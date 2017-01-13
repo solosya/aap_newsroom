@@ -1,0 +1,111 @@
+.top-stories{
+    margin-bottom: 78px;
+    
+    @media screen and (max-width: $sm-break){
+        margin-bottom: 25px;
+    }
+
+    > .container > h2{
+        font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: em(20);
+        color: #000000;
+
+        @media screen and (max-width: $sm-break){
+            color: #e22f22;
+            border-bottom: 1px solid #dadada;
+        }
+    }
+
+    a.card{
+        @extend %flexbox;
+        height: auto;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+
+        @media screen and (max-width: $sm-break){
+            margin-bottom: 6px;
+            border-bottom: 1px solid #dadada;
+        }
+
+        > article > figure{
+            width: 99px;
+            flex: 0 0 99px;
+            overflow: hidden;
+            float: left;
+            margin-right: 14px;
+
+            @media screen and (max-width: $md-break){
+                width: 65px;
+                flex: 0 0 65px;
+            }
+
+            @media screen and (max-width: $sm-break){
+                width: 60px;
+                flex: 0 0 60px;
+            }
+
+            > img{
+                max-width: 100%;
+            }
+        }
+
+        > article > .content{
+            border-bottom: 1px solid #dadada;
+            padding-bottom: 3px;
+            -ms-flex: 1 0;
+            
+            @media screen and (max-width: $md-break){
+                padding-bottom: 15px;
+            }
+
+            @media screen and (max-width: $sm-break){
+                border: 0;
+            }
+            > .category{
+                font-size: em(11.2);
+                font-weight: bold;
+                color: #8a8b93;
+                display: block;
+                line-height: 1;
+                margin-bottom: 3px;
+            }
+
+            > h2{
+                font-weight: bold;
+                font-size: em(22);
+
+                @media screen and (max-width: $md-break){
+                   font-size: em(16);
+                }
+
+                @media screen and (max-width: $sm-break){
+                    font-size: em(14.5);
+                    margin: 2px;
+                }
+            }
+
+            > .author{
+                display: none;
+            }
+
+            > time{
+                padding: 0;
+                border: 0;
+                line-height: 1;
+
+                @media screen and (max-width: $md-break){
+                    position: absolute;
+                    bottom: 5px;
+                    right: 15px;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    font-size: em(10);
+                }
+            }
+        }
+
+
+    }
+}

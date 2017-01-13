@@ -1,0 +1,42 @@
+body{
+    @media screen and (max-width: $sm-break){
+        overflow-x: hidden;
+    }
+}
+
+.container-fluid{
+    max-width: 1600px;
+}
+
+.btn{
+    font-size: em(14);
+    font-weight: 600;
+    border-radius: 0;
+    padding: 10px 9px;
+    border-bottom: 2px solid $brand-secondary;  
+}
+
+.btn-primary{
+    &:hover{
+        border-bottom: 2px solid $brand-secondary;
+    }
+}
+
+.sidebar{
+    padding-left: 75px;
+    @media screen and (max-width: $md-break){
+        padding-left: 15px;
+    }
+}
+
+.card-group{
+    @media screen and (max-width: $sm-break){
+        margin-bottom: 35px;
+    }
+}
+
+.site-main{
+    @media screen and (max-width: $mobile-break){
+        padding-top: 65px;
+    }
+}

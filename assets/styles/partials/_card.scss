@@ -1,0 +1,46 @@
+.card{
+    
+    display:block;
+
+    .category{
+        font-size: em(14);
+        font-weight: 600;
+        color: #8a8b93;
+        text-transform: uppercase;
+        line-height: 1;
+        display: block;
+    }
+
+    h2{
+        font-family: "tinos";
+        font-size: em(48);
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    .author{
+        img{
+            float: left;
+        }
+        p{
+            float: left;
+            padding-left: 11px;
+            padding-top: 5px;
+            font-family: "tinos";
+            font-size: em(16.5);
+            font-weight: 700;
+            color: #6c6c6c;
+        }
+    }
+
+    time{
+        float: right;
+        padding-top: 10px;
+        padding-left: 13px;
+        padding-bottom: 10px;
+        border-left: solid 1px #dadada;
+        font-size: em(12);
+        line-height: 1;
+        color: #6c6c6c;
+    }
+}

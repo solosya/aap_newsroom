@@ -1,0 +1,154 @@
+.site-footer{
+    width: 100%;
+    margin-top: 130px;
+    @media screen and (max-width: $sm-break){
+        margin-top: 55px;
+    }
+
+    .footer-menu{
+        padding-bottom: 26px;
+        @media screen and (max-width: $sm-break){
+            display: none;
+        }
+        > ul{
+            @extend %ulmenu;
+
+            > li{
+                margin-right: 50px;
+
+                > a{
+                    color: #FFF;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .footer-top{
+        background: #000;
+        position: relative;
+        @media screen and (max-width: $sm-break){
+            padding-top: 155px;
+        }
+        .logo-wrapper{
+            @media screen and (max-width: $sm-break){
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+            }
+        }
+
+        .icon-wrapper{
+            @media screen and (max-width: $sm-break){
+                position: absolute;
+                top: 75px;
+            }
+        }
+
+        .footer-brand{
+            display: block;
+            width: 202px;
+            padding-top: 61px;
+        }
+
+        .symbol{
+            margin-right: 46px;
+            padding-top: 15px;
+            @media screen and (max-width: $sm-break){
+                float: left;
+            }
+            @media screen and (max-width: $mobile-break){
+                padding-top: 155px;
+                width: 55px;
+                padding-top: 45px;
+            }
+        }
+
+        .footer_btn-lg{
+            background-color: #e22f22;
+            color: #FFF;
+            padding-top: 51px;
+            border-bottom: 2px solid #FFF;
+            @media screen and (max-width: $sm-break){
+                float: right;
+            }
+        }
+
+        .social-links{
+            margin-top:25px;
+            margin-bottom: 57px;
+
+            > ul{
+                > li{
+                    > a{
+                        color: #e22f22;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-btm{
+        padding-top: 12px;
+        padding-bottom: 14px;
+
+        .footer-menu {
+            display: block;
+            padding-bottom: 0;
+            margin-left: -15px;
+            margin-right: -15px;
+
+            @media screen and (max-width: $sm-break){
+                border-bottom: solid 1px #d4d4d4;
+            }
+            > ul{
+                padding-left: 15px;
+                > li {
+                    margin-right: 30px;
+                    @media screen and (max-width: $sm-break){
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+
+        .footer-menu > ul > li > a {
+            color: #000;
+            font-size: em(14);
+            text-transform: capitalize;
+        }
+
+        .rooms-link{
+            float: right;        
+            @media screen and (max-width: $sm-break){
+                float: left;
+            }       
+            > ul{
+                @extend %ulmenu;
+                @media screen and (max-width: $sm-break){
+                    display: block;
+                    padding-top: 15px;
+                }
+                li{
+                    @media screen and (max-width: $sm-break){
+                        margin-bottom: 15px;
+                    }
+                    a{
+                        display: block;
+                        margin-right: 24px;
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                        
+                        img{
+                            height: 20px;
+                            width: auto;
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

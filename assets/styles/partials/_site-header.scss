@@ -1,0 +1,120 @@
+.site-header{
+    padding-top: 44px;
+    @media screen and (max-width: $sm-break){
+        padding-top: 0;
+    }
+    @media screen and (max-width: $mobile-break){
+        position: fixed;
+        top:0;
+        width: 100%;
+        background: #FFF;
+        z-index: 100;
+    }
+
+    .social-links{
+        a{
+            color: $gray-base;
+        }
+    }
+
+    .secondary-menu{
+        > ul {
+            @extend %ulmenu;
+            font-size: em(14);
+            font-weight: 600;
+
+            li{
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .section-right{
+        @media screen and (min-width: $header-break){
+            width: 895px;
+        }
+    }
+
+    .site-branding-top{
+        @media screen and (max-width: $sm-break){
+            display: none;
+        }
+        .section-right{
+            padding-top: 10px;
+            margin-right: 0;
+        }
+    }
+    
+    .rooms-link{
+        float: left;
+        padding-top: 20px;
+        margin-left: -30px;
+        
+        @media screen and (max-width: $md-break){
+            display: none;
+        }
+
+        > ul{
+            @extend %ulmenu;
+
+            li{
+                a{
+                    display: block;
+                    margin-right: 30px;
+
+                    img{
+                        height: 26px;
+                        width: auto;
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .site-branding-bottom{
+        padding-top: 55px;
+        padding-bottom: 60px;
+
+        @media screen and (max-width: $sm-break){
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .section-right{
+            @media screen and (min-width: $header-break){
+                padding-left: 0;
+                padding-right: 0;
+                float: right;
+                margin-left: 0;
+                margin-right: 15px;
+            }
+            > .sb-custom-menu{
+                border-top: solid 4px #000000;
+
+                @media screen and (max-width: $header-break){
+                    border: 0;
+                }
+            }
+        }
+    }
+
+    .navbar-brand{
+        padding: 0;
+        height: auto;
+
+        .main-logo{
+            @media screen and (max-width: $sm-break){
+                display: none;
+            }
+        }
+
+        .mobile-logo{
+            display: none;
+            @media screen and (max-width: $sm-break){
+                display: block;
+                width: 63px;
+            }
+        }
+    }
+}

@@ -1,0 +1,122 @@
+.room-living{
+    margin-bottom: 80px;
+    @media screen and (max-width: $sm-break){
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    > header{
+        margin-bottom: 20px;
+    }
+
+    > .content-wrapper{
+        height: 587px;
+        background-size: cover;
+        position: relative;
+
+        @media screen and (max-width: $sm-break){
+            height: 202px;
+        }
+
+        @media screen and (max-width: $sm-break){
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            padding-top: 202px;
+            height: auto;
+        }
+        &:before{
+            content: '';
+            width: 20px;
+            height: 100%;
+            background: #80c342;
+            display: block;
+
+            @media screen and (max-width: $sm-break){
+                position: absolute;
+                top: 0;
+            }
+        }
+
+        > .contents{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 418px;
+            background: rgba(0, 0, 0, 0.4);
+            color: #FFF;
+            padding-left: 25px;
+            padding-right: 25px;
+            @media screen and (max-width: $sm-break){
+                position: relative;
+                width: 100%;
+            }
+            @media screen and (max-width: $sm-break){
+                background: #000;
+            }
+            
+            > a {
+                color:white;
+
+                &:last-child article{
+                    border: 0;
+                }
+
+            }
+
+            > a > article{
+                height: 193px;
+                overflow: hidden;
+                border-bottom: 2px solid #FFF;
+                padding-top: 25px;
+                @media screen and (max-width: $sm-break){
+                    padding-top: 15px;
+                    height: auto;
+                    padding-bottom: 20px;
+                }
+
+                > .content{
+                    @media screen and (max-width: $sm-break){
+                        position: relative;
+                    }
+                    > .category{
+                        color:white;
+                        font-size: em(14);
+                        text-transform: uppercase;
+
+                        @media screen and (max-width: $sm-break){
+                            font-size: em(9.2);
+                        }
+                    }
+
+                    > h2{
+                        margin-top:21px;
+                        font-style: italic;
+                        font-weight: normal;
+                        font-size: em(28);
+                        @media screen and (max-width: $sm-break){
+                            font-size: em(16);
+                            margin-top: 5px;
+                        }
+                    }
+
+                    > .author {
+                        @media screen and (max-width: $sm-break){
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                        }
+                        > p {
+                            color:white;
+                            font-size: em(16.5);
+                            font-weight: bold;
+                            font-family: "tinos";
+                            @media screen and (max-width: $sm-break){
+                                font-size: em(11);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
