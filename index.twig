@@ -1,0 +1,722 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 20 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+
+    <main id="main" class="site-main" role="main">
+        <section class="featured-slider container-fluid">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <article class="card">
+                            <figure>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/slider-1.jpg">
+                            </figure>
+                            <div class="content">
+                                <span class="category">World news</span>
+                                <h2>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec..</h2>        
+                                <div class="author">
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                    <p>Jane oung</p>
+                                </div><!-- .author-->
+                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                            </div><!--content-->
+                        </article><!--card-->
+                    </div><!--swiper slide-->
+
+                    <div class="swiper-slide">
+                        <article class="card">
+                            <figure>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/slider-1.jpg">
+                            </figure>
+                            <div class="content">
+                                <span class="category">World news</span>
+                                <h2>1Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec..</h2>        
+                                <div class="author">
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                    <p>Jane oung</p>
+                                </div><!-- .author-->
+                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                            </div><!--content-->
+                        </article><!--card-->
+                    </div><!--swiper slide-->
+
+                </div><!-- .swiper-wrapper-->
+
+                <div class="newsroom-icon">
+                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-icon.png" alt="newsroom ic">
+                </div><!-- .newsroom-icon-->
+
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-black"></div>
+                <div class="swiper-button-prev swiper-button-black"></div>
+
+            </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+
+        <section class="top-stories">
+            <div class="container">
+                <h2>TOP STORIES</h2>
+                <div class="row">
+
+                    {% for i in 0..2 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: i, containerClass: 'col-sm-4'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+
+        <section class="home-page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="card-group">
+                            {% set rowCards = ['card-rec', 'card-rec inverted'] %}                                                                
+                            {% for i in 0..1 %}
+                                {% if articles[i] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: rowCards[i]}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                         </div><!--card-group-->
+
+                        <div class="row">
+                            <div class="card-group">
+                               
+                            {% for i in 0..2 %}
+                                {% if articles[i] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: 'col-sm-4 card-sm'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                            </div><!-- .card-group-->
+                        </div><!-- .row-->
+
+
+
+                        {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
+                        {% for i in 0..1 %}
+                            {% if articles[i] %}                                                                
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: 'col-sm-4 card-sm'}) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
+
+
+
+{#                         <div class="card-lg">
+                            <a class="card">
+                                <article>
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/card-lg.jpg">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>1Fusce vehicula dolor arcu, sit amet blandit dolor..</h2>        
+                                        <div class="author">
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                            <p>Jane oung</p>
+                                        </div><!-- .author-->
+                                        <time datetime="2016-11-16">2 HOURS AGO</time>
+                                    </div><!--content-->
+                                </article><!--card-->
+                            </a>
+                        </div><!-- /card-lg-->
+
+                        <div class="card-rec">
+                            <a class="card">
+                                <article>
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/card-rec.jpg">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>1Fusce vehicula dolor arcu, sit amet blandit dolor..</h2>        
+                                        <div class="author">
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                            <p>Jane oung</p>
+                                        </div><!-- .author-->
+                                        <time datetime="2016-11-16">2 HOURS AGO</time>
+                                    </div><!--content-->
+                                </article><!--card-->
+                            </a>
+                        </div><!-- /card-rec-->
+ #}
+                        
+                    </div><!-- .col-sm-8-->
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+                        <section class="subscribe">
+                            <h3>Subscribe to</h3>
+                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-wordmark.png" alt="newsroom wordmark">
+                            <form method="get" id="subscribe-form" class="subscribe-form" action="#">
+                                <label for="header-search" class="assistive-text sr-only">Search</label>
+                                <div class="input-group">
+                                    <input type="email" class="field form-control" name="email" placeholder="Email address" required="">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" id="searchsubmit">
+                                            <span class="icon-right-small"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </section><!-- .subscribe-->
+
+                        <section class="sidebar-news">
+                            <header>
+                                <h3><strong>Radio</strong> New Zealand</h3>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/rnz-logo-reo-opaque-420-px.png" alt="rnz">
+                            </header>
+
+                            <a class="card">
+                                <article>
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/sidebar.jpg">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Banks consider raising variable interest rates…</h2>        
+                                        <div class="author">
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                            <p>Jane oung</p>
+                                        </div><!-- .author-->
+                                        <time datetime="2016-11-16">2 HOURS AGO</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+                            <a class="card">
+                                <article>
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/sidebar.jpg">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Banks consider raising variable interest rates…</h2>        
+                                        <div class="author">
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                            <p>Jane oung</p>
+                                        </div><!-- .author-->
+                                        <time datetime="2016-11-16">2 HOURS AGO</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+                            <a class="card">
+                                <article>
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/sidebar.jpg">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Banks consider raising variable interest rates…</h2>        
+                                        <div class="author">
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+                                            <p>Jane oung</p>
+                                        </div><!-- .author-->
+                                        <time datetime="2016-11-16">2 HOURS AGO</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                        </section><!-- .sidebar-news -->
+
+                        <section class="subscribe">
+                            <h3>Subscribe to</h3>
+                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-pro-wordmark.png" alt="newsroom wordmark">
+                            <form method="get" id="subscribe-form" class="subscribe-form" action="#">
+                                <label for="header-search" class="assistive-text sr-only">Search</label>
+                                <div class="input-group">
+                                    <input type="email" class="field form-control" name="email" placeholder="Email address" required="">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" id="searchsubmit">
+                                            <span class="icon-right-small"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                            <p>Sign up to Newsroom Pro today to enjoy all the extra features we have to offer.</p>
+                        </section><!-- .subscribe-->
+
+                        <section class="add sidebar-add">
+                            <div class="block hidden-xs">
+                                <a href="#">
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-lg-rec.jpg" alt="Add Alt Here">
+                                </a>
+                                <span class="add-text">Advertisement</span>
+                            </div><!--block-->
+
+                            <div class="block visible-xs-block">
+                                <a href="#">
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-mobile.jpg" alt="Add Alt Here">
+                                </a>
+                                <span class="add-text">Advertisement</span>
+                            </div><!--block-->
+                        </section>
+                    </div><!-- .col-sm-4-->
+
+                    <div class="col-sm-12">
+                        <section class="most-popular">
+                            <h2>MOST POPULAR</h2>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-6">
+                                    
+                                    <a class="card">
+                                        <article>
+                                            <figure>
+                                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/popular-news.jpg" class="img-responsive">
+                                            </figure>
+                                            <div class="content">
+                                                <span class="category">World news</span>
+                                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                                                <h2>Senate and House leaders call for inquiry of Russian hacking in election</h2>        
+                                                <div class="author">
+                                                    <p>By Suzanne McFadden</p>
+                                                </div><!-- .author-->
+                                            </div><!--content-->
+                                        </article>
+                                    </a>
+                                </div><!-- .col-sm-3-->
+                                <div class="col-sm-3 col-xs-6">
+                                    <a class="card">
+                                        <article>
+                                            <figure>
+                                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/popular-news.jpg" class="img-responsive">
+                                            </figure>
+                                            <div class="content">
+                                                <span class="category">World news</span>
+                                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                                                <h2>Senate and House leaders call for inquiry of Russian hacking in election</h2>        
+                                                <div class="author">
+                                                    <p>By Suzanne McFadden</p>
+                                                </div><!-- .author-->
+                                            </div><!--content-->
+                                        </article>
+                                    </a>
+                                </div><!-- .col-sm-3-->
+                                <div class="col-sm-3 col-xs-6">
+                                    <a class="card">
+                                        <article>
+                                            <figure>
+                                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/popular-news.jpg" class="img-responsive">
+                                            </figure>
+                                            <div class="content">
+                                                <span class="category">World news</span>
+                                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                                                <h2>Senate and House leaders call for inquiry of Russian hacking in election</h2>        
+                                                <div class="author">
+                                                    <p>By Suzanne McFadden</p>
+                                                </div><!-- .author-->
+                                            </div><!--content-->
+                                        </article>
+                                    </a>
+                                </div><!-- .col-sm-3-->
+                                <div class="col-sm-3 col-xs-6">
+                                    <a class="card">
+                                        <article>
+                                            <figure>
+                                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/popular-news.jpg" class="img-responsive">
+                                            </figure>
+                                            <div class="content">
+                                                <span class="category">World news</span>
+                                                <time datetime="2016-11-16">2 HOURS AGO</time>
+                                                <h2>Senate and House leaders call for inquiry of Russian hacking in election</h2>        
+                                                <div class="author">
+                                                    <p>By Suzanne McFadden</p>
+                                                </div><!-- .author-->
+                                            </div><!--content-->
+                                        </article>
+                                    </a>
+                                </div><!-- .col-sm-3-->
+
+                            </div><!-- .row-->
+                        </section><!--most-popular-->
+                    </div><!-- .col-sm-12-->
+                </div><!-- .row-->
+
+                <section class="add lg-block">
+                    <div class="block">
+                        <a href="#">
+                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-top.jpg" alt="Add Alt Here" class="img-responsive">
+                        </a>
+                        <span class="add-text">Advertisement</span>
+                    </div>
+                </section><!-- .add-->
+
+                <section class="room-view">
+                    <header>
+                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-viewingroom-3x.png" alt="viewing room" class="img-responsive">
+                    </header>
+
+                    <div class="content-wrapper">
+                    
+                        <a class="card">
+                            <article class="featured col-sm-12">
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/room-view-faetured.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>      
+                                    <p>In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.</p>  
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                        </a>
+
+
+
+                        <div class="rowd">
+                            <a class="card">
+                                <article class="col-sm-4">
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
+                                        <time datetime="2016-11-16">2 days ago</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                            <a class="card">
+                                <article class="col-sm-4">
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
+                                        <time datetime="2016-11-16">2 days ago</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                            <a class="card">
+                                <article class="col-sm-4">
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                        <time datetime="2016-11-16">2 days ago</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                        </div><!-- .row-->
+                    </div><!-- .content-wrapper-->
+
+                </section><!-- .room-view-->
+
+                <section class="room-living">
+                    <header>
+                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-livingroom-wordmark.png" alt="viewing room">
+                    </header>
+
+                    <div class="content-wrapper" style="background-image: url(http://tengu.aapp.io/themes/aap_newsroom/static/images/living-room-bck.jpg);">
+                        <div class="contents">
+                            
+                            <a class="card">
+                                <article>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                        <div class="author">
+                                            <p>By Suzanne McFadden</p>
+                                        </div><!-- .author-->      
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                            <a class="card">
+                                <article>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                        <div class="author">
+                                            <p>By Suzanne McFadden</p>
+                                        </div><!-- .author-->      
+                                    </div><!--content-->
+                                </article>
+                            </a>
+
+                            <a class="card">
+                                <article>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                        <div class="author">
+                                            <p>By Suzanne McFadden</p>
+                                        </div><!-- .author-->      
+                                    </div><!--content-->
+                                </article>
+                            </a>
+                        </div><!-- .content-->
+                    </div>
+                </section><!-- .room-living-->
+
+                <section class="room-board">
+                    <header>
+                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-viewingroom-wordmark-copy-2@3x.png" alt="board room">
+                    </header>
+
+                    <div class="featured">
+                        
+                        <a class="card">
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/baord-room-feat.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>   
+                                    <p>In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.</p>     
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                        </a>
+                    </div><!-- .featured-->
+
+                    <div class="articles">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/board-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/board-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/board-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
+
+                        </div><!-- .articles-->
+                    </div><!-- .row-->
+                </section><!--room-board-->
+
+                <section class="room-sports">
+                    <header>
+                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-sportsroom-wordmark.png" alt="board room">
+                    </header>
+
+                    <div class="featured">
+                        <a class="card">
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-20@3x.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>   
+                                    <p>In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.</p>     
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                        </a>
+                    </div><!-- .featured-->
+
+                    <div class="articles">
+                        <div class="row">
+
+                            <article class="col-sm-12 col-md-6">
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article class="col-sm-12 col-md-6">
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                    </div><!-- .row-->
+                </section><!--room-sports-->
+
+                <section class="room-corporate">
+                    <header>
+                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/newsroom-sportsroom-wordmark.png" alt="board room">
+                    </header>
+                    <div class="row">
+                        <div class="col-sm-4 articles">
+                            <h3>Corporate Responsibility</h3>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <div class="sponsors">
+                                <p>Sponsored by</p>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/ANZ-brand.png" alt="ANZ">
+                                <span class="add-text">Advertiser content</span>
+                            </div><!-- .sponsors-->
+                        </div><!-- .col-sm-4-->
+                        <div class="col-sm-4 articles">
+                            <h3>Corporate Responsibility</h3>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <div class="sponsors">
+                                <p>Sponsored by</p>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/ANZ-brand.png" alt="ANZ">
+                                <span class="add-text">Advertiser content</span>
+                            </div><!-- .sponsors-->
+                        </div><!-- .col-sm-4-->
+                        <div class="col-sm-4 articles">
+                            <h3>Corporate Responsibility</h3>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <article>
+                                <figure>
+                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/cant-export-img.jpg" class="img-responsive">
+                                </figure>
+                                <div class="content">
+                                    <span class="category">World news</span>
+                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                    <time datetime="2016-11-16">2 days ago</time>
+                                </div><!--content-->
+                            </article>
+                            <div class="sponsors">
+                                <p>Sponsored by</p>
+                                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/ANZ-brand.png" alt="ANZ">
+                                <span class="add-text">Advertiser content</span>
+                            </div><!-- .sponsors-->
+                        </div><!-- .col-sm-4-->
+                    </div><!-- .row-->
+                </section><!-- .room-corporate-->
+
+
+
+            </div><!-- .container-->
+        </section><!-- .home-page-content-->
+
+    </main><!-- .site-main -->

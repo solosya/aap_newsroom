@@ -3622,7 +3622,7 @@ input[type="button"].btn-block {
   content: '\f32d'; }
 
 /* '' */
-.top-stories a.card, .card-rec a.card > article {
+.top-stories a.card > article, .card-rec a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5025,71 +5025,73 @@ button.swiper-pagination-bullet {
       .top-stories > .container > h2 {
         color: #e22f22;
         border-bottom: 1px solid #dadada; } }
-  .top-stories a.card {
+  @media screen and (max-width: 769px) {
+    .top-stories a.card {
+      margin-bottom: 6px;
+      border-bottom: 1px solid #dadada; } }
+  .top-stories a.card > article {
     height: auto;
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap; }
+  .top-stories a.card > article > figure {
+    width: 99px;
+    flex: 0 0 99px;
+    overflow: hidden;
+    float: left;
+    margin-right: 14px; }
+    @media screen and (max-width: 1200px) {
+      .top-stories a.card > article > figure {
+        width: 65px;
+        flex: 0 0 65px; } }
     @media screen and (max-width: 769px) {
-      .top-stories a.card {
-        margin-bottom: 6px;
-        border-bottom: 1px solid #dadada; } }
-    .top-stories a.card > article > figure {
-      width: 99px;
-      flex: 0 0 99px;
-      overflow: hidden;
-      float: left;
-      margin-right: 14px; }
+      .top-stories a.card > article > figure {
+        width: 60px;
+        flex: 0 0 60px; } }
+    .top-stories a.card > article > figure > img {
+      max-width: 100%; }
+  .top-stories a.card > article > .content {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 3px;
+    -ms-flex: 1 0; }
+    @media screen and (max-width: 1200px) {
+      .top-stories a.card > article > .content {
+        padding-bottom: 15px; } }
+    @media screen and (max-width: 769px) {
+      .top-stories a.card > article > .content {
+        border: 0; } }
+    .top-stories a.card > article > .content > .category {
+      font-size: 0.74667em;
+      font-weight: bold;
+      color: #8a8b93;
+      display: block;
+      line-height: 1;
+      margin-bottom: 3px; }
+    .top-stories a.card > article > .content > h2 {
+      font-weight: bold;
+      font-size: 1.46667em; }
       @media screen and (max-width: 1200px) {
-        .top-stories a.card > article > figure {
-          width: 65px;
-          flex: 0 0 65px; } }
+        .top-stories a.card > article > .content > h2 {
+          font-size: 1.06667em; } }
       @media screen and (max-width: 769px) {
-        .top-stories a.card > article > figure {
-          width: 60px;
-          flex: 0 0 60px; } }
-      .top-stories a.card > article > figure > img {
-        max-width: 100%; }
-    .top-stories a.card > article > .content {
-      border-bottom: 1px solid #dadada;
-      padding-bottom: 3px;
-      -ms-flex: 1 0; }
+        .top-stories a.card > article > .content > h2 {
+          font-size: 0.96667em;
+          margin: 2px; } }
+    .top-stories a.card > article > .content > .author {
+      display: none; }
+    .top-stories a.card > article > .content > time {
+      padding: 0;
+      border: 0;
+      line-height: 1; }
       @media screen and (max-width: 1200px) {
-        .top-stories a.card > article > .content {
-          padding-bottom: 15px; } }
+        .top-stories a.card > article > .content > time {
+          position: absolute;
+          bottom: 5px;
+          right: 15px; } }
       @media screen and (max-width: 769px) {
-        .top-stories a.card > article > .content {
-          border: 0; } }
-      .top-stories a.card > article > .content > .category {
-        font-size: 0.74667em;
-        font-weight: bold;
-        color: #8a8b93;
-        display: block;
-        line-height: 1;
-        margin-bottom: 3px; }
-      .top-stories a.card > article > .content > h2 {
-        font-weight: bold;
-        font-size: 1.46667em; }
-        @media screen and (max-width: 1200px) {
-          .top-stories a.card > article > .content > h2 {
-            font-size: 1.06667em; } }
-        @media screen and (max-width: 769px) {
-          .top-stories a.card > article > .content > h2 {
-            font-size: 0.96667em;
-            margin: 2px; } }
-      .top-stories a.card > article > .content > .author {
-        display: none; }
-      .top-stories a.card > article > .content > time {
-        padding: 0;
-        border: 0;
-        line-height: 1; }
-        @media screen and (max-width: 1200px) {
-          .top-stories a.card > article > .content > time {
-            position: absolute;
-            bottom: 5px;
-            right: 15px; } }
-        @media screen and (max-width: 769px) {
-          .top-stories a.card > article > .content > time {
-            font-size: 0.66667em; } }
+        .top-stories a.card > article > .content > time {
+          font-size: 0.66667em; } }
+    .top-stories a.card > article > .content p {
+      display: none; }
 
 .room-view {
   margin-bottom: 80px; }
@@ -6000,7 +6002,9 @@ button.swiper-pagination-bullet {
         .card-rec.inverted > a.card > article > .content > .author p {
           color: #FFF; }
         .card-rec.inverted > a.card > article > .content > time {
-          color: #FFF; } }
+          color: #FFF; }
+        .card-rec.inverted > a.card > article > .content p {
+          display: none; } }
   @media screen and (max-width: 769px) {
     .card-rec a.card {
       margin-left: -15px;
@@ -6058,6 +6062,8 @@ button.swiper-pagination-bullet {
           font-size: 1.06667em;
           height: auto;
           border: 0; } }
+    .card-rec a.card > article > .content > p {
+      display: none; }
     @media screen and (max-width: 769px) {
       .card-rec a.card > article > .content > .author {
         display: none; } }
@@ -6132,6 +6138,8 @@ button.swiper-pagination-bullet {
         .card-sm a.card > article > .content > time {
           color: #6c6c6c;
           font-size: 0.66667em; } }
+    .card-sm a.card > article > .content p {
+      display: none; }
 
 .card-lg {
   margin-bottom: 79.5px; }

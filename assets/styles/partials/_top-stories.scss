@@ -18,14 +18,17 @@
     }
 
     a.card{
-        @extend %flexbox;
-        height: auto;
-        flex-wrap: nowrap;
-        -webkit-flex-wrap: nowrap;
 
         @media screen and (max-width: $sm-break){
             margin-bottom: 6px;
             border-bottom: 1px solid #dadada;
+        }
+
+        > article {
+            @extend %flexbox;
+            height: auto;
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
         }
 
         > article > figure{
@@ -103,6 +106,10 @@
                 @media screen and (max-width: $sm-break){
                     font-size: em(10);
                 }
+            }
+
+            p {
+                display:none;
             }
         }
 

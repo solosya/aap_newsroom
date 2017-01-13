@@ -1,0 +1,95 @@
+{% set networkData = _Network.getNetworkData() %}
+
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
+
+
+{{this.registerJs("HomeController.listing();")}}
+{{this.registerJs("HomeController.blog();")}}
+
+{% set limit = 20 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
+{% endif %}
+
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <section class="section-hero content-block">
+
+        {% if articles[articleCount] %}                                                                
+            {{this.render('partials/_single-article.twig', {article: articles[articleCount], containerClass: 'hero-image-wrapper' }) | raw }}
+            {% set articleCount = articleCount + 1 %}
+        {% endif %}
+
+    </section><!--blog-hero-->
+
+    <div class="content-block container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
+
+                    {% set rowCards = ['col-sm-12 card-sm', 'col-sm-12 card-sm', 'col-sm-12 card-sm'] %}                                                                
+                    {% for i in 0..3 %}
+
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], containerClass:  rowCards[i] }) | raw }}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div><!--row-->
+            </div><!--col-sm-3-->
+            
+            <div class="col-sm-9">
+                <div class="row">
+                <!--article blocks -->
+
+                    {% set rowCards = [
+                        'col-sm-8 card-lg', 
+                        'col-sm-4 card-md', 
+                        'col-sm-4 card-md',
+                        'col-sm-4 card-md',
+                        'col-sm-4 card-md'] 
+                    %}                                                                
+                    {% for i in 0..3 %}
+
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], containerClass:  rowCards[i] }) | raw }}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                </div><!--row-->
+            </div><!--col-sm-9-->
+
+        </div><!--row-->
+    </div><!--content-block-->
+
+    <div class="content-block container">
+
+        {% for i in 0..2 %}
+
+            {% if articles[articleCount] %}                                                                
+                {{this.render('partials/_single-article.twig', {article: articles[articleCount], containerClass:  'col-sm-4 card-rec' }) | raw }}
+                {% set articleCount = articleCount + 1 %}
+            {% endif %}
+
+        {% endfor %}
+
+    </div><!--content-block-->
