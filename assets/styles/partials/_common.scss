@@ -40,3 +40,77 @@ body{
         padding-top: 65px;
     }
 }
+
+figcaption{
+    margin-top: 10px;
+
+    @media screen and (max-width: $sm-break){
+        float: left;
+        margin-bottom: 30px;
+    }
+    
+    > p {
+        font-size: em(12.5);
+        color: #6c6c6c;
+        font-style: italic;
+        font-family: "tinos", "National" ;
+        float: left;
+
+        &.credit{
+            font-style: normal;
+            float: right;
+
+            @media screen and (max-width: $sm-break){
+                float: left;
+            }
+        }
+    }
+}
+
+.btn-post{
+    background-color: #3b5b97;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: em(13);
+    font-weight: bold;
+    border: 0;
+
+    &:hover,
+    &:focus{    
+        color: #FFF;
+    }
+}
+
+.btn-tweet{
+    background-color: #21b0ee;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: em(13);
+    font-weight: bold;
+    border: 0;
+
+    &:hover,
+    &:focus{    
+        color: #FFF;
+    }
+}
+
+.btn-share{
+    background-color: #f57a61;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: em(13);
+    font-weight: bold;
+    border: 0;
+
+    &:hover,
+    &:focus{    
+        color: #FFF;
+    }
+}
+
+p.lead{
+    font-size: em(20);
+    font-weight: bold;
+    color: #4a4a4a;
+}

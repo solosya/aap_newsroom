@@ -1,0 +1,100 @@
+.page-content{
+    aside{
+        padding-left: 25px;
+        border-left: solid 1px #dadada;
+
+        @media screen and (max-width: $md-break){
+            padding-left: 15px;
+            border-left:0;
+        }
+
+        @media screen and (max-width: $sm-break){
+            padding-left: 0;
+        }
+
+        .sidebar-add{
+            text-align: center;
+            margin-bottom: 35px;
+            @media screen and (max-width: $sm-break){
+                text-align: left;
+            }
+            &:last-child{
+                margin-top:330px;
+                @media screen and (max-width: $sm-break){
+                    margin-top:35px;
+                }
+            }
+        }
+
+        .sidebar-articles{
+            article.card{
+                position: relative;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin-bottom: 27px;
+                width: 100%;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                flex-wrap: nowrap;
+                -webkit-flex-wrap: nowrap;
+                border-bottom: solid 1px #979797;
+
+                > figure{
+                    width: 110px;
+                    flex: 0 0 110px;
+                    overflow: hidden;
+                    float: left;
+                    margin-right: 12px;
+
+                    > img{
+                        max-width: 100%;
+                    }
+                }
+
+                > .content{
+                    padding-bottom: 3px;
+                    width: 100%;
+                    -ms-flex: 1 0;
+                    -webkit-flex: 1 0;
+                    flex: 1 0;
+                    
+                    > .category{
+                        font-size: em(14);
+                        font-weight: bold;
+                        display: block;
+                        line-height: 1;
+                        margin-bottom: 7px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: #e22f22;
+                    }
+
+                    > h2{
+                        font-weight: normal;
+                        font-size: em(19);
+                        min-height: 85px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    > .author{
+                        display: none;
+                    }
+
+                    > time{
+                        padding: 0;
+                        border: 0;
+                        line-height: 1;
+                        float: left;
+                        color: #8a8b93;
+                        font-size: em(12);
+                    }
+                }
+
+            }
+        }
+    }
+}

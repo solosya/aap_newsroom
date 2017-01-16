@@ -1,0 +1,119 @@
+{{ set(this, 'title', article.title) }}
+
+{{this.registerJs("ArticleController.view();")}}
+{{this.registerJs("HomeController.blog();")}}
+
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% set authorId = article.createdBy['id'] %}
+{% set authorGUID = article.createdBy['guid'] %}
+
+{% if not _User.isGuset() and _User.isUserFollowing('user', authorId)%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
+{% endif %}
+{% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %}
+{% set imgWidth = 1140 %}
+{% set imgHeight = 493 %}
+
+{% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+{% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+
+    <div class="container article-page">
+        <article>
+            <header class="col-sm-8 col-sm-offset-2">
+                <span class="section">{{ article.label}}</span>
+
+                <!--author section display onle on tablet -->
+                <div class="author col-sm-12 visible-xs-block">
+                    <img src="{{ profileImg }}" alt="alt">
+                    <span class="author-name">By {{article.createdBy['displayName']}}</span>
+                    <time>2 HOURS AGO</time>
+                </div><!--author-->
+                <!--author section display onle on tablet -->
+
+                <time>12 minute read</time>
+                <h1>{{article.title | raw}}</h1>
+                <ul class="social-links">
+                    <li><a href="http://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" target="_blank">
+                        <span class="icon icon-faceook-inverted"></span>
+                        <span class="sr-only">Facebook</span>
+                    </a></li>
+                    <li><a href="http://twitter.com/intent/tweet?status={{ article.title|url_encode }}{{article.url}}" target="_blank">
+                            <span class="icon icon-twitter-inverted"></span>
+                            <span class="sr-only">Twitter</span>
+                        </a></li>
+                    <li><a href="#"><span class="icon icon-google-inverted"></span><span class="sr-only">Google</span></a></li>
+                    <li><a href="#"><span class="icon icon-linkedin-inverted"></span><span class="sr-only">Linked in</span></a></li>
+                </ul>
+            </header>
+
+            <figure>
+                <img src="{{articleImg}}" alt="alt">
+                <figcaption>
+                    {{article.media[0].caption | raw}}
+                </figcaption>
+            </figure>
+
+            <div class="row">
+                <div class="col-md-8 col-md-push-2 col-sm-9 col-sm-push-3 content-main">
+                    <p>{{ article.content | raw }}</p>
+
+
+                <!--BUTTONS-->
+                <div class="article-actions text-right">
+                    <a href="#" class="btn btn-icon"><span class="icon icon-heart"></span><span class="sr-only">Button screen reader text</span></a>
+                    <a href="#" class="btn btn-icon"><span class="icon icon-tag"></span><span class="sr-only">Button screen reader text</span></a>
+                </div><!--article-actions-->
+                <!--BUTTONS-->
+
+                <!--comments disqus -->
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'jsfiddles'; // required: replace example with your forum shortname
+                
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 <!--comments disqus -->
+                </div><!--content-main-->
+
+
+                <div class="author col-md-2 col-md-pull-8 col-sm-3 col-sm-pull-9 hidden-xs">
+                    <img src="{{ profileImg }}" alt="alt">
+                    <span class="author-name">By {{article.createdBy['displayName']}}</span>
+                    <time>2 HOURS AGO</time>
+                    <a href="#" class="btn">Follow</a>
+                    <hr>
+                    <h4>About</h4>
+                    <p>
+                        {{ article.createdBy['bio'] }}
+                    </p>
+                </div><!--author-->
+            </div><!--row-->
+        </article>
+
+        <div class="related-posts">
+            <h2>You also might like..</h2>
+            <div class="row">
+
+                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
+                {% if popularArticles|length > 0 %}
+                    {% for article in popularArticles %}
+                        {{this.render('partials/_single-article.twig', {article: article, containerClass: 'col-sm-3 col-xs-6 card-sm'}) | raw}}
+                    {% endfor %}
+                {% else %}
+                    <p class="nodata text-center">No data found.</p>
+                {% endif %}
+
+            </div><!--row-->
+        </div><!--related-posts-->
+    </div>
+
