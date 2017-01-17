@@ -12,6 +12,42 @@
 {% set articleCount = 0 %}
 
 
+{% set sections =  {
+        "2SER": {
+            "feed": "jabber",
+            "link": ""
+        }, 
+        "Breaking News": {
+            "feed": "Biobber",
+            "link": ""
+        }, 
+        "Board Room": {
+            "feed": "",
+            "link": ""
+        },
+        "Sports Room": {
+            "feed": "",
+            "link": ""
+        }
+    } 
+%}
+
+{% for key, value in sections %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title == key %}
+            {% set value = value | merge({'feed': "kobber" }) %}
+
+{#             {% set value.feed = _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}) %}
+            {% set value.link = blog.link %}
+ #}     
+            {{ dump(key) }}
+            {{ dump(value) }}
+   
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{# {{ dump(sections) }} #}
 
 
     <main id="main" class="site-main" role="main">
@@ -19,7 +55,15 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
-                    <div class="swiper-slide">
+                    {% for i in 0..1 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: i, containerClass: 'swiper-slide'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+
+{#                     <div class="swiper-slide">
                         <article class="card">
                             <figure>
                                 <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/slider-1.jpg">
@@ -51,7 +95,7 @@
                                 <time datetime="2016-11-16">2 HOURS AGO</time>
                             </div><!--content-->
                         </article><!--card-->
-                    </div><!--swiper slide-->
+                    </div><!--swiper slide--> #}
 
                 </div><!-- .swiper-wrapper-->
 
