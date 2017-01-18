@@ -5237,73 +5237,73 @@ button.swiper-pagination-bullet {
         @media screen and (max-width: 769px) {
           .room-view article > .content > time {
             display: none; } }
-    .room-view article.featured {
-      padding: 0;
-      width: 100%;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      flex-wrap: nowrap;
-      -webkit-flex-wrap: nowrap;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #FFF;
-      margin-bottom: 25px; }
+  .room-view .featured article {
+    padding: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 25px; }
+    @media screen and (max-width: 769px) {
+      .room-view .featured article {
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap; } }
+    .room-view .featured article > figure {
+      margin-bottom: 0;
+      width: 633px;
+      flex: 0 0 633px;
+      overflow: hidden; }
+      @media screen and (max-width: 1200px) {
+        .room-view .featured article > figure {
+          width: 54%;
+          flex: 0 0 54%; } }
       @media screen and (max-width: 769px) {
-        .room-view article.featured {
-          flex-wrap: wrap;
-          -webkit-flex-wrap: wrap; } }
-      .room-view article.featured > figure {
-        margin-bottom: 0;
-        width: 633px;
-        flex: 0 0 633px;
-        overflow: hidden; }
+        .room-view .featured article > figure {
+          width: 100%;
+          flex: 0 0 100%; } }
+      .room-view .featured article > figure:before {
+        content: '';
+        width: 20px;
+        background: #ebb913;
+        position: absolute;
+        bottom: 0;
+        top: 0; }
+      @media screen and (max-width: 1200px) {
+        .room-view .featured article > figure:after {
+          top: 37%;
+          left: 43%; } }
+      .room-view .featured article > figure > img {
+        max-width: 100%; }
+    .room-view .featured article > .content {
+      padding: 70px 40px 30px 40px;
+      -webkit-flex: 1 0;
+      -ms-flex: 1 0;
+      flex: 1 0; }
+      @media screen and (max-width: 1200px) {
+        .room-view .featured article > .content {
+          padding: 15px 20px 5px 25px; } }
+      .room-view .featured article > .content > h2 {
+        font-size: 2.93333em;
+        font-weight: bold; }
         @media screen and (max-width: 1200px) {
-          .room-view article.featured > figure {
-            width: 54%;
-            flex: 0 0 54%; } }
+          .room-view .featured article > .content > h2 {
+            font-size: 2.53333em; } }
         @media screen and (max-width: 769px) {
-          .room-view article.featured > figure {
-            width: 100%;
-            flex: 0 0 100%; } }
-        .room-view article.featured > figure:before {
-          content: '';
-          width: 20px;
-          background: #ebb913;
-          position: absolute;
-          bottom: 0;
-          top: 0; }
+          .room-view .featured article > .content > h2 {
+            font-size: 1.6em; } }
+      .room-view .featured article > .content > p {
+        font-size: 20px; }
         @media screen and (max-width: 1200px) {
-          .room-view article.featured > figure:after {
-            top: 37%;
-            left: 43%; } }
-        .room-view article.featured > figure > img {
-          max-width: 100%; }
-      .room-view article.featured > .content {
-        padding: 70px 40px 30px 40px;
-        -webkit-flex: 1 0;
-        -ms-flex: 1 0;
-        flex: 1 0; }
-        @media screen and (max-width: 1200px) {
-          .room-view article.featured > .content {
-            padding: 15px 20px 5px 25px; } }
-        .room-view article.featured > .content > h2 {
-          font-size: 2.93333em;
-          font-weight: bold; }
-          @media screen and (max-width: 1200px) {
-            .room-view article.featured > .content > h2 {
-              font-size: 2.53333em; } }
-          @media screen and (max-width: 769px) {
-            .room-view article.featured > .content > h2 {
-              font-size: 1.6em; } }
-        .room-view article.featured > .content > p {
-          font-size: 20px; }
-          @media screen and (max-width: 1200px) {
-            .room-view article.featured > .content > p {
-              font-size: 1.06667em; } }
-          @media screen and (max-width: 769px) {
-            .room-view article.featured > .content > p {
-              display: none; } }
+          .room-view .featured article > .content > p {
+            font-size: 1.06667em; } }
+        @media screen and (max-width: 769px) {
+          .room-view .featured article > .content > p {
+            display: none; } }
 
 .room-living {
   margin-bottom: 80px; }
@@ -5353,51 +5353,51 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 769px) {
         .room-living > .content-wrapper > .contents {
           background: #000; } }
-      .room-living > .content-wrapper > .contents > a {
+      .room-living > .content-wrapper > .contents > div > a {
         color: white; }
-        .room-living > .content-wrapper > .contents > a:last-child article {
+        .room-living > .content-wrapper > .contents > div > a:last-child article {
           border: 0; }
-      .room-living > .content-wrapper > .contents > a > article {
+      .room-living > .content-wrapper > .contents > div > a > article {
         height: 193px;
         overflow: hidden;
         border-bottom: 2px solid #FFF;
         padding-top: 25px; }
         @media screen and (max-width: 769px) {
-          .room-living > .content-wrapper > .contents > a > article {
+          .room-living > .content-wrapper > .contents > div > a > article {
             padding-top: 15px;
             height: auto;
             padding-bottom: 20px; } }
         @media screen and (max-width: 769px) {
-          .room-living > .content-wrapper > .contents > a > article > .content {
+          .room-living > .content-wrapper > .contents > div > a > article > .content {
             position: relative; } }
-        .room-living > .content-wrapper > .contents > a > article > .content > .category {
+        .room-living > .content-wrapper > .contents > div > a > article > .content > .category {
           color: white;
           font-size: 0.93333em;
           text-transform: uppercase; }
           @media screen and (max-width: 769px) {
-            .room-living > .content-wrapper > .contents > a > article > .content > .category {
+            .room-living > .content-wrapper > .contents > div > a > article > .content > .category {
               font-size: 0.61333em; } }
-        .room-living > .content-wrapper > .contents > a > article > .content > h2 {
+        .room-living > .content-wrapper > .contents > div > a > article > .content > h2 {
           margin-top: 21px;
           font-style: italic;
           font-weight: normal;
           font-size: 1.86667em; }
           @media screen and (max-width: 769px) {
-            .room-living > .content-wrapper > .contents > a > article > .content > h2 {
+            .room-living > .content-wrapper > .contents > div > a > article > .content > h2 {
               font-size: 1.06667em;
               margin-top: 5px; } }
         @media screen and (max-width: 769px) {
-          .room-living > .content-wrapper > .contents > a > article > .content > .author {
+          .room-living > .content-wrapper > .contents > div > a > article > .content > .author {
             position: absolute;
             top: 0;
             right: 0; } }
-        .room-living > .content-wrapper > .contents > a > article > .content > .author > p {
+        .room-living > .content-wrapper > .contents > div > a > article > .content > .author > p {
           color: white;
           font-size: 1.1em;
           font-weight: bold;
           font-family: "tinos"; }
           @media screen and (max-width: 769px) {
-            .room-living > .content-wrapper > .contents > a > article > .content > .author > p {
+            .room-living > .content-wrapper > .contents > div > a > article > .content > .author > p {
               font-size: 0.73333em; } }
 
 .room-board {

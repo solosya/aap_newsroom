@@ -35,20 +35,18 @@
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title == key %}
-            {% set value = value | merge({'feed': "kobber" }) %}
-
-{#             {% set value.feed = _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}) %}
-            {% set value.link = blog.link %}
- #}     
-            {{ dump(key) }}
-            {{ dump(value) }}
-   
+            {% set sections = sections | merge({
+                (key) : {
+                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                    'link' : blog.link
+                    }
+                }) %}
         {% endif %}
     {% endfor %}
 {% endfor %}
 
-{# {{ dump(sections) }} #}
-
+{# {{ dump(sections) }}
+ #}
 
     <main id="main" class="site-main" role="main">
         <section class="featured-slider container-fluid">
@@ -380,63 +378,75 @@
                     </header>
 
                     <div class="content-wrapper">
-                    
-                        <a class="card">
-                            <article class="featured col-sm-12">
-                                <figure>
-                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/room-view-faetured.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>      
-                                    <p>In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.</p>  
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                        </a>
+                
+{#                 {% if two_serPanelfeed|length > 0 %}
+                    {% for i in 0..1 %}
+                        {{this.render('partials/_2ser-article.twig', {article: two_serPanelfeed.articles[i], 'position': (i+1), containerClass: 'col-sm-4'}) | raw}}
+                    {% endfor %}
+                {% endif %}
+ #}
+                        <div class="col-sm-12">
+                            <a class="card featured">
+                                <article class="">
+                                    <figure>
+                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/room-view-faetured.jpg" class="img-responsive">
+                                    </figure>
+                                    <div class="content">
+                                        <span class="category">World news</span>
+                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>      
+                                        <p>In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.</p>  
+                                        <time datetime="2016-11-16">2 days ago</time>
+                                    </div><!--content-->
+                                </article>
+                            </a>
+                        </div>
 
 
 
                         <div class="rowd">
-                            <a class="card">
-                                <article class="col-sm-4">
-                                    <figure>
-                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
-                                        <time datetime="2016-11-16">2 days ago</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article class="">
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
 
-                            <a class="card">
-                                <article class="col-sm-4">
-                                    <figure>
-                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
-                                        <time datetime="2016-11-16">2 days ago</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
-
-                            <a class="card">
-                                <article class="col-sm-4">
-                                    <figure>
-                                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                        <time datetime="2016-11-16">2 days ago</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
-
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article class="">
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>       
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/view-room-thumb.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
                         </div><!-- .row-->
                     </div><!-- .content-wrapper-->
 
@@ -448,43 +458,50 @@
                     </header>
 
                     <div class="content-wrapper" style="background-image: url(http://tengu.aapp.io/themes/aap_newsroom/static/images/living-room-bck.jpg);">
+                        
+
                         <div class="contents">
+                            <div>
+                                <a class="card">
+                                    <article>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                            <div class="author">
+                                                <p>By Suzanne McFadden</p>
+                                            </div><!-- .author-->      
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
                             
-                            <a class="card">
-                                <article>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
-                                        <div class="author">
-                                            <p>By Suzanne McFadden</p>
-                                        </div><!-- .author-->      
-                                    </div><!--content-->
-                                </article>
-                            </a>
+                            <div>
+                                <a class="card">
+                                    <article>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                            <div class="author">
+                                                <p>By Suzanne McFadden</p>
+                                            </div><!-- .author-->      
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
 
-                            <a class="card">
-                                <article>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
-                                        <div class="author">
-                                            <p>By Suzanne McFadden</p>
-                                        </div><!-- .author-->      
-                                    </div><!--content-->
-                                </article>
-                            </a>
-
-                            <a class="card">
-                                <article>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
-                                        <div class="author">
-                                            <p>By Suzanne McFadden</p>
-                                        </div><!-- .author-->      
-                                    </div><!--content-->
-                                </article>
-                            </a>
+                            <div>
+                                <a class="card">
+                                    <article>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>  
+                                            <div class="author">
+                                                <p>By Suzanne McFadden</p>
+                                            </div><!-- .author-->      
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
                         </div><!-- .content-->
                     </div>
                 </section><!-- .room-living-->
@@ -495,7 +512,6 @@
                     </header>
 
                     <div class="featured">
-                        
                         <a class="card">
                             <article>
                                 <figure>
@@ -513,6 +529,7 @@
 
                     <div class="articles">
                         <div class="row">
+                            
                             <div class="col-sm-4">
                                 <a class="card">
                                     <article>
@@ -527,6 +544,7 @@
                                     </article>
                                 </a>
                             </div>
+                            
                             <div class="col-sm-4">
                                 <a class="card">
                                     <article>
@@ -541,6 +559,7 @@
                                     </article>
                                 </a>
                             </div>
+                            
                             <div class="col-sm-4">
                                 <a class="card">
                                     <article>
@@ -582,29 +601,39 @@
                     </div><!-- .featured-->
 
                     <div class="articles">
+                        
                         <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
 
-                            <article class="col-sm-12 col-md-6">
-                                <figure>
-                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article class="col-sm-12 col-md-6">
-                                <figure>
-                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                    </div><!-- .row-->
+                            <div class="col-sm-12 col-md-6">
+                                <a class="card">
+                                    <article>
+                                        <figure>
+                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
+                                        </figure>
+                                        <div class="content">
+                                            <span class="category">World news</span>
+                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
+                                            <time datetime="2016-11-16">2 days ago</time>
+                                        </div><!--content-->
+                                    </article>
+                                </a>
+                            </div>
+                        </div><!-- .row-->
+                    </div>
                 </section><!--room-sports-->
 
                 <section class="room-corporate">
