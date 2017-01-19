@@ -9,3 +9,7 @@
 
     @return $pixels / $context * 1em;
 }
+
+@function color($card_type) {
+  	@return map-get($cards, $card_type);
+}

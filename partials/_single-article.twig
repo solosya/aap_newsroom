@@ -6,25 +6,50 @@
         {% set imgWidth = 1280 %}
         {% set imgHeight = 720 %}
 
-        {% if 'col-sm-4' in containerClass %}
-            {% set imgWidth = 99 %}
-            {% set imgHeight = 88 %}
-        {% endif %}
 
-        {% if 'card-rec' in containerClass %}
+        {% if 'subfeature col-sm-4' == containerClass %}
             {% set imgWidth = 330 %}
-            {% set imgHeight = 236 %}
-        {% endif %}
+            {% set imgHeight = 212 %}
 
-        {% if 'card-sm' in containerClass %}
+        {% elseif 'featured col-sm-12' == containerClass %}
+            {% set imgWidth = 633 %}
+            {% set imgHeight = 428 %}
+
+        {% elseif 'subfeature-board col-sm-4' == containerClass %}
+            {% set imgWidth = 92 %}
+            {% set imgHeight = 100 %}
+
+        {% elseif 'featured board' == containerClass %}
+            {% set imgWidth = 627 %}
+            {% set imgHeight = 415 %}
+
+        {% elseif 'featured sport' == containerClass %}
+            {% set imgWidth = 1140 %}
+            {% set imgHeight = 430 %}
+
+
+        {% elseif 'col-sm-12 col-md-6' == containerClass %}
+            {% set imgWidth = 203 %}
+            {% set imgHeight = 129 %}
+
+        {% elseif 'col-sm-4 card-sm' == containerClass %}
             {% set imgWidth = 230 %}
             {% set imgHeight = 206 %}
-        {% endif %}
 
-        {% if 'card-lg' in containerClass %}
+
+
+{#         {% elseif 'col-sm-4' in containerClass %}
+            {% set imgWidth = 99 %}
+            {% set imgHeight = 88 %}
+
+        {% elseif 'card-rec' in containerClass %}
+            {% set imgWidth = 330 %}
+            {% set imgHeight = 236 %}
+
+        {% elseif 'card-lg' in containerClass %}
             {% set imgWidth = 750 %}
             {% set imgHeight = 518 %}
-        {% endif %}
+ #}        {% endif %}
 
 
 

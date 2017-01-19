@@ -74,11 +74,20 @@
                     }
                 }
 
+                > p {
+                    display:none;
+                }
+
+                > .author {
+                    display:none;
+                }
+
                 > h2{
                     font-size: em(28);
                     font-weight: normal;
                     line-height: 1.02;
                     margin-bottom: 20px;
+                    margin-top:21px;
                     @media screen and (max-width: $sm-break){
                         font-size: em(16);
                         margin-top: 5px;
@@ -87,6 +96,10 @@
                 }
 
                 > time{
+                    float:none;
+                    border:none;
+                    padding:0;
+                    color:$black;
                     font-size: em(14);
                     font-weight: bold;
                     @media screen and (max-width: $sm-break){
@@ -166,6 +179,7 @@
                 }
 
                 > p{
+                    height:75px;
                     font-size: em(20);
                     line-height: 1.25;
                     color: #FFF;
@@ -173,6 +187,10 @@
                     @media screen and (max-width: $sm-break){
                         display: none;
                     }
+                }
+
+                > .author {
+                    display: none;
                 }
 
                 > time{

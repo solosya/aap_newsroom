@@ -22,6 +22,7 @@
 
     <link rel="shortcut icon" href="{{favicon}}" />
     <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
+    <link href='https://fonts.googleapis.com/css?family=Tinos:400,700' rel='stylesheet' type='text/css'>
 
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
@@ -38,7 +39,7 @@
     <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css" />
     <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css" />
     <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css" />
-    <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=10' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=13' type='text/css' media='all' />
     
     <script src="https://use.typekit.net/unp4tin.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -183,7 +184,7 @@
     {{ this.render('partials/footer.twig', {network : networkData, blog: blogData }) | raw }}
 
     
-    {# {{ this.render('partials/_javascript.twig') | raw }} #}
+    {{ this.render('partials/_javascript.twig') | raw }}
 
     <div class="SwappingHelper" style="display:none">
         <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">

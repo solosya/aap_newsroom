@@ -54,24 +54,31 @@
                 background: #000;
             }
             
-            > div > a {
-                color:white;
-
-                &:last-child article{
+            > div {
+                border-bottom: 2px solid #FFF;
+                &:last-child {
                     border: 0;
                 }
+            }
 
+            > div > a {
+                color:white;
             }
 
             > div > a > article{
                 height: 193px;
                 overflow: hidden;
-                border-bottom: 2px solid #FFF;
+                // border-bottom: 2px solid #FFF;
                 padding-top: 25px;
                 @media screen and (max-width: $sm-break){
                     padding-top: 15px;
                     height: auto;
                     padding-bottom: 20px;
+                }
+
+
+                > figure {
+                    display: none;
                 }
 
                 > .content{
@@ -98,6 +105,15 @@
                             margin-top: 5px;
                         }
                     }
+                    
+                    > p {
+                        display:none;
+                    }
+                    
+                    > time {
+                        display: none
+                    }
+
 
                     > .author {
                         @media screen and (max-width: $sm-break){
@@ -105,7 +121,16 @@
                             top: 0;
                             right: 0;
                         }
+                        
+
+                        
                         > p {
+
+                            &:before{
+                                content: 'By ';
+                            }
+
+
                             color:white;
                             font-size: em(16.5);
                             font-weight: bold;
@@ -113,6 +138,9 @@
                             @media screen and (max-width: $sm-break){
                                 font-size: em(11);
                             }
+                        }
+                        > img {
+                            display:none;
                         }
                     }
                 }

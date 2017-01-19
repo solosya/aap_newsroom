@@ -98,9 +98,6 @@
                 }
             }
 
-            > p{
-                font-size: 20px;
-            }
 
             > time{
                 float:none;
@@ -113,7 +110,24 @@
                     display: none;
                 }
             }
+            
+            > div.author {
+                display:none;
+            }
+
         }
+    }
+
+    .subfeature article {
+        > .content{
+
+            > p {
+                display:none;
+            }
+
+
+        }
+
     }
 
     .featured article {

@@ -81,7 +81,32 @@
                 color: #8a8b93;
             }
 
+            > .author {
+                display: none;
+            }
+
         }
+    }
+
+    .subfeature-board article {
+        > .content{
+
+            > p {
+                display:none;
+            }
+            > h2 {
+                margin-top:21px;
+            }
+
+            > time {
+                float:none;
+                border:none;
+                padding:0;
+            }
+
+
+        }
+
     }
 
     > .featured{
@@ -185,6 +210,7 @@
                     line-height: 1.25;
                     color: #8a8b93;
                     margin-bottom: 30px;
+                    height: 75px;
                     @media screen and (max-width: $md-break){
                         display: none;
                     }
@@ -197,6 +223,10 @@
                     font-size: 14px;
                     font-weight: bold;
                     color: #8a8b93;
+                }
+
+                > .author {
+                    display:none;
                 }
             }
             > figure{
