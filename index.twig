@@ -53,12 +53,10 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
-                    {% for i in 0..1 %}
-                        {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: i, containerClass: 'swiper-slide'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    {% endfor %}
+                    {% if articles[0] %}                                                                
+                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
                 </div><!-- .swiper-wrapper-->
 
                 <div class="newsroom-icon">
@@ -66,8 +64,8 @@
                 </div><!-- .newsroom-icon-->
 
                 <!-- Add Arrows -->
-                <div class="swiper-button-next swiper-button-black"></div>
-                <div class="swiper-button-prev swiper-button-black"></div>
+{#                 <div class="swiper-button-next swiper-button-black"></div>
+                <div class="swiper-button-prev swiper-button-black"></div> #}
 
             </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
@@ -80,7 +78,7 @@
 
                     {% for i in 0..2 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: i, containerClass: 'col-sm-4'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
@@ -97,7 +95,7 @@
                             {% set rowCards = ['card-rec', 'card-rec inverted'] %}                                                                
                             {% for i in 0..1 %}
                                 {% if articles[i] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: rowCards[i]}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
@@ -109,7 +107,7 @@
                                
                             {% for i in 0..2 %}
                                 {% if articles[i] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: 'col-sm-4 card-sm'}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
@@ -122,7 +120,7 @@
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
                         {% for i in 0..1 %}
                             {% if articles[i] %}                                                                
-                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: articleCount+1, containerClass: rowCards[i]}) | raw}}
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
                         {% endfor %}
@@ -237,22 +235,28 @@
                         </section>
                     </div><!-- .col-sm-4-->
 
+
+
+
+
                     <div class="col-sm-12">
-                        <section class="most-popular">
-                            <h2>MOST POPULAR</h2>
-                            <div class="row">
+                        <section class="room-board">
+                            <div class="articles">
+                                <div class="row">
 
-                                {% set popularArticles = _Article.getPopularArticles({ limit: 4 }) %}
-                                {% if popularArticles|length > 0 %}
-                                    {% for article in popularArticles %}
-                                        {{this.render('partials/_single-article.twig', {article: article, containerClass: 'col-sm-3 col-xs-6'}) | raw}}
-                                    {% endfor %}
-                                {% endif %}
-
+                                {% for i in 0..2 %}
+                                    {% if sections['2SER'].feed.articles[i] %}        
+                                        {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], containerClass: 'subfeature-board col-sm-4'}) | raw}}
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
                             </div><!-- .row-->
                         </section><!--most-popular-->
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
+
+
+
 
                 <section class="add lg-block">
                     <div class="block">
@@ -278,7 +282,7 @@
                     <div class="content-wrapper">
                 
                         {% if sections['2SER'].feed|length > 0 %}
-                            {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420'}) | raw}}
                         {% endif %}
 
 
@@ -377,35 +381,8 @@
                                 {% endif %}
                             {% endfor %}
 
-{#                             <div class="col-sm-12 col-md-6">
-                                <a class="card">
-                                    <article>
-                                        <figure>
-                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
-                                        </figure>
-                                        <div class="content">
-                                            <span class="category">World news</span>
-                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                            <time datetime="2016-11-16">2 days ago</time>
-                                        </div><!--content-->
-                                    </article>
-                                </a>
-                            </div>
 
-                            <div class="col-sm-12 col-md-6">
-                                <a class="card">
-                                    <article>
-                                        <figure>
-                                            <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/20161017-s-k-i-n-d-e-e-p-slide-6-u-e-6-video-sixteen-by-nine-jumbo-1600-copy-2.jpg" class="img-responsive">
-                                        </figure>
-                                        <div class="content">
-                                            <span class="category">World news</span>
-                                            <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                            <time datetime="2016-11-16">2 days ago</time>
-                                        </div><!--content-->
-                                    </article>
-                                </a>
-                            </div> #}
+
                         </div><!-- .row-->
                     </div>
                 </section><!--room-sports-->

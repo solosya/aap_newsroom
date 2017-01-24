@@ -109,7 +109,7 @@
             z-index: 2;
             @media screen and (max-width:1600px){
                 width: 35%;
-                padding: 85px 15px 15px 15px;
+                padding: 140px 15px 0 15px;
             }
 
             @media screen and (max-width: $mmd-break){
@@ -156,8 +156,15 @@
                      border: 0;
                 }
             }
+            
+            > p {
+                height:70px;
+            }
 
             .author{
+        
+                margin-top:50px;
+
                 @media screen and (max-width: $sm-break){
                     img{
                         display: none;
@@ -170,6 +177,9 @@
             }
 
             time{
+
+                margin-top:50px;
+
                 @media screen and (max-width: $sm-break){
                     font-size: em(10);
                     border: 0;

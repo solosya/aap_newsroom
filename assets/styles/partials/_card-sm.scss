@@ -3,6 +3,7 @@
     @media screen and (max-width: $sm-break){
         margin-bottom: -2px;
     }
+
     a.card{
         
         @media screen and (max-width: $sm-break){
@@ -39,7 +40,7 @@
 
         > article > .content{
             border: 1px solid #dadada;
-            padding: 15px;
+            padding: 13px 15px 8px 15px;
             @media screen and (max-width: $sm-break){
                 padding: 10px;
                 border: 0;
@@ -51,7 +52,7 @@
                 color: #8a8b93;
                 display: block;
                 line-height: 1;
-                margin-bottom: 3px;
+                margin-bottom: 8px;
                 @media screen and (max-width: $sm-break){
                     font-size: em(11);
                     margin-bottom: 5px;
@@ -72,7 +73,7 @@
             }
 
             > time{
-                float: left;
+                float: none;
                 padding: 0;
                 border: 0;
                 color: #f73d30;
