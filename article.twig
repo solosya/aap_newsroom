@@ -19,15 +19,6 @@
 {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
-    <section class="add page-add container">
-        <div class="block">
-            <a href="#">
-
-                <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-top.jpg" alt="Add Alt Here" class="img-responsive">
-            </a>
-            <span class="add-text">Advertisement</span>
-        </div>
-    </section><!--add page-add-->
 
     <main id="main" class="site-main" role="main">
         <article class="article-main">
