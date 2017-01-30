@@ -32,15 +32,7 @@
             {% set imgWidth = 203 %}
             {% set imgHeight = 129 %}
 
-        {% elseif 'col-sm-4 card-sm' == containerClass %}
-            {% set imgWidth = 230 %}
-            {% set imgHeight = 206 %}
 
-
-
-        {% elseif 'col-sm-4' in containerClass %}
-            {% set imgWidth = 99 %}
-            {% set imgHeight = 88 %}
 
         {% elseif 'card-rec' in containerClass %}
             {% set imgWidth = 330 %}
@@ -50,11 +42,22 @@
             {% set imgWidth = 750 %}
             {% set imgHeight = 518 %}
 
+        {% elseif 's230x206' in containerClass %}
+            {% set imgWidth = 230 %}
+            {% set imgHeight = 206 %}
+
+
         {% elseif 's633x420' in containerClass %}
             {% set imgWidth = 633 %}
             {% set imgHeight = 420 %}
         
+        {% elseif 's370x270' in containerClass %}
+            {% set imgWidth = 633 %}
+            {% set imgHeight = 420 %}
 
+        {% elseif 'col-sm-4' in containerClass %}
+            {% set imgWidth = 99 %}
+            {% set imgHeight = 88 %}
 
         {% endif %}
 

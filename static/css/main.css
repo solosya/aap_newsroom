@@ -10302,6 +10302,70 @@ button.swiper-pagination-bullet {
         color: #8a8b93;
         font-size: 0.8em; }
 
+.channel {
+  margin-top: 150px;
+  position: relative; }
+  .channel h1 {
+    color: #000000;
+    font-size: 3.2em;
+    font-weight: 600;
+    margin-bottom: 30px; }
+    @media screen and (max-width: 769px) {
+      .channel h1 {
+        margin-bottom: 0; } }
+  .channel .follow-box {
+    position: relative;
+    text-align: right; }
+    @media screen and (max-width: 769px) {
+      .channel .follow-box {
+        text-align: left;
+        padding-bottom: 20px; } }
+  .channel .follow {
+    font-size: 0.93333em;
+    margin-top: 30px;
+    padding-top: 10px;
+    height: 40px;
+    width: 180px; }
+    @media screen and (max-width: 769px) {
+      .channel .follow {
+        margin-top: 15px; } }
+  .channel .featured-slider {
+    margin-bottom: 70px; }
+    .channel .featured-slider a.card .content {
+      padding: 70px 29px 36px 31px; }
+      .channel .featured-slider a.card .content > p {
+        display: none; }
+  .channel .section-sidepanel-news {
+    padding-left: 15px; }
+    .channel .section-sidepanel-news a.card .content {
+      height: auto; }
+      .channel .section-sidepanel-news a.card .content h2 {
+        margin: 15px 0;
+        font-size: 1.73333em; }
+      .channel .section-sidepanel-news a.card .content time {
+        position: static;
+        margin-top: 10px;
+        float: right;
+        padding-left: 11px;
+        padding: 10px;
+        font-family: "tinos";
+        font-size: 0.8em;
+        font-weight: normal;
+        border-left: solid 1px #dadada;
+        color: #6c6c6c; }
+      .channel .section-sidepanel-news a.card .content .author {
+        display: block;
+        padding-top: 10px;
+        border-top: solid 1px #dadada; }
+        .channel .section-sidepanel-news a.card .content .author:after {
+          content: ".";
+          visibility: hidden;
+          display: block;
+          height: 0;
+          clear: both; }
+        .channel .section-sidepanel-news a.card .content .author p {
+          display: block; }
+
 .card {
   display: block; }
   .card .category {
@@ -10551,7 +10615,6 @@ button.swiper-pagination-bullet {
       width: 400px;
       float: left;
       height: 100%;
-      padding: 178px 29px 36px 31px;
       z-index: 2; }
       @media screen and (max-width: 1600px) {
         .featured-slider .card .content {
@@ -10662,7 +10725,7 @@ button.swiper-pagination-bullet {
       max-width: 100%; }
   .card-rec a.card > article > .content {
     border: 1px solid #dadada;
-    padding: 35px 24px 3px 24px;
+    padding: 29px 24px 3px 24px;
     -ms-flex: 1 0;
     -webkit-flex: 1 0;
     flex: 1 0; }
@@ -10676,7 +10739,7 @@ button.swiper-pagination-bullet {
       color: #8a8b93;
       display: block;
       line-height: 1;
-      margin-bottom: 3px; }
+      margin-bottom: 11px; }
       @media screen and (max-width: 769px) {
         .card-rec a.card > article > .content > .category {
           font-size: 0.73333em;
@@ -10708,6 +10771,24 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 769px) {
     .card-sm {
       margin-bottom: -2px; } }
+  @media screen and (min-width: 769px) {
+    .card-sm.inverted > a.card {
+      background-color: #000;
+      color: #FFF; }
+      .card-sm.inverted > a.card > article {
+        -ms-flex-direction: row-reverse;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse; }
+      .card-sm.inverted > a.card > article > .content {
+        border: 1px solid #000; }
+        .card-sm.inverted > a.card > article > .content > .category {
+          color: #27aae1; }
+        .card-sm.inverted > a.card > article > .content > .author p {
+          color: #FFF; }
+        .card-sm.inverted > a.card > article > .content > time {
+          color: #FFF; }
+        .card-sm.inverted > a.card > article > .content > p {
+          display: none; } }
   @media screen and (max-width: 769px) {
     .card-sm a.card {
       height: 115px;
@@ -10733,6 +10814,8 @@ button.swiper-pagination-bullet {
     .card-sm a.card > article > figure > img {
       max-width: 100%; }
   .card-sm a.card > article > .content {
+    position: relative;
+    height: 139px;
     border: 1px solid #dadada;
     padding: 13px 15px 8px 15px; }
     @media screen and (max-width: 769px) {
@@ -10759,6 +10842,8 @@ button.swiper-pagination-bullet {
     .card-sm a.card > article > .content > .author {
       display: none; }
     .card-sm a.card > article > .content > time {
+      position: absolute;
+      bottom: 5px;
       float: none;
       padding: 0;
       border: 0;

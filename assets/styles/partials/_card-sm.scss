@@ -1,11 +1,47 @@
 .card-sm{
+
     margin-bottom: 79.5px;
     @media screen and (max-width: $sm-break){
         margin-bottom: -2px;
     }
 
+
+    &.inverted{
+        @media screen and (min-width: $sm-break){
+            > a.card{
+                background-color: #000;
+                color: #FFF;
+                
+                > article { 
+                    -ms-flex-direction: row-reverse;
+                    -webkit-flex-direction: row-reverse;
+                    flex-direction: row-reverse;
+                }
+
+                > article > .content{
+                    border: 1px solid #000;
+                        > .category{
+                            color: #27aae1;
+                        }
+
+                        > .author p{
+                            color: #FFF;
+                        }
+
+                        > time{
+                            color: #FFF;
+                        }
+                        > p {
+                            display: none;
+                        }
+                }
+            }
+        }
+    }
+
+
     a.card{
-        
+
         @media screen and (max-width: $sm-break){
             height: 115px;
             margin-left: -15px;
@@ -39,6 +75,8 @@
         }
 
         > article > .content{
+            position:relative;
+            height: 139px;
             border: 1px solid #dadada;
             padding: 13px 15px 8px 15px;
             @media screen and (max-width: $sm-break){
@@ -73,6 +111,8 @@
             }
 
             > time{
+                position:absolute;
+                bottom:5px;
                 float: none;
                 padding: 0;
                 border: 0;
