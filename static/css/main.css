@@ -10883,11 +10883,13 @@ button.swiper-pagination-bullet {
       width: 400px;
       float: left;
       height: 100%;
+      max-height: 587px;
+      padding: 178px 29px 36px 31px;
       z-index: 2; }
       @media screen and (max-width: 1600px) {
         .featured-slider .card .content {
           width: 35%;
-          padding: 140px 15px 0 15px; } }
+          padding: 85px 15px 15px 15px; } }
       @media screen and (max-width: 992px) {
         .featured-slider .card .content {
           padding: 42px 15px 15px 15px; } }
@@ -10907,7 +10909,8 @@ button.swiper-pagination-bullet {
             color: #FFF; } }
       .featured-slider .card .content h2 {
         padding-bottom: 35px;
-        margin-bottom: 8px; }
+        margin-bottom: 8px;
+        border-bottom: solid 1px #dadada; }
         @media screen and (max-width: 1330px) {
           .featured-slider .card .content h2 {
             font-size: 2.26667em; } }
@@ -10921,26 +10924,18 @@ button.swiper-pagination-bullet {
           .featured-slider .card .content h2 {
             font-size: 1.86667em;
             border: 0; } }
-      .featured-slider .card .content > p {
-        height: 70px; }
-      .featured-slider .card .content .author {
-        margin-top: 45px;
-        padding-top: 5px;
-        border-top: solid 1px #dadada; }
-        @media screen and (max-width: 769px) {
-          .featured-slider .card .content .author img {
-            display: none; }
-          .featured-slider .card .content .author p {
-            padding: 0;
-            color: #FFF; } }
-      .featured-slider .card .content time {
-        margin-top: 50px; }
-        @media screen and (max-width: 769px) {
-          .featured-slider .card .content time {
-            font-size: 0.66667em;
-            border: 0;
-            color: #FFF;
-            font-weight: normal; } }
+      @media screen and (max-width: 769px) {
+        .featured-slider .card .content .author img {
+          display: none; }
+        .featured-slider .card .content .author p {
+          padding: 0;
+          color: #FFF; } }
+      @media screen and (max-width: 769px) {
+        .featured-slider .card .content time {
+          font-size: 0.66667em;
+          border: 0;
+          color: #FFF;
+          font-weight: normal; } }
 
 .card-rec {
   margin-bottom: 79.5px; }

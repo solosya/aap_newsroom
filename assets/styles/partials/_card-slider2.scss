@@ -9,7 +9,7 @@
         top: 10px;
         right: 10px;
         width: 201px;
-
+        z-index:100;
         @media screen and (max-width:1600px){
             width: 115px;
         }
@@ -51,10 +51,21 @@
 
             // }
         }
+        
+        > article {
+            background:orange;
+            width:100%;
+            height:100%;
+            // line-height:587px;
+
+            white-space: nowrap;
+        }
 
         figure{
+            line-height:normal;
+            vertical-align:top;
             width: 1168px;
-            float: left;
+            display:inline-block;
             &:before{
                 @media screen and (max-width: $sm-break){
                     position: absolute;
@@ -102,15 +113,17 @@
 
         .content{
             width: 400px;
-            float: left;
+            display:inline-block;
+            vertical-align:top;
+            line-height:normal;
+            background:red;
             //border: solid 1px #7e8084;
             height: 100%;
-            max-height:587px;
             padding: 178px 29px 36px 31px;
             z-index: 2;
             @media screen and (max-width:1600px){
                 width: 35%;
-                padding: 85px 15px 15px 15px;
+                padding: 140px 15px 0 15px;
             }
 
             @media screen and (max-width: $mmd-break){
@@ -138,7 +151,6 @@
             h2{
                 padding-bottom: 35px;
                 margin-bottom: 8px;
-                border-bottom: solid 1px #dadada;
 
                 @media screen and (max-width:1330px){
                     font-size: em(34);
@@ -157,8 +169,17 @@
                      border: 0;
                 }
             }
+            
+            > p {
+                height:70px;
+            }
 
             .author{
+        
+                margin-top:45px;
+                padding-top: 5px;
+                border-top: solid 1px #dadada;
+
                 @media screen and (max-width: $sm-break){
                     img{
                         display: none;
@@ -171,6 +192,9 @@
             }
 
             time{
+
+                margin-top:50px;
+
                 @media screen and (max-width: $sm-break){
                     font-size: em(10);
                     border: 0;
