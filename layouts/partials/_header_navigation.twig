@@ -35,7 +35,6 @@
 
                             <li>
                                 <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                    {{ ((parentItem.label is empty) ? ((parentItem.blogTitle is empty)? parentItem.blogTitle : parentItem.pageTitle) : parentItem.label )}}
                                     <img src="{{networkData.templatePath}}/static/images/newsroom-{{parentItem.blogTitle}}.jpg" alt="newsroom-{{parentItem.blogTitle}}">
                                 </a>
                             </li>
