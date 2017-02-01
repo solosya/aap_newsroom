@@ -4,39 +4,7 @@
         margin-bottom: 120px;
     }
 
-    .featured {
-        
-
-        a.card {
-
-            .content {
-                padding: 232px 29px 36px 31px;
-
-                > p {
-                    display:none;
-                }
-
-            }
-        }
-
-
-        &:before{
-            content: '';
-            width: 20px;
-            height: 100%;
-            bottom: 0;
-            top: 0;
-            background: #27aae1;
-            position: absolute;
-            z-index: 2;
-            @media screen and (max-width: $sm-break){
-                display: none;
-            }
-        }
-    }
-
     .top-stories{ 
-
         a.card{
             > article {
                 > figure {
@@ -102,7 +70,6 @@
 
         a.card {
     
-
             figure {
                 display:none;
             }

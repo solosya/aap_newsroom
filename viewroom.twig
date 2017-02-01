@@ -12,17 +12,16 @@
 {% set articleCount = 0 %}
 
 
-    <main id="main" class="site-main roompage" role="main">
+    <main id="main" class="site-main" role="main">
         <section class="featured-slider container-fluid">
 
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+                <div class="">
 
-                        {% if articles[0] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured swiper-slide s1168x587'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    </div><!-- .swiper-wrapper-->
+                    {% if articles[0] %} 
+
+                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
 
                 </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
