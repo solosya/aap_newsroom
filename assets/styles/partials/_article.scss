@@ -1,16 +1,16 @@
 .article {
+    
     @media screen and (max-width: $mobile-break){
         padding-top:100px;
     }
 
     .site-header{
-        padding-top: 0;
         border-bottom: 2px solid #dadada;
         margin-bottom: 55px;
 
-        .site-branding-top{
-            display: none;
-        }
+        // .site-branding-top{
+        //     display: none;
+        // }
 
         .site-branding-bottom{
             padding-top: 10px;
@@ -197,4 +197,48 @@
             }
         }
     }
+
+.featured {
+  position: relative; }
+  .featured .video-overlay .icons .icon {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    line-height: 60px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    /* Chrome, Safari, Opera */
+    -moz-transform: translate(-50%, -50%);
+    /* Mozilla Firefox */
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* IE 9 */
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in; }
+    .featured .video-overlay .icons .icon:hover {
+      border: 1px solid white;
+      transition: all 0.3s ease-in;
+      -moz-transition: all 0.3s ease-in;
+      -o-transition: all 0.3s ease-in;
+      -webkit-transition: all 0.3s ease-in;
+      -ms-transition: all 0.3s ease-in; }
+    .featured .video-overlay .icons .icon i {
+      font-size: 28px;
+      color: #ffffff;
+      width: 100%;
+      text-align: center;
+      margin-left: 4px;
+      line-height: 60px;
+      height: 100%; }
+
+    
 }

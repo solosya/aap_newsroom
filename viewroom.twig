@@ -1,0 +1,47 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 20 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <main id="main" class="site-main roompage" role="main">
+        <section class="featured-slider container-fluid">
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured swiper-slide s1168x587'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </div><!-- .swiper-wrapper-->
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+
+        <section class="card-group">
+            <div class="container">
+                <div class="row">
+
+                    {% for i in 0..12 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s360x215'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+
+
+    </main><!-- .site-main -->

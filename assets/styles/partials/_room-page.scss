@@ -1,0 +1,201 @@
+.roompage {
+
+    .featured-slider {
+        margin-bottom: 120px;
+    }
+
+    .featured {
+        
+
+        a.card {
+
+            .content {
+                padding: 232px 29px 36px 31px;
+
+                > p {
+                    display:none;
+                }
+
+            }
+        }
+
+
+        &:before{
+            content: '';
+            width: 20px;
+            height: 100%;
+            bottom: 0;
+            top: 0;
+            background: #27aae1;
+            position: absolute;
+            z-index: 2;
+            @media screen and (max-width: $sm-break){
+                display: none;
+            }
+        }
+    }
+
+    .top-stories{ 
+
+        a.card{
+            > article {
+                > figure {
+                    height:auto;
+                    width:auto;
+                    flex:none;
+                }
+            }   
+        }
+    }
+
+    .room-top-stories {
+
+        margin-left:-35px;
+
+        > h2 {
+            font-family: Tinos;
+            font-size: 22px;
+            font-weight: bold;
+            color: #000000;
+            margin-top:50px;
+        }
+
+        ul {
+            padding:0;
+            // background:orange;
+            list-style-type:none;
+            width:300px;
+
+            > li {
+                width:100%;
+                display:block;
+                line-height:1em;
+                white-space: nowrap; 
+                border-bottom: solid 1px #dadada;
+                margin-bottom: 10px;
+                padding-bottom:15px;
+
+                > span {
+                    display: inline-block;
+                    vertical-align:top;
+                    width: 30px;
+                    height: 30px;
+                    font-family: Tinos;
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: #e22f22;
+                    margin-top:6px;
+
+                }
+
+                > div {
+                    // background:rgba(0,0,200, .3);
+                    display:inline-block;
+                    vertical-align:top;
+                    height:55px;
+                    
+                }
+            }
+        }
+
+
+
+        a.card {
+    
+
+            figure {
+                display:none;
+            }
+
+            .content {
+
+                > h2 {
+                    line-height: 1.36;
+                    font-family: Tinos;
+                    font-size: 22px;
+                    font-weight: normal;
+                    color: #000000;
+                }
+
+
+
+                > p {
+                    display:none;
+                }
+
+                .category {
+                    display:none;
+                }
+
+                time {
+                    display:none;
+                }
+
+                .author {
+                    display:none;
+                }
+            }
+        }
+    }
+
+    .sidebar-inverted {
+        a.card {
+            margin-top: 40px;
+            margin-left:-35px;
+
+            figure {
+                height:260px;
+
+                img {
+
+                    max-height:100%;
+                    width:auto;
+                }
+            }
+            .content {
+                
+                height:auto;
+
+                h2 {
+                    margin: 25px 0;
+                    font-size: ((26px / $font-size-base) + $font-unit);
+                }
+
+                time {
+                    position:static;
+                    margin-top:10px;
+                    float:right;
+                    padding-left: 11px;
+                    padding: 10px;
+                    font-family: "tinos";
+                    font-size: em(12);
+                    font-weight: normal;
+                    border-left: solid 1px #dadada;
+                    color: #6c6c6c;
+                }
+
+
+                .author {
+                    display:block;
+                    padding-top:10px;
+                    border-top: solid 1px #dadada;
+
+                    &:after{
+                       content: "."; 
+                       visibility: hidden; 
+                       display: block; 
+                       height: 0; 
+                       clear: both;
+                    }
+        
+                    p {
+                        display:block;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+

@@ -1,0 +1,140 @@
+.related-articles{
+    margin-bottom: 78px;
+    
+    @media screen and (max-width: $sm-break){
+        margin-bottom: 25px;
+    }
+
+    > h2 {
+        font-family: National;
+        font-size: 20px;
+        font-weight: normal;
+        font-style: normal;
+        color: #e22f22;
+
+    }
+
+    > .container > h2{
+        font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: em(20);
+        color: #000000;
+
+        @media screen and (max-width: $sm-break){
+            color: #e22f22;
+            border-bottom: 1px solid #dadada;
+        }
+    }
+
+    a.card{
+
+        position:relative;
+        padding:15px 0;
+        margin-bottom:17px;
+        border-bottom: 1px solid #dadada;
+
+        @media screen and (max-width: $sm-break){
+            margin-bottom: 6px;
+            // border-bottom: 1px solid #dadada;
+        }
+
+        > article {
+            @extend %flexbox;
+            height: auto;
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+        }
+
+        > article > figure{
+            width: 99px;
+            flex: 0 0 99px;
+            overflow: hidden;
+            float: left;
+            margin-right: 14px;
+
+            @media screen and (max-width: $md-break){
+                width: 65px;
+                flex: 0 0 65px;
+            }
+
+            @media screen and (max-width: $sm-break){
+                width: 60px;
+                flex: 0 0 60px;
+            }
+
+            > img{
+                max-width: 100%;
+            }
+        }
+
+        > article > .content{
+            -ms-flex: 1 0;
+            
+            @media screen and (max-width: $md-break){
+                padding-bottom: 15px;
+            }
+
+            @media screen and (max-width: $sm-break){
+                border: 0;
+            }
+            > .category{
+                position:absolute;
+                left:0;
+                top:0;
+                font-size: em(11.2);
+                font-weight: bold;
+                color: #8a8b93;
+                display: block;
+                line-height: 1;
+                margin-bottom: 3px;
+            }
+
+            > h2{
+                font-weight: normal;
+                font-size: em(14);
+                height:30px;
+
+                @media screen and (max-width: $md-break){
+                   font-size: em(16);
+                }
+
+                @media screen and (max-width: $sm-break){
+                    font-size: em(14.5);
+                    margin: 2px;
+                }
+            }
+
+            > .author{
+                display: none;
+            }
+
+            > time{
+                float:none;
+                padding: 0;
+                border: 0;
+                line-height: 1;
+
+                @media screen and (max-width: $md-break){
+                    position: absolute;
+                    bottom: 5px;
+                    right: 15px;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    font-size: em(10);
+                }
+            }
+
+            p {
+                height:30px;
+                margin-top:10px;
+                overflow:hidden;
+                line-height: 1.2em !important;
+                font-size: em(13) !important;
+
+            }
+        }
+
+
+    }
+}

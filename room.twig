@@ -1,0 +1,133 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 20 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <main id="main" class="site-main roompage" role="main">
+        <section class="featured-slider container-fluid">
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured swiper-slide s1168x587'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </div><!-- .swiper-wrapper-->
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+
+        <section class="top-stories">
+            <div class="container">
+                <div class="row">
+
+                    {% for i in 0..1 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 s203x130'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+
+        <section class="home-page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="card-group">
+
+                            {% for i in 0..4 %}
+                                {% if articles[i] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                         </div><!--card-group-->
+
+
+                    </div><!-- .col-sm-8-->
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+
+                        <section class="add sidebar-add">
+                            <div class="block hidden-xs">
+                                <a href="#">
+                                    <img src="{{networkData.templatePath}}/static/images/add-lg-rec.jpg" alt="Add Alt Here">
+                                </a>
+                                <span class="add-text">Advertisement</span>
+                            </div><!--block-->
+
+                            <div class="block visible-xs-block">
+                                <a href="#">
+                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
+                                </a>
+                                <span class="add-text">Advertisement</span>
+                            </div><!--block-->
+                        </section>
+
+
+
+                        <section class="room-top-stories">
+                            <h2>Top stories</h2>
+
+                            {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
+                            {% if popularArticles|length > 0 %}
+                                {% set counter = 1 %}
+
+                                <ul>
+                                {% for article in popularArticles %}
+                                    <li>
+                                        <span>{{counter}}.</span>
+                                        {{this.render('partials/_single-article.twig', {article: article, containerClass: ''}) | raw}}
+                                    </li>
+                                    {% set counter = counter + 1 %}
+
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="nodata text-center">No data found.</p>
+                            {% endif %}
+
+                        </section><!--sidebar-news-->
+
+                    <section class="sidebar-inverted">
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </section>
+
+
+
+                    </div><!-- .col-sm-4-->
+
+                </div><!-- .row-->
+
+                <div class="row">
+                    {% for i in 0..3 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-3 card-sm s255x208'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            </div><!-- .container-->
+        </section><!-- .home-page-content-->
+
+    </main><!-- .site-main -->

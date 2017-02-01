@@ -27,13 +27,13 @@
 {% set articleCount = 0 %}
 
 
-        <section class="featured-slider container-fluid">
+        <section class="featured-slider channel container-fluid">
             <div class="container">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 
                         {% if articles[0] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s660x440'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     </div><!-- .swiper-wrapper-->
@@ -74,14 +74,14 @@
                         <section class="add sidebar-add" style="background:orange">
                             <div class="block hidden-xs">
                                 <a href="#">
-                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-lg-rec.jpg" alt="Add Alt Here">
+                                    <img src="{{networkData.templatePath}}/static/images/add-lg-rec.jpg" alt="Add Alt Here">
                                 </a>
                                 <span class="add-text">Advertisement</span>
                             </div><!--block-->
 
                             <div class="block visible-xs-block">
                                 <a href="#">
-                                    <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/add-mobile.jpg" alt="Add Alt Here">
+                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
                                 </a>
                                 <span class="add-text">Advertisement</span>
                             </div><!--block-->
