@@ -27,11 +27,27 @@
             <div class="section-right navbar-right col-md-6 col-lg-8 col-sm-2">
                 <div class="rooms-link">
                     <ul>
-                        <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-viewingroom.jpg" alt="newsroom-viewingroom"></a></li>
+
+                        {% set menuItems = blog.blogHeaderMenu %}
+                        {% for parentItem in menuItems %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {{ ((parentItem.label is empty) ? ((parentItem.blogTitle is empty)? parentItem.blogTitle : parentItem.pageTitle) : parentItem.label )}}
+                                    <img src="{{networkData.templatePath}}/static/images/newsroom-{{parentItem.blogTitle}}.jpg" alt="newsroom-{{parentItem.blogTitle}}">
+                                </a>
+                            </li>
+
+                        {% endfor %}
+
+
+{#                         <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-viewingroom.jpg" alt="newsroom-viewingroom"></a></li>
                         <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-livingroom.jpg" alt="newsroom-viewingroom"></a></li>
                         <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-boardroom.jpg" alt="newsroom-viewingroom"></a></li>
                         <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-sportsroom.jpg" alt="newsroom-viewingroom"></a></li>
-                    </ul>
+ #}                    </ul>
                 </div><!-- .rooms-link-->
                 <a href="#" class="btn btn-primary pull-right">Press Patron Donations</a>
              </div>
