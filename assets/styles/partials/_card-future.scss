@@ -1,0 +1,138 @@
+.future-learning {
+    padding:0 0 15px 0;
+    border-bottom: 1px solid #dadada;
+
+    header {
+        padding-bottom:10px;
+        border-bottom:1px solid #dadada;
+        margin-bottom:20px;
+    }
+    
+    .container {
+        padding:0;
+    }
+
+    .furturelearning{
+
+
+        a.card{
+
+            @media screen and (max-width: $sm-break){
+                margin-bottom: 6px;
+                border-bottom: 1px solid #dadada;
+            }
+
+            > article {
+                @extend %flexbox;
+                height: auto;
+                flex-wrap: nowrap;
+                -webkit-flex-wrap: nowrap;
+            }
+
+            > article > figure{
+                width: 99px;
+                flex: 0 0 99px;
+                overflow: hidden;
+                float: left;
+                margin-right: 14px;
+
+                @media screen and (max-width: $md-break){
+                    width: 65px;
+                    flex: 0 0 65px;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    width: 60px;
+                    flex: 0 0 60px;
+                }
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+            > article > .content{
+                // border-bottom: 1px solid #dadada;
+                padding-bottom: 3px;
+                -ms-flex: 1 0;
+                
+                @media screen and (max-width: $md-break){
+                    padding-bottom: 15px;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    border: 0;
+                }
+                > .category{
+                    font-size: em(11.2);
+                    font-weight: bold;
+                    color: #8a8b93;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom: 3px;
+                }
+
+                > h2{
+                    font-weight: bold;
+                    font-size: em(22);
+
+                    @media screen and (max-width: $md-break){
+                       font-size: em(16);
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        font-size: em(14.5);
+                        margin: 2px;
+                    }
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    padding: 0;
+                    border: 0;
+                    line-height: 1;
+                    float:none;
+
+                    @media screen and (max-width: $md-break){
+                        position: absolute;
+                        bottom: 5px;
+                        right: 15px;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        font-size: em(10);
+                    }
+                }
+
+                p {
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+.future-learning-sponsors{
+    padding-top: 12px;
+    margin-bottom:130px;
+
+    > p {
+        font-size: em(12);
+        font-weight: bold;
+        color: #18385f;
+        display: inline-block;
+        margin-right: 15px;
+        margin-bottom: 0;
+        vertical-align: bottom;
+    }
+
+    > .add-text{
+        font-size: 12px;
+        float: right;
+        color: #6c6c6c;
+        padding-top: 6px;
+    }
+}

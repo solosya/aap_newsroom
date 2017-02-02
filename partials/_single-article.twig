@@ -42,6 +42,11 @@
             {% set imgHeight = 518 %}
 
 
+        {% elseif 's92x100' == containerClass %}
+            {% set imgWidth = 92 %}
+            {% set imgHeight = 100 %}
+
+
 
         {% elseif 's110x110' in containerClass %}
             {% set imgWidth = 110 %}
@@ -133,6 +138,7 @@
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
+        {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
         <a  href="{{article.url}}" 
             class="{{swap}} card other {{hasArticleMediaClass}}" 
@@ -144,7 +150,6 @@
 
             <article class="">
                 {% if article.hasMedia == 'TRUE' %}
-                    {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
                     <figure>
                         {% if lazyload == false %}
                             <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>

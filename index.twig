@@ -239,21 +239,31 @@
 
 
                     <div class="col-sm-12">
-                        <section class="top-stories">
-                            <div class="container">
-                                <h2>TOP STORIES</h2>
+                        <section class="future-learning">
+                                <header>
+                                    <img src="{{networkData.templatePath}}/static/images/futurelearning.png" alt="viewing room">
+                                </header>
                                 <div class="row">
 
                                     {% for i in 0..2 %}
                                         {% if articles[i] %}                                                                
-                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100' }) | raw}}
                                             {% set articleCount = articleCount + 1 %}
                                         {% endif %}
                                     {% endfor %}
 
                                 </div><!-- .row-->
-                            </div><!-- .container-->
                         </section><!-- .top-stories-->
+
+
+                        <div class="future-learning-sponsors">
+                            <p>Sponsored by</p>
+                            <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ">
+                        </div><!-- .sponsors-->
+
+
+
+
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
 
@@ -394,7 +404,7 @@
 
                 <section class="room-corporate">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/newsroom-sportsroom-wordmark.png" alt="board room">
+                        <img src="{{networkData.templatePath}}/static/images/corporate.png" alt="board room">
                     </header>
                     <div class="row">
                         <div class="col-sm-4 articles">

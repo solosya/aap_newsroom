@@ -5841,7 +5841,7 @@ input[type="button"].btn-block {
 /* Gradient Mixin */
 /* Touch Scroll */
 /* Transition Delay */
-.top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article {
+.top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article, .future-learning .furturelearning a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -7861,7 +7861,7 @@ p.lead {
   content: '\f32d'; }
 
 /* '' */
-.top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article {
+.top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article, .future-learning .furturelearning a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11453,5 +11453,99 @@ button.swiper-pagination-bullet {
       .viewingroom.featured > a > article > figure > img {
         width: 100%;
         max-width: 100%; }
+
+.future-learning {
+  padding: 0 0 15px 0;
+  border-bottom: 1px solid #dadada; }
+  .future-learning header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 20px; }
+  .future-learning .container {
+    padding: 0; }
+  @media screen and (max-width: 769px) {
+    .future-learning .furturelearning a.card {
+      margin-bottom: 6px;
+      border-bottom: 1px solid #dadada; } }
+  .future-learning .furturelearning a.card > article {
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+  .future-learning .furturelearning a.card > article > figure {
+    width: 99px;
+    flex: 0 0 99px;
+    overflow: hidden;
+    float: left;
+    margin-right: 14px; }
+    @media screen and (max-width: 1200px) {
+      .future-learning .furturelearning a.card > article > figure {
+        width: 65px;
+        flex: 0 0 65px; } }
+    @media screen and (max-width: 769px) {
+      .future-learning .furturelearning a.card > article > figure {
+        width: 60px;
+        flex: 0 0 60px; } }
+    .future-learning .furturelearning a.card > article > figure > img {
+      max-width: 100%; }
+  .future-learning .furturelearning a.card > article > .content {
+    padding-bottom: 3px;
+    -ms-flex: 1 0; }
+    @media screen and (max-width: 1200px) {
+      .future-learning .furturelearning a.card > article > .content {
+        padding-bottom: 15px; } }
+    @media screen and (max-width: 769px) {
+      .future-learning .furturelearning a.card > article > .content {
+        border: 0; } }
+    .future-learning .furturelearning a.card > article > .content > .category {
+      font-size: 0.74667em;
+      font-weight: bold;
+      color: #8a8b93;
+      display: block;
+      line-height: 1;
+      margin-bottom: 3px; }
+    .future-learning .furturelearning a.card > article > .content > h2 {
+      font-weight: bold;
+      font-size: 1.46667em; }
+      @media screen and (max-width: 1200px) {
+        .future-learning .furturelearning a.card > article > .content > h2 {
+          font-size: 1.06667em; } }
+      @media screen and (max-width: 769px) {
+        .future-learning .furturelearning a.card > article > .content > h2 {
+          font-size: 0.96667em;
+          margin: 2px; } }
+    .future-learning .furturelearning a.card > article > .content > .author {
+      display: none; }
+    .future-learning .furturelearning a.card > article > .content > time {
+      padding: 0;
+      border: 0;
+      line-height: 1;
+      float: none; }
+      @media screen and (max-width: 1200px) {
+        .future-learning .furturelearning a.card > article > .content > time {
+          position: absolute;
+          bottom: 5px;
+          right: 15px; } }
+      @media screen and (max-width: 769px) {
+        .future-learning .furturelearning a.card > article > .content > time {
+          font-size: 0.66667em; } }
+    .future-learning .furturelearning a.card > article > .content p {
+      display: none; }
+
+.future-learning-sponsors {
+  padding-top: 12px;
+  margin-bottom: 130px; }
+  .future-learning-sponsors > p {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #18385f;
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+    vertical-align: bottom; }
+  .future-learning-sponsors > .add-text {
+    font-size: 12px;
+    float: right;
+    color: #6c6c6c;
+    padding-top: 6px; }
 
 /*# sourceMappingURL=main.css.map */
