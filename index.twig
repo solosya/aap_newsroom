@@ -239,18 +239,21 @@
 
 
                     <div class="col-sm-12">
-                        <section class="room-view">
-                            <div class="articles">
+                        <section class="top-stories">
+                            <div class="container">
+                                <h2>TOP STORIES</h2>
                                 <div class="row">
 
-                                {% for i in 0..2 %}
-                                    {% if sections['viewingroom'].feed.articles[i] %}        
-                                        {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], containerClass: 'subfeature-board col-sm-4'}) | raw}}
-                                    {% endif %}
-                                {% endfor %}
-                                </div>
-                            </div><!-- .row-->
-                        </section><!--most-popular-->
+                                    {% for i in 0..2 %}
+                                        {% if articles[i] %}                                                                
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
+                                            {% set articleCount = articleCount + 1 %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div><!-- .row-->
+                            </div><!-- .container-->
+                        </section><!-- .top-stories-->
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
 
@@ -311,11 +314,14 @@
                     </header>
                     
                     {% set LivingImg = _Media.getMediaUrl(sections['livingroom'].feed.articles[0].featuredMedia,1140, 587, {'crop': 'fill', 'gravity': 'faces'} ) %}
-                    <div class="content-wrapper" style="background-image: url({{ LivingImg }});">
+                    <div class="content-wrapper" style="background:yellow">
+
+                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature'}) | raw}}
+
 
                         <div class="contents">
 
-                            {% for i in 0..2 %}
+                            {% for i in 1..3 %}
                                 {% if sections['livingroom'].feed.articles[i] %}        
                                     {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: ''}) | raw}}
                                 {% endif %}
