@@ -247,7 +247,7 @@
 
                                     {% for i in 0..2 %}
                                         {% if articles[i] %}                                                                
-                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100' }) | raw}}
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100', swap: 'false' }) | raw}}
                                             {% set articleCount = articleCount + 1 %}
                                         {% endif %}
                                     {% endfor %}
@@ -294,7 +294,7 @@
                     <div class="content-wrapper">
                 
                         {% if sections['viewingroom'].feed|length > 0 %}
-                            {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
                         {% endif %}
 
 
@@ -302,7 +302,7 @@
 
                             {% for i in 1..3 %}
                                 {% if sections['viewingroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4'}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4', swap: 'false'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 
@@ -323,17 +323,16 @@
                         <img src="{{networkData.templatePath}}/static/images/newsroom-livingroom-wordmark.png" alt="viewing room">
                     </header>
                     
-                    {% set LivingImg = _Media.getMediaUrl(sections['livingroom'].feed.articles[0].featuredMedia,1140, 587, {'crop': 'fill', 'gravity': 'faces'} ) %}
                     <div class="content-wrapper" style="background:yellow">
 
-                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587'}) | raw}}
+                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
 
 
                         <div class="contents">
 
                             {% for i in 1..3 %}
                                 {% if sections['livingroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: ''}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
                                 {% endif %}
                             {% endfor %}
                         </div><!-- .content-->
@@ -353,7 +352,7 @@
 
 
                     {% if sections['boardroom'].feed|length > 0 %}
-                        {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board'}) | raw}}
+                        {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board', swap: 'false'}) | raw}}
                     {% endif %}
 
                     <div class="articles">
@@ -361,7 +360,7 @@
                             
                             {% for i in 1..3 %}
                                 {% if sections['boardroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4'}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4', swap: 'false'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 
@@ -382,7 +381,7 @@
                     </header>
 
                     {% if sections['sportsroom'].feed|length > 0 %}
-                        {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport'}) | raw}}
+                        {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport', swap: 'false'}) | raw}}
                     {% endif %}
 
 
@@ -392,7 +391,7 @@
                             
                             {% for i in 1..2 %}
                                 {% if sections['sportsroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6'}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6', swap: 'false'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 

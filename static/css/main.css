@@ -8652,9 +8652,11 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   .site-header .navbar-brand {
     padding: 0;
     height: auto; }
-    @media screen and (max-width: 769px) {
-      .site-header .navbar-brand .main-logo {
-        display: none; } }
+    .site-header .navbar-brand .main-logo {
+      max-width: 400px; }
+      @media screen and (max-width: 769px) {
+        .site-header .navbar-brand .main-logo {
+          display: none; } }
     .site-header .navbar-brand .mobile-logo {
       display: none; }
       @media screen and (max-width: 769px) {
@@ -10688,6 +10690,10 @@ button.swiper-pagination-bullet {
 
 .card {
   display: block; }
+  .card:hover {
+    text-decoration: none; }
+  .card figure img {
+    width: 100%; }
   .card .category {
     font-size: 0.93333em;
     font-weight: 600;
@@ -10990,7 +10996,8 @@ button.swiper-pagination-bullet {
           font-weight: normal; } }
 
 .card-rec {
-  margin-bottom: 79.5px; }
+  margin-bottom: 79.5px;
+  position: relative; }
   @media screen and (max-width: 769px) {
     .card-rec {
       margin-bottom: -2px; } }
@@ -11390,7 +11397,8 @@ button.swiper-pagination-bullet {
         line-height: 1.02;
         color: #FFF;
         margin-bottom: 40px;
-        margin-top: 21px; }
+        margin-top: 21px;
+        border: none; }
         @media screen and (max-width: 769px) {
           .viewingroom.featured > a > article > .content > h2 {
             color: #000;
@@ -11413,7 +11421,7 @@ button.swiper-pagination-bullet {
         position: absolute;
         padding-left: 10px;
         border-left: 1px solid black;
-        top: 200px;
+        top: 250px;
         left: 140px;
         float: none;
         font-size: 0.93333em;

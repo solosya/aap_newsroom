@@ -158,7 +158,7 @@
 {% set pageClass = _Page.getBodyClass() %}
 
 {% set pageTypeClass = blogData.type %}
-
+{% set blogName = blogData.title %}
 
 
 <body class="{{ pageTypeClass }} {{ pageClass }}">
@@ -175,7 +175,7 @@
     </div><!--add add-header-top-->
 
     
-    {{ this.render('partials/_header_navigation.twig', {blog : blogData, homeUrl :  networkData.defaultBlogUrl, networkData: networkData, pageClass: pageClass }) | raw }}
+    {{ this.render('partials/_header_navigation.twig', {blog : blogData, homeUrl :  networkData.defaultBlogUrl, networkData: networkData, pageClass: blogName }) | raw }}
 
 
     {{ content | raw}}
