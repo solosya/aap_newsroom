@@ -9541,16 +9541,20 @@ button.swiper-pagination-bullet {
           position: absolute;
           top: 0;
           left: 20px;
-          width: 100%;
-          height: 587px; }
+          right: 0;
+          height: 587px;
+          overflow: hidden; }
           .room-living > .content-wrapper > .feature > a.card > article > figure > img {
+            position: absolute;
+            left: 0;
+            width: 100%;
             height: 587px; }
           .room-living > .content-wrapper > .feature > a.card > article > figure:after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 20px;
+            right: 0;
             height: 100%;
             display: block;
             background: rgba(0, 0, 0, 0.4); }

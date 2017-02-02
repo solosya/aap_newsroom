@@ -316,7 +316,7 @@
                     {% set LivingImg = _Media.getMediaUrl(sections['livingroom'].feed.articles[0].featuredMedia,1140, 587, {'crop': 'fill', 'gravity': 'faces'} ) %}
                     <div class="content-wrapper" style="background:yellow">
 
-                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature'}) | raw}}
+                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587'}) | raw}}
 
 
                         <div class="contents">
