@@ -13,19 +13,19 @@
 
 
 {% set sections =  {
-        "2SER": {
+        "viewingroom": {
             "feed": "",
             "link": ""
         }, 
-        "Breaking News": {
+        "boardroom": {
             "feed": "",
             "link": ""
         }, 
-        "Board Room": {
+        "livingroom": {
             "feed": "",
             "link": ""
         },
-        "Sports Room": {
+        "sportsroom": {
             "feed": "",
             "link": ""
         }
@@ -45,7 +45,6 @@
     {% endfor %}
 {% endfor %}
 
-{# {{ dump(sections) }} #}
 
 
     <main id="main" class="site-main" role="main">
@@ -240,13 +239,13 @@
 
 
                     <div class="col-sm-12">
-                        <section class="room-board">
+                        <section class="room-view">
                             <div class="articles">
                                 <div class="row">
 
                                 {% for i in 0..2 %}
-                                    {% if sections['2SER'].feed.articles[i] %}        
-                                        {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], containerClass: 'subfeature-board col-sm-4'}) | raw}}
+                                    {% if sections['viewingroom'].feed.articles[i] %}        
+                                        {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], containerClass: 'subfeature-board col-sm-4'}) | raw}}
                                     {% endif %}
                                 {% endfor %}
                                 </div>
@@ -281,16 +280,16 @@
 
                     <div class="content-wrapper">
                 
-                        {% if sections['2SER'].feed|length > 0 %}
-                            {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420'}) | raw}}
+                        {% if sections['viewingroom'].feed|length > 0 %}
+                            {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420'}) | raw}}
                         {% endif %}
 
 
                         <div class="rowd">
 
                             {% for i in 1..3 %}
-                                {% if sections['2SER'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4'}) | raw}}
+                                {% if sections['viewingroom'].feed.articles[i] %}        
+                                    {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 
@@ -311,14 +310,14 @@
                         <img src="{{networkData.templatePath}}/static/images/newsroom-livingroom-wordmark.png" alt="viewing room">
                     </header>
                     
-                    {% set LivingImg = _Media.getMediaUrl(sections['2SER'].feed.articles[0].featuredMedia,1140, 587, {'crop': 'fill', 'gravity': 'faces'} ) %}
+                    {% set LivingImg = _Media.getMediaUrl(sections['livingroom'].feed.articles[0].featuredMedia,1140, 587, {'crop': 'fill', 'gravity': 'faces'} ) %}
                     <div class="content-wrapper" style="background-image: url({{ LivingImg }});">
 
                         <div class="contents">
 
                             {% for i in 0..2 %}
-                                {% if sections['2SER'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], position: i+1, containerClass: ''}) | raw}}
+                                {% if sections['livingroom'].feed.articles[i] %}        
+                                    {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: ''}) | raw}}
                                 {% endif %}
                             {% endfor %}
                         </div><!-- .content-->
@@ -337,16 +336,16 @@
                     </header>
 
 
-                    {% if sections['2SER'].feed|length > 0 %}
-                        {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[0], 'position': (1), containerClass: 'featured board'}) | raw}}
+                    {% if sections['boardroom'].feed|length > 0 %}
+                        {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board'}) | raw}}
                     {% endif %}
 
                     <div class="articles">
                         <div class="row">
                             
                             {% for i in 1..3 %}
-                                {% if sections['2SER'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4'}) | raw}}
+                                {% if sections['boardroom'].feed.articles[i] %}        
+                                    {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 
@@ -366,8 +365,8 @@
                         <img src="{{networkData.templatePath}}/static/images/newsroom-sportsroom-wordmark.png" alt="board room">
                     </header>
 
-                    {% if sections['2SER'].feed|length > 0 %}
-                        {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[0], 'position': (1), containerClass: 'featured sport'}) | raw}}
+                    {% if sections['sportsroom'].feed|length > 0 %}
+                        {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport'}) | raw}}
                     {% endif %}
 
 
@@ -376,8 +375,8 @@
                         <div class="row">
                             
                             {% for i in 1..2 %}
-                                {% if sections['2SER'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['2SER'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6'}) | raw}}
+                                {% if sections['sportsroom'].feed.articles[i] %}        
+                                    {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6'}) | raw}}
                                 {% endif %}
                             {% endfor %}
 
