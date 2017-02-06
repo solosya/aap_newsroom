@@ -1,4 +1,6 @@
 .card{
+
+    display:block;
     &:hover {
         text-decoration:none;
     }
@@ -9,7 +11,16 @@
         }
     }
 
-    display:block;
+    article {
+        height:100%;
+    }
+
+    .content {
+        // display: flex;
+        // flex-direction:column;
+        // justify-content: flex-start;
+    }
+
 
     .category{
         font-size: em(14);
