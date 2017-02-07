@@ -131,10 +131,12 @@
 
     {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
     {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %}
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
     {% set articleTitle =  titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 
+{# {{ dump(article.createdBy.media.path)}} #}
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
@@ -174,7 +176,8 @@
                     {% endif %}
                     <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate)}} ago</time>
                     <div class="author">
-                        <img src="http://tengu.aapp.io/themes/aap_newsroom/static/images/thumb-author.png" class="img-circle">
+
+                        <img src="{{profileImg}}" class="img-circle">
                         <p>{{ article.createdBy['displayName'] }}</p>
                     </div><!-- .author-->
 
