@@ -25,7 +25,7 @@
                         {% endif %}      
 
 
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         <li><a href="#">News</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Subscribe</a></li>
@@ -93,11 +93,11 @@
              </div>
         </div><!-- .site-branding-top -->
 
-            
+
         <div class="site-branding-bottom row">
             <div class="section-left col-md-4 col-sm-6">
                 <div class="logo pull-left">
-                    <a class="navbar-brand" href="#" rel="Home" tabindex="-1" title="Home">
+                    <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                         <img src="{{networkData.templatePath}}/static/images/newsroom-{{pageClass}}-lrg.png" alt="logo" class="main-logo">
                         <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
                     </a>
