@@ -17,6 +17,53 @@ $('document').ready(function() {
         return false;
     };
 
+
+    isScrolledPass = function(){
+        var scroll = $(window).scrollTop();
+        console.log(scroll);
+        if (scroll >= 210) {
+            console.log('returning true');
+            return true;
+        }
+        console.log('returning false');
+        return false;
+    };
+
+    stickHeader = function(){
+        if ( isScrolledPass() ){
+            $("#topAddBlock").removeClass("fixadd");
+            // $("#masthead").removeClass("site-header-extra-padding");
+            $("#topAddBlock").css({
+                "position": "absolute",
+                "top":"212px"
+            });
+            $('.site-branding-bottom').addClass('branding-bottom-fixed');
+        } else {
+            console.log('adding class');  
+            $("#topAddBlock").addClass("fixadd");
+            // $("#masthead").addClass("site-header-extra-padding");
+            $("#topAddBlock").css({
+                "position": "",
+                "top":""
+            });
+            $('.site-branding-bottom').removeClass('branding-bottom-fixed');
+
+        }
+        return false;
+    };   
+
+    //Onload and resize events
+    $(window).on("resize", function () {
+        stickHeader();
+    }).resize();
+
+    //On Scroll
+    $(window).scroll(function() {
+        stickHeader();
+    });
+
+
+
     $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $(".menu-mobile").on("click", function (e) {
@@ -50,6 +97,16 @@ $('document').ready(function() {
             e.preventDefault();
         }
     });
+
+
+      $('#profile').on('click', function(e) {
+        console.log('clicked');
+        $('#header__menu').toggleClass('Profile_Open');
+        $('body').toggleClass('no_profile');
+        e.preventDefault();
+      });
+
+
 
 
     cardHolder = '';

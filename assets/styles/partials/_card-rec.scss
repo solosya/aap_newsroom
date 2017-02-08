@@ -76,11 +76,13 @@
         }
 
         > article > .content{
+            display: block;
+            width:100%;
             border: 1px solid #dadada;
             padding: 29px 24px 3px 24px;
-            -ms-flex: 1 0;
-            -webkit-flex: 1 0;
-            flex: 1 0;
+            // -ms-flex: 1 0;
+            // -webkit-flex: 1 0;
+            // flex: 1 0;
 
             @media screen and (max-width: $sm-break){
                 border: 0;
@@ -119,14 +121,14 @@
             }
 
             > .author{
-                
+
                 @media screen and (max-width: $sm-break){
                     display: none;
                 }
             }
 
             > time{
-                
+
                 @media screen and (max-width: $sm-break){
                     float: left;
                     border: 0;

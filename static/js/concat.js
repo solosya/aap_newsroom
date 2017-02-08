@@ -32206,19 +32206,14 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                         url = $(elem).data('url');
                     }
                     opts.features = [];
-                    window.brightocved = true;
-                    content = '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
-                    <video data-video-id="'+videoId+'" \
-                    data-account="'+videoId+'" \
-                    data-player="default" \
-                    data-embed="default" \
-                    data-application-id \
-                    class="video-js" \
-                    controls \
-                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></video>\
-                    <script src="//players.brightcove.net/'+accountID+'/default_default/index.min.js"></script></div>\
-                </div>';
-
+                    content = 
+                        '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
+                            <iframe src="//players.brightcove.net/'+accountID+'/default_default/index.html?videoId='+videoId+'" \
+                            allowfullscreen\
+                            webkitallowfullscreen\
+                            mozallowfullscreen\
+                            style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></iframe>\
+                        </div></div>';
                 }
             }
             
@@ -34206,6 +34201,53 @@ $('document').ready(function() {
         return false;
     };
 
+
+    isScrolledPass = function(){
+        var scroll = $(window).scrollTop();
+        console.log(scroll);
+        if (scroll >= 210) {
+            console.log('returning true');
+            return true;
+        }
+        console.log('returning false');
+        return false;
+    };
+
+    stickHeader = function(){
+        if ( isScrolledPass() ){
+            $("#topAddBlock").removeClass("fixadd");
+            // $("#masthead").removeClass("site-header-extra-padding");
+            $("#topAddBlock").css({
+                "position": "absolute",
+                "top":"212px"
+            });
+            $('.site-branding-bottom').addClass('branding-bottom-fixed');
+        } else {
+            console.log('adding class');  
+            $("#topAddBlock").addClass("fixadd");
+            // $("#masthead").addClass("site-header-extra-padding");
+            $("#topAddBlock").css({
+                "position": "",
+                "top":""
+            });
+            $('.site-branding-bottom').removeClass('branding-bottom-fixed');
+
+        }
+        return false;
+    };   
+
+    //Onload and resize events
+    $(window).on("resize", function () {
+        stickHeader();
+    }).resize();
+
+    //On Scroll
+    $(window).scroll(function() {
+        stickHeader();
+    });
+
+
+
     $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $(".menu-mobile").on("click", function (e) {
@@ -34239,6 +34281,16 @@ $('document').ready(function() {
             e.preventDefault();
         }
     });
+
+
+      $('#profile').on('click', function(e) {
+        console.log('clicked');
+        $('#header__menu').toggleClass('Profile_Open');
+        $('body').toggleClass('no_profile');
+        e.preventDefault();
+      });
+
+
 
 
     cardHolder = '';
