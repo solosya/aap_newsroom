@@ -174,6 +174,12 @@
     googletag.pubads().collapseEmptyDivs();
     googletag.enableServices();
   });
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/268436641/smlbanner1', [728, 90], 'div-gpt-ad-1486514780983-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
 </script>
 </head>
 
@@ -188,12 +194,12 @@
     {{ this.beginBody() }}
     
     <div class="add add-header-top">
-        <div class="block">
-            <a href="#">
-                <img src="{{networkData.templatePath}}/static/images/add-top.jpg" alt="Add Alt Here" class="img-responsive">
-            </a>
-            <span class="add-text">Advertisement</span>
-        </div><!--block-->
+        <!-- /268436641/smlbanner1 -->
+		<div id='div-gpt-ad-1486514780983-0' style='height:90px; width:728px;'>
+			<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1486514780983-0'); });
+			</script>
+		</div>
     </div><!--add add-header-top-->
 
     
