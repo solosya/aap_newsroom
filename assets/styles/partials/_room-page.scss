@@ -1,5 +1,30 @@
 .roompage {
 
+    &.sportsroom {
+        .featured {
+            &:before{
+                background: #27aae1;
+            }
+
+        }
+    }
+    &.livingroom {
+        .featured {
+            &:before{
+                background: #80c342;
+            }
+
+        }
+    }
+    &.boardroom {
+        .featured {
+            &:before{
+                background: #6c6c6c;
+            }
+
+        }
+    }
+
     .featured-slider {
         margin-bottom: 120px;
     }
@@ -26,7 +51,6 @@
             height: 100%;
             bottom: 0;
             top: 0;
-            background: #27aae1;
             position: absolute;
             z-index: 2;
             @media screen and (max-width: $sm-break){

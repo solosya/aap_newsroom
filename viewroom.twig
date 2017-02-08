@@ -13,12 +13,9 @@
 
 
     <main id="main" class="site-main viewing-room" role="main">
-        <section class="featured-slider container-fluid">
-
+        <section class="container-fluid">
                 <div class="">
-
                     {% if articles[0] %} 
-
                         {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
                         {% set articleCount = articleCount + 1 %}
                     {% endif %}

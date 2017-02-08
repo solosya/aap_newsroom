@@ -248,7 +248,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+  font-family: "SourceSansPro", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857;
   color: #000;
@@ -7348,7 +7348,7 @@ button.like {
 .terms_page .content_area h1, .terms_page .content_area h2, .terms_page .content_area h3, .terms_page .content_area h4, .terms_page .content_area h5 {
   font-weight: 400 !important;
   margin-bottom: 20px !important;
-  font-family: "National", "roboto", Helvetica, Arial, sans-serif !important;
+  font-family: "tinos", Helvetica, Arial, sans-serif !important;
   line-height: 1.4 !important; }
 
 .terms_page .content_area h1 {
@@ -7384,7 +7384,7 @@ button.like {
 .terms_page .content_area ul, .terms_page .content_area ol, .terms_page .content_area p, .terms_page .content_area li, .terms_page .content_area a {
   font-weight: 300;
   margin-bottom: 20px;
-  font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 17px !important; }
 
 .terms_page .content_area strong, .terms_page .content_area b {
@@ -7747,46 +7747,6 @@ button.like {
       max-height: 44px;
       padding: 5px 25px 8px; }
 
-/**
- * Fonts
- **/
-@font-face {
-  font-family: National;
-  font-weight: 100;
-  src: url("../fonts/National-Thin.otf") format("opentype"), url("../fonts/NationalWeb-Thin.eot") format("embedded-opentype"), url("../fonts/NationalWeb-Thin.woff2") format("woff2"), url("../fonts/NationalWeb-Thin.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 100;
-  font-style: italic;
-  src: url("../fonts/NationalWeb-ThinItalic.eot") format("embedded-opentype"), url("../fonts/NationalWeb-ThinItalic.woff2") format("woff2"), url("../fonts/NationalWeb-ThinItalic.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 300;
-  src: url("../fonts/National-Light.otf") format("opentype"), url("../fonts/NationalWeb-Light.eot") format("embedded-opentype"), url("../fonts/NationalWeb-Light.woff2") format("woff2"), url("../fonts/NationalWeb-Light.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 300;
-  font-style: italic;
-  src: url("../fonts/NationalWeb-LightItalic.eot") format("embedded-opentype"), url("../fonts/NationalWeb-LightItalic.woff2") format("woff2"), url("../fonts/NationalWeb-LightItalic.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 400;
-  src: url("../fonts/National-Book.otf") format("opentype"), url("../fonts/NationalWeb-Book.eot") format("embedded-opentype"), url("../fonts/NationalWeb-Book.woff2") format("woff2"), url("../fonts/NationalWeb-Book.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 500;
-  src: url("../fonts/National-Semibold.otf") format("opentype"), url("../fonts/NationalWeb-Semibold.eot") format("embedded-opentype"), url("../fonts/NationalWeb-Semibold.woff2") format("woff2"), url("../fonts/NationalWeb-Semibold.woff") format("woff"); }
-
-@font-face {
-  font-family: National;
-  font-weight: 600;
-  src: url("../fonts/National-Bold.otf") format("opentype"), url("../fonts/NationalWeb-Bold.eot") format("embedded-opentype"), url("../fonts/NationalWeb-Bold.woff2") format("woff2"), url("../fonts/NationalWeb-Bold.woff") format("woff"); }
-
 @media screen and (max-width: 769px) {
   body {
     overflow-x: hidden; } }
@@ -7828,7 +7788,7 @@ figcaption {
     font-size: 0.83333em;
     color: #6c6c6c;
     font-style: italic;
-    font-family: "tinos", "National";
+    font-family: "tinos", "SourceSansPro";
     float: left; }
     figcaption > p.credit {
       font-style: normal;
@@ -8261,7 +8221,7 @@ p.lead {
         line-height: 1;
         margin-bottom: 7px; }
       .sidebar-news a.card > article .content > h2 {
-        font-weight: bold;
+        font-weight: normal;
         font-size: 1.2em;
         height: 55px;
         overflow: hidden;
@@ -8278,7 +8238,7 @@ p.lead {
 
 .most-popular > h2 {
   font-size: 2em;
-  font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+  font-family: "SourceSansPro", Helvetica, Arial, sans-serif;
   color: #e22f22; }
 
 .most-popular article {
@@ -9592,8 +9552,7 @@ button.swiper-pagination-bullet {
   .room-view article {
     padding-left: 25px;
     padding-right: 25px;
-    margin-bottom: 17px;
-    border-right: 1px solid #d4d4d4; }
+    margin-bottom: 17px; }
     @media screen and (max-width: 769px) {
       .room-view article {
         border-bottom: 1px solid #d4d4d4;
@@ -9667,10 +9626,14 @@ button.swiper-pagination-bullet {
             display: none; } }
       .room-view article > .content > div.author {
         display: none; }
-  .room-view .subfeature article > .content > p {
-    display: none; }
-  .room-view .subfeature article > .content > h2 {
-    margin-top: 21px; }
+  .room-view .subfeature {
+    border-right: 1px solid #d4d4d4; }
+    .room-view .subfeature article > .content > p {
+      display: none; }
+    .room-view .subfeature article > .content > h2 {
+      margin-top: 21px; }
+  .room-view .subfeature:last-child {
+    border: 0; }
   .room-view .featured article {
     padding: 0;
     width: 100%;
@@ -9681,7 +9644,7 @@ button.swiper-pagination-bullet {
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
     padding-bottom: 20px;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid #dadada;
     margin-bottom: 25px; }
     @media screen and (max-width: 769px) {
       .room-view .featured article {
@@ -9722,6 +9685,7 @@ button.swiper-pagination-bullet {
         .room-view .featured article > .content {
           padding: 15px 20px 5px 25px; } }
       .room-view .featured article > .content > h2 {
+        margin: 20px 0;
         font-size: 2.93333em;
         font-weight: bold; }
         @media screen and (max-width: 1200px) {
@@ -9731,6 +9695,7 @@ button.swiper-pagination-bullet {
           .room-view .featured article > .content > h2 {
             font-size: 1.6em; } }
       .room-view .featured article > .content > p {
+        margin-bottom: 20px;
         font-size: 20px; }
         @media screen and (max-width: 1200px) {
           .room-view .featured article > .content > p {
@@ -9949,7 +9914,8 @@ button.swiper-pagination-bullet {
           .room-board article > .content > .category {
             font-size: 0.53333em; } }
       .room-board article > .content > h2 {
-        font-size: 1.33333em; }
+        font-size: 1.33333em;
+        font-weight: normal; }
         @media screen and (max-width: 992px) {
           .room-board article > .content > h2 {
             font-size: 1.06667em; } }
@@ -10377,7 +10343,7 @@ button.swiper-pagination-bullet {
           font-size: 0.69333em; } }
     .room-corporate article > .content > h2 {
       font-size: 1.2em;
-      font-weight: bold;
+      font-weight: normal;
       color: #000;
       font-family: "National", "roboto", Helvetica, Arial, sans-serif;
       margin-top: 10px; }
@@ -10404,31 +10370,26 @@ button.swiper-pagination-bullet {
   .article .site-header .site-branding-bottom {
     padding-top: 10px;
     padding-bottom: 10px; }
-    .article .site-header .site-branding-bottom .sb-custom-menu {
-      border-top: 0; }
-      .article .site-header .site-branding-bottom .sb-custom-menu .menu-mobile {
-        margin-top: 20px; }
-        @media screen and (max-width: 769px) {
-          .article .site-header .site-branding-bottom .sb-custom-menu .menu-mobile {
-            margin-top: 5px; } }
-      .article .site-header .site-branding-bottom .sb-custom-menu .show-on-tablet {
-        top: 85px; }
-      .article .site-header .site-branding-bottom .sb-custom-menu > ul > li:first-child > a {
-        padding-left: 0; }
-      .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
-        padding: 25px 15px; }
-        @media screen and (max-width: 1370px) {
-          .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
-            padding-left: 0;
-            padding-top: 10px;
-            padding-bottom: 10px; } }
+    .article .site-header .site-branding-bottom .sb-custom-menu .menu-mobile {
+      margin-top: 20px; }
+      @media screen and (max-width: 769px) {
+        .article .site-header .site-branding-bottom .sb-custom-menu .menu-mobile {
+          margin-top: 5px; } }
+    .article .site-header .site-branding-bottom .sb-custom-menu .show-on-tablet {
+      top: 85px; }
+    .article .site-header .site-branding-bottom .sb-custom-menu > ul > li:first-child > a {
+      padding-left: 0; }
+    .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
+      padding: 25px 15px; }
+      @media screen and (max-width: 1370px) {
+        .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
+          padding-left: 0;
+          padding-top: 10px;
+          padding-bottom: 10px; } }
     .article .site-header .site-branding-bottom .navbar-brand {
       width: 105px; }
-      .article .site-header .site-branding-bottom .navbar-brand .main-logo {
-        display: none; }
       .article .site-header .site-branding-bottom .navbar-brand .mobile-logo {
-        display: block;
-        max-width: 100%; }
+        display: none; }
 
 .article article.article-main figure.featured {
   margin-bottom: 65px; }
@@ -10483,7 +10444,8 @@ button.swiper-pagination-bullet {
   font-stretch: normal;
   line-height: 1.45;
   letter-spacing: 0.8px;
-  color: #717171; }
+  color: #717171;
+  padding-right: 10px; }
   .article article.article-main .page-content .content p.lead {
     font-weight: bold;
     color: #4a4a4a; }
@@ -10655,13 +10617,13 @@ button.swiper-pagination-bullet {
     .related-articles {
       margin-bottom: 25px; } }
   .related-articles > h2 {
-    font-family: National;
+    font-family: Tinos;
     font-size: 20px;
     font-weight: normal;
     font-style: normal;
     color: #e22f22; }
   .related-articles > .container > h2, .login-page .related-articles > .container > h2, .related-articles > .profile__container > h2 {
-    font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+    font-family: "Tinos",  Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 1.33333em;
     color: #000000; }
@@ -10815,6 +10777,15 @@ button.swiper-pagination-bullet {
         .channel .section-sidepanel-news a.card .content .author p {
           display: block; }
 
+.roompage.sportsroom .featured:before {
+  background: #27aae1; }
+
+.roompage.livingroom .featured:before {
+  background: #80c342; }
+
+.roompage.boardroom .featured:before {
+  background: #6c6c6c; }
+
 .roompage .featured-slider {
   margin-bottom: 120px; }
 
@@ -10829,7 +10800,6 @@ button.swiper-pagination-bullet {
   height: 100%;
   bottom: 0;
   top: 0;
-  background: #27aae1;
   position: absolute;
   z-index: 2; }
   @media screen and (max-width: 769px) {
@@ -10928,6 +10898,10 @@ button.swiper-pagination-bullet {
         clear: both; }
       .roompage .sidebar-inverted a.card .content .author p {
         display: block; }
+
+.viewing-room .featured .content {
+  position: absolute;
+  top: 0; }
 
 .card {
   display: block; }
@@ -11240,7 +11214,7 @@ button.swiper-pagination-bullet {
         flex: 2 2 0;
         -moz-flex: 2 2 0;
         min-height: 0;
-        padding-bottom: 35px;
+        vertical-align: middle;
         margin-bottom: 8px; }
         @media screen and (max-width: 1330px) {
           .featured-slider .card .content h2 {
@@ -11261,7 +11235,6 @@ button.swiper-pagination-bullet {
         flex: 1 0 0;
         -moz-flex: 1 0 0;
         min-height: 0;
-        max-height: 85px;
         padding-bottom: 20px; }
       .featured-slider .card .content time {
         -webkit-flex: 1 0 0;
@@ -11464,7 +11437,7 @@ button.swiper-pagination-bullet {
           font-size: 0.73333em;
           margin-bottom: 5px; } }
     .card-sm a.card > article > .content > h2 {
-      font-weight: bold;
+      font-weight: normal;
       font-size: 1.33333em; }
       @media screen and (max-width: 769px) {
         .card-sm a.card > article > .content > h2 {
@@ -11562,14 +11535,10 @@ button.swiper-pagination-bullet {
     .card-vr a.card > article > .content > .author {
       display: none; }
     .card-vr a.card > article > .content > time {
-      position: absolute;
-      top: 15px;
-      left: 100px;
       float: none;
-      padding: 0 0 0 10px;
+      padding: 0;
       border: 0;
-      color: #8a8b93;
-      border-left: 1px solid black; }
+      color: #8a8b93; }
       @media screen and (max-width: 769px) {
         .card-vr a.card > article > .content > time {
           color: #6c6c6c;
@@ -11727,12 +11696,9 @@ button.swiper-pagination-bullet {
       .viewingroom.featured > a > article > .content > .author {
         display: none; }
       .viewingroom.featured > a > article > .content > time {
-        position: absolute;
-        padding-left: 10px;
-        border-left: 1px solid black;
-        top: 250px;
-        left: 140px;
         float: none;
+        border: 0;
+        padding: 0;
         font-size: 0.93333em;
         font-weight: bold;
         color: #FFF; }
@@ -11821,7 +11787,7 @@ button.swiper-pagination-bullet {
       line-height: 1;
       margin-bottom: 3px; }
     .future-learning .furturelearning a.card > article > .content > h2 {
-      font-weight: bold;
+      font-weight: normal;
       font-size: 1.46667em; }
       @media screen and (max-width: 1200px) {
         .future-learning .furturelearning a.card > article > .content > h2 {

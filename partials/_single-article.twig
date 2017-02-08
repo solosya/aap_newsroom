@@ -174,7 +174,7 @@
                     {% if cardClass != 'instagram no-caption' %}  
                         <p>{{ article.excerpt | raw }}</p>
                     {% endif %}
-                    <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate)}} ago</time>
+                    <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
                     <div class="author">
 
                         <img src="{{profileImg}}" class="img-circle">
