@@ -6,13 +6,14 @@
     }
 
     > .container > h2{
-        font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+        font-family: $font-family-sans-serif;
         font-weight: bold;
         font-size: em(20);
         color: #000000;
 
         @media screen and (max-width: $sm-break){
             color: #e22f22;
+            padding-bottom:10px;
             border-bottom: 1px solid #dadada;
         }
     }
@@ -20,7 +21,7 @@
     a.card{
 
         @media screen and (max-width: $sm-break){
-            margin-bottom: 6px;
+            // margin-bottom: 6px;
             border-bottom: 1px solid #dadada;
         }
 
@@ -44,6 +45,8 @@
             }
 
             @media screen and (max-width: $sm-break){
+                margin-top:6px;
+                margin-bottom:6px;
                 width: 60px;
                 flex: 0 0 60px;
             }
@@ -72,6 +75,12 @@
                 display: block;
                 line-height: 1;
                 margin-bottom: 3px;
+
+                @media screen and (max-width: $sm-break) {
+                    font-family: "tinos";
+                    font-size: em(22);
+                    text-transform: none;
+                }
             }
 
             > h2{
@@ -83,7 +92,7 @@
                 }
 
                 @media screen and (max-width: $sm-break){
-                    font-size: em(14.5);
+                    // font-size: em(22);
                     margin: 2px;
                 }
             }

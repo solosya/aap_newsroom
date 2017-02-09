@@ -43,8 +43,8 @@
         @media screen and (max-width: $sm-break){
             margin-left: -15px;
             margin-right: -15px;
-            border-top: 2px solid #dadada;
-            border-bottom: 2px solid #dadada;
+            border-top: 2px solid #7e8084;
+            border-bottom: 2px solid #7e8084;
             > article {
                 height: auto !important;
             }
@@ -65,12 +65,14 @@
             float: left;
 
             @media screen and (max-width: $sm-break){
-                width: 125px;
+                width: 116px;
+                height: 116px;
                 flex: 0 0 125px;
+
             }
 
             > img{
-                max-width: 100%;
+                // max-width: 100%;
             }
 
         }
@@ -98,8 +100,9 @@
                 margin-bottom: 11px;
 
                 @media screen and (max-width: $sm-break){
-                    font-size: em(11);
+                    font-size: em(22);
                     margin-bottom: 5px;
+                    text-transform:none;
                 }
             }
 
@@ -110,7 +113,7 @@
                 border-bottom: 1px solid #dadada;
 
                 @media screen and (max-width: $sm-break){
-                    font-size: em(16);
+                    font-size: em(20);
                     height: auto;
                     border: 0;
                 }

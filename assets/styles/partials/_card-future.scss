@@ -41,10 +41,14 @@
                     flex: 0 0 65px;
                 }
 
+
                 @media screen and (max-width: $sm-break){
+                    margin-top:6px;
+                    margin-bottom:6px;
                     width: 60px;
                     flex: 0 0 60px;
                 }
+
 
                 > img{
                     max-width: 100%;
@@ -70,6 +74,12 @@
                     display: block;
                     line-height: 1;
                     margin-bottom: 3px;
+                    
+                    @media screen and (max-width: $sm-break) {
+                        font-family: "tinos";
+                        font-size: em(22);
+                        text-transform: none;
+                    }
                 }
 
                 > h2{

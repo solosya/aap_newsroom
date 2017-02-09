@@ -60,6 +60,11 @@
                 display: block;
                 line-height: 1;
                 margin-bottom: 7px;
+                @media screen and (max-width: $sm-break){
+                    font-size: em(22);
+                    // margin-bottom:5px;
+                    text-transform:none;
+                }
             }
 
             > h2{
@@ -68,6 +73,12 @@
                 height: 55px;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                @media screen and (max-width: $sm-break){
+                    font-size: em(20);
+                }
+
+
+
             }
 
             > .author{

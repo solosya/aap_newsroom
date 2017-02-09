@@ -116,9 +116,6 @@
                 font-size: em(14);
                 font-weight: bold;
                 color: #ebb913;
-                @media screen and (max-width: $sm-break){
-                    display: none;
-                }
             }
             
             > div.author {
@@ -133,8 +130,43 @@
 
     .subfeature {
         border-right: 1px solid #d4d4d4;
+        
+        @media screen and (max-width: $sm-break){
+            border-right: none;
+            border-top: 1px solid #dadada;
+            padding-left:0;
+        }
+
+
         article {
+
+            @media screen and (max-width: $sm-break){
+                padding:10px 0 0 0;
+            }
+
+
+           > figure{
+                img {
+                    @media screen and (max-width: $sm-break){
+                        margin-top:10px;
+                    }
+                }
+            }
+
+
+
+
             > .content{
+
+                > .category{
+
+                    @media screen and (max-width: $sm-break) {
+                        font-family: "tinos";
+                        font-size: em(22);
+                        text-transform: none;
+                    }
+                }
+
 
                 > p {
                     display:none;
@@ -143,13 +175,20 @@
                 > h2 {
                     margin-top:21px;
                 }
+
+                > time {
+                    @media screen and (max-width: $sm-break){
+                        display: none;
+                    }
+                }
+
             }
         }
     }
 
 
     .subfeature:last-child {
-        border:0;
+        border-right:none;
     }
 
 
@@ -169,6 +208,7 @@
         @media screen and (max-width: $sm-break){
             flex-wrap: wrap;
             -webkit-flex-wrap: wrap;
+            border-bottom: none;
         }
 
         > figure{
@@ -200,6 +240,8 @@
                 @media screen and (max-width: $md-break){
                     top: 37%;
                     left: 43%;
+                    height:100px;
+                    width:100px;
                 }
             }
 
@@ -216,6 +258,17 @@
 
             @media screen and (max-width: $md-break){
                 padding: 15px 20px 5px 25px;
+            }
+
+
+
+            > .category{
+
+                @media screen and (max-width: $sm-break) {
+                    font-family: "tinos";
+                    font-size: em(22);
+                    text-transform: none;
+                }
             }
 
             > h2{

@@ -92,6 +92,18 @@
     .subfeature-board article {
         > .content{
 
+            .category{
+              
+                @media screen and (max-width: $sm-break) {
+                    font-family: "tinos";
+                    font-size: em(22);
+                    text-transform: none;
+                }
+            }
+
+
+
+
             > p {
                 display:none;
             }
@@ -186,6 +198,15 @@
                     font-size: em(14);
                     font-weight: bold;
                     color: #8a8b93;
+                  
+                    @media screen and (max-width: $sm-break) {
+                        font-family: "tinos";
+                        font-size: em(22);
+                        text-transform: none;
+                    }
+
+
+
                 }
 
                 > h2{
