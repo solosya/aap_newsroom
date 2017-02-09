@@ -45,6 +45,11 @@
             position:absolute;
             top:0;
             width:100%;
+            
+            @media screen and (max-width: $sm-break){
+                position:static;
+                height:200px;
+            }
 
             > a.card {
                 width:100%;
@@ -101,6 +106,11 @@
                         > p {
                             font-size: em(20);
                             height:85px;
+
+                            @media screen and (max-width: $sm-break){
+                                display:none;
+                            }
+
                         }
 
                         time {
@@ -127,23 +137,21 @@
 
 
         > .contents{
-            // background:pink;
+
             position: absolute;
             right: 0;
             top: 0;
             height: 100%;
             width: 418px;
-            // background: rgba(0, 0, 0, 0.4);
             color: #FFF;
             padding-left: 25px;
             padding-right: 25px;
             @media screen and (max-width: $sm-break){
                 position: relative;
                 width: 100%;
-            }
-            @media screen and (max-width: $sm-break){
                 background: #000;
             }
+
             
             > div {
                 border-bottom: 2px solid #FFF;

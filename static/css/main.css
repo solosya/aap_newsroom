@@ -9777,6 +9777,10 @@ button.swiper-pagination-bullet {
       position: absolute;
       top: 0;
       width: 100%; }
+      @media screen and (max-width: 769px) {
+        .room-living > .content-wrapper > .feature {
+          position: static;
+          height: 200px; } }
       .room-living > .content-wrapper > .feature > a.card {
         width: 100%;
         position: absolute;
@@ -9817,6 +9821,9 @@ button.swiper-pagination-bullet {
           .room-living > .content-wrapper > .feature > a.card > article > .content > p {
             font-size: 1.33333em;
             height: 85px; }
+            @media screen and (max-width: 769px) {
+              .room-living > .content-wrapper > .feature > a.card > article > .content > p {
+                display: none; } }
           .room-living > .content-wrapper > .feature > a.card > article > .content time {
             float: none;
             border: none;
@@ -9838,9 +9845,7 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 769px) {
         .room-living > .content-wrapper > .contents {
           position: relative;
-          width: 100%; } }
-      @media screen and (max-width: 769px) {
-        .room-living > .content-wrapper > .contents {
+          width: 100%;
           background: #000; } }
       .room-living > .content-wrapper > .contents > div {
         border-bottom: 2px solid #FFF; }
