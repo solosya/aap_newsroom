@@ -11426,6 +11426,9 @@ button.swiper-pagination-bullet {
     .card-rec a.card > article > .content > p {
       height: 50px;
       border-bottom: 1px solid #dadada; }
+      @media screen and (max-width: 769px) {
+        .card-rec a.card > article > .content > p {
+          display: none; } }
     @media screen and (max-width: 769px) {
       .card-rec a.card > article > .content > .author {
         display: none; } }

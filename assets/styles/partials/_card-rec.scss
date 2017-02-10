@@ -121,6 +121,12 @@
             > p {
                 height: 50px;
                 border-bottom: 1px solid #dadada;
+
+                @media screen and (max-width: $sm-break){
+                    display:none;
+                }
+
+
             }
 
             > .author{
