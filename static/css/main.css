@@ -9568,7 +9568,6 @@ button.swiper-pagination-bullet {
     margin-bottom: 17px; }
     @media screen and (max-width: 769px) {
       .room-view article {
-        border-bottom: 1px solid #d4d4d4;
         border-right: 0;
         display: -webkit-box;
         display: -webkit-flex;
@@ -11811,6 +11810,9 @@ button.swiper-pagination-bullet {
 .future-learning {
   padding: 0 0 15px 0;
   border-bottom: 1px solid #dadada; }
+  @media screen and (max-width: 769px) {
+    .future-learning {
+      border: 0; } }
   .future-learning header {
     padding-bottom: 10px;
     border-bottom: 1px solid #dadada;

@@ -2,6 +2,10 @@
     padding:0 0 15px 0;
     border-bottom: 1px solid #dadada;
 
+    @media screen and (max-width: $sm-break){
+        border:0;
+    }
+
     header {
         padding-bottom:10px;
         border-bottom:1px solid #dadada;
