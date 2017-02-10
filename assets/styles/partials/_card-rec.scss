@@ -31,7 +31,7 @@
                             color: #FFF;
                         }
                         > p {
-                            display: none;
+                            // display: none;
                         }
                 }
             }
@@ -109,8 +109,7 @@
             > h2{
                 font-weight: bold;
                 font-size: em(30);
-                height: 130px;
-                border-bottom: 1px solid #dadada;
+                height: 70px;
 
                 @media screen and (max-width: $sm-break){
                     font-size: em(20);
@@ -120,7 +119,8 @@
             }
             
             > p {
-                display:none;
+                height: 50px;
+                border-bottom: 1px solid #dadada;
             }
 
             > .author{
