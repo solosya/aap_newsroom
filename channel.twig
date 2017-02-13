@@ -60,7 +60,7 @@
                         <div class="row">
                             <div class="card-group">
                             {% for i in 0..2 %}
-                                {% if articles[i] %}                                                                
+                                {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s230x206'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
@@ -98,7 +98,7 @@
 
                         {% set rowCards = ['card-lg', 'card-rec', 'card-rec'] %}                                                                
                         {% for i in 0..2 %}
-                            {% if articles[i] %}                                                                
+                            {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -115,7 +115,7 @@
                                 <div class="card-group">
                                 {% set rowCards = ['card-sm s370x270', 'card-sm inverted s370x270'] %}                                                                
                                 {% for i in 0..1 %}
-                                    {% if articles[i] %}                                                                
+                                    {% if articles[articleCount] %}                                                                
                                         {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
@@ -136,7 +136,7 @@
                             <div class="card-group">
                                
                             {% for i in 0..3 %}
-                                {% if articles[i] %}                                                                
+                                {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-3 card-sm s263x209'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
