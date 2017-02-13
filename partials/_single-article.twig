@@ -143,7 +143,7 @@
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
         <a  href="{{article.url}}" 
-            class="{{swap}} card other {{hasArticleMediaClass}}" 
+            class="{{swap}} card {{hasArticleMediaClass}}" 
             data-id="{{article.articleId}}" 
             data-position="{{position}}" 
             data-social="0" 
@@ -169,7 +169,7 @@
 
 
                 <div class="content">
-                    <span class="category">{{article.label}}</span>
+                    <di class="category">{{article.label}}</di>
                     <h2>{{ articleTitle | raw }}</h2>
                     {% if cardClass != 'instagram no-caption' %}  
                         <p>{{ article.excerpt | raw }}</p>
@@ -227,7 +227,15 @@
             <article class="">
                 {% if social.hasMedia == 'TRUE' %}  
                     <figure>
-                        <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div>
+
+                        {% if lazyload == false %}
+                            <img class="img-responsive" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                        {% else %}
+                            <img class="img-responsive lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                        {%endif%}
+
+
+                        {# <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div> #}
                         {% if social.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
                             <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
                         {% endif %}
@@ -241,21 +249,17 @@
                 {% endif %}
 
                 <div class="content">
-                    <span class="category">{{social.source}}</span>
-                    <span class="article-icon"></span>
+                    <div class="category {{social.source}}"></div>
                     <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
-{#                     <h2>{{ articleTitle | raw }}</h2>
- #}                  <span class="author">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
+                    <h2>{{ articleTitle | raw }}</h2>
+                    <span class="author">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
                     
                     {% if cardClass != 'instagram no-caption' %}  
                         <p id="updateSocial{{article.socialId}}" data-update="0">{{ social.content | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ') 
                                              | raw }}</p>
                     {% endif %}
 
-{#                     <div class="share">
-                        <span class="sr-only">Share</span><span class="share-icon icon"></span>
-                    </div>
- #}                </div>
+                </div>
             </article>
 
             {% if article.userHasBlogAccess == '1' %}

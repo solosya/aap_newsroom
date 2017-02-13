@@ -7842,6 +7842,11 @@ p.lead {
   font-weight: bold;
   color: #4a4a4a; }
 
+.advertiser-content {
+  font-family: "SourceSansPro";
+  font-size: 0.8em;
+  color: #6c6c6c; }
+
 .flex_col {
   display: -ms-flexbox;
   display: flex;
@@ -9547,6 +9552,7 @@ button.swiper-pagination-bullet {
       display: none; }
 
 .room-view {
+  margin-top: 130px;
   margin-bottom: 80px; }
   @media screen and (max-width: 1200px) {
     .room-view {
@@ -11223,11 +11229,7 @@ button.swiper-pagination-bullet {
           .featured-slider .card figure img {
             height: 100%;
             position: relative;
-            left: -15%;
             width: initial; } }
-        @media screen and (max-width: 410px) {
-          .featured-slider .card figure img {
-            left: -50%; } }
     .featured-slider .card .content {
       -webkit-flex: 1 0 0;
       -ms-flex: 1 0 0;
@@ -11438,6 +11440,13 @@ button.swiper-pagination-bullet {
         border: 0;
         padding: 0;
         font-size: 0.66667em; } }
+  .card-rec a.card.twitter .content p {
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-rec a.card.instagram .content p {
+    font-size: 28px;
+    font-weight: normal; }
 
 .card-sm {
   margin-bottom: 79.5px; }
@@ -11816,10 +11825,17 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 769px) {
     .future-learning {
       border: 0; } }
+  .future-learning + .advertiser-content {
+    text-align: right; }
   .future-learning header {
+    position: relative;
     padding-bottom: 10px;
     border-bottom: 1px solid #dadada;
     margin-bottom: 20px; }
+    .future-learning header > div {
+      position: absolute;
+      right: 0;
+      display: inline-block; }
   .future-learning .container, .future-learning .profile__container {
     padding: 0; }
   @media screen and (max-width: 769px) {
@@ -11898,8 +11914,7 @@ button.swiper-pagination-bullet {
       display: none; }
 
 .future-learning-sponsors {
-  padding-top: 12px;
-  margin-bottom: 130px; }
+  padding-top: 12px; }
   .future-learning-sponsors > p {
     font-size: 0.8em;
     font-weight: bold;

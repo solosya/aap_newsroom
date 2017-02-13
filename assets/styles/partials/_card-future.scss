@@ -1,15 +1,30 @@
 .future-learning {
+
     padding:0 0 15px 0;
     border-bottom: 1px solid #dadada;
+    // margin-bottom:130px;
 
     @media screen and (max-width: $sm-break){
         border:0;
     }
 
+    + .advertiser-content {
+        text-align:right;
+    }
+
+
     header {
+        position:relative;
         padding-bottom:10px;
         border-bottom:1px solid #dadada;
         margin-bottom:20px;
+
+        > div {
+            position:absolute;
+            right:0;
+            display:inline-block;
+        }
+
     }
     
     .container {
@@ -129,9 +144,9 @@
     }
 }
 
+
 .future-learning-sponsors{
     padding-top: 12px;
-    margin-bottom:130px;
 
     > p {
         font-size: em(12);

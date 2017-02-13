@@ -244,26 +244,32 @@
 
                     <div class="col-sm-12">
                         <section class="future-learning">
-                                <header>
-                                    <img src="{{networkData.templatePath}}/static/images/futurelearning.png" alt="viewing room">
-                                </header>
-                                <div class="row">
+                            <header>
+                                <img src="{{networkData.templatePath}}/static/images/futurelearning.png" alt="viewing room">
+                                <div class="future-learning-sponsors">
+                                    <p>Sponsored by</p>
+                                    <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ">
+                                </div><!-- .sponsors-->
 
-                                    {% for i in 0..2 %}
-                                        {% if articles[i] %}                                                                
-                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100', swap: 'false' }) | raw}}
-                                            {% set articleCount = articleCount + 1 %}
-                                        {% endif %}
-                                    {% endfor %}
+                            </header>
+                            <div class="row">
 
-                                </div><!-- .row-->
+                                {% for i in 0..2 %}
+                                    {% if articles[i] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100', swap: 'false' }) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </div><!-- .row-->
+
+
                         </section><!-- .top-stories-->
+ 
+                        <div class="advertiser-content">
+                            <span class="add-text">Advertiser content</span>
+                        </div>
 
-
-                        <div class="future-learning-sponsors">
-                            <p>Sponsored by</p>
-                            {# <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ"> #}
-                        </div><!-- .sponsors-->
 
 
 
