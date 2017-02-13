@@ -39,7 +39,7 @@
                      {% if user.profileMedia.id != '' %}
                             {% set profileImg = _Media.getMediaUrl(user.profileMedia, 80, 80, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
                         {% else %}
-                            {% set profileImg = network.templatePath ~ "/static/images/icons/profile.svg" %}
+                            {% set profileImg = networkData.templatePath ~ "/static/images/icons/profile.svg" %}
                         {% endif %}
                   <div class="profile__menu-image" style="background-image: url({{ profileImg }})"></div>
                   <div class="profile__menu-content">
@@ -49,10 +49,10 @@
                   </div>
                   <ul class="profile__menu-navigation">
                       {% if _User.isAdminUser() %}
-                          <li><a class="profile__menu-navigation-link" href="http://{{network.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
+                          <li><a class="profile__menu-navigation-link" href="http://{{networkData.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
                       {% endif %}
                       <li><a class="profile__menu-navigation-link" href="{{blogUrl}}/profile/{{user.username}}">View Profile</a></li>
-                      <li><a class="profile__menu-navigation-link" href="http://{{network.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
+                      <li><a class="profile__menu-navigation-link" href="http://{{networkData.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
                       <li><a class="profile__menu-navigation-link" href="{{_AppHelper.getLogoffUrl()}}">Sign Out</a></li>
                   </ul>
                 </div>
