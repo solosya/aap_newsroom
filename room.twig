@@ -27,7 +27,7 @@
                 </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
     
-
+        {% if articles[articleCount] %}                                                                
         <section class="top-stories">
             <div class="container">
                 <div class="row">
@@ -42,10 +42,15 @@
                 </div><!-- .row-->
             </div><!-- .container-->
         </section><!-- .top-stories-->
+        {% endif %}
+
+
 
         <section class="home-page-content">
             <div class="container">
                 <div class="row">
+
+                    {% if articles[articleCount] %}                                                                
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
 
@@ -57,9 +62,8 @@
                             {% endfor %}
 
                          </div><!--card-group-->
-
-
                     </div><!-- .col-sm-8-->
+                    {% endif %}
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
@@ -104,19 +108,21 @@
 
                         </section><!--sidebar-news-->
 
+
+                    {% if articles[articleCount] %}                                                                
                     <section class="sidebar-inverted">
-                        {% if articles[articleCount] %}                                                                
                             {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
                             {% set articleCount = articleCount + 1 %}
-                        {% endif %}
                     </section>
-
+                    {% endif %}
 
 
                     </div><!-- .col-sm-4-->
 
                 </div><!-- .row-->
 
+
+                {% if articles[articleCount] %}                                                                
                 <div class="row">
                     {% for i in 0..3 %}
                         {% if articles[i] %}                                                                
@@ -125,6 +131,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+                {% endif %}
 
 
             </div><!-- .container-->
