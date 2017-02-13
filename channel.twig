@@ -47,26 +47,27 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
+                        {% if articles[articleCount] %}                                                                
                         <div class="card-group">
-                            {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec inverted'}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
-                            {% endif %}
 
                          </div><!--card-group-->
+                        {% endif %}
 
+
+                        {% if articles[articleCount] %}                                                                
                         <div class="row">
                             <div class="card-group">
-                               
                             {% for i in 0..2 %}
                                 {% if articles[i] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s230x206'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
-
                             </div><!-- .card-group-->
                         </div><!-- .row-->
+                        {% endif %}
 
                     </div><!-- .col-sm-8-->
 
@@ -90,10 +91,10 @@
                 </div>
 
 
+                {% if articles[articleCount] %}                                                                
 
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
-
 
                         {% set rowCards = ['card-lg', 'card-rec', 'card-rec'] %}                                                                
                         {% for i in 0..2 %}
@@ -104,29 +105,33 @@
                         {% endfor %}
 
                     </div>
+
+
                     <div class="col-sm-12 col-md-4">
+                        
+                        {% if articles[articleCount] %}                                                                
                         <section class="section-sidepanel-news">
                             <div class="row">
                                 <div class="card-group">
                                 {% set rowCards = ['card-sm s370x270', 'card-sm inverted s370x270'] %}                                                                
                                 {% for i in 0..1 %}
                                     {% if articles[i] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[i], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
 
                                 </div><!-- .card-group-->
                             </div><!-- .row-->
-
                         </section>
-
+                        {% endif %}
 
                     </div><!-- .col-sm-4-->
 
 
 
                     <div class="col-sm-12">
+                        {% if articles[articleCount] %}                                                                
                         <div class="row">
                             <div class="card-group">
                                
@@ -139,11 +144,13 @@
 
                             </div><!-- .card-group-->
                         </div><!-- .row-->
+                        {% endif %}
 
 
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
-
+                {% endif %}
+    
 
 
 
