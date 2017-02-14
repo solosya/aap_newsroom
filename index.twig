@@ -34,7 +34,7 @@
 
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
-        {% if blog.title == key %}
+        {% if blog.title | lower == key %}
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
