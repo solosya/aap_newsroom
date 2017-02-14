@@ -1,8 +1,37 @@
+
+{% set submenu = [] %}
+
+{# {% set sections =  {
+        "newsroom": {
+            "top" : ["viewing", 'livingroom', 'boardroom', 'sportsroom'],
+            "bottom": [""]
+        }, 
+        "viewingroom": {
+            "top" : ["newsroom", 'livingroom', 'boardroom', 'sportsroom'],
+            "bottom": [""]
+        }, 
+        "boardroom": {
+            "top" : ["newsroom", 'viewingroom', 'livingroom', 'sportsroom'],
+            "bottom": [""]
+        }, 
+        "livingroom": {
+            "top" : ["newsroom", 'livingroom', 'boardroom', 'sportsroom'],
+            "bottom": [""]
+        },
+        "sportsroom": {
+            "top" : ["newsroom", 'livingroom', 'boardroom', 'sportsroom'],
+            "bottom": [""]
+        }
+    } 
+%}
+ #}
+
+
 <header id="masthead" class="site-header container-fluid {# site-header-extra-padding #}">
         
     <div class="site-header-main">
             
-        <div class="site-branding-top row">
+        <div class="site-branding-top row foldaway">
             <div class="section-left col-md-6 col-lg-4 col-sm-6">
                 <div class="social-links">
                     <ul>
@@ -59,35 +88,27 @@
             </div>
 
 
-
-
-
-
-
-
             <div class="section-right navbar-right col-md-6 col-lg-8 col-sm-2">
                 <div class="rooms-link">
                     <ul>
 
                         {% set menuItems = blog.blogHeaderMenu %}
-                        {% for i, parentItem in menuItems | slice(0, 4) %}
+                        {% for i, parentItem in menuItems | slice(0, 5) %}
                             {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                             {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
+                            {% if (parentItem.blogTitle != pageClass) %}
                             <li>
                                 <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                     <img src="{{networkData.templatePath}}/static/images/newsroom-{{parentItem.blogTitle | lower}}.jpg" alt="newsroom-{{parentItem.blogTitle}}">
                                 </a>
                             </li>
+                            {% else %}
+                            {% set submenu = parentItem.children %}
+                            {% endif  %}
 
                         {% endfor %}
 
-
-{#                         <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-viewingroom.jpg" alt="newsroom-viewingroom"></a></li>
-                        <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-livingroom.jpg" alt="newsroom-viewingroom"></a></li>
-                        <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-boardroom.jpg" alt="newsroom-viewingroom"></a></li>
-                        <li><a href="#"><img src="{{networkData.templatePath}}/static/images/newsroom-sportsroom.jpg" alt="newsroom-viewingroom"></a></li>
- #}                    </ul>
+                    </ul>
                 </div><!-- .rooms-link-->
                 <a href="#" class="btn btn-primary pull-right">Press Patron Donations</a>
              </div>
@@ -106,34 +127,14 @@
 
             <div class="section-right col-md-8 col-sm-6">
                 <nav class="sb-custom-menu">
+                    <a href="#" class="menu-mobile">MENU</a>
                     <ul id="menu-primary-menu" class="menu">
+                        {# {{dump(submenu)}} #}
+                        {% for i, childItem in submenu %}
                         <li class="menu-item">
-                            <a href="#">News</a>
+                            <a href="#">{{ childItem.label }}</a>
                         </li>
-
-                        <li class="menu-item nav-main-item">
-                            <a href="#">Politics</a>
-                        </li>
-                
-                        <li class="menu-item nav-main-item">
-                            <a href="#">Technology</a>
-                        </li>
-
-                        <li class="menu-item nav-main-item">
-                            <a href="#">Real Economy</a>
-                        </li>
-
-                        <li class="menu-item nav-main-item">
-                            <a href="#">New Auckland</a>
-                        </li>
-
-                        <li class="menu-item nav-main-item">
-                            <a href="#">Health & Science</a>
-                        </li>
-
-                        <li class="menu-item nav-main-item">
-                            <a href="#">Environment</a>
-                        </li>
+                        {% endfor %}
 
                         <li id="menu-item-search" class="menu-item menu-item-search">
                             <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
@@ -157,5 +158,25 @@
                 </nav>  
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
+
+
+
+{#         <div class="site-branding-bottom-foldaway row" >
+            <div class="section-left col-md-4 col-sm-6">
+                <div class="logo pull-left">
+                    <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                    </a>
+                </div>
+            </div><!--section-left-->
+
+            <div class="section-right col-md-8 col-sm-6">
+                <nav class="sb-custom-menu-foldaway">
+                    <a href="#" class="menu-mobile">MENU</a>
+                </nav>
+            </div>
+        </div>
+
+ #}
     </div><!-- .site-header-main -->
 </header>

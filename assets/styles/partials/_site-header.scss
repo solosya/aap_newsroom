@@ -14,7 +14,7 @@
 
 }
 
-.site-header{
+.site-header {
     padding-top: 44px;
     @media screen and (max-width: $sm-break){
         padding-top: 0;
@@ -26,66 +26,70 @@
         background: #FFF;
         z-index: 100;
     }
+    .site-branding-top{
 
-    .social-links{
-        a {
-            color: $gray-base;
-        }
-    }
-
-    .secondary-menu{
-        > ul {
-            @extend %ulmenu;
-            font-size: em(14);
-            font-weight: 600;
-
-            li{
-                margin-right: 20px;
+        .social-links{
+            a {
+                color: $gray-base;
             }
         }
-    }
 
-    .section-right{
-        @media screen and (min-width: $header-break){
-            width: 895px;
-        }
-    }
+        .secondary-menu{
+            > ul {
+                @extend %ulmenu;
+                font-size: em(14);
+                font-weight: 600;
 
-    .site-branding-top{
-        @media screen and (max-width: $sm-break){
-            display: none;
+                li{
+                    margin-right: 20px;
+                }
+            }
         }
+
         .section-right{
             padding-top: 10px;
             margin-right: 0;
+            @media screen and (min-width: $header-break){
+                width: 895px;
+            }
         }
-    }
-    
-    .rooms-link{
-        float: left;
-        padding-top: 20px;
-        margin-left: -30px;
-        
-        @media screen and (max-width: $md-break){
+
+        @media screen and (max-width: $sm-break){
             display: none;
         }
+    
+        .rooms-link{
+            float: left;
+            padding-top: 20px;
+            margin-left: -30px;
+            
+            @media screen and (max-width: $md-break){
+                display: none;
+            }
 
-        > ul{
-            @extend %ulmenu;
+            > ul{
+                @extend %ulmenu;
 
-            li{
-                a{
-                    display: block;
-                    margin-right: 30px;
+                li{
+                    a{
+                        display: block;
+                        margin-right: 30px;
 
-                    img{
-                        height: 26px;
-                        width: auto;
-                        max-width: 100%;
+                        img{
+                            height: 26px;
+                            width: auto;
+                            max-width: 100%;
+                        }
                     }
                 }
             }
         }
+
+        &.foldaway {
+            // display:block;
+            // background:pink;
+        }
+
     }
 
     .site-branding-bottom{
@@ -113,26 +117,73 @@
                 }
             }
         }
-    }
+        .navbar-brand{
+            padding: 0;
+            height: auto;
 
-    .navbar-brand{
-        padding: 0;
-        height: auto;
+            .main-logo{
+                max-width:400px;
 
-        .main-logo{
-            max-width:400px;
+                @media screen and (max-width: $sm-break){
+                    display: none;
+                }
+            }
 
-            @media screen and (max-width: $sm-break){
+            .mobile-logo{
                 display: none;
+                @media screen and (max-width: $sm-break){
+                    display: block;
+                    width: 63px;
+                }
             }
         }
 
-        .mobile-logo{
-            display: none;
-            @media screen and (max-width: $sm-break){
+    }
+    .site-branding-bottom-foldaway {
+        background:yellow;
+        padding:10px;
+        // text-align:right;
+
+        // .section-right{
+        //         padding-left: 0;
+        //         padding-right: 0;
+        //         float: right;
+        //         margin-left: 0;
+        //         margin-right: 15px;
+        // }
+
+        .navbar-brand{
+            padding:0;
+            height:auto;
+
+            .mobile-logo{
                 display: block;
                 width: 63px;
             }
         }
+
+        .sb-custom-menu-foldaway {
+            float:right;
+            .menu-mobile{
+                display: block;
+                width: 95px;
+                // text-align:right;
+                background-image: url(../images/mobile-menu.svg);
+                background-size: 45px 30px;
+                background-position: right;
+                background-repeat: no-repeat;
+                padding: 5px 0;
+                color: #f73d30;
+            }
+            // @media screen and (max-width: $header-break){
+            //     display: block;
+            // }
+        }
+
+
     }
+
+
+
+
 }

@@ -8078,7 +8078,7 @@ p.lead {
   transition-duration: 0.5s;
   transition: all 0.5s ease; }
 
-.social-links > ul, .site-footer .footer-menu > ul, .site-footer .footer-btm .rooms-link > ul, .site-header .secondary-menu > ul, .site-header .rooms-link > ul {
+.social-links > ul, .site-footer .footer-menu > ul, .site-footer .footer-btm .rooms-link > ul, .site-header .site-branding-top .secondary-menu > ul, .site-header .site-branding-top .rooms-link > ul {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8811,33 +8811,33 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       width: 100%;
       background: #FFF;
       z-index: 100; } }
-  .site-header .social-links a {
+  .site-header .site-branding-top .social-links a {
     color: #000; }
-  .site-header .secondary-menu > ul {
+  .site-header .site-branding-top .secondary-menu > ul {
     font-size: 0.93333em;
     font-weight: 600; }
-    .site-header .secondary-menu > ul li {
+    .site-header .site-branding-top .secondary-menu > ul li {
       margin-right: 20px; }
-  @media screen and (min-width: 1370px) {
-    .site-header .section-right {
-      width: 895px; } }
-  @media screen and (max-width: 769px) {
-    .site-header .site-branding-top {
-      display: none; } }
   .site-header .site-branding-top .section-right {
     padding-top: 10px;
     margin-right: 0; }
-  .site-header .rooms-link {
+    @media screen and (min-width: 1370px) {
+      .site-header .site-branding-top .section-right {
+        width: 895px; } }
+  @media screen and (max-width: 769px) {
+    .site-header .site-branding-top {
+      display: none; } }
+  .site-header .site-branding-top .rooms-link {
     float: left;
     padding-top: 20px;
     margin-left: -30px; }
     @media screen and (max-width: 1200px) {
-      .site-header .rooms-link {
+      .site-header .site-branding-top .rooms-link {
         display: none; } }
-    .site-header .rooms-link > ul li a {
+    .site-header .site-branding-top .rooms-link > ul li a {
       display: block;
       margin-right: 30px; }
-      .site-header .rooms-link > ul li a img {
+      .site-header .site-branding-top .rooms-link > ul li a img {
         height: 26px;
         width: auto;
         max-width: 100%; }
@@ -8860,20 +8860,40 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       @media screen and (max-width: 1370px) {
         .site-header .site-branding-bottom .section-right > .sb-custom-menu {
           border: 0; } }
-  .site-header .navbar-brand {
-    padding: 0;
-    height: auto; }
-    .site-header .navbar-brand .main-logo {
-      max-width: 400px; }
-      @media screen and (max-width: 769px) {
-        .site-header .navbar-brand .main-logo {
-          display: none; } }
-    .site-header .navbar-brand .mobile-logo {
-      display: none; }
-      @media screen and (max-width: 769px) {
-        .site-header .navbar-brand .mobile-logo {
-          display: block;
-          width: 63px; } }
+    .site-header .site-branding-bottom .navbar-brand {
+      padding: 0;
+      height: auto; }
+      .site-header .site-branding-bottom .navbar-brand .main-logo {
+        max-width: 400px; }
+        @media screen and (max-width: 769px) {
+          .site-header .site-branding-bottom .navbar-brand .main-logo {
+            display: none; } }
+      .site-header .site-branding-bottom .navbar-brand .mobile-logo {
+        display: none; }
+        @media screen and (max-width: 769px) {
+          .site-header .site-branding-bottom .navbar-brand .mobile-logo {
+            display: block;
+            width: 63px; } }
+  .site-header .site-branding-bottom-foldaway {
+    background: yellow;
+    padding: 10px; }
+    .site-header .site-branding-bottom-foldaway .navbar-brand {
+      padding: 0;
+      height: auto; }
+      .site-header .site-branding-bottom-foldaway .navbar-brand .mobile-logo {
+        display: block;
+        width: 63px; }
+    .site-header .site-branding-bottom-foldaway .sb-custom-menu-foldaway {
+      float: right; }
+      .site-header .site-branding-bottom-foldaway .sb-custom-menu-foldaway .menu-mobile {
+        display: block;
+        width: 95px;
+        background-image: url(../images/mobile-menu.svg);
+        background-size: 45px 30px;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding: 5px 0;
+        color: #f73d30; }
 
 /**
  * Swiper 3.4.1
@@ -10989,6 +11009,8 @@ button.swiper-pagination-bullet {
     font-weight: 700;
     margin-top: 0; }
   .card .author img {
+    width: 34px;
+    height: 34px;
     float: left; }
   .card .author p {
     float: left;
@@ -11921,7 +11943,7 @@ button.swiper-pagination-bullet {
     color: #18385f;
     display: inline-block;
     margin-right: 15px;
-    margin-bottom: 0;
+    margin-bottom: 7px;
     vertical-align: bottom; }
   .future-learning-sponsors > .add-text {
     font-size: 12px;
