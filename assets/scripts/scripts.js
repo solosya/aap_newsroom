@@ -66,6 +66,13 @@ $('document').ready(function() {
 
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
+    $("#menu-foldaway").on("click", function (e) {
+        console.log('clicked');
+         $("#menu-top-foldaway").toggleClass('hide');
+         $("#menu-bottom-foldaway").toggleClass('hide');
+
+    });
+
     $(".menu-mobile").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");

@@ -86,11 +86,38 @@
         }
 
         &.foldaway {
-            // display:block;
+            background:pink;
+            .press-patron {
+                display:none;
+            }
+
+            .section-left {
+                background:green;
+            }
+
+            .section-right {
+                background:green;
+                width:auto;
+            }
+
+
+            .social-links{
+                display:inline-block;
+            }
+            
+            .secondary-menu {
+                display:inline-block;
+            }
+            // displary:none;
             // background:pink;
         }
 
     }
+
+
+
+
+
 
     .site-branding-bottom{
         padding-top: 55px;
@@ -137,6 +164,13 @@
                 }
             }
         }
+        &.foldaway {
+            // background:green;
+
+            // display:none;
+            // background:pink;
+        }
+
 
     }
     .site-branding-bottom-foldaway {
