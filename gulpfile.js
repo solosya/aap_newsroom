@@ -18,7 +18,12 @@ var gzip_options = {
 
 // task
 gulp.task('minify-css', function () {
-    gulp.src('./static/css/main.css') // path to your file
+    return gulp.src([
+        './static/css/main.css',
+        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css',
+        './assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css',
+    ]) // path to your file
+    .pipe(concat('main.css'))
     .pipe(gp_rename({suffix: '.min'}))
     .pipe(minifyCss())
     .pipe(gulp.dest('./static/css'))
