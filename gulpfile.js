@@ -26,9 +26,9 @@ gulp.task('minify-css', function () {
     .pipe(concat('main.css'))
     .pipe(gp_rename({suffix: '.min'}))
     .pipe(minifyCss())
-    .pipe(gulp.dest('./static/css'))
-    .pipe(gzip(gzip_options))
     .pipe(gulp.dest('./static/css'));
+    // .pipe(gzip(gzip_options))
+    // .pipe(gulp.dest('./static/css'));
 });
 
 gulp.task('cacheBuster', function () {
