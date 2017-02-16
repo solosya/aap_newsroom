@@ -305,7 +305,9 @@
 
                 <section class="room-view">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/Viewingroom.png" alt="viewing room" class="img-responsive">
+                        <a href="{{ sections['viewingroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/viewingroom-logo.svg" alt="viewing room" class="img-responsive">
+                        </a>
                     </header>
 
                     <div class="content-wrapper">
@@ -335,7 +337,9 @@
 
                 <section class="room-living">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/Livingroom.png" alt="viewing room">
+                        <a href="{{ sections['livingroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/livingroom-logo.svg" alt="viewing room">
+                        </a>
                     </header>
                     
                     <div class="content-wrapper">
@@ -362,7 +366,9 @@
 
                 <section class="room-board">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/Boardroom.png" alt="board room">
+                        <a href="{{ sections['boardroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/boardroom-logo.svg" alt="board room">
+                        </a>
                     </header>
 
 
@@ -392,7 +398,9 @@
 
                 <section class="room-sports">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/Sportsroom.png" alt="board room">
+                        <a href="{{ sections['sportroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg" alt="board room">
+                        </a>
                     </header>
 
                     {% if sections['sportsroom'].feed|length > 0 %}
@@ -418,7 +426,7 @@
 
                 <section class="room-corporate">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/corporate.png" alt="board room">
+                        <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
                     </header>
                     <div class="row">
                         <div class="col-sm-4 articles">
