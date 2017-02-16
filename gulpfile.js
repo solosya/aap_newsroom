@@ -5,6 +5,39 @@ var gp_rename = require("gulp-rename");
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var minifyCss = require("gulp-minify-css");
+var gzip = require('gulp-gzip');
+var cacheBuster = require('gulp-cache-bust');
+
+var gzip_options = {
+    threshold: '1kb',
+    gzipOptions: {
+        level: 9
+    }
+};
+
+// task
+gulp.task('minify-css', function () {
+    gulp.src('./static/css/main.css') // path to your file
+    .pipe(gp_rename({suffix: '.min'}))
+    .pipe(minifyCss())
+    .pipe(gulp.dest('./static/css'))
+    .pipe(gzip(gzip_options))
+    .pipe(gulp.dest('./static/css'));
+});
+
+gulp.task('cacheBuster', function () {
+    return gulp.src('./layouts/main.twig')
+        .pipe(cacheBuster())
+        .pipe(gulp.dest('.'));
+});
+
+// gulp.task('cacheBuster', ['copyCss', 'copyJs', 'renameIndex'], function () {
+//     return gulp.src('index/index.release.html')
+//         .pipe(cacheBuster())
+//         .pipe(gulp.dest('.'));
+// });
+
 
 gulp.task('styles', function() {
     return gulp.src('./assets/styles/**/*.scss')
@@ -56,7 +89,10 @@ gulp.task('scripts', function(){
 		.pipe(gulp.dest('./static/js'))
 		.pipe(gp_rename('scripts.js'))
 		.pipe(uglify().on('error', gutil.log))
-		.pipe(gulp.dest('./static/js'));
+		.pipe(gulp.dest('./static/js'))
+        .pipe(gzip(gzip_options))
+        .pipe(gulp.dest('./static/js'));
+
 });
 
 gulp.task('watch', function (){
@@ -64,4 +100,4 @@ gulp.task('watch', function (){
 	gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts','styles']);
+gulp.task('default', ['scripts','styles', 'minify-css']);

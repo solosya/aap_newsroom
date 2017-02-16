@@ -254,10 +254,10 @@
                     <div class="col-sm-12">
                         <section class="future-learning">
                             <header>
-                                <img src="{{networkData.templatePath}}/static/images/futurelearning.svg" alt="viewing room">
+                                <img src="{{networkData.templatePath}}/static/images/futurelearning.svg" alt="Future Learning">
                                 <div class="future-learning-sponsors">
                                     <p>Sponsored by</p>
-                                    <img src="{{networkData.templatePath}}/static/images/vicuni.png" alt="ANZ">
+                                    <img src="{{networkData.templatePath}}/static/images/vicuni.png" alt="Vic Uni">
                                 </div><!-- .sponsors-->
 
                             </header>
@@ -304,7 +304,7 @@
 
 
 
-
+                {% if sections['viewingroom'].feed|length > 0 %}
                 <section class="room-view">
                     <header>
                         <img src="{{networkData.templatePath}}/static/images/Viewingroom.png" alt="viewing room" class="img-responsive">
@@ -312,9 +312,7 @@
 
                     <div class="content-wrapper">
                 
-                        {% if sections['viewingroom'].feed|length > 0 %}
                             {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
-                        {% endif %}
 
 
 
@@ -328,12 +326,14 @@
                     </div><!-- .content-wrapper-->
 
                 </section><!-- .room-view-->
+                {% endif %}
 
 
 
 
 
 
+                {% if sections['livingroom'].feed|length > 0 %}
 
                 <section class="room-living">
                     <header>
@@ -355,12 +355,14 @@
                         </div><!-- .content-->
                     </div>
                 </section><!-- .room-living-->
+                {% endif %}
 
 
 
 
 
 
+                {% if sections['boardroom'].feed|length > 0 %}
 
                 <section class="room-board">
                     <header>
@@ -368,9 +370,7 @@
                     </header>
 
 
-                    {% if sections['boardroom'].feed|length > 0 %}
                         {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board', swap: 'false'}) | raw}}
-                    {% endif %}
 
                     <div class="articles">
                         <div class="row">
@@ -386,20 +386,20 @@
 
 
                 </section><!--room-board-->
+                {% endif %}
 
 
 
 
 
+                {% if sections['sportsroom'].feed|length > 0 %}
 
                 <section class="room-sports">
                     <header>
                         <img src="{{networkData.templatePath}}/static/images/Sportsroom.png" alt="board room">
                     </header>
 
-                    {% if sections['sportsroom'].feed|length > 0 %}
                         {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport', swap: 'false'}) | raw}}
-                    {% endif %}
 
 
                     <div class="articles">
@@ -417,6 +417,10 @@
                         </div><!-- .row-->
                     </div>
                 </section><!--room-sports-->
+                {% endif %}
+
+
+
 
                 <section class="room-corporate">
                     <header>
