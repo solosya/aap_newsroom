@@ -2,15 +2,19 @@ $('document').ready(function() {
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 1370;
     var mobileView = 620;
+    var scrollMetric = [$(window).scrollTop()];
+    var foldawayPanel = $("#foldaway-panel");
+    var menu_top_foldaway = $("#menu-top-foldaway");
+    var menu_bottom_foldaway = $("#menu-bottom-foldaway");
 
-    isMenuBroken = function(){
+    var isMenuBroken = function(){
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             return false;
         }
         return true;
     };
 
-    isMobile = function(){
+    var isMobile = function(){
         if (window.innerWidth < mobileView) {
             return true;
         }
@@ -18,19 +22,15 @@ $('document').ready(function() {
     };
 
 
-    isScrolledPass = function(){
-        var scroll = $(window).scrollTop();
-        console.log(scroll);
-        if (scroll >= 210) {
-            console.log('returning true');
+    var isScolledPast = function(position){
+        if (scrollMetric[0] >= position) {
             return true;
         }
-        console.log('returning false');
         return false;
     };
 
-    stickHeader = function(){
-        if ( isScrolledPass() ){
+    var stickHeader = function(){
+        if ( isScolledPast(210) ){
             $("#topAddBlock").removeClass("fixadd");
             // $("#masthead").removeClass("site-header-extra-padding");
             $("#topAddBlock").css({
@@ -38,6 +38,8 @@ $('document').ready(function() {
                 "top":"212px"
             });
             $(".menu-mobile").data('foldaway', true);
+            
+
             // $('.site-branding-bottom').addClass('branding-bottom-fixed');
         } else {
             $("#topAddBlock").addClass("fixadd");
@@ -52,19 +54,44 @@ $('document').ready(function() {
         return false;
     };   
 
+
+    var scrollUpMenu = function() {
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) && !isMobile() ){
+            foldawayPanel.addClass('showMenuPanel');
+        } else {
+            menu_top_foldaway.addClass('hide');
+            menu_bottom_foldaway.addClass('hide');
+            foldawayPanel.removeClass('showMenuPanel');
+        }
+    }
+
+
     //Onload and resize events
     $(window).on("resize", function () {
         stickHeader();
+        scrollUpMenu();
     }).resize();
 
     //On Scroll
     $(window).scroll(function() {
+        var direction = 'down';
+        var scroll = $(window).scrollTop();
+        if (scroll < scrollMetric[0]) {
+            direction = 'up';
+        }
+        scrollMetric = [scroll, direction];
         stickHeader();
+        scrollUpMenu();
     });
 
 
 
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
+
+    $("#menu-foldaway").on("click", function (e) {
+        menu_top_foldaway.toggleClass('hide');
+        menu_bottom_foldaway.toggleClass('hide');
+    });
 
     $(".menu-mobile").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
@@ -109,7 +136,7 @@ $('document').ready(function() {
 
 
 
-    cardHolder = '';
+    var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
         $('.card .content > p, .card h2').dotdotdot({

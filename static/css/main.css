@@ -8790,6 +8790,11 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
 .site-header-extra-padding {
   padding-top: 407px !important; }
 
+.showMenuPanel {
+  top: 0 !important;
+  left: 0;
+  right: 0; }
+
 .branding-bottom-fixed {
   display: block;
   width: 100%;
@@ -8800,6 +8805,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   background: white; }
 
 .site-header {
+  background: white;
   padding-top: 44px; }
   @media screen and (max-width: 769px) {
     .site-header {
@@ -8841,6 +8847,27 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         height: 26px;
         width: auto;
         max-width: 100%; }
+  .site-header .site-branding-top.foldaway {
+    border-bottom: 1px solid #6c6c6c;
+    border-top: 1px solid #6c6c6c;
+    margin-top: 50px; }
+    .site-header .site-branding-top.foldaway .rooms-link {
+      float: none;
+      padding-top: 0;
+      margin-left: 0; }
+    .site-header .site-branding-top.foldaway .press-patron {
+      display: none; }
+    .site-header .site-branding-top.foldaway .section-left {
+      padding-top: 10px; }
+    .site-header .site-branding-top.foldaway .section-right {
+      width: auto; }
+    .site-header .site-branding-top.foldaway .social-links {
+      display: inline-block; }
+    .site-header .site-branding-top.foldaway .secondary-menu {
+      display: inline-block; }
+      .site-header .site-branding-top.foldaway .secondary-menu > ul > li > a {
+        color: #6c6c6c;
+        font-weight: normal; }
   .site-header .site-branding-bottom {
     padding-top: 55px;
     padding-bottom: 60px; }
@@ -8874,9 +8901,39 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
           .site-header .site-branding-bottom .navbar-brand .mobile-logo {
             display: block;
             width: 63px; } }
+    .site-header .site-branding-bottom.foldaway {
+      color: #6c6c6c;
+      padding: 0;
+      padding-top: 10px; }
+      .site-header .site-branding-bottom.foldaway .sb-custom-menu {
+        border-top: none;
+        text-align: right; }
+        @media (max-width: 1370px) {
+          .site-header .site-branding-bottom.foldaway .sb-custom-menu > ul {
+            display: block; }
+            .site-header .site-branding-bottom.foldaway .sb-custom-menu > ul > li {
+              width: auto;
+              float: none;
+              display: inline-block;
+              border: none; } }
+        .site-header .site-branding-bottom.foldaway .sb-custom-menu a {
+          text-transform: none;
+          color: #6c6c6c;
+          font-weight: normal; }
   .site-header .site-branding-bottom-foldaway {
-    background: yellow;
-    padding: 10px; }
+    transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    background: white;
+    position: fixed;
+    top: -60px;
+    padding: 10px 0 5px 0;
+    margin: 0;
+    width: 100%;
+    border-bottom: solid 1px #6c6c6c;
+    z-index: 2147483647; }
     .site-header .site-branding-bottom-foldaway .navbar-brand {
       padding: 0;
       height: auto; }
