@@ -244,7 +244,6 @@
     {{ this.render('partials/footer.twig', {network : networkData, blog: blogData }) | raw }}
 
     
-    {{ this.render('partials/_javascript.twig') | raw }}
 
     <div class="SwappingHelper" style="display:none">
         <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">
@@ -257,6 +256,8 @@
     {{ this.endBody() }}
 
 </body>
+{{ this.render('partials/_javascript.twig') | raw }}
+
 {{ this.endPage() }}
 
 </html>

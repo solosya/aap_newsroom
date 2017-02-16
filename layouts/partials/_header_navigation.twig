@@ -47,7 +47,7 @@
                             {% if (parentItem.blogTitle != pageClass) %}
                             <li>
                                 <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                    <img src="{{networkData.templatePath}}/static/images/newsroom-{{parentItem.blogTitle | lower}}.jpg" alt="newsroom-{{parentItem.blogTitle}}">
+                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
                                 </a>
                             </li>
                             {% else %}
