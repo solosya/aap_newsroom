@@ -34240,14 +34240,9 @@ $('document').ready(function() {
 
 
     var scrollUpMenu = function() {
-        // console.log('checking scroll up');
-        // console.log(scrollMetric);
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) ){
-            console.log('showing panel');
-            // console.log(foldawayPanel);
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) && !isMobile() ){
             foldawayPanel.addClass('showMenuPanel');
         } else {
-            console.log('removing panel');
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
@@ -34258,6 +34253,7 @@ $('document').ready(function() {
     //Onload and resize events
     $(window).on("resize", function () {
         stickHeader();
+        scrollUpMenu();
     }).resize();
 
     //On Scroll
