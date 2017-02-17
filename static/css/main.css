@@ -8893,24 +8893,25 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         color: #6c6c6c;
         font-weight: normal; }
   .site-header .site-branding-bottom {
-    padding-top: 55px;
+    padding-top: 45px;
     padding-bottom: 60px; }
     @media screen and (max-width: 769px) {
       .site-header .site-branding-bottom {
         padding-top: 10px;
         padding-bottom: 10px; } }
-    @media screen and (min-width: 1370px) {
-      .site-header .site-branding-bottom .section-right {
-        padding-left: 0;
-        padding-right: 0;
-        float: right;
-        margin-left: 0;
-        margin-right: 15px; } }
-    .site-header .site-branding-bottom .section-right > .sb-custom-menu {
-      border-top: solid 4px #000000; }
-      @media screen and (max-width: 1370px) {
-        .site-header .site-branding-bottom .section-right > .sb-custom-menu {
-          border: 0; } }
+    .site-header .site-branding-bottom .section-right {
+      padding-top: 20px; }
+      @media screen and (min-width: 1370px) {
+        .site-header .site-branding-bottom .section-right {
+          padding-left: 0;
+          padding-right: 0;
+          float: right;
+          margin-left: 0; } }
+      .site-header .site-branding-bottom .section-right > .sb-custom-menu {
+        border-top: solid 4px #000000; }
+        @media screen and (max-width: 1370px) {
+          .site-header .site-branding-bottom .section-right > .sb-custom-menu {
+            border: 0; } }
     .site-header .site-branding-bottom .navbar-brand {
       padding: 0;
       height: auto; }
@@ -10414,111 +10415,47 @@ button.swiper-pagination-bullet {
       .room-sports > .featured > a > article > figure > img {
         max-width: 100%; }
 
-.room-corporate > header {
-  margin-bottom: 32px; }
-
-.room-corporate h3 {
-  font-size: 0.93333em;
-  font-weight: bold;
-  color: #8a8b93;
-  font-family: "National", "roboto", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  margin-top: 0;
-  padding-bottom: 13px;
-  border-bottom: solid 1px #d4d4d4; }
-
-.room-corporate > .row {
-  margin-left: -46px;
-  margin-right: -46px; }
-  .room-corporate > .row > .col-sm-4 {
-    padding-left: 46px;
-    padding-right: 46px;
-    border-right: solid 1px #dadada;
-    margin-bottom: 45px; }
-    .room-corporate > .row > .col-sm-4:last-child {
-      border: 0; }
-
-.room-corporate .sponsors {
-  padding-top: 12px; }
-  .room-corporate .sponsors > p {
-    font-size: 0.8em;
+.room-corporate {
+  background: #d8d8d8;
+  padding: 50px 0; }
+  .room-corporate > div > header {
+    margin-bottom: 32px; }
+  .room-corporate h3 {
+    font-size: 0.93333em;
     font-weight: bold;
-    color: #18385f;
-    display: inline-block;
-    margin-right: 15px;
+    color: #8a8b93;
+    font-family: "SourceSansPro",  Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    margin-top: 0;
+    padding-bottom: 13px;
+    border-bottom: solid 1px #d4d4d4; }
+  .room-corporate .card-sm {
     margin-bottom: 0;
-    vertical-align: bottom; }
-  .room-corporate .sponsors > .add-text {
-    font-size: 12px;
-    float: right;
-    color: #6c6c6c;
-    padding-top: 6px; }
-
-.room-corporate article {
-  padding-top: 15px;
-  padding-bottom: 13px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: nowrap;
-  -webkit-flex-wrap: nowrap;
-  border-bottom: solid 1px #d4d4d4; }
-  @media screen and (max-width: 1200px) {
-    .room-corporate article {
-      flex-wrap: wrap;
-      -webkit-flex-wrap: wrap; } }
-  @media screen and (max-width: 769px) {
-    .room-corporate article {
-      flex-wrap: nowrap;
-      -webkit-flex-wrap: nowrap; } }
-  .room-corporate article > figure {
-    width: 92px;
-    flex: 0 0 92px; }
-    @media screen and (max-width: 1200px) {
-      .room-corporate article > figure {
-        margin-bottom: 5px; } }
-    @media screen and (max-width: 992px) {
-      .room-corporate article > figure {
-        width: 80px;
-        flex: 0 0 80px;
-        padding-right: 13px; } }
-  .room-corporate article > .content {
-    padding-left: 21px;
-    -webkit-flex: 1 0;
-    -ms-flex: 1 0;
-    flex: 1 0; }
-    @media screen and (max-width: 992px) {
-      .room-corporate article > .content {
-        padding-left: 0; } }
-    .room-corporate article > .content > .category {
-      font-size: 0.93333em;
+    padding: 0 30px; }
+    .room-corporate .card-sm:first-child {
+      padding-left: 15px; }
+    .room-corporate .card-sm:last-child {
+      padding-right: 15px; }
+    .room-corporate .card-sm .content {
+      background: white; }
+      .room-corporate .card-sm .content time {
+        position: static !important;
+        padding-bottom: 60px !important; }
+  .room-corporate .sponsors {
+    padding-top: 12px; }
+    .room-corporate .sponsors > p {
+      font-size: 0.8em;
       font-weight: bold;
       color: #18385f;
-      line-height: 1;
-      display: block;
-      text-transform: uppercase; }
-      @media screen and (max-width: 769px) {
-        .room-corporate article > .content > .category {
-          font-size: 0.69333em; } }
-    .room-corporate article > .content > h2 {
-      font-size: 1.2em;
-      font-weight: normal;
-      color: #000;
-      font-family: "National", "roboto", Helvetica, Arial, sans-serif;
-      margin-top: 10px; }
-      @media screen and (max-width: 992px) {
-        .room-corporate article > .content > h2 {
-          font-size: 1.04667em;
-          margin-top: 6px;
-          margin-bottom: 5px; } }
-    .room-corporate article > .content > time {
-      font-size: 0.8em;
+      display: inline-block;
+      margin-right: 15px;
+      margin-bottom: 0;
+      vertical-align: bottom; }
+    .room-corporate .sponsors > .add-text {
+      font-size: 12px;
+      float: right;
       color: #6c6c6c;
-      text-transform: uppercase; }
-      @media screen and (max-width: 769px) {
-        .room-corporate article > .content > time {
-          font-size: 0.66667em; } }
+      padding-top: 6px; }
 
 @media screen and (max-width: 620px) {
   .article {
@@ -11352,10 +11289,10 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 1600px) {
         .featured-slider .card .content {
           width: 35%;
-          padding: 85px 15px 0 15px; } }
+          padding: 165px 15px 0 15px; } }
       @media screen and (min-width: 769px) and (max-width: 992px) {
         .featured-slider .card .content {
-          padding: 42px 15px 15px 15px; } }
+          padding: 132px 15px 15px 15px; } }
       @media screen and (max-width: 769px) {
         .featured-slider .card .content {
           width: 100%;

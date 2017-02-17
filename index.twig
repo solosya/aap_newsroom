@@ -423,132 +423,26 @@
                         </div><!-- .row-->
                     </div>
                 </section><!--room-sports-->
+            </div><!-- .container-->
 
-                <section class="room-corporate">
+            <section class="room-corporate">
+                <div class="container">
                     <header>
                         <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
                     </header>
-                    <div class="row">
-                        <div class="col-sm-4 articles">
-                            <h3>Corporate Responsibility</h3>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <div class="sponsors">
-                                <p>Sponsored by</p>
-                                {# <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ"> #}
-                                <span class="add-text">Advertiser content</span>
-                            </div><!-- .sponsors-->
-                        </div><!-- .col-sm-4-->
-                        <div class="col-sm-4 articles">
-                            <h3>Corporate Responsibility</h3>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <div class="sponsors">
-                                <p>Sponsored by</p>
-                                {# <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ"> #}
-                                <span class="add-text">Advertiser content</span>
-                            </div><!-- .sponsors-->
-                        </div><!-- .col-sm-4-->
-                        <div class="col-sm-4 articles">
-                            <h3>Corporate Responsibility</h3>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <article>
-                                <figure>
-                                    <img src="{{networkData.templatePath}}/static/images/cant-export-img.jpg" class="img-responsive">
-                                </figure>
-                                <div class="content">
-                                    <span class="category">World news</span>
-                                    <h2>Fusce vehicula dolor arcu, sit amet bland dolor molli.</h2>        
-                                    <time datetime="2016-11-16">2 days ago</time>
-                                </div><!--content-->
-                            </article>
-                            <div class="sponsors">
-                                <p>Sponsored by</p>
-                                {# <img src="{{networkData.templatePath}}/static/images/ANZ-brand.png" alt="ANZ"> #}
-                                <span class="add-text">Advertiser content</span>
-                            </div><!-- .sponsors-->
-                        </div><!-- .col-sm-4-->
+                    <div class="row corporate-articles">
+                        {% for i in 0..3 %}
+                            {% if articles[articleCount] %}                                                                
+                                {{this.render('partials/_single-article.twig', {article: articles[i], position: (articleCount+1), containerClass: 'col-sm-3 card-sm s255x208'}) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
                     </div><!-- .row-->
-                </section><!-- .room-corporate-->
+                </div>
+            </section><!-- .room-corporate-->
 
 
 
-            </div><!-- .container-->
         </section><!-- .home-page-content-->
 
     </main><!-- .site-main -->
