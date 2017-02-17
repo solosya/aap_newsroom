@@ -7801,9 +7801,11 @@ figcaption {
   background-color: #3b5b97;
   color: #FFF;
   text-transform: uppercase;
-  font-size: 0.86667em;
+  font-size: 1.26667em;
   font-weight: bold;
-  border: 0; }
+  border: 0;
+  padding: 2px 12px;
+  margin-right: 2px; }
   .btn-post:hover, .btn-post:focus {
     color: #FFF; }
 
@@ -7811,19 +7813,34 @@ figcaption {
   background-color: #21b0ee;
   color: #FFF;
   text-transform: uppercase;
-  font-size: 0.86667em;
+  font-size: 1.46667em;
   font-weight: bold;
-  border: 0; }
+  border: 0;
+  padding: 0 10px;
+  margin-right: 2px; }
   .btn-tweet:hover, .btn-tweet:focus {
+    color: #FFF; }
+
+.btn-linkedin {
+  background-color: #21b0ee;
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 1.26667em;
+  font-weight: bold;
+  border: 0;
+  padding: 2px 12px;
+  margin-right: 2px; }
+  .btn-linkedin:hover, .btn-linkedin:focus {
     color: #FFF; }
 
 .btn-share {
   background-color: #f57a61;
   color: #FFF;
   text-transform: uppercase;
-  font-size: 0.86667em;
+  font-size: 1.26667em;
   font-weight: bold;
-  border: 0; }
+  border: 0;
+  padding: 2px 12px; }
   .btn-share:hover, .btn-share:focus {
     color: #FFF; }
 
@@ -7831,9 +7848,10 @@ figcaption {
   background-color: #717171;
   color: #FFF;
   text-transform: uppercase;
-  font-size: 0.86667em;
+  font-size: 1.26667em;
   font-weight: bold;
-  border: 0; }
+  border: 0;
+  padding: 2px 12px; }
   .btn-email:hover, .btn-email:focus {
     color: #FFF; }
 
@@ -7970,8 +7988,8 @@ p.lead {
 
 @font-face {
   font-family: 'fontello';
-  src: url("../icons/font/fontello.eot?64398446");
-  src: url("../icons/font/fontello.eot?64398446#iefix") format("embedded-opentype"), url("../icons/font/fontello.woff2?64398446") format("woff2"), url("../icons/font/fontello.woff?64398446") format("woff"), url("../icons/font/fontello.ttf?64398446") format("truetype"), url("../icons/font/fontello.svg?64398446#fontello") format("svg");
+  src: url("../icons/font/fontello.eot?64398447");
+  src: url("../icons/font/fontello.eot?64398447#iefix") format("embedded-opentype"), url("../icons/font/fontello.woff2?64398447") format("woff2"), url("../icons/font/fontello.woff?64398447") format("woff"), url("../icons/font/fontello.ttf?64398447") format("truetype"), url("../icons/font/fontello.svg?64398447#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -8052,6 +8070,14 @@ p.lead {
   content: '\f32d'; }
 
 /* '' */
+.icon-mail:before {
+  content: '\F0E0'; }
+
+/* '' */
+.icon-linkedin:before {
+  content: '\e806'; }
+
+/* '' */
 .top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article, .future-learning .furturelearning a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9645,8 +9671,7 @@ button.swiper-pagination-bullet {
     color: white; }
   .room-view article {
     padding-left: 25px;
-    padding-right: 25px;
-    margin-bottom: 17px; }
+    padding-right: 25px; }
     @media screen and (max-width: 769px) {
       .room-view article {
         border-right: 0;
@@ -9717,7 +9742,8 @@ button.swiper-pagination-bullet {
       .room-view article > .content > div.author {
         display: none; }
   .room-view .subfeature {
-    border-right: 1px solid #d4d4d4; }
+    border-right: 1px solid #d4d4d4;
+    margin-bottom: 20px; }
     @media screen and (max-width: 769px) {
       .room-view .subfeature {
         border-right: none;
@@ -10499,7 +10525,6 @@ button.swiper-pagination-bullet {
     padding-top: 100px; } }
 
 .article .site-header {
-  border-bottom: 2px solid #dadada;
   margin-bottom: 55px; }
   .article .site-header .site-branding-bottom {
     padding-top: 10px;
@@ -10567,9 +10592,12 @@ button.swiper-pagination-bullet {
       .article article.article-main .page-content .content-author p {
         display: none; } }
 
-@media screen and (max-width: 769px) {
-  .article article.article-main .page-content .content h1 {
-    font-size: 1.73333em; } }
+.article article.article-main .page-content .content h1 {
+  margin-top: 40px;
+  margin-bottom: 47px; }
+  @media screen and (max-width: 769px) {
+    .article article.article-main .page-content .content h1 {
+      font-size: 1.73333em; } }
 
 .article article.article-main .page-content .content p {
   font-size: 1.33333em;
@@ -10813,8 +10841,10 @@ button.swiper-pagination-bullet {
         margin-bottom: 3px; }
       .related-articles a.card > article > .content > h2 {
         font-weight: normal;
-        font-size: 0.93333em;
-        height: 30px; }
+        font-size: 1.33333em;
+        line-height: 1.2em;
+        height: 50px;
+        margin-bottom: 0; }
         @media screen and (max-width: 1200px) {
           .related-articles a.card > article > .content > h2 {
             font-size: 1.06667em; } }
@@ -11233,7 +11263,8 @@ button.swiper-pagination-bullet {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 150px; }
+    width: 140px;
+    margin: 29px 29px 0 0; }
     @media screen and (max-width: 1600px) {
       .featured-slider .newsroom-icon {
         width: 115px; } }
