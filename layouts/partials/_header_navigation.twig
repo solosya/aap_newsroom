@@ -48,7 +48,7 @@
 
                             <li>
                                 <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
+                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
                                 </a>
                             </li>
                             {% else %}
