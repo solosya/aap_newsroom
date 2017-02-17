@@ -8125,17 +8125,16 @@ p.lead {
   .add .add-text {
     color: #6c6c6c;
     font-size: 0.8em; }
-  @media screen and (max-width: 1200px) {
-    .add.sidebar-add .block > a {
-      display: block; } }
-  @media screen and (max-width: 769px) {
-    .add.sidebar-add {
-      margin-bottom: 43px; } }
-  .add.sidebar-add .add-text {
-    float: right; }
+  .add.sidebar-add {
+    margin-bottom: 43px; }
     @media screen and (max-width: 1200px) {
-      .add.sidebar-add .add-text {
-        float: left; } }
+      .add.sidebar-add .block > a {
+        display: block; } }
+    .add.sidebar-add .add-text {
+      float: right; }
+      @media screen and (max-width: 1200px) {
+        .add.sidebar-add .add-text {
+          float: left; } }
   .add.lg-block {
     text-align: center;
     margin-bottom: 70px; }
