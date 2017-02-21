@@ -13,6 +13,10 @@
             width:205px;
             margin-left:20px;
         }    
+        @media screen and (max-width: $sm-mobile-break){
+            width:205px;
+            margin-left:20px;
+        }    
     }
 
     
@@ -139,6 +143,9 @@
                         @media screen and (max-width: $mmd-break){
                             width: 350px;
                         }
+                        @media screen and (max-width: $sm-break){
+                            width: 100%;
+                        }
 
 
 
@@ -222,6 +229,9 @@
 
             @media screen and (max-width: $mmd-break){
                 width: 280px;
+            }
+            @media screen and (max-width: $sm-break){
+                width: 100%;
             }
 
             

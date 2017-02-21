@@ -9872,6 +9872,10 @@ button.swiper-pagination-bullet {
       .room-living > header {
         width: 205px;
         margin-left: 20px; } }
+    @media screen and (max-width: 490px) {
+      .room-living > header {
+        width: 205px;
+        margin-left: 20px; } }
   .room-living > .feature {
     position: relative;
     width: 100%;
@@ -9944,6 +9948,9 @@ button.swiper-pagination-bullet {
         @media screen and (max-width: 992px) {
           .room-living > .feature > a.card > article > .content {
             width: 350px; } }
+        @media screen and (max-width: 769px) {
+          .room-living > .feature > a.card > article > .content {
+            width: 100%; } }
         .room-living > .feature > a.card > article > .content .category {
           color: #fff;
           margin-bottom: 40px; }
@@ -9994,6 +10001,9 @@ button.swiper-pagination-bullet {
     @media screen and (max-width: 992px) {
       .room-living > .contents {
         width: 280px; } }
+    @media screen and (max-width: 769px) {
+      .room-living > .contents {
+        width: 100%; } }
     .room-living > .contents > div {
       border-bottom: 2px solid #FFF; }
       .room-living > .contents > div:last-child {
@@ -10484,10 +10494,11 @@ button.swiper-pagination-bullet {
     margin-bottom: 0;
     padding: 0 30px; }
     .room-corporate .card-sm .content {
-      background: white; }
+      background: white;
+      display: block; }
       .room-corporate .card-sm .content time {
-        position: static !important;
-        padding-bottom: 60px !important; }
+        float: none;
+        position: static !important; }
   .room-corporate .sponsors {
     padding-top: 12px; }
     .room-corporate .sponsors > p {

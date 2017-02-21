@@ -14,19 +14,19 @@
                         <li><a href="#"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
                         <li><a href="#"><span class="sr-only">Instagram</span><span class="icon-instagram"></span></a></li>
                         <li><a href="#"><span class="sr-only">Vimeo</span><span class="icon-vimeo"></span></a></li>
-                    </ul>
-                </div><!-- .social-links-->
-
-                <div class="secondary-menu">
-                    <ul>
+                    
                         {% if not _User.isGuest() %}
                             {% set user = _User.getUser() %}
                             <li><a href="javscript:void(0)" class="" id="profile">
                                 {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
                             </a></li>
-                        {% endif %}      
+                        {% endif %} 
 
+                    </ul>
+                </div><!-- .social-links-->
 
+                <div class="secondary-menu">
+                    <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         <li><a href="#">News</a></li>
                         <li><a href="#">About</a></li>
