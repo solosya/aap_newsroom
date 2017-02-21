@@ -3,6 +3,11 @@
     
     > header{
         margin-bottom: 20px;
+    
+    @media screen and (max-width: $sm-mobile-break){
+            width:205px;
+            margin-left:20px;
+        }
     }
 
     .articles{
@@ -97,7 +102,7 @@
                 @media screen and (max-width: $sm-break) {
                     font-family: "tinos";
                     font-size: em(22);
-                    text-transform: none;
+                    text-transform: upper;
                 }
             }
 

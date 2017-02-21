@@ -19,7 +19,7 @@
                     <div class="swiper-wrapper">
 
                         {% if articles[0] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured swiper-slide s1168x587'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured s1168x587'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     </div><!-- .swiper-wrapper-->
@@ -123,7 +123,7 @@
 
 
                 {% if articles[articleCount] %}                                                                
-                <div class="row">
+                <div class="row bottom-row">
                     {% for i in 0..3 %}
                         {% if articles[articleCount] %}                                                                
                             {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-3 card-sm s255x208'}) | raw}}

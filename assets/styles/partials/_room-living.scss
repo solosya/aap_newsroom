@@ -1,78 +1,108 @@
 .room-living{
     margin-bottom: 80px;
+    position:relative;
+
     @media screen and (max-width: $sm-break){
         margin-left: -15px;
         margin-right: -15px;
     }
     > header{
         margin-bottom: 20px;
+
+        @media screen and (max-width: $sm-mobile-break){
+            width:205px;
+            margin-left:20px;
+        }    
     }
 
     
 
 
-    > .content-wrapper{
-        height: 587px;
-        width:100%;
-        background-size: cover;
-        position: relative;
+    // // > .content-wrapper{
+    // //     height: 587px;
+    // //     width:100%;
+    // //     background-size: cover;
+    // //     position: relative;
         
-        @media screen and (max-width: $sm-break){
-            height: 202px;
-        }
+    //     @media screen and (max-width: $sm-break){
+    //         height: 202px;
+    //     }
 
-        @media screen and (max-width: $sm-break){
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            padding-top: 202px;
-            height: auto;
-        }
-        &:before{
-            content: '';
-            width: 20px;
-            height: 100%;
-            background: #80c342;
-            display: block;
-
-            @media screen and (max-width: $sm-break){
-                position: absolute;
-                top: 0;
-            }
-        }
+    //     @media screen and (max-width: $sm-break){
+    //         background-size: 100% auto;
+    //         background-repeat: no-repeat;
+    //         padding-top: 202px;
+    //         height: auto;
+    //     }
 
         
         > .feature {
-            position:absolute;
-            top:0;
+            position:relative;
+            // top:0;
             width:100%;
+            height: 587px;
             
             @media screen and (max-width: $sm-break){
-                position:static;
-                height:200px;
+                position:relative;
+                height:550px;
             }
+            @media screen and (max-width: $sm-mobile-break){
+                height:415px;
+            }
+
+
 
             > a.card {
                 width:100%;
                 position:absolute;
                 top:0;
-                background:blue;
+                // background:blue;
                 
                > article {
 
                     > figure {
                         position:absolute;
-                        top:0;
-                        left:20px;
-                        right:0;
+                        width:100%;
+                        // top:0;
+                        // left:20px;
+                        // right:0;
                         height:587px;
-                        overflow:hidden;
+                        // overflow:hidden;
 
+                        @media screen and (max-width: $sm-break){
+                            position: relative;
+                            max-height: 415px;
+                        }
+                        @media screen and (max-width: $sm-mobile-break){
+                            max-height: 280px;
+                        }
                         > img {
                             position:absolute;
                             left:0;
                             width:100%;
-                            height:587px;
+                            // height:auto;
                         }
+
+                        &:before{
+                            content: '';
+                            width: 20px;
+                            height: 100%;
+                            background: #80c342;
+                            bottom: 0;
+                            top: 0;
+                            position: absolute;
+                            z-index: 2;
+
+
+
+                            @media screen and (max-width: $sm-break){
+                                position: absolute;
+                                top: 0;
+                            }
+                        }
+
+
+
 
                         &:after{
                             content: '';
@@ -94,13 +124,50 @@
                         top:70px;
                         color:#fff;
 
+                        @media screen and (max-width: $sm-break){
+                            position: relative;
+                            top:0;
+                            left:0;
+                            width: 100%;
+                            color: #000;
+                            border-bottom: 1px solid #d4d4d4;
+                            padding: 19px 15px;
+                            color:white;
+                            background:black;
+                        }
+
+                        @media screen and (max-width: $mmd-break){
+                            width: 350px;
+                        }
+
+
+
                         .category {
                             color:#fff;
                             margin-bottom:40px;
+                            @media screen and (max-width: $sm-break){
+                                // color:white;
+                                margin-bottom:10px;
+                                font-size: em(11);
+                                text-transform: uppercase;
+                            }
+
+
+
                         }
 
                         h2 {
                             margin-bottom:40px;
+                            @media screen and (max-width: $sm-break){
+                                font-style: italic;
+                                font-weight: normal;
+                                font-size: em(16);
+                                margin-top: 5px;
+                                margin-bottom:0;
+                            }
+
+
+
                         }
     
                         > p {
@@ -140,7 +207,7 @@
 
             position: absolute;
             right: 0;
-            top: 0;
+            top: 80px;
             height: 100%;
             width: 418px;
             color: #FFF;
@@ -148,8 +215,13 @@
             padding-right: 25px;
             @media screen and (max-width: $sm-break){
                 position: relative;
+                top: 0;
                 width: 100%;
                 background: #000;
+            }
+
+            @media screen and (max-width: $mmd-break){
+                width: 280px;
             }
 
             
@@ -248,5 +320,5 @@
                 }
             }
         }
-    }
+    // }
 }

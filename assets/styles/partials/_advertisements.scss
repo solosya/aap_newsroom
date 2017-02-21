@@ -13,7 +13,10 @@
     }
 
     &.sidebar-add{
-        margin-bottom: 43px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        text-align:center;
+
         @media screen and (max-width: $md-break){
             .block > a{
                 display: block;
@@ -28,6 +31,19 @@
             @media screen and (max-width: $md-break){
                 float: left;
             }
+            
+            @media screen and (max-width: $mmd-break){
+                float: none;
+            }
+
+
+
+        }
+        > div {
+            margin: 0 auto;
+        }
+        > span {
+
         }
     }
 

@@ -9,7 +9,11 @@
 
     > header{
         margin-bottom: 20px;
-    }
+
+        @media screen and (max-width: $sm-mobile-break){
+            width:205px;
+            margin-left:20px;
+        }    }
 
     > .articles{
 
@@ -161,7 +165,7 @@
                         color: #8a8b93;
                         font-family: "tinos";
                         font-size: em(22);
-                        text-transform: none;
+                        text-transform: upper;
                     }
                 }
 
@@ -214,7 +218,7 @@
                 z-index: 1;
                 @media screen and (max-width: $sm-break){
                     position: relative;
-                    height: auto;
+                    max-height: 415px;
                     &:before{
                         content: '';
                         width: 10px;
@@ -226,6 +230,12 @@
                         z-index: 2;
                     }
                 }
+                
+                // @media screen and (min-width:$sm-break) and (max-width:$mmd-break){
+                @media screen and (max-width: $sm-mobile-break){
+                    max-height: 260px;
+                }
+
                 &:after{
                     position: absolute;
                     background: rgba(0,0,0,0.5);

@@ -131,15 +131,18 @@
                     padding-top: 15px;
                 }
                 li{
+                    
+                    margin-right: 36px;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+
                     @media screen and (max-width: $sm-break){
                         margin-bottom: 15px;
                     }
+
                     a{
                         display: block;
-                        margin-right: 24px;
-                        &:last-child{
-                            margin-right: 0;
-                        }
                         
                         img{
                             height: 20px;
