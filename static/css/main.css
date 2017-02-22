@@ -12038,10 +12038,15 @@ button.swiper-pagination-bullet {
     padding-bottom: 10px;
     border-bottom: 1px solid #dadada;
     margin-bottom: 20px; }
+    .future-learning header > img {
+      float: left; }
     .future-learning header > div {
       position: absolute;
       right: 0;
       display: inline-block; }
+      @media screen and (max-width: 769px) {
+        .future-learning header > div {
+          position: static; } }
   .future-learning .container, .future-learning .profile__container {
     padding: 0; }
   @media screen and (max-width: 769px) {

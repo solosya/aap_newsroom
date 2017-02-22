@@ -19,10 +19,25 @@
         border-bottom:1px solid #dadada;
         margin-bottom:20px;
 
+        @media screen and (max-width: $sm-break){
+            // width:220px;
+        }
+
+        > img {
+            float:left;
+        }
+
         > div {
             position:absolute;
             right:0;
             display:inline-block;
+            
+            @media screen and (max-width: $sm-break){
+                position:static;
+            }
+
+
+
         }
 
     }
