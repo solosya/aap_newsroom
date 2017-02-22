@@ -40,14 +40,32 @@
         }
 
         .icon-wrapper{
+            position:relative;
+            width:100%;
             @media screen and (max-width: $sm-break){
                 position: absolute;
                 top: 75px;
             }
+
+            span {
+                display:none;
+
+                @media screen and (max-width: $sm-break){
+                    position:absolute;
+                    bottom:0;
+                    right:20px;
+                    display: inline-block;
+                    font-family: $font-family-sans-serif;
+                    font-size:em(10);
+                    color:white;
+                }
+
+
+            }
         }
 
         .footer-brand{
-            display: block;
+            display: inline-block;
             width: 202px;
             padding-top: 61px;
         }
@@ -87,6 +105,19 @@
                 }
             }
         }
+
+        .footer-menu {
+
+            span {
+                position:absolute;
+                top:0;
+                right: 15px;
+                color:white;
+                font-size: em(15);
+                font-family: $font-family-sans-serif;
+            }
+        }
+
     }
 
     .footer-btm{
@@ -94,6 +125,7 @@
         padding-bottom: 14px;
 
         .footer-menu {
+            position:relative;
             display: block;
             padding-bottom: 0;
             margin-left: -15px;
@@ -111,6 +143,7 @@
                     }
                 }
             }
+
         }
 
         .footer-menu > ul > li > a {

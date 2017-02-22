@@ -8398,12 +8398,26 @@ p.lead {
         top: 0;
         right: 0;
         left: 0; } }
-    @media screen and (max-width: 769px) {
-      .site-footer .footer-top .icon-wrapper {
-        position: absolute;
-        top: 75px; } }
+    .site-footer .footer-top .icon-wrapper {
+      position: relative;
+      width: 100%; }
+      @media screen and (max-width: 769px) {
+        .site-footer .footer-top .icon-wrapper {
+          position: absolute;
+          top: 75px; } }
+      .site-footer .footer-top .icon-wrapper span {
+        display: none; }
+        @media screen and (max-width: 769px) {
+          .site-footer .footer-top .icon-wrapper span {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            display: inline-block;
+            font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+            font-size: 0.66667em;
+            color: white; } }
     .site-footer .footer-top .footer-brand {
-      display: block;
+      display: inline-block;
       width: 202px;
       padding-top: 61px; }
     .site-footer .footer-top .symbol {
@@ -8430,10 +8444,18 @@ p.lead {
       margin-bottom: 57px; }
       .site-footer .footer-top .social-links > ul > li > a {
         color: #e22f22; }
+    .site-footer .footer-top .footer-menu span {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      color: white;
+      font-size: 1em;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
   .site-footer .footer-btm {
     padding-top: 12px;
     padding-bottom: 14px; }
     .site-footer .footer-btm .footer-menu {
+      position: relative;
       display: block;
       padding-bottom: 0;
       margin-left: -15px;
@@ -8929,7 +8951,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         padding-top: 10px;
         padding-bottom: 10px; } }
     .site-header .site-branding-bottom .section-right {
-      padding-top: 20px; }
+      padding-top: 10px; }
       @media screen and (min-width: 1370px) {
         .site-header .site-branding-bottom .section-right {
           padding-left: 0;
@@ -9695,7 +9717,7 @@ button.swiper-pagination-bullet {
     @media screen and (max-width: 490px) {
       .room-view > header {
         width: 205px;
-        margin-left: 20px; } }
+        margin-left: 15px; } }
   .room-view .featured {
     padding: 0; }
   .room-view .content-wrapper {
@@ -9738,7 +9760,7 @@ button.swiper-pagination-bullet {
         background-size: cover; }
         @media screen and (max-width: 1200px) {
           .room-view article > figure:after {
-            top: 30%;
+            top: 40%;
             left: 35%;
             width: 40px;
             height: 40px; } }
@@ -9899,12 +9921,11 @@ button.swiper-pagination-bullet {
     margin-bottom: 20px; }
     @media screen and (max-width: 490px) {
       .room-living > header {
-        width: 205px;
-        margin-left: 20px; } }
+        width: 205px; } }
     @media screen and (max-width: 490px) {
       .room-living > header {
         width: 205px;
-        margin-left: 20px; } }
+        margin-left: 15px; } }
   .room-living > .feature {
     position: relative;
     width: 100%;
@@ -10096,8 +10117,7 @@ button.swiper-pagination-bullet {
     margin-bottom: 20px; }
     @media screen and (max-width: 490px) {
       .room-board > header {
-        width: 205px;
-        margin-left: 20px; } }
+        width: 205px; } }
   .room-board .articles {
     border-top: solid 1px #d4d4d4;
     border-bottom: solid 1px #d4d4d4;
@@ -10311,8 +10331,7 @@ button.swiper-pagination-bullet {
     margin-bottom: 20px; }
     @media screen and (max-width: 490px) {
       .room-sports > header {
-        width: 205px;
-        margin-left: 20px; } }
+        width: 205px; } }
   .room-sports > .articles article {
     display: -webkit-box;
     display: -webkit-flex;
@@ -10572,8 +10591,6 @@ button.swiper-pagination-bullet {
           padding-bottom: 10px; } }
     .article .site-header .site-branding-bottom .navbar-brand {
       width: 105px; }
-      .article .site-header .site-branding-bottom .navbar-brand .mobile-logo {
-        display: none; }
 
 .article article.article-main figure.featured {
   margin-bottom: 65px; }
@@ -10639,7 +10656,7 @@ button.swiper-pagination-bullet {
   margin-bottom: 47px; }
   @media screen and (max-width: 769px) {
     .article article.article-main .page-content .content h1 {
-      font-size: 1.73333em; } }
+      font-size: 2em; } }
 
 .article article.article-main .page-content .content > p {
   font-size: 1.33333em;
