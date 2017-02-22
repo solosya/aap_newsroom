@@ -12038,6 +12038,9 @@ button.swiper-pagination-bullet {
     padding-bottom: 10px;
     border-bottom: 1px solid #dadada;
     margin-bottom: 20px; }
+    @media screen and (max-width: 769px) {
+      .future-learning header {
+        margin-bottom: 0; } }
     .future-learning header > img {
       float: left; }
     .future-learning header > div {
@@ -12051,7 +12054,6 @@ button.swiper-pagination-bullet {
     padding: 0; }
   @media screen and (max-width: 769px) {
     .future-learning .furturelearning a.card {
-      margin-bottom: 6px;
       border-bottom: 1px solid #dadada; } }
   .future-learning .furturelearning a.card > article {
     height: auto;
@@ -12069,21 +12071,19 @@ button.swiper-pagination-bullet {
         flex: 0 0 65px; } }
     @media screen and (max-width: 769px) {
       .future-learning .furturelearning a.card > article > figure {
-        margin-top: 6px;
-        margin-bottom: 6px;
-        width: 60px;
-        flex: 0 0 60px; } }
+        margin-top: 15px;
+        width: 70px;
+        height: 70px;
+        flex: 0 0 70px; } }
     .future-learning .furturelearning a.card > article > figure > img {
       max-width: 100%; }
   .future-learning .furturelearning a.card > article > .content {
     padding-bottom: 3px;
     -ms-flex: 1 0; }
-    @media screen and (max-width: 1200px) {
-      .future-learning .furturelearning a.card > article > .content {
-        padding-bottom: 15px; } }
     @media screen and (max-width: 769px) {
       .future-learning .furturelearning a.card > article > .content {
-        border: 0; } }
+        border: 0;
+        padding: 15px 0; } }
     .future-learning .furturelearning a.card > article > .content > .category {
       font-size: 0.74667em;
       font-weight: bold;
@@ -12104,7 +12104,8 @@ button.swiper-pagination-bullet {
           font-size: 1.06667em; } }
       @media screen and (max-width: 769px) {
         .future-learning .furturelearning a.card > article > .content > h2 {
-          font-size: 0.96667em;
+          height: 37px;
+          font-size: 1.06667em;
           margin: 2px; } }
     .future-learning .furturelearning a.card > article > .content > .author {
       display: none; }
@@ -12120,7 +12121,8 @@ button.swiper-pagination-bullet {
           right: 15px; } }
       @media screen and (max-width: 769px) {
         .future-learning .furturelearning a.card > article > .content > time {
-          font-size: 0.66667em; } }
+          font-size: 0.66667em;
+          position: static; } }
     .future-learning .furturelearning a.card > article > .content p {
       display: none; }
 
