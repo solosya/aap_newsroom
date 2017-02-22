@@ -159,6 +159,36 @@ p.lead{
     color:#6c6c6c;
 }
 
+.sponsor-logos {
+    margin-top:80px;
+    height:100px;
+    width:100%;
+    text-align: center;
+
+    ul {
+        margin: 0 auto;
+
+        li {
+            display:inline-block;
+            
+            &.sponsor-holden {
+                width:100px;
+                height:100px;
+                background: url('../images/holden.svg');
+                background-repeat: no-repeat;
+            }
+
+            &.sponsor-stuff {
+                width:100px;
+                height:100px;
+                background: url('../images/suff.svg');
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+}
+
 
 .flex_col{display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;
           display:-webkit-flex;-webkit-flex-direction:column;
