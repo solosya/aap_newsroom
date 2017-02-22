@@ -169,8 +169,8 @@
                 max-height:20px;
                 @media screen and (max-width: $sm-break){
                     color: #8a8b93;
-                    font-family: Tinos;
-                    font-size: 22px;
+                    font-family: $font-family-sans-serif;
+                    font-size: em(12);
                 }
             }
 
@@ -255,7 +255,7 @@
                         display: none;
                     }
                     p{
-                        font-family: Tinos;
+                        font-family: $base-font-family;
                         font-size: em(18);
                         padding: 0;
                         color: #FFF;
