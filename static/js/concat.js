@@ -32169,7 +32169,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var source = elem.data('source');
             var poster = elem.data('poster');
             var caption = elem.data('caption');
-
             var url, content;
 
             if (source.trim() !== 'undefined' && source.trim() !== "") {
@@ -32206,6 +32205,9 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                         url = $(elem).data('url');
                     }
                     opts.features = [];
+                    opts.width = (window.innerWidth/3)*2;
+                    opts.height = (opts.width * 9)/16;
+
                     content = 
                         '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
                             <iframe src="//players.brightcove.net/'+accountID+'/default_default/index.html?videoId='+videoId+'" \
