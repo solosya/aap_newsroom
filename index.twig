@@ -209,9 +209,8 @@
 
                         </section><!-- .sidebar-news -->
 
-                        {# {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}} #}
 
-                        {{ this.render('partials/subscribe.twig' | raw ) }}
+                        {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }}
 
 
                         <section class="add sidebar-add">
