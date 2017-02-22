@@ -58,8 +58,9 @@
             }
 
             @media screen and (max-width: $sm-break){
-                width: 60px;
-                flex: 0 0 60px;
+                width: 88px;
+                height:88px;
+                flex: 0 0 88px;
             }
 
             > img{
@@ -100,7 +101,8 @@
                 }
 
                 @media screen and (max-width: $sm-break){
-                    font-size: em(14.5);
+                    height:75px;
+                    font-size: em(20);
                     margin: 2px;
                 }
             }
@@ -122,6 +124,7 @@
                 }
 
                 @media screen and (max-width: $sm-break){
+                    position:static;
                     font-size: em(10);
                 }
             }
@@ -132,6 +135,9 @@
                 overflow:hidden;
                 line-height: 1.2em !important;
                 font-size: em(13) !important;
+                @media screen and (max-width: $sm-break){
+                    display:none;
+                }
 
             }
         }

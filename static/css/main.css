@@ -10875,8 +10875,9 @@ button.swiper-pagination-bullet {
           flex: 0 0 65px; } }
       @media screen and (max-width: 769px) {
         .related-articles a.card > article > figure {
-          width: 60px;
-          flex: 0 0 60px; } }
+          width: 88px;
+          height: 88px;
+          flex: 0 0 88px; } }
       .related-articles a.card > article > figure > img {
         max-width: 100%; }
     .related-articles a.card > article > .content {
@@ -10908,7 +10909,8 @@ button.swiper-pagination-bullet {
             font-size: 1.06667em; } }
         @media screen and (max-width: 769px) {
           .related-articles a.card > article > .content > h2 {
-            font-size: 0.96667em;
+            height: 75px;
+            font-size: 1.33333em;
             margin: 2px; } }
       .related-articles a.card > article > .content > .author {
         display: none; }
@@ -10924,6 +10926,7 @@ button.swiper-pagination-bullet {
             right: 15px; } }
         @media screen and (max-width: 769px) {
           .related-articles a.card > article > .content > time {
+            position: static;
             font-size: 0.66667em; } }
       .related-articles a.card > article > .content p {
         height: 30px;
@@ -10931,6 +10934,9 @@ button.swiper-pagination-bullet {
         overflow: hidden;
         line-height: 1.2em !important;
         font-size: 0.86667em !important; }
+        @media screen and (max-width: 769px) {
+          .related-articles a.card > article > .content p {
+            display: none; } }
 
 .channel {
   position: relative; }
