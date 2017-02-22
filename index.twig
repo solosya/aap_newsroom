@@ -209,22 +209,10 @@
 
                         </section><!-- .sidebar-news -->
 
-                        <section class="subscribe">
-                            <h3>Subscribe to</h3>
-                            <img src="{{networkData.templatePath}}/static/images/newsroom-pro-wordmark.png" alt="newsroom wordmark">
-                            <form method="get" id="subscribe-form" class="subscribe-form" action="#">
-                                <label for="header-search" class="assistive-text sr-only">Search</label>
-                                <div class="input-group">
-                                    <input type="email" class="field form-control" name="email" placeholder="Email address" required="">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" id="searchsubmit">
-                                            <span class="icon-right-small"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-                            <p>Sign up to Newsroom Pro today to enjoy all the extra features we have to offer.</p>
-                        </section><!-- .subscribe-->
+                        {# {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}} #}
+
+                        {{ this.render('partials/subscribe.twig' | raw ) }}
+
 
                         <section class="add sidebar-add">
                                                        <!-- /268436641/sidepanel1 -->

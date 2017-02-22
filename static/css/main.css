@@ -8208,6 +8208,8 @@ p.lead {
   .subscribe h3 {
     font-size: 1.33333em;
     font-weight: 700; }
+  .subscribe img {
+    width: 158px; }
   .subscribe > .subscribe-form {
     margin-top: 27px;
     margin-bottom: 19px; }
@@ -9629,6 +9631,7 @@ button.swiper-pagination-bullet {
         margin-top: 6px;
         margin-bottom: 6px;
         width: 60px;
+        height: 56px;
         flex: 0 0 60px; } }
     .top-stories a.card > article > figure > img {
       max-width: 100%; }
@@ -9844,6 +9847,12 @@ button.swiper-pagination-bullet {
           left: 43%;
           height: 100px;
           width: 100px; } }
+      @media screen and (max-width: 769px) {
+        .room-view .featured article > figure:after {
+          top: 45%;
+          left: 43%;
+          height: 51px;
+          width: 51px; } }
       .room-view .featured article > figure > img {
         max-width: 100%; }
     .room-view .featured article > .content {
@@ -10155,7 +10164,8 @@ button.swiper-pagination-bullet {
   .room-board .subfeature-board article > .content > p {
     display: none; }
   .room-board .subfeature-board article > .content > h2 {
-    margin-top: 21px; }
+    margin-top: 21px;
+    font-size: 1.2em; }
   .room-board .subfeature-board article > .content > time {
     float: none;
     border: none;
