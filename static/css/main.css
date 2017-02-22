@@ -10668,9 +10668,15 @@ button.swiper-pagination-bullet {
   letter-spacing: 0.8px;
   color: #717171;
   padding-right: 10px; }
+  @media screen and (max-width: 769px) {
+    .article article.article-main .page-content .content > p {
+      color: #8a8b93; } }
   .article article.article-main .page-content .content > p.lead {
     font-weight: bold;
     color: #4a4a4a; }
+    @media screen and (max-width: 769px) {
+      .article article.article-main .page-content .content > p.lead {
+        color: #8a8b93; } }
   .article article.article-main .page-content .content > p:last-child {
     margin-bottom: 50px; }
   @media screen and (max-width: 769px) {
@@ -10694,6 +10700,18 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 769px) {
     .article article.article-main .page-content .content blockquote {
       font-size: 1.46667em; } }
+
+.article article.article-main .page-content div.comments {
+  margin-bottom: 50px; }
+  .article article.article-main .page-content div.comments h3 {
+    font-size: 1.2em;
+    margin-bottom: 13px; }
+  .article article.article-main .page-content div.comments p {
+    font-family: font-family-sans-serif;
+    font-size: 1.06667em;
+    color: #777881; }
+    .article article.article-main .page-content div.comments p span {
+      color: black; }
 
 .article .page-add {
   text-align: center;
