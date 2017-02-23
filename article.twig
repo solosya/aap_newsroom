@@ -60,13 +60,14 @@
                                     ><a href="#" class="btn btn-linkedin icon-linkedin"></a
                                     ><a href="#" class="btn btn-email icon-mail"></a>
 
-                                    <time>December 15, 2016</time>
+                                    <time>{{ article.publishedDate | upper }}</time>
                                 </div><!--content-block-top-->
 
                                 <div class="content-author">
                                     <img src="{{ profileImg }}" alt="">
                                     <h3>{{ article.createdBy['displayName'] }}</h3>
                                     <p>{{ article.createdBy['bio'] }}</p>
+                                    <span>{{ article.publishedDate | upper }}</span>
                                 </div><!-- .content-author-->
 
                                 <div class="content">

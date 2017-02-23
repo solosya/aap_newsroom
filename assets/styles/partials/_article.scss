@@ -75,6 +75,11 @@
                     text-transform: uppercase;
                     font-size: em(13);
                     padding: 10px 0;
+
+                    @media screen and (max-width: $sm-break){
+                        display:none;
+                    }
+
                 }
             }
 
@@ -83,7 +88,9 @@
                 border-bottom: solid 1px #dadada;
                 padding: 13px 0;
                 min-height: 90px;
-
+                @media screen and (max-width: $sm-break){
+                    min-height: 60px;
+                }
 
                 img{
                     float: left;
@@ -99,7 +106,20 @@
                     margin-bottom: 5px;
 
                     @media screen and (max-width: $sm-break){
+                        display:inline-block;
                         margin-bottom: 10px;
+                        margin-top: 15px;
+                    }
+                }
+
+                span {
+                    display: none;
+                    color: #8a8b93;
+                    font-family: $font-family-sans-serif;
+                    font-size: em(15);
+                    @media screen and (max-width: $sm-break){
+                        display:inline;
+                        float: right;
                         margin-top: 15px;
                     }
                 }

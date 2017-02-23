@@ -5,12 +5,12 @@
             <div class="row">
                 <div class="col-sm-3 icon-wrapper">
                     <a class="footer-brand" href="#" rel="Home" tabindex="-1" title="Home">
-                        <img src="{{network.templatePath}}/static/images/newsroom-reversed.png" alt="logo">
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo">
                     </a>
                     <span>POWERED BY AAP</span>
                 </div><!-- .col-sm-3-->
                 <div class="col-sm-6 pull-right text-right logo-wrapper">
-                    <img src="{{network.templatePath}}/static/images/0newsroom-symbol-reversed.png" class="symbol">
+                    <img src="{{networkData.templatePath}}/static/images/0newsroom-symbol-reversed.png" class="symbol">
                     <a href="#" class="footer_btn-lg btn">Become a supporter</a>
                 </div><!-- .col-sm-6-->
             </div><!--row-->
@@ -64,11 +64,30 @@
                 <div class="col-sm-7">
                     <div class="rooms-link">
                         <ul>
-                            <li><a href="#"><img src="{{network.templatePath}}/static/images/viewingroom-logo.svg" alt="viewingroom"></a></li>
+                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% for i, parentItem in menuItems | slice(0, 5) %}
+                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                                {% if (parentItem.blogTitle != pageClass) %}
+
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
+                                    </a>
+                                </li>
+                                {% else %}
+                                    {% set submenu = parentItem.children %}
+                                {% endif  %}
+
+                            {% endfor %}
+
+
+
+{#                             <li><a href="#"><img src="{{network.templatePath}}/static/images/viewingroom-logo.svg" alt="viewingroom"></a></li>
                             <li><a href="#"><img src="{{network.templatePath}}/static/images/livingroom-logo.svg" alt="livingroom"></a></li>
                             <li><a href="#"><img src="{{network.templatePath}}/static/images/boardroom-logo.svg" alt="boardroom"></a></li>
                             <li><a href="#"><img src="{{network.templatePath}}/static/images/sportsroom-logo.svg" alt="sportsroom"></a></li>
-                        </ul>
+ #}                        </ul>
                     </div>
                 </div><!-- .col-sm-6-->
             </div><!-- .row-->
