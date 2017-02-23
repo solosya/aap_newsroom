@@ -3,6 +3,14 @@
     text-align: center;
     margin-bottom: 80px;
 
+    &.form {
+        display:none;
+        @media screen and (max-width: $sm-break){
+            display:block;
+        }
+    }
+
+
     h3{
         font-size: em(20);
         font-weight: 700;

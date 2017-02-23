@@ -8206,6 +8206,11 @@ p.lead {
   padding-top: 30px;
   text-align: center;
   margin-bottom: 80px; }
+  .subscribe.form {
+    display: none; }
+    @media screen and (max-width: 769px) {
+      .subscribe.form {
+        display: block; } }
   .subscribe h3 {
     font-size: 1.33333em;
     font-weight: 700;
@@ -9738,7 +9743,8 @@ button.swiper-pagination-bullet {
     padding: 0; }
   .room-view .content-wrapper {
     background: #000;
-    color: #FFF; }
+    color: #FFF;
+    display: table; }
   .room-view a {
     padding-top: 10px;
     padding-bottom: 15px;
@@ -11053,13 +11059,13 @@ button.swiper-pagination-bullet {
         .channel .section-sidepanel-news a.card .content .author p {
           display: block; }
 
-.roompage.sportsroom .featured:before {
+.roompage.Sportsroom .featured:before {
   background: #27aae1; }
 
-.roompage.livingroom .featured:before {
+.roompage.Livingroom .featured:before {
   background: #80c342; }
 
-.roompage.boardroom .featured:before {
+.roompage.Boardroom .featured:before {
   background: #6c6c6c; }
 
 .roompage .featured-slider {
