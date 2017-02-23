@@ -8202,6 +8202,15 @@ p.lead {
         .add-header-top .block .add-text {
           width: 100%; } }
 
+.article .subscribe {
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid black;
+  text-align: left; }
+  .article .subscribe button {
+    margin: 0;
+    font-size: 0.93333em; }
+
 .subscribe {
   padding-top: 30px;
   text-align: center;
@@ -9705,7 +9714,8 @@ button.swiper-pagination-bullet {
       font-size: 1.46667em; }
       @media screen and (max-width: 1200px) {
         .top-stories a.card > article > .content > h2 {
-          font-size: 1.06667em; } }
+          font-size: 1.06667em;
+          height: 34px; } }
       @media screen and (max-width: 769px) {
         .top-stories a.card > article > .content > h2 {
           margin: 2px; } }
@@ -9744,9 +9754,12 @@ button.swiper-pagination-bullet {
   .room-view .content-wrapper {
     background: #000;
     color: #FFF;
-    display: table; }
+    display: table;
+    padding-bottom: 20px; }
+    @media screen and (max-width: 769px) {
+      .room-view .content-wrapper {
+        padding-bottom: 0; } }
   .room-view a {
-    padding-top: 10px;
     padding-bottom: 15px;
     color: white; }
   .room-view article {
@@ -9822,6 +9835,10 @@ button.swiper-pagination-bullet {
         display: none; }
   .room-view .subfeature {
     border-right: 1px solid #d4d4d4; }
+    @media screen and (max-width: 769px) {
+      .room-view .subfeature > a {
+        padding-top: 10px;
+        padding-bottom: 15px; } }
     @media screen and (max-width: 769px) {
       .room-view .subfeature {
         border-right: none;
@@ -10421,7 +10438,6 @@ button.swiper-pagination-bullet {
         float: none;
         border: none;
         padding: 0;
-        color: #000000;
         font-size: 0.93333em;
         font-weight: bold; }
         @media screen and (max-width: 769px) {
@@ -11191,7 +11207,7 @@ button.swiper-pagination-bullet {
       float: right;
       padding-left: 11px;
       padding: 10px;
-      font-family: "tinos", Helvetica, Arial, sans-serif;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       font-size: 0.8em;
       font-weight: normal;
       border-left: solid 1px #dadada;
@@ -11898,7 +11914,7 @@ button.swiper-pagination-bullet {
       padding: 10px 22px; } }
   .card-lg a.card {
     position: relative;
-    height: 517px; }
+    overflow: hidden; }
     .card-lg a.card:after {
       content: '';
       opacity: 0.4;
@@ -11951,17 +11967,22 @@ button.swiper-pagination-bullet {
         font-weight: bold;
         font-size: 2.66667em;
         padding-top: 115px;
-        height: 410px;
+        height: 400px;
         border-bottom: 1px solid #dadada; }
         @media screen and (max-width: 1200px) {
           .card-lg a.card > article > .content > h2 {
-            height: 320px; } }
+            height: 310px; } }
         @media screen and (max-width: 769px) {
           .card-lg a.card > article > .content > h2 {
             font-size: 1.33333em;
             height: 60px;
             padding-top: 0;
             border: 0; } }
+      .card-lg a.card > article > .content > .author:before, .card-lg a.card > article > .content > .author:after {
+        content: " ";
+        display: table; }
+      .card-lg a.card > article > .content > .author:after {
+        clear: both; }
       @media screen and (max-width: 769px) {
         .card-lg a.card > article > .content > .author {
           display: none; } }
@@ -12107,7 +12128,15 @@ button.swiper-pagination-bullet {
       display: inline-block; }
       @media screen and (max-width: 769px) {
         .future-learning header > div {
+          padding-top: 0; } }
+      @media screen and (max-width: 490px) {
+        .future-learning header > div {
           position: static; } }
+    .future-learning header:before, .future-learning header:after {
+      content: " ";
+      display: table; }
+    .future-learning header:after {
+      clear: both; }
   .future-learning .container, .future-learning .profile__container {
     padding: 0; }
   @media screen and (max-width: 769px) {
@@ -12160,7 +12189,7 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 1200px) {
         .future-learning .furturelearning a.card > article > .content > h2 {
           font-size: 1.06667em; } }
-      @media screen and (max-width: 769px) {
+      @media screen and (max-width: 992px) {
         .future-learning .furturelearning a.card > article > .content > h2 {
           height: 37px;
           font-size: 1.06667em;
@@ -12177,7 +12206,7 @@ button.swiper-pagination-bullet {
           position: absolute;
           bottom: 5px;
           right: 15px; } }
-      @media screen and (max-width: 769px) {
+      @media screen and (max-width: 992px) {
         .future-learning .furturelearning a.card > article > .content > time {
           font-size: 0.66667em;
           position: static; } }

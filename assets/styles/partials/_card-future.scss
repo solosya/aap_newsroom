@@ -36,13 +36,15 @@
             display:inline-block;
             
             @media screen and (max-width: $sm-break){
-                position:static;
+                padding-top:0;
             }
 
-
-
+            @media screen and (max-width: $sm-mobile-break){
+                position:static;
+            }
         }
 
+        @include clearfix;
     }
     
     .container {
@@ -97,7 +99,8 @@
                 // border-bottom: 1px solid #dadada;
                 padding-bottom: 3px;
                 -ms-flex: 1 0;
-                
+                // @include clearfix;
+
                 @media screen and (max-width: $md-break){
                     // padding-bottom: 15px;
                 }
@@ -129,7 +132,7 @@
                        font-size: em(16);
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mmd-break){
                         height:37px;
                         font-size: em(16);
                         margin: 2px;
@@ -152,7 +155,7 @@
                         right: 15px;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mmd-break){
                         font-size: em(10);
                         position:static;
                     }

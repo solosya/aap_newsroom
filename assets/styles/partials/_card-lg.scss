@@ -10,7 +10,6 @@
 
     a.card{
 
-
         &:after{
             content: '';
             opacity: 0.4;
@@ -25,7 +24,8 @@
 
 
         position: relative;
-        height: 517px;
+        overflow:hidden;
+        // height: 517px;
         @media screen and (max-width: $mmd-break){
             height: auto;
         }
@@ -52,6 +52,7 @@
             z-index: 100;
             position: relative;
             color: #FFF;
+
             @media screen and (max-width: $sm-break){
                 padding: 0;
             }
@@ -81,11 +82,11 @@
                 font-weight: bold;
                 font-size: em(40);
                 padding-top: 115px;
-                height: 410px;
+                height: 400px;
                 border-bottom: 1px solid #dadada;
 
                 @media screen and (max-width: $md-break){
-                    height: 320px;
+                    height: 310px;
                 }
 
                 @media screen and (max-width: $sm-break){
@@ -98,6 +99,8 @@
             }
 
             > .author{
+                @include clearfix;
+
                 @media screen and (max-width: $sm-break){
                     display: none;
                 }
