@@ -9726,6 +9726,8 @@ button.swiper-pagination-bullet {
     color: #FFF;
     display: table; }
   .room-view a {
+    padding-top: 10px;
+    padding-bottom: 15px;
     color: white; }
   .room-view article {
     padding-left: 25px;
@@ -9742,7 +9744,6 @@ button.swiper-pagination-bullet {
     .room-view article:last-child {
       border: 0; }
     .room-view article > figure {
-      margin-bottom: 20px;
       position: relative; }
       @media screen and (max-width: 769px) {
         .room-view article > figure {
@@ -9800,8 +9801,7 @@ button.swiper-pagination-bullet {
       .room-view article > .content > div.author {
         display: none; }
   .room-view .subfeature {
-    border-right: 1px solid #d4d4d4;
-    margin-bottom: 20px; }
+    border-right: 1px solid #d4d4d4; }
     @media screen and (max-width: 769px) {
       .room-view .subfeature {
         border-right: none;
@@ -9811,9 +9811,6 @@ button.swiper-pagination-bullet {
       .room-view .subfeature article {
         padding: 10px 0 0 0; } }
     @media screen and (max-width: 769px) {
-      .room-view .subfeature article > figure img {
-        margin-top: 10px; } }
-    @media screen and (max-width: 769px) {
       .room-view .subfeature article > .content > .category {
         font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
         font-size: 0.8em;
@@ -9821,7 +9818,7 @@ button.swiper-pagination-bullet {
     .room-view .subfeature article > .content > p {
       display: none; }
     .room-view .subfeature article > .content > h2 {
-      margin-top: 21px; }
+      margin-top: 6px; }
     @media screen and (max-width: 769px) {
       .room-view .subfeature article > .content > time {
         display: none; } }
@@ -12080,8 +12077,10 @@ button.swiper-pagination-bullet {
     @media screen and (max-width: 769px) {
       .future-learning header {
         margin-bottom: 0; } }
-    .future-learning header > img {
-      float: left; }
+    @media screen and (max-width: 769px) {
+      .future-learning header > img {
+        float: left;
+        width: 222px; } }
     .future-learning header > div {
       position: absolute;
       right: 0;

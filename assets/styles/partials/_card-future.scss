@@ -24,7 +24,10 @@
         }
 
         > img {
-            float:left;
+            @media screen and (max-width: $sm-break){
+                float:left;
+                width:222px;
+            }
         }
 
         > div {
