@@ -118,6 +118,7 @@
                             </div><!-- .card-group-->
                         </div><!-- .row-->
 
+                        {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }}
 
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
@@ -210,7 +211,7 @@
                         </section><!-- .sidebar-news -->
 
 
-                        {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }}
+                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
 
 
                         <section class="add sidebar-add">

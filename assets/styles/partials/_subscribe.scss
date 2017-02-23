@@ -1,16 +1,22 @@
 .subscribe{
     padding-top: 30px;
     text-align: center;
-    margin-bottom: 110px;
+    margin-bottom: 80px;
 
     h3{
         font-size: em(20);
         font-weight: 700;
+        margin-bottom:2px;
     }
 
     img {
         width: 158px;
     }
+
+    img.pro {
+        width: 190px;
+    }
+
 
     > .subscribe-form{
         margin-top: 27px;
@@ -35,5 +41,20 @@
             line-height: 1;
             color: #f83d30;
         }
+    }
+
+    > button {
+        font-size: em(11);
+        display:block;
+        margin: 30px auto;
+        color: white;
+        background: #e22f22;
+        border: 1px solid #e12e21;
+        padding: 10px 20px;
+    }
+
+    > p {
+        margin:20px auto;
+        width:70%;
     }
 }
