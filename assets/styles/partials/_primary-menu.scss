@@ -116,7 +116,9 @@
     .secondary-menu{
         display:none;
     }
-
+    ul.pages {
+        display:none;
+    }
 
 }
 
@@ -262,6 +264,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
         background: #1d1d1d;
         
         >ul.pages {
+            display:block;
             padding:10px;
             border-bottom: 1px solid rgba(255,255,255,.3);
 
