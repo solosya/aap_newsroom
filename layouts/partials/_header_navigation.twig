@@ -1,7 +1,31 @@
-
 {% set submenu = [] %}
 
-{% set rooms = ['viewingroom', 'livingroom', 'boardroom', 'sportsroom'] %}
+{% set menuItems = blog.blogHeaderMenu %}
+
+{% set rooms = [] %}
+
+{% for room in menuItems  %}
+    {% set rooms = rooms | merge([room.blogTitle | lower]) %}
+
+    {% if (room.blogTitle == pageClass) %}
+        {% set submenu = room.children %}
+    {% endif %} 
+{% endfor %}
+
+{% if (submenu | length == 0 and pageClass | lower not in rooms) %}
+    {% for room in menuItems  %}
+        {% for childItem in room.children %}
+            {% if (childItem.menu_blog_id == blog.id) %}
+                {% set submenu = room.children %}
+            {% endif %} 
+        {% endfor %}
+
+    {% endfor %}
+
+{% endif %} 
+
+
+
 
 <header id="masthead" class="site-header container-fluid {# site-header-extra-padding #}">
         
@@ -31,12 +55,13 @@
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         {# <li><a href="#">News</a></li> #}
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Subscribe</a></li>
+                        {# <li><a href="#">Subscribe</a></li> #}
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div><!-- .secondary-menu-->
             </div><!-- .menu-left-->  
-            
+
+
             <div class="section-right navbar-right col-md-6 col-lg-8 col-sm-2">
                 <div class="rooms-link">
                     <ul>
@@ -52,15 +77,15 @@
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
                                     </a>
                                 </li>
-                            {% else %}
-                                {% set submenu = parentItem.children %}
                             {% endif  %}
 
                         {% endfor %}
 
                     </ul>
                 </div><!-- .rooms-link-->
-                <a href="#" class="btn btn-primary pull-right">Become a supporter</a>
+                <div id="pp-donate-button"></div>
+
+                {# <a href="#" class="btn btn-primary pull-right">Become a supporter</a> #}
              </div>
         </div><!-- .site-branding-top -->
 
@@ -69,8 +94,8 @@
             <div class="section-left col-md-4 col-sm-6">
                 <div class="logo pull-left">
                     <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        
-                        {% if (submenu | length == 0) %}
+
+                        {% if (pageClass | lower not in rooms) %}
                             <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?cache=1" alt="logo" class="main-logo">
                         {% else %}
                             <img src="{{networkData.templatePath}}/static/images/{{pageClass | lower}}-logo.svg?cache=1" alt="logo" class="main-logo">
@@ -85,11 +110,11 @@
                 <nav class="sb-custom-menu">
                     <a href="#" class="menu-mobile">MENU</a>
                     <ul id="menu-primary-menu" class="menu">
-                        {# {{dump(submenu)}} #}
                         {% for i, childItem in submenu %}
-                        <li class="menu-item">
-                            <a href="{{childItem.link}}">{{ childItem.label }}</a>
-                        </li>
+                            {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            <li class="menu-item">
+                                <a class="{{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+                            </li>
                         {% endfor %}
 
                         <li id="menu-item-search" class="menu-item menu-item-search">

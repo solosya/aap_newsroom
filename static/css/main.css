@@ -7848,10 +7848,10 @@ figcaption {
   background-color: #717171;
   color: #FFF;
   text-transform: uppercase;
-  font-size: 1.26667em;
+  font-size: 1.06667em;
   font-weight: bold;
   border: 0;
-  padding: 2px 12px; }
+  padding: 5px 17px 4px 10px; }
   .btn-email:hover, .btn-email:focus {
     color: #FFF; }
 
@@ -8557,6 +8557,8 @@ p.lead {
     font-size: 0.93333em;
     font-weight: 600;
     text-transform: uppercase; }
+  .sb-custom-menu a.active {
+    color: #8a8b93; }
   .sb-custom-menu > ul {
     margin: 0;
     padding-left: 0; }
@@ -9034,6 +9036,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     background: white;
     position: fixed;
     top: -60px;
+    right: 0;
     padding: 10px 0 5px 0;
     margin: 0;
     width: 100%;
@@ -10752,6 +10755,7 @@ button.swiper-pagination-bullet {
       font-size: 1.46667em; } }
 
 .article article.article-main .page-content div.comments {
+  margin-top: 100px;
   margin-bottom: 50px; }
   .article article.article-main .page-content div.comments h3 {
     font-size: 1.2em;
@@ -11231,6 +11235,158 @@ button.swiper-pagination-bullet {
 .viewing-room .featured .content {
   position: absolute;
   top: 0; }
+
+body.channel.about h1 {
+  font-size: 3.13333em;
+  font-weight: bold;
+  margin-bottom: 45px; }
+
+body.channel.about h2 {
+  font-size: 2.2em;
+  font-weight: normal;
+  font-style: italic;
+  border-bottom: solid 1px #dadada;
+  padding-bottom: 10px;
+  margin-bottom: 60px; }
+
+body.channel.about p {
+  font-size: 1.33333em;
+  line-height: 1.45; }
+
+body.channel.about .content {
+  margin-bottom: 56px; }
+
+body.channel.about .founders .block {
+  margin-bottom: 100px; }
+  @media screen and (max-width: 992px) {
+    body.channel.about .founders .block {
+      border-bottom: solid 1px #dadada; } }
+  @media screen and (max-width: 992px) {
+    body.channel.about .founders .block .left {
+      text-align: center;
+      margin-bottom: 30px; }
+      body.channel.about .founders .block .left .section-header-tablet {
+        margin-bottom: 15px; }
+        body.channel.about .founders .block .left .section-header-tablet > h3 {
+          font-size: 1.46667em; }
+        body.channel.about .founders .block .left .section-header-tablet > .title {
+          font-size: 1.33333em;
+          font-weight: normal;
+          color: #e12e21; }
+      body.channel.about .founders .block .left figure {
+        display: inline-block;
+        width: 123px;
+        height: auto;
+        margin-bottom: 20px; }
+      body.channel.about .founders .block .left .social {
+        font-size: 1.2em; }
+      body.channel.about .founders .block .left > p {
+        font-size: 1.2em; } }
+  body.channel.about .founders .block figure {
+    margin-bottom: 40px; }
+  body.channel.about .founders .block .social {
+    font-size: 1.53333em; }
+    body.channel.about .founders .block .social ul {
+      list-style: none;
+      padding-left: 0;
+      text-align: center;
+      margin-bottom: 20px; }
+      body.channel.about .founders .block .social ul > li {
+        display: inline-block; }
+  body.channel.about .founders .block .content {
+    padding-left: 47.5px;
+    padding-right: 47.5px; }
+    @media screen and (max-width: 992px) {
+      body.channel.about .founders .block .content {
+        padding-left: 15px;
+        padding-right: 15px; } }
+  body.channel.about .founders .block .section-header {
+    display: block;
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 5px;
+    margin-bottom: 57px; }
+    body.channel.about .founders .block .section-header > h3 {
+      display: inline-block;
+      font-size: 1.86667em;
+      font-weight: normal; }
+    body.channel.about .founders .block .section-header > .title {
+      font-size: 25px;
+      font-weight: normal;
+      font-style: normal;
+      color: #e12e21;
+      margin-left: 15px;
+      display: inline-block;
+      text-transform: uppercase; }
+      body.channel.about .founders .block .section-header > .title:before {
+        content: '';
+        width: 1px;
+        height: 30px;
+        background-color: #dadada;
+        display: inline-block;
+        margin-right: 15px;
+        position: relative;
+        top: 5px; }
+
+body.channel.about .editor {
+  margin-bottom: 80px; }
+  @media screen and (max-width: 992px) {
+    body.channel.about .editor {
+      border-bottom: solid 1px #dadada;
+      padding-bottom: 15px; } }
+  body.channel.about .editor .section-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    margin-bottom: 25px; }
+    body.channel.about .editor .section-header figure {
+      float: left;
+      margin-right: 15px;
+      width: 123px;
+      flex: 0 0 123px;
+      overflow: hidden; }
+      @media screen and (max-width: 620px) {
+        body.channel.about .editor .section-header figure {
+          width: 60px;
+          flex: 0 0 60px; } }
+    body.channel.about .editor .section-header .header-content {
+      -ms-flex: 1 0; }
+      body.channel.about .editor .section-header .header-content > h3 {
+        font-size: 1.53333em;
+        font-weight: normal; }
+        @media screen and (max-width: 620px) {
+          body.channel.about .editor .section-header .header-content > h3 {
+            font-size: 1.46667em;
+            margin-top: 5px;
+            margin-bottom: 5px; } }
+      body.channel.about .editor .section-header .header-content > .title {
+        font-size: 1.26667em;
+        font-weight: normal;
+        color: #e12e21; }
+        @media screen and (max-width: 620px) {
+          body.channel.about .editor .section-header .header-content > .title {
+            font-size: 1.2em; } }
+      body.channel.about .editor .section-header .header-content > .muted {
+        font-size: 1.26667em;
+        font-weight: normal;
+        color: #777881; }
+        @media screen and (max-width: 992px) {
+          body.channel.about .editor .section-header .header-content > .muted {
+            display: none; } }
+      body.channel.about .editor .section-header .header-content > p {
+        font-size: 1.2em; }
+  body.channel.about .editor .content > p {
+    font-size: 1.2em;
+    line-height: 1.44; }
+    body.channel.about .editor .content > p:last-child {
+      margin-bottom: 30px; }
+  body.channel.about .editor .contact > p {
+    font-size: 1.2em;
+    line-height: 1.44;
+    margin-bottom: 5px; }
 
 .card {
   display: block; }
