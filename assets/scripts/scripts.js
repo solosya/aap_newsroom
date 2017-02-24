@@ -96,7 +96,8 @@ $('document').ready(function() {
     $(".menu-mobile").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
-        $(thisMenuElem).find('ul.menu').toggleClass("show-on-tablet");
+        $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
+        // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         e.preventDefault();
     });
