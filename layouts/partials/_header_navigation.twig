@@ -19,11 +19,16 @@
                 {% set submenu = room.children %}
             {% endif %} 
         {% endfor %}
-
     {% endfor %}
-
 {% endif %} 
 
+
+{# 'Newsroom is the default header logo but want to suppress it in
+ top 'room' nav when a sub channel is active' #}
+{% set header_exclude = '' %}
+{% if (pageClass | lower not in rooms) %}
+    {% set header_exclude = 'newsroom' %}
+{% endif %} 
 
 
 
@@ -70,8 +75,8 @@
                         {% for i, parentItem in menuItems  %}
                             {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                             {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                            
-                            {% if (parentItem.blogTitle != pageClass) %}
+
+                            {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
@@ -205,13 +210,11 @@
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 {% if (parentItem.blogTitle != pageClass) %}
-                                <li>
-                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
-                                    </a>
-                                </li>
-                                {% else %}
-                                    {% set submenu = parentItem.children %}
+                                    <li>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
+                                        </a>
+                                    </li>
                                 {% endif  %}
 
                             {% endfor %}
