@@ -10147,9 +10147,8 @@ button.swiper-pagination-bullet {
             font-size: 0.61333em; } }
       .room-living > .contents > div > a > article > .content > h2 {
         margin-top: 21px;
-        font-style: italic;
         font-weight: normal;
-        font-size: 1.86667em; }
+        font-size: 1.73333em; }
         @media screen and (max-width: 769px) {
           .room-living > .contents > div > a > article > .content > h2 {
             font-size: 1.06667em;
@@ -11221,8 +11220,14 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 1200px) {
     .roompage .sidebar-inverted a.card {
       margin-left: 0; } }
+  @media screen and (max-width: 769px) {
+    .roompage .sidebar-inverted a.card {
+      margin-left: -15px; } }
   .roompage .sidebar-inverted a.card figure {
     height: 260px; }
+    @media screen and (max-width: 769px) {
+      .roompage .sidebar-inverted a.card figure {
+        height: 116px; } }
     .roompage .sidebar-inverted a.card figure img {
       max-height: 100%;
       width: auto; }
@@ -11232,6 +11237,10 @@ button.swiper-pagination-bullet {
     .roompage .sidebar-inverted a.card .content h2 {
       margin: 25px 0;
       font-size: 1.73333em; }
+      @media screen and (max-width: 769px) {
+        .roompage .sidebar-inverted a.card .content h2 {
+          font-size: 1.33333em;
+          margin: 0 0 10px 0; } }
     .roompage .sidebar-inverted a.card .content time {
       margin-top: 10px;
       float: right;
@@ -11242,10 +11251,20 @@ button.swiper-pagination-bullet {
       font-weight: normal;
       border-left: solid 1px #dadada;
       color: #6c6c6c; }
+      @media screen and (max-width: 769px) {
+        .roompage .sidebar-inverted a.card .content time {
+          float: none;
+          border: none;
+          padding: 0;
+          font-size: 0.66667em;
+          color: #27a9e1; } }
     .roompage .sidebar-inverted a.card .content .author {
       display: block;
       padding-top: 10px;
       border-top: solid 1px #dadada; }
+      @media screen and (max-width: 769px) {
+        .roompage .sidebar-inverted a.card .content .author {
+          display: none; } }
       .roompage .sidebar-inverted a.card .content .author:after {
         content: ".";
         visibility: hidden;
@@ -11254,6 +11273,9 @@ button.swiper-pagination-bullet {
         clear: both; }
       .roompage .sidebar-inverted a.card .content .author p {
         display: block; }
+        @media screen and (max-width: 769px) {
+          .roompage .sidebar-inverted a.card .content .author p {
+            display: none; } }
 
 .roompage .bottom-row .card .content time {
   color: #27a9e1; }

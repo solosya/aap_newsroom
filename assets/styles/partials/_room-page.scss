@@ -222,10 +222,19 @@
                 margin-left:0;
             }
 
+            @media screen and (max-width: $sm-break){
+                margin-left:-15px;
+            }
 
 
             figure {
                 height:260px;
+
+                @media screen and (max-width: $sm-break){
+                    height: 116px;
+                }
+
+    
 
                 img {
 
@@ -240,7 +249,12 @@
 
                 h2 {
                     margin: 25px 0;
-                    font-size: ((26px / $font-size-base) + $font-unit);
+                    font-size: em(26);
+                    
+                    @media screen and (max-width: $sm-break){
+                        font-size: em(20);
+                        margin: 0 0 10px 0;
+                    }
                 }
 
                 time {
@@ -254,6 +268,15 @@
                     font-weight: normal;
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;
+
+                    @media screen and (max-width: $sm-break){
+                        float: none;
+                        border:none;
+                        padding:0;
+                        font-size: em(10);
+                        color:#27a9e1;
+
+                    }
                 }
 
 
@@ -261,6 +284,12 @@
                     display:block;
                     padding-top:10px;
                     border-top: solid 1px #dadada;
+
+
+                    @media screen and (max-width: $sm-break){
+                        display: none;
+                    }
+
 
                     &:after{
                        content: "."; 
@@ -272,6 +301,10 @@
         
                     p {
                         display:block;
+
+                        @media screen and (max-width: $sm-break){
+                            display:none;
+                        }   
                     }
                 }
             }
