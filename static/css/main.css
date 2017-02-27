@@ -8203,13 +8203,20 @@ p.lead {
           width: 100%; } }
 
 .article .subscribe {
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
-  border-top: 2px solid black;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
   text-align: left; }
-  .article .subscribe button {
+  .article .subscribe > p {
+    color: #e22f22;
     margin: 0;
     font-size: 0.93333em; }
+    .article .subscribe > p > span {
+      position: relative;
+      top: 2px;
+      padding-top: 5px;
+      font-size: 1.33333em; }
 
 .subscribe {
   padding-top: 30px;
@@ -8247,7 +8254,7 @@ p.lead {
       height: 42px;
       line-height: 1;
       color: #f83d30; }
-  .subscribe > button {
+  .subscribe > a > button {
     font-size: 0.73333em;
     display: block;
     margin: 30px auto;
@@ -9997,14 +10004,15 @@ button.swiper-pagination-bullet {
     @media screen and (max-width: 769px) {
       .room-living > .feature {
         position: relative;
-        height: 550px; } }
-    @media screen and (max-width: 490px) {
-      .room-living > .feature {
-        height: 415px; } }
+        height: auto; } }
     .room-living > .feature > a.card {
       width: 100%;
       position: absolute;
       top: 0; }
+      @media screen and (max-width: 769px) {
+        .room-living > .feature > a.card {
+          position: relative;
+          height: auto; } }
       .room-living > .feature > a.card > article > figure {
         position: absolute;
         width: 100%;
@@ -10055,8 +10063,7 @@ button.swiper-pagination-bullet {
             left: 0;
             width: 100%;
             color: #000;
-            border-bottom: 1px solid #d4d4d4;
-            padding: 19px 15px;
+            padding: 19px 25px;
             color: white;
             background: black; } }
         @media screen and (max-width: 992px) {
@@ -10070,16 +10077,16 @@ button.swiper-pagination-bullet {
           margin-bottom: 40px; }
           @media screen and (max-width: 769px) {
             .room-living > .feature > a.card > article > .content .category {
+              color: #8a8b93;
               margin-bottom: 10px;
-              font-size: 0.73333em;
+              font-size: 0.8em;
               text-transform: uppercase; } }
         .room-living > .feature > a.card > article > .content h2 {
           margin-bottom: 40px; }
           @media screen and (max-width: 769px) {
             .room-living > .feature > a.card > article > .content h2 {
-              font-style: italic;
               font-weight: normal;
-              font-size: 1.06667em;
+              font-size: 1.46667em;
               margin-top: 5px;
               margin-bottom: 0; } }
         .room-living > .feature > a.card > article > .content > p {
@@ -10091,10 +10098,14 @@ button.swiper-pagination-bullet {
         .room-living > .feature > a.card > article > .content time {
           float: none;
           border: none;
-          margin-top: 20px;
+          padding: 20px 0;
           padding-left: 0;
           color: #fff;
           font-size: 0.93333em; }
+          @media screen and (max-width: 769px) {
+            .room-living > .feature > a.card > article > .content time {
+              color: #7fc241;
+              border-bottom: 1px solid #d4d4d4; } }
         .room-living > .feature > a.card > article > .content .author {
           display: none; }
   .room-living > .contents {
@@ -10119,7 +10130,7 @@ button.swiper-pagination-bullet {
       .room-living > .contents {
         width: 100%; } }
     .room-living > .contents > div {
-      border-bottom: 2px solid #FFF; }
+      border-bottom: 1px solid #FFF; }
       .room-living > .contents > div:last-child {
         border: 0; }
     .room-living > .contents > div > a {
@@ -10789,7 +10800,7 @@ button.swiper-pagination-bullet {
     font-family: font-family-sans-serif;
     font-size: 1.06667em;
     color: #777881; }
-    .article article.article-main .page-content div.comments p span {
+    .article article.article-main .page-content div.comments p a {
       color: black; }
 
 .article .page-add {

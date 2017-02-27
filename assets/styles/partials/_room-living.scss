@@ -47,11 +47,11 @@
             
             @media screen and (max-width: $sm-break){
                 position:relative;
-                height:550px;
+                height:auto;
             }
-            @media screen and (max-width: $sm-mobile-break){
-                height:415px;
-            }
+            // @media screen and (max-width: $sm-mobile-break){
+            //     height:415px;
+            // }
 
 
 
@@ -59,7 +59,11 @@
                 width:100%;
                 position:absolute;
                 top:0;
-                // background:blue;
+                @media screen and (max-width: $sm-break){
+                    position: relative;
+                    height:auto;
+                    // max-height: 415px;
+                }
                 
                > article {
 
@@ -133,8 +137,7 @@
                             left:0;
                             width: 100%;
                             color: #000;
-                            border-bottom: 1px solid #d4d4d4;
-                            padding: 19px 15px;
+                            padding: 19px 25px;
                             color:white;
                             background:black;
                         }
@@ -152,9 +155,9 @@
                             color:#fff;
                             margin-bottom:40px;
                             @media screen and (max-width: $sm-break){
-                                // color:white;
+                                color:#8a8b93;
                                 margin-bottom:10px;
-                                font-size: em(11);
+                                font-size: em(12);
                                 text-transform: uppercase;
                             }
 
@@ -165,9 +168,8 @@
                         h2 {
                             margin-bottom:40px;
                             @media screen and (max-width: $sm-break){
-                                font-style: italic;
                                 font-weight: normal;
-                                font-size: em(16);
+                                font-size: em(22);
                                 margin-top: 5px;
                                 margin-bottom:0;
                             }
@@ -189,10 +191,17 @@
                         time {
                             float:none;
                             border:none;
-                            margin-top:20px;
+                            padding:20px 0;
                             padding-left:0;
                             color:#fff;
                             font-size: em(14);
+                            
+                            @media screen and (max-width: $sm-break){
+                                color:#7fc241;
+                                border-bottom: 1px solid #d4d4d4;
+                            }
+
+                            
 
                         }
 
@@ -235,7 +244,7 @@
 
             
             > div {
-                border-bottom: 2px solid #FFF;
+                border-bottom: 1px solid #FFF;
                 &:last-child {
                     border: 0;
                 }

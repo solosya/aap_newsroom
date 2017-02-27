@@ -6,15 +6,23 @@
 
 .article {
     .subscribe{
-        padding:0;
+        padding:10px 0;
         margin:0;
-        border-top: 2px solid black;
+        border-top: 1px solid #dadada;
+        border-bottom: 1px solid #dadada;
         text-align:left;
 
-
-        button {
+        > p {
+            color: #e22f22;
             margin:0;
             font-size: em(14);
+
+            > span {
+                position:relative;
+                top:2px;
+                padding-top:5px;
+                font-size: em(20);
+            }
         }
     }
 }
@@ -73,7 +81,7 @@
         }
     }
 
-    > button {
+    > a > button {
         font-size: em(11);
         display:block;
         margin: 30px auto;
