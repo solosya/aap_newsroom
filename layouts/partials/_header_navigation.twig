@@ -1,36 +1,3 @@
-{% set submenu = [] %}
-
-{% set menuItems = blog.blogHeaderMenu %}
-
-{% set rooms = [] %}
-
-{% for room in menuItems  %}
-    {% set rooms = rooms | merge([room.blogTitle | lower]) %}
-
-    {% if (room.blogTitle == pageClass) %}
-        {% set submenu = room.children %}
-    {% endif %} 
-{% endfor %}
-
-{% if (submenu | length == 0 and pageClass | lower not in rooms) %}
-    {% for room in menuItems  %}
-        {% for childItem in room.children %}
-            {% if (childItem.menu_blog_id == blog.id) %}
-                {% set submenu = room.children %}
-            {% endif %} 
-        {% endfor %}
-    {% endfor %}
-{% endif %} 
-
-
-{# 'Newsroom is the default header logo but want to suppress it in
- top 'room' nav when a sub channel is active' #}
-{% set header_exclude = '' %}
-{% if (pageClass | lower not in rooms) %}
-    {% set header_exclude = 'newsroom' %}
-{% endif %} 
-
-
 
 <header id="masthead" class="site-header container-fluid {# site-header-extra-padding #}">
         
@@ -59,7 +26,7 @@
                     <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         {# <li><a href="#">News</a></li> #}
-                        <li><a href="#">About</a></li>
+                        <li><a href="http://{{networkData.defaultDomain.domain}}/@about">About</a></li>
                         {# <li><a href="#">Subscribe</a></li> #}
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -72,7 +39,7 @@
                     <ul>
 
                         {% set menuItems = blog.blogHeaderMenu %}
-                        {% for i, parentItem in menuItems  %}
+                        {% for parentItem in menuItems  %}
                             {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                             {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
@@ -114,33 +81,64 @@
             <div class="section-right col-md-8 col-sm-6">
                 <nav class="sb-custom-menu">
                     <a href="#" class="menu-mobile">MENU</a>
-                    <ul id="menu-primary-menu" class="menu">
-                        {% for i, childItem in submenu %}
-                            {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                            <li class="menu-item">
-                                <a class="{{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
-                            </li>
-                        {% endfor %}
+                    
 
-                        <li id="menu-item-search" class="menu-item menu-item-search">
-                            <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        <div class="menuContainer">
+                            <ul class="pages">
+                                <li>About</li>
+                                <li>Contact</li>
+                            </ul>
 
-                            <ul class="sub-menu normal-sub search-sub-menu">
-                                <li class="search-container">
-                                    <fieldset>
-                                        <form method="get" id="searchform" action="#">
-                                            <label for="header-search" class="assistive-text sr-only">Search</label>
-                                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                            <button class="btn btn-default" type="submit" id="searchsubmit">
-                                                <span class="icon icon-search-blk"></span>
-                                                <span class="screen-reader-text"></span>
-                                            </button>
-                                        </form>
-                                    </fieldset>
+                            <ul id="menu-primary-menu" class="menu channels">
+                                {% for childItem in submenu %}
+                                    {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                    <li class="menu-item">
+                                        <a class="{{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+                                    </li>
+                                {% endfor %}
+
+                                <li id="menu-item-search" class="menu-item menu-item-search">
+                                    <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        
+                                    <ul class="sub-menu normal-sub search-sub-menu">
+                                        <li class="search-container">
+                                            <fieldset>
+                                                <form method="get" id="searchform" action="#">
+                                                    <label for="header-search" class="assistive-text sr-only">Search</label>
+                                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                                    <button class="btn btn-default" type="submit" id="searchsubmit">
+                                                        <span class="icon icon-search-blk"></span>
+                                                        <span class="screen-reader-text"></span>
+                                                    </button>
+                                                </form>
+                                            </fieldset>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
+
+                            <div id="menu-secondary-menu" class="secondary-menu">
+                                    
+                                {% for parentItem in menuItems  %}
+                                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                                    {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
+                                        </a>
+                                    {% endif  %}
+
+                                {% endfor %}
+
+
+{#                                 <a class="">Sportsroom</a>
+                                <a class="">Boardroom</a>
+                                <a class="">Viewingroom</a>
+                                <a class="">Livingroom</a>
+ #}                         </div>
+                        </div>
+
                 </nav>  
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
@@ -181,21 +179,8 @@
 
                     <div class="secondary-menu">
                         <ul>
-
-                            {% if not _User.isGuest() %}
-                                {% set user = _User.getUser() %}
-                                <li><a href="javscript:void(0)" class="" id="profile">
-                                    {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                                </a></li>
-                            {% else %}      
-                                <li><a href="{{_AppHelper.getLoginUrl()}}">Login</a></li>
-                            {% endif %}      
-
-
                             <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-{#                             <li><a href="#">News</a></li>#}
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Subscribe</a></li>
+                            <li><a href="http://{{networkData.defaultDomain.domain}}/@about">About</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div><!-- .secondary-menu-->
@@ -231,7 +216,6 @@
 
 
 
-
             <div id="menu-bottom-foldaway" class="site-branding-bottom row hide foldaway">
 
                 <div class="section-right col-sm-12">
@@ -240,9 +224,9 @@
 
                             {% for i, childItem in submenu %}
 
-                            <li class="menu-item">
-                                <a href="{{ childItem.link }}">{{ childItem.label }}</a>
-                            </li>
+                                <li class="menu-item">
+                                    <a href="{{ childItem.link }}">{{ childItem.label }}</a>
+                                </li>
                             {% endfor %}
 
                             <li id="menu-item-search" class="menu-item menu-item-search">
@@ -298,6 +282,7 @@
             </div>
         </div>
 
+    <div id="pp-banner"></div>
 
     </div><!-- .site-header-main -->
 </header>

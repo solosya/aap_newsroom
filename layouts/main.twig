@@ -51,7 +51,7 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=30" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=32" type="text/css" media="all">
         {% else %}
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -203,8 +203,6 @@
 </script>
  
 
-{% set boxad1 = '1486439573763' %}
-
 
 <script>
   googletag.cmd.push(function() {
@@ -264,15 +262,62 @@
 	</div>
     </div><!--add add-header-top-->
 
+
+
+
+
+
+    {# 'figure out the nav sub menu to send through to the header and footer' #}
+    {% set submenu = [] %}
+    {% set menuItems = blogData.blogHeaderMenu %}
+    {% set rooms = [] %}
+    {% for room in menuItems  %}
+        {% set rooms = rooms | merge([room.blogTitle | lower]) %}
+        {% if (room.blogTitle == blogName) %}
+            {% set submenu = room.children %}
+        {% endif %} 
+    {% endfor %}
     
 
-    {{ this.render('partials/_header_navigation.twig', {blog : blogData, networkData: networkData, pageClass: blogName }) | raw }}
+    {% if (submenu | length == 0 and blogName | lower not in rooms) %}
+        {% for room in menuItems  %}
+            {% for childItem in room.children %}
+                {% if (childItem.menu_blog_id == blogData.id) %}
+                    {% set submenu = room.children %}
+                {% endif %} 
+            {% endfor %}
+        {% endfor %}
+    {% endif %} 
+
+    {# 'Newsroom is the default header logo but want to suppress it in
+     top 'room' nav when a sub channel is active' #}
+    {% set header_exclude = '' %}
+    {% if (blogName | lower not in rooms) %}
+        {% set header_exclude = 'newsroom' %}
+    {% endif %} 
+
+    
+
+    {{ this.render('partials/_header_navigation.twig', {
+        blog : blogData, 
+        networkData: networkData, 
+        pageClass: blogName,
+        header_exclude: header_exclude,
+        submenu: submenu 
+    }) | raw }}
 
 
     {{ content | raw}}
 
 
-    {{ this.render('partials/footer.twig', {networkData : networkData, blog: blogData, pageClass: blogName }) | raw }}
+    {{ this.render('partials/footer.twig', {
+        blog : blogData, 
+        networkData: networkData, 
+        pageClass: blogName,
+        header_exclude: header_exclude,
+        submenu: submenu 
+    }) | raw }}
+
 
     {{ this.render('partials/_javascript.twig') | raw }}
 

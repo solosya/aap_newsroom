@@ -32,13 +32,12 @@
                 <div class="col-sm-12">
                     <div class="footer-menu">
                         <ul>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Politics</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Real Economy</a></li>
-                            <li><a href="#">New Auckland</a></li>
-                            <li><a href="#">Health & Science</a></li>
-                            <li><a href="#">Environment</a></li>
+                            {% for i, childItem in submenu %}
+                                {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                <li class="menu-item">
+                                    <a class="{{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                         <span>POWERED BY AAP</span>
                     </div><!-- .footer-menu -->
@@ -68,26 +67,18 @@
                             {% for i, parentItem in menuItems | slice(0, 5) %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                                {% if (parentItem.blogTitle != pageClass) %}
+                                {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
 
-                                <li>
-                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
-                                    </a>
-                                </li>
-                                {% else %}
-                                    {% set submenu = parentItem.children %}
-                                {% endif  %}
+                                    <li>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
+                                        </a>
+                                    </li>
+                                {% endif %}
 
                             {% endfor %}
 
-
-
-{#                             <li><a href="#"><img src="{{network.templatePath}}/static/images/viewingroom-logo.svg" alt="viewingroom"></a></li>
-                            <li><a href="#"><img src="{{network.templatePath}}/static/images/livingroom-logo.svg" alt="livingroom"></a></li>
-                            <li><a href="#"><img src="{{network.templatePath}}/static/images/boardroom-logo.svg" alt="boardroom"></a></li>
-                            <li><a href="#"><img src="{{network.templatePath}}/static/images/sportsroom-logo.svg" alt="sportsroom"></a></li>
- #}                        </ul>
+                        </ul>
                     </div>
                 </div><!-- .col-sm-6-->
             </div><!-- .row-->
