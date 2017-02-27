@@ -102,7 +102,7 @@ $('document').ready(function() {
         e.preventDefault();
     });
 
-    $(".sb-custom-menu > ul > li.menu-item-search").hover(function (e) {
+    $(".menuContainer > ul > li.menu-item-search").hover(function (e) {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $(this).children("ul").stop(true, false).slideToggle(225);
             $(this).toggleClass('now-active');
@@ -110,12 +110,12 @@ $('document').ready(function() {
         }
     });
 
-    $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
-        if (window.innerWidth > sbCustomMenuBreakPoint) {
-            $("input#header-search").focus();
-            return false;
-        }
-    });
+    // $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
+    //     if (window.innerWidth > sbCustomMenuBreakPoint) {
+    //         $("input#header-search").focus();
+    //         return false;
+    //     }
+    // });
 
     //For accessibility
     $(".sb-custom-menu > ul > li > a").focus(function(e) {
@@ -128,7 +128,6 @@ $('document').ready(function() {
 
 
       $('#profile').on('click', function(e) {
-        console.log('clicked');
         $('#header__menu').toggleClass('Profile_Open');
         $('body').toggleClass('no_profile');
         e.preventDefault();
@@ -136,23 +135,22 @@ $('document').ready(function() {
 
 
 
-
-    var cardHolder = '';
-    clearTimeout(cardHolder);
-    cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2').dotdotdot({
-            watch: true
-        });
-    }), 750);
+    // var cardHolder = '';
+    // clearTimeout(cardHolder);
+    // cardHolder = setTimeout((function() {
+    //     $('.card .content > p, .card h2').dotdotdot({
+    //         watch: true
+    //     });
+    // }), 750);
 
 
 
     //Main slider
-    var swiper = new Swiper('.swiper-container', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 30
-    });
+    // var swiper = new Swiper('.swiper-container', {
+    //     nextButton: '.swiper-button-next',
+    //     prevButton: '.swiper-button-prev',
+    //     spaceBetween: 30
+    // });
 
 
 
