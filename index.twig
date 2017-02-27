@@ -32,7 +32,15 @@
         "futurelearning": {
             "feed": "",
             "link": ""
-        }
+        },
+        "holden": {
+            "feed": "",
+            "link": ""
+        },
+        "stuff": {
+            "feed": "",
+            "link": ""
+        },
     } 
 %}
 
@@ -418,13 +426,27 @@
                         <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
                     </header>
                     <div class="row corporate-articles">
-                        {% for i in 0..3 %}
+
+                        {% for i in 0..1 %}
+                            {% if sections['holden'].feed.articles[i] %}        
+                                {{this.render('partials/_single-article_corp.twig', {article: sections['holden'].feed.articles[i], position: i+1, networkData: networkData, containerClass: 'col-md-3 card-sm s255x208', swap: 'false'}) | raw}}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for i in 0..1 %}
+                            {% if sections['stuff'].feed.articles[i] %}        
+                                {{this.render('partials/_single-article_corp.twig', {article: sections['stuff'].feed.articles[i], position: i+1, networkData: networkData, containerClass: 'col-md-3 card-sm s255x208', swap: 'false'}) | raw}}
+                            {% endif %}
+                        {% endfor %}
+
+
+{#                         {% for i in 0..3 %}
                             {% if articles[articleCount] %}                                                                
-                                {{this.render('partials/_single-article.twig', {article: articles[i], position: (articleCount+1), containerClass: 'col-md-3 card-sm s255x208'}) | raw}}
+                                {{this.render('partials/_single-article_corp.twig', {article: articles[i], position: (articleCount+1), network: networkData, containerClass: 'col-md-3 card-sm s255x208'}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
                         {% endfor %}
-                    </div><!-- .row-->
+ #}                    </div><!-- .row-->
                 </div>
             </section><!-- .room-corporate-->
 

@@ -7873,16 +7873,18 @@ p.lead {
   .sponsor-logos ul {
     margin: 0 auto; }
     .sponsor-logos ul li {
-      display: inline-block; }
+      display: inline-block;
+      margin-right: 10px; }
       .sponsor-logos ul li.sponsor-holden {
         width: 100px;
         height: 100px;
         background: url("../images/holden.svg");
         background-repeat: no-repeat; }
       .sponsor-logos ul li.sponsor-stuff {
-        width: 100px;
+        width: 130px;
         height: 100px;
-        background: url("../images/suff.svg");
+        background: url("../images/stuff.svg?ver=1");
+        background-position: 0 20px;
         background-repeat: no-repeat; }
 
 .flex_col {
@@ -10617,10 +10619,16 @@ button.swiper-pagination-bullet {
     padding: 0 30px; }
     .room-corporate .card-sm .content {
       background: white;
-      display: block; }
+      display: block;
+      height: 195px !important; }
       .room-corporate .card-sm .content time {
         float: none;
         position: static !important; }
+      .room-corporate .card-sm .content div.logo {
+        text-align: right;
+        height: 100px; }
+        .room-corporate .card-sm .content div.logo img.stuff {
+          margin-top: 20px; }
   .room-corporate .sponsors {
     padding-top: 12px; }
     .room-corporate .sponsors > p {

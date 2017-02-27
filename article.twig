@@ -55,10 +55,10 @@
                         <div class="col-md-8">
                             <div class="content-wrapper">
                                 <div class="content-block-top">
-                                    <a href="#" class="btn btn-post icon-facebook"></a
-                                    ><a href="#" class="btn btn-tweet icon-twitter"></a
-                                    ><a href="#" class="btn btn-linkedin icon-linkedin"></a
-                                    ><a href="#" class="btn btn-email icon-mail"></a>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
+                                    ><a href="http://twitter.com/intent/tweet?status={{ article.title|url_encode }}{{article.url}}" class="btn btn-tweet icon-twitter"></a
+                                    ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
+                                    ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
 
                                     <time>{{ article.publishedDate | upper }}</time>
                                 </div><!--content-block-top-->
