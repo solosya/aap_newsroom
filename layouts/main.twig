@@ -2,7 +2,19 @@
 {{ register_jquery_asset() }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData = _Blog.getBlog() %}
-{{ this.beginPage() }}
+
+    turn this on when the sdk goes through cognitives
+{# {% set redir = _Page.setHttpRedirects({'|^/users.*|': 'http://service.newsroom.co.nz',
+                                       '|^/categories.*|': 'http://service.newsroom.co.nz',
+                                       '|^/assets.*|': 'http://service.newsroom.co.nz',
+                                       '|^/feeds.*|': 'http://service.newsroom.co.nz',
+                                       '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
+                                       '|^/newswires.*|': 'http://service.newsroom.co.nz',
+                                       '|^/catalog.*|': 'http://service.newsroom.co.nz',
+                                       '|^/stories.*|': 'http://service.newsroom.co.nz'
+                                    }, true) %}    
+ #}
+ {{ this.beginPage() }}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
 <head>
