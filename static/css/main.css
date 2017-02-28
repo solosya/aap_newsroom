@@ -7860,6 +7860,9 @@ p.lead {
   font-weight: bold;
   color: #4a4a4a; }
 
+span.leadsentence {
+  font-weight: bold; }
+
 .advertiser-content {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 0.8em;
@@ -8236,7 +8239,7 @@ p.lead {
   .subscribe img {
     width: 158px; }
   .subscribe img.pro {
-    width: 190px; }
+    width: 295px; }
   .subscribe > .subscribe-form {
     margin-top: 27px;
     margin-bottom: 19px; }
@@ -8257,9 +8260,11 @@ p.lead {
       line-height: 1;
       color: #f83d30; }
   .subscribe > a > button {
-    font-size: 0.73333em;
+    width: 160px;
+    height: 45px;
+    font-size: 1.06667em;
     display: block;
-    margin: 30px auto;
+    margin: 42px auto;
     color: white;
     background: #e22f22;
     border: 1px solid #e12e21;
@@ -9824,8 +9829,8 @@ button.swiper-pagination-bullet {
           margin-right: 10px; } }
       .room-view article > figure:after {
         position: absolute;
-        top: 39%;
-        left: 42%;
+        top: 45%;
+        left: 45%;
         content: '';
         width: 56px;
         height: 56px;
@@ -10806,7 +10811,7 @@ button.swiper-pagination-bullet {
     font-size: 1.2em;
     margin-bottom: 13px; }
   .article article.article-main .page-content div.comments p {
-    font-family: font-family-sans-serif;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.06667em;
     color: #777881; }
     .article article.article-main .page-content div.comments p a {
@@ -11304,7 +11309,11 @@ button.swiper-pagination-bullet {
   position: absolute;
   top: 0; }
 
+body.channel.about .email {
+  text-align: center; }
+
 body.channel.about h1 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 3.13333em;
   font-weight: bold;
   margin-bottom: 45px; }
@@ -11322,6 +11331,9 @@ body.channel.about p {
   line-height: 1.45; }
 
 body.channel.about .content {
+  margin-bottom: 24px; }
+
+body.channel.about .content.about {
   margin-bottom: 56px; }
 
 body.channel.about .founders .block {
@@ -11394,6 +11406,14 @@ body.channel.about .founders .block {
         margin-right: 15px;
         position: relative;
         top: 5px; }
+    body.channel.about .founders .block .section-header > .city {
+      float: right;
+      margin-top: 20px;
+      font-size: 25px;
+      color: #8a8b93;
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block; }
 
 body.channel.about .editor {
   margin-bottom: 80px; }
@@ -11457,6 +11477,7 @@ body.channel.about .editor {
     margin-bottom: 5px; }
 
 body.channel.contact h1 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 3.13333em;
   font-weight: bold;
   margin-bottom: 45px;
@@ -11464,6 +11485,7 @@ body.channel.contact h1 {
   border-bottom: 1px solid #dadada; }
 
 body.channel.contact h2 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.46667em;
   font-weight: bold;
   margin-top: 38px;

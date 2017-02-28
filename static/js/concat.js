@@ -34320,7 +34320,6 @@ $('document').ready(function() {
       });
 
 
-console.log('we we we');
 
     // var cardHolder = '';
     // clearTimeout(cardHolder);
