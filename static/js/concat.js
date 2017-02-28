@@ -34296,12 +34296,12 @@ $('document').ready(function() {
         }
     });
 
-    // $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
-    //     if (window.innerWidth > sbCustomMenuBreakPoint) {
-    //         $("input#header-search").focus();
-    //         return false;
-    //     }
-    // });
+    $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $("input#header-search").focus();
+            return false;
+        }
+    });
 
     //For accessibility
     $(".sb-custom-menu > ul > li > a").focus(function(e) {
