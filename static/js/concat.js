@@ -34321,13 +34321,13 @@ $('document').ready(function() {
 
 
 
-    // var cardHolder = '';
-    // clearTimeout(cardHolder);
-    // cardHolder = setTimeout((function() {
-    //     $('.card .content > p, .card h2').dotdotdot({
-    //         watch: true
-    //     });
-    // }), 750);
+    var cardHolder = '';
+    clearTimeout(cardHolder);
+    cardHolder = setTimeout((function() {
+        $('.card .content > p, .card h2').dotdotdot({
+            watch: true
+        });
+    }), 750);
 
 
 
