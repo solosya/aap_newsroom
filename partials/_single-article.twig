@@ -134,6 +134,7 @@
 
     {% set articleTitle =  titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
+    {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
 {# {{ dump(article.createdBy.media.path)}} #}
 
@@ -151,17 +152,17 @@
 
             <article class="">
                 {% if article.hasMedia == 'TRUE' %}
-                    <figure>
+                    <figure class="{{figureClass}}">
                         {% if lazyload == false %}
                             <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {% else %}
                             <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
 
-                        {% if article.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
+{#                         {% if article.featuredMedia['type'] == 'video' %}
                             <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
                         {% endif %}
-
+ #}
                     </figure>
                 {% endif %}
 

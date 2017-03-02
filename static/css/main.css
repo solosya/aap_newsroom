@@ -11420,6 +11420,26 @@ body.channel.contact .form button {
   display: block; }
   .card:hover {
     text-decoration: none; }
+  .card figure.video:after {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    content: '';
+    width: 56px;
+    height: 56px;
+    background-image: url(../images/play-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover; }
+    @media screen and (max-width: 1200px) {
+      .card figure.video:after {
+        top: 40%;
+        left: 35%;
+        width: 40px;
+        height: 40px; } }
+    @media screen and (max-width: 769px) {
+      .card figure.video:after {
+        width: 30px;
+        height: 30px; } }
   .card figure img {
     width: 100%;
     height: 100%;
@@ -12183,7 +12203,7 @@ body.channel.contact .form button {
 
 .viewingroom.featured {
   height: 587px;
-  margin-bottom: 28px;
+  margin-bottom: 120px;
   position: relative;
   overflow: hidden; }
   @media screen and (max-width: 769px) {
