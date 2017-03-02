@@ -41,6 +41,10 @@
             "feed": "",
             "link": ""
         },
+        "latestnews": {
+            "feed": "",
+            "link": ""
+        },
     } 
 %}
 
@@ -163,58 +167,20 @@
 
                         <section class="sidebar-news">
                             <header>
-                                <h3><strong>Radio</strong> New Zealand</h3>
-                                <img src="{{networkData.templatePath}}/static/images/rnz-logo-reo-opaque-420-px.png" alt="rnz">
+                                <h3>Latest News</h3>
                             </header>
 
-                            <a class="card">
-                                <article>
-                                    <figure>
-                                        <img src="{{networkData.templatePath}}/static/images/sidebar.jpg">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Banks consider raising variable interest rates…</h2>        
-                                        <div class="author">
-                                            <img src="{{networkData.templatePath}}/static/images/thumb-author.png" class="img-circle">
-                                            <p>Jane oung</p>
-                                        </div><!-- .author-->
-                                        <time datetime="2016-11-16">2 HOURS AGO</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
-                            <a class="card">
-                                <article>
-                                    <figure>
-                                        <img src="{{networkData.templatePath}}/static/images/sidebar.jpg">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Banks consider raising variable interest rates…</h2>        
-                                        <div class="author">
-                                            <img src="{{networkData.templatePath}}/static/images/thumb-author.png" class="img-circle">
-                                            <p>Jane oung</p>
-                                        </div><!-- .author-->
-                                        <time datetime="2016-11-16">2 HOURS AGO</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
-                            <a class="card">
-                                <article>
-                                    <figure>
-                                        <img src="{{networkData.templatePath}}/static/images/sidebar.jpg">
-                                    </figure>
-                                    <div class="content">
-                                        <span class="category">World news</span>
-                                        <h2>Banks consider raising variable interest rates…</h2>        
-                                        <div class="author">
-                                            <img src="{{networkData.templatePath}}/static/images/thumb-author.png" class="img-circle">
-                                            <p>Jane oung</p>
-                                        </div><!-- .author-->
-                                        <time datetime="2016-11-16">2 HOURS AGO</time>
-                                    </div><!--content-->
-                                </article>
-                            </a>
+
+                            {% if sections['futurelearning'].feed|length > 0 %}
+
+                                {% for i in 0..2 %}
+                                    {% if sections['futurelearning'].feed.articles[i] %}        
+                                        {{this.render('partials/_single-article.twig', {article: sections['futurelearning'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                                    {% endif %}
+                                {% endfor %}
+
+                            {% endif %}
+
 
                         </section><!-- .sidebar-news -->
 
@@ -233,7 +199,7 @@
                             <!--block-->
 
                             <div class="block visible-xs-block">
-                                                                    <!-- /268436641/sidepanel1 -->
+                            <!-- /268436641/sidepanel1 -->
 {#                                 <a href="#">
                                     <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
                                 </a>
@@ -250,7 +216,11 @@
                     <div class="col-sm-12">
                         <section class="future-learning">
                             <header>
-                                <img src="{{networkData.templatePath}}/static/images/futurelearning.svg" alt="viewing room">
+
+                                <a href="{{ sections['futurelearning'].link }}">
+                                    <img src="{{networkData.templatePath}}/static/images/futurelearning.svg" alt="Furture learning" class="img-responsive">
+                                </a>
+
                                 <div class="future-learning-sponsors">
                                     <p>Sponsored by</p>
                                     <img src="{{networkData.templatePath}}/static/images/vicuni.png" alt="ANZ">

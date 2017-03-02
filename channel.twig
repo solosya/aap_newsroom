@@ -26,9 +26,15 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
+{# blogInfo.title #}
+    
 
         <section class="featured-slider channel container-fluid">
             <div class="container">
+
+                <h1 class="sectionpage">{{blogInfo.title}}</h1>
+
+
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 
@@ -42,7 +48,6 @@
             </div>
         </section><!-- .featured-slider-->
     
-
         <section class="home-page-content">
             <div class="container">
                 <div class="row">

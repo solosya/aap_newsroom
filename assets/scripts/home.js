@@ -26,6 +26,7 @@ HomeController.Listing = (function ($) {
     };
     
     var bindDeleteHideArticle = function(){
+
         $('button.HideBlogArticle').Ajax_deleteArticle({
             onSuccess: function(data, obj){
                 var sectionPostsCount = $(obj).closest('.section__content').find('.card__news').length;
@@ -242,19 +243,22 @@ HomeController.Listing = (function ($) {
 
         
         $('.loadMoreArticles').on('click', function(e){
+            console.log('clicked');
             e.preventDefault();
 
             var btnObj = $(this);
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
+                    console.log(data);
                     if (data.success == 1) {
                         $('.ajaxArticles').data('existing-nonpinned-count', data.existingNonPinnedCount);
 
                         if (data.articles.length < 20) {
                             $(btnObj).css('display', 'none');
                         }
+
                         for (var i in data.articles) {
-                            data.articles[i]['containerClass'] = 'col-quarter';
+                            data.articles[i]['containerClass'] = 'col-sm-3 card-sm';
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
                             data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';

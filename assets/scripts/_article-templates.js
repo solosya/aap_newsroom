@@ -6,7 +6,7 @@ var systemCardTemplate =
 '<div class="{{containerClass}} "> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap other" \
+        class="card swap" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
@@ -14,18 +14,21 @@ var systemCardTemplate =
         data-article-text="{{title}}"> \
         \
         <article class="">\
-            {{#if hasMedia}}  \
+            {{#if hasMedia}}\
                 <figure>\
-                    <div class="image-wrapper lazyload" data-original="{{imageUrl}}" style="background-image:url("{{placeholder}}");"></div>\
+                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
                 </figure>\
             {{/if}} \
         \
             <div class="content">\
-                    <span class="category">{{label}}</span>\
-                    <time datetime="2016-11-16">{{publishDate}}</time>\
-                    <h2>{{{title}}}</h2>\
-                    <span class="author">{{ createdBy.displayName }}</span>\
+                    <div class="category">{{label}}</div>\
+                    <h2>{{{ title }}}</h2>\
                     <p>{{{ excerpt }}}</p>\
+                    <time datetime="2016-11-16">{{publishDate}}</time>\
+                    <div class="author">\
+                        <img src="{{profileImg}}" class="img-circle">\
+                        <p>{{ createdBy.displayName }}</p>\
+                    </div>\
             </div>\
         </article>'+
         

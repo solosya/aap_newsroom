@@ -33336,6 +33336,7 @@ jQuery(document).ready(function () {
             onError: function () {}
         };
 
+        var isLoaded = 0; 
         var opts = $.extend({}, defaults, options);
 
         return this.each(function () {
@@ -33345,11 +33346,11 @@ jQuery(document).ready(function () {
                 e.stopPropagation();
 
                 var obj = $(this);
-
+                
                 //initialization code
-                $.loadScript("//api.filepicker.io/v2/filepicker.js", function () {
-                    
+                $.loadScript("//api.filepicker.io/v2/filepicker.js", isLoaded, function () {
                     var tabs = $.extend([], ['COMPUTER'], opts.tabs);
+                    isLoaded = 1;
 
                     //Set file picker api key
                     filepicker.setKey(_appJsConfig.filepickerKey);
@@ -33374,27 +33375,32 @@ jQuery(document).ready(function () {
         });
     };
 
-    $.loadScript = function (url, callback) {
+    $.loadScript = function (url, isLoaded, callback) {
 
-        var script = document.createElement("script")
-        script.type = "text/javascript";
+        if (!isLoaded) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
 
-        if (script.readyState) {  //IE
-            script.onreadystatechange = function () {
-                if (script.readyState == "loaded" ||
-                        script.readyState == "complete") {
-                    script.onreadystatechange = null;
+            if (script.readyState) {  //IE
+                script.onreadystatechange = function () {
+                    if (script.readyState == "loaded" ||
+                            script.readyState == "complete") {
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else {  //Others
+                script.onload = function () {
                     callback();
-                }
-            };
-        } else {  //Others
-            script.onload = function () {
-                callback();
-            };
-        }
+                };
+            }
 
-        script.src = url;
-        document.getElementsByTagName("head")[0].appendChild(script);
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+        else { 
+            callback();
+        }
     };
 
 }(jQuery));
@@ -33449,7 +33455,7 @@ var systemCardTemplate =
 '<div class="{{containerClass}} "> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap other" \
+        class="card swap" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
@@ -33457,18 +33463,21 @@ var systemCardTemplate =
         data-article-text="{{title}}"> \
         \
         <article class="">\
-            {{#if hasMedia}}  \
+            {{#if hasMedia}}\
                 <figure>\
-                    <div class="image-wrapper lazyload" data-original="{{imageUrl}}" style="background-image:url("{{placeholder}}");"></div>\
+                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
                 </figure>\
             {{/if}} \
         \
             <div class="content">\
-                    <span class="category">{{label}}</span>\
-                    <time datetime="2016-11-16">{{publishDate}}</time>\
-                    <h2>{{{title}}}</h2>\
-                    <span class="author">{{ createdBy.displayName }}</span>\
+                    <div class="category">{{label}}</div>\
+                    <h2>{{{ title }}}</h2>\
                     <p>{{{ excerpt }}}</p>\
+                    <time datetime="2016-11-16">{{publishDate}}</time>\
+                    <div class="author">\
+                        <img src="{{profileImg}}" class="img-circle">\
+                        <p>{{ createdBy.displayName }}</p>\
+                    </div>\
             </div>\
         </article>'+
         
@@ -33521,34 +33530,34 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     '{{/if}}'+   
                                 '</a>' +
                             '</div>';
-var ArticleController = (function ($) {
-    return {
-        view: function () {
-            ArticleController.View.init();
-        }
-    };
-}(jQuery));
+// var ArticleController = (function ($) {
+//     return {
+//         view: function () {
+//             ArticleController.View.init();
+//         }
+//     };
+// }(jQuery));
 
-ArticleController.View = (function ($) {
+// ArticleController.View = (function ($) {
 
-    var attachEvents = function () {
+//     var attachEvents = function () {
 
-        var fullExcerptHeight = $('.article_main .news__main').height();
-        $($('.news__sidebar a.card').get().reverse()).each(function () {
-            var sidebarHeight = $('.article_main .news__sidebar').height();
-            if (fullExcerptHeight < sidebarHeight) {
-                $(this).addClass('hide');
-            }
-        });
-    };
+//         var fullExcerptHeight = $('.article_main .news__main').height();
+//         $($('.news__sidebar a.card').get().reverse()).each(function () {
+//             var sidebarHeight = $('.article_main .news__sidebar').height();
+//             if (fullExcerptHeight < sidebarHeight) {
+//                 $(this).addClass('hide');
+//             }
+//         });
+//     };
 
-    return {
-        init: function () {
-            attachEvents();
-        }
-    };
+//     return {
+//         init: function () {
+//             attachEvents();
+//         }
+//     };
 
-}(jQuery));
+// }(jQuery));
 
 var AuthController = (function ($) {
     return {
@@ -33672,153 +33681,153 @@ AuthController.ResetPassword = (function ($) {
         effect : "fadeIn"
     });
     
-    $(window).resize(function(){
-        if ($('.side-navigation').is(':visible')) {
-            var currentWidth = $('.side-navigation').width();
-            var windowWidth = $(window).width();
-            if (currentWidth > windowWidth && windowWidth > 300) {
-                var newWidth = windowWidth - 20;
-                $('.side-navigation').css('width', newWidth + 'px');
-            }
-        }
-    });
+    // $(window).resize(function() {
+    //     if ($('.side-navigation').is(':visible')) {
+    //         var currentWidth = $('.side-navigation').width();
+    //         var windowWidth = $(window).width();
+    //         if (currentWidth > windowWidth && windowWidth > 300) {
+    //             var newWidth = windowWidth - 20;
+    //             $('.side-navigation').css('width', newWidth + 'px');
+    //         }
+    //     }
+    // });
   
-    $('.forceLoginModal').loginModal({
-        onLoad: function () {
-            $("#loginForm").validateLoginForm();
-            $("#signupForm").validateSignupForm();
-        }
-    });
+    // $('.forceLoginModal').loginModal({
+    //     onLoad: function () {
+    //         $("#loginForm").validateLoginForm();
+    //         $("#signupForm").validateSignupForm();
+    //     }
+    // });
     
 
     /************************************************************************************
      *              FOLLOW AND UNFOLLOW ARTICLE PAGE JS
      ************************************************************************************/
-    $('.followArticleBtn').followBlog({
-        onSuccess: function (data, obj) {
-           ($(obj).data('status') === 'follow') ? $(obj).html("Follow +") : $(obj).html("Following -");
-            var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
-            $.fn.General_ShowNotification({message: message + " blog successfully."});                 
-        },
-        beforeSend: function (obj) {
-            $(obj).html('please wait...');
-        },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
-        }
-    });
+    // $('.followArticleBtn').followBlog({
+    //     onSuccess: function (data, obj) {
+    //        ($(obj).data('status') === 'follow') ? $(obj).html("Follow +") : $(obj).html("Following -");
+    //         var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
+    //         $.fn.General_ShowNotification({message: message + " blog successfully."});                 
+    //     },
+    //     beforeSend: function (obj) {
+    //         $(obj).html('please wait...');
+    //     },
+    //     onError: function (obj, errorMessage) {
+    //         $().General_ShowErrorMessage({message: errorMessage});
+    //     }
+    // });
     
     /************************************************************************************
      *              FOLLOW AND UNFOLLOW USER PROFILE PAGE JS
      ************************************************************************************/
     
-    $('.FollowProfileBlog').followBlog({
-        onSuccess: function (data, obj) {
-            var status = $(obj).data('status');
-            if($(obj).hasClass('hasStar')) {
-                (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
-            }  
-        },
-        beforeSend: function (obj) {
-            $(obj).find('.fa').addClass('fa-spin fa-spinner');
-        },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
-        },
-        onComplete: function (obj) {
-            $(obj).find('.fa').removeClass('fa-spin fa-spinner');
-        }
-    });
+    // $('.FollowProfileBlog').followBlog({
+    //     onSuccess: function (data, obj) {
+    //         var status = $(obj).data('status');
+    //         if($(obj).hasClass('hasStar')) {
+    //             (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
+    //         }  
+    //     },
+    //     beforeSend: function (obj) {
+    //         $(obj).find('.fa').addClass('fa-spin fa-spinner');
+    //     },
+    //     onError: function (obj, errorMessage) {
+    //         $().General_ShowErrorMessage({message: errorMessage});
+    //     },
+    //     onComplete: function (obj) {
+    //         $(obj).find('.fa').removeClass('fa-spin fa-spinner');
+    //     }
+    // });
     
     
-    $("#owl-thumbnails").owlCarousel({
-        items: 2,
-        itemsDesktop: [1199, 2],
-        itemsDesktopSmall: [980, 1],
-        itemsTablet: [768, 1],
-        itemsMobile: [600, 1],
-        pagination: true,
-        navigation: true,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 1000,
-        navigationText: [
-            "<i class='fa fa-angle-left fa-2x'></i>",
-            "<i class='fa fa-angle-right fa-2x'></i>"
-        ]
-    });     
+    // $("#owl-thumbnails").owlCarousel({
+    //     items: 2,
+    //     itemsDesktop: [1199, 2],
+    //     itemsDesktopSmall: [980, 1],
+    //     itemsTablet: [768, 1],
+    //     itemsMobile: [600, 1],
+    //     pagination: true,
+    //     navigation: true,
+    //     loop: true,
+    //     autoplay: true,
+    //     autoplayTimeout: 1000,
+    //     navigationText: [
+    //         "<i class='fa fa-angle-left fa-2x'></i>",
+    //         "<i class='fa fa-angle-right fa-2x'></i>"
+    //     ]
+    // });     
     
-    $('.shareIcons').SocialShare({
-        onLoad: function (obj) {
-            var title = obj.parents('div.article').find('.card__news-category').text();
-            var url = obj.parents('div.article').find('a').attr('href');
-            var content = obj.parents('div.article').find('.card__news-description').text();
-            $('.rrssb-buttons').rrssb({
-                title: title,
-                url: url,
-                description: content
-            });
-            setTimeout(function () {
-                rrssbInit();
-            }, 10);
-        }
-    });
+    // $('.shareIcons').SocialShare({
+    //     onLoad: function (obj) {
+    //         var title = obj.parents('div.article').find('.card__news-category').text();
+    //         var url = obj.parents('div.article').find('a').attr('href');
+    //         var content = obj.parents('div.article').find('.card__news-description').text();
+    //         $('.rrssb-buttons').rrssb({
+    //             title: title,
+    //             url: url,
+    //             description: content
+    //         });
+    //         setTimeout(function () {
+    //             rrssbInit();
+    //         }, 10);
+    //     }
+    // });
     
     //Contact form validation
-    $('#contactForm').validate({
-        rules: {
-            name: "required",
-            email: "required",
-            message: "required"
-        },
-        errorElement: "span",
-        messages: {
-            name: "Name cannot be blank.",
-            email: "Email cannot be blank.",
-            message: "Message cannot be blank."
-        }
-    });
+    // $('#contactForm').validate({
+    //     rules: {
+    //         name: "required",
+    //         email: "required",
+    //         message: "required"
+    //     },
+    //     errorElement: "span",
+    //     messages: {
+    //         name: "Name cannot be blank.",
+    //         email: "Email cannot be blank.",
+    //         message: "Message cannot be blank."
+    //     }
+    // });
     
     /************************************************************************************
      *                  USER EDIT PROFILE PAGE JS
      ************************************************************************************/
     
-    $('.uploadFileBtn').uploadFile({
-           onSuccess: function(data, obj){
-                var resultJsonStr = JSON.stringify(data);
+    // $('.uploadFileBtn').uploadFile({
+    //        onSuccess: function(data, obj){
+    //             var resultJsonStr = JSON.stringify(data);
                 
-                var imgClass = $(obj).data('imgcls');
-                $('.' + imgClass).css('background-image', 'url(' + data.url + ')');
+    //             var imgClass = $(obj).data('imgcls');
+    //             $('.' + imgClass).css('background-image', 'url(' + data.url + ')');
                 
-                var fieldId = $(obj).data('id');
-                $('#' + fieldId).val(resultJsonStr);
+    //             var fieldId = $(obj).data('id');
+    //             $('#' + fieldId).val(resultJsonStr);
                 
-                $().General_ShowNotification({message: 'Image added successfully' });
-            }
-    });
+    //             $().General_ShowNotification({message: 'Image added successfully' });
+    //         }
+    // });
     
      /**
      * Update Social Post From Listing
      */
-    $('.editSocialPost').on('click', function (e) {
-        e.preventDefault();
-        var elem = $(this);
-        var url = elem.data('url');
-        var popup = window.open(url, '_blank', 'toolbar=no,scrollbars=yes,resizable=false,width=360,height=450');
-        popup.focus();
+    // $('.editSocialPost').on('click', function (e) {
+    //     e.preventDefault();
+    //     var elem = $(this);
+    //     var url = elem.data('url');
+    //     var popup = window.open(url, '_blank', 'toolbar=no,scrollbars=yes,resizable=false,width=360,height=450');
+    //     popup.focus();
 
-        var intervalId = setInterval(function () {
-            if (popup.closed) {
-                clearInterval(intervalId);
-                var socialId = elem.parents('a').data('id');
-                if($('#updateSocial'+socialId).data('update') == '1') {
-                    $().General_ShowNotification({message: 'Social Post(s) updated successfully.'});
-                }  
-            }
-        }, 50);
+    //     var intervalId = setInterval(function () {
+    //         if (popup.closed) {
+    //             clearInterval(intervalId);
+    //             var socialId = elem.parents('a').data('id');
+    //             if($('#updateSocial'+socialId).data('update') == '1') {
+    //                 $().General_ShowNotification({message: 'Social Post(s) updated successfully.'});
+    //             }  
+    //         }
+    //     }, 50);
 
-        return;
-    });
+    //     return;
+    // });
     
 }(jQuery));
 
@@ -33855,6 +33864,7 @@ HomeController.Listing = (function ($) {
     };
     
     var bindDeleteHideArticle = function(){
+
         $('button.HideBlogArticle').Ajax_deleteArticle({
             onSuccess: function(data, obj){
                 var sectionPostsCount = $(obj).closest('.section__content').find('.card__news').length;
@@ -34071,19 +34081,22 @@ HomeController.Listing = (function ($) {
 
         
         $('.loadMoreArticles').on('click', function(e){
+            console.log('clicked');
             e.preventDefault();
 
             var btnObj = $(this);
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
+                    console.log(data);
                     if (data.success == 1) {
                         $('.ajaxArticles').data('existing-nonpinned-count', data.existingNonPinnedCount);
 
                         if (data.articles.length < 20) {
                             $(btnObj).css('display', 'none');
                         }
+
                         for (var i in data.articles) {
-                            data.articles[i]['containerClass'] = 'col-quarter';
+                            data.articles[i]['containerClass'] = 'col-sm-3 card-sm';
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
                             data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
@@ -34355,6 +34368,7 @@ SearchController.Listing = (function ($) {
     var attachEvents = function () {
         
         $('.loadMoreArticles').on('click', function(e){
+            console.log('clicked');
             e.preventDefault();
             var btnObj = $(this);
             $.fn.Ajax_LoadSearchArticles({

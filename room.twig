@@ -2,7 +2,10 @@
 {% set networkData = _Network.getNetworkData() %}
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 20 %}
+{% set limit = 13 %}
+
+
+
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -136,5 +139,29 @@
 
             </div><!-- .container-->
         </section><!-- .home-page-content-->
+
+        
+
+        <section class="">
+            <div class="container">
+                <div class="row">
+                    <div class="ajaxArticles"
+                         data-offset="2"
+                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                     </div>
+                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                </div>
+
+                {% set noDataCls = 'hide' %}
+                {% if articles|length == 0 %}
+                    {% set noDataCls = '' %}
+                 {% endif %}
+                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                    <p class="no-data text-center">No articles found.</p>  
+                </div>
+            </div>
+        </section>
+
+
 
     </main><!-- .site-main -->

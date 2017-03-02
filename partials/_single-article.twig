@@ -158,10 +158,10 @@
                             <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
 
-{#                         {% if article.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
+                        {% if article.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
                             <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
                         {% endif %}
- #}
+
                     </figure>
                 {% endif %}
 

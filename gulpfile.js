@@ -47,7 +47,7 @@ gulp.task('cacheBuster', function () {
 gulp.task('styles', function() {
     return gulp.src('./assets/styles/**/*.scss')
 		.pipe(sourcemaps.init())
-    	.pipe(sass({includePaths: ['./assets/styles/partials']}).on('error', sass.logError))
+    	.pipe(sass({includePaths: ['./assets/styles','./assets/styles/partials']}).on('error', sass.logError))
     	.pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./static/css'));
 });

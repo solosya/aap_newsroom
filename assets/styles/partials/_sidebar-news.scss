@@ -8,10 +8,11 @@
 
         > h3 {
             font-size: em(26);
-            font-family: "National", "roboto", Helvetica, Arial, sans-serif;
+            font-family: $font-family-sans-serif;
             font-weight: normal;
             float: left;
             margin-top: 5px;
+            margin-bottom:0;
         }
 
         > img{
@@ -70,7 +71,7 @@
             > h2{
                 font-weight: normal;
                 font-size: em(18);
-                height: 55px;
+                height: 45px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 @media screen and (max-width: $sm-break){
@@ -79,6 +80,10 @@
 
 
 
+            }
+
+            > p {
+                display:none;
             }
 
             > .author{
