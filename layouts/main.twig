@@ -271,7 +271,10 @@
             {% set submenu = room.children %}
         {% endif %} 
     {% endfor %}
-    
+
+    {# futurelearning to be treated like a room kinda #}
+    {% set rooms = rooms | merge(['futurelearning']) %}
+
 
     {% if (submenu | length == 0 and blogName | lower not in rooms) %}
         {% for room in menuItems if submenu | length == 0 %}
