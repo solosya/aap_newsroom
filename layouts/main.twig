@@ -206,7 +206,7 @@
     <script>
       var googletag = googletag || {};
       googletag.cmd = googletag.cmd || [];
-      googletag.pubads().setTargeting('pagename', '{{ blogName | lower }}');
+      // googletag.pubads().setTargeting('pagename', '{{ blogName | lower }}');
 
     </script>
      
@@ -309,24 +309,22 @@
     <script>
 
         boxadID = '{{boxadID}}';
-        boxadSlot = '{{boxadSlot}}';
         sidepanelID = '{{sidepanelID}}';
-        sidepanelSlot = '{{sidepanelSlot}}';
         smallbannerID = '{{smallbannerID}}';
-        smallbannerSlot = '{{smallbannerSlot}};';
         tinybannerID = '{{tinybannerID}}' ;
-        tinybannerSlot = '{{tinybannerSlot}}';
 
+console.log('HELLO');
+console.log(smallbannerID);
 
         googletag.cmd.push(function() {
-            googletag.defineSlot(boxadSlot, [300, 250], boxadID).addService(googletag.pubads());
-            googletag.defineSlot(sidepanelSlot, [300, 600], sidepanelID).addService(googletag.pubads());
-            googletag.defineSlot(smallbannerSlot, [[728, 90], [728, 250]], smallbannerID).addService(googletag.pubads());
-            googletag.defineSlot(tinybannerSlot, [300, 75], tinybannerID).addService(googletag.pubads());
+            googletag.defineSlot('{{boxadSlot}}', [300, 250], '{{boxadID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{sidepanelSlot}}', [300, 600], '{{sidepanelID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{smallbannerSlot}}', [[728, 90], [728, 250]], '{{smallbannerID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{tinybannerSlot}}', [300, 75], '{{tinybannerID}}').addService(googletag.pubads());
             googletag.pubads().enableSingleRequest();
             googletag.pubads().collapseEmptyDivs();
             googletag.pubads().enableVideoAds();
-            googletag.companionAds().setRefreshUnfilledSlots(true);
+            // googletag.companionAds().setRefreshUnfilledSlots(true);
             googletag.enableServices();
         });
 
@@ -343,10 +341,10 @@
     {{ this.beginBody() }}
      
         <div class="add add-header-top">
-            <div id='smallbannerAd'>
+            <div id='smallbannerID'>
                 <script>
                     document.currentScript.parentNode.id = smallbannerID;
-                    googletag.cmd.push(function() { googletag.display(smallbannerID); });
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-2'); });
                 </script>
             </div>
             <span class="add-text">Advertisement</span>
