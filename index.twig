@@ -135,8 +135,6 @@
                             </div><!-- .card-group-->
                         </div><!-- .row-->
 
-                        {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }}
-
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
                         {% for i in 0..1 %}
@@ -156,7 +154,7 @@
                                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1487309089707-0'); });
                             </script>
                             </div>                            
-                            <span class="add-text">Advertisement</span>
+                            {# <span class="add-text">Advertisement</span> #}
                             <!--block-->
 
 {#                             <div class="block visible-xs-block">
@@ -398,7 +396,9 @@
             <section class="room-corporate">
                 <div class="container">
                     <header>
-                        <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
+                        <a href="{{ sections['corporate newsroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
+                        </a>
                     </header>
                     <div class="row corporate-articles">
                         {% for i in 0..3 %}
@@ -434,10 +434,12 @@
             <section class="sponsor-logos">
                 <div class="container">
                     <ul>
-                        <li class="sponsor-holden"></li>
                         <li class="sponsor-stuff"></li>
                         <li class="sponsor-holden"></li>
                         <li class="sponsor-stuff"></li>
+                        <li class="sponsor-holden"></li>
+                        <li class="sponsor-stuff"></li>
+                        <li class="sponsor-holden"></li>
                     </ul>
                 </div>
             </section>

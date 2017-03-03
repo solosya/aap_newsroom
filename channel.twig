@@ -32,8 +32,7 @@
         <section class="featured-slider channel container-fluid">
             <div class="container">
 
-    
-                {% if not blogInfo.title == 'futurelearning' %}
+                {% if 'futurelearning' != blogInfo.title | lower %}
                     <h1 class="sectionpage">{{blogInfo.title}}</h1>
                 {% endif %}
 

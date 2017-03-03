@@ -10,19 +10,6 @@
             margin-left: -15px;
             margin-right: -15px;
         }
-        // &:before{
-        //     content: '';
-        //     width: 20px;
-        //     height: 100%;
-        //     bottom: 0;
-        //     top: 0;
-        //     background: #27aae1;
-        //     position: absolute;
-        //     z-index: 2;
-        //     @media screen and (max-width: $sm-break){
-        //         display: none;
-        //     }
-        // }
 
         > a > article{
             position:relative;
@@ -34,24 +21,24 @@
                 padding-left: 60px;
                 padding-top:260px !important;
                 color: #FFF;
-                @media screen and (max-width: $sm-break){
-                    position: relative;
-                    width: 100%;
-                    color: #000;
-                    border-bottom: 1px solid #d4d4d4;
-                    padding: 19px 15px;
-                }
+                // @media screen and (max-width: $sm-break){
+                //     position: relative;
+                //     width: 100%;
+                //     color: #000;
+                //     border-bottom: 1px solid #d4d4d4;
+                //     padding: 19px 15px;
+                // }
                 .category{
                     font-size: em(14);
                     font-weight: bold;
                     color: #ebb913;
                     text-transform: uppercase;
-                    @media screen and (max-width: $sm-break){
-                        color: #000;
-                    }
-                    @media screen and (max-width: $sm-break){
-                        font-size: em(11);
-                    }
+                    // @media screen and (max-width: $sm-break){
+                    //     color: #000;
+                    // }
+                    // @media screen and (max-width: $sm-break){
+                    //     font-size: em(11);
+                    // }
                 }
 
                 > h2{
@@ -62,12 +49,12 @@
                     margin-bottom: 40px;
                     margin-top: 21px;
                     border:none;
-                    @media screen and (max-width: $sm-break){
-                        color: #000;
-                        font-size: em(22);
-                        margin-top: 13px;
-                        margin-bottom: 13px;
-                    }
+                    // @media screen and (max-width: $sm-break){
+                    //     color: #000;
+                    //     font-size: em(22);
+                    //     margin-top: 13px;
+                    //     margin-bottom: 13px;
+                    // }
                 }
 
                 > p{
@@ -98,9 +85,9 @@
                     font-size: em(14);
                     font-weight: bold;
                     color: #FFF;
-                    @media screen and (max-width: $sm-break){
-                        color: #000;
-                    }
+                    // @media screen and (max-width: $sm-break){
+                    //     color: #000;
+                    // }
                 }
             }
             > figure{
@@ -108,20 +95,7 @@
                 height: 587px;
                 // position: absolute;
                 z-index: 1;
-                @media screen and (max-width: $sm-break){
-                    position: relative;
-                    height: auto;
-                    &:before{
-                        content: '';
-                        width: 10px;
-                        height: 100%;
-                        bottom: 0;
-                        top: 0;
-                        background: #27aae1;
-                        position: absolute;
-                        z-index: 2;
-                    }
-                }
+
                 &:after{
                     position: absolute;
                     background: rgba(0,0,0,0.5);
@@ -130,9 +104,9 @@
                     content: '';
                     width: 100%;
                     height: 587px;
-                    @media screen and (max-width: $sm-break){
-                        display: none;
-                    }
+                    // @media screen and (max-width: $sm-break){
+                    //     display: none;
+                    // }
                 }
                 > img{
                     width:100%;

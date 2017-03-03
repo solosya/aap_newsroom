@@ -17,6 +17,16 @@
 
     > .articles{
 
+        > div > div {
+            &:last-child{
+                article {
+                    border-right: 0;
+                }                
+            }
+        }
+
+
+
         article{
             display: -webkit-box;
             display: -webkit-flex;
@@ -38,9 +48,6 @@
                 border-right: 0;
                 border-bottom: 1px solid #d4d4d4;
                 padding-bottom: 13px;
-            }
-            &:last-child{
-                border-right: 0;
             }
 
             > figure{
