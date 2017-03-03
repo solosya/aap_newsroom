@@ -9,6 +9,7 @@
             height: auto;
             margin-left: -15px;
             margin-right: -15px;
+            margin-bottom: 60px;
         }
 
         > a > article{
@@ -21,13 +22,11 @@
                 padding-left: 60px;
                 padding-top:260px !important;
                 color: #FFF;
-                // @media screen and (max-width: $sm-break){
-                //     position: relative;
-                //     width: 100%;
-                //     color: #000;
-                //     border-bottom: 1px solid #d4d4d4;
-                //     padding: 19px 15px;
-                // }
+                @media screen and (max-width: $sm-break){
+                    width: 100%;
+                    padding-top:190px !important;
+                    padding-left: 20px;
+                }
                 .category{
                     font-size: em(14);
                     font-weight: bold;
@@ -95,6 +94,9 @@
                 height: 587px;
                 // position: absolute;
                 z-index: 1;
+                @media screen and (max-width: $sm-break){
+                    height: 500px;
+                }
 
                 &:after{
                     position: absolute;
