@@ -79,31 +79,33 @@
                     </div><!-- .col-sm-8-->
 
                     <div class="col-sm-12 col-md-4 sidebar">
-                        <section class="add sidebar-add hidden-xs" style="">
-                            <div id='sidepanelAd' style='height:600px; width:300px;'>
-                                <script>
-                                    document.currentScript.parentNode.id = sidepanelID;
-                                    googletag.cmd.push(function() { googletag.display(sidepanelID); });
-                                </script>
+                        <section class="add sidebar-add" style="">
+                            <div class="block hidden-xs-block">
+                                <div id='sidepanelAd' style='height:600px; width:300px;'>
+                                    <script>
+                                        document.currentScript.parentNode.id = sidepanelID;
+                                        googletag.cmd.push(function() { googletag.display(sidepanelID); });
+                                    </script>
+                                </div>
+                                <span class="add-text">Advertisement</span>
                             </div>
-                            <span class="add-text">Advertisement</span>
-
-{#                             <div class="block visible-xs-block">
+    {#                      <div class="block visible-xs-block">
                                 <a href="#">
                                     <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
                                 </a>
                                 <span class="add-text">Advertisement</span>
                             </div><!--block-->
  #}                            
-                             <div id='boxad' class="visible-xs-block" style='height:300px; width:250px;'>
-                                <script>
-                                    document.currentScript.parentNode.id = boxadID;
-                                    googletag.cmd.push(function() { googletag.display(boxadID); });
-                                </script>
+                            <div class="block visible-xs-block">
+                                 <div id='boxad' style='height:300px; width:250px;'>
+                                    <script>
+                                        document.currentScript.parentNode.id = boxadID;
+                                        googletag.cmd.push(function() { googletag.display(boxadID); });
+                                    </script>
+                                </div>
+                                <span class="add-text">Advertisement</span>
+
                             </div>
-                            <span class="add-text">Advertisement</span>
-
-
                         </section>
                     </div>
                 </div>
