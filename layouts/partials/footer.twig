@@ -4,10 +4,10 @@
         <div class="container">        
             <div class="row">
                 <div class="col-sm-3 icon-wrapper">
-                    <a class="footer-brand" href="#" rel="Home" tabindex="-1" title="Home">
+                    <a class="footer-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                         <img src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo">
                     </a>
-                    <span>POWERED BY AAP</span>
+                    <span><a href="http://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
                 </div><!-- .col-sm-3-->
                 <div class="col-sm-6 pull-right text-right logo-wrapper">
                     <img src="{{networkData.templatePath}}/static/images/0newsroom-symbol-reversed.png" class="symbol">
@@ -21,8 +21,6 @@
                         <ul>
                             <li><a href="#"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
                             <li><a href="#"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="sr-only">Instagram</span><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="sr-only">Vimeo</span><span class="icon-vimeo"></span></a></li>
                         </ul>
                     </div><!-- .social-links-->
                 </div><!-- .col-sm-12-->
@@ -39,7 +37,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                        <span>POWERED BY AAP</span>
+                        <span><a href="http://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
                     </div><!-- .footer-menu -->
                 </div><!-- .col-sm-12-->
             </div><!-- .row-->
@@ -52,7 +50,7 @@
                 <div class="col-sm-5">
                     <div class="footer-menu">
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="http://{{networkData.defaultDomain.domain}}/@contact">Contact Us</a></li>
                             <li><a href="#">Copyright</a></li>
                             <li><a href="#">Disclaimer</a></li>
                             <li><a href="#">Privacy</a></li>

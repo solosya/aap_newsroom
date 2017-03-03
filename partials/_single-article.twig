@@ -136,7 +136,6 @@
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
-{# {{ dump(article.createdBy.media.path)}} #}
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
