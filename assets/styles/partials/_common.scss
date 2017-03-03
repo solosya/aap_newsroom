@@ -4,6 +4,24 @@ body{
     }
 }
 
+.loadMoreArticles {
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #e12e21;
+    width: 160px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    color: #e12e21;
+
+    @media screen and (max-width: $sm-break){
+        margin-top:40px;
+    }
+}
+
+
+
 button.bootbox-close-button {
     float: right;
     background: none;
