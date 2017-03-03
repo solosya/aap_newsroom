@@ -215,7 +215,7 @@
 
 
 
-    {% if blogName | lower == ('golf' or 'basketball' or 'cricket' or 'rugby' or 'soccer' or 'tennis' or 'sportsroom') %}
+    {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
         <script>
             googletag.cmd.push(function() {
                 googletag.defineSlot('/268436641/boxad1/sportbox', [300, 250], 'div-gpt-ad-1488502133668-0').addService(googletag.pubads());
@@ -255,7 +255,7 @@
     {{ this.beginBody() }}
      
         <div class="add add-header-top">
-            {% if blogName | lower == ('golf' or 'basketball' or 'cricket' or 'rugby' or 'soccer' or 'tennis' or 'sportsroom') %}
+            {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
                 <!-- /268436641/smlbanner1/sportbanner --><div id='div-gpt-ad-1488502133668-2'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-2'); });</script></div>
             {# {% elseif blogName | lower == 'businessroom' %}
             {% elseif blogName | lower == 'futurelearning' %} #}
