@@ -215,49 +215,32 @@
 
 
 
-    {% if blogName | lower == 'sportsroom'  %}
+    {% if blogName | lower == 'golf'  %}
         <script>
-          googletag.cmd.push(function() {
-            googletag.defineSlot('/268436641/smlbanner1', [[728, 90], [728, 250]], 'div-gpt-ad-1488413219176-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.pubads().collapseEmptyDivs();
-            googletag.enableServices();
-          });
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/268436641/boxad1/sportbox', [300, 250], 'div-gpt-ad-1488502133668-0').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/sidepanel1/sportpanel', [300, 600], 'div-gpt-ad-1488502133668-1').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/smlbanner1/sportbanner', [[728, 90], [728, 250]], 'div-gpt-ad-1488502133668-2').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/tinybanner1/sporttinybanner', [300, 75], 'div-gpt-ad-1488502133668-3').addService(googletag.pubads());
+            });
+        </script>
+    {# {% elseif blogName | lower == 'businessroom' %}
+
+    {% elseif blogName | lower == 'futurelearning' %} #}
+    {% else %}
+        <script>
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/268436641/boxad1', [300, 250], 'div-gpt-ad-1488502464882-0').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/sidepanel1', [300, 600], 'div-gpt-ad-1488502464882-1').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/smlbanner1', [[728, 250], [728, 90]], 'div-gpt-ad-1488502464882-2').addService(googletag.pubads());
+                googletag.defineSlot('/268436641/tinybanner1', [300, 75], 'div-gpt-ad-1488502464882-3').addService(googletag.pubads());
+            });
         </script>
     {% endif %}
-
-
-
     <script>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/268436641/smlbanner1', [[728, 90], [728, 250]], 'div-gpt-ad-1488413219176-0').addService(googletag.pubads());
         googletag.pubads().enableSingleRequest();
         googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
-      });
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/268436641/sidepanel1', [300, 600], 'div-gpt-ad-1486517092858-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-      });
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/268436641/boxad1', [300, 250], 'div-gpt-ad-1487309089707-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-      });
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/268436641/tinybanner1', [300, 75], 'div-gpt-ad-1488263747220-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-      });
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/268436641/bigbanner1', [728, 250], 'div-gpt-ad-1487316039087-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-      });
     </script>
 
 </head>
@@ -267,17 +250,17 @@
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 
     {{ this.beginBody() }}
-    
-    <div class="add add-header-top">
-        <!-- /268436641/smlbanner1 -->
-            <div id='div-gpt-ad-1488413219176-0'>
-                <script>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488413219176-0'); });
-                </script>
-            </div>
-		<span class="add-text">Advertisement</span>
-	</div>
-    </div><!--add add-header-top-->
+     
+        <div class="add add-header-top">
+            {% if blogName | lower == 'golf'  %}
+                <!-- /268436641/smlbanner1/sportbanner --><div id='div-gpt-ad-1488502133668-2'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-2'); });</script></div>
+            {# {% elseif blogName | lower == 'businessroom' %}
+            {% elseif blogName | lower == 'futurelearning' %} #}
+            {% else %}
+                <!-- /268436641/smlbanner1 --><div id='div-gpt-ad-1488413219176-0'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488413219176-0'); });</script></div>
+            {% endif %}
+            <span class="add-text">Advertisement</span>
+        </div><!--add add-header-top-->
 
 
 
