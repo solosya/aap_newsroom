@@ -104,14 +104,16 @@
                         <div class="col-md-4">
                             <aside>
                                 <section class="add sidebar-add ">
-                                    {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-                                        <!-- /268436641/boxad1/sportbox --><div id='div-gpt-ad-1488502133668-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-0'); });</script></div>
 
-                                    {# {% elseif blogName | lower == 'businessroom' %}
-                                    {% elseif blogName | lower == 'futurelearning' %} #}
-                                    {% else %}
-                                        <!-- /268436641/boxad1 --><div id='div-gpt-ad-1488502464882-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-0'); });</script></div>
-                                    {% endif %}
+                                    <div id='boxad' style='height:600px; width:300px;'>
+                                        <script>
+                                            document.currentScript.parentNode.id = boxadID;
+                                            googletag.cmd.push(function() { googletag.display(boxadID); });
+                                        </script>
+                                    </div>
+
+
+
                                     <span class="add-text">Advertisement</span>
                                 </section>
 
@@ -129,13 +131,12 @@
                                 </section><!--sidebar-news-->
 
                                 <section class="add sidebar-add  hidden-xs">
-                                   {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-                                        <!-- /268436641/sidepanel1/sportpanel --><div id='div-gpt-ad-1488502133668-1' style='height:600px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-1'); });</script></div>
-                                    {# {% elseif blogName | lower == 'businessroom' %}
-                                    {% elseif blogName | lower == 'futurelearning' %} #}
-                                    {% else %}
-                                        <!-- /268436641/sidepanel1 --><div id='div-gpt-ad-1488502464882-1' style='height:600px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-1'); });</script></div>
-                                    {% endif %}
+                                    <div id='sidepanelAd' style='height:600px; width:300px;'>
+                                        <script>
+                                            document.currentScript.parentNode.id = sidePanelID;
+                                            googletag.cmd.push(function() { googletag.display(sidePanelID); });
+                                        </script>
+                                    </div>
                                     <span class="add-text">Advertisement</span>
                                 </section>
                             </aside>
