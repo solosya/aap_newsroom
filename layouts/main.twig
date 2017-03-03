@@ -222,6 +222,11 @@
                 googletag.defineSlot('/268436641/sidepanel1/sportpanel', [300, 600], 'div-gpt-ad-1488502133668-1').addService(googletag.pubads());
                 googletag.defineSlot('/268436641/smlbanner1/sportbanner', [[728, 90], [728, 250]], 'div-gpt-ad-1488502133668-2').addService(googletag.pubads());
                 googletag.defineSlot('/268436641/tinybanner1/sporttinybanner', [300, 75], 'div-gpt-ad-1488502133668-3').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.pubads().collapseEmptyDivs();
+                googletag.pubads().enableVideoAds();
+                googletag.companionAds().setRefreshUnfilledSlots(true);
+                googletag.enableServices();
             });
         </script>
     {# {% elseif blogName | lower == 'businessroom' %}
@@ -234,14 +239,12 @@
                 googletag.defineSlot('/268436641/sidepanel1', [300, 600], 'div-gpt-ad-1488502464882-1').addService(googletag.pubads());
                 googletag.defineSlot('/268436641/smlbanner1', [[728, 250], [728, 90]], 'div-gpt-ad-1488502464882-2').addService(googletag.pubads());
                 googletag.defineSlot('/268436641/tinybanner1', [300, 75], 'div-gpt-ad-1488502464882-3').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.pubads().collapseEmptyDivs();
+                googletag.enableServices();
             });
         </script>
     {% endif %}
-    <script>
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-    </script>
 
 </head>
 
