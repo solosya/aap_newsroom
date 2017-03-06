@@ -91,21 +91,24 @@
         </section><!-- .featured-slider-->
     
 
-        <section class="top-stories">
-            <div class="container">
-                <h2>TOP STORIES</h2>
-                <div class="row">
+        {% if articles[articleCount] %}
+            <section class="top-stories">
+                <div class="container">
+                    <h2>TOP STORIES</h2>
+                    <div class="row">
 
-                    {% for i in 0..2 %}
-                        {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    {% endfor %}
+                        {% for i in 0..2 %}
+                            {% if articles[i] %}                                                                
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
 
-                </div><!-- .row-->
-            </div><!-- .container-->
-        </section><!-- .top-stories-->
+                    </div><!-- .row-->
+                </div><!-- .container-->
+            </section><!-- .top-stories-->
+        {% endif %}
+
 
         <section class="home-page-content">
             <div class="container">
@@ -135,7 +138,7 @@
                             </div><!-- .card-group-->
                         </div><!-- .row-->
 
-                        {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }}
+                        {# {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }} #}
 
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
@@ -151,25 +154,21 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                         <section class="add sidebar-add hidden-md hidden-lg">
                             {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-                                        <!-- /268436641/boxad1/sportbox --><div id='div-gpt-ad-1488502133668-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-0'); });</script></div>
+                                <!-- /268436641/boxad1/sportbox -->
+                                <div id='div-gpt-ad-1488502133668-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-0'); });</script></div>
 
-                                    {# {% elseif blogName | lower == 'businessroom' %}
-                                    {% elseif blogName | lower == 'futurelearning' %} #}
-                                    {% else %}
-                                        <!-- /268436641/boxad1 --><div id='div-gpt-ad-1488502464882-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-0'); });</script></div>
-                                    {% endif %}                       
+                            {% else %}
+                                <!-- /268436641/boxad1 -->
+                                <div id='div-gpt-ad-1488502464882-0' style='height:250px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-0'); });</script></div>
+                            {% endif %}                       
                             <span class="add-text">Advertisement</span>
                             <!--block-->
 
-{#                             <div class="block visible-xs-block">
-                                <!-- /268436641/sidepanel1 -->
-                                <a href="#">
-                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
-                                </a>
+                        </section>
 
-                                <span class="add-text">Advertisement</span>
-                            </div><!--block-->
- #}                        </section>
+
+
+                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
 
 
                         <section class="sidebar-news">
@@ -182,7 +181,6 @@
 
                                 {% for i in 0..5 %}
                                     {% if recentArticles[i] %}
-                                        {# <p>{{dump(recentArticles[i].title)}}</p> #}
                                         {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
                                     {% endif %}
                                 {% endfor %}
@@ -193,7 +191,6 @@
                         </section><!-- .sidebar-news -->
 
 
-                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
 
 
                         <section class="add sidebar-add hidden-sm hidden-xs">

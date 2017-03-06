@@ -7874,8 +7874,8 @@ span.leadsentence {
 
 @font-face {
   font-family: 'fontello';
-  src: url("../icons/font/fontello.eot?64398447");
-  src: url("../icons/font/fontello.eot?64398447#iefix") format("embedded-opentype"), url("../icons/font/fontello.woff2?64398447") format("woff2"), url("../icons/font/fontello.woff?64398447") format("woff"), url("../icons/font/fontello.ttf?64398447") format("truetype"), url("../icons/font/fontello.svg?64398447#fontello") format("svg");
+  src: url("../icons/font/fontello.eot?64398448");
+  src: url("../icons/font/fontello.eot?64398448#iefix") format("embedded-opentype"), url("../icons/font/fontello.woff2?64398448") format("woff2"), url("../icons/font/fontello.woff?64398448") format("woff"), url("../icons/font/fontello.ttf?64398448") format("truetype"), url("../icons/font/fontello.svg?64398448#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -7940,6 +7940,14 @@ span.leadsentence {
   content: '\e805'; }
 
 /* '' */
+.icon-linkedin:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-right-angle:after {
+  content: '\e807'; }
+
+/* '' */
 .icon-twitter:before {
   content: '\f099'; }
 
@@ -7960,10 +7968,6 @@ span.leadsentence {
   content: '\e80c'; }
 
 /* '' */
-.icon-linkedin:before {
-  content: '\e806'; }
-
-/* '' */
 .top-stories a.card > article, .related-articles a.card > article, .card-rec a.card > article, .future-learning .furturelearning a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8099,7 +8103,7 @@ span.leadsentence {
       font-size: 1.33333em; }
 
 .subscribe {
-  padding-top: 10px;
+  padding-top: 0;
   text-align: center;
   margin-bottom: 80px; }
   .subscribe.form {
@@ -8139,7 +8143,7 @@ span.leadsentence {
     height: 45px;
     font-size: 1.06667em;
     display: block;
-    margin: 42px auto;
+    margin: 0 auto 42px auto;
     color: white;
     background: #e22f22;
     border: 1px solid #e12e21;
@@ -8149,7 +8153,7 @@ span.leadsentence {
     width: 70%; }
 
 .sidebar-news header {
-  margin-bottom: 22px;
+  margin-bottom: 15px;
   display: inline-block;
   width: 100%; }
   .sidebar-news header > h3 {
@@ -8164,7 +8168,7 @@ span.leadsentence {
 
 .sidebar-news a.card {
   margin-bottom: 27px;
-  height: 110px;
+  height: 100px;
   width: 100%; }
   .sidebar-news a.card > article {
     display: -webkit-box;
@@ -8189,7 +8193,7 @@ span.leadsentence {
     -webkit-flex: 1 0;
     flex: 1 0; }
     .sidebar-news a.card > article .content > .category {
-      font-size: 0.93333em;
+      font-size: 0.73333em;
       font-weight: bold;
       color: #8a8b93;
       display: block;
@@ -8200,8 +8204,8 @@ span.leadsentence {
           font-size: 1.46667em;
           text-transform: none; } }
     .sidebar-news a.card > article .content > h2 {
-      font-weight: normal;
-      font-size: 1.2em;
+      font-weight: 700;
+      font-size: 1.46667em;
       height: 45px;
       overflow: hidden;
       text-overflow: ellipsis; }
@@ -8432,11 +8436,11 @@ span.leadsentence {
   background-repeat: no-repeat;
   padding: 5px 0;
   color: #f73d30; }
-  @media screen and (max-width: 1370px) {
+  @media screen and (max-width: 1120px) {
     .sb-custom-menu .menu-mobile {
       display: block; } }
 
-@media screen and (min-width: 1370px) {
+@media screen and (min-width: 1120px) {
   .stick .sb-custom-menu > div > ul > li > a {
     padding: 24px 9px; } }
 
@@ -8456,6 +8460,11 @@ span.leadsentence {
     text-transform: uppercase; }
   .sb-custom-menu a.active {
     color: #8a8b93; }
+  .sb-custom-menu > div > ul.pages > li > a {
+    color: #8a8b93; }
+    @media screen and (max-width: 1120px) {
+      .sb-custom-menu > div > ul.pages > li > a {
+        padding: 10px 10px; } }
   .sb-custom-menu > div > ul {
     margin: 0;
     padding-left: 0; }
@@ -8468,12 +8477,12 @@ span.leadsentence {
         display: block;
         padding: 16px 13px;
         position: relative; }
-        @media screen and (max-width: 1370px) {
+        @media screen and (max-width: 1120px) {
           .sb-custom-menu > div > ul > li > a {
-            padding: 16px 10px; } }
+            padding: 12px 20px; } }
         @media (max-width: 620px) {
           .sb-custom-menu > div > ul > li > a {
-            color: white; } }
+            color: #fff; } }
         .sb-custom-menu > div > ul > li > a:hover {
           text-decoration: none;
           color: #000; }
@@ -8582,21 +8591,21 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
 .bank-btn-mobile-wrpr {
   display: none; }
 
-@media (max-width: 1370px) {
+@media (max-width: 1120px) {
   .stick .menu-mobile {
     top: 20px; } }
-  @media screen and (max-width: 1370px) and (max-width: 620px) {
+  @media screen and (max-width: 1120px) and (max-width: 620px) {
     .stick .menu-mobile {
       top: 8px; } }
 
-@media (max-width: 1370px) {
+@media (max-width: 1120px) {
   .stick .sb-custom-menu .show-on-tablet {
     top: 70px; } }
-  @media screen and (max-width: 1370px) and (max-width: 620px) {
+  @media screen and (max-width: 1120px) and (max-width: 620px) {
     .stick .sb-custom-menu .show-on-tablet {
       top: 42px; } }
 
-@media (max-width: 1370px) {
+@media (max-width: 1120px) {
   .sb-custom-menu > div > ul > li > a:hover:after,
   .sb-custom-menu > div > ul > li > a:focus:after,
   .sb-custom-menu > div > ul li.current_page_item > a:after,
@@ -8621,10 +8630,10 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     top: 40px;
     right: 15px;
     z-index: 100;
-    background: #1d1d1d; }
+    background: rgba(0, 0, 0, 0.7); }
     .sb-custom-menu .show-on-tablet > ul.pages {
       display: block;
-      padding: 10px;
+      padding: 5px 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
       .sb-custom-menu .show-on-tablet > ul.pages > li {
         border: none;
@@ -8643,10 +8652,15 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         .sb-custom-menu .show-on-tablet .secondary-menu ul > li {
           border-bottom: 1px solid black; }
           .sb-custom-menu .show-on-tablet .secondary-menu ul > li > a {
-            display: inline-block;
-            margin: 10px; }
+            position: relative;
+            display: block;
+            padding: 15px 20px; }
             .sb-custom-menu .show-on-tablet .secondary-menu ul > li > a > img {
               height: 25px; }
+            .sb-custom-menu .show-on-tablet .secondary-menu ul > li > a:after {
+              position: absolute;
+              right: 20px;
+              font-size: 1.33333em; }
   #menuContainer > ul > li {
     width: auto; }
   .sb-custom-menu > div > ul > li {
@@ -8699,11 +8713,11 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     padding: 5px 0; }
   .stick .sb-custom-menu > div > ul > li > ul.sub-menu {
     top: 70px; } }
-  @media screen and (max-width: 1370px) and (max-width: 620px) {
+  @media screen and (max-width: 1120px) and (max-width: 620px) {
     .stick .sb-custom-menu > div > ul > li > ul.sub-menu {
       top: 42px; } }
 
-@media (max-width: 1370px) {
+@media (max-width: 1120px) {
   .sb-custom-menu > div > ul > li > ul.sub-menu {
     height: auto;
     padding: 0;
@@ -8721,12 +8735,12 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     width: 100%;
     right: 40px;
     left: 0; } }
-  @media screen and (max-width: 1370px) and (min-width: 620px) and (max-width: 1310px) {
+  @media screen and (max-width: 1120px) and (min-width: 620px) and (max-width: 1310px) {
     .sb-custom-menu > div > ul > li > ul.sub-menu {
       left: auto;
       width: 500px; } }
 
-@media (max-width: 1370px) {
+@media (max-width: 1120px) {
     .sb-custom-menu > div > ul > li > ul.sub-menu li a.news-thumb-menu {
       width: 27%;
       display: block;
@@ -8800,6 +8814,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     width: 100%;
     position: fixed;
     top: 63px;
+    bottom: 0;
     right: 0;
     left: 0;
     padding-bottom: 100px; }
@@ -8861,22 +8876,19 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   .site-header .site-branding-top .section-right {
     padding-top: 10px;
     margin-right: 0; }
-    @media screen and (min-width: 1370px) {
-      .site-header .site-branding-top .section-right {
-        width: 895px; } }
   @media screen and (max-width: 769px) {
     .site-header .site-branding-top {
       display: none; } }
   .site-header .site-branding-top .rooms-link {
-    float: left;
+    float: right;
     padding-top: 20px;
     margin-left: -30px; }
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1120px) {
       .site-header .site-branding-top .rooms-link {
         display: none; } }
     .site-header .site-branding-top .rooms-link > ul li a {
       display: block;
-      margin-right: 30px; }
+      margin-left: 30px; }
       .site-header .site-branding-top .rooms-link > ul li a img {
         height: 20px;
         width: auto;
@@ -8911,14 +8923,14 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         padding-bottom: 10px; } }
     .site-header .site-branding-bottom .section-right {
       padding-top: 10px; }
-      @media screen and (min-width: 1370px) {
+      @media screen and (min-width: 1120px) {
         .site-header .site-branding-bottom .section-right {
           padding-left: 0;
           float: right;
           margin-left: 0; } }
       .site-header .site-branding-bottom .section-right > .sb-custom-menu {
         border-top: solid 4px #000000; }
-        @media screen and (max-width: 1370px) {
+        @media screen and (max-width: 1120px) {
           .site-header .site-branding-bottom .section-right > .sb-custom-menu {
             border: 0; } }
     .site-header .site-branding-bottom .navbar-brand {
@@ -10574,7 +10586,7 @@ button.swiper-pagination-bullet {
       padding-left: 0; }
     .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
       padding: 25px 13px; }
-      @media screen and (max-width: 1370px) {
+      @media screen and (max-width: 1120px) {
         .article .site-header .site-branding-bottom .sb-custom-menu > ul > li > a {
           padding-left: 0;
           padding-top: 10px;
@@ -12215,7 +12227,7 @@ body.channel.contact .form button {
         max-width: 100%; }
     .card-lg a.card > article > .content {
       display: block;
-      padding: 36px 24px 0 24px;
+      padding: 110px 24px 0 24px;
       margin-bottom: 10px;
       z-index: 100;
       position: relative;
@@ -12237,14 +12249,14 @@ body.channel.contact .form button {
             font-size: 0.8em;
             margin-bottom: 15px;
             text-transform: uppercase; } }
-      .card-lg a.card > article > .content > p {
-        display: none; }
+      @media screen and (max-width: 769px) {
+        .card-lg a.card > article > .content > p {
+          display: none; } }
       .card-lg a.card > article > .content > h2 {
         font-weight: bold;
         font-size: 2.66667em;
-        padding-top: 115px;
-        height: 400px;
-        border-bottom: 1px solid #dadada; }
+        padding-top: 15px;
+        height: 160px; }
         @media screen and (max-width: 1200px) {
           .card-lg a.card > article > .content > h2 {
             height: 310px; } }
@@ -12254,18 +12266,23 @@ body.channel.contact .form button {
             height: 60px;
             padding-top: 0;
             border: 0; } }
-      .card-lg a.card > article > .content > .author:before, .card-lg a.card > article > .content > .author:after {
-        content: " ";
-        display: table; }
-      .card-lg a.card > article > .content > .author:after {
-        clear: both; }
-      @media screen and (max-width: 769px) {
-        .card-lg a.card > article > .content > .author {
-          display: none; } }
-      .card-lg a.card > article > .content > .author p {
-        color: #FFF; }
+      .card-lg a.card > article > .content > .author {
+        border-top: 1px solid #dadada;
+        padding-top: 15px; }
+        .card-lg a.card > article > .content > .author:before, .card-lg a.card > article > .content > .author:after {
+          content: " ";
+          display: table; }
+        .card-lg a.card > article > .content > .author:after {
+          clear: both; }
+        @media screen and (max-width: 769px) {
+          .card-lg a.card > article > .content > .author {
+            display: none; } }
+        .card-lg a.card > article > .content > .author p {
+          color: #FFF; }
       .card-lg a.card > article > .content > time {
-        color: #FFF; }
+        color: #FFF;
+        padding-top: 15px;
+        margin-top: 10px; }
         @media screen and (max-width: 769px) {
           .card-lg a.card > article > .content > time {
             float: none;

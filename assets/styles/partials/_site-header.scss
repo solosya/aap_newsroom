@@ -64,7 +64,7 @@
             padding-top: 10px;
             margin-right: 0;
             @media screen and (min-width: $header-break){
-                width: 895px;
+                // width: 895px;
             }
         }
 
@@ -73,11 +73,11 @@
         }
     
         .rooms-link{
-            float: left;
+            float: right;
             padding-top: 20px;
             margin-left: -30px;
             
-            @media screen and (max-width: $md-break){
+            @media screen and (max-width: $header-break){
                 display: none;
             }
 
@@ -87,7 +87,7 @@
                 li{
                     a{
                         display: block;
-                        margin-right: 30px;
+                        margin-left: 30px;
 
                         img{
                             height: 20px;

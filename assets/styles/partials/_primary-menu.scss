@@ -54,6 +54,16 @@
         color:#8a8b93;
     }
 
+    > div > ul.pages{
+        >li > a {
+            color:#8a8b93;
+           
+            @media screen and (max-width: $header-break){
+                padding: 10px 10px;
+            }
+        }
+    }
+
     > div > ul{
         margin: 0;
         padding-left: 0;
@@ -72,10 +82,10 @@
 
             > a{
                 @media screen and (max-width: $header-break){
-                    padding: 16px 10px;
+                    padding: 12px 20px;
                 }
                 @media (max-width: $mobile-break){
-                    color:white;
+                    color:#fff;
                 }
                 display: block;
                 padding: 16px 13px;
@@ -215,7 +225,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
 .bank-btn-mobile-wrpr{
     display: none;
 }
-@media (max-width: 1370px){
+@media (max-width: $header-break){
     .stick{
         .menu-mobile{
             top: 20px;
@@ -264,11 +274,11 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
         top: 40px;
         right: 15px;
         z-index: 100;
-        background: #1d1d1d;
+        background: rgba(0,0,0,0.7);
         
         >ul.pages {
             display:block;
-            padding:10px;
+            padding:5px 10px;
             border-bottom: 1px solid rgba(255,255,255,.3);
 
             >li {
@@ -297,11 +307,19 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
                     border-bottom: 1px solid black;
 
                     > a {
-                        display:inline-block;
-                        margin:10px;
+                        position:relative;
+                        display:block;
+                        padding:15px 20px;
 
                         > img {
                             height: 25px;
+
+                        }
+
+                        &:after {
+                            position: absolute;
+                            right: 20px;
+                            font-size: em(20);
                         }
                     } 
                 }
@@ -505,7 +523,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
         width: 100%;
         position: fixed;
         top:63px;
-        // bottom: 0;
+        bottom: 0;
         right: 0;
         left: 0;
         padding-bottom: 100px;

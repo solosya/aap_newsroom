@@ -137,7 +137,6 @@
     {% set articleTitle =  quotes.smatren(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 
-{# {{ dump(article.createdBy.media.path)}} #}
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
