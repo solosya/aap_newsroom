@@ -250,18 +250,20 @@
     {% set sportsroomAddClass = ['golf', 'basketball', 'cricket', 'rugby', 'soccer', 'tennis', 'sportsroom'] %}
     {% set businessroomAddClass = ['businessroom'] %}
     {% set futurelearningAddClass = ['futurelearning'] %}
+    {% set corporateAddClass = ['corporateroom'] %}
+        
 
-    {% set boxadID = 'div-gpt-ad-1488502464882-0' %}
-    {% set boxadSlot = '/268436641/boxad1' %}
+    {% set boxadID = 'div-gpt-ad-1488757884390-0' %}
+    {% set boxadSlot = '/268436641/boxad1/newsbox' %}
 
-    {% set sidepanelID = 'div-gpt-ad-1488502464882-1' %}
-    {% set sidepanelSlot = '/268436641/sidepanel1' %}
+    {% set sidepanelID = 'div-gpt-ad-1488757884390-1' %}
+    {% set sidepanelSlot = '/268436641/sidepanel1/newspanel' %}
 
-    {% set smallbannerID = 'div-gpt-ad-1488502464882-2' %}
-    {% set smallbannerSlot = '/268436641/smlbanner1' %}
+    {% set smallbannerID = 'div-gpt-ad-1488757884390-2' %}
+    {% set smallbannerSlot = '/268436641/smlbanner1/newsbanner' %}
 
-    {% set tinybannerID = 'div-gpt-ad-1488502464882-3' %}
-    {% set tinybannerSlot = '/268436641/sidepanel1' %}
+    {% set tinybannerID = 'div-gpt-ad-1488757884390-3' %}
+    {% set tinybannerSlot = '/268436641/tinybanner1/newstinybanner' %}
 
     {% if (blogName | lower in sportsroomAddClass) %}
         {% set boxadID = 'div-gpt-ad-1488502464882-0' %}
@@ -304,6 +306,15 @@
         {% set tinybannerID = 'div-gpt-ad-1488502464882-3' %}
         {% set tinybannerSlot = '/268436641/sidepanel1' %}
     {% endif %}
+
+    {% if (blogName | lower in corporateAddClass) %}
+        {% set smallbannerID = 'div-gpt-ad-1488502464882-2' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1488502464882-3' %}
+        {% set tinybannerSlot = '/268436641/sidepanel1' %}
+    {% endif %}
+
 
 
     <script>
