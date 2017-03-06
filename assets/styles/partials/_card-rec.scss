@@ -71,6 +71,30 @@
 
             }
 
+            &.video {
+
+                &:after{
+                    top: 40%;
+                    left: 40%;
+
+                    @media screen and (max-width: $md-break){
+                        top: 40%;
+                        left: 35%;
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+            }
+
+
+
+
             > img{
                 // max-width: 100%;
             }

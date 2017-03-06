@@ -286,23 +286,35 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
 
         .secondary-menu{
             display:block;
-            padding: 15px;
+            // padding: 15px;
             background:white;
             
-            > a {
-                display:inline-block;
-                margin:10px;
+            ul {
+                margin:0;
+                padding:0;
 
-                > img {
-                    height: 25px;
+                > li {
+                    border-bottom: 1px solid black;
+
+                    > a {
+                        display:inline-block;
+                        margin:10px;
+
+                        > img {
+                            height: 25px;
+                        }
+                    } 
                 }
-            } 
+            }
         }
 
 
 
     }
 
+    #menuContainer > ul > li {
+        width:auto;
+    }
 
     .sb-custom-menu > div > ul > li {
         width: 100%;

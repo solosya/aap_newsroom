@@ -34203,6 +34203,7 @@ $('document').ready(function() {
     var mobileView = 620;
     var scrollMetric = [$(window).scrollTop()];
     var foldawayPanel = $("#foldaway-panel");
+    var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
 
@@ -34257,10 +34258,12 @@ $('document').ready(function() {
     var scrollUpMenu = function() {
         if ( scrollMetric[1] === 'up' && isScolledPast(400) && !isMobile() ){
             foldawayPanel.addClass('showMenuPanel');
+            menuContainer.show();
         } else {
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
+            menuContainer.show();
         }
     }
 

@@ -9,9 +9,7 @@
                     <ul>
                         <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
                         <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
-{#                         <li><a href="#"><span class="sr-only">Instagram</span><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="sr-only">Vimeo</span><span class="icon-vimeo"></span></a></li>
- #}                    
+                    
                         {% if not _User.isGuest() %}
                             {% set user = _User.getUser() %}
                             <li class="logedin"><a href="javscript:void(0)" class="" id="profile">
@@ -25,9 +23,7 @@
                 <div class="secondary-menu">
                     <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                        {# <li><a href="#">News</a></li> #}
                         <li><a href="http://{{networkData.defaultDomain.domain}}/@about">About</a></li>
-                        {# <li><a href="#">Subscribe</a></li> #}
                         <li><a href="http://{{networkData.defaultDomain.domain}}/@contact">Contact</a></li>
                     </ul>
                 </div><!-- .secondary-menu-->
@@ -116,25 +112,22 @@
                             </ul>
 
                             <div id="menu-secondary-menu" class="secondary-menu">
-                                    
+                                <ul>
                                 {% for parentItem in menuItems  %}
                                     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
                                     {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
-                                        </a>
+                                        <li>
+                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            </a>
+                                        </li>
                                     {% endif  %}
 
                                 {% endfor %}
-
-
-{#                                 <a class="">Sportsroom</a>
-                                <a class="">Boardroom</a>
-                                <a class="">Viewingroom</a>
-                                <a class="">Livingroom</a>
- #}                         </div>
+                                </ul>
+                            </div>
                         </div>
 
                 </nav>  
@@ -218,7 +211,7 @@
 
                 <div class="section-right col-sm-12">
                     <nav class="sb-custom-menu">
-                        <div class="menuContainer">
+                        <div id="menuContainer" class="menuContainer">
                             <ul id="menu-primary-menu" class="menu">
 
                                 {% for i, childItem in submenu %}
