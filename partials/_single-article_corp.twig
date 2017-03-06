@@ -1,3 +1,5 @@
+{% import "quotes.twig" as quotes %}
+
 
 {% if article.articleId > 0 %}
     {% set articleImg = '' %}
@@ -132,7 +134,7 @@
     {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %}
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
-    {% set articleTitle =  titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title  %}
+    {% set articleTitle =  quotes.smatren(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 
 {# {{ dump(article.createdBy.media.path)}} #}

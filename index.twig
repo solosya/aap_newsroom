@@ -3,6 +3,10 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 
+{% macro smartquotes(text) %}
+    {{text|replace({'/[^"]/': '&ldquo;', "/[^'']/": '&lsquo;', "'": '&rsquo;', '"': '&rdquo;'})}}
+{% endmacro %}
+
 
 {{this.registerJs("HomeController.listing();")}}
 {% set limit = 20 %}

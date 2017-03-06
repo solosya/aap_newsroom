@@ -1,3 +1,6 @@
+{% import "quotes.twig" as quotes %}
+
+
 
 {% if article.articleId > 0 %}
     {% set articleImg = '' %}
@@ -132,7 +135,8 @@
     {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %}
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
-    {% set articleTitle =  titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title  %}
+    {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
+
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
@@ -174,9 +178,9 @@
 
                 <div class="content">
                     <div class="category">{{article.label}}</div>
-                    <h2>{{ articleTitle | raw }}</h2>
+                    <h2>{{ articleTitle }}</h2>
                     {% if cardClass != 'instagram no-caption' %}  
-                        <p>{{ article.excerpt | raw }}</p>
+                        <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
                     <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
                     <div class="author">
@@ -255,12 +259,12 @@
                 <div class="content">
                     <div class="category {{social.source}}"></div>
                     <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
-                    <h2>{{ articleTitle | raw }}</h2>
+                    <h2>{{ articleTitle }}</h2>
                     <span class="author">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
                     
                     {% if cardClass != 'instagram no-caption' %}  
-                        <p id="updateSocial{{article.socialId}}" data-update="0">{{ social.content | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ') 
-                                             | raw }}</p>
+                        <p id="updateSocial{{article.socialId}}" data-update="0">{{ quotes.smarten(social.content | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
+                                             | raw) }}</p>
                     {% endif %}
 
                 </div>

@@ -1,3 +1,6 @@
+{% import "partials/quotes.twig" as quotes %}
+
+
 {{ set(this, 'title', article.title) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
@@ -74,8 +77,8 @@
                                 </div><!-- .content-author-->
 
                                 <div class="content">
-                                    <h1>{{article.title | raw}}</h1>
-                                    <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | raw }}</p>
+                                    <h1>{{ quotes.smarten(article.title) }}</h1>
+                                    <p>{{ quotes.smarten(article.content | preg_replace('/^<p>/', '<p class="lead">') | raw) }}</p>
                                     
                                 </div><!-- .content-->
                             </div><!-- .content-->
