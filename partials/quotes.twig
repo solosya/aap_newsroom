@@ -8,8 +8,7 @@
     		| preg_replace("/'/", '&rsquo;') 
     		| preg_replace("/&lsquo;&rsquo;/", '&lsquo;&lsquo;')
     		| preg_replace("/&lsquo;&rdquo;/", '&lsquo;&ldquo;')
-    		| preg_replace("/&ldquo;&rsquo;/", '&lsquo;&lsquo;')
-    		| preg_replace("/&ldquo;&rdquo;/", '&lsquo;&ldquo;')
-
+    		| preg_replace("/&ldquo;&rsquo;/", '&ldquo;&lsquo;')
+    		| preg_replace("/&ldquo;&rdquo;/", '&ldquo;&ldquo;')
     		| raw }}
 {% endmacro %}
