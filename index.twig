@@ -274,7 +274,7 @@
 
 
 
-                {% if sections['viewingroom'].feed|length > 0 %}
+                {% if sections['viewingroom'].feed.articles|length > 0 %}
                 <section class="room-view">
                     <header>
                         <a href="{{ sections['viewingroom'].link }}">
@@ -302,8 +302,7 @@
 
 
 
-
-                {% if sections['livingroom'].feed|length > 0 %}
+                {% if sections['livingroom'].feed.articles|length > 0 %}
                 <section class="room-living">
                     <header>
                         <a href="{{ sections['livingroom'].link }}">
@@ -330,7 +329,7 @@
 
 
 
-                {% if sections['boardroom'].feed|length > 0 %}
+                {% if sections['boardroom'].feed.articles|length > 0 %}
                 <section class="room-board">
                     <header>
                         <a href="{{ sections['boardroom'].link }}">
@@ -360,7 +359,7 @@
 
 
 
-                {% if sections['sportsroom'].feed|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
 
                 <section class="room-sports">
                     <header>
