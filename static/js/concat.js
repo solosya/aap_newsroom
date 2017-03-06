@@ -34199,7 +34199,7 @@ HomeController.Blog = (function ($) {
 }(jQuery));
 $('document').ready(function() {
     var isMenuBroken, isMobile;
-    var sbCustomMenuBreakPoint = 1370;
+    var sbCustomMenuBreakPoint = 1120;
     var mobileView = 620;
     var scrollMetric = [$(window).scrollTop()];
     var foldawayPanel = $("#foldaway-panel");
