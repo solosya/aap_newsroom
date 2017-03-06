@@ -206,7 +206,7 @@
     <script>
       var googletag = googletag || {};
       googletag.cmd = googletag.cmd || [];
-      googletag.pubads().setTargeting('pagename', '{{ blogName | lower }}');
+      // googletag.pubads().setTargeting('pagename', '{{ blogName | lower }}');
 
     </script>
      
@@ -215,7 +215,7 @@
 
 
 
-    {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
+{#     {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
         <script>
             googletag.cmd.push(function() {
                 googletag.defineSlot('/268436641/boxad1/sportbox', [300, 250], 'div-gpt-ad-1488502133668-0').addService(googletag.pubads());
@@ -229,9 +229,9 @@
                 googletag.enableServices();
             });
         </script>
-    {# {% elseif blogName | lower == 'businessroom' %}
+    {% elseif blogName | lower == 'businessroom' %}
 
-    {% elseif blogName | lower == 'futurelearning' %} #}
+    {% elseif blogName | lower == 'futurelearning' %}
     {% else %}
         <script>
             googletag.cmd.push(function() {
@@ -244,7 +244,104 @@
                 googletag.enableServices();
             });
         </script>
+    {% endif %} #}
+
+
+    {% set sportsroomAddClass = ['golf', 'basketball', 'cricket', 'rugby', 'soccer', 'tennis', 'sportsroom'] %}
+    {% set businessroomAddClass = ['boardroom', 'real economy'] %}
+    {% set futurelearningAddClass = ['futurelearning'] %}
+    {% set corporateAddClass = ['corporateroom'] %}
+        
+
+    {% set boxadID = 'div-gpt-ad-1488757884390-0' %}
+    {% set boxadSlot = '/268436641/boxad1/newsbox' %}
+
+    {% set sidepanelID = 'div-gpt-ad-1488757884390-1' %}
+    {% set sidepanelSlot = '/268436641/sidepanel1/newspanel' %}
+
+    {% set smallbannerID = 'div-gpt-ad-1488757884390-2' %}
+    {% set smallbannerSlot = '/268436641/smlbanner1/newsbanner' %}
+
+    {% set tinybannerID = 'div-gpt-ad-1488757884390-3' %}
+    {% set tinybannerSlot = '/268436641/tinybanner1/newstinybanner' %}
+
+    {% if (blogName | lower in sportsroomAddClass) %}
+        {% set boxadID = 'div-gpt-ad-1488502464882-0' %}
+        {% set boxadSlot = '/268436641/boxad1/sportbox' %}
+
+        {% set sidepanelID = 'div-gpt-ad-1488502133668-1' %}
+        {% set sidepanelSlot = '/268436641/sidepanel1/sportpanel' %}
+
+        {% set smallbannerID = 'div-gpt-ad-1488502133668-2' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1/sportbanner' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1488502133668-3' %}
+        {% set tinybannerSlot = '/268436641/tinybanner1/sporttinybanner' %}
     {% endif %}
+
+    {% if (blogName | lower in businessroomAddClass) %}
+        {% set boxadID = 'div-gpt-ad-1488762086660-0' %}
+        {% set boxadSlot = '/268436641/boxad1/busbox' %}
+
+        {% set sidepanelID = 'div-gpt-ad-1488762086660-1' %}
+        {% set sidepanelSlot = '/268436641/sidepanel1/buspanel' %}
+
+        {% set smallbannerID = 'div-gpt-ad-1488762086660-2' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1/busbanner' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1488762086660-3' %}
+        {% set tinybannerSlot = '/268436641/tinybanner1/bustinybanner' %}
+    {% endif %}
+
+    {% if (blogName | lower in futurelearningAddClass) %}
+        {% set boxadID = 'div-gpt-ad-1488761921892-0' %}
+        {% set boxadSlot = '/268436641/boxad1/learnbox' %}
+
+        {% set sidepanelID = 'div-gpt-ad-1488761921892-1' %}
+        {% set sidepanelSlot = '/268436641/sidepanel1/learnpanel' %}
+
+        {% set smallbannerID = 'div-gpt-ad-1488761921892-2' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1/learnbanner' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1488761921892-3' %}
+        {% set tinybannerSlot = '/268436641/tinybanner1/learntinybanner' %}
+    {% endif %}
+
+    {% if (blogName | lower in corporateAddClass) %}
+        {% set smallbannerID = 'div-gpt-ad-1488762178801-0' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1/corpbanner' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1488762178801-1' %}
+        {% set tinybannerSlot = '/268436641/tinybanner1/corptinybanner' %}
+    {% endif %}
+
+
+
+    <script>
+
+        boxadID = '{{boxadID}}';
+        sidepanelID = '{{sidepanelID}}';
+        smallbannerID = '{{smallbannerID}}';
+        tinybannerID = '{{tinybannerID}}' ;
+
+console.log('HELLO');
+console.log(smallbannerID);
+
+        googletag.cmd.push(function() {
+            googletag.defineSlot('{{boxadSlot}}', [300, 250], '{{boxadID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{sidepanelSlot}}', [300, 600], '{{sidepanelID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{smallbannerSlot}}', [[728, 90], [728, 250]], '{{smallbannerID}}').addService(googletag.pubads());
+            googletag.defineSlot('{{tinybannerSlot}}', [300, 75], '{{tinybannerID}}').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.pubads().enableVideoAds();
+            // googletag.companionAds().setRefreshUnfilledSlots(true);
+            googletag.enableServices();
+        });
+
+
+    </script>
+
 
 </head>
 
@@ -255,13 +352,12 @@
     {{ this.beginBody() }}
      
         <div class="add add-header-top">
-            {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-                <!-- /268436641/smlbanner1/sportbanner --><div id='div-gpt-ad-1488502133668-2'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-2'); });</script></div>
-            {# {% elseif blogName | lower == 'businessroom' %}
-            {% elseif blogName | lower == 'futurelearning' %} #}
-            {% else %}
-                <!-- /268436641/smlbanner1 --><div id='div-gpt-ad-1488502464882-2'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-2'); });</script></div>
-            {% endif %}
+            <div id='smallbannerID'>
+                <script>
+                    document.currentScript.parentNode.id = smallbannerID;
+                    googletag.cmd.push(function() { googletag.display(smallbannerID); });
+                </script>
+            </div>
             <span class="add-text">Advertisement</span>
         </div><!--add add-header-top-->
 
@@ -316,13 +412,13 @@
     <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
 
         <div class="add add-header-mob hidden-sm hidden-md hidden-lg">
-            {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-                <!-- /268436641/tinybanner1/sporttinybanner --><div id='div-gpt-ad-1488502133668-3' style='height:75px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502133668-3'); });</script></div>
-            {# {% elseif blogName | lower == 'businessroom' %}
-            {% elseif blogName | lower == 'futurelearning' %} #}
-            {% else %}
-                <!-- /268436641/tinybanner1 --><div id='div-gpt-ad-1488502464882-3' style='height:75px; width:300px;'><script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1488502464882-3'); });</script></div>
-            {% endif %}     
+            <div id='tinybannerAd' style='height:75px; width:300px;'>
+                <script>
+                    document.currentScript.parentNode.id = tinybannerID;
+                    googletag.cmd.push(function() { googletag.display(tinybannerID); });
+                </script>
+            </div>
+ 
         </div>
     </div>
 
