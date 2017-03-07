@@ -117,7 +117,7 @@
                         <div class="card-group">
                             {% set rowCards = ['card-rec', 'card-rec inverted'] %}                                                                
                             {% for i in 0..1 %}
-                                {% if articles[i] %}                                                                
+                                {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
@@ -129,7 +129,7 @@
                             <div class="card-group">
                                
                             {% for i in 0..2 %}
-                                {% if articles[i] %}                                                                
+                                {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s230x140'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
@@ -143,7 +143,7 @@
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
                         {% for i in 0..1 %}
-                            {% if articles[i] %}                                                                
+                            {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -152,7 +152,7 @@
                     </div><!-- .col-sm-8-->
 
                     <div class="col-sm-12 col-md-4 sidebar">
-                        
+
                         <section class="add sidebar-add hidden-md hidden-lg">
 
                             <div id='boxad' style='height:300px; width:250px;'>
@@ -361,7 +361,7 @@
 
                 <section class="room-sports">
                     <header>
-                        <a href="{{ sections['sportroom'].link }}">
+                        <a href="{{ sections['sportsroom'].link }}">
                             <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg" alt="board room" class="img-responsive">
                         </a>
                     </header>
