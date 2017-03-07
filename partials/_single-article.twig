@@ -263,8 +263,11 @@
                     <span class="author">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
                     
                     {% if cardClass != 'instagram no-caption' %}  
-                        <p id="updateSocial{{article.socialId}}" data-update="0">{{ quotes.smarten(social.content | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
-                                             | raw) }}</p>
+                        <p id="updateSocial{{article.socialId}}" data-update="0">
+                            {{ quotes.smarten(social.content 
+                                                | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
+                                                | raw) }}
+                        </p>
                     {% endif %}
 
                 </div>
@@ -272,7 +275,7 @@
 
             {% if article.userHasBlogAccess == '1' %}
             <div class="btn_overlay articleMenu">
-                <button title="Hide" data-guid="{{article.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
+                <button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
                     <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>
                 </button>
                     <button title="Edit" class="btnhide social-tooltip editSocialPost" type="button" data-url="/admin/social-funnel/update-social?guid={{social.blog['guid']}}&socialguid={{social.guid}}">
