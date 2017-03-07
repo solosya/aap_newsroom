@@ -388,6 +388,8 @@
 
             </div><!-- .container-->
 
+
+            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
             <section class="room-corporate">
                 <div class="container">
                     <header>
@@ -406,6 +408,7 @@
                     </div><!-- .row-->
                 </div>
             </section><!-- .room-corporate-->
+            {% endif %}
 
             <section class="sponsor-logos">
                 <div class="container">
