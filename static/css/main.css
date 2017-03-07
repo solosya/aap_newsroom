@@ -7744,6 +7744,11 @@ span.leadsentence {
         height: 100px;
         background: url("../images/holden.svg");
         background-repeat: no-repeat; }
+      .sponsor-logos ul li.sponsor-chorus {
+        width: 150px;
+        height: 120px;
+        background: url("../images/chorus.svg");
+        background-repeat: no-repeat; }
       .sponsor-logos ul li.sponsor-stuff {
         width: 130px;
         height: 100px;
@@ -9694,6 +9699,35 @@ button.swiper-pagination-bullet {
           font-size: 0.66667em; } }
     .top-stories a.card > article > .content p {
       display: none; }
+  .top-stories a.card.youtube .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .top-stories a.card.facebook .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .top-stories a.card.pinterest .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .top-stories a.card.vimeo .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .top-stories a.card.twitter .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .top-stories a.card.instagram .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
 
 .room-view {
   margin-top: 130px;
@@ -10567,6 +10601,213 @@ button.swiper-pagination-bullet {
       color: #6c6c6c;
       padding-top: 6px; }
 
+.room-engine {
+  margin-bottom: 80px;
+  position: relative; }
+  @media screen and (max-width: 769px) {
+    .room-engine {
+      margin-left: -15px;
+      margin-right: -15px; } }
+  .room-engine > header {
+    margin-bottom: 20px;
+    height: 51px; }
+    @media screen and (max-width: 490px) {
+      .room-engine > header {
+        width: 205px; } }
+    @media screen and (max-width: 490px) {
+      .room-engine > header {
+        width: 205px;
+        margin-left: 15px; } }
+    .room-engine > header img {
+      height: 100%; }
+  .room-engine > .feature {
+    position: relative;
+    width: 100%;
+    height: 587px; }
+    @media screen and (max-width: 769px) {
+      .room-engine > .feature {
+        position: relative;
+        height: auto; } }
+    .room-engine > .feature > a.card {
+      width: 100%;
+      position: absolute;
+      top: 0; }
+      @media screen and (max-width: 769px) {
+        .room-engine > .feature > a.card {
+          position: relative;
+          height: auto; } }
+      .room-engine > .feature > a.card > article > figure {
+        position: absolute;
+        width: 100%;
+        height: 587px; }
+        @media screen and (max-width: 769px) {
+          .room-engine > .feature > a.card > article > figure {
+            position: relative;
+            max-height: 415px; } }
+        @media screen and (max-width: 490px) {
+          .room-engine > .feature > a.card > article > figure {
+            max-height: 280px; } }
+        .room-engine > .feature > a.card > article > figure > img {
+          position: absolute;
+          left: 0;
+          width: 100%; }
+        .room-engine > .feature > a.card > article > figure:before {
+          content: '';
+          width: 20px;
+          height: 100%;
+          background: #E22F22;
+          bottom: 0;
+          top: 0;
+          position: absolute;
+          z-index: 2; }
+          @media screen and (max-width: 769px) {
+            .room-engine > .feature > a.card > article > figure:before {
+              position: absolute;
+              top: 0; } }
+        .room-engine > .feature > a.card > article > figure:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          display: block;
+          background: rgba(0, 0, 0, 0.4); }
+      .room-engine > .feature > a.card > article > .content {
+        width: 400px;
+        position: absolute;
+        left: 60px;
+        top: 70px;
+        color: #fff; }
+        @media screen and (max-width: 769px) {
+          .room-engine > .feature > a.card > article > .content {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #000;
+            padding: 19px 25px;
+            color: white;
+            background: black; } }
+        @media screen and (max-width: 992px) {
+          .room-engine > .feature > a.card > article > .content {
+            width: 350px; } }
+        @media screen and (max-width: 769px) {
+          .room-engine > .feature > a.card > article > .content {
+            width: 100%; } }
+        .room-engine > .feature > a.card > article > .content .category {
+          color: #fff;
+          margin-bottom: 40px; }
+          @media screen and (max-width: 769px) {
+            .room-engine > .feature > a.card > article > .content .category {
+              color: #8a8b93;
+              margin-bottom: 10px;
+              font-size: 0.8em;
+              text-transform: uppercase; } }
+        .room-engine > .feature > a.card > article > .content h2 {
+          margin-bottom: 40px; }
+          @media screen and (max-width: 769px) {
+            .room-engine > .feature > a.card > article > .content h2 {
+              font-weight: normal;
+              font-size: 1.46667em;
+              margin-top: 5px;
+              margin-bottom: 0; } }
+        .room-engine > .feature > a.card > article > .content > p {
+          font-size: 1.33333em;
+          height: 85px; }
+          @media screen and (max-width: 769px) {
+            .room-engine > .feature > a.card > article > .content > p {
+              display: none; } }
+        .room-engine > .feature > a.card > article > .content time {
+          float: none;
+          border: none;
+          padding: 20px 0;
+          padding-left: 0;
+          color: #fff;
+          font-size: 0.93333em; }
+          @media screen and (max-width: 769px) {
+            .room-engine > .feature > a.card > article > .content time {
+              color: #7fc241;
+              border-bottom: 1px solid #d4d4d4; } }
+        .room-engine > .feature > a.card > article > .content .author {
+          display: none; }
+  .room-engine > .contents {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    height: 100%;
+    width: 418px;
+    color: #FFF;
+    padding-left: 25px;
+    padding-right: 25px; }
+    @media screen and (max-width: 769px) {
+      .room-engine > .contents {
+        position: relative;
+        top: 0;
+        width: 100%;
+        background: #000; } }
+    @media screen and (max-width: 992px) {
+      .room-engine > .contents {
+        width: 280px; } }
+    @media screen and (max-width: 769px) {
+      .room-engine > .contents {
+        width: 100%; } }
+    .room-engine > .contents > div {
+      border-bottom: 1px solid #FFF; }
+      .room-engine > .contents > div:last-child {
+        border: 0; }
+    .room-engine > .contents > div > a {
+      color: white; }
+    .room-engine > .contents > div > a > article {
+      height: 193px;
+      overflow: hidden;
+      padding-top: 25px; }
+      @media screen and (max-width: 769px) {
+        .room-engine > .contents > div > a > article {
+          padding-top: 15px;
+          height: auto;
+          padding-bottom: 20px; } }
+      .room-engine > .contents > div > a > article > figure {
+        display: none; }
+      @media screen and (max-width: 769px) {
+        .room-engine > .contents > div > a > article > .content {
+          position: relative; } }
+      .room-engine > .contents > div > a > article > .content > .category {
+        color: white;
+        font-size: 0.93333em;
+        text-transform: uppercase; }
+        @media screen and (max-width: 769px) {
+          .room-engine > .contents > div > a > article > .content > .category {
+            font-size: 0.61333em; } }
+      .room-engine > .contents > div > a > article > .content > h2 {
+        margin-top: 21px;
+        font-weight: normal;
+        font-size: 1.73333em; }
+        @media screen and (max-width: 769px) {
+          .room-engine > .contents > div > a > article > .content > h2 {
+            font-size: 1.06667em;
+            margin-top: 5px; } }
+      .room-engine > .contents > div > a > article > .content > p {
+        display: none; }
+      .room-engine > .contents > div > a > article > .content > time {
+        display: none; }
+      @media screen and (max-width: 769px) {
+        .room-engine > .contents > div > a > article > .content > .author {
+          position: absolute;
+          top: 0;
+          right: 0; } }
+      .room-engine > .contents > div > a > article > .content > .author > p {
+        padding-left: 0;
+        color: white;
+        font-size: 1.1em;
+        font-weight: bold;
+        font-family: "tinos", Helvetica, Arial, sans-serif; }
+        @media screen and (max-width: 769px) {
+          .room-engine > .contents > div > a > article > .content > .author > p {
+            font-size: 0.73333em; } }
+      .room-engine > .contents > div > a > article > .content > .author > img {
+        display: none; }
+
 @media screen and (max-width: 620px) {
   .article {
     padding-top: 100px; } }
@@ -11075,6 +11316,9 @@ button.swiper-pagination-bullet {
 .roompage.sportsroom .featured:before {
   background: #27aae1; }
 
+.roompage.engineroom .featured:before {
+  background: #E22F22; }
+
 .roompage.livingroom .featured:before {
   background: #80c342; }
 
@@ -11505,6 +11749,7 @@ body.channel.contact .form button {
   .card article {
     height: 100%; }
   .card .content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; }
@@ -11544,6 +11789,13 @@ body.channel.contact .form button {
     font-size: 0.8em;
     line-height: 1;
     color: #6c6c6c; }
+  .card.social .content .category {
+    margin-top: 17px; }
+  .card.social .content > p {
+    display: block;
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
+  .card.social .content .author > p {
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
 
 /*! Overlay Button */
 .btn_overlay {
@@ -11908,7 +12160,9 @@ body.channel.contact .form button {
         .card-rec.inverted > a.card > article > .content > .author p {
           color: #FFF; }
         .card-rec.inverted > a.card > article > .content > time {
-          color: #FFF; } }
+          color: #FFF; }
+      .card-rec.inverted > a.card.social .content .author {
+        color: white; } }
   @media screen and (max-width: 769px) {
     .card-rec a.card {
       margin-left: -15px;
@@ -11992,15 +12246,40 @@ body.channel.contact .form button {
         border: 0;
         padding: 0;
         font-size: 0.66667em; } }
-  .card-rec a.card.twitter .content p {
-    background: green;
-    font-size: 28px;
-    font-weight: normal; }
-  .card-rec a.card.instagram .content p {
-    font-size: 28px;
-    font-weight: normal; }
+  .card-rec a.card.social .content .category {
+    margin-bottom: 21px; }
+  .card-rec a.card.social .content > p {
+    display: block;
+    font-size: 1.6em;
+    height: 117px;
+    padding-bottom: 27px; }
+  .card-rec a.card.social.without__content figure {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    .card-rec a.card.social.without__content figure:after {
+      content: '';
+      opacity: 0.4;
+      background-color: #000;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+  .card-rec a.card.social.without__content .content {
+    z-index: 1; }
+    .card-rec a.card.social.without__content .content .category {
+      color: white;
+      margin-bottom: 21px; }
+    .card-rec a.card.social.without__content .content time {
+      color: white; }
+    .card-rec a.card.social.without__content .content .author > p {
+      color: white; }
 
 .card-sm {
+  height: 333px;
   margin-bottom: 79.5px; }
   @media screen and (max-width: 769px) {
     .card-sm {
@@ -12023,85 +12302,97 @@ body.channel.contact .form button {
           color: #FFF; }
         .card-sm.inverted > a.card > article > .content > p {
           display: none; } }
-  @media screen and (max-width: 769px) {
-    .card-sm a.card {
-      height: 115px;
-      margin-left: -15px;
-      margin-right: -15px;
-      border-top: 2px solid #dadada;
-      border-bottom: 2px solid #dadada;
-      height: auto; }
-      .card-sm a.card > article {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: nowrap;
-        -webkit-flex-wrap: nowrap; } }
-  .card-sm a.card > article > figure {
-    width: auto;
-    overflow: hidden; }
+  .card-sm a.card {
+    height: 100%; }
     @media screen and (max-width: 769px) {
-      .card-sm a.card > article > figure {
-        width: 116px;
-        height: 116px;
-        flex: 0 0 116px; } }
-    .card-sm a.card > article > figure.video:after {
-      top: 35%;
-      left: 40%; }
-      @media screen and (max-width: 1200px) {
-        .card-sm a.card > article > figure.video:after {
-          top: 40%;
-          left: 35%;
-          width: 40px;
-          height: 40px; } }
+      .card-sm a.card {
+        height: 115px;
+        margin-left: -15px;
+        margin-right: -15px;
+        border-top: 2px solid #dadada;
+        border-bottom: 2px solid #dadada;
+        height: auto; }
+        .card-sm a.card > article {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          flex-wrap: nowrap;
+          -webkit-flex-wrap: nowrap; } }
+    .card-sm a.card > article > figure {
+      width: auto;
+      overflow: hidden; }
       @media screen and (max-width: 769px) {
-        .card-sm a.card > article > figure.video:after {
-          width: 30px;
-          height: 30px; } }
-    .card-sm a.card > article > figure > img {
-      max-width: 100%; }
-  .card-sm a.card > article > .content {
-    position: relative;
-    height: 139px;
-    border: 1px solid #dadada;
-    padding: 13px 15px 8px 15px; }
-    @media screen and (max-width: 769px) {
-      .card-sm a.card > article > .content {
-        height: auto;
-        padding: 10px;
+        .card-sm a.card > article > figure {
+          width: 116px;
+          height: 116px;
+          flex: 0 0 116px; } }
+      .card-sm a.card > article > figure.video:after {
+        top: 35%;
+        left: 40%; }
+        @media screen and (max-width: 1200px) {
+          .card-sm a.card > article > figure.video:after {
+            top: 40%;
+            left: 35%;
+            width: 40px;
+            height: 40px; } }
+        @media screen and (max-width: 769px) {
+          .card-sm a.card > article > figure.video:after {
+            width: 30px;
+            height: 30px; } }
+      .card-sm a.card > article > figure > img {
+        max-width: 100%; }
+    .card-sm a.card > article > .content {
+      position: relative;
+      height: 139px;
+      border: 1px solid #dadada;
+      padding: 13px 15px 8px 15px; }
+      @media screen and (max-width: 769px) {
+        .card-sm a.card > article > .content {
+          height: auto;
+          padding: 10px;
+          border: 0;
+          width: 100%; } }
+      .card-sm a.card > article > .content > .category {
+        font-size: 0.93333em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 8px; }
+        @media screen and (max-width: 769px) {
+          .card-sm a.card > article > .content > .category {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            margin-bottom: 5px; } }
+      .card-sm a.card > article > .content > h2 {
+        font-weight: normal;
+        font-size: 1.33333em; }
+        @media screen and (max-width: 769px) {
+          .card-sm a.card > article > .content > h2 {
+            font-size: 1.33333em; } }
+      .card-sm a.card > article > .content > .author {
+        display: none; }
+      .card-sm a.card > article > .content > time {
+        padding: 0;
         border: 0;
-        width: 100%; } }
-    .card-sm a.card > article > .content > .category {
-      font-size: 0.93333em;
-      font-weight: bold;
-      color: #8a8b93;
+        color: #f73d30; }
+        @media screen and (max-width: 769px) {
+          .card-sm a.card > article > .content > time {
+            color: #6c6c6c;
+            font-size: 0.66667em; } }
+      .card-sm a.card > article > .content p {
+        display: none; }
+    .card-sm a.card.social .content .category {
+      margin-bottom: 36px; }
+    .card-sm a.card.social .content > p {
       display: block;
-      line-height: 1;
-      margin-bottom: 8px; }
-      @media screen and (max-width: 769px) {
-        .card-sm a.card > article > .content > .category {
-          font-size: 0.8em;
-          text-transform: uppercase;
-          margin-bottom: 5px; } }
-    .card-sm a.card > article > .content > h2 {
-      font-weight: normal;
-      font-size: 1.33333em; }
-      @media screen and (max-width: 769px) {
-        .card-sm a.card > article > .content > h2 {
-          font-size: 1.33333em; } }
-    .card-sm a.card > article > .content > .author {
-      display: none; }
-    .card-sm a.card > article > .content > time {
-      padding: 0;
-      border: 0;
-      color: #f73d30; }
-      @media screen and (max-width: 769px) {
-        .card-sm a.card > article > .content > time {
-          color: #6c6c6c;
-          font-size: 0.66667em; } }
-    .card-sm a.card > article > .content p {
-      display: none; }
+      font-size: 1.2em; }
+    .card-sm a.card.social.without__image .content {
+      height: 100%; }
+      .card-sm a.card.social.without__image .content > p {
+        height: 182px;
+        margin-bottom: 52px; }
 
 .card-vr {
   margin-bottom: 79.5px; }
@@ -12190,6 +12481,35 @@ body.channel.contact .form button {
           font-size: 0.66667em; } }
     .card-vr a.card > article > .content p {
       display: none; }
+  .card-vr a.card.youtube .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-vr a.card.facebook .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-vr a.card.pinterest .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-vr a.card.vimeo .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-vr a.card.twitter .content p {
+    display: block;
+    background: green;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-vr a.card.instagram .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
 
 .card-lg {
   margin-bottom: 79.5px; }
@@ -12289,6 +12609,35 @@ body.channel.contact .form button {
             border: 0;
             padding: 0;
             font-size: 0.66667em; } }
+    .card-lg a.card.youtube .content p {
+      display: block;
+      background: green;
+      font-size: 28px;
+      font-weight: normal; }
+    .card-lg a.card.facebook .content p {
+      display: block;
+      background: green;
+      font-size: 28px;
+      font-weight: normal; }
+    .card-lg a.card.pinterest .content p {
+      display: block;
+      background: green;
+      font-size: 28px;
+      font-weight: normal; }
+    .card-lg a.card.vimeo .content p {
+      display: block;
+      background: green;
+      font-size: 28px;
+      font-weight: normal; }
+    .card-lg a.card.twitter .content p {
+      display: block;
+      background: green;
+      font-size: 28px;
+      font-weight: normal; }
+    .card-lg a.card.instagram .content p {
+      display: block;
+      font-size: 28px;
+      font-weight: normal; }
 
 .viewingroom.featured {
   height: 587px;

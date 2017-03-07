@@ -1,6 +1,7 @@
 .card{
 
     display:block;
+    
     &:hover {
         text-decoration:none;
     }
@@ -49,6 +50,7 @@
     }
 
     .content {
+        width:100%;
         display: flex;
         flex-direction:column;
         justify-content: flex-start;
@@ -104,6 +106,42 @@
         line-height: 1;
         color: #6c6c6c;
     }
+
+    &.social {
+        .content {
+            .category {
+                margin-top:17px;
+            }
+            
+            > p {
+                display:block;
+                font-family: $base-font-family;
+            }
+
+            .author {
+                > p {
+                    font-family: $base-font-family;
+                }
+            }
+        }
+    }
+
+    &.twitter{
+        .content{
+            p{
+            }
+        }
+    }
+
+    &.instagram{
+        .content{
+            p{
+            }
+        }
+    }
+
+
+
 }
 
 /*! Overlay Button */

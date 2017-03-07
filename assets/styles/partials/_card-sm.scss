@@ -1,5 +1,6 @@
 .card-sm{
-
+    
+    height:333px;
     margin-bottom: 79.5px;
     @media screen and (max-width: $sm-break){
         margin-bottom: -2px;
@@ -41,6 +42,8 @@
 
 
     a.card{
+
+        height:100%;
 
         @media screen and (max-width: $sm-break){
             height: 115px;
@@ -159,5 +162,50 @@
         }
 
 
+        &.social {
+            .content {
+                .category {
+                    margin-bottom:36px;
+                }
+        
+                > p {
+                    display:block;
+
+                    // display: block;
+                    // // background:rgba(20, 200, 100, .1);
+                    font-size: em(18);
+                    // height:117px;
+                    // padding-bottom:27px;
+                }
+                .author {
+
+                }
+            }
+
+            &.without__image {
+
+                .content {
+                    height:100%;
+
+                    > p {
+                        height: 182px;
+                        margin-bottom:52px;
+                    }
+                }
+            }
+
+
+
+        }
+
+        &.youtube{
+            .content{
+                p{
+                }
+            }
+        }
+      
+
+        
     }
 }

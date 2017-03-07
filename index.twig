@@ -80,7 +80,7 @@
                 </div><!-- .swiper-wrapper-->
 
                 <div class="newsroom-icon">
-                    <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="newsroom ic">
+                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
                 </div><!-- .newsroom-icon-->
 
                 <!-- Add Arrows -->
@@ -384,6 +384,27 @@
                {% endif %}
 
 
+                {% if sections['engineroom'].feed.articles|length > 0 %}
+                <section class="room-engine">
+                    <header>
+                        <a href="{{ sections['engineroom'].link }}">
+                            <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt="engine room" class="">
+                        </a>
+                    </header>
+                    
+
+                        {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
+
+
+                        <div class="contents">
+                            {% for i in 1..3 %}
+                                {% if sections['engineroom'].feed.articles[i] %}        
+                                    {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                                {% endif %}
+                            {% endfor %}
+                        </div><!-- .content-->
+                </section><!-- .room-living-->
+                {% endif %}
 
 
             </div><!-- .container-->
@@ -413,11 +434,11 @@
             <section class="sponsor-logos">
                 <div class="container">
                     <ul>
-                        <li class="sponsor-stuff"></li>
+                        <li class="sponsor-chorus"></li>
                         <li class="sponsor-holden"></li>
-                        <li class="sponsor-stuff"></li>
+                        <li class="sponsor-chorus"></li>
                         <li class="sponsor-holden"></li>
-                        <li class="sponsor-stuff"></li>
+                        <li class="sponsor-chorus"></li>
                         <li class="sponsor-holden"></li>
                     </ul>
                 </div>

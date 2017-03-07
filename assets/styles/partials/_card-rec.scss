@@ -19,20 +19,29 @@
 
                 > article > .content{
                     border: 1px solid #000;
-                        > .category{
-                            color: #27aae1;
-                        }
 
-                        > .author p{
-                            color: #FFF;
-                        }
+                    > .category{
+                        color: #27aae1;
+                    }
 
-                        > time{
-                            color: #FFF;
+                    > .author p{
+                        color: #FFF;
+                    }
+
+                    > time{
+                        color: #FFF;
+                    }
+                    > p {
+                        // display: none;
+                    }
+                }
+                &.social {
+                    .content {
+
+                        .author {
+                            color:white;
                         }
-                        > p {
-                            // display: none;
-                        }
+                    }
                 }
             }
         }
@@ -168,12 +177,97 @@
             }
         }
 
+        &.social {
+            .content {
+                .category {
+                    margin-bottom:21px;
+                }
+        
+                > p {
+                    display:block;
+                    // background:rgba(20, 200, 100, .1);
+                    font-size: em(24);
+                    height:117px;
+                    padding-bottom:27px;
+                }
+                .author {
+
+                }
+            }
+            &.without__content {
+                figure {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height:100%;
+
+                    &:after{
+                        content: '';
+                        opacity: 0.4;
+                        background-color: #000;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+
+
+
+                }
+                .content {
+                    z-index: 1;
+                    .category {
+                        color:white;
+                        margin-bottom:21px;
+                    }
+                    time {
+                        color:white;
+                    }
+                    // > p {
+                    //     display: none;
+                    // }
+                    .author {
+                        > p {
+                            color:white;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+
+        &.youtube{
+            .content{
+                p{
+                }
+            }
+        }
+        &.facebook{
+            .content{
+                p{
+                }
+            }
+        }
+        &.pinterest{
+            .content{
+                p{
+                }
+            }
+        }
+        &.vimeo{
+            .content{
+                p{
+                }
+            }
+        }
+
         &.twitter{
             .content{
                 p{
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
+                    
                 }
             }
         }
@@ -181,11 +275,8 @@
         &.instagram{
             .content{
                 p{
-                    font-size: 28px;
-                    font-weight: normal;
                 }
             }
         }
-
     }
 }

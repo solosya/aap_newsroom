@@ -184,7 +184,6 @@
                     {% endif %}
                     <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
                     <div class="author">
-
                         <img src="{{profileImg}}" class="img-circle">
                         <p>{{ article.createdBy['displayName'] }}</p>
                     </div><!-- .author-->
@@ -222,10 +221,11 @@
     {% set mediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content' : 'without__image' %}
     {% set videoClass = (social.media['type'] == 'video') ? 'video_card' : '' %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
+    {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
 
     <div class="{{containerClass}}">
         <a  href="{{social.url}}"
-            class="swap card {{ social.source }}  {{hasArticleMediaClass}}" 
+            class="swap card social {{ social.source }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
             data-id="{{article.socialId}}" 
             data-position="{{position}}" 
             data-social="1" 
@@ -257,18 +257,20 @@
                 {% endif %}
 
                 <div class="content">
-                    <div class="category {{social.source}}"></div>
-                    <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
-                    <h2>{{ articleTitle }}</h2>
-                    <span class="author">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
+                    <div class="category {{social.source}}">{{social.source}}</div>
                     
-                    {% if cardClass != 'instagram no-caption' %}  
-                        <p id="updateSocial{{article.socialId}}" data-update="0">
-                            {{ quotes.smarten(social.content 
-                                                | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
-                                                | raw) }}
-                        </p>
-                    {% endif %}
+                    <p id="updateSocial{{article.socialId}}" data-update="0">
+                             {{ quotes.smarten(social.content 
+                                            | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
+                                            | raw) }}
+                    </p>
+
+                    <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
+                    
+                    <div class="author">
+                        <img src="{{social.user.media.path}}" class="img-circle">
+                        <p class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
+                    </div><!-- .author-->
 
                 </div>
             </article>
