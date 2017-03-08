@@ -62,7 +62,7 @@
 
     article.article-main{
         figure.featured{
-            margin-bottom: 65px;
+            margin-top: 65px;
         }
 
         .page-content{
@@ -140,7 +140,8 @@
 
             .content{
                 figure {
-                    margin-bottom:80px;
+                    margin-top:40px;
+                    margin-bottom:40px;
                     
                     img {
                         max-width: 100%;
@@ -152,6 +153,7 @@
                         font-style: italic;
                         font-family: $base-font-family;
                         float: left;
+                        margin-bottom: 30px;
 
                         &.credit{
                             font-style: normal;
@@ -183,6 +185,7 @@
                     letter-spacing: 0.8px;
                     color: #717171;
                     padding-right:10px;
+                    clear:both;
                     @media screen and (max-width: $sm-break){
                         color:  #8a8b93;
                     }

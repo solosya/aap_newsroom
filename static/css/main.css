@@ -8184,6 +8184,7 @@ span.leadsentence {
     -webkit-flex-wrap: nowrap; }
   .sidebar-news a.card > article > figure {
     width: 100px;
+    height: 100px;
     flex: 0 0 100px;
     overflow: hidden;
     float: left;
@@ -10836,7 +10837,7 @@ button.swiper-pagination-bullet {
       width: 105px; }
 
 .article article.article-main figure.featured {
-  margin-bottom: 65px; }
+  margin-top: 65px; }
 
 .article article.article-main .page-content .content-block-top {
   margin-bottom: 17px; }
@@ -10895,7 +10896,8 @@ button.swiper-pagination-bullet {
         display: none; } }
 
 .article article.article-main .page-content .content figure {
-  margin-bottom: 80px; }
+  margin-top: 40px;
+  margin-bottom: 40px; }
   .article article.article-main .page-content .content figure img {
     max-width: 100%; }
   .article article.article-main .page-content .content figure figcaption {
@@ -10903,7 +10905,8 @@ button.swiper-pagination-bullet {
     color: #6c6c6c;
     font-style: italic;
     font-family: "tinos", Helvetica, Arial, sans-serif;
-    float: left; }
+    float: left;
+    margin-bottom: 30px; }
     .article article.article-main .page-content .content figure figcaption.credit {
       font-style: normal;
       float: right; }
@@ -10926,7 +10929,8 @@ button.swiper-pagination-bullet {
   line-height: 1.45;
   letter-spacing: 0.8px;
   color: #717171;
-  padding-right: 10px; }
+  padding-right: 10px;
+  clear: both; }
   @media screen and (max-width: 769px) {
     .article article.article-main .page-content .content > p {
       color: #8a8b93; } }
@@ -12279,7 +12283,6 @@ body.channel.contact .form button {
       color: white; }
 
 .card-sm {
-  height: 333px;
   margin-bottom: 79.5px; }
   @media screen and (max-width: 769px) {
     .card-sm {
