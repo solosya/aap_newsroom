@@ -82,6 +82,7 @@
             
             @media screen and (max-width:1600px){
                 width: 65%;
+                max-height: 587px;
             }
 
             @media screen and (max-width: $sm-break){
@@ -182,9 +183,19 @@
                 // padding-bottom: 35px;
                 margin-bottom: 8px;
 
-                @media screen and (max-width:1330px){
-                    font-size: em(40);
+                @media screen and (max-width:1427px){
+                    font-size: em(42);
                 }
+
+
+                @media screen and (max-width:1350px){
+                    font-size: em(38);
+                }
+
+                @media screen and (max-width:1300px){
+                    font-size: em(32);
+                }
+
 
                 @media screen and (max-width: $md-break){
                    font-size: em(24);
@@ -218,7 +229,10 @@
                 position:absolute;
                 bottom:10px;
                 right:10px;
-
+                
+                @media screen and (max-width: 1100px){
+                    display:none;
+                }
 
                 @media screen and (max-width: $sm-break){
                     font-size: em(10);

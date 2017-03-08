@@ -24,7 +24,7 @@
 {% set imgHeight = 493 %}
 
 {% if article.media|length > 0 %}
-    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill'} ) %}
 {% else %}
     {% set articleImg = false %}
 {% endif %}

@@ -8055,6 +8055,8 @@ span.leadsentence {
   text-align: center;
   padding-top: 60px;
   padding-bottom: 60px; }
+  .add-header-top > div {
+    margin: 0 auto; }
   @media screen and (max-width: 769px) {
     .add-header-top {
       display: none; } }
@@ -11792,8 +11794,6 @@ body.channel.contact .form button {
     font-size: 0.8em;
     line-height: 1;
     color: #6c6c6c; }
-  .card.social .content .category {
-    margin-top: 17px; }
   .card.social .content > p {
     display: block;
     font-family: "tinos", Helvetica, Arial, sans-serif; }
@@ -11987,7 +11987,8 @@ body.channel.contact .form button {
       -moz-flex: 3 0 0; }
       @media screen and (max-width: 1600px) {
         .featured-slider .card figure {
-          width: 65%; } }
+          width: 65%;
+          max-height: 587px; } }
       @media screen and (max-width: 769px) {
         .featured-slider .card figure {
           width: 100%;
@@ -12072,9 +12073,15 @@ body.channel.contact .form button {
         min-height: 0;
         vertical-align: middle;
         margin-bottom: 8px; }
-        @media screen and (max-width: 1330px) {
+        @media screen and (max-width: 1427px) {
           .featured-slider .card .content h2 {
-            font-size: 2.66667em; } }
+            font-size: 2.8em; } }
+        @media screen and (max-width: 1350px) {
+          .featured-slider .card .content h2 {
+            font-size: 2.53333em; } }
+        @media screen and (max-width: 1300px) {
+          .featured-slider .card .content h2 {
+            font-size: 2.13333em; } }
         @media screen and (max-width: 1200px) {
           .featured-slider .card .content h2 {
             font-size: 1.6em; } }
@@ -12106,6 +12113,9 @@ body.channel.contact .form button {
         position: absolute;
         bottom: 10px;
         right: 10px; }
+        @media screen and (max-width: 1100px) {
+          .featured-slider .card .content time {
+            display: none; } }
         @media screen and (max-width: 769px) {
           .featured-slider .card .content time {
             font-size: 0.66667em;
@@ -12249,13 +12259,15 @@ body.channel.contact .form button {
         border: 0;
         padding: 0;
         font-size: 0.66667em; } }
-  .card-rec a.card.social .content .category {
-    margin-bottom: 21px; }
   .card-rec a.card.social .content > p {
     display: block;
     font-size: 1.6em;
-    height: 104px;
+    height: 127px;
     padding-bottom: 27px; }
+    @media screen and (max-width: 769px) {
+      .card-rec a.card.social .content > p {
+        padding: 0;
+        height: 58px; } }
   .card-rec a.card.social.without__content figure {
     position: absolute;
     left: 0;
@@ -12323,7 +12335,8 @@ body.channel.contact .form button {
           -webkit-flex-wrap: nowrap; } }
     .card-sm a.card > article > figure {
       width: auto;
-      overflow: hidden; }
+      overflow: hidden;
+      height: 208px; }
       @media screen and (max-width: 769px) {
         .card-sm a.card > article > figure {
           width: 116px;
@@ -12346,7 +12359,7 @@ body.channel.contact .form button {
         max-width: 100%; }
     .card-sm a.card > article > .content {
       position: relative;
-      height: 139px;
+      height: 125px;
       border: 1px solid #dadada;
       padding: 13px 15px 8px 15px; }
       @media screen and (max-width: 769px) {
@@ -12386,15 +12399,19 @@ body.channel.contact .form button {
       .card-sm a.card > article > .content p {
         display: none; }
     .card-sm a.card.social .content .category {
-      margin-bottom: 36px; }
+      margin-top: 0;
+      margin-bottom: 8px; }
     .card-sm a.card.social .content > p {
       display: block;
       font-size: 1.2em; }
     .card-sm a.card.social.without__image .content {
       height: 100%; }
       .card-sm a.card.social.without__image .content > p {
-        height: 182px;
+        height: 225px;
         margin-bottom: 52px; }
+        @media screen and (max-width: 769px) {
+          .card-sm a.card.social.without__image .content > p {
+            height: auto; } }
 
 .card-vr {
   margin-bottom: 79.5px; }
@@ -12523,6 +12540,7 @@ body.channel.contact .form button {
       margin-right: -15px;
       padding: 10px 22px; } }
   .card-lg a.card {
+    height: 515px;
     position: relative;
     overflow: hidden; }
     .card-lg a.card:after {
@@ -12541,6 +12559,7 @@ body.channel.contact .form button {
       position: absolute;
       left: 0;
       top: 0;
+      height: 100%;
       width: 100%; }
       @media screen and (max-width: 769px) {
         .card-lg a.card > article > figure {
@@ -12571,9 +12590,11 @@ body.channel.contact .form button {
             font-size: 0.8em;
             margin-bottom: 15px;
             text-transform: uppercase; } }
-      @media screen and (max-width: 769px) {
-        .card-lg a.card > article > .content > p {
-          display: none; } }
+      .card-lg a.card > article > .content > p {
+        height: 150px; }
+        @media screen and (max-width: 769px) {
+          .card-lg a.card > article > .content > p {
+            display: none; } }
       .card-lg a.card > article > .content > h2 {
         font-weight: bold;
         font-size: 2.66667em;
@@ -12611,35 +12632,14 @@ body.channel.contact .form button {
             border: 0;
             padding: 0;
             font-size: 0.66667em; } }
-    .card-lg a.card.youtube .content p {
+    .card-lg a.card.social .content > p {
       display: block;
-      background: green;
-      font-size: 28px;
-      font-weight: normal; }
-    .card-lg a.card.facebook .content p {
-      display: block;
-      background: green;
-      font-size: 28px;
-      font-weight: normal; }
-    .card-lg a.card.pinterest .content p {
-      display: block;
-      background: green;
-      font-size: 28px;
-      font-weight: normal; }
-    .card-lg a.card.vimeo .content p {
-      display: block;
-      background: green;
-      font-size: 28px;
-      font-weight: normal; }
-    .card-lg a.card.twitter .content p {
-      display: block;
-      background: green;
-      font-size: 28px;
-      font-weight: normal; }
-    .card-lg a.card.instagram .content p {
-      display: block;
-      font-size: 28px;
-      font-weight: normal; }
+      font-size: 1.2em;
+      height: 280px;
+      margin-top: 40px; }
+      @media screen and (max-width: 769px) {
+        .card-lg a.card.social .content > p {
+          height: auto; } }
 
 .viewingroom.featured {
   height: 587px;
