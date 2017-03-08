@@ -251,7 +251,16 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
     .site-header .site-header-menu-1{
         position: relative;
     }
-    
+
+    .site-header-active{
+        @media screen and (max-width: $mobile-break){
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
+        }
+    }
+
+
     .sb-custom-menu > div{
         display: none;
     }

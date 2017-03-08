@@ -34301,6 +34301,8 @@ $('document').ready(function() {
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
+        $("#masthead").toggleClass('site-header-active');
+
         e.preventDefault();
     });
 

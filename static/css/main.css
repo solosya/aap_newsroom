@@ -8618,7 +8618,15 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   .sb-custom-menu > div > ul li.now-active > a:after {
     display: none; }
   .site-header .site-header-menu-1 {
-    position: relative; }
+    position: relative; } }
+
+@media screen and (max-width: 1120px) and (max-width: 620px) {
+  .site-header-active {
+    position: fixed;
+    z-index: 1000;
+    width: 100%; } }
+
+@media (max-width: 1120px) {
   .sb-custom-menu > div {
     display: none; }
   .sb-custom-menu > div {
