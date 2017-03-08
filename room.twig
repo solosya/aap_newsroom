@@ -56,20 +56,20 @@
             <div class="container">
                 <div class="row">
 
-                    {% if articles[articleCount] %}                                                                
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
+                            {% if articles[articleCount] %}                                                                
 
-                            {% for i in 0..4 %}
-                                {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
-                                    {% set articleCount = articleCount + 1 %}
-                                {% endif %}
-                            {% endfor %}
+                                {% for i in 0..4 %}
+                                    {% if articles[articleCount] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
 
                          </div><!--card-group-->
                     </div><!-- .col-sm-8-->
-                    {% endif %}
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
