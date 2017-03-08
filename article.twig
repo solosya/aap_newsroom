@@ -24,7 +24,7 @@
 {% set imgHeight = 493 %}
 
 {% if article.media|length > 0 %}
-    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill'} ) %}
+    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'auto'} ) %}
 {% else %}
     {% set articleImg = false %}
 {% endif %}
@@ -65,9 +65,10 @@
                                     ><a href="http://twitter.com/intent/tweet?status={{ article.title|url_encode }}{{article.url}}" class="btn btn-tweet icon-twitter"></a
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
                                     ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
-                                    <button onclick="window.location = '{{article.editUrl}}'; return false;" title="Edit" class="btnhide social-tooltip" type="button">
-                                        <i class="fa fa-edit"></i><span class="hide">Edit</span>
-                                    </button>
+                                    
+                                    {% if not _User.isGuest() %}
+                                        <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                                    {% endif %}
 
                                     <time>{{ article.publishedDate | upper }}</time>
                                 </div><!--content-block-top-->
