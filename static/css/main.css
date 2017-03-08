@@ -7633,10 +7633,6 @@ h4.modal-title {
   .card-group {
     margin-bottom: 35px; } }
 
-@media screen and (max-width: 620px) {
-  .site-main {
-    padding-top: 65px; } }
-
 figcaption {
   margin-top: 10px; }
   @media screen and (max-width: 769px) {
@@ -8156,6 +8152,10 @@ span.leadsentence {
   .subscribe > p {
     margin: 20px auto;
     width: 70%; }
+
+@media screen and (max-width: 769px) {
+  .sidebar-news {
+    display: none; } }
 
 .sidebar-news header {
   margin-bottom: 15px;
@@ -10839,143 +10839,139 @@ button.swiper-pagination-bullet {
 .article article.article-main figure.featured {
   margin-top: 65px; }
 
-.article article.article-main .page-content .content-block-top {
-  margin-bottom: 17px; }
-  .article article.article-main .page-content .content-block-top time {
-    float: right;
-    color: #6c6c6c;
-    text-transform: uppercase;
-    font-size: 0.86667em;
-    padding: 10px 0; }
-    @media screen and (max-width: 769px) {
-      .article article.article-main .page-content .content-block-top time {
-        display: none; } }
-
-.article article.article-main .page-content .content-author {
-  border-top: solid 1px #dadada;
-  border-bottom: solid 1px #dadada;
-  padding: 13px 0;
-  min-height: 90px; }
-  @media screen and (max-width: 769px) {
-    .article article.article-main .page-content .content-author {
-      min-height: 60px; } }
-  .article article.article-main .page-content .content-author img {
-    float: left;
-    margin-right: 18.5px;
-    width: 47px;
-    border-radius: 100%;
-    padding-bottom: 10px; }
-  .article article.article-main .page-content .content-author h3 {
-    font-size: 1.33333em;
-    margin-top: 0;
-    margin-bottom: 5px; }
-    @media screen and (max-width: 769px) {
-      .article article.article-main .page-content .content-author h3 {
-        display: inline-block;
-        margin-bottom: 10px;
-        margin-top: 15px; } }
-  .article article.article-main .page-content .content-author span {
-    display: none;
-    color: #8a8b93;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-size: 1em; }
-    @media screen and (max-width: 769px) {
-      .article article.article-main .page-content .content-author span {
-        display: inline;
-        float: right;
-        margin-top: 15px; } }
-  .article article.article-main .page-content .content-author p {
-    font-size: 1em;
-    font-weight: 300;
-    color: #4a4a4a;
-    line-height: 1.4;
-    margin-bottom: 0;
-    width: 100%; }
-    @media screen and (max-width: 769px) {
-      .article article.article-main .page-content .content-author p {
-        display: none; } }
-
-.article article.article-main .page-content .content figure {
-  margin-top: 40px;
-  margin-bottom: 40px; }
-  .article article.article-main .page-content .content figure img {
-    max-width: 100%; }
-  .article article.article-main .page-content .content figure figcaption {
-    font-size: 0.83333em;
-    color: #6c6c6c;
-    font-style: italic;
-    font-family: "tinos", Helvetica, Arial, sans-serif;
-    float: left;
-    margin-bottom: 30px; }
-    .article article.article-main .page-content .content figure figcaption.credit {
-      font-style: normal;
-      float: right; }
-      @media screen and (max-width: 769px) {
-        .article article.article-main .page-content .content figure figcaption.credit {
-          float: left; } }
-
-.article article.article-main .page-content .content h1 {
-  margin-top: 40px;
-  margin-bottom: 47px; }
-  @media screen and (max-width: 769px) {
-    .article article.article-main .page-content .content h1 {
-      font-size: 2em; } }
-
-.article article.article-main .page-content .content > p {
-  font-size: 1.33333em;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.45;
-  letter-spacing: 0.8px;
-  color: #717171;
-  padding-right: 10px;
+.article article.article-main .page-content {
   clear: both; }
-  @media screen and (max-width: 769px) {
-    .article article.article-main .page-content .content > p {
-      color: #8a8b93; } }
-  .article article.article-main .page-content .content > p.lead {
-    font-weight: bold;
-    color: #4a4a4a; }
+  .article article.article-main .page-content .content-block-top {
+    margin-bottom: 17px; }
+    .article article.article-main .page-content .content-block-top time {
+      float: right;
+      color: #6c6c6c;
+      text-transform: uppercase;
+      font-size: 0.86667em;
+      padding: 10px 0; }
+      @media screen and (max-width: 769px) {
+        .article article.article-main .page-content .content-block-top time {
+          display: none; } }
+  .article article.article-main .page-content .content-author {
+    border-top: solid 1px #dadada;
+    border-bottom: solid 1px #dadada;
+    padding: 13px 0;
+    min-height: 90px; }
     @media screen and (max-width: 769px) {
-      .article article.article-main .page-content .content > p.lead {
+      .article article.article-main .page-content .content-author {
+        min-height: 60px; } }
+    .article article.article-main .page-content .content-author img {
+      float: left;
+      margin-right: 18.5px;
+      width: 47px;
+      border-radius: 100%;
+      padding-bottom: 10px; }
+    .article article.article-main .page-content .content-author h3 {
+      font-size: 1.33333em;
+      margin-top: 0;
+      margin-bottom: 5px; }
+      @media screen and (max-width: 769px) {
+        .article article.article-main .page-content .content-author h3 {
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-top: 15px; } }
+    .article article.article-main .page-content .content-author span {
+      display: none;
+      color: #8a8b93;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 1em; }
+      @media screen and (max-width: 769px) {
+        .article article.article-main .page-content .content-author span {
+          display: inline;
+          float: right;
+          margin-top: 15px; } }
+    .article article.article-main .page-content .content-author p {
+      font-size: 1em;
+      font-weight: 300;
+      color: #4a4a4a;
+      line-height: 1.4;
+      margin-bottom: 0;
+      width: 100%; }
+      @media screen and (max-width: 769px) {
+        .article article.article-main .page-content .content-author p {
+          display: none; } }
+  .article article.article-main .page-content .content figure {
+    margin-top: 40px;
+    margin-bottom: 40px; }
+    .article article.article-main .page-content .content figure img {
+      max-width: 100%; }
+    .article article.article-main .page-content .content figure figcaption {
+      font-size: 0.83333em;
+      color: #6c6c6c;
+      font-style: italic;
+      font-family: "tinos", Helvetica, Arial, sans-serif;
+      float: left;
+      margin-bottom: 30px; }
+      .article article.article-main .page-content .content figure figcaption.credit {
+        font-style: normal;
+        float: right; }
+        @media screen and (max-width: 769px) {
+          .article article.article-main .page-content .content figure figcaption.credit {
+            float: left; } }
+  .article article.article-main .page-content .content h1 {
+    margin-top: 40px;
+    margin-bottom: 47px; }
+    @media screen and (max-width: 769px) {
+      .article article.article-main .page-content .content h1 {
+        font-size: 2em; } }
+  .article article.article-main .page-content .content > p {
+    font-size: 1.33333em;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: 0.8px;
+    color: #717171;
+    padding-right: 10px;
+    clear: both; }
+    @media screen and (max-width: 769px) {
+      .article article.article-main .page-content .content > p {
         color: #8a8b93; } }
-  .article article.article-main .page-content .content > p:last-child {
+    .article article.article-main .page-content .content > p.lead {
+      font-weight: bold;
+      color: #4a4a4a; }
+      @media screen and (max-width: 769px) {
+        .article article.article-main .page-content .content > p.lead {
+          color: #8a8b93; } }
+    .article article.article-main .page-content .content > p:last-child {
+      margin-bottom: 50px; }
+    @media screen and (max-width: 769px) {
+      .article article.article-main .page-content .content > p {
+        font-size: 1.06667em; } }
+  .article article.article-main .page-content .content blockquote {
+    font-size: 2.13333em;
+    font-weight: bold;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    padding-left: 0;
+    border: 0; }
+    .article article.article-main .page-content .content blockquote:before, .article article.article-main .page-content .content blockquote:after {
+      width: 62px;
+      height: 2px;
+      background: #e22f22;
+      display: block;
+      content: '';
+      margin-bottom: 28px;
+      margin-top: 28px; }
+    @media screen and (max-width: 769px) {
+      .article article.article-main .page-content .content blockquote {
+        font-size: 1.46667em; } }
+  .article article.article-main .page-content div.comments {
+    margin-top: 100px;
     margin-bottom: 50px; }
-  @media screen and (max-width: 769px) {
-    .article article.article-main .page-content .content > p {
-      font-size: 1.06667em; } }
-
-.article article.article-main .page-content .content blockquote {
-  font-size: 2.13333em;
-  font-weight: bold;
-  font-family: "tinos", Helvetica, Arial, sans-serif;
-  padding-left: 0;
-  border: 0; }
-  .article article.article-main .page-content .content blockquote:before, .article article.article-main .page-content .content blockquote:after {
-    width: 62px;
-    height: 2px;
-    background: #e22f22;
-    display: block;
-    content: '';
-    margin-bottom: 28px;
-    margin-top: 28px; }
-  @media screen and (max-width: 769px) {
-    .article article.article-main .page-content .content blockquote {
-      font-size: 1.46667em; } }
-
-.article article.article-main .page-content div.comments {
-  margin-top: 100px;
-  margin-bottom: 50px; }
-  .article article.article-main .page-content div.comments h3 {
-    font-size: 1.2em;
-    margin-bottom: 13px; }
-  .article article.article-main .page-content div.comments p {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-size: 1.06667em;
-    color: #777881; }
-    .article article.article-main .page-content div.comments p a {
-      color: black; }
+    .article article.article-main .page-content div.comments h3 {
+      font-size: 1.2em;
+      margin-bottom: 13px; }
+    .article article.article-main .page-content div.comments p {
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 1.06667em;
+      color: #777881; }
+      .article article.article-main .page-content div.comments p a {
+        color: black; }
 
 .article .page-add {
   text-align: center;
@@ -12062,7 +12058,7 @@ body.channel.contact .form button {
         max-height: 20px; }
         @media screen and (max-width: 769px) {
           .featured-slider .card .content .category {
-            color: #8a8b93;
+            color: white;
             font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
             font-size: 0.8em; } }
       .featured-slider .card .content h2 {
@@ -12255,7 +12251,7 @@ body.channel.contact .form button {
   .card-rec a.card.social .content > p {
     display: block;
     font-size: 1.6em;
-    height: 117px;
+    height: 104px;
     padding-bottom: 27px; }
   .card-rec a.card.social.without__content figure {
     position: absolute;
