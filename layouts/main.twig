@@ -41,6 +41,7 @@
     <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
     <link href='https://fonts.googleapis.com/css?family=Tinos:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400i" rel="stylesheet"> 
     
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
@@ -275,7 +276,7 @@
     {% set tinybannerID = 'div-gpt-ad-1488757884390-3' %}
     {% set tinybannerSlot = '/268436641/tinybanner1/newstinybanner' %}
 
-    {% if (blogName | lower in sportsroomAddClass) %}
+    {% if (roomInfo[0] | lower in sportsroomAddClass) %}
         {% set boxadID = 'div-gpt-ad-1488502464882-0' %}
         {% set boxadSlot = '/268436641/boxad1/sportbox' %}
 
@@ -289,7 +290,7 @@
         {% set tinybannerSlot = '/268436641/tinybanner1/sporttinybanner' %}
     {% endif %}
 
-    {% if (blogName | lower in businessroomAddClass) %}
+    {% if (roomInfo[0] | lower in businessroomAddClass) %}
         {% set boxadID = 'div-gpt-ad-1488762086660-0' %}
         {% set boxadSlot = '/268436641/boxad1/busbox' %}
 
@@ -303,7 +304,7 @@
         {% set tinybannerSlot = '/268436641/tinybanner1/bustinybanner' %}
     {% endif %}
 
-    {% if (blogName | lower in futurelearningAddClass) %}
+    {% if (roomInfo[0] | lower in futurelearningAddClass) %}
         {% set boxadID = 'div-gpt-ad-1488761921892-0' %}
         {% set boxadSlot = '/268436641/boxad1/learnbox' %}
 
@@ -317,7 +318,7 @@
         {% set tinybannerSlot = '/268436641/tinybanner1/learntinybanner' %}
     {% endif %}
 
-     {% if (blogName | lower in engineAddClass) %}
+     {% if (roomInfo[0] | lower in engineAddClass) %}
         {% set boxadID = 'div-gpt-ad-1489014661945-0' %}
         {% set boxadSlot = '/268436641/boxad1/enginebox' %}
 
@@ -331,7 +332,7 @@
         {% set tinybannerSlot = '/268436641/tinybanner1/enginetinybanner' %}
     {% endif %}
 
-    {% if (blogName | lower in corporateAddClass) %}
+    {% if (roomInfo[0] | lower in corporateAddClass) %}
         {% set smallbannerID = 'div-gpt-ad-1488762178801-0' %}
         {% set smallbannerSlot = '/268436641/smlbanner1/corpbanner' %}
 
@@ -373,7 +374,7 @@
 
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 
-
+{# 
     <div class="hidden-xs hidden-sm hidden-md hidden-lg">
         {% for room in rooms  %}
                 {{room}}
@@ -386,7 +387,7 @@
         {% endfor %}
 
         {{roomInfo[0]}}
-    </div>
+    </div> #}
 
 
 
