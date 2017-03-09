@@ -412,11 +412,11 @@
 
     {# 'Newsroom is the default header logo but want to suppress it in
      top 'room' nav when a sub channel is active' #}
-{#     {% set header_exclude = '' %}
+    {% set header_exclude = '' %}
     {% if (blogName | lower not in rooms) %}
         {% set header_exclude = 'newsroom' %}
     {% endif %} 
- #}
+
     <div class="hidden-xs hidden-sm hidden-md hidden-lg">
             {% for room in rooms  %}
                 {{room}}
@@ -428,7 +428,6 @@
         blog : blogData, 
         networkData: networkData, 
         pageClass: blogName,
-        header_exclude: header_exclude,
         submenu: submenu,
         roomInfo: roomInfo,
         rooms:rooms 

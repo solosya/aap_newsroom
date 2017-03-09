@@ -107,13 +107,24 @@
                             </li>
                         </ul>
 
+
+
+
+
+
+
+                    {#  _____________________________________________________
+
+                                            MOBILE ROOM LIST
+                        _____________________________________________________  #}
+
                         <div id="menu-secondary-menu" class="secondary-menu">
                             <ul>
                             {% for parentItem in menuItems  %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                                {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
+                                {% if (parentItem.blogTitle != roomInfo[0]) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
@@ -151,6 +162,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+    {#  _____________________________________________________
+
+                            FOLDAWAY MENU
+        _____________________________________________________  #}
 
 
             <div id="menu-top-foldaway" class="site-branding-top row hide foldaway">
@@ -240,6 +264,27 @@
 
         </div> <!-- #foldaway-panel -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {#  _____________________________________________________
+
+                            PROFILE WINDOW
+        _____________________________________________________  #}
 
 
 
