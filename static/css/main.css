@@ -8058,11 +8058,12 @@ span.leadsentence {
 .add-header-top {
   width: 100%;
   background-color: #d8d8d8;
-  text-align: center;
   padding-top: 60px;
   padding-bottom: 60px; }
   .add-header-top > div {
     margin: 0 auto; }
+    .add-header-top > div > div > iframe {
+      margin: 0 auto; }
   @media screen and (max-width: 768px) {
     .add-header-top {
       display: none; } }
@@ -11324,6 +11325,12 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 1450px) {
     .roompage .featured a.card .content {
       padding: 150px 29px 36px 31px; } }
+  @media screen and (max-width: 1200px) {
+    .roompage .featured a.card .content {
+      padding: 120px 29px 36px 31px; } }
+  @media screen and (max-width: 992px) {
+    .roompage .featured a.card .content {
+      padding: 100px 29px 36px 31px; } }
   .roompage .featured a.card .content time {
     bottom: 40px;
     right: 30px; }
@@ -11439,6 +11446,7 @@ button.swiper-pagination-bullet {
       -ms-flex-wrap: nowrap; } }
   @media screen and (max-width: 768px) {
     .roompage .sidebar-inverted a.card article {
+      display: block;
       height: auto !important; } }
   .roompage .sidebar-inverted a.card figure {
     height: 260px; }
@@ -11453,13 +11461,19 @@ button.swiper-pagination-bullet {
         float: left; } }
     @media screen and (max-width: 768px) {
       .roompage .sidebar-inverted a.card figure {
-        height: auto !important; } }
+        height: 116px;
+        width: 116px; } }
     .roompage .sidebar-inverted a.card figure img {
+      height: 100%;
       max-height: 100%;
       width: 100%; }
   .roompage .sidebar-inverted a.card .content {
     display: block;
     height: auto; }
+    @media screen and (max-width: 768px) {
+      .roompage .sidebar-inverted a.card .content {
+        padding-left: 126px;
+        height: 116px; } }
     .roompage .sidebar-inverted a.card .content h2 {
       margin: 25px 0;
       font-size: 1.73333em; }
@@ -11472,6 +11486,9 @@ button.swiper-pagination-bullet {
         display: block !important;
         height: 45px !important;
         margin-bottom: 5px !important; } }
+    @media screen and (max-width: 768px) {
+      .roompage .sidebar-inverted a.card .content > p {
+        display: none !important; } }
     .roompage .sidebar-inverted a.card .content time {
       margin-top: 10px;
       float: right;

@@ -2,6 +2,7 @@ $('document').ready(function() {
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 1120;
     var mobileView = 620;
+    var desktopView = 1119;
     var scrollMetric = [$(window).scrollTop()];
     var foldawayPanel = $("#foldaway-panel");
     var menuContainer = $("#menuContainer");
@@ -17,6 +18,13 @@ $('document').ready(function() {
 
     var isMobile = function(){
         if (window.innerWidth < mobileView) {
+            return true;
+        }
+        return false;
+    };
+
+    var isDesktop = function(){
+        if (window.innerWidth > desktopView) {
             return true;
         }
         return false;
@@ -57,7 +65,7 @@ $('document').ready(function() {
 
 
     var scrollUpMenu = function() {
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) && !isMobile() ){
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
         } else {

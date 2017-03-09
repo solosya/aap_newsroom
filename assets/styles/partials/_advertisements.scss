@@ -77,12 +77,15 @@
 .add-header-top{
     width: 100%;
     background-color: $gray-bck;
-    text-align: center;
+    // text-align: center;
     padding-top: 60px;
     padding-bottom: 60px;
 
     > div {
         margin: 0 auto;
+        > div > iframe {
+            margin:0 auto;
+        }
     }
 
     @media screen and (max-width: $sm-break){
