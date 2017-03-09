@@ -384,7 +384,7 @@
 
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
-    {% set roomInfo = [] %}
+    {% set roomInfo = ['newsroom'] %}
     {% set menuItems = blogData.blogHeaderMenu %}
     {% set rooms = [] %}
     {% for room in menuItems  %}
@@ -412,11 +412,11 @@
 
     {# 'Newsroom is the default header logo but want to suppress it in
      top 'room' nav when a sub channel is active' #}
-    {% set header_exclude = '' %}
+{#     {% set header_exclude = '' %}
     {% if (blogName | lower not in rooms) %}
         {% set header_exclude = 'newsroom' %}
     {% endif %} 
-
+ #}
     <div class="hidden-xs hidden-sm hidden-md hidden-lg">
             {% for room in rooms  %}
                 {{room}}
