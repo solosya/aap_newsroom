@@ -91,12 +91,33 @@
         .footer_btn-lg{
             background-color: #e22f22;
             color: #FFF;
-            padding-top: 51px;
-            border-bottom: 2px solid #FFF;
+            padding-top: 20px;
             @media screen and (max-width: $sm-break){
                 float: right;
             }
+
+            > a {
+                font-family: 'IM Fell Great Primer', serif;
+                color: #FFF;
+                font-size: 16px;
+                font-weight: normal;
+
+                }
+            > div {
+                background-color: white;
+                margin-top: 20px;
+                > input {
+                     font-family: 'PT Sans', Tahoma, Arial, serif;
+                     color: #000;
+                }
+            }
+            
+
+
         }
+
+
+
 
         .social-links{
             margin-top:25px;
