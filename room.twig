@@ -123,11 +123,17 @@
                             </section><!--sidebar-news-->
 
 
-                            {% if articles[articleCount] %}                                                                
-                            <section class="col-sm-12 sidebar-inverted">
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
-                                    {% set articleCount = articleCount + 1 %}
-                            </section>
+                            {% if 'livingroom' == blogName | lower %}
+                                <section class="col-sm-12">
+                                    {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm advert', networkData: networkData }) | raw}}
+                                </section>
+                            {% else %}
+                                {% if articles[articleCount] %}                                                                
+                                <section class="col-sm-12 sidebar-inverted">
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
+                                </section>
+                                {% endif %}
                             {% endif %}
 
                         </div> <!-- .row-->

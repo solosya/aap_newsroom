@@ -161,6 +161,12 @@
 
             > .author{
 
+                > p {
+                    @media screen and (max-width: $sm-break){
+                        font-size: em(15);
+                    }
+                }
+
                 @media screen and (max-width: $mobile-break){
                     display: none;
                 }

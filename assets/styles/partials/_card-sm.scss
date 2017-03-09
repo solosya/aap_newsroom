@@ -6,6 +6,100 @@
     }
 
 
+
+
+
+    &.advert {
+        a.card {
+            margin-left: -35px;
+            background: #0082c9;
+
+            @media screen and (max-width: $md-break){
+                margin-left:0;
+            }
+
+            @media screen and (max-width: $sm-break){
+                margin-left:-15px;
+            }
+
+
+
+            > article {
+                @media screen and (max-width: $mmd-break){
+                    display:-webkit-box;
+                    display:-webkit-flex;
+                    display:-moz-flex;
+                    display:-ms-flexbox;
+                    display:flex;
+                    height: 235px;
+                    flex-wrap: nowrap;
+                    -webkit-flex-wrap: nowrap;
+                    -ms-flex-wrap: nowrap;
+                }
+                @media screen and (max-width: $sm-break){
+                    display:block;
+                    height:auto !important;
+                }
+
+
+                figure {
+                    height:312px;
+
+                    @media screen and (max-width: $mmd-break){
+                        width: 330px;
+                        height:235px;
+                        -ms-flex: 0 0 330px;
+                        -webkit-flex: 0 0 330px;
+                        flex: 0 0 330px;
+                        overflow: hidden;
+                        float: left;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        height:116px;
+                        width:116px;
+                    }    
+
+                    > img {
+                        object-fit:fill;
+                    }       
+                }
+            
+               > .content {
+                    border:none;
+                    display:block;
+                    @media screen and (max-width: $sm-break){
+                        padding-left:126px;
+                        height:116px;
+                    }
+
+                    > h2 {
+                        margin-top:12px;
+                        font-size: em(24);
+                        font-weight:600;
+                        color:white;
+                        padding-bottom:15px;
+                        border-bottom: solid 1px #dadada;
+                    
+                        @media screen and (max-width: $mmd-break){
+                            font-size: em(28);
+                            margin: 50px 0 0 0;
+                            min-height:110px;
+                            padding-bottom:30px;
+                        }
+                        @media screen and (max-width: $sm-break){
+                            margin: 12px 0 0 0;
+                            min-height:auto;
+                            padding-bottom:15px;
+                        }
+
+                    }
+                }  
+            }
+
+        }
+    }
+
     &.inverted{
         @media screen and (min-width: $sm-break){
             > a.card{

@@ -8444,7 +8444,7 @@ p.foundingpartners {
           display: block;
           padding-top: 15px; } }
       .site-footer .footer-btm .rooms-link > ul li {
-        margin-right: 36px; }
+        margin-right: 26px; }
         .site-footer .footer-btm .rooms-link > ul li:last-child {
           margin-right: 0; }
         @media screen and (max-width: 768px) {
@@ -8453,7 +8453,7 @@ p.foundingpartners {
         .site-footer .footer-btm .rooms-link > ul li a {
           display: block; }
           .site-footer .footer-btm .rooms-link > ul li a img {
-            height: 20px;
+            height: 19px;
             width: auto;
             max-width: 100%; }
 
@@ -12314,6 +12314,9 @@ body.channel.contact .form button {
       @media screen and (max-width: 620px) {
         .card-rec a.card > article > .content > p {
           display: none; } }
+    @media screen and (max-width: 768px) {
+      .card-rec a.card > article > .content > .author > p {
+        font-size: 1em; } }
     @media screen and (max-width: 620px) {
       .card-rec a.card > article > .content > .author {
         display: none; } }
@@ -12365,6 +12368,72 @@ body.channel.contact .form button {
   @media screen and (max-width: 768px) {
     .card-sm {
       margin-bottom: -2px; } }
+  .card-sm.advert a.card {
+    margin-left: -35px;
+    background: #0082c9; }
+    @media screen and (max-width: 1200px) {
+      .card-sm.advert a.card {
+        margin-left: 0; } }
+    @media screen and (max-width: 768px) {
+      .card-sm.advert a.card {
+        margin-left: -15px; } }
+    @media screen and (max-width: 992px) {
+      .card-sm.advert a.card > article {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 235px;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap; } }
+    @media screen and (max-width: 768px) {
+      .card-sm.advert a.card > article {
+        display: block;
+        height: auto !important; } }
+    .card-sm.advert a.card > article figure {
+      height: 312px; }
+      @media screen and (max-width: 992px) {
+        .card-sm.advert a.card > article figure {
+          width: 330px;
+          height: 235px;
+          -ms-flex: 0 0 330px;
+          -webkit-flex: 0 0 330px;
+          flex: 0 0 330px;
+          overflow: hidden;
+          float: left; } }
+      @media screen and (max-width: 768px) {
+        .card-sm.advert a.card > article figure {
+          height: 116px;
+          width: 116px; } }
+      .card-sm.advert a.card > article figure > img {
+        object-fit: fill; }
+    .card-sm.advert a.card > article > .content {
+      border: none;
+      display: block; }
+      @media screen and (max-width: 768px) {
+        .card-sm.advert a.card > article > .content {
+          padding-left: 126px;
+          height: 116px; } }
+      .card-sm.advert a.card > article > .content > h2 {
+        margin-top: 12px;
+        font-size: 1.6em;
+        font-weight: 600;
+        color: white;
+        padding-bottom: 15px;
+        border-bottom: solid 1px #dadada; }
+        @media screen and (max-width: 992px) {
+          .card-sm.advert a.card > article > .content > h2 {
+            font-size: 1.86667em;
+            margin: 50px 0 0 0;
+            min-height: 110px;
+            padding-bottom: 30px; } }
+        @media screen and (max-width: 768px) {
+          .card-sm.advert a.card > article > .content > h2 {
+            margin: 12px 0 0 0;
+            min-height: auto;
+            padding-bottom: 15px; } }
   @media screen and (min-width: 768px) {
     .card-sm.inverted > a.card {
       background-color: #000;
