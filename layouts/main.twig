@@ -61,7 +61,7 @@
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
             <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=149' type='text/css' media='all' />
+            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=151' type='text/css' media='all' />
         {% endif %}
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
@@ -384,12 +384,14 @@
 
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
+    {% set roomInfo = [] %}
     {% set menuItems = blogData.blogHeaderMenu %}
     {% set rooms = [] %}
     {% for room in menuItems  %}
         {% set rooms = rooms | merge([room.blogTitle | lower]) %}
         {% if (room.blogTitle == blogName) %}
             {% set submenu = room.children %}
+            {% set roomInfo = [room.blogTitle, room.link] %}
         {% endif %} 
     {% endfor %}
 
@@ -402,6 +404,7 @@
             {% for childItem in room.children if submenu | length == 0 %}
                 {% if (childItem.menu_blog_id == blogData.id) %}
                     {% set submenu = room.children %}
+                    {% set roomInfo = [room.blogTitle, room.link] %}
                 {% endif %} 
             {% endfor %}
         {% endfor %}
@@ -422,6 +425,7 @@
         pageClass: blogName,
         header_exclude: header_exclude,
         submenu: submenu,
+        roomInfo: roomInfo,
         rooms:rooms 
     }) | raw }}
 

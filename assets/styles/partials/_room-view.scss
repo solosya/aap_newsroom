@@ -24,7 +24,7 @@
         color: #FFF;
         display: table;
         padding-bottom:20px;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             padding-bottom:0;
 
         }
@@ -33,7 +33,7 @@
     a {
         padding-bottom:15px;
         color:white;
-        // @media screen and (max-width: $sm-break){
+        // @media screen and (max-width: $mobile-break){
         //     padding-bottom:0;
 
         // }
@@ -51,7 +51,7 @@
         // margin-bottom: 17px;
         // border-right: 1px solid #d4d4d4;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             // border-bottom: 1px solid #d4d4d4;
             border-right: 0;
             display: -webkit-box;
@@ -68,7 +68,7 @@
         > figure{
             // margin-bottom: 20px;
             position: relative;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 width: 115px;
                 flex: 0 0 115px;
                 margin-right: 10px;
@@ -93,7 +93,7 @@
                         height: 40px;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         width: 30px;
                         height: 30px;
                     }
@@ -155,13 +155,13 @@
         
 
         > a {
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 padding-top:10px;
                 padding-bottom:15px;
             }
         }
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             border-right: none;
             border-top: 1px solid #dadada;
             padding-left:0;
@@ -170,14 +170,14 @@
 
         article {
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 padding:10px 0 0 0;
             }
 
 
            // > figure{
            //      img {
-           //          @media screen and (max-width: $sm-break){
+           //          @media screen and (max-width: $mobile-break){
            //              margin-top:10px;
            //          }
            //      }
@@ -190,7 +190,7 @@
 
                 > .category{
 
-                    @media screen and (max-width: $sm-break) {
+                    @media screen and (max-width: $mobile-break) {
                         font-family: $font-family-sans-serif;
                         font-size: em(12);
                         text-transform: uppercase;
@@ -207,7 +207,7 @@
                 }
 
                 > time {
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         display: none;
                     }
                 }
@@ -235,7 +235,7 @@
         border-bottom: 1px solid #dadada;
         margin-bottom: 25px;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             flex-wrap: wrap;
             -webkit-flex-wrap: wrap;
             border-bottom: none;
@@ -252,7 +252,7 @@
                 flex: 0 0 54%;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 width: 100%;
                 flex: 0 0 100%;
             }
@@ -274,7 +274,7 @@
                     width:100px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     top: 45%;
                     left: 43%;
                     height:51px;
@@ -303,7 +303,7 @@
 
             > .category{
 
-                @media screen and (max-width: $sm-break) {
+                @media screen and (max-width: $mobile-break) {
                     font-family: $font-family-sans-serif;
                     font-size: em(12);
                     text-transform: uppercase;
@@ -317,7 +317,7 @@
                 @media screen and (max-width: $md-break){
                     font-size: em(38);
                 }
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     font-size: em(24);
                 }
             }
@@ -328,7 +328,7 @@
                 @media screen and (max-width: $md-break){
                     font-size: em(16);
                 }
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     display: none;
                 }
             }

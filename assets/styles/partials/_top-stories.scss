@@ -154,71 +154,52 @@
             }
         }
 
+        &.social {
+            .content {
+                .category {
+                    margin-top:0;
+                    margin-bottom:8px;
+                }
+        
+                > p {
+                    display:block;
+                    height:48px;
 
+                    // display: block;
+                    // // background:rgba(20, 200, 100, .1);
+                    // font-size: em(18);
+                    // height:117px;
+                    // padding-bottom:27px;
+                }
+            }
+
+            // &.without__image {
+
+            //     .content {
+            //         height:100%;
+
+            //         > p {
+            //             height: 225px;
+            //             margin-bottom:52px;
+
+            //             @media screen and (max-width: $sm-break){
+            //                 height:auto;
+            //             }
+            //         }
+            //     }
+            // }
+
+
+
+        }
 
 
         &.youtube{
             .content{
                 p{
-                    display:block;
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
                 }
             }
         }
-        &.facebook{
-            .content{
-                p{
-                    display:block;
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
-                }
-            }
-        }
-        &.pinterest{
-            .content{
-                p{
-                    display:block;
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
-                }
-            }
-        }
-        &.vimeo{
-            .content{
-                p{
-                    display:block;
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
-                }
-            }
-        }
-
-        &.twitter{
-            .content{
-                p{
-                    display:block;
-                    background:green;
-                    font-size: 28px;
-                    font-weight: normal;
-                }
-            }
-        }
-
-        &.instagram{
-            .content{
-                p{
-                    display:block;
-                    font-size: 28px;
-                    font-weight: normal;
-                }
-            }
-        }
-
 
     }
 }

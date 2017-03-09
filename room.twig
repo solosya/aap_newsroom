@@ -72,63 +72,65 @@
                     </div><!-- .col-sm-8-->
 
                     <div class="col-sm-12 col-md-4 sidebar">
+                        
+                        <div class="row">
+                        
+                            <section class="col-sm-6 col-md-12 add sidebar-add">
+                               <div class="block hidden-xs">
+                                   <div id='sidepanelAd' style='height:600px; width:300px;'>
+                                        <script>
+                                            document.currentScript.parentNode.id = sidepanelID;
+                                            googletag.cmd.push(function() { googletag.display(sidepanelID); });
+                                        </script>
+                                    </div>
+                                    <span class="add-text">Advertisement</span>
+                                </div><!--block-->
 
-                        <section class="add sidebar-add">
-                           <div class="block hidden-xs">
-                               <div id='sidepanelAd' style='height:600px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = sidepanelID;
-                                        googletag.cmd.push(function() { googletag.display(sidepanelID); });
-                                    </script>
-                                </div>
-                                <span class="add-text">Advertisement</span>
-                            </div><!--block-->
-
-                            <div class="block visible-xs-block">
-                                <div id='boxadID' style='height:250px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = boxadID;
-                                        googletag.cmd.push(function() { googletag.display(boxadID); });
-                                    </script>
-                                </div>
-                                <span class="add-text">Advertisement</span>
-                            </div><!--block-->
-                        </section>
+                                <div class="block visible-xs-block">
+                                    <div id='boxadID' style='height:250px; width:300px;'>
+                                        <script>
+                                            document.currentScript.parentNode.id = boxadID;
+                                            googletag.cmd.push(function() { googletag.display(boxadID); });
+                                        </script>
+                                    </div>
+                                    <span class="add-text">Advertisement</span>
+                                </div><!--block-->
+                            </section>
 
 
 
-                        <section class="room-top-stories">
-                            <h2>Top stories</h2>
+                            <section class="col-sm-6 col-md-12 room-top-stories">
+                                <h2>Top stories</h2>
 
-                            {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
-                            {% if popularArticles|length > 0 %}
-                                {% set counter = 1 %}
+                                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
+                                {% if popularArticles|length > 0 %}
+                                    {% set counter = 1 %}
 
-                                <ul>
-                                {% for article in popularArticles %}
-                                    <li>
-                                        <span>{{counter}}.</span>
-                                        {{this.render('partials/_single-article.twig', {article: article, containerClass: ''}) | raw}}
-                                    </li>
-                                    {% set counter = counter + 1 %}
+                                    <ul>
+                                    {% for article in popularArticles %}
+                                        <li>
+                                            <span>{{counter}}.</span>
+                                            {{this.render('partials/_single-article.twig', {article: article, containerClass: ''}) | raw}}
+                                        </li>
+                                        {% set counter = counter + 1 %}
 
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p class="nodata text-center">No data found.</p>
+                                    {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p class="nodata text-center">No data found.</p>
+                                {% endif %}
+
+                            </section><!--sidebar-news-->
+
+
+                            {% if articles[articleCount] %}                                                                
+                            <section class="col-sm-12 sidebar-inverted">
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                            </section>
                             {% endif %}
 
-                        </section><!--sidebar-news-->
-
-
-                    {% if articles[articleCount] %}                                                                
-                    <section class="sidebar-inverted">
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                    </section>
-                    {% endif %}
-
-
+                        </div> <!-- .row-->
                     </div><!-- .col-sm-4-->
 
                 </div><!-- .row-->

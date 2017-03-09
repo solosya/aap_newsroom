@@ -125,6 +125,20 @@
 
                          </div><!--card-group-->
 
+                        <section class="add sidebar-add hidden-md hidden-lg">
+
+                            <div id='boxad' style='height:250px; width:300px;'>
+                                <script>
+                                    document.currentScript.parentNode.id = boxadID;
+                                    googletag.cmd.push(function() { googletag.display(boxadID); });
+                                </script>
+                            </div>
+                            <span class="add-text">Advertisement</span>
+                            <!--block-->
+                        </section>
+
+
+
                         <div class="row">
                             <div class="card-group">
                                
@@ -153,17 +167,6 @@
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
-                        <section class="add sidebar-add hidden-md hidden-lg">
-
-                            <div id='boxad' style='height:250px; width:300px;'>
-                                <script>
-                                    document.currentScript.parentNode.id = boxadID;
-                                    googletag.cmd.push(function() { googletag.display(boxadID); });
-                                </script>
-                            </div>
-                            <span class="add-text">Advertisement</span>
-                            <!--block-->
-                        </section>
 
 
 
@@ -227,7 +230,7 @@
 
                                 <div class="future-learning-sponsors">
                                     <p>Sponsored by</p>
-                                    <img src="{{networkData.templatePath}}/static/images/vicuni.png" alt="ANZ">
+                                    <img src="{{networkData.templatePath}}/static/images/vicuni.jpg" alt="ANZ">
                                 </div><!-- .sponsors-->
 
                             </header>
@@ -410,7 +413,7 @@
             </div><!-- .container-->
 
 
-            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+{#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
             <section class="room-corporate">
                 <div class="container">
                     <header>
@@ -429,7 +432,7 @@
                     </div><!-- .row-->
                 </div>
             </section><!-- .room-corporate-->
-            {% endif %}
+            {% endif %} #}
 
             <section class="sponsor-logos">
                 <div class="container">

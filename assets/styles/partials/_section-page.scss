@@ -94,6 +94,10 @@
     .section-sidepanel-news {
 
         padding-left: 15px;
+        
+        @media screen and (max-width: $mobile-break) {
+            padding-left:0;
+        }
 
         a.card {
                 

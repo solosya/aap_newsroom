@@ -59,7 +59,7 @@
                     margin-bottom: 5px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     width: 105px;
                     flex: 0 0 105px;
                 }
@@ -80,7 +80,7 @@
                     display: block;
                     line-height: 1;
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         font-family: $font-family-sans-serif;
                         font-size: em(12);
                         text-transform: uppercase;
@@ -101,7 +101,7 @@
                     line-height: 1.02;
                     margin-bottom: 20px;
                     margin-top:21px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         font-size: em(16);
                         margin-top: 5px;
                         margin-bottom: 5px;
@@ -115,7 +115,7 @@
                     // color:$black;
                     font-size: em(14);
                     font-weight: bold;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         font-size: em(9.5);
                     }
                 }
@@ -129,7 +129,7 @@
         margin-bottom: 28px;
         position: relative;
         overflow: hidden;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             height: auto;
             margin-left: -15px;
             margin-right: -15px;
@@ -143,7 +143,7 @@
             background: #27aae1;
             position: absolute;
             z-index: 2;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 display: none;
             }
         }
@@ -156,7 +156,7 @@
                 padding-left: 60px;
                 padding-top:80px;
                 color: #FFF;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     position: relative;
                     width: 100%;
                     color: #000;
@@ -168,7 +168,7 @@
                     font-weight: bold;
                     color: #FFF;
                     text-transform: uppercase;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         color: #8a8b93;
                         font-family: $font-family-sans-serif;
                         font-size: em(12);
@@ -183,7 +183,7 @@
                     color: #FFF;
                     margin-bottom: 40px;
                     margin-top: 21px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         color: #000;
                         font-size: em(22);
                         margin-top: 13px;
@@ -197,7 +197,7 @@
                     line-height: 1.25;
                     color: #FFF;
                     margin-bottom: 30px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         display: none;
                     }
                 }
@@ -213,7 +213,7 @@
                     font-size: em(14);
                     font-weight: bold;
                     color: #FFF;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         color: #000;
                     }
                 }
@@ -223,7 +223,7 @@
                 height: 430px;
                 position: absolute;
                 z-index: 1;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     position: relative;
                     max-height: 415px;
                     &:before{
@@ -238,7 +238,7 @@
                     }
                 }
                 
-                // @media screen and (min-width:$sm-break) and (max-width:$mmd-break){
+                // @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
                 @media screen and (max-width: $sm-mobile-break){
                     max-height: 260px;
                 }
@@ -251,7 +251,7 @@
                     content: '';
                     width: 100%;
                     height: 430px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $mobile-break){
                         display: none;
                     }
                 }

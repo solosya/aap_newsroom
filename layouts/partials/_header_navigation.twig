@@ -35,11 +35,12 @@
                     <ul>
 
                         {% set menuItems = blog.blogHeaderMenu %}
+                            {# {{dump(menuItems)}} #}
                         {% for parentItem in menuItems  %}
                             {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                             {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                            {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
+                            {% if (parentItem.blogTitle != roomInfo[0] ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
@@ -60,13 +61,8 @@
         <div class="site-branding-bottom row">
             <div class="section-left col-md-4 col-sm-6">
                 <div class="logo pull-left">
-                    <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        {% if (pageClass | lower not in rooms) %}
-                            <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?cache=1" alt="logo" class="main-logo">
-                        {% else %}
-                            <img src="{{networkData.templatePath}}/static/images/{{pageClass | lower}}-logo.svg?cache=1" alt="logo" class="main-logo">
-                        {% endif  %}
-
+                    <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home">
+                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?cache=1" alt="logo" class="main-logo">
                         <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
                     </a>
                 </div>
@@ -180,7 +176,7 @@
                         <ul>
 
                             {% set menuItems = blog.blogHeaderMenu %}
-                            {% for i, parentItem in menuItems | slice(0, 5) %}
+                            {% for parentItem in menuItems  %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 {% if (parentItem.blogTitle != pageClass) %}
