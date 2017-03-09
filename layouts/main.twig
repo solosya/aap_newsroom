@@ -252,6 +252,7 @@
     {% set businessroomAddClass = ['boardroom', 'real economy'] %}
     {% set futurelearningAddClass = ['futurelearning'] %}
     {% set corporateAddClass = ['corporateroom'] %}
+    {% set engineAddClass = ['engineroom'] %}
         
 
     {% set boxadID = 'div-gpt-ad-1488757884390-0' %}
@@ -306,6 +307,20 @@
 
         {% set tinybannerID = 'div-gpt-ad-1488761921892-3' %}
         {% set tinybannerSlot = '/268436641/tinybanner1/learntinybanner' %}
+    {% endif %}
+
+     {% if (blogName | lower in engineAddClass) %}
+        {% set boxadID = 'div-gpt-ad-1489014661945-0' %}
+        {% set boxadSlot = '/268436641/boxad1/enginebox' %}
+
+        {% set sidepanelID = 'div-gpt-ad-1489014661945-1' %}
+        {% set sidepanelSlot = '/268436641/sidepanel1/enginepanel' %}
+
+        {% set smallbannerID = 'div-gpt-ad-1489014661945-2' %}
+        {% set smallbannerSlot = '/268436641/smlbanner1/enginebanner' %}
+
+        {% set tinybannerID = 'div-gpt-ad-1489014661945-3' %}
+        {% set tinybannerSlot = '/268436641/tinybanner1/enginetinybanner' %}
     {% endif %}
 
     {% if (blogName | lower in corporateAddClass) %}
