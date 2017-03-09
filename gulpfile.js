@@ -44,7 +44,7 @@ gulp.task('cacheBuster', function () {
 // });
 
 
-gulp.task('styles', function() {
+gulp.task('styles', ['minify-css'], function() {
     return gulp.src('./assets/styles/**/*.scss')
 		.pipe(sourcemaps.init())
     	.pipe(sass({includePaths: ['./assets/styles','./assets/styles/partials']}).on('error', sass.logError))

@@ -7728,8 +7728,12 @@ span.leadsentence {
   font-size: 0.8em;
   color: #6c6c6c; }
 
+p.foundingpartners {
+  margin: 0 0 25px 0;
+  text-align: center;
+  color: #8a8b93; }
+
 .sponsor-logos {
-  margin-top: 80px;
   width: 100%;
   text-align: center; }
   @media screen and (max-width: 768px) {
@@ -8177,6 +8181,8 @@ span.leadsentence {
     float: left;
     margin-top: 5px;
     margin-bottom: 0; }
+    .sidebar-news header > h3 > span {
+      font-weight: 700; }
   .sidebar-news header > img {
     float: right; }
 
@@ -8221,7 +8227,7 @@ span.leadsentence {
     .sidebar-news a.card > article .content > h2 {
       font-weight: 700;
       font-size: 1.46667em;
-      height: 45px;
+      height: 55px;
       overflow: hidden;
       text-overflow: ellipsis; }
       @media screen and (max-width: 768px) {
@@ -8311,7 +8317,7 @@ span.leadsentence {
 
 .site-footer {
   width: 100%;
-  margin-top: 130px; }
+  margin-top: 60px; }
   @media screen and (max-width: 768px) {
     .site-footer {
       margin-top: 55px; } }
@@ -11318,6 +11324,9 @@ button.swiper-pagination-bullet {
 
 .roompage .featured-slider {
   margin-bottom: 120px; }
+  @media screen and (max-width: 620px) {
+    .roompage .featured-slider {
+      margin-bottom: 30px; } }
 
 .roompage .featured a.card .content {
   padding: 232px 29px 36px 31px; }
@@ -12443,6 +12452,12 @@ body.channel.contact .form button {
             font-size: 0.66667em; } }
       .card-sm a.card > article > .content p {
         display: none; }
+    .card-sm a.card.without__image .content {
+      height: 333px; }
+      .card-sm a.card.without__image .content > h2 {
+        margin-top: 60px;
+        font-size: 30px;
+        height: 190px; }
     .card-sm a.card.social .content .category {
       margin-top: 0;
       margin-bottom: 8px; }

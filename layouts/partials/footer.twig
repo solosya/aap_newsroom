@@ -3,7 +3,7 @@
     <div class="footer-top">
         <div class="container">        
             <div class="row">
-                <div class="col-sm-12 col-md-3 icon-wrapper">
+                <div class="col-sm-6 col-md-3 icon-wrapper">
                     <a class="footer-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                         <img src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo">
                     </a>
@@ -63,11 +63,11 @@
                     <div class="rooms-link">
                         <ul>
                             {% set menuItems = blog.blogHeaderMenu %}
-                            {% for i, parentItem in menuItems | slice(0, 5) %}
+                            {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                                {% if (parentItem.blogTitle != pageClass and parentItem.blogTitle | lower != header_exclude) %}
-
+                                
+                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=1" alt="{{parentItem.blogTitle}}-logo.svg">
