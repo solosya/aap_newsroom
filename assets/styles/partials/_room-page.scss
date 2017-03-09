@@ -36,6 +36,11 @@
     .featured-slider {
         margin-bottom: 120px;
 
+        @media screen and (max-width: $sm-break){
+            margin-bottom: 50px;
+        }
+
+
         @media screen and (max-width: $mobile-break){
             margin-bottom: 30px;
         }
