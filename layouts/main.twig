@@ -256,7 +256,7 @@
 
 
 
-    {% set sportsroomAddClass = ['golf', 'basketball', 'cricket', 'rugby', 'soccer', 'tennis', 'sportsroom'] %}
+    {% set sportsroomAddClass = ['sportsroom'] %}
     {% set businessroomAddClass = ['boardroom', 'real economy'] %}
     {% set futurelearningAddClass = ['futurelearning'] %}
     {% set corporateAddClass = ['corporateroom'] %}
@@ -379,9 +379,13 @@
                 {{room}}
         {% endfor %}
         {% for menu in submenu  %}
-            {{menu}}
+            menu
+            {% for m in menu  %}
+                {{m}}
+            {% endfor %}
         {% endfor %}
 
+        {{roomInfo[0]}}
     </div>
 
 
