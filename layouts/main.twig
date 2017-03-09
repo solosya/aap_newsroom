@@ -414,7 +414,12 @@
         {% set header_exclude = 'newsroom' %}
     {% endif %} 
 
-    
+    <div class="hidden-xs hidden-sm hidden-md hidden-lg">
+            {% for room in rooms  %}
+                {{room}}
+          {% endfor %}
+
+    </div>
 
     {{ this.render('partials/_header_navigation.twig', {
         blog : blogData, 
