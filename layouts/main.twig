@@ -211,41 +211,49 @@
 
     </script>
      
-    
+  
+
+
+
+    {# 'figure out the nav sub menu to send through to the header and footer' #}
+    {% set submenu = [] %}
+    {% set roomInfo = ['newsroom'] %}
+    {% set menuItems = blogData.blogHeaderMenu %}
+    {% set rooms = [] %}
+    {% for room in menuItems  %}
+        {% set rooms = rooms | merge([room.blogTitle | lower]) %}
+        {% if (room.blogTitle == blogName) %}
+            {% set submenu = room.children %}
+            {% set roomInfo = [room.blogTitle, room.link] %}
+        {% endif %} 
+    {% endfor %}
+
+    {# futurelearning to be treated like a room kinda #}
+    {% set rooms = rooms | merge(['futurelearning']) %}
+
+
+    {% if (submenu | length == 0 and blogName | lower not in rooms) %}
+        {% for room in menuItems if submenu | length == 0 %}
+            {% for childItem in room.children if submenu | length == 0 %}
+                {% if (childItem.menu_blog_id == blogData.id) %}
+                    {% set submenu = room.children %}
+                    {% set roomInfo = [room.blogTitle, room.link] %}
+                {% endif %} 
+            {% endfor %}
+        {% endfor %}
+    {% endif %} 
+
+    {# 'Newsroom is the default header logo but want to suppress it in
+     top 'room' nav when a sub channel is active' #}
+    {% set header_exclude = '' %}
+    {% if (blogName | lower not in rooms) %}
+        {% set header_exclude = 'newsroom' %}
+    {% endif %} 
 
 
 
 
-{#     {% if (blogName | lower == 'golf') or (blogName | lower == 'basketball') or (blogName | lower == 'cricket') or (blogName | lower == 'rugby') or (blogName | lower == 'soccer') or (blogName | lower == 'tennis') or (blogName | lower == 'sportsroom') %}
-        <script>
-            googletag.cmd.push(function() {
-                googletag.defineSlot('/268436641/boxad1/sportbox', [300, 250], 'div-gpt-ad-1488502133668-0').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/sidepanel1/sportpanel', [300, 600], 'div-gpt-ad-1488502133668-1').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/smlbanner1/sportbanner', [[728, 90], [728, 250]], 'div-gpt-ad-1488502133668-2').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/tinybanner1/sporttinybanner', [300, 75], 'div-gpt-ad-1488502133668-3').addService(googletag.pubads());
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().collapseEmptyDivs();
-                googletag.pubads().enableVideoAds();
-                googletag.companionAds().setRefreshUnfilledSlots(true);
-                googletag.enableServices();
-            });
-        </script>
-    {% elseif blogName | lower == 'businessroom' %}
 
-    {% elseif blogName | lower == 'futurelearning' %}
-    {% else %}
-        <script>
-            googletag.cmd.push(function() {
-                googletag.defineSlot('/268436641/boxad1', [300, 250], 'div-gpt-ad-1488502464882-0').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/sidepanel1', [300, 600], 'div-gpt-ad-1488502464882-1').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/smlbanner1', [[728, 250], [728, 90]], 'div-gpt-ad-1488502464882-2').addService(googletag.pubads());
-                googletag.defineSlot('/268436641/tinybanner1', [300, 75], 'div-gpt-ad-1488502464882-3').addService(googletag.pubads());
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().collapseEmptyDivs();
-                googletag.enableServices();
-            });
-        </script>
-    {% endif %} #}
 
 
     {% set sportsroomAddClass = ['golf', 'basketball', 'cricket', 'rugby', 'soccer', 'tennis', 'sportsroom'] %}
@@ -365,6 +373,19 @@
 
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 
+
+    <div class="hidden-xs hidden-sm hidden-md hidden-lg">
+        {% for room in rooms  %}
+                {{room}}
+        {% endfor %}
+        {% for menu in submenu  %}
+            {{menu}}
+        {% endfor %}
+
+    </div>
+
+
+
     {{ this.beginBody() }}
      
         <div class="add add-header-top">
@@ -381,48 +402,6 @@
 
 
 
-
-    {# 'figure out the nav sub menu to send through to the header and footer' #}
-    {% set submenu = [] %}
-    {% set roomInfo = ['newsroom'] %}
-    {% set menuItems = blogData.blogHeaderMenu %}
-    {% set rooms = [] %}
-    {% for room in menuItems  %}
-        {% set rooms = rooms | merge([room.blogTitle | lower]) %}
-        {% if (room.blogTitle == blogName) %}
-            {% set submenu = room.children %}
-            {% set roomInfo = [room.blogTitle, room.link] %}
-        {% endif %} 
-    {% endfor %}
-
-    {# futurelearning to be treated like a room kinda #}
-    {% set rooms = rooms | merge(['futurelearning']) %}
-
-
-    {% if (submenu | length == 0 and blogName | lower not in rooms) %}
-        {% for room in menuItems if submenu | length == 0 %}
-            {% for childItem in room.children if submenu | length == 0 %}
-                {% if (childItem.menu_blog_id == blogData.id) %}
-                    {% set submenu = room.children %}
-                    {% set roomInfo = [room.blogTitle, room.link] %}
-                {% endif %} 
-            {% endfor %}
-        {% endfor %}
-    {% endif %} 
-
-    {# 'Newsroom is the default header logo but want to suppress it in
-     top 'room' nav when a sub channel is active' #}
-    {% set header_exclude = '' %}
-    {% if (blogName | lower not in rooms) %}
-        {% set header_exclude = 'newsroom' %}
-    {% endif %} 
-
-    <div class="hidden-xs hidden-sm hidden-md hidden-lg">
-            {% for room in rooms  %}
-                {{room}}
-          {% endfor %}
-
-    </div>
 
     {{ this.render('partials/_header_navigation.twig', {
         blog : blogData, 
