@@ -230,7 +230,7 @@
     {% endfor %}
 
     {# futurelearning to be treated like a room kinda #}
-    {% set rooms = rooms | merge(['future-learning']) %}
+    {% set rooms = rooms | merge(['futurelearning']) %}
 
 
     {% if (submenu | length == 0 and blogName | lower not in rooms) %}
@@ -259,7 +259,7 @@
 
     {% set sportsroomAddClass = ['sportsroom'] %}
     {% set businessroomAddClass = ['boardroom', 'real economy'] %}
-    {% set futurelearningAddClass = ['future-learning'] %}
+    {% set futurelearningAddClass = ['futurelearning'] %}
     {% set corporateAddClass = ['corporateroom'] %}
     {% set engineAddClass = ['engineroom'] %}
         
