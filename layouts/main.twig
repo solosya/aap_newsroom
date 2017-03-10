@@ -244,6 +244,12 @@
         {% endfor %}
     {% endif %} 
 
+ {% if (blogName | lower == 'futurelearning') %}
+        {% set roomInfo = ['futurelearning', room.link] %}
+ {% endif %}
+
+
+
     {# 'Newsroom is the default header logo but want to suppress it in
      top 'room' nav when a sub channel is active' #}
     {% set header_exclude = '' %}
@@ -374,7 +380,7 @@
 
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 
-{# 
+
     <div class="hidden-xs hidden-sm hidden-md hidden-lg">
         {% for room in rooms  %}
                 {{room}}
@@ -387,7 +393,7 @@
         {% endfor %}
 
         {{roomInfo[0]}}
-    </div> #}
+    </div>
 
 
 
