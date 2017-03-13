@@ -72,6 +72,10 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+    <!-- Google Tag Manager -->
+    {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
+        {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
+    {% endif %}
 
 <script>
     (function(d) {
