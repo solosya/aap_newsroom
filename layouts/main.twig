@@ -76,7 +76,7 @@
     {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
         {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
     {% endif %}
-
+{# 
 <script>
     (function(d) {
       var el, fjs = d.getElementsByTagName('script')[0];
@@ -87,7 +87,7 @@
     }(document));
 </script>
 
-
+ #}
 {# <script id="js-pp-banner" src="//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm"></script> #}
 
     {% set themeColors = networkData['styling']['colours'] %}
