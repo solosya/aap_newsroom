@@ -77,6 +77,33 @@
                 float: left;
                 margin-right: 14px;
 
+
+                &.video {
+
+                    &:after{
+                        top: 28%;
+                        left: 28%;
+                        width: 45px;
+                        height: 45px;
+
+                        @media screen and (max-width: $md-break){
+                            top: 15%;
+                            left: 18%;
+                            // width: 40px;
+                            // height: 40px;
+                        }
+
+                        @media screen and (max-width: $sm-break){
+                            // width: 30px;
+                            // height: 30px;
+                        }
+                    }
+
+                }
+
+
+
+
                 @media screen and (max-width: $md-break){
                     width: 65px;
                     flex: 0 0 65px;

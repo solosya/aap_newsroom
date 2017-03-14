@@ -230,8 +230,8 @@
 
                                 <div class="future-learning-sponsors">
                                     <p>Sponsored by</p>
-                                    <img src="{{networkData.templatePath}}/static/images/VIC-LOGO-Landscape-Green.svg" alt="vicuni" style="height:31px" >
-                                    <img src="{{networkData.templatePath}}/static/images/UOA-H-Blue.svg" alt="UOA" style="height:31px; margin-left:5px" >
+                                    <img src="{{networkData.templatePath}}/static/images/VIC-LOGO-Landscape-Green.svg?ver=1" alt="vicuni" style="height:37px" >
+                                    <img src="{{networkData.templatePath}}/static/images/UOA-H-Blue.svg" alt="UOA" style="height:37px; margin-left:10px" >
                                 </div><!-- .sponsors-->
 
                             </header>
@@ -388,7 +388,7 @@
                {% endif %}
 
 
-                {% if sections['engineroom'].feed.articles|length > 0 %}
+{#                 {% if sections['engineroom'].feed.articles|length > 0 %}
                 <section class="room-engine">
                     <header>
                         <a href="{{ sections['engineroom'].link }}">
@@ -409,10 +409,8 @@
                         </div><!-- .content-->
                 </section><!-- .room-living-->
                 {% endif %}
-
-
             </div><!-- .container-->
-
+ #}
 
 {#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
             <section class="room-corporate">

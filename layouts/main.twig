@@ -57,12 +57,12 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=87" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=96" type="text/css" media="all">
         {% else %}
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
             <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=158' type='text/css' media='all' />
+            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=161' type='text/css' media='all' />
         {% endif %}
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
@@ -222,7 +222,7 @@
 
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
-    {% set roomInfo = ['newsroom'] %}
+    {% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
     {% set menuItems = blogData.blogHeaderMenu %}
     {% set rooms = [] %}
     {% for room in menuItems  %}

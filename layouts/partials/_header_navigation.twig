@@ -193,7 +193,7 @@
                     <div class="secondary-menu">
                         <ul>
                             <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                            <li><a href="http://{{networkData.defaultDomain.domain}}/@about">About</a></li>
+                            <li><a href="https://{{networkData.defaultDomain.domain}}/@about">About</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div><!-- .secondary-menu-->
@@ -308,10 +308,10 @@
               </div>
               <ul class="profile__menu-navigation">
                   {% if _User.isAdminUser() %}
-                      <li><a class="profile__menu-navigation-link" href="http://{{networkData.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
+                      <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
                   {% endif %}
                   <li><a class="profile__menu-navigation-link" href="{{blogUrl}}/profile/{{user.username}}">View Profile</a></li>
-                  <li><a class="profile__menu-navigation-link" href="http://{{networkData.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
+                  <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
                   <li><a class="profile__menu-navigation-link" href="{{_AppHelper.getLogoffUrl()}}">Sign Out</a></li>
               </ul>
             </div>

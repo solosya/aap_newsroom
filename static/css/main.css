@@ -8447,7 +8447,7 @@ p.foundingpartners {
     .site-footer .footer-btm .footer-menu > ul > li > a {
       color: #000;
       font-size: 0.93333em;
-      text-transform: capitalize; }
+      text-transform: none; }
     .site-footer .footer-btm .rooms-link {
       float: right; }
       @media screen and (max-width: 768px) {
@@ -10938,7 +10938,7 @@ button.swiper-pagination-bullet {
     @media screen and (max-width: 768px) {
       .article article.article-main .page-content .content h1 {
         font-size: 2em; } }
-  .article article.article-main .page-content .content > p {
+  .article article.article-main .page-content .content p {
     font-size: 1.33333em;
     font-weight: normal;
     font-style: normal;
@@ -10949,18 +10949,18 @@ button.swiper-pagination-bullet {
     padding-right: 10px;
     clear: both; }
     @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content > p {
+      .article article.article-main .page-content .content p {
         color: #8a8b93; } }
-    .article article.article-main .page-content .content > p.lead {
+    .article article.article-main .page-content .content p.lead {
       font-weight: bold;
       color: #4a4a4a; }
       @media screen and (max-width: 768px) {
-        .article article.article-main .page-content .content > p.lead {
+        .article article.article-main .page-content .content p.lead {
           color: #8a8b93; } }
-    .article article.article-main .page-content .content > p:last-child {
+    .article article.article-main .page-content .content p:last-child {
       margin-bottom: 50px; }
     @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content > p {
+      .article article.article-main .page-content .content p {
         font-size: 1.06667em; } }
   .article article.article-main .page-content .content blockquote {
     font-size: 2.13333em;
@@ -10968,7 +10968,7 @@ button.swiper-pagination-bullet {
     font-family: "tinos", Helvetica, Arial, sans-serif;
     padding-left: 0;
     border: 0; }
-    .article article.article-main .page-content .content blockquote:before, .article article.article-main .page-content .content blockquote:after {
+    .article article.article-main .page-content .content blockquote:after, .article article.article-main .page-content .content blockquote:before {
       width: 62px;
       height: 2px;
       background: #e22f22;
@@ -11391,20 +11391,22 @@ button.swiper-pagination-bullet {
   .roompage .card-rec a.card .content time {
     display: none; } }
 
-.roompage .top-stories a.card > article > figure {
-  height: auto;
-  width: auto;
-  flex: none; }
-  @media screen and (max-width: 1200px) {
-    .roompage .top-stories a.card > article > figure {
-      width: 150px;
-      flex: 0 0 150px; } }
-  @media screen and (max-width: 768px) {
-    .roompage .top-stories a.card > article > figure {
-      margin-top: 6px;
-      margin-bottom: 6px;
-      width: 60px;
-      flex: 0 0 60px; } }
+.roompage .top-stories a.card > article {
+  height: 130px; }
+  .roompage .top-stories a.card > article > figure {
+    height: auto;
+    width: 203px;
+    flex: none; }
+    @media screen and (max-width: 1200px) {
+      .roompage .top-stories a.card > article > figure {
+        width: 150px;
+        flex: 0 0 150px; } }
+    @media screen and (max-width: 768px) {
+      .roompage .top-stories a.card > article > figure {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        width: 60px;
+        flex: 0 0 60px; } }
 
 .roompage .room-top-stories {
   margin-left: -35px; }
@@ -11787,6 +11789,37 @@ body.channel.contact .form button {
   border: solid 1px #e12e21;
   color: white; }
 
+body.channel.supporters h1 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 3.13333em;
+  font-weight: normal;
+  margin-bottom: 30px;
+  margin-top: 45px; }
+
+body.channel.supporters h2 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 38px;
+  margin-bottom: 15px;
+  padding: 0; }
+  body.channel.supporters h2:first-child {
+    margin-top: 0; }
+
+body.channel.supporters .content p a {
+  color: #15c; }
+
+body.channel.supporters figure > img {
+  margin: 20px 0;
+  width: 200px;
+  height: 200px; }
+
+body.channel.supporters p {
+  font-size: 1.2em; }
+  body.channel.supporters p span {
+    margin-top: 10px;
+    display: block; }
+
 .card {
   display: block; }
   .card:hover {
@@ -12010,6 +12043,8 @@ body.channel.contact .form button {
     .featured-slider {
       margin-left: -15px;
       margin-right: -15px; } }
+  .featured-slider .featured {
+    width: 100%; }
   .featured-slider .newsroom-icon {
     position: absolute;
     top: 10px;
@@ -12058,7 +12093,11 @@ body.channel.contact .form button {
       -webkit-flex: 3 0 0;
       -ms-flex: 3 0 0;
       flex: 3 0 0;
-      -moz-flex: 3 0 0; }
+      -moz-flex: 3 0 0;
+      -ms-flex-negative: 0;
+      -webkit-flex-shrink: 0;
+      flex-shrink: 0;
+      -moz-flex-shrink: 0; }
       @media screen and (max-width: 1600px) {
         .featured-slider .card figure {
           max-width: 65%;
@@ -12925,6 +12964,15 @@ body.channel.contact .form button {
     overflow: hidden;
     float: left;
     margin-right: 14px; }
+    .future-learning .furturelearning a.card > article > figure.video:after {
+      top: 28%;
+      left: 28%;
+      width: 45px;
+      height: 45px; }
+      @media screen and (max-width: 1200px) {
+        .future-learning .furturelearning a.card > article > figure.video:after {
+          top: 15%;
+          left: 18%; } }
     @media screen and (max-width: 1200px) {
       .future-learning .furturelearning a.card > article > figure {
         width: 65px;
