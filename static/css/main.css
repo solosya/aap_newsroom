@@ -7965,7 +7965,10 @@ p.foundingpartners {
 
 /* '' */
 .icon-linkedin:before {
-  content: '\e806'; }
+  content: '\e806';
+  font-size: 17px;
+  position: relative;
+  top: -1px; }
 
 /* '' */
 .icon-right-angle:after {
@@ -7973,7 +7976,11 @@ p.foundingpartners {
 
 /* '' */
 .icon-twitter:before {
-  content: '\f099'; }
+  content: '\f099';
+  position: relative;
+  top: 1px;
+  font-size: 20px;
+  left: -1px; }
 
 /* '' */
 .icon-facebook:before {
@@ -10451,7 +10458,8 @@ button.swiper-pagination-bullet {
         font-weight: normal;
         line-height: 1.02;
         margin-bottom: 20px;
-        margin-top: 21px; }
+        margin-top: 21px;
+        height: 58px; }
         @media screen and (max-width: 620px) {
           .room-sports > .articles article > .content > h2 {
             font-size: 1.06667em;
