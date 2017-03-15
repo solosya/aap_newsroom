@@ -162,19 +162,15 @@
                         {% else %}
                             <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
-
-{#                         {% if article.featuredMedia['type'] == 'video' %}
-                            <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
-                        {% endif %}
- #}
                     </figure>
                 {% endif %}
 
-                {% if cardClass == 'soundcloud' %}  
+
+                {# {% if cardClass == 'soundcloud' %}  
                     <div class="other-content">
                         <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/289583160&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_artwork=false"></iframe>
                     </div>
-                {% endif %}
+                {% endif %} #}
 
 
                 <div class="content">
