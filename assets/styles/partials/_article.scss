@@ -129,13 +129,13 @@
 				}
 			}
 
-			.content {
+			.article_content {
 				> {
 					& span, u, p, ul, li, strong, b, h1, h2, h3, h4, h5, h6, figure, figcaption, img, blockquote {
 						&[style] {
 						font-size: inherit!important;
 						font-weight: inherit!important;
-				    line-height: inherit!important;
+				    	line-height: inherit!important;
 						font-family: inherit!important;
 						letter-spacing: inherit!important;
 						}
@@ -186,16 +186,16 @@
 					color: black;
 					padding-right: 10px;
 					clear: both;
-					@media screen and (max-width: $sm-break) {
-						color: #8a8b93;
-					}
+					// @media screen and (max-width: $sm-break) {
+					// 	color: #8a8b93;
+					// }
 
 					&.lead {
 						font-weight: bold;
 						color: black;
-						@media screen and (max-width: $sm-break) {
-							color: #8a8b93;
-						}
+						// @media screen and (max-width: $sm-break) {
+						// 	color: #8a8b93;
+						// }
 					}
 
 					&:last-child {

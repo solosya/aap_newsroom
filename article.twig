@@ -80,7 +80,7 @@
                                     <span>{{ article.publishedDate | upper }}</span>
                                 </div><!-- .content-author-->
 
-                                <div class="content">
+                                <div class="article_content">
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
                                     <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | raw }}</p>
                                     

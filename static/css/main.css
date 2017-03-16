@@ -10923,37 +10923,37 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 768px) {
         .article article.article-main .page-content .content-author p {
           display: none; } }
-  .article article.article-main .page-content .content > span[style], .article article.article-main .page-content .content > u[style], .article article.article-main .page-content .content > p[style], .article article.article-main .page-content .content > ul[style], .article article.article-main .page-content .content > li[style], .article article.article-main .page-content .content > strong[style], .article article.article-main .page-content .content > b[style], .article article.article-main .page-content .content > h1[style], .article article.article-main .page-content .content > h2[style], .article article.article-main .page-content .content > h3[style], .article article.article-main .page-content .content > h4[style], .article article.article-main .page-content .content > h5[style], .article article.article-main .page-content .content > h6[style], .article article.article-main .page-content .content > figure[style], .article article.article-main .page-content .content > figcaption[style], .article article.article-main .page-content .content > img[style], .article article.article-main .page-content .content > blockquote[style] {
+  .article article.article-main .page-content .article_content > span[style], .article article.article-main .page-content .article_content > u[style], .article article.article-main .page-content .article_content > p[style], .article article.article-main .page-content .article_content > ul[style], .article article.article-main .page-content .article_content > li[style], .article article.article-main .page-content .article_content > strong[style], .article article.article-main .page-content .article_content > b[style], .article article.article-main .page-content .article_content > h1[style], .article article.article-main .page-content .article_content > h2[style], .article article.article-main .page-content .article_content > h3[style], .article article.article-main .page-content .article_content > h4[style], .article article.article-main .page-content .article_content > h5[style], .article article.article-main .page-content .article_content > h6[style], .article article.article-main .page-content .article_content > figure[style], .article article.article-main .page-content .article_content > figcaption[style], .article article.article-main .page-content .article_content > img[style], .article article.article-main .page-content .article_content > blockquote[style] {
     font-size: inherit !important;
     font-weight: inherit !important;
     line-height: inherit !important;
     font-family: inherit !important;
     letter-spacing: inherit !important; }
-  .article article.article-main .page-content .content figure {
+  .article article.article-main .page-content .article_content figure {
     margin-top: 40px;
     margin-bottom: 40px; }
-    .article article.article-main .page-content .content figure img {
+    .article article.article-main .page-content .article_content figure img {
       max-width: 100%; }
-    .article article.article-main .page-content .content figure figcaption {
+    .article article.article-main .page-content .article_content figure figcaption {
       font-size: 0.83333em;
       color: #6c6c6c;
       font-style: italic;
       font-family: "tinos", Helvetica, Arial, sans-serif;
       float: left;
       margin-bottom: 30px; }
-      .article article.article-main .page-content .content figure figcaption.credit {
+      .article article.article-main .page-content .article_content figure figcaption.credit {
         font-style: normal;
         float: right; }
         @media screen and (max-width: 768px) {
-          .article article.article-main .page-content .content figure figcaption.credit {
+          .article article.article-main .page-content .article_content figure figcaption.credit {
             float: left; } }
-  .article article.article-main .page-content .content h1 {
+  .article article.article-main .page-content .article_content h1 {
     margin-top: 40px;
     margin-bottom: 47px; }
     @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content h1 {
+      .article article.article-main .page-content .article_content h1 {
         font-size: 2em; } }
-  .article article.article-main .page-content .content p {
+  .article article.article-main .page-content .article_content p {
     font-size: 1.33333em;
     font-weight: normal;
     font-style: normal;
@@ -10963,27 +10963,21 @@ button.swiper-pagination-bullet {
     color: black;
     padding-right: 10px;
     clear: both; }
-    @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content p {
-        color: #8a8b93; } }
-    .article article.article-main .page-content .content p.lead {
+    .article article.article-main .page-content .article_content p.lead {
       font-weight: bold;
       color: black; }
-      @media screen and (max-width: 768px) {
-        .article article.article-main .page-content .content p.lead {
-          color: #8a8b93; } }
-    .article article.article-main .page-content .content p:last-child {
+    .article article.article-main .page-content .article_content p:last-child {
       margin-bottom: 50px; }
     @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content p {
+      .article article.article-main .page-content .article_content p {
         font-size: 1.06667em; } }
-  .article article.article-main .page-content .content blockquote {
+  .article article.article-main .page-content .article_content blockquote {
     font-size: 2.13333em;
     font-weight: bold;
     font-family: "tinos", Helvetica, Arial, sans-serif;
     padding-left: 0;
     border: 0; }
-    .article article.article-main .page-content .content blockquote:after, .article article.article-main .page-content .content blockquote:before {
+    .article article.article-main .page-content .article_content blockquote:after, .article article.article-main .page-content .article_content blockquote:before {
       width: 62px;
       height: 2px;
       background: #e22f22;
@@ -10992,7 +10986,7 @@ button.swiper-pagination-bullet {
       margin-bottom: 28px;
       margin-top: 28px; }
     @media screen and (max-width: 768px) {
-      .article article.article-main .page-content .content blockquote {
+      .article article.article-main .page-content .article_content blockquote {
         font-size: 1.46667em; } }
   .article article.article-main .page-content div.comments {
     margin-top: 100px;
