@@ -11,8 +11,14 @@
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
+
+
+
+
+
     {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
-    {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %}
+    {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) %}
+    {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %} #}
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
@@ -57,7 +63,8 @@
                     {% if cardClass != 'instagram no-caption' %}  
                         <p>{{ article.excerpt | raw }}</p>
                     {% endif %}
-                    <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
+                    
+                    <time datetime="2016-11-16">{{publishedRelativeTime | upper}} AGO</time>
                     <div class="author">
 
                         <img src="{{profileImg}}" class="img-circle">
