@@ -10923,6 +10923,12 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 768px) {
         .article article.article-main .page-content .content-author p {
           display: none; } }
+  .article article.article-main .page-content .content > span[style], .article article.article-main .page-content .content > u[style], .article article.article-main .page-content .content > p[style], .article article.article-main .page-content .content > ul[style], .article article.article-main .page-content .content > li[style], .article article.article-main .page-content .content > strong[style], .article article.article-main .page-content .content > b[style], .article article.article-main .page-content .content > h1[style], .article article.article-main .page-content .content > h2[style], .article article.article-main .page-content .content > h3[style], .article article.article-main .page-content .content > h4[style], .article article.article-main .page-content .content > h5[style], .article article.article-main .page-content .content > h6[style], .article article.article-main .page-content .content > figure[style], .article article.article-main .page-content .content > figcaption[style], .article article.article-main .page-content .content > img[style], .article article.article-main .page-content .content > blockquote[style] {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    font-family: inherit !important;
+    letter-spacing: inherit !important; }
   .article article.article-main .page-content .content figure {
     margin-top: 40px;
     margin-bottom: 40px; }
@@ -10954,7 +10960,7 @@ button.swiper-pagination-bullet {
     font-stretch: normal;
     line-height: 1.45;
     letter-spacing: 0.8px;
-    color: #717171;
+    color: black;
     padding-right: 10px;
     clear: both; }
     @media screen and (max-width: 768px) {
@@ -10962,7 +10968,7 @@ button.swiper-pagination-bullet {
         color: #8a8b93; } }
     .article article.article-main .page-content .content p.lead {
       font-weight: bold;
-      color: #4a4a4a; }
+      color: black; }
       @media screen and (max-width: 768px) {
         .article article.article-main .page-content .content p.lead {
           color: #8a8b93; } }

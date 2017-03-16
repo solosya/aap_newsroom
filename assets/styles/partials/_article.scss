@@ -130,6 +130,18 @@
 			}
 
 			.content {
+				> {
+					& span, u, p, ul, li, strong, b, h1, h2, h3, h4, h5, h6, figure, figcaption, img, blockquote {
+						&[style] {
+						font-size: inherit!important;
+						font-weight: inherit!important;
+				    line-height: inherit!important;
+						font-family: inherit!important;
+						letter-spacing: inherit!important;
+						}
+					}
+				}
+
 				figure {
 					margin-top: 40px;
 					margin-bottom: 40px;
@@ -171,7 +183,7 @@
 					font-stretch: normal;
 					line-height: 1.45;
 					letter-spacing: 0.8px;
-					color: #717171;
+					color: black;
 					padding-right: 10px;
 					clear: both;
 					@media screen and (max-width: $sm-break) {
@@ -180,7 +192,7 @@
 
 					&.lead {
 						font-weight: bold;
-						color: #4a4a4a;
+						color: black;
 						@media screen and (max-width: $sm-break) {
 							color: #8a8b93;
 						}

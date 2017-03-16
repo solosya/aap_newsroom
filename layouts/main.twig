@@ -8,15 +8,17 @@
 
 
 {#     turn this on when the sdk goes through cognitives #}
-{% set redir = _Page.setHttpRedirects({'|^/users.*|': 'http://service.newsroom.co.nz',
-                                       '|^/categories.*|': 'http://service.newsroom.co.nz',
-                                       '|^/assets.*|': 'http://service.newsroom.co.nz',
-                                       '|^/feeds.*|': 'http://service.newsroom.co.nz',
-                                       '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
-                                       '|^/newswires.*|': 'http://service.newsroom.co.nz',
-                                       '|^/catalog.*|': 'http://service.newsroom.co.nz',
-                                       '|^/stories.*|': 'http://service.newsroom.co.nz'
-                                    }, true) 
+{% set redir = _Page.setHttpRedirects(
+    {
+        '|^/users.*|'        : 'http://service.newsroom.co.nz',
+        '|^/categories.*|'   : 'http://service.newsroom.co.nz',
+        '|^/assets.*|'       : 'http://service.newsroom.co.nz',
+        '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
+        '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
+        '|^/newswires.*|'    : 'http://service.newsroom.co.nz',
+        '|^/catalog.*|'      : 'http://service.newsroom.co.nz',
+        '|^/stories.*|'      : 'http://service.newsroom.co.nz'
+    }, true) 
 %}    
 
 {{ this.beginPage() }}
@@ -57,12 +59,12 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=103" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/main.min.css?ver=107" type="text/css" media="all">
         {% else %}
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
             <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=162' type='text/css' media='all' />
+            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/main.css?ver=163' type='text/css' media='all' />
         {% endif %}
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
@@ -76,7 +78,7 @@
     {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
         {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
     {% endif %}
-{# 
+
 <script>
     (function(d) {
       var el, fjs = d.getElementsByTagName('script')[0];
@@ -87,8 +89,8 @@
     }(document));
 </script>
 
- #}
-{# <script id="js-pp-banner" src="//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm"></script> #}
+
+<script id="js-pp-banner" src="//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm"></script>
 
     {% set themeColors = networkData['styling']['colours'] %}
     <style type="text/css">
@@ -359,8 +361,7 @@
         smallbannerID = '{{smallbannerID}}';
         tinybannerID = '{{tinybannerID}}' ;
 
-// console.log('HELLO');
-// console.log(smallbannerID);
+
 
         googletag.cmd.push(function() {
             googletag.defineSlot('{{boxadSlot}}', [300, 250], '{{boxadID}}').addService(googletag.pubads());
