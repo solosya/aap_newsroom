@@ -218,4 +218,13 @@
         color: #6c6c6c;
         padding-top: 6px;
     }
+
+    > img {
+        height:37px;
+        
+        @media screen and (max-width: $sm-break){
+            margin-top:10px;
+            height:30px;
+        }
+    }
 }

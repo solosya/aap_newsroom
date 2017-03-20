@@ -261,10 +261,23 @@
             .content {
                 height:333px;
 
+                @media screen and (max-width: $sm-break){
+                    height: 116px;
+                    padding-top: 20px;                
+                }
+
+
+
                 > h2 {
                     margin-top: 60px;
                     font-size: 30px;
                     height: 190px;
+                    
+                    @media screen and (max-width: $sm-break){
+                        height:auto;
+                        margin-top:0;
+                        font-size: em(20);
+                    }
                 }
             }
         }

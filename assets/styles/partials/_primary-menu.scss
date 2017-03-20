@@ -514,6 +514,32 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li{
         display: block;
     }
 
+    .menu-search{
+        display:flex;
+        input{
+            width:100%;
+            border:none;
+            color:black;
+            }
+        form{
+            display:flex;
+            padding-left:20px;
+            flex:1;
+            }
+        div{
+            display:flex;
+            flex: 1;
+        }
+        .btn{
+            border:none;
+        }
+        li{
+            display:flex;
+            flex: 1;
+        }
+    }
+
+
 }
  
 @media (max-width: 620px){

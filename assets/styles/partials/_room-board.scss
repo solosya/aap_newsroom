@@ -114,6 +114,14 @@
             > h2 {
                 margin-top:21px;
                 font-size: em(18);
+                height:38px;
+                @media screen and (max-width: $mmd-break) {
+                    height:58px;
+                }
+                @media screen and (max-width: $sm-break) {
+                    height:auto;
+                }
+
             }
 
             > time {

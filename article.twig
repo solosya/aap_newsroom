@@ -7,7 +7,7 @@
 {% set blogName      = blogData.title %}
 
 
-{{this.registerJs("ArticleController.view();")}}
+{# {{this.registerJs("ArticleController.view();")}} #}
 {{this.registerJs("HomeController.blog();")}}
 
 {% set status = 'follow' %}
@@ -51,7 +51,6 @@
                         {% endif %}
                         <figcaption>
                             <p>{{article.media[0].caption}}</p>
-                            {# <p class="credit">Photo: Loremioa</p> #}
                         </figcaption>
                     </figure>
                 {% endif %}
@@ -62,7 +61,7 @@
                             <div class="content-wrapper">
                                 <div class="content-block-top">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
-                                    ><a href="https://twitter.com/intent/tweet?status={{ article.title|url_encode }}%20{{article.url}}" class="btn btn-tweet icon-twitter"></a
+                                    ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
                                     ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
                                     

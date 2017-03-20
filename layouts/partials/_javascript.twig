@@ -1,6 +1,6 @@
 {% set networkData = _Network.getNetworkData() %}
 {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=9"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=10"></script>
 {% else %}
 
     <script type="text/javascript" src="{{networkData.templatePath}}/bower_components/jquery/dist/jquery.js"></script>
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/bootstrap-modal.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/bootbox.js?ver=1"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/bootbox.js?ver=2"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery.validate/jquery.validate.min.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/handlebars-v4.0.5.js"></script>

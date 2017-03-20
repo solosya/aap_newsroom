@@ -125,16 +125,20 @@
 
                          </div><!--card-group-->
 
-                        <section class="add sidebar-add hidden-md hidden-lg">
-
-                            <div id='boxad' style='height:250px; width:300px;'>
-                                <script>
-                                    document.currentScript.parentNode.id = boxadID;
-                                    googletag.cmd.push(function() { googletag.display(boxadID); });
-                                </script>
-                            </div>
-                            <span class="add-text">Advertisement</span>
+                        <section class="add row sidebar-add hidden-md hidden-lg">
+                            <div class="col-sm-6">
+                                <div id='boxad' class="" style='height:250px; width:300px;'>
+                                    <script>
+                                        document.currentScript.parentNode.id = boxadID;
+                                        googletag.cmd.push(function() { googletag.display(boxadID); });
+                                    </script>
+                                </div>
+                                <span class="add-text">Advertisement</span>
                             <!--block-->
+                            </div>
+                            <div class="col-sm-6 hidden-xs">
+                                {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
+                            </div>
                         </section>
 
 
@@ -168,9 +172,7 @@
                     <div class="col-sm-12 col-md-4 sidebar">
 
 
-
-
-                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
+                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
 
 
                         <section class="sidebar-news">

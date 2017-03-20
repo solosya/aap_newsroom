@@ -74,7 +74,6 @@
     }
   }; 
 
-  console.log(templates.dialog);
 
   var defaults = {
     // default language
@@ -361,7 +360,6 @@
     options.buttons.confirm.callback = function() {
       return options.callback.call(this, true);
     };
-    console.log(options);
     return exports.dialog(options);
   };
 
@@ -581,7 +579,6 @@
     options = sanitize(options);
 
     var dialog = $(templates.dialog);
-    console.log(dialog);
     var innerDialog = dialog.find(".modal-dialog");
     var body = dialog.find(".modal-body");
     var buttons = options.buttons;
@@ -781,7 +778,6 @@
       }
     };
     */
-    // console.log(dialog);
     return dialog;
 
   };

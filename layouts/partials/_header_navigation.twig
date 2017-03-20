@@ -24,8 +24,8 @@
                 <div class="secondary-menu">
                     <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                        <li><a href="https://{{networkData.defaultDomain.domain}}/@about">About</a></li>
-                        <li><a href="https://{{networkData.defaultDomain.domain}}/@contact">Contact</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
                     </ul>
                 </div><!-- .secondary-menu-->
             </div><!-- .menu-left-->  
@@ -78,9 +78,19 @@
 
                     <div class="menuContainer">
                         <ul class="pages">
-                            <li><a href="https://{{networkData.defaultDomain.domain}}/@about">About</a></li>
-                            <li><a href="https://{{networkData.defaultDomain.domain}}/@contact">Contact</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
                         </ul>
+                        <div id="menu-search" class="secondary-menu menu-search">
+                            <ul><li>
+                                <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
+                                    <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
+                                    <button class="btn btn-default" type="submit" id="searchsubmit">
+                                        <span class="icon-search icon"></span>
+                                    </button>
+                                </form>
+                            </ul></li>
+                        </div>
 
                         <ul id="menu-primary-menu" class="menu channels">
                             {% for childItem in submenu %}
@@ -193,7 +203,7 @@
                     <div class="secondary-menu">
                         <ul>
                             <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                            <li><a href="https://{{networkData.defaultDomain.domain}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div><!-- .secondary-menu-->
