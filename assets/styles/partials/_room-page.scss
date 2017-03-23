@@ -53,24 +53,45 @@
         a.card {
 
             .content {
-                padding: 232px 29px 36px 31px;
+                padding: 220px 29px 36px 31px;
 
-
+                @media screen and (max-width: 1600px){
+                    padding: 150px 29px 20px 20px;
+                }
                 @media screen and (max-width: $large-break){
-                    padding: 150px 29px 36px 31px;
+                    padding: 120px 29px 20px 31px;
                 }
                 @media screen and (max-width: $md-break){
-                    padding: 120px 29px 36px 31px;
+                    padding: 100px 29px 20px 31px;
                 }
                 @media screen and (max-width: $mmd-break){
-                    padding: 100px 29px 36px 31px;
+                    padding: 60px 29px 15px 31px;
                 }
 
+                h2 {
+                    min-height:160px;
 
+                    @media screen and (max-width: $large-break){
+                        min-height:100px;
+                    }
+                    @media screen and (max-width: $md-break){
+                        min-height:60px;
+                    }
+                    @media screen and (max-width: $mmd-break){
+                        min-height:50px;
+                    }
+
+
+                }
 
                 time {
                     bottom:40px;
                     right:30px;
+
+                    @media screen and (max-width: 1600px){
+                        bottom:20px;
+                    }
+
 
                     @media screen and (max-width: $md-break){
                         display:none;
@@ -81,9 +102,9 @@
 
                 }
 
-                > p {
-                    display:none;
-                }
+                // > p {
+                //     display:none;
+                // }
 
             }
         }
@@ -136,8 +157,8 @@
                     @media screen and (max-width: $sm-break){
                         margin-top:6px;
                         margin-bottom:6px;
-                        width: 60px;
-                        flex: 0 0 60px;
+                        width: 116px;
+                        flex: 0 0 116px;
                     }
 
                 }
@@ -193,6 +214,7 @@
 
                 > div {
                     // background:rgba(0,0,200, .3);
+                    width:90%;
                     display:inline-block;
                     vertical-align:top;
                     height:55px;
@@ -205,6 +227,8 @@
 
         a.card {
     
+            
+
 
             figure {
                 display:none;
@@ -250,7 +274,7 @@
                 margin-left:0;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 margin-left:-15px;
             }
 

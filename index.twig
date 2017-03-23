@@ -9,7 +9,7 @@
 
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 20 %}
+{% set limit = 11 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -167,13 +167,40 @@
                             {% endif %}
                         {% endfor %}
 
+                    
+                        {% if not _User.isGuest() %}
+
+                        <section class="" style="margin-bottom:50px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="ajaxArticles clearfix"
+                                         data-offset="{{limit}}"
+                                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                                     </div>
+                                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                                </div>
+
+                                {% set noDataCls = 'hide' %}
+                                {% if articles|length == 0 %}
+                                    {% set noDataCls = '' %}
+                                 {% endif %}
+                                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                                    <p class="no-data text-center">No articles found.</p>  
+                                </div>
+                            </div>
+                        </section>
+                        {% endif %} 
+
+
+
+
                     </div><!-- .col-sm-8-->
 
+
+
+
                     <div class="col-sm-12 col-md-4 sidebar">
-
-
                         {{ this.render('partials/subscribe_pro.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
-
 
                         <section class="sidebar-news">
                             <header>
@@ -216,7 +243,14 @@
                                 {# <span class="add-text">Advertisement</span> #}
                             </div><!--block-->
                         </section>
+                    
+
+
+
+
+
                     </div><!-- .col-sm-4-->
+
 
 
 
@@ -249,14 +283,6 @@
 
                         </section><!-- .top-stories-->
  
-{#                         <div class="advertiser-content">
-                            <span class="add-text">Advertiser content</span>
-                        </div>
- #}
-
-
-
-
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
 

@@ -1,6 +1,6 @@
 {% set networkData = _Network.getNetworkData() %}
 {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=10"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=11"></script>
 {% else %}
 
     <script type="text/javascript" src="{{networkData.templatePath}}/bower_components/jquery/dist/jquery.js"></script>
@@ -45,7 +45,7 @@
 
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/_article-templates.js?ver=1"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/common.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/home.js?ver=6"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/home.js?ver=7"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/article.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/search.js?ver=1"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/user-articles.js"></script>

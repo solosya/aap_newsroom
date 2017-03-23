@@ -7764,10 +7764,13 @@ p.foundingpartners {
         background-size: contain; }
       .sponsor-logos ul li.sponsor-uni-auckland {
         width: 200px;
-        height: 50px;
-        background: url("../images/UOA-H-White.svg");
+        height: 45px;
+        background: url("../images/UOA_H_Black.svg?ver=2");
         background-repeat: no-repeat;
-        background-size: contain; }
+        background-size: contain;
+        margin-left: 40px;
+        position: relative;
+        top: -5px; }
       .sponsor-logos ul li.sponsor-stuff {
         width: 130px;
         height: 100px;
@@ -10183,7 +10186,7 @@ button.swiper-pagination-bullet {
       @media screen and (max-width: 620px) {
         .room-living > .contents > div > a > article > .content > .author {
           position: absolute;
-          top: 0;
+          top: -3px;
           right: 0; } }
       .room-living > .contents > div > a > article > .content > .author > p {
         padding-left: 0;
@@ -10193,7 +10196,9 @@ button.swiper-pagination-bullet {
         font-family: "tinos", Helvetica, Arial, sans-serif; }
         @media screen and (max-width: 620px) {
           .room-living > .contents > div > a > article > .content > .author > p {
-            font-size: 0.73333em; } }
+            font-size: 0.73333em;
+            margin: 0;
+            padding-top: 0; } }
       .room-living > .contents > div > a > article > .content > .author > img {
         display: none; }
 
@@ -10997,9 +11002,6 @@ button.swiper-pagination-bullet {
     color: black;
     padding-right: 10px;
     clear: both; }
-    .article article.article-main .page-content .article_content p.lead {
-      font-weight: bold;
-      color: black; }
     .article article.article-main .page-content .article_content p:last-child {
       margin-bottom: 50px; }
     @media screen and (max-width: 768px) {
@@ -11328,7 +11330,7 @@ button.swiper-pagination-bullet {
         @media screen and (max-width: 768px) {
           .channel .featured-slider.channel a.card figure {
             width: auto;
-            max-width: none; } }
+            max-width: 60%; } }
       .channel .featured-slider.channel a.card .content {
         padding: 70px 15px 10px 31px; }
         @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -11399,24 +11401,39 @@ button.swiper-pagination-bullet {
       margin-bottom: 30px; } }
 
 .roompage .featured a.card .content {
-  padding: 232px 29px 36px 31px; }
+  padding: 220px 29px 36px 31px; }
+  @media screen and (max-width: 1600px) {
+    .roompage .featured a.card .content {
+      padding: 150px 29px 20px 20px; } }
   @media screen and (max-width: 1450px) {
     .roompage .featured a.card .content {
-      padding: 150px 29px 36px 31px; } }
+      padding: 120px 29px 20px 31px; } }
   @media screen and (max-width: 1200px) {
     .roompage .featured a.card .content {
-      padding: 120px 29px 36px 31px; } }
+      padding: 100px 29px 20px 31px; } }
   @media screen and (max-width: 992px) {
     .roompage .featured a.card .content {
-      padding: 100px 29px 36px 31px; } }
+      padding: 60px 29px 15px 31px; } }
+  .roompage .featured a.card .content h2 {
+    min-height: 160px; }
+    @media screen and (max-width: 1450px) {
+      .roompage .featured a.card .content h2 {
+        min-height: 100px; } }
+    @media screen and (max-width: 1200px) {
+      .roompage .featured a.card .content h2 {
+        min-height: 60px; } }
+    @media screen and (max-width: 992px) {
+      .roompage .featured a.card .content h2 {
+        min-height: 50px; } }
   .roompage .featured a.card .content time {
     bottom: 40px;
     right: 30px; }
+    @media screen and (max-width: 1600px) {
+      .roompage .featured a.card .content time {
+        bottom: 20px; } }
     @media screen and (max-width: 1200px) {
       .roompage .featured a.card .content time {
         display: none; } }
-  .roompage .featured a.card .content > p {
-    display: none; }
 
 .roompage .featured:before {
   content: '';
@@ -11448,8 +11465,8 @@ button.swiper-pagination-bullet {
       .roompage .top-stories a.card > article > figure {
         margin-top: 6px;
         margin-bottom: 6px;
-        width: 60px;
-        flex: 0 0 60px; } }
+        width: 116px;
+        flex: 0 0 116px; } }
 
 .roompage .room-top-stories {
   margin-left: -35px; }
@@ -11484,6 +11501,7 @@ button.swiper-pagination-bullet {
         color: #e22f22;
         margin-top: 6px; }
       .roompage .room-top-stories ul > li > div {
+        width: 90%;
         display: inline-block;
         vertical-align: top;
         height: 55px; }
@@ -11510,7 +11528,7 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 1200px) {
     .roompage .sidebar-inverted a.card {
       margin-left: 0; } }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 620px) {
     .roompage .sidebar-inverted a.card {
       margin-left: -15px; } }
   @media screen and (max-width: 992px) {
@@ -12469,7 +12487,7 @@ body.channel.supporters p {
 
 .card-sm {
   margin-bottom: 79.5px; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 620px) {
     .card-sm {
       margin-bottom: -2px; } }
   .card-sm.advert a.card {
@@ -12478,7 +12496,7 @@ body.channel.supporters p {
     @media screen and (max-width: 1200px) {
       .card-sm.advert a.card {
         margin-left: 0; } }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 620px) {
       .card-sm.advert a.card {
         margin-left: -15px; } }
     @media screen and (max-width: 992px) {
@@ -12492,7 +12510,7 @@ body.channel.supporters p {
         flex-wrap: nowrap;
         -webkit-flex-wrap: nowrap;
         -ms-flex-wrap: nowrap; } }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 620px) {
       .card-sm.advert a.card > article {
         display: block;
         height: auto !important; } }
@@ -12507,7 +12525,7 @@ body.channel.supporters p {
           flex: 0 0 330px;
           overflow: hidden;
           float: left; } }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-sm.advert a.card > article figure {
           height: 116px;
           width: 116px; } }
@@ -12516,7 +12534,7 @@ body.channel.supporters p {
     .card-sm.advert a.card > article > .content {
       border: none;
       display: block; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-sm.advert a.card > article > .content {
           padding-left: 126px;
           height: 116px; } }
@@ -12533,12 +12551,12 @@ body.channel.supporters p {
             margin: 50px 0 0 0;
             min-height: 110px;
             padding-bottom: 30px; } }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm.advert a.card > article > .content > h2 {
             margin: 12px 0 0 0;
             min-height: auto;
             padding-bottom: 15px; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 620px) {
     .card-sm.inverted > a.card {
       background-color: #000;
       color: #FFF; }
@@ -12558,7 +12576,7 @@ body.channel.supporters p {
           display: none; } }
   .card-sm a.card {
     height: 100%; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 620px) {
       .card-sm a.card {
         height: 115px;
         margin-left: -15px;
@@ -12577,7 +12595,7 @@ body.channel.supporters p {
       width: auto;
       overflow: hidden;
       height: 208px; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-sm a.card > article > figure {
           width: 116px;
           height: 116px;
@@ -12591,7 +12609,7 @@ body.channel.supporters p {
             left: 35%;
             width: 40px;
             height: 40px; } }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card > article > figure.video:after {
             width: 30px;
             height: 30px; } }
@@ -12602,7 +12620,7 @@ body.channel.supporters p {
       height: 125px;
       border: 1px solid #dadada;
       padding: 13px 15px 8px 15px; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-sm a.card > article > .content {
           height: auto;
           padding: 10px;
@@ -12615,7 +12633,7 @@ body.channel.supporters p {
         display: block;
         line-height: 1;
         margin-bottom: 8px; }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card > article > .content > .category {
             font-size: 0.8em;
             text-transform: uppercase;
@@ -12623,7 +12641,7 @@ body.channel.supporters p {
       .card-sm a.card > article > .content > h2 {
         font-weight: normal;
         font-size: 1.33333em; }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card > article > .content > h2 {
             font-size: 1.33333em; } }
       .card-sm a.card > article > .content > .author {
@@ -12632,7 +12650,7 @@ body.channel.supporters p {
         padding: 0;
         border: 0;
         color: #f73d30; }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card > article > .content > time {
             color: #6c6c6c;
             font-size: 0.66667em; } }
@@ -12640,7 +12658,7 @@ body.channel.supporters p {
         display: none; }
     .card-sm a.card.without__image .content {
       height: 333px; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-sm a.card.without__image .content {
           height: 116px;
           padding-top: 20px; } }
@@ -12648,7 +12666,7 @@ body.channel.supporters p {
         margin-top: 60px;
         font-size: 30px;
         height: 190px; }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card.without__image .content > h2 {
             height: auto;
             margin-top: 0;
@@ -12664,16 +12682,16 @@ body.channel.supporters p {
       .card-sm a.card.social.without__image .content > p {
         height: 225px;
         margin-bottom: 52px; }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 620px) {
           .card-sm a.card.social.without__image .content > p {
             height: auto; } }
 
 .card-vr {
   margin-bottom: 79.5px; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 620px) {
     .card-vr {
       margin-bottom: -2px; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 620px) {
     .card-vr.inverted > a.card {
       background-color: #000;
       color: #FFF; }
@@ -12689,7 +12707,7 @@ body.channel.supporters p {
         color: #FFF; }
       .card-vr.inverted > a.card > article > .content > p {
         display: none; } }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 620px) {
     .card-vr a.card {
       height: 115px;
       margin-left: -15px;
@@ -12707,7 +12725,7 @@ body.channel.supporters p {
   .card-vr a.card > article > figure {
     width: auto;
     overflow: hidden; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 620px) {
       .card-vr a.card > article > figure {
         width: 125px;
         flex: 0 0 125px; } }
@@ -12717,7 +12735,7 @@ body.channel.supporters p {
     position: relative;
     height: 139px;
     padding: 13px 0; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 620px) {
       .card-vr a.card > article > .content {
         padding: 10px;
         border: 0; } }
@@ -12728,7 +12746,7 @@ body.channel.supporters p {
       display: block;
       line-height: 1;
       margin-bottom: 8px; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-vr a.card > article > .content > .category {
           font-size: 0.73333em;
           margin-bottom: 5px; } }
@@ -12739,7 +12757,7 @@ body.channel.supporters p {
       line-height: 1.14;
       color: #000000;
       font-size: 1.73333em; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-vr a.card > article > .content > h2 {
           font-size: 1.06667em; } }
     .card-vr a.card > article > .content > .author {
@@ -12749,7 +12767,7 @@ body.channel.supporters p {
       padding: 0;
       border: 0;
       color: #8a8b93; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 620px) {
         .card-vr a.card > article > .content > time {
           color: #6c6c6c;
           font-size: 0.66667em; } }

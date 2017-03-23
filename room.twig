@@ -146,7 +146,7 @@
                 <div class="row bottom-row">
                     {% for i in 0..3 %}
                         {% if articles[articleCount] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-3 card-sm s255x208'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3 card-sm s255x208'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
@@ -162,8 +162,8 @@
         <section class="">
             <div class="container">
                 <div class="row">
-                    <div class="ajaxArticles"
-                         data-offset="2"
+                    <div class="ajaxArticles clearfix"
+                         data-offset="{{limit}}"
                          data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
                      </div>
                     <a class="loadMoreArticles" href="#">LOAD MORE</a>

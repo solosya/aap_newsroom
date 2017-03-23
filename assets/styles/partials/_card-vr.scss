@@ -1,13 +1,13 @@
 .card-vr{
 
     margin-bottom: 79.5px;
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $mobile-break){
         margin-bottom: -2px;
     }
 
 
     &.inverted{
-        @media screen and (min-width: $sm-break){
+        @media screen and (min-width: $mobile-break){
             > a.card{
                 background-color: #000;
                 color: #FFF;
@@ -42,7 +42,7 @@
 
     a.card{
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $mobile-break){
             height: 115px;
             margin-left: -15px;
             margin-right: -15px;
@@ -64,7 +64,7 @@
         > article > figure{
             width: auto;
             overflow: hidden;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 width: 125px;
                 flex: 0 0 125px;
             }
@@ -79,7 +79,7 @@
             height: 139px;
 
             padding: 13px 0;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mobile-break){
                 padding: 10px;
                 border: 0;
             }
@@ -91,7 +91,7 @@
                 display: block;
                 line-height: 1;
                 margin-bottom: 8px;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     font-size: em(11);
                     margin-bottom: 5px;
                 }
@@ -105,7 +105,7 @@
                 color: #000000;
                 font-size: em(26);
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     font-size: em(16);
                 }
             }
@@ -123,7 +123,7 @@
                 border: 0;
                 color: #8a8b93;
                 // border-left: 1px solid black;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $mobile-break){
                     color: #6c6c6c;
                     font-size: em(10);
                 }
