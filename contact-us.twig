@@ -31,33 +31,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-two-thirds">
-                    <h3 class="sub-heading">Leave us a message</h3>
-                    <p class="has-border-bottom">Please fill out the form below to contact us.</p>
-                    {{this.render('layouts/partials/messages.twig') | raw }}
-                    <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
-                         <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-name required">
-                                <label class="control-label" for="contactform-name">Name</label>
-                                <input type="text" id="contactform-name" class="form-control" name="name" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-email required">
-                                <label class="control-label" for="contactform-email">Email</label>
-                                <input type="text" id="contactform-email" class="form-control" name="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-message required">
-                                <label class="control-label" for="contactform-message">Message</label>
-                                <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" id="btnContact" class="button green lg" style="margin-top:20px;" name="contact-button">Send</button>
-                    </form>
-                </div>
+
             </div>
         </div>
     </section>
