@@ -31767,8 +31767,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
 
 
-(function($) {
-   
+(function ($) {
+
     //Noty Message
     $.fn.General_ShowNotification = function (options) {
         var defaults = {
@@ -31776,15 +31776,15 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             type: 'success',
             timeout: 2000
         };
-        
-        var opts = $.extend( {}, defaults, options );
-        
+
+        var opts = $.extend({}, defaults, options);
+
         $.noty.closeAll();  //close all before displaying
-        
-        if($('#noty_topRight_layout_container').length > 0) {
+
+        if ($('#noty_topRight_layout_container').length > 0) {
             $('#noty_topRight_layout_container').remove();
         }
-        
+
         var n = noty({
             type: opts.type,
             text: opts.message,
@@ -31799,7 +31799,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             }
         });
     };
-    
+
     //Show Error Message
     $.fn.General_ShowErrorMessage = function (options) {
         var defaults = {
@@ -31808,15 +31808,15 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             timeout: 2000,
             title: 'Error'
         };
-        
-        var opts = $.extend( {}, defaults, options );
-        
+
+        var opts = $.extend({}, defaults, options);
+
         bootbox.alert({
             title: opts.title,
             message: opts.message
         });
     };
-    
+
 }(jQuery));
     $.fn.Ajax_LoadBlogArticles = function(options){
         var defaults = {
@@ -31891,8 +31891,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             $(elem).off('click');
             $(elem).on('click', function(e){
                 e.preventDefault();
-                e.stopPropagation();
-                
+
                 var articleId = parseInt($(elem).data('id'));
                 var position = parseInt($(elem).data('position'));
                 var existingStatus = $(elem).data('status');
@@ -31946,7 +31945,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         if (typeof articleGuid === 'undefined' || articleGuid === "") {
             return;
         }
-        
+
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         $.ajax({
             type: 'POST',
@@ -31986,8 +31985,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             $(elem).off('click');
             $(elem).on('click', function(e){
                 e.preventDefault();
-                e.stopPropagation();
-                
              
                 var isSocial = $(elem).data('social');
                 var msgStr = (isSocial == 1) ? "Do you really want to delete this article?" : "Do you really want to hide this article?";
@@ -32196,11 +32193,14 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     content = "<video class ='videoPlayer' src='" + url + "' poster='" + poster + "' width='" + opts.width + "' height='" + opts.height + "' controls='controls' preload='none' ></video>";
                 }
                 else if (source.trim() === 'brightcove') {
+                    playerID = videoId.toString().split("::")[2];
                     accountID = videoId.toString().split("::")[1];
                     videoId = videoId.toString().split("::")[0];
-
+                    
+                    if (playerID == '' || typeof playerID == "undefined") {playerID = 'default';}
+                    console.log(playerID);
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                         url = "http://players.brightcove.net/"+accountID+"/default_default/index.html?videoId=" + videoId;
+                         url = "http://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
                     } else {
                         url = $(elem).data('url');
                     }
@@ -32210,7 +32210,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
                     content = 
                         '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
-                            <iframe src="//players.brightcove.net/'+accountID+'/default_default/index.html?videoId='+videoId+'" \
+                            <iframe src="//players.brightcove.net/'+accountID+'/'+playerID+'_default/index.html?videoId='+videoId+'" \
                             allowfullscreen\
                             webkitallowfullscreen\
                             mozallowfullscreen\
@@ -32442,6 +32442,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     data: {guid: blogGuid,  _csrf: csrfToken},
                     success: function (data, textStatus, jqXHR) {
                         $(obj).data('status', state);
+                        $().General_ShowNotification({message: 'Follow blog successfully'});
                         if (opts.onSuccess && typeof opts.onSuccess === 'function') {
                             opts.onSuccess(data, obj);
                         }
@@ -32505,6 +32506,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     data: {guid: userGuid, _csrf: csrfToken},
                     success: function (data, textStatus, jqXHR) {
                         $(obj).data('status', state);
+                        $().General_ShowNotification({message: 'Follow user successfully'});
                         if (opts.onSuccess && typeof opts.onSuccess === 'function') {
                             opts.onSuccess(data, obj);
                         }
@@ -32567,6 +32569,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     data: {guid: guid, _csrf: csrfToken},
                     success: function (data, textStatus, jqXHR) {
                         $(obj).data('status', state);
+                        $().General_ShowNotification({message: 'Follow article successfully'});
                         if (opts.onSuccess && typeof opts.onSuccess === 'function') {
                             opts.onSuccess(data, obj);
                         }
@@ -33336,7 +33339,6 @@ jQuery(document).ready(function () {
             onError: function () {}
         };
 
-        var isLoaded = 0; 
         var opts = $.extend({}, defaults, options);
 
         return this.each(function () {
@@ -33346,19 +33348,17 @@ jQuery(document).ready(function () {
                 e.stopPropagation();
 
                 var obj = $(this);
-                
+
                 //initialization code
-                $.loadScript("//api.filepicker.io/v2/filepicker.js", isLoaded, function () {
+                $.loadScript("//api.filepicker.io/v2/filepicker.js", function () {
+                    
                     var tabs = $.extend([], ['COMPUTER'], opts.tabs);
-                    isLoaded = 1;
 
                     //Set file picker api key
                     filepicker.setKey(_appJsConfig.filepickerKey);
 
                     filepicker.pick({
-                        //mimetype: 'image/*',
-                        maxSize: _appJsConfig.uploadImageMaxFilesize,
-                        extensions: _appJsConfig.uploadImageFileFormat.split(","),
+                        mimetype: 'image/*',
                         services: tabs
                     },
                     function (Blob) {
@@ -33375,32 +33375,27 @@ jQuery(document).ready(function () {
         });
     };
 
-    $.loadScript = function (url, isLoaded, callback) {
+    $.loadScript = function (url, callback) {
 
-        if (!isLoaded) {
-            var script = document.createElement("script");
-            script.type = "text/javascript";
+        var script = document.createElement("script")
+        script.type = "text/javascript";
 
-            if (script.readyState) {  //IE
-                script.onreadystatechange = function () {
-                    if (script.readyState == "loaded" ||
-                            script.readyState == "complete") {
-                        script.onreadystatechange = null;
-                        callback();
-                    }
-                };
-            } else {  //Others
-                script.onload = function () {
+        if (script.readyState) {  //IE
+            script.onreadystatechange = function () {
+                if (script.readyState == "loaded" ||
+                        script.readyState == "complete") {
+                    script.onreadystatechange = null;
                     callback();
-                };
-            }
+                }
+            };
+        } else {  //Others
+            script.onload = function () {
+                callback();
+            };
+        }
 
-            script.src = url;
-            document.getElementsByTagName("head")[0].appendChild(script);
-        }
-        else { 
-            callback();
-        }
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
     };
 
 }(jQuery));

@@ -266,13 +266,27 @@ p.foundingpartners {
 }
 
 
-.flex_col{display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;
-          display:-webkit-flex;-webkit-flex-direction:column;
-          display:-moz-flex;-moz-flex-direction:column;
+.flex_col {
+    -webkit-flex-direction:column;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    -webkit-flex-direction:column;
+    -moz-flex-direction:column;
+    display:flex;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:-ms-flexbox;
 }
-.flex_row{display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;
-          display:-webkit-flex;-webkit-flex-direction:row;
-          display:-moz-flex;-moz-flex-direction:row;
+.flex_row {
+    flex-direction:row;
+    -webkit-flex-direction:row;
+    -ms-flex-direction:row;
+    -webkit-flex-direction:row;
+    -moz-flex-direction:row;
+    display:flex;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:-ms-flexbox;
 }
 
 .flex_between{

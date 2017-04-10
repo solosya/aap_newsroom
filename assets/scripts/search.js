@@ -11,7 +11,6 @@ SearchController.Listing = (function ($) {
     var attachEvents = function () {
         
         $('.loadMoreArticles').on('click', function(e){
-            console.log('clicked');
             e.preventDefault();
             var btnObj = $(this);
             $.fn.Ajax_LoadSearchArticles({

@@ -6,49 +6,51 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var minifyCss = require("gulp-minify-css");
-var gzip = require('gulp-gzip');
-var cacheBuster = require('gulp-cache-bust');
+var runSequence = require('run-sequence');
 
-var gzip_options = {
-    threshold: '1kb',
-    gzipOptions: {
-        level: 9
-    }
-};
+
+gulp.task('styles', function(callback) {
+  runSequence('sass', 'concat', 'minify-css', callback);
+});
+
 
 // task
 gulp.task('minify-css', function () {
     return gulp.src([
-        './static/css/main.css',
-        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css',
-        './assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css',
+        './static/css/concat.css',
     ]) // path to your file
-    .pipe(concat('main.css'))
     .pipe(gp_rename({suffix: '.min'}))
     .pipe(minifyCss())
     .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('cacheBuster', function () {
-    return gulp.src('./layouts/main.twig')
-        .pipe(cacheBuster())
-        .pipe(gulp.dest('.'));
+
+gulp.task('concat', function () {
+    return gulp.src([
+        './static/css/main.css',
+        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css',
+        './assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css',
+    ]) // path to your file
+    .pipe(concat('concat.css'))
+    .pipe(gulp.dest('./static/css'));
 });
 
-// gulp.task('cacheBuster', ['copyCss', 'copyJs', 'renameIndex'], function () {
-//     return gulp.src('index/index.release.html')
-//         .pipe(cacheBuster())
-//         .pipe(gulp.dest('.'));
-// });
 
-
-gulp.task('styles', ['minify-css'], function() {
-    return gulp.src('./assets/styles/**/*.scss')
-		.pipe(sourcemaps.init())
-    	.pipe(sass({includePaths: ['./assets/styles','./assets/styles/partials']}).on('error', sass.logError))
-    	.pipe(sourcemaps.write('.'))
+gulp.task('sass', function() {
+    return gulp.src([
+            './assets/styles/main.scss',
+        ])
+        .pipe(sourcemaps.init())
+        .pipe(sass({includePaths: [
+            './assets/styles/partials', 
+        ]}).on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./static/css'));
 });
+
+
+
+
 
 gulp.task('scripts', function(){
 	return gulp.src([
@@ -69,22 +71,22 @@ gulp.task('scripts', function(){
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
 
-        '../../static/sdk/js/cloudinary/jquery.cloudinary.js',
-        '../../static/sdk/js/common.js',
-        '../../static/sdk/js/blog.js',
-        '../../static/sdk/js/article.js',
-        '../../static/sdk/js/search.js',
-        '../../static/sdk/js/disqus.js',
-        '../../static/sdk/js/video-player.js',
-        '../../static/sdk/js/user-articles.js',
-        '../../static/sdk/js/follow.js',
-        '../../static/sdk/js/login.js',
-        '../../static/sdk/js/image.js',
-        '../../static/sdk/js/social-share.js',
-        '../../static/sdk/js/yii/yii.js',
-        '../../static/sdk/js/yii/yii.captcha.js',
-        '../../static/sdk/js/uploadfile.js',
-        '../../static/sdk/js/media-player/mediaelement-and-player.min.js',
+        './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
+        './assets/scripts/sdk/common.js',
+        './assets/scripts/sdk/blog.js',
+        './assets/scripts/sdk/article.js',
+        './assets/scripts/sdk/search.js',
+        './assets/scripts/sdk/disqus.js',
+        './assets/scripts/sdk/video-player.js',
+        './assets/scripts/sdk/user-articles.js',
+        './assets/scripts/sdk/follow.js',
+        './assets/scripts/sdk/login.js',
+        './assets/scripts/sdk/image.js',
+        './assets/scripts/sdk/social-share.js',
+        './assets/scripts/sdk/yii/yii.js',
+        './assets/scripts/sdk/yii/yii.captcha.js',
+        './assets/scripts/sdk/uploadfile.js',
+        './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
 
 		'./assets/scripts/*.js',
 		])
@@ -92,8 +94,6 @@ gulp.task('scripts', function(){
 		.pipe(gulp.dest('./static/js'))
 		.pipe(gp_rename('scripts.js'))
 		.pipe(uglify().on('error', gutil.log))
-		.pipe(gulp.dest('./static/js'))
-        .pipe(gzip(gzip_options))
         .pipe(gulp.dest('./static/js'));
 
 });
@@ -103,4 +103,4 @@ gulp.task('watch', function (){
 	gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts','styles', 'minify-css']);
+gulp.task('default', ['scripts','styles']);

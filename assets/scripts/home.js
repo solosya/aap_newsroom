@@ -243,13 +243,11 @@ HomeController.Listing = (function ($) {
 
         
         $('.loadMoreArticles').on('click', function(e){
-            console.log('clicked');
             e.preventDefault();
 
             var btnObj = $(this);
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
-                    console.log(data);
                     if (data.success == 1) {
                         $('.ajaxArticles').data('existing-nonpinned-count', data.existingNonPinnedCount);
 
