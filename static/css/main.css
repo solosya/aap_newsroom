@@ -7592,6 +7592,12 @@ button.like {
   body {
     overflow-x: hidden; } }
 
+a.fancybox-close {
+  z-index: 1 !important; }
+
+div.fancybox-title {
+  display: none !important; }
+
 .loadMoreArticles {
   text-decoration: none;
   display: block;
@@ -7779,26 +7785,26 @@ p.foundingpartners {
         background-repeat: no-repeat; }
 
 .flex_col {
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-flex;
   -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  display: flex;
+  display: -webkit-flex;
   display: -moz-flex;
-  -moz-flex-direction: column; }
+  display: -ms-flexbox; }
 
 .flex_row {
-  display: -ms-flexbox;
-  display: flex;
+  flex-direction: row;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
-  flex-direction: row;
-  display: -webkit-flex;
   -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  display: flex;
+  display: -webkit-flex;
   display: -moz-flex;
-  -moz-flex-direction: row; }
+  display: -ms-flexbox; }
 
 .flex_between {
   justify-content: space-between; }

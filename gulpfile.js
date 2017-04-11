@@ -30,6 +30,7 @@ gulp.task('concat', function () {
         './static/css/main.css',
         './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css',
         './assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css',
+        './assets/scripts/sdk/media-player/mediaelementplayer.css'
     ]) // path to your file
     .pipe(concat('concat.css'))
     .pipe(gulp.dest('./static/css'));

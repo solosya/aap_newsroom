@@ -32173,7 +32173,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
                 if (source.trim() === 'youtube') {
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                        url = "http://www.youtube.com/watch?v=" + videoId;
+                        url = "https://www.youtube.com/watch?v=" + videoId;
                     } else {
                         url = $(elem).data('url');
                     }
@@ -32198,9 +32198,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     videoId = videoId.toString().split("::")[0];
                     
                     if (playerID == '' || typeof playerID == "undefined") {playerID = 'default';}
-                    console.log(playerID);
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                         url = "http://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
+                         url = "https://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
                     } else {
                         url = $(elem).data('url');
                     }
@@ -32386,7 +32385,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.responseText);
+
                 if (opts.onError && typeof opts.onError === 'function') {
                     opts.onError(jqXHR, textStatus, errorThrown);
                 }
@@ -34076,13 +34075,11 @@ HomeController.Listing = (function ($) {
 
         
         $('.loadMoreArticles').on('click', function(e){
-            console.log('clicked');
             e.preventDefault();
 
             var btnObj = $(this);
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
-                    console.log(data);
                     if (data.success == 1) {
                         $('.ajaxArticles').data('existing-nonpinned-count', data.existingNonPinnedCount);
 
@@ -34376,7 +34373,6 @@ SearchController.Listing = (function ($) {
     var attachEvents = function () {
         
         $('.loadMoreArticles').on('click', function(e){
-            console.log('clicked');
             e.preventDefault();
             var btnObj = $(this);
             $.fn.Ajax_LoadSearchArticles({

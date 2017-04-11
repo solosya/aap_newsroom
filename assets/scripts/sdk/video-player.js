@@ -42,7 +42,7 @@
 
                 if (source.trim() === 'youtube') {
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                        url = "http://www.youtube.com/watch?v=" + videoId;
+                        url = "https://www.youtube.com/watch?v=" + videoId;
                     } else {
                         url = $(elem).data('url');
                     }
@@ -68,7 +68,7 @@
                     
                     if (playerID == '' || typeof playerID == "undefined") {playerID = 'default';}
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                         url = "http://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
+                         url = "https://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
                     } else {
                         url = $(elem).data('url');
                     }
