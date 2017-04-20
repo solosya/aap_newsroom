@@ -1,8 +1,13 @@
-{% set networkData = _Network.getNetworkData() %}
 {% if _AppHelper.getApplicationEnv() == 'PROD'%}
     {# http://d31nhj1t453igc.cloudfront.net/sdk/sdk-v1.0.0.min.js #}
+    
+    {# {% if _User.isGuest() %} #}
+    {#    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/user_scripts.js?ver=16"></script>
+    {% else %} #}
+        <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=17"></script>
+    {# {% endif %} #}
 
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=16"></script>
+
 {% else %}
 
     <script type="text/javascript" src="{{networkData.templatePath}}/bower_components/jquery/dist/jquery.js"></script>

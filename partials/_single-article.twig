@@ -2,7 +2,7 @@
 
 
 
-{% if article.articleId > 0 %}
+{% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
     {% set articleImg = '' %}
     {% if article.featuredMedia | length > 0 %}
         {% set imgWidth = 1280 %}
@@ -132,10 +132,24 @@
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
     {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
-    {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) %}
+    {# {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %} #}
+    {# {% set publishedAgo = 1 %} #}
+
+    {% set updatedRelativeTime = "" %}
+{#     {% if article.publishDateTime != article.updateDateTime %}
+        {% set updatedAgo = _AppHelper.getSecondsSincePublished(article.updateDateTime) %}
+        {% if updatedAgo < 86400 %}
+            {% set updatedRelativeTime = "UPDATED " ~ _AppHelper.getRelativeTime(article.updateDateTime) ~ " AGO" %}
+        {% endif %}
+    {% endif %}
+ #}
+    {# {% set publishedRelativeTime = '' %} #}
+    {# {% if publishedAgo < 86400 %} #}
+    {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %}
+    {# {% endif %} #}
+
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
-
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
 
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
@@ -175,11 +189,17 @@
 
                 <div class="content">
                     <div class="category">{{article.label}}</div>
+                    
                     <h2>{{ articleTitle }}</h2>
+                    
                     {% if cardClass != 'instagram no-caption' %}  
                         <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
-                    <time datetime="2016-11-16">{{publishedRelativeTime | upper}} AGO</time>
+                    
+                    {% if publishedRelativeTime != '' %}  
+                        <time datetime="2016-11-16">{{publishedRelativeTime | upper}}</time>
+                    {% endif %}
+                    
                     <div class="author">
                         <img src="{{profileImg}}" class="img-circle">
                         <p>{{ article.createdBy['displayName'] }}</p>

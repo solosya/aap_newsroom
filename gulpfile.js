@@ -57,8 +57,9 @@ gulp.task('scripts', function(){
 	return gulp.src([
 		'./bower_components/jquery/dist/jquery.js',
 		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-		'./bower_components/swiper/dist/js/swiper.jquery.js',
-		'./assets/scripts/plugins/slick.js',
+		// './bower_components/swiper/dist/js/swiper.jquery.js',
+		
+        './assets/scripts/plugins/slick.js',
         './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
         './assets/scripts/plugins/bootstrap-modalmanager.js',
         './assets/scripts/plugins/bootstrap-modal.js',
@@ -99,9 +100,57 @@ gulp.task('scripts', function(){
 
 });
 
+
+gulp.task('user_scripts', function(){
+    return gulp.src([
+        './bower_components/jquery/dist/jquery.js',
+        './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+        // './bower_components/swiper/dist/js/swiper.jquery.js',
+        
+        // './assets/scripts/plugins/slick.js',
+        // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
+        // './assets/scripts/plugins/bootstrap-modalmanager.js',
+        // './assets/scripts/plugins/bootstrap-modal.js',
+        // './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
+        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
+        // './assets/scripts/plugins/bootbox.min.js',
+        // './assets/scripts/plugins/jquery.validate/jquery.validate.min.js',
+        // './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
+        './assets/scripts/plugins/handlebars-v4.0.5.js',
+        './assets/scripts/plugins/jquery.lazyload.min.js',
+        './assets/scripts/plugins/jquery.dotdotdot.min.js',
+        './assets/scripts/plugins/owl.carousel.min.js',
+
+        // './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
+        // './assets/scripts/sdk/common.js',
+        // './assets/scripts/sdk/blog.js',
+        // './assets/scripts/sdk/article.js',
+        './assets/scripts/sdk/search.js',
+        // './assets/scripts/sdk/disqus.js',
+        './assets/scripts/sdk/video-player.js',
+        './assets/scripts/sdk/user-articles.js',
+        './assets/scripts/sdk/follow.js',
+        './assets/scripts/sdk/login.js',
+        './assets/scripts/sdk/image.js',
+        './assets/scripts/sdk/social-share.js',
+        './assets/scripts/sdk/yii/yii.js',
+        './assets/scripts/sdk/yii/yii.captcha.js',
+        './assets/scripts/sdk/uploadfile.js',
+        './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
+
+        './assets/scripts/*.js',
+        ])
+        .pipe(concat('user_concat.js'))
+        .pipe(gulp.dest('./static/js'))
+        .pipe(gp_rename('user_scripts.js'))
+        .pipe(uglify().on('error', gutil.log))
+        .pipe(gulp.dest('./static/js'));
+
+});
+
 gulp.task('watch', function (){
 	gulp.watch('./assets/styles/**/*.scss', ['styles']);
 	gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts','styles']);
+gulp.task('default', ['scripts', 'user_scripts', 'styles']);

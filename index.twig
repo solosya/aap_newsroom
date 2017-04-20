@@ -37,10 +37,6 @@
             "feed": "",
             "link": ""
         },
-        "engineroom": {
-            "feed": "",
-            "link": ""
-        },
         "futurelearning": {
             "feed": "",
             "link": ""
@@ -82,10 +78,6 @@
                 <div class="newsroom-icon">
                     <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
                 </div><!-- .newsroom-icon-->
-
-                <!-- Add Arrows -->
-{#                 <div class="swiper-button-next swiper-button-black"></div>
-                <div class="swiper-button-prev swiper-button-black"></div> #}
 
             </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
@@ -156,8 +148,6 @@
                             </div><!-- .card-group-->
                         </div><!-- .row-->
 
-                        {# {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }} #}
-
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
                         {% for i in 0..1 %}
@@ -175,6 +165,7 @@
                                 <div class="row">
                                     <div class="ajaxArticles clearfix"
                                          data-offset="{{limit}}"
+                                         data-containerclass="col-sm-3 card-sm"
                                          data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
                                      </div>
                                     <a class="loadMoreArticles" href="#">LOAD MORE</a>
@@ -212,7 +203,7 @@
 
                                 {% for i in 0..5 %}
                                     {% if recentArticles[i] %}
-                                        {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                                        {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], containerClass: '', swap: 'false', isArticle: 'true'}) | raw}}
                                     {% endif %}
                                 {% endfor %}
 

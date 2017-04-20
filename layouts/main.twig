@@ -405,27 +405,10 @@
 </head>
 
 
+{{ this.beginBody() }}
 
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 
-
-    <div class="hidden-xs hidden-sm hidden-md hidden-lg">
-        {% for room in rooms  %}
-                {{room}}
-        {% endfor %}
-        {% for menu in submenu  %}
-            menu
-            {% for m in menu  %}
-                {{m}}
-            {% endfor %}
-        {% endfor %}
-
-        {{roomInfo[0]}}
-        {{roomInfo[1]}}
-    </div>
-
-
-    {{ this.beginBody() }}
       
 
         <div class="add add-header-top hidden-xs hidden-sm">
@@ -490,7 +473,9 @@
     }) | raw }}
 
 
-    {{ this.render('partials/_javascript.twig') | raw }}
+    {{ this.render('partials/_javascript.twig', {
+        networkData: networkData
+    }) | raw }}
 
 
     <div class="SwappingHelper" style="display:none">

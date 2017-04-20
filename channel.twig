@@ -166,10 +166,12 @@
                         {% endif %}
 
 
+                        {% if articles|length >= limit %}
                         <section class="">
                             <div class="row">
                                 <div class="ajaxArticles clearfix"
                                      data-offset="{{limit}}"
+                                     data-containerclass="col-sm-3 card-sm"
                                      data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
                                  </div>
                                 <a class="loadMoreArticles" href="#">LOAD MORE</a>
@@ -183,6 +185,7 @@
                                 <p class="no-data text-center">No articles found.</p>  
                             </div>
                         </section>
+                        {% endif %}
 
 
 

@@ -246,6 +246,7 @@ HomeController.Listing = (function ($) {
             e.preventDefault();
 
             var btnObj = $(this);
+            
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
                     if (data.success == 1) {
@@ -255,8 +256,11 @@ HomeController.Listing = (function ($) {
                             $(btnObj).css('display', 'none');
                         }
 
+                        var container = $('.ajaxArticles');
+                        var templateClass = container.data('containerclass');
+
                         for (var i in data.articles) {
-                            data.articles[i]['containerClass'] = 'col-sm-3 card-sm';
+                            data.articles[i]['containerClass'] = templateClass;
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
                             data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
@@ -281,7 +285,7 @@ HomeController.Listing = (function ($) {
                                 articleTemplate = Handlebars.compile(systemCardTemplate);
                             }
                             var article = articleTemplate(data.articles[i]);
-                            $('.ajaxArticles').append(article);
+                            container.append(article);
                         }
 
                         $(".card p, .card h1").dotdotdot();

@@ -24,7 +24,6 @@ var systemCardTemplate =
                     <div class="category">{{label}}</div>\
                     <h2>{{{ title }}}</h2>\
                     <p>{{{ excerpt }}}</p>\
-                    <time datetime="2016-11-16">{{publishDate}}</time>\
                     <div class="author">\
                         <img src="{{profileImg}}" class="img-circle">\
                         <p>{{ createdBy.displayName }}</p>\
