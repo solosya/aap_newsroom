@@ -29412,14 +29412,13 @@ HomeController.Listing = (function ($) {
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
                     if (data.success == 1) {
-                        $('.ajaxArticles').data('existing-nonpinned-count', data.existingNonPinnedCount);
+                        var container = $('.ajaxArticles');
+                        container.data('existing-nonpinned-count', data.existingNonPinnedCount);
+                        var templateClass = container.data('containerclass');
 
                         if (data.articles.length < 20) {
                             $(btnObj).css('display', 'none');
                         }
-
-                        var container = $('.ajaxArticles');
-                        var templateClass = container.data('containerclass');
 
                         for (var i in data.articles) {
                             data.articles[i]['containerClass'] = templateClass;
