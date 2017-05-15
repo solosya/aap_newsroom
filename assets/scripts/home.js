@@ -29,12 +29,13 @@ HomeController.Listing = (function ($) {
 
         $('button.HideBlogArticle').Ajax_deleteArticle({
             onSuccess: function(data, obj){
-                var sectionPostsCount = $(obj).closest('.section__content').find('.card__news').length;
-                if(sectionPostsCount <= 1) {
-                    $(obj).closest('.section__content').addClass('hide');
-                }
+                // var section = $(obj).closest('.section__content');
+                // var sectionPostsCount = section.find('.card__news').length;
+                // if(sectionPostsCount <= 1) {
+                //     section.addClass('hide');
+                // }
                 $(obj).closest('.card').parent('div').remove();
-                var postsCount = $('body').find('.card__news').length;
+                var postsCount = $('body').find('.card').length;
                 if(postsCount <= 0) {
                     $('.NoArticlesMsg').removeClass('hide');
                 }
