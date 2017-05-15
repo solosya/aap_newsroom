@@ -9,7 +9,7 @@
 
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 20 %}
+{% set limit = 11 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -34,10 +34,6 @@
             "link": ""
         },
         "sportsroom": {
-            "feed": "",
-            "link": ""
-        },
-        "engineroom": {
             "feed": "",
             "link": ""
         },
@@ -83,10 +79,6 @@
                     <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
                 </div><!-- .newsroom-icon-->
 
-                <!-- Add Arrows -->
-{#                 <div class="swiper-button-next swiper-button-black"></div>
-                <div class="swiper-button-prev swiper-button-black"></div> #}
-
             </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
     
@@ -94,6 +86,7 @@
         {% if articles[articleCount] %}
             <section class="top-stories special">
                 <div class="container">
+
                     <div class="row">
 
                         {% for i in 0..2 %}
@@ -155,8 +148,6 @@
                             </div><!-- .card-group-->
                         </div><!-- .row-->
 
-                        {# {{ this.render('partials/subscribe.twig', {networkData : networkData}) | raw }} #}
-
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
                         {% for i in 0..1 %}
@@ -166,7 +157,38 @@
                             {% endif %}
                         {% endfor %}
 
+
+                        {% if not _User.isGuest() %}
+
+                        <section class="" style="margin-bottom:50px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="ajaxArticles clearfix"
+                                         data-offset="{{limit}}"
+                                         data-containerclass="col-sm-3 card-sm"
+                                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                                     </div>
+                                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                                </div>
+
+                                {% set noDataCls = 'hide' %}
+                                {% if articles|length == 0 %}
+                                    {% set noDataCls = '' %}
+                                 {% endif %}
+                                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                                    <p class="no-data text-center">No articles found.</p>  
+                                </div>
+                            </div>
+                        </section>
+                        {% endif %} 
+
+
+
+
                     </div><!-- .col-sm-8-->
+
+
+
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
