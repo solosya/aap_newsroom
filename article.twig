@@ -71,12 +71,25 @@
                                     <time>{{ article.publishedDate | upper }}</time>
                                 </div><!--content-block-top-->
 
+
                                 <div class="content-author">
                                     <img src="{{ profileImg }}" alt="">
                                     <h3>{{ article.createdBy['displayName'] }}</h3>
                                     <p>{{ article.createdBy['bio'] }}</p>
-                                    <span>{{ article.publishedDate | upper }}</span>
                                 </div><!-- .content-author-->
+
+
+                                {% if article['createdBy']['coauthors'] %}
+                                    {% for author in article['createdBy']['coauthors'] %}
+                                        <div class="content-author">
+                                            <img src="{{ profileImg }}" alt="">
+                                            <h3>{{ author['displayName'] }}</h3>
+                                            <p>{{ author['bio'] }}</p>
+                                        </div><!-- .content-author-->
+                                    {% endfor %}
+                                {% endif %}
+
+
 
                                 <div class="article_content">
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
