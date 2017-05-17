@@ -1,0 +1,173 @@
+.featured-slider-comments {
+
+    .newsroom-icon {
+        position: absolute;
+        top: 10px;
+        left: 50px;
+        width: 91px;
+        margin:29px 29px 0 0;
+        z-index:2;
+
+        img{
+            max-width: 100%;
+        }
+    }
+
+
+    .feature {
+        margin-bottom:78px;
+
+        @media screen and (max-width: $sm-break) {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+
+
+        .card {
+            height: 438px;
+
+            @media screen and (max-width: $sm-break){
+                position: relative;
+                height: 350px;
+                overflow: hidden;
+            }
+
+            article {
+                position:relative;
+                display: flex;
+                flex-direction:row;
+                white-space: nowrap;
+
+                // @media screen and (max-width: $mobile-break){
+                //     display: block;
+                // }
+
+                figure {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+
+                    -webkit-flex:3 0 0;-ms-flex:3 0 0;flex:3 0 0;-moz-flex:3 0 0;
+                    -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+
+
+                    &:before {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        content: '';
+                        z-index: 1;
+                        background:rgba(0,0,0,.3);
+
+
+
+                        @media screen and (max-width: $mobile-break){
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            content: '';
+                            z-index: 1;
+                            // background: rgba(0,0,0,.4);
+                            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.36+65,1+100 */
+                            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.36) 65%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 55%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 65%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+                        }
+                    }
+                    img {
+                        height:100%;
+                        min-width:100%;
+                        object-fit: cover;
+
+                        @media screen and (max-width: $sm-break){
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                .content {
+                    
+                    vertical-align: top;
+                    line-height: normal;
+                    // width: 400px;
+                    height: auto;
+                    max-height:587px;
+                    padding: 203px 105px 10px 39px;
+                    z-index: 2;
+
+                    @media screen and (max-width: $mobile-break) {
+                        padding: 150px 105px 10px 39px;
+                    }
+
+                    
+
+                    .category{
+                        font-size: rem(11);
+                        margin-bottom: 10px;
+                        display: block;
+                        color:#dadada;
+                        // -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                        min-height:0;
+                        max-height:20px;
+                    }
+
+                    h2{
+                        font-size: rem(44);
+                        // -webkit-flex:2 2 0;-ms-flex:2 2 0;flex:2 2 0;-moz-flex:2 2 0;
+                        color:#fff;
+                        height:90px;
+                        line-height:1;
+                        margin-bottom: 8px;
+
+                        @media screen and (max-width: $mobile-break) {
+                            font-size: rem(36);
+                        }
+
+                    }
+
+                    > p {
+                        // -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                        font-size:rem(18);
+                        color:#fff;
+                        height:50px;
+                        line-height:1.3;
+                        @media screen and (max-width: $mobile-break){
+                            font-size:rem(17);
+                            height:60px;
+                        }
+                    }
+
+                    time{
+                        display:none;
+                    }
+
+                    .author {
+                        // -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                        // -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+
+                        > p {
+                            padding-left:0;
+                            font-size: rem(16);
+                            color:#fff;
+                            padding-top:8px;
+                        }
+
+                        img{
+                            display: none;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -19,7 +19,7 @@
         $('.'+opts.containerClass).data('offset', (offset + opts.limit));
         
          var csrfToken = $('meta[name="csrf-token"]').attr("content");
-        
+        console.log({offset: offset, limit: opts.limit, search: opts.search, _csrf: csrfToken});
         $.ajax({
             type: 'POST',
             url: _appJsConfig.baseHttpPath + '/search/load-articles',

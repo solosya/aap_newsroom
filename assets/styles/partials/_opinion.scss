@@ -1,0 +1,253 @@
+.opinion{
+    margin-bottom: 78px;
+    
+    &.special {
+        margin-bottom:150px;
+    }
+
+    // @media screen and (max-width: $sm-break){
+    //     margin-bottom: 25px;
+    // }
+
+    > .container > h2{
+        font-family: $font-family-sans-serif;
+        font-weight: bold;
+        font-size: em(20);
+        color: #000000;
+        @media screen and (max-width: $sm-break){
+            color: #e22f22;
+            padding-bottom:10px;
+            margin-bottom:2px;
+            border-bottom: 1px solid #dadada;
+        }
+    }
+
+    a.card{
+
+
+        @media screen and (max-width: $sm-break){
+            padding-top: 6px;
+            border-bottom: 1px solid #dadada;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        @media screen and (max-width: $mobile-break){
+            margin-top: 10px;
+        }
+
+
+
+        > article {
+            @extend %flexbox;
+            height: auto;
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+            padding-bottom:11px;
+            border-bottom: 1px solid #dadada;
+
+        }
+
+        > article > figure{
+            width: 113px;
+            height:119px;
+            flex: 0 0 113px;
+            overflow: hidden;
+            float: left;
+            margin-right: 14px;
+
+            &.video {
+
+                &:after{
+                    top: 35%;
+                    left: 35%;
+                    width: 35px;
+                    height: 35px;
+
+                    @media screen and (max-width: $md-break){
+                        top: 40%;
+                        left: 35%;
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+            }
+
+            @media screen and (max-width: $md-break){
+                width: 65px;
+                flex: 0 0 65px;
+            }
+
+            @media screen and (max-width: $sm-break){
+                margin-bottom:6px;
+                width: 60px;
+                height:56px;
+                flex: 0 0 60px;
+            }
+
+            @media screen and (max-width: $mobile-break){
+                width: 116px;
+                height: 116px;
+                flex: 0 0 116px;
+            }
+
+
+            > img{
+                max-width: 100%;
+            }
+        }
+
+        > article > .content{
+            display:block;
+            padding-bottom: 0;
+
+
+            @media screen and (max-width: $sm-break){
+                border: 0;
+            }
+            > .category{
+                font-size: em(11.2);
+                font-weight: bold;
+                color: #8a8b93;
+                display: block;
+                line-height: 1;
+                margin-bottom: 3px;
+
+                @media screen and (max-width: $sm-break) {
+                    font-family: $font-family-sans-serif;
+                    font-size: em(12);
+                    text-transform: uppercase;
+                }
+            }
+
+            > h2{
+                display:none;
+                font-weight: bold;
+                font-size: em(22);
+                height:48px;
+
+                @media screen and (max-width: $md-break){
+                   font-size: em(16);
+                   height:34px;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    // font-size: em(22);
+                    margin: 2px;
+                }
+            }
+
+            > p {
+                font-family:$base-font-family;
+                height:79px;
+                line-height:1.33;
+                font-size: rem(18);
+
+                &:before {
+                    position: absolute;
+                    margin-left: -30px;
+                    z-index: 10;
+                    content: '';
+                    height:20px;
+                    width:20px;
+                    background-image:url("../images/quote.svg");
+                    background-position:center center;
+                    background-repeat:no-repeat;
+                    background-size:20px;
+                }
+
+
+            }
+
+
+
+            > .author{
+                float:left;
+
+                >img {
+                    display:none;
+                }
+                >p {
+                    padding:0;
+                    margin:0;
+                    font-size:rem(16);
+                    padding-left:0;
+                    color:#e22f22;
+                }
+            }
+
+            > time{
+                float:right;
+                margin-top:6px;
+                padding: 0;
+                border: 0;
+                line-height: 1;
+
+                // @media screen and (max-width: $md-break){
+                //     position: absolute;
+                //     bottom: 5px;
+                //     right: 15px;
+                // }
+
+                // @media screen and (max-width: $sm-break){
+                //     font-size: em(10);
+                // }
+            }
+
+        }
+
+        &.social {
+            .content {
+                .category {
+                    margin-top:0;
+                    margin-bottom:8px;
+                }
+        
+                > p {
+                    display:block;
+                    height:48px;
+
+                    // display: block;
+                    // // background:rgba(20, 200, 100, .1);
+                    // font-size: em(18);
+                    // height:117px;
+                    // padding-bottom:27px;
+                }
+            }
+
+            // &.without__image {
+
+            //     .content {
+            //         height:100%;
+
+            //         > p {
+            //             height: 225px;
+            //             margin-bottom:52px;
+
+            //             @media screen and (max-width: $sm-break){
+            //                 height:auto;
+            //             }
+            //         }
+            //     }
+            // }
+
+
+
+        }
+
+
+        &.youtube{
+            .content{
+                p{
+                }
+            }
+        }
+
+    }
+}

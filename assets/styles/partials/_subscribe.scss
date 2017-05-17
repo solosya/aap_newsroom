@@ -31,30 +31,32 @@
 .subscribe{
     // padding-top: 60px;
     text-align: center;
-    margin-bottom: 80px;
-
+    margin-bottom: 32px;
+    padding:40px 24px 58px 24px;
+    background:rgba(74, 74, 74, 0.1);
 
     @media screen and (max-width: $mobile-break){
-        padding-top: 60px;
+        margin-top: 60px;
+        margin-bottom: 60px;
     }
 
 
-    &.form {
-        display:none;
-        @media screen and (max-width: $sm-break){
-            display:block;
-        }
-    }
+    // &.form {
+    //     display:none;
+    //     @media screen and (max-width: $sm-break){
+    //         display:block;
+    //     }
+    // }
 
 
     h3{
-        font-size: em(20);
+        font-size: em(14);
         font-weight: 700;
         margin-bottom:2px;
     }
 
     img {
-        width: 158px;
+        width: 179px;
     }
 
     img.pro {
@@ -63,8 +65,7 @@
 
 
     > .subscribe-form{
-        margin-top: 27px;
-        margin-bottom: 19px;
+        margin-top: 10px;
         
         input.field{
             height: 42px;
@@ -104,3 +105,82 @@
         width:75%;
     }
 }
+
+.subscribe_grey_bg{
+    // padding-top: 60px;
+    text-align: center;
+    margin-bottom: 70px;
+    padding:43px 32px 32px 32px;
+    background: rgba(74,74,74,.1);
+
+
+    @media screen and (max-width: $mobile-break){
+        padding-top: 60px;
+    }
+
+
+    &.form {
+        display:none;
+        @media screen and (max-width: $sm-break){
+            display:block;
+        }
+    }
+
+
+    h3{
+        font-size: em(20);
+        font-weight: 700;
+        margin-bottom:2px;
+    }
+
+    img {
+        width: 158px;
+    }
+
+    img.pro {
+        width: 236px;
+    }
+
+
+    > .subscribe-form{
+        margin-top: 27px;
+        margin-bottom: 19px;
+        
+        input.field{
+            height: 42px;
+            border-radius: 0;
+            border: solid 1px #000000;
+            border-right: 0;
+            color: #6c6c6c;
+            font-size: em(18);
+        }
+
+        .btn{
+            border-radius: 0;
+            border: solid 1px #000000;
+            border-left: 0;
+            padding: 0;
+            font-size: 25px;
+            height: 42px;
+            line-height: 1;
+            color: #f83d30;
+        }
+    }
+
+    > a > button {
+        width: 160px;
+        height: 45px;
+        font-size: em(16);
+        display:block;
+        margin: 0 auto;
+        color: white;
+        background: #e22f22;
+        border: 1px solid #e12e21;
+        padding: 10px 20px;
+    }
+
+    > p {
+        margin:20px auto;
+    }
+}
+

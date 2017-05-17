@@ -243,7 +243,7 @@ HomeController.Listing = (function ($) {
         }
 
         
-        $('.loadMoreArticles').on('click', function(e){
+        $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
 
             var btnObj = $(this);

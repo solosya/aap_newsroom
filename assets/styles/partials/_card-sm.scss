@@ -336,3 +336,21 @@
         
     }
 }
+
+.sidebar .card-sm {
+    a.card {
+        article {
+            figure {
+                height:242px;
+
+                @media screen and (max-width: $mobile-break){
+                    height:auto;
+                }
+            }
+            .content {
+
+            }
+        }
+    }
+}
+

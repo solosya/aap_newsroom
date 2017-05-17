@@ -60,6 +60,8 @@
 
 		.page-content {
 			clear: both;
+			margin-top: 70px;
+
 
 			.content-block-top {
 				margin-bottom: 17px;
@@ -180,7 +182,7 @@
 					}
 				}
 
-				p {
+				> p {
 					font-size: em(20);
 					font-weight: normal;
 					font-style: normal;
@@ -190,17 +192,7 @@
 					color: black;
 					padding-right: 10px;
 					clear: both;
-					// @media screen and (max-width: $sm-break) {
-					// 	color: #8a8b93;
-					// }
 
-					&.lead {
-						// font-weight: bold;
-						// color: black;
-						// @media screen and (max-width: $sm-break) {
-						// 	color: #8a8b93;
-						// }
-					}
 
 					&:last-child {
 						margin-bottom: 50px;
@@ -211,7 +203,7 @@
 				}
 
 				blockquote {
-					font-size: em(32);
+					font-size: rem(32);
 					font-weight: bold;
 					font-family: $base-font-family;
 					padding-left: 0;
@@ -228,7 +220,7 @@
 						margin-top: 28px;
 					}
 					@media screen and (max-width: $sm-break) {
-						font-size: em(22);
+						font-size: rem(22);
 					}
 				}
 			}

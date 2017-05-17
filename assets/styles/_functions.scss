@@ -13,3 +13,16 @@
 @function color($card_type) {
   	@return map-get($cards, $card_type);
 }
+
+
+@function rem($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1rem;
+}

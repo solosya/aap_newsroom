@@ -9,7 +9,7 @@
 
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 11 %}
+{% set limit = 14 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -18,7 +18,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-{% set recentArticles = _Article.getRecentArticles({'limit': 5}) %}
+{% set recentArticles = _Article.getRecentArticles({'limit': 7}) %}
 
 {% set sections =  {
         "viewingroom": {
@@ -44,8 +44,7 @@
         "corporate newsroom": {
             "feed": "",
             "link": ""
-        },
-
+        }
     }
 %}
 
@@ -64,48 +63,76 @@
 
 
 
-    <main id="main" class="site-main index-special" role="main">
-        <section class="featured-slider container-fluid">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-
-                    {% if articles[0] %}                                                                
-                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s1168x587'}) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endif %}
-                </div><!-- .swiper-wrapper-->
-
-                <div class="newsroom-icon">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
-                </div><!-- .newsroom-icon-->
-
-            </div><!-- .swiper-container-->
-        </section><!-- .featured-slider-->
-    
-
-        {% if articles[articleCount] %}
-            <section class="top-stories special">
-                <div class="container">
-
+    <main id="main" class="site-main" role="main">
+        <section class="featured-slider-comments container">
+            <div class="row">
+                <div class="col-sm-8">
                     <div class="row">
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'col-sm-12 feature s1168x587'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </div>
+                    <div class="newsroom-icon">
+                        <img src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" alt="newsroom ic">
+                    </div><!-- .newsroom-icon-->
+                </div>
 
+
+                {% if articles[articleCount] %}
+                <div class="col-sm-4">
+                    <div class="row top-stories-comments">
+                        <h2>TOP STORIES</h2>
                         {% for i in 0..2 %}
                             {% if articles[i] %}                                                                
-                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4'}) | raw}}
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-12'}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
                         {% endfor %}
+                    </div>
+                </div><!-- .row-->
+                {% endif %}
 
-                    </div><!-- .row-->
-                </div><!-- .container-->
-            </section><!-- .top-stories-->
-        {% endif %}
+            </div>
+
+
+
+
+
+        </section><!-- .featured-slider-->
+    
 
 
         <section class="home-page-content">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
+
+
+                        {% if articles[articleCount] %}
+                            <section class="opinion">
+
+                                    <div class="row">
+
+                                        {% for i in 0..1 %}
+                                            {% if articles[i] %}                                                                
+                                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6'}) | raw}}
+                                                {% set articleCount = articleCount + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </div><!-- .row-->
+                            </section><!-- .top-stories-->
+                        {% endif %}
+
+
+
+
+
+
+
+
+
                         <div class="card-group">
                             {% set rowCards = ['card-rec inverted', 'card-rec'] %}                                                                
                             {% for i in 0..1 %}
@@ -129,7 +156,7 @@
                             <!--block-->
                             </div>
                             <div class="col-sm-6 hidden-xs">
-                                {{ this.render('partials/subscribe_pro.twig', {networkData : networkData}) | raw }}
+                                {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData}) | raw }}
                             </div>
                         </section>
 
@@ -157,43 +184,13 @@
                             {% endif %}
                         {% endfor %}
 
-
-                        {% if not _User.isGuest() %}
-
-                        <section class="" style="margin-bottom:50px;">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="ajaxArticles clearfix"
-                                         data-offset="{{limit}}"
-                                         data-containerclass="col-sm-3 card-sm"
-                                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                                     </div>
-                                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
-                                </div>
-
-                                {% set noDataCls = 'hide' %}
-                                {% if articles|length == 0 %}
-                                    {% set noDataCls = '' %}
-                                 {% endif %}
-                                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                                    <p class="no-data text-center">No articles found.</p>  
-                                </div>
-                            </div>
-                        </section>
-                        {% endif %} 
-
-
-
-
                     </div><!-- .col-sm-8-->
-
 
 
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
-
-                        {{ this.render('partials/subscribe_pro.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-xs hidden-sm'}) | raw }}
 
 
                         <section class="sidebar-news">
@@ -204,15 +201,13 @@
 
                             {% if recentArticles|length > 0 %}
 
-                                {% for i in 0..5 %}
+                                {% for i in 0..6 %}
                                     {% if recentArticles[i] %}
                                         {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
                                     {% endif %}
                                 {% endfor %}
 
                             {% endif %}
-
-
                         </section><!-- .sidebar-news -->
 
 
@@ -226,18 +221,45 @@
                                         </script>
                                     </div>
                                 <span class="add-text">Advertisement</span>
-                            <!--block-->
-
-                            <div class="block visible-xs-block">
-                            <!-- /268436641/sidepanel1 -->
-{#                                 <a href="#">
-                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
-                                </a>
- #}
-                                {# <span class="add-text">Advertisement</span> #}
-                            </div><!--block-->
                         </section>
+
+                        {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+
+
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+
+
+
+
+
                     </div><!-- .col-sm-4-->
+
+
+
+                    <div class="col-sm-12">
+                         <section class="" style="">
+                            <div class="row">
+                                <div class="ajaxArticles index clearfix"
+                                     data-offset="{{limit}}"
+                                     data-articlecount="10"
+                                     data-containerclass="col-sm-3 card-sm"
+                                     data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                                 </div>
+                                <a class="loadMoreArticles-index" href="#">Load more articles</a>
+                            </div>
+
+                            {% set noDataCls = 'hide' %}
+                            {% if articles|length == 0 %}
+                                {% set noDataCls = '' %}
+                             {% endif %}
+                            <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                                <p class="no-data text-center">No articles found.</p>  
+                            </div>
+                        </section>
+                    </div>
 
 
 
@@ -411,31 +433,10 @@
                {% endif %}
 
 
-{#                 {% if sections['engineroom'].feed.articles|length > 0 %}
-                <section class="room-engine">
-                    <header>
-                        <a href="{{ sections['engineroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt="engine room" class="">
-                        </a>
-                    </header>
-                    
-
-                        {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
 
 
-                        <div class="contents">
-                            {% for i in 1..3 %}
-                                {% if sections['engineroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
-                                {% endif %}
-                            {% endfor %}
-                        </div><!-- .content-->
-                </section><!-- .room-living-->
-                {% endif %}
-            </div><!-- .container-->
- #}
 
-{#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
             <section class="room-corporate">
                 <div class="container">
                     <header>
@@ -454,7 +455,11 @@
                     </div><!-- .row-->
                 </div>
             </section><!-- .room-corporate-->
-            {% endif %} #}
+            {% endif %}
+
+
+
+
             <p class="foundingpartners">FOUNDING PARTNERS</p>
             <section class="sponsor-logos">
                 <div class="container">

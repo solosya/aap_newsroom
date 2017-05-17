@@ -1,5 +1,5 @@
 .sidebar-news{
-    // margin-bottom: 100px;
+    margin-bottom: 60px;
     
     @media screen and (max-width: $mmd-break) {
         display:none;
@@ -15,9 +15,10 @@
             font-size: em(26);
             font-family: $font-family-sans-serif;
             font-weight: normal;
-            float: left;
             margin-top: 5px;
             margin-bottom:0;
+            padding-bottom:5px;
+            border-bottom: 1px solid #dadada;
 
             > span {
                 font-weight: 700;
@@ -30,8 +31,7 @@
     }
 
     a.card{
-        margin-bottom: 27px;
-        height: 100px;
+        margin-bottom: 10px;
         width: 100%;
     
         > article {
@@ -44,44 +44,46 @@
         }
 
         > article > figure{
-            width: 100px;
-            height:100px;
-            flex: 0 0 100px;
-            overflow: hidden;
-            float: left;
-            margin-right: 19px;
+            display:none;
+            // width: 100px;
+            // height:100px;
+            // flex: 0 0 100px;
+            // overflow: hidden;
+            // float: left;
+            // margin-right: 19px;
 
-            > img{
-                max-width: 100%;
-            }
+            // > img{
+            //     max-width: 100%;
+            // }
         }
 
         > article .content{
             border-bottom: 1px solid #dadada;
-            padding-bottom: 3px;
+            padding-bottom: 10px;
             width: 100%;
             -ms-flex: 1 0;
             -webkit-flex: 1 0;
             flex: 1 0;
             
             > .category{
-                font-size: em(11);
-                font-weight: bold;
-                color: #8a8b93;
-                display: block;
-                line-height: 1;
-                margin-bottom: 7px;
-                @media screen and (max-width: $sm-break){
-                    font-size: em(22);
-                    // margin-bottom:5px;
-                    text-transform:none;
-                }
+                display:none;
+                // font-size: em(11);
+                // font-weight: bold;
+                // color: #8a8b93;
+                // display: block;
+                // line-height: 1;
+                // margin-bottom: 7px;
+                // @media screen and (max-width: $sm-break){
+                //     font-size: em(22);
+                //     // margin-bottom:5px;
+                //     text-transform:none;
+                // }
             }
 
             > h2{
                 font-weight: 700;
-                font-size: em(22);
-                height: 55px;
+                font-size: rem(16);
+                height: 20px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 @media screen and (max-width: $sm-break){
@@ -106,7 +108,7 @@
                 line-height: 1;
                 float: left;
                 color: #f73d30;
-                font-size: em(12);
+                font-size: rem(12);
             }
         }
 

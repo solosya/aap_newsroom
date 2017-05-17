@@ -1,5 +1,6 @@
 .featured-slider{
     margin-bottom: 22px;
+    
     @media screen and (max-width: $sm-break){
         margin-left: -15px;
         margin-right: -15px;
@@ -80,229 +81,223 @@
                 display: block;
             }
 
-        }
 
-
-
-
-
-
-
-        figure{
-            position:relative;
-            vertical-align: top;
-            line-height: normal;
-            max-width: 1168px;
-            -webkit-flex:3 0 0;-ms-flex:3 0 0;flex:3 0 0;-moz-flex:3 0 0;
-            -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
-            @media screen and (max-width:1600px){
-                max-width: 65%;
-                max-height: 587px;
-            }
-
-            @media screen and (max-width: $sm-break){
-                max-width: 60%;
-                height: 350px;
-            }
-
-            @media screen and (max-width: $mobile-break){
-                min-width: 100%;
-                height: 350px;
-            }
-
-
-            &:before{
-                @media screen and (max-width: $mobile-break){
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    content: '';
-                    z-index: 1;
-                    // background: rgba(0,0,0,.4);
-                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.36+65,1+100 */
-                    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.36) 65%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-                    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 55%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 65%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-                }
-            }
-            img{
-                height:100%;
-                min-width:100%;
-                object-fit: cover;
-
-                @media screen and (max-width: $sm-break){
-                    width: 100%;
-                    height: 100%;
-                }
-                @media screen and (max-width: $mobile-break){
-                    height: 100%;
-                    // max-width: initial;
-                    position: relative;
-                    // left: -15%;
-                    width: initial;
-                }
-                // @media screen and (max-width: 410px ){
-                //     left: -50%;
-                // }
-            }
-
-        }
-
-        .content{
-            -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
-            vertical-align: top;
-            line-height: normal;
-            width: 400px;
-            height: auto;
-            max-height:587px;
-            padding: 208px 15px 10px 31px;
-            z-index: 2;
-
-            @media screen and (max-width:1600px){
-                width: 35%;
-                padding: 165px 15px 5px 15px;
-            }
-
-                            // Not under:                     Not over:
-            @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
-                padding: 100px 15px 15px 15px;
-            }
-
-
-
-            @media screen and (max-width: $mobile-break){
-                width: 100%;
-                height:100%;
-                position: absolute;
-                top:0;
-                padding:150px 20px 0 20px;
-                color: #FFF;
-            }
-            
-
-            .category{
-                // background:red;
-                margin-bottom: 10px;
-                display: block;
-                -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
-                min-height:0;
-                max-height:20px;
-                @media screen and (max-width: $mobile-break){
-                    color: white;
-                    font-family: $font-family-sans-serif;
-                    font-size: em(12);
-                }
-            }
-
-            h2{
-                // background:green;
-                -webkit-flex:2 2 0;-ms-flex:2 2 0;flex:2 2 0;-moz-flex:2 2 0;
-                min-height:0;
-                vertical-align:middle;
-                // padding-bottom: 35px;
-                margin-bottom: 8px;
-
-                @media screen and (max-width:1427px){
-                    font-size: em(42);
-                }
-
-
-                @media screen and (max-width:1350px){
-                    font-size: em(38);
-                }
-
-                @media screen and (max-width:1300px){
-                    font-size: em(32);
-                }
-
-
-                @media screen and (max-width: $md-break){
-                   font-size: em(24);
-                }
-
-                @media screen and (max-width: $mmd-break){
-                   padding-bottom: 5px;
-                }
-
-                @media screen and (max-width: $sm-break){
-                     font-size: em(28);
-                     border: 0;
-                }
-            }
-
-            > p {
-                -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
-                min-height:0;
-                line-height:1.5em;
-                padding-bottom:20px;
-                @media screen and (max-width: $mobile-break){
-                    display:none;
-                }
-            }
-
-            time{
-                // background:yellow;
-                -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
-                min-height:0;
-                max-height:30px;
-                position:absolute;
-                bottom:10px;
-                right:10px;
-                
-                @media screen and (max-width: 1100px){
-                    display:none;
-                }
-
-                @media screen and (max-width: $mobile-break){
-                    font-size: em(10);
-                    border: 0;
-                    color: #FFF;
-                    font-weight: normal;
-                }
-            }
-
-            .author{
-                // background:orange;
-                -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+            figure{
+                position:relative;
+                vertical-align: top;
+                line-height: normal;
+                max-width: 1168px;
+                -webkit-flex:3 0 0;-ms-flex:3 0 0;flex:3 0 0;-moz-flex:3 0 0;
                 -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
-                min-height:35px;
-                max-height:35px;
-                // position:absolute;
-                // bottom:5px;
-                // width:100%;
+                @media screen and (max-width:1600px){
+                    max-width: 65%;
+                    max-height: 587px;
+                }
 
-                &:before {
-                    content: '';
-                    display:block;
-                    position:relative;
-                    top: -10px;
-                    border-bottom: 1px solid #dadada;
-                    width: 100%;
+                @media screen and (max-width: $sm-break){
+                    max-width: 60%;
+                    height: 350px;
+                }
+
+                @media screen and (max-width: $mobile-break){
+                    min-width: 100%;
+                    height: 350px;
+                }
+
+
+                &:before{
                     @media screen and (max-width: $mobile-break){
-                        border:0;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        content: '';
+                        z-index: 1;
+                        // background: rgba(0,0,0,.4);
+                        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.36+65,1+100 */
+                        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.36) 65%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+                        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 55%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 65%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+                    }
+                }
+
+                img{
+                    height:100%;
+                    min-width:100%;
+                    object-fit: cover;
+
+                    @media screen and (max-width: $sm-break){
+                        width: 100%;
+                        height: 100%;
+                    }
+                    @media screen and (max-width: $mobile-break){
+                        height: 100%;
+                        // max-width: initial;
+                        position: relative;
+                        // left: -15%;
+                        width: initial;
+                    }
+                    // @media screen and (max-width: 410px ){
+                    //     left: -50%;
+                    // }
+                }
+
+            }
+
+            .content{
+                -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                vertical-align: top;
+                line-height: normal;
+                width: 400px;
+                height: auto;
+                max-height:587px;
+                padding: 208px 15px 10px 31px;
+                z-index: 2;
+
+                @media screen and (max-width:1600px){
+                    width: 35%;
+                    padding: 165px 15px 5px 15px;
+                }
+
+                                // Not under:                     Not over:
+                @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
+                    padding: 100px 15px 15px 15px;
+                }
+
+
+
+                @media screen and (max-width: $mobile-break){
+                    width: 100%;
+                    height:100%;
+                    position: absolute;
+                    top:0;
+                    padding:150px 20px 0 20px;
+                    color: #FFF;
+                }
+                
+
+                .category{
+                    // background:red;
+                    margin-bottom: 10px;
+                    display: block;
+                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    min-height:0;
+                    max-height:20px;
+                    @media screen and (max-width: $mobile-break){
+                        color: white;
+                        font-family: $font-family-sans-serif;
+                        font-size: em(12);
+                    }
+                }
+
+                h2{
+                    // background:green;
+                    -webkit-flex:2 2 0;-ms-flex:2 2 0;flex:2 2 0;-moz-flex:2 2 0;
+                    min-height:0;
+                    vertical-align:middle;
+                    // padding-bottom: 35px;
+                    margin-bottom: 8px;
+
+                    @media screen and (max-width:1427px){
+                        font-size: em(42);
+                    }
+
+
+                    @media screen and (max-width:1350px){
+                        font-size: em(38);
+                    }
+
+                    @media screen and (max-width:1300px){
+                        font-size: em(32);
+                    }
+
+
+                    @media screen and (max-width: $md-break){
+                       font-size: em(24);
+                    }
+
+                    @media screen and (max-width: $mmd-break){
+                       padding-bottom: 5px;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                         font-size: em(28);
+                         border: 0;
                     }
                 }
 
                 > p {
-                    padding-top:8px;
+                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    min-height:0;
+                    line-height:1.5em;
+                    padding-bottom:20px;
+                    @media screen and (max-width: $mobile-break){
+                        display:none;
+                    }
                 }
 
-                @media screen and (max-width: $mobile-break){
-                    img{
-                        display: none;
+                time{
+                    // background:yellow;
+                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    min-height:0;
+                    max-height:30px;
+                    position:absolute;
+                    bottom:10px;
+                    right:10px;
+                    
+                    @media screen and (max-width: 1100px){
+                        display:none;
                     }
-                    p{
-                        font-family: $base-font-family;
-                        font-size: em(18);
-                        padding: 0;
+
+                    @media screen and (max-width: $mobile-break){
+                        font-size: em(10);
+                        border: 0;
                         color: #FFF;
+                        font-weight: normal;
+                    }
+                }
+
+                .author{
+                    // background:orange;
+                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+                    min-height:35px;
+                    max-height:35px;
+                    // position:absolute;
+                    // bottom:5px;
+                    // width:100%;
+
+                    &:before {
+                        content: '';
+                        display:block;
+                        position:relative;
+                        top: -10px;
+                        border-bottom: 1px solid #dadada;
+                        width: 100%;
+                        @media screen and (max-width: $mobile-break){
+                            border:0;
+                        }
+                    }
+
+                    > p {
+                        padding-top:8px;
+                    }
+
+                    @media screen and (max-width: $mobile-break){
+                        img{
+                            display: none;
+                        }
+                        p{
+                            font-family: $base-font-family;
+                            font-size: em(18);
+                            padding: 0;
+                            color: #FFF;
+                        }
                     }
                 }
             }
-    
         }
     }
 }
