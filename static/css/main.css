@@ -7592,6 +7592,14 @@ button.like {
   body {
     overflow-x: hidden; } }
 
+.gutter-60.row {
+  margin-right: -30px;
+  margin-left: -30px; }
+
+.gutter-60 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 30px;
+  padding-left: 30px; }
+
 .gutter-20.row {
   margin-right: -10px;
   margin-left: -10px; }
@@ -9970,15 +9978,13 @@ button.swiper-pagination-bullet {
         padding-bottom: 10px;
         margin-bottom: 2px;
         border-bottom: 1px solid #dadada; } }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 620px) {
     .opinion a.card {
+      margin-top: 10px;
       padding-top: 6px;
       border-bottom: 1px solid #dadada;
       margin-left: -15px;
       margin-right: -15px; } }
-  @media screen and (max-width: 620px) {
-    .opinion a.card {
-      margin-top: 10px; } }
   .opinion a.card > article {
     height: auto;
     flex-wrap: nowrap;
@@ -10007,16 +10013,6 @@ button.swiper-pagination-bullet {
         .opinion a.card > article > figure.video:after {
           width: 30px;
           height: 30px; } }
-    @media screen and (max-width: 1200px) {
-      .opinion a.card > article > figure {
-        width: 65px;
-        flex: 0 0 65px; } }
-    @media screen and (max-width: 768px) {
-      .opinion a.card > article > figure {
-        margin-bottom: 6px;
-        width: 60px;
-        height: 56px;
-        flex: 0 0 60px; } }
     @media screen and (max-width: 620px) {
       .opinion a.card > article > figure {
         width: 116px;
@@ -10026,7 +10022,8 @@ button.swiper-pagination-bullet {
       max-width: 100%; }
   .opinion a.card > article > .content {
     display: block;
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    padding-left: 20px; }
     @media screen and (max-width: 768px) {
       .opinion a.card > article > .content {
         border: 0; } }
@@ -10935,6 +10932,10 @@ button.swiper-pagination-bullet {
       .room-sports > .featured > a > article > figure > img {
         max-width: 100%; }
 
+.coporate-news-room {
+  max-width: none;
+  padding: 0; }
+
 .room-corporate {
   background: #d8d8d8;
   padding: 50px 0; }
@@ -10950,18 +10951,34 @@ button.swiper-pagination-bullet {
     padding-bottom: 13px;
     border-bottom: solid 1px #d4d4d4; }
   .room-corporate .card-sm {
-    margin-bottom: 0;
-    padding: 0 30px; }
+    margin-bottom: 0; }
+    @media screen and (max-width: 992px) {
+      .room-corporate .card-sm {
+        margin-bottom: 50px; } }
+    @media screen and (max-width: 620px) {
+      .room-corporate .card-sm {
+        margin-bottom: 0; } }
     .room-corporate .card-sm .content {
       background: white;
       display: block;
+      position: relative;
       height: 195px !important; }
+      @media screen and (max-width: 620px) {
+        .room-corporate .card-sm .content {
+          height: auto !important; } }
       .room-corporate .card-sm .content time {
         float: none;
         position: static !important; }
       .room-corporate .card-sm .content div.logo {
-        text-align: right;
-        height: 100px; }
+        position: absolute;
+        right: 10px;
+        bottom: 10px; }
+        @media screen and (max-width: 620px) {
+          .room-corporate .card-sm .content div.logo {
+            width: 60px; } }
+        @media screen and (max-width: 620px) {
+          .room-corporate .card-sm .content div.logo > img {
+            width: 100%; } }
         .room-corporate .card-sm .content div.logo img.stuff {
           margin-top: 20px; }
   .room-corporate .sponsors {

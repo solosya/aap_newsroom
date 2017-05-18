@@ -1,3 +1,8 @@
+.coporate-news-room {
+    max-width:none;
+    padding:0;
+}
+
 .room-corporate{
     
     background:#d8d8d8;
@@ -23,20 +28,28 @@
 
     .card-sm {
 
-        // &:first-child {
-        //     padding-left:15px;
-        // }
-        // &:last-child {
-        //     padding-right:15px;
-        // }
-
         margin-bottom:0;
-        padding: 0 30px;
+
+        @media screen and (max-width: $mmd-break){
+            margin-bottom:50px;
+        }
+
+        @media screen and (max-width: $mobile-break){
+            margin-bottom:0;
+        }
 
         .content {
             background:white;
             display:block;
+            position:relative;
+
             height:195px !important;
+
+
+            @media screen and (max-width: $mobile-break) {
+                height:auto !important;
+            }
+
 
             time {
                 float:none;
@@ -46,9 +59,19 @@
             }
 
             div.logo {
-                text-align:right;
-                height:100px;
+                position:absolute;
+                right:10px;
+                bottom:10px;
+                
+                @media screen and (max-width: $mobile-break) {
+                    width:60px;
+                }
 
+                > img {
+                    @media screen and (max-width: $mobile-break) {
+                        width: 100%
+                    }
+                }
 
                 img.stuff {
                     margin-top:20px;

@@ -4,6 +4,19 @@ body{
     }
 }
 
+
+// 20px gutter
+.gutter-60.row {
+  margin-right: -30px;
+  margin-left: -30px;
+}
+.gutter-60 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+
+
 // 20px gutter
 .gutter-20.row {
   margin-right: -10px;
