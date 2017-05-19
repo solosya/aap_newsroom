@@ -129,7 +129,7 @@
 
     {% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'' %}
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
-    {% set hasArticleMediaClass = (article.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
+    {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
     {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
     {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}

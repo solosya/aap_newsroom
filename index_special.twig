@@ -224,16 +224,6 @@
                                         </script>
                                     </div>
                                 <span class="add-text">Advertisement</span>
-                            <!--block-->
-
-                            <div class="block visible-xs-block">
-                            <!-- /268436641/sidepanel1 -->
-{#                                 <a href="#">
-                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
-                                </a>
- #}
-                                {# <span class="add-text">Advertisement</span> #}
-                            </div><!--block-->
                         </section>
                     </div><!-- .col-sm-4-->
 
@@ -268,207 +258,165 @@
 
                         </section><!-- .top-stories-->
  
-{#                         <div class="advertiser-content">
-                            <span class="add-text">Advertiser content</span>
-                        </div>
- #}
-
-
-
-
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
 
 
 
 
-{#                 <section class="add lg-block" style="background:#dadada;padding:50px 0 40px 0">
-                    <div class="block">
-                        <a href="#">
-                            <img src="{{networkData.templatePath}}/static/images/add-top.jpg" alt="Add Alt Here" class="img-responsive">
-                        </a>
-                        <span class="add-text">Advertisement</span>
-                    </div>
-                </section><!-- .add-->
- #}
+                 {% if sections['viewingroom'].feed.articles|length > 0 %}
+                 <section class="room-view">
+                     <header>
+                         <a href="{{ sections['viewingroom'].link }}">
+                             <img src="{{networkData.templatePath}}/static/images/viewingroom-logo.svg" alt="viewing room" class="img-responsive">
+                         </a>
+                     </header>
+
+                     <div class="content-wrapper">
+                 
+                         {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
+
+                         {% for i in 1..3 %}
+                             {% if sections['viewingroom'].feed.articles[i] %}        
+                                 {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4', swap: 'false'}) | raw}}
+                             {% endif %}
+                         {% endfor %}
+
+                     </div><!-- .content-wrapper-->
+
+                 </section><!-- .room-view-->
+                 {% endif %}
+
+                 {% if sections['livingroom'].feed.articles|length > 0 %}
+                 <section class="room-living">
+                     <header>
+                         <a href="{{ sections['livingroom'].link }}">
+                             <img src="{{networkData.templatePath}}/static/images/livingroom-logo.svg" alt="viewing room" class="img-responsive">
+                         </a>
+                     </header>
+                     
+
+                         {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
+
+
+                         <div class="contents">
+                             {% for i in 1..3 %}
+                                 {% if sections['livingroom'].feed.articles[i] %}        
+                                     {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                                 {% endif %}
+                             {% endfor %}
+                         </div><!-- .content-->
+                 </section><!-- .room-living-->
+                 {% endif %}
 
 
 
 
 
 
-                {% if sections['viewingroom'].feed.articles|length > 0 %}
-                <section class="room-view">
-                    <header>
-                        <a href="{{ sections['viewingroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/viewingroom-logo.svg" alt="viewing room" class="img-responsive">
-                        </a>
-                    </header>
+                 {% if sections['boardroom'].feed.articles|length > 0 %}
+                 <section class="room-board">
+                     <header>
+                         <a href="{{ sections['boardroom'].link }}">
+                             <img src="{{networkData.templatePath}}/static/images/boardroom-logo.svg" alt="board room" class="img-responsive">
+                         </a>
+                     </header>
 
-                    <div class="content-wrapper">
-                
-                        {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
+                     {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board', swap: 'false'}) | raw}}
 
-                        {% for i in 1..3 %}
-                            {% if sections['viewingroom'].feed.articles[i] %}        
-                                {{this.render('partials/_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4', swap: 'false'}) | raw}}
-                            {% endif %}
-                        {% endfor %}
+                     <div class="articles">
+                         <div class="row">
+                             
+                             {% for i in 1..3 %}
+                                 {% if sections['boardroom'].feed.articles[i] %}        
+                                     {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4', swap: 'false'}) | raw}}
+                                 {% endif %}
+                             {% endfor %}
+
+                         </div><!-- .articles-->
+                     </div><!-- .row-->
 
 
-                    </div><!-- .content-wrapper-->
+                 </section><!--room-board-->
+                 {% endif %}
 
-                </section><!-- .room-view-->
+
+
+
+
+                 {% if sections['sportsroom'].feed.articles|length > 0 %}
+
+                 <section class="room-sports">
+                     <header>
+                         <a href="{{ sections['sportsroom'].link }}">
+                             <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg" alt="board room" class="img-responsive">
+                         </a>
+                     </header>
+
+                     {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport', swap: 'false'}) | raw}}
+
+                     <div class="articles">
+                         
+                         <div class="row">
+                             
+                             {% for i in 1..2 %}
+                                 {% if sections['sportsroom'].feed.articles[i] %}        
+                                     {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6', swap: 'false'}) | raw}}
+                                 {% endif %}
+                             {% endfor %}
+
+                         </div><!-- .row-->
+                     </div>
+                 </section><!--room-sports-->
                 {% endif %}
 
+            </div>
 
 
+            <div class="container-fluid coporate-news-room">
+
+                 {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+                 <section class="room-corporate">
+                     <div class="container">
+                         <header>
+                             <a href="{{ sections['corporate newsroom'].link }}">
+                                 <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
+                             </a>
+                         </header>
+                         <div class="row corporate-articles gutter-60">
+                             {% for i in 0..3 %}
+                                 {% if sections['corporate newsroom'].feed.articles[i] %}        
+                                     {{this.render('partials/_single-article_corp.twig', {
+                                         article: sections['corporate newsroom'].feed.articles[i], 
+                                         networkData: networkData, 
+                                         containerClass: 'col-xs-12 col-sm-6 col-md-3 card-sm s255x208', 
+                                         swap: 'false'
+                                     }) | raw}}
+                                 {% endif %}
+                             {% endfor %}
 
 
-                {% if sections['livingroom'].feed.articles|length > 0 %}
-                <section class="room-living">
-                    <header>
-                        <a href="{{ sections['livingroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/livingroom-logo.svg" alt="viewing room" class="img-responsive">
-                        </a>
-                    </header>
-                    
+                         </div><!-- .row-->
+                     </div>
+                 </section><!-- .room-corporate-->
+                 {% endif %}
 
-                        {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
+             </div>
 
 
-                        <div class="contents">
-                            {% for i in 1..3 %}
-                                {% if sections['livingroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
-                                {% endif %}
-                            {% endfor %}
-                        </div><!-- .content-->
-                </section><!-- .room-living-->
-                {% endif %}
-
-
-
-
-
-
-                {% if sections['boardroom'].feed.articles|length > 0 %}
-                <section class="room-board">
-                    <header>
-                        <a href="{{ sections['boardroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/boardroom-logo.svg" alt="board room" class="img-responsive">
-                        </a>
-                    </header>
-
-                    {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[0], 'position': (1), containerClass: 'featured board', swap: 'false'}) | raw}}
-
-                    <div class="articles">
-                        <div class="row">
-                            
-                            {% for i in 1..3 %}
-                                {% if sections['boardroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['boardroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4', swap: 'false'}) | raw}}
-                                {% endif %}
-                            {% endfor %}
-
-                        </div><!-- .articles-->
-                    </div><!-- .row-->
-
-
-                </section><!--room-board-->
-                {% endif %}
-
-
-
-
-
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
-
-                <section class="room-sports">
-                    <header>
-                        <a href="{{ sections['sportsroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg" alt="board room" class="img-responsive">
-                        </a>
-                    </header>
-
-                    {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport', swap: 'false'}) | raw}}
-
-                    <div class="articles">
-                        
-                        <div class="row">
-                            
-                            {% for i in 1..2 %}
-                                {% if sections['sportsroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6', swap: 'false'}) | raw}}
-                                {% endif %}
-                            {% endfor %}
-
-                        </div><!-- .row-->
-                    </div>
-                </section><!--room-sports-->
-               {% endif %}
-
-
-{#                 {% if sections['engineroom'].feed.articles|length > 0 %}
-                <section class="room-engine">
-                    <header>
-                        <a href="{{ sections['engineroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt="engine room" class="">
-                        </a>
-                    </header>
-                    
-
-                        {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
-
-
-                        <div class="contents">
-                            {% for i in 1..3 %}
-                                {% if sections['engineroom'].feed.articles[i] %}        
-                                    {{this.render('partials/_single-article.twig', {article: sections['engineroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
-                                {% endif %}
-                            {% endfor %}
-                        </div><!-- .content-->
-                </section><!-- .room-living-->
-                {% endif %}
-            </div><!-- .container-->
- #}
-
-{#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
-            <section class="room-corporate">
-                <div class="container">
-                    <header>
-                        <a href="{{ sections['corporate newsroom'].link }}">
-                            <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
-                        </a>
-                    </header>
-                    <div class="row corporate-articles">
-                        {% for i in 0..3 %}
-                            {% if sections['corporate newsroom'].feed.articles[i] %}        
-                                {{this.render('partials/_single-article_corp.twig', {article: sections['corporate newsroom'].feed.articles[i], position: i+1, networkData: networkData, containerClass: 'col-md-3 card-sm s255x208', swap: 'false'}) | raw}}
-                            {% endif %}
-                        {% endfor %}
-
-
-                    </div><!-- .row-->
-                </div>
-            </section><!-- .room-corporate-->
-            {% endif %} #}
-            <p class="foundingpartners">FOUNDING PARTNERS</p>
-            <section class="sponsor-logos">
-                <div class="container">
-                    <ul>
-                        <li class="sponsor-chorus"></li>
-                        <li class="sponsor-holden"></li>
-                        <li class="sponsor-vic-uni-wellington"></li>
-                        <li class="sponsor-uni-auckland"></li>
-{#                        <li class="sponsor-holden"></li>
-                        <li class="sponsor-chorus"></li>
-                        <li class="sponsor-holden"></li>
- #}                    </ul>
-                </div>
-            </section>
-
-
-        </section><!-- .home-page-content-->
+             <div class="container">
+                 <p class="foundingpartners">FOUNDING PARTNERS</p>
+                 <section class="sponsor-logos">
+                     <div class="container">
+                         <ul>
+                             <li class="sponsor-chorus"></li>
+                             <li class="sponsor-holden"></li>
+                             <li class="sponsor-vic-uni-wellington"></li>
+                             <li class="sponsor-uni-auckland"></li>
+                         </ul>
+                     </div>
+                 </section>  
+             </div>
+         </section><!-- .home-page-content-->
 
     </main><!-- .site-main -->

@@ -45,7 +45,7 @@
             "feed": "",
             "link": ""
         },
-        "opinion": {
+        "comment": {
             "feed": "",
             "link": ""
         }
@@ -87,7 +87,6 @@
                 {% if articles[articleCount] %}
                 <div class="cold-sm-12 col-md-4">
                     <div class="row top-stories-comments">
-                        <h2>TOP STORIES</h2>
                         {% for i in 0..2 %}
                             {% if articles[i] %}                                                                
                                 {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-12'}) | raw}}
@@ -100,10 +99,6 @@
 
             </div>
 
-
-
-
-
         </section><!-- .featured-slider-->
     
 
@@ -113,25 +108,23 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
 
-
-                        {% if articles[articleCount] %}
+                        {% if sections['comment'].feed.articles|length > 0 %}
+                            {% if articles[articleCount] %}
                             <section class="opinion">
-
                                     <div class="row">
-
                                         {% for i in 0..1 %}
-                                            {% if articles[i] %}                                                                
+                                            {% if sections['comment'].feed.articles[i] %}        
                                                 {{this.render('partials/_single-article.twig', {
-                                                    article: articles[articleCount], 
+                                                    article: sections['comment'].feed.articles[i],
                                                     position: (articleCount+1), 
                                                     containerClass: 'col-sm-6', 
                                                     swap: 'false'}) | raw}}
-                                                {% set articleCount = articleCount + 1 %}
                                             {% endif %}
                                         {% endfor %}
 
                                     </div><!-- .row-->
                             </section><!-- .top-stories-->
+                            {% endif %}
                         {% endif %}
 
 
@@ -451,7 +444,7 @@
                                     {{this.render('partials/_single-article_corp.twig', {
                                         article: sections['corporate newsroom'].feed.articles[i], 
                                         networkData: networkData, 
-                                        containerClass: 'col-xs-12 col-sm-6 col-md-3 card-sm s255x208', 
+                                        containerClass: 'col-sm-12 col-md-3 card-sm s255x208', 
                                         swap: 'false'
                                     }) | raw}}
                                 {% endif %}
@@ -467,23 +460,18 @@
 
 
             <div class="container">
-
-
-
-
-            <p class="foundingpartners">FOUNDING PARTNERS</p>
-            <section class="sponsor-logos">
-                <div class="container">
-                    <ul>
-                        <li class="sponsor-chorus"></li>
-                        <li class="sponsor-holden"></li>
-                        <li class="sponsor-vic-uni-wellington"></li>
-                        <li class="sponsor-uni-auckland"></li>
-                    </ul>
-                </div>
-            </section>
-
-
+                <p class="foundingpartners">FOUNDING PARTNERS</p>
+                <section class="sponsor-logos">
+                    <div class="container">
+                        <ul>
+                            <li class="sponsor-chorus"></li>
+                            <li class="sponsor-holden"></li>
+                            <li class="sponsor-vic-uni-wellington"></li>
+                            <li class="sponsor-uni-auckland"></li>
+                        </ul>
+                    </div>
+                </section>  
+            </div>
         </section><!-- .home-page-content-->
 
     </main><!-- .site-main -->
