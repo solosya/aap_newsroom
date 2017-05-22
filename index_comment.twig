@@ -428,9 +428,9 @@
            </div>
 
 
-           <div class="container-fluid coporate-news-room">
+           {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+            <div class="container-fluid coporate-news-room">
 
-                {% if sections['corporate newsroom'].feed.articles|length > 0 %}
                 <section class="room-corporate">
                     <div class="container">
                         <header>
@@ -454,9 +454,8 @@
                         </div><!-- .row-->
                     </div>
                 </section><!-- .room-corporate-->
-                {% endif %}
-
             </div>
+            {% endif %}
 
 
             <div class="container">
