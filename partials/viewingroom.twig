@@ -1,0 +1,21 @@
+
+<section class="room-view">
+    <header>
+        <a href="{{ sections['viewingroom'].link }}">
+            <img src="{{networkData.templatePath}}/static/images/viewingroom-logo.svg" alt="viewing room" class="img-responsive">
+        </a>
+    </header>
+
+    <div class="content-wrapper">
+
+        {{this.render('_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
+
+        {% for i in 1..3 %}
+            {% if sections['viewingroom'].feed.articles[i] %}        
+                {{this.render('_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4', swap: 'false'}) | raw}}
+            {% endif %}
+        {% endfor %}
+
+    </div><!-- .content-wrapper-->
+
+</section><!-- .room-view-->

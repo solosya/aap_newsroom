@@ -1,0 +1,19 @@
+<section class="room-living">
+    <header>
+        <a href="{{ sections['livingroom'].link }}">
+            <img src="{{networkData.templatePath}}/static/images/livingroom-logo.svg" alt="viewing room" class="img-responsive">
+        </a>
+    </header>
+    
+
+        {{this.render('_single-article.twig', {article: sections['livingroom'].feed.articles[0], position: i+1, containerClass: 'feature s1130x587', swap: 'false'}) | raw}}
+
+
+        <div class="contents">
+            {% for i in 1..3 %}
+                {% if sections['livingroom'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {article: sections['livingroom'].feed.articles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                {% endif %}
+            {% endfor %}
+        </div><!-- .content-->
+</section><!-- .room-living-->

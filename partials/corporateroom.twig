@@ -1,0 +1,26 @@
+<div class="container-fluid coporate-news-room">
+
+    <section class="room-corporate">
+        <div class="container">
+            <header>
+                <a href="{{ sections['corporate newsroom'].link }}">
+                    <img src="{{networkData.templatePath}}/static/images/corporate-newsroom-header.svg" alt="board room">
+                </a>
+            </header>
+            <div class="row corporate-articles gutter-60">
+                {% for i in 0..3 %}
+                    {% if sections['corporate newsroom'].feed.articles[i] %}        
+                        {{this.render('_single-article_corp.twig', {
+                            article: sections['corporate newsroom'].feed.articles[i], 
+                            networkData: networkData, 
+                            containerClass: 'col-sm-12 col-md-3 card-sm s255x208', 
+                            swap: 'false'
+                        }) | raw}}
+                    {% endif %}
+                {% endfor %}
+
+
+            </div><!-- .row-->
+        </div>
+    </section><!-- .room-corporate-->
+</div>

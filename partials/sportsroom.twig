@@ -1,0 +1,22 @@
+ <section class="room-sports">
+     <header>
+         <a href="{{ sections['sportsroom'].link }}">
+             <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg" alt="board room" class="img-responsive">
+         </a>
+     </header>
+
+     {{this.render('_single-article.twig', {article: sections['sportsroom'].feed.articles[0], 'position': (1), containerClass: 'featured sport', swap: 'false'}) | raw}}
+
+     <div class="articles">
+         
+         <div class="row">
+             
+             {% for i in 1..2 %}
+                 {% if sections['sportsroom'].feed.articles[i] %}        
+                     {{this.render('_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6', swap: 'false'}) | raw}}
+                 {% endif %}
+             {% endfor %}
+
+         </div><!-- .row-->
+     </div>
+ </section><!--room-sports-->

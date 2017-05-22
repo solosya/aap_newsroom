@@ -1,0 +1,28 @@
+<div class="col-sm-12">
+    <section class="future-learning">
+        <header>
+
+            <a href="{{ sections['futurelearning'].link }}">
+                <img src="{{networkData.templatePath}}/static/images/futurelearning-logo.svg" alt="Furture learning" class="img-responsive">
+            </a>
+
+            <div class="future-learning-sponsors">
+                <p>Sponsored by</p>
+                <img src="{{networkData.templatePath}}/static/images/VIC-LOGO-Landscape-Green.svg?ver=1" alt="vicuni" style="height:37px" >
+                <img src="{{networkData.templatePath}}/static/images/UOA-H-Blue.svg" alt="UOA" style="height:37px; margin-left:10px" >
+            </div><!-- .sponsors-->
+
+        </header>
+        <div class="row">
+            {% for i in 0..2 %}
+                {% if sections['futurelearning'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {article: sections['futurelearning'].feed.articles[i], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100', swap: 'false' }) | raw}}
+                {% endif %}
+            {% endfor %}
+
+        </div><!-- .row-->
+
+
+    </section><!-- .top-stories-->
+
+</div><!-- .col-sm-12-->
