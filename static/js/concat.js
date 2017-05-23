@@ -27166,6 +27166,13 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             offset = opts.limit;
         }
         
+        var count = parseInt($('.'+opts.containerClass).data('articlecount'));
+        if(isNaN(count) || count < 0) {
+            count = opts.limit;
+        }
+
+
+
         var existingNonPinnedCount = parseInt($('.'+opts.containerClass).data('existing-nonpinned-count'));
         if(isNaN(existingNonPinnedCount)) {
             existingNonPinnedCount = -1;
@@ -27367,7 +27374,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         $('.'+opts.containerClass).data('offset', (offset + opts.limit));
         
          var csrfToken = $('meta[name="csrf-token"]').attr("content");
-        
+        console.log({offset: offset, limit: opts.limit, search: opts.search, _csrf: csrfToken});
         $.ajax({
             type: 'POST',
             url: _appJsConfig.baseHttpPath + '/search/load-articles',
@@ -29191,12 +29198,13 @@ HomeController.Listing = (function ($) {
 
         $('button.HideBlogArticle').Ajax_deleteArticle({
             onSuccess: function(data, obj){
-                var sectionPostsCount = $(obj).closest('.section__content').find('.card__news').length;
-                if(sectionPostsCount <= 1) {
-                    $(obj).closest('.section__content').addClass('hide');
-                }
+                // var section = $(obj).closest('.section__content');
+                // var sectionPostsCount = section.find('.card__news').length;
+                // if(sectionPostsCount <= 1) {
+                //     section.addClass('hide');
+                // }
                 $(obj).closest('.card').parent('div').remove();
-                var postsCount = $('body').find('.card__news').length;
+                var postsCount = $('body').find('.card').length;
                 if(postsCount <= 0) {
                     $('.NoArticlesMsg').removeClass('hide');
                 }
@@ -29404,7 +29412,7 @@ HomeController.Listing = (function ($) {
         }
 
         
-        $('.loadMoreArticles').on('click', function(e){
+        $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
 
             var btnObj = $(this);
