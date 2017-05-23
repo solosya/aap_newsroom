@@ -29411,10 +29411,10 @@ HomeController.Listing = (function ($) {
             }); 
         }
 
-        console.log('adding load more listener');
+        
         $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
-            console.log('loading more');
+
             var btnObj = $(this);
             
             $.fn.Ajax_LoadBlogArticles({
