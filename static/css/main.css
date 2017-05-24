@@ -10938,6 +10938,30 @@ button.swiper-pagination-bullet {
   max-width: none;
   padding: 0; }
 
+.sidebar .sponsored.card-sm a.card article figure {
+  height: 195px; }
+  .sidebar .sponsored.card-sm a.card article figure:after {
+    content: 'SPONSORED CONTENT';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: #fff; }
+
+.sidebar .sponsored.card-sm a.card article .content {
+  height: 175px; }
+  .sidebar .sponsored.card-sm a.card article .content div.logo {
+    position: absolute;
+    right: 10px;
+    bottom: 10px; }
+    @media screen and (max-width: 992px) {
+      .sidebar .sponsored.card-sm a.card article .content div.logo {
+        width: 60px; } }
+    @media screen and (max-width: 992px) {
+      .sidebar .sponsored.card-sm a.card article .content div.logo > img {
+        width: 100%; } }
+    .sidebar .sponsored.card-sm a.card article .content div.logo img.stuff {
+      margin-top: 20px; }
+
 .room-corporate {
   background: #d8d8d8;
   padding: 50px 0;

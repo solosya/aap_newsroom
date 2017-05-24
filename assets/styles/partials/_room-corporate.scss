@@ -3,6 +3,50 @@
     padding:0;
 }
 
+
+.sidebar .sponsored.card-sm {
+    a.card {
+        article {
+
+            figure {
+
+                height: 195px;
+
+                &:after{
+                    content:'SPONSORED CONTENT';
+                    position:absolute;
+                    top:5px;
+                    left:10px;
+                    color:#fff;
+                }
+            }
+
+            .content {
+                height: 175px;
+                div.logo {
+                    position:absolute;
+                    right:10px;
+                    bottom:10px;
+                    
+                    @media screen and (max-width: $mmd-break) {
+                        width:60px;
+                    }
+
+                    > img {
+                        @media screen and (max-width: $mmd-break) {
+                            width: 100%
+                        }
+                    }
+
+                    img.stuff {
+                        margin-top:20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .room-corporate{
     
     background:#d8d8d8;
@@ -54,24 +98,13 @@
                     display: -webkit-flex;
                     display: -ms-flexbox;
                     display: flex;
-
                     flex-wrap: nowrap;
                     -webkit-flex-wrap: nowrap;
                 }    
             }
 
             > article {
-                
-                // > figure{
-                //     width: auto;
-                //     overflow: hidden;
-                //     height:208px;
-                //     @media screen and (max-width: $mmd-break){
-                //         width: 116px;
-                //         height:116px;
-                //         flex: 0 0 116px;
-                //     }
-                // }
+               
 
                 .content {
                     background:white;
@@ -89,7 +122,6 @@
                     time {
                         float:none;
                         position:static !important;
-                        // padding-bottom:60px !important;
 
                     }
 
@@ -115,9 +147,6 @@
                 }
             }
         }
-
-
-
     }
 
     
