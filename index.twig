@@ -235,6 +235,7 @@
 
 
 
+                    {{ this.render('partials/_sponsor_logos.twig') | raw }}
 
 {#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
                 {{ this.render('partials/corporateroom.twig', {sections: sections, networkData: networkData}) | raw }}
@@ -242,47 +243,7 @@
  #}
 
 
-             <div class="container">
-                 <p class="foundingpartners">FOUNDING PARTNERS</p>
-                 <section class="sponsor-logos">
-                     <div class="container hidden-sm hidden-xs">
-                         <ul>
-                             <li class="sponsor-chorus"></li>
-                             <li class="sponsor-holden"></li>
-                             <li class="sponsor-vic-uni-wellington"></li>
-                             <li class="sponsor-uni-auckland"></li>
-                         </ul>
-                     </div>
-                     <div class="container hidden-xs hidden-md hidden-lg">
-                         <ul>
-                             <li class="sponsor-chorus"></li>
-                             <li class="sponsor-holden"></li>
-                         </ul>
-                         <br>
-                         <ul>
-                             <li class="sponsor-vic-uni-wellington"></li>
-                             <li class="sponsor-uni-auckland"></li>
-                         </ul>
-                     </div>
-                     <div class="container hidden-sm hidden-md hidden-lg">
-                         <ul>
-                             <li class="sponsor-chorus"></li>
-                         </ul>
-                         <br>
-                         <ul>
-                             <li class="sponsor-holden"></li>
-                         </ul>
-                         <br>
-                         <ul>
-                             <li class="sponsor-vic-uni-wellington"></li>
-                         </ul>
-                         <br>
-                         <ul>
-                             <li class="sponsor-uni-auckland"></li>
-                         </ul>
-                     </div>
-                 </section>  
-             </div>
+
          </section><!-- .home-page-content-->
 
     </main><!-- .site-main -->
