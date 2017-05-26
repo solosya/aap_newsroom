@@ -227,22 +227,8 @@
                         {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
 
 
-                        {% if sections['corporate newsroom'].feed.articles|length > 0 %}
-                            
-                            {{this.render('partials/_single-article_corp.twig', {
-                                article: sections['corporate newsroom'].feed.articles[0], 
-                                networkData: networkData, 
-                                containerClass: 'sponsored card-sm s255x208', 
-                                swap: 'false'
-                            }) | raw}}
-
-
-
-                        {% elseif articles[articleCount] %} 
-
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
+                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
 
 
                     </div><!-- .col-sm-4-->
@@ -284,10 +270,10 @@
 
 
 
-{#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
                 {{ this.render('partials/corporateroom.twig', {sections: sections, networkData: networkData}) | raw }}
             {% endif %}
- #}
+
 
 
 

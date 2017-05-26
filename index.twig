@@ -233,14 +233,16 @@
 
             </div>
 
-
-
-                    {{ this.render('partials/_sponsor_logos.twig') | raw }}
-
-{#             {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
                 {{ this.render('partials/corporateroom.twig', {sections: sections, networkData: networkData}) | raw }}
             {% endif %}
- #}
+
+
+
+
+
+            {{ this.render('partials/_sponsor_logos.twig') | raw }}
+
 
 
 
