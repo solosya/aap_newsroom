@@ -136,6 +136,7 @@
 
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
+    {% set sponsors = ['holden', 'chorus']  %}
 
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
@@ -175,7 +176,7 @@
                     {% endif %}
                     <time datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
                     <div class="logo">
-                        {% if article.label | lower == 'holden' %}
+                        {% if article.label | lower in sponsors %}
                             <img src="{{networkData.templatePath}}/static/images/{{article.label | lower}}.svg" class="{{article.label | lower}}">
                         {% endif %}
                     </div><!-- .author-->
