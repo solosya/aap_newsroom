@@ -160,8 +160,11 @@
 
 
                     <div class="col-sm-12 col-md-4 sidebar">
+                        {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
 
-                        {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
 
                         <section class="sidebar-news">
                             <header>
@@ -196,7 +199,8 @@
                         </section>
 
 
-                        {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
 
 
                     </div><!-- .col-sm-4-->
