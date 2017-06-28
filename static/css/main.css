@@ -7653,7 +7653,7 @@ div.fancybox-title {
   top: -70px; }
   @media screen and (max-width: 768px) {
     .loadMoreArticles-index {
-      margin-top: 40px; } }
+      margin-top: 20px; } }
   @media screen and (max-width: 620px) {
     .loadMoreArticles-index {
       top: 0;
@@ -7686,6 +7686,9 @@ h4.modal-title {
   @media screen and (max-width: 1200px) {
     .sidebar {
       padding-left: 15px; } }
+  @media screen and (max-width: 620px) {
+    .sidebar {
+      margin-top: 30px; } }
 
 @media screen and (max-width: 768px) {
   .card-group {
@@ -8176,6 +8179,10 @@ p.foundingpartners {
   .add-header-mob > div {
     margin: 0 auto; }
 
+@media screen and (max-width: 768px) {
+  .subscriptions {
+    margin-bottom: 40px; } }
+
 .article .subscribe {
   padding: 10px 0;
   margin: 0;
@@ -8194,23 +8201,21 @@ p.foundingpartners {
 
 .subscribe {
   text-align: center;
-  margin-bottom: 32px;
-  padding: 40px 24px 58px 24px;
+  margin-bottom: 20px;
+  padding: 20px 24px 25px 24px;
   background: rgba(74, 74, 74, 0.1); }
-  @media screen and (max-width: 620px) {
-    .subscribe {
-      margin-top: 60px;
-      margin-bottom: 60px; } }
   .subscribe h3 {
-    font-size: 1.4em;
+    margin: 0;
+    font-size: 1.6em;
     font-weight: 700;
     margin-bottom: 2px; }
   .subscribe img {
-    width: 179px; }
+    width: 179px;
+    margin-bottom: 8px; }
   .subscribe img.pro {
     width: 295px; }
   .subscribe > .subscribe-form {
-    margin-top: 10px; }
+    margin-top: 15px; }
     .subscribe > .subscribe-form input.field {
       height: 42px;
       border-radius: 0;
@@ -8228,18 +8233,18 @@ p.foundingpartners {
       line-height: 1;
       color: #f83d30; }
   .subscribe > a > button {
-    width: 160px;
-    height: 45px;
+    width: 120px;
+    height: 40px;
     font-size: 1.6em;
     display: block;
-    margin: 0 auto 42px auto;
+    margin: 0 auto;
+    margin-top: 15px;
     color: white;
     background: #e22f22;
-    border: 1px solid #e12e21;
-    padding: 10px 20px; }
+    border: 1px solid #e12e21; }
   .subscribe > p {
-    margin: 20px auto;
-    width: 75%; }
+    font-size: 1.4rem;
+    margin: 5px auto; }
 
 .subscribe_grey_bg {
   text-align: center;
@@ -8296,7 +8301,7 @@ p.foundingpartners {
     margin: 10px auto; }
 
 .sidebar-news {
-  margin-bottom: 60px; }
+  margin-bottom: 40px; }
   @media screen and (max-width: 992px) {
     .sidebar-news {
       display: none; } }
@@ -13518,6 +13523,10 @@ body.channel.supporters p {
       .viewingroom.featured > a > article > figure > img {
         width: 100%;
         max-width: 100%; }
+
+@media screen and (max-width: 620px) {
+  .future {
+    margin-top: 50px; } }
 
 .future-learning {
   padding: 0 0 15px 0;

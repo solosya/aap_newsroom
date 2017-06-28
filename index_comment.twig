@@ -9,7 +9,7 @@
 
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 14 %}
+{% set limit = 12 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -18,7 +18,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-{% set recentArticles = _Article.getRecentArticles({'limit': 7}) %}
+{% set recentArticles = _Article.getRecentArticles({'limit': 3}) %}
 
 {% set sections =  {
         "viewingroom": {
@@ -153,7 +153,7 @@
                             <!--block-->
                             </div>
                             <div class="col-sm-6 hidden-xs">
-                                {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData}) | raw }}
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData}) | raw }}
                             </div>
                         </section>
 
@@ -181,13 +181,29 @@
                             {% endif %}
                         {% endfor %}
 
+                        {{ this.render('partials/ajaxarticles.twig', {limit: articleCount, articlesArr: articlesArr, articles: articles}) | raw }}
+
+
                     </div><!-- .col-sm-8-->
 
 
 
                     <div class="col-sm-12 col-md-4 sidebar">
 
-                        {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-xs hidden-sm'}) | raw }}
+                        <div class="row subscriptions">
+                            <div class="col-sm-12">
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                        </div>
+
+
+                        {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-xs hidden-sm'}) | raw }} #}
 
 
                         <section class="sidebar-news">
@@ -220,7 +236,7 @@
                                 <span class="add-text">Advertisement</span>
                         </section>
 
-                        {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                        {# {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
 
 
                         {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
@@ -230,10 +246,11 @@
                     </div><!-- .col-sm-4-->
 
 
-                    {{ this.render('partials/ajaxarticles.twig', {limit: articleCount, articlesArr: articlesArr, articles: articles}) | raw }}
 
 
-                    {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
+                    <div class="row future">
+                        {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
+                    </div>
                 </div><!-- .row-->
 
 
