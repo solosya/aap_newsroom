@@ -83,7 +83,7 @@
                                 {% if article['createdBy']['coauthors'] %}
                                     {% for author in article['createdBy']['coauthors'] %}
                                         <div class="content-author">
-                                            <img src="{{ profileImg }}" alt="">
+                                            <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
                                             <h3>{{ author['displayName'] }}</h3>
                                             <p>{{ author['bio'] }}</p>
                                         </div><!-- .content-author-->
