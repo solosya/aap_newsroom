@@ -12276,7 +12276,8 @@ body.channel.supporters p {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    overflow: hidden; }
     .card .content > p {
       font-size: 1.4rem;
       overflow: hidden; }
@@ -12296,15 +12297,23 @@ body.channel.supporters p {
   .card .author img {
     width: 34px;
     height: 34px;
-    float: left; }
+    display: inline-block; }
   .card .author p {
     float: left;
     padding-left: 11px;
-    padding-top: 5px;
+    padding-right: 15px;
     font-family: "tinos", Helvetica, Arial, sans-serif;
     font-size: 1.65em;
     font-weight: 700;
-    color: #6c6c6c; }
+    color: #6c6c6c;
+    white-space: nowrap; }
+    .card .author p:first-child {
+      margin-bottom: 50px;
+      margin-left: -25px; }
+  .card .author span {
+    white-space: nowrap;
+    margin-left: 11px;
+    margin-right: 15px; }
   .card time {
     float: right;
     padding-top: 10px;
@@ -12682,7 +12691,7 @@ body.channel.supporters p {
               .featured-slider .card article .content .author:before {
                 border: 0; } }
           .featured-slider .card article .content .author > p {
-            padding-top: 8px; }
+            padding-top: 0px; }
           @media screen and (max-width: 620px) {
             .featured-slider .card article .content .author img {
               display: none; }
