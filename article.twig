@@ -86,6 +86,13 @@ MOO
 
                                 {% if article['createdBy']['coauthors'] %}
                                     {% for author in article['createdBy']['coauthors'] %}
+
+
+{% for key,value in author %}
+    Key : {{ key }}
+{% endfor %}
+
+
                                         <div class="content-author">
                                             <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
                                             <h3>{{ author['displayName'] }}</h3>
