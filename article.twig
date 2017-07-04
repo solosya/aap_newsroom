@@ -31,6 +31,9 @@
 
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
+{% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishedDate,'d M Y - h:ia') %}
+
+
 
     <main id="main" class="site-main" role="main">
        <article class="article-main">
@@ -69,7 +72,7 @@
                                         <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                                     {% endif %}
 
-                                    <time>{{ article.publishedDate | upper }}</time>
+                                    <time>{{ publishDate | upper }}</time>
                                 </div><!--content-block-top-->
 
 
