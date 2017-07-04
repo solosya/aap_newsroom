@@ -131,22 +131,11 @@
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
-    {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
-    {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
-    {# {% set publishedAgo = 1 %} #}
+    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %} #}
+    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y - h:ia') %}
+    {# {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %} #}
 
-{#     {% set updatedRelativeTime = "" %}
-    {% if article.publishDateTime != article.updateDateTime %}
-        {% set updatedAgo = _AppHelper.getSecondsSincePublished(article.updateDateTime) %}
-        {% if updatedAgo < 86400 %}
-            {% set updatedRelativeTime = "UPDATED " ~ _AppHelper.getRelativeTime(article.updateDateTime) ~ " AGO" %}
-        {% endif %}
-    {% endif %}
- #}
-    {% set publishedRelativeTime = '' %}
-    {# {% if publishedAgo < 86400 %} #}
-        {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %}
-    {# {% endif %} #}
+    {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %} #}
 
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
@@ -196,9 +185,7 @@
                         <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
                     
-                    {% if publishedRelativeTime != '' %}  
-                        <time datetime="2016-11-16">{{publishedRelativeTime | upper}}</time>
-                    {% endif %}
+                    <time datetime="2016-11-16">{{publishDate}}</time>
                     
                     <div class="author">
                         <p style="white-space:nowrap">
