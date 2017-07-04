@@ -79,19 +79,8 @@
                                     <p>{{ article.createdBy['bio'] }}</p>
                                 </div><!-- .content-author-->
 
-MOO
-{% for key,value in article['createdBy']['coauthors'] %}
-    Key : {{ key }}
-{% endfor %}
-
                                 {% if article['createdBy']['coauthors'] %}
                                     {% for author in article['createdBy']['coauthors'] %}
-
-
-{% for key,value in author %}
-    Key : {{ key }}
-    Value : {{ author['id'] }}
-{% endfor %}
 
 
                                         <div class="content-author">

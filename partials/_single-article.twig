@@ -201,15 +201,15 @@
                     {% endif %}
                     
                     <div class="author">
-                        <p></p> 
                         <p style="white-space:nowrap">
                             <img src="{{profileImg}}" class="img-circle">
                             <span>{{ article.createdBy['displayName'] }}</span>
+
                             {% if article['createdBy']['coauthors'] %}
-                            {% for author in article['createdBy']['coauthors'] %}
-                                <img src="{{ _Media.getMediaUrl(author['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
-                                <span>{{ author['displayName'] }}</span>
-                            {% endfor %}
+                                {% for author in article['createdBy']['coauthors'] %}
+                                    <img src="{{ _Media.getMediaUrl(author['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
+                                    <span>{{ author['displayName'] }}</span>
+                                {% endfor %}
                             {% endif %}    
                         </p>
                     </div><!-- .author-->
@@ -294,7 +294,6 @@
                     <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
                     
                     <div class="author">
-                        <p></p>
                         <p>
                             <img src="{{social.user.media.path}}" class="img-circle">
                             <span class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
