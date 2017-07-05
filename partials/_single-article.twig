@@ -112,15 +112,9 @@
             {% set imgWidth = 1601 %}
             {% set imgHeight = 587 %}
 
-
-
-
         {% elseif 'col-sm-4' in containerClass %}
             {% set imgWidth = 99 %}
             {% set imgHeight = 88 %}
-
-
-
 
         {% endif %}
 
@@ -130,11 +124,24 @@
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
-    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %} #}
-    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y') %}
-    {# {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %} #}
 
-    {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %} #}
+
+
+
+
+    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y') %}
+
+    {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
+    
+    {% if publishedAgo < 86400 %}
+        {% set publishDate = _AppHelper.getRelativeTime(article.publishDateTime) ~ " ago" %}
+    {% endif %}
+
+
+
+
+
+
 
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
@@ -142,6 +149,10 @@
 
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+
+
+
+
 
 
     {% set author = "" %}
