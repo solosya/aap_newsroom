@@ -233,6 +233,22 @@
                     min-height:0;
                     line-height:1.5em;
                     padding-bottom:20px;
+                    border-bottom: 1px solid #dadada;
+                    // &:after {
+                    //     content: '';
+                    //     display:block;
+                    //     position:relative;
+                    //     bottom: -25px;
+                        
+                    //     width: 100%;
+                    //     @media screen and (max-width: $mobile-break){
+                    //         border:0;
+                    //     }
+                    // }
+
+
+
+
                     @media screen and (max-width: $mobile-break){
                         display:none;
                     }
@@ -247,7 +263,7 @@
                     bottom:10px;
                     right:10px;
                     
-                    @media screen and (max-width: 1100px){
+                    @media screen and (max-width: $md-break){
                         display:none;
                     }
 
@@ -260,30 +276,42 @@
                 }
 
                 .author{
+                    display:flex;
                     // background:orange;
                     -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
                     -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
                     min-height:35px;
                     max-height:35px;
-                    // position:absolute;
-                    // bottom:5px;
-                    // width:100%;
-
-                    &:before {
-                        content: '';
-                        display:block;
-                        position:relative;
-                        top: -10px;
-                        border-bottom: 1px solid #dadada;
-                        width: 100%;
-                        @media screen and (max-width: $mobile-break){
-                            border:0;
-                        }
-                    }
+                    flex-direction: row;
+                    width:65%;
+                    overflow:hidden;
 
                     > p {
-                        padding-top:0px;
+                        padding-top: 6px;
+                        height: 25px;
                     }
+
+                    @media screen and (min-width: $large-break){
+                        width: 75%;
+                    }
+
+                    @media screen and (min-width: $super-large-break){
+                        width: 66%;
+                    }
+
+                    @media screen and (min-width: 1320px) and (max-width:$large-break){
+                        width: 72%;
+                    }
+
+                    @media screen and (min-width: $md-break) and (max-width:1320px) {
+                        width: 67%;
+                    }
+
+                    @media screen and (max-width: $md-break){
+                        width: 100%;
+                    }
+
+
 
                     @media screen and (max-width: $mobile-break){
                         img{

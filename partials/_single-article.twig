@@ -144,6 +144,25 @@
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
 
+    {% set author = "" %}
+    {% if article['createdBy']['coauthors'] %}
+        {% set author = author ~  "<p>" ~ article.createdBy['displayName'] %}
+
+        {% for i, authors in article['createdBy']['coauthors'] %}
+            {% set divider = (loop.last) ? ' and ' : ', ' %}
+            {% set author = author ~ divider ~ authors['displayName'] %}
+        {% endfor %}
+        {% set author = author ~  "</p>" %}
+
+    {% else %}
+        {% set author = author ~  '<img src=' ~ profileImg ~ ' class="img-circle">' %}
+        {% set author = author ~  '<p>' ~ article.createdBy['displayName'] ~ '</p>' %}
+    {% endif %}    
+
+
+
+
+
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
@@ -178,27 +197,7 @@
                     
                     <time datetime="2016-11-16">{{publishDate}}</time>
                     
-                    <div class="author">
-                        <p style="white-space:nowrap">
-                            <img src="{{profileImg}}" class="img-circle">
-                            <span>{{ article.createdBy['displayName'] }}</span>
-
-                            {% if article['createdBy']['coauthors'] %}
-                                {% set divider = ', ' %}
-                                <span>{{ article.createdBy['displayName'] }}</span>
-                                {% for i, author in article['createdBy']['coauthors'] %}
-                                    {% if loop.last %}
-                                        {% set divider = 'and ' %}
-                                    {% endif %}    
-
-                                    <span>{{divider}} {{ author['displayName'] }}</span>
-                                {% endfor %}
-                            {% else %}
-                                <img src="{{profileImg}}" class="img-circle">
-                                <span>{{ article.createdBy['displayName'] }}</span>
-                            {% endif %}    
-                        </p>
-                    </div><!-- .author-->
+                    <div class="author">{{author | raw}}</div><!-- .author-->
 
                 </div>
             </article>

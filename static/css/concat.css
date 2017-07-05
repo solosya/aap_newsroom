@@ -12294,20 +12294,17 @@ body.channel.supporters p {
   .card .author img {
     width: 34px;
     height: 34px;
-    display: inline-block; }
+    display: inline-block;
+    margin-right: 10px; }
   .card .author p {
-    float: left;
-    padding-left: 11px;
-    padding-right: 15px;
+    display: inline-block;
+    margin: 0;
     font-family: "tinos", Helvetica, Arial, sans-serif;
     font-size: 1.65em;
     font-weight: 700;
     color: #6c6c6c;
-    white-space: nowrap; }
-  .card .author span {
     white-space: nowrap;
-    margin-left: 11px;
-    margin-right: 15px; }
+    padding-top: 5px; }
   .card time {
     float: right;
     padding-top: 10px;
@@ -12640,7 +12637,8 @@ body.channel.supporters p {
           -moz-flex: 1 0 0;
           min-height: 0;
           line-height: 1.5em;
-          padding-bottom: 20px; }
+          padding-bottom: 20px;
+          border-bottom: 1px solid #dadada; }
           @media screen and (max-width: 620px) {
             .featured-slider .card article .content > p {
               display: none; } }
@@ -12654,7 +12652,7 @@ body.channel.supporters p {
           position: absolute;
           bottom: 10px;
           right: 10px; }
-          @media screen and (max-width: 1100px) {
+          @media screen and (max-width: 1200px) {
             .featured-slider .card article .content time {
               display: none; } }
           @media screen and (max-width: 620px) {
@@ -12664,6 +12662,7 @@ body.channel.supporters p {
               color: #FFF;
               font-weight: normal; } }
         .featured-slider .card article .content .author {
+          display: flex;
           -webkit-flex: 1 0 0;
           -ms-flex: 1 0 0;
           flex: 1 0 0;
@@ -12673,19 +12672,28 @@ body.channel.supporters p {
           flex-shrink: 0;
           -moz-flex-shrink: 0;
           min-height: 35px;
-          max-height: 35px; }
-          .featured-slider .card article .content .author:before {
-            content: '';
-            display: block;
-            position: relative;
-            top: -10px;
-            border-bottom: 1px solid #dadada;
-            width: 100%; }
-            @media screen and (max-width: 620px) {
-              .featured-slider .card article .content .author:before {
-                border: 0; } }
+          max-height: 35px;
+          flex-direction: row;
+          width: 65%;
+          overflow: hidden; }
           .featured-slider .card article .content .author > p {
-            padding-top: 0px; }
+            padding-top: 6px;
+            height: 25px; }
+          @media screen and (min-width: 1450px) {
+            .featured-slider .card article .content .author {
+              width: 75%; } }
+          @media screen and (min-width: 1600px) {
+            .featured-slider .card article .content .author {
+              width: 66%; } }
+          @media screen and (min-width: 1320px) and (max-width: 1450px) {
+            .featured-slider .card article .content .author {
+              width: 72%; } }
+          @media screen and (min-width: 1200px) and (max-width: 1320px) {
+            .featured-slider .card article .content .author {
+              width: 67%; } }
+          @media screen and (max-width: 1200px) {
+            .featured-slider .card article .content .author {
+              width: 100%; } }
           @media screen and (max-width: 620px) {
             .featured-slider .card article .content .author img {
               display: none; }
@@ -12864,6 +12872,10 @@ body.channel.supporters p {
     flex: 0 0 330px;
     overflow: hidden;
     float: left; }
+    @media screen and (max-width: 1200px) {
+      .card-rec a.card > article > figure {
+        width: 256px;
+        flex: 0 0 256px; } }
     @media screen and (max-width: 620px) {
       .card-rec a.card > article > figure {
         width: 116px;
@@ -12918,21 +12930,39 @@ body.channel.supporters p {
       @media screen and (max-width: 620px) {
         .card-rec a.card > article > .content > p {
           display: none; } }
-    @media screen and (max-width: 768px) {
-      .card-rec a.card > article > .content > .author > p {
-        font-size: 1.5em; } }
-    @media screen and (max-width: 620px) {
-      .card-rec a.card > article > .content > .author {
-        display: none; } }
-    @media screen and (min-width: 620px) and (max-width: 720px) {
-      .card-rec a.card > article > .content > time {
-        display: none; } }
-    @media screen and (max-width: 620px) {
-      .card-rec a.card > article > .content > time {
-        float: left;
-        border: 0;
-        padding: 0;
-        font-size: 1em; } }
+    .card-rec a.card > article > .content > .author {
+      width: 220px;
+      overflow: hidden; }
+      @media screen and (max-width: 768px) {
+        .card-rec a.card > article > .content > .author > p {
+          font-size: 1.5em; } }
+      @media screen and (max-width: 992px) {
+        .card-rec a.card > article > .content > .author {
+          width: 280px; } }
+      @media screen and (max-width: 620px) {
+        .card-rec a.card > article > .content > .author {
+          display: none; } }
+    .card-rec a.card > article > .content > time {
+      margin-top: 6px;
+      padding-top: 4px; }
+      @media screen and (max-width: 992px) {
+        .card-rec a.card > article > .content > time {
+          width: auto; } }
+      @media screen and (max-width: 1200px) {
+        .card-rec a.card > article > .content > time {
+          width: 76px;
+          height: 20px;
+          white-space: nowrap;
+          overflow: hidden; } }
+      @media screen and (min-width: 620px) and (max-width: 720px) {
+        .card-rec a.card > article > .content > time {
+          display: none; } }
+      @media screen and (max-width: 620px) {
+        .card-rec a.card > article > .content > time {
+          float: left;
+          border: 0;
+          padding: 0;
+          font-size: 1em; } }
   .card-rec a.card.social .content > p {
     display: block;
     font-size: 2.4em;
