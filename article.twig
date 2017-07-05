@@ -31,7 +31,7 @@
 
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
-{% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishedDate,'d M Y - h:ia') %}
+{% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishedDate,'d M Y') %}
 
 
 
