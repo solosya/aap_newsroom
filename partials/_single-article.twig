@@ -131,7 +131,7 @@
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
     {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %} #}
-    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y - h:ia') %}
+    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y') %}
     {# {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %} #}
 
     {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %} #}
