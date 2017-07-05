@@ -129,7 +129,8 @@
 
 
 
-    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDateTime,'d M Y h:ia') %}
+    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDateTime,'d M Y h:ia') %} #}
+    {% set publishDate = article.publishDate %}
 
     {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
     
