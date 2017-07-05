@@ -73,6 +73,13 @@
             overflow: hidden;
             float: left;
 
+            @media screen and (max-width: $md-break){
+                width: 256px;
+                flex: 0 0 256px;
+
+            }
+
+
             @media screen and (max-width: $mobile-break){
                 width: 116px;
                 height: 116px;
@@ -160,12 +167,20 @@
             }
 
             > .author{
+                width: 220px;
+                overflow: hidden;
 
                 > p {
+
                     @media screen and (max-width: $sm-break){
                         font-size: em(15);
                     }
                 }
+
+                @media screen and (max-width: $mmd-break){
+                    width: 280px;
+                }
+
 
                 @media screen and (max-width: $mobile-break){
                     display: none;
@@ -173,7 +188,21 @@
             }
 
             > time{
+                
+                margin-top:6px;
+                padding-top:4px;
 
+                @media screen and (max-width: $mmd-break){
+                    width: auto;
+                }
+
+
+                @media screen and (max-width: $md-break){
+                    width: 76px;
+                    height: 20px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
                 @media screen and (min-width: $mobile-break) and (max-width: 720px){
                     display:none;
                 }

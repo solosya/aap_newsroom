@@ -226,7 +226,7 @@ HomeController.Listing = (function ($) {
                                 $.fn.General_ShowNotification({message: "Articles swapped successfully"});
                             }
                             
-                            $(".card p, .card h2").dotdotdot();
+                            $(".card .content > p, .card h2").dotdotdot();
                             initSwap();
                         },
                         error: function(jqXHR, textStatus, errorThrown){

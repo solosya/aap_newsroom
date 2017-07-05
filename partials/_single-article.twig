@@ -34,7 +34,6 @@
             {% set imgHeight = 129 %}
 
 
-
         {% elseif 'card-rec' in containerClass %}
             {% set imgWidth = 330 %}
             {% set imgHeight = 236 %}
@@ -131,22 +130,11 @@
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
-    {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
-    {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
-    {# {% set publishedAgo = 1 %} #}
+    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %} #}
+    {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate,'d M Y - h:ia') %}
+    {# {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %} #}
 
-{#     {% set updatedRelativeTime = "" %}
-    {% if article.publishDateTime != article.updateDateTime %}
-        {% set updatedAgo = _AppHelper.getSecondsSincePublished(article.updateDateTime) %}
-        {% if updatedAgo < 86400 %}
-            {% set updatedRelativeTime = "UPDATED " ~ _AppHelper.getRelativeTime(article.updateDateTime) ~ " AGO" %}
-        {% endif %}
-    {% endif %}
- #}
-    {% set publishedRelativeTime = '' %}
-    {# {% if publishedAgo < 86400 %} #}
-        {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %}
-    {# {% endif %} #}
+    {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) ~ " AGO" %} #}
 
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
@@ -154,6 +142,25 @@
 
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+
+
+    {% set author = "" %}
+    {% if article['createdBy']['coauthors'] %}
+        {% set author = author ~  "<p>" ~ article.createdBy['displayName'] %}
+
+        {% for i, authors in article['createdBy']['coauthors'] %}
+            {% set divider = (loop.last) ? ' and ' : ', ' %}
+            {% set author = author ~ divider ~ authors['displayName'] %}
+        {% endfor %}
+        {% set author = author ~  "</p>" %}
+
+    {% else %}
+        {% set author = author ~  '<img src=' ~ profileImg ~ ' class="img-circle">' %}
+        {% set author = author ~  '<p>' ~ article.createdBy['displayName'] ~ '</p>' %}
+    {% endif %}    
+
+
+
 
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
@@ -179,14 +186,6 @@
                     </figure>
                 {% endif %}
 
-
-                {# {% if cardClass == 'soundcloud' %}  
-                    <div class="other-content">
-                        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/289583160&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_artwork=false"></iframe>
-                    </div>
-                {% endif %} #}
-
-
                 <div class="content">
                     <div class="category">{{article.label}}</div>
                     
@@ -196,14 +195,9 @@
                         <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
                     
-                    {% if publishedRelativeTime != '' %}  
-                        <time datetime="2016-11-16">{{publishedRelativeTime | upper}}</time>
-                    {% endif %}
+                    <time datetime="2016-11-16">{{publishDate}}</time>
                     
-                    <div class="author">
-                        <img src="{{profileImg}}" class="img-circle">
-                        <p>{{ article.createdBy['displayName'] }}</p>
-                    </div><!-- .author-->
+                    <div class="author">{{author | raw}}</div><!-- .author-->
 
                 </div>
             </article>
@@ -285,8 +279,10 @@
                     <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
                     
                     <div class="author">
-                        <img src="{{social.user.media.path}}" class="img-circle">
-                        <p class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
+                        <p>
+                            <img src="{{social.user.media.path}}" class="img-circle">
+                            <span class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
+                        </p>
                     </div><!-- .author-->
 
                 </div>
