@@ -97,7 +97,10 @@
 
                                 <div class="article_content">
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
-                                    <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | _resizeImages({"width":750}) | raw }}</p>
+                                    <p>{{ article.content   | preg_replace('/^<p>/', '<p class="lead">')
+                                                            | _resizeImages({"width":750}) 
+                                                            | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
+                                                            | raw }}</p>
                                     
                                 </div><!-- .content-->
                             </div><!-- .content-->
