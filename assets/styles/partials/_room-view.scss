@@ -77,25 +77,31 @@
             &.video {
                 &:after{
                     position: absolute;
-                    top: 45%;
-                    left: 45%;
                     content: '';
+                    top: 50%;
+                    left: 50%;
                     width: 56px;
                     height: 56px;
+                    margin-left:-28px;
+                    margin-top:-28px;
                     background-image: url(../images/play-icon.svg);
                     background-repeat: no-repeat;
                     background-size: cover;
 
                     @media screen and (max-width: $md-break){
-                        top: 40%;
-                        left: 35%;
                         width: 40px;
                         height: 40px;
+                        margin-left:-20px;
+                        margin-top:-20px;
+
                     }
 
                     @media screen and (max-width: $mobile-break){
                         width: 30px;
                         height: 30px;
+                        margin-left:-15px;
+                        margin-top:-15px;
+
                     }
                 }
             }
