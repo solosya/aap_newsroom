@@ -291,11 +291,16 @@ p.foundingpartners {
     
     ul {
         margin: 0 auto;
-
+        @media screen and (max-width: $mobile-break){
+                padding: 0;
+            }
 
         li {
             display:inline-block;
             margin-right:10px;
+            @media screen and (max-width: $mobile-break){
+                margin-right: 0;
+            }
 
             a {
                 margin: 0px; 
@@ -311,6 +316,9 @@ p.foundingpartners {
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-top: 15px;
+                @media screen and (max-width: $mobile-break){
+                    margin-left:35px;
+                }
             }
 
             &.sponsor-chorus {
@@ -339,6 +347,9 @@ p.foundingpartners {
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left:40px;
+                @media screen and (max-width: $mobile-break){
+                    margin-left:50px;
+                }
                 position: relative;
                 top: -5px;
                 margin-top: 15px;
