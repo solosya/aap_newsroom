@@ -7792,9 +7792,15 @@ p.foundingpartners {
       margin-bottom: 35px; } }
   .sponsor-logos ul {
     margin: 0 auto; }
+    @media screen and (max-width: 620px) {
+      .sponsor-logos ul {
+        padding: 0; } }
     .sponsor-logos ul li {
       display: inline-block;
       margin-right: 10px; }
+      @media screen and (max-width: 620px) {
+        .sponsor-logos ul li {
+          margin-right: 0; } }
       .sponsor-logos ul li a {
         margin: 0px;
         display: block;
@@ -7807,6 +7813,9 @@ p.foundingpartners {
         background-repeat: no-repeat;
         background-size: contain;
         margin-top: 15px; }
+        @media screen and (max-width: 620px) {
+          .sponsor-logos ul li.sponsor-holden {
+            margin-left: 35px; } }
       .sponsor-logos ul li.sponsor-chorus {
         width: 200px;
         height: 50px;
@@ -7832,6 +7841,9 @@ p.foundingpartners {
         position: relative;
         top: -5px;
         margin-top: 15px; }
+        @media screen and (max-width: 620px) {
+          .sponsor-logos ul li.sponsor-uni-auckland {
+            margin-left: 50px; } }
       .sponsor-logos ul li.sponsor-kiwibank {
         width: 65px;
         height: 65px;
