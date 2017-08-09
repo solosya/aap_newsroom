@@ -1,0 +1,67 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 19 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <main id="main" class="site-main viewing-room" role="main">
+        <section class="container-fluid">
+                <div class="">
+                    {% if articles[0] %} 
+                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+
+        <section class="card-group">
+            <div class="container">
+                <div class="row">
+
+                    {% for i in 0..19 %}
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-4 card-vr s360x215'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+
+
+        {% if articles|length >= limit %}
+            <section class="">
+                <div class="container">
+                    <div class="row">
+                        <div class="ajaxArticles clearfix"
+                             data-offset="{{limit}}"
+                             data-containerclass="col-sm-6 col-md-4 card-vr s360x215"
+                             data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                         </div>
+                        <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                    </div>
+
+                    {% set noDataCls = 'hide' %}
+                    {% if articles|length == 0 %}
+                        {% set noDataCls = '' %}
+                     {% endif %}
+                    <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                        <p class="no-data text-center">No articles found.</p>  
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+
+    </main><!-- .site-main -->
