@@ -272,7 +272,7 @@ HomeController.Listing = (function ($) {
                             
                                                         
                             var ImageUrl = $.image({media:data.articles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
-                            var profileImage = $.image({media:data.articles[i]['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face', type: 'user'} });
+                            var profileImage = $.image({media:data.articles[i]['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
                             data.articles[i]['imageUrl'] = ImageUrl;
                             data.articles[i]['profileImg'] = profileImage;
                             var articleId = parseInt(data.articles[i].articleId);
