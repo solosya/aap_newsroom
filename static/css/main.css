@@ -13368,27 +13368,22 @@ body.channel.supporters p {
       display: none; }
   .card-vr a.card.youtube .content p {
     display: block;
-    background: green;
     font-size: 28px;
     font-weight: normal; }
   .card-vr a.card.facebook .content p {
     display: block;
-    background: green;
     font-size: 28px;
     font-weight: normal; }
   .card-vr a.card.pinterest .content p {
     display: block;
-    background: green;
     font-size: 28px;
     font-weight: normal; }
   .card-vr a.card.vimeo .content p {
     display: block;
-    background: green;
     font-size: 28px;
     font-weight: normal; }
   .card-vr a.card.twitter .content p {
     display: block;
-    background: green;
     font-size: 28px;
     font-weight: normal; }
   .card-vr a.card.instagram .content p {
@@ -13746,5 +13741,118 @@ body.channel.supporters p {
       .future-learning-sponsors > img {
         margin-top: 10px;
         height: 30px; } }
+
+.card-election {
+  margin-bottom: 79.5px; }
+  @media screen and (max-width: 620px) {
+    .card-election {
+      margin-bottom: -2px; } }
+  @media screen and (min-width: 620px) {
+    .card-election.inverted > a.card {
+      background-color: #000;
+      color: #FFF; }
+      .card-election.inverted > a.card > article {
+        -ms-flex-direction: row-reverse;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse; }
+      .card-election.inverted > a.card > article > .content > .category {
+        color: #27aae1; }
+      .card-election.inverted > a.card > article > .content > .author p {
+        color: #FFF; }
+      .card-election.inverted > a.card > article > .content > time {
+        color: #FFF; }
+      .card-election.inverted > a.card > article > .content > p {
+        display: none; } }
+  @media screen and (max-width: 620px) {
+    .card-election a.card {
+      min-height: 115px;
+      margin-left: -15px;
+      margin-right: -15px;
+      border-top: 2px solid #dadada;
+      border-bottom: 2px solid #dadada;
+      height: auto; }
+      .card-election a.card > article {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap; } }
+  .card-election a.card > article > figure {
+    width: auto;
+    overflow: hidden;
+    height: 215px; }
+    @media screen and (max-width: 620px) {
+      .card-election a.card > article > figure {
+        width: 125px;
+        flex: 0 0 125px; } }
+    .card-election a.card > article > figure > img {
+      max-width: 100%; }
+  .card-election a.card > article > .content {
+    display: block;
+    position: relative;
+    height: 139px;
+    padding: 13px 0; }
+    @media screen and (max-width: 620px) {
+      .card-election a.card > article > .content {
+        padding: 10px;
+        border: 0; } }
+    .card-election a.card > article > .content > .category {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #ebb913;
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px; }
+      @media screen and (max-width: 620px) {
+        .card-election a.card > article > .content > .category {
+          font-size: 1.1em;
+          margin-bottom: 5px; } }
+    .card-election a.card > article > .content > h2 {
+      margin-top: 10px;
+      font-family: "tinos", Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      line-height: 1.14;
+      color: #000000;
+      font-size: 2.6em;
+      max-height: 58px; }
+      @media screen and (max-width: 620px) {
+        .card-election a.card > article > .content > h2 {
+          font-size: 1.6em; } }
+    .card-election a.card > article > .content > time {
+      margin-top: 12px;
+      padding: 0;
+      border: 0;
+      color: #8a8b93; }
+      @media screen and (max-width: 620px) {
+        .card-election a.card > article > .content > time {
+          color: #6c6c6c;
+          font-size: 1em; } }
+    .card-election a.card > article > .content > p {
+      display: none; }
+  .card-election a.card.youtube .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-election a.card.facebook .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-election a.card.pinterest .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-election a.card.vimeo .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-election a.card.twitter .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
+  .card-election a.card.instagram .content p {
+    display: block;
+    font-size: 28px;
+    font-weight: normal; }
 
 /*# sourceMappingURL=main.css.map */
