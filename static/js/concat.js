@@ -27150,6 +27150,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
 }(jQuery));
     $.fn.Ajax_LoadBlogArticles = function(options){
+
+        console.log('loading blog articles');
         var defaults = {
             'limit': 20,
             'containerClass': 'ajaxArticles',
@@ -28105,7 +28107,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         };
 
         var opts = $.extend({}, defaults, options);
-        
+
         var imageId = opts.media.id;
         var path = opts.media.path;
         var cloudName = opts.media.cloudName;
@@ -29441,7 +29443,9 @@ HomeController.Listing = (function ($) {
                             
                                                         
                             var ImageUrl = $.image({media:data.articles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
+                            var profileImage = $.image({media:data.articles[i]['createdBy']['media'], mediaOptions:{width: 50 ,height:50, crop: 'limit'} });
                             data.articles[i]['imageUrl'] = ImageUrl;
+                            data.articles[i]['profileImg'] = profileImage;
                             var articleId = parseInt(data.articles[i].articleId);
                             var articleTemplate;
                             if (isNaN(articleId) || articleId <= 0) {

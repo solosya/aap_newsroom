@@ -19974,7 +19974,7 @@ responsive:!0,responsiveRefreshRate:200,responsiveBaseWidth:g,baseClass:"owl-car
         };
 
         var opts = $.extend({}, defaults, options);
-        
+
         var imageId = opts.media.id;
         var path = opts.media.path;
         var cloudName = opts.media.cloudName;
@@ -21310,7 +21310,9 @@ HomeController.Listing = (function ($) {
                             
                                                         
                             var ImageUrl = $.image({media:data.articles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
+                            var profileImage = $.image({media:data.articles[i]['createdBy']['media'], mediaOptions:{width: 50 ,height:50, crop: 'limit'} });
                             data.articles[i]['imageUrl'] = ImageUrl;
+                            data.articles[i]['profileImg'] = profileImage;
                             var articleId = parseInt(data.articles[i].articleId);
                             var articleTemplate;
                             if (isNaN(articleId) || articleId <= 0) {

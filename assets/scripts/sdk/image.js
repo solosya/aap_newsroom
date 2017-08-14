@@ -9,7 +9,7 @@
         };
 
         var opts = $.extend({}, defaults, options);
-        
+
         var imageId = opts.media.id;
         var path = opts.media.path;
         var cloudName = opts.media.cloudName;

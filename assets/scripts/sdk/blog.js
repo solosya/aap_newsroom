@@ -1,4 +1,6 @@
     $.fn.Ajax_LoadBlogArticles = function(options){
+
+        console.log('loading blog articles');
         var defaults = {
             'limit': 20,
             'containerClass': 'ajaxArticles',
