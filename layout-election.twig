@@ -28,7 +28,7 @@
                             article: articles[0], 
                             position: 1, 
                             containerClass: 'viewingroom featured s1601x587'}) | raw}}
-                        {# {% set articleCount = articleCount + 1 %} #}
+                        {% set articleCount = articleCount + 1 %}
                     {% endif %}
 
                 </div><!-- .swiper-container-->
@@ -45,7 +45,7 @@
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
                                 containerClass: 'col-sm-6 col-md-4 card-election s360x215'}) | raw}}
-                            {# {% set articleCount = articleCount + 1 %} #}
+                            {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
 
