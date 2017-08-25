@@ -29,6 +29,7 @@
                         }
 
                         > time{
+                            display:none;
                             color: #FFF;
                         }
                         > p {
@@ -120,16 +121,18 @@
             }
 
             > time{
-                margin-top:12px;
-                // float: none;
-                padding: 0;
-                border: 0;
-                color: #8a8b93;
+                display:none;
 
-                @media screen and (max-width: $mobile-break){
-                    color: #6c6c6c;
-                    font-size: em(10);
-                }
+                // margin-top:12px;
+                // // float: none;
+                // padding: 0;
+                // border: 0;
+                // color: #8a8b93;
+
+                // @media screen and (max-width: $mobile-break){
+                //     color: #6c6c6c;
+                //     font-size: em(10);
+                // }
             }
 
             > p {

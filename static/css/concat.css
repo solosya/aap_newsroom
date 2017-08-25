@@ -13770,6 +13770,7 @@ body.channel.supporters p {
       .card-election.inverted > a.card > article > .content > .author p {
         color: #FFF; }
       .card-election.inverted > a.card > article > .content > time {
+        display: none;
         color: #FFF; }
       .card-election.inverted > a.card > article > .content > p {
         display: none; } }
@@ -13831,14 +13832,7 @@ body.channel.supporters p {
         .card-election a.card > article > .content > h2 {
           font-size: 1.6em; } }
     .card-election a.card > article > .content > time {
-      margin-top: 12px;
-      padding: 0;
-      border: 0;
-      color: #8a8b93; }
-      @media screen and (max-width: 620px) {
-        .card-election a.card > article > .content > time {
-          color: #6c6c6c;
-          font-size: 1em; } }
+      display: none; }
     .card-election a.card > article > .content > p {
       display: none; }
   .card-election a.card.youtube .content p {

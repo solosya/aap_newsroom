@@ -60,12 +60,12 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=ad426994" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=ba8c0806" type="text/css" media="all">
         {% else %}
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=2' type='text/css' media='all' />
+            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=3' type='text/css' media='all' />
         {% endif %}
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
@@ -490,7 +490,30 @@
     </div>
 
 
+    <!-- START Nielsen Online SiteCensus V6.0 -->
+    <!-- COPYRIGHT 2012 Nielsen Online -->
+    <script type="text/javascript" src="//secure-nz.imrworldwide.com/v60.js"></script>
+    <script type="text/javascript">
+        var pvar = { cid: "nz-newsroom", content: "0", server: "secure-nz" };
+        var trac = nol_t(pvar);
+        trac.record().post();
+    </script>
+    <noscript>
+     <div>
+        <img src="//secure-nz.imrworldwide.com/cgi-bin/m?ci=nz-newsroom&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt="" />
+     </div>
+    </noscript>
+    <!-- END Nielsen Online SiteCensus V6.0 -->
+    <!-- END Nielsen Online SiteCensus V6.0 -->
+
+    
+
+
+
+
+
     {{ this.endBody() }}
+
 
 </body>
 
