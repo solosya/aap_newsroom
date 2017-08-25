@@ -13831,8 +13831,25 @@ body.channel.supporters p {
       @media screen and (max-width: 620px) {
         .card-election a.card > article > .content > h2 {
           font-size: 1.6em; } }
+    .card-election a.card > article > .content > .author > img {
+      vertical-align: baseline; }
+    .card-election a.card > article > .content > .author > p {
+      white-space: normal;
+      padding: 0;
+      height: 26px;
+      overflow: hidden; }
     .card-election a.card > article > .content > time {
-      display: none; }
+      position: absolute;
+      top: 15px;
+      right: 0;
+      float: none;
+      padding: 0;
+      border: none;
+      color: #8a8b93; }
+      @media screen and (max-width: 620px) {
+        .card-election a.card > article > .content > time {
+          color: #6c6c6c;
+          font-size: 1em; } }
     .card-election a.card > article > .content > p {
       display: none; }
   .card-election a.card.youtube .content p {
