@@ -9,7 +9,9 @@
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = 0 %}
+{# {% set articleCount = 0 %} #}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
     <main id="main" class="site-main viewing-room" role="main">
@@ -28,7 +30,7 @@
                             article: articles[0], 
                             position: 1, 
                             containerClass: 'viewingroom featured s1601x587'}) | raw}}
-                        {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endif %}
 
                 </div><!-- .swiper-container-->
@@ -45,7 +47,7 @@
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
                                 containerClass: 'col-sm-6 col-md-4 card-election s360x215'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
 
