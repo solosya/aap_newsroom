@@ -158,7 +158,7 @@
 
     {% set author = "" %}
     {% if article['createdBy']['coauthors'] %}
-        {% set author = author ~  "<p>" ~ article.createdBy['displayName'] %}
+        {% set author = author ~  "<p style='margin-top:12px;'>" ~ article.createdBy['displayName'] %}
 
         {% for i, authors in article['createdBy']['coauthors'] %}
             {% set divider = (loop.last) ? ' and ' : ', ' %}

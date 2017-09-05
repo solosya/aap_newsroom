@@ -29687,7 +29687,7 @@ $('document').ready(function() {
     var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2').dotdotdot({
+        $('.card .content > p, .card h2, .card .content > .author > p').dotdotdot({
             watch: true
         });
     }), 750);
