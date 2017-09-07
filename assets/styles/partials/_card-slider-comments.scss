@@ -108,8 +108,18 @@
                     padding: 203px 275px 10px 39px;
                     z-index: 2;
                     position:relative;
+
+
+                    @media screen and (max-width: $md-break) {
+                        padding: 203px 20% 10px 39px;
+                    }
+
+                    @media screen and (max-width: $sm-break) {
+                        padding: 150px 20% 10px 39px;
+                    }
+
                     @media screen and (max-width: $mobile-break) {
-                        padding: 150px 90px 10px 20px;
+                        padding: 150px 20% 10px 20px;
                     }
 
                     
@@ -128,13 +138,13 @@
                         font-size: rem(44);
                         // -webkit-flex:2 2 0;-ms-flex:2 2 0;flex:2 2 0;-moz-flex:2 2 0;
                         color:#fff;
-                        height:90px;
+                        min-height:90px;
                         line-height:1;
                         margin-bottom: 8px;
 
                         @media screen and (max-width: $mobile-break) {
                             font-size: rem(28);
-                            height:140px;
+                            // min-height:140px;
                         }
 
                     }

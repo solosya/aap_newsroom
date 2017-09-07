@@ -12824,9 +12824,15 @@ body.channel.supporters p {
         padding: 203px 275px 10px 39px;
         z-index: 2;
         position: relative; }
+        @media screen and (max-width: 1200px) {
+          .featured-slider-comments .feature .card article .content {
+            padding: 203px 20% 10px 39px; } }
+        @media screen and (max-width: 768px) {
+          .featured-slider-comments .feature .card article .content {
+            padding: 150px 20% 10px 39px; } }
         @media screen and (max-width: 620px) {
           .featured-slider-comments .feature .card article .content {
-            padding: 150px 90px 10px 20px; } }
+            padding: 150px 20% 10px 20px; } }
         .featured-slider-comments .feature .card article .content .category {
           font-size: 1.1rem;
           margin-bottom: 10px;
@@ -12837,13 +12843,12 @@ body.channel.supporters p {
         .featured-slider-comments .feature .card article .content h2 {
           font-size: 4.4rem;
           color: #fff;
-          height: 90px;
+          min-height: 90px;
           line-height: 1;
           margin-bottom: 8px; }
           @media screen and (max-width: 620px) {
             .featured-slider-comments .feature .card article .content h2 {
-              font-size: 2.8rem;
-              height: 140px; } }
+              font-size: 2.8rem; } }
         .featured-slider-comments .feature .card article .content > p {
           font-size: 1.8rem;
           color: #fff;
