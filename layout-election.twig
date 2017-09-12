@@ -17,13 +17,19 @@
     <main id="main" class="site-main viewing-room" role="main">
 
 
-        {% if 'futurelearning' != this.title | lower %}
-            <h1 class="sectionpage" style="margin-left:20px;">{{this.title}}</h1>
-        {% endif %}
 
 
 
         <section class="container-fluid">
+
+        
+            {% if 'futurelearning' != this.title | lower %}
+                <h1 class="sectionpage">{{this.title}}</h1>
+            {% endif %}
+
+
+
+
                 <div class="">
                     {% if articles[0] %} 
                         {{this.render('partials/_single-article.twig', {
