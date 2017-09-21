@@ -11317,12 +11317,17 @@ button.swiper-pagination-bullet {
   margin-top: 70px; }
   .article article.article-main .page-content .content-block-top {
     margin-bottom: 17px; }
-    .article article.article-main .page-content .content-block-top time {
+    .article article.article-main .page-content .content-block-top div.articleTimes {
       float: right;
-      color: #6c6c6c;
-      text-transform: uppercase;
-      font-size: 1.3em;
-      padding: 15px 0; }
+      text-align: right; }
+      .article article.article-main .page-content .content-block-top div.articleTimes time {
+        display: block;
+        color: #6c6c6c;
+        text-transform: uppercase;
+        font-size: 1.3em; }
+        .article article.article-main .page-content .content-block-top div.articleTimes time.updated {
+          color: #e22f22;
+          font-style: italic; }
   .article article.article-main .page-content .content-author {
     border-top: solid 1px #dadada;
     border-bottom: solid 1px #dadada;

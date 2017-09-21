@@ -31,7 +31,21 @@
 
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
-{% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishedDate,'d M Y') %}
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime,'F j, Y') %}
+{% set updateDate = _AppHelper.getDefaultTimezoneDateTime(article.updatedDateTime,'F j, Y') %}
+
+{# {% set updateDate = article.updateDate %} #}
+{% set updated = false %}
+
+{% if article.publishedDateTime != article.updatedDateTime %}
+    {% set updatedAgo = _AppHelper.getSecondsSincePublished(article.updatedDateTime) %}
+    {% if updatedAgo < 86400 %}
+        {% set updateDate = _AppHelper.getRelativeTime(article.updatedDateTime) ~ " ago" %}
+    {% endif %}
+
+    {% set updated = true %}
+
+{% endif %}
 
 
 
@@ -79,7 +93,12 @@
                                         <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                                     {% endif %}
 
-                                    <time>{{ publishDate | upper }}</time>
+                                    <div class="articleTimes">
+                                        <time>{{ publishDate | upper }}</time>
+                                        {% if updated %}
+                                            <time class="updated">Updated {{ updateDate | upper }}</time>
+                                        {% endif %}
+                                    </div>
                                 </div><!--content-block-top-->
 
 
@@ -155,7 +174,7 @@
                                     <span class="add-text" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
 
-                                <section class="related-articles">
+{#                                 <section class="related-articles">
                                     <h2>RELATED ARTICLES</h2>
 
                                     {% set popularArticles = _Article.getPopularArticles({ limit: 5, excludeArticleId : article.id }) %}
@@ -177,7 +196,7 @@
                                     </div>
                                     <span class="add-text" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
-                            </aside>
+ #}                            </aside>
                         </div><!-- .col-md-4-->
                     </div><!-- .row-->
 
