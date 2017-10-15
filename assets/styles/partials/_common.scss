@@ -341,6 +341,10 @@ p.foundingpartners {
                 background-size: contain;
                 margin-right: 40px;
                 margin-top: 15px;
+                @media screen and (max-width: $mobile-break){
+                   
+                    margin-right: 0;
+                }
             }
 
             &.sponsor-vic-uni-wellington {
@@ -360,7 +364,7 @@ p.foundingpartners {
                 background-size: contain;
                 margin-left:40px;
                 @media screen and (max-width: $mobile-break){
-                    margin-left:50px;
+                    margin-right: -30px;
                 }
                 position: relative;
                 top: -5px;
