@@ -105,7 +105,8 @@
                                 <div class="content-author">
                                     <img src="{{ profileImg }}" alt="">
                                     <h3>{{ article.createdBy['displayName'] }}</h3>
-                                    <p>{{ article.createdBy['bio'] }}</p>
+                                    <p class="bio">{{ article.createdBy['bio'] }}</p>
+                                    <a id="bio-show-more" class="showmore visible-xs-block">Show more <span class="arrow down"></span></a>
                                 </div><!-- .content-author-->
 
                                 {% if article['createdBy']['coauthors'] %}

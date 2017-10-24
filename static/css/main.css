@@ -11328,6 +11328,9 @@ button.swiper-pagination-bullet {
         color: #6c6c6c;
         text-transform: uppercase;
         font-size: 1.3em; }
+        @media screen and (max-width: 768px) {
+          .article article.article-main .page-content .content-block-top div.articleTimes time {
+            font-size: 1em; } }
         .article article.article-main .page-content .content-block-top div.articleTimes time.updated {
           color: #e22f22;
           font-style: italic; }
@@ -11351,8 +11354,9 @@ button.swiper-pagination-bullet {
       margin-bottom: 5px; }
       @media screen and (max-width: 768px) {
         .article article.article-main .page-content .content-author h3 {
+          font-size: 1.4em;
           display: inline-block;
-          margin-bottom: 10px;
+          margin-bottom: 0;
           margin-top: 15px; } }
     .article article.article-main .page-content .content-author span {
       display: none;
@@ -11364,7 +11368,7 @@ button.swiper-pagination-bullet {
           display: inline;
           float: right;
           margin-top: 15px; } }
-    .article article.article-main .page-content .content-author p {
+    .article article.article-main .page-content .content-author p.bio {
       font-size: 1.5em;
       font-weight: 300;
       color: #4a4a4a;
@@ -11372,8 +11376,36 @@ button.swiper-pagination-bullet {
       margin-bottom: 0;
       width: 100%; }
       @media screen and (max-width: 768px) {
-        .article article.article-main .page-content .content-author p {
-          display: none; } }
+        .article article.article-main .page-content .content-author p.bio {
+          font-size: 1.1em;
+          display: none;
+          margin-bottom: 8px;
+          margin-top: 10px; } }
+    .article article.article-main .page-content .content-author a.showmore {
+      text-decoration: none;
+      cursor: pointer;
+      font-family: "tinos", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      color: #8a8b93; }
+      .article article.article-main .page-content .content-author a.showmore span.arrow {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        float: none;
+        margin-left: 5px;
+        border-right: 1px solid #8a8b93;
+        border-bottom: 1px solid #8a8b93;
+        height: 7px;
+        width: 7px;
+        position: relative; }
+        .article article.article-main .page-content .content-author a.showmore span.arrow.down {
+          transform: rotate(45deg);
+          top: -1px; }
+        .article article.article-main .page-content .content-author a.showmore span.arrow.right {
+          transform: rotate(-45deg); }
+        .article article.article-main .page-content .content-author a.showmore span.arrow.up {
+          transform: rotate(-135deg);
+          top: 2px; }
   .article article.article-main .page-content .article_content > span[style], .article article.article-main .page-content .article_content > u[style], .article article.article-main .page-content .article_content > p[style], .article article.article-main .page-content .article_content > ul[style], .article article.article-main .page-content .article_content > li[style], .article article.article-main .page-content .article_content > strong[style], .article article.article-main .page-content .article_content > b[style], .article article.article-main .page-content .article_content > h1[style], .article article.article-main .page-content .article_content > h2[style], .article article.article-main .page-content .article_content > h3[style], .article article.article-main .page-content .article_content > h4[style], .article article.article-main .page-content .article_content > h5[style], .article article.article-main .page-content .article_content > h6[style], .article article.article-main .page-content .article_content > figure[style], .article article.article-main .page-content .article_content > figcaption[style], .article article.article-main .page-content .article_content > img[style], .article article.article-main .page-content .article_content > blockquote[style] {
     font-size: inherit !important;
     font-weight: inherit !important;
