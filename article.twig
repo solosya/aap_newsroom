@@ -106,7 +106,10 @@
                                     <img src="{{ profileImg }}" alt="">
                                     <h3>{{ article.createdBy['displayName'] }}</h3>
                                     <p class="bio">{{ article.createdBy['bio'] }}</p>
-                                    <a id="bio-show-more" class="showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                    {% if article.createdBy['bio'] != "" %}
+                                        <a id="bio-show-more" class="showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                    {% endif %}
+
                                 </div><!-- .content-author-->
 
                                 {% if article['createdBy']['coauthors'] %}
