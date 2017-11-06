@@ -21549,7 +21549,7 @@ $('document').ready(function() {
         e.preventDefault();
       });
 
-      $('#bio-show-more').on('click', function(e) {
+      $('.bio-show-more').on('click', function(e) {
         e.preventDefault();
         var button = $(this);
         var arrow = button.find('span');

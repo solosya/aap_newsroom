@@ -107,7 +107,7 @@
                                     <h3>{{ article.createdBy['displayName'] }}</h3>
                                     <p class="bio">{{ article.createdBy['bio'] }}</p>
                                     {% if article.createdBy['bio'] != "" %}
-                                        <a id="bio-show-more" class="showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                        <a class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
                                     {% endif %}
 
                                 </div><!-- .content-author-->
@@ -118,7 +118,10 @@
                                         <div class="content-author">
                                             <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
                                             <h3>{{ author['displayName'] }}</h3>
-                                            <p>{{ author['bio'] }}</p>
+                                            <p class="bio">{{ author['bio'] }}</p>
+                                            {% if author['bio'] != "" %}
+                                                <a  class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                            {% endif %}
                                         </div><!-- .content-author-->
                                     {% endfor %}
                                 {% endif %}
