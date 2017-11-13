@@ -1,60 +1,70 @@
-{{ set(this, 'title', 'User Articles') }}
-{% set networkData = _Network.getNetworkData() %}
-{% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
-{{this.registerJs("UserArticlesController.load()")}}
-<div class="userProfilePost_page">
-    <section class="container">
-        <div class="row">
-            <!-- Begin User Profile Sidebar -->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div id="userprofile-sidebar">
-                   <img src="{{profileImage}}" class="img-responsive">
-                   <div class="inner-descr">
-                    <h4 class="user-name text-center">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
-                    {% if _User.isGuest() %}
-                        <a href="javascript:void(0)" class="button green button-block forceLoginModal"><i class="fa fa-star"></i>Follow</a>
-                    {% endif %}
-                    {% if not _User.isGuest() and _User.getId() != user.id %}
-                        {% set isUserFollowing = _User.isUserFollowing('user', user.id)  %}
-                        <div class="button-set">
-                            <a href="javascript:void(0)" class="button green FollowProfileUser" data-guid="{{user.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %}follow{% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                            <a href="/profile/{{Html.encode(user.username)}}" class="button green" ><i class="fa fa-star"></i>View Profile</a>
-                        </div>
-                    {% endif %}
+{{ set(this, 'title', 'User Profile') }}
+{% set networkData   = _Network.getNetworkData() %}
 
-                    {% if not _User.isGuest() and _User.getId() == user.id %}
-                      <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
-                    {% endif %}
-                    
+{% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
+{{this.registerJs("UserArticlesController.load()")}}
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+
+
+<!-- Begin Container -->
+<section class="container min-hight">
+    <div class="row" id="userprofile-page">
+        <!-- Begin User Profile -->
+        <div class="col-sm-12">
+
+            <div class="userprofile-bio">
+                <img src="{{profileImage}}" class="profile-image img-responsive">
+                
+                <div class="inner-descr">
+                    <h4 class="user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
+
+                    <a class="mail-icon" href="mailto:{{user.email}}"></a>
+
+
                     <p>{{Html.decode(user.bio) | raw}}</p>
-                    <div class="social-stuffs text-center">
-                        <a href="mailto:{{user.email}}"><i class="fa fa-envelope"></i></a>
-                    </div>
+                    
                 </div>
-                </div>
+
             </div>
             <!-- //End User Profile Sidebar -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="userArticleContainer" class="row" data-total-count="{{totalArticles}}" data-offset="0">
 
-            <!-- Begin User Posts -->
-            <div class="col-md-8 col-sm-8 col-xs-12">
-                <header class="sub-header">Articles</header>
-                <div id="news-posts">
-                    <div class="section__content">
-                        <div class="row">
-                            <div id="userArticleContainer" data-total-count="{{totalArticles}}" data-offset="0">
-                                {% if userArticles | length > 0  %}
-                                    {% set i = 0 %}
-                                    {% for article in userArticles %} 
-                                        {{this.render('partials/_single-article.twig',   {article: article, 'position': (i+1), containerClass: 'col-sm-4 card-sm'}) | raw}}
-                                        {%  set i = i + 1 %}
-                                    {% endfor %}
-                                {% else %}
-                                    <p class="no-data ">No article(s) created yet.</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                {% for i in 0..19 %}
+                    {% if userArticles[i] %}                                                                
+                        {{this.render('partials/_single-article.twig', {
+                            article: userArticles[articleCount], 
+                            position: (articleCount+1), 
+                            containerClass: 'col-sm-6 col-md-3 card-vr s360x215'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
+                {% endfor %}
+
+                {# <!-- Begin My Blogs -->
+                {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
+                <!-- //End My Blogs --> #}
+
+                <!-- Begin Recent Articles -->
+                {# {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles}) | raw }} #}
+                <!-- //End Recent Articles -->
+
+                {# <!-- Begin Following -->
+                {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
+                <!-- //End Following --> #}
+
+                {# <!-- Begin Followed By -->
+                {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
+                <!-- //End Followed By --> #}
+
                 <div id="LoadMoreArticles" class="clearfix" style="clear:both;"></div>
                 {% if totalArticles >= limit%}
                 <div class="loader">
@@ -62,8 +72,11 @@
                     <span class="text">please wait<span class="one">.</span><span class="two">.</span><span class="three">.</span></span>
                 </div>
                 {% endif %}
+
+
             </div>
-            <!-- //End User Posts -->
         </div>
-    </section>
-</div>
+        <!-- //End User Profile -->
+    </div>
+</section>
+<!-- //End Container -->
