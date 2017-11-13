@@ -21680,7 +21680,6 @@ var UserArticlesController = (function ($) {
 UserArticlesController.Load = (function ($) {
 
     var attachEvents = function () {
-      
         /*
          * Load More Articles on My Post Page
          */
@@ -21730,22 +21729,24 @@ UserArticlesController.Load = (function ($) {
          */
 
         var totalPosts = parseInt($('div#userArticleContainer').data('total-count'));
-        
+
         if (totalPosts > _appJsConfig.articleOffset) {
             var waypoint = new Waypoint({
                 element: $('#LoadMoreArticles'),
-                offset: '80%',
+                offset: '90%',
                 handler: function (direction) {
                     if (direction == 'down') {
+
+                        $("#loader").show();
                         $.fn.Ajax_LoadMoreUserArticles({
                             onSuccess: function (data, textStatus, jqXHR) {
                                 if (data.userArticles.length > 0) {
 
                                     for (var i in data.userArticles) {
-                                        data.userArticles[i]['containerClass'] = 'col-third';
-                                        data.userArticles[i]['cardClass'] = 'card__news card--local';
+                                        data.userArticles[i]['containerClass'] = 'col-sm-6 col-md-3 card-vr s360x215';
+                                        // data.userArticles[i]['cardClass'] = 'card__news card--local';
                                         
-                                        data.articles[i]['blogClass']= '';
+                                        data.userArticles[i]['blogClass']= '';
                                         if(data.userArticles[i].blog['id'] !== null) {
                                            data.userArticles[i]['blogClass']= 'card--blog_'+data.userArticles[i].blog['id'];
                                         } 

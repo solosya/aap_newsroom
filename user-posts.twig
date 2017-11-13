@@ -7,6 +7,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
+{% set limit = 20 %}
 
 
 
@@ -66,11 +67,11 @@
                 <!-- //End Followed By --> #}
 
                 <div id="LoadMoreArticles" class="clearfix" style="clear:both;"></div>
-                {% if totalArticles >= limit%}
-                <div class="loader">
-                    <span><img width="24" height="24" src="{{networkData.templatePath}}/static/images/loading.svg"></span>
-                    <span class="text">please wait<span class="one">.</span><span class="two">.</span><span class="three">.</span></span>
-                </div>
+                {% if totalArticles >= limit %}
+                    <div id="loader" class="loader" style="display:none;">
+                        <span><img width="24" height="24" src="{{networkData.templatePath}}/static/images/loading.svg"></span>
+                        <span class="text">please wait<span class="one">.</span><span class="two">.</span><span class="three">.</span></span>
+                    </div>
                 {% endif %}
 
 
