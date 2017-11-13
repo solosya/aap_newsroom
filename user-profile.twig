@@ -1,57 +1,72 @@
 {{ set(this, 'title', 'User Profile') }}
 
-{% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
+{% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
 {{this.registerJs("$('.loginModal').loginModal({});")}}
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+
 
 <!-- Begin Container -->
 <section class="container min-hight">
     <div class="row" id="userprofile-page">
         <!-- Begin User Profile -->
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- Begin User Profile Sidebar -->
-            <div id="userprofile-sidebar">
-                <div class="userprofile-sidebar-inner">
-                    <img src="{{profileImage}}" class="img-responsive">
-                    <div class="inner-descr">
-                        <h4 class="user-name text-center">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h4>
-                        {% if _User.isGuest() %}
-                            <a href="javascript:void(0)" class="button green button-block forceLoginModal"><i class="fa fa-star"></i>Follow</a>
-                        {% endif %}
-                        {% if not _User.isGuest() and _User.getId() != userDetails.id %}
-                            {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                            <a href="javascript:void(0)" class="button green button-block FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                        {% endif %}
+        <div class="col-sm-12">
 
-                        {% if not _User.isGuest() and _User.getId() == userDetails.id %}
-                            <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
-                        {% endif %}
+            <div class="userprofile-bio">
+                <img src="{{profileImage}}" class="profile-image img-responsive">
+                
+                <div class="inner-descr">
+                    <h4 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h4>
 
-                        <p>{{Html.decode(userDetails.bio) | raw}}</p>
-                        <div class="social-stuffs text-center">
-                            <a href="mailto:{{userDetails.email}}"><i class="fa fa-envelope"></i></a>
-                        </div>
-                    </div>
+                    {% if not _User.isGuest() and _User.getId() == userDetails.id %}
+                        <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
+                    {% endif %}
+
+
+                    <a class="mail-icon" href="mailto:{{userDetails.email}}"></a>
+
+
+                    <p>{{Html.decode(userDetails.bio) | raw}}</p>
+                    
                 </div>
+
             </div>
             <!-- //End User Profile Sidebar -->
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
 
-        <div class="col-md-8 col-sm-8 col-xs-12">
-            <!-- Begin My Blogs -->
+
+            {% for i in 0..12 %}
+                {% if myArticles[i] %}                                                                
+                    {{this.render('partials/_single-article.twig', {
+                        article: myArticles[articleCount], 
+                        position: (articleCount+1), 
+                        containerClass: 'col-sm-4 card-vr s360x215'
+                    }) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            {% endfor %}
+
+            {# <!-- Begin My Blogs -->
             {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
-            <!-- //End My Blogs -->
+            <!-- //End My Blogs --> #}
 
             <!-- Begin Recent Articles -->
-            {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles}) | raw }}
+            {# {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles}) | raw }} #}
             <!-- //End Recent Articles -->
 
-            <!-- Begin Following -->
+            {# <!-- Begin Following -->
             {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
-            <!-- //End Following -->
+            <!-- //End Following --> #}
 
-            <!-- Begin Followed By -->
+            {# <!-- Begin Followed By -->
             {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
-            <!-- //End Followed By -->
+            <!-- //End Followed By --> #}
 
         </div>
         <!-- //End User Profile -->
