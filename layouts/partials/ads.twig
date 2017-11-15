@@ -97,14 +97,32 @@
      });
   }
 
+  function loadTwoAds(blogAd) {
+     if (blogAd != 'futurelearning') {blogAd = '{{adPlace}}'}
+     var adSlot = document.getElementById("newAdBanner");
+     var slotName = generateNextBannerName();
+     var slotDiv = document.createElement('div');
+     adSlot.appendChild(slotDiv);
+     slotDiv.id = slotName;
+     slotDiv.setAttribute( 'class', 'google_ad' );
+     adSlot.id = "";
+     adSlot.setAttribute( 'class', 'bannerad' );
+     var adSlot2 = document.getElementById("newAdHalf");
+     var slotName2 = generateNextHalfName();
+     var slotDiv2 = document.createElement('div');
+     adSlot2.appendChild(slotDiv2);
+     slotDiv2.id = slotName2;
+     slotDiv2.setAttribute( 'class', 'google_ad' );
+     adSlot2.id = "";
+     adSlot2.setAttribute( 'class', 'sidepanelAd' );
+     
+     googletag.cmd.push(function() {
+       var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75]], slotName).setTargeting().defineSizeMapping([[[1025,0],[970,250]],[[768,0],[728,250],[728,90]],[[0,0],[300,75]]]).addService(googletag.pubads());
+       var slot2 = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[300,250],[300, 75]], slotName2).setTargeting().defineSizeMapping([[[768,0],[[300,600],300,250]],[[0,0],[300,250]]]).addService(googletag.pubads());
+       googletag.display(slotName);
+       googletag.pubads().refresh([slot]).refresh([slot2]);
+     });
+  }
 
-</script>
 
-
-<script>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/268436641/newsroom', [[300, 250], [970, 250], [300, 600], [728, 250], [728, 90], [300, 75]], 'div-gpt-ad-1510720808039-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
 </script>

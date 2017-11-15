@@ -17,7 +17,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-    <script>loadNextBannerAd('')</script>
+    
 
     <main id="main" class="site-main roompage {{this.title | lower}}" role="main">
         <section class="featured-slider container-fluid">
@@ -78,7 +78,6 @@
                         
                             <section class="col-sm-6 col-md-12 add sidebar-add">
                                 <div id="newAdHalf"></div>
-                                <script>loadNextHalfAd('')</script>
                                 <span class="add-text">Advertisement</span>
                             </section>
 
@@ -167,5 +166,5 @@
     {% endif %}
 
 
-
+    <script>loadTwoAds('{{artBlog}}')</script>
     </main><!-- .site-main -->

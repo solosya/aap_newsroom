@@ -48,7 +48,6 @@
 {% endif %}
 
 {% set artBlog = (article.blog.title | lower) %}
-<script>loadNextBannerAd('{{artBlog}}')</script>
 
 
 
@@ -187,8 +186,8 @@
 
                                 <section class="add sidebar-add ">
 
-                                    <div id="newAdMrec"></div>
-                                    <script>loadNextMrecAd('{{artBlog}}')</script>
+                                    <div id="newAdHalf"></div>
+                                    
                                     <span class="add-text" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
 
@@ -267,8 +266,9 @@
 
 
             </div><!--container-->
+            <script>loadTwoAds('{{artBlog}}')</script>
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
-
+        
     </main><!--site-main-->
 
