@@ -271,139 +271,10 @@
 
 
 
-    {% set sportsroomAddClass = ['sportsroom'] %}
-    {% set businessroomAddClass = ['boardroom', 'real economy'] %}
-    {% set futurelearningAddClass = ['futurelearning', 'democracy week'] %}
-    {% set corporateAddClass = ['corporateroom'] %}
-    {% set engineAddClass = ['engineroom'] %}
-        
-
-    {% set boxadID = 'div-gpt-ad-1488757884390-0' %}
-    {% set boxadSlot = '/268436641/boxad1/newsbox' %}
-
-    {% set sidepanelID = 'div-gpt-ad-1488757884390-1' %}
-    {% set sidepanelSlot = '/268436641/sidepanel1/newspanel' %}
-
-    {% set smallbannerID = 'div-gpt-ad-1488757884390-2' %}
-    {% set smallbannerSlot = '/268436641/smlbanner1/newsbanner' %}
-
-    {% set tinybannerID = 'div-gpt-ad-1488757884390-3' %}
-    {% set tinybannerSlot = '/268436641/tinybanner1/newstinybanner' %}
-
-    {% set widebannerID = 'div-gpt-ad-1490315342623-4' %}
-    {% set widebannerSlot = '/268436641/widebanner1/newswide' %}
-
-    {% if (roomInfo[0] | lower in sportsroomAddClass) %}
-        {% set boxadID = 'div-gpt-ad-1488502464882-0' %}
-        {% set boxadSlot = '/268436641/boxad1/sportbox' %}
-
-        {% set sidepanelID = 'div-gpt-ad-1488502133668-1' %}
-        {% set sidepanelSlot = '/268436641/sidepanel1/sportpanel' %}
-
-        {% set smallbannerID = 'div-gpt-ad-1488502133668-2' %}
-        {% set smallbannerSlot = '/268436641/smlbanner1/sportbanner' %}
-
-        {% set tinybannerID = 'div-gpt-ad-1488502133668-3' %}
-        {% set tinybannerSlot = '/268436641/tinybanner1/sporttinybanner' %}
-
-        {% set widebannerID = 'div-gpt-ad-1490315342623-5' %}
-        {% set widebannerSlot = '/268436641/widebanner1/sportwide' %}
-
-    {% endif %}
-
-    {% if (roomInfo[0] | lower in businessroomAddClass) %}
-        {% set boxadID = 'div-gpt-ad-1488762086660-0' %}
-        {% set boxadSlot = '/268436641/boxad1/busbox' %}
-
-        {% set sidepanelID = 'div-gpt-ad-1488762086660-1' %}
-        {% set sidepanelSlot = '/268436641/sidepanel1/buspanel' %}
-
-        {% set smallbannerID = 'div-gpt-ad-1488762086660-2' %}
-        {% set smallbannerSlot = '/268436641/smlbanner1/busbanner' %}
-
-        {% set tinybannerID = 'div-gpt-ad-1488762086660-3' %}
-        {% set tinybannerSlot = '/268436641/tinybanner1/bustinybanner' %}
-
-        {% set widebannerID = 'div-gpt-ad-1490315342623-0' %}
-        {% set widebannerSlot = '/268436641/widebanner1/buswide' %}
-
-    {% endif %}
-
-    {% if (blogName | lower in futurelearningAddClass) %}
-        {% set boxadID = 'div-gpt-ad-1488761921892-0' %}
-        {% set boxadSlot = '/268436641/boxad1/learnbox' %}
-
-        {% set sidepanelID = 'div-gpt-ad-1488761921892-1' %}
-        {% set sidepanelSlot = '/268436641/sidepanel1/learnpanel' %}
-
-        {% set smallbannerID = 'div-gpt-ad-1488761921892-2' %}
-        {% set smallbannerSlot = '/268436641/smlbanner1/learnbanner' %}
-
-        {% set tinybannerID = 'div-gpt-ad-1488761921892-3' %}
-        {% set tinybannerSlot = '/268436641/tinybanner1/learntinybanner' %}
-
-        {% set widebannerID = 'div-gpt-ad-1490315342623-3' %}
-        {% set widebannerSlot = '/268436641/widebanner1/learnwide' %}
-
-    {% endif %}
-
-     {% if (roomInfo[0] | lower in engineAddClass) %}
-        {% set boxadID = 'div-gpt-ad-1489014661945-0' %}
-        {% set boxadSlot = '/268436641/boxad1/enginebox' %}
-
-        {% set sidepanelID = 'div-gpt-ad-1489014661945-1' %}
-        {% set sidepanelSlot = '/268436641/sidepanel1/enginepanel' %}
-
-        {% set smallbannerID = 'div-gpt-ad-1489014661945-2' %}
-        {% set smallbannerSlot = '/268436641/smlbanner1/enginebanner' %}
-
-        {% set tinybannerID = 'div-gpt-ad-1489014661945-3' %}
-        {% set tinybannerSlot = '/268436641/tinybanner1/enginetinybanner' %}
-
-        {% set widebannerID = 'div-gpt-ad-1490315342623-2' %}
-        {% set widebannerSlot = '/268436641/widebanner1/enginewide' %}
-
-    {% endif %}
-
-    {% if (roomInfo[0] | lower in corporateAddClass) %}
-        {% set smallbannerID = 'div-gpt-ad-1488762178801-0' %}
-        {% set smallbannerSlot = '/268436641/smlbanner1/corpbanner' %}
-
-        {% set tinybannerID = 'div-gpt-ad-1488762178801-1' %}
-        {% set tinybannerSlot = '/268436641/tinybanner1/corptinybanner' %}
-
-        {% set widebannerID = 'div-gpt-ad-1490315342623-1' %}
-        {% set widebannerSlot = '/268436641/widebanner1/corpwide' %}
-
-    {% endif %}
-
-
-
-    <script>
-
-        boxadID = '{{boxadID}}';
-        sidepanelID = '{{sidepanelID}}';
-        smallbannerID = '{{smallbannerID}}';
-        tinybannerID = '{{tinybannerID}}' ;
-        widebannerID = '{{widebannerID}}';
-
-
-
-        googletag.cmd.push(function() {
-            googletag.defineSlot('{{boxadSlot}}', [300, 250], '{{boxadID}}').addService(googletag.pubads());
-            googletag.defineSlot('{{sidepanelSlot}}', [300, 600], '{{sidepanelID}}').addService(googletag.pubads());
-            googletag.defineSlot('{{smallbannerSlot}}', [[728, 90], [728, 250]], '{{smallbannerID}}').addService(googletag.pubads());
-            googletag.defineSlot('{{tinybannerSlot}}', [300, 75], '{{tinybannerID}}').addService(googletag.pubads());
-            googletag.defineSlot('{{widebannerSlot}}', [970, 250], '{{widebannerID}}').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.pubads().collapseEmptyDivs();
-            googletag.pubads().enableVideoAds();
-            // googletag.companionAds().setRefreshUnfilledSlots(true);
-            googletag.enableServices();
-        });
-
-
-    </script>
+    {{ this.render('partials/ads.twig', {
+        networkData: networkData,
+        blogData: blogData
+    }) | raw }}
 
 
 </head>
@@ -415,33 +286,7 @@
 
       
 
-        <div class="add add-header-top hidden-xs hidden-sm">
-            <span class="add-text" style="display:block;width:970px;margin:0 auto;">Advertisement</span>
-            <div id='widebannerID' style='width:970px;'>
-                <script>
-                    document.currentScript.parentNode.id = widebannerID;
-                    googletag.cmd.push(function() { googletag.display(widebannerID); });
-                </script>
-            </div>
-        </div><!--add add-header-top-->
-
-        <div class="add add-header-top hidden-xs hidden-md hidden-lg">
-            <span class="add-text" style="display:block;width:728px;margin:0 auto;">Advertisement</span>
-            <div id='smallbannerID' style='width:728px;'>
-                <script>
-                    document.currentScript.parentNode.id = smallbannerID;
-                    googletag.cmd.push(function() { googletag.display(smallbannerID); });
-                </script>
-            </div>
-        </div><!--add add-header-top-->
-
-        
-
-
-
-
-
-
+        <div id="newAdBanner"></div> 
 
     {{ this.render('partials/_header_navigation.twig', {
         blog : blogData, 
