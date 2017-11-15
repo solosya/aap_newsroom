@@ -20,12 +20,22 @@
 
 }
 
+.bannerad{
+    @media screen and (max-width: $sm-break){
+        padding-top: 70px;
+        
+    }
+}
+
 .site-header {
     background:white;
 
     padding-top: 18px;
     @media screen and (max-width: $sm-break){
         padding-top: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
     }
     // @media screen and (max-width: $mobile-break){
     //     position: fixed;
