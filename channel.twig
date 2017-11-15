@@ -80,29 +80,7 @@
 
                     <div class="col-sm-12 col-md-4 sidebar">
                         <section class="add sidebar-add" >
-                            <div class="hidden-xs">
-                                <div id='sidepanelAd' style='height:600px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = sidepanelID;
-                                        googletag.cmd.push(function() { googletag.display(sidepanelID); });
-                                    </script>
-                                </div>
-                                <span class="add-text">Advertisement</span>
-                            </div>
-    {#                      <div class="block visible-xs-block">
-                                <a href="#">
-                                    <img src="{{networkData.templatePath}}/static/images/add-mobile.jpg" alt="Add Alt Here">
-                                </a>
-                                <span class="add-text">Advertisement</span>
-                            </div><!--block-->
- #}                            
-                            <div class="visible-xs">
-                                 <div id='boxad' style='height:250px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = boxadID;
-                                        googletag.cmd.push(function() { googletag.display(boxadID); });
-                                    </script>
-                                </div>
+                                <div id="newAdHalf"></div>
                                 <span class="add-text">Advertisement</span>
                             </div>
                         </section>
@@ -199,7 +177,7 @@
 
 
 
-
+            <script>loadTwoAds('')</script>
             </div><!-- .container-->
         </section><!-- .home-page-content-->
 
