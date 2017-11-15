@@ -143,12 +143,8 @@
 
                         <section class="add row sidebar-add hidden-md hidden-lg">
                             <div class="col-sm-6">
-                                <div id='boxad' class="" style='height:250px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = boxadID;
-                                        googletag.cmd.push(function() { googletag.display(boxadID); });
-                                    </script>
-                                </div>
+                                <div id="newAdMrec"></div>
+                                <script>loadNextMrecAd('')</script>
                                 <span class="add-text">Advertisement</span>
                             <!--block-->
                             </div>
@@ -227,12 +223,8 @@
 
 
                         <section class="add sidebar-add hidden-sm hidden-xs">
-                                <div id='sidepanelAd' style='height:600px; width:300px;'>
-                                        <script>
-                                            document.currentScript.parentNode.id = sidepanelID;
-                                            googletag.cmd.push(function() { googletag.display(sidepanelID); });
-                                        </script>
-                                    </div>
+                                <div id="newAdHalf"></div>
+                                <script>loadNextHalfAd('')</script>
                                 <span class="add-text">Advertisement</span>
                         </section>
 
