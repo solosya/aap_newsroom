@@ -16,7 +16,7 @@
         <div class="row">
             {% for i in 0..2 %}
                 {% if sections['futurelearning'].feed.articles[i] %}        
-                    {{this.render('_single-article.twig', {article: sections['futurelearning'].feed.articles[i], position: (articleCount+1), containerClass: 'col-sm-4 furturelearning s92x100', swap: 'false' }) | raw}}
+                    {{this.render('_single-article.twig', {article: sections['futurelearning'].feed.articles[i], position: (articleCount+1), containerClass: 'col-sm-4 futurelearning s92x100', swap: 'false' }) | raw}}
                 {% endif %}
             {% endfor %}
 
