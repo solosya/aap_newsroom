@@ -120,7 +120,7 @@
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75]], slotName).setTargeting().defineSizeMapping([[[1025,0],[970,250]],[[768,0],[728,250],[728,90]],[[0,0],[300,75]]]).addService(googletag.pubads());
        var slot2 = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[300,250],[300, 75]], slotName2).setTargeting().defineSizeMapping([[[768,0],[[300,600],300,250]],[[0,0],[300,250]]]).addService(googletag.pubads());
        googletag.display(slotName);
-       googletag.pubads().refresh([slot]).refresh([slot2]);
+       googletag.pubads().refresh([[slot],[slot2]]);
      });
   }
 
