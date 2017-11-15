@@ -285,8 +285,10 @@
 {{ this.beginBody() }}
 
       
-
-        <div id="newAdBanner"></div> 
+        <div class="add add-header-top" style="margin-top:10px;">
+            {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
+            <div id="newAdBanner"></div> 
+        </div><!--add add-header-top-->
 
     {{ this.render('partials/_header_navigation.twig', {
         blog : blogData, 
