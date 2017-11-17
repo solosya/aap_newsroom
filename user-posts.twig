@@ -1,7 +1,7 @@
 {{ set(this, 'title', 'User Profile') }}
 {% set networkData   = _Network.getNetworkData() %}
 
-{% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
+{% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
 {{this.registerJs("UserArticlesController.load()")}}
 
 <!-- used to index each article as we loop over throughout the template -->

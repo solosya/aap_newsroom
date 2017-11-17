@@ -17,6 +17,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
+    
 
     <main id="main" class="site-main roompage {{this.title | lower}}" role="main">
         <section class="featured-slider container-fluid">
@@ -76,25 +77,9 @@
                         <div class="row">
                         
                             <section class="col-sm-6 col-md-12 add sidebar-add">
-                               <div class="block hidden-xs">
-                                   <div id='sidepanelAd' style='height:600px; width:300px;'>
-                                        <script>
-                                            document.currentScript.parentNode.id = sidepanelID;
-                                            googletag.cmd.push(function() { googletag.display(sidepanelID); });
-                                        </script>
-                                    </div>
-                                    <span class="add-text">Advertisement</span>
-                                </div><!--block-->
-
-                                <div class="block visible-xs-block">
-                                    <div id='boxadID' style='height:250px; width:300px;'>
-                                        <script>
-                                            document.currentScript.parentNode.id = boxadID;
-                                            googletag.cmd.push(function() { googletag.display(boxadID); });
-                                        </script>
-                                    </div>
-                                    <span class="add-text">Advertisement</span>
-                                </div><!--block-->
+                                <div id="newAdHalf"></div>
+                                <script>loadTwoAds('')</script>
+                                <span class="add-text">Advertisement</span>
                             </section>
 
 
@@ -155,6 +140,7 @@
 
 
             </div><!-- .container-->
+            
         </section><!-- .home-page-content-->
 
         
@@ -180,7 +166,6 @@
             </div>
         </section>
     {% endif %}
-
 
 
     </main><!-- .site-main -->
