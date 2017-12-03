@@ -119,7 +119,11 @@ $('document').ready(function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $(this).children("ul").stop(true, false).slideToggle(225);
             $(this).toggleClass('now-active');
-            e.preventDefault();
+            // e.preventDefault();
+            if (window.innerWidth > sbCustomMenuBreakPoint) {
+                $("input#header-search").focus();
+                // return false;
+            }
         }
     });
 
