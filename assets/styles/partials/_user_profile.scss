@@ -5,6 +5,11 @@
     width:148px;
     height:148px;
     margin-right:47px;
+    @media screen and (max-width: $sm-break){
+        width:33%;
+        height:unset; 
+        margin-left: 33%;
+        }
 }
 
 .userprofile-bio {
@@ -15,11 +20,17 @@
 .inner-descr {
     float:left;
     width:60%;
+    @media screen and (max-width: $sm-break){
+        width:unset;
+    }
     h4 {
         font-size:rem(14px);
         color:$gray-text;
         text-transform:uppercase;
         margin-bottom:15px;
+        @media screen and (max-width: $sm-break){
+            text-align: center;
+        }
     }
 
     .mail-icon {
@@ -30,6 +41,9 @@
         background-repeat: no-repeat;
         background-size:cover;
         margin-bottom:28px;
+        @media screen and (max-width: $sm-break){
+            margin-left:47%;
+        }
     }
 
     >p {

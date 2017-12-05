@@ -6081,6 +6081,11 @@ body.no_profile .profile_overlay {
   width: 148px;
   height: 148px;
   margin-right: 47px; }
+  @media screen and (max-width: 768px) {
+    .profile-image {
+      width: 33%;
+      height: unset;
+      margin-left: 33%; } }
 
 .userprofile-bio {
   overflow: auto;
@@ -6089,11 +6094,17 @@ body.no_profile .profile_overlay {
 .inner-descr {
   float: left;
   width: 60%; }
+  @media screen and (max-width: 768px) {
+    .inner-descr {
+      width: unset; } }
   .inner-descr h4 {
     font-size: 1.4rem;
     color: #6c6c6c;
     text-transform: uppercase;
     margin-bottom: 15px; }
+    @media screen and (max-width: 768px) {
+      .inner-descr h4 {
+        text-align: center; } }
   .inner-descr .mail-icon {
     display: block;
     height: 15px;
@@ -6102,6 +6113,9 @@ body.no_profile .profile_overlay {
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 28px; }
+    @media screen and (max-width: 768px) {
+      .inner-descr .mail-icon {
+        margin-left: 47%; } }
   .inner-descr > p {
     font-size: 1.8rem;
     line-height: 1.33;
