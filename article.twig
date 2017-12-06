@@ -106,8 +106,7 @@
 
                                 <div class="content-author">
                                     <img src="{{ profileImg }}" alt="">
-                                    {# "{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts" #}
-                                    <a href="#">
+                                    <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
                                         <h3>{{ article.createdBy['displayName'] }}</h3>
                                     </a>
 
