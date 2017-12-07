@@ -197,9 +197,10 @@
         }
 
     }
-    &.userpost {
-        height: 115px;
-    
+    .userpost {
+        @media screen and (max-width: $sm-break){
+            height: 115px;
+        }
     }
 
 }
