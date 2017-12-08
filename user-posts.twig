@@ -46,7 +46,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: userArticles[articleCount], 
                             position: (articleCount+1), 
-                            containerClass: 'col-sm-6 col-md-3 card-vr s360x215'
+                            containerClass: 'col-sm-6 col-md-3 card-vr s360x215 userpost'
                         }) | raw}}
                         {% set articleCount = articleCount + 1 %}
                     {% endif %}

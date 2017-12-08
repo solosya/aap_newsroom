@@ -12478,6 +12478,15 @@ body.channel.supporters p {
     font-size: 28px;
     font-weight: normal; }
 
+@media screen and (max-width: 768px) {
+  .userpost {
+    height: 115px; }
+    .userpost a.card {
+      height: 115px;
+      border-bottom: unset; }
+      .userpost a.card article figure {
+        height: 113px; } }
+
 .card-lg {
   margin-bottom: 79.5px; }
   @media screen and (max-width: 620px) {
