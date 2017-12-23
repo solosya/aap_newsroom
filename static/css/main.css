@@ -8178,6 +8178,10 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     .site-header .site-branding-bottom .navbar-brand {
       padding: 0;
       height: auto; }
+      @media screen and (max-width: 768px) {
+        .site-header .site-branding-bottom .navbar-brand {
+          display: flex;
+          flex-direction: row; } }
       .site-header .site-branding-bottom .navbar-brand .main-logo {
         max-width: 400px;
         height: 61px; }
@@ -8188,8 +8192,16 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         display: none; }
         @media screen and (max-width: 768px) {
           .site-header .site-branding-bottom .navbar-brand .mobile-logo {
-            display: block;
-            width: 63px; } }
+            display: flex;
+            width: 63px;
+            height: 45px; } }
+      .site-header .site-branding-bottom .navbar-brand .mobile-logo-summer {
+        display: none; }
+        @media screen and (max-width: 768px) {
+          .site-header .site-branding-bottom .navbar-brand .mobile-logo-summer {
+            display: flex;
+            width: 62px;
+            margin-top: 13px; } }
     .site-header .site-branding-bottom.foldaway {
       color: #6c6c6c;
       padding: 0;
@@ -10338,8 +10350,6 @@ button.swiper-pagination-bullet {
           padding-left: 0;
           padding-top: 10px;
           padding-bottom: 10px; } }
-    .article .site-header .site-branding-bottom .navbar-brand {
-      width: 105px; }
 
 .article article.article-main figure.featured {
   margin-top: 65px; }

@@ -188,6 +188,10 @@
         .navbar-brand{
             padding: 0;
             height: auto;
+            @media screen and (max-width: $sm-break){
+                display: flex;
+                flex-direction: row;
+            }
 
             .main-logo{
                 max-width:400px;
@@ -201,8 +205,17 @@
             .mobile-logo{
                 display: none;
                 @media screen and (max-width: $sm-break){
-                    display: block;
+                    display: flex;
                     width: 63px;
+                    height:45px;
+                }
+            }
+            .mobile-logo-summer {
+                display: none;
+                @media screen and (max-width: $sm-break){
+                    display: flex;
+                    width: 62px;
+                    margin-top: 13px;
                 }
             }
         }
