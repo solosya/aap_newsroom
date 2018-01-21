@@ -141,7 +141,7 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?cache=2" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=3" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
