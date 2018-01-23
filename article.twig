@@ -141,6 +141,7 @@
 
 
                                 <div class="article_content">
+                                    <p class="article_content__section">{{artBlog}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
                                     <p>{{ article.content   | preg_replace('/^<p>/', '<p class="lead">')
                                                             | _resizeImages({"width":750}) 
