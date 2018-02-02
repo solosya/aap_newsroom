@@ -6621,7 +6621,9 @@ body.no_profile .profile_overlay {
   .hidden-print {
     display: none !important; }
   .show-print {
-    display: block !important; } }
+    display: block !important; }
+  a[href]:after {
+    content: none !important; } }
 
 .gutter-20.row {
   margin-right: -10px;

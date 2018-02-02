@@ -104,7 +104,7 @@
                                 </div><!--content-block-top-->
 
 
-                                <div class="content-author hidden-print">
+                                <div class="content-author">
                                     <img src="{{ profileImg }}" alt="">
                                     <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
                                         <h3>{{ article.createdBy['displayName'] }}</h3>
@@ -122,7 +122,7 @@
                                 {% if article['createdBy']['coauthors'] %}
                                     {% for author in article['createdBy']['coauthors'] %}
 
-                                        <div class="content-author hidden-print">
+                                        <div class="content-author">
                                             <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
                                             
 
@@ -138,10 +138,10 @@
                                     {% endfor %}
                                 {% endif %}
 
-                                <div class="content-author show-print" style="display:none;">
+                                {# <div class="content-author show-print" style="display:none;">
                                         <h3>{{ article.createdBy['displayName'] }}</h3>
                                         <h3>{{ author['displayName'] }}</h3>
-                                </div>
+                                </div> #}
 
                                 <div class="article_content">
                                     <p class="article_content__section">{{article.label}}</p>
