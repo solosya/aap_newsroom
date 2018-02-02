@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="content-wrapper">
-                                <div class="content-block-top">
+                                <div class="content-block-top hidden-print">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
                                     ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
@@ -104,7 +104,7 @@
                                 </div><!--content-block-top-->
 
 
-                                <div class="content-author">
+                                <div class="content-author hidden-print">
                                     <img src="{{ profileImg }}" alt="">
                                     <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
                                         <h3>{{ article.createdBy['displayName'] }}</h3>
@@ -122,7 +122,7 @@
                                 {% if article['createdBy']['coauthors'] %}
                                     {% for author in article['createdBy']['coauthors'] %}
 
-                                        <div class="content-author">
+                                        <div class="content-author hidden-print">
                                             <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
                                             
 
@@ -138,7 +138,9 @@
                                     {% endfor %}
                                 {% endif %}
 
-
+                                <div class="content-author show-print" style="display:none;">
+                                        <h3>{{ article.createdBy['displayName'] }}</h3>
+                                </div>
 
                                 <div class="article_content">
                                     <p class="article_content__section">{{article.label}}</p>
@@ -165,7 +167,7 @@
                                 </p>
  #}                            {# </div><!-- .col-sm-8--> #}
                      
-                            <div class="comments">
+                            <div class="comments hidden-print">
                                 <h3>Comments</h3>
                                 <p>
                                     Newsroom does not allow comments directly on this website. 
@@ -188,7 +190,7 @@
 
                                     <div id="newAdHalf"></div>
                                     
-                                    <span class="add-text" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                    <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
 
                                 

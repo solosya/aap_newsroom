@@ -18,6 +18,15 @@ body{
   padding-left: 30px;
 }
 
+@media print {
+    .hidden-print {
+        display:none !important;
+    }
+    .show-print {
+        display:block !important;
+    }
+}
+
 
 
 // 20px gutter
