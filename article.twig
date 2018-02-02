@@ -114,7 +114,7 @@
 
                                     <p class="bio">{{ article.createdBy['bio'] }}</p>
                                     {% if article.createdBy['bio'] != "" %}
-                                        <a class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                        <a class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
                                     {% endif %}
 
                                 </div><!-- .content-author-->
@@ -132,7 +132,7 @@
 
                                             <p class="bio">{{ author['bio'] }}</p>
                                             {% if author['bio'] != "" %}
-                                                <a  class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                                <a  class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
                                             {% endif %}
                                         </div><!-- .content-author-->
                                     {% endfor %}
