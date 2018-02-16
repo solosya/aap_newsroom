@@ -6617,6 +6617,14 @@ body.no_profile .profile_overlay {
   padding-right: 30px;
   padding-left: 30px; }
 
+@media print {
+  .hidden-print {
+    display: none !important; }
+  .show-print {
+    display: block !important; }
+  a[href]:after {
+    content: none !important; } }
+
 .gutter-20.row {
   margin-right: -10px;
   margin-left: -10px; }

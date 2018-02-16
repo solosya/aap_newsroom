@@ -52,7 +52,7 @@
      slotDiv.id = slotName;
      slotDiv.setAttribute( 'class', 'google_ad' );
      adSlot.id = "";
-     adSlot.setAttribute( 'class', 'bannerad' );
+     adSlot.setAttribute( 'class', 'bannerad hidden-print' );
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75]], slotName).setTargeting().defineSizeMapping([[[1025,400],[970,250]],[[768,400],[[728,250],[728,90]]],[[0,250],[300,75]]]).addService(googletag.pubads());
@@ -70,7 +70,7 @@
      slotDiv.id = slotName;
      slotDiv.setAttribute( 'class', 'google_ad' );
      adSlot.id = "";
-     adSlot.setAttribute( 'class', 'boxad' );
+     adSlot.setAttribute( 'class', 'boxad hidden-print' );
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,250],[300, 75]], slotName).setTargeting().defineSizeMapping([[[768,0],[300,250]],[[0,0],[300,75]]]).addService(googletag.pubads());
@@ -88,7 +88,7 @@
      slotDiv.id = slotName;
      slotDiv.setAttribute( 'class', 'google_ad' );
      adSlot.id = "";
-     adSlot.setAttribute( 'class', 'sidepanelAd' );
+     adSlot.setAttribute( 'class', 'sidepanelAd hidden-print' );
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[300,250],[300, 75]], slotName).setTargeting().defineSizeMapping([[[768,0],[[300,600],300,250]],[[0,0],[300,250]]]).addService(googletag.pubads());
@@ -106,7 +106,7 @@
      slotDiv.id = slotName;
      slotDiv.setAttribute( 'class', 'google_ad' );
      adSlot.id = "";
-     adSlot.setAttribute( 'class', 'bannerad' );
+     adSlot.setAttribute( 'class', 'bannerad hidden-print' );
      var adSlot2 = document.getElementById("newAdHalf");
      var slotName2 = generateNextHalfName();
      var slotDiv2 = document.createElement('div');
@@ -114,7 +114,7 @@
      slotDiv2.id = slotName2;
      slotDiv2.setAttribute( 'class', 'google_ad' );
      adSlot2.id = "";
-     adSlot2.setAttribute( 'class', 'sidepanelAd' );
+     adSlot2.setAttribute( 'class', 'sidepanelAd hidden-print' );
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75]], slotName).setTargeting().defineSizeMapping([[[1025,400],[970,250]],[[768,400],[[728,250],[728,90]]],[[0,250],[300,75]]]).addService(googletag.pubads());

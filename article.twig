@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="content-wrapper">
-                                <div class="content-block-top">
+                                <div class="content-block-top hidden-print">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
                                     ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
@@ -114,7 +114,7 @@
 
                                     <p class="bio">{{ article.createdBy['bio'] }}</p>
                                     {% if article.createdBy['bio'] != "" %}
-                                        <a class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                        <a class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
                                     {% endif %}
 
                                 </div><!-- .content-author-->
@@ -132,13 +132,16 @@
 
                                             <p class="bio">{{ author['bio'] }}</p>
                                             {% if author['bio'] != "" %}
-                                                <a  class="bio-show-more showmore visible-xs-block">Show more <span class="arrow down"></span></a>
+                                                <a  class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
                                             {% endif %}
                                         </div><!-- .content-author-->
                                     {% endfor %}
                                 {% endif %}
 
-
+                                {# <div class="content-author show-print" style="display:none;">
+                                        <h3>{{ article.createdBy['displayName'] }}</h3>
+                                        <h3>{{ author['displayName'] }}</h3>
+                                </div> #}
 
                                 <div class="article_content">
                                     <p class="article_content__section">{{article.label}}</p>
@@ -151,7 +154,7 @@
                                 </div><!-- .content-->
                             </div><!-- .content-->
                             
-                            <div id="pp-donate-button" style="margin-left:-15px"></div>
+                            <div id="pp-donate-button" style="margin-left:-15px" class="hidden-print"></div>
                             {# <div class="subscribe"> #}
 {#                                 <p><a  class="subscribe" target="_blank" href="http://www.presspatron.com/newsroom" 
                                     style="padding: 0.5em 1em;
@@ -165,7 +168,7 @@
                                 </p>
  #}                            {# </div><!-- .col-sm-8--> #}
                      
-                            <div class="comments">
+                            <div class="comments hidden-print">
                                 <h3>Comments</h3>
                                 <p>
                                     Newsroom does not allow comments directly on this website. 
@@ -188,7 +191,7 @@
 
                                     <div id="newAdHalf"></div>
                                     
-                                    <span class="add-text" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                    <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
 
                                 
