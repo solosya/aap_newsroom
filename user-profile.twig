@@ -37,12 +37,10 @@
             <!-- //End User Profile Sidebar -->
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-12">
 
-       {% if myArticles is defined and myArticles | length > 0 %}
-            <a href='{{ _AppHelper.buildUrl('profile/user-posts',{name :  Html.encode(myArticles[0].createdBy['username'])})}}' class='view-more'>View all articles</a>
-        {% endif %}
 
 
             {% for i in 0..12 %}
@@ -75,5 +73,15 @@
         </div>
         <!-- //End User Profile -->
     </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            {% if myArticles is defined and myArticles | length > 0 %}
+                 <a href='{{ _AppHelper.buildUrl('profile/user-posts',{name :  Html.encode(myArticles[0].createdBy['username'])})}}' class='view-more'>View all articles</a>
+             {% endif %}
+        </div>
+    </div>
+
+    
 </section>
 <!-- //End Container -->
