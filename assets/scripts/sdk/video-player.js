@@ -78,7 +78,7 @@
 
                     content = 
                         '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
-                            <iframe src="//players.brightcove.net/'+accountID+'/'+playerID+'_default/index.html?videoId='+videoId+'" \
+                            <iframe src="//players.brightcove.net/'+accountID+'/'+playerID+'_default/index.html?videoId='+videoId+'&playsinline" \
                             allowfullscreen\
                             webkitallowfullscreen\
                             mozallowfullscreen\
