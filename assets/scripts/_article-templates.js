@@ -1,6 +1,14 @@
 /**
  * Handlebar Article templates for listing
  */
+Acme.templates = {};
+
+
+Acme.templates.registerPopup = 
+'<div id="register-popup" class="register-popup"> \
+    <a href="#" id="register-popup-close" class="register-popup__close">X</a> \
+</div>';
+
 
 var systemCardTemplate = 
 '<div class="{{containerClass}} "> \
