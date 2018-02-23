@@ -23,7 +23,6 @@ Acme.registerPopUp.prototype.run = function()
 		this.render();
 		return;
 	}
-	console.log('not rendering the popup!');
 };
 
 Acme.registerPopUp.prototype.getDateString = function() 
@@ -101,12 +100,15 @@ Acme.registerPopUp.prototype.removeToken = function()
 
 Acme.registerPopUp.prototype.render = function() 
 {
-	console.log('rendering the popup');
 	$('body').append(Acme.templates.registerPopup);
+	$('#register-popup').animate({bottom: "0px"}, 500);
 };
+
 Acme.registerPopUp.prototype.close = function() 
 {
-	$('#register-popup').remove();
+	$('#register-popup').animate({bottom: "-150px"}, 500, function() {
+		$('#register-popup').remove();
+	});
 };
 
 Acme.registerPopUp.prototype.events = function() 

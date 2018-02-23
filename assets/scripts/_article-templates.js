@@ -6,7 +6,40 @@ Acme.templates = {};
 
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
-    <a href="#" id="register-popup-close" class="register-popup__close">X</a> \
+    <div class="container"> \
+        <a href="#" id="register-popup-close" class="register-popup__close"></a> \
+        \
+        <div class="row"> \
+            <div class="col-sm-6"> \
+                <img class="register-popup__logo" src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo"> \
+                <p class="register-popup__text"> \
+                    Sign up here for your free daily briefing email. <br /> \
+                    Start your day with our editors\' picks of the very best stories. \
+                </p> \
+            </div> \
+            \
+            <div class="col-sm-offset-1 col-sm-5"> \
+                <div id="mc_embed_signup" class="popup-embed-signup"> \
+                    <form action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+                        <div id="mc_embed_signup_scroll" style="display:flex"> \
+                            <div class="mc-field-group popup-embed-signup__field"> \
+                                <input type="email" value="" name="EMAIL" class="required email popup-embed-signup__input" id="mce-EMAIL" placeholder="Email address" style="color:black; border:none"> \
+                            </div> \
+                            <button type="submit" class="popup-embed-signup__button" name="subscribe" id="mc-embedded-subscribe"> \
+                                Sign Up \
+                            </button> \
+                            \
+                            <div id="mce-responses" class="clear"> \
+                                <div class="response" id="mce-error-response" style="display:none"></div> \
+                                <div class="response" id="mce-success-response" style="display:none"></div> \
+                            </div> \
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div> \
+                        </div> \
+                    </form> \
+                </div> \
+            </div> \
+        </div> \
+    </div> \
 </div>';
 
 
@@ -24,7 +57,7 @@ var systemCardTemplate =
         <article class="">\
             {{#if hasMedia}}\
                 <figure>\
-                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
+                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
                 </figure>\
             {{/if}} \
         \
