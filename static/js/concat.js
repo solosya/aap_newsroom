@@ -29423,7 +29423,7 @@ Acme.templates.registerPopup =
         \
         <div class="row"> \
             <div class="col-sm-6"> \
-                <img class="register-popup__logo" src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo"> \
+                <img class="register-popup__logo" src="{{path}}/static/images/newsroom-reversed.png" alt="logo"> \
                 <p class="register-popup__text"> \
                     Sign up here for your free daily briefing email. <br /> \
                     Start your day with our editors\' picks of the very best stories. \
@@ -30305,7 +30305,9 @@ Acme.registerPopUp.prototype.removeToken = function()
 
 Acme.registerPopUp.prototype.render = function() 
 {
-	$('body').append(Acme.templates.registerPopup);
+	var html = Handlebars.compile(Acme.templates.registerPopup);
+
+	$('body').append(html({path: _appJsConfig.templatePath}));
 	$('#register-popup').animate({bottom: "0px"}, 500);
 };
 

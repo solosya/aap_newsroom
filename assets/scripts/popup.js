@@ -104,7 +104,9 @@ Acme.registerPopUp.prototype.removeToken = function()
 
 Acme.registerPopUp.prototype.render = function() 
 {
-	$('body').append(Acme.templates.registerPopup);
+	var html = Handlebars.compile(Acme.templates.registerPopup);
+
+	$('body').append(html({path: _appJsConfig.templatePath}));
 	$('#register-popup').animate({bottom: "0px"}, 500);
 };
 
