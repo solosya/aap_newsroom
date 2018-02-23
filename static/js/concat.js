@@ -27539,7 +27539,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     
                     if (playerID == '' || typeof playerID == "undefined") {playerID = 'default';}
                     if (videoId !== "" && typeof videoId !== "undefined") {
-                         url = "https://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId;
+                         url = "https://players.brightcove.net/"+accountID+"/"+playerID+"_default/index.html?videoId=" + videoId + "&playsinline";
                     } else {
                         url = $(elem).data('url');
                     }
@@ -27549,7 +27549,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
                     content = 
                         '<div style="display: block; position: relative; max-width: 100%;"><div style="padding-top: 56.25%;">\
-                            <iframe src="//players.brightcove.net/'+accountID+'/'+playerID+'_default/index.html?videoId='+videoId+'" \
+                            <iframe src="//players.brightcove.net/'+accountID+'/'+playerID+'_default/index.html?videoId='+videoId+'&playsinline" \
                             allowfullscreen\
                             webkitallowfullscreen\
                             mozallowfullscreen\
