@@ -108,7 +108,12 @@ gulp.task('scripts', function(){
         './assets/scripts/sdk/uploadfile.js',
         './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
 
-		'./assets/scripts/*.js',
+
+        './assets/scripts/framework.js',
+        './assets/scripts/!(framework)*.js', // all files that end in .js EXCEPT common*.js
+
+
+		// './assets/scripts/*.js',
 		])
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('./static/js'))
