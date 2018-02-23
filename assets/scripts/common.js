@@ -1,10 +1,5 @@
 (function ($) {
     
-    $('.video-player').videoPlayer();
-    
-    $("div.lazyload").lazyload({
-        effect : "fadeIn"
-    });
     
     // $(window).resize(function() {
     //     if ($('.side-navigation').is(':visible')) {
