@@ -28749,7 +28749,40 @@ Acme.templates = {};
 
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
-    <div id="register-popup-close" class="register-popup__close">X</div> \
+    <div class="container"> \
+        <a href="#" id="register-popup-close" class="register-popup__close"></a> \
+        \
+        <div class="row"> \
+            <div class="col-sm-6"> \
+                <img class="register-popup__logo" src="{{networkData.templatePath}}/static/images/newsroom-reversed.png" alt="logo"> \
+                <p class="register-popup__text"> \
+                    Sign up here for your free daily briefing email. <br /> \
+                    Start your day with our editors\' picks of the very best stories. \
+                </p> \
+            </div> \
+            \
+            <div class="col-sm-offset-1 col-sm-5"> \
+                <div id="mc_embed_signup" class="popup-embed-signup"> \
+                    <form action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" method="post" id="mc-embedded-subscribe-form-popup" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+                        <div id="mc_embed_signup_scroll" style="display:flex"> \
+                            <div class="mc-field-group popup-embed-signup__field"> \
+                                <input type="email" value="" name="EMAIL" class="required email popup-embed-signup__input" id="mce-EMAIL" placeholder="Email address" style="color:black; border:none"> \
+                            </div> \
+                            <button type="submit" class="popup-embed-signup__button" name="subscribe" id="mc-embedded-subscribe"> \
+                                Sign Up \
+                            </button> \
+                            \
+                            <div id="mce-responses" class="clear"> \
+                                <div class="response" id="mce-error-response" style="display:none"></div> \
+                                <div class="response" id="mce-success-response" style="display:none"></div> \
+                            </div> \
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div> \
+                        </div> \
+                    </form> \
+                </div> \
+            </div> \
+        </div> \
+    </div> \
 </div>';
 
 
@@ -28767,7 +28800,7 @@ var systemCardTemplate =
         <article class="">\
             {{#if hasMedia}}\
                 <figure>\
-                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
+                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
                 </figure>\
             {{/if}} \
         \
@@ -30166,24 +30199,24 @@ HomeController.Blog = (function ($) {
     };
 
 }(jQuery));
-
-Acme.registerPopUp = function() 
+Acme.registerPopUp = function(tokenName) 
 {
-	console.log('local storaging!!');
-	this.hasLocal = typeof localStorage != "undefined" ? true : false;
-	this.keyName = "register_popup";
-	this.removeLocalStorageKey();
-	this.date = new Date();
-	this.value = {};
+	this.hasLocal	= typeof localStorage != "undefined" ? true : false;
+	this.keyName 	= tokenName;
+	this.date 		= new Date();
+	// this.removeToken();
+	// return;
+	this.token 		= {};
 	this.run();
 	this.events();
 };
 
 Acme.registerPopUp.prototype.run = function()
 {
-	this.value = this.getLocalStorageKey();
-	if (!this.value) {
-		this.setLocalStorageKey();
+	this.token = this.getToken();
+	if (!this.token) {
+		this.refreshToken();
+		this.setToken();
 		this.render();
 		return;
 	}
@@ -30191,7 +30224,6 @@ Acme.registerPopUp.prototype.run = function()
 		this.render();
 		return;
 	}
-	console.log('not rendering the popup!');
 };
 
 Acme.registerPopUp.prototype.getDateString = function() 
@@ -30205,19 +30237,44 @@ Acme.registerPopUp.prototype.getDateString = function()
 
 Acme.registerPopUp.prototype.isPopUpExpired = function() 
 {
-	if (this.value.seen != this.getDateString()) {
+
+	if (this.token.registered) {
+		return false;
+	}
+
+	var sameDay = this.token.seen === this.getDateString();
+	if (!sameDay) {
+		this.refreshToken();
+		this.setToken();
 		return true;
 	}
+	if(sameDay && this.token.closed == false) {
+		return true;
+	}
+
 	return false;
+};
+Acme.registerPopUp.prototype.refreshToken = function() 
+{
+	this.token = {
+		"seen" 			: this.getDateString(),
+		"closed" 		: false,
+		"registered" 	: false
+	};
+};
+
+Acme.registerPopUp.prototype.updateToken = function(key, value) 
+{
+	this.token[key] = value;
+	this.setToken();
 };
 
 
-
-Acme.registerPopUp.prototype.getLocalStorageKey = function() 
+Acme.registerPopUp.prototype.getToken = function() 
 {
 	if ( this.hasLocal ) {
-	    var value =  localStorage.getItem(this.keyName);
-	    return value && JSON.parse(value);
+	    this.token = localStorage.getItem(this.keyName);
+	    return this.token && JSON.parse(this.token);
 
 	} else {
 	    // var c_start = document.cookie.indexOf(this.keyName + "=");
@@ -30229,22 +30286,16 @@ Acme.registerPopUp.prototype.getLocalStorageKey = function()
 	    return null;
 	}
 };
-Acme.registerPopUp.prototype.setLocalStorageKey = function() 
+Acme.registerPopUp.prototype.setToken = function() 
 {
-	var value = {
-		"seen" 			: this.getDateString(),
-		"closed" 		: false,
-		"registered" 	: false
-	};
-
 	if ( this.hasLocal ) {
-	    localStorage.setItem(this.keyName, JSON.stringify(value));
+	    localStorage.setItem(this.keyName, JSON.stringify(this.token));
 	} else {
 	    // document.cookie = this.keyName + "=" + escape(value) +
 	    // ((expiredays === null) ? "" : ";expires=" + exdate.toUTCString());
 	}
 };
-Acme.registerPopUp.prototype.removeLocalStorageKey = function() 
+Acme.registerPopUp.prototype.removeToken = function() 
 {	
 	if ( this.hasLocal ) {
 	    return localStorage.removeItem(this.keyName);
@@ -30254,12 +30305,15 @@ Acme.registerPopUp.prototype.removeLocalStorageKey = function()
 
 Acme.registerPopUp.prototype.render = function() 
 {
-	console.log('rendering the popup');
 	$('body').append(Acme.templates.registerPopup);
+	$('#register-popup').animate({bottom: "0px"}, 500);
 };
+
 Acme.registerPopUp.prototype.close = function() 
 {
-	$('#register-popup').remove();
+	$('#register-popup').animate({bottom: "-150px"}, 500, function() {
+		$('#register-popup').remove();
+	});
 };
 
 Acme.registerPopUp.prototype.events = function() 
@@ -30267,7 +30321,15 @@ Acme.registerPopUp.prototype.events = function()
 	var self = this;
 
 	$('#register-popup').on('click', function(e) {
+		var elem = $(e.target);
+		if (elem.hasClass("register-popup__close")) {
+			self.updateToken('closed', true);
+			self.close();
+		}
+	});
 
+	$('#mc-embedded-subscribe-form-popup').on('submit', function(e) {
+		self.updateToken('registered', true);
 	});
 };
 $('document').ready(function() {

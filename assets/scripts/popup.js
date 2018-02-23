@@ -36,7 +36,11 @@ Acme.registerPopUp.prototype.getDateString = function()
 
 Acme.registerPopUp.prototype.isPopUpExpired = function() 
 {
-	console.log(this.token);
+
+	if (this.token.registered) {
+		return false;
+	}
+
 	var sameDay = this.token.seen === this.getDateString();
 	if (!sameDay) {
 		this.refreshToken();
@@ -118,9 +122,12 @@ Acme.registerPopUp.prototype.events = function()
 	$('#register-popup').on('click', function(e) {
 		var elem = $(e.target);
 		if (elem.hasClass("register-popup__close")) {
-			console.log('clicked');
 			self.updateToken('closed', true);
 			self.close();
 		}
+	});
+
+	$('#mc-embedded-subscribe-form-popup').on('submit', function(e) {
+		self.updateToken('registered', true);
 	});
 };

@@ -20,7 +20,7 @@ Acme.templates.registerPopup =
             \
             <div class="col-sm-offset-1 col-sm-5"> \
                 <div id="mc_embed_signup" class="popup-embed-signup"> \
-                    <form action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+                    <form action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" method="post" id="mc-embedded-subscribe-form-popup" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
                         <div id="mc_embed_signup_scroll" style="display:flex"> \
                             <div class="mc-field-group popup-embed-signup__field"> \
                                 <input type="email" value="" name="EMAIL" class="required email popup-embed-signup__input" id="mce-EMAIL" placeholder="Email address" style="color:black; border:none"> \
