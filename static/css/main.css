@@ -9333,6 +9333,34 @@ button.swiper-pagination-bullet {
     .popup-embed-signup__button {
       height: 36px; } }
 
+.article-supoort {
+  position: relative;
+  overflow: auto;
+  padding: 20px;
+  background-color: rgba(74, 74, 74, 0.1); }
+
+.article-supoort__text {
+  width: 65%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  float: left; }
+  @media screen and (max-width: 490px) {
+    .article-supoort__text {
+      float: none;
+      width: 100%;
+      text-align: center; } }
+
+.article-supoort__button {
+  width: 100px;
+  height: 40px;
+  float: right; }
+  @media screen and (max-width: 490px) {
+    .article-supoort__button {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px; } }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }
