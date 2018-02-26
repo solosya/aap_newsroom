@@ -1,0 +1,44 @@
+.register-popup {
+	z-index:100;
+    position: fixed;
+    bottom: -150px;
+	width:100%;
+	padding:20px;
+	background:black;
+}
+
+.register-popup__close {
+	float:right;
+	display:block;
+	background-image: url('../icons/cross.svg');
+	background-repeat: no-repeat;
+	background-position:center;
+	border: 1px solid white;
+	width:27px;
+	height:27px;
+	border-radius:50%;
+	@media screen and (max-width: $sm-break){
+		width:23px;
+		height:23px;
+	}
+
+}
+.register-popup__logo {
+	margin-top:10px;
+	@media screen and (max-width: $sm-break){
+		width:150px;
+	}
+}
+
+.register-popup__text {
+	color:white;
+	margin-top:20px;
+	font-family: $font-family-sans-serif;
+	font-size: rem(20);
+	font-weight:600;
+	@media screen and (max-width: $sm-break){
+		font-size: rem(12);
+	}
+
+
+}

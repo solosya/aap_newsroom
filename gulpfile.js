@@ -44,7 +44,10 @@ gulp.task('concat', function () {
         './static/css/main.css',
         './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css',
         './assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css',
-        './assets/scripts/sdk/media-player/mediaelementplayer.css'
+        './assets/scripts/sdk/media-player/mediaelementplayer.css',
+        './assets/scripts/plugins/owl.carousel.min.css',
+        './assets/scripts/plugins/owl.theme.default.css'
+
     ]) // path to your file
     .pipe(concat('concat.css'))
     .pipe(gulp.dest('./static/css'));
@@ -86,6 +89,7 @@ gulp.task('scripts', function(){
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
+        // './assets/scripts/plugins/owl.carousel2.thumbs.js',
 
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
         './assets/scripts/sdk/common.js',
@@ -104,7 +108,12 @@ gulp.task('scripts', function(){
         './assets/scripts/sdk/uploadfile.js',
         './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
 
-		'./assets/scripts/*.js',
+
+        './assets/scripts/framework.js',
+        './assets/scripts/!(framework)*.js', // all files that end in .js EXCEPT common*.js
+
+
+		// './assets/scripts/*.js',
 		])
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('./static/js'))
