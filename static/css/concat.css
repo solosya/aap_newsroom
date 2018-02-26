@@ -9284,9 +9284,16 @@ button.swiper-pagination-bullet {
   width: 27px;
   height: 27px;
   border-radius: 50%; }
+  @media screen and (max-width: 768px) {
+    .register-popup__close {
+      width: 23px;
+      height: 23px; } }
 
 .register-popup__logo {
   margin-top: 10px; }
+  @media screen and (max-width: 768px) {
+    .register-popup__logo {
+      width: 150px; } }
 
 .register-popup__text {
   color: white;
@@ -9294,6 +9301,9 @@ button.swiper-pagination-bullet {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 2rem;
   font-weight: 600; }
+  @media screen and (max-width: 768px) {
+    .register-popup__text {
+      font-size: 1.2rem; } }
 
 .popup-embed-signup {
   background: white;
@@ -9305,7 +9315,11 @@ button.swiper-pagination-bullet {
 .popup-embed-signup__input {
   font-size: 1.6rem;
   padding-left: 10px;
-  line-height: 46px; }
+  line-height: 46px;
+  height: 48px; }
+  @media screen and (max-width: 768px) {
+    .popup-embed-signup__input {
+      height: 36px; } }
 
 .popup-embed-signup__button {
   width: 144px;
@@ -9315,6 +9329,9 @@ button.swiper-pagination-bullet {
   font-size: 1.6rem;
   background: #e22f22;
   border: none; }
+  @media screen and (max-width: 768px) {
+    .popup-embed-signup__button {
+      height: 36px; } }
 
 .room-view {
   margin-top: 70px;
