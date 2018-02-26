@@ -3,11 +3,14 @@ Acme.registerPopUp = function(tokenName)
 	this.hasLocal	= typeof localStorage != "undefined" ? true : false;
 	this.keyName 	= tokenName;
 	this.date 		= new Date();
-	// this.removeToken();
-	// return;
+
 	this.token 		= {};
-	this.run();
-	this.events();
+	var self = this;
+	setTimeout(function() {
+		self.run();
+		self.events();
+
+	}, 5000);
 };
 
 Acme.registerPopUp.prototype.run = function()
