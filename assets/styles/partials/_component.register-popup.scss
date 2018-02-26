@@ -5,12 +5,14 @@
 	width:100%;
 	padding:20px;
 	background:black;
-	@media screen and (max-width: $sm-break-down){
-		display: none;
-	}
+	// @media screen and (max-width: $sm-break-down){
+		// display: none;
+	// }
 }
 
 .register-popup__close {
+	position:relative;
+	z-index:10;
 	float:right;
 	display:block;
 	background-image: url('../icons/cross.svg');
