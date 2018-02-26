@@ -5,6 +5,9 @@
 	width:100%;
 	padding:20px;
 	background:black;
+	@media screen and (max-width: $sm-break-down){
+		display: none;
+	}
 }
 
 .register-popup__close {
