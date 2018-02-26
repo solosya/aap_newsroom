@@ -1,10 +1,10 @@
-{% if _AppHelper.getApplicationEnv() != 'PROD'%}
+{% if _AppHelper.getApplicationEnv() == 'PROD'%}
     {# http://d31nhj1t453igc.cloudfront.net/sdk/sdk-v1.0.0.min.js #}
     
     {# {% if _User.isGuest() %} #}
     {#    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/user_scripts.js?ver=16"></script>
     {% else %} #}
-        <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=44"></script>
+        <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?ver=45"></script>
     {# {% endif %} #}
 
 
@@ -61,7 +61,7 @@
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/user-articles.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/auth.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/user-profile.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/popup.js"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/popup.js?ver=2"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/scripts.js?ver=25"></script>
 
 
