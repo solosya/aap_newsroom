@@ -5,6 +5,8 @@
 {% set networkData   = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
+{% set recentLabel    = 'Newsroom' %}
+
 
 {{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
 
@@ -34,7 +36,6 @@
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime,'F j, Y') %}
 {% set updateDate = _AppHelper.getDefaultTimezoneDateTime(article.updatedDateTime,'F j, Y') %}
 
-{# {% set updateDate = article.updateDate %} #}
 {% set updated = false %}
 
 {% if article.publishedDateTime != article.updatedDateTime %}
@@ -47,8 +48,18 @@
 
 {% endif %}
 
-{% set artBlog = (article.blog.title | lower) %}
-{% set recentArticles = _Article.getRecentArticles({'limit': 3}) %}
+{% set articleBlog = (article.blog.title | lower) %}
+
+{#  Get most recent articles for sports section if article published on Sportsroom
+    For the rest get most recent network wide. #}
+{% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
+{% if articleBlog | lower == 'sportsroom' %}
+    {% set recentLabel = blogName %}
+    {% set recentParams = recentParams | merge({
+        'blogId': blogData['id'],
+    }) %}
+{% endif %}
+{% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
 
 
@@ -220,7 +231,7 @@
 
                                 <section class="sidebar-news" style="width:300px;margin:auto;">
                                     <header>
-                                        <h3><span>Latest</span> on Newsroom</h3>
+                                        <h3><span>Latest</span> on {{recentLabel}}</h3>
                                     </header>
 
                                     {% if recentArticles|length > 0 %}
@@ -246,7 +257,7 @@
 
 
             </div><!--container-->
-            <script>loadTwoAds('{{artBlog}}')</script>
+            <script>loadTwoAds('{{articleBlog}}')</script>
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         

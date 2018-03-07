@@ -13,6 +13,8 @@
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
+{# {% set popularArticles = _Article.getRecentArticles({ limit: 4, sortBy: 'views' }) %} #}
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'views' }) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -87,7 +89,6 @@
                             <section class="col-sm-6 col-md-12 room-top-stories">
                                 <h2>Top stories</h2>
 
-                                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
                                 {% if popularArticles|length > 0 %}
                                     {% set counter = 1 %}
 
