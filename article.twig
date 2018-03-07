@@ -48,7 +48,7 @@
 
 {% endif %}
 
-{% set articleBlog = (article.blog.title | lower) %}
+{% set articleBlog = (article.blog.title) %}
 
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
@@ -257,7 +257,7 @@
 
 
             </div><!--container-->
-            <script>loadTwoAds('{{articleBlog}}')</script>
+            <script>loadTwoAds('{{articleBlog | lower}}')</script>
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         
