@@ -14,7 +14,7 @@
 {% set articles = articlesArr.articles %}
 
 {# {% set popularArticles = _Article.getRecentArticles({ limit: 4, sortBy: 'views' }) %} #}
-{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'views' }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network', sortBy: 'views' }) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}

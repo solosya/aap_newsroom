@@ -53,13 +53,13 @@
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
 {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
-{% if articleBlog | lower == 'sportsroom' %}
+{# {% if articleBlog | lower == 'sportsroom' %}
     {% set recentLabel = blogName %}
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
     }) %}
 {% endif %}
-{% set recentArticles = _Article.getRecentArticles(recentParams) %}
+ #}{% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
 
 
