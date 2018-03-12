@@ -25,10 +25,6 @@
         "boardroom": {
             "feed": "",
             "link": ""
-        },
-        "lockerroom": {
-            "feed": "",
-            "link": ""
         }, 
         "sportsroom": {
             "feed": "",
@@ -222,9 +218,9 @@
                      {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['lockerroom'].feed.articles|length > 0 %}
+                {# {% if sections['lockerroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
+                {% endif %} #}
 
                 {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
