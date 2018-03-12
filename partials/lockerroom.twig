@@ -1,0 +1,21 @@
+<section class="room-locker">
+    <header>
+        <a href="{{ sections['lockerroom'].link }}">
+            <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="board room" class="img-responsive">
+        </a>
+    </header>
+
+    {{this.render('_single-article.twig', {article: sections['lockerroom'].feed.articles[0], 'position': (1), containerClass: 'featured board', swap: 'false'}) | raw}}
+
+    <div class="articles">
+        <div class="row">
+            
+            {% for i in 1..3 %}
+                {% if sections['lockerroom'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {article: sections['lockerroom'].feed.articles[i], position: i+1, containerClass: 'subfeature-board col-sm-4', swap: 'false'}) | raw}}
+                {% endif %}
+            {% endfor %}
+
+        </div><!-- .articles-->
+    </div><!-- .row-->
+</section><!--room-board-->
