@@ -25,6 +25,10 @@
         "boardroom": {
             "feed": "",
             "link": ""
+        },
+        "lockerroom": {
+            "feed": "",
+            "link": ""
         }, 
         "sportsroom": {
             "feed": "",
@@ -213,27 +217,21 @@
 
                 </div><!-- .row-->
 
-                
-                {% if sections['viewingroom'].feed.articles|length > 0 %}
-                    {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
+
+                {% if sections['boardroom'].feed.articles|length > 0 %}
+                     {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-
-
-                 {% if sections['livingroom'].feed.articles|length > 0 %}
-                     {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                 {% endif %}
-
-
-
-                 {% if sections['boardroom'].feed.articles|length > 0 %}
-                     {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                 {% endif %}
-
-
+                {% if sections['lockerroom'].feed.articles|length > 0 %}
+                    {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+                
+                {% if sections['viewingroom'].feed.articles|length > 0 %}
+                    {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
             </div>
