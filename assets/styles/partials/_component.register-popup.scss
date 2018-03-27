@@ -10,11 +10,20 @@
 	// }
 }
 
+
 .register-popup__close {
 	position:relative;
 	z-index:10;
 	float:right;
 	display:block;
+	color:white;
+	font-size: rem(14);
+	font-weight:600;
+	margin-left:23px;
+	width:75px;
+}
+
+.register-popup__close-icon {
 	background-image: url('../icons/cross.svg');
 	background-repeat: no-repeat;
 	background-position:center;
@@ -22,12 +31,28 @@
 	width:27px;
 	height:27px;
 	border-radius:50%;
+    display: block;
+    position: absolute;
+    top: -4px;
+	right: 0;
 	@media screen and (max-width: $sm-break){
 		width:23px;
 		height:23px;
 	}
 
 }
+
+.register-popup__subscriber {
+	position:relative;
+	z-index:10;
+	font-size: rem(11);
+	text-decoration: underline;
+	float:right;
+	display:inline;
+	color:white;
+	margin-top:1px;
+}
+
 .register-popup__logo {
 	margin-top:10px;
 	@media screen and (max-width: $sm-break){

@@ -29419,14 +29419,15 @@ Acme.templates = {};
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
     <div class="container"> \
-        <a href="#" id="register-popup-close" class="register-popup__close"></a> \
+        <a href="#" id="register-popup-close" class="register-popup__close">CLOSE <span class="register-popup__close-icon"></span></a> \
+        <a href="#" id="register-popup-subscriber" class="register-popup__subscriber">I\'ve already subscribed</a> \
         \
         <div class="row"> \
             <div class="col-sm-6"> \
                 <img class="register-popup__logo" src="{{path}}/static/images/newsroom-reversed.png" alt="logo"> \
                 <p class="register-popup__text"> \
-                    Sign up here for your free daily briefing email. <br /> \
                     Start your day with our editors\' picks of the very best stories. \
+                    Sign up here for your free daily briefing email. <br /> \
                 </p> \
             </div> \
             \
@@ -30204,29 +30205,29 @@ Acme.registerPopUp = function(tokenName)
 	this.hasLocal	= typeof localStorage != "undefined" ? true : false;
 	this.keyName 	= tokenName;
 	this.date 		= new Date();
-
 	this.token 		= {};
-	var self = this;
+	var self 		= this;
+	
 	setTimeout(function() {
 		self.run();
 		self.events();
-
 	}, 5000);
 };
 
 Acme.registerPopUp.prototype.run = function()
 {
 	this.token = this.getToken();
-	if (!this.token) {
+
+	if ( !this.token || this.isPopUpExpired() ) {
 		this.refreshToken();
 		this.setToken();
-		this.render();
+	}
+
+	if ( this.token.registered || this.token.closed ) {
 		return;
 	}
-	if ( this.isPopUpExpired() ) {
-		this.render();
-		return;
-	}
+
+	this.render();
 };
 
 Acme.registerPopUp.prototype.getDateString = function() 
@@ -30247,11 +30248,6 @@ Acme.registerPopUp.prototype.isPopUpExpired = function()
 
 	var sameDay = this.token.seen === this.getDateString();
 	if (!sameDay) {
-		this.refreshToken();
-		this.setToken();
-		return true;
-	}
-	if(sameDay && this.token.closed == false) {
 		return true;
 	}
 
@@ -30327,7 +30323,8 @@ Acme.registerPopUp.prototype.events = function()
 
 	$('#register-popup').on('click', function(e) {
 		var elem = $(e.target);
-		if (elem.hasClass("register-popup__close")) {
+		if (elem.hasClass("register-popup__close") 		|| 
+			elem.hasClass("register-popup__close-icon") ) {
 			self.updateToken('closed', true);
 			self.close();
 		}
@@ -30335,7 +30332,14 @@ Acme.registerPopUp.prototype.events = function()
 
 	$('#mc-embedded-subscribe-form-popup').on('submit', function(e) {
 		self.updateToken('registered', true);
+		self.close();
 	});
+
+	$('#register-popup-subscriber').on('click', function(e) {
+		self.updateToken('registered', true);
+		self.close();
+	});
+
 };
 $('document').ready(function() {
 

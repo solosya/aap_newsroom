@@ -7,14 +7,15 @@ Acme.templates = {};
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
     <div class="container"> \
-        <a href="#" id="register-popup-close" class="register-popup__close"></a> \
+        <a href="#" id="register-popup-close" class="register-popup__close">CLOSE <span class="register-popup__close-icon"></span></a> \
+        <a href="#" id="register-popup-subscriber" class="register-popup__subscriber">I\'ve already subscribed</a> \
         \
         <div class="row"> \
             <div class="col-sm-6"> \
                 <img class="register-popup__logo" src="{{path}}/static/images/newsroom-reversed.png" alt="logo"> \
                 <p class="register-popup__text"> \
-                    Sign up here for your free daily briefing email. <br /> \
                     Start your day with our editors\' picks of the very best stories. \
+                    Sign up here for your free daily briefing email. <br /> \
                 </p> \
             </div> \
             \
