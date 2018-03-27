@@ -7,19 +7,26 @@ Acme.templates = {};
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
     <div class="container"> \
-        <a href="#" id="register-popup-close" class="register-popup__close">CLOSE <span class="register-popup__close-icon"></span></a> \
-        <a href="#" id="register-popup-subscriber" class="register-popup__subscriber">I\'ve already subscribed</a> \
-        \
         <div class="row"> \
-            <div class="col-sm-6"> \
+            <div class="col-xs-6 "> \
                 <img class="register-popup__logo" src="{{path}}/static/images/newsroom-reversed.png" alt="logo"> \
+            </div> \
+            <div class="col-xs-6 "> \
+                <div class="register-popup__close-container"> \
+                    <a href="#" id="register-popup-close" class="register-popup__close register-popup__close@sm">CLOSE <span class="register-popup__close-icon"></span></a> \
+                    <a href="#" id="register-popup-subscriber" class="register-popup__subscriber register-popup__subscriber@sm">I\'ve already subscribed</a> \
+                </div>\
+            </div> \
+        </div> \
+        <div class="row">\
+            <div class="col-sm-5"> \
                 <p class="register-popup__text"> \
                     Start your day with our editors\' picks of the very best stories. \
                     Sign up here for your free daily briefing email. <br /> \
                 </p> \
             </div> \
             \
-            <div class="col-sm-offset-1 col-sm-5"> \
+            <div class="col-sm-offset-1 col-sm-6"> \
                 <div id="mc_embed_signup" class="popup-embed-signup"> \
                     <form action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" method="post" id="mc-embedded-subscribe-form-popup" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
                         <div id="mc_embed_signup_scroll" style="display:flex"> \
