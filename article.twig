@@ -53,18 +53,23 @@
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
 {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
-{# {% if articleBlog | lower == 'sportsroom' %}
+{% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom'%}
     {% set recentLabel = blogName %}
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
     }) %}
+{% else %}
+    {% set recentParams = recentParams | merge({
+        'scope': 'network',
+    }) %}
 {% endif %}
- #}{% set recentArticles = _Article.getRecentArticles(recentParams) %}
+
+{% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
 
 
     <main id="main" class="site-main" role="main">
-       <article class="article-main">
+        <article class="article-main">
             <div class="container">
                
 
@@ -229,23 +234,30 @@
                                     <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
 
-                                <section class="sidebar-news" style="width:300px;margin:auto;">
-                                    <header>
-                                        <h3><span>Latest</span> on {{recentLabel}}</h3>
-                                    </header>
+
+                                <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                    <h3 class="recent-articles__header">
+                                        <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                    </h3>
 
                                     {% if recentArticles|length > 0 %}
 
                                         {% for i in 0..6 %}
                                             {% if recentArticles[i] %}
-                                                {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], position: i+1, containerClass: '', swap: 'false'}) | raw}}
+                                                {{
+                                                    this.render('partials/_single-article_recent.twig', {
+                                                        article: recentArticles[i], 
+                                                        containerClass: '', 
+                                                        swap: 'false', 
+                                                        isArticle: 'true'}) | raw
+                                                }}
                                             {% endif %}
                                         {% endfor %}
 
                                     {% endif %}
+
                                 </section><!-- .sidebar-news -->
 
-                            
                             </aside>
                         </div><!-- .col-md-4-->
                     </div><!-- .row-->

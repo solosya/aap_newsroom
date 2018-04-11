@@ -1,4 +1,4 @@
-{{ set(this, 'title', _Blog.getBlogTitle()) }}
+, 'scope': 'network'{{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
@@ -7,20 +7,34 @@
 {{this.registerJs("HomeController.listing();")}}
 {% set limit = 13 %}
 
+{% set recentPanelBlogName = "Newsroom" %}
+{% set recentParams = {'limit': 4} %}
+
+{% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom'%}                                                                
+    {% set recentPanelBlogName = blogName %}
+    {% set recentParams = recentParams | merge({
+        'blogId': blogData['id'],
+    }) %}
+{% else %}
+
+    {% set recentParams = recentParams | merge({
+        'scope': 'network',
+    }) %}
+
+{% endif %}
 
 
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
-{# {% set popularArticles = _Article.getRecentArticles({ limit: 4, sortBy: 'views' }) %} #}
-{% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network', sortBy: 'views' }) %}
+{% set recentArticles = _Article.getRecentArticles(recentParams) %}
+{# {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network'}) %} #}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
     
-
     <main id="main" class="site-main roompage {{this.title | lower}}" role="main">
         <section class="featured-slider container-fluid">
 
@@ -85,9 +99,34 @@
                             </section>
 
 
+                        <section class="sidebar-news recent-articles">
+                            <h3 class="recent-articles__header">
+                                <span class="recent-articles__header-bold">Latest</span> on {{recentPanelBlogName}} 
+                            </h3>
 
-                            <section class="col-sm-6 col-md-12 room-top-stories">
-                                <h2>Top stories</h2>
+                            {% if recentArticles|length > 0 %}
+
+                                {% for i in 0..5 %}
+                                    {% if recentArticles[i] %}
+                                        {{
+                                            this.render('partials/_single-article_recent.twig', {
+                                                article: recentArticles[i], 
+                                                containerClass: '', 
+                                                swap: 'false', 
+                                                isArticle: 'true'}) | raw
+                                        }}
+                                    {% endif %}
+                                {% endfor %}
+
+                            {% endif %}
+
+                        </section><!-- .sidebar-news -->
+                            
+                            
+                            {# <section class="col-sm-6 col-md-12 room-top-stories">
+                                <header>
+                                    <h3><span>Latest</span> on Newsroom</h3>
+                                </header>
 
                                 {% if popularArticles|length > 0 %}
                                     {% set counter = 1 %}
@@ -106,7 +145,7 @@
                                     <p class="nodata text-center">No data found.</p>
                                 {% endif %}
 
-                            </section><!--sidebar-news-->
+                            </section><!--sidebar-news--> #}
 
 
                             {% if 'livingroom' == blogName | lower %}

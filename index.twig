@@ -177,17 +177,22 @@
                         </div>
                         {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
 
-                        <section class="sidebar-news">
-                            <header>
-                                <h3><span>Latest</span> on Newsroom</h3>
-                            </header>
-
+                        <section class="sidebar-news recent-articles">
+                            <h3 class="recent-articles__header">
+                                <span class="recent-articles__header-bold">Latest</span> on Newsroom
+                            </h3>
 
                             {% if recentArticles|length > 0 %}
 
                                 {% for i in 0..5 %}
                                     {% if recentArticles[i] %}
-                                        {{this.render('partials/_single-article_recent.twig', {article: recentArticles[i], containerClass: '', swap: 'false', isArticle: 'true'}) | raw}}
+                                        {{
+                                            this.render('partials/_single-article_recent.twig', {
+                                                article: recentArticles[i], 
+                                                containerClass: '', 
+                                                swap: 'false', 
+                                                isArticle: 'true'}) | raw
+                                        }}
                                     {% endif %}
                                 {% endfor %}
 
