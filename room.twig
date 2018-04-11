@@ -1,4 +1,4 @@
-{{ set(this, 'title', _Blog.getBlogTitle()) }}
+, 'scope': 'network'{{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
@@ -15,6 +15,12 @@
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
     }) %}
+{% else %}
+
+    {% set recentParams = recentParams | merge({
+        'scope': 'network',
+    }) %}
+
 {% endif %}
 
 
