@@ -131,14 +131,20 @@
 
     {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDateTime,'d M Y h:ia') %} #}
     {% set publishDate = article.publishDate %}
-
     {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
-    
     {% if publishedAgo < 86400 %}
         {% set publishDate = _AppHelper.getRelativeTime(article.publishDateTime) ~ " ago" %}
     {% endif %}
 
 
+
+
+    {% set totalstring = "" %}
+    {% set totals = (article.total is defined) ? article.total : false %}
+    {% if totals and _User.isAdminUser() %}
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+    {% endif %}
 
 
 
@@ -194,7 +200,8 @@
             data-position="{{position}}" 
             data-social="0" 
             data-article-image="{{articleImg}}" 
-            data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}">
+            data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            title="{{totalstring}}">
 
             <article class="">
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
