@@ -58,6 +58,10 @@
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
     }) %}
+{% else %}
+    {% set recentParams = recentParams | merge({
+        'scope': 'network',
+    }) %}
 {% endif %}
 
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
