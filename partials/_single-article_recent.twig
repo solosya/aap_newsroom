@@ -22,15 +22,25 @@
     {% endif %}
 
 
-
-{#     {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %}
-    {% set publishedRelativeTime = _AppHelper.getRelativeTime(article.publishDateTime) %}
- #}    {# {% set publishedRelativeTime = _AppHelper.getRelativeTime(_AppHelper.getDefaultTimezoneDateTime(article.publishDateTime)) %} #}
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+
+
+
+    {% set totalstring = "" %}
+    {% set totals = (article.total is defined) ? article.total : false %}
+    {% if totals and _User.isAdminUser() %}
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+    {% endif %}
+
+
+
+
+
 
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
@@ -43,7 +53,8 @@
             data-position="{{position}}" 
             data-social="0" 
             data-article-image="{{articleImg}}" 
-            data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}">
+            data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            title="{{totalstring}}">
 
             <article class="">
                 {% if article.hasMedia == 'TRUE' %}
