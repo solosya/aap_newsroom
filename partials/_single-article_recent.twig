@@ -34,7 +34,7 @@
     {% set totals = (article.total is defined) ? article.total : false %}
     {% if totals and _User.isAdminUser() %}
         {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
-        {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+        {% set totalstring = totalstring ~ " Published " ~ publishDate %}
     {% endif %}
 
 
