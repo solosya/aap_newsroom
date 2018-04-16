@@ -26,6 +26,10 @@
             "feed": "",
             "link": ""
         },
+        "livingroom": {
+            "feed": "",
+            "link": ""
+        }, 
         "lockerroom": {
             "feed": "",
             "link": ""
@@ -233,6 +237,10 @@
 
                 {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
+                {% if sections['livingroom'].feed.articles|length > 0 %}
+                    {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
                 
                 {% if sections['viewingroom'].feed.articles|length > 0 %}
