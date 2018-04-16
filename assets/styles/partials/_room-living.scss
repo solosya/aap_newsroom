@@ -8,8 +8,12 @@
     }
     > header{
         margin-bottom: 20px;
-        @media screen and (min-width: $mmd-break){
-            height: 50px;
+        > a {
+            > img {
+                @media screen and (min-width: $mmd-break){
+                    height: 50px;
+                }
+            }
         }
 
         @media screen and (max-width: $sm-mobile-break){
