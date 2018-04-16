@@ -12,6 +12,7 @@
 
     @media screen and (max-width: $sm-break){
         border:0;
+        padding:0 15px 15px 15px;
     }
 
     + .advertiser-content {
@@ -208,6 +209,8 @@
 .future-learning-sponsors{
     padding-top: 12px;
 
+
+
     > p {
         font-size: em(12);
         font-weight: bold;
@@ -227,14 +230,16 @@
 
     a {
         margin: 0px; 
-    }
 
-    > img {
-        height:37px;
-        
-        @media screen and (max-width: $sm-break){
-            margin-top:10px;
-            height:30px;
+        > img {
+            height:37px;
+            
+            @media screen and (max-width: $sm-break){
+                margin-top:10px;
+                height:30px;
+            }
         }
     }
+
+    
 }
