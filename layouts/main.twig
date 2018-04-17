@@ -231,8 +231,6 @@
 
     {% set menuItems = _Menu.get({'menuType': 'header'}) %}
 
-
-    {# {% set menuItems = blogData.blogHeaderMenu %} #}
     {% set rooms = [] %}
     {% for room in menuItems  %}
         {% set rooms = rooms | merge([room.blogTitle | lower]) %}
