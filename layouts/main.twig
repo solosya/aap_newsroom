@@ -228,7 +228,11 @@
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
     {% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
-    {% set menuItems = blogData.blogHeaderMenu %}
+
+    {% set menuItems = _Menu.get({'menuType': 'header'}) %}
+
+
+    {# {% set menuItems = blogData.blogHeaderMenu %} #}
     {% set rooms = [] %}
     {% for room in menuItems  %}
         {% set rooms = rooms | merge([room.blogTitle | lower]) %}
@@ -292,12 +296,12 @@
         </div><!--add add-header-top-->
 
     {{ this.render('partials/_header_navigation.twig', {
-        blog : blogData, 
-        networkData: networkData, 
-        pageClass: blogName,
-        submenu: submenu,
-        roomInfo: roomInfo,
-        rooms:rooms 
+        headerMenu  : menuItems, 
+        networkData : networkData, 
+        pageClass   : blogName,
+        submenu     : submenu,
+        roomInfo    : roomInfo,
+        rooms       : rooms 
     }) | raw }}
 
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
@@ -316,12 +320,12 @@
 
 
     {{ this.render('partials/footer.twig', {
-        blog : blogData, 
-        networkData: networkData, 
-        pageClass: blogName,
-        roomInfo: roomInfo,
-        submenu: submenu,
-        rooms:rooms 
+        blog        : blogData, 
+        networkData : networkData, 
+        pageClass   : blogName,
+        roomInfo    : roomInfo,
+        submenu     : submenu,
+        rooms       : rooms 
     }) | raw }}
 
 
