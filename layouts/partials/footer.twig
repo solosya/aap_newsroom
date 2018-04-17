@@ -82,7 +82,7 @@
                 <div class="col-sm-9">
                     <div class="rooms-link">
                         <ul>
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = headerMenu %}
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}

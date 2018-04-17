@@ -34,7 +34,7 @@
                 <div class="rooms-link">
                     <ul>
 
-                        {% set menuItems = blog.blogHeaderMenu %}
+                        {% set menuItems = headerMenu %}
 
                         {% for parentItem in menuItems  %}
 
@@ -214,7 +214,7 @@
                     <div class="rooms-link">
                         <ul>
 
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = headerMenu %}
                             {% for parentItem in menuItems  %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
