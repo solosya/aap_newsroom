@@ -181,7 +181,9 @@
         <!-- End Google Analytics -->
     {% endif %}
     
-    {% set blogList = _Blog.getBlogList() %}
+
+    
+    {# {% set blogList = _Blog.getBlogList() %}
 
     {% if blogList | length > 0 %}
         <style type="text/css">
@@ -197,7 +199,7 @@
                 {% endif %}
             {% endfor%}
         </style>
-    {% endif %}
+    {% endif %} #}
 
     {{ this.head() }}
     
