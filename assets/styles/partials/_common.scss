@@ -5,6 +5,11 @@ body{
     @media screen and (max-width: $sm-break){
         overflow-x: hidden;
     }
+    
+    &.acme-modal-active {
+        overflow: hidden;
+    }
+    
 }
 
 
@@ -413,6 +418,10 @@ p.foundingpartners {
 
 }
 
+
+.u-invisible {
+    visibility: hidden;
+}
 
 .flex_col {
     -webkit-flex-direction:column;

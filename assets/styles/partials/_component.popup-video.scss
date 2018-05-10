@@ -1,0 +1,33 @@
+.popup-video {
+    display:flex;
+    flex: 1 1 0;
+    position:relative;
+}
+
+
+// .popupVideo__logo-container {
+//     // background:purple;
+// }
+.popupVideo__headerlogo{ 
+    display:none;
+    width:43px;
+
+    @media #{$up-to-desktop} {
+        display: block;
+    }
+}
+
+.popupVideo__logo {
+    width:43px;
+    margin-right:8px;
+
+    @media #{$up-to-desktop} {
+        display: none;
+    }
+
+}
+.popupVideo__video {
+    flex-grow:1;
+    height: 100%;
+    // background:yellow;
+}

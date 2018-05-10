@@ -546,23 +546,24 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
-            var tmp = Handlebars.compile(window.templates[this.template]);
+            var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
-            $('body').addClass('active').append(tmp);
+
+            $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
             }
             this.events();
+            this.rendered(); // lifecycle hook that can be overriden
             return this.dfd.promise();
         };
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
-            var tmp = Handlebars.compile(window.templates[this.layouts[layout]]);
+            var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
             var layout = tmp(data);
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
         };
@@ -574,13 +575,18 @@
             });
 
         };
+        Acme.modal.prototype.rendered = function() {
+            return true;
+        };
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
             if (!$elem.is('input')) {
                 e.preventDefault();
             }
-
+            if ($elem.data('behaviour') == 'close') {
+                this.closeWindow();
+            }
             if ( $elem.is('button') ) {
                 if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {
                     this.dfd.fail();
@@ -594,7 +600,7 @@
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
-            $('body').removeClass('active');
+            $('body').removeClass('acme-modal-active');
             $('#'+this.parentCont).remove();
         };
     

@@ -3,6 +3,33 @@
  */
 Acme.templates = {};
 
+Acme.templates.modal = 
+// style="scrolling == unusable position:fixed element might be fixing login for ios safari
+// also margin-top:10px
+'<div id="signin" class="flex_col acme-modal"> \
+    <div id="dialog" class="acme-modal__window"> \
+        <div class="acme-modal__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="acme-modal__header"> \
+                <h2 class="acme-modal__title">{{title}}</h2> \
+                <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
+                <a class="acme-modal__close u-invisible" href="#" data-behaviour="close"></a> \
+            </div> \
+            <div class="acme-modal__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+        </div> \
+    </div> \
+</div>';
+
+    // <video class="popupVideo__video" controls poster="{{image.path}}"> \
+    //     <source src="{{video}}" type="video/mp4"/> \
+    // </video> \
+
+Acme.templates.modalVideo = 
+'<div id="popupVideo" class="popup-video"> \
+    <div class="popupVideo__logo-container"> \
+        <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
+    </div> \
+    <iframe class="popupVideo__video" width="100%" height="100%" src="https://www.youtube.com/embed/L4O352anH_g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> \
+</div>';
 
 Acme.templates.registerPopup = 
 '<div id="register-popup" class="register-popup"> \
