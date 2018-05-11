@@ -20,6 +20,31 @@
 
 }
 
+
+
+.website-award {
+
+}
+.voyager-logo {
+    margin-left:15px;
+    width:280px;
+}
+
+@media #{$tablet} {
+    .voyager-logo {
+        // margin:0;
+        // margin-top:5px;
+    }
+}
+
+
+@media #{$mobile} {
+    .voyager-logo {
+        display:none;
+    }
+}
+
+
 .bannerad{
     @media screen and (max-width: $sm-break){
         padding-top: 70px;
@@ -187,12 +212,6 @@
         }
 
 
-        @media #{$tablet} {
-            .voyager-logo {
-                display:none;
-            }
-    
-        }
 
         .navbar-brand{
             padding: 0;
