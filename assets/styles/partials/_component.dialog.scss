@@ -63,6 +63,13 @@
         background:url("../icons/cross-black.svg");
         background-repeat:no-repeat;
         background-size: contain;
+       
+        @media #{$up-to-desktop} {
+            margin-top: 10px;
+            height:15px;
+            width:15px;
+        }
+
     }
 
 .acme-modal__content-window {

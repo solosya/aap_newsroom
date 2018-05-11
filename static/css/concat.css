@@ -9422,7 +9422,7 @@ button.swiper-pagination-bullet {
   width: 43px; }
   @media screen and (max-width: 991px) {
     .popupVideo__headerlogo {
-      display: block; } }
+      display: inline; } }
 
 .popupVideo__logo {
   width: 43px;
@@ -9493,6 +9493,11 @@ button.swiper-pagination-bullet {
   background: url("../icons/cross-black.svg");
   background-repeat: no-repeat;
   background-size: contain; }
+  @media screen and (max-width: 991px) {
+    .acme-modal__close {
+      margin-top: 10px;
+      height: 15px;
+      width: 15px; } }
 
 .acme-modal__content-window {
   flex-grow: 1;
