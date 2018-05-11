@@ -34,12 +34,45 @@
             <div class="container">
                 <div class="row awards">
                     <div class="col-sm-6 col-md-8">
-                        <h1 class="awards__headline">NZ’s best website for journalism. Officially.</h1>
-                        <p class="awards__p">Newsroom set out in its first year to change the New Zealand media landscape by producing quality written and video stories that set the national news agenda and inform intelligent conversations at every level of New Zealand life.</p>
-                        <p class="awards__p">This effort has been rewarded with the supreme digital prize at the 2018 Voyager Media Awards, <strong>Best Website.</strong></p>
-                        <p class="awards__p">One of the biggest stories of 2017 first saw the light of day at Newsroom. Our investigation into clandestine recording of staff at the electorate office of National Party MP Todd Barclay was awarded <strong>Best Story</strong> and Melanie Reid, who reported the story, was awarded <strong>Best Reporter.</strong></p>
-                        <p class="awards__p">Newsroom is an independent NZ news and current affairs site, delivering in-depth storytelling for thinking audiences with an interest in the people, progress, and democracy of Aotearoa.</p>
-                        <p class="awards__p"><strong>Be part of it.</strong></p>
+                        <div>
+                            <h1 class="awards__headline">NZ’s best website for journalism. Officially.</h1>
+                            <p class="awards__p">Newsroom set out in its first year to change the New Zealand media landscape by producing quality written and video stories that set the national news agenda and inform intelligent conversations at every level of New Zealand life.</p>
+                            <p class="awards__p">This effort has been rewarded with the supreme digital prize at the 2018 Voyager Media Awards, <strong>Best Website.</strong></p>
+                            <p class="awards__p">One of the biggest stories of 2017 first saw the light of day at Newsroom. Our investigation into clandestine recording of staff at the electorate office of National Party MP Todd Barclay was awarded <strong>Best Story</strong> and Melanie Reid, who reported the story, was awarded <strong>Best Reporter.</strong></p>
+                            <p class="awards__p">Newsroom is an independent NZ news and current affairs site, delivering in-depth storytelling for thinking audiences with an interest in the people, progress, and democracy of Aotearoa.</p>
+                            <p class="awards__p"><strong>Be part of it.</strong></p>
+                        </div>
+                    
+                    
+                        <div class="card-group">
+
+                            {% if articles[articleCount] %}                                                                
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec inverted'
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+
+                         </div><!--card-group-->
+
+                        <div class="row">
+                            <div class="card-group">
+                               
+                            {% for i in 0..2 %}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s633x420'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                            </div><!-- .card-group-->
+                        </div><!-- .row-->
+
+                    
+                    
+                    
                     </div>
 
                     <div class="col-sm-12 col-md-4 sidebar">
@@ -55,51 +88,24 @@
                             </div>
                         </div>
 
+
+
+
+
+                        <section class="add sidebar-add hidden-sm hidden-xs">
+                            <div id="newAdHalf"></div>
+                            <script>loadNextHalfAd('')</script>
+                            <span class="add-text">Advertisement</span>
+                        </section>
+
+
+
                     </div>
 
                 </div>
             </div>
         </section>
 
-
-        <section class="card-group">
-            <div class="container">
-                <div class="row">
-
-                    {% for i in 0..19 %}
-                        {% if articles[articleCount] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-4 card-vr s360x215'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    {% endfor %}
-
-                </div><!-- .row-->
-            </div><!-- .container-->
-        </section><!-- .top-stories-->
-
-
-        {% if articles|length >= limit %}
-            <section class="">
-                <div class="container">
-                    <div class="row">
-                        <div class="ajaxArticles clearfix"
-                             data-offset="{{limit}}"
-                             data-containerclass="col-sm-6 col-md-4 card-vr s360x215"
-                             data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                         </div>
-                        <a class="loadMoreArticles" href="#">LOAD MORE</a>
-                    </div>
-
-                    {% set noDataCls = 'hide' %}
-                    {% if articles|length == 0 %}
-                        {% set noDataCls = '' %}
-                     {% endif %}
-                    <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                        <p class="no-data text-center">No articles found.</p>  
-                    </div>
-                </div>
-            </section>
-        {% endif %}
 
 
     </main><!-- .site-main -->
