@@ -164,7 +164,7 @@ h4.modal-title {
 }
 
 .site-main{
-    @media screen and (max-width: $mobile-break){
+    @media #{$up-to-desktop} {
         padding-top: 65px;
     }
 }
