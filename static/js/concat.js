@@ -29441,12 +29441,15 @@ Acme.templates.modal =
     //     <source src="{{video}}" type="video/mp4"/> \
     // </video> \
 
+    // <iframe class="popupVideo__video" width="100%" height="100%" src="https://www.youtube.com/embed/L4O352anH_g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> \
 Acme.templates.modalVideo = 
 '<div id="popupVideo" class="popup-video"> \
     <div class="popupVideo__logo-container"> \
         <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
     </div> \
-    <iframe class="popupVideo__video" width="100%" height="100%" src="https://www.youtube.com/embed/L4O352anH_g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> \
+    <video class="popupVideo__video" controls autoplay poster="{{image.path}}"> \
+         <source src="{{path}}/static//videos/Newsroom_Awards_Full.mp4" type="video/mp4"/> \
+    </video> \
 </div>';
 
 Acme.templates.registerPopup = 
@@ -30266,7 +30269,7 @@ Acme.videoPopup.prototype.errorMsg = function(msg) {
 Acme.videoPopup.prototype.rendered = function(msg) {
     setTimeout(function() {
         $('.acme-modal__close').removeClass('u-invisible');
-    }, 5000);
+    }, 20000);
 
 };
 Acme.videoPopup.prototype.handle = function(e) {
