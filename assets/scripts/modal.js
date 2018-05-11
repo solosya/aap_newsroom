@@ -24,7 +24,7 @@ Acme.videoPopup.prototype.errorMsg = function(msg) {
 Acme.videoPopup.prototype.rendered = function(msg) {
     setTimeout(function() {
         $('.acme-modal__close').removeClass('u-invisible');
-    }, 5000);
+    }, 20000);
 
 };
 Acme.videoPopup.prototype.handle = function(e) {
