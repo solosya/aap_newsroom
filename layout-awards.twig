@@ -1,0 +1,105 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogInfo = _Blog.getBlog() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 19 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <main id="main" class="site-main viewing-room" role="main">
+
+
+        <section class="container-fluid">
+
+            <h1 class="sectionpage">{{blogInfo.title}}</h1>
+
+
+                <div class="">
+                    {% if articles[0] %} 
+                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+        <section>
+            <div class="container">
+                <div class="row awards">
+                    <div class="col-sm-6 col-md-8">
+                        <h1 class="awards__headline">NZ’s best website for journalism. Officially.</h1>
+                        <p class="awards__p">Newsroom set out in its first year to change the New Zealand media landscape by producing quality written and video stories that set the national news agenda and inform intelligent conversations at every level of New Zealand life.</p>
+                        <p class="awards__p">This effort has been rewarded with the supreme digital prize at the 2018 Voyager Media Awards, Best Website.</p>
+                        <p class="awards__p">One of the biggest stories of 2017 first saw the light of day at Newsroom. Our investigation into clandestine recording of staff at the electorate office of National Party MP Todd Barclay was awarded Best Story and Melanie Reid, who reported the story, was awarded Best Reporter.</p>
+                        <p class="awards__p">Newsroom is an independent NZ news and current affairs site, delivering in-depth storytelling for thinking audiences with an interest in the people, progress, and democracy of Aotearoa.</p>
+                        <p class="awards__p">Be part of it.</p>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+                        <div class="row subscriptions">
+                            <div class="col-sm-12">
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="card-group">
+            <div class="container">
+                <div class="row">
+
+                    {% for i in 0..19 %}
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-4 card-vr s360x215'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+
+
+        {% if articles|length >= limit %}
+            <section class="">
+                <div class="container">
+                    <div class="row">
+                        <div class="ajaxArticles clearfix"
+                             data-offset="{{limit}}"
+                             data-containerclass="col-sm-6 col-md-4 card-vr s360x215"
+                             data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                         </div>
+                        <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                    </div>
+
+                    {% set noDataCls = 'hide' %}
+                    {% if articles|length == 0 %}
+                        {% set noDataCls = '' %}
+                     {% endif %}
+                    <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                        <p class="no-data text-center">No articles found.</p>  
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+
+    </main><!-- .site-main -->
