@@ -30,7 +30,7 @@ Acme.templates.modalVideo =
         <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
     </div> \
     <video class="popupVideo__video" controls autoplay poster="{{image.path}}"> \
-         <source src="{{path}}/static/videos/newsroom_awards_full.mp4" type="video/mp4"/> \
+         <source src="https://s3-ap-southeast-2.amazonaws.com/cog-aap/themes/g02Ei4J8TjnbLiR/static/videos/Newsroom_Awards_Full.mp4" type="video/mp4"/> \
     </video> \
 </div>';
 
