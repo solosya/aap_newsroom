@@ -357,13 +357,12 @@
     </noscript>
     <!-- END Nielsen Online SiteCensus V6.0 -->
     <!-- END Nielsen Online SiteCensus V6.0 -->
-{# ;Acme.videoPopupView.render('video', 'Video', {}); #}
-    {{this.registerJs("
+    {# {{this.registerJs("
         Acme.videoPopupView = new Acme.videoPopup('modal', 'signin', 
                 {'video' : 'modalVideo'}, 
-                {path: _appJsConfig.templatePath});")}}
+                {path: _appJsConfig.templatePath});")}} #}
     
-    {# {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}} #}
+    {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
 
     {{ this.endBody() }}
 
