@@ -1,0 +1,111 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogInfo = _Blog.getBlog() %}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 19 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+    <main id="main" class="site-main viewing-room" role="main">
+
+
+        <section class="container-fluid">
+
+            <h1 class="sectionpage">{{blogInfo.title}}</h1>
+
+
+                <div class="">
+                    {% if articles[0] %} 
+                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+        <section>
+            <div class="container">
+                <div class="row awards">
+                    <div class="col-sm-6 col-md-8">
+                        <div>
+                            <h1 class="awards__headline">NZ’s best website for journalism. Officially.</h1>
+                            <p class="awards__p">Newsroom set out in its first year to change the New Zealand media landscape by producing quality written and video stories that set the national news agenda and inform intelligent conversations at every level of New Zealand life.</p>
+                            <p class="awards__p">This effort has been rewarded with the supreme digital prize at the 2018 Voyager Media Awards, <strong>Best Website.</strong></p>
+                            <p class="awards__p">One of the biggest stories of 2017 first saw the light of day at Newsroom. Our investigation into clandestine recording of staff at the electorate office of National Party MP Todd Barclay was awarded <strong>Best Story</strong> and Melanie Reid, who reported the story, was awarded <strong>Best Reporter.</strong></p>
+                            <p class="awards__p">Newsroom is an independent NZ news and current affairs site, delivering in-depth storytelling for thinking audiences with an interest in the people, progress, and democracy of Aotearoa.</p>
+                            <p class="awards__p"><strong>Be part of it.</strong></p>
+                        </div>
+                    
+                    
+                        <div class="card-group" style="margin-top:90px;">
+
+                            {% if articles[articleCount] %}                                                                
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec inverted'
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+
+                         </div><!--card-group-->
+
+                        <div class="row">
+                            <div class="card-group">
+                               
+                            {% for i in 0..2 %}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s633x420'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                            </div><!-- .card-group-->
+                        </div><!-- .row-->
+
+                    
+                    
+                    
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+                        <div class="row subscriptions">
+                            <div class="col-sm-12">
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
+                            </div>
+                        </div>
+
+
+
+
+
+                        <section class="add sidebar-add hidden-sm hidden-xs">
+                            <div id="newAdHalf"></div>
+                            <script>loadNextHalfAd('')</script>
+                            <span class="add-text">Advertisement</span>
+                        </section>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+    </main><!-- .site-main -->

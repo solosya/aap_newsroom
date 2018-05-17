@@ -8175,6 +8175,19 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   z-index: 100000;
   background: white; }
 
+@media screen and (max-width: 767px) {
+  .website-award {
+    margin-top: 18px;
+    margin-left: 7px; } }
+
+.voyager-logo {
+  margin-left: 15px;
+  width: 280px; }
+
+@media screen and (max-width: 767px) {
+  .voyager-logo {
+    display: none; } }
+
 @media screen and (max-width: 768px) {
   .bannerad {
     padding-top: 70px; } }
@@ -9409,7 +9422,7 @@ button.swiper-pagination-bullet {
   width: 43px; }
   @media screen and (max-width: 991px) {
     .popupVideo__headerlogo {
-      display: block; } }
+      display: inline; } }
 
 .popupVideo__logo {
   width: 43px;
@@ -9420,7 +9433,8 @@ button.swiper-pagination-bullet {
 
 .popupVideo__video {
   flex-grow: 1;
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 .acme-modal {
   position: fixed;
@@ -9459,6 +9473,7 @@ button.swiper-pagination-bullet {
   margin: auto; }
 
 .acme-modal__header {
+  flex-shrink: 0;
   overflow: auto;
   margin-bottom: 5px; }
 
@@ -9478,6 +9493,11 @@ button.swiper-pagination-bullet {
   background: url("../icons/cross-black.svg");
   background-repeat: no-repeat;
   background-size: contain; }
+  @media screen and (max-width: 991px) {
+    .acme-modal__close {
+      margin-top: 10px;
+      height: 15px;
+      width: 15px; } }
 
 .acme-modal__content-window {
   flex-grow: 1;
@@ -9487,6 +9507,21 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 991px) {
     .acme-modal__content-window {
       padding-right: 0; } }
+
+.awards__headline {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 3.4rem;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0.1px;
+  color: #000000;
+  margin-bottom: 20px; }
+
+.awards__p {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 10px; }
 
 .room-view {
   margin-top: 70px;
