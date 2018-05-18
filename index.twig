@@ -64,7 +64,7 @@
 {% endfor %}
 
 
-<script>loadNextBannerAd('')</script>
+<script>loadNextBannerAd('');</script>
 
 
     <main id="main" class="site-main" role="main" data-test="true">
@@ -128,7 +128,7 @@
                         <section class="add row sidebar-add hidden-md hidden-lg">
                             <div class="col-sm-6">
                                 <div id="newAdMrec"></div>
-                                <script>loadNextMrecAd('')</script>
+                                <script>loadNextMrecAd('');</script>
                                 <span class="add-text">Advertisement</span>
                             <!--block-->
                             </div>
@@ -209,7 +209,7 @@
 
                         <section class="add sidebar-add hidden-sm hidden-xs">
                                 <div id="newAdHalf"></div>
-                                <script>loadNextHalfAd('')</script>
+                                <script>loadNextHalfAd('');</script>
                                 <span class="add-text">Advertisement</span>
                         </section>
                     
@@ -261,7 +261,11 @@
             {{ this.render('partials/_sponsor_logos.twig') | raw }}
 
 
-
+            <script type="text/javascript">
+            var axel = Math.random() + "";
+            var a = axel * 10000000000000;
+            document.write('<iframe src="https://8621311.fls.doubleclick.net/activityi;src=8621311;type=pansite;cat=pansi0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+            </script>
 
          </section><!-- .home-page-content-->
 
