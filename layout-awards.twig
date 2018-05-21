@@ -77,7 +77,7 @@
 
                     <div class="col-sm-12 col-md-4 sidebar">
                         <div class="row subscriptions">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
                             </div>
                             <div class="col-sm-6 col-md-12">
@@ -105,13 +105,12 @@
                 </div>
             </div>
         </section>
-{# 
-        <script type="text/javascript">
-            var axel = Math.random() + "";
-            var a = axel * 10000000000000;
-            document.write('<iframe src="https://8621311.fls.doubleclick.net/activityi;src=8621311;type=learnmor;cat=learn0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
-        </script>
- #}
-
+        <div id="tagdiv">
+                <script>
+                    addTagListeners('subscribebutton','signup');
+                    addTagListeners('getprobutton','getpro');
+                    addTagListeners('learnmorebutton','learnmore');
+                </script>
+            </div>
 
     </main><!-- .site-main -->

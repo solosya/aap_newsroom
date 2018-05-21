@@ -169,7 +169,7 @@
 
                     <div class="col-sm-12 col-md-4 sidebar">
                         <div class="row subscriptions">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
                             </div>
                             <div class="col-sm-6 col-md-12">
@@ -259,6 +259,13 @@
 
 
             {{ this.render('partials/_sponsor_logos.twig') | raw }}
+            <div id="tagdiv">
+                <script>
+                    addTagListeners('subscribebutton','signup');
+                    addTagListeners('subscribe-form','getpro');
+                    addTagListeners('learnmorebutton','learnmore');
+                </script>
+            </div>
 
          </section><!-- .home-page-content-->
 

@@ -19,6 +19,14 @@
 
 <script>
 
+  var setTags = {
+
+    "getpro": "https://8621311.fls.doubleclick.net/activityi;src=8621311;type=getpro;cat=getpr0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=",
+    "learnmore": "https://8621311.fls.doubleclick.net/activityi;src=8621311;type=learnmor;cat=learn0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=",
+    "signup": "https://8621311.fls.doubleclick.net/activityi;src=8621311;type=signup;cat=signu0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord="
+
+  }
+
   googletag.cmd.push(function() {         
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
@@ -156,6 +164,24 @@
        googletag.display(slotName);
        googletag.pubads().refresh([[slot],[slot2]]);
      });
+  }
+
+  function addTagListeners(itemId,tagType) {
+    var theItem = document.getElementById(itemId);
+    console.log(itemId,tagType,theItem);
+    theItem.addEventListener("click",function(){ theTag(tagType); });
+  }
+
+  function theTag(tagSelect) {
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    window.alert(setTags[tagSelect]);
+    if (document.getElementById(tagSelect)) {return}
+    var tagSlot = document.getElementById("tagdiv");
+    var slotDiv = document.createElement('div');
+    tagSlot.appendChild(slotDiv);
+    slotDiv.id = tagSelect;
+    slotDiv.innerHTML = '<iframe src='+setTags[tagSelect]+a+'?" width="1" height="1" frameborder="0" style="display:none"></iframe>';
   }
 
 </script>
