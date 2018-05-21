@@ -61,7 +61,6 @@
     } else {
       var blogName = '{{adPlace}}';
     }
-    console.log(altAds);
     if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
@@ -87,7 +86,6 @@
     } else {
       var blogName = '{{adPlace}}';
     }
-    console.log(altAds);
      if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdMrec");
      var slotName = generateNextMrecName();
@@ -113,7 +111,6 @@
       } else {
         var blogName = '{{adPlace}}';
       }
-      console.log(altAds);
      if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdHalf");
      var slotName = generateNextHalfName();
@@ -139,7 +136,6 @@
       } else {
         var blogName = '{{adPlace}}';
       }
-      console.log(altAds);
      if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
@@ -168,7 +164,6 @@
 
   function addTagListeners(itemId,tagType) {
     var theItem = document.getElementById(itemId);
-    console.log(itemId,tagType,theItem);
     theItem.addEventListener("click",function(){ theTag(tagType); });
   }
 
