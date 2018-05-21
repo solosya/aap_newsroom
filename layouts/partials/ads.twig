@@ -13,9 +13,11 @@
 {% endif %}
 
 {% set dfpAcct = '268436641' %}
+
+
+
+
 <script>
- 
-  blogName = '{{adPlace}}'
 
   googletag.cmd.push(function() {         
                 googletag.pubads().enableSingleRequest();
@@ -44,7 +46,15 @@
   }
 
   function loadNextBannerAd(blogAd) {
-    if (blogAd != 'futurelearning') {blogAd = '{{adPlace}}'}
+    var altAds = document.getElementById("specifyads");
+ 
+    if (altAds) {
+      var blogName = altAds.className;
+    } else {
+      var blogName = '{{adPlace}}';
+    }
+    console.log(altAds);
+    if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
      var slotDiv = document.createElement('div');
@@ -62,7 +72,15 @@
   }
 
   function loadNextMrecAd(blogAd) {
-     if (blogAd != 'futurelearning') {blogAd = '{{adPlace}}'}
+    var altAds = document.getElementById("specifyads");
+ 
+    if (altAds) {
+      var blogName = altAds.className;
+    } else {
+      var blogName = '{{adPlace}}';
+    }
+    console.log(altAds);
+     if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdMrec");
      var slotName = generateNextMrecName();
      var slotDiv = document.createElement('div');
@@ -80,7 +98,15 @@
   }
 
   function loadNextHalfAd(blogAd) {
-     if (blogAd != 'futurelearning') {blogAd = '{{adPlace}}'}
+    var altAds = document.getElementById("specifyads");
+ 
+      if (altAds) {
+        var blogName = altAds.className;
+      } else {
+        var blogName = '{{adPlace}}';
+      }
+      console.log(altAds);
+     if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdHalf");
      var slotName = generateNextHalfName();
      var slotDiv = document.createElement('div');
@@ -98,7 +124,15 @@
   }
 
   function loadTwoAds(blogAd) {
-     if (blogAd != 'futurelearning') {blogAd = '{{adPlace}}'}
+     var altAds = document.getElementById("specifyads");
+ 
+      if (altAds) {
+        var blogName = altAds.className;
+      } else {
+        var blogName = '{{adPlace}}';
+      }
+      console.log(altAds);
+     if (blogAd != 'futurelearning') {blogAd = blogName}
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
      var slotDiv = document.createElement('div');
@@ -124,7 +158,6 @@
      });
   }
 
-
 </script>
 
 <!-- Facebook Pixel Code -->
@@ -146,3 +179,4 @@ src="https://www.facebook.com/tr?id=193452251391850&ev=PageView
 &noscript=1"/>
 </noscript>
 <!-- End Facebook Pixel Code -->
+
