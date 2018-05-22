@@ -162,12 +162,21 @@
      });
   }
 
-  function addTagListeners(itemId,tagType) {
+  function addTagListeners(itemId,tagType,listener) {
     var theItem = document.getElementById(itemId);
-    theItem.addEventListener("click",function(){ theTag(tagType); });
+
+    theItem.addEventListener(listener,function(){ theTag(tagType); });
+  }
+
+  function addClassTagListeners(itemId,tagType,listener) {
+    var theItem = document.getElementsByClassName(itemId);
+    for (i = 0;i<theItem.length;i++){
+      theItem[i].addEventListener(listener,function(){ theTag(tagType); });
+    }
   }
 
   function theTag(tagSelect) {
+    console.log('woowoo');
     var axel = Math.random() + "";
     var a = axel * 10000000000000;
     if (document.getElementById(tagSelect)) {return}
