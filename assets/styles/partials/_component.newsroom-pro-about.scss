@@ -1,0 +1,114 @@
+.newsroom-pro-about__main {
+    background-color:#ececec;
+}
+
+
+.newsroom-pro-about {
+    background:black;
+    padding-top:52px;
+    padding-bottom:48px;
+}
+
+.newsroom-pro-about__header-figure {
+    width:166px;
+    height:166px;
+    margin-bottom:40px;
+}
+
+.newsroom-pro-about__header-figure\@tablet {
+    @media #{$tablet} {
+        width:117px;
+        height:117px;
+        margin-bottom:20px;
+    
+    }
+}
+
+
+.newsroom-pro-about__header-content {
+
+}
+.newsroom-pro-about__header-name {
+    font-family: $base-font-family;
+    color:color(red);
+    font-size:rem(25);
+    margin:0;
+    margin-bottom:3px;
+}
+
+.newsroom-pro-about__header-name\@tablet {
+    @media #{$tablet} {
+        font-size:rem(19);
+    }
+}
+
+
+.newsroom-pro-about__header-title {
+    font-family: $font-family-sans-serif;
+    color: #fcfcfc;
+    font-size:rem(18);
+    margin:0;
+}
+
+.newsroom-pro-about__header-title\@tablet {
+    @media #{$tablet} {
+        font-size:rem(14);
+    }
+}
+
+
+
+.newsroom-pro-about__header-location {
+    color:color(red);
+    font-family: $font-family-sans-serif;
+    font-size:rem(18);
+    margin:0;
+    line-height:1;
+}
+
+.newsroom-pro-about__header-location\@tablet {
+    @media #{$tablet} {
+        font-size: rem(14);        
+    }
+}
+
+.newsroom-pro-about__p {
+    font-family: $font-family-sans-serif;
+    font-size: rem(20);
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: 0.8px;
+    color: #fcfcfc;
+}
+
+
+.newsroom-pro-about__header {
+    
+}
+.newsroom-pro-about__header {
+        font-family: $font-family-sans-serif;
+    font-size:rem(47);
+    color: #fcfcfc;
+    margin-bottom:80px;
+}
+
+.newsroom-pro-about__signup {
+    margin-bottom:60px;
+}
+
+.newsroom-pro-about__arrow {
+    margin-right:15px;
+    position:relative;
+    top:5px;
+}
+.newsroom-pro-about__signup-text {
+    color: #fcfcfc;
+    font-size: rem(22);
+    width:290px;
+
+    >span {
+        color:color(red);
+    }
+}
