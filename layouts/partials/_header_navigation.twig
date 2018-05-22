@@ -1,4 +1,5 @@
 <div id="pp-banner" class="hidden-print"></div>
+{{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }}
 
 <header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print">
     <div class="site-header-main">
@@ -306,7 +307,7 @@
 
 
 
-        <div id="header__menu">
+        {# <div id="header__menu">
             <div class="profile__menu">
                  {% if user.profileMedia.id != '' %}
                         {% set profileImg = _Media.getMediaUrl(user.profileMedia, 80, 80, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
@@ -328,7 +329,7 @@
                   <li><a class="profile__menu-navigation-link" href="{{_AppHelper.getLogoffUrl()}}">Sign Out</a></li>
               </ul>
             </div>
-        </div>
+        </div> #}
 
 
     </div><!-- .site-header-main -->

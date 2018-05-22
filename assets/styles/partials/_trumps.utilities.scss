@@ -1,0 +1,157 @@
+.relative {
+    position:relative;
+}
+.no-padding {padding:0;}
+.u-padding-5 { padding:5px; }
+.u-padding-10 { padding:10px }
+.u-margin-top-80 { margin-top: 80px; }
+.u-margin-top-70 { margin-top: 70px; }
+.u-margin-top-60 { margin-top: 60px; }
+.u-margin-top-50 { margin-top: 50px; }
+.u-margin-top-40 { margin-top: 40px; }
+.u-margin-top-30 { margin-top: 30px; }
+.u-margin-top-25 { margin-top: 25px; }
+.u-margin-top-20 { margin-top: 20px; }
+.u-margin-top-15 { margin-top: 15px; }
+.u-margin-top-10 { margin-top: 10px; }
+
+
+.u-margin-bottom-100 { margin-bottom: 100px; }
+.u-margin-bottom-80 { margin-bottom: 80px; }
+.u-margin-bottom-70 { margin-bottom: 70px; }
+.u-margin-bottom-60 { margin-bottom: 60px; }
+.u-margin-bottom-50 { margin-bottom: 50px; }
+.u-margin-bottom-40 { margin-bottom: 40px; }
+.u-margin-bottom-30 { margin-bottom: 30px; }
+.u-margin-bottom-25 { margin-bottom: 25px; }
+.u-margin-bottom-20 { margin-bottom: 20px; }
+.u-margin-bottom-15 { margin-bottom: 25px; }
+.u-margin-bottom-10 { margin-bottom: 10px; }
+@media screen and (max-width: $sm-break-down){
+    .u-mobile-no-margin-top {margin-top:0!important;}
+    .u-mobile-no-margin-bottom {margin-bottom:0!important;}
+}
+@media screen and (min-width: $sm-break) and (max-width:$mmd-break-down){
+    .u-tablet-no-margin-top {margin-top:0!important;}
+    .u-tablet-no-margin-bottom {margin-bottom:0!important;}
+    .u-tablet-margin-bottom-30 {margin-bottom:30px!important;}
+}
+@media screen and (min-width: $mmd-break){
+    .u-desktop-no-margin-top {margin-top:0!important;}
+    .u-desktop-no-margin-bottom {margin-bottom:0!important;}
+}
+
+
+
+
+
+
+.u-float-left { float:left; }
+.u-float-right { float:right; }
+.u-clear-both { clear:both; }
+.u-block {display:block;}
+
+
+
+.divide {
+    margin-top: 32px;
+    margin-bottom: 42px;
+    border: 0;
+    border-top: 1px solid #dadada;
+
+    @media #{$tablet} {
+      margin-top: 22px;
+      margin-bottom: 32px;
+    }
+}
+
+
+.clearfix {overflow:hidden;overflow-x:hidden}
+.centerContent { display:inline; text-align: center;}
+.centerText {text-align: center;}
+.centerBlock {margin-left:auto;margin-right:auto}
+// 20px gutter
+.gutter-60.row {
+  margin-right: -30px;
+  margin-left: -30px;
+}
+.gutter-60 > [class^="col-"], .gutter-60 > [class^=" col-"] {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+// 20px gutter
+.gutter-20.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.gutter-20 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+// 10px gutter
+.gutter-10.row {
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.gutter-10 > [class^="col-"], .gutter-10 > [class^=" col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+// 0px gutter
+.gutter-0.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+.gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"]{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+
+
+
+// Row with equal height columns
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.row-eq-height-desk {
+    @media screen and (min-width: $sm-break) {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+    }
+}
+
+.flex_col {
+    -webkit-flex-direction:column;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    -webkit-flex-direction:column;
+    -moz-flex-direction:column;
+    display:flex;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:-ms-flexbox;
+}
+.flex_row {
+    flex-direction:row;
+    -webkit-flex-direction:row;
+    -ms-flex-direction:row;
+    -webkit-flex-direction:row;
+    -moz-flex-direction:row;
+    display:flex;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:-ms-flexbox;
+}
+
+.flex_between{
+    justify-content: space-between;
+}
+

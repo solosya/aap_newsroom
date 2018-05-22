@@ -1,0 +1,82 @@
+.subscribe-pro-banner {
+    height:54px;
+    background-color:#64656d;
+    border-bottom:6px solid black;
+    box-sizing: content-box;
+}
+.subscribe-pro-banner\@sm {
+    @media #{$mobile} {
+        display:none;
+    }
+}
+
+.subscribe-pro-banner__logo-container {
+    margin-right:72px;
+    margin-top: 18px;
+}
+
+.subscribe-pro-banner__logo-container\@md {
+    @media #{$tablet} {
+        margin-right:30px;
+        width: 180px;
+    }
+}
+.subscribe-pro-banner__logo{
+    width:100%;
+}
+
+
+.subscribe-pro-banner__headshot-container {
+    margin-right:35px;
+    height:54px;
+}
+
+.subscribe-pro-banner__headshot-container\@md {
+    @media #{$tablet} {
+        margin-right:40px;
+    }
+}
+
+
+.subscribe-pro-banner__headshot {
+    height:100%;
+}
+
+
+
+
+.subscribe-pro-banner__link {
+    padding:10px;
+    padding-bottom: 0;
+    &:hover {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+.subscribe-pro-banner__arrow {
+    margin-right:7px;
+}
+.subscribe-pro-banner__link-text {
+    font-family: $font-family-sans-serif;
+    font-size: rem(20);
+    color: #fcfcfc;
+    position: relative;
+    top: 5px;
+}
+.subscribe-pro-banner__p {
+    font-family: $font-family-sans-serif;
+    font-size: rem(15);
+    font-weight: 600;
+    line-height: 1.31;
+    color: #fcfcfc;
+    margin-top: 18px;
+    margin-right:56px;
+}
+
+.subscribe-pro-banner__p\@md {
+    @media #{$tablet} {
+        margin-right:30px;
+        font-size: rem(13);
+    }
+}
