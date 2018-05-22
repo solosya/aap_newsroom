@@ -7591,11 +7591,7 @@ p.foundingpartners {
       float: none; }
 
 .site-footer {
-  width: 100%;
-  margin-top: 60px; }
-  @media screen and (max-width: 768px) {
-    .site-footer {
-      margin-top: 55px; } }
+  width: 100%; }
   .site-footer .footer-menu {
     padding-bottom: 26px; }
     @media screen and (max-width: 768px) {
@@ -9641,12 +9637,37 @@ button.swiper-pagination-bullet {
     font-size: 1.3rem; } }
 
 .newsroom-pro-about__main {
-  background-color: #ececec; }
+  background-color: #ececec;
+  padding-bottom: 55px; }
 
 .newsroom-pro-about {
   background: black;
   padding-top: 52px;
   padding-bottom: 48px; }
+
+.newsroom-pro-about__header {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 4.7rem;
+  color: #fcfcfc;
+  margin-bottom: 80px; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about__header\@tablet {
+    font-size: 3rem;
+    margin-bottom: 35px;
+    margin-top: 0; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__header\@mobile {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    margin-top: 15px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about\@tablet {
+    margin-top: 0;
+    padding-top: 35px;
+    padding-bottom: 18px; } }
 
 .newsroom-pro-about__header-figure {
   width: 166px;
@@ -9657,6 +9678,14 @@ button.swiper-pagination-bullet {
   .newsroom-pro-about__header-figure\@tablet {
     width: 117px;
     height: 117px;
+    margin-bottom: 20px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__header-figure\@mobile {
+    margin-right: 20px;
+    float: left;
+    width: 61px;
+    height: 61px;
     margin-bottom: 20px; } }
 
 .newsroom-pro-about__header-name {
@@ -9670,6 +9699,10 @@ button.swiper-pagination-bullet {
   .newsroom-pro-about__header-name\@tablet {
     font-size: 1.9rem; } }
 
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__header-name\@mobile {
+    font-size: 1.9rem; } }
+
 .newsroom-pro-about__header-title {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   color: #fcfcfc;
@@ -9678,6 +9711,10 @@ button.swiper-pagination-bullet {
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .newsroom-pro-about__header-title\@tablet {
+    font-size: 1.4rem; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__header-title\@mobile {
     font-size: 1.4rem; } }
 
 .newsroom-pro-about__header-location {
@@ -9691,6 +9728,10 @@ button.swiper-pagination-bullet {
   .newsroom-pro-about__header-location\@tablet {
     font-size: 1.4rem; } }
 
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__header-location\@mobile {
+    font-size: 1.4rem; } }
+
 .newsroom-pro-about__p {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 2rem;
@@ -9701,19 +9742,44 @@ button.swiper-pagination-bullet {
   letter-spacing: 0.8px;
   color: #fcfcfc; }
 
-.newsroom-pro-about__header {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-size: 4.7rem;
-  color: #fcfcfc;
-  margin-bottom: 80px; }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about__p\@tablet {
+    font-size: 1.5rem;
+    font-weight: normal;
+    line-height: 1.2; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__p\@mobile {
+    margin-top: 20px;
+    width: 85%;
+    font-size: 1.6rem;
+    font-weight: normal;
+    line-height: 1.3; } }
 
 .newsroom-pro-about__signup {
   margin-bottom: 60px; }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__signup-container\@mobile {
+    margin: 10px 0; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about__signup\@tablet {
+    margin-bottom: 30px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__signup\@mobile {
+    margin-bottom: 10px; } }
 
 .newsroom-pro-about__arrow {
   margin-right: 15px;
   position: relative;
   top: 5px; }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__arrow\@mobile {
+    width: 28px;
+    height: 28px; } }
 
 .newsroom-pro-about__signup-text {
   color: #fcfcfc;
@@ -9722,13 +9788,51 @@ button.swiper-pagination-bullet {
   .newsroom-pro-about__signup-text > span {
     color: #e22f22; }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about__signup-text\@tablet {
+    font-size: 1.6rem;
+    width: auto; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about__signup-text\@mobile {
+    font-size: 1.6rem;
+    width: 80%; } }
+
 .newsroom-pro-offers {
   padding-top: 80px;
   padding-bottom: 44px;
   background-color: rgba(100, 101, 109, 0.3); }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers\@tablet {
+    padding-top: 20px;
+    padding-bottom: 20px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers\@mobile {
+    padding-top: 20px;
+    padding-bottom: 20px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__offer\@mobile {
+    margin-bottom: 40px; } }
+
 .newsroom-pro-offers__header {
-  margin-bottom: 43px; }
+  margin-bottom: 43px;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-size: 3.3rem;
+  font-weight: normal;
+  font-style: italic; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers__header\@tablet {
+    margin-bottom: 20px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__header\@mobile {
+    font-size: 2.2rem;
+    margin-top: 10px;
+    margin-bottom: 20px; } }
 
 .newsroom-pro-offers__text {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -9737,6 +9841,20 @@ button.swiper-pagination-bullet {
   font-style: normal;
   letter-spacing: 0.8px;
   max-width: 210px; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers__text\@tablet {
+    font-size: 1.4rem; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__text\@mobile {
+    font-size: 1.6rem;
+    width: auto;
+    max-width: none; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__icon-figure\@mobile {
+    width: 70px; } }
 
 .newsroom-pro-offers__icon {
   margin-right: 20px; }
@@ -9753,6 +9871,38 @@ button.swiper-pagination-bullet {
   width: 124px;
   height: 114px; }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers__icon-world\@tablet {
+    width: 60px;
+    height: 63px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers__icon-satellite\@tablet {
+    width: 57px;
+    height: 57px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-offers__icon-media\@tablet {
+    width: 81px;
+    height: 75px;
+    margin-right: 0; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__icon-world\@mobile {
+    width: 51px;
+    height: 57px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__icon-satellite\@mobile {
+    width: 51px;
+    height: 52px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-offers__icon-media\@mobile {
+    width: 81px;
+    height: 75px;
+    margin-right: 0; } }
+
 .pro-team-member {
   height: 123px; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -9761,6 +9911,20 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 767px) {
     .pro-team-member {
       height: auto; } }
+
+.pro-team-member__header {
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 3.3rem;
+  margin-top: 55px;
+  margin-bottom: 45px; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .pro-team-memeber__header\@tablet {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 2.5rem; } }
 
 .pro-team-member__headshot {
   width: 123px;
@@ -9791,6 +9955,7 @@ button.swiper-pagination-bullet {
   margin-right: 10px; }
   @media screen and (max-width: 767px) {
     .pro-team-member__details {
+      max-width: 70%;
       width: auto;
       min-height: 65px; } }
 
@@ -13984,7 +14149,9 @@ body.channel.supporters p {
   .u-tablet-no-margin-top {
     margin-top: 0 !important; }
   .u-tablet-no-margin-bottom {
-    margin-bottom: 0 !important; } }
+    margin-bottom: 0 !important; }
+  .u-tablet-margin-bottom-30 {
+    margin-bottom: 30px !important; } }
 
 @media screen and (min-width: 992px) {
   .u-desktop-no-margin-top {
@@ -14009,6 +14176,10 @@ body.channel.supporters p {
   margin-bottom: 42px;
   border: 0;
   border-top: 1px solid #dadada; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .divide {
+      margin-top: 22px;
+      margin-bottom: 32px; } }
 
 .clearfix {
   overflow: hidden;

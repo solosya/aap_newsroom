@@ -4,9 +4,44 @@
     // height:336px;
     background-color: rgba(100,101,109, .3);
 }
+.newsroom-pro-offers\@tablet {
+    @media #{$tablet} {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+}
+.newsroom-pro-offers\@mobile {
+    @media #{$mobile} {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+}
+
+.newsroom-pro-offers__offer\@mobile {
+    @media #{$mobile} {
+        margin-bottom:40px;
+    }
+}
 
 .newsroom-pro-offers__header {
     margin-bottom:43px;
+    font-family: $base-font-family;
+    font-size:rem(33);
+    font-weight:normal;
+    font-style: italic;
+}
+.newsroom-pro-offers__header\@tablet {
+    @media #{$tablet} {
+        margin-bottom:20px;
+    }
+}
+
+.newsroom-pro-offers__header\@mobile {
+    @media #{$mobile} {
+        font-size:rem(22);
+        margin-top:10px;
+        margin-bottom:20px;
+    }
 }
 
 
@@ -19,6 +54,26 @@
     max-width:210px;
 }
 
+
+.newsroom-pro-offers__text\@tablet {
+    @media #{$tablet} {
+        font-size: rem(14);
+    }
+}
+.newsroom-pro-offers__text\@mobile {
+    @media #{$mobile} {
+        font-size: rem(16);
+        width:auto;
+        max-width:none;
+    }
+}
+
+ 
+.newsroom-pro-offers__icon-figure\@mobile {
+    @media #{$mobile} {
+        width:70px;
+    }
+}
 
 .newsroom-pro-offers__icon {
     margin-right:20px;
@@ -36,4 +91,45 @@
 .newsroom-pro-offers__icon-media {
     width: 124px;
     height:114px;
+}
+
+
+.newsroom-pro-offers__icon-world\@tablet {
+    @media #{$tablet} {
+        width: 60px;
+        height:63px;
+    }
+}
+.newsroom-pro-offers__icon-satellite\@tablet {
+    @media #{$tablet} {
+        width: 57px;
+        height:57px;
+    }
+}
+.newsroom-pro-offers__icon-media\@tablet {
+    @media #{$tablet} {
+        width: 81px;
+        height:75px;
+        margin-right:0;
+    }
+}
+
+.newsroom-pro-offers__icon-world\@mobile {
+    @media #{$mobile} {
+        width: 51px;
+        height:57px;
+    }
+}
+.newsroom-pro-offers__icon-satellite\@mobile {
+    @media #{$mobile} {
+        width: 51px;
+        height:52px;
+    }
+}
+.newsroom-pro-offers__icon-media\@mobile {
+    @media #{$mobile} {
+        width: 81px;
+        height:75px;
+        margin-right:0;
+    }
 }

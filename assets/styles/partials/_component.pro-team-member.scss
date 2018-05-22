@@ -8,6 +8,21 @@
     }
 
 }
+.pro-team-member__header {
+    font-family: $base-font-family;
+    font-weight:normal;
+    font-style:italic;
+    font-size:rem(33);
+    margin-top: 55px;
+    margin-bottom: 45px;
+}
+.pro-team-memeber__header\@tablet {
+    @media #{$tablet} {
+        margin-top:30px;
+        margin-bottom:20px;
+        font-size: rem(25); 
+    }
+}
 
 .pro-team-member__headshot{
     width:123px;
@@ -43,6 +58,7 @@
         // margin-right:70px;
     }
     @media #{$mobile} {
+        max-width:70%;
         width:auto;
         min-height:65px;
     }

@@ -34,6 +34,7 @@
 @media screen and (min-width: $sm-break) and (max-width:$mmd-break-down){
     .u-tablet-no-margin-top {margin-top:0!important;}
     .u-tablet-no-margin-bottom {margin-bottom:0!important;}
+    .u-tablet-margin-bottom-30 {margin-bottom:30px!important;}
 }
 @media screen and (min-width: $mmd-break){
     .u-desktop-no-margin-top {margin-top:0!important;}
@@ -57,6 +58,11 @@
     margin-bottom: 42px;
     border: 0;
     border-top: 1px solid #dadada;
+
+    @media #{$tablet} {
+      margin-top: 22px;
+      margin-bottom: 32px;
+    }
 }
 
 
