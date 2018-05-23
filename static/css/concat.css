@@ -7730,7 +7730,8 @@ p.foundingpartners {
 
 .sb-custom-menu .menu-mobile {
   display: none;
-  width: 95px;
+  height: 30px;
+  width: 45px;
   text-decoration: none;
   background-image: url(../images/mobile-menu.svg);
   background-size: 45px 30px;
@@ -8114,6 +8115,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   .menu-search {
     display: flex; }
     .menu-search input {
+      font-size: 1.4rem;
       width: 100%;
       border: none;
       color: black; }
@@ -9645,6 +9647,16 @@ button.swiper-pagination-bullet {
   padding-top: 52px;
   padding-bottom: 48px; }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .newsroom-pro-about\@tablet {
+    margin-top: 0;
+    padding-top: 35px;
+    padding-bottom: 18px; } }
+
+@media screen and (max-width: 767px) {
+  .newsroom-pro-about\@mobile {
+    padding-bottom: 27px; } }
+
 .newsroom-pro-about__header {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 4.7rem;
@@ -9662,12 +9674,6 @@ button.swiper-pagination-bullet {
     font-size: 2.2rem;
     margin-bottom: 25px;
     margin-top: 15px; } }
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .newsroom-pro-about\@tablet {
-    margin-top: 0;
-    padding-top: 35px;
-    padding-bottom: 18px; } }
 
 .newsroom-pro-about__header-figure {
   width: 166px;
@@ -9810,12 +9816,14 @@ button.swiper-pagination-bullet {
 
 @media screen and (max-width: 767px) {
   .newsroom-pro-offers\@mobile {
-    padding-top: 20px;
-    padding-bottom: 20px; } }
+    padding-top: 15px;
+    padding-bottom: 27px; } }
 
 @media screen and (max-width: 767px) {
   .newsroom-pro-offers__offer\@mobile {
-    margin-bottom: 40px; } }
+    margin-bottom: 40px; }
+    .newsroom-pro-offers__offer\@mobile:last-child {
+      margin-bottom: 0; } }
 
 .newsroom-pro-offers__header {
   margin-bottom: 43px;
@@ -9831,7 +9839,7 @@ button.swiper-pagination-bullet {
 @media screen and (max-width: 767px) {
   .newsroom-pro-offers__header\@mobile {
     font-size: 2.2rem;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 20px; } }
 
 .newsroom-pro-offers__text {
@@ -9903,6 +9911,17 @@ button.swiper-pagination-bullet {
     height: 75px;
     margin-right: 0; } }
 
+.pro-team-member__container {
+  padding-top: 55px; }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .pro-team-member__container\@tablet {
+    padding-top: 55px; } }
+
+@media screen and (max-width: 767px) {
+  .pro-team-member__container\@mobile {
+    padding-top: 15px; } }
+
 .pro-team-member {
   height: 123px; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -9925,6 +9944,12 @@ button.swiper-pagination-bullet {
     margin-top: 30px;
     margin-bottom: 20px;
     font-size: 2.5rem; } }
+
+@media screen and (max-width: 767px) {
+  .pro-team-memeber__header\@mobile {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2.2rem; } }
 
 .pro-team-member__headshot {
   width: 123px;
@@ -9957,7 +9982,8 @@ button.swiper-pagination-bullet {
     .pro-team-member__details {
       max-width: 70%;
       width: auto;
-      min-height: 65px; } }
+      min-height: 65px;
+      padding-top: 5px; } }
 
 .pro-team-member__name {
   margin: 0;
@@ -10032,6 +10058,8 @@ button.swiper-pagination-bullet {
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .pro-team-member__contact-text {
       font-size: 1.6rem; } }
+  .pro-team-member__contact-text > strong {
+    font-weight: 600; }
 
 .room-view {
   margin-top: 70px;
