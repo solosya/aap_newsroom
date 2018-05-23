@@ -123,29 +123,6 @@
                         </section><!-- .sidebar-news -->
                             
                             
-                            {# <section class="col-sm-6 col-md-12 room-top-stories">
-                                <header>
-                                    <h3><span>Latest</span> on Newsroom</h3>
-                                </header>
-
-                                {% if popularArticles|length > 0 %}
-                                    {% set counter = 1 %}
-
-                                    <ul>
-                                    {% for article in popularArticles %}
-                                        <li>
-                                            <span>{{counter}}.</span>
-                                            {{this.render('partials/_single-article.twig', {article: article, containerClass: ''}) | raw}}
-                                        </li>
-                                        {% set counter = counter + 1 %}
-
-                                    {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    <p class="nodata text-center">No data found.</p>
-                                {% endif %}
-
-                            </section><!--sidebar-news--> #}
 
 
                             {% if 'livingroom' == blogName | lower %}
@@ -153,12 +130,15 @@
                                     {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm advert', networkData: networkData }) | raw}}
                                 </section>
                             {% else %}
-                                {% if articles[articleCount] %}                                                                
-                                <section class="col-sm-12 sidebar-inverted">
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
-                                        {% set articleCount = articleCount + 1 %}
+
+                                {# {% if articles[articleCount] %}   #}                                                             
+                                <section class="col-sm-12 sidebar-inverted"> 
+                                        {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }}
+
+                                        {# {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                                        {% set articleCount = articleCount + 1 %} #}
                                 </section>
-                                {% endif %}
+                                {# {% endif %} #}
                             {% endif %}
 
                         </div> <!-- .row-->
