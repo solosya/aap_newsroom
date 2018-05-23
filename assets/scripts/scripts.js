@@ -108,6 +108,7 @@ $('document').ready(function() {
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
+        $('body').toggleClass('acme-modal-active');
 
         e.preventDefault();
     });

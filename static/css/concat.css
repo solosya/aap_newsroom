@@ -6699,12 +6699,16 @@ body.no_profile .profile_overlay {
     float: none;
     margin: auto; } }
 
+html {
+  height: 100%; }
+
 @media screen and (max-width: 768px) {
   body {
     overflow-x: hidden; } }
 
 body.acme-modal-active {
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100%; }
 
 .gutter-60.row {
   margin-right: -30px;

@@ -29447,7 +29447,7 @@ Acme.templates.modalVideo =
     <div class="popupVideo__logo-container"> \
         <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
     </div> \
-    <video class="popupVideo__video" controls autoplay poster="{{image.path}}"> \
+    <video class="popupVideo__video" controls autoplay poster="{{path}}/static/videos/newsroom_awards_full.jpg"> \
          <source src="https://s3-ap-southeast-2.amazonaws.com/cog-aap/themes/g02Ei4J8TjnbLiR/static/videos/Newsroom_Awards_Full.mp4" type="video/mp4"/> \
     </video> \
 </div>';
@@ -30619,6 +30619,7 @@ $('document').ready(function() {
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
+        $('body').toggleClass('acme-modal-active');
 
         e.preventDefault();
     });
