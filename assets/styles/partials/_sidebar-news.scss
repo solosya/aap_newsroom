@@ -1,7 +1,7 @@
 .sidebar-news{
     margin-bottom: 40px;
     
-    @media screen and (max-width: $mmd-break) {
+    @media screen and (max-width: $mmd-break-down) {
         display:none;
     }
 
@@ -50,7 +50,7 @@
                 // display: block;
                 // line-height: 1;
                 // margin-bottom: 7px;
-                // @media screen and (max-width: $sm-break){
+                // @media screen and (max-width: $sm-break-down) {
                 //     font-size: em(22);
                 //     // margin-bottom:5px;
                 //     text-transform:none;
@@ -64,7 +64,7 @@
                 overflow: hidden;
                 margin-bottom: 5px;
                 text-overflow: ellipsis;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     font-size: em(20);
                 }
 

@@ -10,7 +10,7 @@
 	font-size: rem(16);
 	font-weight: 600;
 	float:left;
-	@media screen and (max-width: $sm-break){
+	@media screen and (max-width: $sm-break-down) {
 		float:none;
 		width: 100%;
 		font-size: rem(14);
@@ -23,7 +23,7 @@
 	// width:100px;
 	// height:40px;
 	float:right;
-	@media screen and (max-width: $sm-break){
+	@media screen and (max-width: $sm-break-down) {
 		text-align:center;
 		float:none;
 		margin-left:auto;

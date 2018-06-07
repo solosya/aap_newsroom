@@ -5,7 +5,7 @@
         margin-bottom:150px;
     }
 
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         margin-bottom: 25px;
     }
 
@@ -14,8 +14,7 @@
         font-weight: bold;
         font-size: em(20);
         color: #000000;
-        @media screen and (max-width: $sm-break){
-            color: #e22f22;
+        @media screen and (max-width: $sm-break-down) {
             padding-bottom:10px;
             margin-bottom:2px;
             border-bottom: 1px solid #dadada;
@@ -24,7 +23,7 @@
 
     a.card{
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             padding-top: 6px;
             border-bottom: 1px solid #dadada;
         }
@@ -53,7 +52,7 @@
                     margin-left: -20px;
                     margin-top: -20px;
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         width: 30px;
                         height: 30px;
                         margin-left: -15px;
@@ -75,7 +74,7 @@
                 flex: 0 0 65px;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 // margin-top:6px;
                 margin-bottom:6px;
                 width: 60px;
@@ -97,7 +96,7 @@
                 padding-bottom: 15px;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 border: 0;
             }
             > .category{
@@ -108,7 +107,7 @@
                 line-height: 1;
                 margin-bottom: 3px;
 
-                @media screen and (max-width: $sm-break) {
+                @media screen and (max-width: $sm-break-down) {
                     font-family: $font-family-sans-serif;
                     font-size: em(12);
                     text-transform: uppercase;
@@ -125,7 +124,7 @@
                    height:36px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     // font-size: em(22);
                     margin: 2px;
                 }
@@ -146,7 +145,7 @@
                     right: 15px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     font-size: em(10);
                 }
             }
@@ -184,7 +183,7 @@
             //             height: 225px;
             //             margin-bottom:52px;
 
-            //             @media screen and (max-width: $sm-break){
+            //             @media screen and (max-width: $sm-break-down) {
             //                 height:auto;
             //             }
             //         }

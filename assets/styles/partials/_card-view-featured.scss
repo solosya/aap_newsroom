@@ -5,7 +5,7 @@
         margin-bottom: 120px;
         position: relative;
         overflow: hidden;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             height: auto;
             margin-left: -15px;
             margin-right: -15px;
@@ -22,7 +22,7 @@
                 padding-left: 60px;
                 padding-top:260px !important;
                 color: #FFF;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     width: 100%;
                     padding-top:190px !important;
                     padding-left: 20px;
@@ -32,10 +32,10 @@
                     font-weight: bold;
                     color: #ebb913;
                     text-transform: uppercase;
-                    // @media screen and (max-width: $sm-break){
+                    // @media screen and (max-width: $sm-break-down) {
                     //     color: #000;
                     // }
-                    // @media screen and (max-width: $sm-break){
+                    // @media screen and (max-width: $sm-break-down) {
                     //     font-size: em(11);
                     // }
                 }
@@ -48,7 +48,7 @@
                     margin-bottom: 40px;
                     margin-top: 21px;
                     border:none;
-                    // @media screen and (max-width: $sm-break){
+                    // @media screen and (max-width: $sm-break-down) {
                     //     color: #000;
                     //     font-size: em(22);
                     //     margin-top: 13px;
@@ -63,7 +63,7 @@
                     line-height: 1.25;
                     color: #FFF;
                     margin-bottom: 30px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         display: none;
                     }
                 }
@@ -84,7 +84,7 @@
                     font-size: em(14);
                     font-weight: bold;
                     color: #FFF;
-                    // @media screen and (max-width: $sm-break){
+                    // @media screen and (max-width: $sm-break-down) {
                     //     color: #000;
                     // }
                 }
@@ -94,7 +94,7 @@
                 height: 587px;
                 // position: absolute;
                 z-index: 1;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     height: 500px;
                 }
 
@@ -106,7 +106,7 @@
                     content: '';
                     width: 100%;
                     height: 587px;
-                    // @media screen and (max-width: $sm-break){
+                    // @media screen and (max-width: $sm-break-down) {
                     //     display: none;
                     // }
                 }

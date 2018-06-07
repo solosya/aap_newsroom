@@ -13,6 +13,9 @@
                 @media screen and (min-width: $mmd-break){
                     height: 50px;
                 }
+                @media screen and (max-width: $mmd-break-down) and (min-width: $sm-break){
+                    height: 51.5px;
+                }
             }
         }
 
@@ -149,7 +152,7 @@
                             background:black;
                         }
 
-                        @media screen and (max-width: $mmd-break){
+                        @media screen and (max-width: $mmd-break-down){
                             width: 350px;
                         }
                         @media screen and (max-width: $mobile-break){
@@ -242,7 +245,7 @@
                 background: #000;
             }
 
-            @media screen and (max-width: $mmd-break){
+            @media screen and (max-width: $mmd-break-down){
                 width: 280px;
             }
             @media screen and (max-width: $mobile-break){
