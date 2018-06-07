@@ -1,7 +1,7 @@
 .featured-slider{
     margin-bottom: 22px;
     
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         margin-left: -15px;
         margin-right: -15px;
     }
@@ -21,11 +21,11 @@
             width: 115px;
         }
 
-        @media screen and (min-width: 769px) and (max-width: $mmd-break){
+        @media #{$tablet}{
            width: 65px;
         }
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             width: 55px;
             top: 5px;
             right: 5px;
@@ -49,7 +49,7 @@
             height: auto;
         }
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             position: relative;
             height: 350px;
             overflow: hidden;
@@ -94,7 +94,7 @@
                     max-height: 587px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     max-width: 60%;
                     height: 350px;
                 }
@@ -128,7 +128,7 @@
                     min-width:100%;
                     object-fit: cover;
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         width: 100%;
                         height: 100%;
                     }
@@ -162,8 +162,8 @@
                 }
 
                                 // Not under:                     Not over:
-                @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
-                    padding: 100px 15px 15px 15px;
+                @media #{$tablet}{
+                    padding: 90px 15px 15px 15px;
                 }
 
 
@@ -218,11 +218,12 @@
                        font-size: em(24);
                     }
 
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                        padding-bottom: 5px;
+                       margin-top:10px;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                          font-size: em(28);
                          border: 0;
                     }

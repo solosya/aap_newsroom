@@ -82,7 +82,7 @@
             > h2{
                 font-size: em(20);
                 font-weight:normal;
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     font-size: em(16);
                 }
             }
@@ -121,10 +121,10 @@
                 margin-top:21px;
                 font-size: em(18);
                 height:38px;
-                @media screen and (max-width: $mmd-break) {
+                @media screen and (max-width: $mmd-break-down) {
                     height:58px;
                 }
-                @media screen and (max-width: $sm-break) {
+                @media screen and (max-width: $sm-break-down) {
                     height:auto;
                 }
 
@@ -192,7 +192,7 @@
                     max-width: 377px;
                 }
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     max-width: 290px;
                 }
 

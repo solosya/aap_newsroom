@@ -7,7 +7,7 @@
 
     article{
         margin-bottom: 80px;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom: 30px;
         }
         &:after{
@@ -16,7 +16,7 @@
             width: 41px;
             background-color: #dadada;
             display: block;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 display: none;
             }
         }
@@ -33,7 +33,7 @@
                 font-weight: bold;
                 text-transform: uppercase;
                 line-height: 1.42857;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     font-size: em(11.2);
                 }
             }
@@ -44,7 +44,7 @@
                 font-size: em(12);
                 color: #8a8b93;
                 line-height: 1.82857;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     display: none;
                 }
             }
@@ -55,13 +55,13 @@
                 margin-bottom: 24px;
                 margin-top: 21px;
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     margin-bottom: 17px;
                     font-size: em(16);
                     margin-top: 5px;
                 }
                 &:after{
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         content: '';
                         height: 3px;
                         width: 41px;

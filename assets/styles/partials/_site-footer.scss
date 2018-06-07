@@ -1,13 +1,13 @@
 .site-footer{
     width: 100%;
     // margin-top: 60px;
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         // margin-top: 55px;
     }
 
     .footer-menu{
         padding-bottom: 26px;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             display: none;
         }
         > ul{
@@ -27,11 +27,11 @@
     .footer-top{
         background: #000;
         position: relative;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             padding-top: 155px;
         }
         .logo-wrapper{
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -42,7 +42,7 @@
         .icon-wrapper{
             position:relative;
             // width:100%;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 position: absolute;
                 top: 75px;
                 width: 100%;
@@ -51,7 +51,7 @@
             span {
                 display:none;
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     position:absolute;
                     bottom:0;
                     right:20px;
@@ -78,7 +78,7 @@
         .symbol{
             margin-right: 46px;
             padding-top: 15px;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 float: left;
             }
             @media screen and (max-width: $mobile-break){
@@ -92,7 +92,7 @@
             background-color: #e22f22;
             color: #FFF;
             padding-top: 20px;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 float: right;
             }
 
@@ -164,14 +164,14 @@
             margin-left: -15px;
             margin-right: -15px;
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 border-bottom: solid 1px #d4d4d4;
             }
             > ul{
                 padding-left: 15px;
                 > li {
                     margin-right: 30px;
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         margin-right: 20px;
                     }
                 }
@@ -187,12 +187,12 @@
 
         .rooms-link{
             float: right;        
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 float: left;
             }       
             > ul{
                 @extend %ulmenu;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     display: block;
                     padding-top: 15px;
                 }
@@ -203,7 +203,7 @@
                         margin-right: 0;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         margin-bottom: 15px;
                     }
 

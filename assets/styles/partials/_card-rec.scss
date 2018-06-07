@@ -172,12 +172,12 @@
                 white-space: nowrap;
                 > p {
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         font-size: em(15);
                     }
                 }
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     width: 280px;
                 }
 
@@ -192,7 +192,7 @@
                 margin-top:6px;
                 padding-top:4px;
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     width: auto;
                 }
 

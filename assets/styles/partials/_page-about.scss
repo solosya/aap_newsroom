@@ -10,6 +10,7 @@ body.channel.about, body.section.about{
         font-size: em(47);
         font-weight: bold;
         margin-bottom: 45px;
+
     }
     h2{
 
@@ -36,12 +37,12 @@ body.channel.about, body.section.about{
         .block{
             margin-bottom: 100px;
 
-            @media screen and (max-width: $mmd-break){
+            @media screen and (max-width: $mmd-break-down){
                 border-bottom: solid 1px #dadada;
             }
 
             .left{
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     text-align: center;
                     margin-bottom: 30px;
 
@@ -98,7 +99,7 @@ body.channel.about, body.section.about{
                 padding-left: 47.5px;
                 padding-right: 47.5px;
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     padding-left: 15px;
                     padding-right: 15px;
                 }
@@ -152,10 +153,11 @@ body.channel.about, body.section.about{
 
     .editor{
         margin-bottom: 80px;
-
-        @media screen and (max-width: $mmd-break){
-            border-bottom: solid 1px #dadada;
+        @media #{$tablet} {
+            height: 300px;
             padding-bottom: 15px;
+            margin-bottom: 25px;
+
         }
 
         .section-header{
@@ -175,6 +177,11 @@ body.channel.about, body.section.about{
                 flex: 0 0 123px;
                 overflow: hidden;
 
+                @media #{$tablet} {
+                    width: 73px;
+                    flex: 0 0 73px;
+                }
+
                 @media screen and (max-width: $mobile-break){
                     width: 60px;
                     flex: 0 0 60px;
@@ -188,6 +195,10 @@ body.channel.about, body.section.about{
                     font-size: em(23);
                     font-weight: normal;
 
+                    @media #{$tablet} {
+                        font-size: em(18);
+                    }
+
                     @media screen and (max-width: $mobile-break){
                         font-size: em(22);
                         margin-top: 5px;
@@ -196,7 +207,7 @@ body.channel.about, body.section.about{
                 }
 
                 > .title{
-                    font-size: em(19);
+                    font-size: em(15);
                     font-weight: normal;
                     color: #e12e21;
 
@@ -206,24 +217,24 @@ body.channel.about, body.section.about{
                 }
 
                 > .muted{
-                    font-size: em(19);
+                    font-size: em(15);
                     font-weight: normal;
                     color: #777881;
 
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                         display: none;
                     }
                 }
 
                 > p{
-                    font-size: em(18);
+                    font-size: em(15);
                 }
             }
         }
 
         .content{
             > p{
-                font-size: em(18);
+                font-size: em(13);
                 line-height: 1.44;
 
                 &:last-child{
@@ -234,7 +245,7 @@ body.channel.about, body.section.about{
 
         .contact{
             > p{
-                font-size: em(18);
+                font-size: em(13);
                 line-height: 1.44;
                 margin-bottom: 5px;
             }

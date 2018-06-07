@@ -1,7 +1,7 @@
 
 
 .subscriptions {
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         margin-bottom: 40px;
     }
 }
@@ -112,7 +112,7 @@
 
     &.form {
         display:none;
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             display:block;
         }
     }

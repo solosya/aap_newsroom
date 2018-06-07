@@ -1,7 +1,7 @@
 .related-articles{
     margin-bottom: 78px;
     
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         margin-bottom: 25px;
     }
 
@@ -20,7 +20,7 @@
         font-size: em(20);
         color: #000000;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             color: #e22f22;
             border-bottom: 1px solid #dadada;
         }
@@ -33,7 +33,7 @@
         margin-bottom:17px;
         border-bottom: 1px solid #dadada;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom: 6px;
             padding-bottom:0;
             // border-bottom: 1px solid #dadada;
@@ -58,7 +58,7 @@
                 flex: 0 0 65px;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 width: 88px;
                 height:88px;
                 flex: 0 0 88px;
@@ -76,7 +76,7 @@
                 padding-bottom: 15px;
             }
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 border: 0;
             }
             > .category{
@@ -101,7 +101,7 @@
                    font-size: em(16);
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     height:75px;
                     font-size: em(20);
                     margin: 2px;
@@ -124,7 +124,7 @@
                     right: 15px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     position:static;
                     font-size: em(10);
                 }
@@ -136,7 +136,7 @@
                 overflow:hidden;
                 line-height: 1.2em !important;
                 font-size: em(13) !important;
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     display:none;
                 }
 

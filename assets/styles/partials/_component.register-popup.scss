@@ -41,7 +41,7 @@
     position: absolute;
     top: -4px;
 	right: 0;
-	@media screen and (max-width: $sm-break){
+	@media screen and (max-width: $sm-break-down) {
 		width:23px;
 		height:23px;
 	}
@@ -70,7 +70,7 @@
 
 .register-popup__logo {
 	margin-top:10px;
-	@media screen and (max-width: $sm-break){
+	@media screen and (max-width: $sm-break-down) {
 		width:150px;
 	}
 }
@@ -81,7 +81,7 @@
 	font-family: $font-family-sans-serif;
 	font-size: rem(20);
 	font-weight:600;
-	@media screen and (max-width: $sm-break){
+	@media screen and (max-width: $sm-break-down) {
 		font-size: rem(12);
 	}
 

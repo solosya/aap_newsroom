@@ -68,7 +68,7 @@
                         height: 40px;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         width: 30px;
                         height: 30px;
                     }
@@ -89,7 +89,7 @@
             padding-bottom: 3px;
             
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 border: 0;
             }
             > .category{
@@ -100,7 +100,7 @@
                 line-height: 1;
                 margin-bottom: 3px;
 
-                @media screen and (max-width: $sm-break) {
+                @media screen and (max-width: $sm-break-down) {
                     font-family: $font-family-sans-serif;
                     font-size: em(12);
                     text-transform: uppercase;
@@ -124,7 +124,7 @@
                 border: 0;
                 line-height: 1;
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     font-size: rem(10);
                 }
             }

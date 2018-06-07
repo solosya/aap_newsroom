@@ -10,7 +10,7 @@
     border-bottom: 1px solid #dadada;
     // margin-bottom:130px;
 
-    @media screen and (max-width: $sm-break){
+    @media screen and (max-width: $sm-break-down) {
         border:0;
         padding:0 15px 15px 15px;
     }
@@ -26,12 +26,12 @@
         border-bottom:1px solid #dadada;
         margin-bottom:20px;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom:0;
         }
 
         > img {
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 float:left;
                 width:222px;
             }
@@ -43,7 +43,7 @@
             top:0;
             display:inline-block;
             
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 padding-top:0;
                 position:static;
             }
@@ -65,7 +65,7 @@
 
         a.card{
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 // margin-bottom: 6px;
                 border-bottom: 1px solid #dadada;
             }
@@ -100,7 +100,7 @@
                             // height: 40px;
                         }
 
-                        @media screen and (max-width: $sm-break){
+                        @media screen and (max-width: $sm-break-down) {
                             // width: 30px;
                             // height: 30px;
                         }
@@ -117,7 +117,7 @@
                 }
 
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     margin-top:15px;
 
                     width: 70px;
@@ -141,7 +141,7 @@
                     // padding-bottom: 15px;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     border: 0;
                     padding: 15px 0;
                 }
@@ -153,7 +153,7 @@
                     line-height: 1;
                     margin-bottom: 3px;
                     
-                    @media screen and (max-width: $sm-break) {
+                    @media screen and (max-width: $sm-break-down) {
                         font-family: $font-family-sans-serif;
                         font-size: em(12);
                         text-transform: upper;
@@ -168,7 +168,7 @@
                        font-size: em(16);
                     }
 
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                         height:37px;
                         font-size: em(16);
                         margin: 2px;
@@ -191,7 +191,7 @@
                         right: 15px;
                     }
 
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                         font-size: em(10);
                         position:static;
                     }
@@ -234,7 +234,7 @@
         > img {
             height:37px;
             
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 margin-top:10px;
                 height:30px;
             }

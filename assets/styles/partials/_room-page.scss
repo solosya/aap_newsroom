@@ -44,7 +44,7 @@
     .featured-slider {
         margin-bottom: 120px;
 
-        @media screen and (max-width: $sm-break){
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom: 50px;
         }
 
@@ -72,7 +72,7 @@
                 @media screen and (max-width: $md-break){
                     padding: 100px 29px 20px 31px;
                 }
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     padding: 60px 29px 15px 31px;
                 }
 
@@ -85,7 +85,7 @@
                     @media screen and (max-width: $md-break){
                         min-height:60px;
                     }
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                         min-height:50px;
                     }
 
@@ -126,7 +126,7 @@
             top: 0;
             position: absolute;
             z-index: 2;
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $sm-break-down) {
                 display: none;
             }
         }
@@ -162,7 +162,7 @@
                         flex: 0 0 150px;
                     }
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         margin-top:6px;
                         margin-bottom:6px;
                         width: 116px;
@@ -290,7 +290,7 @@
 
             article {
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     display:-webkit-box;
                     display:-webkit-flex;
                     display:-moz-flex;
@@ -301,7 +301,7 @@
                     -webkit-flex-wrap: nowrap;
                     -ms-flex-wrap: nowrap;
                 }
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     display:block;
                     height:auto !important;
                 }
@@ -310,7 +310,7 @@
             figure {
                 height:260px;
 
-                @media screen and (max-width: $mmd-break){
+                @media screen and (max-width: $mmd-break-down){
                     width: 330px;
                     height:235px;
                     -ms-flex: 0 0 330px;
@@ -320,7 +320,7 @@
                     float: left;
                 }
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     height:116px;
                     width:116px;
                 }
@@ -336,7 +336,7 @@
                 display: block;
                 height:auto;
 
-                @media screen and (max-width: $sm-break){
+                @media screen and (max-width: $sm-break-down) {
                     padding-left:126px;
                     height:116px;
                 }
@@ -346,7 +346,7 @@
                     margin: 25px 0;
                     font-size: em(26);
                     
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         font-size: em(20);
                         margin: 0 0 10px 0;
                     }
@@ -354,12 +354,12 @@
 
                 > p {
 
-                    @media screen and (max-width: $mmd-break){
+                    @media screen and (max-width: $mmd-break-down){
                         display:block !important;
                         height:45px !important;
                         margin-bottom:5px !important;
                     }
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         display:none !important;
                     }
                 }
@@ -376,7 +376,7 @@
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         float: none;
                         border:none;
                         padding:0;
@@ -393,7 +393,7 @@
                     border-top: solid 1px #dadada;
 
 
-                    @media screen and (max-width: $sm-break){
+                    @media screen and (max-width: $sm-break-down) {
                         display: none;
                     }
 
@@ -409,7 +409,7 @@
                     p {
                         display:block;
 
-                        @media screen and (max-width: $sm-break){
+                        @media screen and (max-width: $sm-break-down) {
                             display:none;
                         }   
                     }

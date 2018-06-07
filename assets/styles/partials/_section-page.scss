@@ -6,7 +6,7 @@ body.channel, body.section {
         font-size:  ((48px / $font-size-base) + $font-unit);
         font-weight:600;
         margin-bottom:30px;
-        @media screen and (max-width: $sm-break) {
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom:0;
         }
 	}
@@ -18,7 +18,7 @@ body.channel, body.section {
         font-weight:600;
         text-transform:uppercase;
         margin-bottom:25px;
-        @media screen and (max-width: $sm-break) {
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom:0;
         }
     }
@@ -28,7 +28,7 @@ body.channel, body.section {
     .follow-box {
         position:relative;
         text-align:right;
-        @media screen and (max-width: $sm-break) {
+        @media screen and (max-width: $sm-break-down) {
             text-align:left;
             padding-bottom: 20px;
         }
@@ -41,7 +41,7 @@ body.channel, body.section {
         height:40px;
         width:180px;
 
-        @media screen and (max-width: $sm-break) {
+        @media screen and (max-width: $sm-break-down) {
             margin-top:15px;
         }
 
@@ -56,7 +56,7 @@ body.channel, body.section {
             a.card {                
                 height: 440px;
 
-                @media screen and (max-width: $sm-break) {
+                @media screen and (max-width: $sm-break-down) {
                     height:auto;
                 }
 
@@ -64,7 +64,7 @@ body.channel, body.section {
                 figure {
                     width: 60%;
                     max-width:60%;
-                    @media screen and (max-width: $sm-break) {
+                    @media screen and (max-width: $sm-break-down) {
                         width:auto;
                         max-width:60%;
                     }
@@ -124,7 +124,7 @@ body.channel, body.section {
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;
                 
-                    @media screen and (max-width: $sm-break) {
+                    @media screen and (max-width: $sm-break-down) {
                         float:none;
                         border:none;
                         padding:0;
@@ -147,7 +147,7 @@ body.channel, body.section {
                        clear: both;
                     }
         
-                    @media screen and (max-width: $sm-break) {
+                    @media screen and (max-width: $sm-break-down) {
                         display:none;
                     }
 
