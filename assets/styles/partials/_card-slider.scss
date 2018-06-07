@@ -21,7 +21,7 @@
             width: 115px;
         }
 
-        @media screen and (min-width: 769px) and (max-width: $mmd-break-down){
+        @media #{$tablet}{
            width: 65px;
         }
 
@@ -162,8 +162,8 @@
                 }
 
                                 // Not under:                     Not over:
-                @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
-                    padding: 100px 15px 15px 15px;
+                @media #{$tablet}{
+                    padding: 90px 15px 15px 15px;
                 }
 
 
@@ -220,6 +220,7 @@
 
                     @media screen and (max-width: $mmd-break-down){
                        padding-bottom: 5px;
+                       margin-top:10px;
                     }
 
                     @media screen and (max-width: $sm-break-down) {
