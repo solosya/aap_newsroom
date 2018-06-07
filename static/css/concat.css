@@ -12369,10 +12369,11 @@ body.channel.about .founders .block, body.section.about .founders .block {
 
 body.channel.about .editor, body.section.about .editor {
   margin-bottom: 80px; }
-  @media screen and (max-width: 991px) {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
     body.channel.about .editor, body.section.about .editor {
-      border-bottom: solid 1px #dadada;
-      padding-bottom: 15px; } }
+      height: 300px;
+      padding-bottom: 15px;
+      margin-bottom: 25px; } }
   body.channel.about .editor .section-header, body.section.about .editor .section-header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -12388,6 +12389,10 @@ body.channel.about .editor, body.section.about .editor {
       width: 123px;
       flex: 0 0 123px;
       overflow: hidden; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        body.channel.about .editor .section-header figure, body.section.about .editor .section-header figure {
+          width: 73px;
+          flex: 0 0 73px; } }
       @media screen and (max-width: 620px) {
         body.channel.about .editor .section-header figure, body.section.about .editor .section-header figure {
           width: 60px;
@@ -12397,34 +12402,37 @@ body.channel.about .editor, body.section.about .editor {
       body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
         font-size: 2.3em;
         font-weight: normal; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
+            font-size: 1.8em; } }
         @media screen and (max-width: 620px) {
           body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
             font-size: 2.2em;
             margin-top: 5px;
             margin-bottom: 5px; } }
       body.channel.about .editor .section-header .header-content > .title, body.section.about .editor .section-header .header-content > .title {
-        font-size: 1.9em;
+        font-size: 1.5em;
         font-weight: normal;
         color: #e12e21; }
         @media screen and (max-width: 620px) {
           body.channel.about .editor .section-header .header-content > .title, body.section.about .editor .section-header .header-content > .title {
             font-size: 1.8em; } }
       body.channel.about .editor .section-header .header-content > .muted, body.section.about .editor .section-header .header-content > .muted {
-        font-size: 1.9em;
+        font-size: 1.5em;
         font-weight: normal;
         color: #777881; }
         @media screen and (max-width: 991px) {
           body.channel.about .editor .section-header .header-content > .muted, body.section.about .editor .section-header .header-content > .muted {
             display: none; } }
       body.channel.about .editor .section-header .header-content > p, body.section.about .editor .section-header .header-content > p {
-        font-size: 1.8em; }
+        font-size: 1.5em; }
   body.channel.about .editor .content > p, body.section.about .editor .content > p {
-    font-size: 1.8em;
+    font-size: 1.3em;
     line-height: 1.44; }
     body.channel.about .editor .content > p:last-child, body.section.about .editor .content > p:last-child {
       margin-bottom: 30px; }
   body.channel.about .editor .contact > p, body.section.about .editor .contact > p {
-    font-size: 1.8em;
+    font-size: 1.3em;
     line-height: 1.44;
     margin-bottom: 5px; }
 
