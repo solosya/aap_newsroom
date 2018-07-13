@@ -1,0 +1,157 @@
+.managed-users {
+    padding:0;
+    margin:0;
+    margin-bottom:20px;
+}
+.managed-users-search {
+    padding:0;
+    margin:0;
+}
+.managed-users-search__field {
+    padding:0;
+    margin:0;
+}
+.managed-users-search__button {
+    padding:0;
+    margin:0;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background:none;
+    border:none;
+    color:color(red);
+    font-size: rem(14);
+    font-style: italic;
+}
+
+.managed-users-search__button-clear {
+    display:none;
+    color:rgb(38, 81, 127);
+}
+
+
+.userdetails{
+    list-style:none;
+    overflow:hidden;
+    border-bottom: 1px solid color(border);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.userdetails__name{
+    color: #ae232c;
+    font-size: 18px;
+    text-align: left;
+    margin:0;
+}
+.userdetails__username {
+    display: inline;
+    font-size: 11.7px;
+    font-weight: bold;
+    line-height: 1.33;
+    color: black;
+    padding-bottom: 11px;
+}
+.userdetails__email {
+    margin-right:30px;
+    color:black;
+}
+
+.userdetails__button {
+    display:block;
+    height:14px;
+    width:14px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.userdetails__button--edit {
+    margin-right:10px;
+    background: url('../icons/pencil.svg');
+}
+.userdetails__button--delete {
+    background: url('../icons/delete-cross.svg');
+}
+.userdetails__button--save {
+    color:color(red);    
+    margin-right: 40px;
+    position: relative;
+    top: -2px;
+}
+
+
+.user-editor {
+    list-style:none;
+    height: 150px;
+}
+.user-editor__input-container {
+    width:50%;
+    height:100%;
+    position:relative;
+}
+
+.user-editor__input {
+    border:none;
+    padding:5px;
+    width:100%;
+    margin-bottom:4px;
+    border-radius:7px;
+    background-color:color(galleryback);
+    display:block;
+}
+
+
+.managed-users {
+
+
+    .useremailbuttons{
+        flex-grow: 0;
+        div {
+            position: relative;    
+            top: 50%;    
+            transform: translateY(-50%);
+        }
+        .edituser {
+            margin-right:10px;
+            color: #717171;
+            &:hover {
+                color: color(red);
+                cursor: pointer;
+            }
+
+        }
+        .saveedit {
+            color: #ae232c;
+            &:hover {
+                color: color(#717171);
+                cursor: pointer;
+            }
+        }
+        .canceledit {
+            color: #ae232c;
+            &:hover {
+                color: color(#717171);
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    .edituserfield {
+        border-radius: 6px;
+        border: 1px solid #E5E5E5;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.empty-listing {
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid color(lightgrey);
+    margin-bottom: 30px;
+    text-align: center;
+    color: color(lightgrey);
+    font-size: rem(13);
+}

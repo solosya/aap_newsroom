@@ -1,91 +1,485 @@
 {{ set(this, 'title', 'Edit Profile') }}
 
+
+
+
+
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData = _Blog.getBlog() %}
+{% set jobsBlogId = blogData.additionalInfo['joblistingsid'] %}
+{% set propBlogId = blogData.additionalInfo['propertylistingsid'] %}
+
 <!-- Begin User Profile Page -->
-{% set user = _User.getUser()%}
-<div class="user_profile">
+
+{% set jobListingsArr = [] %}
+{% set propListingsArr = [] %}
+{% set pwstats = _User.getPaywallStats(true) %}
+{% set plans = _Network.getNetworkData()['paywallPlans'] %}
+
+{% set userLimit = 20 %}
+{% set user = _User.getUser() %}
+{% if user %} 
+    {% set jobListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[jobsBlogId], 'status': '-1'}) %}
+    {% set propListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[propBlogId], 'status': '-1'}) %}
+{% endif %}
+
+{{this.registerJs("Acme.usercard = new Acme.Usercard();")}}
+
+
+{{this.registerJs("Acme.userController = new Acme.UserProfileController();")}}
+
+
+
+                                                 {# renders the card    fetch-limit  fetch-offset    infinite scroll            #}
+                                                 {#            ↑             ↑          ↑            ↑                          #}
+{{this.registerJs("Acme.userFeed = new Acme.View.userFeed(Acme.usercard, " ~ userLimit ~ ",     20,         false,          null, Acme.userController);")}}
+
+
+
+
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+<!-- 3 is job, 4 is property, 5 is event -->
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+<main id="main" class="user_profile listingForm" role="main">
+    <div id="stripekey" class="hidden" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
+    {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-xs-12"><h3 class="sub-heading">Account &amp; Profile</h3></div>
-            <div class="col-sm-6 col-xs-12"><a href="/profile/{{user.username}}" class="button green pull-right ">View Profile</a></div>
-        </div>
+
         <div class="user_profile_section">
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-sm-12">
                     {{this.render('layouts/partials/messages.twig') | raw}}
-                    <div class="profile-status text-center">
-                        <p>Your profile is <span class="green">{{_User.getProfileCompletionPercentage()}}%</span> complete</p>
-                    </div>
-                    <div class="profile-upload text-center ">
-                        {% set profileImage = _Media.getMediaUrl(user.profileMedia, 120, 120, {radius: 'max', gravity: 'face', crop: 'thumb'})%}
-                        <div class="user-pic"><span class="uploadedUser"{% if profileImage is not empty %} style="background-image:url({{profileImage}});"{% endif %}><i class="fa fa-user {{ (profileImage is not empty) ? 'hide' : ''}}"></i></span></div>
-                        <a href="javascript:void(0)"  class="em upload-profile uploadFileBtn" data-imgcls="uploadedUser" data-id="userProfileImage" ><i class="fa fa-plus-circle green"></i>add new image</a>
-                    </div>
 
-                    <div class="profile-details">
-                        <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" autocomplete="off" >
-                            <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
-                            <input type="hidden" name="profileImage" id="userProfileImage" value="" />
-                           
-                            <div class="controls-full">
-                                <label for="user-username">Username</label>
-                                <input type="text" id="username" class="form-control" name="username" value="{{user.username}}" placeholder="Username" >
-                            </div>
+                    <div class="profile-section profile-section--border">
+                        <div class="profile-section__header">
+                            <p class="profile-section__heading">My details</p>                                    
+                            <a class="text-button text-button--italic u-float-right" href="/auth/logoff">Log Out</a> 
+                        </div>
 
-                            <div class="controls-full">
-                                <label for="user-firstname">First Name</label>
-                                <input type="text" id="firstname" class="form-control" name="firstname" value="{{user.firstname}}" placeholder="First name">
-                            </div>
 
-                            <div class="controls-full">
-                                <label for="user-lastname">Last Name</label>
-                                <input type="text" id="lastname" class="form-control" name="lastname" value="{{user.lastname}}" placeholder="Last name">
-                            </div>
 
-                            <div class="controls-full">
-                                <label for="user-by_line">Byline</label>
-                                <div class="button-set">
-                                    <div class="column">
-                                        <label><input type="radio" id="User_by_line0" name="by_line" value="FirstNameLastName" {% if user.by_line == 'FirstNameLastName'%} checked='checked' {% endif %}><span><!-- fake checkbox --></span>First Name Last Name</label>
-                                    </div>
+                        <div class="">
+                            <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" autocomplete="off" >
+                                <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
+                                <input type="hidden" name="profileImage" id="userProfileImage" value="" />
 
-                                    <div class="column">
-                                        <label><input type="radio" id="User_by_line1" name="by_line" value="Username" {% if user.by_line == 'Username'%} checked='checked' {% endif %}><span><!-- fake checkbox --></span>Username</label>
-                                    </div>
+                                <label class="mobLabel" for="firstname">First name</label>
+                                <div class="inline-inputs">
+                                    <label for="firstname">First name</label>
+                                    <input type="text" id="firstname" class="form-control" name="firstname" value="{{user.firstname}}" placeholder="First name" >
                                 </div>
-                                <div class="help-block"></div>
-                            </div>
 
-                            <div class="controls-full">
-                                <label for="user-bio">Bio</label>
-                                <textarea id="user-bio" class="form-control" name="bio" rows="3" placeholder="Write your description...">{{Html.decode(user.bio)}}</textarea>
-                                <span class='help-block'>Tell us a bit about yourself</span>
-                            </div>
+                                <label class="mobLabel" for="lastname">Last name</label>
+                                <div class="inline-inputs">
+                                    <label for="lastname">Last name</label>
+                                    <input type="text" id="lastname" class="form-control" name="lastname" value="{{user.lastname}}" placeholder="Last name" >
+                                </div>                            
+                               
+{#                                 <div class="inline-inputs">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" class="form-control" name="company" value="{{user.company}}" placeholder="Company" >
+                                </div>
+ #}                             
+                                <label class="mobLabel" for="username">Username</label>
+                                <div class="inline-inputs">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" class="form-control" name="username" value="{{user.username}}" placeholder="Username" >
+                                </div>
 
-                            <div class="controls-full">
-                                <label for="user-email">Email</label>
-                                <input type="text" id="user-email" class="form-control" disabled="true" name="email" value="{{user.email}}" placeholder="Email">
-                                <span class='help-block'>You can't update the email address</span>
-                            </div>
+                                <label class="mobLabel" for="email">Email</label>
+                                <div class="inline-inputs">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" class="form-control" name="email" value="{{user.email}}" placeholder="email@domain.com" >
+                                </div>
 
-                            <div class="controls-full">
-                                <label for="user-password">Password</label>
-                                <input type="password" id="user-password" class="form-control required" name="password" placeholder="Leave empty to not update">
-                            </div>
+                                <label class="mobLabel" for="password">Password</label>
+                                <div class="inline-inputs">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="new password" >
+                                </div>
 
-                            <div class="controls-full">
-                                <label for="user-verifypassword">Verify Password</label>
-                                <input type="password" id="user-verifypassword" class="form-control required" name="verifypassword" placeholder="Leave empty to not update">
-                            </div>
+                                <label class="mobLabel" for="password">Verify Password</label>
+                                <div class="inline-inputs">
+                                    <label for="password">Verify Password</label>
+                                    <input type="password" id="verifypassword" class="form-control" name="verifypassword" placeholder="verify password" >
+                                </div>
+                                
+                                <div class="button-full">
+                                    <button type="submit" class="text-button u-float-right u-margin-top-25 update-details">Update Details</button>
+                                </div>
+                            </form>
 
-                            <div class="button-full">
-                                <button type="submit" class="button green button-large">Save</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
+
+                {% if pwstats.userManager == true %}
+
+
+                    {% set managedUsers = _User.getPaywallManagedUsers({"limit": userLimit}) %}
+                    {% set managedUserCount = managedUsers | length %}   
                     
+                    <div class="profile-section">
+                       
+                       <div class="profile-section__header">
+                            <p class="profile-section__heading">Subscription Details</p>
+                        </div>
+
+
+                        <div id="userPlanSection">
+                            
+                            <div class="user-details">
+                                
+                                <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" disabled="disabled">
+                                    
+                                    {% if pwstats['type'] == 'time' %}
+
+                                        <label class="mobLabel" for="currentplan">Current Plan</label>
+                                        <div class="inline-inputs">
+                                            <label for="currentplan">Current Plan</label>
+                                            <input type="text" id="currentplan" class="form-control" value="{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}" disabled="disabled">
+                                        </div>
+
+                                        <label class="mobLabel" for="currentplan">Plan Status</label>
+                                        <div class="inline-inputs">
+                                            <label for="currentplan">Plan Status</label>
+                                            <input style="margin-left:35px; cursor: pointer; cursor: hand;" type="text" id="currentplan" class="form-control" value="{{ pwstats['status']}}" disabled="disabled">
+
+                                            <div class="button-full">
+                                            {% if pwstats['status'] == 'cancelled' %}
+                                                {# {% if (date(pwstats['expiry_date']) > date(now) ) %} #}
+                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button u-float-right u-margin-top-25">Restart Subscription</a>
+                                                {# {% else %}  #}
+                                                <span  class="u-float-right profile-section__users-left">All data will be removed 30 days after last payment date.</span>
+                                                {# {% endif %}  #}
+                                            {% else %} 
+                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button u-float-right cancel-account">Cancel Subscription</a>
+                                            {% endif %} 
+                                            </div>
+                                        </div>
+
+                                        <label class="mobLabel" for="totalusers">Available Users</label>
+                                        <div class="inline-inputs">
+                                            <label for="totalusers">Available Users</label>
+                                            <input type="text" id="totalusers" class="form-control" value="{{ pwstats['user_count'] - managedUsers|length }}" disabled="disabled">
+                                        </div>                            
+                                       
+{#                                         <div class="inline-inputs">
+                                            <label for="activeusers">Active Users</label>
+                                            <input type="text" id="activeusers" class="form-control" value="{{ managedUsers|length }}" disabled="disabled">
+                                        </div>
+ #}     
+                                        <label class="mobLabel" for="expires">Next Payment</label>
+                                        <div class="inline-inputs">
+                                            <label for="expires">Next Payment</label>
+                                            <input type="text" id="expires" class="form-control" value="{{ pwstats['expiry_date']}}" disabled="disabled">
+                                        </div>
+
+                                    {% else %} 
+
+                                        <label class="mobLabel" for="currentplan">Current Plan</label>
+                                        <div class="inline-inputs">
+                                            <label for="currentplan">Current Plan</label>
+                                            <input type="text" id="currentplan" class="form-control" value="{{ pwstats['plan_value']/100}}/{{pwstats['total_articles']}}" disabled="disabled">
+                                        </div>
+
+                                        <label class="mobLabel" for="remaining">Articles Remaining</label>
+                                        <div class="inline-inputs">
+                                            <label for="remaining">Articles Remaining</label>
+                                            <input type="text" id="remaining" class="form-control" value="{{ pwstats['article_count']}}" disabled="disabled">
+                                        </div>                            
+                                        
+                                    {% endif %} 
+
+                                    <label class="mobLabel" for="remaining">Payment Method</label>
+                                    <div class="inline-inputs">
+                                        <label for="remaining">Payment Method</label>
+                                        <input type="text" id="remaining" class="form-control" value="{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}" disabled="disabled">
+                                    </div>                            
+
+                                </form>
+
+                            </div>
+
+
+
+
+                            <div class='update-card' style="overflow:auto">
+                                <div class="">
+
+                                    <div class="profile-section__header">
+                                         <p class="profile-section__heading">Change your credit card details</p>
+                                     </div>
+
+                                    <form id="update-card-form" action="/update" method="post">
+
+                                        <div id="card-element">
+                                        <!-- a Stripe Element will be inserted here. -->
+                                        </div>
+
+                                        <!-- Used to display Element errors -->
+                                        <div id="card-errors" role="alert"></div>
+                                        <button type="submit" class="text-button text-button--italic u-float-right u-margin-top-20">Change</button>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="profile-section__header">
+                                <p class="profile-section__heading">Change Plan</p>
+                            </div>
+
+                            <div class="plans">
+
+                            {% for plan in plans %}
+                                {% if plan.guid != pwstats['plan_guid'] or (pwstats['status'] != 'paid' and pwstats['status'] != 'trial') %}
+                                
+                                {% set uc = plan.user_count + 1 %}
+                                {% set val = plan.plan_value / 100 %}
+                                {% if val == 19.89 %}
+                                    {% set val = 19.90 %}
+                                {% endif %}
+
+
+                                <div class="j-setplan plans__item" style="cursor:hand; cursor:pointer;">
+                                    <h3 class="plans__name">{{plan.name}}</h3>
+                                    <p class="plans__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
+                                    <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
+                                                            per {{plan.period}}</p>
+
+                                    <input type="hidden" id="planid"        value="{{plan.guid}}">
+                                    <input type="hidden" id="planusercount" value="{{uc}}">
+                                    <input type="hidden" id="plancost"      value="{{plan.plan_value}}">
+                                    <input type="hidden" id="planperiod"    value="{{plan.period}}">
+                                    <input type="hidden" id="currentcost"   value="{{pwstats['plan_value']}}">
+                                    <input type="hidden" id="currentperiod" value="{{pwstats['period']}}">
+                                    <input type="hidden" id="currentusers"  value="{{managedUsers|length}}">
+                                    <input type="hidden" id="expdate"       value="{{ pwstats['expiry_date']}}">
+                                    <input type="hidden" id="_csrf"         value="{{_AppHelper.getCsrfToken()}}" /> 
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="profile-section">
+                        <div class="profile-section__header">
+                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUsers|length}} of {{pwstats['user_count']}} used.</span></p>
+                            <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUsers|length >= pwstats['user_count'] %} hidden{% endif %}">+ Add users</a>
+                        </div>
+
+                        {% if pwstats['user_count'] > userLimit and managedUserCount == userLimit %} 
+                            <div id="menu-search" class="managed-users-search u-margin-bottom-20">
+                                <form method="get" id="managed-user-search" action="">
+                                    <div style="position:relative">
+                                        <input type="search" class="managed-users-search__field" name="s" id="managed-user-search-field" placeholder="Find a user" required="">
+                                        <button class="managed-users-search__button" type="submit" id="user-search-submit">
+                                            Search
+                                        </button>
+                                        <button class="managed-users-search__button managed-users-search__button-clear" type="submit" id="user-search-clear">
+                                            Clear search
+                                        </button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        {% endif %}
+
+
+
+
+
+
+                        <div class="row">
+                            <div id="user_profile" class="col-md-12">
+                                
+                                <ul id="mangedUsers" class="managed-users">
+                                {% if managedUsers|length == 0 %} 
+                                    <div id="nousers" class="empty-listing">
+                                        <p>You have no current users.</p>
+                                    </div>
+                                {% else %}
+                                 
+                                    {% for user in managedUsers %}
+
+                                        <li id="{{user.id}}" class="userdetails">
+                                            <div class="u-float-left">
+                                                <p class="userdetails__name">
+                                                    <span class="j-firstname">{{user.firstname}}</span> 
+                                                    <span class="j-lastname">{{user.lastname}}</span>
+                                                </p> 
+                                                <p class="j-username userdetails__username">{{user.username}}</p>
+                                            </div>
+                                            <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a>
+                                            <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>
+                                            <p class="j-email userdetails__email u-float-right">{{user.email}}</p>
+                                        </li>
+                                    {% endfor %}
+
+                                {% endif %}
+
+                                </ul>
+                            </div>
+                            
+                            {% if pwstats['user_count'] > userLimit and managedUserCount == userLimit %} 
+                                {{ this.render('partials/ajaxarticles.twig', {
+                                    limit           : userLimit,
+                                    label           : "Show more",
+                                    loadtype        : "user",
+                                    name            : "user-load",
+                                    card_class      : "userdetails",
+                                    cardTemplate    : "managed_user",
+                                    container       : "mangedUsers"
+                                }) | raw }}
+                            {% endif %}
+
+                            <a id="createUserErrorMessage"></a>
+                        </div>
+
+                    </div>
+                {% endif %}
+
+                {% if _User.isAdminUser() %}
+                    <div class="add-batch-users" style="display:none;">
+                        <textarea id="batch-user-input"></textarea>
+                        <button id="batch-add">Add</button>
+                    </div>
+                {% endif %}
+
+
+                {% set hasJobListings = jobListingsArr | length > 0 %}
+                {% set jobLink = (hasJobListings) ? "Edit listings" : "Submit a listing"  %}
+                
+                <div class="profile-section">
+                    
+                    <div class="profile-section__header">
+                        <p class="profile-section__heading">Employment Listings</p>
+                        <a class="text-button text-button--italic u-float-right" href="{{networkData.defaultBlogUrl}}/@job-form">{{jobLink}}</a>
+                    </div>
+
+                    <div class="row">
+
+                        {% if hasJobListings  %}
+
+                            <div  id="jobListings" class="col-md-12">
+                                {% set articleCount = (dev) ? articleCount : 0 %}
+                                {% for i in 0..2 if jobListingsArr[articleCount] %}
+
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: jobListingsArr[articleCount], 
+                                        template: 'user-jobs',
+                                        containerClass: "card-profile-job card-profile-job-tablet card-profile-job-mobile"
+                                    }) | raw}}
+                                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="col-md-12">
+                                <p class="no-listings">
+                                    You have no current listings
+                                </p>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+
+                {% set hasPropListings =  propListingsArr | length > 0 %}
+                {% set propLink = hasPropListings ? "Edit listings" : "Submit a listing"  %}
+                
+
+
+                    <div class="profile-section">
+                        <div class="profile-section__header">
+                            <p class="profile-section__heading">Property Listings</p>
+                            <a class="text-button text-button--italic u-float-right" href="{{networkData.defaultBlogUrl}}/@property-form">{{propLink}}</a>
+                        </div>
+
+                        <div class="row">
+                            {% if hasPropListings %}
+
+                                <div id="realEstateListings" class="col-md-12">
+                                    {% set articleCount = (dev) ? articleCount : 0 %}
+                                    {% for i in 0..2 if propListingsArr[articleCount] %}
+
+                                        {{this.render('partials/_single-article.twig', {
+                                            article: propListingsArr[articleCount], 
+                                            template: 'user-property',
+                                            containerClass: "card-profile-property card-profile-property-tablet card-profile-property-mobile",
+                                            networkData: networkData
+                                        }) | raw}}
+                                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+                                    {% endfor %}
+                                </div>
+
+                            {% else %}
+                                <div class="col-md-12">
+                                    <p class="no-listings">
+                                        You have no current listings
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+</main>
+
+
+{{this.registerJs("(function(){
+    var w=window;
+    var ic=w.Intercom;
+    if(typeof ic==='function'){
+        ic('reattach_activator');
+        ic('update',intercomSettings);
+    }else{
+        var d=document;
+        var i=function(){
+            i.c(arguments)
+        };
+        i.q=[];
+        i.c=function(args){
+            i.q.push(args)
+        };
+        w.Intercom=i;
+        function l(){
+            var s=d.createElement('script');
+            s.type='text/javascript';
+            s.async=true;
+            s.src='https://widget.intercom.io/widget/zxwsoz9f';
+            var x=d.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s,x);
+        }
+        if(w.attachEvent){
+            w.attachEvent('onload',l);
+        }else{
+            w.addEventListener('load',l,false);
+        }
+    }
+})()")}}
+
+
+
+<script>
+  window.intercomSettings = {
+    app_id: "zxwsoz9f"
+  };    
+</script>
 <!-- //End User Profile Page -->

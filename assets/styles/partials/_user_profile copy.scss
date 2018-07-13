@@ -1,0 +1,110 @@
+/*! Layout User Profile Page
+-------------------------*/
+
+.inline-inputs {
+    display: flex;
+    flex-direction: row;
+    label {
+        flex: 2;
+    }
+    input, span {
+        flex: 7;
+    }
+}
+
+.change-password {
+    font-style: italic;
+    font-size: rem(12);
+    color: color(lightgrey);
+    position: relative;
+    top: -25px;
+    &:hover {
+        color: color(red);
+        cursor: pointer;
+    }
+}
+
+.name {
+    span {
+        font-size: rem(25);
+        font-weight: normal;
+        line-height: 1.2;
+        color: color(red);
+    }
+}
+
+.cancel-account {
+    font-style: italic;
+    @media #{$media-iPad-to-desktop} {
+        margin-top: -62px;
+    }
+    @media #{$media-mobile} {
+        margin-top: -130px;
+    }
+}
+
+.update-details {
+    font-style: italic;
+}
+
+
+.user_profile {
+
+    
+
+    font-family: $font-family-sans-serif;
+    background-color: #f3f3f3;
+
+    label {
+        font-size: rem(13);
+        height: 44px;
+        line-height: 44px;
+        color: color(darkblue);
+        font-weight: bold;
+        min-width: 100px;
+        @media screen and (max-width: $sm-break-down){
+           display: none;
+        }
+    }
+    .mobLabel {
+            display: none;
+            @media screen and (max-width: $sm-break-down){
+                display: inherit;
+                margin-bottom: -10px;
+            }
+        }
+    .container {
+        @media screen and (max-width: $sm-break-down){
+            background-color:white;
+        }
+    }
+
+    a.submit {
+        font-style: italic;
+        margin-top: 0 !important; 
+
+    }
+
+	.user_profile_section {
+        margin: 36px auto;
+        width: 722px;
+
+		background-color:#fff;
+        @include padding(40px);
+
+        @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
+            width:100%;
+          @include padding(0);
+          margin-top:0;
+        }
+	}
+
+    .no-listings {
+        color:color(lightgrey);
+        text-align: center;
+        margin-top: 25px;
+        font-weight:normal;
+        border-bottom: 1px solid color(lightgrey);
+        padding-bottom: 30px;
+    }
+}
