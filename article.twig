@@ -11,11 +11,11 @@
 
 {% set showPaywall = true %}
 {% set content = article.content %}
-
+{% set paywall_content_style = "" %}
 {# Pages don't have a blogName so class has to be used #}
 {% if   not _User.isAdminUser()                             and
-        blogName  | lower               == "newsroom pro"   and
-        blogName['showPaywall']         == true  %}
+        blogName  | lower       == "newsroom pro"   and
+        blogName['showPaywall'] == true  %}
     
     {% set showPaywall = true %}
 
@@ -25,6 +25,8 @@
     {% set storySplit = article.content | split('<p>')  %}
     {% set para2 = storySplit[2] | replace({'</p>': ''}) | slice(0, 190) ~ '</p>'  %}
     {% set content = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
+    {% set paywall_content_style = "content-paywalled" %}
+
 {% endif %}
 
 
@@ -206,14 +208,14 @@
                                         <h3>{{ author['displayName'] }}</h3>
                                 </div> #}
 
-                                <div class="article_content">
+                                <div class="article_content {{paywall_content_style}}">
                                     <p class="article_content__section">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
 
-                                    <p>{{ content   | preg_replace('/^<p>/', '<p class="lead">')
-                                                    | _resizeImages({"width":750}) 
-                                                    | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
-                                                    | raw }}</p>
+                                    {{ content  | preg_replace('/^<p>/', '<p class="lead">')
+                                                | _resizeImages({"width":750}) 
+                                                | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
+                                                | raw }}
                                     
                                 </div><!-- .content-->
                             </div><!-- .content-->
