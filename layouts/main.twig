@@ -337,7 +337,14 @@
         </div>
     </div> #}
 
-    {{ content | raw}}
+
+    {% if showPaywall %}
+        {{ this.render('/layout-marketing.twig', {networkData: networkData}) | raw }}
+    {% else %}
+        {{ content | raw }}
+    {% endif %}
+
+
 
 
     {{ this.render('partials/footer.twig', {
