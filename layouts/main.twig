@@ -6,7 +6,7 @@
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
 
-
+{{dump(blogName)}}
 {#     turn this on when the sdk goes through cognitives #}
 {% set redir = _Page.setHttpRedirects(
     {
@@ -20,6 +20,33 @@
         '|^/stories.*|'      : 'http://service.newsroom.co.nz'
     }, true) 
 %}    
+
+
+
+{% set showPaywall = false %}
+{# {% set url = _AppHelper.getParsedUrl().path %} #}
+
+{# Pages don't have a blogName so class has to be used #}
+{% if   not _User.isAdminUser()                                             and
+        blogName  | lower               == "newsroom pro"                   and
+        blogData['showPaywall']         == true %}
+
+    {% set showPaywall = true %}
+    {% set layout = "layout-marketing" %}
+{% endif %}
+
+
+{# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
+    {% set showPaywall = false %}
+{% endif %} #}
+
+
+
+
+
+
+
+
 
 {{ this.beginPage() }}
 <!DOCTYPE html>
@@ -60,7 +87,7 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=598dbd67" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=2a4ebe60" type="text/css" media="all">
 
 
         {% else %}
@@ -85,18 +112,18 @@
         {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
     {% endif %}
 
-<script>
-    (function(d) {
-      var el, fjs = d.getElementsByTagName('script')[0];
-        el = d.createElement('script');
-        el.id = "js-pp-banner";
-        el.src = "//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm";
-        fjs.parentNode.insertBefore(el, fjs);
-    }(document));
-</script>
+    <script>
+        (function(d) {
+        var el, fjs = d.getElementsByTagName('script')[0];
+            el = d.createElement('script');
+            el.id = "js-pp-banner";
+            el.src = "//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm";
+            fjs.parentNode.insertBefore(el, fjs);
+        }(document));
+    </script>
 
 
-    {% set themeColors = networkData['styling']['colours'] %}
+    {# {% set themeColors = networkData['styling']['colours'] %}
     <style type="text/css">
     {% if primaryFont != "" %}
         body, .body, p {
@@ -166,41 +193,27 @@
     {% if customCss != "" %}
             {{customCss | raw }}
     {% endif %}
-    </style>
+    </style> #}
 
-    {% if blogData.settings['GoogleAnalyticsID'] is  defined  and  blogData.settings['GoogleAnalyticsID'] is not empty %}
-        <!-- Google Analytics -->
+    {% set googleAnalyitcsId = ''%}
+    {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
+        {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
+    {% endif %}
+
+    {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
+        <!-- Google Analytics u -->
         <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', '{{blogData.settings['GoogleAnalyticsID']}}', 'auto');
+        ga('create', '{{googleAnalyitcsId}}', 'auto');
         ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
     {% endif %}
     
-
-    
-    {# {% set blogList = _Blog.getBlogList() %}
-
-    {% if blogList | length > 0 %}
-        <style type="text/css">
-            {% for blog in blogList %}
-                {% if blog.featuredColor is not empty %}
-                    {% set blogClass = 'card--blog_'~blog.id %}
-                    .card.{{blogClass | lower}} .title-section span {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                    .card.{{blogClass | lower}} .caption_bottom .author_name {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                {% endif %}
-            {% endfor%}
-        </style>
-    {% endif %} #}
 
     {{ this.head() }}
     
@@ -210,6 +223,7 @@
 
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-9270963482105934",

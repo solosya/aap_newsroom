@@ -6,25 +6,37 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 {% set recentLabel    = 'Newsroom' %}
+{# {% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %} #}
+
+
+{% set showPaywall = true %}
+{% set content = article.content %}
+
+{# Pages don't have a blogName so class has to be used #}
+{% if   not _User.isAdminUser()                             and
+        blogName  | lower               == "newsroom pro"   and
+        blogName['showPaywall']         == true  %}
+    
+    {% set showPaywall = true %}
+
+{% endif %}
+
+{% if showPaywall == true %}
+    {% set storySplit = article.content | split('<p>')  %}
+    {% set para2 = storySplit[2] | replace({'</p>': ''}) | slice(0, 190) ~ '</p>'  %}
+    {% set content = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
+{% endif %}
+
 
 
 {{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
 
-{# {{this.registerJs("ArticleController.view();")}} #}
 {{this.registerJs("HomeController.blog();")}}
 
-{% set status = 'follow' %}
-{% set text = 'Follow +' %}
-{% set authorId = article.createdBy['id'] %}
-{% set authorGUID = article.createdBy['guid'] %}
 
-{% if not _User.isGuset() and _User.isUserFollowing('user', authorId)%}
-    {% set status = 'unfollow' %}
-    {% set text = 'Following -' %}
-{% endif %}
-{% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %}
-{% set imgWidth = 1140 %}
-{% set imgHeight = 493 %}
+{# {% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %} #}
+{# {% set imgWidth = 1140 %}
+{% set imgHeight = 493 %} #}
 
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
@@ -49,6 +61,9 @@
 {% endif %}
 
 {% set articleBlog = (article.blog.title) %}
+
+
+
 
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
@@ -194,10 +209,11 @@
                                 <div class="article_content">
                                     <p class="article_content__section">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
-                                    <p>{{ article.content   | preg_replace('/^<p>/', '<p class="lead">')
-                                                            | _resizeImages({"width":750}) 
-                                                            | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
-                                                            | raw }}</p>
+
+                                    <p>{{ content   | preg_replace('/^<p>/', '<p class="lead">')
+                                                    | _resizeImages({"width":750}) 
+                                                    | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
+                                                    | raw }}</p>
                                     
                                 </div><!-- .content-->
                             </div><!-- .content-->
