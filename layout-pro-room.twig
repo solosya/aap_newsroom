@@ -1,0 +1,147 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 12 %}
+
+{% set recentPanelBlogName = "Newsroom" %}
+{% set recentParams = {'limit': 4} %}
+
+{% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom'%}                                                                
+    {% set recentPanelBlogName = blogName %}
+    {% set recentParams = recentParams | merge({
+        'blogId': blogData['id'],
+    }) %}
+{% else %}
+
+    {% set recentParams = recentParams | merge({
+        'scope': 'network',
+    }) %}
+
+{% endif %}
+
+
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+{% set recentArticles = _Article.getRecentArticles(recentParams) %}
+{# {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network'}) %} #}
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+    
+    <main id="main" class="site-main pro-room {{this.title | lower}}" role="main">
+        <section class="featured-slider container-fluid">
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured s1168x587'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </div><!-- .swiper-wrapper-->
+
+                </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+    
+        {% if articles[articleCount] %}                                                                
+        <section class="top-stories">
+            <div class="container">
+                <div class="row">
+
+                    {% for i in 0..1 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 s203x130'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </div><!-- .row-->
+            </div><!-- .container-->
+        </section><!-- .top-stories-->
+        {% endif %}
+
+
+
+        <section class="home-page-content">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-8">
+                        <div class="card-group">
+                            {% if articles[articleCount] %}                                                                
+
+                                {% for i in 0..3 %}
+                                    {% if articles[articleCount] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+
+                         </div><!--card-group-->
+                    </div><!-- .col-sm-8-->
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+                        
+                        <div class="row">
+                        
+
+                        <section class="col-sm-12 sidebar-news recent-articles">
+                            <h3 class="recent-articles__header">Most Popular</h3>
+                            {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+                            {% for i in 0..4 if popularArticles[i] %}
+                                {{this.render('/partials/_single-article_recent.twig', {
+                                    article         : popularArticles[i], 
+                                    swap            : false,
+                                    containerClass  : ''
+                                }) | raw}}
+                            {% endfor %} 
+
+                        </section><!-- .sidebar-news -->
+                            
+                        
+
+                        </div> <!-- .row-->
+                    </div><!-- .col-sm-4-->
+
+                </div><!-- .row-->
+
+
+
+            </div><!-- .container-->
+            
+        </section><!-- .home-page-content-->
+
+        
+    {% if articles|length >= limit %}
+        <section class="">
+            <div class="container">
+                <div class="row">
+                    <div class="ajaxArticles clearfix col-sm-12 col-md-8 card-group"
+                         data-offset="{{limit}}"
+                         data-containerclass="card-rec"
+                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                     </div>
+                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                </div>
+
+                {% set noDataCls = 'hide' %}
+                {% if articles|length == 0 %}
+                    {% set noDataCls = '' %}
+                 {% endif %}
+                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                    <p class="no-data text-center">No articles found.</p>  
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    </main><!-- .site-main -->

@@ -64,7 +64,11 @@
             <div class="section-left col-md-6 col-sm-8">
                 <div class="logo pull-left">
                     <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+                    {% if pageClass | lower == 'newsroom pro' %}
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo">
+                    {% else %} 
                         <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=7" alt="logo" class="main-logo">
+                    {% endif %}
                     </a>
                      <img class="website-award hidden-sm hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
                     <img class="website-award hidden-xs" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
