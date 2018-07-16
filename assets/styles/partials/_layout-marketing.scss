@@ -23,7 +23,7 @@
         }
     }
     .site-header-main {
-        display:none;
+        // display:none;
     }
     .marketing-container {
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break) {
@@ -61,16 +61,16 @@
 
         > div {
             text-align:center;
-            width:350px;
+            width:550px;
             margin: 0 auto;
             margin-top:25px;
 
             @media screen and (max-width: $mmd-break) {
-                width: 265px;
+                width: 450px;
             }
             @media screen and (max-width: $sm-break) {
-                width: 189px;
-            }
+                width: 300px;
+            } 
 
            p {
                 border-top:1px solid black;
@@ -96,11 +96,12 @@
                 float: right;
             }
             img.frankHeader__img {
+                width:500px;
                 @media screen and (max-width: $mmd-break) {
-                    width:129px;
+                    width:400px;
                 }
                 @media screen and (max-width: $sm-break) {
-                    width:104px;
+                    width:250px;
                 }
 
             }
@@ -120,7 +121,7 @@
         >h1 {
             font-family: $font-family-serif;
             font-size: rem(40);
-            text-align:center;
+            text-align:left;
             font-weight:700;
             @media screen and (max-width: $mmd-break) {
                 font-size: rem(40);
@@ -135,6 +136,7 @@
     .three-card {
         margin-top:55px;
         text-align:center;
+        display: flex;
         @media screen and (max-width: $mmd-break) {
             text-align:left;
         }
@@ -144,6 +146,7 @@
                 float:left;
                 margin-right:36px;
                 margin-bottom:50px;
+
             }
             @media screen and (max-width: $sm-break) {
                 float:left;
@@ -153,39 +156,25 @@
             }
 
         }
-        h2 {
-            margin-top:17px;
-            font-size:rem(18);
-            color: color(darkblue);
-            font-weight:700;
-            @media screen and (max-width: $mmd-break) {
-                margin-top:5px;
-            }
-            @media screen and (max-width: $sm-break) {
-                padding-top:5px;
-            }
-
-        }
-
+        
         p{
-            margin-top:21px;
-            font-size:rem(16);
+            margin-left: 20px;
+            margin-right: 20px;
+            font-size: rem(12.5);
             line-height: 1.62;
+            text-align: left;
         }
     }
 
     .market-hero {
-        height:566px;
-        margin-bottom:70px;
-        // background:yellow;
-        // background-image: linear-gradient(to left, rgba(0, 0, 0, 0.0), #000000), url('../images/market-hand_crop.png');
-        // background-image: linear-gradient(to left, rgba(0, 45, 86, 0.0), #193046), url('../images/market-hand_crop.png');
-        background-image: linear-gradient(to right, #193046 17%, rgba(0, 0, 0, 0.0) 100%) , url('../images/market-hand_crop2.png');
-
-        // background: url('../images/market-hand.png');
-        background-size: contain;
+        height:470px;
+        background-image: linear-gradient(to right, #FFF 05%, rgba(0, 0, 0, 0.0) 100%) , url('../images/market-splash.png');
+        background-size: 1300px;
         background-repeat: no-repeat;
         background-position: right;
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
 
         @media screen and (max-width: $mmd-break-down) {
             height:400px;
@@ -199,8 +188,10 @@
         }
 
         .content {
-            width:581px;
-            padding-top:185px;
+            //width:581px;
+            padding-top:110px;
+            margin-left:auto;
+            margin-right: auto;
             @media screen and (max-width: $mmd-break-down) {
                 padding-top:120px;
             }
@@ -208,14 +199,19 @@
                 width:100%;
                 padding-top:140px;
             }
+            @media #{$desktop-up} {
+                max-width: 1000px;
+
+            }
 
             h1 {
                 line-height: 0.88;
                 font-family: $font-family-serif;
                 font-size: rem(64);
                 font-weight:700;
-                color:white;
+                color:black;
                 margin-bottom:25px;
+                width: 600px;
                 @media screen and (max-width: $mmd-break-down) {
                     font-size: rem(47);
                     width:335px;
@@ -228,10 +224,12 @@
                 }
             }
              p{
-                font-family:$base-font-family;
-                font-size: rem(30);
-                color:white;
+                font-family:$font-family-sans-serif;
+                font-size: rem(25);
+                color:black;
+                font-weight: 400;
                 margin-bottom:45px;
+                width: 400px;
                 @media screen and (max-width: $mmd-break-down) {
                     font-size: rem(17);
 
@@ -247,7 +245,7 @@
                 background: color(red);
                 color:white;
                 font-size:rem(14);
-                padding:15px 10px;
+                padding:15px 50px;
                 @media screen and (max-width: $mmd-break-down) {
                     font-size:rem(11);
                     padding:11px 8px;
@@ -268,24 +266,25 @@
 
     .essential-news {
         margin:93px 0;
-        padding-top:70px;
         padding-bottom: 40px;
-        background: color(marketgrey);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
         
         .screenImage {
             max-width:100%;
         }
 
         h3 {
-            color:color(red);
-            font-size:rem(22);
+            color:black;
+            font-size:rem(37);
             margin-bottom:20px;
         }
 
         p {
             margin-top:18px;
-            margin-bottom:60px;
-            text-align: center;
+            margin-bottom:30px;
+            text-align: left;
             font-size:rem(24);
         }
 
@@ -336,7 +335,8 @@
                 margin-top:18px;
                 margin-bottom:50px;
                 text-align: center;
-                font-size:rem(24);
+                font-size:rem(28);
+                font-weight: 600;
             }
         }
 
@@ -404,6 +404,25 @@
             // }
         }
 
+    }
+    .pro-market__grey {
+        background: rgba(216,216,216,.3);
+    }
+    .pro-offers {
+        max-width: 1000px;
+        margin: 30px auto;
+    }
+    .pro-mini-border {
+        margin-bottom: 30px;
+        width: 52px;
+        height: 1px;
+        background-color: black;
+    }
+    .pro-dr{
+        height: 1px;
+        width: 168px;
+        background-color: black;
+        margin-bottom: 40px;
     }
 }
 
@@ -552,8 +571,11 @@
 .subscribe__contact {
     margin-top:60px;
     font-family:$base-font-family;
-    font-size: rem(24);
+    font-size: rem(28);
     text-align: center;
+    a{
+        text-decoration: underline;
+    }
 }
 .subscribe__payment-info {
     margin-top: 25px;

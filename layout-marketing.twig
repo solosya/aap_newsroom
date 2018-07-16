@@ -1,3 +1,7 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
 {% set plans = networkData['paywallPlans'] %}
 
 {{this.registerJs("var signin = new Acme.Signin('signinForm', '#signin');")}}
@@ -9,11 +13,8 @@
 		<section class="row">
 			<div class="col-sm-12 market-header">
 				<div class="frankheader">
-					<img class="frankHeader__img" src="{{networkData.templatePath}}/static/images/frank-logo.svg" width="216" height="60">
-					<p>TRUSTED SOURCES. GLOBAL STORIES.</p>
+					<img class="frankHeader__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
 				</div>
-
-				<img class="ubt-logo" src="{{networkData.templatePath}}/static/images/ubt-logo.png" width="151" height="54">
 
 			</div>
 		</section>
@@ -25,38 +26,35 @@
 				<div class="col-sm-12">
 					<div class="content">
 
-						<h1>News&nbsp;that matters&nbsp;to&nbsp;you</h1>
-						{# <p>Special offer – Sign up now for a 14-day free trial of the improved frank website </p> #}
+						<h1>Behind&nbsp;the headlines</h1>
+						<p>In-depth analysis of politics  and business from 99c a day </p>
 
 
 						<a id="" href="#subscriptions" class="_btn">SUBSCRIBE NOW</a>
- 						<a id="body_login_link" class="hidden-xs hidden-sm" style="background:#337ab7;margin-left:25px;padding:15px 45px;cursor:pointer;">SIGN IN</a>
+ 						<a id="body_login_link" class="hidden-xs hidden-sm" style="background:#8A8B93;margin-left:25px;padding:15px 45px;cursor:pointer;">START FREE TRIAL</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<div class="container-fluid">
+	<div class="container-fluid pro-market__grey">
 
-		<section class="row">
+		<section class="row pro-offers">
 			<div class="col-sm-12 section-title">
-				<h1>A unique news experience</h1>
+				<h1>What Newsroom Pro Offers</h1>
 			</div>
 			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-curated.svg">
-				<h2>CURATED</h2>
-				<p>We understand what really matters, without the fluff. Informative news that's safe for all the family to read.   </p>
+				<img src="{{networkData.templatePath}}/static/images/market-global.svg" style="height: 85px;">
+				<p>A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</p>
 			</div>
 			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-professional.svg">
-				<h2>PROFESSIONAL</h2>
-				<p>Curated exclusively for UBT by AAP's dedicated newsroom of professionals to the highest editorial standards.</p>
+				<img src="{{networkData.templatePath}}/static/images/market-satellite.svg" style="height: 90px;">
+				<p>Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</p>
 			</div>
 			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-world.svg">
-				<h2>ALL THE WORLD'S NEWS</h2>
-				<p>Stay well-informed with our premium network of news and video from Australia, New Zealand and every corner of the globe, with specific focus on community locations.</p>
+				<img src="{{networkData.templatePath}}/static/images/market-monitoring.svg" style="height: 112px;margin-top:-15px;">
+				<p>Group subscribers get access to our media monitoring service, which covers dozens of business sectors</p>
 		</section>
 	</div>
 
@@ -64,26 +62,25 @@
 
 	<section class="row essential-news u-mobile-no-margin-bottom">
 		<div class="container-fluid">
-			<div class="col-sm-12 section-title">
-				<h1>Essential news delivered daily</h1>
-				<p>Quality journalism, the way you want it. Enjoy unlimited access to stories that matter.</p>
+			<div class="col-sm-12 col-md-6 centerContent">
+				<img class="screenImage" src="{{networkData.templatePath}}/static/images/market-device.png"></img>
 			</div>
-			<div class="col-sm-12 col-md-5 col-md-offset-1 centerContent">
-				<img class="screenImage" src="{{networkData.templatePath}}/static/images/market-screens.png?v=4"></img>
-			</div>
-			<div class="col-sm-12 col-md-offset-1 col-md-5">
-				<h3>What's included in your subscription</h3>
-				<ul>
-					<li>Unlimited access to the frank website on desktop, mobile and tablet</li>
-					<li>frank Analysis, an exclusive printable newsletter of the day's best news</li>
-					<li>Post and view real estate and job listings from the UBT community</li>
-					<li>Digital screens available for business pack subscribers*</li>
-				</ul>
-				<p class="disclaimer">*Additional hardware may be required for digital screens</p>
+			<div class="col-sm-12 col-md-6">
+				<h3><b style="color:#e22f22">Our top business journalists</b><br />  deliver NZ’s big corporate stories first</h3>
+				<div style="width:100%;">
+					<hr class="pro-mini-border">
+				</div>
+				<p>
+					Corporate news, first with our dedicated team of the top business journalists in NZ
+				</p>
+				<p>
+					Newsroom Pro is a subscription news service for corporations, government agencies, local councils, NGOs, and other premium clients.
+				</p>
 			</div>
 		</div>
 	</section>
 
+	<hr class="pro-dr">
 
 	<div class="container-fluid">
 
@@ -92,8 +89,7 @@
 		<section class="row subscription">
 			<div class="container-fluid">
 				<div class="col-sm-12 section-title">
-					<h1>Trusted sources. Global stories</h1>
-					<p>Choose the subscription that's right for you</p>
+					<p>Choose the business subscription that's right for you</p>
 				</div>
 
 
@@ -110,18 +106,16 @@
 								<p class="usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
 								<p class="price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})<br class="hidden-xs"> per {{plan.period}}</p>
 
-	{# 							//trial button. this will probably be turned on again at some point
-								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
-									<p class="centerBlock _btn _btn--blue _btn__subscribe">14-DAY FREE TRIAL</p>
-								</a>
-	 #}
-
-
 								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}">
 									<p class="centerBlock _btn _btn--red _btn__subscribe">
 										<span>SUBSCRIBE NOW</span>
-										{# <span class="btn_trial">Your subscription includes a <br />14-day free trial period</span> #}
+										
 									</p>
+								</a>
+
+								<!-- trial button. this will probably be turned off again at some point -->
+								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
+									<p class="centerBlock _btn _btn--blue _btn__subscribe">START 28-DAY FREE TRIAL</p>
 								</a>
 							</div>
 						</div>
@@ -131,8 +125,8 @@
 
 
 			</div>
-			<a class="subscribe__link" href="mailto:franknews@aap.com.au"><p class="subscribe__contact">Need a package tailored to your business? Contact us.</p></a>
-			{# <p class="subscribe__payment-info">Please note: Your payment method will be charged at the end of the 14-day free trial period unless cancelled prior.</p> #}
+			<p class="subscribe__contact">For enterprises with 200 or more users, please <a href="mailto:bernard.hickey@newsroom.co.nz">email us</a> for a custom arrangement.</p>
+			
 
 		</section>
 

@@ -12480,9 +12480,6 @@ body.channel, body.section {
         padding-top: 14px;
         font-size: 11px; } }
 
-.layout-marketing .site-header-main, body.auth.login .site-header-main {
-  display: none; }
-
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .layout-marketing .marketing-container, body.auth.login .marketing-container {
     padding: 0 80px; } }
@@ -12511,15 +12508,15 @@ body.channel, body.section {
         position: static; } }
   .layout-marketing .market-header > div, body.auth.login .market-header > div {
     text-align: center;
-    width: 350px;
+    width: 550px;
     margin: 0 auto;
     margin-top: 25px; }
     @media screen and (max-width: 992px) {
       .layout-marketing .market-header > div, body.auth.login .market-header > div {
-        width: 265px; } }
+        width: 450px; } }
     @media screen and (max-width: 768px) {
       .layout-marketing .market-header > div, body.auth.login .market-header > div {
-        width: 189px; } }
+        width: 300px; } }
     .layout-marketing .market-header > div p, body.auth.login .market-header > div p {
       border-top: 1px solid black;
       padding-top: 10px;
@@ -12535,12 +12532,14 @@ body.channel, body.section {
   @media screen and (max-width: 768px) {
     .layout-marketing .market-header .frankheader, body.auth.login .market-header .frankheader {
       float: right; } }
-  @media screen and (max-width: 992px) {
-    .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
-      width: 129px; } }
-  @media screen and (max-width: 768px) {
-    .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
-      width: 104px; } }
+  .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
+    width: 500px; }
+    @media screen and (max-width: 992px) {
+      .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
+        width: 400px; } }
+    @media screen and (max-width: 768px) {
+      .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
+        width: 250px; } }
   @media screen and (max-width: 768px) {
     .layout-marketing .market-header .ubt-logo, body.auth.login .market-header .ubt-logo {
       float: left;
@@ -12551,7 +12550,7 @@ body.channel, body.section {
 .layout-marketing .section-title > h1, body.auth.login .section-title > h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 4rem;
-  text-align: center;
+  text-align: left;
   font-weight: 700; }
   @media screen and (max-width: 992px) {
     .layout-marketing .section-title > h1, body.auth.login .section-title > h1 {
@@ -12562,7 +12561,8 @@ body.channel, body.section {
 
 .layout-marketing .three-card, body.auth.login .three-card {
   margin-top: 55px;
-  text-align: center; }
+  text-align: center;
+  display: flex; }
   @media screen and (max-width: 992px) {
     .layout-marketing .three-card, body.auth.login .three-card {
       text-align: left; } }
@@ -12577,28 +12577,22 @@ body.channel, body.section {
       height: 30px;
       margin-bottom: 0;
       margin-right: 19px; } }
-  .layout-marketing .three-card h2, body.auth.login .three-card h2 {
-    margin-top: 17px;
-    font-size: 1.8rem;
-    font-weight: 700; }
-    @media screen and (max-width: 992px) {
-      .layout-marketing .three-card h2, body.auth.login .three-card h2 {
-        margin-top: 5px; } }
-    @media screen and (max-width: 768px) {
-      .layout-marketing .three-card h2, body.auth.login .three-card h2 {
-        padding-top: 5px; } }
   .layout-marketing .three-card p, body.auth.login .three-card p {
-    margin-top: 21px;
-    font-size: 1.6rem;
-    line-height: 1.62; }
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.25rem;
+    line-height: 1.62;
+    text-align: left; }
 
 .layout-marketing .market-hero, body.auth.login .market-hero {
-  height: 566px;
-  margin-bottom: 70px;
-  background-image: linear-gradient(to right, #193046 17%, transparent 100%), url("../images/market-hand_crop2.png");
-  background-size: contain;
+  height: 470px;
+  background-image: linear-gradient(to right, #FFF 5%, transparent 100%), url("../images/market-splash.png");
+  background-size: 1300px;
   background-repeat: no-repeat;
-  background-position: right; }
+  background-position: right;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto; }
   @media screen and (max-width: 991px) {
     .layout-marketing .market-hero, body.auth.login .market-hero {
       height: 400px; } }
@@ -12608,8 +12602,9 @@ body.channel, body.section {
       background-size: cover;
       margin-bottom: 25px; } }
   .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
-    width: 581px;
-    padding-top: 185px; }
+    padding-top: 110px;
+    margin-left: auto;
+    margin-right: auto; }
     @media screen and (max-width: 991px) {
       .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
         padding-top: 120px; } }
@@ -12617,13 +12612,17 @@ body.channel, body.section {
       .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
         width: 100%;
         padding-top: 140px; } }
+    @media screen and (min-width: 992px) {
+      .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
+        max-width: 1000px; } }
     .layout-marketing .market-hero .content h1, body.auth.login .market-hero .content h1 {
       line-height: 0.88;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: 6.4rem;
       font-weight: 700;
-      color: white;
-      margin-bottom: 25px; }
+      color: black;
+      margin-bottom: 25px;
+      width: 600px; }
       @media screen and (max-width: 991px) {
         .layout-marketing .market-hero .content h1, body.auth.login .market-hero .content h1 {
           font-size: 4.7rem;
@@ -12634,10 +12633,12 @@ body.channel, body.section {
           width: 262px;
           margin-top: -25px; } }
     .layout-marketing .market-hero .content p, body.auth.login .market-hero .content p {
-      font-family: "tinos", Helvetica, Arial, sans-serif;
-      font-size: 3rem;
-      color: white;
-      margin-bottom: 45px; }
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 2.5rem;
+      color: black;
+      font-weight: 400;
+      margin-bottom: 45px;
+      width: 400px; }
       @media screen and (max-width: 991px) {
         .layout-marketing .market-hero .content p, body.auth.login .market-hero .content p {
           font-size: 1.7rem; } }
@@ -12651,7 +12652,7 @@ body.channel, body.section {
       background: #e22f22;
       color: white;
       font-size: 1.4rem;
-      padding: 15px 10px; }
+      padding: 15px 50px; }
       @media screen and (max-width: 991px) {
         .layout-marketing .market-hero .content a, body.auth.login .market-hero .content a {
           font-size: 1.1rem;
@@ -12665,18 +12666,20 @@ body.channel, body.section {
 
 .layout-marketing .essential-news, body.auth.login .essential-news {
   margin: 93px 0;
-  padding-top: 70px;
-  padding-bottom: 40px; }
+  padding-bottom: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto; }
   .layout-marketing .essential-news .screenImage, body.auth.login .essential-news .screenImage {
     max-width: 100%; }
   .layout-marketing .essential-news h3, body.auth.login .essential-news h3 {
-    color: #e22f22;
-    font-size: 2.2rem;
+    color: black;
+    font-size: 3.7rem;
     margin-bottom: 20px; }
   .layout-marketing .essential-news p, body.auth.login .essential-news p {
     margin-top: 18px;
-    margin-bottom: 60px;
-    text-align: center;
+    margin-bottom: 30px;
+    text-align: left;
     font-size: 2.4rem; }
   .layout-marketing .essential-news ul, body.auth.login .essential-news ul {
     padding: 20px; }
@@ -12711,7 +12714,8 @@ body.channel, body.section {
     margin-top: 18px;
     margin-bottom: 50px;
     text-align: center;
-    font-size: 2.4rem; }
+    font-size: 2.8rem;
+    font-weight: 600; }
   @media screen and (max-width: 767px) {
     .layout-marketing .subscription .subscriptionCard, body.auth.login .subscription .subscriptionCard {
       padding-left: 0;
@@ -12757,6 +12761,25 @@ body.channel, body.section {
       font-size: 1.4rem;
       color: #e22f22;
       font-weight: 700; }
+
+.layout-marketing .pro-market__grey, body.auth.login .pro-market__grey {
+  background: rgba(216, 216, 216, 0.3); }
+
+.layout-marketing .pro-offers, body.auth.login .pro-offers {
+  max-width: 1000px;
+  margin: 30px auto; }
+
+.layout-marketing .pro-mini-border, body.auth.login .pro-mini-border {
+  margin-bottom: 30px;
+  width: 52px;
+  height: 1px;
+  background-color: black; }
+
+.layout-marketing .pro-dr, body.auth.login .pro-dr {
+  height: 1px;
+  width: 168px;
+  background-color: black;
+  margin-bottom: 40px; }
 
 #signin {
   position: fixed;
@@ -12855,8 +12878,10 @@ body.channel, body.section {
 .subscribe__contact {
   margin-top: 60px;
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   text-align: center; }
+  .subscribe__contact a {
+    text-decoration: underline; }
 
 .subscribe__payment-info {
   margin-top: 25px;
