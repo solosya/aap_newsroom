@@ -29280,8 +29280,9 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 
 
     Acme.modal = function(template, name, layouts, data) {
-        this.parentCont = name || null;
+        console.log(name);
         this.template = template || null;
+        this.parentCont = name   || null;
         this.layouts = layouts   || null;
         this.data = data         || {};
         this.dfd = $.Deferred();
@@ -29293,11 +29294,13 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
+            console.log(this.data);
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
             $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
+                console.log('rendering', layout);
                 this.renderLayout(layout, data);
             }
             this.events();
@@ -29306,6 +29309,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         };
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
+            console.log(Acme.templates[this.layouts[layout]]);
             var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
             var layout = tmp(data);
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
@@ -29421,18 +29425,75 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
  */
 Acme.templates = {};
 
+Acme.templates.signinFormTmpl = 
+    // <script> tag possible ios safari login fix
+    '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="loginName" class="" type="text" name="username" placeholder="Username or email" value="" /> \
+        <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
+        \
+        <div class="remember"> \
+            <p class="layout" data-layout="forgot" class="">Forgot password</p> \
+        </div> \
+        \
+        <div class="message active hide"> \
+            <div class="login-form__error_text">Invalid Username or Password</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+        \
+        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/login-faq">Read our FAQ</a></p> \
+        <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
+    </form>';
+
+Acme.templates.registerTmpl = 
+    '<form name="registerForm" id="registerForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="name" class="" type="text" name="name" placeholder="Name"> \
+        <input id="email" class="" type="email" name="email" placeholder="Email"> \
+        \
+        <div class="message active hide"> \
+            <div class="account-modal__error_text">Done!</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red register">Register</button> \
+    </form>';
+
+
+Acme.templates.forgotFormTmpl = 
+    '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        <input type="hidden" name="_csrf" value="" /> \
+        <p class="password-reset-form__p">Enter your email below and we will send you an email to reset your password.</p> \
+        <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
+        \
+        <div class="password-reset-form__remember"> \
+            <p class="layout" data-layout="signin" class="">Remember password?</p> \
+        </div> \
+        \
+        <div class="message active hide"> \
+            <div class="password-reset-form__error_text">No user with that email found.</div> \
+        </div> \
+        \
+        <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
+    </form>';
+
+
+Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
+
+
+
 Acme.templates.modal = 
 // style="scrolling == unusable position:fixed element might be fixing login for ios safari
 // also margin-top:10px
-'<div id="signin" class="flex_col acme-modal"> \
-    <div id="dialog" class="acme-modal__window"> \
-        <div class="acme-modal__container centerContent" style="scrolling == unusable position:fixed element"> \
-            <div class="acme-modal__header"> \
-                <h2 class="acme-modal__title">{{title}}</h2> \
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
                 <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
-                <a class="acme-modal__close u-invisible" href="#" data-behaviour="close"></a> \
+                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
-            <div class="acme-modal__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
     </div> \
 </div>';
@@ -30788,6 +30849,155 @@ SearchController.Listing = (function ($) {
             attachEvents();
         }
     };
+
+}(jQuery));
+(function ($) {
+
+
+Acme.Signin = function(template, parent, layouts) {
+    this.template = template;
+    this.parentCont = parent;
+    this.layouts = layouts;
+    this.parent = Acme.modal.prototype;
+};
+Acme.Signin.prototype = new Acme.modal();
+Acme.Signin.constructor = Acme.Signin;
+Acme.Signin.prototype.errorMsg = function(msg) {
+    $('.message').removeClass('hide');
+};
+Acme.Signin.prototype.handle = function(e) {
+    var self = this;
+    var $elem = this.parent.handle.call(this, e);
+
+    if ( $elem.is('a') ) {
+        if ($elem.hasClass('close')) {
+            e.preventDefault();
+            $('body').removeClass("active");
+            this.closeWindow();
+        }
+    }
+    if ($elem.is('button')) {
+        $('.message').addClass('hide');
+        if ($elem.hasClass('signin')) {
+            $elem.text('')
+                 .addClass('spinner');
+            e.preventDefault();
+            var formData = {};
+
+            $.each($('#loginForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+            // rememberMe sets flag to store login for 30 days in cookie
+            formData['rememberMe'] = 1;
+            Acme.server.create('/api/auth/login', formData).done(function(r) {
+
+                if (r.success === 1) {
+                    window.location.href = location.origin;
+
+                } else {
+                    $elem.text("Sign in")
+                         .removeClass('spinner');
+                    self.errorMsg();
+                }
+            }).fail(function(r) { console.log(r);});
+        }
+
+
+        if ($elem.hasClass('register')) {
+            e.preventDefault();
+            var formData = {};
+            $.each($('#registerForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+
+            if (formData['email'] !== '' && formData['name'] !== ''){
+                $.get( 'https://submit.pagemasters.com.au/ubt/submit.php?email='+encodeURI(formData['email'])+'&name='+encodeURI(formData['name']) );
+                $elem.addClass('spinner');
+                function close() {
+                    self.closeWindow();
+                    self.render('userPlan', "Thank you for registering.");
+
+                };
+                setTimeout(close, 2000);
+
+            } else {
+                alert ("Please fill out all fields.");
+            }
+        }
+
+
+        if ($elem.hasClass('forgot')) {
+            e.preventDefault();
+            var formData = {};
+            $.each($('#forgotForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+
+            Acme.server.create('/api/auth/forgot-password', formData).done(function(r) {
+                if (r.success === 1) {
+                    location.reload();
+                } else {
+                    self.errorMsg();
+                }
+
+            }).fail(function(r) { console.log(r);});
+        }
+
+        if ($elem.hasClass('default-weather')) {
+            var newDefault = Acme.State.Country + '/' + Acme.State.City;
+
+            localStorage.setItem('city', newDefault);
+            function close() {
+
+                Acme.PubSub.publish("update_state", {'localweather': newDefault });                
+
+                self.closeWindow();
+            };
+            setTimeout(close, 500);            
+        }     
+
+
+        if ($elem.hasClass('close')) {
+            $('body').removeClass("active");
+            this.closeWindow();
+        }
+   
+
+    }
+    if ($elem.hasClass('layout')) {
+        var layout = $elem.data('layout');
+        this.renderLayout(layout);
+    }
+
+
+
+};
+
+var layouts = {
+    "signin"        : 'signinFormTmpl',
+    "register"      : 'registerTmpl',
+    "forgot"        : 'forgotFormTmpl',
+    "spinner"       : 'spinnerTmpl'
+}
+
+
+
+
+Acme.SigninView = new Acme.Signin('modal', 'signin-modal', layouts);
+
+
+
+$('#signinBtn').on('click', function() {
+    Acme.SigninView.render("signin", "Sign in");
+});
+
+$('a.j-register').on('click', function(e) {
+    e.preventDefault();
+    Acme.SigninView.render("register", "Register your interest");
+});
+
+
+
 
 }(jQuery));
 var UserArticlesController = (function ($) {
