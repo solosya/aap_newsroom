@@ -3,18 +3,75 @@
  */
 Acme.templates = {};
 
+Acme.templates.signinFormTmpl = 
+    // <script> tag possible ios safari login fix
+    '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="loginName" class="" type="text" name="username" placeholder="Username or email" value="" /> \
+        <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
+        \
+        <div class="remember"> \
+            <p class="layout" data-layout="forgot" class="">Forgot password</p> \
+        </div> \
+        \
+        <div class="message active hide"> \
+            <div class="login-form__error_text">Invalid Username or Password</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+        \
+        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/login-faq">Read our FAQ</a></p> \
+        <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
+    </form>';
+
+Acme.templates.registerTmpl = 
+    '<form name="registerForm" id="registerForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="name" class="" type="text" name="name" placeholder="Name"> \
+        <input id="email" class="" type="email" name="email" placeholder="Email"> \
+        \
+        <div class="message active hide"> \
+            <div class="account-modal__error_text">Done!</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red register">Register</button> \
+    </form>';
+
+
+Acme.templates.forgotFormTmpl = 
+    '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        <input type="hidden" name="_csrf" value="" /> \
+        <p class="password-reset-form__p">Enter your email below and we will send you an email to reset your password.</p> \
+        <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
+        \
+        <div class="password-reset-form__remember"> \
+            <p class="layout" data-layout="signin" class="">Remember password?</p> \
+        </div> \
+        \
+        <div class="message active hide"> \
+            <div class="password-reset-form__error_text">No user with that email found.</div> \
+        </div> \
+        \
+        <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
+    </form>';
+
+
+Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
+
+
+
 Acme.templates.modal = 
 // style="scrolling == unusable position:fixed element might be fixing login for ios safari
 // also margin-top:10px
-'<div id="signin" class="flex_col acme-modal"> \
-    <div id="dialog" class="acme-modal__window"> \
-        <div class="acme-modal__container centerContent" style="scrolling == unusable position:fixed element"> \
-            <div class="acme-modal__header"> \
-                <h2 class="acme-modal__title">{{title}}</h2> \
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
                 <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
-                <a class="acme-modal__close u-invisible" href="#" data-behaviour="close"></a> \
+                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
-            <div class="acme-modal__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
     </div> \
 </div>';

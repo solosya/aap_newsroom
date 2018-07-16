@@ -8286,8 +8286,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         color: #6c6c6c;
         font-weight: normal; }
   .site-header .site-branding-bottom {
-    padding-top: 6px;
-    padding-bottom: 40px; }
+    padding-top: 6px; }
     @media screen and (max-width: 767px) {
       .site-header .site-branding-bottom {
         padding-top: 10px;
@@ -9300,6 +9299,248 @@ button.swiper-pagination-bullet {
     display: block;
     height: 48px; }
 
+.btn {
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 0;
+  padding: 10px 9px;
+  border-bottom: 2px solid #e22f22; }
+
+._btn {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: 170px;
+  height: 44px;
+  line-height: 44px; }
+
+._btn--red {
+  background: #e22f22;
+  color: white; }
+  ._btn--red:hover {
+    text-decoration: none;
+    color: white; }
+
+._btn--blue {
+  color: white; }
+  ._btn--blue:hover {
+    text-decoration: none;
+    color: white; }
+
+._btn--gray {
+  background: #97999c;
+  color: white; }
+
+._btn__subscribe {
+  padding: 10px 5px;
+  width: 190px;
+  height: auto;
+  line-height: 1.2; }
+  ._btn__subscribe > span {
+    display: block;
+    text-align: center; }
+  ._btn__subscribe > .btn_trial {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    font-weight: 400; }
+
+._btn__register {
+  font-size: 2.3rem;
+  width: 427px;
+  height: 94px;
+  display: block;
+  margin: 0 auto;
+  padding: 33px 10px; }
+  @media screen and (max-width: 767px) {
+    ._btn__register {
+      width: 80%;
+      height: 10%; } }
+
+.signin-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7); }
+
+.signin-modal__window {
+  margin: auto auto;
+  width: 468px;
+  background: white;
+  padding: 30px 50px;
+  border-radius: 3px; }
+  @media screen and (max-width: 767px) {
+    .signin-modal__window {
+      width: auto;
+      margin-top: 10px; } }
+
+.signin-modal__container {
+  position: relative;
+  margin: auto; }
+
+.signin-modal__header {
+  overflow: auto;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #97999c;
+  margin-bottom: 20px; }
+
+.signin-modal__title {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  float: left;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  margin-right: 20px; }
+
+.signin-modal__close {
+  display: block;
+  float: right;
+  height: 30px;
+  width: 30px;
+  background: url("../icons/cross-black.svg");
+  background-repeat: no-repeat; }
+
+.login-form input[type=text], .login-form input[type=password], .login-form input[type=email] {
+  display: block;
+  border: none;
+  height: 44px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  background: white; }
+  .login-form input[type=text]::placeholder, .login-form input[type=password]::placeholder, .login-form input[type=email]::placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .login-form input[type=text]::-webkit-input-placeholder, .login-form input[type=password]::-webkit-input-placeholder, .login-form input[type=email]::-webkit-input-placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .login-form input[type=text]::-moz-placeholder, .login-form input[type=password]::-moz-placeholder, .login-form input[type=email]::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .login-form input[type=text]:-ms-input-placeholder, .login-form input[type=password]:-ms-input-placeholder, .login-form input[type=email]:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .login-form input[type=text]:-moz-placeholder, .login-form input[type=password]:-moz-placeholder, .login-form input[type=email]:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .login-form input[type=text]:disabled, .login-form input[type=password]:disabled, .login-form input[type=email]:disabled {
+    padding: 0px !important;
+    border: none; }
+
+.login-form .remember {
+  overflow: auto; }
+  .login-form .remember > div {
+    float: left; }
+    @media screen and (max-width: 767px) {
+      .login-form .remember > div {
+        float: none; } }
+    .login-form .remember > div label {
+      font-size: 1.2rem;
+      color: #97999c;
+      font-weight: normal; }
+  .login-form .remember > p.layout {
+    float: right;
+    font-size: 1.2rem;
+    color: #97999c;
+    font-style: italic; }
+    @media screen and (max-width: 767px) {
+      .login-form .remember > p.layout {
+        float: none; } }
+    .login-form .remember > p.layout:hover {
+      cursor: pointer; }
+
+.login-form-faq {
+  font-size: 1.2rem;
+  color: #97999c;
+  font-style: italic; }
+
+.login-form-faq__link {
+  color: #97999c;
+  text-decoration: underline; }
+
+.login-form__error_text {
+  color: #e22f22;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 26px 0; }
+
+.password-reset-form input[type=text], .password-reset-form input[type=password], .password-reset-form input[type=email] {
+  display: block;
+  border: none;
+  height: 44px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  background: white; }
+  .password-reset-form input[type=text]::placeholder, .password-reset-form input[type=password]::placeholder, .password-reset-form input[type=email]::placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .password-reset-form input[type=text]::-webkit-input-placeholder, .password-reset-form input[type=password]::-webkit-input-placeholder, .password-reset-form input[type=email]::-webkit-input-placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .password-reset-form input[type=text]::-moz-placeholder, .password-reset-form input[type=password]::-moz-placeholder, .password-reset-form input[type=email]::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .password-reset-form input[type=text]:-ms-input-placeholder, .password-reset-form input[type=password]:-ms-input-placeholder, .password-reset-form input[type=email]:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .password-reset-form input[type=text]:-moz-placeholder, .password-reset-form input[type=password]:-moz-placeholder, .password-reset-form input[type=email]:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .password-reset-form input[type=text]:disabled, .password-reset-form input[type=password]:disabled, .password-reset-form input[type=email]:disabled {
+    padding: 0px !important;
+    border: none; }
+
+.password-reset-form .password-reset-form__remember {
+  overflow: auto; }
+  .password-reset-form .password-reset-form__remember > div {
+    float: left; }
+    @media screen and (max-width: 767px) {
+      .password-reset-form .password-reset-form__remember > div {
+        float: none; } }
+    .password-reset-form .password-reset-form__remember > div label {
+      font-size: 1.2rem;
+      color: #97999c;
+      font-weight: normal; }
+  .password-reset-form .password-reset-form__remember > p.layout {
+    float: right;
+    font-size: 1.2rem;
+    color: #97999c;
+    font-style: italic; }
+    @media screen and (max-width: 767px) {
+      .password-reset-form .password-reset-form__remember > p.layout {
+        float: none; } }
+    .password-reset-form .password-reset-form__remember > p.layout:hover {
+      cursor: pointer; }
+
+.password-reset-form__error_text {
+  color: #e22f22;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 26px 0; }
+
+.password-reset-form__p {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.38; }
+
 .register-popup {
   z-index: 100;
   position: fixed;
@@ -10206,9 +10447,10 @@ button.swiper-pagination-bullet {
 .empty-listing {
   display: block;
   padding: 20px 0;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #97999c;
   margin-bottom: 30px;
   text-align: center;
+  color: #97999c;
   font-size: 1.3rem; }
 
 .profile-section {
@@ -10216,7 +10458,7 @@ button.swiper-pagination-bullet {
   padding: 18px 0px; }
 
 .profile-section--border {
-  border-bottom: 1px solid; }
+  border-bottom: 1px solid #97999c; }
 
 .profile-section__users-left {
   font-size: 1.2rem;
@@ -10225,7 +10467,7 @@ button.swiper-pagination-bullet {
 
 .profile-section__header {
   width: 100%;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #97999c;
   padding-bottom: 10px;
   margin-top: 40px;
   margin-bottom: 15px; }
@@ -10282,7 +10524,8 @@ button.swiper-pagination-bullet {
     display: block;
     height: 1px;
     width: 49px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    background: #97999c; }
 
 .room-view {
   margin-top: 70px;
@@ -12666,7 +12909,8 @@ body.channel, body.section {
 .layout-marketing .essential-news, body.auth.login .essential-news {
   margin: 93px 0;
   padding-top: 70px;
-  padding-bottom: 40px; }
+  padding-bottom: 40px;
+  background: rgba(216, 216, 216, 0.3); }
   .layout-marketing .essential-news .screenImage, body.auth.login .essential-news .screenImage {
     max-width: 100%; }
   .layout-marketing .essential-news h3, body.auth.login .essential-news h3 {
@@ -12703,7 +12947,8 @@ body.channel, body.section {
     margin-bottom: 41px; }
   .layout-marketing .cost p, body.auth.login .cost p {
     margin-top: 25px;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    color: #97999c; }
 
 .layout-marketing .subscription, body.auth.login .subscription {
   margin-top: 90px; }
@@ -12719,7 +12964,8 @@ body.channel, body.section {
   .layout-marketing .subscription .subscriptionCard .card, body.auth.login .subscription .subscriptionCard .card {
     padding: 37px 0;
     margin-bottom: 35px;
-    text-align: center; }
+    text-align: center;
+    background: rgba(216, 216, 216, 0.3); }
     @media screen and (max-width: 767px) {
       .layout-marketing .subscription .subscriptionCard .card, body.auth.login .subscription .subscriptionCard .card {
         margin-bottom: 30px;
@@ -12781,7 +13027,7 @@ body.channel, body.section {
       #signin #dialog > div .head {
         overflow: auto;
         padding-bottom: 11px;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid #97999c;
         margin-bottom: 20px; }
         #signin #dialog > div .head h2 {
           float: left;
@@ -12797,8 +13043,10 @@ body.channel, body.section {
           background-repeat: no-repeat; }
       #signin #dialog > div .faq {
         font-size: 1.2rem;
+        color: #97999c;
         font-style: italic; }
       #signin #dialog > div .faq__link {
+        color: #97999c;
         text-decoration: underline; }
       #signin #dialog > div form input[type=text], #signin #dialog > div form input[type=password], #signin #dialog > div form input[type=email] {
         display: block;
@@ -12809,21 +13057,26 @@ body.channel, body.section {
         margin-bottom: 12px;
         padding-left: 15px;
         border-radius: 6px;
-        border: 1px solid;
+        border: 1px solid #E5E5E5;
         background: white; }
         #signin #dialog > div form input[type=text]::placeholder, #signin #dialog > div form input[type=password]::placeholder, #signin #dialog > div form input[type=email]::placeholder {
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          color: #97999c; }
         #signin #dialog > div form input[type=text]::-webkit-input-placeholder, #signin #dialog > div form input[type=password]::-webkit-input-placeholder, #signin #dialog > div form input[type=email]::-webkit-input-placeholder {
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          color: #97999c; }
         #signin #dialog > div form input[type=text]::-moz-placeholder, #signin #dialog > div form input[type=password]::-moz-placeholder, #signin #dialog > div form input[type=email]::-moz-placeholder {
           /* Firefox 19+ */
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          color: #97999c; }
         #signin #dialog > div form input[type=text]:-ms-input-placeholder, #signin #dialog > div form input[type=password]:-ms-input-placeholder, #signin #dialog > div form input[type=email]:-ms-input-placeholder {
           /* IE 10+ */
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          color: #97999c; }
         #signin #dialog > div form input[type=text]:-moz-placeholder, #signin #dialog > div form input[type=password]:-moz-placeholder, #signin #dialog > div form input[type=email]:-moz-placeholder {
           /* Firefox 18- */
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          color: #97999c; }
         #signin #dialog > div form input[type=text]:disabled, #signin #dialog > div form input[type=password]:disabled, #signin #dialog > div form input[type=email]:disabled {
           padding: 0px !important;
           border: none; }
@@ -12836,10 +13089,12 @@ body.channel, body.section {
               float: none; } }
           #signin #dialog > div form .remember > div label {
             font-size: 1.2rem;
+            color: #97999c;
             font-weight: normal; }
         #signin #dialog > div form .remember > p.layout {
           float: right;
           font-size: 1.2rem;
+          color: #97999c;
           font-style: italic; }
           @media screen and (max-width: 767px) {
             #signin #dialog > div form .remember > p.layout {

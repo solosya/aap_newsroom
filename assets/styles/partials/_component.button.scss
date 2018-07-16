@@ -1,0 +1,72 @@
+.btn{
+    font-size: rem(14);
+    font-weight: 600;
+    border-radius: 0;
+    padding: 10px 9px;
+    border-bottom: 2px solid $brand-secondary;  
+}
+._btn {
+    position:relative;
+    border:0;
+    border-radius:0;
+    font-size: rem(14);
+    font-weight:700;
+    width:170px;
+    height:44px;
+    line-height:44px;
+    // margin-right:10px;
+}
+
+._btn--red {
+    background: color(red);
+    color:white;
+    &:hover{
+        text-decoration: none;
+        color:white;
+    }
+}
+
+._btn--blue {
+    background: color(darkblue);
+    color:white;
+    &:hover{
+        text-decoration: none;
+        color:white;
+    }
+}
+
+._btn--gray {
+    background: color(lightgrey);
+    color:white;
+}
+
+
+._btn__subscribe {
+    padding:10px 5px;
+    width:190px;
+    height:auto;
+    line-height:1.2;
+    >span {
+        display:block;
+        text-align: center;
+    }
+    >.btn_trial {
+        margin-top:5px;
+        font-size:rem(12);
+        font-weight:400;
+    }
+}
+
+
+._btn__register {
+    font-size: rem(23);
+    width: 427px;
+    height: 94px;
+    @media screen and (max-width: $sm-break-down){
+        width: 80%;
+        height: 10%;
+    }
+    display: block;
+    margin: 0 auto;
+    padding: 33px 10px;
+}

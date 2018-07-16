@@ -1,10 +1,10 @@
 //Bootstrap
-@import "variables";
+@import "settings.variables";
 @import "bootstrap";
-@import "functions";
+@import "tools.functions";
 @import "bootbox";
 @import "font-awesome-4.7.0/scss/font-awesome";
-@import "mixins";
+@import "tools.mixins";
 @import "login";
 
 @import "profile";
@@ -40,6 +40,10 @@
 @import "opinion";
 
 
+@import "component.button";
+@import "component.signin-modal";
+@import "component.modal-login-form";
+@import "component.modal-password-reset-form";
 @import "component.register-popup";
 @import "component.popup-embed";
 @import "component.article-support";
