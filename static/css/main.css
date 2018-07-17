@@ -10520,6 +10520,255 @@ button.swiper-pagination-bullet {
     margin-bottom: 15px;
     background: #97999c; }
 
+.pro-room .featured-slider {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background-color: black;
+  max-width: unset; }
+  @media screen and (max-width: 767px) {
+    .pro-room .featured-slider {
+      margin-bottom: 50px; } }
+  @media screen and (max-width: 620px) {
+    .pro-room .featured-slider {
+      margin-bottom: 30px; } }
+  .pro-room .featured-slider .swiper-container {
+    max-width: 1600px;
+    background-color: black;
+    border: unset; }
+
+.pro-room .featured a.card .content {
+  padding: 220px 29px 36px 31px; }
+  @media screen and (max-width: 1600px) {
+    .pro-room .featured a.card .content {
+      padding: 150px 29px 20px 20px; } }
+  @media screen and (max-width: 1450px) {
+    .pro-room .featured a.card .content {
+      padding: 120px 29px 20px 31px; } }
+  @media screen and (max-width: 1200px) {
+    .pro-room .featured a.card .content {
+      padding: 100px 29px 20px 31px; } }
+  @media screen and (max-width: 991px) {
+    .pro-room .featured a.card .content {
+      padding: 60px 29px 15px 31px; } }
+  .pro-room .featured a.card .content h2 {
+    min-height: 160px;
+    color: #fcfcfc;
+    border-bottom: 1px solid #dadada; }
+    @media screen and (max-width: 1450px) {
+      .pro-room .featured a.card .content h2 {
+        min-height: 100px; } }
+    @media screen and (max-width: 1200px) {
+      .pro-room .featured a.card .content h2 {
+        min-height: 60px; } }
+    @media screen and (max-width: 991px) {
+      .pro-room .featured a.card .content h2 {
+        min-height: 50px; } }
+  .pro-room .featured a.card .content time {
+    bottom: 40px;
+    right: 30px;
+    color: #fcfcfc; }
+    @media screen and (max-width: 1600px) {
+      .pro-room .featured a.card .content time {
+        bottom: 20px; } }
+    @media screen and (max-width: 1200px) {
+      .pro-room .featured a.card .content time {
+        display: none; } }
+  .pro-room .featured a.card .content .category {
+    color: #e22f22; }
+  .pro-room .featured a.card .content .author > p {
+    color: #fcfcfc; }
+  .pro-room .featured a.card .content > p {
+    display: none; }
+
+.pro-room .featured:before {
+  content: '';
+  width: 20px;
+  height: 100%;
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  z-index: 2; }
+  @media screen and (max-width: 767px) {
+    .pro-room .featured:before {
+      display: none; } }
+
+@media screen and (max-width: 1200px) {
+  .pro-room .card-rec a.card .content time {
+    display: none; } }
+
+.pro-room .top-stories a.card > article {
+  height: 130px; }
+  .pro-room .top-stories a.card > article > figure {
+    height: auto;
+    width: 203px;
+    flex: none; }
+    @media screen and (max-width: 1200px) {
+      .pro-room .top-stories a.card > article > figure {
+        width: 150px;
+        flex: 0 0 150px; } }
+    @media screen and (max-width: 767px) {
+      .pro-room .top-stories a.card > article > figure {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        width: 116px;
+        flex: 0 0 116px; } }
+
+.pro-room .room-top-stories {
+  margin-left: -35px; }
+  @media screen and (max-width: 1200px) {
+    .pro-room .room-top-stories {
+      margin-left: 0; } }
+  .pro-room .room-top-stories > h2 {
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 50px; }
+  .pro-room .room-top-stories ul {
+    padding: 0;
+    list-style-type: none; }
+    .pro-room .room-top-stories ul > li {
+      width: 100%;
+      display: block;
+      white-space: nowrap;
+      border-bottom: solid 1px #dadada;
+      margin-bottom: 10px;
+      padding-bottom: 15px; }
+      .pro-room .room-top-stories ul > li > span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        font-family: "tinos", Helvetica, Arial, sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        color: #e22f22; }
+      .pro-room .room-top-stories ul > li > div {
+        width: 90%;
+        display: inline-block;
+        vertical-align: top;
+        height: 55px; }
+  .pro-room .room-top-stories a.card figure {
+    display: none; }
+  .pro-room .room-top-stories a.card .content > h2 {
+    line-height: 1.36;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #000000;
+    height: 60px; }
+  .pro-room .room-top-stories a.card .content > p {
+    display: none; }
+  .pro-room .room-top-stories a.card .content .category {
+    display: none; }
+  .pro-room .room-top-stories a.card .content time {
+    display: none; }
+  .pro-room .room-top-stories a.card .content .author {
+    display: none; }
+
+.pro-room .sidebar-inverted a.card {
+  margin-top: 40px;
+  margin-left: -35px; }
+  @media screen and (max-width: 1200px) {
+    .pro-room .sidebar-inverted a.card {
+      margin-left: 0; } }
+  @media screen and (max-width: 620px) {
+    .pro-room .sidebar-inverted a.card {
+      margin-left: -15px; } }
+  @media screen and (max-width: 991px) {
+    .pro-room .sidebar-inverted a.card article {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      height: 235px;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap; } }
+  @media screen and (max-width: 767px) {
+    .pro-room .sidebar-inverted a.card article {
+      display: block;
+      height: auto !important; } }
+  .pro-room .sidebar-inverted a.card figure {
+    height: 260px; }
+    @media screen and (max-width: 991px) {
+      .pro-room .sidebar-inverted a.card figure {
+        width: 330px;
+        height: 235px;
+        -ms-flex: 0 0 330px;
+        -webkit-flex: 0 0 330px;
+        flex: 0 0 330px;
+        overflow: hidden;
+        float: left; } }
+    @media screen and (max-width: 767px) {
+      .pro-room .sidebar-inverted a.card figure {
+        height: 116px;
+        width: 116px; } }
+    .pro-room .sidebar-inverted a.card figure img {
+      height: 100%;
+      max-height: 100%;
+      width: 100%; }
+  .pro-room .sidebar-inverted a.card .content {
+    display: block;
+    height: auto; }
+    @media screen and (max-width: 767px) {
+      .pro-room .sidebar-inverted a.card .content {
+        padding-left: 126px;
+        height: 116px; } }
+    .pro-room .sidebar-inverted a.card .content h2 {
+      margin: 25px 0;
+      font-size: 2.6em; }
+      @media screen and (max-width: 767px) {
+        .pro-room .sidebar-inverted a.card .content h2 {
+          font-size: 2em;
+          margin: 0 0 10px 0; } }
+    @media screen and (max-width: 991px) {
+      .pro-room .sidebar-inverted a.card .content > p {
+        display: block !important;
+        height: 45px !important;
+        margin-bottom: 5px !important; } }
+    @media screen and (max-width: 767px) {
+      .pro-room .sidebar-inverted a.card .content > p {
+        display: none !important; } }
+    .pro-room .sidebar-inverted a.card .content time {
+      margin-top: 10px;
+      float: right;
+      padding-left: 11px;
+      padding: 10px;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 1.2em;
+      font-weight: normal;
+      border-left: solid 1px #dadada;
+      color: #6c6c6c; }
+      @media screen and (max-width: 767px) {
+        .pro-room .sidebar-inverted a.card .content time {
+          float: none;
+          border: none;
+          padding: 0;
+          font-size: 1em;
+          color: #27a9e1; } }
+    .pro-room .sidebar-inverted a.card .content .author {
+      display: block;
+      padding-top: 10px;
+      border-top: solid 1px #dadada; }
+      @media screen and (max-width: 767px) {
+        .pro-room .sidebar-inverted a.card .content .author {
+          display: none; } }
+      .pro-room .sidebar-inverted a.card .content .author:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both; }
+      .pro-room .sidebar-inverted a.card .content .author p {
+        display: block; }
+        @media screen and (max-width: 767px) {
+          .pro-room .sidebar-inverted a.card .content .author p {
+            display: none; } }
+
+.pro-room .bottom-row .card .content time {
+  color: #6c6c6c; }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }

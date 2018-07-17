@@ -27,9 +27,9 @@
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if   not _User.isAdminUser()                                             and
-        blogName  | lower               == "newsroom pro"                   and
-        blogData['showPaywall']         == true %}
+{% if   not _User.isAdminUser()                     and
+        blogName  | lower       == "newsroom pro"   and
+        blogData['showPaywall'] == true %}
 
     {% set showPaywall = true %}
     {% set layout = "layout-marketing" %}
@@ -87,7 +87,7 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=03248b26" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=86d70fbd" type="text/css" media="all">
 
 
         {% else %}

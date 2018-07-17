@@ -1,0 +1,403 @@
+.pro-room {
+
+
+    .featured-slider {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        background-color: black;
+        max-width: unset;
+        @media screen and (max-width: $sm-break-down) {
+            margin-bottom: 50px;
+        }
+
+
+        @media screen and (max-width: $mobile-break){
+            margin-bottom: 30px;
+        }
+        .swiper-container{
+            max-width: 1600px;
+            background-color: black;
+            border: unset; 
+        }
+
+    }
+
+    .featured {
+        
+        a.card {
+
+            .content {
+                padding: 220px 29px 36px 31px;
+
+                @media screen and (max-width: 1600px){
+                    padding: 150px 29px 20px 20px;
+                }
+                @media screen and (max-width: $large-break){
+                    padding: 120px 29px 20px 31px;
+                }
+                @media screen and (max-width: $md-break){
+                    padding: 100px 29px 20px 31px;
+                }
+                @media screen and (max-width: $mmd-break-down){
+                    padding: 60px 29px 15px 31px;
+                }
+
+                h2 {
+                    min-height:160px;
+                    color: #fcfcfc;
+                    border-bottom: 1px solid #dadada;
+                    @media screen and (max-width: $large-break){
+                        min-height:100px;
+                    }
+                    @media screen and (max-width: $md-break){
+                        min-height:60px;
+                    }
+                    @media screen and (max-width: $mmd-break-down){
+                        min-height:50px;
+                    }
+
+
+                }
+
+                time {
+                    bottom:40px;
+                    right:30px;
+                    color: #fcfcfc;
+                    @media screen and (max-width: 1600px){
+                        bottom:20px;
+                    }
+
+
+                    @media screen and (max-width: $md-break){
+                        display:none;
+                    }
+                }
+                .category {
+                    color: #e22f22;
+                }
+                .author {
+                    >p{
+                        color:  #fcfcfc;
+                    }
+                }
+
+                
+
+                > p {
+                    display:none;
+                }
+
+            }
+        }
+
+
+        &:before{
+            content: '';
+            width: 20px;
+            height: 100%;
+            bottom: 0;
+            top: 0;
+            position: absolute;
+            z-index: 2;
+            @media screen and (max-width: $sm-break-down) {
+                display: none;
+            }
+        }
+    }
+
+    .card-rec {
+        a.card {
+            .content {
+                time {
+                    @media screen and (max-width: $md-break){
+                        display:none;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .top-stories{ 
+
+        a.card{
+            > article {
+
+                height:130px;
+
+                > figure {
+                    height:auto;
+                    width:203px;
+                    flex:none;
+
+                    @media screen and (max-width: $md-break){
+                        width: 150px;
+                        flex: 0 0 150px;
+                    }
+
+                    @media screen and (max-width: $sm-break-down) {
+                        margin-top:6px;
+                        margin-bottom:6px;
+                        width: 116px;
+                        flex: 0 0 116px;
+                    }
+
+                }
+            }   
+        }
+    }
+
+    .room-top-stories {
+
+        margin-left:-35px;
+
+        @media screen and (max-width: $md-break){
+            margin-left:0;
+        }
+
+
+
+        > h2 {
+            font-family: $base-font-family;
+            font-size: 22px;
+            font-weight: bold;
+            color: #000000;
+            margin-top:50px;
+        }
+
+        ul {
+            padding:0;
+            // background:orange;
+            list-style-type:none;
+            // width:300px;
+
+            > li {
+                width:100%;
+                display:block;
+                // line-height:1em;
+                white-space: nowrap; 
+                border-bottom: solid 1px #dadada;
+                margin-bottom: 10px;
+                padding-bottom:15px;
+
+                > span {
+                    display: inline-block;
+                    // vertical-align:top;
+                    width: 30px;
+                    height: 30px;
+                    font-family: $base-font-family;
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: #e22f22;
+                    // margin-top:6px;
+
+                }
+
+                > div {
+                    // background:rgba(0,0,200, .3);
+                    width:90%;
+                    display:inline-block;
+                    vertical-align:top;
+                    height:55px;
+                    
+                }
+            }
+        }
+
+
+
+        a.card {
+    
+            
+
+
+            figure {
+                display:none;
+            }
+
+            .content {
+
+                > h2 {
+                    line-height: 1.36;
+                    font-family: $base-font-family;
+                    font-size: 22px;
+                    font-weight: normal;
+                    color: #000000;
+                    height:60px;
+
+                }
+
+
+
+                > p {
+                    display:none;
+                }
+
+                .category {
+                    display:none;
+                }
+
+                time {
+                    display:none;
+                }
+
+                .author {
+                    display:none;
+                }
+            }
+        }
+    }
+
+    .sidebar-inverted {
+        a.card {
+            margin-top: 40px;
+            margin-left:-35px;
+
+            @media screen and (max-width: $md-break){
+                margin-left:0;
+            }
+
+            @media screen and (max-width: $mobile-break){
+                margin-left:-15px;
+            }
+
+            article {
+
+                @media screen and (max-width: $mmd-break-down){
+                    display:-webkit-box;
+                    display:-webkit-flex;
+                    display:-moz-flex;
+                    display:-ms-flexbox;
+                    display:flex;
+                    height: 235px;
+                    flex-wrap: nowrap;
+                    -webkit-flex-wrap: nowrap;
+                    -ms-flex-wrap: nowrap;
+                }
+                @media screen and (max-width: $sm-break-down) {
+                    display:block;
+                    height:auto !important;
+                }
+            }
+
+            figure {
+                height:260px;
+
+                @media screen and (max-width: $mmd-break-down){
+                    width: 330px;
+                    height:235px;
+                    -ms-flex: 0 0 330px;
+                    -webkit-flex: 0 0 330px;
+                    flex: 0 0 330px;
+                    overflow: hidden;
+                    float: left;
+                }
+
+                @media screen and (max-width: $sm-break-down) {
+                    height:116px;
+                    width:116px;
+                }
+
+
+                img {
+                    height:100%;
+                    max-height:100%;
+                    width:100%;
+                }
+            }
+            .content {
+                display: block;
+                height:auto;
+
+                @media screen and (max-width: $sm-break-down) {
+                    padding-left:126px;
+                    height:116px;
+                }
+
+
+                h2 {
+                    margin: 25px 0;
+                    font-size: em(26);
+                    
+                    @media screen and (max-width: $sm-break-down) {
+                        font-size: em(20);
+                        margin: 0 0 10px 0;
+                    }
+                }
+
+                > p {
+
+                    @media screen and (max-width: $mmd-break-down){
+                        display:block !important;
+                        height:45px !important;
+                        margin-bottom:5px !important;
+                    }
+                    @media screen and (max-width: $sm-break-down) {
+                        display:none !important;
+                    }
+                }
+
+                time {
+                    // position:static;
+                    margin-top:10px;
+                    float:right;
+                    padding-left: 11px;
+                    padding: 10px;
+                    font-family: $font-family-sans-serif;
+                    font-size: em(12);
+                    font-weight: normal;
+                    border-left: solid 1px #dadada;
+                    color: #6c6c6c;
+
+                    @media screen and (max-width: $sm-break-down) {
+                        float: none;
+                        border:none;
+                        padding:0;
+                        font-size: em(10);
+                        color:#27a9e1;
+
+                    }
+                }
+
+
+                .author {
+                    display:block;
+                    padding-top:10px;
+                    border-top: solid 1px #dadada;
+
+
+                    @media screen and (max-width: $sm-break-down) {
+                        display: none;
+                    }
+
+
+                    &:after{
+                       content: "."; 
+                       visibility: hidden; 
+                       display: block; 
+                       height: 0; 
+                       clear: both;
+                    }
+        
+                    p {
+                        display:block;
+
+                        @media screen and (max-width: $sm-break-down) {
+                            display:none;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+    
+    .bottom-row {
+        .card .content{
+            time {
+                color: #6c6c6c;
+            }
+        }
+    }
+}
+
+
