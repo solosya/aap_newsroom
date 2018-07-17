@@ -1,45 +1,59 @@
+.article-pro__image-container {
+	background:black;
+}
+
+.article__figure-caption {
+
+	color: color(caption);
+
+	&.pro {
+		color:white;
+	}
+}
+
+
 .article {
 
-	.site-header {
+	// .site-header {
 
-		margin-bottom: 55px;
+	// 	margin-bottom: 55px;
 
-		.site-branding-bottom {
+	// 	.site-branding-bottom {
 
-			padding-bottom: 10px;
+	// 		padding-bottom: 10px;
 
-			.sb-custom-menu {
+	// 		.sb-custom-menu {
 
-				.menu-mobile {
-					margin-top: 20px;
-					@media screen and (max-width: $sm-break-down) {
-						margin-top: 5px;
-					}
-				}
+	// 			.menu-mobile {
+	// 				margin-top: 20px;
+	// 				@media screen and (max-width: $sm-break-down) {
+	// 					margin-top: 5px;
+	// 				}
+	// 			}
 
-				> ul > li {
-					&:first-child > a {
-						padding-left: 0;
-					}
+	// 			> ul > li {
+	// 				&:first-child > a {
+	// 					padding-left: 0;
+	// 				}
 
-					> a {
-						padding: 25px 13px;
-						@media screen and (max-width: $header-break) {
-							padding-left: 0;
-							padding-top: 10px;
-							padding-bottom: 10px;
-						}
-					}
-				}
-			}
+	// 				> a {
+	// 					padding: 25px 13px;
+	// 					@media screen and (max-width: $header-break) {
+	// 						padding-left: 0;
+	// 						padding-top: 10px;
+	// 						padding-bottom: 10px;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
 
-			.navbar-brand {
-				// width: 105px;
+	// 		.navbar-brand {
+	// 			// width: 105px;
 
 
-			}
-		}
-	}
+	// 		}
+	// 	}
+	// }
 
 	article.article-main {
 		figure.featured {
@@ -374,6 +388,3 @@
 }
 
 
-.article-pro__image-container {
-	background:black;
-}

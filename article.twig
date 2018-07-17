@@ -9,17 +9,25 @@
 {# {% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %} #}
 
 
-{% set showPaywall = true %}
+{% set showPaywall = false %}
 {% set content = article.content %}
 {% set paywall_content_style = "" %}
+{% set newsroom_pro_style = "" %}
+
 {# Pages don't have a blogName so class has to be used #}
 {% if   not _User.isAdminUser()                     and
         blogName  | lower       == "newsroom pro"   and
         blogName['showPaywall'] == true  %}
     
     {% set showPaywall = true %}
-
 {% endif %}
+
+
+{% if blogName | lower == "newsroom pro" %}
+    {% set newsroom_pro_style = "pro" %}
+{% endif %}
+
+
 
 {% if showPaywall == true %}
     {% set storySplit = article.content | split('<p>')  %}
@@ -84,11 +92,11 @@
 
 
 
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main u-margin-top-40" role="main">
         <article class="article-main">
 
 
-        {% if blogName  | lower == "newsroom pro" %}
+        {% if blogName | lower == "newsroom pro" %}
             <div class="article-pro__image-container">
         {% endif %}
 
@@ -133,7 +141,7 @@
                                     </a>
                                 {% endif %}
                                 <figcaption>
-                                    <p>{{image.caption}}</p>
+                                    <p class="article__figure-caption {{newsroom_pro_style}}">{{image.caption}}</p>
                                 </figcaption>
                             </figure>
                         {% endfor %}
@@ -232,6 +240,17 @@
                             </div><!-- .content-->
                             
 
+                            {% if showPaywall == true %}
+                                <div class="article-subscribe">
+                                    <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
+                                    <a href="/@newsroom-pro" class="_btn _btn--red u-margin-right-25">SUBSRIBE TO PRO</a>
+                                    <button id="articleSigninBtn" class="_btn _btn--gray">SIGN IN TO PRO</button>
+                                    <p class="article-subscribe__p">Subscribe now to start a free trial of <br />Newsroom Pro for 28 days.</p>
+                                    <a href="/@newsroom-pro" class="article-subscribe__link">View our subscription options</a>
+                                </div>
+                            {% endif %}
+
+
                             <div class="article-supoort">
                                 <p class="article-supoort__text">Newsroom is powered by the generosity of readers like you, who support our mission to produce fearless, independent and provocative journalism.</p>
                                 <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
@@ -257,10 +276,10 @@
                             <aside>
 
                                 {% if showPaywall == false %}
-                                <section class="add sidebar-add ">
-                                    <div id="newAdHalf"></div>
-                                    <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
-                                </section>
+                                    <section class="add sidebar-add ">
+                                        <div id="newAdHalf"></div>
+                                        <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                    </section>
                                 {% endif %}
 
 
