@@ -1,0 +1,55 @@
+.card-pro-popular{
+    a.card {
+    	border-bottom: 1px solid #dadada;
+    	padding-bottom: 18px;
+        article {
+            figure {
+            	display: block;
+            	padding-top: 27px;
+                img {
+                	height: 113px;
+                	width:	110px;
+                }
+            }
+            .content {
+            	border-bottom: unset;
+            	padding-top: 12px;
+			    margin-left: -110px;
+			    padding-left: 130px;	
+            	.category {
+            		display: block;
+				    color: #e22f22;
+				    position: relative;
+				    top: -5px;
+				    left: -130px;
+            	}
+                .author {
+                	> img {
+                		display:none;
+                	}
+                }
+                > h2 {
+                	height: 40px;
+                }
+                > p {
+                	display: inherit;
+                	height: 40px;
+                	overflow: hidden;
+                }
+                time{
+                	color: #8a8b93; 
+                }
+                
+            }
+        }
+
+
+    }
+    &:first-child {
+        
+       
+    }
+    &:last-child {
+       
+    }
+}
