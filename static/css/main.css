@@ -10475,13 +10475,13 @@ button.swiper-pagination-bullet {
 .userdetails {
   list-style: none;
   overflow: hidden;
-  border-bottom: 1px solid;
-  padding-bottom: 10px;
-  margin-bottom: 10px; }
+  border-bottom: 1px solid #97999c;
+  padding-bottom: 20px;
+  margin-bottom: 20px; }
 
 .userdetails__name {
-  color: #ae232c;
-  font-size: 18px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
   text-align: left;
   margin: 0; }
 
@@ -10494,6 +10494,7 @@ button.swiper-pagination-bullet {
   padding-bottom: 11px; }
 
 .userdetails__email {
+  font-size: 1.3rem;
   margin-right: 30px;
   color: black; }
 
@@ -10511,7 +10512,7 @@ button.swiper-pagination-bullet {
   background: url("../icons/pencil.svg"); }
 
 .userdetails__button--delete {
-  background: url("../icons/delete-cross.svg"); }
+  background: url("../icons/cross.svg"); }
 
 .userdetails__button--save {
   color: #e22f22;
@@ -10752,6 +10753,46 @@ button.swiper-pagination-bullet {
   font-size: 20px;
   line-height: 1.45;
   text-decoration: underline; }
+
+.plans {
+  display: flex;
+  overflow-x: scroll;
+  margin-bottom: 30px;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  padding-bottom: 20px;
+  margin-top: 30px; }
+
+.plans__item {
+  padding: 0;
+  min-width: 150px;
+  margin-right: 15px;
+  background-color: rgba(216, 216, 216, 0.4);
+  text-align: center; }
+
+.plans__name {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px; }
+
+.plans__usercount {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600; }
+
+.plans__price {
+  margin-top: 7px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.07;
+  letter-spacing: 0.3px; }
 
 .room-view {
   margin-top: 70px;

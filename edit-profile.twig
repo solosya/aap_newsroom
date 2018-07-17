@@ -191,9 +191,9 @@
                                             </div>
                                         </div>
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="totalusers">Available Users</label>
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="totalusers">My Users</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="totalusers">Available Users</label>
+                                            <label class="account-form__label account-form__label--red" for="totalusers">My Users</label>
                                             <p type="text" id="totalusers" class="account-form__value">{{ pwstats['user_count'] - managedUsers|length }}</p>
                                         </div>                            
                                        
@@ -345,7 +345,7 @@
                                                     <span class="j-firstname">{{user.firstname}}</span> 
                                                     <span class="j-lastname">{{user.lastname}}</span>
                                                 </p> 
-                                                <p class="j-username userdetails__username">{{user.username}}</p>
+                                                {# <p class="j-username userdetails__username">{{user.username}}</p> #}
                                             </div>
                                             <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a>
                                             <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>
