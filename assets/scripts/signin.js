@@ -124,7 +124,11 @@ var layouts = {
     "signin"        : 'signinFormTmpl',
     "register"      : 'registerTmpl',
     "forgot"        : 'forgotFormTmpl',
-    "spinner"       : 'spinnerTmpl'
+    "spinner"       : 'spinnerTmpl',
+    "expired"       : 'expiredNotice',
+    "userPlan"      : 'userPlanMessage',
+    "userPlanChange" : 'userPlanOkCancel',
+
 }
 
 

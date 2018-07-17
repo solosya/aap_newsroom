@@ -3,6 +3,63 @@
  */
 Acme.templates = {};
 
+
+Acme.templates.create_user = 
+'<div class="" style="height:100%; overflow:auto"> \
+    <div class="user-editor__input-container u-float-left"> \
+        <input type="text" id="newuserfirstname" class="j-firstname user-editor__input" value="" placeholder="{{firstname}}"> \
+        <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="" placeholder="{{lastname}}"> \
+        <input type="text" id="newuserusername" class="j-username user-editor__input" value="" placeholder="{{username}} (between 5 and 15 characters)"> \
+        <input type="text" id="newuseruseremail" class="j-email user-editor__input" value="" placeholder="{{useremail}}"> \
+    </div> \
+    <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
+        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
+        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
+    </div> \
+</div>';
+
+
+Acme.templates.edit_user = 
+'<div class="" style="height:100%; overflow:auto"> \
+    <div class="user-editor__input-container u-float-left"> \
+        <input type="text" id="newuserfirstname" class="j-firstname user-editor__input" value="{{firstname}}" placeholder="First name"> \
+        <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="{{lastname}}" placeholder="Last name"> \
+        <input type="text" id="newuserusername" class="j-username user-editor__input" value="{{username}}" placeholder="Username (between 5 and 15 characters)"> \
+        <input type="text" id="newuseruseremail" class="j-email user-editor__input" value="{{useremail}}" placeholder="Email"> \
+    </div> \
+    <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
+        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
+        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
+    </div> \
+</div>';
+
+Acme.templates.managed_user = 
+'<div class="u-float-left"> \
+    <p class="userdetails__name"> \
+        <span class="j-firstname">{{firstname}}</span> \
+        <span class="j-lastname">{{lastname}}</span> \
+    </p> \
+    <p class="j-username userdetails__username">{{username}}</p> \
+</div>\
+<a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
+<a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
+<p class="j-email  userdetails__email u-float-right">{{useremail}}</p>';
+
+Acme.managed_user = 
+'<li id="{{id}}" class="userdetails"> \
+    <div class="u-float-left"> \
+        <p class="userdetails__name"> \
+            <span class="j-firstname">{{firstname}}</span> \
+            <span class="j-lastname">{{lastname}}</span> \
+        </p> \
+        <p class="j-username userdetails__username">{{username}}</p> \
+    </div>\
+    <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
+    <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
+    <p class="j-email  userdetails__email u-float-right">{{email}}</p> \
+</li>';
+
+
 Acme.templates.signinFormTmpl = 
     // <script> tag possible ios safari login fix
     '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
@@ -58,6 +115,18 @@ Acme.templates.forgotFormTmpl =
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
+Acme.templates.subscribeTerms =  '<p>Please agree to the terms of use</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+
+Acme.templates.userPlanMessage = 
+'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+     <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
+</form>';
+
+Acme.templates.userPlanOkCancel = 
+'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+     <button id="okaybutton" class="_btn _btn--red okay" data-role="okay">OK</button> \
+     <button id="cancelbutton" class="_btn _btn--gray close" data-role="cancel">Cancel</button> \
+</form>';
 
 
 Acme.templates.modal = 
