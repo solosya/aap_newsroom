@@ -1,0 +1,207 @@
+.subscribe {
+
+    .market-hero {
+        height:566px;
+        margin-bottom:70px;
+        // background-image: linear-gradient(to right, #193046 17%, rgba(0, 0, 0, 0.0) 100%) , url('../images/marketing-hero.jpg');
+        background-image: url('../images/marketing-hero.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        @media screen and (max-width: $sm-break-down) {
+            height:420px;
+            background-size: cover;
+        }
+
+        .content {
+            width:670px;
+            padding-top:159px;
+            @media screen and (max-width: $sm-break-down) {
+                width:100%;
+                padding-top:80px;
+            }
+
+
+            h1 {
+                line-height: 1.16;
+                font-family: $font-family-serif;
+                font-size: rem(62);
+                font-weight:700;
+                color:white;
+                margin-bottom:25px;
+                // @media screen and (max-width: $sm-break-down) {
+                //     font-size: rem(60);
+                // }
+                @media screen and (max-width: $sm-break-down) {
+                    font-size: rem(40);
+                }
+            }
+        }
+    }
+
+
+    .card-errors {
+        color:color(red);
+        margin-top:25px;
+    }
+
+    .site-header-main {
+        display:none;
+    }
+
+    .site-main {
+        margin-top:0;
+    }
+
+    .market-header {
+        height:172px;
+        position:relative;
+
+        > img {
+            position:absolute;
+            left:0;
+            top:55px;
+            @media screen and (max-width: $mmd-break) {
+                width:91px;
+                height:32px;
+                left:20px;
+            }
+
+            @media screen and (max-width: $sm-break) {
+                width:73px;
+                height:26px;
+                display:block;
+                margin:auto;
+                position:static;
+            }
+
+        }
+
+
+        > div {
+            text-align:center;
+            width:350px;
+            margin: 0 auto;
+            margin-top:25px;
+
+            @media screen and (max-width: $mmd-break) {
+                width: 265px;
+            }
+            @media screen and (max-width: $sm-break) {
+                width: 189px;
+            }
+
+           p {
+                border-top:1px solid black;
+                padding-top:10px;
+                font-size: rem(17);
+                margin-top:20px;
+
+                @media screen and (max-width: $mmd-break) {
+                    font-size: rem(11);
+                    margin-top:0;
+                }
+                @media screen and (max-width: $sm-break) {
+                    font-size: rem(9);
+                }
+
+
+
+            }
+            
+        }
+        .frankheader{
+            @media screen and (max-width: $sm-break) {
+                float: right;
+            }
+            img.frankHeader__img {
+                @media screen and (max-width: $mmd-break) {
+                    width:129px;
+                }
+                @media screen and (max-width: $sm-break) {
+                    width:104px;
+                }
+
+            }
+        }
+        .ubt-logo {
+            @media screen and (max-width: $sm-break) {
+                float: left;
+                margin-top: 55px; 
+                width: 90px;
+                height: 31px;
+            }
+        }
+
+    }
+
+
+
+    .plan-type {
+        background:color(marketgrey);
+        .plan-type-header {
+            background:color(darkblue);
+            padding:10px;
+            > h2 {
+                color:white;
+                font-size:rem(16);
+                font-weight:600;
+            }
+        }
+        .plan-body {
+            padding:30px 20px;
+            text-align:center;
+            overflow:auto;
+
+            h3 {
+                margin-top: -20px;
+                color:color(red);
+                font-size:rem(18);
+                font-weight:600;
+                letter-spacing: 0.4px;
+                font-family: $font-family-serif;
+            }
+            h4 {
+                color:color(darkblue);
+                margin-bottom:20px;
+            }
+            
+            .red-label {
+                font-size: rem(14);
+                color:color(red);
+                margin-bottom:12px;
+                font-weight:700;
+            }
+
+            >img {
+                width:100%;
+            }
+
+            >a {
+                margin-top:15px;
+                float:right;
+                color:color(red);
+                font-style:italic;
+                font-size: rem(14);
+            }
+            .features-list {
+                text-align: left;
+
+                li {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+
+    .section-title {
+        >h1 {
+            font-family: $font-family-serif;
+            font-size: rem(40);
+            text-align:center;
+            font-weight:700;
+        }
+    }
+
+}
