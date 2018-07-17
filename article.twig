@@ -86,6 +86,13 @@
 
     <main id="main" class="site-main" role="main">
         <article class="article-main">
+
+
+        {% if blogName  | lower == "newsroom pro" %}
+            <div class="article-pro__image-container">
+        {% endif %}
+
+
             <div class="container">
                
 
@@ -140,6 +147,11 @@
                     {% endfor %}
                 </div>
 
+            {% if blogName  | lower == "newsroom pro" %}
+                </div>
+                </div>
+                <div class="container">
+            {% endif %}
 
 
 
@@ -244,12 +256,12 @@
                         <div class="col-md-4">
                             <aside>
 
+                                {% if showPaywall == false %}
                                 <section class="add sidebar-add ">
-
                                     <div id="newAdHalf"></div>
-                                    
                                     <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                 </section>
+                                {% endif %}
 
 
                                 <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
@@ -283,7 +295,11 @@
 
                 </div><!-- .page-content-->
             </div><!--container-->
-            <script>loadTwoAds('{{articleBlog | lower}}');</script>
+
+            {% if showPaywall == false %}
+                <script>loadTwoAds('{{articleBlog | lower}}');</script>
+            {% endif %}
+
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         
