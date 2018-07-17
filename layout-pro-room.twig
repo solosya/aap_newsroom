@@ -57,12 +57,13 @@
 
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 s203x130'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 card-pro-simple 203x130'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
 
                 </div><!-- .row-->
+                <hr class="top-two">
             </div><!-- .container-->
         </section><!-- .top-stories-->
         {% endif %}
@@ -79,7 +80,7 @@
 
                                 {% for i in 0..3 %}
                                     {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec'}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
@@ -94,13 +95,13 @@
                         
 
                         <section class="col-sm-12 sidebar-news recent-articles">
-                            <h3 class="recent-articles__header">Most Popular</h3>
+                            <h3 class="recent-articles__header">MOST VIEWED</h3>
                             {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
                             {% for i in 0..4 if popularArticles[i] %}
-                                {{this.render('/partials/_single-article_recent.twig', {
+                                {{this.render('/partials/_single-article.twig', {
                                     article         : popularArticles[i], 
                                     swap            : false,
-                                    containerClass  : ''
+                                    containerClass  : 'card-pro-popular'
                                 }) | raw}}
                             {% endfor %} 
 
@@ -126,7 +127,7 @@
                 <div class="row">
                     <div class="ajaxArticles clearfix col-sm-12 col-md-8 card-group"
                          data-offset="{{limit}}"
-                         data-containerclass="card-rec"
+                         data-containerclass="card-pro-rec"
                          data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
                      </div>
                     <a class="loadMoreArticles" href="#">LOAD MORE</a>
