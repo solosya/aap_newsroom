@@ -41,7 +41,7 @@
 <!-- 3 is job, 4 is property, 5 is event -->
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
-<main id="main" class="user_profile listingForm" role="main">
+<main id="main" class="user_profile account-form u-margin-top-40" role="main">
     <div id="stripekey" class="hidden" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
     {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
     <div class="container">
@@ -54,7 +54,6 @@
                     <div class="profile-section profile-section--border">
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
-                            <a class="text-button text-button--italic u-float-right" href="/auth/logoff">Log Out</a> 
                         </div>
 
 
@@ -64,54 +63,87 @@
                                 <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                                 <input type="hidden" name="profileImage" id="userProfileImage" value="" />
 
-                                <label class="mobLabel" for="firstname">First name</label>
-                                <div class="inline-inputs">
-                                    <label for="firstname">First name</label>
-                                    <input type="text" id="firstname" class="form-control" name="firstname" value="{{user.firstname}}" placeholder="First name" >
+                                <label class="account-form__label account-form__label--mobile" for="firstname">First name</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="firstname">First name</label>
+                                    <input type="text" id="firstname" class="account-form__input" name="firstname" value="{{user.firstname}}" placeholder="First name" >
                                 </div>
 
-                                <label class="mobLabel" for="lastname">Last name</label>
-                                <div class="inline-inputs">
-                                    <label for="lastname">Last name</label>
-                                    <input type="text" id="lastname" class="form-control" name="lastname" value="{{user.lastname}}" placeholder="Last name" >
+                                <label class="account-form__label account-form__label--mobile" for="lastname">Last name</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="lastname">Last name</label>
+                                    <input type="text" id="lastname" class="account-form__input" name="lastname" value="{{user.lastname}}" placeholder="Last name" >
                                 </div>                            
                                
-{#                                 <div class="inline-inputs">
-                                    <label for="company">Company</label>
-                                    <input type="text" id="company" class="form-control" name="company" value="{{user.company}}" placeholder="Company" >
-                                </div>
- #}                             
-                                <label class="mobLabel" for="username">Username</label>
-                                <div class="inline-inputs">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" class="form-control" name="username" value="{{user.username}}" placeholder="Username" >
+                             
+                                <label class="account-form__label account-form__label--mobile" for="username">Username</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="username">Username</label>
+                                    <input type="text" id="username" class="account-form__input" name="username" value="{{user.username}}" placeholder="Username" >
                                 </div>
 
-                                <label class="mobLabel" for="email">Email</label>
-                                <div class="inline-inputs">
-                                    <label for="email">Email</label>
-                                    <input type="text" id="email" class="form-control" name="email" value="{{user.email}}" placeholder="email@domain.com" >
+
+                                <label class="account-form__label account-form__label--mobile" for="email">Email</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="email">Email</label>
+                                    <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" >
+                                </div>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for=""></label>
+                                    <p class="account-form__explainer">This is the email address you will sign in with</p>
                                 </div>
 
-                                <label class="mobLabel" for="password">Password</label>
-                                <div class="inline-inputs">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" class="form-control" name="password" placeholder="new password" >
+
+
+                                <label class="account-form__label account-form__label--mobile" for="password">Change password</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="password">Password</label>
+                                    <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" >
+                                </div>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for=""></label>
+                                    <p class="account-form__explainer">Passwords must be at least five characters long and contain no spaces</p>
                                 </div>
 
-                                <label class="mobLabel" for="password">Verify Password</label>
-                                <div class="inline-inputs">
-                                    <label for="password">Verify Password</label>
-                                    <input type="password" id="verifypassword" class="form-control" name="verifypassword" placeholder="verify password" >
+
+
+
+                                <label class="account-form__label account-form__label--mobile" for="password">Verify Password</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="password">Verify Password</label>
+                                    <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password" >
                                 </div>
                                 
+
+                                <label class="account-form__label account-form__label--mobile" for="password">Organisation</label>
+                                <div class="account-form__inline-inputs">
+                                    <label class="account-form__label" for="organisation">Organisation</label>
+                                    <input type="text" id="verifypassword" class="account-form__input" value="{{user.company}}" name="organisation" placeholder="" >
+                                </div>
+
+
                                 <div class="button-full">
-                                    <button type="submit" class="text-button u-float-right u-margin-top-25 update-details">Update Details</button>
+                                    <button type="submit" class="text-button u-float-right update-details">Update Details</button>
                                 </div>
                             </form>
 
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 {% if pwstats.userManager == true %}
@@ -131,20 +163,20 @@
                             
                             <div class="user-details">
                                 
-                                <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" disabled="disabled">
+                                {# <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" disabled="disabled"> #}
                                     
                                     {% if pwstats['type'] == 'time' %}
 
-                                        <label class="mobLabel" for="currentplan">Current Plan</label>
-                                        <div class="inline-inputs">
-                                            <label for="currentplan">Current Plan</label>
-                                            <input type="text" id="currentplan" class="form-control" value="{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}" disabled="disabled">
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Current Plan</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="currentplan">Current Plan</label>
+                                            <p type="text" id="currentplan" class="account-form__value">{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}</p>
                                         </div>
 
-                                        <label class="mobLabel" for="currentplan">Plan Status</label>
-                                        <div class="inline-inputs">
-                                            <label for="currentplan">Plan Status</label>
-                                            <input style="margin-left:35px; cursor: pointer; cursor: hand;" type="text" id="currentplan" class="form-control" value="{{ pwstats['status']}}" disabled="disabled">
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Plan Status</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="currentplan">Plan Status</label>
+                                            <p style="margin-left:35px; cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status']}}</p>
 
                                             <div class="button-full">
                                             {% if pwstats['status'] == 'cancelled' %}
@@ -159,46 +191,43 @@
                                             </div>
                                         </div>
 
-                                        <label class="mobLabel" for="totalusers">Available Users</label>
-                                        <div class="inline-inputs">
-                                            <label for="totalusers">Available Users</label>
-                                            <input type="text" id="totalusers" class="form-control" value="{{ pwstats['user_count'] - managedUsers|length }}" disabled="disabled">
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="totalusers">Available Users</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="totalusers">Available Users</label>
+                                            <p type="text" id="totalusers" class="account-form__value">{{ pwstats['user_count'] - managedUsers|length }}</p>
                                         </div>                            
                                        
-{#                                         <div class="inline-inputs">
-                                            <label for="activeusers">Active Users</label>
-                                            <input type="text" id="activeusers" class="form-control" value="{{ managedUsers|length }}" disabled="disabled">
-                                        </div>
- #}     
-                                        <label class="mobLabel" for="expires">Next Payment</label>
-                                        <div class="inline-inputs">
-                                            <label for="expires">Next Payment</label>
-                                            <input type="text" id="expires" class="form-control" value="{{ pwstats['expiry_date']}}" disabled="disabled">
+
+     
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="expires">Next Payment</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="expires">Next Payment</label>
+                                            <p type="text" id="expires" class="account-form__value">{{ pwstats['expiry_date']}}</p>
                                         </div>
 
                                     {% else %} 
 
-                                        <label class="mobLabel" for="currentplan">Current Plan</label>
-                                        <div class="inline-inputs">
-                                            <label for="currentplan">Current Plan</label>
-                                            <input type="text" id="currentplan" class="form-control" value="{{ pwstats['plan_value']/100}}/{{pwstats['total_articles']}}" disabled="disabled">
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Current Plan</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="currentplan">Current Plan</label>
+                                            <p type="text" id="currentplan" class="account-form__value">{{ pwstats['plan_value']/100}}/{{pwstats['total_articles']}}</p>
                                         </div>
 
-                                        <label class="mobLabel" for="remaining">Articles Remaining</label>
-                                        <div class="inline-inputs">
-                                            <label for="remaining">Articles Remaining</label>
-                                            <input type="text" id="remaining" class="form-control" value="{{ pwstats['article_count']}}" disabled="disabled">
+                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="remaining">Articles Remaining</label>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <label class="account-form__label account-form__label--red" for="remaining">Articles Remaining</label>
+                                            <p type="text" id="remaining" class="account-form__value">{{ pwstats['article_count']}}</p>
                                         </div>                            
                                         
                                     {% endif %} 
 
-                                    <label class="mobLabel" for="remaining">Payment Method</label>
-                                    <div class="inline-inputs">
-                                        <label for="remaining">Payment Method</label>
-                                        <input type="text" id="remaining" class="form-control" value="{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}" disabled="disabled">
+                                    <label class="account-form__label account-form__label--mobile account-form__label--red" for="remaining">Payment Method</label>
+                                    <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <label class="account-form__label account-form__label--red" for="remaining">Payment Method</label>
+                                        <p type="text" id="remaining" class="account-form__value">{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}</p>
                                     </div>                            
 
-                                </form>
+                                {# </form> #}
 
                             </div>
 
@@ -347,12 +376,20 @@
                     </div>
                 {% endif %}
 
-                {% if _User.isAdminUser() %}
+
+
+
+
+
+
+
+
+                {# {% if _User.isAdminUser() %}
                     <div class="add-batch-users" style="display:none;">
                         <textarea id="batch-user-input"></textarea>
                         <button id="batch-add">Add</button>
                     </div>
-                {% endif %}
+                {% endif %} #}
 
             </div>
         </div>

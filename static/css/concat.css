@@ -6078,53 +6078,57 @@ body.no_profile .profile_overlay {
 
 /*! Layout User Profile Page
 -------------------------*/
-.profile-image {
-  float: left;
-  width: 148px;
-  height: 148px;
-  margin-right: 47px; }
-  @media screen and (max-width: 767px) {
-    .profile-image {
-      width: 33%;
-      height: unset;
-      margin-left: 33%; } }
+.change-password {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #97999c;
+  position: relative;
+  top: -25px; }
+  .change-password:hover {
+    color: #e22f22;
+    cursor: pointer; }
 
-.userprofile-bio {
-  overflow: auto;
-  margin-bottom: 90px; }
-  @media screen and (max-width: 767px) {
-    .userprofile-bio {
-      margin-top: 50px; } }
+.name span {
+  font-size: 2.5rem;
+  font-weight: normal;
+  line-height: 1.2;
+  color: #e22f22; }
 
-.inner-descr {
-  float: left;
-  width: 60%; }
+.cancel-account {
+  font-style: italic; }
+  @media screen and (min-width: 768px) {
+    .cancel-account {
+      margin-top: -62px; } }
   @media screen and (max-width: 767px) {
-    .inner-descr {
-      width: unset; } }
-  .inner-descr h4 {
-    font-size: 1.4rem;
-    color: #6c6c6c;
-    text-transform: uppercase;
-    margin-bottom: 15px; }
+    .cancel-account {
+      margin-top: -130px; } }
+
+.update-details {
+  font-style: italic; }
+
+.user_profile {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  background-color: #f3f3f3; }
+  .user_profile label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-width: 100px; }
     @media screen and (max-width: 767px) {
-      .inner-descr h4 {
-        text-align: center; } }
-  .inner-descr .mail-icon {
-    display: block;
-    height: 15px;
-    width: 22px;
-    background-image: url("../icons/email.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-bottom: 28px; }
-    @media screen and (max-width: 767px) {
-      .inner-descr .mail-icon {
-        margin-left: 47%; } }
-  .inner-descr > p {
-    font-size: 1.8rem;
-    line-height: 1.33;
-    color: #6c6c6c; }
+      .user_profile label {
+        display: none; } }
+  @media screen and (max-width: 767px) {
+    .user_profile .container, .user_profile .profile__container {
+      background-color: white; } }
+  .user_profile .user_profile_section {
+    margin: 36px auto;
+    width: 722px;
+    background-color: #fff;
+    padding: 40px; }
+    @media screen and (min-width: 668px) and (max-width: 767px), screen and (min-width: 481px) and (max-width: 667px), screen and (min-width: 200px) and (max-width: 480px) {
+      .user_profile .user_profile_section {
+        width: 100%;
+        padding: 0;
+        margin-top: 0; } }
 
 /*! Layout User Post Page
 -------------------------*/
@@ -9398,6 +9402,126 @@ button.swiper-pagination-bullet {
   background: url("../icons/cross-black.svg");
   background-repeat: no-repeat; }
 
+.header-signin {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600; }
+
+.header-signin__name {
+  margin-top: 10px;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.6rem;
+  float: left; }
+
+.header-signin__account {
+  margin-top: 10px;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.6rem;
+  margin-right: 20px; }
+
+.account-form .account-form__label {
+  font-size: 1.3rem;
+  line-height: 44px; }
+
+.account-form .account-form__label--mobile {
+  display: none; }
+  @media screen and (max-width: 767px) {
+    .account-form .account-form__label--mobile {
+      display: inherit;
+      margin-bottom: -10px; } }
+
+.account-form .account-form__label--red {
+  color: #e22f22;
+  line-height: 1.2; }
+
+.account-form .account-form__input {
+  width: 100%;
+  height: 50px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; }
+
+.account-form .account-form__inline-inputs {
+  display: flex;
+  flex-direction: row; }
+  .account-form .account-form__inline-inputs label {
+    flex: 2; }
+  .account-form .account-form__inline-inputs input, .account-form .account-form__inline-inputs span {
+    flex: 7; }
+
+.account-form .account-form__value {
+  margin: 0;
+  flex: 7;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.3rem; }
+
+.account-form .account-form__explainer {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #0e0e0e;
+  flex: 7; }
+
+.account-form .error-message {
+  display: none;
+  padding: 3px 10px;
+  background: #e22f22;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 41px; }
+  .account-form .error-message.active {
+    display: block; }
+
+.account-form form input[type=radio].inline {
+  margin-top: 20px; }
+
+.account-form form input[type=text], .account-form form input[type=password], .account-form form input[type=email], .account-form form input[type=search] {
+  display: block;
+  border: none;
+  height: 44px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5; }
+  .account-form form input[type=text]::placeholder, .account-form form input[type=password]::placeholder, .account-form form input[type=email]::placeholder, .account-form form input[type=search]::placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form form input[type=text]::-webkit-input-placeholder, .account-form form input[type=password]::-webkit-input-placeholder, .account-form form input[type=email]::-webkit-input-placeholder, .account-form form input[type=search]::-webkit-input-placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form form input[type=text]::-moz-placeholder, .account-form form input[type=password]::-moz-placeholder, .account-form form input[type=email]::-moz-placeholder, .account-form form input[type=search]::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form form input[type=text]:-ms-input-placeholder, .account-form form input[type=password]:-ms-input-placeholder, .account-form form input[type=email]:-ms-input-placeholder, .account-form form input[type=search]:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form form input[type=text]:-moz-placeholder, .account-form form input[type=password]:-moz-placeholder, .account-form form input[type=email]:-moz-placeholder, .account-form form input[type=search]:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form form input[type=text]:disabled, .account-form form input[type=password]:disabled, .account-form form input[type=email]:disabled, .account-form form input[type=search]:disabled {
+    background: none;
+    border: none;
+    webkit-box-shadow: none;
+    box-shadow: none; }
+
+.text-button {
+  border: none;
+  background: none;
+  color: #e22f22;
+  border: none;
+  font-size: 1.4rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .text-button:hover {
+    color: #e22f22; }
+
+.text-button--italic {
+  font-style: italic; }
+
 .login-form input[type=text], .login-form input[type=password], .login-form input[type=email] {
   display: block;
   border: none;
@@ -10453,7 +10577,8 @@ button.swiper-pagination-bullet {
   padding: 18px 0px; }
 
 .profile-section--border {
-  border-bottom: 1px solid #97999c; }
+  border-bottom: 1px solid #97999c;
+  overflow: auto; }
 
 .profile-section__users-left {
   font-size: 1.2rem;
@@ -10462,7 +10587,6 @@ button.swiper-pagination-bullet {
 
 .profile-section__header {
   width: 100%;
-  border-bottom: 1px solid #97999c;
   padding-bottom: 10px;
   margin-top: 40px;
   margin-bottom: 15px; }
