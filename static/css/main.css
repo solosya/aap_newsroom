@@ -6703,6 +6703,25 @@ body.no_profile .profile_overlay {
     float: none;
     margin: auto; } }
 
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite; }
+
 html {
   height: 100%; }
 
@@ -9402,6 +9421,61 @@ button.swiper-pagination-bullet {
   background: url("../icons/cross-black.svg");
   background-repeat: no-repeat; }
 
+.spinner-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7); }
+
+.spinner-modal__window {
+  margin: auto auto;
+  width: 468px;
+  background: white;
+  padding: 30px 50px;
+  border-radius: 3px; }
+  @media screen and (max-width: 767px) {
+    .spinner-modal__window {
+      width: auto;
+      margin-top: 10px; } }
+
+.spinner-modal__container {
+  position: relative;
+  margin: auto; }
+
+.spinner-modal__header {
+  overflow: auto;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #97999c;
+  margin-bottom: 20px; }
+
+.spinner-modal__title {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  float: left;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  margin-right: 20px; }
+
+.spinner-modal__close {
+  display: block;
+  float: right;
+  height: 30px;
+  width: 30px;
+  background: url("../icons/cross-black.svg");
+  background-repeat: no-repeat; }
+
+.spinner-modal__content-window {
+  flex-grow: 1;
+  display: flex;
+  padding-top: 30px;
+  position: relative;
+  padding-right: 40px; }
+  @media screen and (max-width: 991px) {
+    .spinner-modal__content-window {
+      padding-right: 0; } }
+
 .header-signin {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 600; }
@@ -9454,6 +9528,8 @@ button.swiper-pagination-bullet {
   height: 50px;
   -webkit-border-radius: 2px;
   border-radius: 2px; }
+  .account-form__input.formError {
+    border-color: #e22f22 !important; }
 
 .account-form__inline-inputs {
   display: flex;

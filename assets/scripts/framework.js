@@ -555,7 +555,7 @@
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
-            $('body').addClass('acme-modal-active').append(tmp);
+            $('body').addClass('acme-modal-active').prepend(tmp);
             if (layout) {
                 console.log('rendering', layout);
                 this.renderLayout(layout, data);

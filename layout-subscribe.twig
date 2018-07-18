@@ -97,13 +97,14 @@
 						<form class="account-form" method="post" action="" id="listingForm">
 							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
 							<p class="account-form__section-label">Your information</p>
-							<input type="email" class="account-form__input" name="email" id="email" value="" placeholder="Email">
-							<input type="text" class="account-form__input" name="firstname" id="firstname" value="" placeholder="First name">
-							<input type="text" class="account-form__input" name="lastname" id="lastname" value="" placeholder="Last name">
-							<input type="password" class="account-form__input" name="password" id="password" value="" placeholder="Password">
-							<input type="password" class="account-form__input" name="verifypassword" id="verifypassword" value="" placeholder="Password verify">
-							<input type="text" class="account-form__input" name="company" id="company" value="" placeholder="Organisation (optional)">
-							<input type="checkbox" class="" id="terms" name="terms"> 
+							<input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
+							<input type="email" 	class="account-form__input" name="email" 			id="email" 			value="" placeholder="Email">
+							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
+							<input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
+							<input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
+							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
+							<input type="text" 		class="account-form__input" name="company" 			id="company" 		value="" placeholder="Organisation (optional)">
+							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
 							<label>I agree to the Newsroom <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label>
 						</form>
 
@@ -121,7 +122,7 @@
 								<!-- Used to display form errors -->
 								<div id="card-errors" class="card-errors" role="alert"></div>
 							</div>
-							<p>All credit card payments are processed by Stripe. <a href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a></p>
+							<p>All credit card payments are processed by Stripe. <a target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a></p>
 
 							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
 							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">SUBSCRIBE</button>

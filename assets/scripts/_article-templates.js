@@ -112,6 +112,17 @@ Acme.templates.forgotFormTmpl =
         <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
     </form>';
 
+    
+Acme.templates.spinner = 
+    '<div id="{{name}}" class="flex_col {{name}}"> \
+        <div id="dialog" class="{{name}}__window"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
+            </div> \
+            <div class="{{name}}__content-window" id="dialogContent"></div> \
+        </div> \
+    </div>';
+    
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 

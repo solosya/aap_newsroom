@@ -28,6 +28,10 @@
     width:100%;
     height:50px;
     @include border-radius(2px);
+    &.formError {
+        border-color:color(red) !important;
+    }
+
 }
 
 

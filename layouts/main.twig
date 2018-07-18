@@ -86,16 +86,19 @@
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
-        {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=fd3931e3" type="text/css" media="all">
+    {% if _AppHelper.getApplicationEnv() == 'PROD'%}
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=06d894c6" type="text/css" media="all">
 
 
-        {% else %}
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=16' type='text/css' media='all' />
-        {% endif %}
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" />
+        <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=16' type='text/css' media='all' />
+    {% endif %}
+
+
+    <script src="https://js.stripe.com/v3/"></script>
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>#}
