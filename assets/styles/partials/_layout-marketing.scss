@@ -1,565 +1,211 @@
-.layout-marketing, body.auth.login {
-
-    .site-header {
-        .top-header {
-            > div {
-                display:block !important;
-                height: 40px;
-                ul {
-                    height: 40px;
-                    padding-top: 9px;
-                    font-size: 14px;
-                    background:#337ab7;
-                    li {
-                        margin: 0 40px;
-                    }
-                    @media screen and (max-width: $sm-break-down) {
-                        padding-top: 14px;
-                        font-size: 11px;
-                    }
-                }
-            }
-
-        }
-    }
-    .site-header-main {
-        // display:none;
-    }
-    .marketing-container {
-        @media screen and (min-width: $sm-break) and (max-width: $mmd-break) {
-            padding: 0 80px;
-        }
-    }
-    .site-main {
-        margin-top:0;
-    }
-
-    .market-header {
-        height:172px;
-        position:relative;
-
-        > img {
-            position:absolute;
-            left:0;
-            top:55px;
-            @media screen and (max-width: $mmd-break) {
-                width:91px;
-                height:32px;
-                left:20px;
-            }
-
-            @media screen and (max-width: $sm-break) {
-                width:73px;
-                height:26px;
-                display:block;
-                margin:auto;
-                position:static;
-            }
-
-        }
-
-
-        > div {
-            text-align:center;
-            width:550px;
-            margin: 0 auto;
-            margin-top:25px;
-
-            @media screen and (max-width: $mmd-break) {
-                width: 450px;
-            }
-            @media screen and (max-width: $sm-break) {
-                width: 300px;
-            } 
-
-           p {
-                border-top:1px solid black;
-                padding-top:10px;
-                font-size: rem(17);
-                margin-top:20px;
-
-                @media screen and (max-width: $mmd-break) {
-                    font-size: rem(11);
-                    margin-top:0;
-                }
-                @media screen and (max-width: $sm-break) {
-                    font-size: rem(9);
-                }
-
-
-
-            }
-            
-        }
-        .frankheader{
-            @media screen and (max-width: $sm-break) {
-                float: right;
-            }
-            img.frankHeader__img {
-                width:500px;
-                @media screen and (max-width: $mmd-break) {
-                    width:400px;
-                }
-                @media screen and (max-width: $sm-break) {
-                    width:250px;
-                }
-
-            }
-        }
-        .ubt-logo {
-            @media screen and (max-width: $sm-break) {
-                float: left;
-                margin-top: 55px; 
-                width: 90px;
-                height: 31px;
-            }
-        }
-
-    }
+.subscription {
+    margin-top:90px;
 
     .section-title {
-        >h1 {
-            font-family: $font-family-serif;
-            font-size: rem(40);
-            text-align:left;
-            font-weight:700;
-            @media screen and (max-width: $mmd-break) {
-                font-size: rem(40);
-            }
-            @media screen and (max-width: $sm-break-down) {
-                font-size: rem(32);
-            }
-
-        }
-    }
-
-    .three-card {
-        margin-top:55px;
-        text-align:center;
-        display: flex;
-        @media screen and (max-width: $mmd-break) {
-            text-align:left;
-        }
-
-        img {
-            @media screen and (max-width: $mmd-break) {
-                float:left;
-                margin-right:36px;
-                margin-bottom:50px;
-
-            }
-            @media screen and (max-width: $sm-break) {
-                float:left;
-                height: 30px;
-                margin-bottom:0;
-                margin-right:19px;
-            }
-
-        }
-        
         p{
-            margin-left: 20px;
-            margin-right: 20px;
-            font-size: rem(12.5);
-            line-height: 1.62;
-            text-align: left;
+            margin-top:18px;
+            margin-bottom:50px;
+            text-align: center;
+            font-size:rem(28);
+            font-weight: 600;
         }
     }
+}
 
-    .market-hero {
-        height:470px;
-        background-image: linear-gradient(to right, #FFF 05%, rgba(0, 0, 0, 0.0) 100%) , url('../images/market-splash.png');
-        background-size: 1300px;
-        background-repeat: no-repeat;
-        background-position: right;
-        max-width: 1600px;
-        margin-left: auto;
-        margin-right: auto;
+.subscriptionPlan {
+    @media #{$media-mobile} {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.subscriptionPlan__card {
+    margin-bottom:35px;
+    text-align:center;
+    background: color(marketgrey);
 
-        @media screen and (max-width: $mmd-break-down) {
-            height:400px;
-        }
+    @media screen and (max-width: $sm-break-down) {
+        margin-bottom: 30px;
+        padding: 18px 0;
+    }
+}
 
-        @media screen and (max-width: $sm-break-down) {
-            height:300px;
-            background-size: cover;
-            margin-bottom:25px;
+.subscriptionPlan__name {
+    font-family: $font-family-sans-serif;
+    padding:20px 0;
+    margin:0;
+    font-size: rem(30);
+    font-weight:700;
+    border-bottom:1px solid black;
+    margin-bottom:20px;
 
-        }
-
-        .content {
-            //width:581px;
-            padding-top:110px;
-            margin-left:auto;
-            margin-right: auto;
-            @media screen and (max-width: $mmd-break-down) {
-                padding-top:120px;
-            }
-            @media screen and (max-width: $sm-break-down) {
-                width:100%;
-                padding-top:140px;
-            }
-            @media #{$desktop-up} {
-                max-width: 1000px;
-
-            }
-
-            h1 {
-                line-height: 0.88;
-                font-family: $font-family-serif;
-                font-size: rem(64);
-                font-weight:700;
-                color:black;
-                margin-bottom:25px;
-                width: 600px;
-                @media screen and (max-width: $mmd-break-down) {
-                    font-size: rem(47);
-                    width:335px;
-                }
-
-                @media screen and (max-width: $sm-break-down) {
-                    font-size: rem(36);
-                    width:262px;
-                    margin-top: -25px;
-                }
-            }
-             p{
-                font-family:$font-family-sans-serif;
-                font-size: rem(25);
-                color:black;
-                font-weight: 400;
-                margin-bottom:45px;
-                width: 400px;
-                @media screen and (max-width: $mmd-break-down) {
-                    font-size: rem(17);
-
-                }
-                @media screen and (max-width: $sm-break-down) {
-                    font-size: rem(14);
-                    width:250px;
-                    margin-bottom:15px;
-                    font-weight: 200;
-                }
-             }
-             a {
-                background: color(red);
-                color:white;
-                font-size:rem(14);
-                padding:15px 50px;
-                @media screen and (max-width: $mmd-break-down) {
-                    font-size:rem(11);
-                    padding:11px 8px;
-                    width: 113px;
+    @media #{$media-mobile} {
+        height:31px;
+        margin-bottom:0;
+        font-size: rem(24);
+       }
+}
+.subscriptionPlan__usercount {
+    font-size: rem(22);
+    font-weight:600;
+    margin-top:50px;
+    @media #{$media-mobile} {
+            margin-bottom:10px;
+            font-size: rem(18);
+    }
+}
+.subscriptionPlan__price {
+    font-size: rem(22);
+       margin-bottom:18px;
+    font-weight:300;
+    @media #{$media-mobile} {
+        font-size: rem(19);
+        margin-bottom:15px;
+    }
+}
+.subscriptionPlan__subnow {
+    font-size: rem(14);
+    color: color(red);
+    font-weight:700;
+}
 
 
-                }
-
-                @media screen and (max-width: $sm-break-down) {
-                    font-size:rem(9);
-                    padding:8px 15px;
-                    width: 113px;
-                }
-
-             }
-        }
+.essential-news {
+    margin:93px 0;
+    padding-bottom: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    .screenImage {
+        max-width:100%;
     }
 
-    .essential-news {
-        margin:93px 0;
-        padding-bottom: 40px;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-        
-        .screenImage {
-            max-width:100%;
-        }
+    h3 {
+        color:black;
+        font-size:rem(37);
+        margin-bottom:20px;
+    }
 
-        h3 {
-            color:black;
-            font-size:rem(37);
+    p {
+        margin-top:18px;
+        margin-bottom:30px;
+        text-align: left;
+        font-size:rem(24);
+    }
+
+    ul {
+        padding:20px;
+        > li {
+            font-size:rem(20);
+            line-height: 1.4;
             margin-bottom:20px;
         }
-
-        p {
-            margin-top:18px;
-            margin-bottom:30px;
-            text-align: left;
-            font-size:rem(24);
-        }
-
-        ul {
-            padding:20px;
-            > li {
-                font-size:rem(20);
-                line-height: 1.4;
-                margin-bottom:20px;
-            }
-        }
-
-        p.disclaimer {
-            font-size: rem(10);
-            font-weight: 300;
-            margin: 0px;
-            padding-left: 20px;
-            text-align: left;
-        }
     }
 
-    .cost {
+    p.disclaimer {
+        font-size: rem(10);
+        font-weight: 300;
+        margin: 0px;
+        padding-left: 20px;
+        text-align: left;
+    }
+}
 
-        text-align:center;
-        overflow:auto;
-        padding-bottom: 90px;
-        border-bottom:1px solid color(border);
-        h2 {
-            font-family:$font-family-serif;
+
+
+.pro-offers {
+    background: rgba(216,216,216,.3);
+}
+
+.pro-offers__container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.pro-offers-card {
+    margin-top:55px;
+    text-align:center;
+    display: flex;
+    @media screen and (max-width: $mmd-break) {
+        text-align:left;
+    }
+}
+.pro-offers-card__img {
+    @media screen and (max-width: $mmd-break) {
+        float:left;
+        margin-right:36px;
+        margin-bottom:50px;
+
+    }
+    @media screen and (max-width: $sm-break) {
+        float:left;
+        height: 30px;
+        margin-bottom:0;
+        margin-right:19px;
+    }
+
+}
+
+.pro-offers-card__p {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: rem(12.5);
+    line-height: 1.62;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+.pro-mini-border {
+    margin-bottom: 30px;
+    width: 52px;
+    height: 1px;
+    background-color: black;
+}
+.pro-dr{
+    height: 1px;
+    width: 168px;
+    background-color: black;
+    margin-bottom: 40px;
+}
+
+
+
+
+.section-title {
+    >h1 {
+        font-family: $font-family-serif;
+        font-size: rem(40);
+        text-align:left;
+        font-weight:700;
+        @media screen and (max-width: $mmd-break) {
             font-size: rem(40);
-            font-weight:700;
-            color:color(darkblue);
-            margin-bottom:41px;
         }
-        p {
-            margin-top:25px;
-            font-size:rem(12);
-            color:color(lightgrey);
-        }
-
-    }
-
-    .subscription {
-        margin-top:90px;
-
-        .section-title {
-            p{
-                margin-top:18px;
-                margin-bottom:50px;
-                text-align: center;
-                font-size:rem(28);
-                font-weight: 600;
-            }
-        }
-
-        .subscriptionCard {
-            @media #{$media-mobile} {
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .card {
-                padding:37px 0;
-                margin-bottom:35px;
-                text-align:center;
-                background: color(marketgrey);
-            
-                @media screen and (max-width: $sm-break-down) {
-                    margin-bottom: 30px;
-                    padding: 18px 0;
-                }
-
-
-                > h3 {
-                    font-family: $font-family-serif;
-                    padding:0;
-                    margin:0;
-                    font-size: rem(30);
-                    font-weight:700;
-                    color: color(red);
-                    margin-bottom:20px;
-                    height: 66px;
-                     @media #{$media-mobile} {
-                        height:31px;
-                        margin-bottom:0;
-                        font-size: rem(24);
-                     }
-                }
-                p.usercount {
-                    font-size: rem(22);
-                    margin-bottom:61px;
-                    @media #{$media-mobile} {
-                         margin-bottom:10px;
-                         font-size: rem(18);
-                    }
-                }
-                p.price {
-                    font-size: rem(26);
-                    color: color(darkblue);
-                    margin-bottom:18px;
-                    font-weight:700;
-                    @media #{$media-mobile} {
-                        font-size: rem(19);
-                        margin-bottom:15px;
-                    }
-                }
-                p.subnow {
-                    font-size: rem(14);
-                    color: color(red);
-                    font-weight:700;
-                }
-            }
-
-            // &:last-child {
-            //     p.usercount {
-            //         margin-bottom:31px;
-            //     }
-            // }
-        }
-
-    }
-    .pro-market__grey {
-        background: rgba(216,216,216,.3);
-    }
-    .pro-offers {
-        max-width: 1000px;
-        margin: 30px auto;
-    }
-    .pro-mini-border {
-        margin-bottom: 30px;
-        width: 52px;
-        height: 1px;
-        background-color: black;
-    }
-    .pro-dr{
-        height: 1px;
-        width: 168px;
-        background-color: black;
-        margin-bottom: 40px;
-    }
-}
-
-
-#signin {
-    position:fixed;top:0;width:100%;height:100%;z-index:1001;background: rgba(0,0,0,0.5);
-    #dialog {
-        margin: auto auto;
-        min-width:468px;
-        // min-height:240px;
-        background:white;
-        padding:30px;
-        border-radius:3px;
         @media screen and (max-width: $sm-break-down) {
-            min-width:auto;
-            margin-top: 10px;
+            font-size: rem(32);
         }
 
-        > div {
-            position:relative;margin:auto;
-        
-            .head {
-                overflow:auto;
-                padding-bottom:11px;
-                border-bottom:1px solid color(lightgrey);
-                margin-bottom: 20px;
-                h2 {
-                    float: left;
-                    font-size: rem(15);
-                    font-weight:600;
-                    margin-right:20px;
-                }
-                >a {
-                    display:block;
-                    float:right;
-                    height:30px;
-                    width:30px;
-                    background:url("../icons/cross.svg");
-                    background-repeat:no-repeat;
-
-                }
-            }
-
-            // .dialogContent {
-            //     p {
-            //         margin-bottom: 40px;
-            //     }
-            // }
-
-
-            .faq {
-                font-size:rem(12);
-                color:color(lightgrey);
-                font-style:italic;
-            }
-
-            .faq__link {
-                color:color(lightgrey);
-                text-decoration: underline;
-            }
-
-            form {
-                input[type=text], input[type=password], input[type=email] {
-                    display:block;
-                    border:none;
-                    height: 44px;
-                    padding: 7px;
-                    width:100%;
-                    margin-bottom:12px;
-                    padding-left:15px;
-                    border-radius:6px;
-                    border: 1px solid color(lightergrey);
-                    background:white;
-
-
-                    &::placeholder {
-                        font-size: rem(14);
-                        color:color(lightgrey);
-                    }
-                    &::-webkit-input-placeholder {
-                        font-size: rem(14);
-                        color:color(lightgrey);
-                    }
-                    &::-moz-placeholder { /* Firefox 19+ */
-                        font-size: rem(14);
-                        color:color(lightgrey);
-                    }
-                    &:-ms-input-placeholder { /* IE 10+ */
-                        font-size: rem(14);
-                        color:color(lightgrey);
-                    }
-                    &:-moz-placeholder { /* Firefox 18- */
-                        font-size: rem(14);
-                        color:color(lightgrey);
-                    }
-
-                    &:disabled {
-                        padding: 0px !important;
-                        border: none;
-                    }
-                }
-
-                .remember {
-                    overflow:auto;
-                    >div {
-                        float:left;
-                        @media screen and (max-width: $sm-break-down) {
-                            float:none
-                        }
-
-
-                        label {
-                            font-size:rem(12);
-                            color:color(lightgrey);
-                            font-weight:normal;
-                        }
-                    }
-                    >p.layout {
-                        float:right;
-                        font-size:rem(12);
-                        color:color(lightgrey);
-                        font-style:italic;
-                        
-                        @media screen and (max-width: $sm-break-down) {
-                            float:none
-                        }
-
-                        &:hover {
-                            cursor:pointer;
-                        }
-                    }
-
-                }
-            }
-        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .subscribe__link {
     color:black;
@@ -570,7 +216,8 @@
 
 .subscribe__contact {
     margin-top:60px;
-    font-family:$base-font-family;
+    font-family:$font-family-sans-serif;
+    font-weight:600;
     font-size: rem(28);
     text-align: center;
     a{
@@ -579,7 +226,7 @@
 }
 .subscribe__payment-info {
     margin-top: 25px;
-    font-family:$base-font-family;
+    font-family:$font-family-sans-serif;
     font-size: rem(16);
     text-align: center;
     font-style: italic;

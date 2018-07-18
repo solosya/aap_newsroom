@@ -9341,6 +9341,13 @@ button.swiper-pagination-bullet {
     text-decoration: none;
     color: white; }
 
+._btn--black {
+  background: black;
+  color: white; }
+  ._btn--black:hover {
+    text-decoration: none;
+    color: white; }
+
 ._btn--blue {
   color: white; }
   ._btn--blue:hover {
@@ -9666,7 +9673,7 @@ input[type=text], input[type=password], input[type=email], input[type=search] {
 .market-hero {
   height: 566px;
   background-image: url("../images/marketing-hero.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: right; }
   @media screen and (max-width: 767px) {
@@ -13184,421 +13191,154 @@ body.channel, body.section {
   position: absolute;
   top: 0; }
 
-.layout-marketing .site-header .top-header > div, body.auth.login .site-header .top-header > div {
-  display: block !important;
-  height: 40px; }
-  .layout-marketing .site-header .top-header > div ul, body.auth.login .site-header .top-header > div ul {
-    height: 40px;
-    padding-top: 9px;
-    font-size: 14px;
-    background: #337ab7; }
-    .layout-marketing .site-header .top-header > div ul li, body.auth.login .site-header .top-header > div ul li {
-      margin: 0 40px; }
-    @media screen and (max-width: 767px) {
-      .layout-marketing .site-header .top-header > div ul, body.auth.login .site-header .top-header > div ul {
-        padding-top: 14px;
-        font-size: 11px; } }
-
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .layout-marketing .marketing-container, body.auth.login .marketing-container {
-    padding: 0 80px; } }
-
-.layout-marketing .site-main, body.auth.login .site-main {
-  margin-top: 0; }
-
-.layout-marketing .market-header, body.auth.login .market-header {
-  height: 172px;
-  position: relative; }
-  .layout-marketing .market-header > img, body.auth.login .market-header > img {
-    position: absolute;
-    left: 0;
-    top: 55px; }
-    @media screen and (max-width: 992px) {
-      .layout-marketing .market-header > img, body.auth.login .market-header > img {
-        width: 91px;
-        height: 32px;
-        left: 20px; } }
-    @media screen and (max-width: 768px) {
-      .layout-marketing .market-header > img, body.auth.login .market-header > img {
-        width: 73px;
-        height: 26px;
-        display: block;
-        margin: auto;
-        position: static; } }
-  .layout-marketing .market-header > div, body.auth.login .market-header > div {
+.subscription {
+  margin-top: 90px; }
+  .subscription .section-title p {
+    margin-top: 18px;
+    margin-bottom: 50px;
     text-align: center;
-    width: 550px;
-    margin: 0 auto;
-    margin-top: 25px; }
-    @media screen and (max-width: 992px) {
-      .layout-marketing .market-header > div, body.auth.login .market-header > div {
-        width: 450px; } }
-    @media screen and (max-width: 768px) {
-      .layout-marketing .market-header > div, body.auth.login .market-header > div {
-        width: 300px; } }
-    .layout-marketing .market-header > div p, body.auth.login .market-header > div p {
-      border-top: 1px solid black;
-      padding-top: 10px;
-      font-size: 1.7rem;
-      margin-top: 20px; }
-      @media screen and (max-width: 992px) {
-        .layout-marketing .market-header > div p, body.auth.login .market-header > div p {
-          font-size: 1.1rem;
-          margin-top: 0; } }
-      @media screen and (max-width: 768px) {
-        .layout-marketing .market-header > div p, body.auth.login .market-header > div p {
-          font-size: 0.9rem; } }
-  @media screen and (max-width: 768px) {
-    .layout-marketing .market-header .frankheader, body.auth.login .market-header .frankheader {
-      float: right; } }
-  .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
-    width: 500px; }
-    @media screen and (max-width: 992px) {
-      .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
-        width: 400px; } }
-    @media screen and (max-width: 768px) {
-      .layout-marketing .market-header .frankheader img.frankHeader__img, body.auth.login .market-header .frankheader img.frankHeader__img {
-        width: 250px; } }
-  @media screen and (max-width: 768px) {
-    .layout-marketing .market-header .ubt-logo, body.auth.login .market-header .ubt-logo {
-      float: left;
-      margin-top: 55px;
-      width: 90px;
-      height: 31px; } }
+    font-size: 2.8rem;
+    font-weight: 600; }
 
-.layout-marketing .section-title > h1, body.auth.login .section-title > h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 4rem;
-  text-align: left;
-  font-weight: 700; }
-  @media screen and (max-width: 992px) {
-    .layout-marketing .section-title > h1, body.auth.login .section-title > h1 {
-      font-size: 4rem; } }
-  @media screen and (max-width: 767px) {
-    .layout-marketing .section-title > h1, body.auth.login .section-title > h1 {
-      font-size: 3.2rem; } }
+@media screen and (max-width: 767px) {
+  .subscriptionPlan {
+    padding-left: 0;
+    padding-right: 0; } }
 
-.layout-marketing .three-card, body.auth.login .three-card {
-  margin-top: 55px;
+.subscriptionPlan__card {
+  margin-bottom: 35px;
   text-align: center;
-  display: flex; }
-  @media screen and (max-width: 992px) {
-    .layout-marketing .three-card, body.auth.login .three-card {
-      text-align: left; } }
-  @media screen and (max-width: 992px) {
-    .layout-marketing .three-card img, body.auth.login .three-card img {
-      float: left;
-      margin-right: 36px;
-      margin-bottom: 50px; } }
-  @media screen and (max-width: 768px) {
-    .layout-marketing .three-card img, body.auth.login .three-card img {
-      float: left;
-      height: 30px;
-      margin-bottom: 0;
-      margin-right: 19px; } }
-  .layout-marketing .three-card p, body.auth.login .three-card p {
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 1.25rem;
-    line-height: 1.62;
-    text-align: left; }
-
-.layout-marketing .market-hero, body.auth.login .market-hero {
-  height: 470px;
-  background-image: linear-gradient(to right, #FFF 5%, transparent 100%), url("../images/market-splash.png");
-  background-size: 1300px;
-  background-repeat: no-repeat;
-  background-position: right;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto; }
-  @media screen and (max-width: 991px) {
-    .layout-marketing .market-hero, body.auth.login .market-hero {
-      height: 400px; } }
+  background: rgba(216, 216, 216, 0.3); }
   @media screen and (max-width: 767px) {
-    .layout-marketing .market-hero, body.auth.login .market-hero {
-      height: 300px;
-      background-size: cover;
-      margin-bottom: 25px; } }
-  .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
-    padding-top: 110px;
-    margin-left: auto;
-    margin-right: auto; }
-    @media screen and (max-width: 991px) {
-      .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
-        padding-top: 120px; } }
-    @media screen and (max-width: 767px) {
-      .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
-        width: 100%;
-        padding-top: 140px; } }
-    @media screen and (min-width: 992px) {
-      .layout-marketing .market-hero .content, body.auth.login .market-hero .content {
-        max-width: 1000px; } }
-    .layout-marketing .market-hero .content h1, body.auth.login .market-hero .content h1 {
-      line-height: 0.88;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      font-size: 6.4rem;
-      font-weight: 700;
-      color: black;
-      margin-bottom: 25px;
-      width: 600px; }
-      @media screen and (max-width: 991px) {
-        .layout-marketing .market-hero .content h1, body.auth.login .market-hero .content h1 {
-          font-size: 4.7rem;
-          width: 335px; } }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .market-hero .content h1, body.auth.login .market-hero .content h1 {
-          font-size: 3.6rem;
-          width: 262px;
-          margin-top: -25px; } }
-    .layout-marketing .market-hero .content p, body.auth.login .market-hero .content p {
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-      font-size: 2.5rem;
-      color: black;
-      font-weight: 400;
-      margin-bottom: 45px;
-      width: 400px; }
-      @media screen and (max-width: 991px) {
-        .layout-marketing .market-hero .content p, body.auth.login .market-hero .content p {
-          font-size: 1.7rem; } }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .market-hero .content p, body.auth.login .market-hero .content p {
-          font-size: 1.4rem;
-          width: 250px;
-          margin-bottom: 15px;
-          font-weight: 200; } }
-    .layout-marketing .market-hero .content a, body.auth.login .market-hero .content a {
-      background: #e22f22;
-      color: white;
-      font-size: 1.4rem;
-      padding: 15px 50px; }
-      @media screen and (max-width: 991px) {
-        .layout-marketing .market-hero .content a, body.auth.login .market-hero .content a {
-          font-size: 1.1rem;
-          padding: 11px 8px;
-          width: 113px; } }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .market-hero .content a, body.auth.login .market-hero .content a {
-          font-size: 0.9rem;
-          padding: 8px 15px;
-          width: 113px; } }
+    .subscriptionPlan__card {
+      margin-bottom: 30px;
+      padding: 18px 0; } }
 
-.layout-marketing .essential-news, body.auth.login .essential-news {
+.subscriptionPlan__name {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  padding: 20px 0;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px; }
+  @media screen and (max-width: 767px) {
+    .subscriptionPlan__name {
+      height: 31px;
+      margin-bottom: 0;
+      font-size: 2.4rem; } }
+
+.subscriptionPlan__usercount {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 50px; }
+  @media screen and (max-width: 767px) {
+    .subscriptionPlan__usercount {
+      margin-bottom: 10px;
+      font-size: 1.8rem; } }
+
+.subscriptionPlan__price {
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  font-weight: 300; }
+  @media screen and (max-width: 767px) {
+    .subscriptionPlan__price {
+      font-size: 1.9rem;
+      margin-bottom: 15px; } }
+
+.subscriptionPlan__subnow {
+  font-size: 1.4rem;
+  color: #e22f22;
+  font-weight: 700; }
+
+.essential-news {
   margin: 93px 0;
   padding-bottom: 40px;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto; }
-  .layout-marketing .essential-news .screenImage, body.auth.login .essential-news .screenImage {
+  .essential-news .screenImage {
     max-width: 100%; }
-  .layout-marketing .essential-news h3, body.auth.login .essential-news h3 {
+  .essential-news h3 {
     color: black;
     font-size: 3.7rem;
     margin-bottom: 20px; }
-  .layout-marketing .essential-news p, body.auth.login .essential-news p {
+  .essential-news p {
     margin-top: 18px;
     margin-bottom: 30px;
     text-align: left;
     font-size: 2.4rem; }
-  .layout-marketing .essential-news ul, body.auth.login .essential-news ul {
+  .essential-news ul {
     padding: 20px; }
-    .layout-marketing .essential-news ul > li, body.auth.login .essential-news ul > li {
+    .essential-news ul > li {
       font-size: 2rem;
       line-height: 1.4;
       margin-bottom: 20px; }
-  .layout-marketing .essential-news p.disclaimer, body.auth.login .essential-news p.disclaimer {
+  .essential-news p.disclaimer {
     font-size: 1rem;
     font-weight: 300;
     margin: 0px;
     padding-left: 20px;
     text-align: left; }
 
-.layout-marketing .cost, body.auth.login .cost {
-  text-align: center;
-  overflow: auto;
-  padding-bottom: 90px;
-  border-bottom: 1px solid; }
-  .layout-marketing .cost h2, body.auth.login .cost h2 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 41px; }
-  .layout-marketing .cost p, body.auth.login .cost p {
-    margin-top: 25px;
-    font-size: 1.2rem;
-    color: #97999c; }
-
-.layout-marketing .subscription, body.auth.login .subscription {
-  margin-top: 90px; }
-  .layout-marketing .subscription .section-title p, body.auth.login .subscription .section-title p {
-    margin-top: 18px;
-    margin-bottom: 50px;
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 600; }
-  @media screen and (max-width: 767px) {
-    .layout-marketing .subscription .subscriptionCard, body.auth.login .subscription .subscriptionCard {
-      padding-left: 0;
-      padding-right: 0; } }
-  .layout-marketing .subscription .subscriptionCard .card, body.auth.login .subscription .subscriptionCard .card {
-    padding: 37px 0;
-    margin-bottom: 35px;
-    text-align: center;
-    background: rgba(216, 216, 216, 0.3); }
-    @media screen and (max-width: 767px) {
-      .layout-marketing .subscription .subscriptionCard .card, body.auth.login .subscription .subscriptionCard .card {
-        margin-bottom: 30px;
-        padding: 18px 0; } }
-    .layout-marketing .subscription .subscriptionCard .card > h3, body.auth.login .subscription .subscriptionCard .card > h3 {
-      font-family: Georgia, "Times New Roman", Times, serif;
-      padding: 0;
-      margin: 0;
-      font-size: 3rem;
-      font-weight: 700;
-      color: #e22f22;
-      margin-bottom: 20px;
-      height: 66px; }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .subscription .subscriptionCard .card > h3, body.auth.login .subscription .subscriptionCard .card > h3 {
-          height: 31px;
-          margin-bottom: 0;
-          font-size: 2.4rem; } }
-    .layout-marketing .subscription .subscriptionCard .card p.usercount, body.auth.login .subscription .subscriptionCard .card p.usercount {
-      font-size: 2.2rem;
-      margin-bottom: 61px; }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .subscription .subscriptionCard .card p.usercount, body.auth.login .subscription .subscriptionCard .card p.usercount {
-          margin-bottom: 10px;
-          font-size: 1.8rem; } }
-    .layout-marketing .subscription .subscriptionCard .card p.price, body.auth.login .subscription .subscriptionCard .card p.price {
-      font-size: 2.6rem;
-      margin-bottom: 18px;
-      font-weight: 700; }
-      @media screen and (max-width: 767px) {
-        .layout-marketing .subscription .subscriptionCard .card p.price, body.auth.login .subscription .subscriptionCard .card p.price {
-          font-size: 1.9rem;
-          margin-bottom: 15px; } }
-    .layout-marketing .subscription .subscriptionCard .card p.subnow, body.auth.login .subscription .subscriptionCard .card p.subnow {
-      font-size: 1.4rem;
-      color: #e22f22;
-      font-weight: 700; }
-
-.layout-marketing .pro-market__grey, body.auth.login .pro-market__grey {
+.pro-offers {
   background: rgba(216, 216, 216, 0.3); }
 
-.layout-marketing .pro-offers, body.auth.login .pro-offers {
+.pro-offers__container {
   max-width: 1000px;
   margin: 30px auto; }
 
-.layout-marketing .pro-mini-border, body.auth.login .pro-mini-border {
+.pro-offers-card {
+  margin-top: 55px;
+  text-align: center;
+  display: flex; }
+  @media screen and (max-width: 992px) {
+    .pro-offers-card {
+      text-align: left; } }
+
+@media screen and (max-width: 992px) {
+  .pro-offers-card__img {
+    float: left;
+    margin-right: 36px;
+    margin-bottom: 50px; } }
+
+@media screen and (max-width: 768px) {
+  .pro-offers-card__img {
+    float: left;
+    height: 30px;
+    margin-bottom: 0;
+    margin-right: 19px; } }
+
+.pro-offers-card__p {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 1.25rem;
+  line-height: 1.62;
+  text-align: left; }
+
+.pro-mini-border {
   margin-bottom: 30px;
   width: 52px;
   height: 1px;
   background-color: black; }
 
-.layout-marketing .pro-dr, body.auth.login .pro-dr {
+.pro-dr {
   height: 1px;
   width: 168px;
   background-color: black;
   margin-bottom: 40px; }
 
-#signin {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1001;
-  background: rgba(0, 0, 0, 0.5); }
-  #signin #dialog {
-    margin: auto auto;
-    min-width: 468px;
-    background: white;
-    padding: 30px;
-    border-radius: 3px; }
-    @media screen and (max-width: 767px) {
-      #signin #dialog {
-        min-width: auto;
-        margin-top: 10px; } }
-    #signin #dialog > div {
-      position: relative;
-      margin: auto; }
-      #signin #dialog > div .head {
-        overflow: auto;
-        padding-bottom: 11px;
-        border-bottom: 1px solid #97999c;
-        margin-bottom: 20px; }
-        #signin #dialog > div .head h2 {
-          float: left;
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-right: 20px; }
-        #signin #dialog > div .head > a {
-          display: block;
-          float: right;
-          height: 30px;
-          width: 30px;
-          background: url("../icons/cross.svg");
-          background-repeat: no-repeat; }
-      #signin #dialog > div .faq {
-        font-size: 1.2rem;
-        color: #97999c;
-        font-style: italic; }
-      #signin #dialog > div .faq__link {
-        color: #97999c;
-        text-decoration: underline; }
-      #signin #dialog > div form input[type=text], #signin #dialog > div form input[type=password], #signin #dialog > div form input[type=email] {
-        display: block;
-        border: none;
-        height: 44px;
-        padding: 7px;
-        width: 100%;
-        margin-bottom: 12px;
-        padding-left: 15px;
-        border-radius: 6px;
-        border: 1px solid #E5E5E5;
-        background: white; }
-        #signin #dialog > div form input[type=text]::placeholder, #signin #dialog > div form input[type=password]::placeholder, #signin #dialog > div form input[type=email]::placeholder {
-          font-size: 1.4rem;
-          color: #97999c; }
-        #signin #dialog > div form input[type=text]::-webkit-input-placeholder, #signin #dialog > div form input[type=password]::-webkit-input-placeholder, #signin #dialog > div form input[type=email]::-webkit-input-placeholder {
-          font-size: 1.4rem;
-          color: #97999c; }
-        #signin #dialog > div form input[type=text]::-moz-placeholder, #signin #dialog > div form input[type=password]::-moz-placeholder, #signin #dialog > div form input[type=email]::-moz-placeholder {
-          /* Firefox 19+ */
-          font-size: 1.4rem;
-          color: #97999c; }
-        #signin #dialog > div form input[type=text]:-ms-input-placeholder, #signin #dialog > div form input[type=password]:-ms-input-placeholder, #signin #dialog > div form input[type=email]:-ms-input-placeholder {
-          /* IE 10+ */
-          font-size: 1.4rem;
-          color: #97999c; }
-        #signin #dialog > div form input[type=text]:-moz-placeholder, #signin #dialog > div form input[type=password]:-moz-placeholder, #signin #dialog > div form input[type=email]:-moz-placeholder {
-          /* Firefox 18- */
-          font-size: 1.4rem;
-          color: #97999c; }
-        #signin #dialog > div form input[type=text]:disabled, #signin #dialog > div form input[type=password]:disabled, #signin #dialog > div form input[type=email]:disabled {
-          padding: 0px !important;
-          border: none; }
-      #signin #dialog > div form .remember {
-        overflow: auto; }
-        #signin #dialog > div form .remember > div {
-          float: left; }
-          @media screen and (max-width: 767px) {
-            #signin #dialog > div form .remember > div {
-              float: none; } }
-          #signin #dialog > div form .remember > div label {
-            font-size: 1.2rem;
-            color: #97999c;
-            font-weight: normal; }
-        #signin #dialog > div form .remember > p.layout {
-          float: right;
-          font-size: 1.2rem;
-          color: #97999c;
-          font-style: italic; }
-          @media screen and (max-width: 767px) {
-            #signin #dialog > div form .remember > p.layout {
-              float: none; } }
-          #signin #dialog > div form .remember > p.layout:hover {
-            cursor: pointer; }
+.section-title > h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 4rem;
+  text-align: left;
+  font-weight: 700; }
+  @media screen and (max-width: 992px) {
+    .section-title > h1 {
+      font-size: 4rem; } }
+  @media screen and (max-width: 767px) {
+    .section-title > h1 {
+      font-size: 3.2rem; } }
 
 .subscribe__link {
   color: black; }
@@ -13607,7 +13347,8 @@ body.channel, body.section {
 
 .subscribe__contact {
   margin-top: 60px;
-  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size: 2.8rem;
   text-align: center; }
   .subscribe__contact a {
@@ -13615,7 +13356,7 @@ body.channel, body.section {
 
 .subscribe__payment-info {
   margin-top: 25px;
-  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   text-align: center;
   font-style: italic; }

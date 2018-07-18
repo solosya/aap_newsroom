@@ -109,7 +109,7 @@ if ($('#stripekey').length > 0) {
         }
 
 
-        modal.render("spinner", "Authorising payment");
+        modal.render("spinner", "Your request is being processed.");
 
         stripe.createToken(card).then(function(result) {
 

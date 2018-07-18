@@ -537,7 +537,6 @@
 
 
     Acme.modal = function(template, name, layouts, data) {
-        console.log(name);
         this.template = template || null;
         this.parentCont = name   || null;
         this.layouts = layouts   || null;
@@ -551,13 +550,11 @@
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
-            console.log(this.data);
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
             $('body').addClass('acme-modal-active').prepend(tmp);
             if (layout) {
-                console.log('rendering', layout);
                 this.renderLayout(layout, data);
             }
             this.events();
@@ -566,7 +563,6 @@
         };
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
-            console.log(Acme.templates[this.layouts[layout]]);
             var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
             var layout = tmp(data);
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 

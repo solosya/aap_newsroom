@@ -23,7 +23,7 @@
 
 
 
-{% set showPaywall = false %}
+{% set showPaywall = true %}
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
@@ -87,7 +87,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=8f709c70" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=4de8deb0" type="text/css" media="all">
 
 
     {% else %}

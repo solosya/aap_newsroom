@@ -8,54 +8,60 @@
  
 
 <main id="main" class="site-main" role="main">
+
+
 	<div class="container-fluid">
-
 		<section class="row">
-			<div class="col-sm-12 market-header">
-				<div class="frankheader">
-					<img class="frankHeader__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
-				</div>
-
+			<div class="col-sm-12 market-header u-margin-top-40">
+				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
 			</div>
 		</section>
 	</div>
 
-	<section class="market-hero">
-		<div class="container-fluid">
+	<section class="market-hero u-margin-top-40">
+		<div class="market-hero__content container-fluid">
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="content">
-
-						<h1>Behind&nbsp;the headlines</h1>
-						<p>In-depth analysis of politics  and business from 99c a day </p>
-
-
-						<a id="" href="#subscriptions" class="_btn">SUBSCRIBE NOW</a>
- 						<a id="body_login_link" class="hidden-xs hidden-sm" style="background:#8A8B93;margin-left:25px;padding:15px 45px;cursor:pointer;">START FREE TRIAL</a>
-					</div>
+				<div class="col-md-offset-1 col-md-11">
+					<h1 class="market-hero__headline">Behind the <br />headlines</h1>
+					<h3 class="market-hero__tagline">In-depth analysis of politics <br />and business from 99c a day</h3>
+					<a id="" href="#subscriptions" class="_btn _btn--red">SUBSCRIBE NOW</a>
+					<a id="body_login_link" class="_btn _btn--gray hidden-xs hidden-sm" >START FREE TRIAL</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<div class="container-fluid pro-market__grey">
 
-		<section class="row pro-offers">
-			<div class="col-sm-12 section-title">
-				<h1>What Newsroom Pro Offers</h1>
-			</div>
-			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-global.svg" style="height: 85px;">
-				<p>A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</p>
-			</div>
-			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-satellite.svg" style="height: 90px;">
-				<p>Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</p>
-			</div>
-			<div class="col-sm-4 three-card">
-				<img src="{{networkData.templatePath}}/static/images/market-monitoring.svg" style="height: 112px;margin-top:-15px;">
-				<p>Group subscribers get access to our media monitoring service, which covers dozens of business sectors</p>
-		</section>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="pro-offers">
+		<div class="container-fluid">
+			<section class="row pro-offers__container">
+				<div class="col-sm-12 section-title">
+					<h1>What Newsroom Pro Offers</h1>
+				</div>
+				<div class="col-sm-4 pro-offers-card">
+					<img class="pro-offers-card__img" src="{{networkData.templatePath}}/static/images/market-global.svg" style="height: 85px;">
+					<p class="pro-offers-card__p">A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</p>
+				</div>
+				<div class="col-sm-4 pro-offers-card">
+					<img class="pro-offers-card__img" src="{{networkData.templatePath}}/static/images/market-satellite.svg" style="height: 90px;">
+					<p class="pro-offers-card__p">Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</p>
+				</div>
+				<div class="col-sm-4 pro-offers-card">
+					<img class="pro-offers-card__img" src="{{networkData.templatePath}}/static/images/market-monitoring.svg" style="height: 112px;margin-top:-15px;">
+					<p class="pro-offers-card__p">Group subscribers get access to our media monitoring service, which covers dozens of business sectors</p>
+			</section>
+		</div>
 	</div>
 
 
@@ -95,30 +101,30 @@
 
 			    {% for plan in plans %}
 			    	
-						<div class="col-sm-3 subscriptionCard">
-							<div class="card">
-								<h3>{{plan.name}}</h3>
-								{% set uc = plan.user_count + 1 %}
-								{% set val = plan.plan_value / 100 %}
-								{% if val == 19.89 %}
-									{% set val = 19.90 %}
-								{% endif %}
-								<p class="usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
-								<p class="price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})<br class="hidden-xs"> per {{plan.period}}</p>
+					<div class="col-sm-3 subscriptionPlan">
+						<div class="subscriptionPlan__card">
+							<h3 class="subscriptionPlan__name">{{plan.name}}</h3>
+							{% set uc = plan.user_count + 1 %}
+							{% set val = plan.plan_value / 100 %}
+							{% if val == 19.89 %}
+								{% set val = 19.90 %}
+							{% endif %}
+							<p class="subscriptionPlan__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
+							<p class="subscriptionPlan__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})<br class="hidden-xs"> per {{plan.period}}</p>
 
-								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}">
-									<p class="centerBlock _btn _btn--red _btn__subscribe">
-										<span>SUBSCRIBE NOW</span>
-										
-									</p>
-								</a>
+							<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}">
+								<p class="centerBlock _btn _btn--red _btn__subscribe">
+									<span>SUBSCRIBE NOW</span>
+									
+								</p>
+							</a>
 
-								<!-- trial button. this will probably be turned off again at some point -->
-								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
-									<p class="centerBlock _btn _btn--blue _btn__subscribe">START 28-DAY FREE TRIAL</p>
-								</a>
-							</div>
+							<!-- trial button. this will probably be turned off again at some point -->
+							<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
+								<p class="centerBlock _btn _btn--black _btn__subscribe">START 28-DAY FREE TRIAL</p>
+							</a>
 						</div>
+					</div>
 					
 			    {% endfor %}
 
