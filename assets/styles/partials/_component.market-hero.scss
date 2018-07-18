@@ -1,0 +1,39 @@
+.market-hero {
+    height:566px;
+    margin-bottom:70px;
+    background-image: url('../images/marketing-hero.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    @media screen and (max-width: $sm-break-down) {
+        height:420px;
+        background-size: cover;
+    }
+    
+}   
+    
+.market-hero__content {
+    padding-top:159px;
+    height:100%;
+    @media screen and (max-width: $sm-break-down) {
+        width:100%;
+        padding-top:80px;
+    }
+}
+
+
+.market-hero__headline {
+    font-family: $font-family-serif;
+    font-size: rem(62);
+    font-weight:700;
+    margin-bottom:25px;
+
+    @media screen and (max-width: $sm-break-down) {
+        font-size: rem(40);
+    }
+}
+.market-hero__tagline {
+    font-family: $font-family-sans-serif;
+    font-size: rem(25);
+    font-weight: 600; 
+}

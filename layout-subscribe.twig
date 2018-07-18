@@ -4,7 +4,7 @@
 
 
 {% set plan = false %}
-{% set trial = false %}
+{% set trial = true %}
 
 {% set url = _AppHelper.getParsedUrl() %}
 {% set params = url['query'] %}
@@ -30,26 +30,25 @@
 <main id="main" class="site-main" role="main">
 	<div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
 	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
+	
+	
 	<div class="container-fluid">
-
 		<section class="row">
-			<div class="col-sm-12">
-				<img class="newsroom-logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
+			<div class="col-sm-12 market-header u-margin-top-40">
+				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
 			</div>
 		</section>
 	</div>
 
-	<section class="market-hero">
-		<div class="container-fluid">
+	<section class="market-hero u-margin-top-40">
+		<div class="market-hero__content container-fluid">
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="content">
-						<h1>Behind the headlines</h1>
-						<h3>You’re just one step away from reading Newsroom Pro.</h3>
-					</div>
+				<div class="col-md-offset-1 col-md-11">
+					<h1 class="market-hero__headline">Behind the <br />headlines</h1>
+					<h3 class="market-hero__tagline">You’re just one step away from<br /> reading Newsroom Pro.</h3>
 				</div>
 			</div>
-		</section>
+		</div>
 	</section>
 
 
@@ -60,16 +59,24 @@
 	<div class="container-fluid">
 
 		<section class="row">
+
 			<div class="col-md-offset-1 col-md-7">
-				{% if plan != false  %}
+				<div class="row">
+					<div class="col-md-10">
+			{% if plan == false  %}
+						<h1>You need to choose a plan from the subscriptions screen</h1>
+					</div>
+				</div>
+			</div>
+			{% else %}
 
 					{% if trial %}
 						<div class="trial">
 							<h2 class="trial__header">Start your 14-day free trial now</h2>
 
 							<p class="trial__text">
-								A 14-day free trial requires registration with a valid credit card. After 14 days, 
-								your credit card will be charged for your chosen subscription unless you cancel 
+								A 14-day free trial requires registration with a valid credit card. <span>After 14 days, 
+								your credit card will be charged for your chosen subscription</span> unless you cancel 
 								not less than two days before the end of the free period. Subscriptions are billed 
 								monthly.
 							</p>
@@ -80,124 +87,80 @@
 							</p>
 						</div>
 					{% endif %}
+					</div>
+				</div>
 
-				    <form class="account-form" method="post" action="" id="listingForm">
-			    		<p class="form-section-label">Your information</p>
-
-		                <input type="text" class="articleExtendedData account-form__input" name="username" id="username" value="" placeholder="Username">
-		                <p class="form-section-note">Username must be at least five characters long and contain no spaces or special characters</p>
-
-		                <input type="text" class="articleExtendedData account-form__input" name="firstname" id="firstname" value="" placeholder="First name">
-		                <input type="text" class="articleExtendedData account-form__input" name="lastname" id="lastname" value="" placeholder="Last name">
-
-		                <input type="password" class="account-form__input" name="password" id="password" value="" placeholder="Password">
-		                <input type="password" class="account-form__input" name="verifypassword" id="verifypassword" value="" placeholder="Password verify">
+				<div class="row">
+					<div class="col-md-12">
 
 
-		                <input type="email" class="account-form__input" name="email" id="email" value="" placeholder="Email">
-		                <input type="text" class="articleExtendedData account-form__input" name="phone_no" id="phone_no" value="" placeholder="Mobile">
-		                <input type="text" class="articleExtendedData account-form__input" name="address1" id="address1" value="" placeholder="Address">
-						<input type="text" class="articleExtendedData account-form__input" name="suburb" id="suburb" value="" placeholder="Suburb">
-						{% if plan.currency == "GBP" %}
-		                <input type="text" class="articleExtendedData account-form__input" name="state" id="state" value="" placeholder="City/Town">
-						{% else %}
-		                <input type="text" class="articleExtendedData account-form__input" name="state" id="state" value="" placeholder="State">
-			            {% endif %}
-		                <input type="text" class="articleExtendedData account-form__input" name="postcode" id="postcode" value="" placeholder="Postcode">
-			            
-			            <input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
-			            {# <input type="hidden" class="" name="trial" id="trial" value="{{trial}}"> #}
+						<form class="account-form" method="post" action="" id="listingForm">
+							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
+							<p class="account-form__section-label">Your information</p>
+							<input type="email" class="account-form__input" name="email" id="email" value="" placeholder="Email">
+							<input type="text" class="account-form__input" name="firstname" id="firstname" value="" placeholder="First name">
+							<input type="text" class="account-form__input" name="lastname" id="lastname" value="" placeholder="Last name">
+							<input type="password" class="account-form__input" name="password" id="password" value="" placeholder="Password">
+							<input type="password" class="account-form__input" name="verifypassword" id="verifypassword" value="" placeholder="Password verify">
+							<input type="text" class="account-form__input" name="company" id="company" value="" placeholder="Organisation (optional)">
+							<input type="checkbox" class="" id="terms" name="terms"> 
+							<label>I agree to the Newsroom <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label>
+						</form>
 
-			            <div id="countrySelect" class="countrySelect"></div> 
 
-			            {# {% if trial %}
-			            	<input type="checkbox" class="" onclick="return false;" value="true" id="trial" name="trial" checked> 
-			            	<label>Include 14 day trial period</label>
-			            {% endif %} #}
-			            <br />
+						<p class="account-form__section-label u-margin-top-40">Payment details</p>
+						<form action="/charge" method="post" id="payment-form">
+							<div class="form-row ">
+								<label for="card-element">
+								Credit or debit card
+								</label>
+								<div id="card-element">
+								<!-- a Stripe Element will be inserted here. -->
+								</div>
+
+								<!-- Used to display form errors -->
+								<div id="card-errors" class="card-errors" role="alert"></div>
+							</div>
+							<p>All credit card payments are processed by Stripe. <a href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a></p>
+
+							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
+							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">SUBSCRIBE</button>
+						</form>
+
 						
-						<input type="checkbox" class="" id="terms" name="terms"> 
-			            <label>I agree to the frank <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label>
- 						<p class="form-section-label u-margin-top-40">Payment details</p>
+						
 
 
-{# 		                <fieldset>
-		                    <div class="inline">
-		                        <input type="radio" name="extendedData.salary" id="paymentType1" class="articleExtendedData" value="1" checked="checked" />
-		                        <label for="paymentType1">Credit card</label>
-		                    </div>
-		                    <div class="inline">
-		                        <input type="radio" name="extendedData.salary" id="paymentType2" class="articleExtendedData" value="2" />
-		                        <label for="paymentType2">Pay Pal</label>
-		                    </div>
-		                    <div class="inline">
-		                        <input type="radio" name="extendedData.salary" id="paymentType3" class="articleExtendedData" value="3" />
-		                        <label for="paymentType3">Bank deposit</label>
-		                    </div>
-		                </fieldset>
- #}
- {# 		                <input type="text" class="articleExtendedData" name="cardname" id="cardname" value="" placeholder="Name on card">
-		                <input type="text" class="articleExtendedData" name="cardnumber" id="cardnumber" value="" placeholder="Credit card number">
-		                <input type="text" class="articleExtendedData" name="expiry" id="expiry" value="" placeholder="Expiry date">
-		                <input type="text" class="articleExtendedData" name="ccv" id="ccv" value="" placeholder="ccv">
- #}		                
-{# 			            <button class="_btn" type="submit" id="listingFormSubmit">SUBSCRIBE</button>
-		                <button class="_btn" type="reset"  id="listingFormClear">CLEAR</button>
- #}				    
-					</form>
+					</div>			
 
-					<form action="/charge" method="post" id="payment-form">
-					  <div class="form-row ">
-					    <label for="card-element">
-					      Credit or debit card
-					    </label>
-					    <div id="card-element">
-					      <!-- a Stripe Element will be inserted here. -->
-					    </div>
-
-					    <!-- Used to display form errors -->
-					    <div id="card-errors" class="card-errors" role="alert"></div>
-					  </div>
-
-					  {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-					  <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">SUBSCRIBE</button>
-					</form>
-
-				{% else %}
-					<h1>You need to choose a plan from the subscriptions screen</h1>
-				{% endif %}
-			</div>			
-
-
+				</div>
+			</div>
 
 			<div class="col-md-3">
 				<div class="plan-type">
 
 					{% if plan != false %}
-						<div class="plan-type-header">
-							<h2>Order Summary</h2>
-						</div>
-						<div class="plan-body">
+						<h2 class="plan-type__header">Order Summary</h2>
+						
+						<div class="plan-type__body">
 
-							<h3>{{plan.name}}</h3>
+							<h3 class="plan-type__name">{{plan.name}}</h3>
 							{% set uc = plan.user_count + 1 %}
 							{% set val = plan.plan_value / 100 %}
 							{% if val == 19.89 %}
 								{% set val = 19.90 %}
 							{% endif %}
 
-							<p>{{uc|replace({ '10001': '20+' })}} users</p>
-							<h4>{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})/{{plan.period}}</h4>
-							<img src="{{networkData.templatePath}}/static/images/market-screens.png?v=4">
-							<p class="red-label u-margin-top-40">What's included in your subscription:</p>
-							<ul class="features-list">
+							<p class="plan-type__users">{{uc|replace({ '10001': '20+' })}} users</p>
+							<h4 class="plan-type__currency">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})/{{plan.period}}</h4>
+							<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
+							<p class="plan-type__label u-margin-top-40">What's included in your subscription:</p>
+							<ul class="plan-type__features">
 								{{plan.description | raw }}
 							</ul>
 
-							<a href="{{networkData.defaultBlogUrl}}#subscriptions">Change subscription</a>
+							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}#subscriptions">Change subscription</a>
 						</div>
-
-
 
 					{# 	{{ this.render('partials/_plan-'~plan~'.twig', {
 						    networkData: networkData, 
@@ -206,7 +169,7 @@
 					{% endif %}
 				</div>
 			</div>
-
+			{% endif %}
 		</section>
 
 	</div>

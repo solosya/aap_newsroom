@@ -6799,7 +6799,7 @@ h4.modal-title {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
 
 .container-fluid {
-  max-width: 1600px; }
+  max-width: 1345px; }
 
 .btn {
   font-size: 1.4em;
@@ -9429,62 +9429,67 @@ button.swiper-pagination-bullet {
     background-size: cover;
     background-repeat: no-repeat; }
 
-.account-form .account-form__label {
+.account-form__section-label {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600; }
+
+.account-form__label {
   font-size: 1.3rem;
   line-height: 44px; }
 
-.account-form .account-form__label--mobile {
+.account-form__label--mobile {
   display: none; }
   @media screen and (max-width: 767px) {
-    .account-form .account-form__label--mobile {
+    .account-form__label--mobile {
       display: inherit;
       margin-bottom: -10px; } }
 
-.account-form .account-form__label--red {
+.account-form__label--red {
   color: #e22f22;
   line-height: 1.2; }
 
-.account-form .account-form__input {
+.account-form__input {
   width: 100%;
   height: 50px;
   -webkit-border-radius: 2px;
   border-radius: 2px; }
 
-.account-form .account-form__inline-inputs {
+.account-form__inline-inputs {
   display: flex;
   flex-direction: row; }
-  .account-form .account-form__inline-inputs label {
+  .account-form__inline-inputs label {
     flex: 2; }
-  .account-form .account-form__inline-inputs input, .account-form .account-form__inline-inputs span {
+  .account-form__inline-inputs input, .account-form__inline-inputs span {
     flex: 7; }
 
-.account-form .account-form__value {
+.account-form__value {
   margin: 0;
   flex: 7;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.3rem; }
 
-.account-form .account-form__explainer {
+.account-form__explainer {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   font-style: italic;
   color: #0e0e0e;
   flex: 7; }
 
-.account-form .error-message {
+.error-message {
   display: none;
   padding: 3px 10px;
   background: #e22f22;
   color: white;
   font-size: 1.5rem;
   margin-bottom: 41px; }
-  .account-form .error-message.active {
+  .error-message.active {
     display: block; }
 
-.account-form input[type=radio].inline {
+input[type=radio].inline {
   margin-top: 20px; }
 
-.account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
+input[type=text], input[type=password], input[type=email], input[type=search] {
   display: block;
   border: none;
   height: 44px;
@@ -9494,25 +9499,25 @@ button.swiper-pagination-bullet {
   padding-left: 15px;
   border-radius: 6px;
   border: 1px solid #E5E5E5; }
-  .account-form input[type=text]::placeholder, .account-form input[type=password]::placeholder, .account-form input[type=email]::placeholder, .account-form input[type=search]::placeholder {
+  input[type=text]::placeholder, input[type=password]::placeholder, input[type=email]::placeholder, input[type=search]::placeholder {
     font-size: 1.4rem;
     color: #97999c; }
-  .account-form input[type=text]::-webkit-input-placeholder, .account-form input[type=password]::-webkit-input-placeholder, .account-form input[type=email]::-webkit-input-placeholder, .account-form input[type=search]::-webkit-input-placeholder {
+  input[type=text]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=search]::-webkit-input-placeholder {
     font-size: 1.4rem;
     color: #97999c; }
-  .account-form input[type=text]::-moz-placeholder, .account-form input[type=password]::-moz-placeholder, .account-form input[type=email]::-moz-placeholder, .account-form input[type=search]::-moz-placeholder {
+  input[type=text]::-moz-placeholder, input[type=password]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=search]::-moz-placeholder {
     /* Firefox 19+ */
     font-size: 1.4rem;
     color: #97999c; }
-  .account-form input[type=text]:-ms-input-placeholder, .account-form input[type=password]:-ms-input-placeholder, .account-form input[type=email]:-ms-input-placeholder, .account-form input[type=search]:-ms-input-placeholder {
+  input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=search]:-ms-input-placeholder {
     /* IE 10+ */
     font-size: 1.4rem;
     color: #97999c; }
-  .account-form input[type=text]:-moz-placeholder, .account-form input[type=password]:-moz-placeholder, .account-form input[type=email]:-moz-placeholder, .account-form input[type=search]:-moz-placeholder {
+  input[type=text]:-moz-placeholder, input[type=password]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=search]:-moz-placeholder {
     /* Firefox 18- */
     font-size: 1.4rem;
     color: #97999c; }
-  .account-form input[type=text]:disabled, .account-form input[type=password]:disabled, .account-form input[type=email]:disabled, .account-form input[type=search]:disabled {
+  input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=search]:disabled {
     background: none;
     border: none;
     webkit-box-shadow: none;
@@ -9530,6 +9535,108 @@ button.swiper-pagination-bullet {
 
 .text-button--italic {
   font-style: italic; }
+
+.plan-type {
+  background: rgba(216, 216, 216, 0.3);
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+
+.plan-type__header {
+  background: black;
+  padding: 10px;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600; }
+
+.plan-type__body {
+  padding: 30px 20px;
+  text-align: center;
+  overflow: auto; }
+
+.plan-type__users {
+  font-size: 1.8rem; }
+
+.plan-type__name {
+  margin-top: -20px;
+  color: #e22f22;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-family: Georgia, "Times New Roman", Times, serif; }
+
+.plan-type__currency {
+  color: #e22f22;
+  margin-bottom: 1.8rem; }
+
+.plan-type__label {
+  font-size: 1.4rem;
+  color: #e22f22;
+  margin-bottom: 12px;
+  font-weight: 700; }
+
+.plan-type__img {
+  width: 100%; }
+
+.plan-type__link {
+  margin-top: 15px;
+  float: right;
+  font-style: italic;
+  font-size: 1.4rem; }
+
+.plan-type__features {
+  text-align: left; }
+  .plan-type__features li {
+    margin-bottom: 10px; }
+
+.market-hero {
+  height: 566px;
+  margin-bottom: 70px;
+  background-image: url("../images/marketing-hero.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right; }
+  @media screen and (max-width: 767px) {
+    .market-hero {
+      height: 420px;
+      background-size: cover; } }
+
+.market-hero__content {
+  padding-top: 159px;
+  height: 100%; }
+  @media screen and (max-width: 767px) {
+    .market-hero__content {
+      width: 100%;
+      padding-top: 80px; } }
+
+.market-hero__headline {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 6.2rem;
+  font-weight: 700;
+  margin-bottom: 25px; }
+  @media screen and (max-width: 767px) {
+    .market-hero__headline {
+      font-size: 4rem; } }
+
+.market-hero__tagline {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600; }
+
+.market-header {
+  text-align: center; }
+  .market-header .market-header__logo {
+    width: 590px; }
+    @media screen and (max-width: 992px) {
+      .market-header .market-header__logo {
+        width: 91px;
+        height: 32px;
+        left: 20px; } }
+    @media screen and (max-width: 768px) {
+      .market-header .market-header__logo {
+        width: 73px;
+        height: 26px;
+        display: block;
+        margin: auto;
+        position: static; } }
 
 .login-form input[type=text], .login-form input[type=password], .login-form input[type=email] {
   display: block;
@@ -10612,6 +10719,10 @@ button.swiper-pagination-bullet {
   color: black;
   padding-bottom: 11px; }
 
+.profile-section__card-errors {
+  color: #e22f22;
+  margin-top: 25px; }
+
 .thank-you {
   margin-top: 80px;
   margin-bottom: 150px; }
@@ -10635,22 +10746,29 @@ button.swiper-pagination-bullet {
   color: #e22f22; }
 
 .trial {
-  margin-bottom: 80px; }
+  margin-bottom: 60px;
+  color: #4a4a4a; }
 
 .trial__header {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 3.6rem;
+  font-size: 3.4rem;
   font-weight: bold;
   line-height: 0.89;
-  margin-bottom: 22px; }
+  color: #e22f22;
+  margin-bottom: 32px; }
 
 .trial__text {
+  line-height: 1.56;
   font-size: 1.6rem;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  color: inherit; }
+  .trial__text > span {
+    font-weight: 600; }
 
 .trial__text--last {
   font-size: 1.6rem;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  color: inherit; }
   .trial__text--last:before {
     content: '';
     display: block;
@@ -10805,145 +10923,6 @@ button.swiper-pagination-bullet {
   font-size: 1.25rem;
   line-height: 1.07;
   letter-spacing: 0.3px; }
-
-.subscribe .market-hero {
-  height: 566px;
-  margin-bottom: 70px;
-  background-image: url("../images/marketing-hero.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right; }
-  @media screen and (max-width: 767px) {
-    .subscribe .market-hero {
-      height: 420px;
-      background-size: cover; } }
-  .subscribe .market-hero .content {
-    width: 670px;
-    padding-top: 159px; }
-    @media screen and (max-width: 767px) {
-      .subscribe .market-hero .content {
-        width: 100%;
-        padding-top: 80px; } }
-    .subscribe .market-hero .content h1 {
-      line-height: 1.16;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      font-size: 6.2rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 25px; }
-      @media screen and (max-width: 767px) {
-        .subscribe .market-hero .content h1 {
-          font-size: 4rem; } }
-
-.subscribe .card-errors {
-  color: #e22f22;
-  margin-top: 25px; }
-
-.subscribe .site-main {
-  margin-top: 0; }
-
-.subscribe .market-header {
-  height: 172px;
-  position: relative; }
-  .subscribe .market-header > img {
-    position: absolute;
-    left: 0;
-    top: 55px; }
-    @media screen and (max-width: 992px) {
-      .subscribe .market-header > img {
-        width: 91px;
-        height: 32px;
-        left: 20px; } }
-    @media screen and (max-width: 768px) {
-      .subscribe .market-header > img {
-        width: 73px;
-        height: 26px;
-        display: block;
-        margin: auto;
-        position: static; } }
-  .subscribe .market-header > div {
-    text-align: center;
-    width: 350px;
-    margin: 0 auto;
-    margin-top: 25px; }
-    @media screen and (max-width: 992px) {
-      .subscribe .market-header > div {
-        width: 265px; } }
-    @media screen and (max-width: 768px) {
-      .subscribe .market-header > div {
-        width: 189px; } }
-    .subscribe .market-header > div p {
-      border-top: 1px solid black;
-      padding-top: 10px;
-      font-size: 1.7rem;
-      margin-top: 20px; }
-      @media screen and (max-width: 992px) {
-        .subscribe .market-header > div p {
-          font-size: 1.1rem;
-          margin-top: 0; } }
-      @media screen and (max-width: 768px) {
-        .subscribe .market-header > div p {
-          font-size: 0.9rem; } }
-  @media screen and (max-width: 768px) {
-    .subscribe .market-header .frankheader {
-      float: right; } }
-  @media screen and (max-width: 992px) {
-    .subscribe .market-header .frankheader img.frankHeader__img {
-      width: 129px; } }
-  @media screen and (max-width: 768px) {
-    .subscribe .market-header .frankheader img.frankHeader__img {
-      width: 104px; } }
-  @media screen and (max-width: 768px) {
-    .subscribe .market-header .ubt-logo {
-      float: left;
-      margin-top: 55px;
-      width: 90px;
-      height: 31px; } }
-
-.subscribe .plan-type {
-  background: rgba(216, 216, 216, 0.3); }
-  .subscribe .plan-type .plan-type-header {
-    padding: 10px; }
-    .subscribe .plan-type .plan-type-header > h2 {
-      color: white;
-      font-size: 1.6rem;
-      font-weight: 600; }
-  .subscribe .plan-type .plan-body {
-    padding: 30px 20px;
-    text-align: center;
-    overflow: auto; }
-    .subscribe .plan-type .plan-body h3 {
-      margin-top: -20px;
-      color: #e22f22;
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      font-family: Georgia, "Times New Roman", Times, serif; }
-    .subscribe .plan-type .plan-body h4 {
-      margin-bottom: 20px; }
-    .subscribe .plan-type .plan-body .red-label {
-      font-size: 1.4rem;
-      color: #e22f22;
-      margin-bottom: 12px;
-      font-weight: 700; }
-    .subscribe .plan-type .plan-body > img {
-      width: 100%; }
-    .subscribe .plan-type .plan-body > a {
-      margin-top: 15px;
-      float: right;
-      color: #e22f22;
-      font-style: italic;
-      font-size: 1.4rem; }
-    .subscribe .plan-type .plan-body .features-list {
-      text-align: left; }
-      .subscribe .plan-type .plan-body .features-list li {
-        margin-bottom: 10px; }
-
-.subscribe .section-title > h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 4rem;
-  text-align: center;
-  font-weight: 700; }
 
 .room-view {
   margin-top: 70px;
