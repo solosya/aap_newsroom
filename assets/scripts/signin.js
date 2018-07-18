@@ -39,7 +39,7 @@ Acme.Signin.prototype.handle = function(e) {
             Acme.server.create('/api/auth/login', formData).done(function(r) {
 
                 if (r.success === 1) {
-                    window.location.href = location.origin;
+                    window.location.href = location.origin + "/@newsroom-pro";
 
                 } else {
                     $elem.text("Sign in")
@@ -90,18 +90,6 @@ Acme.Signin.prototype.handle = function(e) {
             }).fail(function(r) { console.log(r);});
         }
 
-        if ($elem.hasClass('default-weather')) {
-            var newDefault = Acme.State.Country + '/' + Acme.State.City;
-
-            localStorage.setItem('city', newDefault);
-            function close() {
-
-                Acme.PubSub.publish("update_state", {'localweather': newDefault });                
-
-                self.closeWindow();
-            };
-            setTimeout(close, 500);            
-        }     
 
 
         if ($elem.hasClass('close')) {
