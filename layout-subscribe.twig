@@ -145,15 +145,10 @@
 						
 						<div class="plan-type__body">
 
-							<h3 class="plan-type__name">{{plan.name}}</h3>
-							{% set uc = plan.user_count + 1 %}
 							{% set val = plan.plan_value / 100 %}
-							{% if val == 19.89 %}
-								{% set val = 19.90 %}
-							{% endif %}
-
-							<p class="plan-type__users">{{uc|replace({ '10001': '20+' })}} users</p>
-							<h4 class="plan-type__currency">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}} ({{plan.currency|raw}})/{{plan.period}}</h4>
+							<h3 class="subscriptionPlan__name">{{plan.name}}</h3>
+							<p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
+							<p class="subscriptionPlan__price">${{val}} <br class="hidden-xs"> per {{plan.period}}</p>
 							<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
 							<p class="plan-type__label u-margin-top-40">What's included in your subscription:</p>
 							<ul class="plan-type__features">

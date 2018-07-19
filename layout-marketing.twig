@@ -103,9 +103,10 @@
 			    	
 					<div class="col-sm-3 subscriptionPlan">
 						<div class="subscriptionPlan__card">
+							{% set val = plan.plan_value / 100 %}
 							<h3 class="subscriptionPlan__name">{{plan.name}}</h3>
 							<p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
-							<p class="subscriptionPlan__price">{{plan.plan_value}} <br class="hidden-xs"> per {{plan.period}}</p>
+							<p class="subscriptionPlan__price">${{val}} <br class="hidden-xs"> per {{plan.period}}</p>
 
 							<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}">
 								<p class="centerBlock _btn _btn--red _btn__subscribe">
