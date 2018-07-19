@@ -1,0 +1,25 @@
+.pro-partial__row {
+	background: black;
+	min-height: 201px;
+	margin-bottom: 79px;
+}
+
+.pro-partial__header {
+	display: flex;
+	margin-bottom: 10px;
+	.pro-partial__header__logo{
+		flex-direction: row;
+		margin-right: 25px;
+		>img{
+			width: 260px;
+		}
+	}
+
+	.pro-partial__header__text{
+		font-size: rem(18);
+		font-weight: 600;
+  		color: black;
+  		flex-direction: row;
+  		margin-top: 10px;
+	}
+}

@@ -220,6 +220,10 @@
 
                     </div><!-- .col-sm-4-->
 
+                    <div class="row">
+                        {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                    </div>
+
                     <div class="row future">
                         {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
                     </div>

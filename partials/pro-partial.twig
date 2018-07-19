@@ -1,0 +1,21 @@
+<div class="col-sm-12">
+    <section>
+        <header class="pro-partial__header">
+
+            <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
+                <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg" alt="Newsroom Pro" class="img-responsive">
+                
+            </a>
+            <p class=" pro-partial__header__text">Our subscription service for corporate clients</p>
+        </header>
+        <div class="pro-partial__row">
+            {% for i in 1..2 if sections['newsroom pro'].feed.articles[i] %}
+                     {{this.render('_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6 card-pro-partial', swap: 'false'}) | raw}}
+             {% endfor %}
+
+        </div><!-- .row-->
+
+
+    </section><!-- .top-stories-->
+
+</div><!-- .col-sm-12-->
