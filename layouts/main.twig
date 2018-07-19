@@ -30,7 +30,7 @@
 {% if   not _User.isAdminUser()                     and
         blogName  | lower       == "newsroom pro"   and
         blogData['showPaywall'] == true             and
-        (pageClass matches 'article' == false) %}
+        pageClass not matches 'article' %}
 
     {% set showPaywall = true %}
     {% set layout = "layout-marketing" %}
