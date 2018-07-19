@@ -16,7 +16,7 @@
 
 {# Pages don't have a blogName so class has to be used #}
 
-{% set articleBlog = (article.blog.title) %}
+{% set articleBlog = article.blog.title | lower %}
 
 {% if   not _User.isAdminUser()                     and
         articleBlog  | lower       == "newsroom pro"   and
@@ -316,8 +316,8 @@
                 </div><!-- .page-content-->
             </div><!--container-->
 
-            {% if showPaywall == false %}
-                <script>loadTwoAds('{{articleBlog | lower}}');</script>
+            {% if articleBlog != 'newsroom pro' %}
+                <script>loadTwoAds('{{articleBlog}}');</script>
             {% endif %}
 
         </article>
