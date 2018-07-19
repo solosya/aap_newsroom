@@ -29,7 +29,8 @@
 {# Pages don't have a blogName so class has to be used #}
 {% if   not _User.isAdminUser()                     and
         blogName  | lower       == "newsroom pro"   and
-        blogData['showPaywall'] == true %}
+        blogData['showPaywall'] == true             and
+        (pageClass matches 'article' == false) %}
 
     {% set showPaywall = true %}
     {% set layout = "layout-marketing" %}
