@@ -11008,8 +11008,8 @@ input[type=radio].inline {
 
 .pro-partial__row {
   background: black;
-  min-height: 201px;
-  margin-bottom: 79px; }
+  margin-bottom: 79px;
+  padding: 30px 15px; }
 
 .pro-partial__header {
   display: flex;
@@ -15490,7 +15490,9 @@ body.channel.supporters p {
   .card-pro-partial a.card article > figure {
     height: auto;
     width: 203px;
-    flex: none; }
+    flex: none;
+    position: relative;
+    float: left; }
     @media screen and (max-width: 1200px) {
       .card-pro-partial a.card article > figure {
         width: 150px;
@@ -15502,11 +15504,17 @@ body.channel.supporters p {
         width: 116px;
         flex: 0 0 116px; } }
   .card-pro-partial a.card article .content {
-    border-bottom: unset; }
+    border-bottom: unset;
+    flex: none;
+    padding-right: 15px; }
     .card-pro-partial a.card article .content > h2 {
-      color: #fcfcfc; }
+      color: #fcfcfc;
+      font-size: 2.8rem; }
+    .card-pro-partial a.card article .content > p {
+      display: none; }
     .card-pro-partial a.card article .content .category {
-      color: #e22f22; }
+      color: #e22f22;
+      margin-bottom: 10px; }
     .card-pro-partial a.card article .content .author {
       display: inherit; }
       .card-pro-partial a.card article .content .author img {

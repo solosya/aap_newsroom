@@ -10,7 +10,7 @@
         </header>
         <div class="pro-partial__row">
             {% for i in 0..1 if sections['newsroom pro'].feed.articles[i] %}
-                     {{this.render('_single-article.twig', {article: sections['sportsroom'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6 card-pro-partial', swap: 'false'}) | raw}}
+                     {{this.render('_single-article.twig', {article: sections['newsroom pro'].feed.articles[i], position: i+1, containerClass: 'col-sm-12 col-md-6 card-pro-partial', swap: 'false'}) | raw}}
              {% endfor %}
 
         </div><!-- .row-->

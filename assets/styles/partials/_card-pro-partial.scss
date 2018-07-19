@@ -7,6 +7,8 @@
                 height:auto;
                 width:203px;
                 flex:none;
+                position: relative;
+                float: left;
 
                 @media screen and (max-width: $md-break){
                     width: 150px;
@@ -23,13 +25,20 @@
             }
             .content {
                 border-bottom: unset;
+                flex:none;
+                padding-right: 15px;
 
                 > h2 { 
                     color: #fcfcfc;
+                    font-size: rem(28);
+                }
+                >p {
+                    display: none;
                 }
 
                 .category{
                     color: #e22f22;
+                    margin-bottom: 10px
                 }
                 .author {
                     display: inherit;
