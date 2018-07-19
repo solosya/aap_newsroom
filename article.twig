@@ -15,15 +15,18 @@
 {% set newsroom_pro_style = "" %}
 
 {# Pages don't have a blogName so class has to be used #}
+
+{% set articleBlog = (article.blog.title) %}
+
 {% if   not _User.isAdminUser()                     and
-        blogName  | lower       == "newsroom pro"   and
-        blogName['showPaywall'] == true  %}
+        articleBlog  | lower       == "newsroom pro"   and
+        blogData['showPaywall'] == true  %}
     
     {% set showPaywall = true %}
 {% endif %}
 
 
-{% if blogName | lower == "newsroom pro" %}
+{% if articleBlog | lower == "newsroom pro" %}
     {% set newsroom_pro_style = "pro" %}
 {% endif %}
 
@@ -68,8 +71,6 @@
     {% set updated = true %}
 
 {% endif %}
-
-{% set articleBlog = (article.blog.title) %}
 
 
 
