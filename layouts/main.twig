@@ -89,7 +89,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=39ac6e6e" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=411e65cf" type="text/css" media="all">
 
 
     {% else %}
@@ -315,11 +315,12 @@
 <body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}">
 {{ this.beginBody() }}
 
-      
+    {% if  blogName  | lower != "newsroom pro" %}  
         <div class="add" style="margin:15px auto;">
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
+    {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
         headerMenu  : menuItems, 

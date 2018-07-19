@@ -4,7 +4,7 @@
             height:130px;
 
             > figure {
-                height:auto;
+                height:129px;
                 width:203px;
                 flex:none;
                 position: relative;
@@ -21,6 +21,10 @@
                     width: 116px;
                     flex: 0 0 116px;
                 }
+                > img{
+                    width: auto;
+                    height: auto;
+                }   
 
             }
             .content {
@@ -48,9 +52,12 @@
                     }
                     p {
                         display: inherit;
-                        margin-top: 15px;
+                        margin-top: 10px;
                         color: #fcfcfc;
                     }
+                }
+                time {
+                    display: none;
                 }
                 
             }

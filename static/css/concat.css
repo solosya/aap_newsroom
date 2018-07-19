@@ -11009,6 +11009,7 @@ input[type=radio].inline {
 .pro-partial__row {
   background: black;
   margin-bottom: 79px;
+  min-height: 189px;
   padding: 30px 15px; }
 
 .pro-partial__header {
@@ -15488,7 +15489,7 @@ body.channel.supporters p {
 .card-pro-partial a.card article {
   height: 130px; }
   .card-pro-partial a.card article > figure {
-    height: auto;
+    height: 129px;
     width: 203px;
     flex: none;
     position: relative;
@@ -15503,6 +15504,9 @@ body.channel.supporters p {
         margin-bottom: 6px;
         width: 116px;
         flex: 0 0 116px; } }
+    .card-pro-partial a.card article > figure > img {
+      width: auto;
+      height: auto; }
   .card-pro-partial a.card article .content {
     border-bottom: unset;
     flex: none;
@@ -15523,8 +15527,10 @@ body.channel.supporters p {
         display: none; }
       .card-pro-partial a.card article .content .author p {
         display: inherit;
-        margin-top: 15px;
+        margin-top: 10px;
         color: #fcfcfc; }
+    .card-pro-partial a.card article .content time {
+      display: none; }
 
 .relative {
   position: relative; }
