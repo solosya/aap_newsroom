@@ -9679,7 +9679,8 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .market-hero {
       height: 420px;
-      background-size: cover; } }
+      background-size: contain;
+      background-image: url("../images/marketing-hero-mobile.jpg"); } }
 
 .market-hero__content {
   padding-top: 159px;
@@ -9687,7 +9688,7 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .market-hero__content {
       width: 100%;
-      padding-top: 80px; } }
+      padding-top: 150px; } }
 
 .market-hero__headline {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -9696,12 +9697,15 @@ input[type=radio].inline {
   margin-bottom: 25px; }
   @media screen and (max-width: 767px) {
     .market-hero__headline {
-      font-size: 4rem; } }
+      font-size: 2.8rem; } }
 
 .market-hero__tagline {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 600; }
+  @media screen and (max-width: 767px) {
+    .market-hero__tagline {
+      font-size: 1.4rem; } }
 
 .market-header {
   text-align: center; }
@@ -11074,6 +11078,24 @@ input[type=radio].inline {
     background-image: url("../icons/account-white.png");
     background-size: cover;
     background-repeat: no-repeat; }
+
+.tandc-page > p {
+  font-size: 2rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+
+.tandc-page__headline {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 4.7rem;
+  font-weight: bold;
+  margin-bottom: 45px; }
+  @media screen and (max-width: 767px) {
+    .tandc-page__headline {
+      margin-top: 60px; } }
+
+.tandc-page__h2 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold; }
 
 .room-view {
   margin-top: 70px;

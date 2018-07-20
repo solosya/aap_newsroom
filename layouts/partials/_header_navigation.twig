@@ -70,12 +70,18 @@
                         <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=9" alt="logo" class="main-logo">
                     {% endif %}
                     </a>
-                     <img class="website-award hidden-sm hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
+                     
                     <img class="website-award hidden-xs" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
+
                     <img class="voyager-logo hidden-xs" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
-                    <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
-                        {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg?ver=2" alt="logo" class="mobile-logo-summer"> #}
+                    {% if pageClass | lower == 'newsroom pro' %}
+                        <img class="website-award hidden-sm hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
+                        <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                            <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                    {% else %}
+                            <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                            {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg?ver=2" alt="logo" class="mobile-logo-summer"> #}
+                    {% endif %}
                     </a>
                 </div>
             </div><!--section-left-->
