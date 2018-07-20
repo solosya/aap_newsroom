@@ -86,11 +86,19 @@
                     
 
                     <div class="menuContainer">
-                        <ul class="pages">
-                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
+                        {# ___________________________
+
+                                SIGN IN BAR 
+                         ___________________________#}
+                        <ul class="menu-signin">
+                            {% if not _User.isGuest() %}
+                                <li><a href="http://newsroomdev.aappublish.com.au/user/edit-profile" class="menu-signin__account u-float-left">Hi, {{user.firstname}} </a></li>
+                                <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
+                            {% else %}
+                                <li><button id="signinBtn" type="submit" class="menu-signin__signin">SIGN IN TO PRO</button></li>
+                            {% endif %}
                         </ul>
-                        <div id="menu-search" class="secondary-menu menu-search">
+                            <div id="menu-search" class="secondary-menu menu-search">
                             <ul><li>
                                 <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
                                     <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
@@ -157,13 +165,21 @@
                             {% endfor %}
                             </ul>
                         </div>
+                        {# ___________________________
+
+                                ABOUT AND CONTACT 
+                         ___________________________#}
+                        <ul class="pages">
+                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
+                        </ul>
                     </div>
 
                 </nav>  
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
 
-        <div class="row">
+        <div class="row visible-md-block visible-lg-block">
             <div class="col-sm-12 header-signin u-margin-top-10">
 
                 {% if not _User.isGuest() %}

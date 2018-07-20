@@ -1,0 +1,34 @@
+.menu-signin {
+	min-height: 41px;
+}
+
+.menu-signin__signout {
+	font-size: rem(14);
+	color: #fff;
+	height: 30px;
+	margin: auto;
+}
+
+.menu-signin__signin {
+	font-size: rem(14);
+	color: #fff;
+	height: 41px;
+	width: 134px;
+	margin: auto;
+}
+
+.menu-signin__account {
+	font-size: rem(14) !important;
+	text-transform: unset !important;
+	&:before {
+        content: '';
+        display:inline-block;
+        margin-right:17px;
+        margin-bottom: -3px;
+        width:17px;
+        height: 15px;
+        background-image: url('../icons/account-white.png');
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+}
