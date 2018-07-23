@@ -13,13 +13,6 @@
                     flex: 0 0 150px;
                 }
 
-                @media screen and (max-width: $sm-break-down) {
-                    margin-top:6px;
-                    margin-bottom:6px;
-                    width: 116px;
-                    flex: 0 0 116px;
-                }
-
             }
             .content {
                 border-bottom: unset;
@@ -49,5 +42,43 @@
         border-left: 1px solid #dadada;
         padding-left:5%;
         margin-left:-10px;
+    }
+}
+
+.card-pro-simple{
+
+    @media #{$mobile} {
+        padding: 0; 
+        border-left: unset;   
+        a.card {
+            height: 60px;
+            border-bottom: unset;
+            padding: 0; 
+            article {
+                
+
+                > figure {
+                    width: 60px;
+                    margin: 0;
+                }
+                .content {
+                    
+
+                    .category{
+                        
+                    }
+                    .author {
+                        display: none;
+                        img {
+                            display: none;
+                        }
+                        p {
+                           display: none; 
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
 }

@@ -1,49 +1,46 @@
 .card-pro-rec{
     margin-bottom: 79.5px;
     position:relative;
-    @media screen and (max-width: $mobile-break){
-        margin-bottom: -2px;
-    }
+   
 
     &.inverted{
-        @media screen and (min-width: $mobile-break){
-            > a.card{
-                background-color: #000;
-                color: #FFF;
-                
-                > article { 
-                    -ms-flex-direction: row-reverse;
-                    -webkit-flex-direction: row-reverse;
-                    flex-direction: row-reverse;
+        
+        > a.card{
+            background-color: #000;
+            color: #FFF;
+            
+            > article { 
+                -ms-flex-direction: row-reverse;
+                -webkit-flex-direction: row-reverse;
+                flex-direction: row-reverse;
+            }
+
+            > article > .content{
+                border: 1px solid #000;
+
+                > .category{
+                    color: #e22f22;
                 }
 
-                > article > .content{
-                    border: 1px solid #000;
+                > .author p{
+                    color: #FFF;
+                }
 
-                    > .category{
-                        color: #e22f22;
-                    }
-
-                    > .author p{
-                        color: #FFF;
-                    }
-
-                    > time{
-                        color: #FFF;
-                        @media screen and (max-width: $md-break){
-                            display:none;
-                        }
-                    }
-                    > p {
-                        // display: none;
+                > time{
+                    color: #FFF;
+                    @media screen and (max-width: $md-break){
+                        display:none;
                     }
                 }
-                &.social {
-                    .content {
+                > p {
+                    // display: none;
+                }
+            }
+            &.social {
+                .content {
 
-                        .author {
-                            color:white;
-                        }
+                    .author {
+                        color:white;
                     }
                 }
             }
