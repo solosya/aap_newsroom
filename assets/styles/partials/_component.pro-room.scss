@@ -141,6 +141,9 @@
             padding-top: 50px;
             max-width: 1170px;
             border-top: unset;
+            @media #{$mobile} {
+                display: none;
+            }
         }
     }
 }

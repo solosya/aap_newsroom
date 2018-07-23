@@ -10966,6 +10966,9 @@ input[type=radio].inline {
     padding-top: 50px;
     max-width: 1170px;
     border-top: unset; }
+    @media screen and (max-width: 767px) {
+      .pro-room .top-stories .top-two {
+        display: none; } }
 
 .article-subscribe {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -15789,12 +15792,12 @@ body.channel.supporters p {
   border-top: 1px solid #dadada; }
 
 hr.u-row-indent {
-  padding-left: 15px;
-  padding-right: 15px; }
+  margin-left: 15px;
+  margin-right: 15px; }
 
 hr.u-row-extend {
-  padding-left: 15px;
-  padding-right: 15px; }
+  margin-left: -15px;
+  margin-right: -15px; }
 
 .u-space-only {
   border-top: unset; }
