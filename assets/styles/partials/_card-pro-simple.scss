@@ -48,17 +48,18 @@
 .card-pro-simple{
 
     @media #{$mobile} {
-        padding: 0; 
         border-left: unset;   
         a.card {
             height: 60px;
             border-bottom: unset;
             padding: 0; 
             article {
-                
+                height: 60px;
+                flex: none;
 
                 > figure {
                     width: 60px;
+                    height: 60px;
                     margin: 0;
                 }
                 .content {
@@ -79,6 +80,15 @@
                     
                 }
             }
+        }
+        &:first-child {
+        padding-right:unset;
+       
+        }
+        &:last-child {
+            border-left: none;
+            padding-left:unset;
+            margin-left: unset;
         }
     }
 }
