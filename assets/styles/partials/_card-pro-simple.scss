@@ -55,15 +55,16 @@
             padding: 0; 
             article {
                 height: 60px;
-                flex: none;
+                
 
                 > figure {
                     width: 60px;
                     height: 60px;
                     margin: 0;
+                    flex: none;
                 }
                 .content {
-                    
+                    margin-left: 15px;
 
                     .category{
                         
@@ -82,12 +83,12 @@
             }
         }
         &:first-child {
-        padding-right:unset;
+        padding-right: 15px;
        
         }
         &:last-child {
             border-left: none;
-            padding-left:unset;
+            padding-left: 15px;
             margin-left: unset;
         }
     }
