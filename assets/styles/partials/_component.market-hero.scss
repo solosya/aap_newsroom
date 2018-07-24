@@ -5,9 +5,10 @@
     background-repeat: no-repeat;
     background-position: right;
     @media screen and (max-width: $sm-break-down) {
-        height:420px;
-        background-size: contain;
+        height:320px;
+        margin-bottom: 100px;
         background-image: url('../images/marketing-hero-mobile.png');
+        background-position: top;
 
     }
     
@@ -40,6 +41,24 @@
     font-weight: 600; 
     @media screen and (max-width: $sm-break-down) {
         font-size: rem(14);
+        margin-top: 0;
+        margin-bottom: 10px;
 
     }
+}
+
+.market-hero__button {
+    @media #{$mobile}{
+        height: 26px;
+        width: 107px;
+        line-height: 26px;
+        font-size: 12px;
+    }
+}
+.market-hero__button__subscribe {
+    float: left;
+}
+
+.market-hero__button__trial {
+    float: right;
 }

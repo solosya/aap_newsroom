@@ -1,5 +1,9 @@
 .subscription {
     margin-top:90px;
+    @media #{$mobile} {
+        margin-top:32px;
+
+    }
 
     .section-title {
         p{
@@ -9,13 +13,18 @@
             font-size:rem(28);
             font-weight: 600;
         }
+        @media #{$mobile} {
+            p{
+                text-align: left;
+                font-size:rem(18);
+            }
+        }
     }
 }
 
 .subscriptionPlan {
     @media #{$media-mobile} {
-        padding-left: 0;
-        padding-right: 0;
+        
     }
 }
 .subscriptionPlan__card {
@@ -41,7 +50,9 @@
     @media #{$media-mobile} {
         height:31px;
         margin-bottom:0;
-        font-size: rem(24);
+        font-size: rem(18);
+        padding: 0;
+        margin-top: -8px;
        }
 }
 .subscriptionPlan__usercount {
@@ -49,8 +60,9 @@
     font-weight:600;
     margin-top:50px;
     @media #{$media-mobile} {
-            margin-bottom:10px;
-            font-size: rem(18);
+        margin-bottom:10px;
+        font-size: rem(16);
+        margin-top: 15px;
     }
 }
 .subscriptionPlan__price {
@@ -58,7 +70,7 @@
        margin-bottom:18px;
     font-weight:300;
     @media #{$media-mobile} {
-        font-size: rem(19);
+        font-size: rem(12);
         margin-bottom:15px;
     }
 }
@@ -66,6 +78,15 @@
     font-size: rem(14);
     color: color(red);
     font-weight:700;
+}
+
+.subscriptionPlan__button {
+    @media #{$mobile} {
+        height: 28px;
+        width: 157px;
+        line-height: 8px;
+        font-size: rem(12);
+    }
 }
 
 
@@ -154,9 +175,29 @@
     text-align: left;
 }
 
+.pro-offers-card__img__global{
+    height: 85px;
+    @media #{$mobile} {
+        height: unset;
+        width: 47px;
+    }
+}
 
+.pro-offers-card__img__sattelite{
+    height: 90px;
+    @media #{$mobile} {
+        height: unset;
+        width: 47px;
+    }
+}
 
-
+.pro-offers-card__img__monitoring{
+    height: 112px;
+    @media #{$mobile} {
+        height: unset;
+        width: 47px;
+    }
+}
 
 
 
@@ -222,6 +263,12 @@
     text-align: center;
     a{
         text-decoration: underline;
+    }
+    @media #{$mobile} {
+        p{
+            font-size: rem(16);
+            text-align: left;
+        }
     }
 }
 .subscribe__payment-info {
