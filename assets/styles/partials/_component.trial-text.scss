@@ -1,6 +1,9 @@
 .trial {
 	margin-bottom:60px;
 	color:color(grey-text);
+	@media #{$mobile} {
+		margin-bottom:	20px;
+	}
 }
 .trial__header {
 	font-family: $font-family-serif;
@@ -9,6 +12,10 @@
 	line-height: 0.89;
 	color: color(red);
 	margin-bottom:32px;
+	@media #{$mobile} {
+		font-size: rem(28);
+		margin-bottom: 20px;
+	}
 }
 .trial__text {
 	line-height:1.56;

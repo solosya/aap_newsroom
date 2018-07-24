@@ -32,7 +32,7 @@
 	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
 	
 	
-	<div class="container-fluid">
+	<div class="container-fluid hidden-xs">
 		<section class="row">
 			<div class="col-sm-12 market-header u-margin-top-40">
 				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
@@ -44,8 +44,8 @@
 		<div class="market-hero__content container-fluid">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-11">
-					<h1 class="market-hero__headline">Behind the <br />headlines</h1>
-					<h3 class="market-hero__tagline">You’re just one step away from<br /> reading Newsroom Pro.</h3>
+					<h1 class="market-hero__headline">Behind the <br class="hidden-xs"/>headlines</h1>
+					<h3 class="market-hero__tagline">You’re just one step away from<br class="hidden-xs" /> reading Newsroom Pro.</h3>
 				</div>
 			</div>
 		</div>
@@ -106,6 +106,10 @@
 							<input type="text" 		class="account-form__input" name="company" 			id="company" 		value="" placeholder="Organisation (optional)">
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
 							<label>I agree to the Newsroom <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label>
+							<input type="checkbox" 	class="" name="summary-email" id="summary-email"> 
+							<label>Send me a summary email each weekday</label>
+							<input type="checkbox" 	class="" name="breaking-email" id="breaking-email"> 
+							<label>Send me an email alert when important news breaks</label>
 						</form>
 
 
