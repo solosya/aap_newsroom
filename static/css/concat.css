@@ -9676,9 +9676,14 @@ input[type=radio].inline {
   font-size: 1.4rem; }
 
 .plan-type__features {
-  text-align: left; }
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.3rem; }
   .plan-type__features li {
     margin-bottom: 10px; }
+  @media screen and (max-width: 767px) {
+    .plan-type__features {
+      font-size: 1.2rem; } }
 
 .market-hero {
   height: 566px;
@@ -10864,7 +10869,9 @@ input[type=radio].inline {
   color: #4a4a4a; }
   @media screen and (max-width: 767px) {
     .trial {
-      margin-bottom: 20px; } }
+      margin-bottom: 20px;
+      margin-left: 15px;
+      margin-right: 15px; } }
 
 .trial__header {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -10875,7 +10882,7 @@ input[type=radio].inline {
   margin-bottom: 32px; }
   @media screen and (max-width: 767px) {
     .trial__header {
-      font-size: 2.8rem;
+      font-size: 2rem;
       margin-bottom: 20px; } }
 
 .trial__text {
@@ -13553,7 +13560,7 @@ body.channel, body.section {
       font-size: 4rem; } }
   @media screen and (max-width: 767px) {
     .section-title > h1 {
-      font-size: 3.2rem; } }
+      font-size: 2rem; } }
 
 .subscribe__link {
   color: black; }
@@ -15867,7 +15874,7 @@ body.channel.supporters p {
   margin-left: 20px; }
 
 .u-margin-left-15 {
-  margin-left: 25px; }
+  margin-left: 15px; }
 
 .u-margin-left-10 {
   margin-left: 10px; }
@@ -15900,7 +15907,7 @@ body.channel.supporters p {
   margin-right: 20px; }
 
 .u-margin-right-15 {
-  margin-right: 25px; }
+  margin-right: 15px; }
 
 .u-margin-right-10 {
   margin-right: 10px; }
@@ -15909,7 +15916,12 @@ body.channel.supporters p {
   .u-mobile-no-margin-top {
     margin-top: 0 !important; }
   .u-mobile-no-margin-bottom {
-    margin-bottom: 0 !important; } }
+    margin-bottom: 0 !important; }
+  .u-mobile-bigger-margins-15 {
+    margin-left: 15px;
+    margin-right: 15px; }
+  .u-mobile-no-padding {
+    padding: 0; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .u-tablet-no-margin-top {

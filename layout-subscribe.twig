@@ -94,7 +94,7 @@
 					<div class="col-md-12">
 
 
-						<form class="account-form" method="post" action="" id="listingForm">
+						<form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
 							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
 							<p class="account-form__section-label">Your information</p>
 							<input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
@@ -109,7 +109,7 @@
 							<input type="checkbox" 	class="" name="summary-email" id="summary-email"> 
 							<label>Send me a summary email each weekday</label><br />
 							<input type="checkbox" 	class="" name="breaking-email" id="breaking-email"> 
-							<label>Send me an email alert when important news breaks</label><br />
+							<label>Send me email alerts of breaking news</label><br />
 						</form>
 
 
@@ -129,7 +129,7 @@
 							<p>All credit card payments are processed by Stripe. <a target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a></p>
 
 							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">SUBSCRIBE</button>
+							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 subscriptionPlan__button">SUBSCRIBE</button>
 						</form>
 
 						
@@ -141,7 +141,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-3 u-mobile-no-padding">
 				<div class="plan-type">
 
 					{% if plan != false %}
@@ -159,7 +159,7 @@
 								{{plan.description | raw }}
 							</ul>
 
-							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}@newsroom-pro#subscriptions">Change subscription</a>
+							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions">Change subscription</a>
 						</div>
 
 					{# 	{{ this.render('partials/_plan-'~plan~'.twig', {

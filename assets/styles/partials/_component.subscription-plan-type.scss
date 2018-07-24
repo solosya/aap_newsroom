@@ -53,8 +53,12 @@
     }
     .plan-type__features {
         text-align: left;
-
+        font-weight: 600;
+        font-size: rem(13);
         li {
             margin-bottom: 10px;
+        }
+        @media #{$mobile} {
+            font-size: rem(12);   
         }
     }
