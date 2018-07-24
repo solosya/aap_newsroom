@@ -132,6 +132,11 @@ input[type=radio] {
             color: #e12e21;
         }
     }
+    input[type=checkbox] {
+        @media #{$mobile} {
+            padding-top: 3px;
+        }
+    }
     
 }
 
