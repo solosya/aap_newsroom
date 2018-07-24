@@ -57,13 +57,13 @@
 
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 card-pro-simple 203x130'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 card-pro-simple card-pro-simple-mobile 203x130'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
 
-                        {% if i == 0 %}
-                            <hr class="divide15 u-row-indent visible-xs-block">
-                        {% endif %}
+                        
+                        <hr class="divide15 u-row-indent visible-xs-block">
+                        
 
                     {% endfor %}
 
@@ -85,9 +85,10 @@
 
                                 {% for i in 0..3 %}
                                     {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec card-pro-rec-mobile'}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
+                                    <hr class="divide15 visible-xs-block">
                                 {% endfor %}
                             {% endif %}
 

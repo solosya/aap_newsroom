@@ -9691,7 +9691,7 @@ input[type=radio].inline {
       padding-top: 150px; } }
 
 .market-hero__headline {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 6.2rem;
   font-weight: 700;
   margin-bottom: 25px; }
@@ -10961,6 +10961,11 @@ input[type=radio].inline {
 
 .pro-room .top-stories {
   margin-bottom: 50px; }
+  @media screen and (max-width: 767px) {
+    .pro-room .top-stories {
+      margin-bottom: 0;
+      margin-left: 15px;
+      margin-right: 15px; } }
   .pro-room .top-stories .top-two {
     border-bottom: 1px solid #dadada;
     padding-top: 50px;
@@ -10969,6 +10974,11 @@ input[type=radio].inline {
     @media screen and (max-width: 767px) {
       .pro-room .top-stories .top-two {
         display: none; } }
+
+@media screen and (max-width: 767px) {
+  .pro-room .home-page-content {
+    margin-left: 15px;
+    margin-right: 15px; } }
 
 .article-subscribe {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -15341,156 +15351,210 @@ body.channel.supporters p {
     font-size: 28px;
     font-weight: normal; }
 
-.card-pro-rec {
-  margin-bottom: 79.5px;
-  position: relative; }
-  .card-pro-rec.inverted > a.card {
-    background-color: #000;
-    color: #FFF; }
-    .card-pro-rec.inverted > a.card > article {
-      -ms-flex-direction: row-reverse;
-      -webkit-flex-direction: row-reverse;
-      flex-direction: row-reverse; }
-    .card-pro-rec.inverted > a.card > article > .content {
-      border: 1px solid #000; }
-      .card-pro-rec.inverted > a.card > article > .content > .category {
-        color: #e22f22; }
-      .card-pro-rec.inverted > a.card > article > .content > .author p {
-        color: #FFF; }
-      .card-pro-rec.inverted > a.card > article > .content > time {
-        color: #FFF; }
-        @media screen and (max-width: 1200px) {
+@media screen and (min-width: 992px) {
+  .card-pro-rec {
+    margin-bottom: 79.5px;
+    position: relative; }
+    .card-pro-rec.inverted > a.card {
+      background-color: #000;
+      color: #FFF; }
+      .card-pro-rec.inverted > a.card > article {
+        -ms-flex-direction: row-reverse;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse; }
+      .card-pro-rec.inverted > a.card > article > .content {
+        border: 1px solid #000; }
+        .card-pro-rec.inverted > a.card > article > .content > .category {
+          color: #e22f22; }
+        .card-pro-rec.inverted > a.card > article > .content > .author p {
+          color: #FFF; }
+        .card-pro-rec.inverted > a.card > article > .content > time {
+          color: #FFF; } }
+        @media screen and (min-width: 992px) and (max-width: 1200px) {
           .card-pro-rec.inverted > a.card > article > .content > time {
             display: none; } }
-    .card-pro-rec.inverted > a.card.social .content .author {
-      color: white; }
-  .card-pro-rec a.card > article {
-    height: 235px;
-    flex-wrap: nowrap;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap; }
-  .card-pro-rec a.card > article > figure {
-    width: 330px;
-    -ms-flex: 0 0 330px;
-    -webkit-flex: 0 0 330px;
-    flex: 0 0 330px;
-    overflow: hidden;
-    float: left; }
-    .card-pro-rec a.card > article > figure.video:after {
-      top: 40%;
-      left: 40%; }
-  .card-pro-rec a.card > article > .content {
-    display: block;
-    width: 100%;
-    border: 1px solid #dadada;
-    padding: 29px 24px 3px 24px; }
-    .card-pro-rec a.card > article > .content > .category {
-      font-size: 1.4em;
-      font-weight: bold;
-      color: #e22f22;
-      display: block;
-      line-height: 1;
-      margin-bottom: 11px; }
-    .card-pro-rec a.card > article > .content > h2 {
-      font-weight: bold;
-      font-size: 3em;
-      height: 70px; }
-    .card-pro-rec a.card > article > .content > p {
-      height: 50px;
-      border-bottom: 1px solid #dadada; }
-    .card-pro-rec a.card > article > .content > .author {
-      overflow: hidden;
-      white-space: nowrap; }
-    .card-pro-rec a.card > article > .content > time {
-      margin-top: 6px;
-      padding-top: 4px; }
-  .card-pro-rec a.card.social .content .category {
-    color: #e22f22; }
-  .card-pro-rec a.card.social .content > p {
-    display: block;
-    font-size: 2.4em;
-    height: 127px;
-    padding-bottom: 27px; }
-  .card-pro-rec a.card.social.without__content figure {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%; }
-    .card-pro-rec a.card.social.without__content figure:after {
-      content: '';
-      opacity: 0.4;
-      background-color: #000;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0; }
-  .card-pro-rec a.card.social.without__content .content {
-    z-index: 1; }
-    .card-pro-rec a.card.social.without__content .content .category {
-      color: white;
-      margin-bottom: 21px; }
-    .card-pro-rec a.card.social.without__content .content time {
-      color: white; }
-    .card-pro-rec a.card.social.without__content .content .author > p {
-      color: white; }
 
-.card-pro-simple a.card article {
-  height: 130px; }
-  .card-pro-simple a.card article > figure {
-    height: auto;
-    width: 203px;
-    flex: none; }
-    @media screen and (max-width: 1200px) {
+@media screen and (min-width: 992px) {
+      .card-pro-rec.inverted > a.card.social .content .author {
+        color: white; }
+    .card-pro-rec a.card > article {
+      height: 235px;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap; }
+    .card-pro-rec a.card > article > figure {
+      width: 330px;
+      -ms-flex: 0 0 330px;
+      -webkit-flex: 0 0 330px;
+      flex: 0 0 330px;
+      overflow: hidden;
+      float: left; }
+      .card-pro-rec a.card > article > figure.video:after {
+        top: 40%;
+        left: 40%; }
+    .card-pro-rec a.card > article > .content {
+      display: block;
+      width: 100%;
+      border: 1px solid #dadada;
+      padding: 29px 24px 3px 24px; }
+      .card-pro-rec a.card > article > .content > .category {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #e22f22;
+        display: block;
+        line-height: 1;
+        margin-bottom: 11px; }
+      .card-pro-rec a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 3em;
+        height: 70px; }
+      .card-pro-rec a.card > article > .content > p {
+        height: 50px;
+        border-bottom: 1px solid #dadada; }
+      .card-pro-rec a.card > article > .content > .author {
+        overflow: hidden;
+        white-space: nowrap; }
+      .card-pro-rec a.card > article > .content > time {
+        margin-top: 6px;
+        padding-top: 4px; }
+    .card-pro-rec a.card.social .content .category {
+      color: #e22f22; }
+    .card-pro-rec a.card.social .content > p {
+      display: block;
+      font-size: 2.4em;
+      height: 127px;
+      padding-bottom: 27px; }
+    .card-pro-rec a.card.social.without__content figure {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; }
+      .card-pro-rec a.card.social.without__content figure:after {
+        content: '';
+        opacity: 0.4;
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; }
+    .card-pro-rec a.card.social.without__content .content {
+      z-index: 1; }
+      .card-pro-rec a.card.social.without__content .content .category {
+        color: white;
+        margin-bottom: 21px; }
+      .card-pro-rec a.card.social.without__content .content time {
+        color: white; }
+      .card-pro-rec a.card.social.without__content .content .author > p {
+        color: white; } }
+
+.card-pro-rec a.card > article {
+  height: 235px;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap; }
+
+@media screen and (max-width: 767px) {
+  .card-pro-rec-mobile a.card article {
+    height: 100px;
+    margin: 6px 0; }
+    .card-pro-rec-mobile a.card article > figure {
+      width: 102px;
+      height: 100px;
+      position: absolute; }
+    .card-pro-rec-mobile a.card article .content {
+      padding-left: 117px;
+      flex: none;
+      display: block;
+      position: relative; }
+      .card-pro-rec-mobile a.card article .content h2 {
+        margin-top: 15px;
+        height: 52px;
+        font-size: 1.6rem; }
+      .card-pro-rec-mobile a.card article .content .category {
+        color: #e22f22;
+        font-size: 1.2rem; }
+      .card-pro-rec-mobile a.card article .content .author {
+        display: none; }
+      .card-pro-rec-mobile a.card article .content > p {
+        display: none; }
+      .card-pro-rec-mobile a.card article .content time {
+        position: absolute;
+        bottom: 0;
+        right: 30px;
+        border-left: unset; }
+  .card-pro-rec-mobile a.card.social article .content > p {
+    display: block;
+    font-size: 1.6rem;
+    height: 62px;
+    font-weight: 600; } }
+
+@media screen and (min-width: 992px) {
+  .card-pro-simple a.card article {
+    height: 130px; }
+    .card-pro-simple a.card article > figure {
+      height: auto;
+      width: 203px;
+      flex: none; } }
+    @media screen and (min-width: 992px) and (max-width: 1200px) {
       .card-pro-simple a.card article > figure {
         width: 150px;
         flex: 0 0 150px; } }
-  .card-pro-simple a.card article .content {
-    border-bottom: unset; }
-    .card-pro-simple a.card article .content .category {
-      color: #e22f22; }
-    .card-pro-simple a.card article .content .author {
-      display: inherit; }
-      .card-pro-simple a.card article .content .author img {
-        display: none; }
-      .card-pro-simple a.card article .content .author p {
-        display: inherit;
-        margin-top: 15px; }
 
-.card-pro-simple:first-child {
-  padding-right: 5%; }
-
-.card-pro-simple:last-child {
-  border-left: 1px solid #dadada;
-  padding-left: 5%;
-  margin-left: -10px; }
+@media screen and (min-width: 992px) {
+    .card-pro-simple a.card article .content {
+      border-bottom: unset; }
+      .card-pro-simple a.card article .content .category {
+        color: #e22f22; }
+      .card-pro-simple a.card article .content .author {
+        display: inherit; }
+        .card-pro-simple a.card article .content .author img {
+          display: none; }
+        .card-pro-simple a.card article .content .author p {
+          display: inherit;
+          margin-top: 15px; }
+  .card-pro-simple:first-child {
+    padding-right: 5%; }
+  .card-pro-simple:last-child {
+    border-left: 1px solid #dadada;
+    padding-left: 5%;
+    margin-left: -10px; } }
 
 @media screen and (max-width: 767px) {
-  .card-pro-simple {
+  .card-pro-simple-mobile {
     border-left: unset; }
-    .card-pro-simple a.card {
+    .card-pro-simple-mobile a.card {
       height: 60px;
       border-bottom: unset;
       padding: 0; }
-      .card-pro-simple a.card article {
+      .card-pro-simple-mobile a.card article {
         height: 60px; }
-        .card-pro-simple a.card article > figure {
+        .card-pro-simple-mobile a.card article > figure {
           width: 60px;
           height: 60px;
           margin: 0;
           flex: none; }
-        .card-pro-simple a.card article .content {
-          margin-left: 15px; }
-          .card-pro-simple a.card article .content .author {
+        .card-pro-simple-mobile a.card article .content {
+          margin-left: 15px;
+          padding: 0; }
+          .card-pro-simple-mobile a.card article .content h2 {
+            margin: 0; }
+          .card-pro-simple-mobile a.card article .content .category {
+            color: #e22f22; }
+          .card-pro-simple-mobile a.card article .content .author {
             display: none; }
-            .card-pro-simple a.card article .content .author img {
+            .card-pro-simple-mobile a.card article .content .author img {
               display: none; }
-            .card-pro-simple a.card article .content .author p {
+            .card-pro-simple-mobile a.card article .content .author p {
               display: none; }
-    .card-pro-simple:first-child {
+          .card-pro-simple-mobile a.card article .content time {
+            bottom: -5px; }
+      .card-pro-simple-mobile a.card.without__image article .content {
+        margin-left: 0; }
+    .card-pro-simple-mobile:first-child {
       padding-right: 15px; }
-    .card-pro-simple:last-child {
+    .card-pro-simple-mobile:last-child {
       border-left: none;
       padding-left: 15px;
       margin-left: unset; } }

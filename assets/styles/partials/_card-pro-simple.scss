@@ -1,53 +1,54 @@
-.card-pro-simple{
-    a.card {
-        article {
-            height:130px;
+.card-pro-simple {
 
-            > figure {
-                height:auto;
-                width:203px;
-                flex:none;
+    @media #{$desktop-up}{
+        a.card {
+            article {
+                height:130px;
 
-                @media screen and (max-width: $md-break){
-                    width: 150px;
-                    flex: 0 0 150px;
-                }
+                > figure {
+                    height:auto;
+                    width:203px;
+                    flex:none;
 
-            }
-            .content {
-                border-bottom: unset;
-
-                .category{
-                    color: #e22f22;
-                }
-                .author {
-                    display: inherit;
-                    img {
-                        display: none;
+                    @media screen and (max-width: $md-break){
+                        width: 150px;
+                        flex: 0 0 150px;
                     }
-                    p {
+
+                }
+                .content {
+                    border-bottom: unset;
+
+                    .category{
+                        color: #e22f22;
+                    }
+                    .author {
                         display: inherit;
-                        margin-top: 15px;
+                        img {
+                            display: none;
+                        }
+                        p {
+                            display: inherit;
+                            margin-top: 15px;
+                        }
                     }
+                    
                 }
-                
             }
         }
-    }
-    &:first-child {
-        padding-right:5%;
-       
-    }
-    &:last-child {
-        border-left: 1px solid #dadada;
-        padding-left:5%;
-        margin-left:-10px;
+        &:first-child {
+            padding-right:5%;
+           
+        }
+        &:last-child {
+            border-left: 1px solid #dadada;
+            padding-left:5%;
+            margin-left:-10px;
+        }
     }
 }
-
-.card-pro-simple{
-
-    @media #{$mobile} {
+.card-pro-simple-mobile {
+    @media #{$mobile}{
         border-left: unset;   
         a.card {
             height: 60px;
@@ -65,9 +66,12 @@
                 }
                 .content {
                     margin-left: 15px;
-
-                    .category{
-                        
+                    padding: 0;
+                    h2{
+                        margin: 0;
+                    }
+                    .category {
+                         color: #e22f22;
                     }
                     .author {
                         display: none;
@@ -78,7 +82,16 @@
                            display: none; 
                         }
                     }
-                    
+                    time {
+                        bottom: -5px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        margin-left: 0;
+                    }
                 }
             }
         }
