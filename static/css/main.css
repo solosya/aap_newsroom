@@ -9616,9 +9616,11 @@ input[type=radio].inline {
   .account-form label a {
     color: #e12e21; }
 
-@media screen and (max-width: 767px) {
-  .account-form input[type=checkbox] {
-    padding-top: 3px; } }
+.account-form input[type=checkbox] {
+  margin-right: 5px; }
+  @media screen and (max-width: 767px) {
+    .account-form input[type=checkbox] {
+      padding-top: 3px; } }
 
 .text-button {
   border: none;
@@ -9650,7 +9652,8 @@ input[type=radio].inline {
   overflow: auto; }
 
 .plan-type__users {
-  font-size: 1.8rem; }
+  font-size: 1.3rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
 
 .plan-type__name {
   margin-top: -20px;
@@ -9658,11 +9661,12 @@ input[type=radio].inline {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 0.4px;
-  font-family: Georgia, "Times New Roman", Times, serif; }
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
 
 .plan-type__currency {
   color: #e22f22;
-  margin-bottom: 1.8rem; }
+  margin-bottom: 1.8rem;
+  font-size: 18px; }
 
 .plan-type__label {
   font-size: 1.4rem;
@@ -9746,7 +9750,7 @@ input[type=radio].inline {
   float: left; }
 
 .market-hero__button__trial {
-  float: right; }
+  margin-left: 35px; }
 
 .market-header {
   text-align: center; }
@@ -12695,8 +12699,6 @@ input[type=radio].inline {
     line-height: inherit !important;
     font-family: inherit !important;
     letter-spacing: inherit !important; }
-  .article article.article-main .page-content .article_content p:nth-child(2) {
-    font-weight: 600; }
   .article article.article-main .page-content .article_content.content-paywalled {
     position: relative; }
     .article article.article-main .page-content .article_content.content-paywalled:after {
@@ -12752,6 +12754,8 @@ input[type=radio].inline {
     padding-right: 10px;
     clear: both;
     margin-bottom: 17px; }
+    .article article.article-main .page-content .article_content > p.lead {
+      font-weight: 700; }
     .article article.article-main .page-content .article_content > p:last-child {
       margin-bottom: 50px; }
     @media screen and (max-width: 767px) {
@@ -13470,7 +13474,8 @@ body.channel, body.section {
   margin-left: auto;
   margin-right: auto; }
   .essential-news .screenImage {
-    max-width: 100%; }
+    max-width: 100%;
+    float: left; }
   .essential-news h3 {
     color: black;
     font-size: 3.7rem;
@@ -13524,7 +13529,7 @@ body.channel, body.section {
 .pro-offers-card__p {
   margin-left: 20px;
   margin-right: 20px;
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   line-height: 1.62;
   text-align: left; }
 
@@ -15531,7 +15536,8 @@ body.channel.supporters p {
         white-space: nowrap; }
       .card-pro-rec a.card > article > .content > time {
         margin-top: 6px;
-        padding-top: 4px; }
+        padding-top: 4px;
+        text-transform: uppercase; }
     .card-pro-rec a.card.social .content .category {
       color: #e22f22; }
     .card-pro-rec a.card.social .content > p {
@@ -15626,21 +15632,25 @@ body.channel.supporters p {
       border-bottom: unset; }
       .card-pro-simple a.card article .content .category {
         color: #e22f22; }
+      .card-pro-simple a.card article .content > h2 {
+        font-size: 2.8rem;
+        font-weight: 500; }
       .card-pro-simple a.card article .content .author {
         display: inherit; }
         .card-pro-simple a.card article .content .author img {
           display: none; }
         .card-pro-simple a.card article .content .author p {
           display: inherit;
-          margin-top: 15px; } }
-
-.card-pro-simple:first-child {
-  padding-right: 5%; }
-
-.card-pro-simple:last-child {
-  border-left: 1px solid #dadada;
-  padding-left: 5%;
-  margin-left: -10px; }
+          margin-top: 15px;
+          color: #000; }
+      .card-pro-simple a.card article .content time {
+        display: none; }
+  .card-pro-simple:first-child {
+    padding-right: 5%; }
+  .card-pro-simple:nth-child(3) {
+    border-left: 1px solid #dadada;
+    padding-left: 5%;
+    margin-left: -10px; } }
 
 @media screen and (max-width: 767px) {
   .card-pro-simple-mobile {

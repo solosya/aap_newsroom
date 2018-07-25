@@ -102,7 +102,7 @@
 							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
 							<input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
 							<input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
-							<label style="font-weight:300;"><i>Passwords must be at least five characters long and contain no spaces</i></label>
+							<label style="font-weight:300;color: #979797;font-size:15px;"><i>Passwords must be at least five characters long and contain no spaces</i></label>
 							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
 							<input type="text" 		class="account-form__input" name="company" 			id="company" 		value="" placeholder="Organisation (optional)">
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
@@ -152,8 +152,8 @@
 
 							{% set val = plan.plan_value / 100 %}
 							<h3 class="plan-type__name">{{plan.name}}</h3>
-							<p class="plan-type__usercount">{{plan.user_count}} Users</p>
-							<p class="plan-type__price">${{val}} <br class="hidden-xs"> per {{plan.period}}</p>
+							<p class="plan-type__users">{{plan.user_count}} Users</p>
+							<p class="plan-type__currency">${{val}} per {{plan.period}}</p>
 							<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
 							<p class="plan-type__label u-margin-top-40">What's included in your subscription:</p>
 							<ul class="plan-type__features">
