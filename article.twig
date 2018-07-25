@@ -281,32 +281,45 @@
                                         <div id="newAdHalf"></div>
                                         <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                     </section>
+
+                                    <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                        <h3 class="recent-articles__header">
+                                            <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                        </h3>
+
+                                        {% if recentArticles|length > 0 %}
+
+                                            {% for i in 0..6 %}
+                                                {% if recentArticles[i] %}
+                                                    {{
+                                                        this.render('partials/_single-article_recent.twig', {
+                                                            article: recentArticles[i], 
+                                                            containerClass: '', 
+                                                            swap: 'false', 
+                                                            isArticle: 'true'}) | raw
+                                                    }}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        {% endif %}
+
+                                    </section><!-- .sidebar-news -->
+                                {% else %}
+
+                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
+                                        <h3 class="recent-articles__header">MOST VIEWED</h3>
+                                        {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+                                        {% for i in 0..4 if popularArticles[i] %}
+                                            {{this.render('/partials/_single-article.twig', {
+                                                article         : popularArticles[i], 
+                                                swap            : false,
+                                                containerClass  : 'card-pro-popular'
+                                            }) | raw}}
+                                        {% endfor %} 
+
+                                    </section><!-- .sidebar-news -->
+                                
                                 {% endif %}
-
-
-                                <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                    <h3 class="recent-articles__header">
-                                        <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
-                                    </h3>
-
-                                    {% if recentArticles|length > 0 %}
-
-                                        {% for i in 0..6 %}
-                                            {% if recentArticles[i] %}
-                                                {{
-                                                    this.render('partials/_single-article_recent.twig', {
-                                                        article: recentArticles[i], 
-                                                        containerClass: '', 
-                                                        swap: 'false', 
-                                                        isArticle: 'true'}) | raw
-                                                }}
-                                            {% endif %}
-                                        {% endfor %}
-
-                                    {% endif %}
-
-                                </section><!-- .sidebar-news -->
-
                             </aside>
                         </div><!-- .col-md-4-->
                     </div><!-- .row-->
