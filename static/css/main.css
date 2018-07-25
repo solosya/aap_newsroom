@@ -7231,6 +7231,9 @@ p.foundingpartners {
   font-size: 17px;
   position: relative;
   top: -1px; }
+  @media screen and (min-width: 992px) {
+    .icon-linkedin:before {
+      margin-right: 30px; } }
 
 /* '' */
 .icon-right-angle:after {
@@ -9690,7 +9693,8 @@ input[type=radio].inline {
   background-image: url("../images/marketing-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right; }
+  background-position: right;
+  border-top: solid 1px #979797; }
   @media screen and (max-width: 767px) {
     .market-hero {
       height: 320px;
@@ -9720,19 +9724,22 @@ input[type=radio].inline {
 .market-hero__tagline {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-bottom: 50px; }
   @media screen and (max-width: 767px) {
     .market-hero__tagline {
       font-size: 1.4rem;
       margin-top: 0;
       margin-bottom: 10px; } }
 
-@media screen and (max-width: 767px) {
-  .market-hero__button {
-    height: 26px;
-    width: 107px;
-    line-height: 26px;
-    font-size: 12px; } }
+.market-hero__button {
+  font-weight: 500; }
+  @media screen and (max-width: 767px) {
+    .market-hero__button {
+      height: 26px;
+      width: 107px;
+      line-height: 26px;
+      font-size: 12px; } }
 
 .market-hero__button__subscribe {
   float: left; }
@@ -9767,24 +9774,25 @@ input[type=radio].inline {
   padding-left: 15px;
   border-radius: 6px;
   border: 1px solid #E5E5E5;
-  background: white; }
+  background: white;
+  font-size: 1.5rem; }
   .login-form input[type=text]::placeholder, .login-form input[type=password]::placeholder, .login-form input[type=email]::placeholder {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #97999c; }
   .login-form input[type=text]::-webkit-input-placeholder, .login-form input[type=password]::-webkit-input-placeholder, .login-form input[type=email]::-webkit-input-placeholder {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #97999c; }
   .login-form input[type=text]::-moz-placeholder, .login-form input[type=password]::-moz-placeholder, .login-form input[type=email]::-moz-placeholder {
     /* Firefox 19+ */
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #97999c; }
   .login-form input[type=text]:-ms-input-placeholder, .login-form input[type=password]:-ms-input-placeholder, .login-form input[type=email]:-ms-input-placeholder {
     /* IE 10+ */
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #97999c; }
   .login-form input[type=text]:-moz-placeholder, .login-form input[type=password]:-moz-placeholder, .login-form input[type=email]:-moz-placeholder {
     /* Firefox 18- */
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #97999c; }
   .login-form input[type=text]:disabled, .login-form input[type=password]:disabled, .login-form input[type=email]:disabled {
     padding: 0px !important;
@@ -13385,6 +13393,7 @@ body.channel, body.section {
     .subscription {
       margin-top: 32px; } }
   .subscription .section-title p {
+    font-family: "tinos", Helvetica, Arial, sans-serif;
     margin-top: 18px;
     margin-bottom: 50px;
     text-align: center;
@@ -13462,7 +13471,8 @@ body.channel, body.section {
   .essential-news h3 {
     color: black;
     font-size: 3.7rem;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
   .essential-news p {
     margin-top: 18px;
     margin-bottom: 30px;
@@ -13542,7 +13552,8 @@ body.channel, body.section {
   margin-bottom: 30px;
   width: 52px;
   height: 1px;
-  background-color: black; }
+  background-color: black;
+  margin-right: 100%; }
 
 .pro-dr {
   height: 1px;
@@ -13568,7 +13579,8 @@ body.channel, body.section {
     color: black; }
 
 .subscribe__contact {
-  margin-top: 60px;
+  margin-top: 35px;
+  margin-bottom: 80px;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 2.8rem;
@@ -15841,7 +15853,7 @@ body.channel.supporters p {
   margin-bottom: 20px; }
 
 .u-margin-bottom-15 {
-  margin-bottom: 25px; }
+  margin-bottom: 15px; }
 
 .u-margin-bottom-10 {
   margin-bottom: 10px; }
@@ -15921,7 +15933,9 @@ body.channel.supporters p {
     margin-left: 15px;
     margin-right: 15px; }
   .u-mobile-no-padding {
-    padding: 0; } }
+    padding: 0; }
+  .u-mobile-margin-top-35 {
+    margin-top: 35px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .u-tablet-no-margin-top {

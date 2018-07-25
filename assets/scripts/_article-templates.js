@@ -101,10 +101,6 @@ Acme.templates.forgotFormTmpl =
         <p class="password-reset-form__p">Enter your email below and we will send you an email to reset your password.</p> \
         <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
         \
-        <div class="password-reset-form__remember"> \
-            <p class="layout" data-layout="signin" class="">Remember password?</p> \
-        </div> \
-        \
         <div class="message active hide"> \
             <div class="password-reset-form__error_text">No user with that email found.</div> \
         </div> \
