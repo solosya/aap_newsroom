@@ -183,7 +183,7 @@
                                     <div class="articleTimes">
                                         <time>{{ publishDate | upper }}</time>
                                         {% if updated %}
-                                            <time class="updated">Updated {{ updateDate | lower }}</time>
+                                            <time class="updated">UPDATED {{ updateDate | lower }}</time>
                                         {% endif %}
                                     </div>
                                 </div><!--content-block-top-->
@@ -307,7 +307,7 @@
                                 {% else %}
 
                                     <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
-                                        <h3 class="recent-articles__header">MOST VIEWED</h3>
+                                        <h3 class="most-viewed__header">MOST VIEWED</h3>
                                         {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
                                         {% for i in 0..4 if popularArticles[i] %}
                                             {{this.render('/partials/_single-article.twig', {

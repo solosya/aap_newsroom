@@ -7759,9 +7759,12 @@ section.subscribe {
         .site-footer .footer-btm .rooms-link > ul li a {
           display: block; }
           .site-footer .footer-btm .rooms-link > ul li a img {
-            height: 19px;
+            height: 18px;
             width: auto;
             max-width: 100%; }
+            @media screen and (max-width: 1200px) and (min-width: 992px) {
+              .site-footer .footer-btm .rooms-link > ul li a img {
+                height: 15px; } }
 
 .sb-custom-menu .menu-mobile {
   display: none;
@@ -9666,7 +9669,8 @@ input[type=radio].inline {
 .plan-type__currency {
   color: #e22f22;
   margin-bottom: 1.8rem;
-  font-size: 18px; }
+  font-size: 18px;
+  font-weight: 600; }
 
 .plan-type__label {
   font-size: 1.4rem;
@@ -11209,6 +11213,11 @@ input[type=radio].inline {
   margin-bottom: 12px;
   border-radius: 6px;
   border: 1px solid #E5E5E5; }
+
+.most-veiwed__header {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 600; }
 
 .room-view {
   margin-top: 70px;
@@ -15634,7 +15643,8 @@ body.channel.supporters p {
         color: #e22f22; }
       .card-pro-simple a.card article .content > h2 {
         font-size: 2.8rem;
-        font-weight: 500; }
+        font-weight: 500;
+        height: 75px; }
       .card-pro-simple a.card article .content .author {
         display: inherit; }
         .card-pro-simple a.card article .content .author img {

@@ -101,7 +101,7 @@
                         
 
                         <section class="col-sm-12 sidebar-news recent-articles">
-                            <h3 class="recent-articles__header">MOST VIEWED</h3>
+                            <h3 class="most-viewed__header">MOST VIEWED</h3>
                             {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
                             {% for i in 0..4 if popularArticles[i] %}
                                 {{this.render('/partials/_single-article.twig', {
