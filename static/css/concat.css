@@ -9623,7 +9623,9 @@ input[type=radio].inline {
       font-size: 1.2rem; } }
 
 .account-form input[type=checkbox] {
-  margin-right: 5px; }
+  margin-right: 5px;
+  vertical-align: top;
+  margin-top: 7px; }
   @media screen and (max-width: 767px) {
     .account-form input[type=checkbox] {
       padding-top: 3px; } }
@@ -11211,8 +11213,9 @@ input[type=radio].inline {
     .article-pro__image-container {
       margin-top: 70px; } }
 
-.stripe-form p a {
-  font-size: 1.6rem; }
+.stripe-form p {
+  font-size: 1.6rem;
+  font-style: italic; }
 
 .most-viewed__header {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -11227,7 +11230,14 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .page-section {
       margin: 60px 15px; } }
-  .page-section h3 {
+  .page-section h1 {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1.09;
+    letter-spacing: 0.1px;
+    color: #000000; }
+  .page-section h2 {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 2rem;
     font-weight: 600;
