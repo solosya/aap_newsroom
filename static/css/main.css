@@ -7846,6 +7846,12 @@ section.subscribe {
           margin-top: 2px; }
         .sb-custom-menu > div > ul > li > ul.sub-menu img {
           max-width: 100%; }
+        .sb-custom-menu > div > ul > li > ul.sub-menu.search-sub-menu {
+          left: unset;
+          top: 15px;
+          right: 0;
+          background: white;
+          width: 60%; }
   .sb-custom-menu .secondary-menu {
     display: none; }
   .sb-custom-menu ul.pages {
@@ -7861,24 +7867,23 @@ section.subscribe {
 .search-sub-menu input.field:focus {
   width: 100%;
   background-color: transparent;
-  color: #1a1818;
-  font-size: 24px;
+  color: #000;
+  font-size: 1.9rem;
   border: 0;
-  border-bottom: solid 2px #d4d4d4;
+  padding-bottom: 2px;
+  border-bottom: solid 1px #d4d4d4;
   outline: none; }
 
-.search-sub-menu input.submit {
+.search-sub-menu .search-button {
+  width: 70px;
+  height: 40px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #e12e21;
+  border: none;
   position: absolute;
-  right: 0;
-  top: 0;
-  background-image: url(../icons/search-blk.svg);
-  background-size: cover;
-  background-color: transparent;
-  width: 30px;
-  height: 30px;
-  border: 0;
-  font-size: 30px;
-  padding: 0 10px; }
+  right: 0px;
+  top: 0; }
 
 .search-sub-menu .search-container {
   width: 100%;
@@ -9944,7 +9949,7 @@ input[type=radio].inline {
     margin-top: 10px; } }
 
 .register-popup__close-icon {
-  background-image: url("../icons/cross.svg");
+  background-image: url("../icons/cross-white.svg");
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid white;
@@ -13646,7 +13651,8 @@ body.channel, body.section {
   font-style: italic; }
 
 body.channel.about .email, body.section.about .email {
-  text-align: center; }
+  text-align: center;
+  font-size: 1.8rem; }
 
 body.channel.about h1, body.section.about h1 {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -13817,7 +13823,7 @@ body.channel.about .editor, body.section.about .editor {
     body.channel.about .editor .content > p:last-child, body.section.about .editor .content > p:last-child {
       margin-bottom: 30px; }
   body.channel.about .editor .contact > p, body.section.about .editor .contact > p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 24px;
     margin-bottom: 5px; }
 
