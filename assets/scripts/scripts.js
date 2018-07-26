@@ -100,8 +100,11 @@ $('document').ready(function() {
     $("#menu-foldaway").on("click", function (e) {
             menu_top_foldaway.toggleClass('hide');
             menu_bottom_foldaway.toggleClass('hide');
-            foldaway_search = false;
-            $(".menuContainer > ul > li.menu-item-search-foldaway").toggleClass('now-active');
+            if (foldaway_search) {
+                foldaway_search = false;
+                $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');
+                $(".menuContainer > ul > li.menu-item-search-foldaway").removeClass('now-active');
+            }
     });
 
     $(".menu-mobile").on("click", function (e) {
@@ -128,7 +131,7 @@ $('document').ready(function() {
     });
 
     $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
-        foldaway_search = true;
+        if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $(this).children("ul").stop(true, false).slideToggle(225);
             $(this).toggleClass('now-active');
