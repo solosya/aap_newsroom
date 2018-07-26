@@ -126,10 +126,13 @@ input[type=radio] {
     
     }
     label {
-        font-size: rem(12);
+        font-size: rem(16);
         font-weight: 600;
         a {
             color: #e12e21;
+        }
+        @media #{$mobile} {
+            font-size: rem(12);
         }
     }
     input[type=checkbox] {

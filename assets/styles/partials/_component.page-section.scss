@@ -1,0 +1,17 @@
+.page-section {
+    border-top: solid 1px #979797;
+    margin-top: 30px;
+    padding-top: 15px;
+
+    @media #{$mobile} {
+    	margin: 60px 15px;
+    }
+    h3 {
+    	font-family: $font-family-sans-serif;
+		font-size: rem(20);
+		font-weight: 600;
+		line-height: 1.45;
+		color: #e12e21;
+    }
+}
+

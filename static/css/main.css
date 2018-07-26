@@ -9614,10 +9614,13 @@ input[type=radio].inline {
     box-shadow: none; }
 
 .account-form label {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 600; }
   .account-form label a {
     color: #e12e21; }
+  @media screen and (max-width: 767px) {
+    .account-form label {
+      font-size: 1.2rem; } }
 
 .account-form input[type=checkbox] {
   margin-right: 5px; }
@@ -9722,7 +9725,7 @@ input[type=radio].inline {
 
 .market-hero__headline {
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 6.2rem;
+  font-size: 8.2rem;
   font-weight: 700;
   margin-bottom: 25px; }
   @media screen and (max-width: 767px) {
@@ -9755,6 +9758,9 @@ input[type=radio].inline {
 
 .market-hero__button__trial {
   margin-left: 35px; }
+  .market-hero__button__trial:hover {
+    color: #fff;
+    text-decoration: none; }
 
 .market-header {
   text-align: center; }
@@ -11205,20 +11211,28 @@ input[type=radio].inline {
     .article-pro__image-container {
       margin-top: 70px; } }
 
-.__PrivateStripeElement-input {
-  display: block;
-  height: 44px;
-  padding: 7px 7px 7px 15px;
-  width: 100%;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #E5E5E5; }
+.stripe-form p a {
+  font-size: 1.6rem; }
 
 .most-viewed__header {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 2rem;
   font-weight: 600;
   margin-top: 0; }
+
+.page-section {
+  border-top: solid 1px #979797;
+  margin-top: 30px;
+  padding-top: 15px; }
+  @media screen and (max-width: 767px) {
+    .page-section {
+      margin: 60px 15px; } }
+  .page-section h3 {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #e12e21; }
 
 .room-view {
   margin-top: 70px;
@@ -13788,13 +13802,13 @@ body.channel.about .editor, body.section.about .editor {
       body.channel.about .editor .section-header .header-content > p, body.section.about .editor .section-header .header-content > p {
         font-size: 1.5em; }
   body.channel.about .editor .content > p, body.section.about .editor .content > p {
-    font-size: 1.3em;
-    line-height: 1.44; }
+    font-size: 1.8rem;
+    line-height: 28px; }
     body.channel.about .editor .content > p:last-child, body.section.about .editor .content > p:last-child {
       margin-bottom: 30px; }
   body.channel.about .editor .contact > p, body.section.about .editor .contact > p {
-    font-size: 1.3em;
-    line-height: 1.44;
+    font-size: 1.6rem;
+    line-height: 24px;
     margin-bottom: 5px; }
 
 body.channel.contact h1, body.section.contact h1 {
@@ -15728,7 +15742,7 @@ body.channel.supporters p {
     .card-pro-popular a.card article .content > h2 {
       height: 40px; }
     .card-pro-popular a.card article .content > p {
-      display: inherit;
+      display: block;
       height: 40px;
       overflow: hidden;
       text-overflow: ellipsis; }
