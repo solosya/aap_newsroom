@@ -9,6 +9,7 @@ $('document').ready(function() {
     var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
+    var foldaway_search = false;
 
     var isMenuBroken = function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
@@ -65,7 +66,7 @@ $('document').ready(function() {
         if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
-        } else {
+        } else if (!foldaway_search) {
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
@@ -97,11 +98,14 @@ $('document').ready(function() {
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-        menu_top_foldaway.toggleClass('hide');
-        menu_bottom_foldaway.toggleClass('hide');
+            menu_top_foldaway.toggleClass('hide');
+            menu_bottom_foldaway.toggleClass('hide');
+            foldaway_search = false;
+            $(".menuContainer > ul > li.menu-item-search-foldaway").toggleClass('now-active');
     });
 
     $(".menu-mobile").on("click", function (e) {
+        console.log('something?',e);
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
@@ -123,9 +127,27 @@ $('document').ready(function() {
         }
     });
 
+    $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
+        foldaway_search = true;
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $(this).children("ul").stop(true, false).slideToggle(225);
+            $(this).toggleClass('now-active');
+            if (window.innerWidth > sbCustomMenuBreakPoint) {
+                $("input#header-search-foldaway").focus();
+            }
+        }
+    });
+
     $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $("input#header-search").focus();
+            return false;
+        }
+    });
+
+    $("li.menu-item-search-foldaway").bind("mouseenter focus mouseleave",function () {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $("input#header-search-foldaway").focus();
             return false;
         }
     });
