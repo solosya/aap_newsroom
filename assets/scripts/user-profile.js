@@ -173,7 +173,11 @@
     {
         var self = this;
     
-    
+        $('#message-close').on('click', function(e) {
+            e.preventDefault();
+            var parent = $(this).parent().remove();
+        });
+
         $('#managed-user-search').on('submit', function(e) {
             e.preventDefault();
             var search = {};

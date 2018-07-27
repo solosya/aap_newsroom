@@ -29289,18 +29289,17 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-            console.log('rendering modal');
+
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
-            console.log(tmp);
 
+        
             $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
-                console.log('rendering layout');
                 this.renderLayout(layout, data);
             }
             this.events();
@@ -29317,7 +29316,6 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         {
             var self = this;
             $('#'+this.parentCont).on("click", function(e) {
-                console.log('self.handling');
                 self.handle(e);
             });
 
@@ -29344,7 +29342,6 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                     this.closeWindow();
                 }
             }
-            console.log('finish parent handling');
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
@@ -32072,7 +32069,11 @@ UserArticlesController.Load = (function ($) {
     {
         var self = this;
     
-    
+        $('#message-close').on('click', function(e) {
+            e.preventDefault();
+            var parent = $(this).parent().remove();
+        });
+
         $('#managed-user-search').on('submit', function(e) {
             e.preventDefault();
             var search = {};

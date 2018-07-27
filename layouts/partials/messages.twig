@@ -1,16 +1,12 @@
 {% for key,message in _AppHelper.getFlashMessages() %}
     {% if key == 'success'%}
         <div class="profile-message" role="alert">
-            <button class="profile-message__button" aria-label="Close" data-dismiss="alert" type="button">
-                <span class="profile-message__close" aria-hidden="true">×</span>
-            </button>
+            <a id="message-close" class="profile-message__close" href="#"></a>
             <p class="profile-message__text">{{message | raw }}</p>
         </div>
     {% else %}
         <div class="profile-message" role="alert">
-            <button class="profile-message__button" aria-label="Close" data-dismiss="alert" type="button">
-                <span class="profile-message__close" aria-hidden="true">×</span>
-            </button>
+            <a  id="message-close" class="profile-message__close" href="#"></a>
             <p class="profile-message__text">{{message | raw }}</p>
         </div>
     {% endif %}
