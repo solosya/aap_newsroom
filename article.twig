@@ -18,8 +18,8 @@
 
 {% set articleBlog = article.blog.title | lower %}
 
-{% if   not _User.isAdminUser()                     and
-        articleBlog  | lower       == "newsroom pro"   and
+{% if   not _User.isAdminUser()                         and
+        articleBlog  | lower       == "newsroom pro"    and
         blogData['showPaywall'] == true  %}
     
     {% set showPaywall = true %}

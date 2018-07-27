@@ -571,6 +571,7 @@
         {
             var self = this;
             $('#'+this.parentCont).on("click", function(e) {
+                console.log('self.handling');
                 self.handle(e);
             });
 
@@ -581,7 +582,7 @@
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if (!$elem.is('input')) {
+            if ( !$elem.is('input') && !$elem.is('a') ) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
@@ -597,6 +598,7 @@
                     this.closeWindow();
                 }
             }
+            console.log('finish parent handling');
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {

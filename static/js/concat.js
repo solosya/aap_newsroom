@@ -29314,6 +29314,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         {
             var self = this;
             $('#'+this.parentCont).on("click", function(e) {
+                console.log('self.handling');
                 self.handle(e);
             });
 
@@ -29324,7 +29325,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if (!$elem.is('input')) {
+            if ( !$elem.is('input') && !$elem.is('a') ) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
@@ -29340,6 +29341,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                     this.closeWindow();
                 }
             }
+            console.log('finish parent handling');
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
@@ -31391,16 +31393,20 @@ Acme.Signin.prototype.errorMsg = function(msg) {
 };
 Acme.Signin.prototype.handle = function(e) {
     var self = this;
+    console.log('parent handling');
     var $elem = this.parent.handle.call(this, e);
 
     if ( $elem.is('a') ) {
+        console.log('element in a');
         if ($elem.hasClass('close')) {
+            console.log('close');
             e.preventDefault();
             $('body').removeClass("active");
             this.closeWindow();
         }
     }
     if ($elem.is('button')) {
+        console.log('element is button');
         $('.message').addClass('hide');
         if ($elem.hasClass('signin')) {
             $elem.text('')
@@ -31476,12 +31482,13 @@ Acme.Signin.prototype.handle = function(e) {
    
 
     }
+    console.log('checking if layout');
     if ($elem.hasClass('layout')) {
         var layout = $elem.data('layout');
         this.renderLayout(layout);
     }
 
-
+    console.log('here');
 
 };
 

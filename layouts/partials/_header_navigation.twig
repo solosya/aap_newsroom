@@ -12,12 +12,12 @@
                         <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
                         <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
 
-                        {% if not _User.isGuest() %}
+                        {# {% if not _User.isGuest() %}
                             {% set user = _User.getUser() %}
                             <li class="logedin"><a href="javscript:void(0)" class="" id="profile">
                                 {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
                             </a></li>
-                        {% endif %} 
+                        {% endif %}  #}
 
                     </ul>
                 </div><!-- .social-links-->
