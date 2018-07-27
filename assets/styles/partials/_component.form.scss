@@ -5,10 +5,15 @@
     font-weight: 600;
 }
 
+
+
 .account-form__label {
-    font-size: rem(13);
-    color:color(dark);
-    line-height: 44px;
+    font-size: rem(16);
+    font-weight: 300;
+    color:color(grey-text);
+    @media #{$mobile} {
+        font-size: rem(12);
+    }
 }
 .account-form__label--mobile {
     display: none;
@@ -20,7 +25,6 @@
 .account-form__label--red {
     color:color(red);
     line-height: 1.2;
-
 }
 
 .account-form__input {
@@ -53,8 +57,9 @@
 }
 
 .account-form__explainer {
+    margin-top: -7px;
     font-family: $font-family-sans-serif;
-    font-size: rem(13);
+    font-size: rem(15);
     font-style:italic;
     color:color(form-explainer);
     flex:7;
@@ -129,16 +134,16 @@ input[type=radio] {
         }
     
     }
-    label {
-        font-size: rem(16);
-        font-weight: 600;
-        a {
-            color: #e12e21;
-        }
-        @media #{$mobile} {
-            font-size: rem(12);
-        }
-    }
+    // label {
+    //     font-size: rem(16);
+    //     font-weight: 600;
+    //     a {
+    //         color: #e12e21;
+    //     }
+    //     @media #{$mobile} {
+    //         font-size: rem(12);
+    //     }
+    // }
     input[type=checkbox] {
         margin-right: 5px;
         vertical-align: top;

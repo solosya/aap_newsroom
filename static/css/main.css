@@ -9543,8 +9543,12 @@ button.swiper-pagination-bullet {
   font-weight: 600; }
 
 .account-form__label {
-  font-size: 1.3rem;
-  line-height: 44px; }
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #4a4a4a; }
+  @media screen and (max-width: 767px) {
+    .account-form__label {
+      font-size: 1.2rem; } }
 
 .account-form__label--mobile {
   display: none; }
@@ -9580,8 +9584,9 @@ button.swiper-pagination-bullet {
   font-size: 1.3rem; }
 
 .account-form__explainer {
+  margin-top: -7px;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-style: italic;
   color: #0e0e0e;
   flex: 7; }
@@ -9636,15 +9641,6 @@ input[type=radio].inline {
     border: none;
     webkit-box-shadow: none;
     box-shadow: none; }
-
-.account-form label {
-  font-size: 1.6rem;
-  font-weight: 600; }
-  .account-form label a {
-    color: #e12e21; }
-  @media screen and (max-width: 767px) {
-    .account-form label {
-      font-size: 1.2rem; } }
 
 .account-form input[type=checkbox] {
   margin-right: 5px;
