@@ -546,15 +546,18 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
+            console.log('rendering modal');
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
+            console.log(tmp);
 
-            $('body').addClass('acme-modal-active').prepend(tmp);
+            $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
+                console.log('rendering layout');
                 this.renderLayout(layout, data);
             }
             this.events();

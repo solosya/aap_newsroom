@@ -98,7 +98,7 @@
 							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
 							<p class="account-form__section-label">Your information</p>
 							<input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
-							<p class="account-form__explainer"><i>Passwords must be at least five characters long and contain no spaces</i></p>
+							<p class="account-form__explainer"><i>Username must be ay least five characters long and contain no spaces or special characters</i></p>
 
 							<input type="email" 	class="account-form__input" name="email" 			id="email" 			value="" placeholder="Email">
 							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
@@ -130,12 +130,15 @@
 								<!-- a Stripe Element will be inserted here. -->
 								</div>
 
-								<!-- Used to display form errors -->
-								<div id="card-errors" class="card-errors" role="alert"></div>
 							</div>
 
 							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 subscriptionPlan__button">SUBSCRIBE</button>
+							<button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button">SUBSCRIBE</button>
+						
+							<!-- Used to display form errors -->
+							<div id="card-errors" class="profile-section__card-errors u-margin-bottom-100" role="alert"></div>
+
+						
 						</form>
 
 						

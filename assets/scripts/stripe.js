@@ -86,7 +86,8 @@ if ($('#stripekey').length > 0) {
         this.addInlineErrors();
         if (checkTerms) {
             if (!this.data.terms) {
-                this.confirmView = new Acme.Confirm('modal', 'signin', {'terms': 'subscribeTerms'});
+
+                this.confirmView = new Acme.Confirm('modal', 'signin-modal', {'terms': 'subscribeTerms'});
                 this.confirmView.render("terms", "Terms of use");
             }
         }
