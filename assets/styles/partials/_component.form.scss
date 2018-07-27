@@ -59,7 +59,7 @@ input[type=radio] {
         vertical-align: top;
         margin-top: 7px;
         @media #{$mobile} {
-            padding-top: 3px;
+             margin-top: 0;
         }
     }
     
@@ -79,9 +79,7 @@ input[type=radio] {
 .account-form__cblabel {
     font-size: rem(16);
     font-weight: 600;
-    a {
-        color: #e12e21;
-    }
+    line-height: 1.8;
     @media #{$mobile} {
         font-size: rem(12);
     }
