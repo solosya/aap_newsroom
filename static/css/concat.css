@@ -9537,13 +9537,71 @@ button.swiper-pagination-bullet {
     background-size: cover;
     background-repeat: no-repeat; }
 
+input[type=radio].inline {
+  margin-top: 20px; }
+
+.account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
+  display: block;
+  border: none;
+  height: 44px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  font-size: 1.5rem; }
+  @media screen and (max-width: 767px) {
+    .account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
+      font-size: 1.2rem; } }
+  .account-form input[type=text]::placeholder, .account-form input[type=password]::placeholder, .account-form input[type=email]::placeholder, .account-form input[type=search]::placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form input[type=text]::-webkit-input-placeholder, .account-form input[type=password]::-webkit-input-placeholder, .account-form input[type=email]::-webkit-input-placeholder, .account-form input[type=search]::-webkit-input-placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form input[type=text]::-moz-placeholder, .account-form input[type=password]::-moz-placeholder, .account-form input[type=email]::-moz-placeholder, .account-form input[type=search]::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form input[type=text]:-ms-input-placeholder, .account-form input[type=password]:-ms-input-placeholder, .account-form input[type=email]:-ms-input-placeholder, .account-form input[type=search]:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form input[type=text]:-moz-placeholder, .account-form input[type=password]:-moz-placeholder, .account-form input[type=email]:-moz-placeholder, .account-form input[type=search]:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form input[type=text]:disabled, .account-form input[type=password]:disabled, .account-form input[type=email]:disabled, .account-form input[type=search]:disabled {
+    background: none;
+    border: none;
+    webkit-box-shadow: none;
+    box-shadow: none; }
+
+.account-form label {
+  font-size: 1.6rem;
+  font-weight: 600; }
+  .account-form label a {
+    color: #e12e21; }
+  @media screen and (max-width: 767px) {
+    .account-form label {
+      font-size: 1.2rem; } }
+
+.account-form input[type=checkbox] {
+  margin-right: 5px;
+  vertical-align: top;
+  margin-top: 7px; }
+  @media screen and (max-width: 767px) {
+    .account-form input[type=checkbox] {
+      padding-top: 3px; } }
+
 .account-form__section-label {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600; }
 
 .account-form__label {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 44px; }
 
 .account-form__label--mobile {
@@ -9595,64 +9653,6 @@ button.swiper-pagination-bullet {
   margin-bottom: 41px; }
   .error-message.active {
     display: block; }
-
-input[type=radio].inline {
-  margin-top: 20px; }
-
-.account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
-  display: block;
-  border: none;
-  height: 44px;
-  padding: 7px;
-  width: 100%;
-  margin-bottom: 12px;
-  padding-left: 15px;
-  border-radius: 6px;
-  border: 1px solid #E5E5E5;
-  font-size: 1.6rem; }
-  @media screen and (max-width: 767px) {
-    .account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
-      font-size: 1.2rem; } }
-  .account-form input[type=text]::placeholder, .account-form input[type=password]::placeholder, .account-form input[type=email]::placeholder, .account-form input[type=search]::placeholder {
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]::-webkit-input-placeholder, .account-form input[type=password]::-webkit-input-placeholder, .account-form input[type=email]::-webkit-input-placeholder, .account-form input[type=search]::-webkit-input-placeholder {
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]::-moz-placeholder, .account-form input[type=password]::-moz-placeholder, .account-form input[type=email]::-moz-placeholder, .account-form input[type=search]::-moz-placeholder {
-    /* Firefox 19+ */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:-ms-input-placeholder, .account-form input[type=password]:-ms-input-placeholder, .account-form input[type=email]:-ms-input-placeholder, .account-form input[type=search]:-ms-input-placeholder {
-    /* IE 10+ */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:-moz-placeholder, .account-form input[type=password]:-moz-placeholder, .account-form input[type=email]:-moz-placeholder, .account-form input[type=search]:-moz-placeholder {
-    /* Firefox 18- */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:disabled, .account-form input[type=password]:disabled, .account-form input[type=email]:disabled, .account-form input[type=search]:disabled {
-    background: none;
-    border: none;
-    webkit-box-shadow: none;
-    box-shadow: none; }
-
-.account-form label {
-  font-size: 1.6rem;
-  font-weight: 600; }
-  .account-form label a {
-    color: #e12e21; }
-  @media screen and (max-width: 767px) {
-    .account-form label {
-      font-size: 1.2rem; } }
-
-.account-form input[type=checkbox] {
-  margin-right: 5px;
-  vertical-align: top;
-  margin-top: 7px; }
-  @media screen and (max-width: 767px) {
-    .account-form input[type=checkbox] {
-      padding-top: 3px; } }
 
 .text-button {
   border: none;
