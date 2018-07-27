@@ -9578,15 +9578,6 @@ input[type=radio].inline {
     webkit-box-shadow: none;
     box-shadow: none; }
 
-.account-form label {
-  font-size: 1.6rem;
-  font-weight: 600; }
-  .account-form label a {
-    color: #e12e21; }
-  @media screen and (max-width: 767px) {
-    .account-form label {
-      font-size: 1.2rem; } }
-
 .account-form input[type=checkbox] {
   margin-right: 5px;
   vertical-align: top;
@@ -9603,6 +9594,15 @@ input[type=radio].inline {
 .account-form__label {
   font-size: 1.5rem;
   line-height: 44px; }
+
+.account-form__cblabel {
+  font-size: 1.6rem;
+  font-weight: 600; }
+  .account-form__cblabel a {
+    color: #e12e21; }
+  @media screen and (max-width: 767px) {
+    .account-form__cblabel {
+      font-size: 1.2rem; } }
 
 .account-form__label--mobile {
   display: none; }
