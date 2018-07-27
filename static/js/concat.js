@@ -30456,6 +30456,9 @@ Acme.Validators = {
         // var ret = !isNaN(parseFloat(n)) && isFinite(n);
         return !isNaN(parseFloat(n)) && isFinite(n);
     },
+    'username' : function(text) {
+        return (text.length > 4);
+    },  
     'isTrue' : function(data) {
         return (data === 'true' || data === true) ? true : false;
     }
@@ -31608,7 +31611,7 @@ if ($('#stripekey').length > 0) {
             "verifypassword"    : ["notEmpty"],
             "firstname"         : ["notEmpty"], 
             "lastname"          : ["notEmpty"], 
-            "username"          : ["notEmpty"], 
+            "username"          : ["notEmpty", "username"], 
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],

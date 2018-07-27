@@ -63,7 +63,7 @@ if ($('#stripekey').length > 0) {
             "verifypassword"    : ["notEmpty"],
             "firstname"         : ["notEmpty"], 
             "lastname"          : ["notEmpty"], 
-            "username"          : ["notEmpty"], 
+            "username"          : ["notEmpty", "username"], 
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],
