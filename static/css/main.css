@@ -13469,24 +13469,27 @@ body.channel, body.section {
   position: absolute;
   top: 0; }
 
-.subscription {
-  margin-top: 90px; }
-  @media screen and (max-width: 767px) {
-    .subscription {
-      margin-top: 32px; } }
+@media screen and (max-width: 767px) {
+  .subscription {
+    margin-top: 32px; } }
+
+.subscription .section-title p {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 600; }
+
+@media screen and (max-width: 767px) {
   .subscription .section-title p {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    margin-top: 18px;
-    margin-bottom: 50px;
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 600; }
-  @media screen and (max-width: 767px) {
-    .subscription .section-title p {
-      text-align: left;
-      font-size: 1.8rem; } }
-  .subscription .section-title h2 {
-    font-family: "tinos", Helvetica, Arial, sans-serif; }
+    text-align: left;
+    font-size: 1.8rem; } }
+
+.subscription .section-title h2 {
+  font-family: "tinos", Helvetica, Arial, sans-serif; }
+
+.subscriptionPlan {
+  margin-top: 40px; }
 
 .subscriptionPlan__card {
   padding-bottom: 21px;
@@ -13651,7 +13654,7 @@ body.channel, body.section {
 .pro-dr {
   height: 1px;
   width: 168px;
-  background-color: black;
+  background-color: #979797;
   margin-bottom: 40px; }
 
 .section-title > h1 {
