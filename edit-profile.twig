@@ -18,6 +18,7 @@
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
+
 {% if user %} 
     {% set jobListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[jobsBlogId], 'status': '-1'}) %}
     {% set propListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[propBlogId], 'status': '-1'}) %}
@@ -118,7 +119,7 @@
                                 <label class="account-form__label account-form__label--mobile" for="password">Organisation</label>
                                 <div class="account-form__inline-inputs">
                                     <label class="account-form__label" for="organisation">Organisation</label>
-                                    <input type="text" id="organisation" class="account-form__input" value="{{user.company}}" name="organisation" placeholder="" >
+                                    <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="organisation" placeholder="" >
                                 </div>
 
 
