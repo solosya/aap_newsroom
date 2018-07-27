@@ -94,6 +94,10 @@ input[type=radio] {
         padding-left:15px;
         border-radius:6px;
         border: 1px solid color(lightergrey);
+        font-size: rem(16);
+        @media #{$mobile} {
+            font-size: rem(12);
+        }
     
     
         &::placeholder {

@@ -9608,7 +9608,11 @@ input[type=radio].inline {
   margin-bottom: 12px;
   padding-left: 15px;
   border-radius: 6px;
-  border: 1px solid #E5E5E5; }
+  border: 1px solid #E5E5E5;
+  font-size: 1.6rem; }
+  @media screen and (max-width: 767px) {
+    .account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
+      font-size: 1.2rem; } }
   .account-form input[type=text]::placeholder, .account-form input[type=password]::placeholder, .account-form input[type=email]::placeholder, .account-form input[type=search]::placeholder {
     font-size: 1.4rem;
     color: #97999c; }
@@ -11281,6 +11285,14 @@ input[type=radio].inline {
     line-height: 1.45;
     color: #e12e21; }
 
+.page-section__content > p {
+  font-size: 2rem;
+  line-height: 2.9; }
+  @media screen and (max-width: 767px) {
+    .page-section__content > p {
+      font-size: 1.6rem;
+      line-height: 21; } }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }
@@ -12766,7 +12778,8 @@ input[type=radio].inline {
           top: 2px; }
       @media screen and (max-width: 767px) {
         .article article.article-main .page-content .content-author a.showmore {
-          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; } }
+          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+          color: #000; } }
   .article article.article-main .page-content .article_content > span[style], .article article.article-main .page-content .article_content > u[style], .article article.article-main .page-content .article_content > p[style], .article article.article-main .page-content .article_content > ul[style], .article article.article-main .page-content .article_content > li[style], .article article.article-main .page-content .article_content > strong[style], .article article.article-main .page-content .article_content > b[style], .article article.article-main .page-content .article_content > h1[style], .article article.article-main .page-content .article_content > h2[style], .article article.article-main .page-content .article_content > h3[style], .article article.article-main .page-content .article_content > h4[style], .article article.article-main .page-content .article_content > h5[style], .article article.article-main .page-content .article_content > h6[style], .article article.article-main .page-content .article_content > figure[style], .article article.article-main .page-content .article_content > figcaption[style], .article article.article-main .page-content .article_content > img[style], .article article.article-main .page-content .article_content > blockquote[style] {
     font-size: inherit !important;
     font-weight: inherit !important;
