@@ -546,18 +546,17 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-            console.log('rendering modal');
+
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
-            console.log(tmp);
 
+        
             $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
-                console.log('rendering layout');
                 this.renderLayout(layout, data);
             }
             this.events();
@@ -574,7 +573,6 @@
         {
             var self = this;
             $('#'+this.parentCont).on("click", function(e) {
-                console.log('self.handling');
                 self.handle(e);
             });
 
@@ -601,7 +599,6 @@
                     this.closeWindow();
                 }
             }
-            console.log('finish parent handling');
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {

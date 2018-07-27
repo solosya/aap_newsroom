@@ -1,12 +1,25 @@
 .profile-message {
-    
+    display:inline-block;
+    padding:5px 10px;
+    background-color:color(message);
+    font-size:rem(13);
 }
-.profile-message__button {
-    
-}
+
 .profile-message__close {
-    
+    font-size:inherit;
+    display:inline-block;
+    margin-right:10px;
+    background: url('../icons/x.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 9px;
+    width: 9px;
 }
 .profile-message__text {
-    
+    font-size:inherit;
+    margin:0;
+    color:color(red);
+    display:inline-block;
+    text-transform: uppercase;
+    font-weight:600;
 }
