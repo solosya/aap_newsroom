@@ -59,7 +59,7 @@ input[type=radio] {
         vertical-align: top;
         margin-top: 7px;
         @media #{$mobile} {
-             margin-top: 0;
+             margin-top: 5px;
         }
     }
     
@@ -123,15 +123,21 @@ input[type=radio] {
     margin:0;
     flex:7;
     font-family: $font-family-sans-serif;
-    font-size: rem(13);
+    font-size: rem(15);
+    @media #{$mobile} {
+        font-size: rem(12);
+    }
 }
 
 .account-form__explainer {
     font-family: $font-family-sans-serif;
-    font-size: rem(13);
+    font-size: rem(15);
     font-style:italic;
     color:color(form-explainer);
     flex:7;
+    @media #{$mobile} {
+        font-size: rem(12);
+    }
 }
 
 
