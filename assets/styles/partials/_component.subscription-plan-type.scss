@@ -18,7 +18,8 @@
     }
 
     .plan-type__users {
-        font-size: rem(18);
+        font-size: rem(13);
+        font-family: $font-family-sans-serif;
     }
 
     .plan-type__name {
@@ -27,11 +28,13 @@
         font-size:rem(18);
         font-weight:600;
         letter-spacing: 0.4px;
-        font-family: $font-family-serif;
+        font-family: $font-family-sans-serif;
     }
     .plan-type__currency {
         color: color(red);
         margin-bottom:rem(18);
+        font-size: 18px;
+        font-weight: 600;
     }
     
     .plan-type__label {
@@ -53,8 +56,12 @@
     }
     .plan-type__features {
         text-align: left;
-
+        font-weight: 600;
+        font-size: rem(13);
         li {
             margin-bottom: 10px;
+        }
+        @media #{$mobile} {
+            font-size: rem(12);   
         }
     }

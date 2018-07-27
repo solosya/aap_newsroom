@@ -77,7 +77,7 @@ Acme.templates.signinFormTmpl =
         \
         <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
         \
-        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/login-faq">Read our FAQ</a></p> \
+        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/faq" target="_blank">Read our FAQ</a></p> \
         <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
     </form>';
 
@@ -100,10 +100,6 @@ Acme.templates.forgotFormTmpl =
         <input type="hidden" name="_csrf" value="" /> \
         <p class="password-reset-form__p">Enter your email below and we will send you an email to reset your password.</p> \
         <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
-        \
-        <div class="password-reset-form__remember"> \
-            <p class="layout" data-layout="signin" class="">Remember password?</p> \
-        </div> \
         \
         <div class="message active hide"> \
             <div class="password-reset-form__error_text">No user with that email found.</div> \

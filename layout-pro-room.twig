@@ -57,9 +57,14 @@
 
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 card-pro-simple 203x130'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 card-pro-simple card-pro-simple-mobile 203x130'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
+
+                        
+                        <hr class="divide15 u-row-indent visible-xs-block">
+                        
+
                     {% endfor %}
 
                 </div><!-- .row-->
@@ -80,22 +85,23 @@
 
                                 {% for i in 0..3 %}
                                     {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec card-pro-rec-mobile'}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
+                                    <hr class="divide15 visible-xs-block">
                                 {% endfor %}
                             {% endif %}
 
                          </div><!--card-group-->
                     </div><!-- .col-sm-8-->
 
-                    <div class="col-sm-12 col-md-4 sidebar">
+                    <div class="col-sm-12 col-md-4 sidebar hidden-xs">
                         
                         <div class="row">
                         
 
                         <section class="col-sm-12 sidebar-news recent-articles">
-                            <h3 class="recent-articles__header">MOST VIEWED</h3>
+                            <h3 class="most-viewed__header">MOST VIEWED</h3>
                             {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
                             {% for i in 0..4 if popularArticles[i] %}
                                 {{this.render('/partials/_single-article.twig', {
@@ -127,7 +133,7 @@
                 <div class="row">
                     <div class="ajaxArticles clearfix col-sm-12 col-md-8 card-group"
                          data-offset="{{limit}}"
-                         data-containerclass="card-pro-rec"
+                         data-containerclass="card-pro-rec card-pro-rec-mobile pro-rec-divide"
                          data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
                      </div>
                     <a class="loadMoreArticles" href="#">LOAD MORE</a>

@@ -32,7 +32,7 @@
 	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
 	
 	
-	<div class="container-fluid">
+	<div class="container-fluid hidden-xs">
 		<section class="row">
 			<div class="col-sm-12 market-header u-margin-top-40">
 				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
@@ -44,8 +44,8 @@
 		<div class="market-hero__content container-fluid">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-11">
-					<h1 class="market-hero__headline">Behind the <br />headlines</h1>
-					<h3 class="market-hero__tagline">You’re just one step away from<br /> reading Newsroom Pro.</h3>
+					<h1 class="market-hero__headline">Behind the <br class="hidden-xs"/>headlines</h1>
+					<h3 class="market-hero__tagline">You’re just one step away from<br class="hidden-xs" /> reading Newsroom Pro.</h3>
 				</div>
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 
 					{% if trial %}
 						<div class="trial">
-							<h2 class="trial__header">Start your 28-day free trial now</h2>
+							<h2 class="trial__header u-mobile-margin-top-35">Start your 28-day free trial now</h2>
 
 							<p class="trial__text">
 								A 28-day free trial requires registration with a valid credit card. <span>After 28 days, 
@@ -94,7 +94,7 @@
 					<div class="col-md-12">
 
 
-						<form class="account-form" method="post" action="" id="listingForm">
+						<form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
 							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
 							<p class="account-form__section-label">Your information</p>
 							<input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
@@ -102,15 +102,20 @@
 							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
 							<input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
 							<input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
+							<label style="font-weight:300;color: #979797;font-size:15px;"><i>Passwords must be at least five characters long and contain no spaces</i></label>
 							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
 							<input type="text" 		class="account-form__input" name="company" 			id="company" 		value="" placeholder="Organisation (optional)">
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
-							<label>I agree to the Newsroom <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label>
+							<label>I agree to the Newsroom <a href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
+							<input type="checkbox" 	class="" name="summary-email" id="summary-email"> 
+							<label>Send me a summary email each weekday</label><br />
+							<input type="checkbox" 	class="" name="breaking-email" id="breaking-email"> 
+							<label>Send me email alerts of breaking news</label><br />
 						</form>
 
 
 						<p class="account-form__section-label u-margin-top-40">Payment details</p>
-						<form action="/charge" method="post" id="payment-form">
+						<form action="/charge" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15">
 							<div class="form-row ">
 								<label for="card-element">
 								Credit or debit card
@@ -125,7 +130,7 @@
 							<p>All credit card payments are processed by Stripe. <a target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a></p>
 
 							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">SUBSCRIBE</button>
+							<button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 subscriptionPlan__button">SUBSCRIBE</button>
 						</form>
 
 						
@@ -137,7 +142,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-3 u-mobile-no-padding">
 				<div class="plan-type">
 
 					{% if plan != false %}
@@ -146,16 +151,16 @@
 						<div class="plan-type__body">
 
 							{% set val = plan.plan_value / 100 %}
-							<h3 class="subscriptionPlan__name">{{plan.name}}</h3>
-							<p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
-							<p class="subscriptionPlan__price">${{val}} <br class="hidden-xs"> per {{plan.period}}</p>
+							<h3 class="plan-type__name">{{plan.name}}</h3>
+							<p class="plan-type__users">{{plan.user_count}} Users</p>
+							<p class="plan-type__currency">${{val}} per {{plan.period}}</p>
 							<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
 							<p class="plan-type__label u-margin-top-40">What's included in your subscription:</p>
 							<ul class="plan-type__features">
 								{{plan.description | raw }}
 							</ul>
 
-							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}@newsroom-pro#subscriptions">Change subscription</a>
+							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions">Change subscription</a>
 						</div>
 
 					{# 	{{ this.render('partials/_plan-'~plan~'.twig', {

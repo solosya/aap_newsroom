@@ -1,53 +1,118 @@
-.card-pro-simple{
-    a.card {
-        article {
-            height:130px;
+.card-pro-simple {
 
-            > figure {
-                height:auto;
-                width:203px;
-                flex:none;
+    @media #{$desktop-up}{
+        a.card {
+            article {
+                height:130px;
 
-                @media screen and (max-width: $md-break){
-                    width: 150px;
-                    flex: 0 0 150px;
-                }
+                > figure {
+                    height:auto;
+                    width:203px;
+                    flex:none;
 
-                @media screen and (max-width: $sm-break-down) {
-                    margin-top:6px;
-                    margin-bottom:6px;
-                    width: 116px;
-                    flex: 0 0 116px;
-                }
-
-            }
-            .content {
-                border-bottom: unset;
-
-                .category{
-                    color: #e22f22;
-                }
-                .author {
-                    display: inherit;
-                    img {
-                        display: none;
+                    @media screen and (max-width: $md-break){
+                        width: 150px;
+                        flex: 0 0 150px;
                     }
-                    p {
+
+                }
+                .content {
+                    border-bottom: unset;
+
+                    .category{
+                        color: #e22f22;
+                    }
+                    >h2 {
+                        font-size: rem(28);
+                        font-weight: 500;
+                        height: 85px;
+                    }
+                    .author {
                         display: inherit;
-                        margin-top: 15px;
+                        img {
+                            display: none;
+                        }
+                        p {
+                            display: inherit;
+                            margin-top: 15px;
+                            color: #000;
+                        }
                     }
+                    time {
+                        display: none
+                    }
+                    
                 }
-                
             }
         }
+        &:first-child {
+            padding-right:5%;
+           
+        }
+        &:nth-child(3) {
+            border-left: 1px solid #dadada;
+            padding-left:5%;
+            margin-left:-10px;
+        }
+        
     }
-    &:first-child {
-        padding-right:5%;
+}
+.card-pro-simple-mobile {
+    @media #{$mobile}{
+        border-left: unset;   
+        a.card {
+            height: 60px;
+            border-bottom: unset;
+            padding: 0; 
+            article {
+                height: 60px;
+                
+
+                > figure {
+                    width: 60px;
+                    height: 60px;
+                    margin: 0;
+                    flex: none;
+                }
+                .content {
+                    margin-left: 15px;
+                    padding: 0;
+                    h2{
+                        margin: 0;
+                    }
+                    .category {
+                         color: #e22f22;
+                    }
+                    .author {
+                        display: none;
+                        img {
+                            display: none;
+                        }
+                        p {
+                           display: none; 
+                        }
+                    }
+                    time {
+                        bottom: -5px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        &:first-child {
+        padding-right: 15px;
        
-    }
-    &:last-child {
-        border-left: 1px solid #dadada;
-        padding-left:5%;
-        margin-left:-10px;
+        }
+        &:last-child {
+            border-left: none;
+            padding-left: 15px;
+            margin-left: unset;
+        }
     }
 }

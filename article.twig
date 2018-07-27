@@ -183,7 +183,7 @@
                                     <div class="articleTimes">
                                         <time>{{ publishDate | upper }}</time>
                                         {% if updated %}
-                                            <time class="updated">Updated {{ updateDate | upper }}</time>
+                                            <time class="updated">Updated {{ updateDate | capitalize }}</time>
                                         {% endif %}
                                     </div>
                                 </div><!--content-block-top-->
@@ -244,10 +244,10 @@
                             {% if showPaywall == true %}
                                 <div class="article-subscribe">
                                     <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
-                                    <a href="/@newsroom-pro" class="_btn _btn--red u-margin-right-25">SUBSRIBE TO PRO</a>
+                                    <a href="/@newsroom-pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
                                     <button id="articleSigninBtn" class="_btn _btn--gray">SIGN IN TO PRO</button>
                                     <p class="article-subscribe__p">Subscribe now to start a free trial of <br />Newsroom Pro for 28 days.</p>
-                                    <a href="/@newsroom-pro" class="article-subscribe__link">View our subscription options</a>
+                                    <a href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions" class="article-subscribe__link">View our subscription options</a>
                                 </div>
                             {% endif %}
 
@@ -281,32 +281,45 @@
                                         <div id="newAdHalf"></div>
                                         <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                     </section>
+
+                                    <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                        <h3 class="recent-articles__header">
+                                            <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                        </h3>
+
+                                        {% if recentArticles|length > 0 %}
+
+                                            {% for i in 0..6 %}
+                                                {% if recentArticles[i] %}
+                                                    {{
+                                                        this.render('partials/_single-article_recent.twig', {
+                                                            article: recentArticles[i], 
+                                                            containerClass: '', 
+                                                            swap: 'false', 
+                                                            isArticle: 'true'}) | raw
+                                                    }}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        {% endif %}
+
+                                    </section><!-- .sidebar-news -->
+                                {% else %}
+
+                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
+                                        <h3 class="most-viewed__header">MOST VIEWED</h3>
+                                        {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+                                        {% for i in 0..4 if popularArticles[i] %}
+                                            {{this.render('/partials/_single-article.twig', {
+                                                article         : popularArticles[i], 
+                                                swap            : false,
+                                                containerClass  : 'card-pro-popular'
+                                            }) | raw}}
+                                        {% endfor %} 
+
+                                    </section><!-- .sidebar-news -->
+                                
                                 {% endif %}
-
-
-                                <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                    <h3 class="recent-articles__header">
-                                        <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
-                                    </h3>
-
-                                    {% if recentArticles|length > 0 %}
-
-                                        {% for i in 0..6 %}
-                                            {% if recentArticles[i] %}
-                                                {{
-                                                    this.render('partials/_single-article_recent.twig', {
-                                                        article: recentArticles[i], 
-                                                        containerClass: '', 
-                                                        swap: 'false', 
-                                                        isArticle: 'true'}) | raw
-                                                }}
-                                            {% endif %}
-                                        {% endfor %}
-
-                                    {% endif %}
-
-                                </section><!-- .sidebar-news -->
-
                             </aside>
                         </div><!-- .col-md-4-->
                     </div><!-- .row-->

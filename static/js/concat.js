@@ -29497,7 +29497,7 @@ Acme.templates.signinFormTmpl =
         \
         <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
         \
-        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/login-faq">Read our FAQ</a></p> \
+        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.baseHttpPath +'/faq" target="_blank">Read our FAQ</a></p> \
         <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
     </form>';
 
@@ -29520,10 +29520,6 @@ Acme.templates.forgotFormTmpl =
         <input type="hidden" name="_csrf" value="" /> \
         <p class="password-reset-form__p">Enter your email below and we will send you an email to reset your password.</p> \
         <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
-        \
-        <div class="password-reset-form__remember"> \
-            <p class="layout" data-layout="signin" class="">Remember password?</p> \
-        </div> \
         \
         <div class="message active hide"> \
             <div class="password-reset-form__error_text">No user with that email found.</div> \
@@ -31107,6 +31103,7 @@ $('document').ready(function() {
     var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
+    var foldaway_search = false;
 
     var isMenuBroken = function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
@@ -31163,7 +31160,7 @@ $('document').ready(function() {
         if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
-        } else {
+        } else if (!foldaway_search) {
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
@@ -31195,11 +31192,17 @@ $('document').ready(function() {
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-        menu_top_foldaway.toggleClass('hide');
-        menu_bottom_foldaway.toggleClass('hide');
+            menu_top_foldaway.toggleClass('hide');
+            menu_bottom_foldaway.toggleClass('hide');
+            if (foldaway_search) {
+                foldaway_search = false;
+                $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');
+                $(".menuContainer > ul > li.menu-item-search-foldaway").removeClass('now-active');
+            }
     });
 
     $(".menu-mobile").on("click", function (e) {
+        console.log('something?',e);
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
@@ -31221,9 +31224,27 @@ $('document').ready(function() {
         }
     });
 
+    $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
+        if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $(this).children("ul").stop(true, false).slideToggle(225);
+            $(this).toggleClass('now-active');
+            if (window.innerWidth > sbCustomMenuBreakPoint) {
+                $("input#header-search-foldaway").focus();
+            }
+        }
+    });
+
     $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $("input#header-search").focus();
+            return false;
+        }
+    });
+
+    $("li.menu-item-search-foldaway").bind("mouseenter focus mouseleave",function () {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $("input#header-search-foldaway").focus();
             return false;
         }
     });
