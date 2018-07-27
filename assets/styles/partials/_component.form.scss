@@ -1,19 +1,90 @@
 
+
+    
+input[type=radio] {
+    &.inline {
+        margin-top:20px;
+    }
+}
+
+.account-form {
+
+    input[type=text], input[type=password], input[type=email], input[type=search] {
+        display:block;
+        border:none;
+        height: 44px;
+        padding: 7px;
+        width:100%;
+        margin-bottom:12px;
+        padding-left:15px;
+        border-radius:6px;
+        border: 1px solid color(lightergrey);
+        font-size: rem(15);
+        @media #{$mobile} {
+            font-size: rem(12);
+        }
+    
+    
+        &::placeholder {
+            font-size: rem(14);
+            color:color(lightgrey);
+        }
+        &::-webkit-input-placeholder {
+            font-size: rem(14);
+            color:color(lightgrey);
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+            font-size: rem(14);
+            color:color(lightgrey);
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+            font-size: rem(14);
+            color:color(lightgrey);
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+            font-size: rem(14);
+            color:color(lightgrey);
+        }
+    
+        &:disabled {
+            background:none;
+            border: none;
+            webkit-box-shadow: none;
+            box-shadow: none;
+        }
+    
+    }
+    label {
+        font-size: rem(16);
+        font-weight: 600;
+        a {
+            color: #e12e21;
+        }
+        @media #{$mobile} {
+            font-size: rem(12);
+        }
+    }
+    input[type=checkbox] {
+        margin-right: 5px;
+        vertical-align: top;
+        margin-top: 7px;
+        @media #{$mobile} {
+            padding-top: 3px;
+        }
+    }
+    
+}
+
 .account-form__section-label {
     font-family: $font-family-sans-serif;
     font-size: rem(15);
     font-weight: 600;
 }
 
-
-
 .account-form__label {
-    font-size: rem(16);
-    font-weight: 300;
-    color:color(grey-text);
-    @media #{$mobile} {
-        font-size: rem(12);
-    }
+    font-size: rem(15);
+    color:color(dark);
+    line-height: 44px;
 }
 .account-form__label--mobile {
     display: none;
@@ -25,6 +96,7 @@
 .account-form__label--red {
     color:color(red);
     line-height: 1.2;
+
 }
 
 .account-form__input {
@@ -57,9 +129,8 @@
 }
 
 .account-form__explainer {
-    margin-top: -7px;
     font-family: $font-family-sans-serif;
-    font-size: rem(15);
+    font-size: rem(13);
     font-style:italic;
     color:color(form-explainer);
     flex:7;
@@ -80,76 +151,6 @@
 }
 
 
-    
-input[type=radio] {
-    &.inline {
-        margin-top:20px;
-    }
-}
-
-.account-form {
-
-    input[type=text], input[type=password], input[type=email], input[type=search] {
-        display:block;
-        border:none;
-        height: 44px;
-        padding: 7px;
-        width:100%;
-        margin-bottom:12px;
-        padding-left:15px;
-        border-radius:6px;
-        border: 1px solid color(lightergrey);
-    
-    
-        &::placeholder {
-            font-size: rem(14);
-            color:color(lightgrey);
-        }
-        &::-webkit-input-placeholder {
-            font-size: rem(14);
-            color:color(lightgrey);
-        }
-        &::-moz-placeholder { /* Firefox 19+ */
-            font-size: rem(14);
-            color:color(lightgrey);
-        }
-        &:-ms-input-placeholder { /* IE 10+ */
-            font-size: rem(14);
-            color:color(lightgrey);
-        }
-        &:-moz-placeholder { /* Firefox 18- */
-            font-size: rem(14);
-            color:color(lightgrey);
-        }
-    
-        &:disabled {
-            background:none;
-            border: none;
-            webkit-box-shadow: none;
-            box-shadow: none;
-        }
-    
-    }
-    // label {
-    //     font-size: rem(16);
-    //     font-weight: 600;
-    //     a {
-    //         color: #e12e21;
-    //     }
-    //     @media #{$mobile} {
-    //         font-size: rem(12);
-    //     }
-    // }
-    input[type=checkbox] {
-        margin-right: 5px;
-        vertical-align: top;
-        margin-top: 7px;
-        @media #{$mobile} {
-            padding-top: 3px;
-        }
-    }
-    
-}
 
 
 
