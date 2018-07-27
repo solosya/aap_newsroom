@@ -8316,7 +8316,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       padding-top: 10px; }
     .site-header .site-branding-top.foldaway .section-right {
       width: auto;
-      margin-right: 50px; }
+      margin-right: 65px; }
     .site-header .site-branding-top.foldaway .social-links {
       display: inline-block; }
     .site-header .site-branding-top.foldaway .secondary-menu {
@@ -9430,6 +9430,8 @@ button.swiper-pagination-bullet {
   padding-bottom: 11px;
   border-bottom: 1px solid #97999c;
   margin-bottom: 20px; }
+  .signin-modal__header > .popupVideo__headerlogo {
+    display: none; }
 
 .signin-modal__title {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -9438,6 +9440,12 @@ button.swiper-pagination-bullet {
   font-weight: 600;
   margin: 0;
   margin-right: 20px; }
+  @media screen and (max-width: 767px) {
+    .signin-modal__title:after {
+      content: ' to Newsroom Pro';
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600; } }
 
 .signin-modal__close {
   display: block;
@@ -9670,6 +9678,9 @@ input[type=radio].inline {
 .plan-type__users {
   font-size: 1.3rem;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  @media screen and (max-width: 767px) {
+    .plan-type__users {
+      font-size: 1.6rem; } }
 
 .plan-type__name {
   margin-top: -20px;
@@ -9690,6 +9701,9 @@ input[type=radio].inline {
   color: #e22f22;
   margin-bottom: 12px;
   font-weight: 700; }
+  @media screen and (max-width: 767px) {
+    .plan-type__label {
+      font-size: 1.6rem; } }
 
 .plan-type__img {
   width: 100%; }
@@ -9708,7 +9722,7 @@ input[type=radio].inline {
     margin-bottom: 10px; }
   @media screen and (max-width: 767px) {
     .plan-type__features {
-      font-size: 1.2rem; } }
+      font-size: 1.6rem; } }
 
 .market-hero {
   height: 566px;
@@ -11151,7 +11165,7 @@ input[type=radio].inline {
     width: 260px; }
   @media screen and (max-width: 767px) {
     .pro-partial__header__logo > img {
-      width: 197px; } }
+      width: 255px; } }
 
 .pro-partial__header__text {
   font-size: 1.8rem;
@@ -11181,7 +11195,10 @@ input[type=radio].inline {
   color: #fff;
   height: 41px;
   width: 134px;
-  margin: auto; }
+  margin: auto;
+  background-color: #1d1d1d;
+  font-weight: 300;
+  line-height: unset; }
 
 .menu-signin__account {
   font-size: 1.4rem !important;
@@ -11219,7 +11236,15 @@ input[type=radio].inline {
   background: black; }
   @media screen and (max-width: 767px) {
     .article-pro__image-container {
-      margin-top: 70px; } }
+      margin-top: 70px; }
+      .article-pro__image-container > .container, .login-page .article-pro__image-container > .container, .article-pro__image-container > .profile__container {
+        padding-left: 0;
+        padding-right: 0; }
+        .article-pro__image-container > .container figcaption, .login-page .article-pro__image-container > .container figcaption, .article-pro__image-container > .profile__container figcaption {
+          padding-left: 30px;
+          padding-right: 30px; } }
+  .article-pro__image-container .article__figure-caption {
+    color: #fff; }
 
 .stripe-form p {
   font-size: 1.6rem;
@@ -12735,6 +12760,9 @@ input[type=radio].inline {
         .article article.article-main .page-content .content-author a.showmore span.arrow.up {
           transform: rotate(-135deg);
           top: 2px; }
+      @media screen and (max-width: 767px) {
+        .article article.article-main .page-content .content-author a.showmore {
+          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; } }
   .article article.article-main .page-content .article_content > span[style], .article article.article-main .page-content .article_content > u[style], .article article.article-main .page-content .article_content > p[style], .article article.article-main .page-content .article_content > ul[style], .article article.article-main .page-content .article_content > li[style], .article article.article-main .page-content .article_content > strong[style], .article article.article-main .page-content .article_content > b[style], .article article.article-main .page-content .article_content > h1[style], .article article.article-main .page-content .article_content > h2[style], .article article.article-main .page-content .article_content > h3[style], .article article.article-main .page-content .article_content > h4[style], .article article.article-main .page-content .article_content > h5[style], .article article.article-main .page-content .article_content > h6[style], .article article.article-main .page-content .article_content > figure[style], .article article.article-main .page-content .article_content > figcaption[style], .article article.article-main .page-content .article_content > img[style], .article article.article-main .page-content .article_content > blockquote[style] {
     font-size: inherit !important;
     font-weight: inherit !important;
@@ -13497,7 +13525,7 @@ body.channel, body.section {
   font-weight: 300; }
   @media screen and (max-width: 767px) {
     .subscriptionPlan__price {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       margin-bottom: 15px; } }
 
 .subscriptionPlan__subnow {
@@ -13548,6 +13576,9 @@ body.channel, body.section {
 
 .pro-offers__container {
   margin: 30px auto; }
+  @media screen and (max-width: 767px) {
+    .pro-offers__container {
+      margin: 5px auto; } }
 
 .pro-offers-card {
   margin-top: 55px;
@@ -13556,6 +13587,10 @@ body.channel, body.section {
   @media screen and (max-width: 992px) {
     .pro-offers-card {
       text-align: left; } }
+  @media screen and (max-width: 767px) {
+    .pro-offers-card {
+      padding-right: 0;
+      margin-top: 10px; } }
 
 @media screen and (max-width: 992px) {
   .pro-offers-card__img {
@@ -13568,7 +13603,7 @@ body.channel, body.section {
     float: left;
     height: 30px;
     margin-bottom: 0;
-    margin-right: 19px; } }
+    margin-right: 5px; } }
 
 .pro-offers-card__p {
   margin-left: 20px;
@@ -13576,6 +13611,9 @@ body.channel, body.section {
   font-size: 1.8rem;
   line-height: 1.62;
   text-align: left; }
+  @media screen and (max-width: 767px) {
+    .pro-offers-card__p {
+      font-size: 1.2rem; } }
 
 .pro-offers-card__img__global {
   height: 85px; }
@@ -15996,7 +16034,9 @@ body.channel.supporters p {
   .u-mobile-no-padding {
     padding: 0; }
   .u-mobile-margin-top-35 {
-    margin-top: 35px; } }
+    margin-top: 35px; }
+  .u-mobile-margin-top-15 {
+    margin-top: 15px !important; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .u-tablet-no-margin-top {

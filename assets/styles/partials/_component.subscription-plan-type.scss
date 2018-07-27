@@ -20,6 +20,9 @@
     .plan-type__users {
         font-size: rem(13);
         font-family: $font-family-sans-serif;
+        @media #{$mobile} {
+            font-size: rem(16);
+        }
     }
 
     .plan-type__name {
@@ -42,6 +45,9 @@
         color:color(red);
         margin-bottom:12px;
         font-weight:700;
+        @media #{$mobile} {
+            font-size: rem(16);
+        }
     }
 
     .plan-type__img {
@@ -62,6 +68,6 @@
             margin-bottom: 10px;
         }
         @media #{$mobile} {
-            font-size: rem(12);   
+            font-size: rem(16);   
         }
     }
