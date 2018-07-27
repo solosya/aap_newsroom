@@ -1,7 +1,11 @@
 <div id="pp-banner" class="hidden-print"></div>
+
+
+
+
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 
-<header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print">
+<header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print ">
     <div class="site-header-main">
             
         <div class="site-branding-top row">
@@ -63,7 +67,7 @@
             <div class="section-left col-md-6 col-sm-8">
                 <div class="logo pull-left">
                     <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                    {% if pageClass | lower == 'newsroom pro' or pageClass | lower == 'subscribe' or pageClass | lower == 'thank you' %}
+                    {% if pageClass | lower == 'newsroom pro' or pageClass | lower == 'subscribe' or 'thank-you' in path({'node': node.id}) %}
                         <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo">
                     {% else %} 
                         <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=9" alt="logo" class="main-logo">
@@ -73,7 +77,7 @@
                     <img class="website-award hidden-xs" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
 
                     <img class="voyager-logo hidden-xs" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
-                    {% if pageClass | lower == 'newsroom pro' or pageClass | lower == 'subscribe' or pageClass | lower == 'thank you' %}
+                    {% if pageClass | lower == 'newsroom pro' or pageClass | lower == 'subscribe' or 'thank-you' in path({'node': node.id}) %}
                         <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@newsroom-pro" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
                     {% else %}
