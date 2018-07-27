@@ -9584,7 +9584,7 @@ input[type=radio].inline {
   margin-top: 7px; }
   @media screen and (max-width: 767px) {
     .account-form input[type=checkbox] {
-      padding-top: 3px; } }
+      margin-top: 0; } }
 
 .account-form__section-label {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -9597,9 +9597,8 @@ input[type=radio].inline {
 
 .account-form__cblabel {
   font-size: 1.6rem;
-  font-weight: 600; }
-  .account-form__cblabel a {
-    color: #e12e21; }
+  font-weight: 600;
+  line-height: 1.8; }
   @media screen and (max-width: 767px) {
     .account-form__cblabel {
       font-size: 1.2rem; } }
@@ -11343,6 +11342,12 @@ input[type=radio].inline {
 @media screen and (max-width: 767px) {
   .contact__pro-link\@sm {
     font-size: 1.2rem; } }
+
+.footer-logo__reversed {
+  width: 202px; }
+  @media screen and (max-width: 767px) {
+    .footer-logo__reversed {
+      width: 156px; } }
 
 .room-view {
   margin-top: 70px;

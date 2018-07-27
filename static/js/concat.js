@@ -29289,15 +29289,18 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
+            console.log('rendering modal');
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
+            console.log(tmp);
 
-            $('body').addClass('acme-modal-active').prepend(tmp);
+            $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
+                console.log('rendering layout');
                 this.renderLayout(layout, data);
             }
             this.events();
@@ -29542,7 +29545,7 @@ Acme.templates.spinner =
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
-Acme.templates.subscribeTerms =  '<p>Please agree to the terms of use</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
 
 Acme.templates.userPlanMessage = 
 '<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
@@ -31414,20 +31417,20 @@ Acme.Signin.prototype.errorMsg = function(msg) {
 };
 Acme.Signin.prototype.handle = function(e) {
     var self = this;
-    console.log('parent handling');
+
     var $elem = this.parent.handle.call(this, e);
 
     if ( $elem.is('a') ) {
-        console.log('element in a');
+
         if ($elem.hasClass('close')) {
-            console.log('close');
+
             e.preventDefault();
             $('body').removeClass("active");
             this.closeWindow();
         }
     }
     if ($elem.is('button')) {
-        console.log('element is button');
+
         $('.message').addClass('hide');
         if ($elem.hasClass('signin')) {
             $elem.text('')
@@ -31503,13 +31506,12 @@ Acme.Signin.prototype.handle = function(e) {
    
 
     }
-    console.log('checking if layout');
+
     if ($elem.hasClass('layout')) {
         var layout = $elem.data('layout');
         this.renderLayout(layout);
     }
 
-    console.log('here');
 
 };
 
@@ -31632,7 +31634,8 @@ if ($('#stripekey').length > 0) {
         this.addInlineErrors();
         if (checkTerms) {
             if (!this.data.terms) {
-                this.confirmView = new Acme.Confirm('modal', 'signin', {'terms': 'subscribeTerms'});
+
+                this.confirmView = new Acme.Confirm('modal', 'signin-modal', {'terms': 'subscribeTerms'});
                 this.confirmView.render("terms", "Terms of use");
             }
         }

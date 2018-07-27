@@ -4,7 +4,7 @@
 
 
 {% set plan = false %}
-{% set trial = true %}
+{% set trial = false %}
 
 {% set url = _AppHelper.getParsedUrl() %}
 {% set params = url['query'] %}
@@ -109,7 +109,7 @@
 							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
 							<input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
-							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__label account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
+							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__cblabel account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
 							
 							<input type="checkbox" 	class="" name="summary-email" id="summary-email" checked> 
 							<label class="account-form__cblabel">Send me a summary email each weekday</label><br />
