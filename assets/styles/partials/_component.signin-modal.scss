@@ -31,14 +31,26 @@
     padding-bottom:11px;
     border-bottom:1px solid color(lightgrey);
     margin-bottom: 20px;
+    >.popupVideo__headerlogo {
+        display: none;
+    }
+
 }
     .signin-modal__title {
     font-family: $font-family-sans-serif;
-        float: left;
-        font-size: rem(16);
-        font-weight:600;
-        margin:0;
-        margin-right:20px;
+    float: left;
+    font-size: rem(16);
+    font-weight:600;
+    margin:0;
+    margin-right:20px;
+    @media #{$mobile} {
+        &:after {
+            content: ' to Newsroom Pro';
+            font-family: $font-family-sans-serif;
+            font-size: rem(16);
+            font-weight:600;
+        }
+    }
 }
 
     .signin-modal__close {

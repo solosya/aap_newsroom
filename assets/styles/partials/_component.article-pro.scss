@@ -2,5 +2,16 @@
     background:black;
     @media #{$mobile} {
         margin-top: 70px;
+        >.container {
+        	padding-left: 0;
+        	padding-right: 0;
+        	figcaption {
+        		padding-left:30px;
+        		padding-right: 30px;
+        	}
+        }
+    }
+    .article__figure-caption {
+    	color: #fff;
     }
 }
