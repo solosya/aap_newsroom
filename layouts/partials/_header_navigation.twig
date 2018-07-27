@@ -98,6 +98,7 @@
                          ___________________________#}
                         <ul class="menu-signin visible-xs-block">
                             {% if not _User.isGuest() %}
+                                {% set user = _User.getUser() %}
                                 <li><a href="http://newsroomdev.aappublish.com.au/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 10px 20px;">Hi, {{user.firstname}} </a></li>
                                 <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
                             {% else %}
