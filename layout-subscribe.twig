@@ -109,19 +109,19 @@
 							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
 							<input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
-							<label class="account-form__label">I agree to the Newsroom <a class="account-form__label account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
+							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__label account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
 							
-							<input type="checkbox" 	class="" name="summary-email" id="summary-email"> 
-							<label class="account-form__label">Send me a summary email each weekday</label><br />
+							<input type="checkbox" 	class="" name="summary-email" id="summary-email" checked> 
+							<label class="account-form__cblabel">Send me a summary email each weekday</label><br />
 							
 							<input type="checkbox" 	class="" name="breaking-email" id="breaking-email"> 
-							<label class="account-form__label">Send me email alerts of breaking news</label><br />
+							<label class="account-form__cblabel">Send me email alerts of breaking news</label><br />
 						</form>
 
 
 						<form action="/charge" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15">
 							<div class="form-row ">
-								<p class="stripe-form__p u-margin-top-40 u-mobile-bigger-margins-15">Please enter your credit or debit card details. </p>
+								<p class="stripe-form__p u-margin-top-40 ">Please enter your credit or debit card details. </p>
 								<p class="stripe-form__p">All credit card payments are processed by Stripe. 
 									<a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a>
 								</p>

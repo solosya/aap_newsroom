@@ -54,16 +54,6 @@ input[type=radio] {
         }
     
     }
-    label {
-        font-size: rem(16);
-        font-weight: 600;
-        a {
-            color: #e12e21;
-        }
-        @media #{$mobile} {
-            font-size: rem(12);
-        }
-    }
     input[type=checkbox] {
         margin-right: 5px;
         vertical-align: top;
@@ -85,6 +75,16 @@ input[type=radio] {
     font-size: rem(15);
     color:color(dark);
     line-height: 44px;
+}
+.account-form__cblabel {
+    font-size: rem(16);
+    font-weight: 600;
+    a {
+        color: #e12e21;
+    }
+    @media #{$mobile} {
+        font-size: rem(12);
+    }
 }
 .account-form__label--mobile {
     display: none;
