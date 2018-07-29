@@ -42,7 +42,7 @@
 <!-- 3 is job, 4 is property, 5 is event -->
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
-<main id="main" class="user_profile account-form u-margin-top-40" role="main">
+<main id="main" class="user_profile account-form u-desktop-margin-top-40 u-mobile-margin-top-80" role="main">
     <div id="stripekey" class="hidden" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
     {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
     <div class="container">
@@ -119,7 +119,7 @@
                                 <label class="account-form__label account-form__label--mobile" for="password">Organisation</label>
                                 <div class="account-form__inline-inputs">
                                     <label class="account-form__label" for="organisation">Organisation</label>
-                                    <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="organisation" placeholder="" >
+                                    <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="organisation" placeholder="Organisation (optional)" >
                                 </div>
 
 
