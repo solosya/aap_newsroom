@@ -229,7 +229,7 @@
                                 </div> #}
 
                                 <div class="article_content {{paywall_content_style}}">
-                                    <p class="article_content__section"{% if articleBlog == "newsroom pro" %}style="color:#e22f22;"{% endif %}>{{article.label}}</p>
+                                    <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
 
                                     {{ content  | preg_replace('/^<p>/', '<p class="lead">')
