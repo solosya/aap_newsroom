@@ -16,11 +16,9 @@
 
             }
             .content {
-                border-bottom: unset;
-                flex:none;
-                padding-right: 15px;
-                padding-left: 15px;
-                width: 60%;
+                width: unset;
+                position: absolute;
+                margin-left: 220px;
                 > h2 { 
                     color: #fcfcfc;
                     font-size: rem(28);
@@ -52,21 +50,37 @@
             }
         }
     }
+}
+.card-pro-partial-tablet{
     @media #{$tablet} {
+        a.card {
+            article {
+                > figure {
+                    width:107px;
+                }
+                .content {
+                    width: unset;
+                    position: absolute;
+                    margin-left: 120px;
+                    >h2{
+                        font-weight: 300;
+                    }
 
+                }
+            }
+        }
     }
-
+}
+.card-pro-partial-mobile{
     @media #{$mobile} {
         margin-left: -15px;
         margin-right: -15px;
-        @media #{$mobile}{
-            &:first-child{
-                padding-bottom:15px;
-                border-bottom: solid 1px white;
-            }
-            &:last-child{
-                margin-top: 15px;
-            }
+        &:first-child{
+            padding-bottom:15px;
+            border-bottom: solid 1px white;
+        }
+        &:last-child{
+            margin-top: 15px;
         }
         a.card {
             height: 75px;
