@@ -75,6 +75,9 @@ input[type=radio] {
     font-size: rem(15);
     color:color(dark);
     line-height: 44px;
+    @media #{$mobile} {
+        display: none;
+    }
 }
 .account-form__cblabel {
     font-size: rem(16);

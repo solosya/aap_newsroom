@@ -9591,6 +9591,9 @@ input[type=radio].inline {
 .account-form__label {
   font-size: 1.5rem;
   line-height: 44px; }
+  @media screen and (max-width: 767px) {
+    .account-form__label {
+      display: none; } }
 
 .account-form__cblabel {
   font-size: 1.6rem;

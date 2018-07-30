@@ -168,15 +168,13 @@
                                     
                                     {% if pwstats['type'] == 'time' %}
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Current Plan</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="currentplan">Current Plan</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Current Plan</label>
                                             <p type="text" id="currentplan" class="account-form__value">{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}</p>
                                         </div>
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Plan Status</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="currentplan">Plan Status</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Plan Status</label>
                                             <p style="margin-left:35px; cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status']}}</p>
 
                                             <div class="button-full">
@@ -192,39 +190,34 @@
                                             </div>
                                         </div>
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="totalusers">My Users</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="totalusers">My Users</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="totalusers">My Users</label>
                                             <p type="text" id="totalusers" class="account-form__value">{{ pwstats['user_count'] - managedUsers|length }}</p>
                                         </div>                            
                                        
 
      
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="expires">Next Payment</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="expires">Next Payment</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="expires">Next Payment</label>
                                             <p type="text" id="expires" class="account-form__value">{{ pwstats['expiry_date']}}</p>
                                         </div>
 
                                     {% else %} 
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="currentplan">Current Plan</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="currentplan">Current Plan</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Current Plan</label>
                                             <p type="text" id="currentplan" class="account-form__value">{{ pwstats['plan_value']/100}}/{{pwstats['total_articles']}}</p>
                                         </div>
 
-                                        <label class="account-form__label account-form__label--mobile account-form__label--red" for="remaining">Articles Remaining</label>
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red" for="remaining">Articles Remaining</label>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="remaining">Articles Remaining</label>
                                             <p type="text" id="remaining" class="account-form__value">{{ pwstats['article_count']}}</p>
                                         </div>                            
                                         
                                     {% endif %} 
 
-                                    <label class="account-form__label account-form__label--mobile account-form__label--red" for="remaining">Payment Method</label>
                                     <div class="account-form__inline-inputs u-margin-bottom-20">
-                                        <label class="account-form__label account-form__label--red" for="remaining">Payment Method</label>
+                                        <label class="account-form__label account-form__label--red account-form__label--mobile" for="remaining">Payment Method</label>
                                         <p type="text" id="remaining" class="account-form__value">{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}</p>
                                     </div>                            
 
