@@ -75,9 +75,6 @@ input[type=radio] {
     font-size: rem(15);
     color:color(dark);
     line-height: 44px;
-    @media #{$mobile} {
-        display: none;
-    }
 }
 .account-form__cblabel {
     font-size: rem(16);
@@ -88,10 +85,10 @@ input[type=radio] {
     }
 }
 .account-form__label--mobile {
-    display: none;
     @media screen and (max-width: $sm-break-down){
         display: inherit;
         margin-bottom: -10px;
+        min-width: 130px;
     }
 }
 .account-form__label--red {
@@ -127,8 +124,10 @@ input[type=radio] {
     flex:7;
     font-family: $font-family-sans-serif;
     font-size: rem(15);
+    margin-left:35px;
     @media #{$mobile} {
         font-size: rem(12);
+        margin-left:0;
     }
 }
 

@@ -64,29 +64,29 @@
                                 <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                                 <input type="hidden" name="profileImage" id="userProfileImage" value="" />
 
-                                <label class="account-form__label account-form__label--mobile" for="firstname">First name</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="firstname">First name</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="firstname">First name</label>
+                                    <label class="account-form__label hidden-xs" for="firstname">First name</label>
                                     <input type="text" id="firstname" class="account-form__input" name="firstname" value="{{user.firstname}}" placeholder="First name" >
                                 </div>
 
-                                <label class="account-form__label account-form__label--mobile" for="lastname">Last name</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="lastname">Last name</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="lastname">Last name</label>
+                                    <label class="account-form__label hidden-xs" for="lastname">Last name</label>
                                     <input type="text" id="lastname" class="account-form__input" name="lastname" value="{{user.lastname}}" placeholder="Last name" >
                                 </div>                            
                                
                              
-                                <label class="account-form__label account-form__label--mobile" for="username">Username</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="username">Username</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="username">Username</label>
+                                    <label class="account-form__label hidden-xs" for="username">Username</label>
                                     <input type="text" id="username" class="account-form__input" name="username" value="{{user.username}}" placeholder="Username" >
                                 </div>
 
 
-                                <label class="account-form__label account-form__label--mobile" for="email">Email</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="email">Email</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="email">Email</label>
+                                    <label class="account-form__label hidden-xs" for="email">Email</label>
                                     <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" >
                                 </div>
                                 <div class="account-form__inline-inputs">
@@ -96,9 +96,9 @@
 
 
 
-                                <label class="account-form__label account-form__label--mobile" for="password">Change password</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Change password</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="password">Password</label>
+                                    <label class="account-form__label hidden-xs" for="password">Password</label>
                                     <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" >
                                 </div>
                                 <div class="account-form__inline-inputs">
@@ -109,16 +109,16 @@
 
 
 
-                                <label class="account-form__label account-form__label--mobile" for="password">Verify Password</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Verify Password</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="password">Verify Password</label>
+                                    <label class="account-form__label hidden-xs" for="password">Verify Password</label>
                                     <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password" >
                                 </div>
                                 
 
-                                <label class="account-form__label account-form__label--mobile" for="password">Organisation</label>
+                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Organisation</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for="organisation">Organisation</label>
+                                    <label class="account-form__label hidden-xs" for="organisation">Organisation</label>
                                     <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="organisation" placeholder="Organisation (optional)" >
                                 </div>
 
@@ -175,7 +175,7 @@
 
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Plan Status</label>
-                                            <p style="margin-left:35px; cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status']}}</p>
+                                            <p style="cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status']}}</p>
 
                                             <div class="button-full">
                                             {% if pwstats['status'] == 'cancelled' %}

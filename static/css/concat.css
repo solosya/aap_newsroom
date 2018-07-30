@@ -6111,8 +6111,7 @@ body.no_profile .profile_overlay {
   background-color: #f3f3f3; }
   .user_profile label {
     font-size: 1.5rem;
-    font-weight: bold;
-    min-width: 100px; }
+    font-weight: bold; }
   @media screen and (max-width: 767px) {
     .user_profile .container, .user_profile .profile__container {
       background-color: white; } }
@@ -9591,9 +9590,6 @@ input[type=radio].inline {
 .account-form__label {
   font-size: 1.5rem;
   line-height: 44px; }
-  @media screen and (max-width: 767px) {
-    .account-form__label {
-      display: none; } }
 
 .account-form__cblabel {
   font-size: 1.6rem;
@@ -9603,12 +9599,11 @@ input[type=radio].inline {
     .account-form__cblabel {
       font-size: 1.2rem; } }
 
-.account-form__label--mobile {
-  display: none; }
-  @media screen and (max-width: 767px) {
-    .account-form__label--mobile {
-      display: inherit;
-      margin-bottom: -10px; } }
+@media screen and (max-width: 767px) {
+  .account-form__label--mobile {
+    display: inherit;
+    margin-bottom: -10px;
+    min-width: 130px; } }
 
 .account-form__label--red {
   color: #e22f22;
@@ -9634,10 +9629,12 @@ input[type=radio].inline {
   margin: 0;
   flex: 7;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  margin-left: 35px; }
   @media screen and (max-width: 767px) {
     .account-form__value {
-      font-size: 1.2rem; } }
+      font-size: 1.2rem;
+      margin-left: 0; } }
 
 .account-form__explainer {
   margin-top: -7px;
