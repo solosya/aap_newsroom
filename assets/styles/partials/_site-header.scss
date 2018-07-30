@@ -84,6 +84,9 @@
     //     z-index: 100;
     // }
     .site-branding-top{
+        @media #{$tablet} {
+            display: none;
+        }
 
         .social-links{
             a {
@@ -202,6 +205,14 @@
     .site-branding-bottom{
         padding-top: 6px;
         // padding-bottom: 40px;
+        @media #{$tablet} {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #8a8b93;
+
+        }
 
         @media screen and (max-width: $sm-break-down) {
             padding-top: 10px;

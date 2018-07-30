@@ -89,7 +89,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=d59bdddc" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=c81cce19" type="text/css" media="all">
 
 
     {% else %}
@@ -316,7 +316,7 @@
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  
-        <div class="add" style="margin:15px auto;">
+        <div class="add add-header__topbanner">
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
