@@ -173,6 +173,37 @@
     {
         var self = this;
     
+
+        $('#profile-form').submit( function(e){
+            // NOTE this form also uses validation from the strip subscribe form
+            // purely by accident as the event listeners in THAT form are generic.
+
+            // Will need to separate if it becomes a problem but for now it works
+            // The following stops submit and adds error text
+
+            e.preventDefault();
+            var errorText = '';
+
+            if ( $('#firstname').val() == '' ) {
+                errorText += "First name cannot be empty. <br />";
+            }
+            if ( $('#lastname').val() == '' ) {
+                errorText += "Last name cannot be empty.  <br />";
+            }
+            if ( $('#username').val().length < 5 ) {
+                errorText += "Username must be at least 5 characters.  <br />";
+            }
+            if ($('#email').val() == '' ) {
+                errorText += "Email cannot be empty. ";
+            }
+
+            $("#account-form__errorText").html(errorText);
+            
+            if (!errorText) {
+                $(this).unbind('submit').submit()
+            }
+        });
+
         $('#message-close').on('click', function(e) {
             e.preventDefault();
             var parent = $(this).parent().remove();
@@ -216,9 +247,10 @@
             $('#newuserfirstname').focus();
             $('#addManagedUser').addClass('hidden');
             $('#nousers').addClass('hidden');
-            
+
             $('#saveUser').on('click', function(e) {
-                $('#user-editor-buttons').addClass('spinner');
+                $('#userError').text("");
+
                 var requestData = { 
                     firstname: $('#newuserfirstname').val(), 
                     lastname:  $('#newuserlastname').val(), 
@@ -226,14 +258,36 @@
                     useremail: $('#newuseruseremail').val(),
                     _csrf: this.csrfToken
                 };
-    
+                
+                var errorText = "";
+                if (requestData.firstname === ""){
+                    errorText += "First name cannot be blank. ";
+                }
+                if (requestData.lastname === ""){
+                    errorText += "Last name cannot be blank. ";
+                }
+                if (requestData.username === ""){
+                    errorText += "Username cannot be blank. ";
+                }
+                if (requestData.useremail === ""){
+                    errorText += "Email cannot be blank. ";
+                }
+                if (errorText != "") {
+                    $('#userError').text(errorText);
+                    return;
+                }
+                
+                
+                $('#user-editor__spinner').addClass('spinner');
+
+
                 $.ajax({
                     type: 'post',
                     url: _appJsConfig.baseHttpPath + '/user/create-paywall-managed-user',
                     dataType: 'json',
                     data: requestData,
                     success: function (data, textStatus, jqXHR) {
-                        $('#user-editor-buttons').removeClass('spinner');
+                        $('#user-editor__spinner').removeClass('spinner');
     
                         if (data.success == 1) {
                             location.reload(false);             

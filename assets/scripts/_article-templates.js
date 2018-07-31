@@ -11,8 +11,10 @@ Acme.templates.create_user =
         <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="" placeholder="{{lastname}}"> \
         <input type="text" id="newuserusername" class="j-username user-editor__input" value="" placeholder="{{username}} (between 5 and 15 characters)"> \
         <input type="text" id="newuseruseremail" class="j-email user-editor__input" value="" placeholder="{{useremail}}"> \
+        <p id="userError" class="user-editor__error"></p> \
     </div> \
     <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
+        <div id="user-editor__spinner" class="user-editor__spinner"></div> \
         <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
         <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
     </div> \

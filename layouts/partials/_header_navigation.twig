@@ -1,10 +1,10 @@
 <div id="pp-banner" class="hidden-print"></div>
 
-{% set proPage = false %}
+{# {% set proPage = false %}
 {% if pageClass | lower == 'newsroom pro' or pageClass | lower == 'subscribe' or 'thank-you' in path({'node': node.id}) %}
     {% set proPage = true %}
 {% endif %}
-
+ #}
 
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 

@@ -86,16 +86,27 @@
 
 .user-editor {
     list-style:none;
-    height: 150px;
+    // height: 150px;
+}
+.user-editor__spinner {
+    position: absolute;
+    top: 60px;
+    right: 150px;
 }
 .user-editor__input-container {
     width:50%;
     height:100%;
     position:relative;
 }
+.user-editor__error {
+    color:color(red);
+    font-weight:600;
+    font-size: rem(13);
+}
 
 .user-editor__input {
     border:none;
+    height:30px;
     font-size:rem(14);
     padding:5px;
     width:100%;

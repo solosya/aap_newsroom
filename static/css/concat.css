@@ -9444,12 +9444,6 @@ button.swiper-pagination-bullet {
   font-weight: 600;
   margin: 0;
   margin-right: 20px; }
-  @media screen and (max-width: 767px) {
-    .signin-modal__title:after {
-      content: ' to Newsroom Pro';
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-      font-size: 1.6rem;
-      font-weight: 600; } }
 
 .signin-modal__close {
   display: block;
@@ -9544,44 +9538,6 @@ button.swiper-pagination-bullet {
 input[type=radio].inline {
   margin-top: 20px; }
 
-.account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
-  display: block;
-  border: none;
-  height: 44px;
-  padding: 7px;
-  width: 100%;
-  margin-bottom: 12px;
-  padding-left: 15px;
-  border-radius: 6px;
-  border: 1px solid #E5E5E5;
-  font-size: 1.5rem; }
-  @media screen and (max-width: 767px) {
-    .account-form input[type=text], .account-form input[type=password], .account-form input[type=email], .account-form input[type=search] {
-      font-size: 1.2rem; } }
-  .account-form input[type=text]::placeholder, .account-form input[type=password]::placeholder, .account-form input[type=email]::placeholder, .account-form input[type=search]::placeholder {
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]::-webkit-input-placeholder, .account-form input[type=password]::-webkit-input-placeholder, .account-form input[type=email]::-webkit-input-placeholder, .account-form input[type=search]::-webkit-input-placeholder {
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]::-moz-placeholder, .account-form input[type=password]::-moz-placeholder, .account-form input[type=email]::-moz-placeholder, .account-form input[type=search]::-moz-placeholder {
-    /* Firefox 19+ */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:-ms-input-placeholder, .account-form input[type=password]:-ms-input-placeholder, .account-form input[type=email]:-ms-input-placeholder, .account-form input[type=search]:-ms-input-placeholder {
-    /* IE 10+ */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:-moz-placeholder, .account-form input[type=password]:-moz-placeholder, .account-form input[type=email]:-moz-placeholder, .account-form input[type=search]:-moz-placeholder {
-    /* Firefox 18- */
-    font-size: 1.4rem;
-    color: #97999c; }
-  .account-form input[type=text]:disabled, .account-form input[type=password]:disabled, .account-form input[type=email]:disabled, .account-form input[type=search]:disabled {
-    background: none;
-    border: none;
-    webkit-box-shadow: none;
-    box-shadow: none; }
-
 .account-form input[type=checkbox] {
   margin-right: 5px;
   vertical-align: top;
@@ -9594,6 +9550,11 @@ input[type=radio].inline {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600; }
+
+.account-form__errorText {
+  color: #e22f22;
+  font-weight: 600;
+  font-size: 1.3rem; }
 
 .account-form__label {
   font-size: 1.5rem;
@@ -9617,13 +9578,45 @@ input[type=radio].inline {
   color: #e22f22;
   line-height: 1.2; }
 
-.account-form__input {
+.account-form__input[type=text], input[type=password], input[type=email], input[type=search] {
+  display: block;
+  border: none;
+  height: 44px;
+  padding: 7px;
   width: 100%;
-  height: 50px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px; }
-  .account-form__input.formError {
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  font-size: 1.5rem; }
+  @media screen and (max-width: 767px) {
+    .account-form__input[type=text], input[type=password], input[type=email], input[type=search] {
+      font-size: 1.2rem; } }
+  .account-form__input[type=text].formError, input[type=password].formError, input[type=email].formError, input[type=search].formError {
     border-color: #e22f22 !important; }
+  .account-form__input[type=text]::placeholder, input[type=password]::placeholder, input[type=email]::placeholder, input[type=search]::placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form__input[type=text]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=search]::-webkit-input-placeholder {
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form__input[type=text]::-moz-placeholder, input[type=password]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=search]::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form__input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=search]:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form__input[type=text]:-moz-placeholder, input[type=password]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=search]:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 1.4rem;
+    color: #97999c; }
+  .account-form__input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=search]:disabled {
+    background: none;
+    border: none;
+    webkit-box-shadow: none;
+    box-shadow: none; }
 
 .account-form__inline-inputs {
   display: flex;
@@ -9679,7 +9672,8 @@ input[type=radio].inline {
   font-size: 1.4rem;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
   .text-button:hover {
-    color: #e22f22; }
+    color: #e22f22;
+    cursor: pointer; }
 
 .text-button--italic {
   font-style: italic; }
@@ -10835,16 +10829,26 @@ input[type=radio].inline {
   top: -2px; }
 
 .user-editor {
-  list-style: none;
-  height: 150px; }
+  list-style: none; }
+
+.user-editor__spinner {
+  position: absolute;
+  top: 60px;
+  right: 150px; }
 
 .user-editor__input-container {
   width: 50%;
   height: 100%;
   position: relative; }
 
+.user-editor__error {
+  color: #e22f22;
+  font-weight: 600;
+  font-size: 1.3rem; }
+
 .user-editor__input {
   border: none;
+  height: 30px;
   font-size: 1.4rem;
   padding: 5px;
   width: 100%;
