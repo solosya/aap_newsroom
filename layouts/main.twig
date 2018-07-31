@@ -90,7 +90,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=84501c60" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=565447db" type="text/css" media="all">
 
 
     {% else %}
@@ -250,6 +250,8 @@
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
+    {% else %}
+         <div class="add add-header__topbanner"></div>
     {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {

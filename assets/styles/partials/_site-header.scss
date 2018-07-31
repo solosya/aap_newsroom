@@ -40,6 +40,18 @@
         width:140px;
     }
 }
+@media #{$tablet} {
+    .header-logos {
+        display: flex;
+        .main-logo{
+            margin-right: 30px;
+        }
+        .website-award {
+            width: 200px;
+            margin-top: 8px;
+        }
+    }
+}
 .voyager-logo {
     margin-left:15px;
     width:280px;
@@ -70,6 +82,9 @@
     background:white;
 
     padding-top: 18px;
+    @media #{$tablet} {
+        padding-top: 0;
+    }
     @media screen and (max-width: $sm-break-down) {
         padding-top: 0;
         top: 0;

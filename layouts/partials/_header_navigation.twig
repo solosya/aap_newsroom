@@ -68,11 +68,11 @@
 
         <div class="site-branding-bottom row">
             <div class="section-left col-md-6 col-sm-8">
-                <div class="logo pull-left">
+                <div class="logo header-logos pull-left">
                     
                     {% if proPage %}
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                            <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo">
+                            <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
                         </a>
                         <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@newsroom-pro" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
@@ -83,10 +83,10 @@
                             <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=9" alt="logo" class="main-logo">
                         </a>
                      
-                        <img class="website-award hidden-xs" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
+                        <img class="website-award hidden-xs hidden-sm" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
 
-                        <img class="voyager-logo hidden-xs" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
-                        <img class="website-award hidden-sm hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
+                        <img class="voyager-logo hidden-xs hidden-sm" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
+                        <img class="website-award hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
                         <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
                             {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg?ver=2" alt="logo" class="mobile-logo-summer"> #}
