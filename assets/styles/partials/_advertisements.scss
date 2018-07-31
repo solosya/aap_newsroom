@@ -136,8 +136,10 @@
 
 }
 .add-header__topbanner {
-    margin: 15px auto;
-    @media #{$tablet} {
-        margin-top: 130px;
+    .bannerad{
+        margin: 15px auto;
+        @media #{$tablet} {
+            padding-top: 130px;
+        }
     }
 }
