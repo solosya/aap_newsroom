@@ -26,11 +26,19 @@
 .page-section__content {
     >p {
         font-size: rem(20);
-        line-height: 2.9;
+        line-height: 1.45;
         @media #{$mobile} {
             font-size: rem(16);
             line-height: 21;
         }
+    }
+    li {
+        font-size: rem(20);
+        line-height: 1.45;
+        @media #{$mobile} {
+            font-size: rem(16);
+            line-height: 21;
+        }  
     }
 }
 
