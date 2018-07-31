@@ -124,7 +124,7 @@ Acme.templates.spinner =
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
-Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
 
 Acme.templates.userPlanMessage = 
 '<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \

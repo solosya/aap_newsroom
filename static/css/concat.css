@@ -9419,8 +9419,7 @@ button.swiper-pagination-bullet {
   border-radius: 3px; }
   @media screen and (max-width: 767px) {
     .signin-modal__window {
-      width: auto;
-      margin-top: 10px; } }
+      width: auto; } }
 
 .signin-modal__container {
   position: relative;
@@ -9428,10 +9427,9 @@ button.swiper-pagination-bullet {
 
 .signin-modal__header {
   overflow: auto;
-  padding-bottom: 11px;
-  border-bottom: 1px solid #97999c;
-  margin-bottom: 20px; }
-  .signin-modal__header > .popupVideo__headerlogo {
+  margin-bottom: 20px;
+  padding-top: 5px; }
+  .signin-modal__header .popupVideo__headerlogo {
     display: none; }
 
 .signin-modal__title {
@@ -9445,10 +9443,12 @@ button.swiper-pagination-bullet {
 .signin-modal__close {
   display: block;
   float: right;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   background: url("../icons/cross-black.svg");
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  position: relative;
+  bottom: 3px; }
 
 .spinner-modal {
   position: fixed;
