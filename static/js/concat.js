@@ -30386,7 +30386,6 @@ Acme.Form = function(validators, rules) {
     };
 
     Acme.Form.prototype.validate = function( /* Array */ checkFields)  {
-        console.trace();
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
 
@@ -31647,7 +31646,7 @@ if ($('#stripekey').length > 0) {
 
     SubscribeForm.prototype.submit = function(event) 
     {
-        console.log("submit on subscribe form");
+
         var self = this;
         event.preventDefault();
         var validated = self.validate();
@@ -31682,7 +31681,6 @@ if ($('#stripekey').length > 0) {
     {
         var self = this;
         $('input, textarea').on("change", function(e) {
-
             e.stopPropagation();
             e.preventDefault();
             var data = {};
@@ -31705,6 +31703,7 @@ if ($('#stripekey').length > 0) {
 
         if (form != null) {
             form.addEventListener('submit', function(event) {
+                console.log('submitting');
                 self.submit(event);
 
             });
