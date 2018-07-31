@@ -31624,7 +31624,8 @@ if ($('#stripekey').length > 0) {
 
         this.events();
 
-        this.data['trial'] = $('#trial').is(":checked");
+        // this.data['trial'] = $('#trial').is(":checked");
+        this.data['trial'] = $('#trial').val();
 
     };
 
@@ -31663,7 +31664,6 @@ if ($('#stripekey').length > 0) {
         modal.render("spinner", "Your request is being processed.");
 
         stripe.createToken(card).then(function(result) {
-
             if (result.error) {
                 modal.closeWindow();
                 // Inform the user if there was an error
@@ -31673,6 +31673,7 @@ if ($('#stripekey').length > 0) {
                 // Send the token to your server
                 subscribe.data['stripetoken'] = result.token.id;
                 subscribe.data['planid'] = $('#planid').val();
+
                 formhandler(subscribe.data, '/auth/paywall-signup');
             }
         });    
@@ -31681,6 +31682,7 @@ if ($('#stripekey').length > 0) {
     {
         var self = this;
         $('input, textarea').on("change", function(e) {
+
             e.stopPropagation();
             e.preventDefault();
             var data = {};
@@ -31703,7 +31705,6 @@ if ($('#stripekey').length > 0) {
 
         if (form != null) {
             form.addEventListener('submit', function(event) {
-                console.log('submitting');
                 self.submit(event);
 
             });
@@ -31730,7 +31731,7 @@ if ($('#stripekey').length > 0) {
             data: formdata,
             dataType: 'json',
             success: function(data) {
-                console.log(data);
+
                 if(data.success) {
                     $('#card-errors').text('Completed successfully.');
                 } else {
