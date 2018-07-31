@@ -90,7 +90,7 @@
                                     <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" >
                                 </div>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for=""></label>
+                                    <label class="account-form__label hidden-xs" for=""></label>
                                     <p class="account-form__explainer">This is the email address you will sign in with</p>
                                 </div>
 
@@ -102,7 +102,7 @@
                                     <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" >
                                 </div>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label" for=""></label>
+                                    <label class="account-form__label hidden-xs" for=""></label>
                                     <p class="account-form__explainer">Passwords must be at least five characters long and contain no spaces</p>
                                 </div>
 
@@ -124,14 +124,13 @@
                                 <input type="checkbox"  class="" name="summary-email" id="summary-email" checked> 
                                 <label class="account-form__cblabel">Send me a summary email each weekday</label><br />
                                 
-                                {# <input type="checkbox"  class="" name="breaking-email" id="breaking-email"> 
-                                <label class="account-form__cblabel">Send me email alerts of breaking news</label><br /> #}
+                                <input type="checkbox"  class="" name="breaking-email" id="breaking-email"> 
+                                <label class="account-form__cblabel">Send me email alerts of breaking news</label><br />
                                 <p class="account-form__unsubscribe">Alternatively, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a> to cancel your email subscriptions</p>
 
-                                <p id="account-form__errorText" class="account-form__errorText"></p>
 
                                 <div class="button-full">
-                                    <button id="update-details" type="submit" class="text-button u-float-right update-details">Update Details</button>
+                                    <button type="submit" class="text-button u-float-right update-details">Update Details</button>
                                 </div>
                             </form>
 
