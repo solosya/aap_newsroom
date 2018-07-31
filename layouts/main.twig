@@ -5,19 +5,20 @@
 {% set pageClass     = _Page.getBodyClass() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
+{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
 
-{# {{dump(blogName)}} #}
+
 {#     turn this on when the sdk goes through cognitives #}
 {% set redir = _Page.setHttpRedirects(
     {
-        '|^/users.*|'        : 'http://service.newsroom.co.nz',
-        '|^/categories.*|'   : 'http://service.newsroom.co.nz',
-        '|^/assets.*|'       : 'http://service.newsroom.co.nz',
-        '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
         '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
+        '|^/categories.*|'   : 'http://service.newsroom.co.nz',
         '|^/newswires.*|'    : 'http://service.newsroom.co.nz',
         '|^/catalog.*|'      : 'http://service.newsroom.co.nz',
-        '|^/stories.*|'      : 'http://service.newsroom.co.nz'
+        '|^/stories.*|'      : 'http://service.newsroom.co.nz',
+        '|^/assets.*|'       : 'http://service.newsroom.co.nz',
+        '|^/users.*|'        : 'http://service.newsroom.co.nz',
+        '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
     }, true) 
 %}    
 
@@ -128,77 +129,6 @@
     </script>
 
 
-    {# {% set themeColors = networkData['styling']['colours'] %}
-    <style type="text/css">
-    {% if primaryFont != "" %}
-        body, .body, p {
-            font-family: "{{primaryFont | replace({'+': ' '})}}" !important;
-        }
-    {% endif %}
-    {% if secFont != "" %}
-        h1, h2, h3, h4, h5, a.header__navigation-link {
-            font-family: "{{secFont | replace({'+': ' '})}}" !important;
-        }
-    {% endif %}
-    {% if themeColors.linkColor != "" %}
-        a {
-            color: {{themeColors.linkColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.linkHoverColor != "" %}
-        a:hover {
-            color: {{themeColors.linkHoverColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.headingColor != "" %}
-        h1, h2, h3, h4, h5 {
-            color: {{themeColors.headingColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationColor != "" %}
-        .header__search-text, a.header__navigation-link {
-            color: {{themeColors.navigationColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationHoverColor != "" %}
-        a.header__navigation-link:hover {
-            color: {{themeColors.navigationHoverColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationActiveColor != "" %}
-        a.header__navigation-link.header__navigation-selected {
-            color: {{themeColors.navigationActiveColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationBgColor != "" %}
-    .header__navigation {
-        background-color: {{themeColors.navigationBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.headerBgColor != "" %}
-    .header__heading {
-        background-color: {{themeColors.headerBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.footerBgColor != "" %}
-    .footer {
-        background-color: {{themeColors.footerBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.pageBgColor != "" %}
-    .body, .body > .section {
-        background-color: {{themeColors.pageBgColor}} !important;
-    }
-    .sub_header {
-        background-color: {{themeColors.pageBgColor}} !important;
-    }
-    {% endif %}
-
-    {% set customCss = networkData['styling']['customStyleSheet'] %}
-    {% if customCss != "" %}
-            {{customCss | raw }}
-    {% endif %}
-    </style> #}
 
     {% set googleAnalyitcsId = ''%}
     {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
@@ -323,12 +253,13 @@
     {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
-        headerMenu  : menuItems, 
         networkData : networkData, 
+        headerMenu  : menuItems, 
         pageClass   : blogName,
-        submenu     : submenu,
         roomInfo    : roomInfo,
-        rooms       : rooms 
+        submenu     : submenu,
+        pageURL     : pageURL,
+        rooms       : rooms,
     }) | raw }}
 
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
@@ -354,8 +285,8 @@
 
 
     {{ this.render('partials/footer.twig', {
-        headerMenu  : menuItems, 
         networkData : networkData, 
+        headerMenu  : menuItems, 
         pageClass   : blogName,
         roomInfo    : roomInfo,
         submenu     : submenu,
