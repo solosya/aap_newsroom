@@ -16,18 +16,18 @@
     <main id="main" class="site-main viewing-room" role="main">
     
 
-        <section class="card-group">
+        <section class="card-group search-page__container">
             <div class="container">
-                <div class="row">
+                <h1 class="search-page__header col-sm-12">Search Results</h1>
 
                     {% for i in 0..12 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-vr s360x215'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
 
-                </div><!-- .row-->
+                
             </div><!-- .container-->
         </section><!-- .top-stories-->
 
