@@ -30963,7 +30963,7 @@ Acme.registerPopUp = function(tokenName)
 	this.date 		= new Date();
 	this.token 		= {};
 	var self 		= this;
-	console.log('in the pop up ');
+
 	setTimeout(function() {
 		self.run();
 		self.events();
@@ -32244,6 +32244,7 @@ UserArticlesController.Load = (function ($) {
                         dataType: 'json',
                         data: requestData,
                         success: function (data, textStatus, jqXHR) {
+
                             if (data.success == 1) {
                                 window.location.reload(false);             
                             } else {

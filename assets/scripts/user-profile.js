@@ -343,6 +343,7 @@
                         dataType: 'json',
                         data: requestData,
                         success: function (data, textStatus, jqXHR) {
+
                             if (data.success == 1) {
                                 window.location.reload(false);             
                             } else {
