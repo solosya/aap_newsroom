@@ -38,6 +38,10 @@
             padding-top: 50px;
             max-width: 1170px;
             border-top: unset;
+            @media #{$tablet} {
+                padding-top: 35px;
+                margin-bottom: 0;
+            }
             @media #{$mobile} {
                 display: none;
             }
