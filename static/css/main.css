@@ -9706,6 +9706,9 @@ input[type=radio].inline {
   padding: 30px 20px;
   text-align: center;
   overflow: auto; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .plan-type__body {
+      padding-top: 10px; } }
 
 .plan-type__users {
   font-size: 1.3rem;
@@ -9721,6 +9724,9 @@ input[type=radio].inline {
   font-weight: 600;
   letter-spacing: 0.4px;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .plan-type__name {
+      margin-top: 10px; } }
 
 .plan-type__currency {
   color: #e22f22;
@@ -9752,6 +9758,11 @@ input[type=radio].inline {
   font-size: 1.3rem; }
   .plan-type__features li {
     margin-bottom: 10px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .plan-type__features {
+      font-size: 1.2rem; }
+      .plan-type__features li {
+        margin-bottom: 5px; } }
   @media screen and (max-width: 767px) {
     .plan-type__features {
       font-size: 1.6rem; } }
