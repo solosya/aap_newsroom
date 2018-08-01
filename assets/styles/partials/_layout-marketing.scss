@@ -53,7 +53,9 @@
     font-weight:700;
     border-bottom:1px solid black;
     margin-bottom:20px;
-
+    @media #{$tablet} {
+        font-size: rem(22);
+    }
     @media #{$media-mobile} {
         height:31px;
         margin-bottom:0;
@@ -66,6 +68,10 @@
     font-size: rem(22);
     font-weight:600;
     margin-top:50px;
+    @media #{$tablet} {
+        font-size: rem(16);
+        margin-top:20px;
+    }
     @media #{$media-mobile} {
         margin-bottom:10px;
         font-size: rem(16);
@@ -76,6 +82,9 @@
     font-size: rem(22);
        margin-bottom:18px;
     font-weight:300;
+    @media #{$tablet} {
+        font-size: rem(16);
+    }
     @media #{$media-mobile} {
         font-size: rem(16);
         margin-bottom:15px;
@@ -93,6 +102,12 @@
         width: 157px;
         line-height: 8px;
         font-size: rem(12);
+    }
+    @media #{$tablet} {
+        height: 28px;
+        width: 130px;
+        font-size: rem(12);
+        line-height: 28px;
     }
 }
 
