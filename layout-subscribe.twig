@@ -32,7 +32,7 @@
 	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
 	
 	
-	<div class="container-fluid hidden-xs">
+	<div class="container-fluid visible-md-block visible-lg-block">
 		<section class="row">
 			<div class="col-sm-12 market-header u-margin-top-40">
 				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
@@ -159,7 +159,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-3 u-mobile-no-padding">
+			<div class="col-md-3 col-sm-12 u-mobile-no-padding">
 				<div class="plan-type">
 
 					{% if plan != false %}
@@ -168,14 +168,20 @@
 						<div class="plan-type__body">
 
 							{% set val = plan.plan_value / 100 %}
-							<h3 class="plan-type__name">{{plan.name}}</h3>
-							<p class="plan-type__users">{{plan.user_count}} Users</p>
-							<p class="plan-type__currency">${{val}} per {{plan.period}}</p>
-							<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
-							<p class="plan-type__label u-margin-top-40">What's included in your subscription:</p>
-							<ul class="plan-type__features">
-								{{plan.description | raw }}
-							</ul>
+							<div class="col-md-12 col-sm-4">	
+								<h3 class="plan-type__name">{{plan.name}}</h3>
+								<p class="plan-type__users">{{plan.user_count}} Users</p>
+								<p class="plan-type__currency">${{val}} per {{plan.period}}</p>
+							</div>
+							<div class="col-md-12 col-sm-3">
+								<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
+							</div>
+							<div class="col-md-12 col-sm-5">
+								<p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
+								<ul class="plan-type__features">
+									{{plan.description | raw }}
+								</ul>
+							</div>
 
 							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions">Change subscription</a>
 						</div>

@@ -15,6 +15,9 @@
         padding:30px 20px;
         text-align:center;
         overflow:auto;
+        @media #{$tablet} {
+            padding-top: 10px;
+        }
     }
 
     .plan-type__users {
@@ -32,6 +35,9 @@
         font-weight:600;
         letter-spacing: 0.4px;
         font-family: $font-family-sans-serif;
+        @media #{$tablet} {
+           margin-top: 10px; 
+        }
     }
     .plan-type__currency {
         color: color(red);
@@ -66,6 +72,12 @@
         font-size: rem(13);
         li {
             margin-bottom: 10px;
+        }
+        @media #{$tablet} {
+            font-size: rem(12);   
+            li {
+                margin-bottom: 5px;
+            }
         }
         @media #{$mobile} {
             font-size: rem(16);   

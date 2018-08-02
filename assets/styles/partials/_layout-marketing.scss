@@ -12,6 +12,9 @@
             text-align: center;
             font-size:rem(28);
             font-weight: 600;
+            @media #{$tablet} {
+                font-size:rem(21);
+            }
         }
         @media #{$mobile} {
             p{
@@ -50,7 +53,9 @@
     font-weight:700;
     border-bottom:1px solid black;
     margin-bottom:20px;
-
+    @media #{$tablet} {
+        font-size: rem(22);
+    }
     @media #{$media-mobile} {
         height:31px;
         margin-bottom:0;
@@ -63,6 +68,10 @@
     font-size: rem(22);
     font-weight:600;
     margin-top:50px;
+    @media #{$tablet} {
+        font-size: rem(16);
+        margin-top:20px;
+    }
     @media #{$media-mobile} {
         margin-bottom:10px;
         font-size: rem(16);
@@ -73,6 +82,9 @@
     font-size: rem(22);
        margin-bottom:18px;
     font-weight:300;
+    @media #{$tablet} {
+        font-size: rem(16);
+    }
     @media #{$media-mobile} {
         font-size: rem(16);
         margin-bottom:15px;
@@ -91,6 +103,12 @@
         line-height: 8px;
         font-size: rem(12);
     }
+    @media #{$tablet} {
+        height: 28px;
+        width: 160px;
+        font-size: rem(12);
+        line-height: 10px;
+    }
 }
 
 
@@ -99,6 +117,11 @@
     padding-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
+    @media #{$tablet} {
+        margin:50px 0;
+        padding-bottom: 0;
+        font-size:rem(25);
+    }
     
     .screenImage {
         max-width:100%;
@@ -110,6 +133,10 @@
         font-size:rem(37);
         margin-bottom:20px;
         font-family:$font-family-sans-serif;
+        @media #{$tablet} {
+            font-size:rem(25);
+            margin-top: 0;
+        }
     }
 
     p {
@@ -117,6 +144,9 @@
         margin-bottom:30px;
         text-align: left;
         font-size:rem(24);
+         @media #{$tablet} {
+            font-size:rem(15);
+        }
     }
 
     ul {
@@ -156,6 +186,7 @@
     display: flex;
     @media screen and (max-width: $mmd-break) {
         text-align:left;
+        margin-top:20px;
     }
      @media #{$mobile} {
         padding-right: 0;
@@ -168,6 +199,9 @@
         margin-right:36px;
         margin-bottom:50px;
 
+    }
+    @media #{$tablet} {
+        margin-right:10px;
     }
     @media screen and (max-width: $sm-break) {
         float:left;
@@ -184,13 +218,21 @@
     font-size: rem(18);
     line-height: 1.62;
     text-align: left;
+    @media #{$tablet} {
+        font-size: rem(12);
+        margin-left: 10px;
+        margin-right: 0;
+    }
     @media #{$mobile} {
-       font-size: rem(12); 
+        font-size: rem(12); 
     }
 }
 
 .pro-offers-card__img__global{
     height: 85px;
+    @media #{$tablet} {
+        height: 45px;
+    }
     @media #{$mobile} {
         height: 55px;
         width: 47px;
@@ -199,6 +241,9 @@
 
 .pro-offers-card__img__satellite{
     height: 90px;
+    @media #{$tablet} {
+        height: 45px;
+    }
     @media #{$mobile} {
         height: 55px;
         width: 47px;
@@ -208,6 +253,10 @@
 .pro-offers-card__img__monitoring{
     height: 112px;
     margin-top: -15px;
+    @media #{$tablet} {
+        height: 51px;
+        margin-top: 0;
+    }
     @media #{$mobile} {
         height: 100px;
         width: 47px;
@@ -244,7 +293,8 @@
         text-align:left;
         font-weight:700;
         @media screen and (max-width: $mmd-break) {
-            font-size: rem(40);
+            font-size: rem(21);
+            margin-top: 0;
         }
         @media screen and (max-width: $sm-break-down) {
             font-size: rem(20);
@@ -280,6 +330,12 @@
     text-align: center;
     a{
         text-decoration: underline;
+    }
+    @media #{$tablet} {
+        font-size: rem(16);
+        margin-top:25px;
+        margin-bottom:35px;
+    
     }
     @media #{$mobile} {
         font-size: rem(16);
