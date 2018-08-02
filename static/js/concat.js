@@ -31629,7 +31629,10 @@ if ($('#stripekey').length > 0) {
         this.events();
 
         // this.data['trial'] = $('#trial').is(":checked");
-        this.data['trial'] = $('#trial').val();
+        var trial = $('#trial').val();
+        if (trial == 1) {
+            this.data['trial'] = 'true';
+        }
 
     };
 
@@ -32228,7 +32231,7 @@ Acme.UserProfileController.prototype.events = function ()
         var status = 'cancelled';
         message = "Are you sure you want to cancel your plan?"
         if ($(e.target).text() == 'Restart Subscription') {
-            message = "Do you want to re activate your plan? You will be billed on the next payment date."
+            message = "Do you want to reactivate your plan? You will be billed on the next payment date."
             status = 'paid'
         }
         var requestData = { 
