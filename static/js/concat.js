@@ -31629,7 +31629,10 @@ if ($('#stripekey').length > 0) {
         this.events();
 
         // this.data['trial'] = $('#trial').is(":checked");
-        this.data['trial'] = $('#trial').val();
+        var trial = $('#trial').val();
+        if (trial == 1) {
+            this.data['trial'] = 'true';
+        }
 
     };
 
