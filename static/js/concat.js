@@ -27111,7 +27111,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 }(jQuery));
     $.fn.Ajax_LoadBlogArticles = function(options){
 
-        console.log('loading blog articles');
+
         var defaults = {
             'limit': 20,
             'containerClass': 'ajaxArticles',
@@ -27174,6 +27174,47 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             }
         });        
     };
+(function ($) {
+
+    $.fn.Ajax_LoadBlogArticles_new = function(options){
+        var requestType = 'post';
+        var url = _appJsConfig.baseHttpPath + '/home/load-articles';
+
+        var requestData = { 
+            offset      : options.offset, 
+            limit       : options.limit, 
+            _csrf       : $('meta[name="csrf-token"]').attr("content"), 
+            dateFormat  : 'SHORT',
+            existingNonPinnedCount: options.nonPinnedOffset
+        };
+
+        if (options.blogid) {
+            requestData['blogguid'] = options.blogid;
+        }
+
+        if (options.loadtype == 'user') {
+            var url = _appJsConfig.appHostName + '/api/'+options.loadtype+'/load-more-managed';
+            var requestType = 'get';
+        }
+
+
+        if (options.search) {
+            requestData['meta_info'] = options.search;
+            var url = _appJsConfig.appHostName + '/'+options.loadtype;
+            var requestType = 'get';
+        }
+
+        return $.ajax({
+            type: requestType,
+            url: url,
+            dataType: 'json',
+            data: requestData
+        }).done(function(r) {
+            // console.log(r);
+        });        
+    };
+
+}(jQuery));
 (function($) {
 
     $.fn.Ajax_pinUnpinArticle = function(options){
@@ -29473,6 +29514,7 @@ Acme.templates.managed_user =
 <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
 <p class="j-email  userdetails__email u-float-right">{{useremail}}</p>';
 
+
 Acme.managed_user = 
 '<li id="{{id}}" class="userdetails"> \
     <div class="u-float-left"> \
@@ -29480,7 +29522,6 @@ Acme.managed_user =
             <span class="j-firstname">{{firstname}}</span> \
             <span class="j-lastname">{{lastname}}</span> \
         </p> \
-        <p class="j-username userdetails__username">{{username}}</p> \
     </div>\
     <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
     <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
@@ -29774,7 +29815,7 @@ Acme.Feed.prototype.fetch = function()
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
 
-    $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
+    $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
         if (data.success == 1) {
             self.render(data);
         }
