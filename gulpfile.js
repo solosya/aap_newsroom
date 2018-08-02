@@ -94,6 +94,7 @@ gulp.task('scripts', function(){
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
         './assets/scripts/sdk/common.js',
         './assets/scripts/sdk/blog.js',
+        './assets/scripts/sdk/blog_new.js',
         './assets/scripts/sdk/article.js',
         './assets/scripts/sdk/search.js',
         './assets/scripts/sdk/disqus.js',

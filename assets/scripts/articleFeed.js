@@ -23,7 +23,7 @@ Acme.Feed.prototype.fetch = function()
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
 
-    $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
+    $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
         if (data.success == 1) {
             self.render(data);
         }

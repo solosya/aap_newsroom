@@ -360,15 +360,21 @@
                             </div>
                             
                             {% if pwstats['user_count'] > userLimit and managedUserCount == userLimit %} 
-                                {{ this.render('partials/ajaxarticles.twig', {
-                                    limit           : userLimit,
-                                    label           : "Show more",
-                                    loadtype        : "user",
-                                    name            : "user-load",
-                                    card_class      : "userdetails",
-                                    cardTemplate    : "managed_user",
-                                    container       : "mangedUsers"
-                                }) | raw }}
+
+                                <br style="clear:both" />
+                                <div class="col-md-12">
+                                    {{ this.render('partials/ajaxarticles_new.twig', {
+                                        name            : "user-load",
+                                        limit           : userLimit,
+                                        label           : "Show more",
+                                        loadtype        : "user",
+                                        container       : "mangedUsersList",
+                                        card_class      : "userdetails",
+                                        buttonClass     : "managed-users__more",
+                                        cardTemplate    : "managed_user",
+                                    }) | raw }}
+                                </div>
+
                             {% endif %}
 
                             <a id="createUserErrorMessage"></a>

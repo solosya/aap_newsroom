@@ -51,6 +51,7 @@ Acme.templates.managed_user =
 <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
 <p class="j-email  userdetails__email u-float-right">{{useremail}}</p>';
 
+
 Acme.managed_user = 
 '<li id="{{id}}" class="userdetails"> \
     <div class="u-float-left"> \
@@ -58,7 +59,6 @@ Acme.managed_user =
             <span class="j-firstname">{{firstname}}</span> \
             <span class="j-lastname">{{lastname}}</span> \
         </p> \
-        <p class="j-username userdetails__username">{{username}}</p> \
     </div>\
     <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
     <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
