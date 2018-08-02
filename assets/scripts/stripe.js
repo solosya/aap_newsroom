@@ -63,7 +63,7 @@ if ($('#stripekey').length > 0) {
             "verifypassword"    : ["notEmpty"],
             "firstname"         : ["notEmpty"], 
             "lastname"          : ["notEmpty"], 
-            "username"          : ["notEmpty", "username"], 
+            "username"          : [], 
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],
@@ -145,6 +145,11 @@ if ($('#stripekey').length > 0) {
 
             if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
                 data[elemid] = elem.val();
+                // username is created from the email plus a random number
+                if (inputType == 'email') {
+                    data['username'] = data[elemid].split('@')[0] + Math.floor(100000000 + Math.random() * 900000000);
+                }
+
             } else if (inputType =='checkbox') {
                 data[elemid] = elem.is(":checked");
             }

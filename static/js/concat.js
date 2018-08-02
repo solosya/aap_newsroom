@@ -28858,19 +28858,21 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
-
-            var key = Object.keys(data)[0];
-            var keySplit = key.split('.');
-            var scope = this.data;
-
-            for(var i=0; i<keySplit.length; i++) {
-                if (!scope[keySplit[i]]) {
-                    scope[keySplit[i]] = {};
+            var keys = Object.keys(data);
+            for (var j=0; j<keys.length; j++) {
+                var key = keys[j];
+                var keySplit = key.split('.');
+                var scope = this.data;
+    
+                for(var i=0; i<keySplit.length; i++) {
+                    if (!scope[keySplit[i]]) {
+                        scope[keySplit[i]] = {};
+                    }
+                    if(i == keySplit.length -1 ) {
+                        scope[keySplit[i]] = data[key];
+                    }
+                    scope = scope[keySplit[i]];
                 }
-                if(i == keySplit.length -1 ) {
-                    scope[keySplit[i]] = data[key];
-                }
-                scope = scope[keySplit[i]];
             }
         }
 
@@ -31617,7 +31619,7 @@ if ($('#stripekey').length > 0) {
             "verifypassword"    : ["notEmpty"],
             "firstname"         : ["notEmpty"], 
             "lastname"          : ["notEmpty"], 
-            "username"          : ["notEmpty", "username"], 
+            "username"          : [], 
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],
@@ -31699,6 +31701,11 @@ if ($('#stripekey').length > 0) {
 
             if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
                 data[elemid] = elem.val();
+                // username is created from the email plus a random number
+                if (inputType == 'email') {
+                    data['username'] = data[elemid].split('@')[0] + Math.floor(100000000 + Math.random() * 900000000);
+                }
+
             } else if (inputType =='checkbox') {
                 data[elemid] = elem.is(":checked");
             }
