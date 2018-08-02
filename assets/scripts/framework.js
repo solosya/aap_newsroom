@@ -115,19 +115,21 @@
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
-
-            var key = Object.keys(data)[0];
-            var keySplit = key.split('.');
-            var scope = this.data;
-
-            for(var i=0; i<keySplit.length; i++) {
-                if (!scope[keySplit[i]]) {
-                    scope[keySplit[i]] = {};
+            var keys = Object.keys(data);
+            for (var j=0; j<keys.length; j++) {
+                var key = keys[j];
+                var keySplit = key.split('.');
+                var scope = this.data;
+    
+                for(var i=0; i<keySplit.length; i++) {
+                    if (!scope[keySplit[i]]) {
+                        scope[keySplit[i]] = {};
+                    }
+                    if(i == keySplit.length -1 ) {
+                        scope[keySplit[i]] = data[key];
+                    }
+                    scope = scope[keySplit[i]];
                 }
-                if(i == keySplit.length -1 ) {
-                    scope[keySplit[i]] = data[key];
-                }
-                scope = scope[keySplit[i]];
             }
         }
 
