@@ -6,27 +6,34 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 {% set recentLabel    = 'Newsroom' %}
-{# {% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %} #}
+{% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
 
 
-{% set showPaywall = false %}
-{% set content = article.content %}
-{% set paywall_content_style = "" %}
-{% set newsroom_pro_style = "" %}
+{% set showPaywall              = false %}
+{% set content                  = article.content %}
+{% set paywall_content_style    = "" %}
+{% set newsroom_pro_style       = "" %}
 
-{# Pages don't have a blogName so class has to be used #}
+{% if articleBlogData['additionalInfo'] is defined            and 
+      articleBlogData['additionalInfo']['paywall'] is defined and 
+      articleBlogData['additionalInfo']['paywall'] == 'on' %}
+    
+    {% set paywallSection = true %}
+
+{% endif %}
+
 
 {% set articleBlog = article.blog.title | lower %}
 
-{% if   not _User.isAdminUser()                         and
-        articleBlog  | lower       == "newsroom pro"    and
-        blogData['showPaywall'] == true  %}
+{% if   not _User.isAdminUser()     and
+        paywallSection == true      and
+        articleBlogData['showPaywall'] == true  %}
     
     {% set showPaywall = true %}
 {% endif %}
 
 
-{% if articleBlog | lower == "newsroom pro" %}
+{% if paywallSection == true %}
     {% set newsroom_pro_style = "pro" %}
 {% endif %}
 
