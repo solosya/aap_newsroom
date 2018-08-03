@@ -98,6 +98,9 @@
     width:48%;
     height:100%;
     position:relative;
+    @media #{$mobile} {
+        width: 100%;
+    }
 }
 .user-editor__error {
     color:color(red);
@@ -116,6 +119,11 @@
     background-color:color(user-editor);
     display:block;
 }
+
+.user-editor__buttons {
+    padding: 15px 0;
+}
+
 
 .managed-users__more {
     border-color:black;
