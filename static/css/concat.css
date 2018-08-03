@@ -9770,7 +9770,7 @@ input[type=radio].inline {
 
 .market-hero {
   height: 596px;
-  background-image: url("../images/marketing-hero.jpg");
+  background-image: url("../images/marketing-hero-desk.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
@@ -9778,12 +9778,12 @@ input[type=radio].inline {
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .market-hero {
       height: 279px;
-      background-image: url("../images/marketing-hero-tablet.jpg"); } }
+      background-image: url("../images/marketing-hero-tablet.png"); } }
   @media screen and (max-width: 767px) {
     .market-hero {
       height: 320px;
       margin-bottom: 150px;
-      background-image: url("../images/marketing-hero-mobile.png");
+      background-image: url("../images/marketing-hero-mobile2.png");
       background-position: top; } }
 
 .market-hero--thanks {
@@ -10886,7 +10886,8 @@ input[type=radio].inline {
   top: -2px; }
 
 .user-editor {
-  list-style: none; }
+  list-style: none;
+  height: 100%; }
 
 .user-editor__spinner {
   position: absolute;
@@ -10894,9 +10895,12 @@ input[type=radio].inline {
   right: 150px; }
 
 .user-editor__input-container {
-  width: 50%;
+  width: 48%;
   height: 100%;
   position: relative; }
+  @media screen and (max-width: 767px) {
+    .user-editor__input-container {
+      width: 100%; } }
 
 .user-editor__error {
   color: #e22f22;
@@ -10913,6 +10917,9 @@ input[type=radio].inline {
   border-radius: 7px;
   background-color: rgba(151, 153, 156, 0.2);
   display: block; }
+
+.user-editor__buttons {
+  padding: 15px 0; }
 
 .managed-users__more {
   border-color: black;
@@ -11331,7 +11338,7 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .page-section__content li {
       font-size: 1.6rem;
-      line-height: 21; } }
+      line-height: 1.5; } }
 
 .contact {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }

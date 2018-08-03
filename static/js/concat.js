@@ -29471,14 +29471,15 @@ Acme.templates.create_user =
 '<div class="" style="height:100%; overflow:auto"> \
     <div class="user-editor__input-container u-float-left"> \
         <input type="text" id="newuserfirstname" class="j-firstname account-form__input" value="" placeholder="{{firstname}}"> \
-        <input type="text" id="newuserusername" class="j-username account-form__input" value="" placeholder="{{username}} (between 5 and 15 characters)"> \
     </div> \
     <div class="user-editor__input-container u-float-right"> \
         <input type="text" id="newuserlastname" class="j-lastname account-form__input" value="" placeholder="{{lastname}}"> \
+    </div> \
+    <div class="user-editor__input-container u-float-left"> \
         <input type="text" id="newuseruseremail" class="j-email account-form__input" value="" placeholder="{{useremail}}"> \
         <p id="userError" class="user-editor__error"></p> \
     </div> \
-    <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
+    <div id="user-editor-buttons" class="user-editor__input-container user-editor__buttons u-float-right"> \
         <div id="user-editor__spinner" class="user-editor__spinner"></div> \
         <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
         <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
