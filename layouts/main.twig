@@ -7,7 +7,6 @@
 {% set blogName      = blogData.title %}
 {% set pageURL       = _AppHelper.getCurrentUrl(true) %}
 
-
 {#     turn this on when the sdk goes through cognitives #}
 {% set redir = _Page.setHttpRedirects(
     {
@@ -25,12 +24,22 @@
 
 
 {% set showPaywall = false %}
+{% set paywallSection = false %}
+
+{% if blogData['additionalInfo'] is defined             and 
+      blogData['additionalInfo']['paywall'] is defined  and 
+      blogData['additionalInfo']['paywall'] == 'on' %}
+    {% set paywallSection = true %}
+{% endif %}
+{# {{dump(blogData['additionalInfo'])}}
+
+{{dump(paywallSection)}} #}
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if   not _User.isAdminUser()                     and
-        blogName  | lower       == "newsroom pro"   and
-        blogData['showPaywall'] == true             and
+{% if   not _User.isAdminUser()         and
+        paywallSection == true          and
+        blogData['showPaywall'] == true and
         'article' not in pageClass %}
     
         {% set showPaywall = true %}
@@ -90,7 +99,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=29e899bd" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=a561e381" type="text/css" media="all">
 
 
     {% else %}
