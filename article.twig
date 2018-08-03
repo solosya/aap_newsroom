@@ -104,7 +104,7 @@
         <article class="article-main">
 
 
-        {% if blogName | lower == "newsroom pro" %}
+        {% if paywallSection %}
             <div class="article-pro__image-container">
         {% endif %}
 
@@ -163,7 +163,7 @@
                     {% endfor %}
                 </div>
 
-            {% if blogName  | lower == "newsroom pro" %}
+            {% if paywallSection %}
                 </div>
                 </div>
                 <div class="container">
@@ -172,7 +172,7 @@
 
 
 
-                <div class="page-content {% if articleBlog == "newsroom pro" %}u-mobile-margin-top-15{% endif %}" >
+                <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
                         <div class="col-md-8">
                             
@@ -283,7 +283,7 @@
                         <div class="col-md-4">
                             <aside>
 
-                                {% if articleBlog != "newsroom pro" %}
+                                {% if not paywallSection %}
                                     <section class="add sidebar-add ">
                                         <div id="newAdHalf"></div>
                                         <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
@@ -336,7 +336,7 @@
                 </div><!-- .page-content-->
             </div><!--container-->
 
-            {% if articleBlog != 'newsroom pro' %}
+            {% if not paywallSection %}
                 <script>loadTwoAds('{{articleBlog}}');</script>
             {% endif %}
 

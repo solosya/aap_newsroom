@@ -43,7 +43,7 @@ Acme.Signin.prototype.handle = function(e) {
             Acme.server.create('/api/auth/login', formData).done(function(r) {
 
                 if (r.success === 1) {
-                    window.location.href = location.origin + "/@newsroom-pro";
+                    window.location.reload();
 
                 } else {
                     $elem.text("Sign in")
