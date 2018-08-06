@@ -2,26 +2,26 @@
     a.card {
     	border-bottom: 1px solid #dadada;
     	padding-bottom: 18px;
+        height: 113px;
         article {
             figure {
             	display: block;
-            	padding-top: 27px;
-                img {
-                	height: 113px;
-                	width:	110px;
+                position: absolute;
+                height: 113px;
+                width:  141px;
+                left: 0;
+            	img {
+                	height: 100%
                 }
             }
             .content {
             	border-bottom: unset;
             	padding-top: 12px;
-			    margin-left: -110px;
-			    padding-left: 130px;	
+			    margin-left: 150px;	
             	.category {
             		display: block;
 				    color: #e22f22;
-				    position: relative;
-				    top: -5px;
-				    left: -130px;
+				    
             	}
                 .author {
                 	> img {
@@ -29,13 +29,13 @@
                 	}
                 }
                 > h2 {
-                	height: 40px;
+                	height: 60px;
+                    margin-bottom: 0;
+                    margin-top: 10px;
                 }
                 > p {
-                	display: block;
-                	height: 40px;
-                	overflow: hidden;
-                    text-overflow: ellipsis;
+                	display: none;
+                	
                 }
                 time{
                 	color: #8a8b93; 

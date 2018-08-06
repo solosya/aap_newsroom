@@ -7298,7 +7298,8 @@ p.foundingpartners {
     color: #6c6c6c;
     font-size: 1.2em; }
   .add.sidebar-add {
-    margin-bottom: 50px; }
+    margin-bottom: 80px;
+    margin-top: 80px; }
     @media screen and (max-width: 1200px) {
       .add.sidebar-add .block > a {
         display: block; } }
@@ -7503,10 +7504,13 @@ section.subscribe {
     margin: 10px auto; }
 
 .sidebar-news {
-  margin-bottom: 40px; }
+  margin-bottom: 70px; }
   @media screen and (max-width: 991px) {
     .sidebar-news {
       display: none; } }
+  @media screen and (min-width: 992px) {
+    .sidebar-news {
+      margin-top: 40px; } }
   .sidebar-news a.card {
     margin-bottom: 10px;
     width: 100%; }
@@ -11177,16 +11181,10 @@ input[type=radio].inline {
   line-height: 1.07;
   letter-spacing: 0.3px; }
 
-.pro-partial {
-  margin-top: 15px; }
-  @media screen and (min-width: 768px) {
-    .pro-partial {
-      margin-top: 60px;
-      padding-left: 15px;
-      padding-right: 15px; } }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .pro-partial {
-      margin-top: 45px; } }
+@media screen and (min-width: 768px) {
+  .pro-partial {
+    padding-left: 15px;
+    padding-right: 15px; } }
 
 .pro-partial__row {
   background: black;
@@ -16383,33 +16381,31 @@ body.channel.supporters p {
 
 .card-pro-popular a.card {
   border-bottom: 1px solid #dadada;
-  padding-bottom: 18px; }
+  padding-bottom: 18px;
+  height: 113px; }
   .card-pro-popular a.card article figure {
     display: block;
-    padding-top: 27px; }
+    position: absolute;
+    height: 113px;
+    width: 141px;
+    left: 0; }
     .card-pro-popular a.card article figure img {
-      height: 113px;
-      width: 110px; }
+      height: 100%; }
   .card-pro-popular a.card article .content {
     border-bottom: unset;
     padding-top: 12px;
-    margin-left: -110px;
-    padding-left: 130px; }
+    margin-left: 150px; }
     .card-pro-popular a.card article .content .category {
       display: block;
-      color: #e22f22;
-      position: relative;
-      top: -5px;
-      left: -130px; }
+      color: #e22f22; }
     .card-pro-popular a.card article .content .author > img {
       display: none; }
     .card-pro-popular a.card article .content > h2 {
-      height: 40px; }
+      height: 60px;
+      margin-bottom: 0;
+      margin-top: 10px; }
     .card-pro-popular a.card article .content > p {
-      display: block;
-      height: 40px;
-      overflow: hidden;
-      text-overflow: ellipsis; }
+      display: none; }
     .card-pro-popular a.card article .content time {
       color: #8a8b93; }
 

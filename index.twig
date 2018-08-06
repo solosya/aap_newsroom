@@ -15,7 +15,7 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-{% set recentArticles = _Article.getRecentArticles({'limit': 3}) %}
+{% set recentArticles = _Article.getRecentArticles({'limit': 5}) %}
 
 {% set sections =  {
         "viewingroom": {
@@ -119,10 +119,9 @@
                 <div class="row">
                     
                     <div class="col-sm-12 col-md-8">
-                        <div class="card-group">
-                            {% set rowCards = ['card-rec inverted', 'card-rec'] %}                                                                
+                        <div class="card-group">                                                                
                                 {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
 
@@ -179,10 +178,10 @@
                             <div class="col-sm-12" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
                             </div>
-                            <div class="col-sm-6 col-md-12">
+                            {# <div class="col-sm-6 col-md-12">
                                 {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }}
-                            </div>
-                            <div class="col-sm-6 col-md-12">
+                            </div> #}
+                            <div class="col-sm-6 col-md-12 u-margin-top-40">
                                 {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
                         </div>
@@ -221,8 +220,12 @@
                         </section>
                     
                         {# {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
+                   {#  {% for i in 0..1 if articles[articleCount] %} #}
+                   {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
                         {% set articleCount = articleCount + 1 %}
+                    {% endif %}
+                    {# {% endfor %} #}
 
 
                     </div><!-- .col-sm-4-->
