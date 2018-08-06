@@ -403,7 +403,7 @@
 
     Acme.listMenu = function(config)
     {
-        this.defaultTemp      = Handlebars.compile(window.templates.pulldown);
+        this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
         this.menuParent       = config.parent        || {};

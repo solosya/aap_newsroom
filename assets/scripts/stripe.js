@@ -126,7 +126,7 @@ if ($('#stripekey').length > 0) {
                 // Send the token to your server
                 subscribe.data['stripetoken'] = result.token.id;
                 subscribe.data['planid'] = $('#planid').val();
-
+                console.log('formhandling');
                 formhandler(subscribe.data, '/auth/paywall-signup');
             }
         });    
@@ -173,10 +173,43 @@ if ($('#stripekey').length > 0) {
 
     var subscribe = new SubscribeForm();
 
+    Acme.countrySelect = function() {
+        this.container = $('#countrySelect');
+        this.subscriptions = Acme.PubSub.subscribe({
+            'Acme.countryChoice.listener' : ["update_state"]
+        });
+        this.render();
+    };
+        Acme.countrySelect.prototype = new Acme._View();
+    
+        Acme.countrySelect.prototype.listeners =  {
+            "regionSelect" : function(data) {
+                var data = {
+                    "region": data.regionSelect
+                }
+                Acme.PubSub.publish('update_state', data);
+            },
+            "clear" : function(data) {
+                this.menu.reset();
+            }
+        };
+        Acme.countrySelect.prototype.render = function() {
+            this.menu = new Acme.listMenu({
+                'parent'        : this.container,
+                'list'          : ['Australia', 'New Zealand', 'America', 'Canada', 'England'],
+                'defaultSelect' : {"label": 'Select Country'},
+                'name'          : 'regionSelect',
+                'key'           : 'regionSelect',
+                'allowClear'    : true
+            }).init().render();
+        };
+        Acme.countrySelect.prototype.reset = function() {
+            this.menu.reset();
+        };
+    
 
 
-
-
+    Acme.countryChoice = new Acme.countrySelect();
 
 
 
@@ -191,6 +224,7 @@ if ($('#stripekey').length > 0) {
             success: function(data) {
 
                 if(data.success) {
+                    console.log('singed up well!!');
                     $('#card-errors').text('Completed successfully.');
                 } else {
                     modal.closeWindow();

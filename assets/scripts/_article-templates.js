@@ -3,6 +3,13 @@
  */
 Acme.templates = {};
 
+Acme.templates.pulldown = 
+'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
+    <p class="Acme-pulldown__selected-item"></p> \
+    <span class="Acme-pulldown__span"></span> \
+    <ul class="Acme-pulldown__list" data-key="{{ key }}"></ul> \
+</div>';
+
 
 Acme.templates.create_user = 
 '<div class="" style="height:100%; overflow:auto"> \
