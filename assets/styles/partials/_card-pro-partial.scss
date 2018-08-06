@@ -5,7 +5,7 @@
 
             > figure {
                 height:129px;
-                width:203px;
+                width:150px;
                 flex:none;
                 position: relative;
                 float: left;
@@ -15,14 +15,21 @@
                 }   
 
             }
+            >.video{
+                &:after{
+                    top: 30%;
+                    left: 32%;
+                }
+            }
             .content {
                 width: unset;
                 position: absolute;
-                margin-left: 220px;
+                margin-left: 170px;
                 > h2 { 
                     color: #fcfcfc;
-                    font-size: rem(28);
-                    max-height: 60px;
+                    font-size: rem(20);
+                    max-height: 80px;
+                    font-weight: 300;
                 }
                 >p {
                     display: none;
@@ -30,7 +37,8 @@
 
                 .category{
                     color: #e22f22;
-                    margin-bottom: 10px
+                    margin-bottom: 10px;
+                    font-size: rem(14);
                 }
                 .author {
                     display: inherit;
@@ -41,6 +49,8 @@
                         display: inherit;
                         margin-top: 10px;
                         color: #fcfcfc;
+                        font-size: rem(13);
+                        font-weight: 300;
                     }
                 }
                 time {

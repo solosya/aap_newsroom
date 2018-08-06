@@ -9549,6 +9549,13 @@ button.swiper-pagination-bullet {
     background-size: cover;
     background-repeat: no-repeat; }
 
+.header-signin__signbtn {
+  width: 93px;
+  margin-left: 20px; }
+
+.header-signin__subbtn {
+  width: 161px; }
+
 input[type=radio].inline {
   margin-top: 20px; }
 
@@ -11170,6 +11177,17 @@ input[type=radio].inline {
   line-height: 1.07;
   letter-spacing: 0.3px; }
 
+.pro-partial {
+  margin-top: 15px; }
+  @media screen and (min-width: 768px) {
+    .pro-partial {
+      margin-top: 60px;
+      padding-left: 15px;
+      padding-right: 15px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .pro-partial {
+      margin-top: 45px; } }
+
 .pro-partial__row {
   background: black;
   margin-bottom: 79px;
@@ -11232,11 +11250,24 @@ input[type=radio].inline {
   height: 30px;
   margin: auto; }
 
+.menu-signin__subscribe {
+  font-size: 1.4rem;
+  color: #fff;
+  height: 21px;
+  width: 165px;
+  margin: auto;
+  background-color: #1d1d1d;
+  font-weight: 300;
+  line-height: unset;
+  padding-right: 15px;
+  border-right: solid 1px #ffffff;
+  margin-right: 15px; }
+
 .menu-signin__signin {
   font-size: 1.4rem;
   color: #fff;
   height: 41px;
-  width: 134px;
+  width: 80px;
   margin: auto;
   background-color: #1d1d1d;
   font-weight: 300;
@@ -16386,26 +16417,31 @@ body.channel.supporters p {
   height: 130px; }
   .card-pro-partial a.card article > figure {
     height: 129px;
-    width: 203px;
+    width: 150px;
     flex: none;
     position: relative;
     float: left; }
     .card-pro-partial a.card article > figure > img {
       width: auto;
       height: 100%; }
+  .card-pro-partial a.card article > .video:after {
+    top: 30%;
+    left: 32%; }
   .card-pro-partial a.card article .content {
     width: unset;
     position: absolute;
-    margin-left: 220px; }
+    margin-left: 170px; }
     .card-pro-partial a.card article .content > h2 {
       color: #fcfcfc;
-      font-size: 2.8rem;
-      max-height: 60px; }
+      font-size: 2rem;
+      max-height: 80px;
+      font-weight: 300; }
     .card-pro-partial a.card article .content > p {
       display: none; }
     .card-pro-partial a.card article .content .category {
       color: #e22f22;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      font-size: 1.4rem; }
     .card-pro-partial a.card article .content .author {
       display: inherit; }
       .card-pro-partial a.card article .content .author img {
@@ -16413,7 +16449,9 @@ body.channel.supporters p {
       .card-pro-partial a.card article .content .author p {
         display: inherit;
         margin-top: 10px;
-        color: #fcfcfc; }
+        color: #fcfcfc;
+        font-size: 1.3rem;
+        font-weight: 300; }
     .card-pro-partial a.card article .content time {
       display: none; }
 
