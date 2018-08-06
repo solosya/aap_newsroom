@@ -7298,7 +7298,8 @@ p.foundingpartners {
     color: #6c6c6c;
     font-size: 1.2em; }
   .add.sidebar-add {
-    margin-bottom: 50px; }
+    margin-bottom: 80px;
+    margin-top: 80px; }
     @media screen and (max-width: 1200px) {
       .add.sidebar-add .block > a {
         display: block; } }
@@ -7503,10 +7504,13 @@ section.subscribe {
     margin: 10px auto; }
 
 .sidebar-news {
-  margin-bottom: 40px; }
+  margin-bottom: 70px; }
   @media screen and (max-width: 991px) {
     .sidebar-news {
       display: none; } }
+  @media screen and (min-width: 992px) {
+    .sidebar-news {
+      margin-top: 40px; } }
   .sidebar-news a.card {
     margin-bottom: 10px;
     width: 100%; }
@@ -11177,12 +11181,10 @@ input[type=radio].inline {
   line-height: 1.07;
   letter-spacing: 0.3px; }
 
-.pro-partial {
-  margin-top: 15px; }
-  @media screen and (min-width: 768px) {
-    .pro-partial {
-      padding-left: 15px;
-      padding-right: 15px; } }
+@media screen and (min-width: 768px) {
+  .pro-partial {
+    padding-left: 15px;
+    padding-right: 15px; } }
 
 .pro-partial__row {
   background: black;
