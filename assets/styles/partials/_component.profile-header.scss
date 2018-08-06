@@ -12,6 +12,9 @@
     font-size:rem(10);
     font-weight:400;
     color:rgb(151, 153, 156);
+    @media #{$tablet-up} {
+        margin-left: 143px;
+    }
 }
 .profile-section__header {
     width: 100%;
