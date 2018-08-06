@@ -6086,15 +6086,6 @@ body.no_profile .profile_overlay {
   line-height: 1.2;
   color: #e22f22; }
 
-.cancel-account {
-  font-style: italic; }
-  @media screen and (min-width: 768px) {
-    .cancel-account {
-      margin-top: -62px; } }
-  @media screen and (max-width: 767px) {
-    .cancel-account {
-      margin-top: -130px; } }
-
 .update-details {
   font-style: italic; }
 
@@ -10989,6 +10980,20 @@ input[type=radio].inline {
 
 .profile-section__cancel {
   margin-top: -15px; }
+
+.profile-section__cancel-account {
+  font-style: italic;
+  position: absolute;
+  right: 0; }
+  @media screen and (min-width: 992px) {
+    .profile-section__cancel-account {
+      margin-top: -70px; } }
+  @media screen and (min-width: 768px) {
+    .profile-section__cancel-account {
+      margin-top: -62px; } }
+  @media screen and (max-width: 767px) {
+    .profile-section__cancel-account {
+      margin-top: -130px; } }
 
 .profile-section__header {
   width: 100%;

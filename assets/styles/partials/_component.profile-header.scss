@@ -19,6 +19,20 @@
 .profile-section__cancel {
     margin-top: -15px;
 }
+.profile-section__cancel-account {
+    font-style: italic;
+    position: absolute;
+    right: 0;
+    @media #{$desktop-up} {
+        margin-top: -70px;
+    }
+    @media #{$media-iPad-to-desktop} {
+        margin-top: -62px;
+    }
+    @media #{$media-mobile} {
+        margin-top: -130px;
+    }
+}
 .profile-section__header {
     width: 100%;
     // border-bottom: 1px solid color(lightgrey);
