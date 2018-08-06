@@ -50,7 +50,7 @@
                 </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
     
-        {% if articles[articleCount] %}                                                                
+        {# {% if articles[articleCount] %}                                                                
         <section class="top-stories">
             <div class="container">
                 <div class="row">
@@ -71,6 +71,28 @@
                 <hr class="top-two">
             </div><!-- .container-->
         </section><!-- .top-stories-->
+        {% endif %} #}
+
+        {% if articles[articleCount] %}
+            <section class="top-stories">
+                <div class="container">
+                    <h2>TOP STORIES</h2>
+                    <div class="row">
+
+                        {% for i in 0..2 %}
+                            {% if articles[i] %}                                                                
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'col-sm-4'
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div><!-- .row-->
+                </div><!-- .container-->
+            </section><!-- .top-stories-->
         {% endif %}
 
 
