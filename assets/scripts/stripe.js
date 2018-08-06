@@ -126,8 +126,17 @@ if ($('#stripekey').length > 0) {
                 // Send the token to your server
                 subscribe.data['stripetoken'] = result.token.id;
                 subscribe.data['planid'] = $('#planid').val();
+                subscribe.data['redirect'] = false;
 
-                formhandler(subscribe.data, '/auth/paywall-signup');
+                formhandler(subscribe.data, '/auth/paywall-signup').then(function() {
+                    // console.log('sigining up');
+                    // Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355",
+                    // {"EMAIL": 'lneenan@pagemasters.com.au'})
+                    //     .then(function(r) {
+                    //         console.log(r);
+                    //     });
+                    // // window.location.href = location.origin + '/auth/thank-you';
+                });
             }
         });    
     };
@@ -147,7 +156,7 @@ if ($('#stripekey').length > 0) {
                 data[elemid] = elem.val();
                 // username is created from the email plus a random number
                 if (inputType == 'email') {
-                    data['username'] = data[elemid].split('@')[0] + Math.floor(100000000 + Math.random() * 900000000);
+                    data['username'] = Math.floor(100000000 + Math.random() * 9000000000000000);
                 }
 
             } else if (inputType =='checkbox') {
@@ -183,7 +192,7 @@ if ($('#stripekey').length > 0) {
     var formhandler = function(formdata, path) {
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
 
-        $.ajax({
+        return $.ajax({
             url: _appJsConfig.appHostName + path,
             type: 'post',
             data: formdata,
@@ -206,7 +215,6 @@ if ($('#stripekey').length > 0) {
                 modal.closeWindow();
             }
         });
-
     }
 
 
