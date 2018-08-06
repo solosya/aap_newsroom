@@ -121,14 +121,16 @@
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
                             {% set rowCards = ['card-rec inverted', 'card-rec'] %}                                                                
-                            {% for i in 0..1 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
-                            {% endfor %}
 
                          </div><!--card-group-->
+
+                        <div class="row">
+                            {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                        </div>
                             
                         <section class="add row sidebar-add hidden-md hidden-lg">
                             <div class="col-sm-6">
@@ -224,10 +226,6 @@
 
 
                     </div><!-- .col-sm-4-->
-
-                    <div class="row">
-                        {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
-                    </div>
 
                     <div class="row future">
                         {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
