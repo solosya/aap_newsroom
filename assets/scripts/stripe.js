@@ -54,7 +54,8 @@ if ($('#stripekey').length > 0) {
 
     var SubscribeForm = function() {
         this.data = {
-
+            "group[1149][1]": true,
+            "group[1149][2]": true,
         };
 
         this.errorFields = [];
@@ -113,7 +114,6 @@ if ($('#stripekey').length > 0) {
             return;
         }
 
-
         modal.render("spinner", "Your request is being processed.");
 
         stripe.createToken(card).then(function(result) {
@@ -124,18 +124,31 @@ if ($('#stripekey').length > 0) {
                 errorElement.textContent = result.error.message;
             } else {
                 // Send the token to your server
-                subscribe.data['stripetoken'] = result.token.id;
-                subscribe.data['planid'] = $('#planid').val();
-                subscribe.data['redirect'] = false;
+                self.data['stripetoken'] = result.token.id;
+                self.data['planid'] = $('#planid').val();
+                self.data['redirect'] = false;
 
-                formhandler(subscribe.data, '/auth/paywall-signup').then(function() {
-                    // console.log('sigining up');
-                    // Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355",
-                    // {"EMAIL": 'lneenan@pagemasters.com.au'})
-                    //     .then(function(r) {
-                    //         console.log(r);
-                    //     });
-                    // // window.location.href = location.origin + '/auth/thank-you';
+                formhandler(self.data, '/auth/paywall-signup').then(function() {
+
+                    // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                    //     var subscribeData = {
+                    //         "EMAIL": self.data['email'], 
+                    //         "FNAME": self.data['firstname'],
+                    //         "LNAME": self.data['lastname'],
+                    //     };
+                    //     if (self.data["group[1149][1]"]) {
+                    //         subscribeData["group[1149][1]"] = 1;
+                    //     }
+                    //     if (self.data["group[1149][2]"]) {
+                    //         subscribeData["group[1149][2]"] = 2;
+                    //     }
+
+                    //     Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                    //         .then(function(r) {
+                    //             console.log(r);
+                    //         });                        
+                    // }
+                    // window.location.href = location.origin + '/auth/thank-you';
                 });
             }
         });    
@@ -160,10 +173,12 @@ if ($('#stripekey').length > 0) {
                 }
 
             } else if (inputType =='checkbox') {
-                data[elemid] = elem.is(":checked");
+                var value = elem.is(":checked");
+                data[elemid] = value;
             }
 
             self.updateData(data);
+
             var validated = self.validate([elemid]);
             self.render();
         });
