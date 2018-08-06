@@ -184,11 +184,11 @@
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Plan Status</label>
                                             <p style="cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value {% if pwstats['status'] != 'cancelled' %}u-margin-left-35 {% endif %}u-mobile-no-margin-left">{{ pwstats['status'] | capitalize }}</p>
                                         </div>
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs u-margin-bottom-20 profile-section__cancel">
                                             {% if pwstats['status'] == 'cancelled' %}
                                                 
                                                 <span  class="profile-section__users-left text-button--italic">Your account will be permanently deleted 30 days after the most recent payment date.</span>
-                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button text-button--italic">Restart Subscription</a>
+                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;margin-top:-2px;" class="text-button text-button--italic">Restart Subscription</a>
                                                 
                                             {% else %} 
                                                 <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button u-float-right cancel-account">Cancel Subscription</a>
