@@ -119,10 +119,9 @@
                 <div class="row">
                     
                     <div class="col-sm-12 col-md-8">
-                        <div class="card-group">
-                            {% set rowCards = ['card-rec inverted', 'card-rec'] %}                                                                
+                        <div class="card-group">                                                                
                                 {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
 
