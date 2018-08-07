@@ -230,7 +230,7 @@
 
                             </div>
 
-                            <hr class="divide" style="border-top:1px solid #97999c;">
+                            <hr class="divide30" style="border-top:1px solid #97999c;">
 
 
                             <div class='update-card' style="overflow:auto">
@@ -253,7 +253,7 @@
                                 </div>
                             </div>
 
-                            <hr class="divide " style="border-top:1px solid #97999c;">
+                            <hr class="divide30" style="border-top:1px solid #97999c;">
 
 
 
@@ -273,7 +273,7 @@
                                 {% endif %}
 
 
-                                <div class="j-setplan plans__item" style="cursor:hand; cursor:pointer;{% if plan.guid == pwstats['plan_guid'] %}background-color: rgba(216,216,216,1);{% endif %}">
+                                <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan {% endif %}plans__item" style="cursor:hand; cursor:pointer;{% if plan.guid == pwstats['plan_guid'] %}background-color: rgba(216,216,216,1);{% endif %}">
                                     <h3 class="plans__name">{{plan.name}}</h3>
                                     <p class="plans__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
                                     <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
@@ -295,7 +295,7 @@
                         </div>
                     </div>
 
-                    <hr class="divide " style="border-top:1px solid #97999c;">
+                    <hr class="divide30 " style="border-top:1px solid #97999c;">
 
 
                     <div class="profile-section">
