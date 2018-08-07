@@ -31673,7 +31673,6 @@ if ($('#stripekey').length > 0) {
         this.data = {
             "group[1149][1]": true,
             "group[1149][2]": true,
-            "country_id"    : null,
         };
 
         this.errorFields = [];
@@ -31686,7 +31685,6 @@ if ($('#stripekey').length > 0) {
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],
-            "country_id"        : ['notEmpty'],
             "terms"             : ["isTrue"],
         };
 
@@ -31699,21 +31697,21 @@ if ($('#stripekey').length > 0) {
         if (trial == 1) {
             this.data['trial'] = 'true';
         }
-        this.subscriptions = Acme.PubSub.subscribe({
-            'Acme.subscribe.listener' : ["update_state"]
-        });
-        this.addMenu();
+        // this.subscriptions = Acme.PubSub.subscribe({
+        //     'Acme.subscribe.listener' : ["update_state"]
+        // });
+
     };
 
     SubscribeForm.prototype = new Acme.Form(Acme.Validators);
     SubscribeForm.constructor = SubscribeForm;
-    SubscribeForm.prototype.listeners =  {
-        "country" : function(data) {
-            this.data.country_id = data.country_id || null;
-            var validated = this.validate(['country_id']);
-            this.render();
-        }
-    };
+    // SubscribeForm.prototype.listeners =  {
+    //     "country" : function(data) {
+    //         this.data.country_id = data.country_id || null;
+    //         var validated = this.validate(['country_id']);
+    //         this.render();
+    //     }
+    // };
 
     SubscribeForm.prototype.render = function(checkTerms) 
     {
@@ -31731,36 +31729,36 @@ if ($('#stripekey').length > 0) {
     SubscribeForm.prototype.addMenu = function(event) 
     {
 
-        this.menu = new Acme.listMenu({
-            'parent'        : $('#countrySelect'),
-            'list'          : [ 
-                {'label': "Argentina",      'value' : 10},
-                {'label': "Australia",      'value' : 13},
-                {'label': "Barbados",       'value' : 18},
-                {'label': "Canada",         'value' : 38},
-                {'label': "France",         'value' : 75},
-                {'label': "Germany",        'value' : 57},
-                {'label': "Ireland",        'value' : 102},
-                {'label': "Italy",          'value' : 110},
-                {'label': "Jamaica",        'value' : 112},
-                {'label': "Netherlands",    'value' : 166},
-                {'label': "New Zealand",    'value' : 171},
-                {'label': "Saint Vincent and the Grenadines", 'value' : 237},
-                {'label': "Spain",          'value' : 68},
-                {'label': "Sweden",         'value' : 197},
-                {'label': "Switzerland",    'value' : 43},
-                {'label': "Trinidad and Tobago", 'value' : 226},
-                {'label': "UK",             'value' : 77},
-                {'label': "US",             'value' : 233},
-                {'label': "Other",          'value' : -1},
+        // this.menu = new Acme.listMenu({
+        //     'parent'        : $('#countrySelect'),
+        //     'list'          : [ 
+        //         {'label': "Argentina",      'value' : 10},
+        //         {'label': "Australia",      'value' : 13},
+        //         {'label': "Barbados",       'value' : 18},
+        //         {'label': "Canada",         'value' : 38},
+        //         {'label': "France",         'value' : 75},
+        //         {'label': "Germany",        'value' : 57},
+        //         {'label': "Ireland",        'value' : 102},
+        //         {'label': "Italy",          'value' : 110},
+        //         {'label': "Jamaica",        'value' : 112},
+        //         {'label': "Netherlands",    'value' : 166},
+        //         {'label': "New Zealand",    'value' : 171},
+        //         {'label': "Saint Vincent and the Grenadines", 'value' : 237},
+        //         {'label': "Spain",          'value' : 68},
+        //         {'label': "Sweden",         'value' : 197},
+        //         {'label': "Switzerland",    'value' : 43},
+        //         {'label': "Trinidad and Tobago", 'value' : 226},
+        //         {'label': "UK",             'value' : 77},
+        //         {'label': "US",             'value' : 233},
+        //         {'label': "Other",          'value' : -1},
 
-            ],
-            'defaultSelect' : {"label": 'Select Country'},
-            'name'          : 'country_id',
-            'key'           : 'country_id',
-            'allowClear'    : true,
-            'callback'      : this.listeners.country.bind(this),
-        }).init().render();
+        //     ],
+        //     'defaultSelect' : {"label": 'Select Country'},
+        //     'name'          : 'country_id',
+        //     'key'           : 'country_id',
+        //     'allowClear'    : true,
+        //     'callback'      : this.listeners.country.bind(this),
+        // }).init().render();
     };
 
     SubscribeForm.prototype.submit = function(event) 
@@ -31860,77 +31858,7 @@ if ($('#stripekey').length > 0) {
 
     Acme.subscribe = new SubscribeForm();
 
-    // Acme.countrySelect = function() {
-    //     this.container = $('#countrySelect');
-    //     this.subscriptions = Acme.PubSub.subscribe({
-    //         'Acme.countryChoice.listener' : ["update_state"]
-    //     });
-    //     this.render();
-    // };
-    //     Acme.countrySelect.prototype = new Acme._View();
-    
-    //     Acme.countrySelect.prototype.listeners =  {
-    //         // "countrySelect" : function(data) {
-    //         //     var data = {
-    //         //         "country": data.countrySelect
-    //         //     }
-    //         //     Acme.PubSub.publish('update_state', data);
-    //         // },
-    //         "clear" : function(data) {
-    //             this.menu.reset();
-    //         }
-    //     };
-    //     Acme.countrySelect.prototype.callback = function(data) {
-    //         this.container.children().removeClass('formError');
-
-    //         var data = {
-    //             "country": data.country_id
-    //         };
-            
-    //         console.log(data);
-    //         console.log("publishing update state");
-    //         Acme.PubSub.publish('update_state', data);
-    //     },
-    //     Acme.countrySelect.prototype.render = function() {
-    //         this.menu = new Acme.listMenu({
-    //             'parent'        : this.container,
-    //             'list'          : [ 
-    //                 {'label': "Argentina",      'value' : 10},
-    //                 {'label': "Australia",      'value' : 13},
-    //                 {'label': "Barbados",       'value' : 18},
-    //                 {'label': "Canada",         'value' : 38},
-    //                 {'label': "France",         'value' : 75},
-    //                 {'label': "Germany",        'value' : 57},
-    //                 {'label': "Ireland",        'value' : 102},
-    //                 {'label': "Italy",          'value' : 110},
-    //                 {'label': "Jamaica",        'value' : 112},
-    //                 {'label': "Netherlands",    'value' : 166},
-    //                 {'label': "New Zealand",    'value' : 171},
-    //                 {'label': "Saint Vincent and the Grenadines", 'value' : 237},
-    //                 {'label': "Spain",          'value' : 68},
-    //                 {'label': "Sweden",         'value' : 197},
-    //                 {'label': "Switzerland",    'value' : 43},
-    //                 {'label': "Trinidad and Tobago", 'value' : 226},
-    //                 {'label': "UK",             'value' : 77},
-    //                 {'label': "US",             'value' : 233},
-    //                 {'label': "Other",          'value' : -1},
-
-    //             ],
-    //             'defaultSelect' : {"label": 'Select Country'},
-    //             'name'          : 'country_id',
-    //             'key'           : 'country_id',
-    //             'allowClear'    : true,
-    //             'callback'      : this.callback.bind(this),
-    //         }).init().render();
-    //     };
-    //     Acme.countrySelect.prototype.reset = function() {
-    //         this.menu.reset();
-    //     };
-    
-
-
-    // Acme.countryChoice = new Acme.countrySelect();
-
+   
 
 
     var formhandler = function(formdata, path) {
