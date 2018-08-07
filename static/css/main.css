@@ -6086,15 +6086,6 @@ body.no_profile .profile_overlay {
   line-height: 1.2;
   color: #e22f22; }
 
-.cancel-account {
-  font-style: italic; }
-  @media screen and (min-width: 768px) {
-    .cancel-account {
-      margin-top: -62px; } }
-  @media screen and (max-width: 767px) {
-    .cancel-account {
-      margin-top: -130px; } }
-
 .update-details {
   font-style: italic; }
 
@@ -7298,7 +7289,8 @@ p.foundingpartners {
     color: #6c6c6c;
     font-size: 1.2em; }
   .add.sidebar-add {
-    margin-bottom: 50px; }
+    margin-bottom: 80px;
+    margin-top: 80px; }
     @media screen and (max-width: 1200px) {
       .add.sidebar-add .block > a {
         display: block; } }
@@ -7503,10 +7495,13 @@ section.subscribe {
     margin: 10px auto; }
 
 .sidebar-news {
-  margin-bottom: 40px; }
+  margin-bottom: 70px; }
   @media screen and (max-width: 991px) {
     .sidebar-news {
       display: none; } }
+  @media screen and (min-width: 992px) {
+    .sidebar-news {
+      margin-top: 40px; } }
   .sidebar-news a.card {
     margin-bottom: 10px;
     width: 100%; }
@@ -7983,7 +7978,6 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     position: absolute;
     top: 40px;
     right: 15px;
-    z-index: 100;
     background: rgba(0, 0, 0, 0.7); }
     .sb-custom-menu .show-on-tablet > ul.pages {
       display: block;
@@ -9549,6 +9543,13 @@ button.swiper-pagination-bullet {
     background-size: cover;
     background-repeat: no-repeat; }
 
+.header-signin__signbtn {
+  width: 93px;
+  margin-left: 20px; }
+
+.header-signin__subbtn {
+  width: 161px; }
+
 input[type=radio].inline {
   margin-top: 20px; }
 
@@ -9858,11 +9859,12 @@ input[type=radio].inline {
     text-decoration: none; }
 
 .market-hero__email {
-  text-decoration: underline;
   margin-top: 76px;
   font-size: 1.8rem;
   line-height: 1.61;
   width: 350px; }
+  .market-hero__emaila, .market-hero__email > a {
+    text-decoration: underline; }
 
 .market-header {
   text-align: center; }
@@ -10962,22 +10964,40 @@ input[type=radio].inline {
   font-size: 1.3rem; }
 
 .profile-section {
-  width: 100%;
-  padding: 18px 0px; }
+  width: 100%; }
 
 .profile-section--border {
   border-bottom: 1px solid #97999c;
   overflow: auto; }
 
 .profile-section__users-left {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #97999c; }
+  @media screen and (min-width: 768px) {
+    .profile-section__users-left {
+      margin-left: 143px; } }
+
+.profile-section__cancel {
+  margin-top: -15px; }
+
+.profile-section__cancel-account {
+  font-style: italic;
+  position: absolute;
+  right: 0; }
+  @media screen and (min-width: 992px) {
+    .profile-section__cancel-account {
+      margin-top: -70px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .profile-section__cancel-account {
+      margin-top: -62px; } }
+  @media screen and (max-width: 767px) {
+    .profile-section__cancel-account {
+      margin-top: -130px; } }
 
 .profile-section__header {
   width: 100%;
   padding-bottom: 10px;
-  margin-top: 40px;
   margin-bottom: 15px; }
 
 .profile-section__heading {
@@ -11239,6 +11259,11 @@ input[type=radio].inline {
   line-height: 1.07;
   letter-spacing: 0.3px; }
 
+@media screen and (min-width: 768px) {
+  .pro-partial {
+    padding-left: 15px;
+    padding-right: 15px; } }
+
 .pro-partial__row {
   background: black;
   margin-bottom: 79px;
@@ -11301,11 +11326,24 @@ input[type=radio].inline {
   height: 30px;
   margin: auto; }
 
+.menu-signin__subscribe {
+  font-size: 1.4rem;
+  color: #fff;
+  height: 21px;
+  width: 165px;
+  margin: auto;
+  background-color: #1d1d1d;
+  font-weight: 300;
+  line-height: unset;
+  padding-right: 15px;
+  border-right: solid 1px #ffffff;
+  margin-right: 15px; }
+
 .menu-signin__signin {
   font-size: 1.4rem;
   color: #fff;
   height: 41px;
-  width: 134px;
+  width: 80px;
   margin: auto;
   background-color: #1d1d1d;
   font-weight: 300;
@@ -16421,60 +16459,69 @@ body.channel.supporters p {
 
 .card-pro-popular a.card {
   border-bottom: 1px solid #dadada;
-  padding-bottom: 18px; }
-  .card-pro-popular a.card article figure {
-    display: block;
-    padding-top: 27px; }
-    .card-pro-popular a.card article figure img {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  height: 128px; }
+  .card-pro-popular a.card article {
+    height: 113px; }
+    .card-pro-popular a.card article figure {
+      display: block;
+      position: absolute;
       height: 113px;
-      width: 110px; }
-  .card-pro-popular a.card article .content {
-    border-bottom: unset;
-    padding-top: 12px;
-    margin-left: -110px;
-    padding-left: 130px; }
-    .card-pro-popular a.card article .content .category {
-      display: block;
-      color: #e22f22;
-      position: relative;
-      top: -5px;
-      left: -130px; }
-    .card-pro-popular a.card article .content .author > img {
-      display: none; }
-    .card-pro-popular a.card article .content > h2 {
-      height: 40px; }
-    .card-pro-popular a.card article .content > p {
-      display: block;
-      height: 40px;
-      overflow: hidden;
-      text-overflow: ellipsis; }
-    .card-pro-popular a.card article .content time {
-      color: #8a8b93; }
+      width: 141px;
+      left: 15px; }
+      .card-pro-popular a.card article figure img {
+        height: 100%; }
+    .card-pro-popular a.card article .content {
+      border-bottom: unset;
+      margin-left: 150px;
+      padding-bottom: 0; }
+      .card-pro-popular a.card article .content .category {
+        display: block;
+        color: #e22f22; }
+      .card-pro-popular a.card article .content .author > img {
+        display: none; }
+      .card-pro-popular a.card article .content > h2 {
+        height: 75px;
+        margin-bottom: 0;
+        margin-top: 10px; }
+      .card-pro-popular a.card article .content > p {
+        display: none; }
+      .card-pro-popular a.card article .content time {
+        color: #8a8b93; }
+
+.card-pro-popular:last-child a.card {
+  border-bottom: unset; }
 
 .card-pro-partial a.card article {
   height: 130px; }
   .card-pro-partial a.card article > figure {
     height: 129px;
-    width: 203px;
+    width: 150px;
     flex: none;
     position: relative;
     float: left; }
     .card-pro-partial a.card article > figure > img {
       width: auto;
       height: 100%; }
+  .card-pro-partial a.card article > .video:after {
+    top: 30%;
+    left: 32%; }
   .card-pro-partial a.card article .content {
     width: unset;
     position: absolute;
-    margin-left: 220px; }
+    margin-left: 170px; }
     .card-pro-partial a.card article .content > h2 {
       color: #fcfcfc;
-      font-size: 2.8rem;
-      max-height: 60px; }
+      font-size: 2rem;
+      max-height: 80px;
+      font-weight: 300; }
     .card-pro-partial a.card article .content > p {
       display: none; }
     .card-pro-partial a.card article .content .category {
       color: #e22f22;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      font-size: 1.4rem; }
     .card-pro-partial a.card article .content .author {
       display: inherit; }
       .card-pro-partial a.card article .content .author img {
@@ -16482,7 +16529,9 @@ body.channel.supporters p {
       .card-pro-partial a.card article .content .author p {
         display: inherit;
         margin-top: 10px;
-        color: #fcfcfc; }
+        color: #fcfcfc;
+        font-size: 1.3rem;
+        font-weight: 300; }
     .card-pro-partial a.card article .content time {
       display: none; }
 
@@ -16694,6 +16743,9 @@ body.channel.supporters p {
 
 .u-padding-10 {
   padding: 10px; }
+
+.u-no-margin-top {
+  margin-top: 0; }
 
 .u-margin-top-120 {
   margin-top: 120px; }
@@ -17039,6 +17091,12 @@ body.channel.supporters p {
 .divide15 {
   margin-top: 15px;
   margin-bottom: 15px;
+  border: 0;
+  border-top: 1px solid #dadada; }
+
+.divide30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
   border: 0;
   border-top: 1px solid #dadada; }
 

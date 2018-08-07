@@ -30,17 +30,8 @@
 <main id="main" class="" role="main">
 	<div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
 	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
-	
-	
-	<div class="container-fluid visible-md-block visible-lg-block">
-		<section class="row">
-			<div class="col-sm-12 market-header u-margin-top-40">
-				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
-			</div>
-		</section>
-	</div>
 
-	<section class="market-hero u-margin-top-40 u-margin-bottom-70">
+	{# <section class="market-hero u-margin-top-40 u-margin-bottom-70">
 		<div class="market-hero__content container-fluid">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-11">
@@ -49,14 +40,14 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> #}
 
 
 
 
 
 
-	<div class="container-fluid">
+	<div class="container-fluid u-margin-top-40 u-mobile-margin-top-50">
 
 		<section class="row">
 
@@ -72,7 +63,7 @@
 						<div class="trial">
 
 							{% if trial %}
-								<h2 class="trial__header u-mobile-margin-top-35">Start your 28-day free trial now</h2>
+								<h2 class="trial__header u-margin-top-15">Start your 28-day free trial now</h2>
 
 								<p class="trial__text">
 									The free trial requires registration with a valid credit card. <span>After 28 days, 
@@ -82,7 +73,7 @@
 								</p>
 								<p class="trial__text trial__text--last">
 							{% else %}
-								<p class="trial__text u-margin-top-30">
+								<p class="trial__text u-margin-top-15">
 							{% endif %}
 								
 								To change your account or subscription details after signup, visit the My Account section. For further 
@@ -123,10 +114,10 @@
 							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
 							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__cblabel account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
 							
-							<input type="checkbox" 	class="" name="summary-email" id="summary-email" checked> 
-							<label class="account-form__cblabel">Send me a summary email each weekday</label><br />
+							<input type="checkbox" 	class="" name="group[1149][2]" id="summary-email" checked> 
+							<label class="account-form__cblabel">Send me Bernard Hickey's <i>8 Things</i><br class="visible-xs-block" /> email each day</label><br />
 							
-							<input type="checkbox" 	class="" name="breaking-email" id="breaking-email"> 
+							<input type="checkbox" 	class="" name="group[1149][1]" id="breaking-email" checked> 
 							<label class="account-form__cblabel">Send me email alerts of breaking news</label><br />
 						</form>
 
