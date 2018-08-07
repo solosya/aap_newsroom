@@ -1,5 +1,8 @@
 <div id="pp-banner" class="hidden-print"></div>
 
+{% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
+    {% set paywallSection = true %}
+{% endif %}
 
 
 
