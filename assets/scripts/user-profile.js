@@ -189,9 +189,7 @@ Acme.UserProfileController.prototype.events = function ()
         if ( $('#lastname').val() == '' ) {
             errorText += "Last name cannot be empty.  <br />";
         }
-        if ( $('#username').val().length < 5 ) {
-            errorText += "Username must be at least 5 characters.  <br />";
-        }
+
         if ($('#email').val() == '' ) {
             errorText += "Email cannot be empty. ";
         }
