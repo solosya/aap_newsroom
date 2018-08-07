@@ -10988,7 +10988,7 @@ input[type=radio].inline {
   @media screen and (min-width: 992px) {
     .profile-section__cancel-account {
       margin-top: -70px; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
     .profile-section__cancel-account {
       margin-top: -62px; } }
   @media screen and (max-width: 767px) {
@@ -16392,6 +16392,7 @@ body.channel.supporters p {
 .card-pro-popular a.card {
   border-bottom: 1px solid #dadada;
   padding-bottom: 15px;
+  margin-bottom: 15px;
   height: 128px; }
   .card-pro-popular a.card article {
     height: 113px; }
@@ -16420,6 +16421,9 @@ body.channel.supporters p {
         display: none; }
       .card-pro-popular a.card article .content time {
         color: #8a8b93; }
+
+.card-pro-popular:last-child {
+  border-bottom: unset; }
 
 .card-pro-partial a.card article {
   height: 130px; }
