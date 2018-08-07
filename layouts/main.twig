@@ -18,9 +18,10 @@
         '|^/assets.*|'       : 'http://service.newsroom.co.nz',
         '|^/users.*|'        : 'http://service.newsroom.co.nz',
         '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
-        '|^/pro.*|'          : networkData.templatePath ~'/@pro',
     }, true) 
-%}    
+%} 
+{% set redir2 = _Page.setHttpRedirects({'|^/pro.*|': networkData.defaultBlogUrl~'/@newsroom-pro'}, false) %}
+
 
 
 
