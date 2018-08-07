@@ -45,13 +45,15 @@
                 
             }
         }
-        &:last-child {
-           border-bottom: unset;
-        }
 
     }
     &:first-child {
         
        
+    }
+    &:last-child {
+        a.card{
+           border-bottom: unset;
+        }
     }
 }
