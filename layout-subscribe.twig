@@ -54,12 +54,16 @@
 			<div class="col-md-offset-1 col-md-7">
 				<div class="row">
 					<div class="col-md-10">
-			{% if plan == false  %}
-						<h1>You need to choose a plan from the subscriptions screen</h1>
-					</div>
-				</div>
-			</div>
-			{% else %}
+
+
+						{% if plan == false  %}
+									<h1>You need to choose a plan from the subscriptions screen</h1>
+								</div>
+							</div>
+						</div>
+						{% else %}
+
+
 						<div class="trial">
 
 							{% if trial %}
@@ -103,7 +107,7 @@
 							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
 							<input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
 							<input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
-							<p class="account-form__explainer"><i>Passwords must be at least five characters long and contain no spaces</i></p>
+							<p class="account-form__explainer"><i>Passwords must be at least six characters long and contain no spaces</i></p>
 							
 							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
 							<input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
@@ -111,7 +115,9 @@
 							<div id="countrySelect" class="countrySelect"></div> 
 
 							
-							<input type="checkbox" 	class=""  					name="terms"			id="terms"> 
+							<input type="checkbox" 	class="" name="terms" id="terms"> 
+							
+							
 							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__cblabel account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
 							
 							<input type="checkbox" 	class="" name="group[1149][2]" id="summary-email" checked> 
@@ -145,10 +151,7 @@
 						
 						</form>
 
-						
-						
-
-
+					
 					</div>			
 
 				</div>
@@ -190,7 +193,5 @@
 			</div>
 			{% endif %}
 		</section>
-
 	</div>
-
 </main>

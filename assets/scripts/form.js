@@ -34,6 +34,7 @@ Acme.Form = function(validators, rules) {
 
         // intersect used to clear the field we want to check 
         // from errorFields.  if still an error it will add again.
+
         function intersect(a, b) {
             var t;
             if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
@@ -80,7 +81,7 @@ Acme.Form = function(validators, rules) {
                 for (var k=0; k<fieldValidators.length; k++) {
                     if ( !this.validators[ fieldValidators[k] ](scope) ) {
                         this.errorFields.push(fieldname); 
-                        console.log(this.errorFields);
+                        // console.log(this.errorFields);
                         validated = false;
                         break;
                     }

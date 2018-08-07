@@ -28839,6 +28839,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme.listen = function() {};
     Acme.listen.prototype.listener = function(topic, data)
     {
+        // console.log(listner);
         var keys = Object.keys(data);
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
@@ -29190,6 +29191,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
+        this.callback         = config.callback      || null,
         this.menuParent       = config.parent        || {};
         this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
@@ -29254,7 +29256,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 }
                 html += itemTemp({
                     'label'   :  label,
-                    'value'   :  value
+                    'value'   :  value || ''
                 });
             }
             return html;
@@ -29273,13 +29275,17 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 var data = {};
                 data[self.key || self.name] = value;
 
-                Acme.PubSub.publish('update_state', data);
+                if (self.callback) {
+                    self.callback(data);
+                } else {
+                    Acme.PubSub.publish('update_state', data);
+                }
                 
                 if (clear) {
                     self.reset();
                 } else {
                     self.defaultItem.text(elem.text())
-                                    .addClass('Acme-pulldown__selected-item--is-active');
+                        .addClass('Acme-pulldown__selected-item--is-active');
                 }
 
                 $(self.listContainer).hide(100);
@@ -30446,6 +30452,7 @@ Acme.Form = function(validators, rules) {
 
         // intersect used to clear the field we want to check 
         // from errorFields.  if still an error it will add again.
+
         function intersect(a, b) {
             var t;
             if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
@@ -30492,7 +30499,7 @@ Acme.Form = function(validators, rules) {
                 for (var k=0; k<fieldValidators.length; k++) {
                     if ( !this.validators[ fieldValidators[k] ](scope) ) {
                         this.errorFields.push(fieldname); 
-                        console.log(this.errorFields);
+                        // console.log(this.errorFields);
                         validated = false;
                         break;
                     }
@@ -31666,6 +31673,7 @@ if ($('#stripekey').length > 0) {
         this.data = {
             "group[1149][1]": true,
             "group[1149][2]": true,
+            "country_id"    : null,
         };
 
         this.errorFields = [];
@@ -31678,6 +31686,7 @@ if ($('#stripekey').length > 0) {
             "password"          : ["notEmpty"],
             "email"             : ["notEmpty"],
             "trial"             : [],
+            "country_id"        : ['notEmpty'],
             "terms"             : ["isTrue"],
         };
 
@@ -31690,11 +31699,22 @@ if ($('#stripekey').length > 0) {
         if (trial == 1) {
             this.data['trial'] = 'true';
         }
-
+        this.subscriptions = Acme.PubSub.subscribe({
+            'Acme.subscribe.listener' : ["update_state"]
+        });
+        this.addMenu();
     };
 
     SubscribeForm.prototype = new Acme.Form(Acme.Validators);
     SubscribeForm.constructor = SubscribeForm;
+    SubscribeForm.prototype.listeners =  {
+        "country" : function(data) {
+            this.data.country_id = data.country_id || null;
+            var validated = this.validate(['country_id']);
+            this.render();
+        }
+    };
+
     SubscribeForm.prototype.render = function(checkTerms) 
     {
         this.clearInlineErrors();
@@ -31708,10 +31728,43 @@ if ($('#stripekey').length > 0) {
         }
     };
 
+    SubscribeForm.prototype.addMenu = function(event) 
+    {
+
+        this.menu = new Acme.listMenu({
+            'parent'        : $('#countrySelect'),
+            'list'          : [ 
+                {'label': "Argentina",      'value' : 10},
+                {'label': "Australia",      'value' : 13},
+                {'label': "Barbados",       'value' : 18},
+                {'label': "Canada",         'value' : 38},
+                {'label': "France",         'value' : 75},
+                {'label': "Germany",        'value' : 57},
+                {'label': "Ireland",        'value' : 102},
+                {'label': "Italy",          'value' : 110},
+                {'label': "Jamaica",        'value' : 112},
+                {'label': "Netherlands",    'value' : 166},
+                {'label': "New Zealand",    'value' : 171},
+                {'label': "Saint Vincent and the Grenadines", 'value' : 237},
+                {'label': "Spain",          'value' : 68},
+                {'label': "Sweden",         'value' : 197},
+                {'label': "Switzerland",    'value' : 43},
+                {'label': "Trinidad and Tobago", 'value' : 226},
+                {'label': "UK",             'value' : 77},
+                {'label': "US",             'value' : 233},
+                {'label': "Other",          'value' : -1},
+
+            ],
+            'defaultSelect' : {"label": 'Select Country'},
+            'name'          : 'country_id',
+            'key'           : 'country_id',
+            'allowClear'    : true,
+            'callback'      : this.listeners.country.bind(this),
+        }).init().render();
+    };
 
     SubscribeForm.prototype.submit = function(event) 
     {
-
         var self = this;
         event.preventDefault();
         var validated = self.validate();
@@ -31805,45 +31858,78 @@ if ($('#stripekey').length > 0) {
 
     };
 
-    var subscribe = new SubscribeForm();
+    Acme.subscribe = new SubscribeForm();
 
-    Acme.countrySelect = function() {
-        this.container = $('#countrySelect');
-        this.subscriptions = Acme.PubSub.subscribe({
-            'Acme.countryChoice.listener' : ["update_state"]
-        });
-        this.render();
-    };
-        Acme.countrySelect.prototype = new Acme._View();
+    // Acme.countrySelect = function() {
+    //     this.container = $('#countrySelect');
+    //     this.subscriptions = Acme.PubSub.subscribe({
+    //         'Acme.countryChoice.listener' : ["update_state"]
+    //     });
+    //     this.render();
+    // };
+    //     Acme.countrySelect.prototype = new Acme._View();
     
-        Acme.countrySelect.prototype.listeners =  {
-            "regionSelect" : function(data) {
-                var data = {
-                    "region": data.regionSelect
-                }
-                Acme.PubSub.publish('update_state', data);
-            },
-            "clear" : function(data) {
-                this.menu.reset();
-            }
-        };
-        Acme.countrySelect.prototype.render = function() {
-            this.menu = new Acme.listMenu({
-                'parent'        : this.container,
-                'list'          : ['Australia', 'New Zealand', 'America', 'Canada', 'England'],
-                'defaultSelect' : {"label": 'Select Country'},
-                'name'          : 'regionSelect',
-                'key'           : 'regionSelect',
-                'allowClear'    : true
-            }).init().render();
-        };
-        Acme.countrySelect.prototype.reset = function() {
-            this.menu.reset();
-        };
+    //     Acme.countrySelect.prototype.listeners =  {
+    //         // "countrySelect" : function(data) {
+    //         //     var data = {
+    //         //         "country": data.countrySelect
+    //         //     }
+    //         //     Acme.PubSub.publish('update_state', data);
+    //         // },
+    //         "clear" : function(data) {
+    //             this.menu.reset();
+    //         }
+    //     };
+    //     Acme.countrySelect.prototype.callback = function(data) {
+    //         this.container.children().removeClass('formError');
+
+    //         var data = {
+    //             "country": data.country_id
+    //         };
+            
+    //         console.log(data);
+    //         console.log("publishing update state");
+    //         Acme.PubSub.publish('update_state', data);
+    //     },
+    //     Acme.countrySelect.prototype.render = function() {
+    //         this.menu = new Acme.listMenu({
+    //             'parent'        : this.container,
+    //             'list'          : [ 
+    //                 {'label': "Argentina",      'value' : 10},
+    //                 {'label': "Australia",      'value' : 13},
+    //                 {'label': "Barbados",       'value' : 18},
+    //                 {'label': "Canada",         'value' : 38},
+    //                 {'label': "France",         'value' : 75},
+    //                 {'label': "Germany",        'value' : 57},
+    //                 {'label': "Ireland",        'value' : 102},
+    //                 {'label': "Italy",          'value' : 110},
+    //                 {'label': "Jamaica",        'value' : 112},
+    //                 {'label': "Netherlands",    'value' : 166},
+    //                 {'label': "New Zealand",    'value' : 171},
+    //                 {'label': "Saint Vincent and the Grenadines", 'value' : 237},
+    //                 {'label': "Spain",          'value' : 68},
+    //                 {'label': "Sweden",         'value' : 197},
+    //                 {'label': "Switzerland",    'value' : 43},
+    //                 {'label': "Trinidad and Tobago", 'value' : 226},
+    //                 {'label': "UK",             'value' : 77},
+    //                 {'label': "US",             'value' : 233},
+    //                 {'label': "Other",          'value' : -1},
+
+    //             ],
+    //             'defaultSelect' : {"label": 'Select Country'},
+    //             'name'          : 'country_id',
+    //             'key'           : 'country_id',
+    //             'allowClear'    : true,
+    //             'callback'      : this.callback.bind(this),
+    //         }).init().render();
+    //     };
+    //     Acme.countrySelect.prototype.reset = function() {
+    //         this.menu.reset();
+    //     };
     
 
 
-    Acme.countryChoice = new Acme.countrySelect();
+    // Acme.countryChoice = new Acme.countrySelect();
 
 
 
@@ -32215,9 +32301,7 @@ Acme.UserProfileController.prototype.events = function ()
         if ( $('#lastname').val() == '' ) {
             errorText += "Last name cannot be empty.  <br />";
         }
-        if ( $('#username').val().length < 5 ) {
-            errorText += "Username must be at least 5 characters.  <br />";
-        }
+
         if ($('#email').val() == '' ) {
             errorText += "Email cannot be empty. ";
         }

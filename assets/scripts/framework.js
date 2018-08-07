@@ -55,6 +55,7 @@
     Acme.listen = function() {};
     Acme.listen.prototype.listener = function(topic, data)
     {
+        // console.log(listner);
         var keys = Object.keys(data);
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
@@ -406,6 +407,7 @@
         this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
+        this.callback         = config.callback      || null,
         this.menuParent       = config.parent        || {};
         this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
@@ -470,7 +472,7 @@
                 }
                 html += itemTemp({
                     'label'   :  label,
-                    'value'   :  value
+                    'value'   :  value || ''
                 });
             }
             return html;
@@ -489,13 +491,17 @@
                 var data = {};
                 data[self.key || self.name] = value;
 
-                Acme.PubSub.publish('update_state', data);
+                if (self.callback) {
+                    self.callback(data);
+                } else {
+                    Acme.PubSub.publish('update_state', data);
+                }
                 
                 if (clear) {
                     self.reset();
                 } else {
                     self.defaultItem.text(elem.text())
-                                    .addClass('Acme-pulldown__selected-item--is-active');
+                        .addClass('Acme-pulldown__selected-item--is-active');
                 }
 
                 $(self.listContainer).hide(100);
