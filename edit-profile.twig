@@ -52,7 +52,7 @@
                 <div class="col-sm-12">
                     {{this.render('layouts/partials/messages.twig') | raw}}
 
-                    <div class="profile-section profile-section--border">
+                    <div class="profile-section">
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
                         </div>
@@ -155,7 +155,7 @@
 
 
                 {% if pwstats.userManager == true %}
-
+                    <hr class="divide30 " style="border-top:1px solid #97999c;">
 
                     {% set managedUsers = _User.getPaywallManagedUsers({"limit": userLimit}) %}
                     {% set managedUserCount = managedUsers | length %}   

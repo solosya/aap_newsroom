@@ -9859,11 +9859,12 @@ input[type=radio].inline {
     text-decoration: none; }
 
 .market-hero__email {
-  text-decoration: underline;
   margin-top: 76px;
   font-size: 1.8rem;
   line-height: 1.61;
   width: 350px; }
+  .market-hero__emaila, .market-hero__email > a {
+    text-decoration: underline; }
 
 .market-header {
   text-align: center; }
@@ -10963,8 +10964,7 @@ input[type=radio].inline {
   font-size: 1.3rem; }
 
 .profile-section {
-  width: 100%;
-  padding: 18px 0px; }
+  width: 100%; }
 
 .profile-section--border {
   border-bottom: 1px solid #97999c;

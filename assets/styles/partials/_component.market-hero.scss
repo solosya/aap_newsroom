@@ -98,7 +98,9 @@
 }
 
 .market-hero__email {
-    text-decoration: underline;
+    &a,>a{
+        text-decoration: underline;
+    }
     margin-top:76px;
     font-size:rem(18);
     line-height: 1.61;
