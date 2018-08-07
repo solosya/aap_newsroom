@@ -1,23 +1,25 @@
 .card-pro-popular{
     a.card {
     	border-bottom: 1px solid #dadada;
-    	padding-bottom: 18px;
-        height: 113px;
+    	padding-bottom: 15px;
+        margin-bottom: 15px;
+        height: 128px;
         article {
+            height: 113px;
             figure {
             	display: block;
                 position: absolute;
                 height: 113px;
                 width:  141px;
-                left: 0;
+                left: 15px;
             	img {
                 	height: 100%
                 }
             }
             .content {
             	border-bottom: unset;
-            	padding-top: 12px;
-			    margin-left: 150px;	
+            	margin-left: 150px;
+                padding-bottom: 0;	
             	.category {
             		display: block;
 				    color: #e22f22;
@@ -29,7 +31,7 @@
                 	}
                 }
                 > h2 {
-                	height: 60px;
+                	height: 75px;
                     margin-bottom: 0;
                     margin-top: 10px;
                 }
@@ -44,13 +46,14 @@
             }
         }
 
-
     }
     &:first-child {
         
        
     }
     &:last-child {
-       
+        a.card{
+           border-bottom: unset;
+        }
     }
 }

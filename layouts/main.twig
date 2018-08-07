@@ -19,7 +19,9 @@
         '|^/users.*|'        : 'http://service.newsroom.co.nz',
         '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
     }, true) 
-%}    
+%} 
+{# {% set redir2 = _Page.setHttpRedirects({'|^/pro.*|': networkData.defaultBlogUrl~'/@newsroom-pro'}, false) %}
+ #}
 
 
 
@@ -99,7 +101,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=ef1483f6" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=78387fe6" type="text/css" media="all">
 
 
     {% else %}
@@ -271,6 +273,7 @@
         submenu     : submenu,
         pageURL     : pageURL,
         rooms       : rooms,
+        paywallSection : paywallSection,
     }) | raw }}
 
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
@@ -301,7 +304,8 @@
         pageClass   : blogName,
         roomInfo    : roomInfo,
         submenu     : submenu,
-        rooms       : rooms 
+        rooms       : rooms,
+        paywallSection : paywallSection
     }) | raw }}
 
 

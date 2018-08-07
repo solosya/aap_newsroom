@@ -52,7 +52,7 @@
                 <div class="col-sm-12">
                     {{this.render('layouts/partials/messages.twig') | raw}}
 
-                    <div class="profile-section profile-section--border">
+                    <div class="profile-section" style="padding-bottom:18px;">
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
                         </div>
@@ -155,7 +155,7 @@
 
 
                 {% if pwstats.userManager == true %}
-
+                    <hr class="divide30 " style="border-top:1px solid #97999c;">
 
                     {% set managedUsers = _User.getPaywallManagedUsers({"limit": userLimit}) %}
                     {% set managedUserCount = managedUsers | length %}   
@@ -182,19 +182,17 @@
 
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Plan Status</label>
-                                            <p style="cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value u-margin-left-35 u-mobile-no-margin-left">{{ pwstats['status']}}</p>
-
-                                            <div class="button-full">
+                                            <p style="cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status'] | capitalize }}</p>
+                                        </div>
+                                        <div class="account-form__inline-inputs u-margin-bottom-20 profile-section__cancel">
                                             {% if pwstats['status'] == 'cancelled' %}
-                                                {# {% if (date(pwstats['expiry_date']) > date(now) ) %} #}
-                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button u-float-right u-margin-top-25">Restart Subscription</a>
-                                                {# {% else %}  #}
-                                                <span  class="u-float-right profile-section__users-left">All data will be removed 30 days after last payment date.</span>
-                                                {# {% endif %}  #}
+                                                
+                                                <span  class="profile-section__users-left text-button--italic">Your account will be permanently deleted 30 days after the most recent payment date.</span>
+                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;margin-top:-2px;" class="text-button text-button--italic">Restart Subscription</a>
+                                                
                                             {% else %} 
-                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button u-float-right cancel-account">Cancel Subscription</a>
+                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button profile-section__cancel-account">Cancel Subscription</a>
                                             {% endif %} 
-                                            </div>
                                         </div>
 
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
@@ -232,7 +230,7 @@
 
                             </div>
 
-                            <hr class="divide" style="border-top:1px solid #97999c;">
+                            <hr class="divide30" style="border-top:1px solid #97999c;">
 
 
                             <div class='update-card' style="overflow:auto">
@@ -255,7 +253,7 @@
                                 </div>
                             </div>
 
-                            <hr class="divide " style="border-top:1px solid #97999c;">
+                            <hr class="divide30" style="border-top:1px solid #97999c;">
 
 
 
@@ -266,7 +264,7 @@
                             <div class="plans">
 
                             {% for plan in plans %}
-                                {% if plan.guid != pwstats['plan_guid'] or (pwstats['status'] != 'paid' and pwstats['status'] != 'trial') %}
+                                {# {% if pwstats['status'] != 'paid' and pwstats['status'] != 'trial' %} #}
                                 
                                 {% set uc = plan.user_count + 1 %}
                                 {% set val = plan.plan_value / 100 %}
@@ -275,7 +273,7 @@
                                 {% endif %}
 
 
-                                <div class="j-setplan plans__item" style="cursor:hand; cursor:pointer;">
+                                <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan {% endif %}plans__item" style="cursor:hand; cursor:pointer;{% if plan.guid == pwstats['plan_guid'] %}background-color: rgba(216,216,216,1);{% endif %}">
                                     <h3 class="plans__name">{{plan.name}}</h3>
                                     <p class="plans__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
                                     <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
@@ -291,13 +289,13 @@
                                     <input type="hidden" id="expdate"       value="{{ pwstats['expiry_date']}}">
                                     <input type="hidden" id="_csrf"         value="{{_AppHelper.getCsrfToken()}}" /> 
                                 </div>
-                                {% endif %}
+                                {# {% endif %} #}
                             {% endfor %}
                             </div>
                         </div>
                     </div>
 
-                    <hr class="divide " style="border-top:1px solid #97999c;">
+                    <hr class="divide30 " style="border-top:1px solid #97999c;">
 
 
                     <div class="profile-section">
