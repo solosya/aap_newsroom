@@ -273,7 +273,7 @@
                                 {% endif %}
 
 
-                                <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan {% else %}plans__current{% endif %}plans__item" style="cursor:hand; cursor:pointer;">
+                                <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan{% else %}plans__current{% endif %} plans__item" style="cursor:hand; cursor:pointer;">
                                     <h3 class="plans__name">{{plan.name}}</h3>
                                     <p class="plans__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
                                     <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
