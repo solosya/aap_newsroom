@@ -233,7 +233,9 @@
         }
 
         .section-right{
-            padding-top:10px;
+            @media #{$desktop-up} {
+                margin-top: -15px;
+            }
             @media screen and (min-width: $header-break){
                 padding-left: 0;
                 // padding-right: 0;
