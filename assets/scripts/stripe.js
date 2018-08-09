@@ -131,25 +131,25 @@ if ($('#stripekey').length > 0) {
 
                 formhandler(self.data, '/auth/paywall-signup').then(function() {
 
-                    // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-                    //     var subscribeData = {
-                    //         "EMAIL": self.data['email'], 
-                    //         "FNAME": self.data['firstname'],
-                    //         "LNAME": self.data['lastname'],
-                    //     };
-                    //     if (self.data["group[1149][1]"]) {
-                    //         subscribeData["group[1149][1]"] = 1;
-                    //     }
-                    //     if (self.data["group[1149][2]"]) {
-                    //         subscribeData["group[1149][2]"] = 2;
-                    //     }
+                    if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                        var subscribeData = {
+                            "EMAIL": self.data['email'], 
+                            "FNAME": self.data['firstname'],
+                            "LNAME": self.data['lastname'],
+                        };
+                        if (self.data["group[1149][1]"]) {
+                            subscribeData["group[1149][1]"] = 1;
+                        }
+                        if (self.data["group[1149][2]"]) {
+                            subscribeData["group[1149][2]"] = 2;
+                        }
 
-                    //     Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                    //         .then(function(r) {
-                    //             console.log(r);
-                    //         });                        
-                    // }
-                    // window.location.href = location.origin + '/auth/thank-you';
+                        Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                            .then(function(r) {
+                                console.log(r);
+                            });                        
+                    }
+                    window.location.href = location.origin + '/auth/thank-you';
                 });
             }
         });    
@@ -237,9 +237,14 @@ if ($('#stripekey').length > 0) {
 
         udform.addEventListener('submit', function(event) {
             event.preventDefault();
-             $('#card-errors').text('');
+            modal.render("spinner", "Your request is being processed.");
+
+            $('#card-errors').text('');
+            
             stripe.createToken(card).then(function(result) {
                 if (result.error) {
+                    modal.closeWindow();
+
                     // Inform the user if there was an error
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
@@ -247,7 +252,10 @@ if ($('#stripekey').length > 0) {
                     // Send the token to your server
 
                     formdata = {"stripetoken":result.token.id}
-                    formhandler(formdata, '/user/update-payment-details');
+                    formhandler(formdata, '/user/update-payment-details').then(function() {
+                        modal.closeWindow();
+                        location.reload();
+                    });
                 }
             });
         });

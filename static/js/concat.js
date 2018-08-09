@@ -31697,21 +31697,11 @@ if ($('#stripekey').length > 0) {
         if (trial == 1) {
             this.data['trial'] = 'true';
         }
-        // this.subscriptions = Acme.PubSub.subscribe({
-        //     'Acme.subscribe.listener' : ["update_state"]
-        // });
 
     };
 
     SubscribeForm.prototype = new Acme.Form(Acme.Validators);
     SubscribeForm.constructor = SubscribeForm;
-    // SubscribeForm.prototype.listeners =  {
-    //     "country" : function(data) {
-    //         this.data.country_id = data.country_id || null;
-    //         var validated = this.validate(['country_id']);
-    //         this.render();
-    //     }
-    // };
 
     SubscribeForm.prototype.render = function(checkTerms) 
     {
@@ -31726,40 +31716,7 @@ if ($('#stripekey').length > 0) {
         }
     };
 
-    SubscribeForm.prototype.addMenu = function(event) 
-    {
 
-        // this.menu = new Acme.listMenu({
-        //     'parent'        : $('#countrySelect'),
-        //     'list'          : [ 
-        //         {'label': "Argentina",      'value' : 10},
-        //         {'label': "Australia",      'value' : 13},
-        //         {'label': "Barbados",       'value' : 18},
-        //         {'label': "Canada",         'value' : 38},
-        //         {'label': "France",         'value' : 75},
-        //         {'label': "Germany",        'value' : 57},
-        //         {'label': "Ireland",        'value' : 102},
-        //         {'label': "Italy",          'value' : 110},
-        //         {'label': "Jamaica",        'value' : 112},
-        //         {'label': "Netherlands",    'value' : 166},
-        //         {'label': "New Zealand",    'value' : 171},
-        //         {'label': "Saint Vincent and the Grenadines", 'value' : 237},
-        //         {'label': "Spain",          'value' : 68},
-        //         {'label': "Sweden",         'value' : 197},
-        //         {'label': "Switzerland",    'value' : 43},
-        //         {'label': "Trinidad and Tobago", 'value' : 226},
-        //         {'label': "UK",             'value' : 77},
-        //         {'label': "US",             'value' : 233},
-        //         {'label': "Other",          'value' : -1},
-
-        //     ],
-        //     'defaultSelect' : {"label": 'Select Country'},
-        //     'name'          : 'country_id',
-        //     'key'           : 'country_id',
-        //     'allowClear'    : true,
-        //     'callback'      : this.listeners.country.bind(this),
-        // }).init().render();
-    };
 
     SubscribeForm.prototype.submit = function(event) 
     {
@@ -31791,25 +31748,25 @@ if ($('#stripekey').length > 0) {
 
                 formhandler(self.data, '/auth/paywall-signup').then(function() {
 
-                    // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-                    //     var subscribeData = {
-                    //         "EMAIL": self.data['email'], 
-                    //         "FNAME": self.data['firstname'],
-                    //         "LNAME": self.data['lastname'],
-                    //     };
-                    //     if (self.data["group[1149][1]"]) {
-                    //         subscribeData["group[1149][1]"] = 1;
-                    //     }
-                    //     if (self.data["group[1149][2]"]) {
-                    //         subscribeData["group[1149][2]"] = 2;
-                    //     }
+                    if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                        var subscribeData = {
+                            "EMAIL": self.data['email'], 
+                            "FNAME": self.data['firstname'],
+                            "LNAME": self.data['lastname'],
+                        };
+                        if (self.data["group[1149][1]"]) {
+                            subscribeData["group[1149][1]"] = 1;
+                        }
+                        if (self.data["group[1149][2]"]) {
+                            subscribeData["group[1149][2]"] = 2;
+                        }
 
-                    //     Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                    //         .then(function(r) {
-                    //             console.log(r);
-                    //         });                        
-                    // }
-                    // window.location.href = location.origin + '/auth/thank-you';
+                        Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                            .then(function(r) {
+                                console.log(r);
+                            });                        
+                    }
+                    window.location.href = location.origin + '/auth/thank-you';
                 });
             }
         });    
@@ -31897,9 +31854,14 @@ if ($('#stripekey').length > 0) {
 
         udform.addEventListener('submit', function(event) {
             event.preventDefault();
-             $('#card-errors').text('');
+            modal.render("spinner", "Your request is being processed.");
+
+            $('#card-errors').text('');
+            
             stripe.createToken(card).then(function(result) {
                 if (result.error) {
+                    modal.closeWindow();
+
                     // Inform the user if there was an error
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
@@ -31907,7 +31869,10 @@ if ($('#stripekey').length > 0) {
                     // Send the token to your server
 
                     formdata = {"stripetoken":result.token.id}
-                    formhandler(formdata, '/user/update-payment-details');
+                    formhandler(formdata, '/user/update-payment-details').then(function() {
+                        modal.closeWindow();
+                        location.reload();
+                    });
                 }
             });
         });
