@@ -1,4 +1,4 @@
-<div id="pp-banner" class="hidden-print"></div>
+<div id="pp-banner" class="hidden-print u-desktop-margin-bottom-20"></div>
 
 {% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
     {% set paywallSection = true %}
@@ -31,6 +31,7 @@
 
                 <div class="secondary-menu">
                     <ul>
+                        <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
                         <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
                     </ul>
@@ -67,7 +68,7 @@
 
 
         <div class="site-branding-bottom row">
-            <div class="section-left col-md-6 col-sm-8">
+            <div class="section-left col-md-5 col-sm-8">
                 <div class="logo header-logos pull-left">
                     
                     {% if paywallSection %}
@@ -95,7 +96,7 @@
                 </div>
             </div><!--section-left-->
 
-            <div class="section-right col-md-6 col-sm-4">
+            <div class="section-right col-md-7 col-sm-4">
                 <nav class="sb-custom-menu">
                     <a href="#" class="menu-mobile"></a>
                     
@@ -195,7 +196,7 @@
         </div><!-- .site-branding-bottom -->
 
         <div class="row visible-sm-block visible-md-block visible-lg-block">
-            <div class="col-sm-12 header-signin u-margin-top-10">
+            <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
                     {% set user = _User.getUser() %}
                     {% if (userData.status == 'trial') %}
