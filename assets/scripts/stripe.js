@@ -80,21 +80,11 @@ if ($('#stripekey').length > 0) {
         if (trial == 1) {
             this.data['trial'] = 'true';
         }
-        // this.subscriptions = Acme.PubSub.subscribe({
-        //     'Acme.subscribe.listener' : ["update_state"]
-        // });
 
     };
 
     SubscribeForm.prototype = new Acme.Form(Acme.Validators);
     SubscribeForm.constructor = SubscribeForm;
-    // SubscribeForm.prototype.listeners =  {
-    //     "country" : function(data) {
-    //         this.data.country_id = data.country_id || null;
-    //         var validated = this.validate(['country_id']);
-    //         this.render();
-    //     }
-    // };
 
     SubscribeForm.prototype.render = function(checkTerms) 
     {
@@ -109,40 +99,7 @@ if ($('#stripekey').length > 0) {
         }
     };
 
-    SubscribeForm.prototype.addMenu = function(event) 
-    {
 
-        // this.menu = new Acme.listMenu({
-        //     'parent'        : $('#countrySelect'),
-        //     'list'          : [ 
-        //         {'label': "Argentina",      'value' : 10},
-        //         {'label': "Australia",      'value' : 13},
-        //         {'label': "Barbados",       'value' : 18},
-        //         {'label': "Canada",         'value' : 38},
-        //         {'label': "France",         'value' : 75},
-        //         {'label': "Germany",        'value' : 57},
-        //         {'label': "Ireland",        'value' : 102},
-        //         {'label': "Italy",          'value' : 110},
-        //         {'label': "Jamaica",        'value' : 112},
-        //         {'label': "Netherlands",    'value' : 166},
-        //         {'label': "New Zealand",    'value' : 171},
-        //         {'label': "Saint Vincent and the Grenadines", 'value' : 237},
-        //         {'label': "Spain",          'value' : 68},
-        //         {'label': "Sweden",         'value' : 197},
-        //         {'label': "Switzerland",    'value' : 43},
-        //         {'label': "Trinidad and Tobago", 'value' : 226},
-        //         {'label': "UK",             'value' : 77},
-        //         {'label': "US",             'value' : 233},
-        //         {'label': "Other",          'value' : -1},
-
-        //     ],
-        //     'defaultSelect' : {"label": 'Select Country'},
-        //     'name'          : 'country_id',
-        //     'key'           : 'country_id',
-        //     'allowClear'    : true,
-        //     'callback'      : this.listeners.country.bind(this),
-        // }).init().render();
-    };
 
     SubscribeForm.prototype.submit = function(event) 
     {
