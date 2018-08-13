@@ -31746,27 +31746,29 @@ if ($('#stripekey').length > 0) {
                 self.data['planid'] = $('#planid').val();
                 self.data['redirect'] = false;
 
-                formhandler(self.data, '/auth/paywall-signup').then(function() {
+                formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                    if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-                        var subscribeData = {
-                            "EMAIL": self.data['email'], 
-                            "FNAME": self.data['firstname'],
-                            "LNAME": self.data['lastname'],
-                        };
-                        if (self.data["group[1149][1]"]) {
-                            subscribeData["group[1149][1]"] = 1;
+                    if (response.success == 1) {
+                        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                            var subscribeData = {
+                                "EMAIL": self.data['email'], 
+                                "FNAME": self.data['firstname'],
+                                "LNAME": self.data['lastname'],
+                            };
+                            if (self.data["group[1149][1]"]) {
+                                subscribeData["group[1149][1]"] = 1;
+                            }
+                            if (self.data["group[1149][2]"]) {
+                                subscribeData["group[1149][2]"] = 2;
+                            }
+    
+                            Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                                .then(function(r) {
+                                    console.log(r);
+                                });                        
                         }
-                        if (self.data["group[1149][2]"]) {
-                            subscribeData["group[1149][2]"] = 2;
-                        }
-
-                        Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                            .then(function(r) {
-                                console.log(r);
-                            });                        
+                        window.location.href = location.origin + '/auth/thank-you';
                     }
-                    window.location.href = location.origin + '/auth/thank-you';
                 });
             }
         });    

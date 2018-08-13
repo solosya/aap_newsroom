@@ -302,7 +302,8 @@
 
                     <div class="profile-section">
 
-                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{totalPlanUserCount -1}} used.</span></p>
+                        {% set usersLeft = totalPlanUserCount > 0 ? totalPlanUserCount -1 : totalPlanUserCount %}
+                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{ usersLeft }} used.</span></p>
                             <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUserCount + 1 >= totalPlanUserCount %} hidden{% endif %}">+ Add users</a>
                         </div>
 
@@ -317,7 +318,6 @@
                                         <button class="managed-users-search__button managed-users-search__button-clear" type="submit" id="user-search-clear">
                                             Clear search
                                         </button>
-
                                     </div>
                                 </form>
                             </div>
