@@ -157,9 +157,11 @@
                 {% if pwstats.userManager == true %}
                     <hr class="divide30 " style="border-top:1px solid #97999c;">
 
-                    {% set managedUsers = _User.getPaywallManagedUsers({"limit": userLimit}) %}
-                    {% set managedUserCount = managedUsers | length %}   
-                    
+                    {% set totalPlanUserCount   = pwstats['user_count'] %}
+                    {% set managedUsers         = _User.getPaywallManagedUsers({"limit": userLimit}) %}
+                    {% set managedUserCount     = managedUsers | length %}   
+                    {% set remainingUsers       = totalPlanUserCount - managedUserCount %}
+
                     <div class="profile-section">
                        
                        <div class="profile-section__header">
@@ -197,7 +199,7 @@
 
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="totalusers">My Users</label>
-                                            <p type="text" id="totalusers" class="account-form__value">{{ pwstats['user_count'] - managedUsers|length }}</p>
+                                            <p type="text" id="totalusers" class="account-form__value">{{ remainingUsers }}</p>
                                         </div>                            
                                        
 
@@ -266,26 +268,26 @@
                             {% for plan in plans %}
                                 {# {% if pwstats['status'] != 'paid' and pwstats['status'] != 'trial' %} #}
                                 
-                                {% set uc = plan.user_count + 1 %}
-                                {% set val = plan.plan_value / 100 %}
-                                {% if val == 19.89 %}
-                                    {% set val = 19.90 %}
+                                {% set userCount = plan.user_count %}
+                                {% set planCost = plan.plan_value / 100 %}
+                                {% if planCost == 19.89 %}
+                                    {% set planCost = 19.90 %}
                                 {% endif %}
 
 
                                 <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan{% else %}plans__current{% endif %} plans__item" style="cursor:hand; cursor:pointer;">
                                     <h3 class="plans__name">{{plan.name}}</h3>
-                                    <p class="plans__usercount">{{uc|replace({ '10001': '20+' })}} Users</p>
-                                    <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{val|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
+                                    <p class="plans__usercount">{{userCount}} Users</p>
+                                    <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{planCost|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
                                                             per {{plan.period}}</p>
 
                                     <input type="hidden" id="planid"        value="{{plan.guid}}">
-                                    <input type="hidden" id="planusercount" value="{{uc}}">
+                                    <input type="hidden" id="planusercount" value="{{userCount}}">
                                     <input type="hidden" id="plancost"      value="{{plan.plan_value}}">
                                     <input type="hidden" id="planperiod"    value="{{plan.period}}">
                                     <input type="hidden" id="currentcost"   value="{{pwstats['plan_value']}}">
                                     <input type="hidden" id="currentperiod" value="{{pwstats['period']}}">
-                                    <input type="hidden" id="currentusers"  value="{{managedUsers|length}}">
+                                    <input type="hidden" id="currentusers"  value="{{managedUserCount}}">
                                     <input type="hidden" id="expdate"       value="{{ pwstats['expiry_date']}}">
                                     <input type="hidden" id="_csrf"         value="{{_AppHelper.getCsrfToken()}}" /> 
                                 </div>
@@ -299,12 +301,12 @@
 
 
                     <div class="profile-section">
-                        <div class="profile-section__header">
-                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUsers|length}} of {{pwstats['user_count']}} used.</span></p>
-                            <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUsers|length >= pwstats['user_count'] %} hidden{% endif %}">+ Add users</a>
+
+                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{totalPlanUserCount -1}} used.</span></p>
+                            <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUserCount + 1 >= totalPlanUserCount %} hidden{% endif %}">+ Add users</a>
                         </div>
 
-                        {% if pwstats['user_count'] > userLimit and managedUserCount == userLimit %} 
+                        {% if totalPlanUserCount > userLimit and managedUserCount == userLimit %} 
                             <div id="menu-search" class="managed-users-search u-margin-bottom-20">
                                 <form method="get" id="managed-user-search" action="">
                                     <div style="position:relative">
@@ -330,7 +332,7 @@
                             <div id="user_profile" class="col-md-12">
                                 
                                 <ul id="mangedUsers" class="managed-users">
-                                {% if managedUsers|length == 0 %} 
+                                {% if managedUserCount == 0 %} 
                                     <div id="nousers" class="empty-listing">
                                         <p>You have no current users.</p>
                                     </div>
@@ -357,7 +359,7 @@
                                 </ul>
                             </div>
                             
-                            {% if pwstats['user_count'] > userLimit and managedUserCount == userLimit %} 
+                            {% if totalPlanUserCount > userLimit and managedUserCount == userLimit %} 
 
                                 <br style="clear:both" />
                                 <div class="col-md-12">

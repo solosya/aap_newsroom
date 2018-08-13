@@ -29481,7 +29481,7 @@ Acme.templates.pulldown =
 
 
 Acme.templates.create_user = 
-'<div class="" style="height:100%; overflow:auto"> \
+'<div class="" style="height:100%; overflow:auto; position:relative"> \
     <div class="user-editor__input-container u-float-left"> \
         <input type="text" id="newuserfirstname" class="j-firstname account-form__input" value="" placeholder="{{firstname}}"> \
     </div> \
@@ -29493,10 +29493,10 @@ Acme.templates.create_user =
         <p id="userError" class="user-editor__error"></p> \
     </div> \
     <div id="user-editor-buttons" class="user-editor__input-container user-editor__buttons u-float-right"> \
-        <div id="user-editor__spinner" class="user-editor__spinner"></div> \
         <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
         <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
     </div> \
+    <div id="user-editor__spinner" class="user-editor__spinner"></div> \
 </div>';
 
 
@@ -32179,7 +32179,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('#profile-form').submit( function(e){
-        // NOTE this form also uses validation from the strip subscribe form
+        // NOTE this form also uses validation from the stripe subscribe form
         // purely by accident as the event listeners in THAT form are generic.
 
         // Will need to separate if it becomes a problem but for now it works

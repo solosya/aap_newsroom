@@ -9610,6 +9610,9 @@ input[type=radio].inline {
   border-radius: 6px;
   border: 1px solid #E5E5E5;
   font-size: 1.5rem; }
+  .account-form__input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=search]:focus {
+    outline: none;
+    border: 1px solid #97999c; }
   @media screen and (max-width: 767px) {
     .account-form__input[type=text], input[type=password], input[type=email], input[type=search] {
       font-size: 1.2rem; } }
@@ -10899,8 +10902,8 @@ input[type=radio].inline {
 
 .user-editor__spinner {
   position: absolute;
-  top: 60px;
-  right: 150px; }
+  top: 50%;
+  right: 50%; }
 
 .user-editor__input-container {
   width: 48%;

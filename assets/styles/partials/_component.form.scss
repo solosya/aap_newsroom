@@ -71,7 +71,11 @@ input[type=radio] {
     border-radius:6px;
     border: 1px solid color(lightergrey);
     font-size: rem(15);
-    
+    &:focus {
+        outline:none;
+        border: 1px solid color(lightgrey);
+
+    }
     @media #{$mobile} {
         font-size: rem(12);
     }

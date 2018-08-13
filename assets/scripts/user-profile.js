@@ -174,7 +174,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('#profile-form').submit( function(e){
-        // NOTE this form also uses validation from the strip subscribe form
+        // NOTE this form also uses validation from the stripe subscribe form
         // purely by accident as the event listeners in THAT form are generic.
 
         // Will need to separate if it becomes a problem but for now it works
