@@ -9796,8 +9796,9 @@ input[type=radio].inline {
       background-image: url("../images/marketing-hero-mobile2.png");
       background-position: top; } }
 
-.market-hero--thanks {
-  height: 785px; }
+@media screen and (max-width: 1194px) {
+  .market-hero--thanks {
+    height: 785px; } }
 
 .market-hero__content {
   padding-top: 149px;
