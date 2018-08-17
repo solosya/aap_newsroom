@@ -6927,10 +6927,8 @@ p.foundingpartners {
 
 .sponsor-logos {
   width: 100%;
-  text-align: center; }
-  @media screen and (max-width: 767px) {
-    .sponsor-logos {
-      margin-bottom: 35px; } }
+  text-align: center;
+  margin-bottom: 35px; }
   .sponsor-logos ul {
     margin: 0 auto; }
     @media screen and (max-width: 620px) {
@@ -9796,8 +9794,9 @@ input[type=radio].inline {
       background-image: url("../images/marketing-hero-mobile2.png");
       background-position: top; } }
 
-.market-hero--thanks {
-  height: 785px; }
+@media screen and (min-width: 992px) {
+  .market-hero--thanks {
+    height: 785px; } }
 
 .market-hero__content {
   padding-top: 149px;
@@ -11365,10 +11364,11 @@ input[type=radio].inline {
     content: '';
     display: inline-block;
     margin-right: 17px;
-    margin-bottom: -3px;
-    width: 17px;
-    height: 15px;
-    background-image: url("../icons/account-white.png");
+    margin-bottom: -5px;
+    width: 27px;
+    height: 27px;
+    margin-top: -5px;
+    background-image: url("../icons/account-circle.png");
     background-size: cover;
     background-repeat: no-repeat; }
 

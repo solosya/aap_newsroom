@@ -20,7 +20,9 @@
 }   
 
 .market-hero--thanks {
-    height:785px;
+    @media #{$desktop-up} {
+        height:785px;
+    }
 } 
 .market-hero__content {
     padding-top:149px;
