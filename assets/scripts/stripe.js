@@ -131,6 +131,7 @@ if ($('#stripekey').length > 0) {
 
                 formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
+                    
                     if (response.success == 1) {
                         if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
                             var subscribeData = {
@@ -150,8 +151,10 @@ if ($('#stripekey').length > 0) {
                                     console.log(r);
                                 });                        
                         }
+
                         window.location.href = location.origin + '/auth/thank-you';
                     }
+                    
                 });
             }
         });    

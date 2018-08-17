@@ -5,11 +5,13 @@
 
 {% set plan = false %}
 {% set trial = false %}
+{% set trialPeriod = '14' %} {# 14 days is default in the platform #}
 
 {% set url = _AppHelper.getParsedUrl() %}
 {% set params = url['query'] %}
-{% for k, p in params %}
 
+{% for k, p in params %}
+	{# Match the plan from the url #}
 	{% if k == 'plan' %}
 		{% for pl in plans %}
 			{% if pl.guid == p %}
@@ -18,9 +20,11 @@
 		{% endfor %}
 	{% endif %}
 
+	{# If trial asked for in url, make sure it's set for the plan #}
 	{% if k == 'trial' %}
-		{% if p == 'true' %}
+		{% if p == 'true' and plan['trial_status'] == '1' %}
 			{% set trial = true %}
+			{% set trialPeriod = plan['trial_period'] %}
 		{% endif %}
 	{% endif %}
 
@@ -29,7 +33,7 @@
 
 <main id="main" class="" role="main">
 	<div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
-	{# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
+
 
 	{# <section class="market-hero u-margin-top-40 u-margin-bottom-70">
 		<div class="market-hero__content container-fluid">
@@ -67,10 +71,10 @@
 						<div class="trial">
 
 							{% if trial %}
-								<h2 class="trial__header u-margin-top-15">Start your 28-day free trial now</h2>
+								<h2 class="trial__header u-margin-top-15">Start your {{trialPeriod}}-day free trial now</h2>
 
 								<p class="trial__text">
-									The free trial requires registration with a valid credit card. <span>After 28 days, 
+									The free trial requires registration with a valid credit card. <span>After {{trialPeriod}} days, 
 									your credit card will be charged for your chosen subscription</span> unless you cancel 
 									not less than two days before the end of the free period. Subscriptions are billed 
 									monthly.

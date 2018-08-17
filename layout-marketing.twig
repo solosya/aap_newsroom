@@ -115,10 +115,12 @@
 								</p>
 							</a>
 							<br class="visible-xs-block" />
-							<!-- trial button. this will probably be turned off again at some point -->
-							<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
-								<p class="centerBlock _btn _btn--black _btn__subscribe subscriptionPlan__button">START 28-DAY FREE TRIAL</p>
-							</a>
+							
+							{% if plan.trial_status == "1" %}
+								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
+									<p class="centerBlock _btn _btn--black _btn__subscribe subscriptionPlan__button">START {{plan.trial_period}}-DAY FREE TRIAL</p>
+								</a>
+							{% endif %}
 						</div>
 					</div>
 					

@@ -112,7 +112,7 @@
                                 <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 10px 20px;">Hi, {{user.firstname}} </a></li>
                                 <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
                             {% else %}
-                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
+                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@newsroom-pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
                         </ul>
                             <div id="menu-search" class="secondary-menu menu-search">
@@ -208,7 +208,7 @@
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a>
                 {% else %}
                     <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
-                    <a href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                    <a href="{{networkData.defaultBlogUrl}}/@newsroom-pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
         </div>
