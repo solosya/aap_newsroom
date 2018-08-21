@@ -29504,11 +29504,10 @@ Acme.templates.edit_user =
 '<div class="" style="height:100%; overflow:auto"> \
     <div class="user-editor__input-container u-float-left"> \
         <input type="text" id="newuserfirstname" class="j-firstname user-editor__input" value="{{firstname}}" placeholder="First name"> \
-        <input type="text" id="newuserusername" class="j-username user-editor__input" value="{{username}}" placeholder="Username (between 5 and 15 characters)"> \
+        <input type="text" id="newuserusername" class="j-username user-editor__input" value="{{username}}" placeholder="Email address"> \
         </div> \
     <div class="user-editor__input-container u-float-right"> \
         <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="{{lastname}}" placeholder="Last name"> \
-        <input type="text" id="newuseruseremail" class="j-email user-editor__input" value="{{useremail}}" placeholder="Email"> \
     </div> \
     <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
         <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
@@ -29525,8 +29524,7 @@ Acme.templates.managed_user =
     <p class="j-username userdetails__username">{{username}}</p> \
 </div>\
 <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
-<a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
-<p class="j-email  userdetails__email u-float-right">{{useremail}}</p>';
+<a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>';
 
 
 Acme.managed_user = 
@@ -29547,7 +29545,7 @@ Acme.templates.signinFormTmpl =
     // <script> tag possible ios safari login fix
     '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
         \
-        <input id="loginName" class="" type="text" name="username" placeholder="Username or email" value="" /> \
+        <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
         <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
         \
         <div class="remember"> \
@@ -29555,7 +29553,7 @@ Acme.templates.signinFormTmpl =
         </div> \
         \
         <div class="message active hide"> \
-            <div class="login-form__error_text">Invalid Username or Password</div> \
+            <div class="login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \
         <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
@@ -31748,6 +31746,7 @@ if ($('#stripekey').length > 0) {
 
                 formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
+                    
                     if (response.success == 1) {
                         if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
                             var subscribeData = {
@@ -31767,8 +31766,10 @@ if ($('#stripekey').length > 0) {
                                     console.log(r);
                                 });                        
                         }
+
                         window.location.href = location.origin + '/auth/thank-you';
                     }
+                    
                 });
             }
         });    
