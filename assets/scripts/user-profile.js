@@ -280,7 +280,7 @@ Acme.UserProfileController.prototype.events = function ()
 
             $.ajax({
                 type: 'post',
-                url: _appJsConfig.baseHttpPath + '/user/create-paywall-managed-user',
+                url: _appJsConfig.appHostName + '/user/create-paywall-managed-user',
                 dataType: 'json',
                 data: requestData,
                 success: function (data, textStatus, jqXHR) {
