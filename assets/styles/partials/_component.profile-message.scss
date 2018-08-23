@@ -3,17 +3,22 @@
     padding:5px 10px;
     background-color:color(message);
     font-size:rem(13);
-    li {
-        font-size:inherit;
-        margin:0;
-        color:color(red);
-        display:inline-block;
-        text-transform: uppercase;
-        font-weight:600;
-        margin-left: 30px;
-    }
+    max-width: 65%;
     >div {
         margin-top: -17px;
+        >ul {
+            padding: 0;
+            margin: 0; 
+            >li {
+                font-size:inherit;
+                margin:0;
+                color:color(red);
+                display:inline-block;
+                text-transform: uppercase;
+                font-weight:400;
+                margin-left: 30px;
+            }
+        }
     }
 }
 
@@ -34,6 +39,6 @@
     color:color(red);
     display:inline-block;
     text-transform: uppercase;
-    font-weight:600;
+    font-weight:400;
     margin-left: 30px;
 }

@@ -11515,17 +11515,21 @@ input[type=radio].inline {
   display: inline-block;
   padding: 5px 10px;
   background-color: #dadada;
-  font-size: 1.3rem; }
-  .profile-message li {
-    font-size: inherit;
-    margin: 0;
-    color: #e22f22;
-    display: inline-block;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-left: 30px; }
+  font-size: 1.3rem;
+  max-width: 65%; }
   .profile-message > div {
     margin-top: -17px; }
+    .profile-message > div > ul {
+      padding: 0;
+      margin: 0; }
+      .profile-message > div > ul > li {
+        font-size: inherit;
+        margin: 0;
+        color: #e22f22;
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-left: 30px; }
 
 .profile-message__close {
   font-size: inherit;
@@ -11544,7 +11548,7 @@ input[type=radio].inline {
   color: #e22f22;
   display: inline-block;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 30px; }
 
 .footer-logo__reversed {
