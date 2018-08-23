@@ -32246,7 +32246,7 @@ Acme.UserProfileController.prototype.events = function ()
             useremail: "Email",
         };
 
-        var html = '<li id="newUser" class="user-editor">' + userTemp(data) + '</li>';
+        var html = '<li id="newUser" class="user-editor user-editor__add"><p class="profile-section__heading">Add User</p>' + userTemp(data) + '</li>';
 
         $('#createManagedUser').append(html);
         $('#newuserfirstname').focus();
