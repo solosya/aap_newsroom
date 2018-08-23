@@ -300,7 +300,7 @@
                     <hr class="divide30 " style="border-top:1px solid #97999c;">
 
 
-                    <div class="profile-section">
+                    <div class="profile-section profile-section__managed-header">
 
                         {% set usersLeft = totalPlanUserCount > 0 ? totalPlanUserCount -1 : totalPlanUserCount %}
                             <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{ usersLeft }} used.</span></p>
@@ -323,9 +323,9 @@
                             </div>
                         {% endif %}
 
+                        <div id="createManagedUser"></div>
 
-
-
+                        <a id="createUserErrorMessage"></a>
 
 
                         <div class="row">
@@ -377,7 +377,7 @@
 
                             {% endif %}
 
-                            <a id="createUserErrorMessage"></a>
+                            
                         </div>
 
                     </div>

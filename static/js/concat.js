@@ -32248,7 +32248,7 @@ Acme.UserProfileController.prototype.events = function ()
 
         var html = '<li id="newUser" class="user-editor">' + userTemp(data) + '</li>';
 
-        $('#mangedUsers').append(html);
+        $('#createManagedUser').append(html);
         $('#newuserfirstname').focus();
         $('#addManagedUser').addClass('hidden');
         $('#nousers').addClass('hidden');
