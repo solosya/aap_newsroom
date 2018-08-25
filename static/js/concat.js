@@ -31254,6 +31254,30 @@ $('document').ready(function() {
 
 
 
+    $('#batch-add').on('click', function(e) {
+        console.log('adding batch users');
+        var input = $('#batch-user-input').val();
+        var send = JSON.parse( input );
+        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
+        return $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: send
+        }).done(function(r) {
+            console.log(r);
+            alert("Users added");
+
+        }).fail(function(r) {
+            console.log(r);
+            alert(r.responseText);
+        });        
+
+    });
+
+
+
+
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
