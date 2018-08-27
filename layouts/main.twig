@@ -25,6 +25,7 @@
 
 {% set showPaywall = false %}
 {% set paywallSection = false %}
+{% set isAdmin = _User.isAdminUser() %}
 
 {% if blogData['additionalInfo'] is defined             and 
       blogData['additionalInfo']['paywall'] is defined  and 
@@ -42,7 +43,7 @@
         blogData['showPaywall'] == true and
         'article' not in pageClass %}
     
-        {% set showPaywall = true %}
+        {% set showPaywall = false %}
         {% set layout = "layout-marketing" %}
     
 {% endif %}
@@ -252,7 +253,7 @@
 
 
 
-<body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}">
+<body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  
