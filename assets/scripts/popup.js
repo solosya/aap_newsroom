@@ -5,7 +5,7 @@ Acme.registerPopUp = function(tokenName)
 	this.date 		= new Date();
 	this.token 		= {};
 	var self 		= this;
-	console.log('in the pop up ');
+
 	setTimeout(function() {
 		self.run();
 		self.events();

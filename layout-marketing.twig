@@ -1,0 +1,142 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+{% set plans = networkData['paywallPlans'] %}
+
+{{this.registerJs("var signin = new Acme.Signin('signinForm', '#signin');")}}
+ 
+
+<main id="main" class="site-main" role="main">
+
+
+	{# <div class="container-fluid visible-md-block visible-lg-block">
+		<section class="row">
+			<div class="col-sm-12 market-header u-margin-top-40">
+				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
+			</div>
+		</section>
+	</div> #}
+
+	<section class="market-hero u-margin-top-40">
+		<div class="market-hero__content container-fluid">
+			<div class="row">
+				<div class="col-md-5 ">
+					<h1 class="market-hero__headline">Behind the <br class="hidden-xs" />headlines</h1>
+					<h3 class="market-hero__tagline">In-depth analysis of politics <br class="hidden-xs" />and business from 99c a day</h3>
+					<a id="" href="#subscriptions" class="_btn _btn--red market-hero__button market-hero__button__subscribe">SUBSCRIBE NOW</a>
+					<a id="body_login_link" href="#subscriptions" class="_btn _btn--gray market-hero__button market-hero__button__trial" >START FREE TRIAL</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="pro-offers">
+		<div class="container-fluid">
+			<section class="row pro-offers__container">
+				<div class="col-sm-12 section-title">
+					<h1>What Newsroom Pro Offers</h1>
+				</div>
+				<div class="col-sm-4 pro-offers-card ">
+					<img class="pro-offers-card__img pro-offers-card__img__global" src="{{networkData.templatePath}}/static/images/market-global.svg">
+					<p class="pro-offers-card__p">A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</p>
+				</div>
+				<div class="col-sm-4 pro-offers-card">
+					<img class="pro-offers-card__img pro-offers-card__img__satellite" src="{{networkData.templatePath}}/static/images/market-satellite.svg">
+					<p class="pro-offers-card__p">Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</p>
+				</div>
+				<div class="col-sm-4 pro-offers-card">
+					<img class="pro-offers-card__img pro-offers-card__img__monitoring" src="{{networkData.templatePath}}/static/images/market-monitoring.svg">
+					<p class="pro-offers-card__p">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
+			</section>
+		</div>
+	</div>
+
+
+
+	<section class="row essential-news u-mobile-no-margin-bottom hidden-xs">
+		<div class="container-fluid">
+			<div class="col-sm-5 col-md-6 centerContent">
+				<img class="screenImage" src="{{networkData.templatePath}}/static/images/market-device.png"></img>
+			</div>
+			<div class="col-sm-7 col-md-5">
+				<h3><b style="color:#e22f22">Our top business journalists</b><br />  deliver NZ’s big corporate stories first.</h3>
+				<div style="width:100%;">
+					<hr class="pro-mini-border">
+				</div>
+				{# <p>
+					Corporate news, first with our dedicated team of the top business journalists in NZ
+				</p> #}
+				<p style="max-width:474px;">
+					Newsroom Pro is a subscription news service for corporations, government agencies, local councils, NGOs, and other premium clients.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<hr class="pro-dr hidden-xs">
+
+	<div class="container-fluid">
+
+
+		<a name="subscriptions"></a>
+		<section class="row subscription">
+			<div class="container-fluid">
+				<div class="col-sm-12 section-title">
+					<p>Choose the subscription that's right for you:</p>
+				</div>
+
+
+			    {% for plan in plans %}
+			    	
+					<div class="col-sm-4 col-md-3 subscriptionPlan">
+						<div class="subscriptionPlan__card">
+							{% set val = plan.plan_value / 100 %}
+							<h3 class="subscriptionPlan__name">{{plan.name}}</h3>
+							<p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
+							<p class="subscriptionPlan__price">${{val}} per {{plan.period}}</p>
+
+							<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}">
+								<p class="centerBlock _btn _btn--red _btn__subscribe subscriptionPlan__button">
+									<span>SUBSCRIBE NOW</span>
+									
+								</p>
+							</a>
+							<br class="visible-xs-block" />
+							
+							{% if plan.trial_status == "1" %}
+								<a href="{{networkData.defaultBlogUrl}}/@subscribe?plan={{plan.guid}}&amp;trial=true">
+									<p class="centerBlock _btn _btn--black _btn__subscribe subscriptionPlan__button">START {{plan.trial_period}}-DAY FREE TRIAL</p>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					
+			    {% endfor %}
+
+
+
+			</div>
+			<p class="subscribe__contact">For enterprises with 200 or more users, please <a href="mailto:bernard.hickey@newsroom.co.nz">email us</a> for a custom arrangement.</p>
+			
+
+		</section>
+
+	</div>
+
+</main>
+
+
+

@@ -1,0 +1,201 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set plans = networkData['paywallPlans'] %}
+
+
+{% set plan = false %}
+{% set trial = false %}
+{% set trialPeriod = '14' %} {# 14 days is default in the platform #}
+
+{% set url = _AppHelper.getParsedUrl() %}
+{% set params = url['query'] %}
+
+{% for k, p in params %}
+	{# Match the plan from the url #}
+	{% if k == 'plan' %}
+		{% for pl in plans %}
+			{% if pl.guid == p %}
+				{% set plan = pl %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+	{# If trial asked for in url, make sure it's set for the plan #}
+	{% if k == 'trial' %}
+		{% if p == 'true' and plan['trial_status'] == '1' %}
+			{% set trial = true %}
+			{% set trialPeriod = plan['trial_period'] %}
+		{% endif %}
+	{% endif %}
+
+{% endfor %}
+
+
+<main id="main" class="" role="main">
+	<div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
+
+
+	{# <section class="market-hero u-margin-top-40 u-margin-bottom-70">
+		<div class="market-hero__content container-fluid">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-11">
+					<h1 class="market-hero__headline">Behind the <br class="hidden-xs"/>headlines</h1>
+					<h3 class="market-hero__tagline">You’re just one step away from<br class="hidden-xs" /> reading Newsroom Pro.</h3>
+				</div>
+			</div>
+		</div>
+	</section> #}
+
+
+
+
+
+
+	<div class="container-fluid u-margin-top-40 u-mobile-margin-top-50">
+
+		<section class="row">
+
+			<div class="col-md-offset-1 col-md-7">
+				<div class="row">
+					<div class="col-md-10">
+
+
+						{% if plan == false  %}
+									<h1>You need to choose a plan from the subscriptions screen</h1>
+								</div>
+							</div>
+						</div>
+						{% else %}
+
+
+						<div class="trial">
+
+							{% if trial %}
+								<h2 class="trial__header u-margin-top-15">Start your {{trialPeriod}}-day free trial now</h2>
+
+								<p class="trial__text">
+									The free trial requires registration with a valid credit card. <span>After {{trialPeriod}} days, 
+									your credit card will be charged for your chosen subscription</span> unless you cancel 
+									not less than two days before the end of the free period. Subscriptions are billed 
+									monthly.
+								</p>
+								<p class="trial__text trial__text--last">
+							{% else %}
+								<p class="trial__text u-margin-top-15">
+							{% endif %}
+								
+								To change your account or subscription details after signup, visit the My Account section. For further 
+								information, please visit the <a href="{{networkData.defaultBlogUrl}}/faq" target="_blank">FAQ</a>.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+
+
+						<form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
+							<input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
+							<input type="hidden" class="" name="trial" id="trial" value="{{trial}}">
+			            {# {% if trial %}
+			            	<input type="checkbox" class="" onclick="return false;" value="true" id="trial" name="trial" checked> 
+			            	<label>Include 14 day trial period</label>
+			            {% endif %} #}
+
+							<p class="account-form__section-label">Your information</p>
+							{# <input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
+							<p class="account-form__explainer"><i>Username must be at least five characters long and contain no spaces or special characters</i></p> #}
+
+							<input type="email" 	class="account-form__input" name="email" 			id="email" 			value="" placeholder="Email">
+							<input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
+							<input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
+							<input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
+							<p class="account-form__explainer"><i>Passwords must be at least six characters long and contain no spaces</i></p>
+							
+							<input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
+							<input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
+							
+							{# <div id="countrySelect" class="countrySelect"></div>  #}
+
+							
+							<input type="checkbox" 	class="" name="terms" id="terms"> 
+							
+							
+							<label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__cblabel account-form__label--red"href="{{networkData.defaultBlogUrl}}/terms-of-use" target="_blank">Terms of Use</a></label><br />
+							
+							<input type="checkbox" 	class="" name="group[1149][2]" id="summary-email" checked> 
+							<label class="account-form__cblabel">Send me Bernard Hickey's <i>8 Things</i><br class="visible-xs-block" /> email each day</label><br />
+							
+{# 							<input type="checkbox" 	class="" name="group[1149][1]" id="breaking-email" checked> 
+							<label class="account-form__cblabel">Send me breaking news alerts <br class="visible-xs-block" />(on average once a month)</label><br /> #}
+						</form>
+
+						<p class="account-form__section-label u-margin-top-40 u-mobile-bigger-margins-15">Payment details</p>
+
+						<form action="/charge" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15">
+							<div class="form-row ">
+								<p class="stripe-form__p ">Please enter your credit or debit card details. </p>
+								<p class="stripe-form__p">All credit card payments are processed by Stripe. 
+									<a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a>
+								</p>
+
+								<div id="card-element" class="u-margin-top-20">
+								<!-- a Stripe Element will be inserted here. -->
+								</div>
+
+							</div>
+
+							{# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
+							<button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button">SUBSCRIBE</button>
+						
+							<!-- Used to display form errors -->
+							<div id="card-errors" class="profile-section__card-errors u-margin-bottom-100" role="alert"></div>
+
+						
+						</form>
+
+					
+					</div>			
+
+				</div>
+			</div>
+
+			<div class="col-md-3 col-sm-12 u-mobile-no-padding">
+				<div class="plan-type">
+
+					{% if plan != false %}
+						<h2 class="plan-type__header">Order Summary</h2>
+						
+						<div class="plan-type__body">
+
+							{% set val = plan.plan_value / 100 %}
+							<div class="col-md-12 col-sm-4">	
+								<h3 class="plan-type__name">{{plan.name}}</h3>
+								<p class="plan-type__users">{{plan.user_count}} Users</p>
+								<p class="plan-type__currency">${{val}} per {{plan.period}}</p>
+							</div>
+							<div class="col-md-12 col-sm-3">
+								<img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
+							</div>
+							<div class="col-md-12 col-sm-5">
+								<p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
+								<ul class="plan-type__features">
+									{{plan.description | raw }}
+								</ul>
+							</div>
+
+							<a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/@newsroom-pro#subscriptions">Change subscription</a>
+						</div>
+
+					{# 	{{ this.render('partials/_plan-'~plan~'.twig', {
+						    networkData: networkData, 
+						}) | raw }} #}
+
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+		</section>
+	</div>
+</main>

@@ -1,14 +1,36 @@
 {{ set(this, 'title', 'Signup Successful') }}
 {% set networkData = _Network.getNetworkData() %}
-<div class="login-page">
-    <div class="container">
-        <div class="tab-content">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                    <p class="helper-text"> Thank You for registering with us. Please check your inbox to verify your email address.</p>
-                    <a href="{{networkData.defaultBlogUrl}}" class="button green">Back to Home</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{% set pwstats = _User.getPaywallStats(true) %}
+
+<main id="main" class="site-main" role="main">
+
+	{# <div class="container-fluid">
+		<section class="row">
+			<div class="col-sm-12 market-header u-margin-top-40">
+				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
+			</div>
+		</section>
+	</div> #}
+
+	<section class="market-hero market-hero--thanks u-margin-top-40">
+		<div class="market-hero__content container-fluid">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-11">
+					<h1 class="market-hero__headline">Welcome</h1>
+					<h3 class="market-hero__tagline">Thank you for subscribing <br />to Newsroom Pro</h3>
+                    <a href="{{networkData.defaultBlogUrl}}\@newsroom-pro" class="_btn _btn--red u-margin-top-10">VIEW TODAY'S ARTICLES</a>
+
+                    <p class="market-hero__email">To add users or edit your subscription details, visit the <a href="{{networkData.defaultBlogUrl}}/user/edit-profile"><strong>My Account</strong></a> page. 
+                    {% if 'business' in pwstats['name'] | lower %}
+						If you would like to use our media monitoring service, please <a href="mailto:bernard.hickey@newsroom.co.nz"><strong>email Bernard Hickey</strong></a>.
+					{% endif %}
+
+                    </p><br />
+					
+
+					
+				</div>
+			</div>
+		</div>
+	</section>
+</main>

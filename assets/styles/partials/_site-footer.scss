@@ -211,9 +211,12 @@
                         display: block;
                         
                         img{
-                            height: 19px;
+                            height: 14px;
                             width: auto;
                             max-width: 100%;
+                            @media screen and (max-width: 1200px) and (min-width: 992px)  {
+                                height: 15px;
+                            }
                         }
                     }
                 }

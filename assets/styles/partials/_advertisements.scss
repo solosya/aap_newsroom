@@ -13,8 +13,8 @@
     }
 
     &.sidebar-add{
-        margin-bottom: 50px;
-        // margin-top: 50px;
+        margin-bottom: 80px;
+        margin-top: 80px;
         // text-align:center;
 
         @media screen and (max-width: $md-break){
@@ -126,12 +126,22 @@
         img{
             margin-left: auto;
             margin-right: auto;
-        }
-        
+        } 
     }
-
     > div {
         margin: 0 auto;
     }
 
+}
+.add-header__topbanner {
+    margin: 15px 0;
+    
+    @media #{$tablet} {
+        margin: 0 auto;
+        padding-top: 85px;
+        margin-bottom: 30px;
+        .bannerad {
+            margin-top: 30px;
+        }
+    }   
 }

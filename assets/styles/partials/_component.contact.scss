@@ -1,0 +1,58 @@
+.contact {
+    font-family: $font-family-sans-serif;
+}
+
+.contact__header {
+    font-family: inherit;
+    font-size: rem(35);
+    font-weight:700;
+}
+
+.contact__header\@sm {
+    @media #{$media-mobile} {
+        font-size: rem(14);
+        font-weight:600;
+    }
+}
+
+
+.contact__sub-header {
+    font-family: inherit;
+    font-size: rem(22);
+    font-weight:600;
+    margin:0;
+    margin-top:20px;
+}
+.contact__sub-header\@sm {
+    @media #{$media-mobile} {
+        font-size: rem(12);
+    }
+}
+
+.contact__p {
+    font-family: inherit;
+    font-size: rem(20);
+    font-weight:300;
+    margin:0;
+}
+
+.contact__p\@sm {
+    @media #{$media-mobile} {
+        font-size: rem(12);
+    }
+}
+
+
+.contact__pro-link {
+    display:block;
+    font-family:inherit;
+    font-size:rem(22);
+    color:color(red);
+    text-decoration: underline;
+}
+
+.contact__pro-link\@sm {
+    @media #{$media-mobile} {
+        font-size:rem(12);
+    }
+}

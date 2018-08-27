@@ -1,0 +1,196 @@
+@mixin card-search-base() {
+    a.card {
+    	border-bottom: 1px solid #dadada;
+    	padding-bottom: 18px;
+        article {
+            figure {
+            	display: block;
+                img {
+                	height: 113px;
+                	width:	110px;
+                }
+            }
+            .content {
+            	border-bottom: unset;
+            	padding-top: 12px;	
+            	.category {
+            		display: block;
+				    color: #e22f22;
+				    position: relative;
+            	}
+                .author {
+                    display: none;
+                }
+                > h2 {
+                	height: 40px;
+                }
+                > p {
+                	 display: none;
+                }
+                time{
+                	color: #8a8b93; 
+                    border-left: none;
+                }
+                
+            }
+        }
+
+
+    }
+    &:first-child {
+        
+       
+    }
+    &:last-child {
+       
+    }
+}
+
+.card-search{
+    @media #{$desktop-up} {
+        @include card-search-base;
+        a.card {
+            height: 360px;
+            margin-bottom: 20px;
+            article {
+                figure {
+                    >img{
+                        height: 215px;
+                        width: 100%;
+                    }
+                }
+                .content {
+                    margin-left: 0; 
+                    padding-left: 0; 
+                    .category {
+                    }
+                    h2{
+                        font-size: rem(28);
+                        height: 60px;
+                        font-weight: 300;
+                        margin-top: 10px;
+                    }
+                    time {
+                        padding: 0;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        padding-top: 0;
+                        >p {
+                            margin-top: 10px;
+                            display: block;
+                            height:130px;
+                            font-size: rem(16);
+                        }
+                        h2 {
+                            margin-top: 10px;
+                            height: 90px;
+                        }
+                    }
+                }
+            }
+       }
+    }
+}
+.card-search-tablet{
+   @media #{$tablet} {
+       @include card-search-base;
+       a.card {
+            height: 260px;
+            margin-bottom: 20px;
+            article {
+                figure {
+                    >img{
+                        height: 145px;
+                        width: 100%;
+                    }
+                }
+                .content {
+                    margin-left: 0; 
+                    padding-left: 0; 
+                    .category {
+                    }
+                    h2{
+                        font-size: rem(22);
+                        height: 50px;
+                        font-weight: 300;
+                        margin-top: 5px;
+                    }
+                    time {
+                        padding: 0;
+                        margin-top: 5px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        padding-top: 0;
+                        >p {
+                            margin-top: 5px;
+                            display: block;
+                            height:120px;
+                            font-size: rem(14);
+                        }
+                        h2 {
+                            margin-top: 5px;
+                            height: 75px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.card-search-mobile{
+    @media #{$mobile} {
+       @include card-search-base;
+       a.card {
+            padding: 15px 0;
+            article {
+                figure {
+                    padding-top: 0;
+                    position: absolute;
+                    >img {
+                        height: 100px;
+                        width: 102px;
+                    }
+                }
+                .content {
+                    margin-left: 120px;
+                    padding-left: 0;
+                    padding-top: 0;
+                    height: 100px;
+                    h2{
+                        font-size: rem(16);
+                        font-weight: 600;
+                        height: 60px;
+                        line-height: 1.03;
+                        margin-top: 12px;
+                        width: 55%;
+                    }
+                    >p {
+                        display: none;
+                    }
+                    .category{
+                        top: 5px;
+                        left: unset;
+                    }
+                    .author {
+                        display: none;
+                    }
+                    time {
+                        position: absolute;
+                        border-left: none;
+                        bottom: 0;
+                        right: 15px;
+                    }
+                }
+            }
+       }
+    }
+}

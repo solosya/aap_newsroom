@@ -5,21 +5,60 @@
 {% set pageClass     = _Page.getBodyClass() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
-
+{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
 
 {#     turn this on when the sdk goes through cognitives #}
 {% set redir = _Page.setHttpRedirects(
     {
-        '|^/users.*|'        : 'http://service.newsroom.co.nz',
-        '|^/categories.*|'   : 'http://service.newsroom.co.nz',
-        '|^/assets.*|'       : 'http://service.newsroom.co.nz',
-        '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
         '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
+        '|^/categories.*|'   : 'http://service.newsroom.co.nz',
         '|^/newswires.*|'    : 'http://service.newsroom.co.nz',
         '|^/catalog.*|'      : 'http://service.newsroom.co.nz',
-        '|^/stories.*|'      : 'http://service.newsroom.co.nz'
+        '|^/stories.*|'      : 'http://service.newsroom.co.nz',
+        '|^/assets.*|'       : 'http://service.newsroom.co.nz',
+        '|^/users.*|'        : 'http://service.newsroom.co.nz',
+        '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
     }, true) 
-%}    
+%} 
+
+
+
+{% set showPaywall = false %}
+{% set paywallSection = false %}
+
+{% if blogData['additionalInfo'] is defined             and 
+      blogData['additionalInfo']['paywall'] is defined  and 
+      blogData['additionalInfo']['paywall'] == 'on' %}
+    {% set paywallSection = true %}
+{% endif %}
+{# {{dump(blogData['additionalInfo'])}}
+
+{{dump(paywallSection)}} #}
+{# {% set url = _AppHelper.getParsedUrl().path %} #}
+
+{# Pages don't have a blogName so class has to be used #}
+{% if   not _User.isAdminUser()         and
+        paywallSection == true          and
+        blogData['showPaywall'] == true and
+        'article' not in pageClass %}
+    
+        {% set showPaywall = true %}
+        {% set layout = "layout-marketing" %}
+    
+{% endif %}
+
+
+{# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
+    {% set showPaywall = false %}
+{% endif %} #}
+
+
+
+
+
+
+
+
 
 {{ this.beginPage() }}
 <!DOCTYPE html>
@@ -59,16 +98,17 @@
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
-        {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=c70d82c5" type="text/css" media="all">
+    {% if _AppHelper.getApplicationEnv() == 'PROD'%}
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=69ae2104" type="text/css" media="all">
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" />
+        <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=16' type='text/css' media='all' />
+    {% endif %}
 
 
-        {% else %}
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
-            <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" />
-            <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=16' type='text/css' media='all' />
-        {% endif %}
+    <script src="https://js.stripe.com/v3/"></script>
 
     {#<script src="https://use.typekit.net/unp4tin.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>#}
@@ -85,122 +125,40 @@
         {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
     {% endif %}
 
-<script>
-    (function(d) {
-      var el, fjs = d.getElementsByTagName('script')[0];
-        el = d.createElement('script');
-        el.id = "js-pp-banner";
-        el.src = "//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm";
-        fjs.parentNode.insertBefore(el, fjs);
-    }(document));
-</script>
+
+{% if _User.isGuest() %}
+    <script>
+        (function(d) {
+        var el, fjs = d.getElementsByTagName('script')[0];
+            el = d.createElement('script');
+            el.id = "js-pp-banner";
+            el.src = "//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm";
+            fjs.parentNode.insertBefore(el, fjs);
+        }(document));
+    </script>
+{% endif %}
 
 
-    {% set themeColors = networkData['styling']['colours'] %}
-    <style type="text/css">
-    {% if primaryFont != "" %}
-        body, .body, p {
-            font-family: "{{primaryFont | replace({'+': ' '})}}" !important;
-        }
-    {% endif %}
-    {% if secFont != "" %}
-        h1, h2, h3, h4, h5, a.header__navigation-link {
-            font-family: "{{secFont | replace({'+': ' '})}}" !important;
-        }
-    {% endif %}
-    {% if themeColors.linkColor != "" %}
-        a {
-            color: {{themeColors.linkColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.linkHoverColor != "" %}
-        a:hover {
-            color: {{themeColors.linkHoverColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.headingColor != "" %}
-        h1, h2, h3, h4, h5 {
-            color: {{themeColors.headingColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationColor != "" %}
-        .header__search-text, a.header__navigation-link {
-            color: {{themeColors.navigationColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationHoverColor != "" %}
-        a.header__navigation-link:hover {
-            color: {{themeColors.navigationHoverColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationActiveColor != "" %}
-        a.header__navigation-link.header__navigation-selected {
-            color: {{themeColors.navigationActiveColor}} !important;
-        }
-    {% endif %}
-    {% if themeColors.navigationBgColor != "" %}
-    .header__navigation {
-        background-color: {{themeColors.navigationBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.headerBgColor != "" %}
-    .header__heading {
-        background-color: {{themeColors.headerBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.footerBgColor != "" %}
-    .footer {
-        background-color: {{themeColors.footerBgColor}} !important;
-    }
-    {% endif %}
-    {% if themeColors.pageBgColor != "" %}
-    .body, .body > .section {
-        background-color: {{themeColors.pageBgColor}} !important;
-    }
-    .sub_header {
-        background-color: {{themeColors.pageBgColor}} !important;
-    }
+
+    {% set googleAnalyitcsId = ''%}
+    {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
+        {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
     {% endif %}
 
-    {% set customCss = networkData['styling']['customStyleSheet'] %}
-    {% if customCss != "" %}
-            {{customCss | raw }}
-    {% endif %}
-    </style>
-
-    {% if blogData.settings['GoogleAnalyticsID'] is  defined  and  blogData.settings['GoogleAnalyticsID'] is not empty %}
-        <!-- Google Analytics -->
+    {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
+        <!-- Google Analytics u -->
         <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', '{{blogData.settings['GoogleAnalyticsID']}}', 'auto');
+        ga('create', '{{googleAnalyitcsId}}', 'auto');
         ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
     {% endif %}
     
-
-    
-    {# {% set blogList = _Blog.getBlogList() %}
-
-    {% if blogList | length > 0 %}
-        <style type="text/css">
-            {% for blog in blogList %}
-                {% if blog.featuredColor is not empty %}
-                    {% set blogClass = 'card--blog_'~blog.id %}
-                    .card.{{blogClass | lower}} .title-section span {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                    .card.{{blogClass | lower}} .caption_bottom .author_name {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                {% endif %}
-            {% endfor%}
-        </style>
-    {% endif %} #}
 
     {{ this.head() }}
     
@@ -210,6 +168,7 @@
 
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-9270963482105934",
@@ -296,19 +255,24 @@
 <body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}">
 {{ this.beginBody() }}
 
-      
-        <div class="add" style="margin:15px auto;">
+    {% if  blogName  | lower != "newsroom pro" %}  
+        <div class="add add-header__topbanner">
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
+    {% else %}
+         <div class="add add-header__topbanner"></div>
+    {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
-        headerMenu  : menuItems, 
         networkData : networkData, 
+        headerMenu  : menuItems, 
         pageClass   : blogName,
-        submenu     : submenu,
         roomInfo    : roomInfo,
-        rooms       : rooms 
+        submenu     : submenu,
+        pageURL     : pageURL,
+        rooms       : rooms,
+        paywallSection : paywallSection,
     }) | raw }}
 
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
@@ -323,16 +287,24 @@
         </div>
     </div> #}
 
-    {{ content | raw}}
+
+    {% if showPaywall %}
+        {{ this.render('/layout-marketing.twig', {networkData: networkData}) | raw }}
+    {% else %}
+        {{ content | raw }}
+    {% endif %}
+
+
 
 
     {{ this.render('partials/footer.twig', {
-        headerMenu  : menuItems, 
         networkData : networkData, 
+        headerMenu  : menuItems, 
         pageClass   : blogName,
         roomInfo    : roomInfo,
         submenu     : submenu,
-        rooms       : rooms 
+        rooms       : rooms,
+        paywallSection : paywallSection
     }) | raw }}
 
 
@@ -372,7 +344,10 @@
                 {'video' : 'modalVideo'}, 
                 {path: _appJsConfig.templatePath});")}} #}
     
-    {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
+    
+    {% if _User.isGuest() %}
+        {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
+    {% endif %}
 
     {{ this.endBody() }}
 
