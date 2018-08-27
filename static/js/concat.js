@@ -31275,7 +31275,51 @@ $('document').ready(function() {
 
     });
 
+    $('#batch-add-csv').on('click', function(e) {
+        console.log('adding batch users');
+        var payload = {
+            "owner" : {
+                "email": null
+            },
+            "users": []
+        };
 
+        var input = $('#batch-user-input').val();
+        
+        const lines = input.split(/\n/);    
+        var owner = lines[0].split(',');
+        payload.owner.email = owner[owner.length - 1];
+
+        for (var i=0; i< lines.length; i++) {
+            $user = lines[i].split(',');
+            
+            $userobj = {
+                "firstname" : $user[0],
+                "lastname" : $user[1],
+                "username" : $user[2],
+                "email" : $user[3],
+            };
+
+            payload.users.push($userobj);
+        }
+
+        console.log(payload);
+        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
+        return $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: payload
+        }).done(function(r) {
+            console.log(r);
+            alert("Users added");
+
+        }).fail(function(r) {
+            console.log(r);
+            alert(r.responseText);
+        });        
+
+    });
 
 
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
