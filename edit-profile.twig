@@ -126,7 +126,7 @@
                                 
                                 {# <input type="checkbox"  class="" name="breaking-email" id="breaking-email"> 
                                 <label class="account-form__cblabel">Send me breaking news alerts <br class="visible-xs-block" />(on average once a month)</label><br /> #}
-                                <p class="account-form__unsubscribe">To unsubscribe from 8 Things, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a>, or click Unsubscribe in any 8 Things email</p>
+                                {# <p class="account-form__unsubscribe">To unsubscribe from 8 Things, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a>, or click Unsubscribe in any 8 Things email</p> #}
 
 
 
@@ -392,7 +392,7 @@
 
 
                 {% if _User.isAdminUser() %}
-                    <div class="add-batch-users" style="display:block;">
+                    <div class="add-batch-users" style="display:none;">
                         <textarea id="batch-user-input"></textarea>
                         <button id="batch-add">Add</button>
                         <button id="batch-add-csv">Add csv</button>
