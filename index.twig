@@ -127,10 +127,17 @@
 
                          </div><!--card-group-->
 
-                        <div class="row">
-                            {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
-                        </div>
-                            
+
+
+                        {% if sections['newsroom pro'].feed.articles|length > 0 %}
+                            <div class="row">
+                                {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                            </div>
+                        {% endif %}
+        
+
+
+
                         <section class="add row sidebar-add sidebar-add__idx hidden-md hidden-lg">
                             <div class="col-sm-6">
                                 <div id="newAdMrec"></div>

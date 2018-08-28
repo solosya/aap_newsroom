@@ -14,6 +14,7 @@
         </a>
         <p class=" pro-partial__header__text">Our subscription service for corporate clients</p>
     </header>
+    
     <div class="pro-partial__row">
         {% for i in 0..1 if sections['newsroom pro'].feed.articles[i] %}
                  {{this.render('_single-article.twig', {article: sections['newsroom pro'].feed.articles[i], position: i+1, containerClass: 'col-sm-6 card-pro-partial card-pro-partial-tablet card-pro-partial-mobile', swap: 'false'}) | raw}}
