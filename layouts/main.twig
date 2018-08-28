@@ -33,9 +33,7 @@
       blogData['additionalInfo']['paywall'] == 'on' %}
     {% set paywallSection = true %}
 {% endif %}
-{# {{dump(blogData['additionalInfo'])}}
 
-{{dump(paywallSection)}} #}
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
@@ -101,7 +99,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=b59edb86" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=da9d7338" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
