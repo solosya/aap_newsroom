@@ -5,6 +5,7 @@
 {% set pageClass     = _Page.getBodyClass() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
+{% set layout        = _Page.getLayoutName() %}
 {% set pageURL       = _AppHelper.getCurrentUrl(true) %}
 
 {#     turn this on when the sdk goes through cognitives #}
@@ -253,7 +254,7 @@
 
 
 
-<body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
+<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  
