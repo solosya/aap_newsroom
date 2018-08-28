@@ -128,7 +128,7 @@
     {% endif %}
 
 
-{% if _User.isGuest() %}
+{% if _User.isGuest() and showPaywall == false %}
     <script>
         (function(d) {
         var el, fjs = d.getElementsByTagName('script')[0];
