@@ -7295,6 +7295,10 @@ p.foundingpartners {
   .add.sidebar-add {
     margin-bottom: 80px;
     margin-top: 80px; }
+    @media screen and (max-width: 767px) {
+      .add.sidebar-add.sidebar-add__idx {
+        margin-top: 30px;
+        margin-bottom: 30px; } }
     @media screen and (max-width: 1200px) {
       .add.sidebar-add .block > a {
         display: block; } }
@@ -11310,7 +11314,8 @@ input[type=radio].inline {
       min-height: 169px; } }
   @media screen and (max-width: 767px) {
     .pro-partial__row {
-      padding: 15px 0px; } }
+      padding: 15px 0px;
+      margin-bottom: 0; } }
 
 .pro-partial__header {
   display: flex;
