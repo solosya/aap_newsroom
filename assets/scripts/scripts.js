@@ -117,7 +117,6 @@ $('document').ready(function() {
     });
 
     $('#batch-add-csv').on('click', function(e) {
-        console.log('adding batch users');
         var payload = {
             "owner" : {
                 "email": null
@@ -176,7 +175,6 @@ $('document').ready(function() {
     });
 
     $(".menu-mobile").on("click", function (e) {
-        console.log('something?',e);
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");

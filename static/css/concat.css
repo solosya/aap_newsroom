@@ -7682,24 +7682,6 @@ section.subscribe {
           padding-top: 155px;
           width: 55px;
           padding-top: 45px; } }
-    .site-footer .footer-top .footer_btn-lg {
-      background-color: #e22f22;
-      color: #FFF;
-      padding-top: 20px; }
-      @media screen and (max-width: 767px) {
-        .site-footer .footer-top .footer_btn-lg {
-          float: right; } }
-      .site-footer .footer-top .footer_btn-lg > a {
-        font-family: 'IM Fell Great Primer', serif;
-        color: #FFF;
-        font-size: 16px;
-        font-weight: normal; }
-      .site-footer .footer-top .footer_btn-lg > div {
-        background-color: white;
-        margin-top: 20px; }
-        .site-footer .footer-top .footer_btn-lg > div > input {
-          font-family: 'PT Sans', Tahoma, Arial, serif;
-          color: #000; }
     .site-footer .footer-top .social-links {
       margin-top: 25px;
       margin-bottom: 57px; }
@@ -10043,96 +10025,86 @@ input[type=radio].inline {
   width: 100%;
   padding: 20px;
   background: black; }
-
-.register-popup__close {
-  position: relative;
-  z-index: 10;
-  float: right;
-  display: block;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-left: 23px;
-  width: 75px; }
-
-@media screen and (max-width: 767px) {
-  .register-popup__close\@sm {
-    margin-top: 10px; } }
-
-.register-popup__close-icon {
-  background-image: url("../icons/cross-white.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 1px solid white;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  top: -4px;
-  right: 0; }
+  .register-popup__close {
+    position: relative;
+    z-index: 10;
+    float: right;
+    display: block;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-left: 23px;
+    width: 75px; }
   @media screen and (max-width: 767px) {
-    .register-popup__close-icon {
-      width: 23px;
-      height: 23px; } }
-
-.register-popup__subscriber {
-  position: relative;
-  z-index: 10;
-  font-size: 1.1rem;
-  text-decoration: underline;
-  float: right;
-  display: inline;
-  color: white;
-  margin-top: 1px; }
-
-@media screen and (max-width: 767px) {
-  .register-popup__subscriber\@sm {
-    margin-top: 10px; } }
-
-.register-popup__logo {
-  margin-top: 10px; }
+    .register-popup__close\@sm {
+      margin-top: 10px; } }
+  .register-popup__close-icon {
+    background-image: url("../icons/cross-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid white;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: -4px;
+    right: 0; }
+    @media screen and (max-width: 767px) {
+      .register-popup__close-icon {
+        width: 23px;
+        height: 23px; } }
+  .register-popup__subscriber {
+    position: relative;
+    z-index: 10;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    float: right;
+    color: white;
+    margin-top: 1px; }
   @media screen and (max-width: 767px) {
-    .register-popup__logo {
-      width: 150px; } }
-
-.register-popup__text {
-  color: white;
-  margin-top: 20px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 600; }
-  @media screen and (max-width: 767px) {
-    .register-popup__text {
-      font-size: 1.2rem; } }
+    .register-popup__subscriber\@sm {
+      margin-top: 10px; } }
+  .register-popup__logo {
+    margin-top: 10px; }
+    @media screen and (max-width: 767px) {
+      .register-popup__logo {
+        width: 150px; } }
+  .register-popup__text {
+    color: white;
+    margin-top: 20px;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 600; }
+    @media screen and (max-width: 767px) {
+      .register-popup__text {
+        font-size: 1.2rem; } }
 
 .popup-embed-signup {
   background: white;
   margin-top: 35px; }
-
-.popup-embed-signup__field {
-  flex: 2; }
-
-.popup-embed-signup__input {
-  font-size: 1.6rem;
-  padding-left: 10px;
-  line-height: 46px;
-  height: 48px; }
-  @media screen and (max-width: 767px) {
-    .popup-embed-signup__input {
-      height: 36px; } }
-
-.popup-embed-signup__button {
-  width: 144px;
-  min-width: 95px;
-  height: 48px;
-  color: white;
-  font-size: 1.6rem;
-  background: #e22f22;
-  border: none; }
-  @media screen and (max-width: 767px) {
-    .popup-embed-signup__button {
-      height: 36px; } }
+  .popup-embed-signup__field {
+    flex: 2; }
+  .popup-embed-signup__input {
+    font-size: 1.6rem;
+    margin: 0 !important;
+    padding-left: 10px;
+    line-height: 46px;
+    height: 48px; }
+    @media screen and (max-width: 767px) {
+      .popup-embed-signup__input {
+        height: 36px !important; } }
+  .popup-embed-signup__button {
+    width: 144px;
+    min-width: 95px;
+    height: 48px;
+    color: white;
+    font-size: 1.6rem;
+    background: #e22f22;
+    border: none; }
+    @media screen and (max-width: 767px) {
+      .popup-embed-signup__button {
+        height: 36px; } }
 
 .article-supoort {
   margin-top: 100px;
@@ -11074,6 +11046,41 @@ input[type=radio].inline {
   display: block;
   margin-top: 15px;
   color: #e22f22; }
+
+.footer-subscribe {
+  background-color: #e22f22;
+  color: #FFF;
+  padding: 10px;
+  padding-top: 20px;
+  float: right;
+  text-align: center; }
+  @media screen and (max-width: 767px) {
+    .footer-subscribe {
+      float: right; } }
+  .footer-subscribe__heading {
+    font-family: 'IM Fell Great Primer', serif;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0; }
+  .footer-subscribe__container {
+    background-color: white;
+    margin-top: 20px; }
+  .footer-subscribe__email {
+    font-family: 'PT Sans', Tahoma, Arial, serif;
+    color: #000;
+    margin: 0 !important;
+    height: 22px !important;
+    border-radius: 0 !important; }
+  .footer-subscribe__submit {
+    width: 15px;
+    height: 21px;
+    display: flex;
+    background: url("../images/arrow-small-red.svg") no-repeat center;
+    border: none;
+    outline: none;
+    box-shadow: none; }
 
 .Acme-pulldown {
   font-size: 1.5rem;
