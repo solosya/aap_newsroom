@@ -37,7 +37,7 @@
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if   not _User.isAdminUser()         and
+{# {% if   not _User.isAdminUser()         and
         paywallSection == true          and
         blogData['showPaywall'] == true and
         'article' not in pageClass %}
@@ -46,7 +46,7 @@
         {% set layout = "layout-marketing" %}
     
 {% endif %}
-
+ #}
 
 {# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
     {% set showPaywall = false %}
