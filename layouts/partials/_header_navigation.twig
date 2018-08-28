@@ -195,13 +195,11 @@
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
 
-        <div class="row visible-sm-block visible-md-block visible-lg-block">
+        {# <div class="row visible-sm-block visible-md-block visible-lg-block">
             <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
                     {% set user = _User.getUser() %}
-                    {% if (userData.status == 'trial') %}
-                        {# <li class="menu-item">Trial period - you will be billed on {{ userData.expiry_date }} #}
-                    {% endif %}
+
                     <p class="header-signin__name hidden-sm">Hi, {{user.firstname}} </p>
                     <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-md-block visible-lg-block">My Account</a>
@@ -211,7 +209,7 @@
                     <a href="{{networkData.defaultBlogUrl}}/@newsroom-pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
-        </div>
+        </div> #}
 
 
         <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
