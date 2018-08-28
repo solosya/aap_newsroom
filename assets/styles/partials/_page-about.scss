@@ -154,12 +154,17 @@ body.channel.about, body.section.about{
 
     .editor{
         margin-bottom: 80px;
+        height: 320px;
         @media #{$tablet} {
             height: 300px;
             padding-bottom: 15px;
             margin-bottom: 25px;
 
         }
+        @media #{$mobile} {
+            height: unset;
+        }
+
 
         .section-header{
             display: -webkit-box;
