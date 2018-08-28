@@ -1,14 +1,8 @@
 {{ use('yii/web/JqueryAsset') }}
 {{ register_jquery_asset() }}
-{% set networkData   = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog() %}
-{% set pageClass     = _Page.getBodyClass() %}
-{% set pageTypeClass = blogData.type %}
-{% set blogName      = blogData.title %}
-{% set layout        = _Page.getLayoutName() %}
-{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
-
 {#     turn this on when the sdk goes through cognitives #}
+
+
 {% set redir = _Page.setHttpRedirects(
     {
         '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
@@ -21,6 +15,16 @@
         '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
     }, true) 
 %} 
+
+
+{% set networkData   = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set pageClass     = _Page.getBodyClass() %}
+{% set pageTypeClass = blogData.type %}
+{% set blogName      = blogData.title %}
+{% set layout        = _Page.getLayoutName() %}
+{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
+
 
 
 
