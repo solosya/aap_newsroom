@@ -29579,7 +29579,7 @@ Acme.templates.registerTmpl =
 Acme.templates.forgotFormTmpl = 
     '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
         <input type="hidden" name="_csrf" value="" /> \
-        <p class="password-reset-form__p">Enter your email below and we will send you an link to set your password.</p> \
+        <p class="password-reset-form__p">Enter your email below and we will send you a link to set your password.</p> \
         <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
         \
         <div class="message active hide"> \
