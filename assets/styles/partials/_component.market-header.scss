@@ -1,0 +1,22 @@
+.market-header {
+    text-align:center;
+
+    .market-header__logo {
+        width:590px;
+
+        @media screen and (max-width: $mmd-break) {
+            width:91px;
+            height:32px;
+            left:20px;
+        }
+
+        @media screen and (max-width: $sm-break) {
+            width:73px;
+            height:26px;
+            display:block;
+            margin:auto;
+            position:static;
+        }
+
+    }
+}

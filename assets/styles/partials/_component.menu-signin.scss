@@ -1,0 +1,52 @@
+.menu-signin {
+	min-height: 41px;
+}
+
+.menu-signin__signout {
+	font-size: rem(14);
+	color: #fff;
+	height: 30px;
+	margin: auto;
+}
+
+.menu-signin__subscribe {
+	font-size: rem(14);
+	color: #fff;
+	height: 21px;
+	width: 165px;
+	margin: auto;
+	background-color: #1d1d1d;
+    font-weight: 300;
+    line-height: unset;
+    padding-right: 15px;
+    border-right: solid 1px #ffffff;
+    margin-right: 15px;
+}
+
+.menu-signin__signin {
+	font-size: rem(14);
+	color: #fff;
+	height: 41px;
+	width: 80px;
+	margin: auto;
+	background-color: #1d1d1d;
+    font-weight: 300;
+    line-height: unset;
+}
+
+.menu-signin__account {
+	font-size: rem(14) !important;
+	text-transform: unset !important;
+	&:before {
+        content: '';
+        display:inline-block;
+        margin-right:17px;
+        margin-bottom: -5px;
+	    width: 27px;
+	    height: 27px;
+	    margin-top: -5px;
+        background-image: url('../icons/account-circle.png');
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+}

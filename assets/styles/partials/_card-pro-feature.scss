@@ -1,0 +1,166 @@
+@mixin card-pro-feature-base() {
+    &:before{
+        background: #e22f22;
+    }  
+    a.card {
+        .content {
+            h2{
+                color: #fcfcfc;
+            }
+            time {
+                display: none;
+            }
+            .category {
+                color: #e22f22;
+            }
+            .author {
+                >p{
+                    color:  #fcfcfc;
+                }
+            }
+            > p {
+                display:none;
+            }
+
+        }
+    }
+    &:before{
+        content: '';
+        width: 20px;
+        height: 100%;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        z-index: 2;
+    }
+}
+.card-pro-feature{
+    @media #{$desktop-up} {
+        @include card-pro-feature-base;
+        a.card {
+            article {
+                figure{
+                    
+                }
+                .content {
+                    padding: 220px 29px 36px 31px;
+                    @media screen and (max-width: 1600px){
+                        padding: 150px 29px 20px 20px;
+                    }
+                    @media screen and (max-width: $large-break){
+                        padding: 120px 29px 20px 31px;
+                    }
+                    @media screen and (max-width: $md-break){
+                        padding: 100px 29px 20px 31px;
+                    }
+                    h2 {
+                        min-height:160px;
+                        border-bottom: 1px solid #dadada;
+                        @media screen and (max-width: $large-break){
+                            min-height:100px;
+                        }
+                        @media screen and (max-width: $md-break){
+                            min-height:60px;
+                        }
+                    }
+                    time {
+                        display: block;
+                        bottom:40px;
+                        right:30px;
+                        color: #fcfcfc;
+                        @media screen and (max-width: 1600px){
+                            bottom:20px;
+                        }
+                    }
+                }
+            }
+        }  
+    }
+}
+.card-pro-feature-tablet{
+    @media #{$tablet} {
+        @include card-pro-feature-base;
+        a.card {
+            article {
+                figure{
+                    @media #{$tablet} {
+                        height: 257px;
+                        max-width: 60%;
+                    }
+                }
+                .content {
+                    padding: 60px 29px 15px 31px;
+                    h2 {
+                        
+                        border-bottom: 1px solid #dadada;
+                        min-height:100px;
+                        max-height: 100px;
+                        font-size: rem(22);
+                    }  
+                    .category {
+                        font-size: rem(10);
+                    }
+                    .author{
+                        display: block;
+                        flex: none;
+                        position: absolute;
+                        bottom: 5px;
+                        >img{
+                            height: 24px;
+                            width: 24px;
+                        }
+                        >p{
+                            height: 24px;
+                            font-size: rem(12);
+                        }
+                    }
+                    time{
+                        display: block;
+                        position: absolute;
+                        right: 30px;
+                        bottom: 13px;
+                    }
+                }
+            }
+        }
+        &:before{
+            width: 10px;
+        }  
+    }
+}
+.card-pro-feature-mobile{
+    @media #{$mobile} {
+        @include card-pro-feature-base;
+        a.card {
+            article {
+                figure{
+                    
+                }
+                .content {
+                   padding: 194px 81px 11px 27px;
+                   h2 {
+                        min-height:160px;
+                        min-height: 100px;
+                        max-height: 100px;
+                        margin: 9px 0;
+                    } 
+                    .category {
+                         margin: 0;
+                    }
+                    .author{
+                        min-height: 15px;
+                        max-height: 15px;
+                        margin: 0;
+                        >p{
+                            font-size: rem(12);
+                            height: 15px;
+                        }  
+                    }
+                }
+            }
+        }
+        &:before{
+            display: none;
+        }  
+    }
+}

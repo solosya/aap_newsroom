@@ -40,6 +40,18 @@
         width:140px;
     }
 }
+@media #{$tablet} {
+    .header-logos {
+        display: flex;
+        .main-logo{
+            margin-right: 30px;
+        }
+        .website-award {
+            width: 200px;
+            margin-top: 8px;
+        }
+    }
+}
 .voyager-logo {
     margin-left:15px;
     width:280px;
@@ -70,6 +82,9 @@
     background:white;
 
     padding-top: 18px;
+    @media #{$tablet} {
+        padding-top: 0;
+    }
     @media screen and (max-width: $sm-break-down) {
         padding-top: 0;
         top: 0;
@@ -84,6 +99,9 @@
     //     z-index: 100;
     // }
     .site-branding-top{
+        @media #{$tablet} {
+            display: none;
+        }
 
         .social-links{
             a {
@@ -110,7 +128,6 @@
         }
 
         .section-right{
-            padding-top: 10px;
             margin-right: 0;
             @media screen and (min-width: $header-break){
                 // width: 895px;
@@ -123,7 +140,6 @@
     
         .rooms-link{
             float: right;
-            padding-top: 20px;
             margin-left: -30px;
             
             @media screen and (max-width: $header-break){
@@ -171,6 +187,7 @@
 
             .section-right {
                 width:auto;
+                margin-right: 65px;
             }
 
 
@@ -200,7 +217,15 @@
 
     .site-branding-bottom{
         padding-top: 6px;
-        padding-bottom: 40px;
+        // padding-bottom: 40px;
+        @media #{$tablet} {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #8a8b93;
+
+        }
 
         @media screen and (max-width: $sm-break-down) {
             padding-top: 10px;
@@ -208,7 +233,9 @@
         }
 
         .section-right{
-            padding-top:10px;
+            @media #{$desktop-up} {
+                margin-top: -15px;
+            }
             @media screen and (min-width: $header-break){
                 padding-left: 0;
                 // padding-right: 0;
@@ -325,6 +352,7 @@
 
         .sb-custom-menu-foldaway {
             float:right;
+            margin-right: 50px;
             .menu-mobile{
                 display: block;
                 width: 95px;
@@ -335,6 +363,9 @@
                 padding: 5px 0;
                 color: #f73d30;
             }
+        }
+        .site-branding-bottom {
+            margin-right: 50px;
         }
 
     }

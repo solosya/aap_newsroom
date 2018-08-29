@@ -1,0 +1,27 @@
+<section class="pro-partial">
+    <header class="pro-partial__header hidden-xs">
+
+        <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
+            <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg" alt="Newsroom Pro" class="img-responsive">
+            
+        </a>
+        <p class=" pro-partial__header__text">Our subscription service for corporate clients</p>
+     </header>
+    <header class="pro-partial__headermobile visible-xs-block">
+        <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
+            <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg" alt="Newsroom Pro">
+            
+        </a>
+        <p class=" pro-partial__header__text">Our subscription service for corporate clients</p>
+    </header>
+    
+    <div class="pro-partial__row">
+        {% for i in 0..1 if sections['newsroom pro'].feed.articles[i] %}
+                 {{this.render('_single-article.twig', {article: sections['newsroom pro'].feed.articles[i], position: i+1, containerClass: 'col-sm-6 card-pro-partial card-pro-partial-tablet card-pro-partial-mobile', swap: 'false'}) | raw}}
+         {% endfor %}
+
+    </div><!-- .row-->
+
+
+</section><!-- .top-stories-->
+

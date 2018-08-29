@@ -1,0 +1,188 @@
+.card-pro-simple {
+
+    @media #{$desktop-up}{
+        a.card {
+            article {
+                height:130px;
+
+                > figure {
+                    height:auto;
+                    width:203px;
+                    flex:none;
+
+                    @media screen and (max-width: $md-break){
+                        width: 150px;
+                        flex: 0 0 150px;
+                    }
+
+                }
+                .content {
+                    border-bottom: unset;
+
+                    .category{
+                        color: #e22f22;
+                    }
+                    >h2 {
+                        font-size: rem(28);
+                        font-weight: 500;
+                        height: 85px;
+                    }
+                    .author {
+                        display: inherit;
+                        img {
+                            display: none;
+                        }
+                        p {
+                            display: inherit;
+                            margin-top: 15px;
+                            color: #000;
+                        }
+                    }
+                    time {
+                        display: none
+                    }
+                    
+                }
+            }
+        }
+        &:first-child {
+            padding-right:5%;
+           
+        }
+        &:nth-child(3) {
+            border-left: 1px solid #dadada;
+            padding-left:5%;
+            margin-left:-10px;
+        }
+        
+    }
+}
+
+.card-pro-simple-tablet {
+    @media #{$tablet}{
+        border-left: unset;   
+        a.card {
+            height: 83px;
+            border-bottom: unset;
+            padding: 0; 
+            article {
+                height: 83px;
+                
+
+                > figure {
+                    width: 124px;
+                    height: 83px;
+                    margin: 0;
+                    flex: none;
+                }
+                .content {
+                    border-bottom: unset;
+                    margin-left: 15px;
+                    padding: 0;
+                    h2{
+                        margin: 0;
+                        height: 60px
+                    }
+                    .category {
+                         color: #e22f22;
+                    }
+                    .author {
+                        display: none;
+                        img {
+                            display: none;
+                        }
+                        p {
+                           display: none; 
+                        }
+                    }
+                    time {
+                        bottom: -5px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        margin-left: 0;
+                        h2 {
+                            height: 20px;
+                        }
+                        >p{ 
+                            display: block;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        &:first-child {
+        padding-right: 15px;
+       
+        }
+        &:nth-child(3) {
+            border-left: 1px solid #dadada;
+            padding-left: 15px;
+            margin-left: unset;
+        }
+    }
+}
+
+.card-pro-simple-mobile {
+    @media #{$mobile}{
+        border-left: unset;   
+        a.card {
+            height: 60px;
+            border-bottom: unset;
+            padding: 0; 
+            article {
+                height: 60px;
+                
+
+                > figure {
+                    width: 60px;
+                    height: 60px;
+                    margin: 0;
+                    flex: none;
+                }
+                .content {
+                    margin-left: 15px;
+                    padding: 0;
+                    h2{
+                        margin: 0;
+                    }
+                    .category {
+                         color: #e22f22;
+                    }
+                    .author {
+                        display: none;
+                        img {
+                            display: none;
+                        }
+                        p {
+                           display: none; 
+                        }
+                    }
+                    time {
+                        bottom: -5px;
+                    }
+                }
+            }
+            &.without__image {
+                article {
+                    .content {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        &:first-child {
+        padding-right: 15px;
+       
+        }
+        &:last-child {
+            border-left: none;
+            padding-left: 15px;
+            margin-left: unset;
+        }
+    }
+}

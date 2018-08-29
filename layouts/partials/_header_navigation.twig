@@ -1,23 +1,30 @@
-<div id="pp-banner" class="hidden-print"></div>
+<div id="pp-banner" class="hidden-print u-desktop-margin-bottom-20"></div>
+
+{% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
+    {% set paywallSection = true %}
+{% endif %}
+
+
+
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 
-<header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print">
+<header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print ">
     <div class="site-header-main">
             
         <div class="site-branding-top row">
-            <div class="section-left col-md-4 col-sm-6">
+            <div class="section-left col-md-2 col-sm-6">
                 <div class="social-links">
                     <ul>
                         <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
                         <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
                         <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
 
-                        {% if not _User.isGuest() %}
+                        {# {% if not _User.isGuest() %}
                             {% set user = _User.getUser() %}
                             <li class="logedin"><a href="javscript:void(0)" class="" id="profile">
                                 {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
                             </a></li>
-                        {% endif %} 
+                        {% endif %}  #}
 
                     </ul>
                 </div><!-- .social-links-->
@@ -26,12 +33,12 @@
                     <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                         <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
-                        <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
                     </ul>
                 </div><!-- .secondary-menu-->
             </div><!-- .menu-left-->  
 
-            <div class="section-right navbar-right col-md-8 col-sm-2">
+            <div class="section-right navbar-right col-md-10 col-sm-2">
                 <div class="rooms-link">
                     <ul>
 
@@ -45,7 +52,7 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=7" alt="{{parentItem.blogTitle}}-logo.svg">
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=9" alt="{{parentItem.blogTitle}}-logo.svg">
                                     </a>
                                 </li>
                             {% endif  %}
@@ -61,32 +68,54 @@
 
 
         <div class="site-branding-bottom row">
-            <div class="section-left col-md-6 col-sm-8">
-                <div class="logo pull-left">
-                    <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=7" alt="logo" class="main-logo">
-                    </a>
-                     <img class="website-award hidden-sm hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
-                    <img class="website-award hidden-xs" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
-                    <img class="voyager-logo hidden-xs" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
-                    <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
-                        {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg?ver=2" alt="logo" class="mobile-logo-summer"> #}
-                    </a>
+            <div class="section-left col-md-5 col-sm-8">
+                <div class="logo header-logos pull-left">
+                    
+                    {% if paywallSection %}
+                        <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+                            <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
+                        </a>
+                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@pro" rel="Home" tabindex="-1" title="Home">
+                            <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
+                        </a>
+
+                    {% else %} 
+                        <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=9" alt="logo" class="main-logo">
+                        </a>
+                     
+                        <img class="website-award hidden-xs hidden-sm" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
+
+                        <img class="voyager-logo hidden-xs hidden-sm" style="" src="{{networkData.templatePath}}/static/images/voyager-media-awards.svg">
+                        <img class="website-award hidden-md hidden-lg" src="{{networkData.templatePath}}/static/images/website-of-the-year-mobile.svg">
+                        <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                            <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                            {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg?ver=2" alt="logo" class="mobile-logo-summer"> #}
+                        </a>
+                    {% endif %}
                 </div>
             </div><!--section-left-->
 
-            <div class="section-right col-md-6 col-sm-4">
+            <div class="section-right col-md-7 col-sm-4">
                 <nav class="sb-custom-menu">
                     <a href="#" class="menu-mobile"></a>
                     
 
                     <div class="menuContainer">
-                        <ul class="pages">
-                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/@contact">Contact</a></li>
+                        {# ___________________________
+
+                                SIGN IN BAR 
+                         ___________________________#}
+                        <ul class="menu-signin visible-xs-block visible-sm-block">
+                            {% if not _User.isGuest() %}
+                                {% set user = _User.getUser() %}
+                                <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
+                                <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
+                            {% else %}
+                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
+                            {% endif %}
                         </ul>
-                        <div id="menu-search" class="secondary-menu menu-search">
+                            <div id="menu-search" class="secondary-menu menu-search">
                             <ul><li>
                                 <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
                                     <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
@@ -112,11 +141,10 @@
                                     <li class="search-container">
                                         <fieldset>
                                             <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                                <label for="header-search" class="assistive-text sr-only">Search</label>
-                                                <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                                <button class="btn btn-default" type="submit" id="searchsubmit">
-                                                    <span class="icon icon-search-blk"></span>
-                                                    <span class="screen-reader-text"></span>
+                                                <label for="header-search" class="assistive-text sr-only"></label>
+                                                <input type="text" class="field" name="s" id="header-search" placeholder="" required="">
+                                                <button class="search-button" type="submit" id="searchsubmit">
+                                                   <span class="screen-reader-text">SEARCH</span>
                                                 </button>
                                             </form>
                                         </fieldset>
@@ -145,7 +173,7 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=7" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=9" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -153,12 +181,35 @@
                             {% endfor %}
                             </ul>
                         </div>
+                        {# ___________________________
+
+                                ABOUT AND CONTACT 
+                         ___________________________#}
+                        <ul class="pages">
+                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
+                        </ul>
                     </div>
 
                 </nav>  
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
 
+        {# <div class="row visible-sm-block visible-md-block visible-lg-block">
+            <div class="col-sm-12 header-signin u-margin-top-30">
+                {% if not _User.isGuest() %}
+                    {% set user = _User.getUser() %}
+
+                    <p class="header-signin__name hidden-sm">Hi, {{user.firstname}} </p>
+                    <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
+                    <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-md-block visible-lg-block">My Account</a>
+                    <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a>
+                {% else %}
+                    <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
+                    <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                {% endif %}
+            </div>
+        </div> #}
 
 
         <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
@@ -207,7 +258,6 @@
 
                     <div class="secondary-menu">
                         <ul>
-                            <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
                             <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
@@ -215,7 +265,7 @@
                 </div><!-- .menu-left-->  
                 
                 <div class="section-right navbar-right col-md-6 col-sm-2">
-                    <div class="rooms-link">
+                    <div class="rooms-link u-padding-top-13">
                         <ul>
 
                             {% set menuItems = headerMenu %}
@@ -225,7 +275,7 @@
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=7" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=9" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -257,18 +307,17 @@
                                     </li>
                                 {% endfor %}
 
-                                <li id="menu-item-search" class="menu-item menu-item-search">
+                                <li id="menu-item-search" class="menu-item menu-item-search-foldaway">
                                     <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
 
-                                    <ul class="sub-menu normal-sub search-sub-menu">
+                                    <ul class="sub-menu normal-sub search-sub-menu search-foldaway">
                                         <li class="search-container">
                                             <fieldset>
                                                 <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                                    <label for="header-search" class="assistive-text sr-only">Search</label>
-                                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                                    <button class="btn btn-default" type="submit" id="searchsubmit">
-                                                        <span class="icon icon-search-blk"></span>
-                                                        <span class="screen-reader-text"></span>
+                                                    <label for="header-search-foldaway" class="assistive-text sr-only"></label>
+                                                    <input type="text" class="field" name="s" id="header-search-foldaway" placeholder="" required="">
+                                                    <button class="search-button" type="submit" id="searchsubmit">
+                                                       <span class="screen-reader-text">SEARCH</span>
                                                     </button>
                                                 </form>
                                             </fieldset>

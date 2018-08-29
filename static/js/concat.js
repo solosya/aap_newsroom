@@ -27111,7 +27111,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 }(jQuery));
     $.fn.Ajax_LoadBlogArticles = function(options){
 
-        console.log('loading blog articles');
+
         var defaults = {
             'limit': 20,
             'containerClass': 'ajaxArticles',
@@ -27174,6 +27174,47 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             }
         });        
     };
+(function ($) {
+
+    $.fn.Ajax_LoadBlogArticles_new = function(options){
+        var requestType = 'post';
+        var url = _appJsConfig.baseHttpPath + '/home/load-articles';
+
+        var requestData = { 
+            offset      : options.offset, 
+            limit       : options.limit, 
+            _csrf       : $('meta[name="csrf-token"]').attr("content"), 
+            dateFormat  : 'SHORT',
+            existingNonPinnedCount: options.nonPinnedOffset
+        };
+
+        if (options.blogid) {
+            requestData['blogguid'] = options.blogid;
+        }
+
+        if (options.loadtype == 'user') {
+            var url = _appJsConfig.appHostName + '/api/'+options.loadtype+'/load-more-managed';
+            var requestType = 'get';
+        }
+
+
+        if (options.search) {
+            requestData['meta_info'] = options.search;
+            var url = _appJsConfig.appHostName + '/'+options.loadtype;
+            var requestType = 'get';
+        }
+
+        return $.ajax({
+            type: requestType,
+            url: url,
+            dataType: 'json',
+            data: requestData
+        }).done(function(r) {
+            // console.log(r);
+        });        
+    };
+
+}(jQuery));
 (function($) {
 
     $.fn.Ajax_pinUnpinArticle = function(options){
@@ -28798,6 +28839,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme.listen = function() {};
     Acme.listen.prototype.listener = function(topic, data)
     {
+        // console.log(listner);
         var keys = Object.keys(data);
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
@@ -28858,19 +28900,21 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
-
-            var key = Object.keys(data)[0];
-            var keySplit = key.split('.');
-            var scope = this.data;
-
-            for(var i=0; i<keySplit.length; i++) {
-                if (!scope[keySplit[i]]) {
-                    scope[keySplit[i]] = {};
+            var keys = Object.keys(data);
+            for (var j=0; j<keys.length; j++) {
+                var key = keys[j];
+                var keySplit = key.split('.');
+                var scope = this.data;
+    
+                for(var i=0; i<keySplit.length; i++) {
+                    if (!scope[keySplit[i]]) {
+                        scope[keySplit[i]] = {};
+                    }
+                    if(i == keySplit.length -1 ) {
+                        scope[keySplit[i]] = data[key];
+                    }
+                    scope = scope[keySplit[i]];
                 }
-                if(i == keySplit.length -1 ) {
-                    scope[keySplit[i]] = data[key];
-                }
-                scope = scope[keySplit[i]];
             }
         }
 
@@ -29144,9 +29188,10 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 
     Acme.listMenu = function(config)
     {
-        this.defaultTemp      = Handlebars.compile(window.templates.pulldown);
+        this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
+        this.callback         = config.callback      || null,
         this.menuParent       = config.parent        || {};
         this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
@@ -29211,7 +29256,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 }
                 html += itemTemp({
                     'label'   :  label,
-                    'value'   :  value
+                    'value'   :  value || ''
                 });
             }
             return html;
@@ -29230,13 +29275,17 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 var data = {};
                 data[self.key || self.name] = value;
 
-                Acme.PubSub.publish('update_state', data);
+                if (self.callback) {
+                    self.callback(data);
+                } else {
+                    Acme.PubSub.publish('update_state', data);
+                }
                 
                 if (clear) {
                     self.reset();
                 } else {
                     self.defaultItem.text(elem.text())
-                                    .addClass('Acme-pulldown__selected-item--is-active');
+                        .addClass('Acme-pulldown__selected-item--is-active');
                 }
 
                 $(self.listContainer).hide(100);
@@ -29280,8 +29329,8 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 
 
     Acme.modal = function(template, name, layouts, data) {
-        this.parentCont = name || null;
         this.template = template || null;
+        this.parentCont = name   || null;
         this.layouts = layouts   || null;
         this.data = data         || {};
         this.dfd = $.Deferred();
@@ -29289,6 +29338,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
+
             if (title) {
                 this.data['title'] = title;
             }
@@ -29296,6 +29346,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
+        
             $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
@@ -29324,7 +29375,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if (!$elem.is('input')) {
+            if ( !$elem.is('input') && !$elem.is('a') ) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
@@ -29421,18 +29472,163 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
  */
 Acme.templates = {};
 
+Acme.templates.pulldown = 
+'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
+    <p class="Acme-pulldown__selected-item"></p> \
+    <span class="Acme-pulldown__span"></span> \
+    <ul class="Acme-pulldown__list" data-key="{{ key }}"></ul> \
+</div>';
+
+
+Acme.templates.create_user = 
+'<div class="" style="height:100%; overflow:auto; position:relative"> \
+    <div class="user-editor__input-container u-float-left"> \
+        <input type="text" id="newuserfirstname" class="j-firstname account-form__input" value="" placeholder="{{firstname}}"> \
+    </div> \
+    <div class="user-editor__input-container u-float-right"> \
+        <input type="text" id="newuserlastname" class="j-lastname account-form__input" value="" placeholder="{{lastname}}"> \
+    </div> \
+    <div class="user-editor__input-container u-float-left"> \
+        <input type="text" id="newuseruseremail" class="j-email account-form__input" value="" placeholder="{{useremail}}"> \
+        <p id="userError" class="user-editor__error"></p> \
+    </div> \
+    <div id="user-editor-buttons" class="user-editor__input-container user-editor__buttons u-float-right"> \
+        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
+        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
+    </div> \
+    <div id="user-editor__spinner" class="user-editor__spinner"></div> \
+</div>';
+
+
+Acme.templates.edit_user = 
+'<div class="" style="height:100%; overflow:auto"> \
+    <div class="user-editor__input-container u-float-left"> \
+        <input type="text" id="newuserfirstname" class="j-firstname user-editor__input" value="{{firstname}}" placeholder="First name"> \
+        <input type="text" id="newuserusername" class="j-username user-editor__input" value="{{username}}" placeholder="Email address"> \
+        </div> \
+    <div class="user-editor__input-container u-float-right"> \
+        <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="{{lastname}}" placeholder="Last name"> \
+    </div> \
+    <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
+        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
+        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
+    </div> \
+</div>';
+
+Acme.templates.managed_user = 
+'<div class="u-float-left"> \
+    <p class="userdetails__name"> \
+        <span class="j-firstname">{{firstname}}</span> \
+        <span class="j-lastname">{{lastname}}</span> \
+    </p> \
+    <p class="j-username userdetails__username">{{username}}</p> \
+</div>\
+<a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
+<a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>';
+
+
+Acme.managed_user = 
+'<li id="{{id}}" class="userdetails"> \
+    <div class="u-float-left"> \
+        <p class="userdetails__name"> \
+            <span class="j-firstname">{{firstname}}</span> \
+            <span class="j-lastname">{{lastname}}</span> \
+        </p> \
+    </div>\
+    <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
+    <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
+    <p class="j-email  userdetails__email u-float-right">{{email}}</p> \
+</li>';
+
+
+Acme.templates.signinFormTmpl = 
+    // <script> tag possible ios safari login fix
+    '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
+        <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
+        \
+        <div class="message active hide"> \
+        <div class="login-form__error_text">Invalid Email or Password</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+        \
+        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
+        <div class="remember"> \
+            <p class="layout" data-layout="forgot" class="">Set my password</p> \
+        </div> \
+        \
+        <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
+    </form>';
+
+Acme.templates.registerTmpl = 
+    '<form name="registerForm" id="registerForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <input id="name" class="" type="text" name="name" placeholder="Name"> \
+        <input id="email" class="" type="email" name="email" placeholder="Email"> \
+        \
+        <div class="message active hide"> \
+            <div class="account-modal__error_text">Done!</div> \
+        </div> \
+        \
+        <button id="signinBtn" type="submit" class="_btn _btn--red register">Register</button> \
+    </form>';
+
+
+Acme.templates.forgotFormTmpl = 
+    '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        <input type="hidden" name="_csrf" value="" /> \
+        <p class="password-reset-form__p">Enter your email below and we will send you an link to set your password.</p> \
+        <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
+        \
+        <div class="message active hide"> \
+            <div class="password-reset-form__error_text">No user with that email found.</div> \
+        </div> \
+        \
+        <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
+    </form>';
+
+    
+Acme.templates.spinner = 
+    '<div id="{{name}}" class="flex_col {{name}}"> \
+        <div id="dialog" class="{{name}}__window"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
+            </div> \
+            <div class="{{name}}__content-window" id="dialogContent"></div> \
+        </div> \
+    </div>';
+    
+
+Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
+
+Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+
+Acme.templates.userPlanMessage = 
+'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+     <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
+</form>';
+
+Acme.templates.userPlanOkCancel = 
+'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+     <button id="okaybutton" class="_btn _btn--red okay" data-role="okay">OK</button> \
+     <button id="cancelbutton" class="_btn _btn--gray close" data-role="cancel">Cancel</button> \
+</form>';
+
+
 Acme.templates.modal = 
 // style="scrolling == unusable position:fixed element might be fixing login for ios safari
 // also margin-top:10px
-'<div id="signin" class="flex_col acme-modal"> \
-    <div id="dialog" class="acme-modal__window"> \
-        <div class="acme-modal__container centerContent" style="scrolling == unusable position:fixed element"> \
-            <div class="acme-modal__header"> \
-                <h2 class="acme-modal__title">{{title}}</h2> \
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
                 <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
-                <a class="acme-modal__close u-invisible" href="#" data-behaviour="close"></a> \
+                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
-            <div class="acme-modal__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
     </div> \
 </div>';
@@ -29605,6 +29801,228 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
 //     };
 
 // }(jQuery));
+
+Acme.Feed = function() {};
+Acme.Feed.prototype.fetch = function()
+{
+    var self = this;
+    self.elem.html("Please wait...");
+
+    var container = $('#'+self.elem.data('container'));
+
+    // blogfeed makes 2 sql calls.  
+    //      Offset is to get pinned contect 
+    //      nonPinnedOffset gets the rest
+    //      They're combined to return full result
+    self.options = {
+        'container'         :   container,
+        'limit'             :   self.elem.data('limit'),
+        'offset'            :   self.elem.data('offset') || self.elem.data('limit'),
+        'nonPinnedOffset'   :   self.elem.data('non-pinned-offset') || -1,
+        'blogid'            :   self.elem.data('blogguid'),
+        'loadtype'          :   self.elem.data('loadtype')      || "home",
+        'search'            :   self.elem.data('searchterm')    || null,
+    };
+    if (self.options.search != null) {
+        self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
+    }
+
+    $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
+        if (data.success == 1) {
+            self.render(data);
+        }
+    });
+};
+
+Acme.Feed.prototype.events = function() 
+{
+    var self = this;
+    self.elem.unbind().on('click', function(e) {
+        e.preventDefault();
+        self.fetch();
+    });
+
+
+    if (this.infinite && this.offset >= this.limit) {
+        self.waypoint = new Waypoint({
+            element: self.elem,
+            offset: '80%',
+            handler: function (direction) {
+                if (direction == 'down') {
+                    self.fetch();
+                }
+            }
+        });
+    }
+};
+
+
+
+
+
+
+Acme.View.articleFeed = function(feedModel, limit, offset, infinite, failText, controller)
+{
+    this.feedModel = feedModel;
+    this.offset    = offset || 0;
+    this.limit     = limit || 10;
+    this.controller= controller || null;
+    this.infinite  = infinite || false;
+    this.waypoint  = false;
+    this.options   = {};
+    this.elem      = $('.loadMoreArticles');
+    this.failText  = failText || null;
+    this.events();
+};
+
+Acme.View.articleFeed.prototype = new Acme.Feed();
+Acme.View.articleFeed.constructor = Acme.View.articleFeed;
+
+Acme.View.articleFeed.prototype.render = function(data) 
+{
+    var self = this;
+
+    var cardClass  =   self.elem.data('card-class'),
+        template   =   self.elem.data('card-template') || null,
+        label      =   self.elem.data('button-label')  || "Load more",
+        ads_on     =   self.elem.data('ads')           || null,
+
+        imgWidth   =   self.elem.data('imgwidth')      || null,
+        imgHeight  =   self.elem.data('imgheight')     || null,
+
+        rendertype =   self.elem.data('rendertype')    || null;
+
+    self.elem.html(label);
+
+    (data.articles.length < self.options.limit) 
+        ? self.elem.css('display', 'none')
+        : self.elem.show();
+
+    // add counts to the dom for next request
+    self.elem.data('non-pinned-offset', data.existingNonPinnedCount);
+    self.elem.data('offset', (self.options.offset + self.options.limit));
+
+    var html = [];
+    if (ads_on == "yes") {
+        html.push( window.templates.ads_infinite );
+    }
+
+
+    if (data.articles.length === 0 && self.failText) {
+        html = ["<p>" + self.failText + "</p>"];
+    } else {
+        for (var i in data.articles) {
+            data.articles[i].imageOptions = {'width': imgWidth, 'height': imgHeight};
+            html.push( self.feedModel.renderCard(data.articles[i], cardClass, template) );
+        }
+    }
+
+    (rendertype === "write")
+        ? self.options.container.empty().append( html.join('') )
+        : self.options.container.append( html.join('') );
+        
+    if (self.waypoint) {
+        (data.articles.length < self.options.limit)
+            ? self.waypoint.disable()
+            : self.waypoint.enable();
+    }
+
+    $(".card .content > p, .card h2").dotdotdot();     
+    // $('.video-player').videoPlayer();
+    $("div.lazyload").lazyload({
+        effect: "fadeIn"
+    });
+
+    self.elem.data('rendertype', '');
+    this.feedModel.events();
+};
+
+
+
+
+
+Acme.View.userFeed = function(feedModel, limit, offset, infinite, failText, controller)
+{
+    this.feedModel = feedModel;
+    this.controller = controller || null;
+    this.offset    = offset || 0;
+    this.limit     = limit || 10;
+    this.infinite  = infinite || false;
+    this.waypoint  = false;
+    this.options   = {};
+    this.elem      = $('.loadMoreArticles');
+    this.failText  = failText || null;
+    this.events();
+};
+
+Acme.View.userFeed.prototype = new Acme.Feed();
+Acme.View.userFeed.constructor = Acme.View.userFeed;
+
+Acme.View.userFeed.prototype.render = function(data) 
+{
+    var self = this;
+    var cardClass  =   self.elem.data('card-class'),
+        template   =   self.elem.data('card-template') || null,
+        label      =   self.elem.data('button-label')  || "Load more",
+        ads_on     =   self.elem.data('ads')           || null,
+        rendertype =   self.elem.data('rendertype')    || null;
+
+    self.elem.html(label);
+
+    (data.users.length < self.options.limit) 
+        ? self.elem.css('display', 'none')
+        : self.elem.show();
+
+    // add counts to the dom for next request
+    self.elem.data('offset', (self.options.offset + self.options.limit));
+
+    var html = [];
+    if (ads_on == "yes") {
+        html.push( window.templates.ads_infinite );
+    }
+
+
+    if (data.users.length === 0 && self.failText) {
+        html = ["<p>" + self.failText + "</p>"];
+    } else {
+        for (var i in data.users) {
+            html.push( self.feedModel.render(data.users[i], cardClass, template) );
+        }
+    }
+
+    (rendertype === "write")
+        ? self.options.container.empty().append( html.join('') )
+        : self.options.container.append( html.join('') );
+        
+    if (self.waypoint) {
+        (data.users.length < self.options.limit)
+            ? self.waypoint.disable()
+            : self.waypoint.enable();
+    }
+
+    this.controller.userEvents();
+
+    $(".card .content > p, .card h2").dotdotdot();     
+    // $('.video-player').videoPlayer();
+    $("div.lazyload").lazyload({
+        effect: "fadeIn"
+    });
+
+    self.elem.data('rendertype', '');
+};
+
+
+Acme.Usercard = function(){
+};
+Acme.Usercard.prototype.render = function(user, cardClass, template, type)
+{
+    var self = this;
+    var template = (template) ? Acme[template] : Acme.systemCardTemplate;
+    userTemplate = Handlebars.compile(template);
+    return userTemplate(user);
+}
+
+
 
 var AuthController = (function ($) {
     return {
@@ -29877,6 +30295,236 @@ AuthController.ResetPassword = (function ($) {
     
 
 
+
+/***                      ****
+  Dialog Confirmation Box
+***                       ****/
+
+Acme.Confirm = function(template, parent, layouts) {
+
+    this.template = template;
+    this.parentCont = parent;
+    this.layouts = layouts;
+    this.parent = Acme.modal.prototype;
+    this.data = {};
+};
+    Acme.Confirm.prototype = new Acme.modal();
+    Acme.Confirm.constructor = Acme.Confirm;
+    Acme.Confirm.prototype.errorMsg = function(msg) {
+        $('.message').toggleClass('hide');
+    };
+    Acme.Confirm.prototype.handle = function(e) {
+        var self = this;
+        this.parent.handle.call(this, e);
+        var $elem = $(e.target);
+
+        if ( $elem.is('a') ) {
+            if ($elem.hasClass('close')) {
+                $('body').removeClass("active");
+                this.closeWindow();
+            }
+        }
+        if ($elem.is('button')) {
+            if ($elem.hasClass('signin')) {
+                e.preventDefault();
+                var formData = {};
+                $.each($('#loginForm').serializeArray(), function () {
+                    formData[this.name] = this.value;
+                });
+                Acme.server.create('/api/auth/login', formData).done(function(r) {
+                    if (r.success === 1) {
+                        window.location.href = location.origin;
+                    } else {
+                        self.errorMsg();
+                    }
+                }).fail(function(r) { console.log(r);});
+            }
+
+
+            if ($elem.hasClass('register')) {
+                e.preventDefault();
+                var formData = {};
+                $.each($('#registerForm').serializeArray(), function () {
+                    formData[this.name] = this.value;
+                });
+
+                if (formData['email'] !== '' && formData['name'] !== ''){
+                    $.get( 'https://submit.pagemasters.com.au/ubt/submit.php?email='+encodeURI(formData['email'])+'&name='+encodeURI(formData['name']) );
+                    $elem.addClass('spinner');
+                    function close() {
+                        self.closeWindow();
+                    };
+                    setTimeout(close, 2000);
+
+                } else {
+                    alert ("Please fill out all fields.");
+                }
+            }
+
+
+            if ($elem.hasClass('forgot')) {
+                e.preventDefault();
+                var formData = {};
+                $.each($('#forgotForm').serializeArray(), function () {
+                    formData[this.name] = this.value;
+                });
+
+                Acme.server.create('/api/auth/forgot-password', formData).done(function(r) {
+                    if (r.success === 1) {
+                        location.reload();
+                    } else {
+                        self.errorMsg();
+                    }
+
+                }).fail(function(r) { console.log(r);});
+            }
+
+            if ($elem.hasClass('default-weather')) {
+                var newDefault = Acme.State.Country + '/' + Acme.State.City;
+
+                localStorage.setItem('city', newDefault);
+                function close() {
+
+                    Acme.PubSub.publish("update_state", {'localweather': newDefault });                
+
+                    self.closeWindow();
+                };
+                setTimeout(close, 500);            
+            }        
+
+            if ($elem.data('role') === 'delete') {
+                $elem.addClass("spinner");
+                Acme.PubSub.publish("update_state", {'delete listing': "" });
+            }
+
+            if ($elem.data('role') === 'deleteImage') {
+                // console.log('you want to delete an image???');
+                // console.log(self.data);
+                Acme.PubSub.publish("update_state", {'delete image': self.data });
+
+                // $elem.addClass("spinner");
+                // Acme.PubSub.publish("update_state", {'delete listing': "" });
+            }
+
+
+        }
+        if ($elem.hasClass('layout')) {
+            var layout = $elem.data('layout');
+            this.renderLayout(layout);
+        }
+    };
+
+/***                             ****
+    Base Class for all Forms
+***                              ****/
+Acme.Form = function(validators, rules) {
+    this.errorField;
+    this.validators = validators || null;
+    this.validateRules = rules || {};
+};
+    Acme.Form.prototype = new Acme._View();
+    Acme.Form.constructor = Acme.Form;
+    Acme.Form.prototype.clearInlineErrors = function()
+    {
+        if (this.errorField) {
+            this.errorField.removeClass('active');
+        }
+        for (var field in this.validateFields) {
+            var fieldname = this.validateFields[field].split('.').reverse()[0];
+            $('#'+fieldname).removeClass('formError');
+        }
+    };
+    Acme.Form.prototype.addInlineErrors = function()
+    {
+        if (this.errorFields.length > 0 && this.errorField) {
+            this.errorField.addClass('active');
+        }
+        for (var field in this.errorFields) {
+            $('#'+this.errorFields[field]).addClass('formError');
+        }
+    };
+
+    Acme.Form.prototype.validate = function( /* Array */ checkFields)  {
+        // checkFields is used to validate a single field, 
+        // otherwise itereate through all compulsory fields
+
+        // intersect used to clear the field we want to check 
+        // from errorFields.  if still an error it will add again.
+
+        function intersect(a, b) {
+            var t;
+            if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+            return a.filter(function (e) {
+                return b.indexOf(e) > -1;
+            });
+        }
+
+        var validated = true, fields = [];
+        if (checkFields && this.validateFields) {
+            var fields = intersect(this.validateFields, checkFields);
+            for (var j=0; j<fields.length;j++) {
+                var fieldName = fields[j].split('.').reverse()[0];
+                var index = this.errorFields.indexOf(fieldName);
+                if (index === -1) break;
+                this.errorFields.splice(index, 1);
+            }
+        } else {
+            var fields = this.validateFields || [];
+            this.errorFields = []; // reset and re-calcuate all fields
+        }
+        for (var i=0;i<fields.length; i++) {
+            var key = fields[i];
+            var keySplit = key.split('.');
+            var scope = this.data;
+            for(var j=0; j<keySplit.length; j++) {
+
+                if (!scope[keySplit[j]]) {
+                    scope = false;
+                    break;
+                }
+                if(j == keySplit.length -1 ) {
+                    scope = scope[keySplit[j]];
+                    break;
+                }
+                scope = scope[keySplit[j]];
+            }
+
+            // DO THE VALIDATE!!!
+            var fieldValidators = this.validateRules[key];
+            if (fieldValidators.length > 0) {
+
+                var fieldname = fields[i].split('.').reverse()[0];
+                for (var k=0; k<fieldValidators.length; k++) {
+                    if ( !this.validators[ fieldValidators[k] ](scope) ) {
+                        this.errorFields.push(fieldname); 
+                        // console.log(this.errorFields);
+                        validated = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return validated;
+    };
+
+
+
+
+Acme.Validators = {
+    'notEmpty' : function(input) {
+        return !input ? false : true;
+    },
+    'isNumeric' : function(n) {
+        // var ret = !isNaN(parseFloat(n)) && isFinite(n);
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    },
+    'username' : function(text) {
+        return (text.length > 4);
+    },  
+    'isTrue' : function(data) {
+        return (data === 'true' || data === true) ? true : false;
+    }
+};
 
 var HomeController = (function ($) {
     return {
@@ -30375,7 +31023,7 @@ Acme.registerPopUp = function(tokenName)
 	this.date 		= new Date();
 	this.token 		= {};
 	var self 		= this;
-	console.log('in the pop up ');
+
 	setTimeout(function() {
 		self.run();
 		self.events();
@@ -30520,6 +31168,7 @@ $('document').ready(function() {
     var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
+    var foldaway_search = false;
 
     var isMenuBroken = function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
@@ -30576,7 +31225,7 @@ $('document').ready(function() {
         if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
-        } else {
+        } else if (!foldaway_search) {
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
@@ -30605,17 +31254,94 @@ $('document').ready(function() {
 
 
 
+    $('#batch-add').on('click', function(e) {
+        console.log('adding batch users');
+        var input = $('#batch-user-input').val();
+        var send = JSON.parse( input );
+        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
+        return $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: send
+        }).done(function(r) {
+            console.log(r);
+            alert("Users added");
+
+        }).fail(function(r) {
+            console.log(r);
+            alert(r.responseText);
+        });        
+
+    });
+
+    $('#batch-add-csv').on('click', function(e) {
+        var payload = {
+            "owner" : {
+                "email": null
+            },
+            "users": []
+        };
+
+        var input = $('#batch-user-input').val();
+        
+        const lines = input.split(/\n/);    
+        var owner = lines[0].split(',');
+        payload.owner.email = owner[owner.length - 1];
+
+        for (var i=0; i< lines.length; i++) {
+            $user = lines[i].split(',');
+            
+            $userobj = {
+                "firstname" : $user[0],
+                "lastname" : $user[1],
+                "username" : $user[2],
+                "email" : $user[3],
+            };
+
+            payload.users.push($userobj);
+        }
+
+
+        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
+        return $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: payload
+        }).done(function(r) {
+            console.log(r);
+            alert("Users added");
+
+        }).fail(function(r) {
+            console.log(r);
+            alert(r.responseText);
+        });        
+
+    });
+
+
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-        menu_top_foldaway.toggleClass('hide');
-        menu_bottom_foldaway.toggleClass('hide');
+            menu_top_foldaway.toggleClass('hide');
+            menu_bottom_foldaway.toggleClass('hide');
+            if (foldaway_search) {
+                foldaway_search = false;
+                $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');
+                $(".menuContainer > ul > li.menu-item-search-foldaway").removeClass('now-active');
+            }
     });
 
     $(".menu-mobile").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
+        if (window.innerWidth < 768) { 
+            $(thisMenuElem).find('.menuContainer').css("z-index","-1");
+         } else {
+            $(thisMenuElem).find('.menuContainer').css("z-index","100");
+         }
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
@@ -30634,9 +31360,27 @@ $('document').ready(function() {
         }
     });
 
+    $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
+        if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $(this).children("ul").stop(true, false).slideToggle(225);
+            $(this).toggleClass('now-active');
+            if (window.innerWidth > sbCustomMenuBreakPoint) {
+                $("input#header-search-foldaway").focus();
+            }
+        }
+    });
+
     $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $("input#header-search").focus();
+            return false;
+        }
+    });
+
+    $("li.menu-item-search-foldaway").bind("mouseenter focus mouseleave",function () {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+            $("input#header-search-foldaway").focus();
             return false;
         }
     });
@@ -30790,6 +31534,419 @@ SearchController.Listing = (function ($) {
     };
 
 }(jQuery));
+(function ($) {
+
+
+Acme.Signin = function(template, parent, layouts) {
+    this.template = template;
+    this.parentCont = parent;
+    this.layouts = layouts;
+    this.parent = Acme.modal.prototype;
+};
+Acme.Signin.prototype = new Acme.modal();
+Acme.Signin.constructor = Acme.Signin;
+Acme.Signin.prototype.errorMsg = function(msg) {
+    $('.message').removeClass('hide');
+};
+Acme.Signin.prototype.handle = function(e) {
+    var self = this;
+
+    var $elem = this.parent.handle.call(this, e);
+
+    if ( $elem.is('a') ) {
+
+        if ($elem.hasClass('close')) {
+
+            e.preventDefault();
+            $('body').removeClass("active");
+            this.closeWindow();
+        }
+    }
+    if ($elem.is('button')) {
+
+        $('.message').addClass('hide');
+        if ($elem.hasClass('signin')) {
+            $elem.text('')
+                 .addClass('spinner');
+            e.preventDefault();
+            var formData = {};
+
+            $.each($('#loginForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+            // rememberMe sets flag to store login for 30 days in cookie
+            formData['rememberMe'] = 1;
+            Acme.server.create('/api/auth/login', formData).done(function(r) {
+
+                if (r.success === 1) {
+                    window.location.reload();
+
+                } else {
+                    $elem.text("Sign in")
+                         .removeClass('spinner');
+                    self.errorMsg();
+                }
+            }).fail(function(r) { console.log(r);});
+        }
+
+
+        if ($elem.hasClass('register')) {
+            e.preventDefault();
+            var formData = {};
+            $.each($('#registerForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+
+            if (formData['email'] !== '' && formData['name'] !== ''){
+                $.get( 'https://submit.pagemasters.com.au/ubt/submit.php?email='+encodeURI(formData['email'])+'&name='+encodeURI(formData['name']) );
+                $elem.addClass('spinner');
+                function close() {
+                    self.closeWindow();
+                    self.render('userPlan', "Thank you for registering.");
+
+                };
+                setTimeout(close, 2000);
+
+            } else {
+                alert ("Please fill out all fields.");
+            }
+        }
+
+
+        if ($elem.hasClass('forgot')) {
+            e.preventDefault();
+            var formData = {};
+            $.each($('#forgotForm').serializeArray(), function () {
+                formData[this.name] = this.value;
+            });
+
+            Acme.server.create('/api/auth/forgot-password', formData).done(function(r) {
+                if (r.success === 1) {
+                    location.reload();
+                } else {
+                    self.errorMsg();
+                }
+
+            }).fail(function(r) { console.log(r);});
+        }
+
+
+
+        if ($elem.hasClass('close')) {
+            $('body').removeClass("active");
+            this.closeWindow();
+        }
+   
+
+    }
+
+    if ($elem.hasClass('layout')) {
+        var layout = $elem.data('layout');
+        this.renderLayout(layout);
+    }
+
+
+};
+
+var layouts = {
+    "signin"        : 'signinFormTmpl',
+    "register"      : 'registerTmpl',
+    "forgot"        : 'forgotFormTmpl',
+    "spinner"       : 'spinnerTmpl',
+    "expired"       : 'expiredNotice',
+    "userPlan"      : 'userPlanMessage',
+    "userPlanChange" : 'userPlanOkCancel',
+
+}
+
+
+
+
+Acme.SigninView = new Acme.Signin('modal', 'signin-modal', layouts);
+
+
+
+$('#signinBtn, #articleSigninBtn').on('click', function() {
+    Acme.SigninView.render("signin", "Sign in");
+});
+
+$('a.j-register').on('click', function(e) {
+    e.preventDefault();
+    Acme.SigninView.render("register", "Register your interest");
+});
+
+
+
+
+}(jQuery));
+// Create a Stripe client
+if ($('#stripekey').length > 0) {
+
+
+    var stripekey = $('#stripekey').html();
+
+
+    var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+
+    var stripe = Stripe(stripekey);
+
+    // Create an instance of Elements
+    var elements = stripe.elements();
+
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+        base: {
+            color: '#32325d',
+            lineHeight: '24px',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    // Create an instance of the card Element
+    var card = elements.create('card', {style: style});
+
+    // Add an instance of the card Element into the `card-element` <div>
+    var cardElement = document.getElementById('card-element');
+    if (cardElement != null) {
+        card.mount('#card-element');
+    }
+
+    // Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    }); 
+
+    // Handle form submission
+
+    var SubscribeForm = function() {
+        this.data = {
+            "group[1149][1]": true,
+            "group[1149][2]": true,
+        };
+
+        this.errorFields = [];
+
+        this.validateRules = {
+            "verifypassword"    : ["notEmpty"],
+            "firstname"         : ["notEmpty"], 
+            "lastname"          : ["notEmpty"], 
+            "username"          : [], 
+            "password"          : ["notEmpty"],
+            "email"             : ["notEmpty"],
+            "trial"             : [],
+            "terms"             : ["isTrue"],
+        };
+
+        this.validateFields = Object.keys(this.validateRules);
+
+        this.events();
+
+        // this.data['trial'] = $('#trial').is(":checked");
+        var trial = $('#trial').val();
+        if (trial == 1) {
+            this.data['trial'] = 'true';
+        }
+
+    };
+
+    SubscribeForm.prototype = new Acme.Form(Acme.Validators);
+    SubscribeForm.constructor = SubscribeForm;
+
+    SubscribeForm.prototype.render = function(checkTerms) 
+    {
+        this.clearInlineErrors();
+        this.addInlineErrors();
+        if (checkTerms) {
+            if (!this.data.terms) {
+
+                this.confirmView = new Acme.Confirm('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+                this.confirmView.render("terms", "Terms of use");
+            }
+        }
+    };
+
+
+
+    SubscribeForm.prototype.submit = function(event) 
+    {
+        var self = this;
+        event.preventDefault();
+        var validated = self.validate();
+        self.render(true);
+        if (!validated) return;
+
+        $('#card-errors').text('');
+        if ( $('#password').val() !== $('#verifypassword').val() ) {
+            $('#card-errors').text('Password fields do not match.');
+            return;
+        }
+
+        modal.render("spinner", "Your request is being processed.");
+
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                modal.closeWindow();
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server
+                self.data['stripetoken'] = result.token.id;
+                self.data['planid'] = $('#planid').val();
+                self.data['redirect'] = false;
+
+                formhandler(self.data, '/auth/paywall-signup').then(function(response) {
+
+                    
+                    if (response.success == 1) {
+                        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                            var subscribeData = {
+                                "EMAIL": self.data['email'], 
+                                "FNAME": self.data['firstname'],
+                                "LNAME": self.data['lastname'],
+                            };
+                            if (self.data["group[1149][1]"]) {
+                                subscribeData["group[1149][1]"] = 1;
+                            }
+                            if (self.data["group[1149][2]"]) {
+                                subscribeData["group[1149][2]"] = 2;
+                            }
+    
+                            Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                                .then(function(r) {
+                                    console.log(r);
+                                });                        
+                        }
+
+                        window.location.href = location.origin + '/auth/thank-you';
+                    }
+                    
+                });
+            }
+        });    
+    };
+    SubscribeForm.prototype.events = function()
+    {
+        var self = this;
+        $('input, textarea').on("change", function(e) {
+
+            e.stopPropagation();
+            e.preventDefault();
+            var data = {};
+            var elem = $(e.target);
+            var elemid = elem.attr('name');
+            var inputType = elem.attr('type');
+
+            if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
+                data[elemid] = elem.val();
+                // username is created from the email plus a random number
+                if (inputType == 'email') {
+                    data['username'] = Math.floor(100000000 + Math.random() * 9000000000000000);
+                }
+
+            } else if (inputType =='checkbox') {
+                var value = elem.is(":checked");
+                data[elemid] = value;
+            }
+
+            self.updateData(data);
+
+            var validated = self.validate([elemid]);
+            self.render();
+        });
+
+        var form = document.getElementById('payment-form');
+
+        if (form != null) {
+            form.addEventListener('submit', function(event) {
+                self.submit(event);
+
+            });
+        }
+
+
+    };
+
+    Acme.subscribe = new SubscribeForm();
+
+   
+
+
+    var formhandler = function(formdata, path) {
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+        return $.ajax({
+            url: _appJsConfig.appHostName + path,
+            type: 'post',
+            data: formdata,
+            dataType: 'json',
+            success: function(data) {
+
+                if(data.success) {
+                    $('#card-errors').text('Completed successfully.');
+                } else {
+                    modal.closeWindow();
+
+                    var text = ''
+                    for (var key in data.error) {
+                        text = text + data.error[key] + " ";
+                    } 
+                    $('#card-errors').text(text);
+                }   
+            },
+            error: function(data) {
+                modal.closeWindow();
+            }
+        });
+    }
+
+
+
+    var udform = document.getElementById('update-card-form');
+
+    if (udform != null) {
+
+        udform.addEventListener('submit', function(event) {
+            event.preventDefault();
+            modal.render("spinner", "Your request is being processed.");
+
+            $('#card-errors').text('');
+            
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    modal.closeWindow();
+
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+
+                    formdata = {"stripetoken":result.token.id}
+                    formhandler(formdata, '/user/update-payment-details').then(function() {
+                        modal.closeWindow();
+                        location.reload();
+                    });
+                }
+            });
+        });
+    }
+} 
 var UserArticlesController = (function ($) {
     return {
         load: function () {
@@ -30915,98 +32072,456 @@ UserArticlesController.Load = (function ($) {
 
 
 
-(function ($) {
+
     
-    /**
-     * Follow Unfollow blog on profile page
-     */
-    $('.FollowUnfollowBlog').followBlog({
-        onSuccess: function (data, obj) {
-            var status = $(obj).data('status');
-            if($(obj).hasClass('hasStar')) {
-                (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
-            }  
-        },
-        beforeSend: function (obj) {
-            $(obj).find('.fa').addClass('fa-spin fa-spinner');
-        },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
-        },
-        onComplete: function (obj) {
-            $(obj).find('.fa').removeClass('fa-spin fa-spinner');
-        }
-    });
-    
-    
-    /**
-     * Follow Profile User on Profile Page
-     */
-    $('.FollowProfileUser').followUser({
-        onSuccess: function (data, obj) {
-            var status = $(obj).data('status');
-            $(obj).get(0).lastChild.nodeValue = " " + status.substr(0,1).toUpperCase()+status.substr(1);
-            var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
-            $.fn.General_ShowNotification({message: message + " user successfully."});   
-        },
-        beforeSend: function (obj) {
-            $(obj).find('.fa').addClass('fa-spin fa-spinner');
-        },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
-        },
-        onComplete: function (obj) {
-            $(obj).find('.fa').removeClass('fa-spin fa-spinner');
-        }
-    });
-    
-  
-    /**
-     * Follow Unfollow Writer on profile page
-     */
-    $('.FollowUnfollowWriter').followUser({
-        onSuccess: function (data, obj) {
-            var status = $(obj).data('status');
-            if($(obj).hasClass('hasStar')) {
-                (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
+Acme.UserProfileController = function()
+{
+    this.csrfToken = $('meta[name="csrf-token"]').attr("content");
+    this.events();
+    this.userEvents();
+    this.listingEvents();
+};
+
+
+Acme.UserProfileController.prototype.deleteUser = function(e) {
+    var user = $(e.target).closest('li');
+    var userid = user.attr("id");
+    var requestData = { 
+        id: userid, 
+        _csrf: this.csrfToken
+    };
+
+    return $.ajax({
+        type: 'post',
+        url: _appJsConfig.baseHttpPath + '/user/delete-managed-user',
+        dataType: 'json',
+        data: requestData,
+        success: function (data, textStatus, jqXHR) {
+            if (data.success == 1) {
+                user.remove();
+                $('#addManagedUser').removeClass('hidden');
+                var usertxt = $('.profile-section__users-left').text();
+                var usercount = usertxt.split(" ");
+                var total = usercount[2];
+                usercount = parseInt(usercount[0]);
+                $('.profile-section__users-left').text((usercount - 1) + " of " + total + " used.");
+            } else {
+                var text = '';
+                for (var key in data.error) {
+                    text = text + data.error[key] + " ";
+                } 
+                $('#createUserErrorMessage').text(text);
             }
         },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
+        error: function (jqXHR, textStatus, errorThrown) {
+                $('#createUserErrorMessage').text(textStatus);
         },
-        beforeSend: function (obj) {
-            $(obj).find('.fa').addClass('fa-spin fa-spinner');
-        },
-        onComplete: function (obj) {
-            $(obj).find('.fa').removeClass('fa-spin fa-spinner');
+    });
+};
+
+Acme.UserProfileController.prototype.renderUser = function(parent, data, template) {
+
+    var userTemp = template ? Handlebars.compile(template) : Handlebars.compile(Acme.templates.managed_user);
+    if (data.constructor != Array) {
+        data = [data];
+    }
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+        html += userTemp(data[i]);
+    }
+    // console.log(html);
+    parent.empty().append(html);
+};
+
+Acme.UserProfileController.prototype.render = function(data) 
+{
+    var self = this;
+    var users = [];
+    for (var i=0; i< data.users.length; i++) {
+        users.push({
+            firstname: data.users[i].firstname, 
+            lastname:  data.users[i].lastname, 
+            username:  data.users[i].username, 
+            useremail: data.users[i].email,
+        });
+    }
+    self.renderUser(($('#mangedUsers')), users, Acme.managed_user);
+    self.userEvents();
+};
+
+Acme.UserProfileController.prototype.search = function(params) 
+{   
+    var self = this;
+    this.fetch(params, 'search-managed-users').done(function(data) {
+        self.render(data);
+    });
+};
+
+Acme.UserProfileController.prototype.fetchUsers = function(params) 
+{   
+    var self = this;
+    this.fetch(params, 'load-more-managed').done(function(data) {
+        self.render(data);
+    });
+};
+
+Acme.UserProfileController.prototype.fetch = function(params, url) 
+{
+    var url = _appJsConfig.appHostName + '/api/user/'+ url;
+    return Acme.server.fetch(url, params);
+};
+
+
+
+Acme.UserProfileController.prototype.userEvents = function() 
+{
+    var self = this;
+
+    $('.j-edit').unbind().on('click', function(e) {
+
+        var listelem = $(e.target).closest('li');
+        var userid = listelem.attr("id");
+
+        function getUserData(func) {
+            return {
+                firstname: listelem.find('.j-firstname')[func](), 
+                lastname:  listelem.find('.j-lastname')[func](), 
+                username:  listelem.find('.j-username')[func](), 
+                useremail: listelem.find('.j-email')[func](),
+            };
+        };
+
+        var data = getUserData("text");
+        var userTemp = Handlebars.compile(Acme.templates.edit_user);
+        var html = userTemp(data);
+        listelem.empty().append(html);
+
+        $('#cancelUserCreate').on('click', function(e) {
+            self.renderUser(listelem, data);
+            self.userEvents();
+        });
+
+        $('#saveUser').on('click', function(e) {
+            var requestData = getUserData("val");
+            requestData.id = userid;
+            requestData._csrf = this.csrfToken;
+            $.ajax({
+                type: 'post',
+                url: _appJsConfig.baseHttpPath + '/user/edit-managed-profile',
+                dataType: 'json',
+                data: requestData,
+                success: function (data, textStatus, jqXHR) {
+                    if (data.success == 1) {
+                        self.renderUser(listelem, requestData);
+                        $('#addManagedUser').removeClass('hidden');
+                        $('#createUserErrorMessage').text('');   
+                    } else {
+                        var text = '';
+                        for (var key in data.error) {
+                            text = text + data.error[key] + " ";
+                        } 
+                        $('#createUserErrorMessage').text(text);
+                    }
+                    self.userEvents();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                        $('#createUserErrorMessage').text(textStatus);
+                },
+            });        
+        });
+    });  
+
+    $('.j-delete').unbind().on('click', function(e) {
+        Acme.SigninView.render("userPlanChange", "Are you sure you want to delete this user?")
+            .done(function() {
+                self.deleteUser(e);
+            });
+    });   
+};
+
+
+
+
+Acme.UserProfileController.prototype.events = function () 
+{
+    var self = this;
+
+
+    $('#profile-form').submit( function(e){
+        // NOTE this form also uses validation from the stripe subscribe form
+        // purely by accident as the event listeners in THAT form are generic.
+
+        // Will need to separate if it becomes a problem but for now it works
+        // The following stops submit and adds error text
+
+        e.preventDefault();
+        var errorText = '';
+
+        if ( $('#firstname').val() == '' ) {
+            errorText += "First name cannot be empty. <br />";
+        }
+        if ( $('#lastname').val() == '' ) {
+            errorText += "Last name cannot be empty.  <br />";
+        }
+
+        if ($('#email').val() == '' ) {
+            errorText += "Email cannot be empty. ";
+        }
+
+        $("#account-form__errorText").html(errorText);
+        
+        if (!errorText) {
+            $(this).unbind('submit').submit()
         }
     });
-    
-    /**
-     * Follow Unfollow User On Profile page
-     */
-    $('.FollowUnfollowUser').followUser({
-        onSuccess: function (data, obj) {
-            var status = $(obj).data('status');
-            if($(obj).hasClass('hasStar')) {
-                (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
+
+    $('#message-close').on('click', function(e) {
+        e.preventDefault();
+        var parent = $(this).parent().remove();
+    });
+
+    $('#managed-user-search').on('submit', function(e) {
+        e.preventDefault();
+        var search = {};
+        $.each($(this).serializeArray(), function(i, field) {
+            search[field.name] = field.value;
+        });
+        self.search(search);
+        $('#user-search-submit').hide();
+        $('#user-search-clear').show();
+
+    });
+
+    $('#user-search-clear').on('click', function(e) {
+        e.preventDefault();
+        self.fetchUsers();
+        $('#managed-user-search-field').val('');
+        $('#user-search-submit').show();
+        $('#user-search-clear').hide();
+    });
+
+
+
+    $('#addManagedUser').on('click', function(e) {
+        e.preventDefault()
+        var userTemp = Handlebars.compile(Acme.templates.create_user);
+        var data = {
+            firstname: "First name", 
+            lastname:  "Last name", 
+            username:  "Username", 
+            useremail: "Email",
+        };
+
+        var html = '<li id="newUser" class="user-editor user-editor__add"><p class="text-button">Add User</p>' + userTemp(data) + '</li>';
+
+        $('#createManagedUser').append(html);
+        $('#newuserfirstname').focus();
+        $('#addManagedUser').addClass('hidden');
+        $('#nousers').addClass('hidden');
+
+        $('#saveUser').on('click', function(e) {
+            $('#userError').text("");
+
+            var requestData = { 
+                firstname: $('#newuserfirstname').val(), 
+                lastname:  $('#newuserlastname').val(), 
+                username:  $('#newuserusername').val(), 
+                useremail: $('#newuseruseremail').val(),
+                _csrf: this.csrfToken
+            };
+            
+            var errorText = "";
+            if (requestData.firstname === ""){
+                errorText += "First name cannot be blank. ";
             }
-        },
-        onError: function (obj, errorMessage) {
-            $().General_ShowErrorMessage({message: errorMessage});
-        },
-        beforeSend: function (obj) {
-            $(obj).find('.fa').addClass('fa-spin fa-spinner');
-        },
-        onComplete: function (obj) {
-            $(obj).find('.fa').removeClass('fa-spin fa-spinner');
+            if (requestData.lastname === ""){
+                errorText += "Last name cannot be blank. ";
+            }
+            if (requestData.username === ""){
+                errorText += "Username cannot be blank. ";
+            }
+            if (requestData.useremail === ""){
+                errorText += "Email cannot be blank. ";
+            }
+            if (errorText != "") {
+                $('#userError').text(errorText);
+                return;
+            }
+            
+            
+            $('#user-editor__spinner').addClass('spinner');
+
+
+            $.ajax({
+                type: 'post',
+                url: _appJsConfig.appHostName + '/user/create-paywall-managed-user',
+                dataType: 'json',
+                data: requestData,
+                success: function (data, textStatus, jqXHR) {
+                    $('#user-editor__spinner').removeClass('spinner');
+
+                    if (data.success == 1) {
+                        location.reload(false);             
+                    } else {
+                        var text = '';
+                        for (var key in data.error) {
+                            text = text + data.error[key] + " ";
+                        } 
+                        $('#createUserErrorMessage').text(text);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('#user-editor-buttons').removeClass('spinner');
+                    $('#createUserErrorMessage').text(textStatus);
+                },
+            });        
+        });
+
+        $('#cancelUserCreate').on('click', function(e) {
+            $('#newUser').remove();
+            $('#addManagedUser').removeClass('hidden');
+            $('#createUserErrorMessage').text('');
+        });
+    });
+
+
+
+    $('#cancelAccount').on('click', function(e) {
+
+        var listelem = $(e.target).closest('li');
+        var userid = listelem.attr("id");
+
+        var status = 'cancelled';
+        message = "Are you sure you want to cancel your plan?"
+        if ($(e.target).text() == 'Restart Subscription') {
+            message = "Do you want to reactivate your plan? You will be billed on the next payment date."
+            status = 'paid'
+        }
+        var requestData = { 
+            status: status, 
+            _csrf: this.csrfToken, 
+        };
+
+
+
+        Acme.SigninView.render("userPlanChange", message)
+            .done(function() {
+                $('#dialog').parent().remove();
+                
+                $.ajax({
+                    type: 'post',
+                    url: _appJsConfig.baseHttpPath + '/user/paywall-account-sataus',
+                    dataType: 'json',
+                    data: requestData,
+                    success: function (data, textStatus, jqXHR) {
+
+                        if (data.success == 1) {
+                            window.location.reload(false);             
+                        } else {
+                            var text = '';
+                            for (var key in data.error) {
+                                text = text + data.error[key] + " ";
+                            } 
+                            $('#createUserErrorMessage').text(text);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                            $('#createUserErrorMessage').text(textStatus);
+                    },
+                });        
+            }); 
+    });       
+
+
+    $('.j-setplan').on('click', function(e) {
+
+        var listelem = $(e.target);
+        if (!listelem.hasClass('j-setplan')) {
+            listelem = $(e.target.parentNode);
+        }
+        var planusers = Number(listelem.find('#planusercount').val());
+        var usercount = Number(listelem.find('#currentusers').val());
+
+
+        var requestData = { 
+            planid: listelem.find('#planid').val(), 
+            _csrf: listelem.find('#_csrf').text(), 
+        };
+
+        if (Number(usercount) <= Number(planusers)) {
+            var newcost = listelem.find('#plancost').val();
+            var oldcost = listelem.find('#currentcost').val();
+            var newdays = listelem.find('#planperiod').val();
+            var olddays = listelem.find('#currentperiod').val();
+            if (newdays == 'week')  {newdays = 7;}
+            if (newdays == 'month') {newdays = 30;}
+            if (newdays == 'year')  {newdays = 365;}
+            if (olddays == 'week')  {olddays = 7;}
+            if (olddays == 'month') {olddays = 30;}
+            if (olddays == 'year')  {olddays = 365;}
+            var newplandailycost = newcost/newdays;
+            var plandailycost = oldcost/olddays;
+            var expDate = listelem.find('#expdate').val();
+
+            var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+            var firstDate = new Date();
+            var secondDate = new Date(expDate.split('-')[0],expDate.split('-')[1]-1,expDate.split('-')[2]);
+
+            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+
+            var msg = "";
+            if ((newplandailycost-plandailycost) * diffDays >= 0) {
+                msg = " This will cost $" + Math.round((newplandailycost-plandailycost) * diffDays);
+                msg = msg.replace(/(.+)(\d\d)$/g, "$1.$2");
+            }
+            Acme.SigninView.render("userPlanChange", "Are you sure you want to change plan?" + msg)
+                .done(function() {
+                    $('#dialog').parent().remove();
+                    
+                    $.ajax({
+                        type: 'post',
+                        url: _appJsConfig.baseHttpPath + '/user/change-paywall-plan',
+                        dataType: 'json',
+                        data: requestData,
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.success == 1) {
+                                window.location.reload();
+                            } else {
+                                $('#dialog').parent().remove();
+                                Acme.SigninView.render("userPlan", data.error);
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                                $('#createUserErrorMessage').text(textStatus);
+                        },
+                    });        
+                }); 
+
+        } else {
+            Acme.SigninView.render("userPlan", "You have too many users to change to that plan.");
         }
     });
+
+};
+
+
+
+
+Acme.UserProfileController.prototype.listingEvents = function() {
+    $('.j-deleteListing').unbind().on('click', function(e) {
+        e.preventDefault();
+        var listing = $(e.target).closest('a.card');
+        var id      = listing.data("guid");
+        Acme.SigninView.render("userPlanChange", "Are you sure you want to delete this listing?")
+            .done(function() {
+                Acme.server.create('/api/article/delete-user-article', {"articleguid": id}).done(function(r) {
+                    listing.remove();
+                }).fail(function(r) {
+                    // console.log(r);
+                });
+            });
+    });  
+};
+
     
-
-}(jQuery));
-
-
-    
-
-

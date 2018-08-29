@@ -6,25 +6,56 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 {% set recentLabel    = 'Newsroom' %}
+{% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
+
+
+{% set showPaywall              = false %}
+{% set content                  = article.content %}
+{% set paywall_content_style    = "" %}
+{% set newsroom_pro_style       = "" %}
+
+{% if articleBlogData['additionalInfo'] is defined            and 
+      articleBlogData['additionalInfo']['paywall'] is defined and 
+      articleBlogData['additionalInfo']['paywall'] == 'on' %}
+    
+    {% set paywallSection = true %}
+
+{% endif %}
+
+
+{% set articleBlog = article.blog.title | lower %}
+
+{% if   not _User.isAdminUser()     and
+        paywallSection == true      and
+        articleBlogData['showPaywall'] == true  %}
+    
+    {% set showPaywall = true %}
+{% endif %}
+
+
+{% if paywallSection == true %}
+    {% set newsroom_pro_style = "pro" %}
+{% endif %}
+
+
+
+{% if showPaywall == true %}
+    {% set storySplit = article.content | split('<p>')  %}
+    {% set para2 = storySplit[2] | replace({'</p>': ''}) | slice(0, 190) ~ '</p>'  %}
+    {% set content = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
+    {% set paywall_content_style = "content-paywalled" %}
+{% endif %}
+
 
 
 {{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
 
-{# {{this.registerJs("ArticleController.view();")}} #}
 {{this.registerJs("HomeController.blog();")}}
 
-{% set status = 'follow' %}
-{% set text = 'Follow +' %}
-{% set authorId = article.createdBy['id'] %}
-{% set authorGUID = article.createdBy['guid'] %}
 
-{% if not _User.isGuset() and _User.isUserFollowing('user', authorId)%}
-    {% set status = 'unfollow' %}
-    {% set text = 'Following -' %}
-{% endif %}
-{% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %}
-{% set imgWidth = 1140 %}
-{% set imgHeight = 493 %}
+{# {% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %} #}
+{# {% set imgWidth = 1140 %}
+{% set imgHeight = 493 %} #}
 
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
@@ -48,7 +79,8 @@
 
 {% endif %}
 
-{% set articleBlog = (article.blog.title) %}
+
+
 
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
@@ -68,8 +100,15 @@
 
 
 
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main u-margin-top-40" role="main">
         <article class="article-main">
+
+
+        {% if paywallSection %}
+            <div class="article-pro__image-container">
+        {% endif %}
+
+
             <div class="container">
                
 
@@ -110,7 +149,7 @@
                                     </a>
                                 {% endif %}
                                 <figcaption>
-                                    <p>{{image.caption}}</p>
+                                    <p class="article__figure-caption {{newsroom_pro_style}}">{{image.caption}}</p>
                                 </figcaption>
                             </figure>
                         {% endfor %}
@@ -124,11 +163,16 @@
                     {% endfor %}
                 </div>
 
+            {% if paywallSection %}
+                </div>
+                </div>
+                <div class="container">
+            {% endif %}
 
 
 
 
-                <div class="page-content">
+                <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
                         <div class="col-md-8">
                             
@@ -139,14 +183,14 @@
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
                                     ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
                                     
-                                    {% if not _User.isGuest() %}
+                                    {% if _User.isAdminUser() %}
                                         <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                                     {% endif %}
 
                                     <div class="articleTimes">
                                         <time>{{ publishDate | upper }}</time>
                                         {% if updated %}
-                                            <time class="updated">Updated {{ updateDate | upper }}</time>
+                                            <time class="updated">Updated {{ updateDate | capitalize }}</time>
                                         {% endif %}
                                     </div>
                                 </div><!--content-block-top-->
@@ -191,22 +235,38 @@
                                         <h3>{{ author['displayName'] }}</h3>
                                 </div> #}
 
-                                <div class="article_content">
-                                    <p class="article_content__section">{{article.label}}</p>
+                                <div class="article_content {{paywall_content_style}}">
+                                    <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
-                                    <p>{{ article.content   | preg_replace('/^<p>/', '<p class="lead">')
-                                                            | _resizeImages({"width":750}) 
-                                                            | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
-                                                            | raw }}</p>
+
+                                    {{ content  | preg_replace('/^<p>/', '<p class="lead">')
+                                                | _resizeImages({"width":750}) 
+                                                | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
+                                                | raw }}
                                     
                                 </div><!-- .content-->
                             </div><!-- .content-->
                             
 
-                            <div class="article-supoort">
-                                <p class="article-supoort__text">Newsroom is powered by the generosity of readers like you, who support our mission to produce fearless, independent and provocative journalism.</p>
-                                <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
-                            </div>
+                            {% if showPaywall == true %}
+                                <div class="article-subscribe">
+                                    <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
+                                    <a href="/@pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
+                                    <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
+                                    <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="hidden-xs" />Newsroom Pro for 28 days.</p>
+                                    <a href="{{networkData.defaultBlogUrl}}/@pro" class="article-subscribe__link">View our subscription options</a>
+                                </div>
+                            {% endif %}
+
+
+
+
+                            {% if not paywallSection %}
+                                <div class="article-supoort">
+                                    <p class="article-supoort__text">Newsroom is powered by the generosity of readers like you, who support our mission to produce fearless, independent and provocative journalism.</p>
+                                    <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
+                                </div>
+                            {% endif %}
                      
                             <div class="comments hidden-print">
                                 <h3>Comments</h3>
@@ -227,37 +287,50 @@
                         <div class="col-md-4">
                             <aside>
 
-                                <section class="add sidebar-add ">
+                                {% if not paywallSection %}
+                                    <section class="add sidebar-add ">
+                                        <div id="newAdHalf"></div>
+                                        <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                    </section>
 
-                                    <div id="newAdHalf"></div>
-                                    
-                                    <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
-                                </section>
+                                    <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                        <h3 class="recent-articles__header">
+                                            <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                        </h3>
 
+                                        {% if recentArticles|length > 0 %}
 
-                                <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                    <h3 class="recent-articles__header">
-                                        <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
-                                    </h3>
+                                            {% for i in 0..6 %}
+                                                {% if recentArticles[i] %}
+                                                    {{
+                                                        this.render('partials/_single-article_recent.twig', {
+                                                            article: recentArticles[i], 
+                                                            containerClass: '', 
+                                                            swap: 'false', 
+                                                            isArticle: 'true'}) | raw
+                                                    }}
+                                                {% endif %}
+                                            {% endfor %}
 
-                                    {% if recentArticles|length > 0 %}
+                                        {% endif %}
 
-                                        {% for i in 0..6 %}
-                                            {% if recentArticles[i] %}
-                                                {{
-                                                    this.render('partials/_single-article_recent.twig', {
-                                                        article: recentArticles[i], 
-                                                        containerClass: '', 
-                                                        swap: 'false', 
-                                                        isArticle: 'true'}) | raw
-                                                }}
-                                            {% endif %}
-                                        {% endfor %}
+                                    </section><!-- .sidebar-news -->
+                                {% else %}
 
-                                    {% endif %}
+                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
+                                        <h3 class="most-viewed__header">MOST VIEWED</h3>
+                                        {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+                                        {% for i in 0..4 if popularArticles[i] %}
+                                            {{this.render('/partials/_single-article.twig', {
+                                                article         : popularArticles[i], 
+                                                swap            : false,
+                                                containerClass  : 'card-pro-popular'
+                                            }) | raw}}
+                                        {% endfor %} 
 
-                                </section><!-- .sidebar-news -->
-
+                                    </section><!-- .sidebar-news -->
+                                
+                                {% endif %}
                             </aside>
                         </div><!-- .col-md-4-->
                     </div><!-- .row-->
@@ -266,7 +339,11 @@
 
                 </div><!-- .page-content-->
             </div><!--container-->
-            <script>loadTwoAds('{{articleBlog | lower}}');</script>
+
+            {% if not paywallSection %}
+                <script>loadTwoAds('{{articleBlog}}');</script>
+            {% endif %}
+
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         

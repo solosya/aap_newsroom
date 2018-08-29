@@ -2,6 +2,7 @@ body.channel.about, body.section.about{
 
     .email {
         text-align:center;
+        font-size: rem(18);
     }
     
 
@@ -153,12 +154,17 @@ body.channel.about, body.section.about{
 
     .editor{
         margin-bottom: 80px;
+        height: 320px;
         @media #{$tablet} {
             height: 300px;
             padding-bottom: 15px;
             margin-bottom: 25px;
 
         }
+        @media #{$mobile} {
+            height: unset;
+        }
+
 
         .section-header{
             display: -webkit-box;
@@ -234,8 +240,8 @@ body.channel.about, body.section.about{
 
         .content{
             > p{
-                font-size: em(13);
-                line-height: 1.44;
+                font-size: rem(18);
+                line-height: 28px;
 
                 &:last-child{
                     margin-bottom: 30px;
@@ -245,8 +251,8 @@ body.channel.about, body.section.about{
 
         .contact{
             > p{
-                font-size: em(13);
-                line-height: 1.44;
+                font-size: rem(18);
+                line-height: 24px;
                 margin-bottom: 5px;
             }
         }
