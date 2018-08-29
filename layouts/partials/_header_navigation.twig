@@ -106,7 +106,7 @@
 
                                 SIGN IN BAR 
                          ___________________________#}
-                        <ul class="menu-signin visible-xs-block visible-sm-block">
+                        {# <ul class="menu-signin visible-xs-block visible-sm-block">
                             {% if not _User.isGuest() %}
                                 {% set user = _User.getUser() %}
                                 <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
@@ -114,7 +114,10 @@
                             {% else %}
                                 <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
-                        </ul>
+                        </ul> #}
+                           
+                           
+                           
                             <div id="menu-search" class="secondary-menu menu-search">
                             <ul><li>
                                 <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
