@@ -8300,7 +8300,6 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     margin-top: 50px; }
     .site-header .site-branding-top.foldaway .rooms-link {
       float: none;
-      padding-top: 0;
       margin-left: 0; }
     .site-header .site-branding-top.foldaway .press-patron {
       display: none; }
@@ -13215,7 +13214,7 @@ input[type=radio].inline {
     padding-left: 0;
     border: 0; }
     .article article.article-main .page-content .article_content blockquote:after, .article article.article-main .page-content .article_content blockquote:before {
-      width: 100%;
+      width: 62px;
       height: 2px;
       background: #e22f22;
       display: block;
@@ -13225,6 +13224,10 @@ input[type=radio].inline {
     @media screen and (max-width: 767px) {
       .article article.article-main .page-content .article_content blockquote {
         font-size: 2.2rem; } }
+  .article article.article-main .page-content .article_content.pro blockquote {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+    .article article.article-main .page-content .article_content.pro blockquote:after, .article article.article-main .page-content .article_content.pro blockquote:before {
+      width: 100%; }
   .article article.article-main .page-content .article_content .article_content__section {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.8rem;
