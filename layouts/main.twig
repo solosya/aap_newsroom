@@ -31,11 +31,11 @@
 {% set paywallSection = false %}
 {% set isAdmin = _User.isAdminUser() %}
 
-{# {% if blogData['additionalInfo'] is defined             and 
+{% if blogData['additionalInfo'] is defined             and 
       blogData['additionalInfo']['paywall'] is defined  and 
       blogData['additionalInfo']['paywall'] == 'on' %}
     {% set paywallSection = true %}
-{% endif %} #}
+{% endif %}
 
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
@@ -102,7 +102,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=596a2ea80" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=4596a2ea80" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
