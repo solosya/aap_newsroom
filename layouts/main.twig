@@ -32,11 +32,11 @@
 {% set paywallSection = false %}
 {% set isAdmin = _User.isAdminUser() %}
 
-{% if blogData['additionalInfo'] is defined             and 
+{# {% if blogData['additionalInfo'] is defined             and 
       blogData['additionalInfo']['paywall'] is defined  and 
       blogData['additionalInfo']['paywall'] == 'on' %}
     {% set paywallSection = true %}
-{% endif %}
+{% endif %} #}
 
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
