@@ -14,6 +14,8 @@
         {% if articles|length == 0 %}
             {% set noDataCls = '' %}
          {% endif %}
-
+        <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+            <p class="no-data text-center">No articles found.</p>  
+        </div>
     </section>
 </div>

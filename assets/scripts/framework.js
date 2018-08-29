@@ -55,7 +55,6 @@
     Acme.listen = function() {};
     Acme.listen.prototype.listener = function(topic, data)
     {
-        // console.log(listner);
         var keys = Object.keys(data);
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
@@ -116,21 +115,19 @@
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
-            var keys = Object.keys(data);
-            for (var j=0; j<keys.length; j++) {
-                var key = keys[j];
-                var keySplit = key.split('.');
-                var scope = this.data;
-    
-                for(var i=0; i<keySplit.length; i++) {
-                    if (!scope[keySplit[i]]) {
-                        scope[keySplit[i]] = {};
-                    }
-                    if(i == keySplit.length -1 ) {
-                        scope[keySplit[i]] = data[key];
-                    }
-                    scope = scope[keySplit[i]];
+
+            var key = Object.keys(data)[0];
+            var keySplit = key.split('.');
+            var scope = this.data;
+
+            for(var i=0; i<keySplit.length; i++) {
+                if (!scope[keySplit[i]]) {
+                    scope[keySplit[i]] = {};
                 }
+                if(i == keySplit.length -1 ) {
+                    scope[keySplit[i]] = data[key];
+                }
+                scope = scope[keySplit[i]];
             }
         }
 
@@ -404,10 +401,9 @@
 
     Acme.listMenu = function(config)
     {
-        this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
+        this.defaultTemp      = Handlebars.compile(window.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
-        this.callback         = config.callback      || null,
         this.menuParent       = config.parent        || {};
         this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
@@ -472,7 +468,7 @@
                 }
                 html += itemTemp({
                     'label'   :  label,
-                    'value'   :  value || ''
+                    'value'   :  value
                 });
             }
             return html;
@@ -491,17 +487,13 @@
                 var data = {};
                 data[self.key || self.name] = value;
 
-                if (self.callback) {
-                    self.callback(data);
-                } else {
-                    Acme.PubSub.publish('update_state', data);
-                }
+                Acme.PubSub.publish('update_state', data);
                 
                 if (clear) {
                     self.reset();
                 } else {
                     self.defaultItem.text(elem.text())
-                        .addClass('Acme-pulldown__selected-item--is-active');
+                                    .addClass('Acme-pulldown__selected-item--is-active');
                 }
 
                 $(self.listContainer).hide(100);
@@ -545,8 +537,8 @@
 
 
     Acme.modal = function(template, name, layouts, data) {
+        this.parentCont = name || null;
         this.template = template || null;
-        this.parentCont = name   || null;
         this.layouts = layouts   || null;
         this.data = data         || {};
         this.dfd = $.Deferred();
@@ -554,7 +546,6 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
             if (title) {
                 this.data['title'] = title;
             }
@@ -562,7 +553,6 @@
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
-        
             $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
@@ -591,7 +581,7 @@
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if ( !$elem.is('input') && !$elem.is('a') ) {
+            if (!$elem.is('input')) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {

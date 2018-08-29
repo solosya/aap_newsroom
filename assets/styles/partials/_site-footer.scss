@@ -88,6 +88,36 @@
             }
         }
 
+        .footer_btn-lg{
+            background-color: #e22f22;
+            color: #FFF;
+            padding-top: 20px;
+            @media screen and (max-width: $sm-break-down) {
+                float: right;
+            }
+
+            > a {
+                font-family: 'IM Fell Great Primer', serif;
+                color: #FFF;
+                font-size: 16px;
+                font-weight: normal;
+
+                }
+            > div {
+                background-color: white;
+                margin-top: 20px;
+                > input {
+                     font-family: 'PT Sans', Tahoma, Arial, serif;
+                     color: #000;
+                }
+            }
+            
+
+
+        }
+
+
+
 
         .social-links{
             margin-top:25px;
@@ -181,12 +211,9 @@
                         display: block;
                         
                         img{
-                            height: 14px;
+                            height: 19px;
                             width: auto;
                             max-width: 100%;
-                            @media screen and (max-width: 1200px) and (min-width: 992px)  {
-                                height: 15px;
-                            }
                         }
                     }
                 }

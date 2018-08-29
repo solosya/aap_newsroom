@@ -1,7 +1,7 @@
 {% set networkData = _Network.getNetworkData() %}
 
-{% set blogData = _Blog.getBlog() %}
-{{ set(this, 'title', blogData.title) }}
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
 
 
 {{this.registerJs("HomeController.listing();")}}
@@ -13,14 +13,12 @@
 {% set articles = articlesArr.articles %}
 
 
-
-{% set paywallSection = false %}
-{% if blogData['additionalInfo'] is defined             and 
-      blogData['additionalInfo']['paywall'] is defined  and 
-      blogData['additionalInfo']['paywall'] == 'on' %}
-    {% set paywallSection = true %}
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
 {% endif %}
-
 
 
 
@@ -28,14 +26,14 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-{# blogData.title #}
+{# blogInfo.title #}
     
 
-        <section class="featured-slider channel container-fluid u-margin-top-40">
+        <section class="featured-slider channel container-fluid">
             <div class="container">
 
-                {% if 'futurelearning' != blogData.title | lower %}
-                    <h1 class="sectionpage">{{blogData.title}}</h1>
+                {% if 'futurelearning' != blogInfo.title | lower %}
+                    <h1 class="sectionpage">{{blogInfo.title}}</h1>
                 {% endif %}
 
 
@@ -81,13 +79,10 @@
                     </div><!-- .col-sm-8-->
 
                     <div class="col-sm-12 col-md-4 sidebar">
-                    
-                    {% if paywallSection == false %}
                         <section class="add sidebar-add" >
                             <div id="newAdHalf"></div>
                             <span class="add-text">Advertisement</span>
                         </section>
-                    {% endif %}
                     </div>
                 </div>
 

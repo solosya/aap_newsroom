@@ -1,60 +1,49 @@
-
-.article__figure-caption {
-
-	color: color(caption);
-
-	&.pro {
-		color:white;
-	}
-}
-
-
 .article {
 
-	// .site-header {
+	.site-header {
 
-	// 	margin-bottom: 55px;
+		margin-bottom: 55px;
 
-	// 	.site-branding-bottom {
+		.site-branding-bottom {
 
-	// 		padding-bottom: 10px;
+			padding-bottom: 10px;
 
-	// 		.sb-custom-menu {
+			.sb-custom-menu {
 
-	// 			.menu-mobile {
-	// 				margin-top: 20px;
-	// 				@media screen and (max-width: $sm-break-down) {
-	// 					margin-top: 5px;
-	// 				}
-	// 			}
+				.menu-mobile {
+					margin-top: 20px;
+					@media screen and (max-width: $sm-break-down) {
+						margin-top: 5px;
+					}
+				}
 
-	// 			> ul > li {
-	// 				&:first-child > a {
-	// 					padding-left: 0;
-	// 				}
+				> ul > li {
+					&:first-child > a {
+						padding-left: 0;
+					}
 
-	// 				> a {
-	// 					padding: 25px 13px;
-	// 					@media screen and (max-width: $header-break) {
-	// 						padding-left: 0;
-	// 						padding-top: 10px;
-	// 						padding-bottom: 10px;
-	// 					}
-	// 				}
-	// 			}
-	// 		}
+					> a {
+						padding: 25px 13px;
+						@media screen and (max-width: $header-break) {
+							padding-left: 0;
+							padding-top: 10px;
+							padding-bottom: 10px;
+						}
+					}
+				}
+			}
 
-	// 		.navbar-brand {
-	// 			// width: 105px;
+			.navbar-brand {
+				// width: 105px;
 
 
-	// 		}
-	// 	}
-	// }
+			}
+		}
+	}
 
 	article.article-main {
 		figure.featured {
-			// margin-top: 65px;
+			margin-top: 65px;
 		}
 
 		.page-content {
@@ -80,7 +69,6 @@
 						&.updated {
 							color: color(red);
 							font-style:italic;
-							text-transform: unset;
 						}
 					}
 				}
@@ -173,10 +161,6 @@
 					    }
 
 					}
-					@media #{$mobile} {
-						font-family:$font-family-sans-serif;
-						color: #000;
-					}
 
 				}
 			}
@@ -193,14 +177,7 @@
 						}
 					}
 				}
-
 				
-				&.content-paywalled {
-					position:relative;
-					@include gradientafter;
-				}
-
-
 				a {
 					color:#8a8b93;
 				}
@@ -251,9 +228,6 @@
 					clear: both;
 					margin-bottom:17px;
 
-					&.lead{
-						font-weight: 700;
-					}
 
 					&:last-child {
 						margin-bottom: 50px;
@@ -272,7 +246,7 @@
 
 					&:after,
 					&:before {
-						width: 100%;
+						width: 62px;
 						height: 2px;
 						background: #e22f22;
 						display: block;
@@ -294,9 +268,6 @@
 						font-size: rem(13);
 						margin: 17px 0 -30px 0;
 					}
-				}
-				.article_content__red {
-					color: #e22f22;
 				}
 			}
 
@@ -395,5 +366,3 @@
 		height: 100%;
 	}
 }
-
-

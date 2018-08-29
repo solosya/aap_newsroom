@@ -9,7 +9,6 @@ $('document').ready(function() {
     var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
-    var foldaway_search = false;
 
     var isMenuBroken = function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
@@ -66,7 +65,7 @@ $('document').ready(function() {
         if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
-        } else if (!foldaway_search) {
+        } else {
             menu_top_foldaway.addClass('hide');
             menu_bottom_foldaway.addClass('hide');
             foldawayPanel.removeClass('showMenuPanel');
@@ -95,94 +94,17 @@ $('document').ready(function() {
 
 
 
-    $('#batch-add').on('click', function(e) {
-        console.log('adding batch users');
-        var input = $('#batch-user-input').val();
-        var send = JSON.parse( input );
-        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
-        return $.ajax({
-            type: 'post',
-            url: url,
-            dataType: 'json',
-            data: send
-        }).done(function(r) {
-            console.log(r);
-            alert("Users added");
-
-        }).fail(function(r) {
-            console.log(r);
-            alert(r.responseText);
-        });        
-
-    });
-
-    $('#batch-add-csv').on('click', function(e) {
-        var payload = {
-            "owner" : {
-                "email": null
-            },
-            "users": []
-        };
-
-        var input = $('#batch-user-input').val();
-        
-        const lines = input.split(/\n/);    
-        var owner = lines[0].split(',');
-        payload.owner.email = owner[owner.length - 1];
-
-        for (var i=0; i< lines.length; i++) {
-            $user = lines[i].split(',');
-            
-            $userobj = {
-                "firstname" : $user[0],
-                "lastname" : $user[1],
-                "username" : $user[2],
-                "email" : $user[3],
-            };
-
-            payload.users.push($userobj);
-        }
-
-
-        var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
-        return $.ajax({
-            type: 'post',
-            url: url,
-            dataType: 'json',
-            data: payload
-        }).done(function(r) {
-            console.log(r);
-            alert("Users added");
-
-        }).fail(function(r) {
-            console.log(r);
-            alert(r.responseText);
-        });        
-
-    });
-
-
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-            menu_top_foldaway.toggleClass('hide');
-            menu_bottom_foldaway.toggleClass('hide');
-            if (foldaway_search) {
-                foldaway_search = false;
-                $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');
-                $(".menuContainer > ul > li.menu-item-search-foldaway").removeClass('now-active');
-            }
+        menu_top_foldaway.toggleClass('hide');
+        menu_bottom_foldaway.toggleClass('hide');
     });
 
     $(".menu-mobile").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
         $(this).toggleClass("active");
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
-        if (window.innerWidth < 768) { 
-            $(thisMenuElem).find('.menuContainer').css("z-index","-1");
-         } else {
-            $(thisMenuElem).find('.menuContainer').css("z-index","100");
-         }
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
@@ -201,27 +123,9 @@ $('document').ready(function() {
         }
     });
 
-    $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
-        if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
-        if (window.innerWidth > sbCustomMenuBreakPoint) {
-            $(this).children("ul").stop(true, false).slideToggle(225);
-            $(this).toggleClass('now-active');
-            if (window.innerWidth > sbCustomMenuBreakPoint) {
-                $("input#header-search-foldaway").focus();
-            }
-        }
-    });
-
     $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             $("input#header-search").focus();
-            return false;
-        }
-    });
-
-    $("li.menu-item-search-foldaway").bind("mouseenter focus mouseleave",function () {
-        if (window.innerWidth > sbCustomMenuBreakPoint) {
-            $("input#header-search-foldaway").focus();
             return false;
         }
     });

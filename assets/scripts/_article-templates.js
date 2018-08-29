@@ -3,163 +3,18 @@
  */
 Acme.templates = {};
 
-Acme.templates.pulldown = 
-'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
-    <p class="Acme-pulldown__selected-item"></p> \
-    <span class="Acme-pulldown__span"></span> \
-    <ul class="Acme-pulldown__list" data-key="{{ key }}"></ul> \
-</div>';
-
-
-Acme.templates.create_user = 
-'<div class="" style="height:100%; overflow:auto; position:relative"> \
-    <div class="user-editor__input-container u-float-left"> \
-        <input type="text" id="newuserfirstname" class="j-firstname account-form__input" value="" placeholder="{{firstname}}"> \
-    </div> \
-    <div class="user-editor__input-container u-float-right"> \
-        <input type="text" id="newuserlastname" class="j-lastname account-form__input" value="" placeholder="{{lastname}}"> \
-    </div> \
-    <div class="user-editor__input-container u-float-left"> \
-        <input type="text" id="newuseruseremail" class="j-email account-form__input" value="" placeholder="{{useremail}}"> \
-        <p id="userError" class="user-editor__error"></p> \
-    </div> \
-    <div id="user-editor-buttons" class="user-editor__input-container user-editor__buttons u-float-right"> \
-        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
-        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
-    </div> \
-    <div id="user-editor__spinner" class="user-editor__spinner"></div> \
-</div>';
-
-
-Acme.templates.edit_user = 
-'<div class="" style="height:100%; overflow:auto"> \
-    <div class="user-editor__input-container u-float-left"> \
-        <input type="text" id="newuserfirstname" class="j-firstname user-editor__input" value="{{firstname}}" placeholder="First name"> \
-        <input type="text" id="newuserusername" class="j-username user-editor__input" value="{{username}}" placeholder="Email address"> \
-        </div> \
-    <div class="user-editor__input-container u-float-right"> \
-        <input type="text" id="newuserlastname" class="j-lastname user-editor__input" value="{{lastname}}" placeholder="Last name"> \
-    </div> \
-    <div id="user-editor-buttons" class="user-editor__input-container u-float-right"> \
-        <a id="cancelUserCreate" class="userdetails__button userdetails__button--delete u-float-right"></a> \
-        <a id="saveUser"       class="userdetails__button userdetails__button--save u-float-right">Save</a> \
-    </div> \
-</div>';
-
-Acme.templates.managed_user = 
-'<div class="u-float-left"> \
-    <p class="userdetails__name"> \
-        <span class="j-firstname">{{firstname}}</span> \
-        <span class="j-lastname">{{lastname}}</span> \
-    </p> \
-    <p class="j-username userdetails__username">{{username}}</p> \
-</div>\
-<a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
-<a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>';
-
-
-Acme.managed_user = 
-'<li id="{{id}}" class="userdetails"> \
-    <div class="u-float-left"> \
-        <p class="userdetails__name"> \
-            <span class="j-firstname">{{firstname}}</span> \
-            <span class="j-lastname">{{lastname}}</span> \
-        </p> \
-    </div>\
-    <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a> \
-    <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a> \
-    <p class="j-email  userdetails__email u-float-right">{{email}}</p> \
-</li>';
-
-
-Acme.templates.signinFormTmpl = 
-    // <script> tag possible ios safari login fix
-    '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-        \
-        <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
-        <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
-        \
-        <div class="message active hide"> \
-        <div class="login-form__error_text">Invalid Email or Password</div> \
-        </div> \
-        \
-        <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
-        \
-        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
-        <div class="remember"> \
-            <p class="layout" data-layout="forgot" class="">Set my password</p> \
-        </div> \
-        \
-        <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
-    </form>';
-
-Acme.templates.registerTmpl = 
-    '<form name="registerForm" id="registerForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-        \
-        <input id="name" class="" type="text" name="name" placeholder="Name"> \
-        <input id="email" class="" type="email" name="email" placeholder="Email"> \
-        \
-        <div class="message active hide"> \
-            <div class="account-modal__error_text">Done!</div> \
-        </div> \
-        \
-        <button id="signinBtn" type="submit" class="_btn _btn--red register">Register</button> \
-    </form>';
-
-
-Acme.templates.forgotFormTmpl = 
-    '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-        <input type="hidden" name="_csrf" value="" /> \
-        <p class="password-reset-form__p">Enter your email below and we will send you an link to set your password.</p> \
-        <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
-        \
-        <div class="message active hide"> \
-            <div class="password-reset-form__error_text">No user with that email found.</div> \
-        </div> \
-        \
-        <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
-    </form>';
-
-    
-Acme.templates.spinner = 
-    '<div id="{{name}}" class="flex_col {{name}}"> \
-        <div id="dialog" class="{{name}}__window"> \
-            <div class="{{name}}__header"> \
-                <h2 class="{{name}}__title">{{title}}</h2> \
-            </div> \
-            <div class="{{name}}__content-window" id="dialogContent"></div> \
-        </div> \
-    </div>';
-    
-
-Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
-
-Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
-
-Acme.templates.userPlanMessage = 
-'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-     <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
-</form>';
-
-Acme.templates.userPlanOkCancel = 
-'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-     <button id="okaybutton" class="_btn _btn--red okay" data-role="okay">OK</button> \
-     <button id="cancelbutton" class="_btn _btn--gray close" data-role="cancel">Cancel</button> \
-</form>';
-
-
 Acme.templates.modal = 
 // style="scrolling == unusable position:fixed element might be fixing login for ios safari
 // also margin-top:10px
-'<div id="{{name}}" class="flex_col {{name}}"> \
-    <div id="dialog" class="{{name}}__window"> \
-        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
-            <div class="{{name}}__header"> \
-                <h2 class="{{name}}__title">{{title}}</h2> \
+'<div id="signin" class="flex_col acme-modal"> \
+    <div id="dialog" class="acme-modal__window"> \
+        <div class="acme-modal__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="acme-modal__header"> \
+                <h2 class="acme-modal__title">{{title}}</h2> \
                 <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
-                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
+                <a class="acme-modal__close u-invisible" href="#" data-behaviour="close"></a> \
             </div> \
-            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+            <div class="acme-modal__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
     </div> \
 </div>';
