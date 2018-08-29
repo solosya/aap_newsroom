@@ -1,13 +1,8 @@
 {{ use('yii/web/JqueryAsset') }}
 {{ register_jquery_asset() }}
-{% set networkData   = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog() %}
-{% set pageClass     = _Page.getBodyClass() %}
-{% set pageTypeClass = blogData.type %}
-{% set blogName      = blogData.title %}
-{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
-
 {#     turn this on when the sdk goes through cognitives #}
+
+
 {% set redir = _Page.setHttpRedirects(
     {
         '|^/subscriptions.*|': 'http://service.newsroom.co.nz',
@@ -22,22 +17,31 @@
 %} 
 
 
+{% set networkData   = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set pageClass     = _Page.getBodyClass() %}
+{% set pageTypeClass = blogData.type %}
+{% set blogName      = blogData.title %}
+{% set layout        = _Page.getLayoutName() %}
+{% set pageURL       = _AppHelper.getCurrentUrl(true) %}
+
+
+
 
 {% set showPaywall = false %}
 {% set paywallSection = false %}
+{% set isAdmin = _User.isAdminUser() %}
 
-{% if blogData['additionalInfo'] is defined             and 
+{# {% if blogData['additionalInfo'] is defined             and 
       blogData['additionalInfo']['paywall'] is defined  and 
       blogData['additionalInfo']['paywall'] == 'on' %}
     {% set paywallSection = true %}
-{% endif %}
-{# {{dump(blogData['additionalInfo'])}}
+{% endif %} #}
 
-{{dump(paywallSection)}} #}
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if   not _User.isAdminUser()         and
+{# {% if   not _User.isAdminUser()         and
         paywallSection == true          and
         blogData['showPaywall'] == true and
         'article' not in pageClass %}
@@ -46,7 +50,7 @@
         {% set layout = "layout-marketing" %}
     
 {% endif %}
-
+ #}
 
 {# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
     {% set showPaywall = false %}
@@ -99,9 +103,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=69ae2104" type="text/css" media="all">
-
-
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=6d04ee7f" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -128,7 +130,7 @@
     {% endif %}
 
 
-{% if _User.isGuest() %}
+{% if _User.isGuest() and showPaywall == false %}
     <script>
         (function(d) {
         var el, fjs = d.getElementsByTagName('script')[0];
@@ -254,7 +256,7 @@
 
 
 
-<body class="{{ pageTypeClass }} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}">
+<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  

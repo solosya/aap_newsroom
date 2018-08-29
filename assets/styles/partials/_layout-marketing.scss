@@ -176,7 +176,7 @@
 .pro-offers__container {
     margin: 30px auto;
     @media #{$mobile} {
-        margin: 5px auto;
+        margin: 15px auto 5px auto;
     }
 }
 
@@ -225,6 +225,9 @@
     }
     @media #{$mobile} {
         font-size: rem(12); 
+    }
+    @media #{$mobile-large} {
+        font-size: rem(14); 
     }
 }
 

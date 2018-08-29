@@ -121,12 +121,12 @@
                                     <label class="account-form__label hidden-xs" for="organisation">Organisation</label>
                                     <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="abn_business_name" placeholder="Organisation (optional)" >
                                 </div>
-                                <input type="checkbox"  class="" name="summary-email" id="summary-email"> 
-                                <label class="account-form__cblabel">Send me Bernard Hickey's <i>8 Things</i><br class="visible-xs-block" /> email each day</label><br />
+                                {# <input type="checkbox"  class="" name="summary-email" id="summary-email">  #}
+                                {# <label class="account-form__cblabel">Send me Bernard Hickey's <i>8 Things</i><br class="visible-xs-block" /> email each day</label><br /> #}
                                 
                                 {# <input type="checkbox"  class="" name="breaking-email" id="breaking-email"> 
                                 <label class="account-form__cblabel">Send me breaking news alerts <br class="visible-xs-block" />(on average once a month)</label><br /> #}
-                                <p class="account-form__unsubscribe">Alternatively, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a> to cancel your email subscriptions</p>
+                                <p class="account-form__unsubscribe">To unsubscribe from 8 Things, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a>, or click Unsubscribe in any 8 Things email</p>
 
 
 
@@ -203,11 +203,12 @@
                                         </div>                            
                                        
 
-     
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="expires">Next Payment</label>
-                                            <p type="text" id="expires" class="account-form__value">{{ pwstats['expiry_date']}}</p>
-                                        </div>
+                                        {% if pwstats['status'] != 'free' %}
+                                            <div class="account-form__inline-inputs u-margin-bottom-20">
+                                                <label class="account-form__label account-form__label--red account-form__label--mobile" for="expires">Next Payment</label>
+                                                <p type="text" id="expires" class="account-form__value">{{ pwstats['expiry_date']}}</p>
+                                            </div>
+                                        {% endif %} 
 
                                     {% else %} 
 
@@ -222,7 +223,8 @@
                                         </div>                            
                                         
                                     {% endif %} 
-                                    {% if 'enterprise' not in pwstats['name'] | lower %}
+                                    
+                                    {% if 'enterprise' not in pwstats['name'] | lower and pwstats['status'] != 'free' %}
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="remaining">Payment Method</label>
                                             <p type="text" id="remaining" class="account-form__value">{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}</p>
@@ -391,13 +393,13 @@
 
 
 
-                {% if _User.isAdminUser() %}
-                    <div class="add-batch-users" style="display:block;">
+                {# {% if _User.isAdminUser() %}
+                    <div class="add-batch-users" style="display:none;">
                         <textarea id="batch-user-input"></textarea>
                         <button id="batch-add">Add</button>
                         <button id="batch-add-csv">Add csv</button>
                     </div>
-                {% endif %}
+                {% endif %} #}
 
             </div>
         </div>

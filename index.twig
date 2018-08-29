@@ -46,14 +46,14 @@
             "feed": "",
             "link": ""
         },
-
-        "newsroom pro": {
+        "newsroom pro__inactive": {
             "feed": "",
             "link": ""
-        },
-
+        }
     }
 %}
+
+
 
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
@@ -119,19 +119,39 @@
                 <div class="row">
                     
                     <div class="col-sm-12 col-md-8">
-                        <div class="card-group">                                                                
+                        <div class="card-group">     
+
+
+                            {% if articles[articleCount] %}                                                                
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec inverted'}) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+
+
+                            {% if sections['newsroom pro'].feed.articles|length == 0 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
+                            {% endif %}
+
+
+
 
                          </div><!--card-group-->
 
-                        <div class="row">
-                            {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
-                        </div>
-                            
-                        <section class="add row sidebar-add hidden-md hidden-lg">
+
+
+                        {% if sections['newsroom pro'].feed.articles|length > 0 %}
+                            <div class="row">
+                                {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                            </div>
+                        {% endif %}
+        
+
+
+
+                        <section class="add row sidebar-add sidebar-add__idx hidden-md hidden-lg">
                             <div class="col-sm-6">
                                 <div id="newAdMrec"></div>
                                 <script>loadNextMrecAd('');</script>

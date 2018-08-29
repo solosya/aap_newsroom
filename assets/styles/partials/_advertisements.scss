@@ -16,6 +16,13 @@
         margin-bottom: 80px;
         margin-top: 80px;
         // text-align:center;
+        &.sidebar-add__idx{
+            @media #{$mobile} {
+                margin-top: 30px;
+                margin-bottom: 30px;
+
+            }
+        }
 
         @media screen and (max-width: $md-break){
             .block > a{

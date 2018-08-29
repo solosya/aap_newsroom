@@ -75,7 +75,7 @@
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
                             <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
                         </a>
-                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@newsroom-pro" rel="Home" tabindex="-1" title="Home">
+                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@pro" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
                         </a>
 
@@ -112,7 +112,7 @@
                                 <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
                                 <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
                             {% else %}
-                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@newsroom-pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
+                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
                         </ul>
                             <div id="menu-search" class="secondary-menu menu-search">
@@ -195,23 +195,21 @@
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
 
-        <div class="row visible-sm-block visible-md-block visible-lg-block">
+        {# <div class="row visible-sm-block visible-md-block visible-lg-block">
             <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
                     {% set user = _User.getUser() %}
-                    {% if (userData.status == 'trial') %}
-                        {# <li class="menu-item">Trial period - you will be billed on {{ userData.expiry_date }} #}
-                    {% endif %}
+
                     <p class="header-signin__name hidden-sm">Hi, {{user.firstname}} </p>
                     <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-md-block visible-lg-block">My Account</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a>
                 {% else %}
                     <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
-                    <a href="{{networkData.defaultBlogUrl}}/@newsroom-pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                    <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
-        </div>
+        </div> #}
 
 
         <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
@@ -267,7 +265,7 @@
                 </div><!-- .menu-left-->  
                 
                 <div class="section-right navbar-right col-md-6 col-sm-2">
-                    <div class="rooms-link">
+                    <div class="rooms-link u-padding-top-13">
                         <ul>
 
                             {% set menuItems = headerMenu %}
