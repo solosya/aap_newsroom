@@ -192,7 +192,7 @@
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
         
-        {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+        {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
 
         <a  href="{{article.url}}" 
             class="{{swap}} card {{hasArticleMediaClass}}" 
