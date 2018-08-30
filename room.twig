@@ -5,7 +5,7 @@
 
 
 {{this.registerJs("HomeController.listing();")}}
-{% set limit = 12 %}
+{% set limit = 13 %}
 
 {% set recentPanelBlogName = "Newsroom" %}
 {% set recentParams = {'limit': 4} %}
@@ -133,10 +133,10 @@
 
                                 {# {% if articles[articleCount] %}   #}                                                             
                                 <section class="col-sm-12 sidebar-inverted"> 
-                                        {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }}
+                                        {# {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }} #}
 
-                                        {# {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
-                                        {% set articleCount = articleCount + 1 %} #}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
                                 </section>
                                 {# {% endif %} #}
                             {% endif %}
