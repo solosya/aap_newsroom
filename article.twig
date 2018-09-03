@@ -239,8 +239,7 @@
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
 
-                                    {{ content  | preg_replace('/^<p>/', '<p class="lead">')
-                                                | _resizeImages({"width":750}) 
+                                    {{ content  | _resizeImages({"width":750}) 
                                                 | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
                                                 | raw }}
                                     
