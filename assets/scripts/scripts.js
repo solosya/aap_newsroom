@@ -143,7 +143,6 @@ $('document').ready(function() {
             payload.users.push($userobj);
         }
 
-        console.log(payload);
         var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
         return $.ajax({
             type: 'post',
