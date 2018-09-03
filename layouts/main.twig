@@ -80,8 +80,10 @@
     {% set favicon = '' %}
     {% if paywallSection %}
         {% set favicon = networkData.templatePath~"/static/images/pro-favicon.ico" %}
+            <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/pro-favicon.ico" sizes="any" type="image/svg+xml" />
     {% elseif networkData.favMedia | length > 0 %}
         {% set favicon = _Media.getMediaUrl(networkData.favMedia, 80, 80)%}
+        <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/apple-logo.png" sizes="any" type="image/svg+xml" />
     {% endif %}
 
     <link rel="shortcut icon" href="{{favicon}}" />
