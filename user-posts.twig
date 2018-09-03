@@ -17,8 +17,8 @@
         <!-- Begin User Profile -->
         <div class="col-sm-12">
 
-            <div class="userprofile-bio">
-                <img src="{{profileImage}}" class="profile-image img-responsive">
+            <div class="author-profile">
+                <img src="{{profileImage}}" class="author-profile__image img-responsive">
                 
                 <div class="inner-descr">
                     <h4 class="user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
@@ -26,7 +26,7 @@
                     <a class="mail-icon" href="mailto:{{user.email}}"></a>
 
 
-                    <p>{{Html.decode(user.bio) | raw}}</p>
+                    <p class="author-profile__text">{{Html.decode(user.bio) | raw}}</p>
                     
                 </div>
 
