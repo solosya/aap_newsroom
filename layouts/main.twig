@@ -256,7 +256,11 @@
 
 
 
-<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
+<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" 
+    data-isAdmin="{{ isAdmin }}" 
+    data-paywall="{{blogData['showPaywall']}}"
+    data-networkid="{{networkData['id']}}"
+>
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  
