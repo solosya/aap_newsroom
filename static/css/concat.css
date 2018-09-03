@@ -6804,7 +6804,7 @@ h4.modal-title {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
 
 .container-fluid {
-  max-width: 1345px; }
+  max-width: 1600px; }
 
 .btn {
   font-size: 1.4em;
@@ -6905,11 +6905,6 @@ figcaption {
   padding: 5px 17px 4px 10px; }
   .btn-email:hover, .btn-email:focus {
     color: #FFF; }
-
-p.lead {
-  font-size: 2em;
-  font-weight: bold;
-  color: #4a4a4a; }
 
 span.leadsentence {
   font-weight: bold; }
@@ -8300,7 +8295,6 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     margin-top: 50px; }
     .site-header .site-branding-top.foldaway .rooms-link {
       float: none;
-      padding-top: 0;
       margin-left: 0; }
     .site-header .site-branding-top.foldaway .press-patron {
       display: none; }
@@ -11653,6 +11647,23 @@ input[type=radio].inline {
   .search-page__container {
     margin-top: 80px; } }
 
+@media screen and (max-width: 767px) {
+  .author-profile {
+    margin-top: 30px; } }
+
+.author-profile__image {
+  float: left;
+  width: 148px;
+  height: 148px;
+  margin-right: 47px;
+  margin-bottom: 50px; }
+  @media screen and (max-width: 767px) {
+    .author-profile__image {
+      margin-bottom: 30px; } }
+
+.author-profile__text {
+  font-size: 1.5rem; }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }
@@ -13201,8 +13212,6 @@ input[type=radio].inline {
     padding-right: 10px;
     clear: both;
     margin-bottom: 17px; }
-    .article article.article-main .page-content .article_content > p.lead {
-      font-weight: 700; }
     .article article.article-main .page-content .article_content > p:last-child {
       margin-bottom: 50px; }
     @media screen and (max-width: 767px) {
@@ -13215,7 +13224,7 @@ input[type=radio].inline {
     padding-left: 0;
     border: 0; }
     .article article.article-main .page-content .article_content blockquote:after, .article article.article-main .page-content .article_content blockquote:before {
-      width: 100%;
+      width: 62px;
       height: 2px;
       background: #e22f22;
       display: block;
@@ -13225,6 +13234,10 @@ input[type=radio].inline {
     @media screen and (max-width: 767px) {
       .article article.article-main .page-content .article_content blockquote {
         font-size: 2.2rem; } }
+  .article article.article-main .page-content .article_content.pro blockquote {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+    .article article.article-main .page-content .article_content.pro blockquote:after, .article article.article-main .page-content .article_content.pro blockquote:before {
+      width: 100%; }
   .article article.article-main .page-content .article_content .article_content__section {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.8rem;
@@ -16697,7 +16710,7 @@ body.channel.supporters p {
 @media screen and (min-width: 992px) {
     .card-pro-feature a.card article .content h2 {
       min-height: 160px;
-      border-bottom: 1px solid #dadada; } }
+      max-height: 220px; } }
     @media screen and (min-width: 992px) and (max-width: 1450px) {
       .card-pro-feature a.card article .content h2 {
         min-height: 100px; } }
@@ -16714,6 +16727,13 @@ body.channel.supporters p {
     @media screen and (min-width: 992px) and (max-width: 1600px) {
       .card-pro-feature a.card article .content time {
         bottom: 20px; } }
+
+@media screen and (min-width: 992px) {
+    .card-pro-feature a.card article .content > p {
+      color: #dadada;
+      max-height: 70px;
+      display: block;
+      margin-bottom: 20px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-pro-feature-tablet:before {
@@ -16824,7 +16844,7 @@ body.channel.supporters p {
   padding: 10px; }
 
 .u-padding-top-13 {
-  padding-top: 13px; }
+  padding-top: 13px !important; }
 
 .u-no-margin-top {
   margin-top: 0; }

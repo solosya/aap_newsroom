@@ -224,12 +224,12 @@
                                         
                                     {% endif %} 
                                     
-                                    {% if 'enterprise' not in pwstats['name'] | lower and pwstats['status'] != 'free' %}
+                                    {# {% if 'enterprise' not in pwstats['name'] | lower and pwstats['status'] != 'free' %}
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="remaining">Payment Method</label>
                                             <p type="text" id="remaining" class="account-form__value">{{ pwstats['card_brand']}} / •••• •••• •••• {{ pwstats['card_last_4']}}</p>
                                         </div>                            
-                                    {% endif %}
+                                    {% endif %} #}
                                 {# </form> #}
 
                             </div>

@@ -114,7 +114,10 @@
                             {% else %}
                                 <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
-                        </ul>
+                        </ul> 
+                           
+                           
+                           
                             <div id="menu-search" class="secondary-menu menu-search">
                             <ul><li>
                                 <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
@@ -195,7 +198,15 @@
             </div><!--section-right-->
         </div><!-- .site-branding-bottom -->
 
-        {# <div class="row visible-sm-block visible-md-block visible-lg-block">
+
+
+
+
+
+
+
+
+        <div class="row visible-sm-block visible-md-block visible-lg-block">
             <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
                     {% set user = _User.getUser() %}
@@ -209,7 +220,18 @@
                     <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
-        </div> #}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
         <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
@@ -247,7 +269,7 @@
 
 
             <div id="menu-top-foldaway" class="site-branding-top row hide foldaway">
-                <div class="section-left col-md-6 col-sm-6">
+                <div class="section-left col-md-3 col-sm-6">
                     <div class="social-links">
                         <ul>
                             <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
@@ -264,7 +286,7 @@
                     </div><!-- .secondary-menu-->
                 </div><!-- .menu-left-->  
                 
-                <div class="section-right navbar-right col-md-6 col-sm-2">
+                <div class="section-right navbar-right col-md-8 col-sm-2">
                     <div class="rooms-link u-padding-top-13">
                         <ul>
 

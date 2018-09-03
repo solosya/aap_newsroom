@@ -1,6 +1,5 @@
 {{ use('yii/web/JqueryAsset') }}
 {{ register_jquery_asset() }}
-{#     turn this on when the sdk goes through cognitives #}
 
 
 {% set redir = _Page.setHttpRedirects(
@@ -32,16 +31,17 @@
 {% set paywallSection = false %}
 {% set isAdmin = _User.isAdminUser() %}
 
-{# {% if blogData['additionalInfo'] is defined             and 
+{% if blogData['additionalInfo'] is defined             and 
       blogData['additionalInfo']['paywall'] is defined  and 
       blogData['additionalInfo']['paywall'] == 'on' %}
+    
     {% set paywallSection = true %}
-{% endif %} #}
+{% endif %}
 
 {# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
-{# {% if   not _User.isAdminUser()         and
+{% if   not _User.isAdminUser()         and
         paywallSection == true          and
         blogData['showPaywall'] == true and
         'article' not in pageClass %}
@@ -50,7 +50,7 @@
         {% set layout = "layout-marketing" %}
     
 {% endif %}
- #}
+ 
 
 {# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
     {% set showPaywall = false %}
@@ -103,7 +103,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=6d04ee7f" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=57aa6506" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -256,7 +256,11 @@
 
 
 
-<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" data-isAdmin="{{ isAdmin }}" data-paywall="{{blogData['showPaywall']}}">
+<body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" 
+    data-isAdmin="{{ isAdmin }}" 
+    data-paywall="{{blogData['showPaywall']}}"
+    data-networkid="{{networkData['id']}}"
+>
 {{ this.beginBody() }}
 
     {% if  blogName  | lower != "newsroom pro" %}  
@@ -349,9 +353,9 @@
                 {path: _appJsConfig.templatePath});")}} #}
     
     
-    {% if _User.isGuest() %}
+    {# {% if _User.isGuest() %}
         {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
-    {% endif %}
+    {% endif %} #}
 
     {{ this.endBody() }}
 

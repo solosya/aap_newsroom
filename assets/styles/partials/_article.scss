@@ -251,10 +251,6 @@
 					clear: both;
 					margin-bottom:17px;
 
-					&.lead{
-						font-weight: 700;
-					}
-
 					&:last-child {
 						margin-bottom: 50px;
 					}
@@ -262,6 +258,7 @@
 						font-size: em(16);
 					}
 				}
+
 
 				blockquote {
 					font-size: rem(32);
@@ -272,7 +269,7 @@
 
 					&:after,
 					&:before {
-						width: 100%;
+						width: 62px;
 						height: 2px;
 						background: #e22f22;
 						display: block;
@@ -284,6 +281,19 @@
 						font-size: rem(22);
 					}
 				}
+
+				&.pro {
+					blockquote {
+						font-family: $font-family-sans-serif;
+						
+						&:after,
+						&:before {
+							width:100%;
+						}
+	
+					}
+				}
+
 				.article_content__section{
 					font-family: $font-family-sans-serif;
 					font-size: rem(18);

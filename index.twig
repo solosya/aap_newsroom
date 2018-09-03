@@ -8,7 +8,7 @@
 {{this.registerJs("HomeController.listing();")}}
 {% set limit = 12 %}
 
-{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 
 
@@ -46,7 +46,7 @@
             "feed": "",
             "link": ""
         },
-        "newsroom pro__inactive": {
+        "newsroom pro": {
             "feed": "",
             "link": ""
         }
@@ -73,7 +73,7 @@
 
 
     <main id="main" class="site-main" role="main" data-test="true">
-        <section class="featured-slider container-fluid u-margin-top-40">
+        <section class="featured-slider container-fluid u-mobile-margin-top-80 u-tablet-margin-top-40 u-desktop-margin-top-40">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
