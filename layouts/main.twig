@@ -79,8 +79,8 @@
 
     {% set favicon = '' %}
     {% if paywallSection %}
-        {% set favicon = networkData.templatePath~"/static/images/pro-favicon.ico" %}
-            <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/pro-favicon.ico" sizes="any" type="image/svg+xml" />
+        {% set favicon = networkData.templatePath~"/static/images/pro-favicon.png" %}
+            <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/pro-favicon.png" sizes="any" type="image/svg+xml" />
     {% elseif networkData.favMedia | length > 0 %}
         {% set favicon = _Media.getMediaUrl(networkData.favMedia, 80, 80)%}
         <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/apple-logo.png" sizes="any" type="image/svg+xml" />
@@ -88,7 +88,6 @@
 
     <link rel="shortcut icon" href="{{favicon}}" />
     <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/images/apple-logo.png" sizes="any" type="image/svg+xml" />
     <link href='https://fonts.googleapis.com/css?family=Tinos:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400i" rel="stylesheet"> 
