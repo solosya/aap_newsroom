@@ -78,7 +78,9 @@
     {{ Html.csrfMetaTags | raw }}
 
     {% set favicon = '' %}
-    {% if networkData.favMedia | length > 0 %}
+    {% if paywallSection %}
+        {% set favicon = networkData.templatePath~"/static/images/pro-favicon.ico" %}
+    {% elseif networkData.favMedia | length > 0 %}
         {% set favicon = _Media.getMediaUrl(networkData.favMedia, 80, 80)%}
     {% endif %}
 
