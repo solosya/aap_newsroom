@@ -55,6 +55,7 @@
                     }
                     h2 {
                         min-height:160px;
+                        max-height: 220px;
                         border-bottom: 1px solid #dadada;
                         @media screen and (max-width: $large-break){
                             min-height:100px;
@@ -71,6 +72,12 @@
                         @media screen and (max-width: 1600px){
                             bottom:20px;
                         }
+                    }
+                    > p {
+                        color: #dadada;
+                        max-height: 70px;
+                        display: block;
+                        margin-bottom: 20px;
                     }
                 }
             }
