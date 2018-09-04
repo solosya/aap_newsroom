@@ -39,7 +39,7 @@
 
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == 'newsroom pro' %}
-            {% set proBlogId = blog.guid %}
+            {% set proBlogId = blog.id %}
         {% endif %}
     {% endfor %}
 
