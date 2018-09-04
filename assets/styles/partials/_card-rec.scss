@@ -1,4 +1,4 @@
-.card-rec{
+@mixin card-rec-base{
     margin-bottom: 79.5px;
     position:relative;
     @media screen and (max-width: $mobile-break){
@@ -59,7 +59,7 @@
             }
         }
         > article {
-            @extend %flexbox;
+            @include flexbox;
             height: 235px;
             flex-wrap: nowrap;
             -webkit-flex-wrap: nowrap;
@@ -326,5 +326,15 @@
                 }
             }
         }
+    }
+}
+
+.card-rec{
+    @include card-rec-base;
+}
+
+.card-rec-tablet{
+    @media #{$tablet}{
+        @include card-rec-base;
     }
 }
