@@ -9907,17 +9907,22 @@ input[type=radio].inline {
 
 .login-form .remember {
   overflow: auto;
-  margin-top: 20px; }
-  .login-form .remember > div {
-    float: left; }
-    @media screen and (max-width: 767px) {
-      .login-form .remember > div {
-        float: none; } }
-    .login-form .remember > div label {
-      font-size: 1.2rem;
-      color: #97999c;
-      font-weight: normal; }
+  padding-right: 2px; }
   .login-form .remember > p.layout {
+    float: right;
+    font-size: 1.2rem;
+    color: #97999c;
+    font-style: italic; }
+    @media screen and (max-width: 767px) {
+      .login-form .remember > p.layout {
+        float: none; } }
+    .login-form .remember > p.layout:hover {
+      cursor: pointer; }
+
+.login-form .reset {
+  overflow: auto;
+  margin-top: 20px; }
+  .login-form .reset > p.layout {
     float: right;
     font-size: 1.6rem;
     color: black;
@@ -9925,9 +9930,9 @@ input[type=radio].inline {
     font-weight: 600;
     text-decoration: underline; }
     @media screen and (max-width: 767px) {
-      .login-form .remember > p.layout {
+      .login-form .reset > p.layout {
         float: none; } }
-    .login-form .remember > p.layout:hover {
+    .login-form .reset > p.layout:hover {
       cursor: pointer; }
 
 .login-form-faq {
