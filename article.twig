@@ -323,7 +323,7 @@
 
 
 
-                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
+                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs" data-proid="{{proBlogId}}">
                                         <h3 class="most-viewed__header">MOST VIEWED</h3>
                                         {% set popularArticles = _Article.getPopularArticles({ 
                                                 limit: 5, 
