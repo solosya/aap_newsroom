@@ -122,7 +122,7 @@
      adSlot.setAttribute( 'class', 'sidepanelAd hidden-print' );
      
      googletag.cmd.push(function() {
-       var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[300,250],[300, 75]], slotName).setTargeting().defineSizeMapping([[[767,0],[[300,600],300,250]],[[0,0],[300,250]]]).addService(googletag.pubads());
+       var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[728,250],[728,90],[300,250],[300, 75]], slotName).setTargeting().defineSizeMapping([[[992,0],[300,600]],[[767,0],[[728,250],[728,90]]],[[0,0],[300,250]]]).addService(googletag.pubads());
        googletag.display(slotName);
        googletag.pubads().refresh([slot]);
      });
@@ -156,7 +156,7 @@
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75]], slotName).setTargeting().defineSizeMapping([[[1025,400],[970,250]],[[767,400],[[728,250],[728,90]]],[[0,250],[300,75]]]).addService(googletag.pubads());
-       var slot2 = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[300,250],[300, 75]], slotName2).setTargeting().defineSizeMapping([[[767,0],[[300,600],[300,250]]],[[0,0],[300,250]]]).addService(googletag.pubads());
+       var slot2 = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[728,250],[728,90],[300,250],[300, 75]], slotName2).setTargeting().defineSizeMapping([[[992,0],[300,600]],[[767,0],[[728,250],[728,90]]],[[0,0],[300,250]]]).addService(googletag.pubads());
        googletag.display(slotName);
        googletag.pubads().refresh([[slot],[slot2]]);
      });

@@ -58,13 +58,7 @@
                     <div class="col-sm-12 col-md-8">
                         {% if articles[articleCount] %}                                                                
                         <div class="card-group">
-
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount], 
-                                    position: (articleCount+1), 
-                                    containerClass: 'card-rec inverted'
-                                }) | raw}}
-
+                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec card-rec-tablet inverted'}) | raw}}
                                 {% set articleCount = articleCount + 1 %}
 
                         </div>
@@ -75,14 +69,8 @@
                         <div class="row">
                             <div class="card-group">
                             {% for i in 0..2 %}
-                                {% if articles[articleCount] %}    
-
-                                    {{this.render('partials/_single-article.twig', {
-                                        article: articles[articleCount], 
-                                        position: (articleCount+1), 
-                                        containerClass: 'col-sm-4 card-sm s230x206'
-                                    }) | raw}}
-
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm card-sm-tablet s230x206'}) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
@@ -94,7 +82,7 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                     
                     {% if paywallSection == false %}
-                        <section class="add sidebar-add" >
+                        <section class="add channel-ad" >
                             <div id="newAdHalf"></div>
                             <span class="add-text">Advertisement</span>
                         </section>
@@ -108,7 +96,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
 
-                        {% set rowCards = ['card-lg', 'card-rec', 'card-rec'] %}                                                                
+                        {% set rowCards = ['card-lg', 'card-rec card-rec-tablet', 'card-rec card-rec-tablet'] %}                                                                
                         {% for i in 0..2 %}
                             {% if articles[articleCount] %}  
 
@@ -131,7 +119,7 @@
                         <section class="section-sidepanel-news">
                             <div class="row">
                                 <div class="card-group">
-                                {% set rowCards = ['col-xs-12 col-sm-6 col-md-12 card-sm s370x270', 'col-xs-12 col-sm-6 col-md-12 card-sm inverted s370x270'] %}                                                                
+                                {% set rowCards = ['col-xs-12 col-sm-6 col-md-12 card-sm card-sm-tablet s370x270', 'col-xs-12 col-sm-6 col-md-12 card-sm card-sm-tablet inverted s370x270'] %}                                                                
                                 {% for i in 0..1 %}
                                     {% if articles[articleCount] %}   
 
@@ -164,7 +152,7 @@
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
                                         position: (articleCount+1), 
-                                        containerClass: 'col-sm-6 col-md-3  card-sm s263x209'
+                                        containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet s263x209'
                                     }) | raw}}
 
                                     {% set articleCount = articleCount + 1 %}

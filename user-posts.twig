@@ -62,20 +62,21 @@
             
 
 
-
-            {{ this.render('partials/ajaxarticles_new.twig', {
-                name            : "section-load",
-                limit           : limit,
-                offset          : limit,
-                label           : "Load more",
-                loadtype        : "user_articles",
-                imgwidth        : "220",
-                imgheight       : "208",
-                container       : "mainAjaxArticles",
-                non_pinned      : articlesArr.existingNonPinnedCount, 
-                card_class      : "col-sm-3 card-vr",
-                buttonClass     : "loadMoreArticles",
-            }) | raw }}
+            {% if totalArticles >= limit %}
+                {{ this.render('partials/ajaxarticles_new.twig', {
+                    name            : "section-load",
+                    limit           : limit,
+                    offset          : limit,
+                    label           : "Load more",
+                    loadtype        : "user_articles",
+                    imgwidth        : "220",
+                    imgheight       : "208",
+                    container       : "mainAjaxArticles",
+                    non_pinned      : articlesArr.existingNonPinnedCount, 
+                    card_class      : "col-sm-3 card-vr",
+                    buttonClass     : "loadMoreArticles",
+                }) | raw }}
+            {% endif %}
 
 
 
