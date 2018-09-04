@@ -408,8 +408,8 @@
 }
 
 .card-sm{
-    @media #{$desktop}{
-        @include card-sm-base
+    @media #{$desktop-up}{
+        @include card-sm-base;
     }
     @media #{$mobile}{
         @include card-sm-small-base;
