@@ -79,7 +79,7 @@
 
                                 {% for i in 0..4 %}
                                     {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec card-rec-tablet'}) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
@@ -127,7 +127,7 @@
 
                             {% if 'livingroom' == blogName | lower %}
                                 <section class="col-sm-12">
-                                    {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm advert', networkData: networkData }) | raw}}
+                                    {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm card-sm-tablet advert', networkData: networkData }) | raw}}
                                 </section>
                             {% else %}
 
@@ -135,7 +135,7 @@
                                 <section class="col-sm-12 sidebar-inverted"> 
                                         {# {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }} #}
 
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm inverted s335x260' }) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm card-sm-tablet inverted s335x260' }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                 </section>
                                 {# {% endif %} #}
@@ -151,7 +151,7 @@
                 <div class="row bottom-row">
                     {% for i in 0..3 %}
                         {% if articles[articleCount] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3 card-sm s255x208'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet s255x208'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}

@@ -7287,6 +7287,8 @@ p.foundingpartners {
   .add .add-text {
     color: #6c6c6c;
     font-size: 1.2em; }
+  .add.channel-ad {
+    margin-bottom: 80px; }
   .add.sidebar-add {
     margin-bottom: 80px;
     margin-top: 80px; }
@@ -7299,7 +7301,7 @@ p.foundingpartners {
         display: block; } }
     .add.sidebar-add .add-text {
       float: left; }
-      @media screen and (max-width: 1200px) {
+      @media screen and (max-width: 767px) {
         .add.sidebar-add .add-text {
           width: 300px;
           display: block;
@@ -13331,11 +13333,8 @@ input[type=radio].inline {
   padding-left: 25px; }
   @media screen and (max-width: 1200px) {
     .page-content aside {
-      padding-left: 15px;
+      padding-left: 0;
       border-left: 0; } }
-  @media screen and (max-width: 767px) {
-    .page-content aside {
-      padding-left: 0; } }
   .page-content aside .sidebar-add {
     margin-bottom: 35px; }
     @media screen and (max-width: 767px) {
