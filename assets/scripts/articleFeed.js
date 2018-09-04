@@ -11,14 +11,16 @@ Acme.Feed.prototype.fetch = function()
     //      nonPinnedOffset gets the rest
     //      They're combined to return full result
     self.options = {
-        'container'         :   container,
-        'limit'             :   self.elem.data('limit'),
-        'offset'            :   self.elem.data('offset') || self.elem.data('limit'),
         'nonPinnedOffset'   :   self.elem.data('non-pinned-offset') || -1,
-        'blogid'            :   self.elem.data('blogguid'),
+        'container'         :   container,
         'loadtype'          :   self.elem.data('loadtype')      || "home",
+        'offset'            :   self.elem.data('offset') || self.elem.data('limit'),
+        'blogid'            :   self.elem.data('blogguid'),
         'search'            :   self.elem.data('searchterm')    || null,
+        'limit'             :   self.elem.data('limit'),
+        // 'page'              :   self.elem.data('page') || 1, // page is used for user articles
     };
+
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
@@ -66,7 +68,7 @@ Acme.View.articleFeed = function(feedModel, limit, offset, infinite, failText, c
     this.infinite  = infinite || false;
     this.waypoint  = false;
     this.options   = {};
-    this.elem      = $('.loadMoreArticles');
+    this.elem      = $('.loadMore');
     this.failText  = failText || null;
     this.events();
 };
@@ -77,6 +79,13 @@ Acme.View.articleFeed.constructor = Acme.View.articleFeed;
 Acme.View.articleFeed.prototype.render = function(data) 
 {
     var self = this;
+    var articles = [];
+    if (data.articles) {
+        articles = data.articles;
+    }
+    if (data.userArticles) {
+        articles = data.userArticles;
+    }
 
     var cardClass  =   self.elem.data('card-class'),
         template   =   self.elem.data('card-template') || null,
@@ -90,13 +99,14 @@ Acme.View.articleFeed.prototype.render = function(data)
 
     self.elem.html(label);
 
-    (data.articles.length < self.options.limit) 
+    (articles.length < self.options.limit) 
         ? self.elem.css('display', 'none')
         : self.elem.show();
 
     // add counts to the dom for next request
     self.elem.data('non-pinned-offset', data.existingNonPinnedCount);
     self.elem.data('offset', (self.options.offset + self.options.limit));
+    // self.elem.data('page', (self.options.page + 1)); // page is used for user articles
 
     var html = [];
     if (ads_on == "yes") {
@@ -104,12 +114,12 @@ Acme.View.articleFeed.prototype.render = function(data)
     }
 
 
-    if (data.articles.length === 0 && self.failText) {
+    if (articles.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
     } else {
-        for (var i in data.articles) {
-            data.articles[i].imageOptions = {'width': imgWidth, 'height': imgHeight};
-            html.push( self.feedModel.renderCard(data.articles[i], cardClass, template) );
+        for (var i in articles) {
+            articles[i].imageOptions = {'width': imgWidth, 'height': imgHeight};
+            html.push( self.feedModel.renderCard(articles[i], cardClass, template) );
         }
     }
 
@@ -118,7 +128,7 @@ Acme.View.articleFeed.prototype.render = function(data)
         : self.options.container.append( html.join('') );
         
     if (self.waypoint) {
-        (data.articles.length < self.options.limit)
+        (articles.length < self.options.limit)
             ? self.waypoint.disable()
             : self.waypoint.enable();
     }
