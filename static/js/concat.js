@@ -27210,10 +27210,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
-        console.log('fetching from blog new');
-        console.log(requestData);
-        console.log(url);
-        console.log(requestType);
+        // console.log('fetching from blog new');
+        // console.log(requestData);
+        // console.log(url);
+        // console.log(requestType);
         
         return $.ajax({
             type: requestType,
@@ -29879,7 +29879,6 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
 Acme.Feed = function() {};
 Acme.Feed.prototype.fetch = function()
 {
-    console.log('fetching');
     var self = this;
     self.elem.html("Please wait...");
 
@@ -29913,9 +29912,7 @@ Acme.Feed.prototype.fetch = function()
 
 Acme.Feed.prototype.events = function() 
 {
-    console.log('adding feed events');
     var self = this;
-    console.log(self.elem);
     self.elem.unbind().on('click', function(e) {
         e.preventDefault();
         self.fetch();
@@ -29959,7 +29956,6 @@ Acme.View.articleFeed.constructor = Acme.View.articleFeed;
 
 Acme.View.articleFeed.prototype.render = function(data) 
 {
-    console.log(data);
     var self = this;
     var articles = [];
     if (data.articles) {

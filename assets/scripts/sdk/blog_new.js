@@ -34,10 +34,10 @@
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
-        console.log('fetching from blog new');
-        console.log(requestData);
-        console.log(url);
-        console.log(requestType);
+        // console.log('fetching from blog new');
+        // console.log(requestData);
+        // console.log(url);
+        // console.log(requestType);
         
         return $.ajax({
             type: requestType,
