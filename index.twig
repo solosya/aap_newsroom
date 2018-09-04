@@ -87,15 +87,15 @@
     <main id="main" class="site-main" role="main" data-test="true">
 
     {% if layoutTitle | lower == 'newsroom_opinion' %}
-        {{this.render('partials/_index-comment.twig', {articles: articles}) | raw}}
+        {{this.render('partials/_index-comment.twig', {articles: articles, networkData: networkData}) | raw}}
         {% set articleCount = articleCount + 4 %}
 
     {% elseif  layoutTitle | lower == 'newsroom-special' %}
-        {{this.render('partials/_index-special.twig', {articles: articles}) | raw}}
+        {{this.render('partials/_index-special.twig', {articles: articles, networkData: networkData}) | raw}}
         {% set articleCount = articleCount + 4 %}
 
     {% else %}
-        {{this.render('partials/_index-default.twig', {articles: articles }) | raw}}
+        {{this.render('partials/_index-default.twig', {articles: articles, networkData: networkData }) | raw}}
         {% set articleCount = articleCount + 1 %}
     {% endif %}
 
