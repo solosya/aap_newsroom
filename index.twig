@@ -10,7 +10,6 @@
 {{this.registerJs("Acme.cards = CardController();")}}
 
 {% set limit = 12 %}
-
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 
@@ -152,7 +151,7 @@
                                 {% endif %}
                             {% endif %}
 
-                         </div><!--card-group-->
+                         </div>
 
 
 
@@ -170,12 +169,14 @@
                                 <div id="newAdMrec"></div>
                                 <script>loadNextMrecAd('');</script>
                                 <span class="add-text">Advertisement</span>
-                            <!--block-->
                             </div>
                             <div class="col-sm-6 hidden-xs">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData}) | raw }}
                             </div>
                         </section>
+
+
+
 
 
                         <div class="row">
@@ -188,8 +189,10 @@
                                 {% endif %}
                             {% endfor %}
 
-                            </div><!-- .card-group-->
-                        </div><!-- .row-->
+                            </div>
+                        </div>
+
+
 
 
                         {% set rowCards = ['card-lg', 'card-rec'] %}                                                                
@@ -200,7 +203,6 @@
                             {% endif %}
                         {% endfor %}
 
-                        {# {{ this.render('partials/ajaxarticles.twig', {limit: limit, articlesArr: articlesArr, articles: articles}) | raw }} #}
                         
                         {{ this.render('partials/ajaxarticles_new.twig', {
                             name            : "section-load",
@@ -225,14 +227,12 @@
                             <div class="col-sm-12" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
                             </div>
-                            {# <div class="col-sm-6 col-md-12">
-                                {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }}
-                            </div> #}
+
                             <div class="col-sm-6 col-md-12 u-margin-top-40">
                                 {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
                         </div>
-                        {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
+
 
                         <section class="sidebar-news recent-articles">
                             <h3 class="recent-articles__header">
@@ -255,7 +255,7 @@
 
                             {% endif %}
 
-                        </section><!-- .sidebar-news -->
+                        </section>
 
 
                         
@@ -266,22 +266,25 @@
                                 <span class="add-text">Advertisement</span>
                         </section>
                     
-                        {# {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
-                   {#  {% for i in 0..1 if articles[articleCount] %} #}
-                   {% if articles[articleCount] %}
+
+                    {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s255x208'}) | raw}}
                         {% set articleCount = articleCount + 1 %}
                     {% endif %}
-                    {# {% endfor %} #}
 
-
-                    </div><!-- .col-sm-4-->
+                    </div>
 
                     <div class="row future">
                         {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
                     </div>
 
-                </div><!-- .row-->
+                </div>
+
+
+
+
+
+
 
 
                 {% if sections['boardroom'].feed.articles|length > 0 %}
@@ -317,8 +320,6 @@
 
             {{ this.render('partials/_sponsor_logos.twig') | raw }}
             
-         </section><!-- .home-page-content-->
+         </section>
 
-         {# <div id="tagdiv"></div> #}
-
-    </main><!-- .site-main -->
+    </main>
