@@ -1,10 +1,17 @@
 {{ set(this, 'title', 'Search - ' ~ search) }}
 
-{{this.registerJs("SearchController.listing();")}}
+{{this.registerJs("Acme.cards = CardController();")}}
 
-{% set limit = 20 %}
+{% set limit = 21 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search}) %}
 {% set networkData = _Network.getNetworkData() %}
+
+{% set firstCount = articles | length %}
+
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 
@@ -18,17 +25,43 @@
 
         <section class="card-group search-page__container">
             <div class="container">
-                <h1 class="search-page__header col-sm-12">Search Results</h1>
-
-                    {% for i in 0..19 %}
+                <div class="row clearfix">
+                    <h1 class="search-page__header col-sm-12">Search Results</h1>
+                    
+                    {% for i in 0..20 %}
                         {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile s360x215'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1), 
+                                containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile s360x215'
+                            }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
 
-                
+                </div>
+
+
+                {% if articles|length >= limit %}
+                    {{ this.render('partials/ajaxarticles_new.twig', {
+                        name            : "section-load",
+                        limit           : limit,
+                        offset          : limit,
+                        label           : "Load more",
+                        imgwidth        : "350",
+                        loadtype        : "api/search",
+                        imgheight       : "215",
+                        container       : "mainAjaxArticles",
+                        searchTerm      : search,
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        card_class      : "col-sm-4 card-search card-search-tablet card-search-mobile s360x215",
+                        buttonClass     : "loadMoreArticles"
+                    }) | raw }}
+                {% endif %}
+
             </div>
+
+
         </section>
 
 
