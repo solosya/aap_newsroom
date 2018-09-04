@@ -3,14 +3,20 @@
 {% set blogData = _Blog.getBlog() %}
 {{ set(this, 'title', blogData.title) }}
 
+{{this.registerJs("Acme.cards = CardController();")}}
 
-{{this.registerJs("HomeController.listing();")}}
-{{this.registerJs("HomeController.blog();")}}
+{# {{this.registerJs("HomeController.listing();")}} #}
+{# {{this.registerJs("HomeController.blog();")}} #}
 
 {% set limit = 14 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 
@@ -148,7 +154,26 @@
                         {% endif %}
 
 
+
+
                         {% if articles|length >= limit %}
+                            {{ this.render('partials/ajaxarticles_new.twig', {
+                                name            : "section-load",
+                                limit           : limit,
+                                offset          : limit,
+                                label           : "Load more",
+                                imgwidth        : "262",
+                                imgheight       : "208",
+                                container       : "mainAjaxArticles",
+                                non_pinned      : articlesArr.existingNonPinnedCount, 
+                                card_class      : "col-sm-3 card-sm",
+                                buttonClass     : "loadMoreArticles"
+                            }) | raw }}
+                        {% endif %}
+
+
+
+                        {# {% if articles|length >= limit %}
                         <section class="">
                             <div class="row">
                                 <div class="ajaxArticles clearfix"
@@ -167,7 +192,7 @@
                                 <p class="no-data text-center">No articles found.</p>  
                             </div>
                         </section>
-                        {% endif %}
+                        {% endif %} #}
                     </div><!-- .col-sm-12-->
                 </div><!-- .row-->
                 {% endif %}

@@ -8,11 +8,16 @@
 {% endmacro %}
 
 
-{{this.registerJs("HomeController.listing();")}}
+{{this.registerJs("Acme.cards = CardController();")}}
 {% set limit = 12 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -29,7 +34,7 @@
             "feed": "",
             "link": ""
         },
-        "ivingroom": {
+        "livingroom": {
             "feed": "",
             "link": ""
         }, 
@@ -52,7 +57,12 @@
         "comment": {
             "feed": "",
             "link": ""
+        },
+        "newsroom pro": {
+            "feed": "",
+            "link": ""
         }
+
     }
 %}
 
@@ -73,7 +83,7 @@
 
 
     <main id="main" class="site-main" role="main">
-        <section class="featured-slider-comments container">
+        <section class="featured-slider-comments container u-mobile-margin-top-80 u-tablet-margin-top-40 u-desktop-margin-top-40">
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                     <div class="row">
@@ -125,9 +135,8 @@
                                                     swap: 'false'}) | raw}}
                                             {% endif %}
                                         {% endfor %}
-
-                                    </div><!-- .row-->
-                            </section><!-- .top-stories-->
+                                    </div>
+                            </section>
                             {% endif %}
                         {% endif %}
 
@@ -186,7 +195,20 @@
                             {% endif %}
                         {% endfor %}
 
-                        {{ this.render('partials/ajaxarticles.twig', {limit: articleCount, articlesArr: articlesArr, articles: articles}) | raw }}
+                        {# {{ this.render('partials/ajaxarticles.twig', {limit: articleCount, articlesArr: articlesArr, articles: articles}) | raw }} #}
+                        {{ this.render('partials/ajaxarticles_new.twig', {
+                            name            : "section-load",
+                            limit           : limit,
+                            offset          : limit,
+                            label           : "Load more articles",
+                            imgwidth        : "220",
+                            imgheight       : "208",
+                            container       : "mainAjaxArticles",
+                            non_pinned      : articlesArr.existingNonPinnedCount, 
+                            card_class      : "col-sm-4 card-sm",
+                            buttonClass     : "loadMoreArticles-index",
+                        }) | raw }}
+
 
 
                     </div><!-- .col-sm-8-->

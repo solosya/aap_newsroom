@@ -17,17 +17,28 @@
         }
 
         if (options.loadtype == 'user') {
-            var url = _appJsConfig.appHostName + '/api/'+options.loadtype+'/load-more-managed';
+            url = _appJsConfig.appHostName + '/api/'+options.loadtype+'/load-more-managed';
             var requestType = 'get';
         }
-
+        
+        if (options.loadtype == 'user_articles') {
+            // url = _appJsConfig.baseHttpPath + '/user/load-articles';
+            var url = window.location.href;
+            var urlArr = url.split('/');
+            var username = decodeURIComponent(urlArr[urlArr.length - 2]);
+            url = _appJsConfig.baseHttpPath + '/profile/'+ username + '/posts';
+        }
 
         if (options.search) {
             requestData['meta_info'] = options.search;
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
-
+        console.log('fetching from blog new');
+        console.log(requestData);
+        console.log(url);
+        console.log(requestType);
+        
         return $.ajax({
             type: requestType,
             url: url,

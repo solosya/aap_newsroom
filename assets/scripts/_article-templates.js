@@ -270,7 +270,70 @@ var systemCardTemplate =
         "{{/if}}"+
     '</a>'+
 '</div>';
-                                                
+
+
+
+
+var cardTemplateTop = 
+'<div class="{{cardClass}} "> \
+    <a  itemprop="url" \
+        href="{{url}}" \
+        class="card swap {{articleStatus}}" \
+        data-id="{{articleId}}" \
+        data-position="{{position}}" \
+        data-status="{{articleStatus}}" \
+        data-social="0" \
+        data-article-image="{{{imageUrl}}}" \
+        data-article-text="{{title}}"> \
+        \
+        <article class="">';
+
+var cardTemplateBottom = 
+        '</article>'+
+        
+        '{{#if userHasBlogAccess}}'+
+            '<div class="btn_overlay articleMenu">'+
+                '<button title="Hide" data-guid="{{guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="0">'+
+                    '<i class="fa fa-eye-slash"></i><span class="hide">Hide</span>'+
+                '</button>'+
+                '<button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button">'+
+                    '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
+                '</button>'+
+                '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn" type="button" data-status="{{isPinned}}">'+
+                    '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+
+                '</button>'+
+            '</div>'+
+        "{{/if}}"+
+    '</a>'+
+'</div>';
+
+
+
+Acme.systemCardTemplate = 
+    cardTemplateTop + 
+        '{{#if hasMedia}}\
+            <figure>\
+                <img class="img-responsive {{imgClass}}" data-original="{{imageUrl}}" src="{{imageUrl}}" {{imgBackgroundStyle}}">\
+            </figure>\
+        {{/if}} \
+        \
+        <div class="content">\
+            <div class="category">{{label}}</div>\
+            <h2>{{{ title }}}</h2>\
+            <p>{{{ excerpt }}}</p>\
+            <div class="author">\
+                <img src="{{profileImg}}" class="img-circle">\
+                <p>{{ createdBy.displayName }}</p>\
+            </div>\
+        </div>' + 
+    cardTemplateBottom;
+
+
+
+
+
+
+
 var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                 '<a href="{{social.url}}" target="_blank" class="card swap card__{{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}" data-id="{{socialId}}" data-position="{{position}}" data-social="1" data-article-image="{{{social.media.path}}}" data-article-text="{{social.content}}">'+
                                     '{{#if social.hasMedia}}'+

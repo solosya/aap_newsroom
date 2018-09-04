@@ -2,13 +2,19 @@
 {% set networkData   = _Network.getNetworkData() %}
 
 {% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
-{{this.registerJs("UserArticlesController.load()")}}
+{# {{this.registerJs("UserArticlesController.load()")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
 {% set limit = 20 %}
 
+
+{% set firstCount = userArticles | length %}
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑           ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 <!-- Begin Container -->
@@ -54,15 +60,37 @@
 
             </div>
             
-            <div id="LoadMoreArticles" class="clearfix" style="clear:both;"></div>
+
+
+
+            {{ this.render('partials/ajaxarticles_new.twig', {
+                name            : "section-load",
+                limit           : limit,
+                offset          : limit,
+                label           : "Load more",
+                loadtype        : "user_articles",
+                imgwidth        : "220",
+                imgheight       : "208",
+                container       : "mainAjaxArticles",
+                non_pinned      : articlesArr.existingNonPinnedCount, 
+                card_class      : "col-sm-3 card-vr",
+                buttonClass     : "loadMoreArticles",
+            }) | raw }}
+
+
+
+
+            {# <div id="LoadMoreArticles" class="clearfix" style="clear:both;"></div>
                 {% if totalArticles >= limit %}
                     <div id="loader" class="loader" style="display:none;">
                         <span><img width="24" height="24" src="{{networkData.templatePath}}/static/images/loading.svg"></span>
                         <span class="text">please wait<span class="one">.</span><span class="two">.</span><span class="three">.</span></span>
                     </div>
                 {% endif %}
-            </div>
+            </div> #}
         </div>
+
+
         <!-- //End User Profile -->
     </div>
 </section>
