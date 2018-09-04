@@ -1,12 +1,8 @@
-{% set networkData = _Network.getNetworkData() %}
-
-{% set blogData = _Blog.getBlog() %}
 {{ set(this, 'title', blogData.title) }}
+{% set networkData  = _Network.getNetworkData() %}
+{% set blogData     = _Blog.getBlog() %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
-
-{# {{this.registerJs("HomeController.listing();")}} #}
-{# {{this.registerJs("HomeController.blog();")}} #}
 
 {% set limit = 14 %}
 
@@ -33,8 +29,6 @@
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
-
-{# blogData.title #}
     
 
         <section class="featured-slider channel container-fluid u-margin-top-40">
@@ -52,11 +46,11 @@
                             {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s660x440'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
-                    </div><!-- .swiper-wrapper-->
+                    </div>
 
-                </div><!-- .swiper-container-->
+                </div>
             </div>
-        </section><!-- .featured-slider-->
+        </section>
     
         <section class="home-page-content">
             <div class="container">
@@ -64,10 +58,16 @@
                     <div class="col-sm-12 col-md-8">
                         {% if articles[articleCount] %}                                                                
                         <div class="card-group">
-                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec inverted'}) | raw}}
+
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec inverted'
+                                }) | raw}}
+
                                 {% set articleCount = articleCount + 1 %}
 
-                        </div><!--card-group-->
+                        </div>
                         {% endif %}
 
 
@@ -75,17 +75,22 @@
                         <div class="row">
                             <div class="card-group">
                             {% for i in 0..2 %}
-                                {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-4 card-sm s230x206'}) | raw}}
+                                {% if articles[articleCount] %}    
+
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount], 
+                                        position: (articleCount+1), 
+                                        containerClass: 'col-sm-4 card-sm s230x206'
+                                    }) | raw}}
+
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
-                            </div><!-- .card-group-->
-                        </div><!-- .row-->
+                            </div>
+                        </div>
                         {% endif %}
 
-                    </div><!-- .col-sm-8-->
-
+                    </div>
                     <div class="col-sm-12 col-md-4 sidebar">
                     
                     {% if paywallSection == false %}
@@ -105,8 +110,14 @@
 
                         {% set rowCards = ['card-lg', 'card-rec', 'card-rec'] %}                                                                
                         {% for i in 0..2 %}
-                            {% if articles[articleCount] %}                                                                
-                                {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
+                            {% if articles[articleCount] %}  
+
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: rowCards[i]
+                                }) | raw}}
+
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
                         {% endfor %}
@@ -122,18 +133,23 @@
                                 <div class="card-group">
                                 {% set rowCards = ['col-xs-12 col-sm-6 col-md-12 card-sm s370x270', 'col-xs-12 col-sm-6 col-md-12 card-sm inverted s370x270'] %}                                                                
                                 {% for i in 0..1 %}
-                                    {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: rowCards[i]}) | raw}}
+                                    {% if articles[articleCount] %}   
+
+                                        {{this.render('partials/_single-article.twig', {
+                                            article: articles[articleCount], 
+                                            position: (articleCount+1), 
+                                            containerClass: rowCards[i]
+                                        }) | raw}}
+
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
                                 {% endfor %}
 
-                                </div><!-- .card-group-->
-                            </div><!-- .row-->
-                        </section>
+                                </div>
+                            </div>
                         {% endif %}
 
-                    </div><!-- .col-sm-4-->
+                    </div>
 
 
 
@@ -143,14 +159,20 @@
                             <div class="card-group">
                                
                             {% for i in 0..3 %}
-                                {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3  card-sm s263x209'}) | raw}}
+                                {% if articles[articleCount] %}      
+
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount], 
+                                        position: (articleCount+1), 
+                                        containerClass: 'col-sm-6 col-md-3  card-sm s263x209'
+                                    }) | raw}}
+
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
                             {% endfor %}
 
-                            </div><!-- .card-group-->
-                        </div><!-- .row-->
+                            </div>
+                        </div>
                         {% endif %}
 
 
@@ -172,35 +194,13 @@
                         {% endif %}
 
 
-
-                        {# {% if articles|length >= limit %}
-                        <section class="">
-                            <div class="row">
-                                <div class="ajaxArticles clearfix"
-                                     data-offset="{{limit}}"
-                                     data-containerclass="col-sm-3 card-sm"
-                                     data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                                 </div>
-                                <a class="loadMoreArticles" href="#">LOAD MORE</a>
-                            </div>
-
-                            {% set noDataCls = 'hide' %}
-                            {% if articles|length == 0 %}
-                                {% set noDataCls = '' %}
-                             {% endif %}
-                            <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                                <p class="no-data text-center">No articles found.</p>  
-                            </div>
-                        </section>
-                        {% endif %} #}
-                    </div><!-- .col-sm-12-->
-                </div><!-- .row-->
+                    </div>
+                </div>
                 {% endif %}
     
 
 
 
             <script>loadTwoAds('')</script>
-            </div><!-- .container-->
-        </section><!-- .home-page-content-->
-
+            </div>
+        </section>

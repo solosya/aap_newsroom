@@ -53,9 +53,6 @@
 {{this.registerJs("HomeController.blog();")}}
 
 
-{# {% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %} #}
-{# {% set imgWidth = 1140 %}
-{% set imgHeight = 493 %} #}
 
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
@@ -85,19 +82,34 @@
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
 {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
-{% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom'%}
+
+
+
+{% if paywallSection %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == 'newsroom pro' %}
+            {% set recentLabel = blogName %}
+            {% set recentParams = recentParams | merge({
+                'blogId': blog.guid,
+            }) %}
+        {% endif %}
+    {% endfor %}
+
+{% elseif blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom' %}
     {% set recentLabel = blogName %}
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
     }) %}
+
+
 {% else %}
     {% set recentParams = recentParams | merge({
         'scope': 'network',
     }) %}
 {% endif %}
 
-{% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
+{% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
 
     <main id="main" class="site-main u-margin-top-40" role="main">
@@ -163,6 +175,8 @@
                     {% endfor %}
                 </div>
 
+
+
             {% if paywallSection %}
                 </div>
                 </div>
@@ -193,7 +207,7 @@
                                             <time class="updated">Updated {{ updateDate | capitalize }}</time>
                                         {% endif %}
                                     </div>
-                                </div><!--content-block-top-->
+                                </div>
 
 
                                 <div class="content-author">
@@ -226,16 +240,13 @@
                                             {% if author['bio'] != "" %}
                                                 <a  class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
                                             {% endif %}
-                                        </div><!-- .content-author-->
+                                        </div>
                                     {% endfor %}
                                 {% endif %}
 
-                                {# <div class="content-author show-print" style="display:none;">
-                                        <h3>{{ article.createdBy['displayName'] }}</h3>
-                                        <h3>{{ author['displayName'] }}</h3>
-                                </div> #}
 
-                                <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
+
+                               <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
 
@@ -243,8 +254,8 @@
                                                 | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
                                                 | raw }}
                                     
-                                </div><!-- .content-->
-                            </div><!-- .content-->
+                                </div>
+                            </div>
                             
 
                             {% if showPaywall == true %}
@@ -267,6 +278,9 @@
                                 </div>
                             {% endif %}
                      
+
+
+
                             <div class="comments hidden-print">
                                 <h3>Comments</h3>
                                 <p>
@@ -277,16 +291,15 @@
                                     your news tips and feedback via email: <a href="mailto:contact@newsroom.co.nz">contact@newsroom.co.nz</a>.
                                     Thank you.
                                 </p>
-                            </div><!-- .col-sm-8-->
-
-
-                        </div><!-- .col-md-8-->
+                            </div>
+                        </div>
 
 
                         <div class="col-md-4">
                             <aside>
 
                                 {% if not paywallSection %}
+
                                     <section class="add sidebar-add ">
                                         <div id="newAdHalf"></div>
                                         <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
@@ -298,7 +311,6 @@
                                         </h3>
 
                                         {% if recentArticles|length > 0 %}
-
                                             {% for i in 0..6 %}
                                                 {% if recentArticles[i] %}
                                                     {{
@@ -310,11 +322,12 @@
                                                     }}
                                                 {% endif %}
                                             {% endfor %}
-
                                         {% endif %}
 
-                                    </section><!-- .sidebar-news -->
+                                    </section>
                                 {% else %}
+
+
 
                                     <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
                                         <h3 class="most-viewed__header">MOST VIEWED</h3>
@@ -326,18 +339,17 @@
                                                 containerClass  : 'card-pro-popular'
                                             }) | raw}}
                                         {% endfor %} 
-
-                                    </section><!-- .sidebar-news -->
+                                    </section>
                                 
                                 {% endif %}
                             </aside>
-                        </div><!-- .col-md-4-->
-                    </div><!-- .row-->
+                        </div>
+                    </div>
 
 
 
-                </div><!-- .page-content-->
-            </div><!--container-->
+                </div>
+            </div>
 
             {% if not paywallSection %}
                 <script>loadTwoAds('{{articleBlog}}');</script>
@@ -346,5 +358,5 @@
         </article>
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         
-    </main><!--site-main-->
+    </main>
 
