@@ -2,11 +2,12 @@
 
 
 {{ set(this, 'title', article.title) }}
-{% set networkData   = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog() %}
-{% set blogName      = blogData.title %}
-{% set recentLabel    = 'Newsroom' %}
-{% set articleBlogData = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
+{% set networkData      = _Network.getNetworkData() %}
+{% set blogData         = _Blog.getBlog() %}
+{% set blogName         = blogData.title %}
+{% set recentLabel      = 'Newsroom' %}
+{% set articleBlogData  = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
+{% set proBlogId        = '' %}
 
 
 {% set showPaywall              = false %}
@@ -35,6 +36,13 @@
 
 {% if paywallSection == true %}
     {% set newsroom_pro_style = "pro" %}
+
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == 'newsroom pro' %}
+            {% set proBlogId = blog.guid %}
+        {% endif %}
+    {% endfor %}
+
 {% endif %}
 
 
@@ -76,24 +84,12 @@
 
 
 
-
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
 {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
 
 
-
-{% if paywallSection %}
-    {% for blog in networkData.networkBlogs %}
-        {% if blog.title | lower == 'newsroom pro' %}
-            {% set recentLabel = blogName %}
-            {% set recentParams = recentParams | merge({
-                'blogId': blog.guid,
-            }) %}
-        {% endif %}
-    {% endfor %}
-
-{% elseif blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom' %}
+{% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom' %}
     {% set recentLabel = blogName %}
     {% set recentParams = recentParams | merge({
         'blogId': blogData['id'],
@@ -110,7 +106,7 @@
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
 
 
-    <main id="main" class="site-main u-margin-top-40" role="main" data-ver="2">
+    <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3">
         <article class="article-main">
 
 
@@ -329,7 +325,12 @@
 
                                     <section class="col-sm-12 sidebar-news recent-articles hidden-xs">
                                         <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                        {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+                                        {% set popularArticles = _Article.getPopularArticles({ 
+                                                limit: 5, 
+                                                blogId: proBlogId, 
+                                                interval: 168 
+                                        }) %}
+                                        
                                         {% for i in 0..4 if popularArticles[i] %}
                                             {{this.render('/partials/_single-article.twig', {
                                                 article         : popularArticles[i], 
