@@ -46,11 +46,15 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         height = card.imageOptions.height || height;
     }
 
+
+    var profileImage = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
+    card['profileImg'] = profileImage;
+
     var ImageUrl = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
     card['imageUrl'] = ImageUrl;
     var articleId = parseInt(card.articleId);
     var articleTemplate;
-
+    // console.log(card);
     if (isNaN(articleId) || articleId <= 0) {
         card['videoClass'] = '';
         if(card.social.media.type && card.social.media.type == 'video') {
