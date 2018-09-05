@@ -39,22 +39,32 @@
         }
     }
 
+
     .remember {
         overflow:auto;
-        margin-top:20px;
-        >div {
-            float:left;
+        padding-right:2px;
+        >p.layout {
+            float:right;
+            font-size:rem(12);
+            color:color(lightgrey);
+            font-style:italic;
+            
             @media screen and (max-width: $sm-break-down) {
                 float:none
             }
 
-
-            label {
-                font-size:rem(12);
-                color:color(lightgrey);
-                font-weight:normal;
+            &:hover {
+                cursor:pointer;
             }
         }
+
+    }
+
+
+    .reset {
+        overflow:auto;
+        margin-top:20px;
+
         >p.layout {
             float:right;
             font-size:rem(16);
@@ -75,6 +85,10 @@
 
     }
 }
+
+
+
+
 
 .login-form-faq {
     font-size:rem(12);

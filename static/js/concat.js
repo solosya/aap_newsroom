@@ -29559,14 +29559,18 @@ Acme.templates.signinFormTmpl =
         <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
         <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
         \
+        <div class="remember"> \
+            <p class="layout" data-layout="forgot" class="">Forgot password</p> \
+        </div> \
+        \
         <div class="message active hide"> \
-        <div class="login-form__error_text">Invalid Email or Password</div> \
+            <div class="login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \
         <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
         \
         <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
-        <div class="remember"> \
+        <div class="reset"> \
             <p class="layout" data-layout="forgot" class="">Set my password</p> \
         </div> \
         \
