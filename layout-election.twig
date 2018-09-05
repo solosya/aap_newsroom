@@ -9,15 +9,11 @@
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{# {% set articleCount = 0 %} #}
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
     <main id="main" class="site-main viewing-room" role="main">
-
-
-
 
 
         <section class="container-fluid">
@@ -39,8 +35,8 @@
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endif %}
 
-                </div><!-- .swiper-container-->
-        </section><!-- .featured-slider-->
+                </div>
+        </section>
     
 
         <section class="card-group">
@@ -57,9 +53,9 @@
                         {% endif %}
                     {% endfor %}
 
-                </div><!-- .row-->
-            </div><!-- .container-->
-        </section><!-- .top-stories-->
+                </div>
+            </div>
+        </section>
 
 
         {% if articles|length >= limit %}
@@ -85,5 +81,4 @@
             </section>
         {% endif %}
 
-
-    </main><!-- .site-main -->
+    </main>

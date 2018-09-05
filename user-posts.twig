@@ -2,7 +2,7 @@
 {% set networkData   = _Network.getNetworkData() %}
 
 {% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
-{# {{this.registerJs("UserArticlesController.load()")}} #}
+
 {{this.registerJs("Acme.cards = CardController();")}}
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -17,10 +17,8 @@
 {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
-<!-- Begin Container -->
 <section class="container min-hight">
     <div class="row" id="userprofile-page">
-        <!-- Begin User Profile -->
         <div class="col-sm-12">
 
             <div class="author-profile">
@@ -37,7 +35,6 @@
                 </div>
 
             </div>
-            <!-- //End User Profile Sidebar -->
         </div>
     </div>
 
@@ -78,21 +75,8 @@
                 }) | raw }}
             {% endif %}
 
-
-
-
-            {# <div id="LoadMoreArticles" class="clearfix" style="clear:both;"></div>
-                {% if totalArticles >= limit %}
-                    <div id="loader" class="loader" style="display:none;">
-                        <span><img width="24" height="24" src="{{networkData.templatePath}}/static/images/loading.svg"></span>
-                        <span class="text">please wait<span class="one">.</span><span class="two">.</span><span class="three">.</span></span>
-                    </div>
-                {% endif %}
-            </div> #}
         </div>
 
 
-        <!-- //End User Profile -->
     </div>
 </section>
-<!-- //End Container -->

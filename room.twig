@@ -33,11 +33,7 @@
                                                      {#            ↑             ↑                 ↑            ↑            #}
 {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
-
-
-
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
-{# {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network'}) %} #}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -53,10 +49,10 @@
                             {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'featured s1168x587'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
-                    </div><!-- .swiper-wrapper-->
+                    </div>
 
-                </div><!-- .swiper-container-->
-        </section><!-- .featured-slider-->
+                </div>
+        </section>
     
         {% if articles[articleCount] %}                                                                
         <section class="top-stories">
@@ -70,9 +66,9 @@
                         {% endif %}
                     {% endfor %}
 
-                </div><!-- .row-->
-            </div><!-- .container-->
-        </section><!-- .top-stories-->
+                </div>
+            </div>
+        </section>
         {% endif %}
 
 
@@ -93,8 +89,8 @@
                                 {% endfor %}
                             {% endif %}
 
-                         </div><!--card-group-->
-                    </div><!-- .col-sm-8-->
+                         </div>
+                    </div>
 
                     <div class="col-sm-12 col-md-4 sidebar">
                         
@@ -128,7 +124,7 @@
 
                             {% endif %}
 
-                        </section><!-- .sidebar-news -->
+                        </section>
                             
                             
 
@@ -139,20 +135,19 @@
                                 </section>
                             {% else %}
 
-                                {# {% if articles[articleCount] %}   #}                                                             
-                                <section class="col-sm-12 sidebar-inverted"> 
-                                        {# {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }} #}
+                                {% if articles[articleCount] %}                                                               
+                                    <section class="col-sm-12 sidebar-inverted"> 
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm card-sm-tablet inverted s335x260' }) | raw}}
+                                            {% set articleCount = articleCount + 1 %}
+                                    </section>
+                                {% endif %}
 
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm card-sm-tablet inverted s335x260' }) | raw}}
-                                        {% set articleCount = articleCount + 1 %}
-                                </section>
-                                {# {% endif %} #}
                             {% endif %}
 
-                        </div> <!-- .row-->
-                    </div><!-- .col-sm-4-->
+                        </div> 
+                    </div>
 
-                </div><!-- .row-->
+                </div>
 
 
                 {% if articles[articleCount] %}                                                                
@@ -165,9 +160,6 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-
-
-
 
 
 
@@ -186,37 +178,6 @@
                 }) | raw }}
             {% endif %}
 
-
-
-            </div><!-- .container-->
-        
-        </section><!-- .home-page-content-->
-
-
-
-
-    {# {% if articles|length >= limit %}
-        <section class="">
-            <div class="container">
-                <div class="row">
-                    <div class="ajaxArticles clearfix"
-                         data-offset="{{limit}}"
-                         data-containerclass="col-sm-3 card-sm"
-                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                     </div>
-                    <a class="loadMoreArticles" href="#">LOAD MORE</a>
-                </div>
-
-                {% set noDataCls = 'hide' %}
-                {% if articles|length == 0 %}
-                    {% set noDataCls = '' %}
-                 {% endif %}
-                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                    <p class="no-data text-center">No articles found.</p>  
-                </div>
             </div>
         </section>
-    {% endif %} #}
-
-
-    </main><!-- .site-main -->
+    </main>
