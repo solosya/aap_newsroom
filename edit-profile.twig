@@ -157,9 +157,26 @@
                 {% if pwstats.userManager == true %}
                     <hr class="divide30 " style="border-top:1px solid #97999c;">
 
-                    {% set totalPlanUserCount   = pwstats['user_count'] %}
-                    {% set managedUsers         = _User.getPaywallManagedUsers({"limit": userLimit}) %}
-                    {% set managedUserCount     = managedUsers | length %}   
+                    {% set totalPlanUserCount       = pwstats['user_count'] %}
+
+                    {% set managedUsersObj = _User.getPaywallManagedUsers({"limit": userLimit}) %}
+
+                    {% set managedUserScreenCount = managedUsersObj | length %}
+
+                    {% set managedUsers = managedUsersObj %}
+                    {% if managedUsersObj['users'] is defined %}
+                        {% set managedUsers = managedUsersObj['users'] %}
+                        {% set managedUserScreenCount = managedUsers | length %}
+
+                    {% endif %}
+
+
+                    {% set managedUserCount = managedUsers | length %}
+                    {% if managedUsersObj['totalCount'] is defined %}
+                        {% set managedUserCount = managedUsersObj['totalCount'] %}
+                    {% endif %}
+
+
                     {% set remainingUsers       = totalPlanUserCount - managedUserCount %}
 
                     <div class="profile-section">
@@ -309,7 +326,7 @@
                             <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUserCount + 1 >= totalPlanUserCount %} hidden{% endif %}">+ Add users</a>
                         </div>
 
-                        {% if totalPlanUserCount > userLimit and managedUserCount == userLimit %} 
+                        {% if totalPlanUserCount > userLimit and managedUserCount >= userLimit %} 
                             <div id="menu-search" class="managed-users-search u-margin-bottom-20">
                                 <form method="get" id="managed-user-search" action="">
                                     <div style="position:relative">
@@ -334,50 +351,50 @@
                             <div id="user_profile" class="col-md-12">
                                 
                                 <ul id="mangedUsers" class="managed-users">
-                                {% if managedUserCount == 0 %} 
-                                    <div id="nousers" class="empty-listing">
-                                        <p>You have no current users.</p>
-                                    </div>
-                                {% else %}
-                                 
-                                    {% for user in managedUsers %}
+                                    {% if managedUserCount == 0 %} 
+                                        <div id="nousers" class="empty-listing">
+                                            <p>You have no current users.</p>
+                                        </div>
+                                    {% else %}
+                                    
+                                        {% for user in managedUsers %}
 
-                                        <li id="{{user.id}}" class="userdetails">
-                                            <div class="u-float-left">
-                                                <p class="userdetails__name">
-                                                    <span class="j-firstname">{{user.firstname}}</span> 
-                                                    <span class="j-lastname">{{user.lastname}}</span>
-                                                </p> 
-                                                {# <p class="j-username userdetails__username">{{user.username}}</p> #}
-                                            </div>
-                                            <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a>
-                                            <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>
-                                            <p class="j-email userdetails__email u-float-right">{{user.email}}</p>
-                                        </li>
-                                    {% endfor %}
+                                            <li id="{{user.id}}" class="userdetails">
+                                                <div class="u-float-left">
+                                                    <p class="userdetails__name">
+                                                        <span class="j-firstname">{{user.firstname}}</span> 
+                                                        <span class="j-lastname">{{user.lastname}}</span>
+                                                    </p> 
+                                                    {# <p class="j-username userdetails__username">{{user.username}}</p> #}
+                                                </div>
+                                                <a class="j-delete userdetails__button userdetails__button--delete u-float-right"></a>
+                                                <a class="j-edit userdetails__button userdetails__button--edit u-float-right"></a>
+                                                <p class="j-email userdetails__email u-float-right">{{user.email}}</p>
+                                            </li>
+                                        {% endfor %}
 
-                                {% endif %}
+                                    {% endif %}
 
                                 </ul>
-                            </div>
                             
-                            {% if totalPlanUserCount > userLimit and managedUserCount == userLimit %} 
+                            
+                            {% if totalPlanUserCount > userLimit and managedUserScreenCount >= userLimit %} 
 
-                                <br style="clear:both" />
-                                <div class="col-md-12">
-                                    {{ this.render('partials/ajaxarticles_new.twig', {
-                                        name            : "user-load",
-                                        limit           : userLimit,
-                                        label           : "Show more",
-                                        loadtype        : "user",
-                                        container       : "mangedUsersList",
-                                        card_class      : "userdetails",
-                                        buttonClass     : "managed-users__more",
-                                        cardTemplate    : "managed_user",
-                                    }) | raw }}
-                                </div>
+                                {{ this.render('partials/ajaxarticles_new.twig', {
+                                    name            : "user-load",
+                                    limit           : userLimit,
+                                    label           : "Show more",
+                                    loadtype        : "user",
+                                    container       : "mangedUsers",
+                                    card_class      : "userdetails",
+                                    buttonClass     : "managed-users__more",
+                                    cardTemplate    : "managed_user",
+                                }) | raw }}
 
                             {% endif %}
+                            
+                            </div>
+                            
 
                             
                         </div>

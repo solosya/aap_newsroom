@@ -59,7 +59,7 @@ Acme.templates.managed_user =
 
 
 Acme.managed_user = 
-'<li id="{{id}}" class="userdetails"> \
+'<li id="{{id}}" class="userdetails {{cardClass}}"> \
     <div class="u-float-left"> \
         <p class="userdetails__name"> \
             <span class="j-firstname">{{firstname}}</span> \
