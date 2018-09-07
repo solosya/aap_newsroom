@@ -28801,7 +28801,10 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme.Controller   = {};
     Acme.State        = {};
     Acme.SigninView   = {};
-
+    Acme.SigninView   = {};
+    Acme.UserProfileController = function(){};
+    
+    
     $('html').on('click', function(e) {
         $('.Acme-pulldown ul').hide();
     });
