@@ -6,7 +6,10 @@
     Acme.Controller   = {};
     Acme.State        = {};
     Acme.SigninView   = {};
-
+    Acme.SigninView   = {};
+    Acme.UserProfileController = function(){};
+    
+    
     $('html').on('click', function(e) {
         $('.Acme-pulldown ul').hide();
     });

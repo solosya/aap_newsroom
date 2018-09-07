@@ -28801,7 +28801,10 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme.Controller   = {};
     Acme.State        = {};
     Acme.SigninView   = {};
-
+    Acme.SigninView   = {};
+    Acme.UserProfileController = function(){};
+    
+    
     $('html').on('click', function(e) {
         $('.Acme-pulldown ul').hide();
     });
@@ -29539,7 +29542,7 @@ Acme.templates.managed_user =
 
 
 Acme.managed_user = 
-'<li id="{{id}}" class="userdetails"> \
+'<li id="{{id}}" class="userdetails {{cardClass}}"> \
     <div class="u-float-left"> \
         <p class="userdetails__name"> \
             <span class="j-firstname">{{firstname}}</span> \
@@ -29960,6 +29963,7 @@ Acme.View.articleFeed.constructor = Acme.View.articleFeed;
 
 Acme.View.articleFeed.prototype.render = function(data) 
 {
+
     var self = this;
     var articles = [];
     if (data.articles) {
@@ -30038,7 +30042,7 @@ Acme.View.userFeed = function(feedModel, limit, offset, infinite, failText, cont
     this.infinite  = infinite || false;
     this.waypoint  = false;
     this.options   = {};
-    this.elem      = $('.loadMoreArticles');
+    this.elem      = $('.loadMore');
     this.failText  = failText || null;
     this.events();
 };
@@ -30049,6 +30053,8 @@ Acme.View.userFeed.constructor = Acme.View.userFeed;
 Acme.View.userFeed.prototype.render = function(data) 
 {
     var self = this;
+    var users = data.users.users || data.users;
+
     var cardClass  =   self.elem.data('card-class'),
         template   =   self.elem.data('card-template') || null,
         label      =   self.elem.data('button-label')  || "Load more",
@@ -30057,7 +30063,7 @@ Acme.View.userFeed.prototype.render = function(data)
 
     self.elem.html(label);
 
-    (data.users.length < self.options.limit) 
+    (users.length < self.options.limit) 
         ? self.elem.css('display', 'none')
         : self.elem.show();
 
@@ -30065,16 +30071,12 @@ Acme.View.userFeed.prototype.render = function(data)
     self.elem.data('offset', (self.options.offset + self.options.limit));
 
     var html = [];
-    if (ads_on == "yes") {
-        html.push( window.templates.ads_infinite );
-    }
 
-
-    if (data.users.length === 0 && self.failText) {
+    if (users.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
     } else {
-        for (var i in data.users) {
-            html.push( self.feedModel.render(data.users[i], cardClass, template) );
+        for (var i in users) {
+            html.push( self.feedModel.render(users[i], cardClass, template) );
         }
     }
 
@@ -30083,7 +30085,7 @@ Acme.View.userFeed.prototype.render = function(data)
         : self.options.container.append( html.join('') );
         
     if (self.waypoint) {
-        (data.users.length < self.options.limit)
+        (users.length < self.options.limit)
             ? self.waypoint.disable()
             : self.waypoint.enable();
     }
@@ -30100,11 +30102,10 @@ Acme.View.userFeed.prototype.render = function(data)
 };
 
 
-Acme.Usercard = function(){
-};
+Acme.Usercard = function(){};
 Acme.Usercard.prototype.render = function(user, cardClass, template, type)
 {
-    var self = this;
+    user['cardClass'] = cardClass;
     var template = (template) ? Acme[template] : Acme.systemCardTemplate;
     userTemplate = Handlebars.compile(template);
     return userTemplate(user);
@@ -32643,13 +32644,14 @@ Acme.UserProfileController.prototype.renderUser = function(parent, data, templat
 Acme.UserProfileController.prototype.render = function(data) 
 {
     var self = this;
+    var data = data.users.users || data.users;
     var users = [];
-    for (var i=0; i< data.users.length; i++) {
+    for (var i=0; i< data.length; i++) {
         users.push({
-            firstname: data.users[i].firstname, 
-            lastname:  data.users[i].lastname, 
-            username:  data.users[i].username, 
-            useremail: data.users[i].email,
+            firstname: data[i].firstname, 
+            lastname:  data[i].lastname, 
+            username:  data[i].username, 
+            useremail: data[i].email,
         });
     }
     self.renderUser(($('#mangedUsers')), users, Acme.managed_user);
