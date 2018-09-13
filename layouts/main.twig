@@ -106,7 +106,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=g09ac5b38" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=570694b2" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -287,7 +287,7 @@
     }) | raw }}
 
    
-    <div class="col-xs-12 header-signin visible-xs-block">
+    <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15" {% if paywallSection == true %}style="padding-top:60px;"{% endif %}>
         {% if not _User.isGuest() %}
             {% set user = _User.getUser() %}
 
