@@ -6919,8 +6919,9 @@ p.foundingpartners {
   text-align: center;
   color: #8a8b93; }
 
-.edit-profile .add-header__topbanner, .layout-subscribe .add-header__topbanner {
-  margin: 60px 0; }
+@media screen and (max-width: 767px) {
+  .edit-profile .add-header__topbanner, .layout-subscribe .add-header__topbanner, .search .add-header__topbanner, .layout-awards .add-header__topbanner {
+    margin: 60px 0; } }
 
 .sponsor-logos {
   width: 100%;
