@@ -4,7 +4,19 @@
     {% set paywallSection = true %}
 {% endif %}
 
+<div class="row u-mobile-no-margins" style="margin-bottom:-40px;">
+    <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
+        {% if not _User.isGuest() %}
+            {% set user = _User.getUser() %}
 
+            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
+            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-left">Hi, {{user.firstname}}</a>
+        {% else %}
+            <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
+            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn">SUBSCRIBE TO PRO</a>
+        {% endif %}
+    </div>
+</div>
 
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 

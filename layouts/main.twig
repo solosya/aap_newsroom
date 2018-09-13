@@ -60,10 +60,6 @@
 
 
 
-
-
-
-
 {{ this.beginPage() }}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
@@ -106,7 +102,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=7f36d15b" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=c2aa8620" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -266,13 +262,13 @@
 >
 {{ this.beginBody() }}
 
-     {% if paywallSection == false %}
+    {% if paywallSection == false %}
         <div class="add add-header__topbanner">
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
     {% else %}
-         <div class="add add-header__topbanner" style="margin-top:70px;"></div>
+         <div class="add add-header__topbanner" style="margin:60px 0;"></div>
     {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
@@ -286,19 +282,7 @@
         paywallSection : paywallSection,
     }) | raw }}
 
-   
-    <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
-        {% if not _User.isGuest() %}
-            {% set user = _User.getUser() %}
-
-            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
-            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-left">Hi, {{user.firstname}}</a>
-        {% else %}
-            <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn">SUBSCRIBE TO PRO</a>
-        {% endif %}
-    </div>
-
+    
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
         <div class="add add-header-mob hidden-sm hidden-md hidden-lg">
             <div id='tinybannerAd' style='height:75px; width:300px;'>
