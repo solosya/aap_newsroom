@@ -33,6 +33,9 @@
 .header-signin__signbtn {
     width: 93px;
     margin-left: 20px;
+    @media #{$mobile}{
+        width: 161px;
+    }
 }
 
 .header-signin__subbtn {

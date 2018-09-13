@@ -9531,6 +9531,9 @@ button.swiper-pagination-bullet {
 .header-signin__signbtn {
   width: 93px;
   margin-left: 20px; }
+  @media screen and (max-width: 767px) {
+    .header-signin__signbtn {
+      width: 161px; } }
 
 .header-signin__subbtn {
   width: 161px; }
@@ -9767,15 +9770,13 @@ input[type=radio].inline {
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .market-hero {
       height: 279px;
-      background-image: url("../images/marketing-hero-tablet.png");
-      margin-top: 150px; } }
+      background-image: url("../images/marketing-hero-tablet.png"); } }
   @media screen and (max-width: 767px) {
     .market-hero {
       height: 320px;
       margin-bottom: 150px;
       background-image: url("../images/marketing-hero-mobile2.png");
-      background-position: top;
-      margin-top: 150px; } }
+      background-position: top; } }
 
 @media screen and (min-width: 992px) {
   .market-hero--thanks {
@@ -17724,6 +17725,8 @@ body.channel.supporters p {
     margin-bottom: 15px; }
   .u-mobile-margin-bottom-10 {
     margin-bottom: 10px; }
+  .u-mobile-margin-top-150 {
+    margin-top: 150px; }
   .u-mobile-margin-top-80 {
     margin-top: 80px; }
   .u-mobile-margin-top-70 {
