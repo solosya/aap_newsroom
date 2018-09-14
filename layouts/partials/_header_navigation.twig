@@ -2,7 +2,12 @@
 
 {% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
     {% set paywallSection = true %}
+    {% layout = 'layout-marketing' %}    
 {% endif %}
+
+
+
+
 
 <div class="row u-mobile-no-margins" style="margin-bottom:-25px;">
     <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
@@ -13,7 +18,7 @@
             <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-left">Hi, {{user.firstname}}</a>
         {% else %}
             <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn">SUBSCRIBE TO PRO</a>
+            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn{% if layout == 'layout-marketing' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
         {% endif %}
     </div>
 </div>
