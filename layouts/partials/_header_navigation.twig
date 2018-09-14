@@ -9,7 +9,7 @@
 
 
 
-<div class="row u-mobile-no-margins" style="margin-bottom:-25px;">
+<div class="row u-mobile-no-margins{% if pageURL == '/auth/thank-you' %} hidden-xs{% endif %}" style="margin-bottom:-25px;">
     <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
         {% if not _User.isGuest() %}
             {% set user = _User.getUser() %}
