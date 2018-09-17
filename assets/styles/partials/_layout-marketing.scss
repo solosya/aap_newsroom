@@ -110,6 +110,20 @@
     }
 }
 
+.subscriptionPlan__mktbutton {
+     @media #{$mobile} {
+        height: 35px;
+        line-height: 14px;
+    }
+    @media #{$tablet} {
+        height: 28px;
+        width: 160px;
+        font-size: rem(12);
+        line-height: 10px;
+    }
+}
+
+
 
 .essential-news {
     margin:93px 0;
