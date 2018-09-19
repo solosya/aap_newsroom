@@ -2,46 +2,139 @@
     
 Acme.UserProfileController = function()
 {
-    this.csrfToken = $('meta[name="csrf-token"]').attr("content");
+    this.csrfToken      = $('meta[name="csrf-token"]').attr("content");
+    this.mailChimpUser  = false;
+    this.awesome        = '17ba69a02c';
+    this.newsroom       = '2412c1d355';
+    this.myAPI          = 'b19e2465ce252bb485f0236d4ca76390-us19';
+    this.newroomAPI     = 'a43cffb2605155810124b677ffbaf4f0-us7'; // faf206894581b2624680756617c1fe49-us7 - mandril
+    // this.group   = 'f6f5aaa06b';
+    this.group  = 'cb03aca14d'; // me
     this.events();
     this.userEvents();
     this.listingEvents();
+    this.fetchEmailLists();
 };
 
 
-Acme.UserProfileController.prototype.deleteUser = function(e) {
-    var user = $(e.target).closest('li');
-    var userid = user.attr("id");
-    var requestData = { 
-        id: userid, 
-        _csrf: this.csrfToken
+Acme.UserProfileController.prototype.subscribeToEmail = function(user, list) {
+    console.log('subscribing to mailchimp');
+    var data = {
+        _csrf  : this.csrfToken,
+        list   : list,
+        user   : user,
+        action : 'subscribe'
     };
 
-    return $.ajax({
-        type: 'post',
-        url: _appJsConfig.baseHttpPath + '/user/delete-managed-user',
-        dataType: 'json',
-        data: requestData,
-        success: function (data, textStatus, jqXHR) {
-            if (data.success == 1) {
-                user.remove();
-                $('#addManagedUser').removeClass('hidden');
-                var usertxt = $('.profile-section__users-left').text();
-                var usercount = usertxt.split(" ");
-                var total = usercount[2];
-                usercount = parseInt(usercount[0]);
-                $('.profile-section__users-left').text((usercount - 1) + " of " + total + " used.");
-            } else {
-                var text = '';
-                for (var key in data.error) {
-                    text = text + data.error[key] + " ";
-                } 
-                $('#createUserErrorMessage').text(text);
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+    return Acme.server.create( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', data).done(function(r) {
+        console.log(r);
+    });
+
+};
+
+
+Acme.UserProfileController.prototype.fetchUserMailchimpStatus = function(list) {
+    console.log('fetching user mailchimp status');
+    var requestData = {
+        action: 'get',
+        list: list
+    };
+    console.log(requestData);
+    return Acme.server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData );
+
+};
+
+
+Acme.UserProfileController.prototype.fetchEmailLists = function() {
+
+    var self = this;
+
+    Acme.server.fetch( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-get-list-data?list='+this.awesome+'&group='+this.group).done(function(data) {
+
+        self.emailLists = data.data.interests;
+        // console.log(self.emailLists);
+        var emails    = Handlebars.compile(Acme.templates.mailchimpList);
+
+
+
+        self.fetchUserMailchimpStatus(self.awesome).done(function(status) {
+            console.log(status);
+            self.mailChimpUser = status.data === false ? false : true;
+
+                for (var i=0; i < self.emailLists.length; i++) {
+                    var checked = '';
+                    console.log(self.emailLists[i].id);
+                    console.log(status.data.interests);
+
+                    if ( status.data !== false && status.data.interests[self.emailLists[i].id] === true && status.data.status !== 'unsubscribed' ) {
+                        checked = 'checked';
+                    }
+
+                    var params = {
+                        listId: self.awesome,
+                        groupId: self.emailLists[i].id,
+                        name: self.emailLists[i].name,
+                        checked: checked
+                    };
+    
+                    
+                    $('#account-form__email').append( emails(params) );
+                }
+
+        });
+    });
+
+};
+
+
+
+
+Acme.UserProfileController.prototype.deleteUser = function(e) {
+   
+    var user = $(e.target).closest('li');
+    var userid = user.attr("id");
+
+    var mailChimpData = {
+        user    : userid,
+        list    : this.awesome,
+        action  : 'unsubscribe'
+    }
+
+    // first remove from email lists
+    Acme.server.create( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', mailChimpData).done(function(r) {
+
+        var requestData = { 
+            id: userid, 
+            _csrf: this.csrfToken
+        };
+
+        // then delete the user
+        return $.ajax({
+            type: 'post',
+            url: _appJsConfig.baseHttpPath + '/user/delete-managed-user',
+            dataType: 'json',
+            data: requestData,
+            success: function (data, textStatus, jqXHR) {
+                if (data.success == 1) {
+                    user.remove();
+                    $('#addManagedUser').removeClass('hidden');
+                    var usertxt = $('.profile-section__users-left').text();
+                    var usercount = usertxt.split(" ");
+                    var total = usercount[2];
+                    usercount = parseInt(usercount[0]);
+                    $('.profile-section__users-left').text((usercount - 1) + " of " + total + " used.");
+                } else {
+                    var text = '';
+                    for (var key in data.error) {
+                        text = text + data.error[key] + " ";
+                    } 
+                    $('#createUserErrorMessage').text(text);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
                 $('#createUserErrorMessage').text(textStatus);
-        },
+            },
+        });
     });
 };
 
@@ -104,6 +197,7 @@ Acme.UserProfileController.prototype.userEvents = function()
 {
     var self = this;
 
+
     $('.j-edit').unbind().on('click', function(e) {
 
         var listelem = $(e.target).closest('li');
@@ -129,6 +223,7 @@ Acme.UserProfileController.prototype.userEvents = function()
         });
 
         $('#saveUser').on('click', function(e) {
+
             var requestData = getUserData("val");
             requestData.id = userid;
             requestData._csrf = this.csrfToken;
@@ -141,7 +236,8 @@ Acme.UserProfileController.prototype.userEvents = function()
                     if (data.success == 1) {
                         self.renderUser(listelem, requestData);
                         $('#addManagedUser').removeClass('hidden');
-                        $('#createUserErrorMessage').text('');   
+                        $('#createUserErrorMessage').text('');
+
                     } else {
                         var text = '';
                         for (var key in data.error) {
@@ -172,7 +268,32 @@ Acme.UserProfileController.prototype.userEvents = function()
 Acme.UserProfileController.prototype.events = function () 
 {
     var self = this;
+    $('#account-form__email').unbind().on('click', function(e) {
+        var elem = $(e.target);
+        
+        var action = elem.is(':checked') 
+            ? self.mailChimpUser 
+                ? 'subscribe' : 'create'
+            : 'unsubscribe';
 
+            var ids = elem.val().split(':');
+        requestData = {
+            list    : ids[0],
+            group   : ids[1],
+            action  : action
+        };
+        console.log(requestData);
+        Acme.server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData )
+            .done(function(r) {
+                if (r.success == 1) {
+                    self.mailChimpUser = true;
+                    // var msg = 'Succesfully ' + action + 'd ' + actionVerb + ' ' + self.emailLists[requestData['list']];
+                    // $("#account-form__email").prepend('<p>' + msg + '</p>');
+                }
+            }).fail(function(e) {
+                $('#createUserErrorMessage').text(e.errorText);
+            });
+    });
 
     $('#profile-form').submit( function(e){
         // NOTE this form also uses validation from the stripe subscribe form
@@ -288,6 +409,11 @@ Acme.UserProfileController.prototype.events = function ()
                     $('#user-editor__spinner').removeClass('spinner');
 
                     if (data.success == 1) {
+
+                        var list = Object.keys( self.emailLists );
+
+                        self.subscribeToEmail(data.user, list);
+
                         location.reload(false);             
                     } else {
                         var text = '';
@@ -316,7 +442,6 @@ Acme.UserProfileController.prototype.events = function ()
     $('#cancelAccount').on('click', function(e) {
 
         var listelem = $(e.target).closest('li');
-        var userid = listelem.attr("id");
 
         var status = 'cancelled';
         message = "Are you sure you want to cancel your plan?"
@@ -328,8 +453,6 @@ Acme.UserProfileController.prototype.events = function ()
             status: status, 
             _csrf: this.csrfToken, 
         };
-
-
 
         Acme.SigninView.render("userPlanChange", message)
             .done(function() {
