@@ -31934,8 +31934,7 @@ $('document').ready(function() {
         });
     }), 750);
 
-
-    $("#owl-thumbnails").owlCarousel({
+    $("#owl-gallery-image").owlCarousel({
         items: 1,
         thumbs: true,
         thumbsPrerendered: true,
