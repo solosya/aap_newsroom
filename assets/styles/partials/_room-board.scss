@@ -85,6 +85,10 @@
             time{
                 font-size: 12px;
                 color: #8a8b93;
+                @media #{$desktop-up}{
+                    bottom: 15px;
+                    position: absolute;
+                }
             }
 
             > .author {
@@ -260,6 +264,10 @@
                     font-size: 14px;
                     font-weight: bold;
                     color: #8a8b93;
+                    @media #{$desktop-up}{
+                        bottom: 15px;
+                        position: absolute;
+                    }
                 }
 
                 > .author {

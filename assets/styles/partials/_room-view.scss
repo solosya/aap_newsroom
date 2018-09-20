@@ -126,6 +126,7 @@
             > h2{
                 font-size: em(20);
                 font-weight: normal;
+                height: 22px;
                 @media screen and (max-width: $md-break){
                     font-size: em(16);
                     margin-top: 5px;
@@ -143,6 +144,10 @@
                 font-size: em(14);
                 font-weight: bold;
                 color: #ebb913;
+                @media #{$desktop-up}{
+                    bottom: 15px;
+                    position: absolute;
+                }
             }
             
             > div.author {

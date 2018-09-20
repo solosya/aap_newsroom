@@ -51,6 +51,9 @@
                         color: #fcfcfc;
                         font-size: rem(13);
                         font-weight: 300;
+                        @media #{$desktop-up}{
+                           margin-top: 20px; 
+                        }
                     }
                 }
                 time {

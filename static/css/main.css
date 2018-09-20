@@ -11805,7 +11805,8 @@ input[type=radio].inline {
             font-size: 1.1em; } }
       .room-view article > .content > h2 {
         font-size: 2em;
-        font-weight: normal; }
+        font-weight: normal;
+        height: 22px; }
         @media screen and (max-width: 1200px) {
           .room-view article > .content > h2 {
             font-size: 1.6em;
@@ -11819,6 +11820,10 @@ input[type=radio].inline {
         font-size: 1.4em;
         font-weight: bold;
         color: #ebb913; }
+        @media screen and (min-width: 992px) {
+          .room-view article > .content > time {
+            bottom: 15px;
+            position: absolute; } }
       .room-view article > .content > div.author {
         display: none; }
   .room-view .subfeature {
@@ -12209,6 +12214,10 @@ input[type=radio].inline {
       .room-board article > .content time {
         font-size: 12px;
         color: #8a8b93; }
+        @media screen and (min-width: 992px) {
+          .room-board article > .content time {
+            bottom: 15px;
+            position: absolute; } }
       .room-board article > .content > .author {
         display: none; }
   @media screen and (max-width: 620px) {
@@ -12333,6 +12342,10 @@ input[type=radio].inline {
           font-size: 14px;
           font-weight: bold;
           color: #8a8b93; }
+          @media screen and (min-width: 992px) {
+            .room-board > .featured > a > article > .content > time {
+              bottom: 15px;
+              position: absolute; } }
         .room-board > .featured > a > article > .content > .author {
           display: none; }
       .room-board > .featured > a > article > figure {
@@ -12647,8 +12660,7 @@ input[type=radio].inline {
         .room-corporate .card-sm a.card > article .content {
           height: auto !important; } }
       .room-corporate .card-sm a.card > article .content time {
-        float: none;
-        position: static !important; }
+        float: none; }
       .room-corporate .card-sm a.card > article .content div.logo {
         position: absolute;
         right: 10px;
@@ -12951,6 +12963,10 @@ input[type=radio].inline {
       .room-locker article > .content time {
         font-size: 12px;
         color: #80C342; }
+        @media screen and (min-width: 992px) {
+          .room-locker article > .content time {
+            bottom: 15px;
+            position: absolute; } }
       .room-locker article > .content > .author {
         display: none; }
   @media screen and (max-width: 620px) {
@@ -13075,6 +13091,10 @@ input[type=radio].inline {
           font-size: 14px;
           font-weight: bold;
           color: #80C342; }
+          @media screen and (min-width: 992px) {
+            .room-locker > .featured > a > article > .content > time {
+              bottom: 15px;
+              position: absolute; } }
         .room-locker > .featured > a > article > .content > .author {
           display: none; }
       .room-locker > .featured > a > article > figure {
@@ -15597,6 +15617,10 @@ body.channel.supporters p {
           padding: 0;
           border: 0;
           color: #f73d30; } }
+        @media screen and (min-width: 992px) and (min-width: 992px) {
+          .card-sm a.card > article > .content > time {
+            bottom: 15px;
+            position: absolute; } }
         @media screen and (min-width: 992px) and (max-width: 620px) {
           .card-sm a.card > article > .content > time {
             color: #6c6c6c;
@@ -15870,6 +15894,10 @@ body.channel.supporters p {
           padding: 0;
           border: 0;
           color: #f73d30; } }
+        @media screen and (max-width: 767px) and (min-width: 992px) {
+          .card-sm a.card > article > .content > time {
+            bottom: 15px;
+            position: absolute; } }
         @media screen and (max-width: 767px) and (max-width: 620px) {
           .card-sm a.card > article > .content > time {
             color: #6c6c6c;
@@ -16101,6 +16129,10 @@ body.channel.supporters p {
           padding: 0;
           border: 0;
           color: #f73d30; } }
+        @media screen and (min-width: 768px) and (max-width: 991px) and (min-width: 992px) {
+          .card-sm-tablet a.card > article > .content > time {
+            bottom: 15px;
+            position: absolute; } }
         @media screen and (min-width: 768px) and (max-width: 991px) and (max-width: 620px) {
           .card-sm-tablet a.card > article > .content > time {
             color: #6c6c6c;
@@ -16583,6 +16615,10 @@ body.channel.supporters p {
       border: 0;
       line-height: 1;
       float: none; }
+      @media screen and (min-width: 992px) {
+        .future-learning .furturelearning a.card > article > .content > time {
+          bottom: 15px;
+          position: absolute; } }
       @media screen and (max-width: 1200px) {
         .future-learning .furturelearning a.card > article > .content > time {
           position: absolute;
@@ -17354,6 +17390,9 @@ body.channel.supporters p {
         color: #fcfcfc;
         font-size: 1.3rem;
         font-weight: 300; }
+        @media screen and (min-width: 992px) {
+          .card-pro-partial a.card article .content .author p {
+            margin-top: 20px; } }
     .card-pro-partial a.card article .content time {
       display: none; }
 

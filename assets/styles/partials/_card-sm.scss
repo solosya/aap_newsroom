@@ -239,6 +239,10 @@
                 padding: 0;
                 border: 0;
                 color: #f73d30;
+                @media #{$desktop-up}{
+                    bottom: 15px;
+                    position: absolute;
+                }
                 @media screen and (max-width: $mobile-break){
                     color: #6c6c6c;
                     font-size: em(10);

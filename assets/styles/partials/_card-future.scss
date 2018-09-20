@@ -185,6 +185,11 @@
                     line-height: 1;
                     float:none;
 
+                    @media #{$desktop-up}{
+                        bottom: 15px;
+                        position: absolute;
+                    }
+
                     @media screen and (max-width: $md-break){
                         position: absolute;
                         bottom: 5px;
