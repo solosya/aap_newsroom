@@ -17369,7 +17369,8 @@ body.channel.supporters p {
   .card-pro-partial a.card article .content {
     width: unset;
     position: absolute;
-    margin-left: 170px; }
+    margin-left: 170px;
+    height: 100%; }
     .card-pro-partial a.card article .content > h2 {
       color: #fcfcfc;
       font-size: 2rem;
@@ -17393,7 +17394,8 @@ body.channel.supporters p {
         font-weight: 300; }
         @media screen and (min-width: 992px) {
           .card-pro-partial a.card article .content .author p {
-            margin-top: 20px; } }
+            position: absolute;
+            bottom: 0; } }
     .card-pro-partial a.card article .content time {
       display: none; }
 

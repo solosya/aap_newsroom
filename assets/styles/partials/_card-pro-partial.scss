@@ -25,6 +25,7 @@
                 width: unset;
                 position: absolute;
                 margin-left: 170px;
+                height: 100%;
                 > h2 { 
                     color: #fcfcfc;
                     font-size: rem(20);
@@ -52,7 +53,8 @@
                         font-size: rem(13);
                         font-weight: 300;
                         @media #{$desktop-up}{
-                           margin-top: 20px; 
+                           position: absolute;
+                           bottom: 0; 
                         }
                     }
                 }
