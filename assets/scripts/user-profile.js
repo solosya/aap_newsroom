@@ -4,12 +4,16 @@ Acme.UserProfileController = function()
 {
     this.csrfToken      = $('meta[name="csrf-token"]').attr("content");
     this.mailChimpUser  = false;
-    this.awesome        = '17ba69a02c';
-    this.newsroom       = '2412c1d355';
-    this.myAPI          = 'b19e2465ce252bb485f0236d4ca76390-us19';
+    
+    // test mailchimp accounts
+    //this.awesome        = '17ba69a02c';
+    //this.myAPI          = 'b19e2465ce252bb485f0236d4ca76390-us19';
+    //this.group          = 'cb03aca14d'; // me
+    
+    
     this.newroomAPI     = 'a43cffb2605155810124b677ffbaf4f0-us7'; // faf206894581b2624680756617c1fe49-us7 - mandril
-    // this.group   = 'f6f5aaa06b';
-    this.group  = 'cb03aca14d'; // me
+    this.newsroom       = '2412c1d355';
+    this.group          = 'f6f5aaa06b';
     this.events();
     this.userEvents();
     this.listingEvents();
@@ -18,7 +22,7 @@ Acme.UserProfileController = function()
 
 
 Acme.UserProfileController.prototype.subscribeToEmail = function(user, list) {
-    console.log('subscribing to mailchimp');
+
     var data = {
         _csrf  : this.csrfToken,
         list   : list,
@@ -27,19 +31,19 @@ Acme.UserProfileController.prototype.subscribeToEmail = function(user, list) {
     };
 
     return Acme.server.create( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', data).done(function(r) {
-        console.log(r);
+        // console.log(r);
     });
 
 };
 
 
 Acme.UserProfileController.prototype.fetchUserMailchimpStatus = function(list) {
-    console.log('fetching user mailchimp status');
+
     var requestData = {
         action: 'get',
         list: list
     };
-    console.log(requestData);
+
     return Acme.server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData );
 
 };
@@ -49,31 +53,38 @@ Acme.UserProfileController.prototype.fetchEmailLists = function() {
 
     var self = this;
 
-    Acme.server.fetch( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-get-list-data?list='+this.awesome+'&group='+this.group).done(function(data) {
+    Acme.server.fetch( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-get-list-data?list='+this.newsroom+'&group='+this.group).done(function(data) {
 
         self.emailLists = data.data.interests;
-        // console.log(self.emailLists);
+
         var emails    = Handlebars.compile(Acme.templates.mailchimpList);
 
 
 
-        self.fetchUserMailchimpStatus(self.awesome).done(function(status) {
-            console.log(status);
+        self.fetchUserMailchimpStatus(self.newsroom).done(function(status) {
+
             self.mailChimpUser = status.data === false ? false : true;
 
-                for (var i=0; i < self.emailLists.length; i++) {
+                for (var i=self.emailLists.length -1; i > -1; i--) {
                     var checked = '';
-                    console.log(self.emailLists[i].id);
-                    console.log(status.data.interests);
+                    var name = self.emailLists[i].name;
 
                     if ( status.data !== false && status.data.interests[self.emailLists[i].id] === true && status.data.status !== 'unsubscribed' ) {
                         checked = 'checked';
                     }
 
+                    if (self.emailLists[i].name.toLowerCase() == 'daily summaries') {
+                        name = "Send me Bernard Hickey's <i>8 Things</i> email each day";
+                    }
+
+                    if (self.emailLists[i].name.toLowerCase() == 'breaking news alerts') {
+                        name = "Send me an email alert when important news breaks";
+                    }
+
                     var params = {
-                        listId: self.awesome,
+                        listId: self.newsroom,
                         groupId: self.emailLists[i].id,
-                        name: self.emailLists[i].name,
+                        name: name,
                         checked: checked
                     };
     
@@ -96,7 +107,7 @@ Acme.UserProfileController.prototype.deleteUser = function(e) {
 
     var mailChimpData = {
         user    : userid,
-        list    : this.awesome,
+        list    : this.newsroom,
         action  : 'unsubscribe'
     }
 
@@ -148,7 +159,7 @@ Acme.UserProfileController.prototype.renderUser = function(parent, data, templat
     for (var i = 0; i < data.length; i++) {
         html += userTemp(data[i]);
     }
-    // console.log(html);
+
     parent.empty().append(html);
 };
 
@@ -282,7 +293,7 @@ Acme.UserProfileController.prototype.events = function ()
             group   : ids[1],
             action  : action
         };
-        console.log(requestData);
+
         Acme.server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData )
             .done(function(r) {
                 if (r.success == 1) {
@@ -460,7 +471,7 @@ Acme.UserProfileController.prototype.events = function ()
                 
                 $.ajax({
                     type: 'post',
-                    url: _appJsConfig.baseHttpPath + '/user/paywall-account-sataus',
+                    url: _appJsConfig.baseHttpPath + '/user/paywall-account-status',
                     dataType: 'json',
                     data: requestData,
                     success: function (data, textStatus, jqXHR) {
