@@ -32535,7 +32535,7 @@ UserArticlesController.Load = (function ($) {
                                 if (data.userArticles.length > 0) {
 
                                     for (var i in data.userArticles) {
-                                        data.userArticles[i]['containerClass'] = 'col-sm-6 col-md-3 card-vr s360x215 userpost';
+                                        data.userArticles[i]['containerClass'] = 'col-sm-6 col-md-3 card-vr userpost';
                                         // data.userArticles[i]['cardClass'] = 'card__news card--local';
                                         
                                         data.userArticles[i]['blogClass']= '';
@@ -32594,11 +32594,9 @@ Acme.UserProfileController = function()
     
     // test mailchimp accounts
     //this.awesome        = '17ba69a02c';
-    //this.myAPI          = 'b19e2465ce252bb485f0236d4ca76390-us19';
     //this.group          = 'cb03aca14d'; // me
     
     
-    this.newroomAPI     = 'a43cffb2605155810124b677ffbaf4f0-us7'; // faf206894581b2624680756617c1fe49-us7 - mandril
     this.newsroom       = '2412c1d355';
     this.group          = 'f6f5aaa06b';
     this.events();

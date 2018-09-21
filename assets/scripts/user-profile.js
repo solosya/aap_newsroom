@@ -7,11 +7,9 @@ Acme.UserProfileController = function()
     
     // test mailchimp accounts
     //this.awesome        = '17ba69a02c';
-    //this.myAPI          = 'b19e2465ce252bb485f0236d4ca76390-us19';
     //this.group          = 'cb03aca14d'; // me
     
     
-    this.newroomAPI     = 'a43cffb2605155810124b677ffbaf4f0-us7'; // faf206894581b2624680756617c1fe49-us7 - mandril
     this.newsroom       = '2412c1d355';
     this.group          = 'f6f5aaa06b';
     this.events();
