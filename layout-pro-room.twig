@@ -30,7 +30,8 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[0], 
                                 position: 1, 
-                                containerClass: 'featured card-pro-feature card-pro-feature-tablet card-pro-feature-mobile s1168x587'
+                                containerClass: 'featured card-pro-feature card-pro-feature-tablet card-pro-feature-mobile', 
+                                imageSize: {width:1168, height:587}
                             }) | raw}}
                             
                             {% set articleCount = articleCount + 1 %}
@@ -51,7 +52,8 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'col-sm-4'
+                                    containerClass: 'col-sm-4', 
+                                    imageSize: {width:99, height:88}
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -74,7 +76,12 @@
 
                                 {% for i in 0..3 %}
                                     {% if articles[articleCount] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-pro-rec card-pro-rec-tablet card-pro-rec-mobile'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {
+                                            article: articles[articleCount], 
+                                            position: (articleCount+1), 
+                                            containerClass: 'card-pro-rec card-pro-rec-tablet card-pro-rec-mobile', 
+                                            imageSize: {width:330, height:236}
+                                        }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
                                     <hr class="divide15 visible-xs-block">
@@ -122,7 +129,8 @@
                                     {{this.render('/partials/_single-article.twig', {
                                         article         : popularArticles[i], 
                                         swap            : false,
-                                        containerClass  : 'card-pro-popular'
+                                        containerClass  : 'card-pro-popular', 
+                                        imageSize: {width:92, height:100}
                                     }) | raw}}
                                 {% endfor %} 
 

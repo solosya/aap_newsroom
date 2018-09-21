@@ -23,7 +23,12 @@
         <section class="container-fluid">
                 <div class="">
                     {% if articles[0] %} 
-                        {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'viewingroom featured s1601x587'}) | raw}}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[0], 
+                            position: 1, 
+                            containerClass: 'viewingroom featured', 
+                            imageSize: {width:1601, height:587}
+                        }) | raw}}
                         {% set articleCount = articleCount + 1 %}
                     {% endif %}
 
@@ -37,7 +42,12 @@
 
                     {% for i in 0..17 %}
                         {% if articles[articleCount] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-4 card-vr s360x215'}) | raw}}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1), 
+                                containerClass: 'col-sm-6 col-md-4 card-vr', 
+                                imageSize: {width:360, height:215}
+                            }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
                     {% endfor %}
@@ -51,11 +61,11 @@
                             limit           : limit,
                             offset          : limit,
                             label           : "Load more",
-                            imgwidth        : "262",
-                            imgheight       : "208",
+                            imgwidth        : "360",
+                            imgheight       : "215",
                             container       : "mainAjaxArticles",
                             non_pinned      : articlesArr.existingNonPinnedCount, 
-                            card_class      : "col-sm-6 col-md-4 card-vr s360x215",
+                            card_class      : "col-sm-6 col-md-4 card-vr",
                             buttonClass     : "loadMoreArticles"
                         }) | raw }}
                     {% endif %}

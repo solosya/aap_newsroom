@@ -73,7 +73,7 @@ UserArticlesController.Load = (function ($) {
                                 if (data.userArticles.length > 0) {
 
                                     for (var i in data.userArticles) {
-                                        data.userArticles[i]['containerClass'] = 'col-sm-6 col-md-3 card-vr s360x215 userpost';
+                                        data.userArticles[i]['containerClass'] = 'col-sm-6 col-md-3 card-vr userpost';
                                         // data.userArticles[i]['cardClass'] = 'card__news card--local';
                                         
                                         data.userArticles[i]['blogClass']= '';

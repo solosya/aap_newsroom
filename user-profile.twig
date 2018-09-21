@@ -48,7 +48,8 @@
                     {{this.render('partials/_single-article.twig', {
                         article: myArticles[articleCount], 
                         position: (articleCount+1), 
-                        containerClass: 'col-sm-4 card-vr s360x215'
+                        containerClass: 'col-sm-4 card-vr s360x215', 
+                        imageSize: {width:360, height:215}
                     }) | raw}}
                     {% set articleCount = articleCount + 1 %}
                 {% endif %}

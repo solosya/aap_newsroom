@@ -33,7 +33,8 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile s360x215'
+                                containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile', 
+                                imageSize: {width:360, height:215}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -48,13 +49,13 @@
                         limit           : limit,
                         offset          : limit,
                         label           : "Load more",
-                        imgwidth        : "350",
+                        imgwidth        : "360",
                         loadtype        : "api/search",
                         imgheight       : "215",
                         container       : "mainAjaxArticles",
                         searchTerm      : search,
                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-4 card-search card-search-tablet card-search-mobile s360x215",
+                        card_class      : "col-sm-4 card-search card-search-tablet card-search-mobile",
                         buttonClass     : "loadMoreArticles"
                     }) | raw }}
                 {% endif %}
