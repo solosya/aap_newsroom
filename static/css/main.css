@@ -11822,7 +11822,7 @@ input[type=radio].inline {
         color: #ebb913; }
         @media screen and (min-width: 992px) {
           .room-view article > .content > time {
-            bottom: 15px;
+            bottom: 0;
             position: absolute; } }
       .room-view article > .content > div.author {
         display: none; }
@@ -11928,6 +11928,9 @@ input[type=radio].inline {
         @media screen and (max-width: 620px) {
           .room-view .featured article > .content > h2 {
             font-size: 2.4em; } }
+      @media screen and (min-width: 992px) {
+        .room-view .featured article > .content > time {
+          bottom: 80px; } }
       .room-view .featured article > .content > p {
         margin-bottom: 20px;
         font-size: 20px; }
@@ -12216,31 +12219,33 @@ input[type=radio].inline {
         color: #8a8b93; }
         @media screen and (min-width: 992px) {
           .room-board article > .content time {
-            bottom: 15px;
+            bottom: 0;
             position: absolute; } }
       .room-board article > .content > .author {
         display: none; }
-  @media screen and (max-width: 620px) {
-    .room-board .subfeature-board article > .content .category {
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-      font-size: 1.2em;
-      text-transform: uppercase; } }
-  .room-board .subfeature-board article > .content > p {
-    display: none; }
-  .room-board .subfeature-board article > .content > h2 {
-    margin-top: 21px;
-    font-size: 1.8em;
-    height: 38px; }
-    @media screen and (max-width: 991px) {
-      .room-board .subfeature-board article > .content > h2 {
-        height: 58px; } }
-    @media screen and (max-width: 767px) {
-      .room-board .subfeature-board article > .content > h2 {
-        height: auto; } }
-  .room-board .subfeature-board article > .content > time {
-    float: none;
-    border: none;
-    padding: 0; }
+  .room-board .subfeature-board article > .content {
+    height: 100%; }
+    @media screen and (max-width: 620px) {
+      .room-board .subfeature-board article > .content .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase; } }
+    .room-board .subfeature-board article > .content > p {
+      display: none; }
+    .room-board .subfeature-board article > .content > h2 {
+      margin-top: 21px;
+      font-size: 1.8em;
+      height: 38px; }
+      @media screen and (max-width: 991px) {
+        .room-board .subfeature-board article > .content > h2 {
+          height: 58px; } }
+      @media screen and (max-width: 767px) {
+        .room-board .subfeature-board article > .content > h2 {
+          height: auto; } }
+    .room-board .subfeature-board article > .content > time {
+      float: none;
+      border: none;
+      padding: 0; }
   .room-board > .featured {
     height: 430px;
     margin-bottom: 22px;
@@ -12965,31 +12970,33 @@ input[type=radio].inline {
         color: #80C342; }
         @media screen and (min-width: 992px) {
           .room-locker article > .content time {
-            bottom: 15px;
+            bottom: 0;
             position: absolute; } }
       .room-locker article > .content > .author {
         display: none; }
-  @media screen and (max-width: 620px) {
-    .room-locker .subfeature-board article > .content .category {
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-      font-size: 1.2em;
-      text-transform: uppercase; } }
-  .room-locker .subfeature-board article > .content > p {
-    display: none; }
-  .room-locker .subfeature-board article > .content > h2 {
-    margin-top: 21px;
-    font-size: 1.8em;
-    height: 38px; }
-    @media screen and (max-width: 991px) {
-      .room-locker .subfeature-board article > .content > h2 {
-        height: 58px; } }
-    @media screen and (max-width: 767px) {
-      .room-locker .subfeature-board article > .content > h2 {
-        height: auto; } }
-  .room-locker .subfeature-board article > .content > time {
-    float: none;
-    border: none;
-    padding: 0; }
+  .room-locker .subfeature-board article > .content {
+    height: 100%; }
+    @media screen and (max-width: 620px) {
+      .room-locker .subfeature-board article > .content .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase; } }
+    .room-locker .subfeature-board article > .content > p {
+      display: none; }
+    .room-locker .subfeature-board article > .content > h2 {
+      margin-top: 21px;
+      font-size: 1.8em;
+      height: 38px; }
+      @media screen and (max-width: 991px) {
+        .room-locker .subfeature-board article > .content > h2 {
+          height: 58px; } }
+      @media screen and (max-width: 767px) {
+        .room-locker .subfeature-board article > .content > h2 {
+          height: auto; } }
+    .room-locker .subfeature-board article > .content > time {
+      float: none;
+      border: none;
+      padding: 0; }
   .room-locker > .featured {
     height: 430px;
     margin-bottom: 22px;
@@ -16546,92 +16553,94 @@ body.channel.supporters p {
       clear: both; }
   .future-learning .container, .future-learning .profile__container {
     padding: 0; }
-  @media screen and (max-width: 767px) {
-    .future-learning .furturelearning a.card {
-      border-bottom: 1px solid #dadada; } }
-  .future-learning .furturelearning a.card > article {
-    height: auto;
-    flex-wrap: nowrap;
-    -webkit-flex-wrap: nowrap; }
-  .future-learning .furturelearning a.card > article > figure {
-    width: 99px;
-    flex: 0 0 99px;
-    overflow: hidden;
-    float: left;
-    margin-right: 14px; }
-    .future-learning .furturelearning a.card > article > figure.video:after {
-      top: 28%;
-      left: 28%;
-      width: 45px;
-      height: 45px; }
+  .future-learning .furturelearning {
+    height: 100%; }
+    @media screen and (max-width: 767px) {
+      .future-learning .furturelearning a.card {
+        border-bottom: 1px solid #dadada; } }
+    .future-learning .furturelearning a.card > article {
+      height: auto;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap; }
+    .future-learning .furturelearning a.card > article > figure {
+      width: 99px;
+      flex: 0 0 99px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .future-learning .furturelearning a.card > article > figure.video:after {
+        top: 28%;
+        left: 28%;
+        width: 45px;
+        height: 45px; }
+        @media screen and (max-width: 1200px) {
+          .future-learning .furturelearning a.card > article > figure.video:after {
+            top: 15%;
+            left: 18%; } }
       @media screen and (max-width: 1200px) {
-        .future-learning .furturelearning a.card > article > figure.video:after {
-          top: 15%;
-          left: 18%; } }
-    @media screen and (max-width: 1200px) {
-      .future-learning .furturelearning a.card > article > figure {
-        width: 65px;
-        flex: 0 0 65px; } }
-    @media screen and (max-width: 767px) {
-      .future-learning .furturelearning a.card > article > figure {
-        margin-top: 15px;
-        width: 70px;
-        height: 70px;
-        flex: 0 0 70px; } }
-    .future-learning .furturelearning a.card > article > figure > img {
-      max-width: 100%; }
-  .future-learning .furturelearning a.card > article > .content {
-    padding-bottom: 3px;
-    -ms-flex: 1 0; }
-    @media screen and (max-width: 767px) {
-      .future-learning .furturelearning a.card > article > .content {
-        border: 0;
-        padding: 15px 0; } }
-    .future-learning .furturelearning a.card > article > .content > .category {
-      font-size: 1.12em;
-      font-weight: bold;
-      color: #8a8b93;
-      display: block;
-      line-height: 1;
-      margin-bottom: 3px; }
+        .future-learning .furturelearning a.card > article > figure {
+          width: 65px;
+          flex: 0 0 65px; } }
       @media screen and (max-width: 767px) {
-        .future-learning .furturelearning a.card > article > .content > .category {
-          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-          font-size: 1.2em;
-          text-transform: upper; } }
-    .future-learning .furturelearning a.card > article > .content > h2 {
-      font-weight: normal;
-      font-size: 2.2em; }
-      @media screen and (max-width: 1200px) {
-        .future-learning .furturelearning a.card > article > .content > h2 {
-          font-size: 1.6em; } }
-      @media screen and (max-width: 991px) {
-        .future-learning .furturelearning a.card > article > .content > h2 {
-          height: 37px;
-          font-size: 1.6em;
-          margin: 2px; } }
-    .future-learning .furturelearning a.card > article > .content > .author {
-      display: none; }
-    .future-learning .furturelearning a.card > article > .content > time {
-      padding: 0;
-      border: 0;
-      line-height: 1;
-      float: none; }
-      @media screen and (min-width: 992px) {
-        .future-learning .furturelearning a.card > article > .content > time {
-          bottom: 15px;
-          position: absolute; } }
-      @media screen and (max-width: 1200px) {
-        .future-learning .furturelearning a.card > article > .content > time {
-          position: absolute;
-          bottom: 5px;
-          right: 15px; } }
-      @media screen and (max-width: 991px) {
-        .future-learning .furturelearning a.card > article > .content > time {
-          font-size: 1em;
-          position: static; } }
-    .future-learning .furturelearning a.card > article > .content p {
-      display: none; }
+        .future-learning .furturelearning a.card > article > figure {
+          margin-top: 15px;
+          width: 70px;
+          height: 70px;
+          flex: 0 0 70px; } }
+      .future-learning .furturelearning a.card > article > figure > img {
+        max-width: 100%; }
+    .future-learning .furturelearning a.card > article > .content {
+      padding-bottom: 3px;
+      -ms-flex: 1 0; }
+      @media screen and (max-width: 767px) {
+        .future-learning .furturelearning a.card > article > .content {
+          border: 0;
+          padding: 15px 0; } }
+      .future-learning .furturelearning a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+        @media screen and (max-width: 767px) {
+          .future-learning .furturelearning a.card > article > .content > .category {
+            font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+            font-size: 1.2em;
+            text-transform: upper; } }
+      .future-learning .furturelearning a.card > article > .content > h2 {
+        font-weight: normal;
+        font-size: 2.2em; }
+        @media screen and (max-width: 1200px) {
+          .future-learning .furturelearning a.card > article > .content > h2 {
+            font-size: 1.6em; } }
+        @media screen and (max-width: 991px) {
+          .future-learning .furturelearning a.card > article > .content > h2 {
+            height: 37px;
+            font-size: 1.6em;
+            margin: 2px; } }
+      .future-learning .furturelearning a.card > article > .content > .author {
+        display: none; }
+      .future-learning .furturelearning a.card > article > .content > time {
+        padding: 0;
+        border: 0;
+        line-height: 1;
+        float: none; }
+        @media screen and (min-width: 992px) {
+          .future-learning .furturelearning a.card > article > .content > time {
+            bottom: 0;
+            position: absolute; } }
+        @media screen and (max-width: 1200px) {
+          .future-learning .furturelearning a.card > article > .content > time {
+            position: absolute;
+            bottom: 5px;
+            right: 15px; } }
+        @media screen and (max-width: 991px) {
+          .future-learning .furturelearning a.card > article > .content > time {
+            font-size: 1em;
+            position: static; } }
+      .future-learning .furturelearning a.card > article > .content p {
+        display: none; }
 
 .future-learning-sponsors {
   padding-top: 12px; }

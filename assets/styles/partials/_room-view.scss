@@ -145,7 +145,7 @@
                 font-weight: bold;
                 color: #ebb913;
                 @media #{$desktop-up}{
-                    bottom: 15px;
+                    bottom: 0;
                     position: absolute;
                 }
             }
@@ -330,6 +330,12 @@
                 }
                 @media screen and (max-width: $mobile-break){
                     font-size: em(24);
+                }
+            }
+
+            >time {
+                @media #{$desktop-up}{
+                    bottom: 80px;
                 }
             }
 

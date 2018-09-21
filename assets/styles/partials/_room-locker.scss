@@ -91,7 +91,7 @@
                 font-size: 12px;
                 color: #80C342;
                 @media #{$desktop-up}{
-                    bottom: 15px;
+                    bottom: 0;
                     position: absolute;
                 }
             }
@@ -105,7 +105,7 @@
 
     .subfeature-board article {
         > .content{
-
+            height: 100%;
             .category{
               
                 @media screen and (max-width: $mobile-break) {
