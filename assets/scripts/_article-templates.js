@@ -3,6 +3,12 @@
  */
 Acme.templates = {};
 
+Acme.templates.mailchimpList = 
+    '<div> \
+        <input type="checkbox" class="email-subscription__checkbox" name="summary-email" id="mailchimp" value="{{listId}}:{{groupId}}" {{checked}}> \
+        <label class="email-subscription__label">{{{name}}}</label> \
+    </div>';
+
 Acme.templates.pulldown = 
 '<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \
