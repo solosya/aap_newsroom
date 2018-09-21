@@ -65,9 +65,8 @@
     {% set articleImg = true %}
 {% endif %}
 
-
-
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime,'F j, Y') %}
 {% set updateDate = _AppHelper.getDefaultTimezoneDateTime(article.updatedDateTime,'F j, Y') %}
 
@@ -118,21 +117,57 @@
 
             <div class="container">
                
+
                 {% if articleImg %} 
+                    {% set owl = ''%}
+                    {% set owlClass = ''%}
 
-                    <div class="gallery-container relative">
+                    {% if (article.media | length > 1) %}
+                        {% set owl = 'owl-thumbnails'%}
+                        {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+                    {% endif %}
 
-                        {% if article.media|length > 0 %}
-                            {% set imageFeature = featured == 'image' ? true : false %}
-                            {{this.render('partials/gallery.twig', {
-                                media: article.media,
-                                default: imageFeature
-                            }) | raw}}
-                        {% endif %}
+                    
+                    <div id="{{owl}}" class="{{owlClass}}" data-slider-id="1">
+                        {% for image in article.media %}
+                            {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-                    </div> 
+                            <figure class="featured" data-hash="{{loop.index}}">
+                                <img src="{{articleImg}}" class="img-responsive">
+                                {% if image.type == 'video' %} 
+                                    {% set mediaUrl = "" %}
+                                    {% if image.media.isSystemVideo == 'TRUE'%}
+                                        {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
+                                    {% endif %}
 
-                {% endif %}
+                                    <a  href="javascript:void(0)" 
+                                        itemprop="video" 
+                                        class="video-overlay video-player" 
+                                        data-source="{{image.source}}" 
+                                        data-video-id="{{image.videoId}}" 
+                                        data-url="{{mediaUrl}}" 
+                                        data-poster="{{image.path}}" 
+                                        data-caption="{{article.title | raw}}">
+                                        
+                                        <div class="icons">
+                                           <div class="icon"><i class="fa fa-play"></i></div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                                <figcaption>
+                                    <p class="article__figure-caption {{newsroom_pro_style}}">{{image.caption}}</p>
+                                </figcaption>
+                            </figure>
+                        {% endfor %}
+                    </div>
+                 {% endif %}
+
+                <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1" style="display:none">
+                    {% for image in article.media %}
+                        {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
+                        <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
+                    {% endfor %}
+                </div>
 
 
 

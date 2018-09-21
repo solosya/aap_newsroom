@@ -2,9 +2,26 @@
 
 {% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
     {% set paywallSection = true %}
+    {% set layout = 'layout-marketing' %}    
 {% endif %}
 
 
+
+
+
+<div class="row u-mobile-no-margins{% if pageURL == '/auth/thank-you' %} hidden-xs{% endif %}" style="margin-bottom:-25px;">
+    <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
+        {% if not _User.isGuest() %}
+            {% set user = _User.getUser() %}
+
+            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout u-float-right">SIGN OUT</a>
+            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-left">Hi, {{user.firstname}}</a>
+        {% else %}
+            <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
+            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn{% if layout == 'layout-marketing' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
+        {% endif %}
+    </div>
+</div>
 
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 
@@ -106,7 +123,7 @@
 
                                 SIGN IN BAR 
                          ___________________________#}
-                        <ul class="menu-signin visible-xs-block visible-sm-block">
+                        {# <ul class="menu-signin visible-xs-block visible-sm-block">
                             {% if not _User.isGuest() %}
                                 {% set user = _User.getUser() %}
                                 <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
@@ -114,7 +131,7 @@
                             {% else %}
                                 <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
-                        </ul> 
+                        </ul>  #}
                            
                            
                            
@@ -206,12 +223,12 @@
 
 
 
-        <div class="row visible-sm-block visible-md-block visible-lg-block">
+        <div class="row hidden-xs">
             <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
                     {% set user = _User.getUser() %}
 
-                    <p class="header-signin__name hidden-sm">Hi, {{user.firstname}} </p>
+                    <p class="header-signin__name visible-md-block visible-lg-block">Hi, {{user.firstname}} </p>
                     <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-md-block visible-lg-block">My Account</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a>

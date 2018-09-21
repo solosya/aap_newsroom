@@ -85,6 +85,13 @@
             time{
                 font-size: 12px;
                 color: #8a8b93;
+                
+                bottom: 0;
+                position: absolute;
+                @media #{$mobile}{
+                    bottom: 15px;
+                }
+                
             }
 
             > .author {
@@ -96,7 +103,7 @@
 
     .subfeature-board article {
         > .content{
-
+            height: 100%;
             .category{
               
                 @media screen and (max-width: $mobile-break) {
@@ -260,6 +267,10 @@
                     font-size: 14px;
                     font-weight: bold;
                     color: #8a8b93;
+                    
+                        bottom: 15px;
+                        position: absolute;
+                    
                 }
 
                 > .author {

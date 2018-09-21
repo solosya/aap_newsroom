@@ -60,10 +60,6 @@
 
 
 
-
-
-
-
 {{ this.beginPage() }}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
@@ -106,7 +102,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=g09ac5b38" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=f21df647" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -266,13 +262,13 @@
 >
 {{ this.beginBody() }}
 
-    {% if  blogName  | lower != "newsroom pro" %}  
+    {% if paywallSection == false %}
         <div class="add add-header__topbanner">
             {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
     {% else %}
-         <div class="add add-header__topbanner"></div>
+         <div class="add add-header__topbanner" style="margin:60px 0;"></div>
     {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
@@ -284,8 +280,10 @@
         pageURL     : pageURL,
         rooms       : rooms,
         paywallSection : paywallSection,
+        layout      : layout
     }) | raw }}
 
+    
     {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
         <div class="add add-header-mob hidden-sm hidden-md hidden-lg">
             <div id='tinybannerAd' style='height:75px; width:300px;'>

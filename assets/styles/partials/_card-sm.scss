@@ -80,6 +80,9 @@
                         color:white;
                         padding-bottom:15px;
                         border-bottom: solid 1px #dadada;
+                        @media #{$desktop-up}{
+                            max-height: 60px;
+                        }
                     
                         @media screen and (max-width: $mmd-break-down){
                             font-size: em(28);
@@ -222,9 +225,11 @@
             > h2{
                 font-weight: normal;
                 font-size: em(20);
+                max-height: 50px;
 
                 @media screen and (max-width: $mobile-break){
                     font-size: em(20);
+                    padding-bottom: 20px;
                 }
             }
 
@@ -239,9 +244,16 @@
                 padding: 0;
                 border: 0;
                 color: #f73d30;
+               
+                    bottom: 15px;
+                    position: absolute;
+                
                 @media screen and (max-width: $mobile-break){
                     color: #6c6c6c;
                     font-size: em(10);
+                     
+                    bottom: 10px;
+                
                 }
             }
 

@@ -152,8 +152,8 @@
                 height: 70px;
                 @media screen and (max-width: $mobile-break){
                     font-size: em(20);
-                    height: auto;
                     border: 0;
+                    height: 50px;
                 }
             }
             
@@ -212,6 +212,8 @@
                     border: 0;
                     padding: 0;
                     font-size: em(10);
+                    position: absolute;
+                    bottom: 5px;
                 }
             }
         }

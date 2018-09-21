@@ -61,7 +61,7 @@
     }
 
     .furturelearning{
-
+        height: 100%;
 
         a.card{
 
@@ -184,6 +184,11 @@
                     border: 0;
                     line-height: 1;
                     float:none;
+
+                    @media #{$desktop-up}{
+                        bottom: 0;
+                        position: absolute;
+                    }
 
                     @media screen and (max-width: $md-break){
                         position: absolute;
