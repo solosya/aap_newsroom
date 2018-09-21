@@ -86,8 +86,11 @@
                 font-size: 12px;
                 color: #8a8b93;
                 
-                    bottom: 0;
-                    position: absolute;
+                bottom: 0;
+                position: absolute;
+                @media #{$mobile}{
+                    bottom: 15px;
+                }
                 
             }
 
