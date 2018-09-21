@@ -5,117 +5,13 @@
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
     {% set articleImg = '' %}
     {% if article.featuredMedia | length > 0 %}
+
         {% set imgWidth = 1280 %}
         {% set imgHeight = 720 %}
 
-        {% if 'subfeature col-sm-4' == containerClass %}
-            {% set imgWidth = 330 %}
-            {% set imgHeight = 212 %}
-
-        {% elseif 'featured col-sm-12' == containerClass %}
-            {% set imgWidth = 633 %}
-            {% set imgHeight = 428 %}
-
-        {% elseif 'subfeature-board col-sm-4' == containerClass %}
-            {% set imgWidth = 92 %}
-            {% set imgHeight = 100 %}
-
-        {% elseif 'featured board' == containerClass %}
-            {% set imgWidth = 627 %}
-            {% set imgHeight = 415 %}
-
-        {% elseif 'featured sport' == containerClass %}
-            {% set imgWidth = 1140 %}
-            {% set imgHeight = 430 %}
-
-
-        {% elseif 'col-sm-12 col-md-6' == containerClass %}
-            {% set imgWidth = 203 %}
-            {% set imgHeight = 129 %}
-
-
-        {% elseif 'card-rec' in containerClass %}
-            {% set imgWidth = 330 %}
-            {% set imgHeight = 236 %}
-
-        {% elseif 'card-lg' in containerClass %}
-            {% set imgWidth = 750 %}
-            {% set imgHeight = 518 %}
-
-
-        {% elseif 's92x100' == containerClass %}
-            {% set imgWidth = 92 %}
-            {% set imgHeight = 100 %}
-
-
-
-        {% elseif 's110x110' in containerClass %}
-            {% set imgWidth = 110 %}
-            {% set imgHeight = 110 %}
-
-        {% elseif 's203x130' in containerClass %}
-            {% set imgWidth = 203 %}
-            {% set imgHeight = 130 %}
-
-        {% elseif 's230x140' in containerClass %}
-            {% set imgWidth = 230 %}
-            {% set imgHeight = 140 %}
-
-
-        {% elseif 's230x206' in containerClass %}
-            {% set imgWidth = 230 %}
-            {% set imgHeight = 206 %}
-
-
-        {% elseif 's263x209' in containerClass %}
-            {% set imgWidth = 263 %}
-            {% set imgHeight = 209 %}
-
-        {% elseif 's255x208' in containerClass %}
-            {% set imgWidth = 268 %}
-            {% set imgHeight = 215 %}
-        
-        {% elseif 's360x215' in containerClass %}
-            {% set imgWidth = 360 %}
-            {% set imgHeight = 215 %}
-
-
-        {% elseif 's335x260' in containerClass %}
-            {% set imgWidth = 335 %}
-            {% set imgHeight = 260 %}
-        
-        {% elseif 's660x440' in containerClass %}
-            {% set imgWidth = 660 %}
-            {% set imgHeight = 440 %}
-
-
-
-
-        {% elseif 's633x420' in containerClass %}
-            {% set imgWidth = 633 %}
-            {% set imgHeight = 420 %}
-        
-        {% elseif 's370x270' in containerClass %}
-            {% set imgWidth = 633 %}
-            {% set imgHeight = 420 %}
-
-
-        {% elseif 's1130x587' in containerClass %}
-            {% set imgWidth = 1130 %}
-            {% set imgHeight = 587 %}
-
-        {% elseif 's1168x587' in containerClass %}
-            {% set imgWidth = 1168 %}
-            {% set imgHeight = 587 %}
-
-        {% elseif 's1601x600' in containerClass %}
-            {% set imgWidth = 1601 %}
-            {% set imgHeight = 587 %}
-
-        {% elseif 'col-sm-4' in containerClass %}
-            {% set imgWidth = 99 %}
-            {% set imgHeight = 88 %}
-
+        {% if imageSize is defined %}
+            {% set imgWidth = (imageSize[width] is defined) ? imageSize[width] : 1280  %}
+            {% set imgHeight = (imageSize[height] is defined) ? imageSize[height] : 720 %}
         {% endif %}
 
     {% endif %}

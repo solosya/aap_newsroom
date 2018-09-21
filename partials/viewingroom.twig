@@ -8,11 +8,25 @@
 
     <div class="content-wrapper">
 
-        {{this.render('_single-article.twig', {article: sections['viewingroom'].feed.articles[0], 'position': (1), containerClass: 'featured col-sm-12 s633x420', swap: 'false'}) | raw}}
+        
+        {{this.render('_single-article.twig', {
+            article             : sections['viewingroom'].feed.articles[0],
+            position            : (1), 
+            containerClass      : 'featured col-sm-12 s633x420', 
+            swap                : 'false',
+            imageSize: {width:633, height:420}
+        }) | raw}}
 
         {% for i in 1..3 %}
             {% if sections['viewingroom'].feed.articles[i] %}        
-                {{this.render('_single-article.twig', {article: sections['viewingroom'].feed.articles[i], position: i+1, containerClass: 'subfeature col-sm-4', swap: 'false'}) | raw}}
+                {{this.render('_single-article.twig', {
+                    article             : sections['viewingroom'].feed.articles[i],
+                    position            : i+1, 
+                    containerClass      : 'subfeature col-sm-4', 
+                    swap                : 'false',
+                    imageSize: {width:330, height:212}
+
+                }) | raw}}
             {% endif %}
         {% endfor %}
 
