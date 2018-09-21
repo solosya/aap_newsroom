@@ -8,8 +8,8 @@
         {% set imgHeight = 720 %}
 
         {% if imageSize is defined %}
-            {% set imgWidth = (imageSize[width] is defined) ? imageSize[width] : 1280  %}
-            {% set imgHeight = (imageSize[height] is defined) ? imageSize[height] : 720 %}
+            {% set imgWidth = (imageSize.width is defined) ? imageSize.width : 1280  %}
+            {% set imgHeight = (imageSize.height is defined) ? imageSize.height : 720 %}
         {% endif %}
 
     {% endif %}

@@ -5,7 +5,12 @@
         <div class="swiper-wrapper">
 
             {% if articles[0] %}                                                                
-                {{this.render('_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s1168x587'}) | raw}}
+                {{this.render('_single-article.twig', {
+                article: articles[0], 
+                position: 1, 
+                containerClass: 'swiper-slide', 
+                imageSize: {width:1168, height:587}
+            }) | raw}}
             {% endif %}
         </div>
 
@@ -27,7 +32,8 @@
                         {{this.render('_single-article.twig', {
                             article: articles[i], 
                             position: (i+1), 
-                            containerClass: 'col-sm-4'
+                            containerClass: 'col-sm-4', 
+                        imageSize: {width:99, height:88}
                         }) | raw}}
                     {% endif %}
                 {% endfor %}

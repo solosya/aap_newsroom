@@ -5,7 +5,12 @@
         <div class="col-sm-12 col-md-8">
             <div class="row">
                 {% if articles[0] %}                                                                
-                    {{this.render('_single-article.twig', {article: articles[0], position: 1, containerClass: 'col-sm-12 feature s1168x587'}) | raw}}
+                    {{this.render('_single-article.twig', {
+                        article: articles[0], 
+                        position: 1, 
+                        containerClass: 'col-sm-12 feature s1168x587', 
+                        imageSize: {width:1168, height:587}
+                }) | raw}}
                 {% endif %}
             </div>
             <div class="newsroom-icon">
@@ -18,7 +23,12 @@
             <div class="row top-stories-comments">
                 {% for i in 1..3 %}
                     {% if articles[i] %}                                                                
-                        {{this.render('_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'col-sm-12'}) | raw}}
+                        {{this.render('_single-article.twig', {
+                            article: articles[i], 
+                            position: (i+1), 
+                            containerClass: 'col-sm-12', 
+                        imageSize: {width:633, height:428}
+                        }) | raw}}
                     {% endif %}
                 {% endfor %}
             </div>
