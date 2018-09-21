@@ -122,6 +122,10 @@
                     time {
                         float:none;
                         // position:static !important;
+                        @media #{$up-to-desktop}{
+                            position: absolute;
+                            bottom: 10px;
+                        }
 
                     }
 

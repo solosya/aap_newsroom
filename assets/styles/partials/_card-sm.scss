@@ -80,6 +80,9 @@
                         color:white;
                         padding-bottom:15px;
                         border-bottom: solid 1px #dadada;
+                        @media #{$desktop-up}{
+                            max-height: 60px;
+                        }
                     
                         @media screen and (max-width: $mmd-break-down){
                             font-size: em(28);
