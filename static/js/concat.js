@@ -31797,7 +31797,7 @@ $('document').ready(function() {
         var owner = lines[0].split(',');
         payload.owner.email = owner[owner.length - 1];
 
-        for (var i=0; i< lines.length; i++) {
+        for (var i=1; i< lines.length; i++) {
             $user = lines[i].split(',');
             
             $userobj = {
