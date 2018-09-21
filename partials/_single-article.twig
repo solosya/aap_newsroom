@@ -103,9 +103,9 @@
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
                     <figure class="{{figureClass}}">
                         {% if lazyload == false %}
-                            <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {% else %}
-                            <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
                     </figure>
                 {% endif %}
