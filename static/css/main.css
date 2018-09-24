@@ -16386,9 +16386,8 @@ body.channel.supporters p {
       .card-top-story.opinion-card a.card > article > .content > .author {
         display: none; }
       .card-top-story.opinion-card a.card > article > .content > time {
-        padding: 0;
-        border: 0;
-        line-height: 1; }
+        bottom: unset;
+        top: 100px; }
       .card-top-story.opinion-card a.card > article > .content p {
         display: none; }
   .card-top-story.opinion-card a.card.social .content .category {
@@ -16512,9 +16511,8 @@ body.channel.supporters p {
       .card-top-story-tablet.opinion-card a.card > article > .content > .author {
         display: none; }
       .card-top-story-tablet.opinion-card a.card > article > .content > time {
-        padding: 0;
-        border: 0;
-        line-height: 1; }
+        bottom: unset;
+        top: 100px; }
       .card-top-story-tablet.opinion-card a.card > article > .content p {
         display: none; }
   .card-top-story-tablet.opinion-card a.card.social .content .category {
@@ -16658,9 +16656,8 @@ body.channel.supporters p {
       .card-top-story-mobile.opinion-card a.card > article > .content > .author {
         display: none; }
       .card-top-story-mobile.opinion-card a.card > article > .content > time {
-        padding: 0;
-        border: 0;
-        line-height: 1; }
+        bottom: unset;
+        top: 100px; }
       .card-top-story-mobile.opinion-card a.card > article > .content p {
         display: none; }
   .card-top-story-mobile.opinion-card a.card.social .content .category {
@@ -16706,19 +16703,21 @@ body.channel.supporters p {
     margin-bottom: 6px;
     width: 116px;
     flex: 0 0 116px; }
-  .card-top-story-mobile.opinion-card a.card > article > figure.video:after {
-    top: 40%;
-    left: 35%;
-    width: 30px;
-    height: 30px; }
-  .card-top-story-mobile.opinion-card a.card > article > .content {
-    border: 0; }
-    .card-top-story-mobile.opinion-card a.card > article > .content > .category {
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-      font-size: 1.2em;
-      text-transform: uppercase; }
-    .card-top-story-mobile.opinion-card a.card > article > .content > time {
-      font-size: 1rem; } }
+  .card-top-story-mobile.opinion-card a.card {
+    border: unset; }
+    .card-top-story-mobile.opinion-card a.card > article > figure.video:after {
+      top: 40%;
+      left: 35%;
+      width: 30px;
+      height: 30px; }
+    .card-top-story-mobile.opinion-card a.card > article > .content {
+      border: 0; }
+      .card-top-story-mobile.opinion-card a.card > article > .content > .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase; }
+      .card-top-story-mobile.opinion-card a.card > article > .content > time {
+        font-size: 1rem; } }
 
 .viewingroom.featured {
   height: 587px;

@@ -178,9 +178,8 @@
                     }
 
                     > time{
-                        padding: 0;
-                        border: 0;
-                        line-height: 1;
+                        bottom: unset;
+                        top: 100px;
                     }
 
                     p {
@@ -339,6 +338,7 @@
 
         &.opinion-card{
             a.card{
+                border: unset; 
                 > article{
                     > figure{
                         &.video{
