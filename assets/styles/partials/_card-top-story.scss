@@ -101,7 +101,7 @@
             }   
         }
     }
-    &.opinion{
+    &.opinion-card{
         &:last-child {
             a.card article {
                 border:none;
@@ -153,6 +153,7 @@
                 > .content{
                     width:auto;
                     padding-bottom: 3px;
+                    border-bottom: unset;
                     
 
                     > .category{
@@ -250,7 +251,7 @@
                 }   
             }
         }
-        &.opinion{
+        &.opinion-card{
             a.card{
                 > article{
                     > figure{
@@ -336,7 +337,7 @@
             }
         }
 
-        &.opinion{
+        &.opinion-card{
             a.card{
                 > article{
                     > figure{
