@@ -52,7 +52,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'col-sm-4', 
+                                    containerClass: 'col-sm-4 card-top-story card-top-story-tablet card-top-story-mobile', 
                                     imageSize: {width:99, height:88}
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}

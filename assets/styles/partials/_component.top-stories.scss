@@ -1,0 +1,23 @@
+.top-stories{
+    margin-bottom: 78px;
+    
+    &.special {
+        margin-bottom:150px;
+    }
+
+    @media screen and (max-width: $sm-break-down) {
+        margin-bottom: 25px;
+    }
+
+    > .container > h2{
+        font-family: $font-family-sans-serif;
+        font-weight: bold;
+        font-size: em(20);
+        color: #000000;
+        @media screen and (max-width: $sm-break-down) {
+            padding-bottom:10px;
+            margin-bottom:2px;
+            border-bottom: 1px solid #dadada;
+        }
+    }
+}

@@ -111,7 +111,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article         : articles[articleCount], 
                                     position        : (articleCount+1), 
-                                    containerClass  : 'col-sm-12'
+                                    containerClass  : 'col-sm-12 card-top-story card-top-story-tablet card-top-story-mobile'
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}

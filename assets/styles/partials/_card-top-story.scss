@@ -1,0 +1,369 @@
+@mixin card-top-story-base() {
+    a.card{
+        > article {
+            display:-webkit-box;
+            display:-webkit-flex;
+            display:-moz-flex;
+            display:-ms-flexbox;
+            display:flex;
+            height: auto;
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+        
+            > figure{
+                width: 99px;
+                flex: 0 0 99px;
+                overflow: hidden;
+                float: left;
+                margin-right: 14px;
+
+                &.video {
+                    &:after{
+                        top: 50%;
+                        left: 50%;
+                        width: 40px;
+                        height: 40px;
+                        margin-left: -20px;
+                        margin-top: -20px;
+                    }
+                }
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+            > .content{
+                border-bottom: 1px solid #dadada;
+                padding-bottom: 3px;
+                -ms-flex: 1 0;
+                min-height: 88px;
+                
+                > .category{
+                    font-size: em(11.2);
+                    font-weight: bold;
+                    color: #8a8b93;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom: 3px;
+                }
+
+                > h2{
+                    font-weight: bold;
+                    font-size: em(22);
+                    height:50px;
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    position: absolute;
+                    bottom: 10px;
+                    right: 15px;
+                    padding: 0;
+                    border: 0;
+                    line-height: 1;
+                }
+
+                p {
+                    display:none;
+                }
+            }
+        }
+
+        &.social {
+            .content {
+                .category {
+                    margin-top:0;
+                    margin-bottom:8px;
+                }
+        
+                > p {
+                    display:block;
+                    height:48px;
+                }
+            }
+        }
+    }
+
+    &.room {
+        a.card{
+            > article {
+                height:130px;
+
+                > figure {
+                    height:auto;
+                    width:203px;
+                    flex:none;
+                }
+            }   
+        }
+    }
+    &.opinion{
+        &:last-child {
+            a.card article {
+                border:none;
+                padding:0;
+                margin:0;
+            }
+        }
+        a.card{
+            &:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+
+            > article {
+                display:block;            
+                height: auto;
+                padding-bottom: 25px;
+                margin-bottom: 25px;
+                border-bottom: 1px solid #dadada;
+
+                &:after {
+                  content: "";
+                  display: table;
+                  clear: both;
+                }
+
+                 > figure{
+                    width: 140px;
+                    height: 112px;
+                    overflow: hidden;
+                    float: left;
+                    margin-right: 14px;
+
+                    &.video {
+                        &:after{
+                            top: 35%;
+                            left: 35%;
+                            width: 35px;
+                            height: 35px;
+                        }
+                    }
+
+                    > img{
+                        max-width: 100%;
+                    }
+                }
+
+                > .content{
+                    width:auto;
+                    padding-bottom: 3px;
+                    
+
+                    > .category{
+                        font-size: em(11.2);
+                        font-weight: bold;
+                        color: #8a8b93;
+                        display: block;
+                        line-height: 1;
+                        margin-bottom: 3px;
+                    }
+
+                    > h2{
+                        font-weight: bold;
+                        font-size: em(22);
+                        height:77px;
+                        margin-bottom:0;
+
+                    }
+
+                    > .author{
+                        display: none;
+                    }
+
+                    > time{
+                        padding: 0;
+                        border: 0;
+                        line-height: 1;
+                    }
+
+                    p {
+                        display:none;
+                    }
+                }
+            }
+
+            &.social {
+                .content {
+                    .category {
+                        margin-top:0;
+                        margin-bottom:8px;
+                    }
+            
+                    > p {
+                        display:block;
+                        height:48px;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card-top-story{
+    @media #{$desktop-up} {
+        @include card-top-story-base;
+          
+    }
+}
+
+.card-top-story-tablet{
+    @media #{$tablet} {
+        @include card-top-story-base;
+        a.card{
+            > article {
+
+                > figure{
+                    width: 65px;
+                    flex: 0 0 65px;
+                }
+
+                > .content{
+                    padding-bottom: 15px;
+
+                    > h2{
+                        font-size: em(16);
+                        height:36px;
+                    }
+
+                    > time{
+                        position: absolute;
+                        bottom: 5px;
+                        right: 15px;
+                    }
+                }
+            }
+        }
+        &.room {
+            a.card{
+                > article {
+                    > figure {
+                        width: 150px;
+                        flex: 0 0 150px;
+                    }
+                }   
+            }
+        }
+        &.opinion{
+            a.card{
+                > article{
+                    > figure{
+                        &.video{
+                            &:after{
+                                top: 40%;
+                                left: 35%;
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.card-top-story-mobile{
+    @media #{$mobile} {
+        @include card-top-story-base;
+
+        a.card {
+            padding-top: 6px;
+            border-bottom: 1px solid #dadada;
+
+            > article{
+
+                > figure{
+                    margin-bottom:6px;
+                    width: 60px;
+                    height:56px;
+                    flex: 0 0 60px;
+
+                    &.video {
+                        &:after{
+                            width: 30px;
+                            height: 30px;
+                            margin-left: -15px;
+                            margin-top: -15px;                      
+                        }
+                    }
+                }
+
+                > .content{
+                    padding-bottom: 5px;
+                    border: 0;
+                    min-height: 56px;
+
+                    > .category{
+                        font-family: $font-family-sans-serif;
+                        font-size: em(12);
+                        text-transform: uppercase;
+                    }
+
+                    > h2{
+                        font-size: rem(14);
+                        height:33px;
+                        margin: 2px;
+                    }
+
+                    > time{
+                        position: absolute;
+                        bottom: 5px;
+                        right: 15px;
+                        font-size: em(10);
+                    }
+                }
+            }
+        } 
+
+        &.room {
+            a.card{
+                > article {
+                    > figure {
+                        width: 150px;
+                        flex: 0 0 150px;
+                        margin-top:6px;
+                        margin-bottom:6px;
+                        width: 116px;
+                        flex: 0 0 116px;
+                    }
+                }   
+            }
+        }
+
+        &.opinion{
+            a.card{
+                > article{
+                    > figure{
+                        &.video{
+                            &:after{
+                                top: 40%;
+                                left: 35%;
+                                width: 30px;
+                                height: 30px;
+                            }
+                        }
+                    }
+
+                    >.content{
+                        border: 0;
+
+                        > .category{
+                            font-family: $font-family-sans-serif;
+                            font-size: em(12);
+                            text-transform: uppercase;
+                        }
+                        > time{
+                            font-size: rem(10);
+                        }
+                    }
+                }
+            }
+        }     
+    }
+}

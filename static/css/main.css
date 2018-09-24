@@ -5679,7 +5679,7 @@ tbody.collapse.in {
 /* Gradient Mixin */
 /* Touch Scroll */
 /* Transition Delay */
-.top-stories a.card > article, .opinion a.card > article, .related-articles a.card > article, .future-learning .furturelearning a.card > article, .card-pro-rec a.card > article {
+.opinion a.card > article, .related-articles a.card > article, .future-learning .furturelearning a.card > article, .card-pro-rec a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -7237,7 +7237,7 @@ p.foundingpartners {
   content: '\e80c'; }
 
 /* '' */
-.top-stories a.card > article, .opinion a.card > article, .related-articles a.card > article, .future-learning .furturelearning a.card > article, .card-pro-rec a.card > article {
+.opinion a.card > article, .related-articles a.card > article, .future-learning .furturelearning a.card > article, .card-pro-rec a.card > article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9005,208 +9005,6 @@ button.swiper-pagination-bullet {
   100% {
     transform: rotate(360deg); } }
 
-.top-stories {
-  margin-bottom: 78px; }
-  .top-stories.special {
-    margin-bottom: 150px; }
-  @media screen and (max-width: 767px) {
-    .top-stories {
-      margin-bottom: 25px; } }
-  .top-stories > .container > h2, .login-page .top-stories > .container > h2, .top-stories > .profile__container > h2 {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 2em;
-    color: #000000; }
-    @media screen and (max-width: 767px) {
-      .top-stories > .container > h2, .login-page .top-stories > .container > h2, .top-stories > .profile__container > h2 {
-        padding-bottom: 10px;
-        margin-bottom: 2px;
-        border-bottom: 1px solid #dadada; } }
-  @media screen and (max-width: 767px) {
-    .top-stories a.card {
-      padding-top: 6px;
-      border-bottom: 1px solid #dadada; } }
-  .top-stories a.card > article {
-    height: auto;
-    flex-wrap: nowrap;
-    -webkit-flex-wrap: nowrap; }
-  .top-stories a.card > article > figure {
-    width: 99px;
-    flex: 0 0 99px;
-    overflow: hidden;
-    float: left;
-    margin-right: 14px; }
-    .top-stories a.card > article > figure.video:after {
-      top: 50%;
-      left: 50%;
-      width: 40px;
-      height: 40px;
-      margin-left: -20px;
-      margin-top: -20px; }
-      @media screen and (max-width: 767px) {
-        .top-stories a.card > article > figure.video:after {
-          width: 30px;
-          height: 30px;
-          margin-left: -15px;
-          margin-top: -15px; } }
-    @media screen and (max-width: 1200px) {
-      .top-stories a.card > article > figure {
-        width: 65px;
-        flex: 0 0 65px; } }
-    @media screen and (max-width: 767px) {
-      .top-stories a.card > article > figure {
-        margin-bottom: 6px;
-        width: 60px;
-        height: 56px;
-        flex: 0 0 60px; } }
-    .top-stories a.card > article > figure > img {
-      max-width: 100%; }
-  .top-stories a.card > article > .content {
-    border-bottom: 1px solid #dadada;
-    padding-bottom: 3px;
-    -ms-flex: 1 0; }
-    @media screen and (max-width: 1200px) {
-      .top-stories a.card > article > .content {
-        padding-bottom: 15px; } }
-    @media screen and (max-width: 767px) {
-      .top-stories a.card > article > .content {
-        border: 0; } }
-    .top-stories a.card > article > .content > .category {
-      font-size: 1.12em;
-      font-weight: bold;
-      color: #8a8b93;
-      display: block;
-      line-height: 1;
-      margin-bottom: 3px; }
-      @media screen and (max-width: 767px) {
-        .top-stories a.card > article > .content > .category {
-          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-          font-size: 1.2em;
-          text-transform: uppercase; } }
-    .top-stories a.card > article > .content > h2 {
-      font-weight: bold;
-      font-size: 2.2em;
-      height: 50px; }
-      @media screen and (max-width: 1200px) {
-        .top-stories a.card > article > .content > h2 {
-          font-size: 1.6em;
-          height: 36px; } }
-      @media screen and (max-width: 767px) {
-        .top-stories a.card > article > .content > h2 {
-          margin: 2px; } }
-    .top-stories a.card > article > .content > .author {
-      display: none; }
-    .top-stories a.card > article > .content > time {
-      padding: 0;
-      border: 0;
-      line-height: 1; }
-      @media screen and (max-width: 1200px) {
-        .top-stories a.card > article > .content > time {
-          position: absolute;
-          bottom: 5px;
-          right: 15px; } }
-      @media screen and (max-width: 767px) {
-        .top-stories a.card > article > .content > time {
-          font-size: 1em; } }
-    .top-stories a.card > article > .content p {
-      display: none; }
-  .top-stories a.card.social .content .category {
-    margin-top: 0;
-    margin-bottom: 8px; }
-  .top-stories a.card.social .content > p {
-    display: block;
-    height: 48px; }
-
-.top-stories-comments {
-  margin-bottom: 78px; }
-  .top-stories-comments > div:last-child a.card article {
-    border: none;
-    padding: 0;
-    margin: 0; }
-  .top-stories-comments > h2 {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 2rem;
-    color: #000000;
-    margin: 0 0 10px 15px; }
-  .top-stories-comments a.card:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .top-stories-comments a.card > article {
-    display: block;
-    height: auto;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #dadada; }
-    .top-stories-comments a.card > article:after {
-      content: "";
-      display: table;
-      clear: both; }
-  .top-stories-comments a.card > article > figure {
-    width: 140px;
-    height: 112px;
-    overflow: hidden;
-    float: left;
-    margin-right: 14px; }
-    .top-stories-comments a.card > article > figure.video:after {
-      top: 35%;
-      left: 35%;
-      width: 35px;
-      height: 35px; }
-      @media screen and (max-width: 1200px) {
-        .top-stories-comments a.card > article > figure.video:after {
-          top: 40%;
-          left: 35%;
-          width: 40px;
-          height: 40px; } }
-      @media screen and (max-width: 767px) {
-        .top-stories-comments a.card > article > figure.video:after {
-          width: 30px;
-          height: 30px; } }
-    .top-stories-comments a.card > article > figure > img {
-      max-width: 100%; }
-  .top-stories-comments a.card > article > .content {
-    width: auto;
-    padding-bottom: 3px; }
-    @media screen and (max-width: 767px) {
-      .top-stories-comments a.card > article > .content {
-        border: 0; } }
-    .top-stories-comments a.card > article > .content > .category {
-      font-size: 1.12em;
-      font-weight: bold;
-      color: #8a8b93;
-      display: block;
-      line-height: 1;
-      margin-bottom: 3px; }
-      @media screen and (max-width: 767px) {
-        .top-stories-comments a.card > article > .content > .category {
-          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-          font-size: 1.2em;
-          text-transform: uppercase; } }
-    .top-stories-comments a.card > article > .content > h2 {
-      font-weight: bold;
-      font-size: 2.2em;
-      height: 77px;
-      margin-bottom: 0; }
-    .top-stories-comments a.card > article > .content > .author {
-      display: none; }
-    .top-stories-comments a.card > article > .content > time {
-      padding: 0;
-      border: 0;
-      line-height: 1; }
-      @media screen and (max-width: 767px) {
-        .top-stories-comments a.card > article > .content > time {
-          font-size: 1rem; } }
-    .top-stories-comments a.card > article > .content p {
-      display: none; }
-  .top-stories-comments a.card.social .content .category {
-    margin-top: 0;
-    margin-bottom: 8px; }
-  .top-stories-comments a.card.social .content > p {
-    display: block;
-    height: 48px; }
-
 .opinion {
   margin-bottom: 78px; }
   .opinion.special {
@@ -9918,6 +9716,33 @@ input[type=radio].inline {
       @media screen and (max-width: 767px) {
         .article-gallery__caption > p.credit {
           float: left; } }
+
+.top-stories {
+  margin-bottom: 78px; }
+  .top-stories.special {
+    margin-bottom: 150px; }
+  @media screen and (max-width: 767px) {
+    .top-stories {
+      margin-bottom: 25px; } }
+  .top-stories > .container > h2, .login-page .top-stories > .container > h2, .top-stories > .profile__container > h2 {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: #000000; }
+    @media screen and (max-width: 767px) {
+      .top-stories > .container > h2, .login-page .top-stories > .container > h2, .top-stories > .profile__container > h2 {
+        padding-bottom: 10px;
+        margin-bottom: 2px;
+        border-bottom: 1px solid #dadada; } }
+
+.top-stories-comments {
+  margin-bottom: 78px; }
+  .top-stories-comments > h2 {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #000000;
+    margin: 0 0 10px 15px; }
 
 .login-form input[type=text], .login-form input[type=password], .login-form input[type=email] {
   display: block;
@@ -13756,23 +13581,6 @@ body.channel, body.section {
   .roompage .card-rec a.card .content time {
     display: none; } }
 
-.roompage .top-stories a.card > article {
-  height: 130px; }
-  .roompage .top-stories a.card > article > figure {
-    height: auto;
-    width: 203px;
-    flex: none; }
-    @media screen and (max-width: 1200px) {
-      .roompage .top-stories a.card > article > figure {
-        width: 150px;
-        flex: 0 0 150px; } }
-    @media screen and (max-width: 767px) {
-      .roompage .top-stories a.card > article > figure {
-        margin-top: 6px;
-        margin-bottom: 6px;
-        width: 116px;
-        flex: 0 0 116px; } }
-
 .roompage .room-top-stories {
   margin-left: -35px; }
   @media screen and (max-width: 1200px) {
@@ -14976,6 +14784,7 @@ body.channel.supporters p {
       .featured-slider-comments .feature .card {
         position: relative;
         height: 350px;
+        width: 100%;
         overflow: hidden; } }
     .featured-slider-comments .feature .card article {
       position: relative;
@@ -16462,6 +16271,451 @@ body.channel.supporters p {
       @media screen and (max-width: 620px) {
         .card-lg a.card.social .content > p {
           height: auto; } }
+
+@media screen and (min-width: 992px) {
+  .card-top-story a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-top-story a.card > article > figure {
+      width: 99px;
+      flex: 0 0 99px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story a.card > article > figure.video:after {
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: -20px;
+        margin-top: -20px; }
+      .card-top-story a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-top-story a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 50px; }
+      .card-top-story a.card > article > .content > .author {
+        display: none; }
+      .card-top-story a.card > article > .content > time {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story a.card > article > .content p {
+        display: none; }
+  .card-top-story a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story a.card.social .content > p {
+    display: block;
+    height: 48px; }
+  .card-top-story.room a.card > article {
+    height: 130px; }
+    .card-top-story.room a.card > article > figure {
+      height: auto;
+      width: 203px;
+      flex: none; }
+  .card-top-story.opinion:last-child a.card article {
+    border: none;
+    padding: 0;
+    margin: 0; }
+  .card-top-story.opinion a.card:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .card-top-story.opinion a.card > article {
+    display: block;
+    height: auto;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #dadada; }
+    .card-top-story.opinion a.card > article:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .card-top-story.opinion a.card > article > figure {
+      width: 140px;
+      height: 112px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story.opinion a.card > article > figure.video:after {
+        top: 35%;
+        left: 35%;
+        width: 35px;
+        height: 35px; }
+      .card-top-story.opinion a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story.opinion a.card > article > .content {
+      width: auto;
+      padding-bottom: 3px; }
+      .card-top-story.opinion a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story.opinion a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 77px;
+        margin-bottom: 0; }
+      .card-top-story.opinion a.card > article > .content > .author {
+        display: none; }
+      .card-top-story.opinion a.card > article > .content > time {
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story.opinion a.card > article > .content p {
+        display: none; }
+  .card-top-story.opinion a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story.opinion a.card.social .content > p {
+    display: block;
+    height: 48px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-top-story-tablet a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-top-story-tablet a.card > article > figure {
+      width: 99px;
+      flex: 0 0 99px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story-tablet a.card > article > figure.video:after {
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: -20px;
+        margin-top: -20px; }
+      .card-top-story-tablet a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story-tablet a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-top-story-tablet a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story-tablet a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 50px; }
+      .card-top-story-tablet a.card > article > .content > .author {
+        display: none; }
+      .card-top-story-tablet a.card > article > .content > time {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story-tablet a.card > article > .content p {
+        display: none; }
+  .card-top-story-tablet a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story-tablet a.card.social .content > p {
+    display: block;
+    height: 48px; }
+  .card-top-story-tablet.room a.card > article {
+    height: 130px; }
+    .card-top-story-tablet.room a.card > article > figure {
+      height: auto;
+      width: 203px;
+      flex: none; }
+  .card-top-story-tablet.opinion:last-child a.card article {
+    border: none;
+    padding: 0;
+    margin: 0; }
+  .card-top-story-tablet.opinion a.card:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .card-top-story-tablet.opinion a.card > article {
+    display: block;
+    height: auto;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #dadada; }
+    .card-top-story-tablet.opinion a.card > article:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .card-top-story-tablet.opinion a.card > article > figure {
+      width: 140px;
+      height: 112px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story-tablet.opinion a.card > article > figure.video:after {
+        top: 35%;
+        left: 35%;
+        width: 35px;
+        height: 35px; }
+      .card-top-story-tablet.opinion a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story-tablet.opinion a.card > article > .content {
+      width: auto;
+      padding-bottom: 3px; }
+      .card-top-story-tablet.opinion a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story-tablet.opinion a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 77px;
+        margin-bottom: 0; }
+      .card-top-story-tablet.opinion a.card > article > .content > .author {
+        display: none; }
+      .card-top-story-tablet.opinion a.card > article > .content > time {
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story-tablet.opinion a.card > article > .content p {
+        display: none; }
+  .card-top-story-tablet.opinion a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story-tablet.opinion a.card.social .content > p {
+    display: block;
+    height: 48px; }
+  .card-top-story-tablet a.card > article > figure {
+    width: 65px;
+    flex: 0 0 65px; }
+  .card-top-story-tablet a.card > article > .content {
+    padding-bottom: 15px; }
+    .card-top-story-tablet a.card > article > .content > h2 {
+      font-size: 1.6em;
+      height: 36px; }
+    .card-top-story-tablet a.card > article > .content > time {
+      position: absolute;
+      bottom: 5px;
+      right: 15px; }
+  .card-top-story-tablet.room a.card > article > figure {
+    width: 150px;
+    flex: 0 0 150px; }
+  .card-top-story-tablet.opinion a.card > article > figure.video:after {
+    top: 40%;
+    left: 35%;
+    width: 40px;
+    height: 40px; } }
+
+@media screen and (max-width: 767px) {
+  .card-top-story-mobile a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-top-story-mobile a.card > article > figure {
+      width: 99px;
+      flex: 0 0 99px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story-mobile a.card > article > figure.video:after {
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: -20px;
+        margin-top: -20px; }
+      .card-top-story-mobile a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story-mobile a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-top-story-mobile a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story-mobile a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 50px; }
+      .card-top-story-mobile a.card > article > .content > .author {
+        display: none; }
+      .card-top-story-mobile a.card > article > .content > time {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story-mobile a.card > article > .content p {
+        display: none; }
+  .card-top-story-mobile a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story-mobile a.card.social .content > p {
+    display: block;
+    height: 48px; }
+  .card-top-story-mobile.room a.card > article {
+    height: 130px; }
+    .card-top-story-mobile.room a.card > article > figure {
+      height: auto;
+      width: 203px;
+      flex: none; }
+  .card-top-story-mobile.opinion:last-child a.card article {
+    border: none;
+    padding: 0;
+    margin: 0; }
+  .card-top-story-mobile.opinion a.card:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .card-top-story-mobile.opinion a.card > article {
+    display: block;
+    height: auto;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #dadada; }
+    .card-top-story-mobile.opinion a.card > article:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .card-top-story-mobile.opinion a.card > article > figure {
+      width: 140px;
+      height: 112px;
+      overflow: hidden;
+      float: left;
+      margin-right: 14px; }
+      .card-top-story-mobile.opinion a.card > article > figure.video:after {
+        top: 35%;
+        left: 35%;
+        width: 35px;
+        height: 35px; }
+      .card-top-story-mobile.opinion a.card > article > figure > img {
+        max-width: 100%; }
+    .card-top-story-mobile.opinion a.card > article > .content {
+      width: auto;
+      padding-bottom: 3px; }
+      .card-top-story-mobile.opinion a.card > article > .content > .category {
+        font-size: 1.12em;
+        font-weight: bold;
+        color: #8a8b93;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-top-story-mobile.opinion a.card > article > .content > h2 {
+        font-weight: bold;
+        font-size: 2.2em;
+        height: 77px;
+        margin-bottom: 0; }
+      .card-top-story-mobile.opinion a.card > article > .content > .author {
+        display: none; }
+      .card-top-story-mobile.opinion a.card > article > .content > time {
+        padding: 0;
+        border: 0;
+        line-height: 1; }
+      .card-top-story-mobile.opinion a.card > article > .content p {
+        display: none; }
+  .card-top-story-mobile.opinion a.card.social .content .category {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .card-top-story-mobile.opinion a.card.social .content > p {
+    display: block;
+    height: 48px; }
+  .card-top-story-mobile a.card {
+    padding-top: 6px;
+    border-bottom: 1px solid #dadada; }
+    .card-top-story-mobile a.card > article > figure {
+      margin-bottom: 6px;
+      width: 60px;
+      height: 56px;
+      flex: 0 0 60px; }
+      .card-top-story-mobile a.card > article > figure.video:after {
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px; }
+    .card-top-story-mobile a.card > article > .content {
+      padding-bottom: 5px;
+      border: 0;
+      min-height: 56px; }
+      .card-top-story-mobile a.card > article > .content > .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase; }
+      .card-top-story-mobile a.card > article > .content > h2 {
+        font-size: 1.4rem;
+        height: 33px;
+        margin: 2px; }
+      .card-top-story-mobile a.card > article > .content > time {
+        position: absolute;
+        bottom: 5px;
+        right: 15px;
+        font-size: 1em; }
+  .card-top-story-mobile.room a.card > article > figure {
+    width: 150px;
+    flex: 0 0 150px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 116px;
+    flex: 0 0 116px; }
+  .card-top-story-mobile.opinion a.card > article > figure.video:after {
+    top: 40%;
+    left: 35%;
+    width: 30px;
+    height: 30px; }
+  .card-top-story-mobile.opinion a.card > article > .content {
+    border: 0; }
+    .card-top-story-mobile.opinion a.card > article > .content > .category {
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 1.2em;
+      text-transform: uppercase; }
+    .card-top-story-mobile.opinion a.card > article > .content > time {
+      font-size: 1rem; } }
 
 .viewingroom.featured {
   height: 587px;
