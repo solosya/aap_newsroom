@@ -200,8 +200,8 @@
                                         </div>
 
                                         <div class="account-form__inline-inputs u-margin-bottom-20">
-                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Plan Status</label>
-                                            <p style="cursor: pointer; cursor: hand;" type="text" id="currentplan" class="account-form__value">{{ pwstats['status'] | capitalize }}</p>
+                                            <label class="account-form__label account-form__label--red account-form__label--mobile" for="planstatus">Plan Status</label>
+                                            <p style="cursor: pointer; cursor: hand;" type="text" id="planstatus" class="account-form__value">{{ pwstats['status'] | capitalize }}</p>
                                         </div>
                                         <div class="account-form__inline-inputs u-margin-bottom-20 profile-section__cancel">
                                             {% if pwstats['status'] == 'cancelled' %}
