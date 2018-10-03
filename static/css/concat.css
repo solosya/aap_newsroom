@@ -9684,7 +9684,9 @@ input[type=radio].inline {
       height: 390px; } }
   @media screen and (min-width: 992px) {
     .article-gallery__image {
-      height: 515px; } }
+      height: 515px; }
+      .article-gallery__image .external-article-video {
+        height: 641px !important; } }
 
 .article-gallery__img-container-article {
   height: 100%; }
@@ -9693,9 +9695,6 @@ input[type=radio].inline {
   width: 100%;
   height: 100%;
   object-fit: cover; }
-  @media screen and (min-width: 992px) {
-    .article-gallery__img .external-article-video {
-      height: 641px !important; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .article-gallery__img-container {
