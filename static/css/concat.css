@@ -11589,11 +11589,11 @@ input[type=radio].inline {
 
 @media screen and (max-width: 767px) {
   .search-page__container {
-    margin-top: 80px; } }
+    margin-top: 130px; } }
 
 @media screen and (max-width: 767px) {
   .author-profile {
-    margin-top: 80px; } }
+    margin-top: 130px; } }
 
 .author-profile__image {
   float: left;
@@ -14098,17 +14098,21 @@ body.channel, body.section {
   text-align: center;
   font-style: italic; }
 
-body.channel.about .email, body.section.about .email {
+@media screen and (max-width: 767px) {
+  body.channel.about article.article-main, body.section.about article.article-main {
+    margin-top: 130px; } }
+
+body.channel.about article.article-main .email, body.section.about article.article-main .email {
   text-align: center;
   font-size: 1.8rem; }
 
-body.channel.about h1, body.section.about h1 {
+body.channel.about article.article-main h1, body.section.about article.article-main h1 {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 4.7em;
   font-weight: bold;
   margin-bottom: 45px; }
 
-body.channel.about h2, body.section.about h2 {
+body.channel.about article.article-main h2, body.section.about article.article-main h2 {
   font-size: 3.3em;
   font-weight: normal;
   font-style: italic;
@@ -14116,71 +14120,71 @@ body.channel.about h2, body.section.about h2 {
   padding-bottom: 10px;
   margin-bottom: 60px; }
 
-body.channel.about p, body.section.about p {
+body.channel.about article.article-main p, body.section.about article.article-main p {
   font-size: 2em;
   line-height: 1.45; }
 
-body.channel.about .content, body.section.about .content {
+body.channel.about article.article-main .content, body.section.about article.article-main .content {
   margin-bottom: 24px; }
 
-body.channel.about .content.about, body.section.about .content.about {
+body.channel.about article.article-main .content.about, body.section.about article.article-main .content.about {
   margin-bottom: 56px; }
 
-body.channel.about .founders .block, body.section.about .founders .block {
+body.channel.about article.article-main .founders .block, body.section.about article.article-main .founders .block {
   margin-bottom: 100px; }
   @media screen and (max-width: 991px) {
-    body.channel.about .founders .block, body.section.about .founders .block {
+    body.channel.about article.article-main .founders .block, body.section.about article.article-main .founders .block {
       border-bottom: solid 1px #dadada; } }
   @media screen and (max-width: 991px) {
-    body.channel.about .founders .block .left, body.section.about .founders .block .left {
+    body.channel.about article.article-main .founders .block .left, body.section.about article.article-main .founders .block .left {
       text-align: center;
       margin-bottom: 30px; }
-      body.channel.about .founders .block .left .section-header-tablet, body.section.about .founders .block .left .section-header-tablet {
+      body.channel.about article.article-main .founders .block .left .section-header-tablet, body.section.about article.article-main .founders .block .left .section-header-tablet {
         margin-bottom: 15px; }
-        body.channel.about .founders .block .left .section-header-tablet > h3, body.section.about .founders .block .left .section-header-tablet > h3 {
+        body.channel.about article.article-main .founders .block .left .section-header-tablet > h3, body.section.about article.article-main .founders .block .left .section-header-tablet > h3 {
           font-size: 2.2em; }
-        body.channel.about .founders .block .left .section-header-tablet > .title, body.section.about .founders .block .left .section-header-tablet > .title {
+        body.channel.about article.article-main .founders .block .left .section-header-tablet > .title, body.section.about article.article-main .founders .block .left .section-header-tablet > .title {
           font-size: 2em;
           font-weight: normal;
           color: #e12e21;
           text-transform: uppercase; }
-      body.channel.about .founders .block .left figure, body.section.about .founders .block .left figure {
+      body.channel.about article.article-main .founders .block .left figure, body.section.about article.article-main .founders .block .left figure {
         display: inline-block;
         width: 123px;
         height: auto;
         margin-bottom: 20px; }
-      body.channel.about .founders .block .left .social, body.section.about .founders .block .left .social {
+      body.channel.about article.article-main .founders .block .left .social, body.section.about article.article-main .founders .block .left .social {
         font-size: 1.8em; }
-      body.channel.about .founders .block .left > p, body.section.about .founders .block .left > p {
+      body.channel.about article.article-main .founders .block .left > p, body.section.about article.article-main .founders .block .left > p {
         font-size: 1.8em; } }
-  body.channel.about .founders .block figure, body.section.about .founders .block figure {
+  body.channel.about article.article-main .founders .block figure, body.section.about article.article-main .founders .block figure {
     margin-bottom: 40px; }
-  body.channel.about .founders .block .social, body.section.about .founders .block .social {
+  body.channel.about article.article-main .founders .block .social, body.section.about article.article-main .founders .block .social {
     font-size: 2.3em; }
-    body.channel.about .founders .block .social ul, body.section.about .founders .block .social ul {
+    body.channel.about article.article-main .founders .block .social ul, body.section.about article.article-main .founders .block .social ul {
       list-style: none;
       padding-left: 0;
       text-align: center;
       margin-bottom: 20px; }
-      body.channel.about .founders .block .social ul > li, body.section.about .founders .block .social ul > li {
+      body.channel.about article.article-main .founders .block .social ul > li, body.section.about article.article-main .founders .block .social ul > li {
         display: inline-block; }
-  body.channel.about .founders .block .content, body.section.about .founders .block .content {
+  body.channel.about article.article-main .founders .block .content, body.section.about article.article-main .founders .block .content {
     padding-left: 47.5px;
     padding-right: 47.5px; }
     @media screen and (max-width: 991px) {
-      body.channel.about .founders .block .content, body.section.about .founders .block .content {
+      body.channel.about article.article-main .founders .block .content, body.section.about article.article-main .founders .block .content {
         padding-left: 15px;
         padding-right: 15px; } }
-  body.channel.about .founders .block .section-header, body.section.about .founders .block .section-header {
+  body.channel.about article.article-main .founders .block .section-header, body.section.about article.article-main .founders .block .section-header {
     display: block;
     border-bottom: 1px solid #dadada;
     padding-bottom: 5px;
     margin-bottom: 57px; }
-    body.channel.about .founders .block .section-header > h3, body.section.about .founders .block .section-header > h3 {
+    body.channel.about article.article-main .founders .block .section-header > h3, body.section.about article.article-main .founders .block .section-header > h3 {
       display: inline-block;
       font-size: 2.8em;
       font-weight: normal; }
-    body.channel.about .founders .block .section-header > .title, body.section.about .founders .block .section-header > .title {
+    body.channel.about article.article-main .founders .block .section-header > .title, body.section.about article.article-main .founders .block .section-header > .title {
       font-size: 25px;
       font-weight: normal;
       font-style: normal;
@@ -14188,7 +14192,7 @@ body.channel.about .founders .block, body.section.about .founders .block {
       margin-left: 15px;
       display: inline-block;
       text-transform: uppercase; }
-      body.channel.about .founders .block .section-header > .title:before, body.section.about .founders .block .section-header > .title:before {
+      body.channel.about article.article-main .founders .block .section-header > .title:before, body.section.about article.article-main .founders .block .section-header > .title:before {
         content: '';
         width: 1px;
         height: 30px;
@@ -14197,7 +14201,7 @@ body.channel.about .founders .block, body.section.about .founders .block {
         margin-right: 15px;
         position: relative;
         top: 5px; }
-    body.channel.about .founders .block .section-header > .city, body.section.about .founders .block .section-header > .city {
+    body.channel.about article.article-main .founders .block .section-header > .city, body.section.about article.article-main .founders .block .section-header > .city {
       float: right;
       margin-top: 20px;
       font-size: 25px;
@@ -14206,18 +14210,18 @@ body.channel.about .founders .block, body.section.about .founders .block {
       font-style: normal;
       display: inline-block; }
 
-body.channel.about .editor, body.section.about .editor {
+body.channel.about article.article-main .editor, body.section.about article.article-main .editor {
   margin-bottom: 80px;
   height: 320px; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
-    body.channel.about .editor, body.section.about .editor {
+    body.channel.about article.article-main .editor, body.section.about article.article-main .editor {
       height: 300px;
       padding-bottom: 15px;
       margin-bottom: 25px; } }
   @media screen and (max-width: 767px) {
-    body.channel.about .editor, body.section.about .editor {
+    body.channel.about article.article-main .editor, body.section.about article.article-main .editor {
       height: unset; } }
-  body.channel.about .editor .section-header, body.section.about .editor .section-header {
+  body.channel.about article.article-main .editor .section-header, body.section.about article.article-main .editor .section-header {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -14226,55 +14230,55 @@ body.channel.about .editor, body.section.about .editor {
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
     margin-bottom: 25px; }
-    body.channel.about .editor .section-header figure, body.section.about .editor .section-header figure {
+    body.channel.about article.article-main .editor .section-header figure, body.section.about article.article-main .editor .section-header figure {
       float: left;
       margin-right: 15px;
       width: 123px;
       flex: 0 0 123px;
       overflow: hidden; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
-        body.channel.about .editor .section-header figure, body.section.about .editor .section-header figure {
+        body.channel.about article.article-main .editor .section-header figure, body.section.about article.article-main .editor .section-header figure {
           width: 73px;
           flex: 0 0 73px; } }
       @media screen and (max-width: 620px) {
-        body.channel.about .editor .section-header figure, body.section.about .editor .section-header figure {
+        body.channel.about article.article-main .editor .section-header figure, body.section.about article.article-main .editor .section-header figure {
           width: 60px;
           flex: 0 0 60px; } }
-    body.channel.about .editor .section-header .header-content, body.section.about .editor .section-header .header-content {
+    body.channel.about article.article-main .editor .section-header .header-content, body.section.about article.article-main .editor .section-header .header-content {
       -ms-flex: 1 0; }
-      body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
+      body.channel.about article.article-main .editor .section-header .header-content > h3, body.section.about article.article-main .editor .section-header .header-content > h3 {
         font-size: 2.3em;
         font-weight: normal; }
         @media screen and (min-width: 768px) and (max-width: 991px) {
-          body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
+          body.channel.about article.article-main .editor .section-header .header-content > h3, body.section.about article.article-main .editor .section-header .header-content > h3 {
             font-size: 1.8em; } }
         @media screen and (max-width: 620px) {
-          body.channel.about .editor .section-header .header-content > h3, body.section.about .editor .section-header .header-content > h3 {
+          body.channel.about article.article-main .editor .section-header .header-content > h3, body.section.about article.article-main .editor .section-header .header-content > h3 {
             font-size: 2.2em;
             margin-top: 5px;
             margin-bottom: 5px; } }
-      body.channel.about .editor .section-header .header-content > .title, body.section.about .editor .section-header .header-content > .title {
+      body.channel.about article.article-main .editor .section-header .header-content > .title, body.section.about article.article-main .editor .section-header .header-content > .title {
         font-size: 1.5em;
         font-weight: normal;
         color: #e12e21; }
         @media screen and (max-width: 620px) {
-          body.channel.about .editor .section-header .header-content > .title, body.section.about .editor .section-header .header-content > .title {
+          body.channel.about article.article-main .editor .section-header .header-content > .title, body.section.about article.article-main .editor .section-header .header-content > .title {
             font-size: 1.8em; } }
-      body.channel.about .editor .section-header .header-content > .muted, body.section.about .editor .section-header .header-content > .muted {
+      body.channel.about article.article-main .editor .section-header .header-content > .muted, body.section.about article.article-main .editor .section-header .header-content > .muted {
         font-size: 1.5em;
         font-weight: normal;
         color: #777881; }
         @media screen and (max-width: 991px) {
-          body.channel.about .editor .section-header .header-content > .muted, body.section.about .editor .section-header .header-content > .muted {
+          body.channel.about article.article-main .editor .section-header .header-content > .muted, body.section.about article.article-main .editor .section-header .header-content > .muted {
             display: none; } }
-      body.channel.about .editor .section-header .header-content > p, body.section.about .editor .section-header .header-content > p {
+      body.channel.about article.article-main .editor .section-header .header-content > p, body.section.about article.article-main .editor .section-header .header-content > p {
         font-size: 1.5em; }
-  body.channel.about .editor .content > p, body.section.about .editor .content > p {
+  body.channel.about article.article-main .editor .content > p, body.section.about article.article-main .editor .content > p {
     font-size: 1.8rem;
     line-height: 28px; }
-    body.channel.about .editor .content > p:last-child, body.section.about .editor .content > p:last-child {
+    body.channel.about article.article-main .editor .content > p:last-child, body.section.about article.article-main .editor .content > p:last-child {
       margin-bottom: 30px; }
-  body.channel.about .editor .contact > p, body.section.about .editor .contact > p {
+  body.channel.about article.article-main .editor .contact > p, body.section.about article.article-main .editor .contact > p {
     font-size: 1.8rem;
     line-height: 24px;
     margin-bottom: 5px; }

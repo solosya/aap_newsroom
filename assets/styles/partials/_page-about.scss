@@ -1,5 +1,7 @@
-body.channel.about, body.section.about{
-
+body.channel.about article.article-main, body.section.about article.article-main{
+    @media #{$mobile}{
+        margin-top: 130px;
+    }
     .email {
         text-align:center;
         font-size: rem(18);
