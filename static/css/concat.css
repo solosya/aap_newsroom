@@ -11606,10 +11606,29 @@ input[type=radio].inline {
   margin-bottom: 50px; }
   @media screen and (max-width: 767px) {
     .author-profile__image {
+      float: unset;
       margin-bottom: 30px; } }
 
 .author-profile__text {
-  font-size: 1.5rem; }
+  font-size: 1.8rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  color: #6c6c6c; }
+
+.author-profile__user-name {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  color: #6c6c6c;
+  text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .author-profile__user-name {
+      font-size: 1.8rem; } }
+
+.author-profile__mail-icon {
+  background-image: url("../icons/email.svg");
+  background-repeat: no-repeat; }
+  @media screen and (max-width: 767px) {
+    .author-profile__mail-icon {
+      width: 22px;
+      height: 15px; } }
 
 .room-view {
   margin-top: 70px;
@@ -14114,6 +14133,9 @@ body.channel.about article.article-main h1, body.section.about article.article-m
   font-size: 4.7em;
   font-weight: bold;
   margin-bottom: 45px; }
+  @media screen and (max-width: 767px) {
+    body.channel.about article.article-main h1, body.section.about article.article-main h1 {
+      font-size: 2.6rem; } }
 
 body.channel.about article.article-main h2, body.section.about article.article-main h2 {
   font-size: 3.3em;

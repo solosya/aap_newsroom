@@ -13,6 +13,9 @@ body.channel.about article.article-main, body.section.about article.article-main
         font-size: em(47);
         font-weight: bold;
         margin-bottom: 45px;
+        @media #{$mobile}{
+            font-size: rem(26);
+        }
 
     }
     h2{

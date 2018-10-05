@@ -19,14 +19,14 @@
                 <img src="{{profileImage}}" class="author-profile__image img-responsive">
                 
                 <div class="inner-descr">
-                    <h4 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h4>
+                    <h4 class="user-name author-profile__user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h4>
 
                     {% if not _User.isGuest() and _User.getId() == userDetails.id %}
                         <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
                     {% endif %}
 
 
-                    <a class="mail-icon" href="mailto:{{userDetails.email}}"></a>
+                    <a class="mail-icon author-profile__mail-icon" href="mailto:{{userDetails.email}}"></a>
 
 
                     <p class="author-profile__text">{{Html.decode(userDetails.bio) | raw}}</p>
