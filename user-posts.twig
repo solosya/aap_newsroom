@@ -25,9 +25,9 @@
                 <img src="{{profileImage}}" class="author-profile__image img-responsive">
                 
                 <div class="inner-descr">
-                    <h4 class="user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
+                    <h4 class="user-name author-profile__user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
 
-                    <a class="mail-icon" href="mailto:{{user.email}}"></a>
+                    <a class="mail-icon author-profile__mail-icon" href="mailto:{{user.email}}"></a>
 
 
                     <p class="author-profile__text">{{Html.decode(user.bio) | raw}}</p>
