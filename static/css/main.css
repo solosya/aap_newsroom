@@ -11438,6 +11438,9 @@ input[type=radio].inline {
 
 .contact {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  @media screen and (max-width: 767px) {
+    .contact {
+      margin-top: 60px; } }
 
 .contact__header {
   font-family: inherit;
@@ -14097,6 +14100,10 @@ body.channel, body.section {
   font-size: 1.6rem;
   text-align: center;
   font-style: italic; }
+
+@media screen and (max-width: 767px) {
+  body.channel.about article.article-main, body.section.about article.article-main {
+    margin-top: 130px; } }
 
 body.channel.about article.article-main .email, body.section.about article.article-main .email {
   text-align: center;
