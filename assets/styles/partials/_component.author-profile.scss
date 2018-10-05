@@ -35,6 +35,7 @@
     color: #6c6c6c;
     text-transform: uppercase;
     @media #{$mobile} {
+        text-align: center;
         font-size: rem(14);
     }
 }
@@ -42,6 +43,7 @@
 .author-profile__mail-icon{
     background-image: url('../icons/email.svg');
     background-repeat: no-repeat;
+    display: inline-block;
     @media #{$mobile} {
         width: 100%;
         height: 15px;

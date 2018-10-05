@@ -11623,11 +11623,13 @@ input[type=radio].inline {
   text-transform: uppercase; }
   @media screen and (max-width: 767px) {
     .author-profile__user-name {
+      text-align: center;
       font-size: 1.4rem; } }
 
 .author-profile__mail-icon {
   background-image: url("../icons/email.svg");
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  display: inline-block; }
   @media screen and (max-width: 767px) {
     .author-profile__mail-icon {
       width: 100%;
