@@ -16,6 +16,19 @@
     font-weight:inherit;
     font-size: rem(16);
     margin-right:27px;
+
+    @media #{$mobile}{
+        width: 42.5%;
+        height: 26px;
+        font-size: rem(12);
+        font-weight: 300;
+        line-height: 2.2;
+        margin: 0;
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
     
     &:after {
         content: '';
@@ -27,6 +40,24 @@
         background-size:cover;
         background-repeat:no-repeat;
         // background:black;
+        @media #{$mobile}{
+            display: none;
+            
+        }
+    }
+    &:before{
+        display: none;
+        content: '';
+        @media #{$mobile}{
+            display: inline-block;
+            background-image: url('../icons/account-white-alt.png');
+            background-size:cover;
+            background-repeat:no-repeat;
+            width: 17px;
+            height: 14px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
     }
 }
 
@@ -34,10 +65,37 @@
     width: 93px;
     margin-left: 20px;
     @media #{$mobile}{
-        width: 161px;
+        width: 22.5%;
+        height: 26px;
+        font-size: rem(12);
+        margin: 0;
+        font-weight: 300;
+        line-height: 2.2;
     }
 }
 
 .header-signin__subbtn {
     width: 161px;
+    @media #{$mobile}{
+        width: 42.5%;
+        height: 26px;
+        font-size: rem(12);
+        font-weight: 300;
+        line-height: 2.2;
+    }
+}
+
+.header-signin__pp {
+    width: auto;
+    border-top: solid 0.5px #dadada;
+    border-bottom: solid 0.5px #dadada;
+    height: 26px;
+    width: 35%;
+    display: inline-block;
+    p{
+        font-size: rem(9);
+        font-family: $font-family-sans-serif;
+        margin: 0 0 0 15px;
+        line-height: 1.2;
+    }
 }

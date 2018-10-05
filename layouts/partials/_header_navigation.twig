@@ -9,7 +9,7 @@
 
 
 
-<div class="row u-mobile-no-margins{% if pageURL == '/auth/thank-you' %} hidden-xs{% endif %}" style="margin-bottom:-25px;">
+{# <div class="row u-mobile-no-margins{% if pageURL == '/auth/thank-you' %} hidden-xs{% endif %}" style="margin-bottom:-25px;">
     <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
         {% if not _User.isGuest() %}
             {% set user = _User.getUser() %}
@@ -21,7 +21,7 @@
             <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn{% if layout == 'layout-marketing' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
         {% endif %}
     </div>
-</div>
+</div> #}
 
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 
@@ -422,4 +422,22 @@
 
 
     </div><!-- .site-header-main -->
+
+    <div class="row visible-xs-block" style="margin-bottom:-25px;">
+        <div class="header-signin u-margin-top-15 u-margin-bottom-15">
+            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="header-signin__pp">
+                <p style="font-weight:700;margin-top:2px;">Become a supporter</p>
+                <p>via PressPatron</p>
+            </a>
+            {% if not _User.isGuest() %}
+                {% set user = _User.getUser() %}
+
+                <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout u-float-right header-signin__signbtn">SIGN OUT</a>
+                <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
+            {% else %}
+                <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right header-signin__signbtn">SIGN IN</button>
+                <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--black u-float-right header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
+            {% endif %}
+        </div>
+    </div>
 </header>
