@@ -11606,8 +11606,11 @@ input[type=radio].inline {
   margin-bottom: 50px; }
   @media screen and (max-width: 767px) {
     .author-profile__image {
+      width: 116px;
+      height: 116px;
       float: unset;
-      margin-bottom: 30px; } }
+      margin-bottom: 30px;
+      margin: auto; } }
 
 .author-profile__text {
   font-size: 1.8rem;
@@ -11620,15 +11623,17 @@ input[type=radio].inline {
   text-transform: uppercase; }
   @media screen and (max-width: 767px) {
     .author-profile__user-name {
-      font-size: 1.8rem; } }
+      font-size: 1.4rem; } }
 
 .author-profile__mail-icon {
   background-image: url("../icons/email.svg");
   background-repeat: no-repeat; }
   @media screen and (max-width: 767px) {
     .author-profile__mail-icon {
-      width: 22px;
-      height: 15px; } }
+      width: 100%;
+      height: 15px;
+      background-position: center;
+      margin-bottom: 15px; } }
 
 .room-view {
   margin-top: 70px;

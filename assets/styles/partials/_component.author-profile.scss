@@ -12,8 +12,11 @@
     margin-right: 47px;
     margin-bottom: 50px;
     @media #{$mobile} {
+        width: 116px;
+        height: 116px;
         float: unset;
         margin-bottom: 30px;
+        margin: auto;
     }
 }
 
@@ -32,7 +35,7 @@
     color: #6c6c6c;
     text-transform: uppercase;
     @media #{$mobile} {
-        font-size: rem(18);
+        font-size: rem(14);
     }
 }
 
@@ -40,7 +43,9 @@
     background-image: url('../icons/email.svg');
     background-repeat: no-repeat;
     @media #{$mobile} {
-        width: 22px;
+        width: 100%;
         height: 15px;
+        background-position: center;
+        margin-bottom: 15px;
     }
 }
