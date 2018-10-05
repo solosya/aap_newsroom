@@ -426,7 +426,7 @@
     <div class="row visible-xs-block" style="margin-bottom:-25px;">
         <div class="header-signin u-margin-top-15 u-margin-bottom-15">
             <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="header-signin__pp">
-                <p style="font-weight:700;margin-top:2px;">Become a supporter</p>
+                <p style="font-weight:700;margin-top:2px;{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %}width:77.5%;{% endif %}">Become a supporter</p>
                 <p>via PressPatron</p>
             </a>
             {% if not _User.isGuest() %}
