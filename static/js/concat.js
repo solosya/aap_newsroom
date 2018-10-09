@@ -32594,12 +32594,13 @@ Acme.UserProfileController = function()
     this.mailChimpUser  = false;
     
     // test mailchimp accounts
-    //this.awesome        = '17ba69a02c';
-    //this.group          = 'cb03aca14d'; // me
+    // this.newsroom       = '17ba69a02c';
+    // this.group          = 'cb03aca14d'; // me
     
     
     this.newsroom       = '2412c1d355';
     this.group          = 'f6f5aaa06b';
+
     this.events();
     this.userEvents();
     this.listingEvents();
@@ -32607,17 +32608,19 @@ Acme.UserProfileController = function()
 };
 
 
-Acme.UserProfileController.prototype.subscribeToEmail = function(user, list) {
+Acme.UserProfileController.prototype.subscribeToEmail = function(user, group) {
+    
 
     var data = {
         _csrf  : this.csrfToken,
-        list   : list,
+        list   : this.newsroom,
+        group  : group,
         user   : user,
-        action : 'subscribe'
+        action : 'create',
     };
 
     return Acme.server.create( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', data).done(function(r) {
-        // console.log(r);
+        console.log(r);
     });
 
 };
@@ -32873,7 +32876,8 @@ Acme.UserProfileController.prototype.events = function ()
                 ? 'subscribe' : 'create'
             : 'unsubscribe';
 
-            var ids = elem.val().split(':');
+        var ids = elem.val().split(':');
+
         requestData = {
             list    : ids[0],
             group   : ids[1],
@@ -33007,9 +33011,11 @@ Acme.UserProfileController.prototype.events = function ()
 
                     if (data.success == 1) {
 
-                        var list = Object.keys( self.emailLists );
+                        var groups = self.emailLists.map(function(g) {
+                            return g['id'];
+                        });
 
-                        self.subscribeToEmail(data.user, list);
+                        self.subscribeToEmail(data.user, groups);
 
                         location.reload(false);             
                     } else {
