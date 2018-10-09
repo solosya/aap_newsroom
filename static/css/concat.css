@@ -8242,7 +8242,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
 
 @media screen and (max-width: 767px) {
   .bannerad {
-    padding-top: 108px; } }
+    padding-top: 123px; } }
 
 .site-header {
   background: white;
@@ -9319,11 +9319,11 @@ button.swiper-pagination-bullet {
   margin-right: 27px; }
   @media screen and (max-width: 767px) {
     .header-signin__account {
-      width: 42.5%;
-      height: 26px;
+      width: 37.5%;
+      height: 37px;
       font-size: 1.2rem;
       font-weight: 300;
-      line-height: 2.2;
+      line-height: 3.2;
       margin: 0; }
       .header-signin__account p {
         display: inline-block;
@@ -9349,45 +9349,56 @@ button.swiper-pagination-bullet {
         background-image: url("../icons/account-white-alt.png");
         background-size: cover;
         background-repeat: no-repeat;
-        width: 17px;
-        height: 14px;
+        width: 19px;
+        height: 17px;
         margin-right: 10px;
-        margin-top: 5px; } }
+        margin-top: 10px; } }
 
 .header-signin__signbtn {
   width: 93px;
   margin-left: 20px; }
   @media screen and (max-width: 767px) {
     .header-signin__signbtn {
-      width: 22.5%;
-      height: 26px;
+      width: 19.5%;
+      height: 37px;
       font-size: 1.2rem;
       margin: 0;
       font-weight: 300;
-      line-height: 2.2; } }
+      line-height: 3.2; } }
 
 .header-signin__subbtn {
   width: 161px; }
   @media screen and (max-width: 767px) {
     .header-signin__subbtn {
-      width: 42.5%;
-      height: 26px;
+      width: 37.5%;
+      height: 37px;
       font-size: 1.2rem;
       font-weight: 300;
-      line-height: 2.2; } }
+      line-height: 3.2; } }
 
 .header-signin__pp {
   width: auto;
   border-top: solid 0.5px #dadada;
   border-bottom: solid 0.5px #dadada;
-  height: 26px;
-  width: 35%;
+  height: 37px;
+  width: 43%;
   display: inline-block; }
   .header-signin__pp p {
-    font-size: 0.9rem;
+    display: inline-block;
+    font-size: 1.1rem;
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    margin: 0 0 0 15px;
+    margin: 0 0 0 5px;
     line-height: 1.2; }
+  .header-signin__pp:before {
+    content: '';
+    display: inline-block;
+    background-image: url("../icons/arrow-right-red.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+    margin-top: 10px; }
 
 .header-signin__hide {
   display: none !important; }
