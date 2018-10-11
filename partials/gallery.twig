@@ -26,18 +26,18 @@ with width taken up with borders on the side #}
 
 {% if ( media | length > 1 ) %}
     {% set owl = "owl-gallery-" ~ type %}
-    {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+    {% set owlClass = ' owl-carousel owl-shep-theme owl-carousel__base'%}
 {% else %}
-    {% set owlClass = 'article-gallery__single' %}
+    {% set owlClass = ' article-gallery__single' %}
 {% endif %}
 
-{% set defaultClass = default is defined and default == true ? "default" : "" %}
+{% set defaultClass = default is defined and default == true ? " default" : "" %}
 
 {# Used for the article gallery to add some caption html #}
 {% set caption = html is defined and html != '' ? html : false %}
 
 
-<div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1" data-default="{{default}}">
+<div id="{{owl}}" class="article-gallery owl-gallery-{{type}}{{owlClass}}{{defaultClass}}" data-slider-id="1" data-default="{{default}}">
     {% for image in media %}
 
         {% set articleImgSmall = _Media.getMediaUrl(image,0, 250, {'crop': 'fill', 'gravity': gravity} ) %}
