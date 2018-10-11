@@ -27,6 +27,8 @@ with width taken up with borders on the side #}
 {% if ( media | length > 1 ) %}
     {% set owl = "owl-gallery-" ~ type %}
     {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+{% else %}
+    {% set owlClass = 'article-gallery__single' %}
 {% endif %}
 
 {% set defaultClass = default is defined and default == true ? "default" : "" %}
