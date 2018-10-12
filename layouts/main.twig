@@ -131,11 +131,11 @@
 
 {# {% if _User.isGuest() and showPaywall == false %} #}
 
-{# {% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %}
+{# {% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %} #}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{% else %} #}
+{# {% else %}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-{# {% endif %} #}
+{% endif %} #}
 
     <script>
         (function(d) {
@@ -271,7 +271,6 @@
 
     {% if paywallSection == false %}
         <div class="add add-header__topbanner">
-            {# <span class="add-text" style="display:block;margin:0 auto;">Advertisement</span> #}
             <div id="newAdBanner"></div> 
         </div><!--add add-header-top-->
     {% else %}
@@ -290,18 +289,6 @@
         layout      : layout
     }) | raw }}
 
-    
-    {# <div class="col-sm-8 hidden-sm hidden-md hidden-lg">
-        <div class="add add-header-mob hidden-sm hidden-md hidden-lg">
-            <div id='tinybannerAd' style='height:75px; width:300px;'>
-                <script>
-                    document.currentScript.parentNode.id = tinybannerID;
-                    googletag.cmd.push(function() { googletag.display(tinybannerID); });
-                </script>
-            </div>
- 
-        </div>
-    </div> #}
 
 
     {% if showPaywall %}
