@@ -13781,7 +13781,7 @@ body.channel, body.section {
         float: left; } }
     @media screen and (max-width: 767px) {
       .roompage .sidebar-inverted a.card figure {
-        height: 116px;
+        height: 116px !important;
         width: 116px; } }
     .roompage .sidebar-inverted a.card figure img {
       height: 100%;
@@ -13792,7 +13792,6 @@ body.channel, body.section {
     height: auto; }
     @media screen and (max-width: 767px) {
       .roompage .sidebar-inverted a.card .content {
-        padding-left: 126px;
         height: 116px; } }
     .roompage .sidebar-inverted a.card .content h2 {
       margin: 25px 0;
@@ -16813,8 +16812,8 @@ body.channel.supporters p {
         font-size: 1.2em;
         text-transform: uppercase; }
       .card-top-story-mobile a.card > article > .content > h2 {
-        font-size: 1.4rem;
-        height: 33px;
+        font-size: 2rem;
+        height: 50px;
         margin: 2px; }
       .card-top-story-mobile a.card > article > .content > time {
         position: absolute;
