@@ -45,6 +45,22 @@
 
 {% endif %}
 
+{% if articleBlog == 'lockerroom' %}
+    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
+{% else %}
+    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
+{% endif %}
+
+    <script>
+        (function(d) {
+        var el, fjs = d.getElementsByTagName('script')[0];
+            el = d.createElement('script');
+            el.id = "js-pp-banner";
+            el.src = "{{ppsrc}}";
+            fjs.parentNode.insertBefore(el, fjs);
+        }(document));
+    </script>
+
 
 
 {% if showPaywall == true %}
