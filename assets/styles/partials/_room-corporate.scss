@@ -117,7 +117,9 @@
                     @media screen and (max-width: $sm-break-down) {
                         height:auto !important;
                     }
-
+                    @media #{$tablet} {
+                        height:160px !important;
+                    }
 
                     time {
                         float:none;
