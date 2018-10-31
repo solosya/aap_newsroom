@@ -1,10 +1,12 @@
 <section class="pod-partial">
-     {{this.render('_single-article.twig', {
-         article: sections['podcasts'].feed.articles[i], 
-         position: i+1, 
-         containerClass: 'card-pod card-pod-tablet card-pod-mobile', 
-        imageSize: {width:0, height:0},
-         swap: 'false'
-     }) | raw}}
+	{% if sections['podcasts'].feed.articles[0] %}
+	    {{this.render('_single-article.twig', {
+	         article: sections['podcasts'].feed.articles[0], 
+	         position: 1, 
+	         containerClass: 'card-pod card-pod-tablet card-pod-mobile', 
+	        imageSize: {width:0, height:0},
+	         swap: 'false'
+	    }) | raw}}
+    {% endif %}
 </section><!-- .top-stories-->
 
