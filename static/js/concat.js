@@ -30283,15 +30283,16 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
 
     card['profileImg'] = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
     card['imageUrl'] = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
-    
-
-    var totalstring = "";
-    var totals = (card.total ) ? card.total : false;
-    if ( totals ) {
-        totalstring = "Viewed " + totals.view + " times";
-        totalstring = totalstring + " Published " + card.publishedDateTime;
+    card['titleString'] = "";
+    if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
+        var totalstring = "";
+        var totals = (card.total ) ? card.total : false;
+        if ( totals ) {
+            totalstring = "Viewed " + totals.view + " times";
+            totalstring = totalstring + " Published " + card.publishedDateTime;
+        }
+        card['titleString'] = totalstring;
     }
-    card['titleString'] = totalstring;
 
     var articleId = parseInt(card.articleId);
     var articleTemplate;
