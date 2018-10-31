@@ -1,0 +1,78 @@
+@mixin card-pod-base{
+    a.card {
+        background-image: url('../images/podback.png');
+        article {
+            
+
+            > figure {
+                display: none;
+                > img{
+                    display: none;
+                }   
+
+            }
+            .content {
+                > h2 { 
+                    font-size: rem(30);
+                    color: white;
+                    height: 40px;
+                    font-family:$base-font-family;
+                }
+                >p {
+                    font-size: rem(20);
+                    color: white;
+                    height: 60px;
+                    font-family:$font-family-sans-serif;  
+                }
+
+                .category{
+                    display: none;
+                }
+                .author {
+                    
+                    img {
+                        display: none;
+                    }
+                    p {
+                       display: none; 
+                    }
+                }
+                time {
+                    display: none;
+                }
+                
+            }
+        }
+    }
+}
+
+.card-pod{
+    @media #{$desktop-up} {
+        @include card-pod-base;
+        a.card {
+            width: 750px;
+            height: 235px;
+            background-size: 750px;
+        }
+    }
+}
+.card-pod-tablet{
+    @media #{$tablet} {
+        @include card-pod-base;
+        a.card {
+            width: 750px;
+            height: 235px;
+            background-size: 750px;
+        }
+    }
+}
+.card-pod-mobile{
+    @media #{$mobile} {
+        @include card-pod-base;
+        a.card {
+            width: 295px;
+            height: 92px;
+            background-size: 295px;
+        }
+    }
+}
