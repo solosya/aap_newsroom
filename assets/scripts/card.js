@@ -31,7 +31,6 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
     card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
     
-
     card['readingTime']= self.renderReadingTime(card.readingTime);
     card['blogClass']= '';
     if(card.blog['id'] !== null) {
@@ -46,15 +45,21 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         height = card.imageOptions.height || height;
     }
 
+    card['profileImg'] = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
+    card['imageUrl'] = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
+    
 
-    var profileImage = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
-    card['profileImg'] = profileImage;
+    var totalstring = "";
+    var totals = (card.total ) ? card.total : false;
+    if ( totals ) {
+        totalstring = "Viewed " + totals.view + " times";
+        totalstring = totalstring + " Published " + card.publishedDateTime;
+    }
+    card['titleString'] = totalstring;
 
-    var ImageUrl = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
-    card['imageUrl'] = ImageUrl;
     var articleId = parseInt(card.articleId);
     var articleTemplate;
-    // console.log(card);
+
     if (isNaN(articleId) || articleId <= 0) {
         card['videoClass'] = '';
         if(card.social.media.type && card.social.media.type == 'video') {

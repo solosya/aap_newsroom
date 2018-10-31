@@ -294,8 +294,9 @@ var cardTemplateTop =
         data-status="{{articleStatus}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
-        data-article-text="{{title}}"> \
-        \
+        data-article-text="{{title}}" \
+        title="{{titleString}}"> \
+    \
         <article class="">';
 
 var cardTemplateBottom = 
