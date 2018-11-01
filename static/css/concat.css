@@ -18030,100 +18030,142 @@ body.channel.supporters p {
     display: none; } }
 
 @media screen and (min-width: 992px) {
+  .card-pod a.card article > figure {
+    display: none; }
+    .card-pod a.card article > figure > img {
+      display: none; }
+  .card-pod a.card article .content > h2 {
+    font-size: 1.6rem;
+    color: white;
+    height: 20px;
+    font-weight: 600px;
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
+  .card-pod a.card article .content > p {
+    font-size: 1.4rem;
+    color: white;
+    height: 70px;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .card-pod a.card article .content .category {
+    display: none; }
+  .card-pod a.card article .content .author img {
+    display: none; }
+  .card-pod a.card article .content .author p {
+    display: none; }
+  .card-pod a.card article .content time {
+    display: none; }
+  .card-pod a.card article:after {
+    position: absolute;
+    top: 45%;
+    right: 45%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/play-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover; }
   .card-pod a.card {
-    background-image: url("../images/podback.png"); }
-    .card-pod a.card article > figure {
-      display: none; }
-      .card-pod a.card article > figure > img {
-        display: none; }
-    .card-pod a.card article .content > h2 {
-      font-size: 3rem;
-      color: white;
-      height: 40px;
-      font-family: "tinos", Helvetica, Arial, sans-serif; }
-    .card-pod a.card article .content > p {
-      font-size: 2rem;
-      color: white;
-      height: 60px;
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-    .card-pod a.card article .content .category {
-      display: none; }
-    .card-pod a.card article .content .author img {
-      display: none; }
-    .card-pod a.card article .content .author p {
-      display: none; }
-    .card-pod a.card article .content time {
-      display: none; }
-  .card-pod a.card {
+    background-image: url("../images/podback-desk.png");
     width: 750px;
     height: 235px;
     background-size: 750px; }
     .card-pod a.card article .content {
-      padding: 25px; } }
+      float: left;
+      width: 233px;
+      height: 122px;
+      margin-top: 25px;
+      background-color: rgba(0, 0, 0, 0.66); } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-pod-tablet a.card article > figure {
+    display: none; }
+    .card-pod-tablet a.card article > figure > img {
+      display: none; }
+  .card-pod-tablet a.card article .content > h2 {
+    font-size: 1.6rem;
+    color: white;
+    height: 20px;
+    font-weight: 600px;
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
+  .card-pod-tablet a.card article .content > p {
+    font-size: 1.4rem;
+    color: white;
+    height: 70px;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .card-pod-tablet a.card article .content .category {
+    display: none; }
+  .card-pod-tablet a.card article .content .author img {
+    display: none; }
+  .card-pod-tablet a.card article .content .author p {
+    display: none; }
+  .card-pod-tablet a.card article .content time {
+    display: none; }
+  .card-pod-tablet a.card article:after {
+    position: absolute;
+    top: 45%;
+    right: 45%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/play-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover; }
   .card-pod-tablet a.card {
-    background-image: url("../images/podback.png"); }
-    .card-pod-tablet a.card article > figure {
-      display: none; }
-      .card-pod-tablet a.card article > figure > img {
-        display: none; }
-    .card-pod-tablet a.card article .content > h2 {
-      font-size: 3rem;
-      color: white;
-      height: 40px;
-      font-family: "tinos", Helvetica, Arial, sans-serif; }
-    .card-pod-tablet a.card article .content > p {
-      font-size: 2rem;
-      color: white;
-      height: 60px;
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-    .card-pod-tablet a.card article .content .category {
-      display: none; }
-    .card-pod-tablet a.card article .content .author img {
-      display: none; }
-    .card-pod-tablet a.card article .content .author p {
-      display: none; }
-    .card-pod-tablet a.card article .content time {
-      display: none; }
-  .card-pod-tablet a.card {
+    background-image: url("../images/podback-tab.png");
     width: 750px;
     height: 235px;
     background-size: 750px; }
     .card-pod-tablet a.card article .content {
-      padding: 15px; } }
+      padding: 15px; }
+    .card-pod-tablet a.card:after {
+      top: 40%;
+      left: 35%;
+      width: 40px;
+      height: 40px; } }
 
 @media screen and (max-width: 767px) {
+  .card-pod-mobile a.card article > figure {
+    display: none; }
+    .card-pod-mobile a.card article > figure > img {
+      display: none; }
+  .card-pod-mobile a.card article .content > h2 {
+    font-size: 1.6rem;
+    color: white;
+    height: 20px;
+    font-weight: 600px;
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
+  .card-pod-mobile a.card article .content > p {
+    font-size: 1.4rem;
+    color: white;
+    height: 70px;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .card-pod-mobile a.card article .content .category {
+    display: none; }
+  .card-pod-mobile a.card article .content .author img {
+    display: none; }
+  .card-pod-mobile a.card article .content .author p {
+    display: none; }
+  .card-pod-mobile a.card article .content time {
+    display: none; }
+  .card-pod-mobile a.card article:after {
+    position: absolute;
+    top: 45%;
+    right: 45%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/play-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover; }
   .card-pod-mobile a.card {
-    background-image: url("../images/podback.png"); }
-    .card-pod-mobile a.card article > figure {
-      display: none; }
-      .card-pod-mobile a.card article > figure > img {
-        display: none; }
-    .card-pod-mobile a.card article .content > h2 {
-      font-size: 3rem;
-      color: white;
-      height: 40px;
-      font-family: "tinos", Helvetica, Arial, sans-serif; }
-    .card-pod-mobile a.card article .content > p {
-      font-size: 2rem;
-      color: white;
-      height: 60px;
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-    .card-pod-mobile a.card article .content .category {
-      display: none; }
-    .card-pod-mobile a.card article .content .author img {
-      display: none; }
-    .card-pod-mobile a.card article .content .author p {
-      display: none; }
-    .card-pod-mobile a.card article .content time {
-      display: none; }
-  .card-pod-mobile a.card {
+    background-image: url("../images/podback-mob.png");
     width: 295px;
     height: 92px;
     background-size: 295px; }
     .card-pod-mobile a.card article .content {
-      padding: 10px; } }
+      padding: 10px; }
+    .card-pod-mobile a.card:after {
+      width: 30px;
+      height: 30px; } }
 
 .relative {
   position: relative; }
