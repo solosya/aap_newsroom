@@ -11666,6 +11666,9 @@ input[type=radio].inline {
 .pod-partial {
   padding: 0 15px;
   margin-bottom: 80px; }
+  @media screen and (max-width: 767px) {
+    .pod-partial {
+      background-color: #2b2926; } }
 
 .room-view {
   margin-top: 70px;
@@ -18038,7 +18041,7 @@ body.channel.supporters p {
     font-size: 1.6rem;
     color: white;
     height: 20px;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     text-transform: uppercase; }
   .card-pod a.card article .content > p {
@@ -18089,7 +18092,7 @@ body.channel.supporters p {
     font-size: 1.6rem;
     color: white;
     height: 20px;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     text-transform: uppercase; }
   .card-pod-tablet a.card article .content > p {
@@ -18113,8 +18116,8 @@ body.channel.supporters p {
     background-size: cover; }
   .card-pod-tablet a.card {
     background-image: url("../images/podback-tab.png");
-    width: 750px;
-    height: 235px;
+    width: 720px;
+    height: 221px;
     background-size: 750px; }
     .card-pod-tablet a.card article .content {
       float: left;
@@ -18140,7 +18143,7 @@ body.channel.supporters p {
     font-size: 1.6rem;
     color: white;
     height: 20px;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     text-transform: uppercase; }
   .card-pod-mobile a.card article .content > p {
@@ -18170,12 +18173,15 @@ body.channel.supporters p {
     background-position: left;
     background-repeat: no-repeat; }
     .card-pod-mobile a.card article .content {
-      padding: 10px;
+      padding: 130px 10px 10px 10px;
       float: right; }
+      .card-pod-mobile a.card article .content h2 {
+        padding-left: 20px; }
     .card-pod-mobile a.card article:after {
       width: 9px;
       height: 11px;
-      margin-top: 22px; } }
+      margin-top: 22px;
+      margin-left: 130px; } }
 
 .relative {
   position: relative; }
