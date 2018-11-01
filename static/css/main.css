@@ -18070,12 +18070,15 @@ body.channel.supporters p {
       width: 233px;
       height: 122px;
       margin-top: 63px;
-      background-color: rgba(0, 0, 0, 0.66); }
-    .card-pod a.card:after {
-      width: 20px;
+      background-color: rgba(0, 0, 0, 0.66);
+      padding: 20px 10px 5px 15px; }
+      .card-pod a.card article .content > p {
+        margin-top: 8px; }
+    .card-pod a.card article:after {
+      width: 15px;
       height: 20px;
-      margin-top: 70px;
-      margin-left: -25px; } }
+      margin-top: 80px;
+      margin-left: -35px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-pod-tablet a.card article > figure {
@@ -18114,12 +18117,19 @@ body.channel.supporters p {
     height: 235px;
     background-size: 750px; }
     .card-pod-tablet a.card article .content {
-      padding: 15px; }
-    .card-pod-tablet a.card:after {
-      top: 40%;
-      left: 35%;
-      width: 40px;
-      height: 40px; } }
+      float: left;
+      width: 233px;
+      height: 122px;
+      margin-top: 50px;
+      background-color: rgba(0, 0, 0, 0.66);
+      padding: 20px 10px 5px 15px; }
+      .card-pod-tablet a.card article .content > p {
+        margin-top: 8px; }
+    .card-pod-tablet a.card article:after {
+      width: 15px;
+      height: 20px;
+      margin-top: 70px;
+      margin-left: -35px; } }
 
 @media screen and (max-width: 767px) {
   .card-pod-mobile a.card article > figure {
@@ -18154,14 +18164,18 @@ body.channel.supporters p {
     background-size: cover; }
   .card-pod-mobile a.card {
     background-image: url("../images/podback-mob.png");
-    width: 295px;
-    height: 92px;
-    background-size: 295px; }
+    width: 100%;
+    height: 116px;
+    background-size: 115px;
+    background-position: left;
+    background-repeat: no-repeat; }
     .card-pod-mobile a.card article .content {
-      padding: 10px; }
-    .card-pod-mobile a.card:after {
-      width: 30px;
-      height: 30px; } }
+      padding: 10px;
+      float: right; }
+    .card-pod-mobile a.card article:after {
+      width: 9px;
+      height: 11px;
+      margin-top: 22px; } }
 
 .relative {
   position: relative; }

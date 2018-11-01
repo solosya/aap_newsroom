@@ -72,14 +72,18 @@
                     height: 122px;
                     margin-top: 63px;
                     background-color: rgba(0, 0, 0, 0.66);
+                    padding: 20px 10px 5px 15px;
+                     >p {
+                        margin-top: 8px;
+                     }
 
                 }
-            }
-            &:after{
-                width: 20px;
-                height: 20px;
-                margin-top: 70px;
-                margin-left: -25px;
+                &:after{
+                    width: 15px;
+                    height: 20px;
+                    margin-top: 80px;
+                    margin-left: -35px;
+                }
             }    
         }
     }
@@ -94,14 +98,23 @@
             background-size: 750px;
             article {
                 .content {
-                    padding: 15px;
+                    float: left;
+                    width: 233px;
+                    height: 122px;
+                    margin-top: 50px;
+                    background-color: rgba(0, 0, 0, 0.66);
+                    padding: 20px 10px 5px 15px;
+                     >p {
+                        margin-top: 8px;
+                     }
+
                 }
-            }
-            &:after{
-                top: 40%;
-                left: 35%;
-                width: 40px;
-                height: 40px;
+                &:after{
+                    width: 15px;
+                    height: 20px;
+                    margin-top: 70px;
+                    margin-left: -35px;
+                }
             }
         }
     }
@@ -111,17 +124,22 @@
         @include card-pod-base;
         a.card {
             background-image: url('../images/podback-mob.png');
-            width: 295px;
-            height: 92px;
-            background-size: 295px;
+            width: 100%;
+            height: 116px;
+            background-size: 115px;
+            background-position: left;
+            background-repeat: no-repeat;
             article {
                 .content {
+
                     padding: 10px;
+                    float: right;
                 }
-            }
-            &:after{
-                width: 30px;
-                height: 30px;
+                &:after{
+                    width: 9px;
+                    height: 11px;
+                    margin-top: 22px;
+                }
             }
         }
     }
