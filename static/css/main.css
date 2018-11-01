@@ -11668,7 +11668,8 @@ input[type=radio].inline {
   margin-bottom: 80px; }
   @media screen and (max-width: 767px) {
     .pod-partial {
-      background-color: #2b2926; } }
+      background-color: #2b2926;
+      margin-bottom: 20px; } }
 
 .room-view {
   margin-top: 70px;
@@ -18173,10 +18174,14 @@ body.channel.supporters p {
     background-position: left;
     background-repeat: no-repeat; }
     .card-pod-mobile a.card article .content {
-      padding: 130px 10px 10px 10px;
+      padding: 20px 10px 5px 130px;
       float: right; }
-      .card-pod-mobile a.card article .content h2 {
-        padding-left: 20px; }
+      .card-pod-mobile a.card article .content > h2 {
+        padding-left: 20px;
+        font-size: 1.4rem; }
+      .card-pod-mobile a.card article .content > p {
+        height: 65px;
+        font-size: 1.2rem; }
     .card-pod-mobile a.card article:after {
       width: 9px;
       height: 11px;
