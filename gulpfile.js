@@ -8,6 +8,10 @@ var sourcemaps  = require('gulp-sourcemaps');
 var minifyCss   = require("gulp-minify-css");
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
+var rev         = require('gulp-rev');
+var collect     = require('gulp-rev-collector');
+var revdel      = require('rev-del');
+
 var runSequence = require('run-sequence');
 
 
@@ -15,6 +19,10 @@ gulp.task('styles', function(callback) {
   runSequence('sass', 'concat', 'minify-css', 'cache',  callback);
 });
 
+gulp.task('stylesTest', function(callback) {
+    runSequence('sass', 'concat', 'minify-css', 'revision:rename',   callback);
+  });
+  
 
 gulp.task('cache',  function() {
   return gulp.src('layouts/main.twig')
@@ -26,7 +34,20 @@ gulp.task('cache',  function() {
     .pipe(gulp.dest('layouts/'));
 });
 
+gulp.task("revision:rename", function() {
+  gulp.src(["./static/css/concat.min.css"])
+  .pipe(rev())
+  .pipe(revdel())
+  .pipe(gulp.dest("./static/css"))
+  .pipe(rev.manifest({ path: "manifest.json" }))
+  .pipe(gulp.dest("./static/css"))
+});
 
+gulp.task("revision:updateReferences", function() {
+   gulp.src(["manifest.json","./static/css/*.json"])
+   .pipe(collect())
+   .pipe(gulp.dest("./static/css"))
+});
 
 gulp.task('minify-css', function () {
     return gulp.src([
