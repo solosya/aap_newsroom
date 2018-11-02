@@ -34,6 +34,8 @@ gulp.task('cache',  function() {
     .pipe(gulp.dest('layouts/'));
 });
 
+
+// https://medium.com/@felipebernardes/solving-browser-cache-hell-with-gulp-rev-6349a293abb9
 gulp.task("revision:rename", function() {
   gulp.src(["./static/css/concat.min.css"])
   .pipe(rev())
@@ -48,6 +50,9 @@ gulp.task("revision:updateReferences", function() {
    .pipe(collect())
    .pipe(gulp.dest("./static/css"))
 });
+
+
+
 
 gulp.task('minify-css', function () {
     return gulp.src([
