@@ -131,11 +131,11 @@
 
 {# {% if _User.isGuest() and showPaywall == false %} #}
 {% if 'article' not in pageClass %}
-   {#  {% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %} #}
+    {% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %}
         {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-    {# {% else %}
+    {% else %}
         {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-    {% endif %} #}
+    {% endif %}
 
         <script>
             (function(d) {

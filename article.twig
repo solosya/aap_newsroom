@@ -45,11 +45,11 @@
 
 {% endif %}
 
-{# {% if articleBlog == 'lockerroom' %} #}
+{% if articleBlog == 'lockerroom' %}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{# {% else %}
+{% else %}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-{% endif %} #}
+{% endif %}
 
     <script>
         (function(d) {
@@ -255,14 +255,14 @@
                                     
 
                                 {% else %}
-                                    <div class="article-supoort">
+                                   {#  <div class="article-supoort">
                                         <p class="article-supoort__text">We recently launched a crowdfunding campaign to sustain and expand LockerRoom, our section dedicated to covering New Zealand women in sport. We created LockerRoom to fill a gap in sports journalism, sharing inspirational, compelling and important stories that would otherwise go untold. To join our team as a supporter, simply click the red button.</p>
                                         <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
-                                    </div>
-                                    {# <div class="article-supoort">
+                                    </div> #}
+                                    <div class="article-supoort">
                                         <p class="article-supoort__text">Newsroom is powered by the generosity of readers like you, who support our mission to produce fearless, independent and provocative journalism.</p>
                                         <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
-                                    </div> #}
+                                    </div>
                                 {% endif %}
                             {% endif %}
                      
