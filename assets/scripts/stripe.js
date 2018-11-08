@@ -153,7 +153,9 @@ if ($('#stripekey').length > 0) {
                                     console.log(r);
                                 });                        
                         }
-
+                        
+                        // set time out used for Firefox which seems to need a little bit more time to figure things out
+                        setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
                         // window.location.href = location.origin + '/auth/thank-you';
                     }
                     
