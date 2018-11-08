@@ -32330,12 +32330,14 @@ if ($('#stripekey').length > 0) {
                 self.data['stripetoken'] = result.token.id;
                 self.data['planid'] = $('#planid').val();
                 self.data['redirect'] = false;
-
+                console.log('sigining up');
                 formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                    
+                    console.log(response)
                     if (response.success == 1) {
+                        console.log(self.data);
                         if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                            console.log('last if');
                             var subscribeData = {
                                 "EMAIL": self.data['email'], 
                                 "FNAME": self.data['firstname'],
@@ -32347,14 +32349,14 @@ if ($('#stripekey').length > 0) {
                             if (self.data["group[1149][2]"]) {
                                 subscribeData["group[1149][2]"] = 2;
                             }
-    
+                            console.log('calling mailchimp');
                             Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
                                 .then(function(r) {
                                     console.log(r);
                                 });                        
                         }
 
-                        window.location.href = location.origin + '/auth/thank-you';
+                        // window.location.href = location.origin + '/auth/thank-you';
                     }
                     
                 });
