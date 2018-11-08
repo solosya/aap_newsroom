@@ -8,9 +8,9 @@ var sourcemaps  = require('gulp-sourcemaps');
 var minifyCss   = require("gulp-minify-css");
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
-var rev         = require('gulp-rev');
-var collect     = require('gulp-rev-collector');
-var revdel      = require('rev-del');
+// var rev         = require('gulp-rev');
+// var collect     = require('gulp-rev-collector');
+// var revdel      = require('rev-del');
 
 var runSequence = require('run-sequence');
 
