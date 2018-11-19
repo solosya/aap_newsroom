@@ -7401,6 +7401,9 @@ section.subscribe {
   margin-bottom: 20px;
   padding: 20px 24px 25px 24px;
   background: rgba(74, 74, 74, 0.1); }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    section.subscribe {
+      height: 250px; } }
   section.subscribe h3 {
     margin: 0;
     font-size: 1.6em;
@@ -11878,6 +11881,9 @@ input[type=radio].inline {
             font-size: 2.4em; } }
       .room-view .featured article > .content > time {
         bottom: 80px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .room-view .featured article > .content > time {
+            bottom: 60px; } }
       .room-view .featured article > .content > p {
         margin-bottom: 20px;
         font-size: 20px; }
@@ -12187,7 +12193,8 @@ input[type=radio].inline {
       height: 38px; }
       @media screen and (max-width: 991px) {
         .room-board .subfeature-board article > .content > h2 {
-          height: 58px; } }
+          height: 58px;
+          margin-top: 8px; } }
       @media screen and (max-width: 767px) {
         .room-board .subfeature-board article > .content > h2 {
           height: auto; } }
@@ -12944,7 +12951,8 @@ input[type=radio].inline {
       height: 38px; }
       @media screen and (max-width: 991px) {
         .room-locker .subfeature-board article > .content > h2 {
-          height: 58px; } }
+          height: 58px;
+          margin-top: 8px; } }
       @media screen and (max-width: 767px) {
         .room-locker .subfeature-board article > .content > h2 {
           height: auto; } }
@@ -16151,6 +16159,9 @@ body.channel.supporters p {
 
 .sidebar .card-sm a.card article figure {
   height: 242px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .sidebar .card-sm a.card article figure {
+      height: 235px; } }
   @media screen and (max-width: 620px) {
     .sidebar .card-sm a.card article figure {
       height: auto; } }

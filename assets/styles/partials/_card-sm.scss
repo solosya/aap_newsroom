@@ -445,6 +445,9 @@
         article {
             figure {
                 height:242px;
+                 @media #{$tablet}{
+                    height:235px;
+                }
 
                 @media screen and (max-width: $mobile-break){
                     height:auto;
