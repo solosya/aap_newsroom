@@ -337,7 +337,10 @@
             >time {
                 
                     bottom: 80px;
-                
+
+                @media #{$tablet} {
+                    bottom: 60px;
+                }
             }
 
             > p{
