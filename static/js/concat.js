@@ -32330,14 +32330,14 @@ if ($('#stripekey').length > 0) {
                 self.data['stripetoken'] = result.token.id;
                 self.data['planid'] = $('#planid').val();
                 self.data['redirect'] = false;
-                console.log('sigining up');
+
                 formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                    console.log(response)
+
                     if (response.success == 1) {
-                        console.log(self.data);
+
                         if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-                            console.log('last if');
+
                             var subscribeData = {
                                 "EMAIL": self.data['email'], 
                                 "FNAME": self.data['firstname'],
