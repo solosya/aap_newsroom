@@ -1,0 +1,214 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData   = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+{% set limit = 4 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑           ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+{% set sections =  {
+    0 : "business",
+    1 : "economy"
+    } 
+%}
+
+{% set variableSections = ['government','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %}
+
+{% set feedCompare = {} %}
+ 
+{% for vSection in variableSections %}
+    
+    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vSection}) %}
+    {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
+    {% set feedCompare = feedCompare | merge({  (vSection) : (publishTime) }) %}
+    
+{% endfor %}
+
+{% set sectionRanks = {} %}
+
+{% for fSection in feedCompare %}
+    {% set rank = 0 %}
+    {% for vSection in feedCompare %}
+        {% if vSection != fsection and feedCompare['fSection'] > feedCompare['vSection'] %}
+            {% set rank = rank + 1 %}
+        {% endif %}
+    {% endfor %}
+    {# {% set rank = rank + 1 %} #}
+    {% if feedCompare[fSection] %}
+        {% set sectionRanks  = sectionRanks | merge({ (rank) : feedCompare.fSection })  %}
+    {% endif %}
+{% endfor %}
+
+{% for i in 0..7 if sectionRanks[i] %}
+    {% set sections = sections | merge({ (i + 2) : sectionRanks[i] }) %}
+{% endfor %}
+
+{% set sectionFeed = {} %}
+
+{% for i in sections %}
+    {% if i == 0 or i == 4 or i == 8 %}
+        {% set limit = 4 %}
+    {% else %}
+        {% set limit = 3 %}
+    {% endif %}
+
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == sections[i] %}
+            {% set sectionFeed = sectionFeed | merge({
+                (sections[i]) : {
+                    'feed'          : _Blog.getBlogFeed({'limit':limit, 'offset': 0, 'blogid':blog.guid}),
+                    'link'          : blog.link,
+                    'description'   : blog.short_description,
+                    'title'         : blog.title
+                    }
+                }) %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% set partialOrder = [
+    'partials/pro/hero-four-light.twig',
+    'partials/pro/hero-three-dark.twig',
+    'partials/pro/sm-three.twig',
+    'partials/pro/hero-three-light.twig',
+    'partials/pro/hero-four-dark.twig',
+    'partials/pro/hero-three-dark.twig',
+    'partials/pro/sm-three.twig',
+    'partials/pro/hero-three-light.twig',
+    'partials/pro/hero-four-dark.twig',
+    'partials/pro/sm-three.twig'
+    ] 
+%}
+    
+    <main id="main" class="site-main pro-room {{this.title | lower}}" role="main">
+        <section class="featured-slider container-fluid">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[0], 
+                                position: 1, 
+                                containerClass: 'featured card-pro-feature card-pro-feature-tablet card-pro-feature-mobile', 
+                                imageSize: {width:1168, height:587}
+                            }) | raw}}
+                            
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    </div>
+                </div>
+        </section>
+    
+
+        {% if articles[articleCount] %}
+            <section class="top-stories">
+                <div class="container">
+                    <h2 class="u-margin-bottom-10">TOP STORIES</h2>
+                    <div class="row">
+
+                        {% for i in 0..2 %}
+                            {% if articles[i] %}                                                                
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'col-sm-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card', 
+                                    imageSize: {width:99, height:88}
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+
+
+        <section class="home-page-content">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-8">
+                        
+                    <!-- INSERT SECTION PARTIALS HERE -->
+
+                    {% for i in sections %}
+       
+       
+                        {% set params = {
+                            'section'   : sections[i],
+                            'blogFeeds' : sectionFeed,
+                            'template' : partialOrder[i]
+                        } %}
+                    
+                        {{this.render('render.twig', params) | raw}} 
+
+                    {% endfor %}
+                    
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 sidebar hidden-xs">
+                        
+                        <div class="row">
+                        
+                            <section class="col-sm-12 sidebar-news recent-articles u-no-margin-top">
+                                <h3 class="most-viewed__header">MOST VIEWED</h3>
+                                
+                                {% set popularArticles = _Article.getPopularArticles({ 
+                                        limit: 6, 
+                                        blogId: blogData['id'], 
+                                        interval: 168 
+                                }) %}
+
+                                
+                                {% for i in 0..5 if popularArticles[i] %}
+                                    {{this.render('/partials/_single-article.twig', {
+                                        article         : popularArticles[i], 
+                                        swap            : false,
+                                        containerClass  : 'card-pro-popular', 
+                                        imageSize: {width:141, height:113}
+                                    }) | raw}}
+                                {% endfor %} 
+
+                            </section>
+                            <section class="col-sm-12 sidebar-news recent-articles u-no-margin-top hidden">
+                                <h3 class="most-viewed__header">MOST RECENT</h3>
+
+                                {% set recentArticles = _Article.getRecentArticles({ 
+                                        limit: 6, 
+                                        blogId: blogData['id'], 
+                                         
+                                }) %}
+
+                                
+                                {% for i in 0..5 if recentArticles[i] %}
+                                    {{this.render('/partials/_single-article.twig', {
+                                        article         : recentArticles[i], 
+                                        swap            : false,
+                                        containerClass  : 'card-pro-popular', 
+                                        imageSize: {width:141, height:113}
+                                    }) | raw}}
+                                {% endfor %} 
+
+                            </section>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

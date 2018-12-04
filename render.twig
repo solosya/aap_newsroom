@@ -1,0 +1,40 @@
+
+
+{% set count = {} %}
+
+{% set feedArr = [] %}
+
+
+    {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+
+
+{% if template != '' %}
+    {% set params = {
+        articles: feedArr,
+        link:     blogFeeds[ section.blogs[0] ].link,
+        title:    section.title is defined ? section.title : '',
+        dev:      dev,
+        site:     site
+    } %}
+
+    {% if section.template_params is defined and section.template_params | length > 0  %}
+        {% set params = params | merge(section.template_params) %}
+    {% endif %}
+
+    {% set margin = 'u-margin-top-30 u-desktop-margin-top-40' %}
+
+    {% if section.background %}
+        <div class="section-background {{margin}}">
+            {% set margin = '' %}
+
+    {% endif %}
+
+        <div class="container {{margin}}">
+            {{this.render(template, params) | raw}} 
+        </div>
+
+    {% if section.background %}
+        </div>
+    {% endif %}
+
+{% endif %}
