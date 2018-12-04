@@ -46,7 +46,6 @@
             {% set rank = rank + 1 %}
         {% endif %}
     {% endfor %}
-    {# {% set rank = rank + 1 %} #}
     {% if feedCompare[fSection] %}
         {% set sectionRanks  = sectionRanks | merge({ (rank) : feedCompare.fSection })  %}
     {% endif %}
@@ -146,18 +145,18 @@
                         
                     <!-- INSERT SECTION PARTIALS HERE -->
 
-                    {% for i in sections %}
-       
-       
-                        {% set params = {
-                            'section'   : sections[i],
-                            'blogFeeds' : sectionFeed,
-                            'template' : partialOrder[i]
-                        } %}
-                    
-                        {{this.render('render.twig', params) | raw}} 
+                        {% for i in sections %}
+           
+           
+                            {% set params = {
+                                'section'   : sections[i],
+                                'blogFeeds' : sectionFeed,
+                                'template' : partialOrder[i]
+                            } %}
+                        
+                            {{this.render('render.twig', params) | raw}} 
 
-                    {% endfor %}
+                        {% endfor %}
                     
                     </div>
 
