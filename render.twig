@@ -1,28 +1,24 @@
 
 
-{% set count = {} %}
 
 {% set feedArr = [] %}
 
 
-    {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+    {% set feedArr = blogFeeds[section].feed.articles %}
 
 
 {% if template != '' %}
     {% set params = {
         articles: feedArr,
-        link:     blogFeeds[ section.blogs[0] ].link,
+        link:     blogFeeds[ section ].link,
         title:    section.title is defined ? section.title : ''
     } %}
 
     {% set margin = 'u-margin-top-30 u-desktop-margin-top-40' %}
 
-        <div class="container {{margin}}">
+        <div class="container {{margin}} {{template}}">
             {{this.render(template, params) | raw}} 
         </div>
 
-    {% if section.background %}
-        </div>
-    {% endif %}
 
 {% endif %}
