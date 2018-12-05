@@ -45,18 +45,17 @@
 %}
 
 
-{% set x = 0 %}
 {% for vSection in variableSections %}
-    
     {% set feed = _Article.getRecentArticles({limit: 1, blogId: vSection}) %}
-    {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) - x %}    
+        
+    {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
     {% set feedCompare = feedCompare | merge({  
         (vSection) : {
             'time' : (publishTime), 
             'section' : (vSection)
         } 
     }) %}
-    {% set x = x + 1 %}
+    
 
 {% endfor %}
 
