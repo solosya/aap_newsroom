@@ -52,7 +52,7 @@
     {% for blog in networkData.networkBlogs %}
 
         {% if blog.title | lower == vSection %}
-            {% set vBlog = blog.guid %}
+            {% set vBlog = blog.id %}
         {% endif %}
 
     {% endfor %}
