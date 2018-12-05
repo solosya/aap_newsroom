@@ -46,8 +46,19 @@
 
 
 {% for vSection in variableSections %}
-    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vSection}) %}
-        
+
+    {% set vBlog = "" %}
+
+    {% for blog in networkData.networkBlogs %}
+
+        {% if blog.title | lower == vSection %}
+            {% set vBlog = blog.guid %}
+        {% endif %}
+
+    {% endfor %}
+
+
+    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vBlog}) %}     
     {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
     {% set feedCompare = feedCompare | merge({  
         (vSection) : {
@@ -58,8 +69,6 @@
     
 
 {% endfor %}
-
-
 
 {% for fSection in feedCompare %}
 
