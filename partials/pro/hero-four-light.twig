@@ -3,51 +3,33 @@
 
 
 <section class="row">
-    <div class="col-sm-9 section-header">
-        <p><a class="{{site}}" href="{{link}}">View All</a></p>
-        <div class="hk">
+    <div class="col-sm-12 section-header">
+        <a class="{{site}}" href="{{link}}">       
             <h2>{{ title }}</h2>
-            <p></p>
-        </div>
+        </a>
     </div>
 
-    <div class="col-md-4 col-sm-5 col-xs-9">
+    <div class="col-sm-12">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 imageSize: {width:414, height:255},
                 site: site,
-                containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+                containerClass: 'card-rec u-margin-bottom-30'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% endif %}
 
-        <hr class="divide visible-xs-block space-only">
-
-    </div>
-
-    <div class="col-md-2 col-sm-4 col-xs-9">
-        {% if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article: articles[articleCount], 
-                imageSize: {width:300},
-                site: site,
-                containerClass: 'card-sm feature-side-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            <hr class="divide visible-xs-block visible-sm-block">
-
-        {% endif %}
 
     </div>
         
-    {% for i in 0..1 if articles[articleCount] %}
-        <div class="col-md-3 col-sm-4 col-xs-9">
+    {% for i in 0..2 if articles[articleCount] %}
+        <div class="col-md-4 col-sm-4 col-xs-12">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
-            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+            containerClass: 'card-sm card-sm-tablet card-sm-mobile'
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% if i == 1 %}

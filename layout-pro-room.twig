@@ -28,56 +28,8 @@
 {% set variableSections = ['government','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %}
 
 {% set feedCompare = {} %}
- 
-{% for vSection in variableSections %}
-    
-    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vSection}) %}
-    {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
-    {% set feedCompare = feedCompare | merge({  (vSection) : (publishTime) }) %}
-    
-{% endfor %}
-
 {% set sectionRanks = {} %}
-
-{% for fSection in feedCompare %}
-    {% set rank = 0 %}
-    {% for vSection in feedCompare %}
-        {% if vSection != fsection and feedCompare['fSection'] > feedCompare['vSection'] %}
-            {% set rank = rank + 1 %}
-        {% endif %}
-    {% endfor %}
-    {% if feedCompare[fSection] %}
-        {% set sectionRanks  = sectionRanks | merge({ (rank) : feedCompare.fSection })  %}
-    {% endif %}
-{% endfor %}
-
-{% for i in 0..7 if sectionRanks[i] %}
-    {% set sections = sections | merge({ (i + 2) : sectionRanks[i] }) %}
-{% endfor %}
-
 {% set sectionFeed = {} %}
-
-{% for i in sections %}
-    {% if i == 0 or i == 4 or i == 8 %}
-        {% set limit = 4 %}
-    {% else %}
-        {% set limit = 3 %}
-    {% endif %}
-
-    {% for blog in networkData.networkBlogs %}
-        {% if blog.title | lower == sections[i] %}
-            {% set sectionFeed = sectionFeed | merge({
-                (sections[i]) : {
-                    'feed'          : _Blog.getBlogFeed({'limit':limit, 'offset': 0, 'blogid':blog.guid}),
-                    'link'          : blog.link,
-                    'description'   : blog.short_description,
-                    'title'         : blog.title
-                    }
-                }) %}
-        {% endif %}
-    {% endfor %}
-{% endfor %}
-
 {% set partialOrder = [
     'partials/pro/hero-four-light.twig',
     'partials/pro/hero-three-dark.twig',
@@ -91,6 +43,85 @@
     'partials/pro/sm-three.twig'
     ] 
 %}
+
+
+{% set x = 0 %}
+{% for vSection in variableSections %}
+    
+    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vSection}) %}
+    {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) - x %}    
+    {% set feedCompare = feedCompare | merge({  
+        (vSection) : {
+            'time' : (publishTime), 
+            'section' : (vSection)
+        } 
+    }) %}
+    {% set x = x + 1 %}
+
+{% endfor %}
+
+
+
+{% for fSection in feedCompare %}
+
+    {% set rank = 0 %}
+    {% for vSection in feedCompare %}
+        
+        {% if vSection.section != fSection.section and fSection.time > vSection.time %}
+
+            {% set rank = rank + 1 %}
+        {% endif %}
+    {% endfor %}
+    {% if fSection.section %}
+        {% set sectionRanks  = sectionRanks | merge({ 
+            (fSection.section) : { 
+                'section' : fSection.section,
+                'rank' : (rank) 
+            } 
+        })  %}
+    {% endif %}
+
+{% endfor %}
+
+
+
+{% set x = 2 %}
+{% for i in 0..7 %}
+    {% for section in sectionRanks %}
+        {% if section.rank == i  %}
+
+            {% set sections = sections | merge({ (x) : section.section }) %}
+            {% set x = x + 1 %}
+        {% endif %}
+
+    {% endfor %}
+{% endfor %}
+
+
+{% set x = 0 %}
+{% for i in sections %}
+    {% if x == 0 or x == 4 or x == 8 %}
+        {% set limit = 4 %}
+    {% else %}
+        {% set limit = 3 %}
+    {% endif %}
+
+    {% for blog in networkData.networkBlogs %}
+
+        {% if blog.title | lower == i %}
+
+            {% set sectionFeed = sectionFeed | merge({
+                (i) : {
+                    'feed'          : _Blog.getBlogFeed({'limit':limit, 'offset': 0, 'blogid':blog.guid}),
+                    'link'          : blog.link,
+                    'description'   : blog.short_description,
+                    'title'         : blog.title
+                    }
+                }) %}
+        {% endif %}
+    {% endfor %}
+    {% set x = x + 1 %}
+{% endfor %}
     
     <main id="main" class="site-main pro-room {{this.title | lower}}" role="main">
         <section class="featured-slider container-fluid">
@@ -145,17 +176,20 @@
                         
                     <!-- INSERT SECTION PARTIALS HERE -->
 
+                        
+                        {% set x = 0 %}
                         {% for i in sections %}
            
            
                             {% set params = {
-                                'section'   : sections[i],
+                                'section'   : i,
                                 'blogFeeds' : sectionFeed,
-                                'template' : partialOrder[i]
+                                'template' : partialOrder[x],
+                                'title' :   i
                             } %}
                         
                             {{this.render('render.twig', params) | raw}} 
-
+                            {% set x = x + 1 %}
                         {% endfor %}
                     
                     </div>

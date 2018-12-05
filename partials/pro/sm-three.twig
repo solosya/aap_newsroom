@@ -1,30 +1,30 @@
 {% set articleCount = 0 %}
 
-<section>
-    <div class="row">
-        <div class="col-sm-9 section-header">
-            <p><a href="{{articles.link}}">View All</a></p>
-            <div class="hk">
-                <h2>{{ title }}</h2>
-                <p></p>
+
+
+<section class="row">
+    <div class="col-sm-12 section-header">
+        <a class="{{site}}" href="{{link}}">       
+            <h2>{{ title }}</h2>
+        </a>
+    </div>
+        
+    {% for i in 0..2 if articles[articleCount] %}
+        <div class="col-md-4 col-sm-4 col-xs-12">
+        {{this.render('../_single-article.twig', {
+            article: articles[articleCount], 
+            imageSize: {width:300, height:160},
+            site: site,
+            containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+        }) | raw}}
+        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        {% if i == 1 %}
+            <div class="row visible-xs-block">
+                <hr class="divide">
             </div>
+        {% else %}
+            <hr class="divide">
+        {% endif %}
         </div>
-    </div>
-
-    <div class="row">
-
-        {% for i in 0..2 if articles.feed.articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[articleCount], 
-                imageSize: {width:300},
-                site: site,
-                containerClass: 'col-sm-3 card-sm-wide card-sm-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-            {% if i < 2 %}
-                <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
-            {% endif %}
-        {% endfor %}
-
-    </div>
+    {% endfor %}
 </section>

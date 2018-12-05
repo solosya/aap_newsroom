@@ -7,17 +7,18 @@
     {% set feedArr = blogFeeds[section].feed.articles %}
 
 
-{% if template != '' %}
+
+{% if template != '' and feedArr[0] %}
     {% set params = {
         articles: feedArr,
         link:     blogFeeds[ section ].link,
-        title:    section.title is defined ? section.title : ''
+        title:    title
     } %}
 
     {% set margin = 'u-margin-top-30 u-desktop-margin-top-40' %}
 
-        <div class="container {{margin}} {{template}}">
-            {{this.render(template, params) | raw}} 
+        <div class="{{margin}} {{template}}">
+            {{this.render(template, params) | raw}}
         </div>
 
 
