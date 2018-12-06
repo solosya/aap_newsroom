@@ -1,0 +1,29 @@
+.pro-sidebar{
+
+}
+
+.pro-sidebar__header {
+	font-family: $base-font-family;
+    font-size: rem(21);
+    font-weight: 600;
+    margin: 0 0 0 10px;
+    display: inline-block;
+    width: 45%;
+    color: #e22f22;
+    &.faded {
+    	color: #dadada;
+    	cursor: pointer;
+    }
+}
+
+.pro-sidebar__border {
+	width: 50%;
+	margin-left: 0;
+	// padding-right: 5%;
+	border-right: 2px #d8d8d8 solid;
+}
+
+.pro-sidebar__headerdiv {
+	padding: 0 0 10px 0;
+	border-bottom: 1px #dadada solid;
+}
