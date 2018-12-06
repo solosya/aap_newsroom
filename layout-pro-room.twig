@@ -47,6 +47,18 @@
     ] 
 %}
 
+{% set popularArticles = _Article.getPopularArticles({ 
+        limit: 6, 
+        blogId: blogData['id'], 
+        interval: 168 
+    }) %}
+
+{% set recentArticles = _Article.getRecentArticles({ 
+        limit: 6, 
+        blogId: blogData['id'], 
+         
+    }) %}
+
 
 {% for vSection in variableSections %}
 
@@ -227,12 +239,90 @@
                             } %}
                         
                             {{this.render('render.twig', params) | raw}} 
+                            
+                            {% if x == 1 %}
+                                <section class="row u-margin-bottom-30">
+                                    <div class="col-sm-6 col-xs-12 u-no-margin-top visible-sm-block visible-xs-block">
+                                        <div class="pro-sidebar__headerdiv">
+                                            <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
+                                             <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
+                                         </div>
+                                        
+
+                                        <div class="j-recent-toggle">
+                                            {% for i in 0..5 if popularArticles[i] %}
+                                                {{this.render('/partials/_single-article_recent.twig', {
+                                                    article         : popularArticles[i], 
+                                                    swap            : false,
+                                                    containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
+                                                }) | raw}}
+                                            {% endfor %}
+                                        </div> 
+
+                                        <div class="j-recent-toggle hidden">
+                                            {% for i in 0..5 if recentArticles[i] %}
+                                                {{this.render('/partials/_single-article_recent.twig', {
+                                                    article         : recentArticles[i], 
+                                                    swap            : false,
+                                                    containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
+                                                }) | raw}}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 u-mobile-margin-top-30 visible-sm-block visible-xs-block">
+                                        <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
+                                        {% for i in 0..4 if columnArticles[i] %}
+                                            {{this.render('/partials/_single-article_column.twig', {
+                                                article         : columnArticles[i], 
+                                                swap            : false,
+                                                containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
+                                                imageSize: {width:1, height:1}
+                                            }) | raw}}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-sm-12 u-margin-top-40 visible-xs-block ">
+                                        {% if extraArticle[0] %}
+                                            {{this.render('/partials/_single-article.twig', {
+                                                    article         : extraArticle[0], 
+                                                    swap            : false,
+                                                    containerClass  : 'card-sm card-sm-tablet card-sm-mobile inverted', 
+                                                    imageSize: {width:300, height:334}
+                                                }) | raw}}
+                                        {% endif %}
+                                    </div>
+                                </section>
+                            {% elseif x == 3 %}
+                                {% set hiddenClass = ['','',' visible-xs-block',' visible-xs-block'] %}
+                                <section class="row u-no-margin-top u-margin-bottom-30 visible-sm-block visible-xs-block">
+                                    <h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Opinion</h3> 
+
+                                    {% for i in 0..3 if opinionArticles[i] %}
+                                        {{this.render('/partials/_single-article.twig', {
+                                            article         : opinionArticles[i], 
+                                            swap            : false,
+                                            containerClass  : 'col-sm-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
+                                        }) | raw}}
+                                    {% endfor %}
+                                </section>
+                            {% elseif x == 7 %}
+                                <section class="row u-margin-top-40 visible-sm-block">
+                                    {% if extraArticle[0] %}
+                                        {{this.render('/partials/_single-article.twig', {
+                                                article         : extraArticle[0], 
+                                                swap            : false,
+                                                containerClass  : 'col-sm-12 card-sm card-sm-tablet card-sm-mobile inverted', 
+                                                imageSize: {width:300, height:334}
+                                            }) | raw}}
+                                    {% endif %}
+                                </section>
+                            {% endif %}
+
                             {% set x = x + 1 %}
                         {% endfor %}
                     
                     </div>
 
-                    <div class="col-sm-12 col-md-3 col-md-offset-1 pro-sidebar hidden-xs">
+                    <div class="col-sm-12 col-md-3 col-md-offset-1 pro-sidebar visible-md-block visible-lg-block">
                         
                         <div class="row">
                         
@@ -241,11 +331,7 @@
                                     <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
                                      <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
                                  </div>
-                                {% set popularArticles = _Article.getPopularArticles({ 
-                                        limit: 6, 
-                                        blogId: blogData['id'], 
-                                        interval: 168 
-                                }) %}
+                                
 
                                 <div class="j-recent-toggle">
                                 {% for i in 0..5 if popularArticles[i] %}
@@ -258,11 +344,7 @@
                                 </div> 
 
                                 <div class="j-recent-toggle hidden">
-                                    {% set recentArticles = _Article.getRecentArticles({ 
-                                        limit: 6, 
-                                        blogId: blogData['id'], 
-                                         
-                                }) %}
+                                    
 
                                 
                                 {% for i in 0..5 if recentArticles[i] %}
