@@ -3,7 +3,7 @@
 
 
 <section class="row">
-    <div class="col-sm-12 section-header">
+    <div class="col-sm-12 section-header u-mobile-no-padding">
         <a href="{{link}}">       
             <h2 class="pro-main__header">{{ title }}</h2>
         </a>
@@ -26,7 +26,7 @@
     {% set borderOptions = ["pro-main__border",""] %}
         
     {% for i in 0..1 if articles[articleCount] %}
-        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}}">
+        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}} u-mobile-no-padding">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
