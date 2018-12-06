@@ -11200,6 +11200,27 @@ input[type=radio].inline {
     margin-right: 15px;
     margin-top: -25px; } }
 
+.pro-sidebar__header {
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin: 0 0 0 10px;
+  display: inline-block;
+  width: 45%;
+  color: #e22f22; }
+  .pro-sidebar__header.faded {
+    color: #dadada;
+    cursor: pointer; }
+
+.pro-sidebar__border {
+  width: 50%;
+  margin-left: 0;
+  border-right: 2px #d8d8d8 solid; }
+
+.pro-sidebar__headerdiv {
+  padding: 0 0 10px 0;
+  border-bottom: 1px #dadada solid; }
+
 .article-subscribe {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   width: 70%; }
@@ -18198,6 +18219,372 @@ body.channel.supporters p {
       margin-top: 22px;
       margin-left: 130px; } }
 
+@media screen and (min-width: 992px) {
+  .card-pro-most a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-pro-most a.card > article > figure {
+      display: none; }
+    .card-pro-most a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      padding-top: 13px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-most a.card > article > .content > .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #1d4a72;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-pro-most a.card > article > .content > h2 {
+        font-weight: 300;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-most a.card > article > .content > .author {
+        display: none; }
+      .card-pro-most a.card > article > .content > time {
+        display: none; }
+      .card-pro-most a.card > article > .content p {
+        display: none; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-pro-most-tablet a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-pro-most-tablet a.card > article > figure {
+      display: none; }
+    .card-pro-most-tablet a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      padding-top: 13px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-most-tablet a.card > article > .content > .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #1d4a72;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-pro-most-tablet a.card > article > .content > h2 {
+        font-weight: 300;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-most-tablet a.card > article > .content > .author {
+        display: none; }
+      .card-pro-most-tablet a.card > article > .content > time {
+        display: none; }
+      .card-pro-most-tablet a.card > article > .content p {
+        display: none; } }
+
+@media screen and (max-width: 767px) {
+  .card-pro-most-mobile a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap; }
+    .card-pro-most-mobile a.card > article > figure {
+      display: none; }
+    .card-pro-most-mobile a.card > article > .content {
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 3px;
+      padding-top: 13px;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-most-mobile a.card > article > .content > .category {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #1d4a72;
+        display: block;
+        line-height: 1;
+        margin-bottom: 3px; }
+      .card-pro-most-mobile a.card > article > .content > h2 {
+        font-weight: 300;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-most-mobile a.card > article > .content > .author {
+        display: none; }
+      .card-pro-most-mobile a.card > article > .content > time {
+        display: none; }
+      .card-pro-most-mobile a.card > article > .content p {
+        display: none; } }
+
+@media screen and (min-width: 992px) {
+  .card-pro-column a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 110px; }
+    .card-pro-column a.card > article > figure {
+      display: none; }
+    .card-pro-column a.card > article > .content {
+      border-bottom: 2px solid #000000;
+      padding-bottom: 1px;
+      padding-top: 18px; }
+      .card-pro-column a.card > article > .content > .category {
+        display: none; }
+      .card-pro-column a.card > article > .content > h2 {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 1.7rem;
+        height: 65px;
+        margin-left: 107px; }
+      .card-pro-column a.card > article > .content > p {
+        display: none; }
+      .card-pro-column a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-column a.card > article > .content > .author > p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #cb2204;
+          margin-top: 55px;
+          margin-left: 7px; }
+        .card-pro-column a.card > article > .content > .author > img {
+          width: 92px;
+          height: 90px;
+          float: left; }
+      .card-pro-column a.card > article > .content > time {
+        display: none; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-pro-column-tablet a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 110px; }
+    .card-pro-column-tablet a.card > article > figure {
+      display: none; }
+    .card-pro-column-tablet a.card > article > .content {
+      border-bottom: 2px solid #000000;
+      padding-bottom: 1px;
+      padding-top: 18px; }
+      .card-pro-column-tablet a.card > article > .content > .category {
+        display: none; }
+      .card-pro-column-tablet a.card > article > .content > h2 {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 1.7rem;
+        height: 65px;
+        margin-left: 107px; }
+      .card-pro-column-tablet a.card > article > .content > p {
+        display: none; }
+      .card-pro-column-tablet a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-column-tablet a.card > article > .content > .author > p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #cb2204;
+          margin-top: 55px;
+          margin-left: 7px; }
+        .card-pro-column-tablet a.card > article > .content > .author > img {
+          width: 92px;
+          height: 90px;
+          float: left; }
+      .card-pro-column-tablet a.card > article > .content > time {
+        display: none; } }
+
+@media screen and (max-width: 767px) {
+  .card-pro-column-mobile a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 110px; }
+    .card-pro-column-mobile a.card > article > figure {
+      display: none; }
+    .card-pro-column-mobile a.card > article > .content {
+      border-bottom: 2px solid #000000;
+      padding-bottom: 1px;
+      padding-top: 18px; }
+      .card-pro-column-mobile a.card > article > .content > .category {
+        display: none; }
+      .card-pro-column-mobile a.card > article > .content > h2 {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 1.7rem;
+        height: 65px;
+        margin-left: 107px; }
+      .card-pro-column-mobile a.card > article > .content > p {
+        display: none; }
+      .card-pro-column-mobile a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-column-mobile a.card > article > .content > .author > p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #cb2204;
+          margin-top: 55px;
+          margin-left: 7px; }
+        .card-pro-column-mobile a.card > article > .content > .author > img {
+          width: 92px;
+          height: 90px;
+          float: left; }
+      .card-pro-column-mobile a.card > article > .content > time {
+        display: none; } }
+
+@media screen and (min-width: 992px) {
+  .card-pro-opinion a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 216px; }
+    .card-pro-opinion a.card > article > figure {
+      display: none; }
+    .card-pro-opinion a.card > article > .content {
+      padding-top: 20px;
+      border-bottom: 1px solid #979797;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-opinion a.card > article > .content > .category {
+        display: none; }
+      .card-pro-opinion a.card > article > .content > h2 {
+        margin-top: 35px;
+        font-weight: 600;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-opinion a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-opinion a.card > article > .content > .author > p {
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: #8a8b93; }
+        .card-pro-opinion a.card > article > .content > .author > img {
+          display: none; }
+      .card-pro-opinion a.card > article > .content > time {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #e12e21;
+        border-left: none;
+        padding: 0; }
+      .card-pro-opinion a.card > article > .content > p {
+        font-size: 1.8rem;
+        height: 80px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-pro-opinion-tablet a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 216px; }
+    .card-pro-opinion-tablet a.card > article > figure {
+      display: none; }
+    .card-pro-opinion-tablet a.card > article > .content {
+      padding-top: 20px;
+      border-bottom: 1px solid #979797;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-opinion-tablet a.card > article > .content > .category {
+        display: none; }
+      .card-pro-opinion-tablet a.card > article > .content > h2 {
+        margin-top: 35px;
+        font-weight: 600;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-opinion-tablet a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-opinion-tablet a.card > article > .content > .author > p {
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: #8a8b93; }
+        .card-pro-opinion-tablet a.card > article > .content > .author > img {
+          display: none; }
+      .card-pro-opinion-tablet a.card > article > .content > time {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #e12e21;
+        border-left: none;
+        padding: 0; }
+      .card-pro-opinion-tablet a.card > article > .content > p {
+        font-size: 1.8rem;
+        height: 80px; } }
+
+@media screen and (max-width: 767px) {
+  .card-pro-opinion-mobile a.card > article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    height: 216px; }
+    .card-pro-opinion-mobile a.card > article > figure {
+      display: none; }
+    .card-pro-opinion-mobile a.card > article > .content {
+      padding-top: 20px;
+      border-bottom: 1px solid #979797;
+      -ms-flex: 1 0;
+      min-height: 88px; }
+      .card-pro-opinion-mobile a.card > article > .content > .category {
+        display: none; }
+      .card-pro-opinion-mobile a.card > article > .content > h2 {
+        margin-top: 35px;
+        font-weight: 600;
+        font-size: 2rem;
+        height: 50px; }
+      .card-pro-opinion-mobile a.card > article > .content > .author {
+        position: absolute; }
+        .card-pro-opinion-mobile a.card > article > .content > .author > p {
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: #8a8b93; }
+        .card-pro-opinion-mobile a.card > article > .content > .author > img {
+          display: none; }
+      .card-pro-opinion-mobile a.card > article > .content > time {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #e12e21;
+        border-left: none;
+        padding: 0; }
+      .card-pro-opinion-mobile a.card > article > .content > p {
+        font-size: 1.8rem;
+        height: 80px; } }
+
 .relative {
   position: relative; }
 
@@ -18482,6 +18869,8 @@ body.channel.supporters p {
     clear: both; }
   .u-desktop-padding-bottom-10 {
     padding-bottom: 10px; }
+  .u-desktop-margin-left-60 {
+    margin-left: 60px; }
   .u-desktop-no-margin-top {
     margin-top: 0 !important; }
   .u-desktop-no-margin-bottom {

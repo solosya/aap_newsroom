@@ -252,6 +252,13 @@ $('document').ready(function() {
         bio.toggle();
     });
 
+    $('.j-recent-header').click(function(e){
+        if ($(this).hasClass('faded')) {
+            $('.j-recent-header').toggleClass('faded');
+            $('.j-recent-toggle').toggleClass('hidden');
+        }
+    });
+
 
     $('.video-player').videoPlayer();
 

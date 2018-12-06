@@ -30,6 +30,9 @@
 {% set feedCompare = {} %}
 {% set sectionRanks = {} %}
 {% set sectionFeed = {} %}
+{% set columnArticles = {} %}
+{% set opinionArticles = {} %}
+{% set extraArticle = {} %}    
 {% set partialOrder = [
     'partials/pro/hero-four-light.twig',
     'partials/pro/hero-three-dark.twig',
@@ -126,9 +129,36 @@
                     'title'         : blog.title
                     }
                 }) %}
+                                                       
         {% endif %}
     {% endfor %}
     {% set x = x + 1 %}
+{% endfor %}
+
+{% for blog in networkData.networkBlogs %}
+    {% if blog.title | lower == "columnists" %}
+
+         {% set columnArticles = _Article.getRecentArticles({ 
+                                    limit: 5, 
+                                    blogId: blog['id'], 
+                                     
+                            }) %}
+    {% elseif blog.title | lower == "opinion" %}
+
+         {% set opinionArticles = _Article.getRecentArticles({ 
+                                    limit: 4, 
+                                    blogId: blog['id'], 
+                                     
+                            }) %} 
+    {% elseif blog.title | lower == "pro-extra" %}
+
+         {% set extraArticle = _Article.getRecentArticles({ 
+                                    limit: 1, 
+                                    blogId: blog['id'], 
+                                     
+                            }) %}                                               
+    {% endif %}
+
 {% endfor %}
     
     <main id="main" class="site-main pro-room {{this.title | lower}}" role="main">
@@ -202,34 +232,33 @@
                     
                     </div>
 
-                    <div class="col-sm-12 col-md-4 sidebar hidden-xs">
+                    <div class="col-sm-12 col-md-3 col-md-offset-1 pro-sidebar hidden-xs">
                         
                         <div class="row">
                         
-                            <section class="col-sm-12 sidebar-news recent-articles u-no-margin-top">
-                                <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                
+                            <section class="col-sm-12 u-no-margin-top">
+                                <div class="pro-sidebar__headerdiv">
+                                    <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
+                                     <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
+                                 </div>
                                 {% set popularArticles = _Article.getPopularArticles({ 
                                         limit: 6, 
                                         blogId: blogData['id'], 
                                         interval: 168 
                                 }) %}
 
-                                
+                                <div class="j-recent-toggle">
                                 {% for i in 0..5 if popularArticles[i] %}
-                                    {{this.render('/partials/_single-article.twig', {
+                                    {{this.render('/partials/_single-article_recent.twig', {
                                         article         : popularArticles[i], 
                                         swap            : false,
-                                        containerClass  : 'card-pro-popular', 
-                                        imageSize: {width:141, height:113}
+                                        containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
                                     }) | raw}}
-                                {% endfor %} 
+                                {% endfor %}
+                                </div> 
 
-                            </section>
-                            <section class="col-sm-12 sidebar-news recent-articles u-no-margin-top hidden">
-                                <h3 class="most-viewed__header">MOST RECENT</h3>
-
-                                {% set recentArticles = _Article.getRecentArticles({ 
+                                <div class="j-recent-toggle hidden">
+                                    {% set recentArticles = _Article.getRecentArticles({ 
                                         limit: 6, 
                                         blogId: blogData['id'], 
                                          
@@ -237,16 +266,50 @@
 
                                 
                                 {% for i in 0..5 if recentArticles[i] %}
-                                    {{this.render('/partials/_single-article.twig', {
+                                    {{this.render('/partials/_single-article_recent.twig', {
                                         article         : recentArticles[i], 
                                         swap            : false,
-                                        containerClass  : 'card-pro-popular', 
+                                        containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
+                                    }) | raw}}
+                                {% endfor %}
+                                </div>
+
+                            </section>
+                            <section class="col-sm-12 u-margin-top-40">
+                                <h3 class="pro-sidebar__colheader">Columnists</h3>
+                                {% for i in 0..4 if columnArticles[i] %}
+                                    {{this.render('/partials/_single-article_recent.twig', {
+                                        article         : columnArticles[i], 
+                                        swap            : false,
+                                        containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
                                         imageSize: {width:141, height:113}
                                     }) | raw}}
                                 {% endfor %} 
 
                             </section>
-                        
+
+                            <section class="col-sm-12 u-margin-top-40">
+                                <h3 class="pro-sidebar__colheader">Opinion</h3> 
+                                {% for i in 0..3 if opinionArticles[i] %}
+                                    {{this.render('/partials/_single-article.twig', {
+                                        article         : opinionArticles[i], 
+                                        swap            : false,
+                                        containerClass  : 'card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile'
+                                    }) | raw}}
+                                {% endfor %} 
+
+                            </section>
+
+                            <section class="col-sm-12 u-margin-top-40">
+                                {% if extraArticle[0] %}
+                                    {{this.render('/partials/_single-article.twig', {
+                                            article         : extraArticle[0], 
+                                            swap            : false,
+                                            containerClass  : 'card-sm card-sm-tablet card-sm-mobile inverted', 
+                                            imageSize: {width:300, height:334}
+                                        }) | raw}}
+                                {% endif %}
+                            </section>
                         </div>
                     </div>
                 </div>
