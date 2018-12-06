@@ -4,8 +4,8 @@
 
 <section class="row">
     <div class="col-sm-12 section-header">
-        <a class="{{site}}" href="{{link}}">       
-            <h2>{{ title }}</h2>
+        <a href="{{link}}">       
+            <h2 class="pro-main__header">{{ title }}</h2>
         </a>
     </div>
 
@@ -22,23 +22,19 @@
 
 
     </div>
+
+    {% set borderOptions = ["pro-main__border",""] %}
         
     {% for i in 0..1 if articles[articleCount] %}
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}}">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
-            containerClass: 'card-pro-popular'
+            containerClass: 'card-pro-follow card-pro-follow-tablet card-pro-follow-mobile'
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-        {% if i == 1 %}
-            <div class="row visible-xs-block">
-                <hr class="divide">
-            </div>
-        {% else %}
-            <hr class="divide">
-        {% endif %}
+        
         </div>
     {% endfor %}
 </section>

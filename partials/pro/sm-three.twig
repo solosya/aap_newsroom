@@ -4,8 +4,8 @@
 
 <section class="row">
     <div class="col-sm-12 section-header">
-        <a class="{{site}}" href="{{link}}">       
-            <h2>{{ title }}</h2>
+        <a href="{{link}}">       
+            <h2 class="pro-main__header">{{ title }}</h2>
         </a>
     </div>
         
@@ -15,16 +15,10 @@
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
-            containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+            containerClass: 'card-sm card-sm-tablet card-sm-mobile u-no-margin-bottom'
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-        {% if i == 1 %}
-            <div class="row visible-xs-block">
-                <hr class="divide">
-            </div>
-        {% else %}
-            <hr class="divide">
-        {% endif %}
+        
         </div>
     {% endfor %}
 </section>

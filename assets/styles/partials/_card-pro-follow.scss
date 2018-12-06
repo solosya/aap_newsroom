@@ -1,0 +1,81 @@
+@mixin card-pro-follow-base() {
+    a.card{
+        > article {
+            display:-webkit-box;
+            display:-webkit-flex;
+            display:-moz-flex;
+            display:-ms-flexbox;
+            display:flex;
+            height: auto;
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+            height: 100px;
+        
+            > figure{
+                height: 100px;
+                width: 141px;
+                position: absolute;
+            }
+
+            > .content{
+                -ms-flex: 1 0;
+                height: 100px;
+                margin-left: 160px;
+                padding-right: 15px;
+                
+                > .category{
+                    font-family: $font-family-sans-serif;
+                    font-size: rem(14);
+                    font-weight: bold;
+                    color: #e22f22;
+                    display: block;
+                }
+
+                > h2{
+                    font-weight: 300;
+                    font-size: rem(18);
+                    height: 60px;
+                    margin-top: 7px;
+                    margin-bottom: 8px;
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    font-size: rem(12);
+                    text-transform: uppercase;
+                    color: #8a8b93;
+                    border-left: none;
+                    padding: 0;
+                }
+
+                p {
+                    display:none;
+                }
+            }
+        }
+    } 
+}
+
+.card-pro-follow{
+    @media #{$desktop-up} {
+        @include card-pro-follow-base;
+          
+    }
+}
+
+.card-pro-follow-tablet{
+    @media #{$tablet} {
+        @include card-pro-follow-base;
+        
+    }
+}
+.card-pro-follow-mobile{
+    @media #{$mobile} {
+        @include card-pro-follow-base;
+
+           
+    }
+}
