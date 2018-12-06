@@ -278,7 +278,7 @@
                             <section class="col-sm-12 u-margin-top-40">
                                 <h3 class="pro-sidebar__colheader">Columnists</h3>
                                 {% for i in 0..4 if columnArticles[i] %}
-                                    {{this.render('/partials/_single-article_recent.twig', {
+                                    {{this.render('/partials/_single-article_column.twig', {
                                         article         : columnArticles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
