@@ -101,7 +101,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=06cc1253" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=96048b39" type="text/css" media="all">
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
@@ -323,12 +323,34 @@
     </div>
 
 
+    {% if _User.isGuest() %}
+        {{this.registerJs('
+            $(function() {
+                $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+                function(json) {
+                    console.log("My public IP address is: ", json.ip);
 
+                    var IPAdresses = ["203.4.189.121", "203.4.189.134", "203.6.189.28", "203.4.189.125", "203.4.182.124"];
+                    if (IPAdresses.indexOf(json.ip) != -1 ) {
+                        Acme.IPNoticePopup = new Acme.IPNotice("modal", "signin-modal", {"main": "ipnotice"});
+                        Acme.IPToken = new Acme.Token("IP_ACCOUNT");
+                        var token = Acme.IPToken.getToken();
+                        console.log("token", token);
+                        if (!token) {
+                            Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
+                        }  
+                    }
+                });
+            });
+        ')}}
+    {% endif %}
+
+    
+    
     {# {{this.registerJs("
         Acme.videoPopupView = new Acme.videoPopup('modal', 'signin', 
                 {'video' : 'modalVideo'}, 
                 {path: _appJsConfig.templatePath});")}} #}
-    
     
     {# {% if _User.isGuest() %}
         {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}

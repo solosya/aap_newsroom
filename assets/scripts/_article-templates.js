@@ -145,6 +145,14 @@ Acme.templates.spinner =
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
 Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+Acme.templates.ipnotice =  
+    '<p class="password-reset-form__p u-margin-bottom-20">You can access Pro for free – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
+    <div> \
+        <form> \
+            <a href="mailto:publish.aap.com.au" class="_btn _btn--red">CONTACT US</a> \
+            <button class="_btn _btn--outline" data-role="close" style="position:relative;top:1px">I\'LL DO IT LATER</button> \
+        </form> \
+    </div>';
 
 Acme.templates.userPlanMessage = 
 '<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
