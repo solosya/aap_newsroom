@@ -78,10 +78,11 @@
         .symbol{
             margin-right: 46px;
             padding-top: 15px;
-            @media screen and (max-width: $sm-break-down) {
+            @media #{$tablet} {
                 float: left;
+                margin-right: 20px;
             }
-            @media screen and (max-width: $mobile-break){
+            @media #{$mobile}{
                 padding-top: 155px;
                 width: 55px;
                 padding-top: 45px;

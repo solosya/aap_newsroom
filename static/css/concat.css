@@ -7672,10 +7672,11 @@ section.subscribe {
     .site-footer .footer-top .symbol {
       margin-right: 46px;
       padding-top: 15px; }
-      @media screen and (max-width: 767px) {
+      @media screen and (min-width: 768px) and (max-width: 991px) {
         .site-footer .footer-top .symbol {
-          float: left; } }
-      @media screen and (max-width: 620px) {
+          float: left;
+          margin-right: 20px; } }
+      @media screen and (max-width: 767px) {
         .site-footer .footer-top .symbol {
           padding-top: 155px;
           width: 55px;
@@ -11157,9 +11158,9 @@ input[type=radio].inline {
   margin-bottom: 50px;
   background-color: black;
   max-width: unset; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 991px) {
     .pro-room .featured-slider {
-      margin-bottom: 50px; } }
+      margin-bottom: 30px; } }
   @media screen and (max-width: 620px) {
     .pro-room .featured-slider {
       margin-bottom: 30px !important;
@@ -17458,12 +17459,13 @@ body.channel.supporters p {
       padding-bottom: 15px;
       min-height: 65px; }
       .card-top-story-tablet a.card > article > .content > h2 {
-        font-size: 1.6em;
+        font-size: 1.4rem;
         height: 36px; }
       .card-top-story-tablet a.card > article > .content > time {
         position: absolute;
         bottom: 5px;
-        right: 15px; }
+        right: 15px;
+        font-size: 1rem; }
   .card-top-story-tablet.room a.card > article > figure {
     width: 150px;
     flex: 0 0 150px; }
@@ -19180,7 +19182,9 @@ body.channel.supporters p {
   .card-pro-column-tablet a.card > article {
     height: 106px; }
     .card-pro-column-tablet a.card > article > .content {
-      padding-top: 15px; } }
+      padding-top: 15px; }
+      .card-pro-column-tablet a.card > article > .content > h2 {
+        padding-top: 10px; } }
 
 @media screen and (max-width: 767px) {
   .card-pro-column-mobile a.card > article {
