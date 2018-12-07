@@ -7794,7 +7794,7 @@ section.subscribe {
       margin: 0; }
       .sb-custom-menu > div > ul > li > a {
         display: block;
-        padding: 16px 11px;
+        padding: 16px 11px 0 11px;
         position: relative; }
         @media screen and (max-width: 1120px) {
           .sb-custom-menu > div > ul > li > a {
@@ -11200,7 +11200,8 @@ input[type=radio].inline {
 
 .pro-sidebar__header {
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 2.1rem;
+  font-size: 1.9rem;
+  line-height: 1.2;
   font-weight: 600;
   margin: 0 0 0 10px;
   display: inline-block;
@@ -11222,9 +11223,11 @@ input[type=radio].inline {
   padding: 0 0 10px 0;
   border-bottom: 1px #dadada solid; }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .pro-sidebar__colheader {
-    font-size: 2.3rem; } }
+.pro-sidebar__colheader {
+  font-size: 2.6rem; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .pro-sidebar__colheader {
+      font-size: 2.3rem; } }
 
 @media screen and (min-width: 768px) {
   .pro-main__border {
@@ -18685,7 +18688,7 @@ body.channel.supporters p {
     position: absolute;
     z-index: 2; }
   .card-pro-feature a.card article .content {
-    padding: 220px 29px 36px 31px; } }
+    padding: 220px 29px 20px 31px; } }
   @media screen and (min-width: 992px) and (max-width: 1600px) {
     .card-pro-feature a.card article .content {
       padding: 150px 29px 20px 20px; } }
@@ -18710,14 +18713,9 @@ body.channel.supporters p {
 @media screen and (min-width: 992px) {
     .card-pro-feature a.card article .content time {
       display: block;
-      bottom: 40px;
+      bottom: 20px;
       right: 30px;
-      color: #fcfcfc; } }
-    @media screen and (min-width: 992px) and (max-width: 1600px) {
-      .card-pro-feature a.card article .content time {
-        bottom: 20px; } }
-
-@media screen and (min-width: 992px) {
+      color: #fcfcfc; }
     .card-pro-feature a.card article .content > p {
       color: #dadada;
       max-height: 70px;
@@ -19117,7 +19115,7 @@ body.channel.supporters p {
       .card-pro-column a.card > article > .content > .author {
         position: absolute; }
         .card-pro-column a.card > article > .content > .author > p {
-          font-size: 1.8rem;
+          font-size: 1.65rem;
           font-weight: 600;
           color: #cb2204;
           margin-top: 55px;
@@ -19159,7 +19157,7 @@ body.channel.supporters p {
       .card-pro-column-tablet a.card > article > .content > .author {
         position: absolute; }
         .card-pro-column-tablet a.card > article > .content > .author > p {
-          font-size: 1.8rem;
+          font-size: 1.65rem;
           font-weight: 600;
           color: #cb2204;
           margin-top: 55px;
@@ -19205,7 +19203,7 @@ body.channel.supporters p {
       .card-pro-column-mobile a.card > article > .content > .author {
         position: absolute; }
         .card-pro-column-mobile a.card > article > .content > .author > p {
-          font-size: 1.8rem;
+          font-size: 1.65rem;
           font-weight: 600;
           color: #cb2204;
           margin-top: 55px;
@@ -19257,6 +19255,7 @@ body.channel.supporters p {
         border-left: none;
         padding: 0; }
       .card-pro-opinion a.card > article > .content > p {
+        font-family: "tinos", Helvetica, Arial, sans-serif;
         font-size: 1.8rem;
         height: 80px; } }
 
@@ -19300,6 +19299,7 @@ body.channel.supporters p {
         border-left: none;
         padding: 0; }
       .card-pro-opinion-tablet a.card > article > .content > p {
+        font-family: "tinos", Helvetica, Arial, sans-serif;
         font-size: 1.8rem;
         height: 80px; } }
 
@@ -19343,6 +19343,7 @@ body.channel.supporters p {
         border-left: none;
         padding: 0; }
       .card-pro-opinion-mobile a.card > article > .content > p {
+        font-family: "tinos", Helvetica, Arial, sans-serif;
         font-size: 1.8rem;
         height: 80px; } }
 
