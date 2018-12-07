@@ -66,7 +66,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'card-rec card-rec-tablet inverted',
+                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile inverted',
                                     imageSize: {width:330, height:236}
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
@@ -83,7 +83,7 @@
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
                                         position: (articleCount+1), 
-                                        containerClass: 'col-sm-4 card-sm card-sm-tablet',
+                                        containerClass: 'col-sm-4 card-sm card-sm-tablet card-sm-mobile',
                                         imageSize: {width:230, height:206}
                                     }) | raw}}
                                     {% set articleCount = articleCount + 1 %}
@@ -129,7 +129,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'card-rec card-rec-tablet',
+                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile',
                                     imageSize: {width:330, height:236}
                                 }) | raw}}
 
@@ -153,7 +153,7 @@
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'col-xs-12 col-sm-6 col-md-12 card-sm card-sm-tablet' ~ rowCards[i],
+                                            containerClass: 'col-xs-12 col-sm-6 col-md-12 card-sm card-sm-tablet card-sm-mobile' ~ rowCards[i],
                                             imageSize: {width:370, height:270}
                                         }) | raw}}
 
@@ -180,7 +180,7 @@
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet',
+                                            containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet card-sm-mobile',
                                             imageSize: {width:263, height:209}
                                         }) | raw}}
 
@@ -205,7 +205,7 @@
                                 imgheight       : "208",
                                 container       : "mainAjaxArticles",
                                 non_pinned      : articlesArr.existingNonPinnedCount, 
-                                card_class      : "col-sm-3 card-sm",
+                                card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
                                 buttonClass     : "loadMoreArticles"
                             }) | raw }}
                         {% endif %}

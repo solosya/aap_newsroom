@@ -96,7 +96,7 @@
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'card-rec card-rec-tablet',
+                                            containerClass: 'card-rec card-rec-tablet card-rec-mobile',
                                             imageSize: {width:330, height:236}
                                         }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
@@ -150,7 +150,7 @@
 
                             {% if 'livingroom' == blogName | lower %}
                                 <section class="col-sm-12">
-                                    {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm card-sm-tablet advert', networkData: networkData }) | raw}}
+                                    {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm card-sm-tablet card-sm-mobile advert', networkData: networkData }) | raw}}
                                 </section>
                             {% else %}
 
@@ -159,7 +159,7 @@
                                             {{this.render('partials/_single-article.twig', {
                                                 article: articles[articleCount], 
                                                 position: (articleCount+1), 
-                                                containerClass: 'card-sm card-sm-tablet inverted',
+                                                containerClass: 'card-sm card-sm-tablet card-sm-mobile inverted',
                                                 imageSize: {width:335, height:260}
                                             }) | raw}}
                                             {% set articleCount = articleCount + 1 %}
@@ -181,7 +181,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet',
+                                containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet card-sm-mobile',
                                 imageSize: {width:255, height:208}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -202,7 +202,7 @@
                     imgheight       : "208",
                     container       : "mainAjaxArticles",
                     non_pinned      : articlesArr.existingNonPinnedCount, 
-                    card_class      : "col-sm-3 card-sm",
+                    card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
                     buttonClass     : "loadMoreArticles"
                 }) | raw }}
             {% endif %}

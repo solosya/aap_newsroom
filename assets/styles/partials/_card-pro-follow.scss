@@ -76,6 +76,50 @@
     @media #{$mobile} {
         @include card-pro-follow-base;
 
+        a.card {
+            height: 115px;
+            padding-bottom: 15px;
+            margin-top: 15px;
+            border-bottom: 0.5px #dadada solid;
+            >article {
+                > figure {
+                    width: 102px;
+                    height: 100px;
+
+                }
+                > .content {
+                    margin-left: 115px;
+                }
+            }
+
+        }
+
+           
+    }
+}
+
+.card-pro-follow-mobile-wide{
+    @media #{$mobile} {
+        @include card-pro-follow-base;
+
+        a.card {
+            height: 115px;
+            padding-bottom: 15px;
+            margin-top: 15px;
+            border-bottom: 0.5px #dadada solid;
+            >article {
+                > figure {
+                    width: 131px;
+                    height: 100px;
+
+                }
+                > .content {
+                    margin-left: 145px;
+                }
+            }
+
+        }
+
            
     }
 }

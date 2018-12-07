@@ -15,7 +15,7 @@
                 article: articles[articleCount], 
                 imageSize: {width:414, height:255},
                 site: site,
-                containerClass: 'card-rec u-margin-bottom-30'
+                containerClass: 'card-rec card-rec-tablet card-sm-mobile u-margin-bottom-30 u-mobile-no-margin-bottom u-mobile-no-border-bottom'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% endif %}
@@ -24,14 +24,14 @@
     </div>
 
     {% set borderOptions = ["pro-main__border",""] %}
-        
+    {% set mobBorders = [' u-mobile-no-border-bottom',''] %}      
     {% for i in 0..1 if articles[articleCount] %}
-        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}} u-mobile-no-padding">
+        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}}">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
-            containerClass: 'card-pro-follow card-pro-follow-tablet card-pro-follow-mobile'
+            containerClass: 'card-pro-follow card-pro-follow-tablet  card-sm-mobile u-no-margin-bottom' ~ mobBorders[i]
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         

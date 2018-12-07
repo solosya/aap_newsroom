@@ -332,11 +332,19 @@
 }
 
 .card-rec{
-    @include card-rec-base;
+    @media #{$desktop-up}{
+        @include card-rec-base;
+    }
 }
 
 .card-rec-tablet{
     @media #{$tablet}{
+        @include card-rec-base;
+    }
+}
+
+.card-rec-mobile{
+    @media #{$mobile}{
         @include card-rec-base;
     }
 }

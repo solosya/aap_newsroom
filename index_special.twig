@@ -123,7 +123,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
-                            {% set rowCards = ['card-rec inverted', 'card-rec'] %}                                                                
+                            {% set rowCards = ['card-rec card-rec-tablet card-rec-mobile inverted', 'card-rec card-rec-tablet card-rec-mobile'] %}                                                                
                             {% for i in 0..1 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {
@@ -164,7 +164,7 @@
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
                                         position: (articleCount+1), 
-                                        containerClass: 'col-sm-4 card-sm', 
+                                        containerClass: 'col-sm-4 card-sm card-sm-tablet card-sm-mobile', 
                                         imageSize: {width:633, height:420}
                                     }) | raw}}
                                     {% set articleCount = articleCount + 1 %}
@@ -191,7 +191,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'card-rec card-rec-tablet',
+                                containerClass: 'card-rec card-rec-tablet card-rec-mobile',
                                 imageSize: {width:330, height:236}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -207,7 +207,7 @@
                             imgheight       : "208",
                             container       : "mainAjaxArticles",
                             non_pinned      : articlesArr.existingNonPinnedCount, 
-                            card_class      : "col-sm-4 card-sm",
+                            card_class      : "col-sm-4 card-sm card-sm-tablet card-sm-mobile",
                             buttonClass     : "loadMoreArticles-index",
                         }) | raw }}
 
@@ -271,7 +271,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1), 
-                            containerClass: 'card-sm',
+                            containerClass: 'card-sm card-sm-tablet card-sm-mobile',
                             imageSize: {width:255, height:208}
                         }) | raw}}
                         {% set articleCount = articleCount + 1 %}

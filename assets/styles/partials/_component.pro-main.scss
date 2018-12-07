@@ -3,7 +3,9 @@
 }
 
 .pro-main__border {
-    border-right: 1px #979797 solid;
+	@media #{$tablet-up}{
+	    border-right: 1px #979797 solid;
+	}
 }
 
 .pro-main__header {
