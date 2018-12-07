@@ -108,8 +108,9 @@ body.channel, body.section {
                 display:block;
 
                 h2 {
-                    margin: 15px 0;
-                    font-size: ((26px / $font-size-base) + $font-unit);
+                    margin: 5px 0;
+                    font-size: 2.6em;
+                    height: 60px;
                 }
 
                 time {
@@ -123,6 +124,7 @@ body.channel, body.section {
                     font-weight: normal;
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;
+                    right: 0;
                 
                     @media screen and (max-width: $sm-break-down) {
                         float:none;
@@ -155,7 +157,7 @@ body.channel, body.section {
 
 
                     p {
-                        display:block;
+                        display:inline-block;
                     }
                 }
             }
