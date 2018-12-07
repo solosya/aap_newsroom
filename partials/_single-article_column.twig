@@ -22,7 +22,7 @@
     {% endif %}
 
 
-    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', 'crop': 'thumb', type: 'user'}) %}
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, { 'crop': 'thumb', type: 'user'}) %}
 
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
@@ -85,7 +85,7 @@
                     {# <time datetime="">{{publishDate | upper}}</time> #}
                     <div class="author">
 
-                        <img src="{{profileImg}}">
+                        <img src="{{profileImg}}" class="columnist-img">
                         <p>{{ article.createdBy['displayName'] }}</p>
                     </div><!-- .author-->
 
