@@ -8,9 +8,11 @@
             <h2 class="pro-main__header u-mobile-margin-bottom-10">{{ title }}</h2>
         </a>
     </div>
+
+    <hr class="divide15 visible-xs-block">
         
     {% for i in 0..2 if articles[articleCount] %}
-        <div class="col-md-4 col-sm-4 col-xs-12 u-mobile-no-padding">
+        <div class="col-md-4 col-sm-4 u-mobile-no-padding">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
