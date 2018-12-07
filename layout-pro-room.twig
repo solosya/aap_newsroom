@@ -42,7 +42,7 @@
     'partials/pro/hero-three-dark.twig',
     'partials/pro/hero-three-light.twig',
     'partials/pro/sm-three.twig',
-    'partials/pro/hero-four-dark.twig',
+    'partials/pro/hero-four-light.twig',
     'partials/pro/sm-three.twig'
     ] 
 %}
@@ -269,7 +269,7 @@
                                             {% endfor %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 u-mobile-margin-top-30 visible-sm-block visible-xs-block u-mobile-no-padding">
+                                    <div class="col-sm-6 u-mobile-margin-top-30 visible-sm-block visible-xs-block u-mobile-no-padding u-tablet-margin-bottom-40">
                                         <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
                                         {% for i in 0..4 if columnArticles[i] %}
                                             {{this.render('/partials/_single-article_column.twig', {
@@ -293,7 +293,7 @@
                                 </section>
                             {% elseif x == 3 %}
                                 {% set hiddenClass = ['','',' visible-xs-block',' visible-xs-block'] %}
-                                <section class="row u-no-margin-top u-margin-bottom-30 visible-sm-block visible-xs-block">
+                                <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 visible-sm-block visible-xs-block">
                                     <h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Opinion</h3> 
 
                                     {% for i in 0..3 if opinionArticles[i] %}
@@ -310,7 +310,7 @@
                                         {{this.render('/partials/_single-article.twig', {
                                                 article         : extraArticle[0], 
                                                 swap            : false,
-                                                containerClass  : 'col-sm-12 card-sm card-sm-tablet card-sm-mobile inverted', 
+                                                containerClass  : 'col-sm-12 card-rec-tablet-extra inverted', 
                                                 imageSize: {width:300, height:334}
                                             }) | raw}}
                                     {% endif %}

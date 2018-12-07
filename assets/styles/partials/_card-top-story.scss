@@ -229,7 +229,7 @@
         @include card-top-story-base;
         a.card{
             > article {
-
+                height: 65px;
                 > figure{
                     width: 65px;
                     flex: 0 0 65px;
@@ -237,6 +237,7 @@
 
                 > .content{
                     padding-bottom: 15px;
+                    min-height: 65px;
 
                     > h2{
                         font-size: em(16);

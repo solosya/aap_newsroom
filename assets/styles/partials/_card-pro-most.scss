@@ -63,7 +63,15 @@
 .card-pro-most-tablet{
     @media #{$tablet} {
         @include card-pro-most-base;
-        
+        a.card {
+            >article{
+                >.content{
+                    >h2 {
+                        width: 90%;
+                    }
+                }
+            }
+        }
     }
 }
 .card-pro-most-mobile{

@@ -343,6 +343,35 @@
     }
 }
 
+.card-rec-tablet-extra{
+    @media #{$tablet}{
+        @include card-rec-base;
+        a.card {
+            >article {
+                >figure {
+                    width: 300px;
+                    flex: 0 0 300px;
+                }
+                >.content{
+                    >.author{
+                        display: none;
+                    }
+                    >time{
+                        display: none;
+                    }
+                    >h2{
+                        margin-bottom: 10px;
+                    }
+                    >p{
+                        height: 80px;
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .card-rec-mobile{
     @media #{$mobile}{
         @include card-rec-base;

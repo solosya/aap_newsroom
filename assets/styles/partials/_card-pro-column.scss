@@ -76,6 +76,14 @@
 .card-pro-column-tablet{
     @media #{$tablet} {
         @include card-pro-column-base;
+        a.card {
+            > article {
+                height: 106px;
+                >.content{
+                    padding-top: 15px;
+                }
+            }
+        }
         
     }
 }
