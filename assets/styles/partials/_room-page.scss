@@ -313,12 +313,14 @@
 
 
                 h2 {
-                    margin: 25px 0;
-                    font-size: em(26);
+                    margin: 5px 0;
+                    font-size: 2.6em;
+                    height: 60px;
                     
                     @media screen and (max-width: $sm-break-down) {
                         font-size: em(20);
                         margin: 0 0 10px 0;
+                        height: 50px;
                     }
                 }
 
@@ -345,6 +347,7 @@
                     font-weight: normal;
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;
+                    right: 0;
 
                     @media screen and (max-width: $sm-break-down) {
                         float: none;
@@ -377,7 +380,7 @@
                     }
         
                     p {
-                        display:block;
+                        display:inline-block;
 
                         @media screen and (max-width: $sm-break-down) {
                             display:none;

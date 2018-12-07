@@ -13851,12 +13851,14 @@ body.channel, body.section {
         height: 116px;
         width: unset; } }
     .roompage .sidebar-inverted a.card .content h2 {
-      margin: 25px 0;
-      font-size: 2.6em; }
+      margin: 5px 0;
+      font-size: 2.6em;
+      height: 60px; }
       @media screen and (max-width: 767px) {
         .roompage .sidebar-inverted a.card .content h2 {
           font-size: 2em;
-          margin: 0 0 10px 0; } }
+          margin: 0 0 10px 0;
+          height: 50px; } }
     @media screen and (max-width: 991px) {
       .roompage .sidebar-inverted a.card .content > p {
         display: block !important;
@@ -13874,7 +13876,8 @@ body.channel, body.section {
       font-size: 1.2em;
       font-weight: normal;
       border-left: solid 1px #dadada;
-      color: #6c6c6c; }
+      color: #6c6c6c;
+      right: 0; }
       @media screen and (max-width: 767px) {
         .roompage .sidebar-inverted a.card .content time {
           float: none;
@@ -13896,7 +13899,7 @@ body.channel, body.section {
         height: 0;
         clear: both; }
       .roompage .sidebar-inverted a.card .content .author p {
-        display: block; }
+        display: inline-block; }
         @media screen and (max-width: 767px) {
           .roompage .sidebar-inverted a.card .content .author p {
             display: none; } }
