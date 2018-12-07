@@ -77,7 +77,16 @@
 .card-pro-most-mobile{
     @media #{$mobile} {
         @include card-pro-most-base;
-
+        a.card {
+            >article{
+                >.content{
+                    min-height: 70px;
+                    >h2 {
+                       font-size: rem(18); 
+                    }
+                }
+            }
+        }
            
     }
 }
