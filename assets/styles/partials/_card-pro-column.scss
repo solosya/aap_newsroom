@@ -94,7 +94,17 @@
 .card-pro-column-mobile{
     @media #{$mobile} {
         @include card-pro-column-base;
-
+        a.card {
+            > article {
+                
+                >.content{
+                    
+                    >h2{
+                        font-size: rem(18);
+                    }
+                }
+            }
+        }
            
     }
 }
