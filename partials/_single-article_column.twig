@@ -22,7 +22,7 @@
     {% endif %}
 
 
-    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {'crop': 'thumb', type: 'user'}) %}
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {'crop': 'thumb'}) %}
 
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
     {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
