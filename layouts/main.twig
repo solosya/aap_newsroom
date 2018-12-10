@@ -324,25 +324,7 @@
 
 
     {% if _User.isGuest() %}
-        {{this.registerJs('
-            $(function() {
-                $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
-                function(json) {
-                    console.log("My public IP address is: ", json.ip);
-
-                    var IPAdresses = ["203.4.189.121", "203.4.189.134", "203.6.189.28", "203.4.189.125", "203.4.182.124"];
-                    if (IPAdresses.indexOf(json.ip) != -1 ) {
-                        Acme.IPNoticePopup = new Acme.IPNotice("modal", "signin-modal", {"main": "ipnotice"});
-                        Acme.IPToken = new Acme.Token("IP_ACCOUNT");
-                        var token = Acme.IPToken.getToken();
-                        console.log("token", token);
-                        if (!token) {
-                            Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
-                        }  
-                    }
-                });
-            });
-        ')}}
+        {{this.registerJs('var ipChecker = new Acme.IPCheck()')}}
     {% endif %}
 
     
