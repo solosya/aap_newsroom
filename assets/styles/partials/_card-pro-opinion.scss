@@ -79,6 +79,15 @@
 .card-pro-opinion-mobile{
     @media #{$mobile} {
         @include card-pro-opinion-base;
+        a.card{
+            >article{
+                >.content{
+                    >p{
+                        height: 50px;
+                    }
+                }
+            }
+        }
 
            
     }

@@ -32,7 +32,7 @@
     
 
         <section class="featured-slider channel container-fluid u-margin-top-40">
-            <div class="container">
+            <div class="container u-mobile-no-padding">
 
                 {% if 'futurelearning' != blogData.title | lower %}
                     <h1 class="sectionpage">{{blogData.title}}</h1>
@@ -62,11 +62,11 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
                         {% if articles[articleCount] %}                                                                
-                        <div class="card-group">
+                        <div class="card-group u-mobile-no-margin-bottom">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile inverted',
+                                    containerClass: 'card-rec card-rec-tablet card-sm-mobile inverted',
                                     imageSize: {width:330, height:236}
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
@@ -116,7 +116,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'card-lg',
+                                containerClass: 'card-lg u-mobile-margin-bottom-30',
                                 imageSize: {width:750, height:518}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -129,7 +129,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile',
+                                    containerClass: 'card-rec card-rec-tablet card-sm-mobile',
                                     imageSize: {width:330, height:236}
                                 }) | raw}}
 
