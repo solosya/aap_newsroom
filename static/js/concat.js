@@ -29389,7 +29389,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if ( !$elem.is('input') && !$elem.is('a') ) {
+            if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
@@ -29629,11 +29629,11 @@ Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
 Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
 Acme.templates.ipnotice =  
-    '<p class="password-reset-form__p u-margin-bottom-20">You can access Pro for free – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
+    '<p class="ipdialog__p u-margin-bottom-20">You can access Pro for free – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
     <div> \
         <form> \
-            <a href="mailto:publish.aap.com.au" class="_btn _btn--red">CONTACT US</a> \
-            <button class="_btn _btn--outline" data-role="close" style="position:relative;top:1px">I\'LL DO IT LATER</button> \
+            <a href="mailto:publish.aap.com.au" class="ipdialog__btn _btn _btn--red _btn--outline-red">CONTACT US</a> \
+            <button class="ipdialog__btn _btn _btn--outline" data-role="close">I\'LL DO IT LATER</button> \
         </form> \
     </div>';
 
@@ -31017,7 +31017,7 @@ Acme.IPCheck = function() {
                 }
 
                 if ( userAccount ) {
-                    Acme.IPNoticePopup = new Acme.IPNotice("modal", "signin-modal", {"main": "ipnotice"});
+                    Acme.IPNoticePopup = new Acme.IPNotice("modal", "ipdialog", {"main": "ipnotice"});
                     Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
                 }
             });
@@ -31044,15 +31044,16 @@ Acme.IPNotice = function(template, parent, layouts) {
         this.parent.handle.call(this, e);
         var $elem = $(e.target);
 
-        if ( $elem.is('a') ) {
+        if ( $elem.is('a') || $elem.parent().is('a') ) {
             self.closeWindow();
+            Acme.IPToken.setToken('true');
         }
         if ($elem.is('button')) {
             if ($elem.data('role') === 'close') {
                 self.closeWindow();
             }
+            Acme.IPToken.setToken('true');
         }
-        Acme.IPToken.setToken('true');
     };
 
 /***                             ****

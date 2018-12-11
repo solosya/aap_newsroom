@@ -594,7 +594,7 @@
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if ( !$elem.is('input') && !$elem.is('a') ) {
+            if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {

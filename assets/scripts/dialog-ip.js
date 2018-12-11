@@ -72,7 +72,7 @@ Acme.IPCheck = function() {
                 }
 
                 if ( userAccount ) {
-                    Acme.IPNoticePopup = new Acme.IPNotice("modal", "signin-modal", {"main": "ipnotice"});
+                    Acme.IPNoticePopup = new Acme.IPNotice("modal", "ipdialog", {"main": "ipnotice"});
                     Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
                 }
             });
@@ -99,13 +99,14 @@ Acme.IPNotice = function(template, parent, layouts) {
         this.parent.handle.call(this, e);
         var $elem = $(e.target);
 
-        if ( $elem.is('a') ) {
+        if ( $elem.is('a') || $elem.parent().is('a') ) {
             self.closeWindow();
+            Acme.IPToken.setToken('true');
         }
         if ($elem.is('button')) {
             if ($elem.data('role') === 'close') {
                 self.closeWindow();
             }
+            Acme.IPToken.setToken('true');
         }
-        Acme.IPToken.setToken('true');
     };
