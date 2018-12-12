@@ -115,19 +115,19 @@ if ($('#stripekey').length > 0) {
             return;
         }
 
-        modal.render("spinner", "Your request is being processed.");
-
-
         isGood = false;
 
         if ($("#code-redeem").length > 0){
             modal.render("spinner", "Authorising code");
-            subscribe.data['planid'] = $('#planid').val();
-            subscribe.data['giftcode'] = $('#code-redeem').val();
-
+            self.data['planid'] = $('#planid').val();
+            self.data['giftcode'] = $('#code-redeem').val();
+            self.data['stripetoken'] = null;
             isGood = true;
 
-        } else{
+        } else {
+
+            modal.render("spinner", "Your request is being processed.");
+
             stripe.createToken(card).then(function(result) {
                 if (result.error) {
                     modal.closeWindow();
@@ -163,7 +163,7 @@ if ($('#stripekey').length > 0) {
                             if (self.data["group[1149][2]"]) {
                                 subscribeData["group[1149][2]"] = 2;
                             }
-                            console.log('calling mailchimp');
+
                             Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
                                 .then(function(r) {
                                     console.log(r);
