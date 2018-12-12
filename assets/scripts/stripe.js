@@ -117,18 +117,34 @@ if ($('#stripekey').length > 0) {
 
         modal.render("spinner", "Your request is being processed.");
 
-        stripe.createToken(card).then(function(result) {
-            if (result.error) {
-                modal.closeWindow();
-                // Inform the user if there was an error
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server
-                self.data['stripetoken'] = result.token.id;
-                self.data['planid'] = $('#planid').val();
-                self.data['redirect'] = false;
 
+        isGood = false;
+
+        if ($("#code-redeem").length > 0){
+            modal.render("spinner", "Authorising code");
+            subscribe.data['planid'] = $('#planid').val();
+            subscribe.data['giftcode'] = $('#code-redeem').val();
+
+            isGood = true;
+
+        } else{
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    modal.closeWindow();
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+                    self.data['stripetoken'] = result.token.id;
+                    self.data['planid'] = $('#planid').val();
+                    self.data['redirect'] = false;
+                    isGood = true;
+                }
+            });   
+        }
+
+            if (isGood) { 
                 formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
 
@@ -161,7 +177,8 @@ if ($('#stripekey').length > 0) {
                     
                 });
             }
-        });    
+            
+         
     };
     SubscribeForm.prototype.events = function()
     {
