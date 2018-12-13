@@ -30972,13 +30972,13 @@ Acme.IPCheck = function() {
                 // "203.4.*.*" or "203.4.189.*"
                 // "202.22.30.101-202.22.30.240" 
                 var IPAdresses = [
-                    // "202.22.30.101",
-                    // "203.97.232.81",
-                    // "202.22.18.245",
-                    // "202.22.18.242",
-                    // "203.97.41.137",
-                    // "202.55.102.220",
-                    // "103.23.18.91",
+                    "202.22.30.101",
+                    "203.97.232.81",
+                    "202.22.18.245",
+                    "202.22.18.242",
+                    "203.97.41.137",
+                    "202.55.102.220",
+                    "103.23.18.91",
                     "203.4.189.121", // AAP IP ADRESS
                 ];
 
@@ -32445,53 +32445,75 @@ if ($('#stripekey').length > 0) {
             return;
         }
 
-        modal.render("spinner", "Your request is being processed.");
 
-        stripe.createToken(card).then(function(result) {
-            if (result.error) {
-                modal.closeWindow();
-                // Inform the user if there was an error
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server
-                self.data['stripetoken'] = result.token.id;
-                self.data['planid'] = $('#planid').val();
-                self.data['redirect'] = false;
+        function submitForm() {
+            formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                formhandler(self.data, '/auth/paywall-signup').then(function(response) {
+                console.log(response);
 
+                if (response.success == 1) {
 
-                    if (response.success == 1) {
+                    if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
-                        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-
-                            var subscribeData = {
-                                "EMAIL": self.data['email'], 
-                                "FNAME": self.data['firstname'],
-                                "LNAME": self.data['lastname'],
-                            };
-                            if (self.data["group[1149][1]"]) {
-                                subscribeData["group[1149][1]"] = 1;
-                            }
-                            if (self.data["group[1149][2]"]) {
-                                subscribeData["group[1149][2]"] = 2;
-                            }
-                            console.log('calling mailchimp');
-                            Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                                .then(function(r) {
-                                    console.log(r);
-                                });                        
+                        var subscribeData = {
+                            "EMAIL": self.data['email'], 
+                            "FNAME": self.data['firstname'],
+                            "LNAME": self.data['lastname'],
+                        };
+                        if (self.data["group[1149][1]"]) {
+                            subscribeData["group[1149][1]"] = 1;
                         }
-                        
-                        // set time out used for Firefox which seems to need a little bit more time to figure things out
-                        setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
-                        // window.location.href = location.origin + '/auth/thank-you';
+                        if (self.data["group[1149][2]"]) {
+                            subscribeData["group[1149][2]"] = 2;
+                        }
+
+                        Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                            .then(function(r) {
+                                console.log(r);
+                            });                        
                     }
                     
-                });
-            }
-        });    
+                    // set time out used for Firefox which seems to need a little bit more time to figure things out
+                    // setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
+                    // window.location.href = location.origin + '/auth/thank-you';
+                }
+                
+            });
+        }
+
+
+        if ($("#code-redeem").length > 0) {
+            modal.render("spinner", "Authorising code");
+            self.data['planid'] = $('#planid').val();
+            self.data['giftcode'] = $('#code-redeem').val();
+            self.data['stripetoken'] = null;
+            submitForm();
+
+        } else {
+
+            modal.render("spinner", "Your request is being processed.");
+
+            var stripeCall = stripe.createToken(card).then(function(result) {
+                console.log(result);
+                if (result.error) {
+                    modal.closeWindow();
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+                    console.log("here");
+
+                    self.data['stripetoken'] = result.token.id;
+                    self.data['planid'] = $('#planid').val();
+                    self.data['redirect'] = false;
+                    submitForm();
+                }
+            });   
+        }
+
+            
+         
     };
     SubscribeForm.prototype.events = function()
     {
