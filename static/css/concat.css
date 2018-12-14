@@ -6946,7 +6946,9 @@ p.foundingpartners {
         background: url("../images/Holden_BASIC_TAG_LAND_POS_MONO.svg");
         background-repeat: no-repeat;
         background-size: contain;
-        margin-top: 15px; }
+        margin-top: 15px;
+        margin-right: 0;
+        margin-left: -15px; }
         @media screen and (max-width: 620px) {
           .sponsor-logos ul li.sponsor-holden {
             margin-left: 35px; } }
@@ -6956,9 +6958,22 @@ p.foundingpartners {
         background: url("../images/Chorus_logo-basic.svg");
         background-repeat: no-repeat;
         background-size: contain;
-        margin-left: 30px;
+        margin-left: -30px;
         margin-top: 15px;
         margin-right: 55px; }
+        @media screen and (max-width: 767px) {
+          .sponsor-logos ul li.sponsor-chorus {
+            margin-left: 50px; } }
+      .sponsor-logos ul li.sponsor-vodafone {
+        width: 155px;
+        height: 50px;
+        background: url("../images/vodafone-logo.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 15px; }
+        @media screen and (max-width: 620px) {
+          .sponsor-logos ul li.sponsor-vodafone {
+            margin-right: 0; } }
       .sponsor-logos ul li.sponsor-bellgully {
         width: 187px;
         height: 50px;
@@ -6996,7 +7011,9 @@ p.foundingpartners {
         background: url("../images/KB_logo_black.svg");
         background-repeat: no-repeat;
         background-size: contain;
-        margin-bottom: -5px; }
+        margin-bottom: -5px;
+        margin-right: 100px;
+        margin-left: 90px; }
       .sponsor-logos ul li.sponsor-ecostore {
         width: 160px;
         height: 50px;
@@ -7010,6 +7027,9 @@ p.foundingpartners {
         background: url("../images/stuff.svg?ver=1");
         background-position: 0 20px;
         background-repeat: no-repeat; }
+      @media screen and (max-width: 767px) {
+        .sponsor-logos ul li {
+          margin: 0; } }
 
 .u-invisible {
   visibility: hidden; }
