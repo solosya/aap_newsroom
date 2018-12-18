@@ -94,15 +94,32 @@
                         {% endif %}
 
                     </div>
-                    <div class="col-sm-12 col-md-4 sidebar">
+                    {#  {% if paywallSection == false %}
+                        <div class="col-sm-12 col-md-4 sidebar">
                     
-                    {% if paywallSection == false %}
-                        <section class="add channel-ad" >
-                            <div id="newAdHalf"></div>
-                            <span class="add-text">Advertisement</span>
+                   
+                            <section class="add channel-ad" >
+                                <div id="newAdHalf"></div>
+                                <span class="add-text">Advertisement</span>
+                            </section>
+                        </div>
+                    {% else %} #}
+                        <section class="channel-sidebar col-sm-12 col-md-4" >
+                            <div class="channel-sidebar__cta">
+
+                            </div>
+                            <div class="">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile',
+                                    imageSize: {width:230, height:206}
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            </div>
                         </section>
-                    {% endif %}
-                    </div>
+                    {# {% endif %} #}
+                    
                 </div>
 
 
