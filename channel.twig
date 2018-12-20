@@ -94,7 +94,7 @@
                         {% endif %}
 
                     </div>
-                    {#  {% if paywallSection == false %}
+                     {% if paywallSection == false %}
                         <div class="col-sm-12 col-md-4 sidebar">
                     
                    
@@ -103,12 +103,12 @@
                                 <span class="add-text">Advertisement</span>
                             </section>
                         </div>
-                    {% else %} #}
+                    {% else %}
                         <section class="channel-sidebar col-sm-12 col-md-4" >
                             <div class="channel-sidebar__cta">
 
                             </div>
-                            <div class="">
+                            <div class="u-margin-top-40">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
@@ -118,7 +118,7 @@
                                 {% set articleCount = articleCount + 1 %}
                             </div>
                         </section>
-                    {# {% endif %} #}
+                    {% endif %}
                     
                 </div>
 
