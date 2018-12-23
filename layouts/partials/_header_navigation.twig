@@ -68,7 +68,7 @@
 
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
-                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{parentItem.blogTitle}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{parentItem.blogTitle | lower}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=15" alt="{{parentItem.blogTitle}}-logo.svg?v=15">
                                     </a>
                                 </li>
