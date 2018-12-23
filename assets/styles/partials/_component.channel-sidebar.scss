@@ -1,10 +1,60 @@
 .channel-sidebar {
+	
 
+ 	.subscribe-form{
+        margin-top: 22px;
+        
+        input.field{
+            height: 42px;
+            border-radius: 0;
+            border: solid 1px #000000;
+            border-right: 0;
+            color: #6c6c6c;
+            font-size: em(18);
+        }
+
+        .btn{
+            border-radius: 0;
+            border: solid 1px #000000;
+            border-left: 0;
+            padding: 0;
+            font-size: 25px;
+            height: 42px;
+            line-height: 1;
+            color: #f83d30;
+        }
+    }
 }
 
 
 .channel-sidebar__cta{
-    height: 315px;
-    width: 300px;
+	padding: 15px;
+    height: 235px;
+    
+    margin-bottom: 79.5px;
+    background-color: black;
+}
 
+.channel-sidebar__cta-text{
+	font-family:$font-family-sans-serif;
+	font-size: rem(15);
+	color: white;
+	margin-bottom: 15px;
+}
+
+.channel-sidebar__cta-category{
+	font-family:$font-family-sans-serif;
+	font-size: rem(18);
+	color: #e22f22;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+.channel-sidebar__cta-directmail{
+	height: 32px;
+}
+
+.channel-sidebar__cta-divide{
+	border-top: 1px solid #fcfcfc;
+	width: 100%;
+	margin: 8px 0;
 }
