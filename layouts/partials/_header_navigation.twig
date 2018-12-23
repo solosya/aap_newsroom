@@ -69,7 +69,7 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{parentItem.blogTitle}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=14" alt="{{parentItem.blogTitle}}-logo.svg?v=14">
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=15" alt="{{parentItem.blogTitle}}-logo.svg?v=15">
                                     </a>
                                 </li>
                             {% endif  %}
@@ -98,7 +98,7 @@
 
                     {% else %} 
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=14" alt="logo" class="main-logo">
+                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=15" alt="logo" class="main-logo">
                         </a>
                      
                        {#  <img class="website-award hidden-xs hidden-sm" src="{{networkData.templatePath}}/static/images/website-of-the-year.svg">
@@ -193,7 +193,7 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=14" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=15" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -314,7 +314,7 @@
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=14" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=15" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
