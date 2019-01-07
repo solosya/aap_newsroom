@@ -155,18 +155,18 @@
                                         </form>
                                     </div>
                             </section> #}
-                            <div class="" style="background-color:black;">
-                                {% for i in 0..1 %}
+                            <div class="" >
+                                
                                     {% if articles[articleCount] %}
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'card-pro-partial card-pro-partial-tablet card-pro-partial-mobile',
-                                            imageSize: {width:230, height:206}
+                                            containerClass: 'card-lg-short',
+                                            imageSize: {width:360, height:235}
                                         }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
                                     {% endif %}
-                                {% endfor %}
+                                
                             </div>
                             <div class="u-margin-top-40">
                                 {% if articles[articleCount] %}
