@@ -155,9 +155,9 @@
                                     blogId: blog['id'], 
                                      
                             }) %}
-    {% elseif blog.title | lower == "opinion" %}
+    {% elseif blog.title | lower == "currency" %}
 
-         {% set opinionArticles = _Article.getRecentArticles({ 
+         {% set currencyArticles = _Article.getRecentArticles({ 
                                     limit: 4, 
                                     blogId: blog['id'], 
                                      
@@ -294,11 +294,11 @@
                             {% elseif x == 3 %}
                                 {% set hiddenClass = ['','',' visible-xs-block',' visible-xs-block'] %}
                                 <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 visible-sm-block visible-xs-block">
-                                    <a href="{{networkData.defaultBlogUrl}}/@opinion"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Opinion</h3></a>
+                                    <a href="{{networkData.defaultBlogUrl}}/@currency"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Currency</h3></a>
 
-                                    {% for i in 0..3 if opinionArticles[i] %}
+                                    {% for i in 0..3 if currencyArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
-                                            article         : opinionArticles[i], 
+                                            article         : currencyArticles[i], 
                                             swap            : false,
                                             containerClass  : 'col-sm-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
                                         }) | raw}}
@@ -371,10 +371,10 @@
                             </section>
 
                             <section class="col-sm-12 u-margin-top-40">
-                                 <a href="{{networkData.defaultBlogUrl}}/@opinion"><h3 class="pro-sidebar__colheader">Opinion</h3></a>
-                                {% for i in 0..3 if opinionArticles[i] %}
+                                 <a href="{{networkData.defaultBlogUrl}}/@currency"><h3 class="pro-sidebar__colheader">Currency</h3></a>
+                                {% for i in 0..3 if currencyArticles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                        article         : opinionArticles[i], 
+                                        article         : currencyArticles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile'
                                     }) | raw}}
