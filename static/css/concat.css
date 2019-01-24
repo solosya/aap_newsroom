@@ -11861,6 +11861,38 @@ input[type=radio].inline {
       background-color: #2b2926;
       margin-bottom: 20px; } }
 
+.wisp-logo {
+  position: absolute;
+  width: 150px; }
+  @media screen and (min-width: 992px) {
+    .wisp-logo {
+      left: 180px;
+      top: 40px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .wisp-logo {
+      left: 425px;
+      top: 0; } }
+  @media screen and (max-width: 767px) {
+    .wisp-logo {
+      width: 100px;
+      left: 150px;
+      top: -5px; } }
+
+.wisp-logo__text {
+  position: absolute; }
+  @media screen and (min-width: 992px) {
+    .wisp-logo__text {
+      left: 125px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .wisp-logo__text {
+      width: 100px;
+      top: 15px;
+      left: 375px; } }
+  @media screen and (max-width: 767px) {
+    .wisp-logo__text {
+      left: 95px;
+      top: 5px; } }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }

@@ -1,0 +1,32 @@
+.wisp-logo{
+	position: absolute;
+	width: 150px;
+	@media #{$desktop-up}{
+		left: 180px;
+	    top: 40px;
+	}
+	@media #{$tablet}{
+		left: 425px;
+	    top: 0;
+	}
+	@media #{$mobile}{
+		width: 100px;
+		left: 150px;
+	    top: -5px;
+	}
+}
+.wisp-logo__text{
+	position: absolute;   
+	@media #{$desktop-up}{
+		left: 125px;
+	}
+	@media #{$tablet}{
+		width: 100px;
+	    top: 15px;
+	    left: 375px;
+	}
+	@media #{$mobile}{
+		left: 95px;
+	    top: 5px;
+	}
+}
