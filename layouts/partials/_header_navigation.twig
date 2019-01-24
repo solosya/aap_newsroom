@@ -100,9 +100,10 @@
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
                             <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=16" alt="logo" class="main-logo">
                         </a>
-                        <a><p class="wisp-logo__text">Sponsored by</p>
-                        <img class="wisp-logo" src="{{networkData.templatePath}}/static/images/WISP-logo.png"></a>
-
+                        {% if parentItem.blogTitle == 'lockerroom' %}
+                            <a><p class="wisp-logo__text">Sponsored by</p>
+                            <img class="wisp-logo" src="{{networkData.templatePath}}/static/images/WISP-logo.png"></a>
+                        {% endif %}
                        
                         
                         <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
