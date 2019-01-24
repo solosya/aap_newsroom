@@ -2,8 +2,8 @@
 	position: absolute;
 	width: 150px;
 	@media #{$desktop-up}{
-		left: 180px;
-	    top: 40px;
+		left: 220px;
+	    top: 48px;
 	}
 	@media #{$tablet}{
 		left: 425px;
@@ -17,8 +17,10 @@
 }
 .wisp-logo__text{
 	position: absolute;   
+	font-weight: 600;
 	@media #{$desktop-up}{
-		left: 125px;
+		left: 155px;
+	    font-size: 12px;
 	}
 	@media #{$tablet}{
 		width: 100px;
