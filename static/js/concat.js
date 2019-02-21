@@ -29632,7 +29632,7 @@ Acme.templates.ipnotice =
     '<p class="ipdialog__p u-margin-bottom-20">You can access Pro under this subscription – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
     <div> \
         <form> \
-            <a href="mailto:publish.aap.com.au" class="ipdialog__btn _btn _btn--red _btn--outline-red">CONTACT US</a> \
+            <a href="mailto:pro@newsroom.co.nz" class="ipdialog__btn _btn _btn--red _btn--outline-red">CONTACT US</a> \
             <button class="ipdialog__btn _btn _btn--outline" data-role="close">I\'LL DO IT LATER</button> \
         </form> \
     </div>';
