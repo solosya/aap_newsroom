@@ -29629,7 +29629,7 @@ Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
 Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
 Acme.templates.ipnotice =  
-    '<p class="ipdialog__p u-margin-bottom-20">You can access Pro for free – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
+    '<p class="ipdialog__p u-margin-bottom-20">You can access Pro under this subscription – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
     <div> \
         <form> \
             <a href="mailto:publish.aap.com.au" class="ipdialog__btn _btn _btn--red _btn--outline-red">CONTACT US</a> \
@@ -30979,7 +30979,26 @@ Acme.IPCheck = function() {
                     "203.97.41.137",
                     "202.55.102.220",
                     "103.23.18.91",
-                    "203.4.189.121", // AAP IP ADRESS
+                    //Ministry of Education:
+                    "202.037.032.*",
+                    "202.037.036.*",
+                    //NZQA:
+                    "163.7.134.132",
+                    "202.020.005.166",
+                    //TEC:
+                    "203.217.142.241",
+                    "203.217.142.242",
+                    //ERO:
+                    "131.203.224.86",
+                    //PWC:
+                    "203.97.65.97",
+                    "203.97.65.100",
+                    //Treasury and DPMC IP addresses below - 
+                    "202.36.172.0-202.36.172.255",
+                    "202.36.173.0-202.36.173.255",
+                    "202.36.47.0-202.36.47.255",
+                    //AAP:
+                    "203.4.189.121",
                 ];
 
                 var userAccount = false;
