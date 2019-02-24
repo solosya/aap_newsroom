@@ -19,7 +19,7 @@ Acme.IPCheck = function() {
         var token = Acme.IPToken.getToken();
 
         if (!token) {
-
+            console.log('got-token');
             $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
             function(json) {
 
@@ -52,6 +52,9 @@ Acme.IPCheck = function() {
                     "202.36.172.0-202.36.172.255",
                     "202.36.173.0-202.36.173.255",
                     "202.36.47.0-202.36.47.255",
+                    //MBIE - 
+                    "116.89.224.153",
+                    "203.144.40.153",
                     //AAP:
                     "203.4.189.121",
                 ];
