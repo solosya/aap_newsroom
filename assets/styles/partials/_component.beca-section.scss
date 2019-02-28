@@ -16,8 +16,14 @@
     }
 }
 .beca-section__article{
+    @media  #{$desktop-up}{
+        padding-right: 20px;
+    }
     @media  #{$mobile}{
         margin-top: -35px;
+    }
+    @media  #{$tablet}{
+
     }
 }
 
