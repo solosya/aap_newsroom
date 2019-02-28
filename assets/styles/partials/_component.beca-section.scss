@@ -8,11 +8,12 @@
         padding-right: 0;
     }
     @media  #{$mobile}{
-        border-bottom: solid 1px #dadada;
         margin-top: 0;
         margin-bottom: 15px;
         height: 45px;
         padding-right: 0;
+        width: fit-content;
+        margin-left: 25px;
     }
 }
 .beca-section__article{
@@ -28,7 +29,7 @@
         margin-bottom: 15px;
         height: 45px;
         padding-right: 0;
-        margin-top: -35px;
+        margin-top: -25px;
     }
     @media  #{$tablet}{
         margin-top: -45px;
@@ -37,26 +38,52 @@
     }
 }
 
-.beca-section__text{
+.beca-section__arttext{
     font-size: rem(24);
     font-weight: 600;
     color: #000000;
     float: right;
     margin-top: 13px;
     @media  #{$mobile}{
-        font-size: rem(10);
-        margin-right: -12px;
+        font-size: rem(12);
+        margin-right: -3px;
+        margin-top: 11.5px;
     }
 
 }
 
-.beca-section__logo {
+.beca-section__artlogo {
     height: 57px;
     float: right;
     margin-right: -20px;
     margin-left: -8px;
     @media  #{$mobile}{
-        height: 45px;
+        height: 37px;
+        margin: 0;
+    }
+}
+
+.beca-section__chatext{
+    font-size: rem(24);
+    font-weight: 600;
+    color: #000000;
+    float: right;
+    margin-top: 13px;
+    @media  #{$mobile}{
+        font-size: rem(14);
+        margin-right: -5px;
+        margin-top: 14px;
+    }
+
+}
+
+.beca-section__chalogo {
+    height: 57px;
+    float: right;
+    margin-right: -20px;
+    margin-left: -8px;
+    @media  #{$mobile}{
+        height: 42px;
         margin: 0;
     }
 }

@@ -11911,11 +11911,12 @@ input[type=radio].inline {
       padding-right: 0; } }
   @media screen and (max-width: 767px) {
     .beca-section__channel {
-      border-bottom: solid 1px #dadada;
       margin-top: 0;
       margin-bottom: 15px;
       height: 45px;
-      padding-right: 0; } }
+      padding-right: 0;
+      width: fit-content;
+      margin-left: 25px; } }
 
 .beca-section__article {
   padding-bottom: 10px;
@@ -11931,32 +11932,55 @@ input[type=radio].inline {
       margin-bottom: 15px;
       height: 45px;
       padding-right: 0;
-      margin-top: -35px; } }
+      margin-top: -25px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .beca-section__article {
       margin-top: -45px;
       margin-bottom: 15px;
       padding-right: 0; } }
 
-.beca-section__text {
+.beca-section__arttext {
   font-size: 2.4rem;
   font-weight: 600;
   color: #000000;
   float: right;
   margin-top: 13px; }
   @media screen and (max-width: 767px) {
-    .beca-section__text {
-      font-size: 1rem;
-      margin-right: -12px; } }
+    .beca-section__arttext {
+      font-size: 1.2rem;
+      margin-right: -3px;
+      margin-top: 11.5px; } }
 
-.beca-section__logo {
+.beca-section__artlogo {
   height: 57px;
   float: right;
   margin-right: -20px;
   margin-left: -8px; }
   @media screen and (max-width: 767px) {
-    .beca-section__logo {
-      height: 45px;
+    .beca-section__artlogo {
+      height: 37px;
+      margin: 0; } }
+
+.beca-section__chatext {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #000000;
+  float: right;
+  margin-top: 13px; }
+  @media screen and (max-width: 767px) {
+    .beca-section__chatext {
+      font-size: 1.4rem;
+      margin-right: -5px;
+      margin-top: 14px; } }
+
+.beca-section__chalogo {
+  height: 57px;
+  float: right;
+  margin-right: -20px;
+  margin-left: -8px; }
+  @media screen and (max-width: 767px) {
+    .beca-section__chalogo {
+      height: 42px;
       margin: 0; } }
 
 .room-view {
