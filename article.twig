@@ -223,6 +223,12 @@
 
                                <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
+                                    {% if blogData.title | lower == 'new auckland' or blogData.title | lower == 'athletics' %}
+                                        <div class="beca-section visible-sm-block visible-xs-block">
+                                            <img class="beca-section__logo" src="{{networkData.templatePath}}/static/images/BECA.png?v=1">
+                                            <p class="beca-section__text">In association with</p>
+                                        </div>
+                                    {% endif %}
                                     <h1>{{ quotes.smarten(article.title) }}</h1>
 
                                     {{ content  | _resizeImages({"width":750}) 
@@ -292,6 +298,13 @@
                                             <section class="" style="width:300px;margin:auto;">
                                                 <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu"><img src="{{networkData.templatePath}}/static/images/LockerRoomBanner.gif"></a>
                                             </section>
+                                    {% endif %}
+
+                                    {% if blogData.title | lower == 'new auckland' or blogData.title | lower == 'athletics' %}
+                                        <div class="beca-section visible-md-block visible-lg-block">
+                                            <img class="beca-section__logo" src="{{networkData.templatePath}}/static/images/BECA.png?v=1">
+                                            <p class="beca-section__text">In association with</p>
+                                        </div>
                                     {% endif %}
 
                                     <section class="add sidebar-add ">
