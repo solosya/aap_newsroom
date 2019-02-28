@@ -1,29 +1,41 @@
-.beca-section {
+.beca-section__channel {
     padding-bottom: 10px;
-    border-bottom: solid 1px #dadada;
-    margin-bottom: 40px;
     height: 61px;
     padding-right: 2.5px;
+    margin-top: -65px;
     @media  #{$tablet}{
+        border-bottom: solid 1px #dadada;
         margin-top: -45px;
         margin-bottom: 15px;
         padding-right: 0;
     }
     @media  #{$mobile}{
+        border-bottom: solid 1px #dadada;
+        margin-top: 0;
         margin-bottom: 15px;
         height: 45px;
         padding-right: 0;
     }
 }
 .beca-section__article{
+    padding-bottom: 10px;
+    border-bottom: solid 1px #dadada;
+    margin-bottom: 40px;
+    height: 61px;
+    padding-right: 2.5px;
     @media  #{$desktop-up}{
         padding-right: 20px;
     }
     @media  #{$mobile}{
+        margin-bottom: 15px;
+        height: 45px;
+        padding-right: 0;
         margin-top: -35px;
     }
     @media  #{$tablet}{
-
+        margin-top: -45px;
+        margin-bottom: 15px;
+        padding-right: 0;
     }
 }
 

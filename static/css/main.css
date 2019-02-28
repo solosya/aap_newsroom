@@ -11900,30 +11900,45 @@ input[type=radio].inline {
       left: 95px;
       top: 5px; } }
 
-.beca-section {
+.beca-section__channel {
+  padding-bottom: 10px;
+  height: 61px;
+  padding-right: 2.5px;
+  margin-top: -65px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .beca-section__channel {
+      border-bottom: solid 1px #dadada;
+      margin-top: -45px;
+      margin-bottom: 15px;
+      padding-right: 0; } }
+  @media screen and (max-width: 767px) {
+    .beca-section__channel {
+      border-bottom: solid 1px #dadada;
+      margin-top: 0;
+      margin-bottom: 15px;
+      height: 45px;
+      padding-right: 0; } }
+
+.beca-section__article {
   padding-bottom: 10px;
   border-bottom: solid 1px #dadada;
   margin-bottom: 40px;
   height: 61px;
   padding-right: 2.5px; }
+  @media screen and (min-width: 992px) {
+    .beca-section__article {
+      padding-right: 20px; } }
+  @media screen and (max-width: 767px) {
+    .beca-section__article {
+      margin-bottom: 15px;
+      height: 45px;
+      padding-right: 0;
+      margin-top: -35px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
-    .beca-section {
+    .beca-section__article {
       margin-top: -45px;
       margin-bottom: 15px;
       padding-right: 0; } }
-  @media screen and (max-width: 767px) {
-    .beca-section {
-      margin-bottom: 15px;
-      height: 45px;
-      padding-right: 0; } }
-
-@media screen and (min-width: 992px) {
-  .beca-section__article {
-    padding-right: 20px; } }
-
-@media screen and (max-width: 767px) {
-  .beca-section__article {
-    margin-top: -35px; } }
 
 .beca-section__text {
   font-size: 2.4rem;
