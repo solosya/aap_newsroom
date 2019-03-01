@@ -157,7 +157,10 @@
         }
 
         .rooms-link{
-            float: right;        
+            float: right;
+            @media #{$desktop-up}{
+                float:none;
+            }        
             @media screen and (max-width: $mmd-break-down) {
                 float: left;
             }       
