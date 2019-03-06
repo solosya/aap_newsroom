@@ -11995,15 +11995,11 @@ input[type=radio].inline {
   padding-left: 10px; }
 
 .rnz-widget__ul {
-  counter-reset: rnz-counter;
   background: #dedede; }
 
 .rnz-widget__li {
-  border-bottom: 1px solid white; }
-  .rnz-widget__li:before {
-    content: counter(rnz-counter);
-    counter-increment: rnz-counter;
-    color: #212427; }
+  border-bottom: 1px solid white;
+  list-style: decimal; }
 
 .rnz-widget__url {
   color: #212427;

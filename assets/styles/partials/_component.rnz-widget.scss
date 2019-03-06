@@ -10,17 +10,12 @@
 }
 
 .rnz-widget__ul{
-	counter-reset: rnz-counter;
 	background: #dedede;
 }
 
 .rnz-widget__li{
 	border-bottom: 1px solid white;
-	&:before{
-		content: counter(rnz-counter);
-		counter-increment: rnz-counter;
-		color: #212427;
-	}
+	list-style: decimal;
 }
 
 .rnz-widget__url{
