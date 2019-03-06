@@ -11986,6 +11986,29 @@ input[type=radio].inline {
       height: 42px;
       margin: 0; } }
 
+.rnz-widget {
+  width: 300px; }
+
+.rnz-widget__header {
+  color: #FFF;
+  background: black;
+  padding-left: 10px; }
+
+.rnz-widget__ul {
+  counter-reset: rnz-counter;
+  background: #dedede; }
+
+.rnz-widget__li {
+  border-bottom: 1px solid white; }
+  .rnz-widget__li:before {
+    content: counter(rnz-counter);
+    counter-increment: rnz-counter;
+    color: #212427; }
+
+.rnz-widget__url {
+  color: #212427;
+  font-size: 12px; }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }
