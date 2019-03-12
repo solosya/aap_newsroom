@@ -46,6 +46,10 @@
             "feed": "",
             "link": ""
         },
+        "ideasroom": {
+            "feed": "",
+            "link": ""
+        },
         "futurelearning": {
             "feed": "",
             "link": ""
@@ -63,10 +67,6 @@
             "link": ""
         },
         "podcasts": {
-            "feed": "",
-            "link": ""
-        },
-        "business": {
             "feed": "",
             "link": ""
         },
@@ -316,11 +316,11 @@
                     {% endif %}
 
                     </div>
-
-                    <div class="future">
-                        {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
-                    </div>
-
+                    {% if sections['futurelearning'].feed.articles|length > 0 %}
+                        <div class="future">
+                            {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
+                        </div>
+                    {% endif %}
                 </div>
 
 
@@ -338,7 +338,9 @@
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% if sections['investigations'].feed.articles|length > 0 %}
+                    {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
