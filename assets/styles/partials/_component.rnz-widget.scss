@@ -3,9 +3,23 @@
 }
 
 .rnz-widget__header{
-	color: #FFF;
+	color: #FFF !important;
     background: black;
-    padding-left: 10px;
+    padding: 5px 0 5px 10px;
+    font-size: rem(23);
+    font-weight: 600;
+    font-family: $font-family-sans-serif;
+    &:after{
+    	content: '';
+    	background-image:url(../images/logo-rnz.png);
+    	background-repeat: no-repeat;
+    	background-position: center;
+    	background-size: 99px;
+    	float: right;
+    	height: 35px;
+	    width: 99px;
+	    margin-top: -5px;
+    }
     
 }
 
@@ -17,15 +31,21 @@
 .rnz-widget__li{
 	border-bottom: 1px solid white;
 	list-style: none;
+	font-family: $font-family-serif;
+	font-size: rem(15);
+	font-weight: 600;
+	padding: 10px 23px 10px 0;
+
 	&:before{
 		counter-increment: rnz-counter;
 		content: counter(rnz-counter);
-		color: #212427;
-		margin-left: -10px;
+		color: #d82229;
+		margin-left: -25px;
+		margin-right: 15px;
 	}
 }
 
 .rnz-widget__url{
 	color: #212427;
-	font-size: 12px;
+	// font-size: 12px;
 }

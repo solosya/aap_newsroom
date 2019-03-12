@@ -11990,9 +11990,22 @@ input[type=radio].inline {
   width: 300px; }
 
 .rnz-widget__header {
-  color: #FFF;
+  color: #FFF !important;
   background: black;
-  padding-left: 10px; }
+  padding: 5px 0 5px 10px;
+  font-size: 2.3rem;
+  font-weight: 600;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+  .rnz-widget__header:after {
+    content: '';
+    background-image: url(../images/logo-rnz.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 99px;
+    float: right;
+    height: 35px;
+    width: 99px;
+    margin-top: -5px; }
 
 .rnz-widget__ul {
   counter-reset: rnz-counter;
@@ -12000,16 +12013,20 @@ input[type=radio].inline {
 
 .rnz-widget__li {
   border-bottom: 1px solid white;
-  list-style: none; }
+  list-style: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px 23px 10px 0; }
   .rnz-widget__li:before {
     counter-increment: rnz-counter;
     content: counter(rnz-counter);
-    color: #212427;
-    margin-left: -10px; }
+    color: #d82229;
+    margin-left: -25px;
+    margin-right: 15px; }
 
 .rnz-widget__url {
-  color: #212427;
-  font-size: 12px; }
+  color: #212427; }
 
 .room-view {
   margin-top: 70px;
@@ -14397,6 +14414,9 @@ body.channel, body.section {
         margin-top: 15px; } }
   body.channel .featured-slider, body.section .featured-slider {
     margin-bottom: 70px; }
+    @media screen and (max-width: 767px) {
+      body.channel .featured-slider, body.section .featured-slider {
+        margin-bottom: 20px; } }
     body.channel .featured-slider.channel a.card, body.section .featured-slider.channel a.card {
       height: 440px; }
       @media screen and (max-width: 767px) {
@@ -18509,6 +18529,7 @@ body.channel.supporters p {
         margin-top: -15px; }
     .card-top-story-mobile a.card > article > .content {
       padding-bottom: 5px;
+      padding-top: 10px;
       border: 0;
       min-height: 56px; }
       .card-top-story-mobile a.card > article > .content > .category {

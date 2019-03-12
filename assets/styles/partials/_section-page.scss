@@ -51,6 +51,9 @@ body.channel, body.section {
     .featured-slider{
 
         margin-bottom:70px;
+        @media #{$mobile}{
+            margin-bottom:20px;
+        }
 
         &.channel {
             a.card {                
