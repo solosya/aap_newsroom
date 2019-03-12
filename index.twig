@@ -65,6 +65,14 @@
         "podcasts": {
             "feed": "",
             "link": ""
+        },
+        "business": {
+            "feed": "",
+            "link": ""
+        },
+        "investigations": {
+            "feed": "",
+            "link": ""
         }
     }
 %}
@@ -329,6 +337,8 @@
                 {% if sections['lockerroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
+
+                {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
 
                 {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}

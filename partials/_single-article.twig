@@ -82,11 +82,15 @@
         {% set author = author ~  '<p>' ~ article.createdBy['displayName'] ~ '</p>' %}
     {% endif %}    
 
+    {% if article.label | lower == 'investigations' %}
+        {% set invLabel = ' investigations' %}
+    {% else %}
+        {% set invLabel = '' %}
+    {% endif %} 
 
 
 
-
-    <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
+    <div class="{{containerClass}}{{invLabel}}" data-title="{{ articleTitle | raw }}">
         
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
 
