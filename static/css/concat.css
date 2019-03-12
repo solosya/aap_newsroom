@@ -13671,6 +13671,9 @@ input[type=radio].inline {
   margin-top: 80px; }
   .room-investigations > header {
     margin-bottom: 20px; }
+    @media screen and (min-width: 992px) {
+      .room-investigations > header {
+        height: 50px; } }
     @media screen and (max-width: 490px) {
       .room-investigations > header {
         width: 205px; } }
@@ -13802,7 +13805,7 @@ input[type=radio].inline {
         -webkit-flex: 0 0 45%;
         flex: 0 0 45%;
         overflow: hidden;
-        padding: 38px 30px 40px 59px;
+        padding: 38px 80px 40px 59px;
         max-width: 510px; }
         @media screen and (max-width: 1200px) {
           .room-investigations > .featured > a > article > .content {
