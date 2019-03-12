@@ -13593,14 +13593,7 @@ input[type=radio].inline {
             flex: 0 0 100%;
             padding: 19px 15px; } }
         .room-investigations > .featured > a > article > .content .category {
-          font-size: 1.4em;
-          font-weight: bold;
-          color: #8a8b93; }
-          @media screen and (max-width: 620px) {
-            .room-investigations > .featured > a > article > .content .category {
-              font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-              font-size: 1.4em;
-              text-transform: uppercase; } }
+          display: none; }
         .room-investigations > .featured > a > article > .content > h2 {
           font-size: 4.4em;
           font-weight: bold;
@@ -13618,6 +13611,12 @@ input[type=radio].inline {
             background-image: url(../images/nz-on-air.png);
             background-repeat: no-repeat;
             background-size: 69px; }
+            @media screen and (max-width: 767px) {
+              .room-investigations > .featured > a > article > .content > h2:before {
+                top: unset;
+                left: unset;
+                right: 15px;
+                bottom: 0; } }
         .room-investigations > .featured > a > article > .content > p {
           font-size: 2em;
           line-height: 1.25;
@@ -13652,6 +13651,13 @@ input[type=radio].inline {
           margin-left: -42px;
           height: 28px;
           font-weight: 100; }
+          @media screen and (max-width: 767px) {
+            .room-investigations > .featured > a > article > .content:before {
+              width: 100%;
+              padding: 1px 0 0 15px;
+              position: absolute;
+              top: 300px;
+              margin-left: -15px; } }
         .room-investigations > .featured > a > article > .content:after {
           content: '';
           background-image: url(../images/newsroom-logo.svg);
@@ -13661,6 +13667,9 @@ input[type=radio].inline {
           top: 5px;
           width: 100%;
           height: 40px; }
+          @media screen and (max-width: 767px) {
+            .room-investigations > .featured > a > article > .content:after {
+              top: 275px; } }
       .room-investigations > .featured > a > article > figure {
         width: 55%;
         -webkit-flex: 0 0 55%;
@@ -13686,7 +13695,7 @@ input[type=radio].inline {
               height: 100%;
               bottom: 0;
               top: 0;
-              background: #979797;
+              background: #aa272e;
               position: absolute; } }
 
 .article__figure-caption {
