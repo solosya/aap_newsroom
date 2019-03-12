@@ -13435,7 +13435,8 @@ input[type=radio].inline {
 
 .room-ideas {
   border-bottom: 1px solid #d4d4d4;
-  margin-bottom: 65px; }
+  margin-bottom: 65px;
+  margin-top: 80px; }
   @media screen and (max-width: 991px) {
     .room-ideas {
       margin-bottom: 40px;
@@ -13445,6 +13446,12 @@ input[type=radio].inline {
     @media screen and (max-width: 490px) {
       .room-ideas > header {
         width: 205px; } }
+    @media screen and (min-width: 768px) {
+      .room-ideas > header .ideas-logo {
+        width: 250px; } }
+    @media screen and (max-width: 767px) {
+      .room-ideas > header .ideas-logo {
+        width: 200px; } }
   .room-ideas > .articles > div > div:last-child article {
     border-right: 0; }
   .room-ideas > .articles article {
