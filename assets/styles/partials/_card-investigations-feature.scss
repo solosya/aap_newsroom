@@ -25,16 +25,6 @@
 
         }
     }
-    &:before{
-        content: '';
-        width: 20px;
-        height: 100%;
-        bottom: 0;
-        top: 0;
-        position: absolute;
-        z-index: 2;
-        background: #aa272e;
-    }
 }
 .card-investigations-feature{
     @media #{$desktop-up} {
@@ -50,17 +40,17 @@
                     h2 {
                         min-height:180px;
                         max-height: 180px;                        
-                        &:before{
-                            content: '';
-                            position: absolute;
-                            top: 95px;
-                            right: 30px;
-                            height: 75px;
-                            width: 119px;
-                            background-image: url(../images/nz-on-air.png);
-                            background-repeat: no-repeat;
-                            background-size: 119px;
-                        }
+                        // &:before{
+                        //     content: '';
+                        //     position: absolute;
+                        //     top: 95px;
+                        //     right: 30px;
+                        //     height: 75px;
+                        //     width: 119px;
+                        //     background-image: url(../images/nz-on-air.png);
+                        //     background-repeat: no-repeat;
+                        //     background-size: 119px;
+                        // }
                     }
                     time {
                         display: block;

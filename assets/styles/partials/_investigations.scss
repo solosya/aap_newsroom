@@ -241,23 +241,23 @@
                         margin-top: 70px;
                     }
                     
-                    &:before{
-                        content: '';
-                        position: absolute;
-                        top: 60px;
-                        left: 38%;
-                        height: 40px;
-                        width: 69px;
-                        background-image: url(../images/nz-on-air.png);
-                        background-repeat: no-repeat;
-                        background-size: 69px;
-                        @media #{$mobile} {
-                            top: unset;
-                            left: unset;
-                            right: 15px;
-                            bottom: 0;
-                        }
-                    }
+                    // &:before{
+                    //     content: '';
+                    //     position: absolute;
+                    //     top: 60px;
+                    //     left: 38%;
+                    //     height: 40px;
+                    //     width: 69px;
+                    //     background-image: url(../images/nz-on-air.png);
+                    //     background-repeat: no-repeat;
+                    //     background-size: 69px;
+                    //     @media #{$mobile} {
+                    //         top: unset;
+                    //         left: unset;
+                    //         right: 15px;
+                    //         bottom: 0;
+                    //     }
+                    // }
                 }
 
                 > p{
@@ -286,41 +286,6 @@
 
                 > .author {
                     display:none;
-                }
-                &:before{
-                    content: 'investigates';
-                    background-color: #000;
-                    font-size: 20px;
-                    font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
-                    text-transform: uppercase;
-                    color: #fff;
-                    width: 43.3%;
-                    padding: 1px 0 0 42px;
-                    position: absolute;
-                    top: 30px;
-                    margin-left: -42px;
-                    height: 28px;
-                    font-weight: 100;
-                    @media #{$mobile} {
-                        width: 100%;
-                        padding: 1px 0 0 15px;
-                        position: absolute;
-                        top: 300px;
-                        margin-left: -15px;
-                    }
-                }
-                &:after{
-                    content: '';
-                    background-image:url(../images/newsroom-logo.svg);
-                    background-size: 125px;
-                    background-repeat: no-repeat;
-                    position: absolute;
-                    top: 5px;
-                    width: 100%;
-                    height: 40px;
-                    @media #{$mobile} {
-                        top: 275px;
-                    }
                 }
             }
             > figure{
@@ -358,6 +323,64 @@
                 }
 
             }
+
         }
+        &.investigations{
+            >a.card{
+                >article{
+                    >.content{
+                        &:before{
+                            content: 'investigates';
+                            background-color: #000;
+                            font-size: 20px;
+                            font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
+                            text-transform: uppercase;
+                            color: #fff;
+                            width: 43.3%;
+                            padding: 1px 0 0 42px;
+                            position: absolute;
+                            top: 30px;
+                            margin-left: -42px;
+                            height: 28px;
+                            font-weight: 100;
+                            @media #{$mobile} {
+                                width: 100%;
+                                padding: 1px 0 0 15px;
+                                position: absolute;
+                                top: 300px;
+                                margin-left: -15px;
+                            }
+                        }
+                        &:after{
+                            content: '';
+                            background-image:url(../images/newsroom-logo.svg);
+                            background-size: 125px;
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            top: 5px;
+                            width: 100%;
+                            height: 40px;
+                            @media #{$mobile} {
+                                top: 275px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.investigations-before{
+    &:before{
+        content: '';
+        width: 20px;
+        height: 100%;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        z-index: 2;
+        background: #aa272e;
     }
 }
