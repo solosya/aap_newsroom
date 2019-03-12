@@ -13887,6 +13887,22 @@ input[type=radio].inline {
               top: 0;
               background: #aa272e;
               position: absolute; } }
+    .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 38%;
+      height: 40px;
+      width: 69px;
+      background-image: url(../images/nz-on-air.png);
+      background-repeat: no-repeat;
+      background-size: 69px; }
+      @media screen and (max-width: 767px) {
+        .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+          top: unset;
+          left: unset;
+          right: 15px;
+          bottom: 0; } }
     .room-investigations > .featured.investigations > a.card > article > .content:before {
       content: 'investigates';
       background-color: #000;
@@ -18793,9 +18809,6 @@ body.channel.supporters p {
 .future-learning-sponsors a {
   margin: 0 0 0 15px;
   float: right; }
-  @media screen and (max-width: 767px) {
-    .future-learning-sponsors a {
-      float: unset; } }
   .future-learning-sponsors a > img {
     height: 37px; }
     @media screen and (max-width: 767px) {

@@ -92,6 +92,11 @@
     {% elseif article.label | lower != 'investigations' and containerClass | lower == 'card-investigations-rec card-investigations-rec-tablet card-investigations-rec-mobile' %}
         {% set invLabel = '' %}
         {% set containerClass = 'card-rec card-rec-tablet card-rec-mobile' %}
+    {% elseif article.label | lower == 'investigations' and containerClass | lower == 'featured investigations' %}
+        {% set invLabel = ' investigations' %}
+    {% elseif article.label | lower != 'investigations' and containerClass | lower == 'featured investigations' %}
+        {% set invLabel = '' %}
+        {% set containerClass = 'featured' %}
     {% endif %} 
 
 

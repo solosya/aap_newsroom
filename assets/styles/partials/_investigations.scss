@@ -241,23 +241,7 @@
                         margin-top: 70px;
                     }
                     
-                    // &:before{
-                    //     content: '';
-                    //     position: absolute;
-                    //     top: 60px;
-                    //     left: 38%;
-                    //     height: 40px;
-                    //     width: 69px;
-                    //     background-image: url(../images/nz-on-air.png);
-                    //     background-repeat: no-repeat;
-                    //     background-size: 69px;
-                    //     @media #{$mobile} {
-                    //         top: unset;
-                    //         left: unset;
-                    //         right: 15px;
-                    //         bottom: 0;
-                    //     }
-                    // }
+                    
                 }
 
                 > p{
@@ -329,6 +313,25 @@
             >a.card{
                 >article{
                     >.content{
+                        >h2{
+                            &:before{
+                                content: '';
+                                position: absolute;
+                                top: 60px;
+                                left: 38%;
+                                height: 40px;
+                                width: 69px;
+                                background-image: url(../images/nz-on-air.png);
+                                background-repeat: no-repeat;
+                                background-size: 69px;
+                                @media #{$mobile} {
+                                    top: unset;
+                                    left: unset;
+                                    right: 15px;
+                                    bottom: 0;
+                                }
+                            }
+                        }
                         &:before{
                             content: 'investigates';
                             background-color: #000;
