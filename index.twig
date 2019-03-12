@@ -316,19 +316,20 @@
                     {% endif %}
 
                     </div>
-                    {% if sections['futurelearning'].feed.articles|length > 0 %}
+                    {# {% if sections['futurelearning'].feed.articles|length > 0 %}
                         <div class="future">
                             {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
                         </div>
-                    {% endif %}
+                    {% endif %} #}
                 </div>
 
 
 
 
 
-
-
+                {% if sections['ideasroom'].feed.articles|length > 0 %}
+                     {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['boardroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}

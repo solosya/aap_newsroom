@@ -231,7 +231,9 @@
                     color: #000;
                     margin-bottom: 40px;
                     margin-top: 40px;
-
+                    @media #{$mobile} {
+                        margin-top: 70px;
+                    }
                     
                     &:before{
                         content: '';
