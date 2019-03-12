@@ -5,7 +5,9 @@
     > header{
         margin-bottom: 20px;
         @media #{$desktop-up}{
-            height: 50px;
+            img{
+                height: 50px;
+            }
         }
     
     @media screen and (max-width: $sm-mobile-break){
