@@ -1,0 +1,34 @@
+<section class="room-investigations">
+    <header>
+        <a href="{{ sections['investigations'].link }}">
+            <img src="{{networkData.templatePath}}/static/images/investigations-logo.svg" alt="investigations" class="img-responsive">
+        </a>
+    </header>
+
+    {{this.render('_single-article.twig', {
+        article         : sections['Business'].feed.articles[0],
+        position        : 1, 
+        containerClass  : 'featured investigations', 
+        imageSize       : {width:627, height:415},
+        swap            : 'false'
+    }) | raw}}
+
+    <div class="articles">
+        <div class="row">
+            
+            {% for i in 1..3 %}
+                {% if sections['Business'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {
+                        article         : sections['Business'].feed.articles[i], 
+                        position        : i+1, 
+                        containerClass  : 'subfeature-investigations col-sm-4', 
+                        imageSize       : {width:92, height:100},
+                        swap            : 'false'
+
+                    }) | raw}}
+                {% endif %}
+            {% endfor %}
+
+        </div><!-- .articles-->
+    </div><!-- .row-->
+</section><!--room-board-->
