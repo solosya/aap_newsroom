@@ -224,10 +224,16 @@
                 }
 
                 .category{
-                    display: none;
-
-
-
+                    font-size: em(14);
+                    font-weight: bold;
+                    color: #FFF;
+                    text-transform: uppercase;
+                    @media screen and (max-width: $mobile-break){
+                        color: #8a8b93;
+                        font-family: $font-family-sans-serif;
+                        font-size: em(12);
+                        text-transform: upper;
+                    }
                 }
 
                 > h2{
@@ -313,6 +319,9 @@
             >a.card{
                 >article{
                     >.content{
+                        .category{
+                            display: none;
+                        }
                         >h2{
                             &:before{
                                 content: '';

@@ -13829,7 +13829,16 @@ input[type=radio].inline {
             flex: 0 0 100%;
             padding: 19px 15px; } }
         .room-investigations > .featured > a > article > .content .category {
-          display: none; }
+          font-size: 1.4em;
+          font-weight: bold;
+          color: #FFF;
+          text-transform: uppercase; }
+          @media screen and (max-width: 620px) {
+            .room-investigations > .featured > a > article > .content .category {
+              color: #8a8b93;
+              font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+              font-size: 1.2em;
+              text-transform: upper; } }
         .room-investigations > .featured > a > article > .content > h2 {
           font-size: 4.4em;
           font-weight: bold;
@@ -13887,6 +13896,8 @@ input[type=radio].inline {
               top: 0;
               background: #aa272e;
               position: absolute; } }
+    .room-investigations > .featured.investigations > a.card > article > .content .category {
+      display: none; }
     .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
       content: '';
       position: absolute;
