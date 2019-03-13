@@ -241,9 +241,9 @@
                     line-height: 1.02;
                     color: #000;
                     margin-bottom: 40px;
-                    margin-top: 40px;
-                    @media #{$mobile} {
-                        margin-top: 70px;
+                    margin-top: 20px;
+                    @media #{$mobile}{
+                        font-size: rem(28);
                     }
                     
                     
@@ -299,6 +299,8 @@
                     width: 100%;
                     flex: 0 0 100%;
                     position: relative;
+                    max-height: 240px;
+                    min-height: 240px;
 
                     &:before{
                         content: '';
@@ -308,6 +310,10 @@
                         top: 0;
                         background: #aa272e;
                         position: absolute;
+                    }
+                    >img{
+                        max-height: 240px;
+                        min-height: 240px;
                     }
                 }
 
@@ -338,6 +344,9 @@
                                     right: 15px;
                                     bottom: 0;
                                 }
+                            }
+                            @media #{$mobile}{
+                                margin-top: 60px;
                             }
                         }
                         &:before{

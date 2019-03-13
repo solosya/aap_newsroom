@@ -13460,9 +13460,6 @@ input[type=radio].inline {
       border-bottom: 0; } }
   .room-ideas > header {
     margin-bottom: 20px; }
-    @media screen and (max-width: 490px) {
-      .room-ideas > header {
-        width: 100%; } }
     @media screen and (min-width: 768px) {
       .room-ideas > header .ideas-logo {
         width: 250px; } }
@@ -13845,10 +13842,10 @@ input[type=radio].inline {
           line-height: 1.02;
           color: #000;
           margin-bottom: 40px;
-          margin-top: 40px; }
+          margin-top: 20px; }
           @media screen and (max-width: 767px) {
             .room-investigations > .featured > a > article > .content > h2 {
-              margin-top: 70px; } }
+              font-size: 2.8rem; } }
         .room-investigations > .featured > a > article > .content > p {
           font-size: 2em;
           line-height: 1.25;
@@ -13887,7 +13884,9 @@ input[type=radio].inline {
           .room-investigations > .featured > a > article > figure {
             width: 100%;
             flex: 0 0 100%;
-            position: relative; }
+            position: relative;
+            max-height: 240px;
+            min-height: 240px; }
             .room-investigations > .featured > a > article > figure:before {
               content: '';
               width: 20px;
@@ -13895,7 +13894,10 @@ input[type=radio].inline {
               bottom: 0;
               top: 0;
               background: #aa272e;
-              position: absolute; } }
+              position: absolute; }
+            .room-investigations > .featured > a > article > figure > img {
+              max-height: 240px;
+              min-height: 240px; } }
     .room-investigations > .featured.investigations > a.card > article > .content .category {
       display: none; }
     .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
@@ -13914,6 +13916,9 @@ input[type=radio].inline {
           left: unset;
           right: 15px;
           bottom: 0; } }
+    @media screen and (max-width: 767px) {
+      .room-investigations > .featured.investigations > a.card > article > .content > h2 {
+        margin-top: 60px; } }
     .room-investigations > .featured.investigations > a.card > article > .content:before {
       content: 'investigates';
       background-color: #000;
