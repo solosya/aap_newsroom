@@ -13462,13 +13462,14 @@ input[type=radio].inline {
     margin-bottom: 20px; }
     @media screen and (max-width: 490px) {
       .room-ideas > header {
-        width: 205px; } }
+        width: 100%; } }
     @media screen and (min-width: 768px) {
       .room-ideas > header .ideas-logo {
         width: 250px; } }
     @media screen and (max-width: 767px) {
       .room-ideas > header .ideas-logo {
-        width: 200px; } }
+        width: 200px;
+        margin-bottom: 15px; } }
   .room-ideas > .articles > div > div:last-child article {
     border-right: 0; }
   .room-ideas > .articles article {
@@ -13831,11 +13832,10 @@ input[type=radio].inline {
         .room-investigations > .featured > a > article > .content .category {
           font-size: 1.4em;
           font-weight: bold;
-          color: #FFF;
+          color: #8a8b93;
           text-transform: uppercase; }
           @media screen and (max-width: 620px) {
             .room-investigations > .featured > a > article > .content .category {
-              color: #8a8b93;
               font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
               font-size: 1.2em;
               text-transform: upper; } }
@@ -18824,7 +18824,6 @@ body.channel.supporters p {
     height: 37px; }
     @media screen and (max-width: 767px) {
       .future-learning-sponsors a > img {
-        margin-top: 10px;
         height: 30px; } }
 
 .card-election {
