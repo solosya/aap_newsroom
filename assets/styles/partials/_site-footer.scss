@@ -142,6 +142,9 @@
                 padding-left: 15px;
                 > li {
                     margin-right: 30px;
+                    @media #{$desktop-up}{
+                        margin-top: -45px;
+                    }
                     @media screen and (max-width: $sm-break-down) {
                         margin-right: 20px;
                     }
@@ -154,6 +157,9 @@
             color: #000;
             font-size: em(14);
             text-transform: none;
+            @media  #{$desktop-up}{
+                color: #fff;
+            }
         }
 
         .rooms-link{
