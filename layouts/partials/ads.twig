@@ -139,10 +139,10 @@
   function loadTwoAds(blogAd) {
 
      var altAds = document.getElementById("specifyads");
- 
+    console.log(altAds);
       if (altAds) {
         var blogName = altAds.className;
-        console.log('blogname');
+        console.log(blogName);
       } else {
         var blogName = '{{adPlace}}';
       }
