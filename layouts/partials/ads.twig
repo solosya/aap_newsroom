@@ -146,7 +146,7 @@
       } else {
         var blogName = '{{adPlace}}';
       }
-     if (blogAd != 'futurelearning' && blogName != 'none') {blogAd = blogName}
+     if (blogAd != 'futurelearning' || blogName != 'none') {blogAd = blogName}
      console.log(blogAd);
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
