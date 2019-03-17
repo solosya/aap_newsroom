@@ -139,14 +139,15 @@
   function loadTwoAds(blogAd) {
 
      var altAds = document.getElementById("specifyads");
-    console.log(altAds);
+      console.log(altAds);
       if (altAds) {
         var blogName = altAds.className;
         console.log(blogName);
       } else {
         var blogName = '{{adPlace}}';
       }
-     if (blogAd != 'futurelearning') {blogAd = blogName}
+     if (blogAd != 'futurelearning' && blogName != 'none') {blogAd = blogName}
+     console.log(blogAd);
      var adSlot = document.getElementById("newAdBanner");
      var slotName = generateNextBannerName();
      var slotDiv = document.createElement('div');
@@ -167,6 +168,8 @@
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[970, 250], [728, 250], [728, 90], [300, 75],[300,100]], slotName).setTargeting().defineSizeMapping([[[1025,400],[970,250]],[[767,400],[[728,250],[728,90]]],[[0,250],[[300,75],[300,100]]]]).addService(googletag.pubads());
        var slot2 = googletag.defineSlot('/{{dfpAcct}}/'+blogAd, [[300,600],[728,250],[728,90],[300,250]], slotName2).setTargeting().defineSizeMapping([[[992,0],[300,600]],[[767,0],[[728,250],[728,90]]],[[0,0],[300,250]]]).addService(googletag.pubads());
+       console.log(slot);
+       console.log(slot2);
        googletag.display(slotName);
      });
   }
