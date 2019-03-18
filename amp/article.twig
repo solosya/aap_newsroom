@@ -2,10 +2,45 @@
 {{ set(this, 'title', article.title) }}
 
 {% set network = _Network.getNetworkData() %}
+{% set articleBlogData  = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
+
+{% set showPaywall              = false %}
+{% set content                  = article.content %}
+{% set paywall_content_style    = "" %}
+
+{% if articleBlogData['additionalInfo'] is defined            and 
+      articleBlogData['additionalInfo']['paywall'] is defined and 
+      articleBlogData['additionalInfo']['paywall'] == 'on' %}
+    
+    {% set paywallSection = true %}
+
+{% endif %}
+
+
+{% if   not _User.isAdminUser()     and
+        paywallSection == true      and
+        articleBlogData['showPaywall'] == true  %}
+    {% set showPaywall = true %}
+{% endif %}
+
+
+{% if showPaywall == true %}
+    {% set storySplit = article.content | split('<p>')  %}
+    {% set para2 = storySplit[2] | replace({'</p>': ''}) | slice(0, 190) ~ '</p>'  %}
+    {% set content = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
+    {% set paywall_content_style = "content-paywalled" %}
+{% endif %}
+
+
+
+
+
 {% set publisher = {height: 60, width: 600, name: network.title, logo: ''} %}
 {% if network.logoMedia | length > 0 %}
     {% set publisher = publisher|merge({logo:_Media.getMediaUrl(network.logoMedia, publisher.width, publisher.height, {'crop': 'lpad'} )})%}
 {% endif %}
+
+
 <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -14,7 +49,7 @@
         "headline": "{{article.title}}",
         "datePublished": "{{article.publishedDate}}",
         "dateModified": "{{article.updatedAt}}",
-        "description": "{{article.content}}",
+        "description": "{{content}}",
         "author": {
             "@type": "Person",
             "name": "{{article.createdBy['displayName']}}"
@@ -30,34 +65,38 @@
             }
         }
         {% if article.media | length > 0 %}
-        ,
-        {% set i = 1 %}
-        {% for media in article.media %}
-            {% set medUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
-        {% if media.type != 'video' %} 
+            ,
+            {% set i = 1 %}
+            {% for media in article.media %}
+                {% set medUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
+                {% if media.type != 'video' %} 
 
-        "image": {
-            "@type": "ImageObject",
-            "url": "{{medUrl}}",
-            "width": 1280,
-            "height": 720
-        }
-        {% if article.media | length > i %}
-        ,
-        {% endif %}
-        {% endif %}
-        {% set i = i+1 %}
-        {% endfor %}
+                    "image": {
+                        "@type": "ImageObject",
+                        "url": "{{medUrl}}",
+                        "width": 1280,
+                        "height": 720
+                    }
+                    {% if article.media | length > i %}
+                        ,
+                    {% endif %}
+                {% endif %}
+                {% set i = i+1 %}
+            {% endfor %}
         {% endif %}
     }
 </script>
+
+
 <div class="article {{ article.media|length <= 0 ? 'no_image' : '' }}">
     <div class="article__headerSection">
         {% if article.media|length %}
             <amp-carousel width="1280" height="720" layout="responsive" type="slides" autoplay="" loop="">
+                
                 {% for media in article.media %}
                     {% if media.type == 'video' %} 
                         {% set mediaUrl = "" %}
+                        
                         {% if media.isSystemVideo == 'TRUE'%}
                             {% set mediaUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} )  %}
                             <div class="video-player">
@@ -75,6 +114,8 @@
                                 <amp-vimeo data-videoid="{{media.videoId}}" layout="responsive" width="500" height="281"></amp-vimeo>
                             {% endif %}
                         {% endif %}                   
+                    
+
                     {% else %}
                         {% set medUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
                         <figure>
@@ -82,8 +123,12 @@
                         </figure>
                     {% endif %}
                 {% endfor %}
+
             </amp-carousel>
         {% endif %}
+
+
+
 
         <div class="article__header">
             <div class="article__header-text">
@@ -97,7 +142,7 @@
             <a href="{{_AppHelper.buildUrl('profile/user-profile',{name: Html.encode(article.createdBy['username'])})}}" class="article__info_author" itemprop="name">By {{article.createdBy['displayName']}}</a>
 
             <div class="article__info_tabs">
-                {% set readingTime = Helper.getEstimatedReadingTime(article.content)%}
+                {% set readingTime = Helper.getEstimatedReadingTime(content)%}
                 <div class="article__info_tab">{{article.publishedDate}}</div>
                 <div class="article__info_tab">{{Helper.renderReadingTime(readingTime) | raw}}</div>
             </div>
@@ -111,8 +156,25 @@
 
     <div class="article__container">
         <div class="article__content">
-            {{article.content | raw}}
+            {{content | raw}}
         </div>
+
+
+        {% if showPaywall == true %}
+            <div class="article-subscribe">
+                <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
+                <a href="{{network.defaultBlogUrl}}/@pro" class="article-subscribe__link">View our subscription options</a>
+            </div>
+        {% endif %}
+
+
+
+
     </div>
+
+
+
+
+
 </div>
 
