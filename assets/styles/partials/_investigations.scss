@@ -344,9 +344,15 @@
                                     right: 15px;
                                     bottom: 0;
                                 }
+                                @media  #{$tablet}{
+                                    left: 30%;
+                                }
                             }
-                            @media #{$mobile}{
+                            @media #{$up-to-desktop}{
                                 margin-top: 60px;
+                            }
+                            @media #{$tablet}{
+                                font-size: rem(30);
                             }
                         }
                         &:before{
@@ -369,6 +375,9 @@
                                 position: absolute;
                                 top: 300px;
                                 margin-left: -15px;
+                            }
+                            @media #{$tablet}{
+                                width: 37.6%;
                             }
                         }
                         &:after{

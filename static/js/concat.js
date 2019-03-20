@@ -30034,7 +30034,7 @@ Acme.View.articleFeed.prototype.render = function(data)
             : self.waypoint.enable();
     }
 
-    $(".card .content > p, .card h2").dotdotdot();     
+    $(".card .content > p, .card h2, .card .content .author > p").dotdotdot();     
     // $('.video-player').videoPlayer();
     $("div.lazyload").lazyload({
         effect: "fadeIn"

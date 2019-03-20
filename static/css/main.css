@@ -11628,7 +11628,6 @@ input[type=radio].inline {
   margin-top: 0; }
 
 .page-section {
-  border-top: solid 1px #979797;
   margin-top: 30px;
   padding-top: 15px; }
   @media screen and (max-width: 767px) {
@@ -13922,9 +13921,15 @@ input[type=radio].inline {
           left: unset;
           right: 15px;
           bottom: 0; } }
-    @media screen and (max-width: 767px) {
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+          left: 30%; } }
+    @media screen and (max-width: 991px) {
       .room-investigations > .featured.investigations > a.card > article > .content > h2 {
         margin-top: 60px; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .room-investigations > .featured.investigations > a.card > article > .content > h2 {
+        font-size: 3rem; } }
     .room-investigations > .featured.investigations > a.card > article > .content:before {
       content: 'investigates';
       background-color: #000;
@@ -13946,6 +13951,9 @@ input[type=radio].inline {
           position: absolute;
           top: 300px;
           margin-left: -15px; } }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .room-investigations > .featured.investigations > a.card > article > .content:before {
+          width: 37.6%; } }
     .room-investigations > .featured.investigations > a.card > article > .content:after {
       content: '';
       background-image: url(../images/newsroom-logo.svg);
@@ -17872,12 +17880,15 @@ body.channel.supporters p {
       float: none;
       padding: 0;
       border: 0;
-      color: #8a8b93; }
+      color: #8a8b93;
+      position: absolute;
+      bottom: 0; }
       @media screen and (max-width: 620px) {
         .card-vr a.card > article > .content > time {
           color: #6c6c6c;
           font-size: 1em;
-          margin-top: 8px; } }
+          margin-top: 8px;
+          position: relative; } }
     .card-vr a.card > article > .content p {
       display: none; }
   .card-vr a.card.youtube .content p {
@@ -19610,7 +19621,8 @@ body.channel.supporters p {
         .card-pro-partial-mobile a.card article .content {
           padding-right: 0;
           height: 75px;
-          margin-left: 130px; }
+          margin-left: 130px;
+          padding-right: 30px; }
           .card-pro-partial-mobile a.card article .content > h2 {
             font-size: 1.6rem;
             max-height: 40px;
@@ -20986,7 +20998,7 @@ body.channel.supporters p {
       background-repeat: no-repeat;
       position: absolute;
       top: 15px;
-      width: 56%;
+      width: 64.5%;
       height: 20px;
       margin-left: -25px; } }
 

@@ -38,8 +38,23 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
+{% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
+
+{% set menuItems = _Menu.get({'menuType': 'header'}) %}
+
+{% set rooms = [] %}
+{% for room in menuItems  %}
+    {% set rooms = rooms | merge([room.blogTitle | lower]) %}
+    {% if (room.blogTitle == blogName) %}
+        {% set roomInfo = [room.blogTitle, room.link] %}
+    {% endif %} 
+{% endfor %}
+
     
     <main id="main" class="site-main roompage {{this.title | lower}} u-margin-top-40" role="main">
+        <a class="visible-xs-block" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none;height:50px;margin-top:-15px;">
+            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=17" alt="logo" class="main-logo" style="height:30px;margin-left:20px;">
+        </a>
         <section class="featured-slider container-fluid">
 
                 <div class="swiper-container">
