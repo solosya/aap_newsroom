@@ -69,7 +69,7 @@
 
     {% set author = "" %}
     {% if article['createdBy']['coauthors'] %}
-        {% set author = author ~  article.createdBy['displayName'] %}
+        {% set author = author ~  "<p style=''>" ~ article.createdBy['displayName'] %}
 
         {% for i, authors in article['createdBy']['coauthors'] %}
             {% set divider = (loop.last) ? ' and ' : ', ' %}
