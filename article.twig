@@ -163,7 +163,7 @@
 
                 <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
-                        {{article.adswitch}}
+                        {{article.additionalInfo.adswitch}}
                         <div class="col-md-8">
                             
                             <div class="content-wrapper">
@@ -364,7 +364,7 @@
                 </div>
             </div>
 
-            {% if article.adswitch is defined and article.adswitch == 'Ads Off' %}
+            {% if article.additionalInfo.adswitch is defined and article.additionalInfo.adswitch == 'Ads Off' %}
             {% else %}
 
                 {% if articleBlog == 'ideasroom' %}
