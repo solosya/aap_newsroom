@@ -163,6 +163,7 @@
 
                 <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
+                        {{article.adswitch}}
                         <div class="col-md-8">
                             
                             <div class="content-wrapper">
@@ -365,6 +366,7 @@
 
             {% if article.adswitch is defined and article.adswitch == 'Ads Off' %}
             {% else %}
+
                 {% if articleBlog == 'ideasroom' %}
                         <script>loadTwoAds('futurelearning');</script>
                 {% else %}
