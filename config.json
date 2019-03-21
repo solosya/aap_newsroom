@@ -19,9 +19,13 @@
         "article" : {
             "extendedAttributes": [
                 {
-                    "label": "Ad Switch (default is ads on)",
-                    "type": "checkbox",
-                    "name": "adswitch"
+                    "label": "Ad Switch (unselected default is ads on)",
+                    "type": "radio",
+                    "name": "adswitch",
+                    "options": {
+                        "on": "Ads On",
+                        "off": "Ads Off"
+                    }
                 }
             ]
         }
