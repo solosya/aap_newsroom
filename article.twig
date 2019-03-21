@@ -363,11 +363,14 @@
                 </div>
             </div>
 
-            {% if articleBlog == 'ideasroom' %}
-                    <script>loadTwoAds('futurelearning');</script>
+            {% if article.adswitch is defined and article.adswitch == 'off' %}
             {% else %}
-                {% if not paywallSection %}
-                    <script>loadTwoAds('{{articleBlog}}');</script>
+                {% if articleBlog == 'ideasroom' %}
+                        <script>loadTwoAds('futurelearning');</script>
+                {% else %}
+                    {% if not paywallSection %}
+                        <script>loadTwoAds('{{articleBlog}}');</script>
+                    {% endif %}
                 {% endif %}
             {% endif %}
 
