@@ -333,7 +333,7 @@
     {# {{this.registerJs("
         Acme.videoPopupView = new Acme.videoPopup('modal', 'signin', 
                 {'video' : 'modalVideo'}, 
-                {path: _appJsConfig.templatePath});")}}
+                {path: _appJsConfig.templatePath});")}} #}
     
     {% if _User.isGuest() %}
         {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
