@@ -13905,31 +13905,30 @@ input[type=radio].inline {
               min-height: 240px; } }
     .room-investigations > .featured.investigations > a.card > article > .content .category {
       display: none; }
-    .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-      content: '';
-      position: absolute;
-      top: 60px;
-      left: 38%;
-      height: 40px;
-      width: 69px;
-      background-image: url(../images/nz-on-air.png);
-      background-repeat: no-repeat;
-      background-size: 69px; }
-      @media screen and (max-width: 767px) {
-        .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-          top: unset;
-          left: unset;
-          right: 15px;
-          bottom: 0; } }
+    .room-investigations > .featured.investigations > a.card > article > .content > h2 {
+      margin-top: 60px; }
+      .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 38%;
+        height: 40px;
+        width: 69px;
+        background-image: url(../images/nz-on-air.png);
+        background-repeat: no-repeat;
+        background-size: 69px; }
+        @media screen and (max-width: 767px) {
+          .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+            top: unset;
+            left: unset;
+            right: 15px;
+            bottom: 0; } }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
+            left: 30%; } }
       @media screen and (min-width: 768px) and (max-width: 991px) {
-        .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-          left: 30%; } }
-    @media screen and (max-width: 991px) {
-      .room-investigations > .featured.investigations > a.card > article > .content > h2 {
-        margin-top: 60px; } }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      .room-investigations > .featured.investigations > a.card > article > .content > h2 {
-        font-size: 3rem; } }
+        .room-investigations > .featured.investigations > a.card > article > .content > h2 {
+          font-size: 3rem; } }
     .room-investigations > .featured.investigations > a.card > article > .content:before {
       content: 'investigates';
       background-color: #000;
