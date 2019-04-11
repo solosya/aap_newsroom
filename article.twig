@@ -219,7 +219,9 @@
                                     {% endfor %}
                                 {% endif %}
 
-
+                                {% if 'investigations' in article.label | lower %}
+                                    <div class="article-investigations__tag"></div>
+                                {% endif %}
 
                                <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>

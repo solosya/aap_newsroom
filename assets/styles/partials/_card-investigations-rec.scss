@@ -68,9 +68,7 @@
 
 
 
-            > img{
-                // max-width: 100%;
-            }
+            
 
         }
 
@@ -88,7 +86,16 @@
                 padding: 10px;
             }
 
-            
+            &:before{
+                content: '';
+                background-color: black;
+                width: 56%;
+                padding: 0;
+                position: absolute;
+                top: 30px;
+                margin-left: -25px;
+                height: 20px;
+            }
 
             > h2{
                 font-weight: bold;
@@ -98,6 +105,37 @@
                     font-size: em(20);
                     border: 0;
                     height: 50px;
+                }
+                &:before{
+                    content: '';
+                    background-image: url(../images/investigates.svg);
+                    font-size: 25px;
+                    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+                    text-transform: uppercase;
+                    color: #fff;
+                    width: 100%;
+                    padding: 0;
+                    position: absolute;
+                    top: 30px;
+                    padding-left: 2px;
+                    height: 35px;
+                    padding-top: 3px;
+                    font-weight: 100;
+                    left: 67%;
+                    background-size: 80px;
+                    background-repeat: no-repeat;
+                    background-position-y: 4px;
+                }
+                &:after{
+                    content: '';
+                    background-image:url(../images/newsroom-logo.svg);
+                    background-size: 120px;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    top: 10px;
+                    width: 100%;
+                    height: 20px;
+                    left: 64.5%;
                 }
             }
             
@@ -176,27 +214,6 @@
                 }
             }
         }
-        &.investigations{
-            a.card{
-                >article{
-                    .content{
-                        &:before{
-                            content: '';
-                            background-image: url(../images/newsroom-investigates.svg);
-                            background-color: black;
-                            background-position: 20px;
-                            background-size: 180px;
-                            background-repeat: no-repeat;
-                            position: absolute;
-                            top: 15px;
-                            width: 56%;
-                            height: 20px;
-                            margin-left: -25px;
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -208,17 +225,18 @@
                 >article{
                     .content{
                         &:before{
-                            content: '';
-                            background-image: url(../images/newsroom-investigates.svg);
-                            background-color: black;
-                            background-position: 20px;
-                            background-size: 180px;
-                            background-repeat: no-repeat;
-                            position: absolute;
-                            top: 15px;
-                            width: 64.5%;
-                            height: 20px;
-                            margin-left: -25px;
+                            width: 64.4%;
+                        }
+                        .category{
+                            display: none;
+                        }
+                        h2{
+                            &:before{
+                                left: 62.5%;
+                            }
+                            &:after{
+                                left: 60%;  
+                            }
                         }
                     }
                 }
@@ -233,8 +251,19 @@
         a.card{
             >article{
                 .content{
+                    &:before{
+                        display: none;  
+                    }
                     > .category{
                         margin-bottom: 10px;
+                    }
+                    h2{
+                        &:before{
+                            display: none;  
+                        }
+                        &:after{
+                            display: none;  
+                        }
                     }
                 }
             }

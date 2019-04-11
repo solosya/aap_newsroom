@@ -11161,6 +11161,55 @@ input[type=radio].inline {
     outline: none;
     box-shadow: none; }
 
+.article-investigations__tag {
+  height: 50px;
+  width: 100%;
+  margin-top: 80px;
+  background-color: black; }
+  .article-investigations__tag:before {
+    content: '';
+    background-image: url(../images/investigates.svg);
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    top: 225px;
+    height: 50px;
+    padding-top: 3px;
+    left: 36%;
+    background-size: 180px;
+    background-repeat: no-repeat;
+    background-position-y: 6px; }
+    @media screen and (min-width: 1600px) {
+      .article-investigations__tag:before {
+        left: 37%; } }
+  .article-investigations__tag:after {
+    content: '';
+    background-image: url(../images/newsroom-logo.svg);
+    background-size: 300px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 165px;
+    width: 100%;
+    height: 50px;
+    left: 29%; }
+    @media screen and (min-width: 1600px) {
+      .article-investigations__tag:after {
+        left: 30%; } }
+  @media screen and (max-width: 767px) {
+    .article-investigations__tag {
+      height: 25px;
+      width: 100%;
+      margin-top: 55px; }
+      .article-investigations__tag:before {
+        height: 25px;
+        background-size: 90px;
+        top: 178px;
+        left: 37%; }
+      .article-investigations__tag:after {
+        background-size: 150px;
+        top: 155px;
+        height: 25px; } }
+
 .Acme-pulldown {
   font-size: 1.5rem;
   font-weight: 500;
@@ -13845,7 +13894,7 @@ input[type=radio].inline {
         .room-investigations > .featured > a > article > .content .category {
           font-size: 1.4em;
           font-weight: bold;
-          color: #8a8b93;
+          color: #aa272e;
           text-transform: uppercase; }
           @media screen and (max-width: 620px) {
             .room-investigations > .featured > a > article > .content .category {
@@ -13914,78 +13963,6 @@ input[type=radio].inline {
             .room-investigations > .featured > a > article > figure > img {
               max-height: 240px;
               min-height: 240px; } }
-    .room-investigations > .featured.investigations > a.card > article > .content .category {
-      display: none; }
-    .room-investigations > .featured.investigations > a.card > article > .content > h2 {
-      margin-top: 60px; }
-      .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-        content: '';
-        position: absolute;
-        top: 60px;
-        left: 38%;
-        height: 40px;
-        width: 69px;
-        background-image: url(../images/nz-on-air.png);
-        background-repeat: no-repeat;
-        background-size: 69px; }
-        @media screen and (max-width: 767px) {
-          .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-            top: unset;
-            left: unset;
-            right: 15px;
-            bottom: 0; } }
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-          .room-investigations > .featured.investigations > a.card > article > .content > h2:before {
-            left: 30%; } }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        .room-investigations > .featured.investigations > a.card > article > .content > h2 {
-          font-size: 3rem; } }
-    .room-investigations > .featured.investigations > a.card > article > .content:before {
-      content: 'investigates';
-      background-color: #000;
-      font-size: 20px;
-      font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
-      text-transform: uppercase;
-      color: #fff;
-      width: 43.3%;
-      padding: 1px 0 0 42px;
-      position: absolute;
-      top: 30px;
-      margin-left: -42px;
-      height: 28px;
-      font-weight: 100; }
-      @media screen and (max-width: 767px) {
-        .room-investigations > .featured.investigations > a.card > article > .content:before {
-          width: 100%;
-          padding: 1px 0 0 15px;
-          position: absolute;
-          top: 300px;
-          margin-left: -15px; } }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        .room-investigations > .featured.investigations > a.card > article > .content:before {
-          width: 37.6%; } }
-    .room-investigations > .featured.investigations > a.card > article > .content:after {
-      content: '';
-      background-image: url(../images/newsroom-logo.svg);
-      background-size: 125px;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 5px;
-      width: 100%;
-      height: 40px; }
-      @media screen and (max-width: 767px) {
-        .room-investigations > .featured.investigations > a.card > article > .content:after {
-          top: 275px; } }
-
-.investigations-before:before {
-  content: '';
-  width: 20px;
-  height: 100%;
-  bottom: 0;
-  top: 0;
-  position: absolute;
-  z-index: 2;
-  background: #aa272e; }
 
 .article__figure-caption {
   color: #6c6c6c; }
@@ -20550,6 +20527,45 @@ body.channel.supporters p {
       background: #e22f22; }
     .card-investigations-feature a.card .content h2 {
       color: #000000; }
+      .card-investigations-feature a.card .content h2:before {
+        content: '';
+        background-image: url(../images/investigates.svg);
+        font-size: 25px;
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        top: 55px;
+        padding-left: 2px;
+        height: 35px;
+        padding-top: 3px;
+        font-weight: 100;
+        left: 77%;
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position-y: 4px; } }
+      @media screen and (min-width: 992px) and (min-width: 1600px) {
+        .card-investigations-feature a.card .content h2:before {
+          left: 82%; } }
+
+@media screen and (min-width: 992px) {
+      .card-investigations-feature a.card .content h2:after {
+        content: '';
+        background-image: url(../images/newsroom-logo.svg);
+        background-size: 200px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15px;
+        width: 100%;
+        height: 40px;
+        left: 73.5%; } }
+      @media screen and (min-width: 992px) and (min-width: 1600px) {
+        .card-investigations-feature a.card .content h2:after {
+          left: 79.5%; } }
+
+@media screen and (min-width: 992px) {
     .card-investigations-feature a.card .content time {
       display: none; }
     .card-investigations-feature a.card .content .category {
@@ -20558,21 +20574,22 @@ body.channel.supporters p {
       color: #000000; }
     .card-investigations-feature a.card .content > p {
       display: none; }
+    .card-investigations-feature a.card .content:before {
+      content: '';
+      background-color: black;
+      width: 100%;
+      padding: 0;
+      position: absolute;
+      top: 55px;
+      margin-left: -31px;
+      padding-left: 33px;
+      height: 30px;
+      padding-top: 3px; }
     .card-investigations-feature a.card article .content {
       padding: 220px 29px 20px 31px; }
       .card-investigations-feature a.card article .content h2 {
         min-height: 180px;
         max-height: 180px; }
-        .card-investigations-feature a.card article .content h2:before {
-          content: '';
-          position: absolute;
-          top: 95px;
-          right: 30px;
-          height: 75px;
-          width: 119px;
-          background-image: url(../images/nz-on-air.png);
-          background-repeat: no-repeat;
-          background-size: 119px; }
       .card-investigations-feature a.card article .content time {
         display: block;
         bottom: 20px;
@@ -20583,32 +20600,7 @@ body.channel.supporters p {
         max-height: 110px;
         min-height: 110px;
         display: block;
-        margin-bottom: 20px; }
-      .card-investigations-feature a.card article .content:before {
-        content: 'investigates';
-        background-color: black;
-        font-size: 25px;
-        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-        text-transform: uppercase;
-        color: #fff;
-        width: 100%;
-        padding: 0;
-        position: absolute;
-        top: 55px;
-        margin-left: -31px;
-        padding-left: 33px;
-        height: 40px;
-        padding-top: 3px;
-        font-weight: 100; }
-      .card-investigations-feature a.card article .content:after {
-        content: '';
-        background-image: url(../images/newsroom-logo.svg);
-        background-size: 165px;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: 15px;
-        width: 100%;
-        height: 40px; } }
+        margin-bottom: 20px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-investigations-feature-tablet {
@@ -20617,6 +20609,45 @@ body.channel.supporters p {
       background: #e22f22; }
     .card-investigations-feature-tablet a.card .content h2 {
       color: #000000; }
+      .card-investigations-feature-tablet a.card .content h2:before {
+        content: '';
+        background-image: url(../images/investigates.svg);
+        font-size: 25px;
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        top: 55px;
+        padding-left: 2px;
+        height: 35px;
+        padding-top: 3px;
+        font-weight: 100;
+        left: 77%;
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position-y: 4px; } }
+      @media screen and (min-width: 768px) and (max-width: 991px) and (min-width: 1600px) {
+        .card-investigations-feature-tablet a.card .content h2:before {
+          left: 82%; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+      .card-investigations-feature-tablet a.card .content h2:after {
+        content: '';
+        background-image: url(../images/newsroom-logo.svg);
+        background-size: 200px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15px;
+        width: 100%;
+        height: 40px;
+        left: 73.5%; } }
+      @media screen and (min-width: 768px) and (max-width: 991px) and (min-width: 1600px) {
+        .card-investigations-feature-tablet a.card .content h2:after {
+          left: 79.5%; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
     .card-investigations-feature-tablet a.card .content time {
       display: none; }
     .card-investigations-feature-tablet a.card .content .category {
@@ -20624,7 +20655,18 @@ body.channel.supporters p {
     .card-investigations-feature-tablet a.card .content .author > p {
       color: #000000; }
     .card-investigations-feature-tablet a.card .content > p {
-      display: none; } }
+      display: none; }
+    .card-investigations-feature-tablet a.card .content:before {
+      content: '';
+      background-color: black;
+      width: 100%;
+      padding: 0;
+      position: absolute;
+      top: 55px;
+      margin-left: -31px;
+      padding-left: 33px;
+      height: 30px;
+      padding-top: 3px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) and (min-width: 768px) and (max-width: 991px) {
     .card-investigations-feature-tablet a.card article figure {
       height: 257px;
@@ -20633,6 +20675,9 @@ body.channel.supporters p {
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .card-investigations-feature-tablet a.card article .content {
       padding: 60px 29px 15px 31px; }
+      .card-investigations-feature-tablet a.card article .content:before {
+        height: 20px;
+        top: 35px; }
       .card-investigations-feature-tablet a.card article .content h2 {
         border-bottom: 1px solid #dadada;
         min-height: 100px;
@@ -20640,15 +20685,13 @@ body.channel.supporters p {
         font-size: 2.2rem;
         margin-top: 45px; }
         .card-investigations-feature-tablet a.card article .content h2:before {
-          content: '';
-          position: absolute;
-          top: 60px;
-          right: 0;
-          height: 40px;
-          width: 69px;
-          background-image: url(../images/nz-on-air.png);
-          background-repeat: no-repeat;
-          background-size: 69px; }
+          background-size: 80px;
+          left: 74.5%;
+          height: 20px;
+          top: 35px; }
+        .card-investigations-feature-tablet a.card article .content h2:after {
+          background-size: 120px;
+          left: 72%; }
       .card-investigations-feature-tablet a.card article .content .category {
         font-size: 1rem; }
       .card-investigations-feature-tablet a.card article .content .author {
@@ -20667,31 +20710,6 @@ body.channel.supporters p {
         position: absolute;
         right: 30px;
         bottom: 13px; }
-      .card-investigations-feature-tablet a.card article .content:before {
-        content: 'investigates';
-        background-color: black;
-        font-size: 20px;
-        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-        text-transform: uppercase;
-        color: #fff;
-        width: 100%;
-        padding: 0;
-        position: absolute;
-        top: 30px;
-        margin-left: -31px;
-        padding-left: 33px;
-        height: 28px;
-        padding-top: 1px;
-        font-weight: 100; }
-      .card-investigations-feature-tablet a.card article .content:after {
-        content: '';
-        background-image: url(../images/newsroom-logo.svg);
-        background-size: 125px;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: 5px;
-        width: 100%;
-        height: 40px; }
     .card-investigations-feature-tablet:before {
       width: 10px; } }
 
@@ -20702,6 +20720,45 @@ body.channel.supporters p {
       background: #e22f22; }
     .card-investigations-feature-mobile a.card .content h2 {
       color: #000000; }
+      .card-investigations-feature-mobile a.card .content h2:before {
+        content: '';
+        background-image: url(../images/investigates.svg);
+        font-size: 25px;
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        top: 55px;
+        padding-left: 2px;
+        height: 35px;
+        padding-top: 3px;
+        font-weight: 100;
+        left: 77%;
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position-y: 4px; } }
+      @media screen and (max-width: 767px) and (min-width: 1600px) {
+        .card-investigations-feature-mobile a.card .content h2:before {
+          left: 82%; } }
+
+@media screen and (max-width: 767px) {
+      .card-investigations-feature-mobile a.card .content h2:after {
+        content: '';
+        background-image: url(../images/newsroom-logo.svg);
+        background-size: 200px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15px;
+        width: 100%;
+        height: 40px;
+        left: 73.5%; } }
+      @media screen and (max-width: 767px) and (min-width: 1600px) {
+        .card-investigations-feature-mobile a.card .content h2:after {
+          left: 79.5%; } }
+
+@media screen and (max-width: 767px) {
     .card-investigations-feature-mobile a.card .content time {
       display: none; }
     .card-investigations-feature-mobile a.card .content .category {
@@ -20710,14 +20767,31 @@ body.channel.supporters p {
       color: #000000; }
     .card-investigations-feature-mobile a.card .content > p {
       display: none; }
+    .card-investigations-feature-mobile a.card .content:before {
+      content: '';
+      background-color: black;
+      width: 100%;
+      padding: 0;
+      position: absolute;
+      top: 55px;
+      margin-left: -31px;
+      padding-left: 33px;
+      height: 30px;
+      padding-top: 3px; }
     .card-investigations-feature-mobile a.card article .content {
       padding: 194px 81px 11px 27px; }
+      .card-investigations-feature-mobile a.card article .content:before {
+        display: none; }
       .card-investigations-feature-mobile a.card article .content h2 {
         min-height: 160px;
         min-height: 100px;
         max-height: 100px;
         margin: 9px 0;
         color: #fff; }
+        .card-investigations-feature-mobile a.card article .content h2:before {
+          display: none; }
+        .card-investigations-feature-mobile a.card article .content h2:after {
+          display: none; }
       .card-investigations-feature-mobile a.card article .content .category {
         margin: 0;
         display: block;
@@ -20804,6 +20878,15 @@ body.channel.supporters p {
         padding: 10px; } }
 
 @media screen and (min-width: 992px) {
+      .card-investigations-rec a.card > article > .content:before {
+        content: '';
+        background-color: black;
+        width: 56%;
+        padding: 0;
+        position: absolute;
+        top: 30px;
+        margin-left: -25px;
+        height: 20px; }
       .card-investigations-rec a.card > article > .content > h2 {
         font-weight: bold;
         font-size: 3em;
@@ -20815,6 +20898,35 @@ body.channel.supporters p {
           height: 50px; } }
 
 @media screen and (min-width: 992px) {
+        .card-investigations-rec a.card > article > .content > h2:before {
+          content: '';
+          background-image: url(../images/investigates.svg);
+          font-size: 25px;
+          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+          text-transform: uppercase;
+          color: #fff;
+          width: 100%;
+          padding: 0;
+          position: absolute;
+          top: 30px;
+          padding-left: 2px;
+          height: 35px;
+          padding-top: 3px;
+          font-weight: 100;
+          left: 67%;
+          background-size: 80px;
+          background-repeat: no-repeat;
+          background-position-y: 4px; }
+        .card-investigations-rec a.card > article > .content > h2:after {
+          content: '';
+          background-image: url(../images/newsroom-logo.svg);
+          background-size: 120px;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 10px;
+          width: 100%;
+          height: 20px;
+          left: 64.5%; }
       .card-investigations-rec a.card > article > .content > p {
         height: 50px;
         border-bottom: 1px solid #dadada; } }
@@ -20863,19 +20975,7 @@ body.channel.supporters p {
 
 @media screen and (min-width: 992px) {
     .card-investigations-rec a.card > article .content > .category {
-      display: none; }
-    .card-investigations-rec.investigations a.card > article .content:before {
-      content: '';
-      background-image: url(../images/newsroom-investigates.svg);
-      background-color: black;
-      background-position: 20px;
-      background-size: 180px;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 15px;
-      width: 56%;
-      height: 20px;
-      margin-left: -25px; } }
+      display: none; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-investigations-rec-tablet {
@@ -20948,6 +21048,15 @@ body.channel.supporters p {
         padding: 10px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+      .card-investigations-rec-tablet a.card > article > .content:before {
+        content: '';
+        background-color: black;
+        width: 56%;
+        padding: 0;
+        position: absolute;
+        top: 30px;
+        margin-left: -25px;
+        height: 20px; }
       .card-investigations-rec-tablet a.card > article > .content > h2 {
         font-weight: bold;
         font-size: 3em;
@@ -20959,6 +21068,35 @@ body.channel.supporters p {
           height: 50px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+        .card-investigations-rec-tablet a.card > article > .content > h2:before {
+          content: '';
+          background-image: url(../images/investigates.svg);
+          font-size: 25px;
+          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+          text-transform: uppercase;
+          color: #fff;
+          width: 100%;
+          padding: 0;
+          position: absolute;
+          top: 30px;
+          padding-left: 2px;
+          height: 35px;
+          padding-top: 3px;
+          font-weight: 100;
+          left: 67%;
+          background-size: 80px;
+          background-repeat: no-repeat;
+          background-position-y: 4px; }
+        .card-investigations-rec-tablet a.card > article > .content > h2:after {
+          content: '';
+          background-image: url(../images/newsroom-logo.svg);
+          background-size: 120px;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 10px;
+          width: 100%;
+          height: 20px;
+          left: 64.5%; }
       .card-investigations-rec-tablet a.card > article > .content > p {
         height: 50px;
         border-bottom: 1px solid #dadada; } }
@@ -21007,17 +21145,13 @@ body.channel.supporters p {
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .card-investigations-rec-tablet.investigations a.card > article .content:before {
-      content: '';
-      background-image: url(../images/newsroom-investigates.svg);
-      background-color: black;
-      background-position: 20px;
-      background-size: 180px;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 15px;
-      width: 64.5%;
-      height: 20px;
-      margin-left: -25px; } }
+      width: 64.4%; }
+    .card-investigations-rec-tablet.investigations a.card > article .content .category {
+      display: none; }
+    .card-investigations-rec-tablet.investigations a.card > article .content h2:before {
+      left: 62.5%; }
+    .card-investigations-rec-tablet.investigations a.card > article .content h2:after {
+      left: 60%; } }
 
 @media screen and (max-width: 767px) {
   .card-investigations-rec-mobile {
@@ -21090,6 +21224,15 @@ body.channel.supporters p {
         padding: 10px; } }
 
 @media screen and (max-width: 767px) {
+      .card-investigations-rec-mobile a.card > article > .content:before {
+        content: '';
+        background-color: black;
+        width: 56%;
+        padding: 0;
+        position: absolute;
+        top: 30px;
+        margin-left: -25px;
+        height: 20px; }
       .card-investigations-rec-mobile a.card > article > .content > h2 {
         font-weight: bold;
         font-size: 3em;
@@ -21101,6 +21244,35 @@ body.channel.supporters p {
           height: 50px; } }
 
 @media screen and (max-width: 767px) {
+        .card-investigations-rec-mobile a.card > article > .content > h2:before {
+          content: '';
+          background-image: url(../images/investigates.svg);
+          font-size: 25px;
+          font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+          text-transform: uppercase;
+          color: #fff;
+          width: 100%;
+          padding: 0;
+          position: absolute;
+          top: 30px;
+          padding-left: 2px;
+          height: 35px;
+          padding-top: 3px;
+          font-weight: 100;
+          left: 67%;
+          background-size: 80px;
+          background-repeat: no-repeat;
+          background-position-y: 4px; }
+        .card-investigations-rec-mobile a.card > article > .content > h2:after {
+          content: '';
+          background-image: url(../images/newsroom-logo.svg);
+          background-size: 120px;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 10px;
+          width: 100%;
+          height: 20px;
+          left: 64.5%; }
       .card-investigations-rec-mobile a.card > article > .content > p {
         height: 50px;
         border-bottom: 1px solid #dadada; } }
@@ -21148,8 +21320,14 @@ body.channel.supporters p {
           bottom: 5px; } }
 
 @media screen and (max-width: 767px) {
+    .card-investigations-rec-mobile a.card > article .content:before {
+      display: none; }
     .card-investigations-rec-mobile a.card > article .content > .category {
-      margin-bottom: 10px; } }
+      margin-bottom: 10px; }
+    .card-investigations-rec-mobile a.card > article .content h2:before {
+      display: none; }
+    .card-investigations-rec-mobile a.card > article .content h2:after {
+      display: none; } }
 
 .relative {
   position: relative; }
