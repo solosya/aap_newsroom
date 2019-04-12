@@ -69,7 +69,11 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+<<<<<<< HEAD
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=18" alt="{{parentItem.blogTitle}}-logo.svg?v=18">
+=======
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
+>>>>>>> master
                                     </a>
                                 </li>
                             {% endif  %}
@@ -98,7 +102,11 @@
 
                     {% else %} 
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+<<<<<<< HEAD
                             <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=18" alt="logo" class="main-logo">
+=======
+                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg" alt="logo" class="main-logo">
+>>>>>>> master
                         </a>
                         {% if roomInfo[0] | lower == 'lockerroom' %}
                             <a><p class="wisp-logo__text">Supported by</p>
@@ -194,7 +202,7 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=18" alt="{{parentItem.blogTitle}}-logo.svg">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -315,7 +323,11 @@
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+<<<<<<< HEAD
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=18" alt="{{parentItem.blogTitle}}-logo.svg">
+=======
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle}}-logo.svg">
+>>>>>>> master
                                         </a>
                                     </li>
                                 {% endif  %}
