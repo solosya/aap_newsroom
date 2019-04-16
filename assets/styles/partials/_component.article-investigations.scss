@@ -34,6 +34,11 @@
             left: 30%;
         }
     }
+    @media #{$tablet}{
+        &:before{
+            background-position-y: 10px;
+        }
+    }
     @media #{$mobile}{
         height: 25px;
         width: 100%;
@@ -43,10 +48,11 @@
             background-size: 90px;
             top: 178px;
             left: 37%;
+            background-position-y: 5px;
         }
         &:after{
             background-size: 150px;
-            top: 155px;
+            top: 150px;
             height: 25px;
         }
     }

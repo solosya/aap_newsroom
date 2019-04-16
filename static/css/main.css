@@ -11195,6 +11195,9 @@ input[type=radio].inline {
     @media screen and (min-width: 1600px) {
       .article-investigations__tag:after {
         left: 30%; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .article-investigations__tag:before {
+      background-position-y: 10px; } }
   @media screen and (max-width: 767px) {
     .article-investigations__tag {
       height: 25px;
@@ -11204,10 +11207,11 @@ input[type=radio].inline {
         height: 25px;
         background-size: 90px;
         top: 178px;
-        left: 37%; }
+        left: 37%;
+        background-position-y: 5px; }
       .article-investigations__tag:after {
         background-size: 150px;
-        top: 155px;
+        top: 150px;
         height: 25px; } }
 
 .Acme-pulldown {
