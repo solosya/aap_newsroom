@@ -121,8 +121,6 @@
 
 
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
-
-
     <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3">
         <article class="article-main">
 
@@ -302,11 +300,17 @@
                                             </section>
                                     {% endif %}
 
-                                    {% if blogData.title | lower == 'new auckland' %}
+                                    {% if articleBlog == 'new auckland' %}
                                         <div class="beca-section beca-section__article visible-md-block visible-lg-block">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/BECA_bw.png?v=0">
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
+                                    {% endif %}
+
+                                    {% if 'RWC2019' in article.keywords %}
+                                        <section class="add sidebar-add ">
+                                            <div id="canon-mrec"></div>
+                                        </section>
                                     {% endif %}
 
                                     <section class="add sidebar-add ">
@@ -365,6 +369,13 @@
                 </div>
             </div>
 
+            {% if 'RWC2019' in article.keywords %}
+                <section class="">
+                    <div id="canon-banner"></div>
+                </section>
+                <script>loadCanonAds();</script>
+            {% endif %}
+
             {% if article.additionalInfo.adswitch is defined and article.additionalInfo.adswitch == 'off' %}
             {% else %}
 
@@ -375,9 +386,11 @@
                         <script>loadTwoAds('{{articleBlog}}');</script>
                     {% endif %}
                 {% endif %}
+
             {% endif %}
 
         </article>
+
         {{ this.render('partials/_sponsor_logos.twig') | raw }}
         
     </main>

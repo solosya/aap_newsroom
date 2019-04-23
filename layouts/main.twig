@@ -206,8 +206,11 @@
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
     {% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
-
-    {% set menuItems = _Menu.get({'menuType': 'header'}) %}
+    {% if _AppHelper.getApplicationEnv() == 'PROD'%}
+        {% set menuItems = _Menu.get({'menuType': 'header'}) %}
+    {% else %}
+        {% set menuItems = _Menu.get({'menuType': 'header','menuGroupName':'Default'}) %}
+    {% endif %}
 
     {% set rooms = [] %}
     {% for room in menuItems  %}
