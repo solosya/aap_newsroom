@@ -178,19 +178,19 @@
      slotDiv.setAttribute( 'class', 'google_ad' );
      adSlot.id = "";
      adSlot.setAttribute( 'class', 'hidden-print' );
-     var adSlot2 = document.getElementById("canon-banner");
-     var slotName2 = generateNextBannerName();
-     var slotDiv2 = document.createElement('div');
-     adSlot2.appendChild(slotDiv2);
-     slotDiv2.id = slotName2;
-     slotDiv2.setAttribute( 'class', 'google_ad' );
-     adSlot2.id = "";
-     adSlot2.setAttribute( 'class', 'hidden-print' );
-     console.log(adSlot2);
+     //var adSlot2 = document.getElementById("canon-banner");
+     //var slotName2 = generateNextBannerName();
+     //var slotDiv2 = document.createElement('div');
+     //adSlot2.appendChild(slotDiv2);
+     //slotDiv2.id = slotName2;
+     //slotDiv2.setAttribute( 'class', 'google_ad' );
+     //adSlot2.id = "";
+     //adSlot2.setAttribute( 'class', 'hidden-print' );
+     //console.log(adSlot2);
      
      googletag.cmd.push(function() {
        var slot = googletag.defineSlot('/{{dfpAcct}}/canon', [[300, 250]], slotName).setTargeting().defineSizeMapping([[[0,250],[300,250]]]).addService(googletag.pubads());
-       var slot2 = googletag.defineSlot('/{{dfpAcct}}/canon', [[970,339]], slotName2).setTargeting().defineSizeMapping([[[992,0],[970,339]],[[0,250],[]]]).addService(googletag.pubads());
+       //var slot2 = googletag.defineSlot('/{{dfpAcct}}/canon', [[970,339]], slotName2).setTargeting().defineSizeMapping([[[992,0],[970,339]],[[0,250],[]]]).addService(googletag.pubads());
        googletag.display(slotName);
      });
   }
