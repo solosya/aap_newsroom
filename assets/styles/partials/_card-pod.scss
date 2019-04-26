@@ -12,11 +12,18 @@
             .content {
                 > h2 { 
                     font-size: rem(16);
-                    color: white;
+                    color: #fd3744;
                     height: 20px;
                     font-weight: 600;
                     font-family:$font-family-sans-serif;
                     text-transform: uppercase;
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        background-image: url(../icons/play-arrow-red.svg);
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
                 }
                 >p {
                     font-size: rem(14);
@@ -42,49 +49,48 @@
                 }
                 
             }
-            &:after{
-                position: absolute;
-                content: '';
-                background-image: url(../icons/play-arrow.svg);
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
+           
         }
         
     }
 }
 
-
-
 .card-pod{
     @media #{$desktop-up} {
         @include card-pod-base;
         a.card {
-            background-image: url('../images/podback-desk.png');
-            // width: 750px;
+            background-image: url('../images/thedetail.png');
             height: 235px;
-            background-size: 750px;
+            background-size: 289px;
+            background-position-x: right;
+            background-position-y: bottom;
+            background-repeat: no-repeat;
+            border: #979797 0.5px solid;
             article {
                 .content {
                     float: left;
-                    width: 233px;
-                    height: 122px;
-                    margin-top: 63px;
-                    background-color: rgba(0, 0, 0, 0.66);
-                    padding: 20px 10px 5px 15px;
-                     >p {
+                    width: 420px;
+                    height: 100%;
+                    background-color: black;
+                    padding: 60px 70px 60px 40px;
+                    >p {
                         margin-top: 8px;
-                     }
-                     h2{
-                        width: 90%;
-                     }
-
-                }
-                &:after{
-                    width: 15px;
-                    height: 20px;
-                    margin-top: 80px;
-                    margin-left: -28px;
+                        &:before{
+                            content:'';
+                            position: absolute;
+                            margin-top: 75px;
+                            width: 35px;
+                            border-top: 1px solid #979797;
+                        }
+                    }
+                    h2{
+                        width: max-content;
+                        &:after{
+                            width: 15px;
+                            height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
                 }
             }    
         }
@@ -94,28 +100,38 @@
     @media #{$tablet} {
         @include card-pod-base;
         a.card {
-            background-image: url('../images/podback-tab2.png');
-            width: 720px;
-            height: 228px;
-            background-size: 720px;
+            height: 235px;
+            background-image: url('../images/thedetail.png');
+            background-size: 289px;
+            background-position-x: right;
+            background-position-y: bottom;
+            background-repeat: no-repeat;
+            border: #979797 0.5px solid;
             article {
                 .content {
                     float: left;
-                    width: 233px;
-                    height: 122px;
-                    margin-top: 50px;
-                    background-color: rgba(0, 0, 0, 0.66);
-                    padding: 20px 10px 5px 15px;
-                     >p {
+                    width: 420px;
+                    height: 100%;
+                    background-color: black;
+                    padding: 60px 70px 60px 40px;
+                    >p {
                         margin-top: 8px;
-                     }
-
-                }
-                &:after{
-                    width: 15px;
-                    height: 20px;
-                    margin-top: 70px;
-                    margin-left: -35px;
+                        &:before{
+                            content:'';
+                            position: absolute;
+                            margin-top: 75px;
+                            width: 35px;
+                            border-top: 1px solid #979797;
+                        }
+                    }
+                    h2{
+                        width: max-content;
+                        &:after{
+                            width: 15px;
+                            height: 20px;
+                            margin-left: 15px;
+                        }
+                    }
                 }
             }
         }
@@ -125,31 +141,33 @@
     @media #{$mobile} {
         @include card-pod-base;
         a.card {
-            background-image: url('../images/podback-mob3.jpg');
-            width: 100%;
+            background-image: url('../images/thedetail-mobile.png');
             height: 116px;
             background-size: 115px;
             background-position: left;
             background-repeat: no-repeat;
+            background-color: black;
+            border-top: #979797 0.5px solid;
+            border-bottom: #979797 0.5px solid;
             article {
                 .content {
 
-                    padding: 20px 10px 5px 130px;
+                    padding: 20px 30px 10px 140px;
                     float: right;
                     >h2 {
-                        padding-left: 20px;
                         font-size: rem(14);
+                        width: max-content;
+                        &:after{
+                            width: 9px;
+                            height: 11px;
+                            margin-left: 10px;
+                            margin-top: 3px;
+                        }
                     }
                     >p{
                         height: 65px;
                         font-size: rem(12);
                     }
-                }
-                &:after{
-                    width: 9px;
-                    height: 11px;
-                    margin-top: 22px;
-                    margin-left: 130px;
                 }
             }
         }

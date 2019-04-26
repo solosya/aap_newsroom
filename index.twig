@@ -66,7 +66,7 @@
             "feed": "",
             "link": ""
         },
-        "podcasts": {
+        "podcast card": {
             "feed": "",
             "link": ""
         },
@@ -161,7 +161,7 @@
                             {% endif %}
 
 
-                            {% if sections['podcasts'].feed.articles|length == 0 %}
+                            {% if sections['podcast card'].feed.articles|length == 0 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
@@ -177,12 +177,11 @@
 
 
 
-                        {% if sections['podcasts'].feed.articles|length > 0 %}
+                        {% if sections['podcast card'].feed.articles|length > 0 %}
                             <div class="row">
-                                {{ this.render('partials/pod-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                                {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: 'card-pod card-pod-tablet card-pod-mobile'}) | raw }}
                             </div>
                         {% endif %}
-        
 
 
 
