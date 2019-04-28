@@ -46,7 +46,7 @@
             &:after{
                 content: '';
                 position: absolute;
-                background-image: url(../icons/play-arrow-red.svg);
+                background-image: url('../icons/play-arrow-red.svg?v=2');
                 background-repeat: no-repeat;
                 background-size: cover;
             }
@@ -58,7 +58,7 @@
     @media #{$desktop-up} {
         @include card-pod-base;
         a.card {
-            background-image: url('../images/thedetail2.png');
+            background-image: url('../images/thedetail2.png?v=2');
             height: 235px;
             background-size: 289px;
             background-position-x: right;
@@ -102,7 +102,7 @@
         @include card-pod-base;
         a.card {
             height: 235px;
-            background-image: url('../images/thedetail2.png');
+            background-image: url('../images/thedetail2.png?v=2');
             background-size: 289px;
             background-position-x: right;
             background-position-y: bottom;
@@ -145,7 +145,7 @@
     @media #{$mobile} {
         @include card-pod-base;
         a.card {
-            background-image: url('../images/thedetail-mobile2.png');
+            background-image: url('../images/thedetail-mobile2.png?v=2');
             height: 116px;
             background-size: 115px;
             background-position: left;
