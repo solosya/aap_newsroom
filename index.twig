@@ -178,8 +178,15 @@
 
 
                         {% if sections['podcast card'].feed.articles|length > 0 %}
+                            {% if 'The Detail' in sections['podcast card'].feed.articles[0].label %}
+                                {% set podCardClass = 'card-pod-td card-pod-td-tablet card-pod-td-mobile' %}
+                            {% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
+                                {% set podCardClass = 'card-pod-tc card-pod-tc-tablet card-pod-tc-mobile' %}
+                            {% else %}
+                                {% set podCardClass = 'card-rec card-rec-tablet card-rec-mobile' %}
+                            {% endif %}
                             <div class="row">
-                                {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: 'card-pod card-pod-tablet card-pod-mobile'}) | raw }}
+                                {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
                             </div>
                         {% endif %}
 

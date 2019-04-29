@@ -1,0 +1,157 @@
+@mixin card-pod-tc-base{
+    a.card {
+        article {
+            
+            > figure {
+                display: none;
+                > img{
+                    display: none;
+                }   
+
+            }
+            .content {
+                > h2 { 
+                    font-size: rem(16);
+                    color: white;
+                    height: 20px;
+                    font-weight: 600;
+                    font-family:$font-family-sans-serif;
+                    text-transform: uppercase;
+                }
+                >p {
+                    font-size: rem(14);
+                    color: white;
+                    height: 75px;
+                    font-family:$font-family-sans-serif;  
+                }
+
+                .category{
+                    display: none;
+                }
+                .author {
+                    
+                    img {
+                        display: none;
+                    }
+                    p {
+                       display: none; 
+                    }
+                }
+                time {
+                    display: none;
+                }
+                
+            }
+            &:after{
+                position: absolute;
+                content: '';
+                background-image: url(../icons/play-arrow.svg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+        
+    }
+}
+
+
+
+.card-pod-tc{
+    @media #{$desktop-up} {
+        @include card-pod-tc-base;
+        a.card {
+            background-image: url('../images/podback-desk.png');
+            // width: 750px;
+            height: 235px;
+            background-size: 750px;
+            article {
+                .content {
+                    float: left;
+                    width: 233px;
+                    height: 122px;
+                    margin-top: 63px;
+                    background-color: rgba(0, 0, 0, 0.66);
+                    padding: 20px 10px 5px 15px;
+                     >p {
+                        margin-top: 8px;
+                     }
+                     h2{
+                        width: 90%;
+                     }
+
+                }
+                &:after{
+                    width: 15px;
+                    height: 20px;
+                    margin-top: 80px;
+                    margin-left: -28px;
+                }
+            }    
+        }
+    }
+}
+.card-pod-tc-tablet{
+    @media #{$tablet} {
+        @include card-pod-tc-base;
+        a.card {
+            background-image: url('../images/podback-tab2.png');
+            width: 720px;
+            height: 228px;
+            background-size: 720px;
+            article {
+                .content {
+                    float: left;
+                    width: 233px;
+                    height: 122px;
+                    margin-top: 50px;
+                    background-color: rgba(0, 0, 0, 0.66);
+                    padding: 20px 10px 5px 15px;
+                     >p {
+                        margin-top: 8px;
+                     }
+
+                }
+                &:after{
+                    width: 15px;
+                    height: 20px;
+                    margin-top: 70px;
+                    margin-left: -35px;
+                }
+            }
+        }
+    }
+}
+.card-pod-tc-mobile{
+    @media #{$mobile} {
+        @include card-pod-tc-base;
+        a.card {
+            background-image: url('../images/podback-mob3.jpg');
+            width: 100%;
+            height: 116px;
+            background-size: 115px;
+            background-position: left;
+            background-repeat: no-repeat;
+            article {
+                .content {
+
+                    padding: 20px 10px 5px 130px;
+                    float: right;
+                    >h2 {
+                        padding-left: 20px;
+                        font-size: rem(14);
+                    }
+                    >p{
+                        height: 65px;
+                        font-size: rem(12);
+                    }
+                }
+                &:after{
+                    width: 9px;
+                    height: 11px;
+                    margin-top: 22px;
+                    margin-left: 130px;
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-@mixin card-pod-base{
+@mixin card-pod-td-base{
     a.card {
         
         article {
@@ -54,9 +54,9 @@
     }
 }
 
-.card-pod{
+.card-pod-td{
     @media #{$desktop-up} {
-        @include card-pod-base;
+        @include card-pod-td-base;
         a.card {
             background-image: url('../images/thedetail2.png?v=2');
             height: 235px;
@@ -97,9 +97,9 @@
         }
     }
 }
-.card-pod-tablet{
+.card-pod-td-tablet{
     @media #{$tablet} {
-        @include card-pod-base;
+        @include card-pod-td-base;
         a.card {
             height: 235px;
             background-image: url('../images/thedetail2.png?v=2');
@@ -141,9 +141,9 @@
         }
     }
 }
-.card-pod-mobile{
+.card-pod-td-mobile{
     @media #{$mobile} {
-        @include card-pod-base;
+        @include card-pod-td-base;
         a.card {
             background-image: url('../images/thedetail-mobile2.png?v=2');
             height: 116px;
