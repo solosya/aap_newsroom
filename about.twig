@@ -1,5 +1,11 @@
 {% set networkData = _Network.getNetworkData() %}
 
+{% set redir = _Page.setHttpRedirects(
+    {
+        '|/@pro/about.*|'    : networkData.defaultBlogUrl ~ '/@pro',
+    }, false) 
+%} 
+
     <main id="main" class="site-main" role="main">
         <article class="article-main">
             <div class="container">
