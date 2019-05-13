@@ -345,12 +345,12 @@
                      {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['readingroom'].feed.articles|length > 0 %}
-                    {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
-
                 {% if sections['boardroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
+                {% if sections['readingroom'].feed.articles|length > 0 %}
+                    {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['lockerroom'].feed.articles|length > 0 %}
