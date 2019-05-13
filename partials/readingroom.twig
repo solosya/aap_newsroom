@@ -1,0 +1,34 @@
+<section class="room-reading">
+    <header class="row">
+        <a href="{{ sections['ideasroom'].link }}" class="col-sm-6 col-xs-12">
+            <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg?v=2" alt="reading room" class="img-responsive reading-logo">
+        </a>
+    </header>
+
+{{this.render('_single-article.twig', {
+    article: sections['readingroom'].feed.articles[0], 
+    position: 1, 
+    containerClass: 'featured reading', 
+    imageSize: {width:1140, height:430},
+    swap: 'false'
+}) | raw}}
+
+    <div class="articles">
+        
+        <div class="row">
+            
+            {% for i in 1..2 %}
+                {% if sections['readingroom'].feed.articles[i] %}        
+                {{this.render('_single-article.twig', {
+                    article: sections['readingroom'].feed.articles[i], 
+                    position: i+1, 
+                    containerClass: 'col-sm-12 col-md-6', 
+                    imageSize: {width:203, height:129},
+                    swap: 'false'
+                }) | raw}}
+                {% endif %}
+            {% endfor %}
+
+        </div><!-- .row-->
+    </div>
+</section><!--room-sports-->
