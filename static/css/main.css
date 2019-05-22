@@ -11620,6 +11620,11 @@ input[type=radio].inline {
       -webkit-flex: 0 0 203px;
       flex: 0 0 203px;
       float: left; }
+      @media screen and (max-width: 767px) {
+        .pro-partial article > figure {
+          width: 130px;
+          -webkit-flex: 0 0 130px;
+          flex: 0 0 130px; } }
       .pro-partial article > figure > img {
         max-width: 100%; }
     .pro-partial article > .content {
@@ -11639,26 +11644,29 @@ input[type=radio].inline {
         font-size: 2.8em;
         font-weight: normal;
         color: #fff;
-        height: 70px;
+        height: 85px;
         margin-top: 10px; }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .pro-partial article > .content > h2 {
             height: 35px; } }
         @media screen and (max-width: 767px) {
           .pro-partial article > .content > h2 {
-            font-size: 2.4em; } }
+            font-size: 2em;
+            height: 50px; } }
       .pro-partial article > .content time {
-        display: none; }
-      .pro-partial article > .content > .author {
-        margin-top: 10px; }
+        font-size: 1.65rem;
+        color: white;
+        text-transform: uppercase;
+        border-left: 0;
+        padding: 0; }
         @media screen and (min-width: 768px) and (max-width: 991px) {
-          .pro-partial article > .content > .author {
-            margin-top: 0; } }
-        .pro-partial article > .content > .author > p {
-          font-size: 1.65rem;
-          color: white; }
-        .pro-partial article > .content > .author > img {
-          display: none; }
+          .pro-partial article > .content time {
+            margin-top: 5px; } }
+        @media screen and (max-width: 991px) {
+          .pro-partial article > .content time {
+            font-size: 12px; } }
+      .pro-partial article > .content > .author {
+        display: none; }
       .pro-partial article > .content > p {
         display: none; }
         @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -11686,6 +11694,9 @@ input[type=radio].inline {
       border-right: 1px solid #dadada; }
       .pro-partial .articles .row > div > a > article > figure {
         max-height: 129px; }
+        @media screen and (max-width: 767px) {
+          .pro-partial .articles .row > div > a > article > figure {
+            max-height: 90px; } }
       .pro-partial .articles .row > div:last-child {
         border-right: 0; }
   .pro-partial > .featured {
