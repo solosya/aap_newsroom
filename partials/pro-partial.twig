@@ -14,6 +14,52 @@
         </a>
         <p class=" pro-partial__header__text">Our subscription service for business news</p>
     </header>
+
+    {{this.render('_single-article.twig', {
+        article         : sections['newsroom pro'].feed.articles[0],
+        position        : 1, 
+        containerClass  : 'featured pro', 
+        imageSize       : {width:627, height:415},
+        swap            : 'false'
+    }) | raw}}
+
+    <div class="articles">
+        
+        <div class="row">
+            
+            {% for i in 1..2 %}
+                {% if sections['newsroom pro'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {
+                        article         : sections['newsroom pro'].feed.articles[i], 
+                        position        : i+1, 
+                        containerClass  : 'col-sm-12 col-md-6', 
+                        imageSize       : {width:203, height:129},
+                        swap            : 'false'
+
+                    }) | raw}}
+                {% endif %}
+            {% endfor %}
+
+        </div><!-- .articles-->
+    </div><!-- .row-->
+</section><!--room-board-->
+
+{# <section class="pro-partial">
+    <header class="pro-partial__header hidden-xs">
+
+        <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
+            <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg?v=2" alt="Newsroom Pro" class="img-responsive">
+            
+        </a>
+        <p class=" pro-partial__header__text">Our subscription service for business news</p>
+     </header>
+    <header class="pro-partial__headermobile visible-xs-block">
+        <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
+            <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg?v=2" alt="Newsroom Pro">
+            
+        </a>
+        <p class=" pro-partial__header__text">Our subscription service for business news</p>
+    </header>
     
     <div class="pro-partial__row">
         {% for i in 0..1 if sections['newsroom pro'].feed.articles[i] %}
@@ -29,5 +75,4 @@
     </div><!-- .row-->
 
 
-</section><!-- .top-stories-->
-
+</section><!-- .top-stories--> #}

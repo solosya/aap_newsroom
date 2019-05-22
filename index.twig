@@ -30,10 +30,6 @@
             "feed": "",
             "link": ""
         }, 
-        "boardroom": {
-            "feed": "",
-            "link": ""
-        },
         "livingroom": {
             "feed": "",
             "link": ""
@@ -241,17 +237,18 @@
                                 imageSize: {width:750, height:518}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
-                        {% endif %}
+                        {% endif %}   
 
-
-                       {% if sections['newsroom pro'].feed.articles|length > 0 %}
-                            <div class="row">
-                                {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
-                            </div>
-                        {% endif %}
-                        
-
-                        
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount + 1), 
+                                containerClass: 'card-rec card-rec-tablet card-rec-mobile inverted',
+                                imageSize: {width:330, height:236}
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}                
+                       
                         {{ this.render('partials/ajaxarticles_new.twig', {
                             name            : "section-load",
                             limit           : limit,
@@ -315,38 +312,18 @@
                             {% endif %}
 
                         </section>
-
-
-                    
-
-                   {# {% if articles[articleCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            position: (articleCount+1), 
-                            containerClass: 'card-sm card-rec-tablet card-rec-mobile',
-                            imageSize: {width:255, height:208}
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endif %} #}
-
                     </div>
-                    {# {% if sections['futurelearning'].feed.articles|length > 0 %}
-                        <div class="future">
-                            {{ this.render('partials/futurelearning.twig', {sections: sections, networkData: networkData}) | raw }}
-                        </div>
-                    {% endif %} #}
                 </div>
 
 
 
 
+                {% if sections['newsroom pro'].feed.articles|length > 0 %}
+                    {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['ideasroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
-
-                {% if sections['boardroom'].feed.articles|length > 0 %}
-                     {{ this.render('partials/boardroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['lockerroom'].feed.articles|length > 0 %}

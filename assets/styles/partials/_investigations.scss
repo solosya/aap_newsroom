@@ -9,9 +9,17 @@
                 height: 50px;
             }
         }
+
+        @media #{$tablet}{
+            img{
+                width:355px;
+            }
+        }
     
-    @media screen and (max-width: $sm-mobile-break){
-            width:255px;
+        @media screen and (max-width: $sm-mobile-break){
+            img{
+                width:255px;
+            }
         }
 
     }

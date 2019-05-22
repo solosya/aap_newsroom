@@ -1,0 +1,68 @@
+{% set networkData  = _Network.getNetworkData() %}
+{% set blogData     = _Blog.getBlog() %}
+{{ set(this, 'title', blogData.title) }}
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set sections =  {
+        "podcast: the detail": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }, 
+        "podcast: two cents' worth": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }
+    }
+%}
+
+
+
+{% for key, value in sections %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == key %}
+            {% set sections = sections | merge({
+                (key) : {
+                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                    'link' : blog.link,
+                    'description'   : blog.short_description,
+                    'title'         : blog.title
+                    }
+                }) %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{# {{_AppHelper.printArray(sections)}} #}
+
+
+<main id="main" class="site-main u-margin-top-40" role="main">
+    <div class="container">
+        <h1 class="sectionpage u-mobile-margin-left-20">{{blogData.title}}</h1>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 partials-block">
+
+            
+                        
+                            
+                {% if sections['podcast: the detail'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {'section' : 'podcast: the detail','blogFeeds' : sections,'template' : 'partials/pro/hero-four-light.twig','title' : 'podcast: the detail'}) | raw}}
+                {% endif %}
+
+                {% if sections["podcast: two cents' worth"].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {'section' : "podcast: two cents' worth",'blogFeeds' : sections,'template' : 'partials/pro/hero-three-dark.twig','title' : "podcast: two cents' worth"}) | raw}}
+                {% endif %}
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <section class="add sidebar-add ">
+                    <div id="newAdHalf"></div>
+                    <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>loadTwoAds('');</script>
+</main>
