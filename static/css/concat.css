@@ -20327,7 +20327,14 @@ body.channel.supporters p {
           border-top: 1px solid #979797; }
       .card-pod-td a.card article .content h2 {
         width: max-content;
-        max-width: 90%; }
+        max-width: 90%; } }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .card-pod-td a.card article .content {
+        width: 320px; }
+        .card-pod-td a.card article .content h2 {
+          max-width: 80%; } }
+
+@media screen and (min-width: 992px) {
     .card-pod-td a.card article:after {
       width: 15px;
       height: 20px;
