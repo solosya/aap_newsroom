@@ -30964,7 +30964,7 @@ Acme.IPCheck = function() {
         var token = Acme.IPToken.getToken();
 
         if (!token) {
-            console.log('got-token');
+
             $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
             function(json) {
 
@@ -31012,6 +31012,8 @@ Acme.IPCheck = function() {
                     "202.37.64.0",
                     "203.167.221.164",
                     "203.97.83.133",
+                    // Tainui Group Holdings Limited
+                    "103.232.108.234",
                     //fonterra
                     "202.50.184.0",
                     "202.50.186.0",
