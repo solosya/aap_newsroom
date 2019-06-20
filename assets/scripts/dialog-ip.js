@@ -112,6 +112,10 @@ Acme.IPCheck = function() {
                     "64.215.22.0",
                     // Bell Gully Auckland full list.
                     "203.97.14.1-203.97.14.15",
+                    // Wellington (+ CHCH) 
+                    "210.54.7.194",
+                    // Auckland 
+                    "210.55.180.235",
                     //AAP:
                     "203.4.189.121",
                 ];
@@ -120,6 +124,9 @@ Acme.IPCheck = function() {
                 var userIPInt = dot2num(json.ip);
 
                 for (var i = 0 ; i < IPAdresses.length ; i++) {
+                    // if (IPAdresses[i].indexOf('//') === 0 ) {
+                    //     continue;
+                    // }
                     var range = IPAdresses[i].split("-");
                     
                     // All IP addresses are converted to a range, however
