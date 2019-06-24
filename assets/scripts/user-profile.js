@@ -386,7 +386,7 @@ Acme.UserProfileController.prototype.events = function ()
             var requestData = { 
                 firstname: $('#newuserfirstname').val(), 
                 lastname:  $('#newuserlastname').val(), 
-                username:  $('#newuserusername').val(), 
+                username:  Math.floor(100000000 + Math.random() * 9000000000000000), 
                 useremail: $('#newuseruseremail').val(),
                 _csrf: this.csrfToken
             };
@@ -398,9 +398,9 @@ Acme.UserProfileController.prototype.events = function ()
             if (requestData.lastname === ""){
                 errorText += "Last name cannot be blank. ";
             }
-            if (requestData.username === ""){
-                errorText += "Username cannot be blank. ";
-            }
+            // if (requestData.username === ""){
+            //     errorText += "Username cannot be blank. ";
+            // }
             if (requestData.useremail === ""){
                 errorText += "Email cannot be blank. ";
             }
