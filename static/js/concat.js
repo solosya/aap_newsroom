@@ -31110,13 +31110,20 @@ Acme.IPCheck = function() {
                     }
                     console.log(range);
                     console.log(userIPInt);
+                    console.log(userIPInt);
+                    console.log(userIPInt >= range[0]);
+                    console.log(userIPInt >= range[1]);
+                    
                     if (userIPInt >= range[0] && userIPInt <= range[1]) {
+                        console.log('ipfound');
                         userAccount = true;
                         break;
                     }
                 }
 
                 if ( userAccount ) {
+                    console.log('showing popup');
+
                     Acme.IPNoticePopup = new Acme.IPNotice("modal", "ipdialog", {"main": "ipnotice"});
                     Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
                 }
