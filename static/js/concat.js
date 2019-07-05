@@ -30962,12 +30962,12 @@ Acme.IPCheck = function() {
     $(function() {
         Acme.IPToken = new Acme.Token("IP_ACCOUNT");
         var token = Acme.IPToken.getToken();
-
+        console.log(token);
         if (!token) {
 
             $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
             function(json) {
-
+                console.log(json);
                 // can accept '*' and range like:
                 // "203.4.*.*" or "203.4.189.*"
                 // "202.22.30.101-202.22.30.240" 
@@ -31108,7 +31108,8 @@ Acme.IPCheck = function() {
                         range[0] = dot2num ( range[0] );
                         range[1] = dot2num ( range[1] );
                     }
-
+                    console.log(range);
+                    console.log(userIPInt);
                     if (userIPInt >= range[0] && userIPInt <= range[1]) {
                         userAccount = true;
                         break;
