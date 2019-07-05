@@ -69,6 +69,8 @@ Acme.IPCheck = function() {
                     "203.97.83.133",
                     // Tainui Group Holdings Limited
                     "103.232.108.234",
+                    "118.209.72.58",
+
                     //fonterra
                     "202.50.184.0",
                     "202.50.186.0",
@@ -110,8 +112,6 @@ Acme.IPCheck = function() {
                     "197.98.201.0",
                     "197.156.245.192",
                     "64.215.22.0",
-                    // 
-                    "118.209.72.58",
                     // Bell Gully Auckland full list.
                     "203.97.14.1-203.97.14.15",
                     // Wellington (+ CHCH) 
