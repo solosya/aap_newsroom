@@ -135,6 +135,9 @@
 					line-height: 1.4;
 					margin-bottom: 0;
 					width: 100%;
+					@media #{$desktop-up}{
+						padding-left: 65px;
+					}
 					@media screen and (max-width: $sm-break-down) {
 						font-size: em(11);
 						display: none;
