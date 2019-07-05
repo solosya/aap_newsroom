@@ -69,7 +69,6 @@ Acme.IPCheck = function() {
                     "203.97.83.133",
                     // Tainui Group Holdings Limited
                     "103.232.108.234",
-                    "118.209.72.58",
 
                     //fonterra
                     "202.50.184.0",
@@ -127,6 +126,9 @@ Acme.IPCheck = function() {
                     "202.8.13.71",
                     //AAP:
                     "203.4.189.121",
+                    //jasper
+                    "118.209.72.58",
+
                 ];
 
                 var userAccount = false;
