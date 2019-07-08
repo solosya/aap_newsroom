@@ -30947,7 +30947,7 @@ Acme.Confirm = function(template, parent, layouts) {
   Dialog Confirmation Box
 ***                       ****/
 
-Acme.IPCheck = function(IPAdresses) {
+Acme.IPCheck = function() {
 
     function dot2num(dot) {
         var d = dot.split(".");
