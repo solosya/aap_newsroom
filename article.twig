@@ -120,6 +120,17 @@
 {% endif %}
 
 
+{% set totalstring = "" %}
+{% set totals = (article.total is defined) ? article.total : false %}
+{% if totals and _User.isAdminUser() %}
+    {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+{% endif %}
+
+
+
+
+
+
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
     <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3">
         <article class="article-main">
@@ -164,6 +175,10 @@
                         <div class="col-md-8">
                             
                             <div class="content-wrapper">
+                                {% if _User.isAdminUser() %}
+                                    <p class="article__totals">{{totalstring}}</p>
+                                {% endif %}
+
                                 <div class="content-block-top hidden-print">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
                                     ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a

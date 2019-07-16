@@ -269,7 +269,7 @@
 
                     <div class="col-sm-12 col-md-4 sidebar">
                         {% if _Page.getPageData("rnz") is defined %}
-                            {% set rnzpage = _Page.getPageData("rnz") %}
+                            {% set rnzpage = _Page.getPageData("rnz", false) %}
                             {{rnzpage.content | raw}}
                         {% endif %}
 
