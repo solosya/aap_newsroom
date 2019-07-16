@@ -2,11 +2,26 @@
     a.card {
         
         article {
-            
+            position: relative;
             > figure {
-                display: none;
+                //display: none;
+                position: absolute;
+                left: 0;
+                z-index: -1;
+                width: 55%;
+                height: 100%;
+                &:after {
+                    display: block;
+                    position: absolute;
+                    background-image: linear-gradient(to bottom, rgba(25, 44, 84, 0), #222);
+                    bottom: 0;
+                    height: 100%;
+                    width: 100%;
+                    content: '';
+                }
                 > img{
-                    display: none;
+                    //display: none;
+                    object-fit: cover;
                 }   
 
             }
@@ -58,9 +73,9 @@
     @media #{$desktop-up} {
         @include card-pod-td-base;
         a.card {
-            background-image: url('../images/thedetail2.png?v=2');
+            background-image: url('../images/thedetail.png');
             height: 235px;
-            background-size: 289px;
+            background-size: 45%;
             background-position-x: right;
             background-position-y: bottom;
             background-repeat: no-repeat;
@@ -70,8 +85,8 @@
                     float: left;
                     width: 420px;
                     height: 100%;
-                    background-color: black;
-                    padding: 60px 70px 60px 40px;
+                    // background-color: black;
+                    padding: 110px 70px 10px 40px;
                     >p {
                         margin-top: 8px;
                         &:before{
@@ -96,7 +111,7 @@
                 &:after{
                     width: 15px;
                     height: 20px;
-                    margin-top: 60px;
+                    margin-top: 110px;
                     margin-left: -90px;
                 } 
             } 
@@ -108,8 +123,8 @@
         @include card-pod-td-base;
         a.card {
             height: 235px;
-            background-image: url('../images/thedetail2.png?v=2');
-            background-size: 289px;
+            background-image: url('../images/thedetail.png');
+            background-size: 45%;
             background-position-x: right;
             background-position-y: bottom;
             background-repeat: no-repeat;
@@ -119,8 +134,8 @@
                     float: left;
                     width: 420px;
                     height: 100%;
-                    background-color: black;
-                    padding: 60px 70px 60px 40px;
+                    //background-color: black;
+                    padding: 110px 70px 10px 40px;
                     >p {
                         margin-top: 8px;
                         &:before{
@@ -151,18 +166,22 @@
     @media #{$mobile} {
         @include card-pod-td-base;
         a.card {
-            background-image: url('../images/thedetail-mobile2.png?v=2');
+            background-image: url('../images/thedetail-mobile.png');
             height: 116px;
-            background-size: 115px;
-            background-position: left;
+            background-size: 35%;
+            
+            background-position: right;
             background-repeat: no-repeat;
-            background-color: black;
             border-top: #979797 0.5px solid;
             border-bottom: #979797 0.5px solid;
+            position: relative;
             article {
+                figure{
+                    width: 65%;
+                }
                 .content {
 
-                    padding: 20px 30px 10px 140px;
+                    padding: 30px 160px 0 20px;
                     float: right;
                     >h2 {
                         font-size: rem(14);
@@ -178,8 +197,8 @@
                     width: 9px;
                     height: 12px;
                     margin-left: -30px;
-                    right: 30px;
-                    margin-top: 22px;
+                    right: 175px;
+                    margin-top: 32px;
                 }
             }
         }

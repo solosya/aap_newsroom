@@ -20272,40 +20272,54 @@ body.channel.supporters p {
     display: none; } }
 
 @media screen and (min-width: 992px) {
-  .card-pod-td a.card article > figure {
-    display: none; }
-    .card-pod-td a.card article > figure > img {
+  .card-pod-td a.card article {
+    position: relative; }
+    .card-pod-td a.card article > figure {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      width: 55%;
+      height: 100%; }
+      .card-pod-td a.card article > figure:after {
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to bottom, rgba(25, 44, 84, 0), #222);
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        content: ''; }
+      .card-pod-td a.card article > figure > img {
+        object-fit: cover; }
+    .card-pod-td a.card article .content > h2 {
+      font-size: 1.6rem;
+      color: #fd3744;
+      height: 20px;
+      font-weight: 600;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      text-transform: uppercase; }
+    .card-pod-td a.card article .content > p {
+      font-size: 1.4rem;
+      color: white;
+      height: 75px;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+    .card-pod-td a.card article .content .category {
       display: none; }
-  .card-pod-td a.card article .content > h2 {
-    font-size: 1.6rem;
-    color: #fd3744;
-    height: 20px;
-    font-weight: 600;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    text-transform: uppercase; }
-  .card-pod-td a.card article .content > p {
-    font-size: 1.4rem;
-    color: white;
-    height: 75px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-  .card-pod-td a.card article .content .category {
-    display: none; }
-  .card-pod-td a.card article .content .author img {
-    display: none; }
-  .card-pod-td a.card article .content .author p {
-    display: none; }
-  .card-pod-td a.card article .content time {
-    display: none; }
-  .card-pod-td a.card article:after {
-    content: '';
-    position: absolute;
-    background-image: url("../icons/play-arrow-red.svg?v=2");
-    background-repeat: no-repeat;
-    background-size: cover; }
+    .card-pod-td a.card article .content .author img {
+      display: none; }
+    .card-pod-td a.card article .content .author p {
+      display: none; }
+    .card-pod-td a.card article .content time {
+      display: none; }
+    .card-pod-td a.card article:after {
+      content: '';
+      position: absolute;
+      background-image: url("../icons/play-arrow-red.svg?v=2");
+      background-repeat: no-repeat;
+      background-size: cover; }
   .card-pod-td a.card {
-    background-image: url("../images/thedetail2.png?v=2");
+    background-image: url("../images/thedetail.png");
     height: 235px;
-    background-size: 289px;
+    background-size: 45%;
     background-position-x: right;
     background-position-y: bottom;
     background-repeat: no-repeat;
@@ -20314,8 +20328,7 @@ body.channel.supporters p {
       float: left;
       width: 420px;
       height: 100%;
-      background-color: black;
-      padding: 60px 70px 60px 40px; }
+      padding: 110px 70px 10px 40px; }
       .card-pod-td a.card article .content > p {
         margin-top: 8px; }
         .card-pod-td a.card article .content > p:before {
@@ -20337,44 +20350,58 @@ body.channel.supporters p {
     .card-pod-td a.card article:after {
       width: 15px;
       height: 20px;
-      margin-top: 60px;
+      margin-top: 110px;
       margin-left: -90px; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .card-pod-td-tablet a.card article > figure {
-    display: none; }
-    .card-pod-td-tablet a.card article > figure > img {
+  .card-pod-td-tablet a.card article {
+    position: relative; }
+    .card-pod-td-tablet a.card article > figure {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      width: 55%;
+      height: 100%; }
+      .card-pod-td-tablet a.card article > figure:after {
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to bottom, rgba(25, 44, 84, 0), #222);
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        content: ''; }
+      .card-pod-td-tablet a.card article > figure > img {
+        object-fit: cover; }
+    .card-pod-td-tablet a.card article .content > h2 {
+      font-size: 1.6rem;
+      color: #fd3744;
+      height: 20px;
+      font-weight: 600;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      text-transform: uppercase; }
+    .card-pod-td-tablet a.card article .content > p {
+      font-size: 1.4rem;
+      color: white;
+      height: 75px;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+    .card-pod-td-tablet a.card article .content .category {
       display: none; }
-  .card-pod-td-tablet a.card article .content > h2 {
-    font-size: 1.6rem;
-    color: #fd3744;
-    height: 20px;
-    font-weight: 600;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    text-transform: uppercase; }
-  .card-pod-td-tablet a.card article .content > p {
-    font-size: 1.4rem;
-    color: white;
-    height: 75px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-  .card-pod-td-tablet a.card article .content .category {
-    display: none; }
-  .card-pod-td-tablet a.card article .content .author img {
-    display: none; }
-  .card-pod-td-tablet a.card article .content .author p {
-    display: none; }
-  .card-pod-td-tablet a.card article .content time {
-    display: none; }
-  .card-pod-td-tablet a.card article:after {
-    content: '';
-    position: absolute;
-    background-image: url("../icons/play-arrow-red.svg?v=2");
-    background-repeat: no-repeat;
-    background-size: cover; }
+    .card-pod-td-tablet a.card article .content .author img {
+      display: none; }
+    .card-pod-td-tablet a.card article .content .author p {
+      display: none; }
+    .card-pod-td-tablet a.card article .content time {
+      display: none; }
+    .card-pod-td-tablet a.card article:after {
+      content: '';
+      position: absolute;
+      background-image: url("../icons/play-arrow-red.svg?v=2");
+      background-repeat: no-repeat;
+      background-size: cover; }
   .card-pod-td-tablet a.card {
     height: 235px;
-    background-image: url("../images/thedetail2.png?v=2");
-    background-size: 289px;
+    background-image: url("../images/thedetail.png");
+    background-size: 45%;
     background-position-x: right;
     background-position-y: bottom;
     background-repeat: no-repeat;
@@ -20383,8 +20410,7 @@ body.channel.supporters p {
       float: left;
       width: 420px;
       height: 100%;
-      background-color: black;
-      padding: 60px 70px 60px 40px; }
+      padding: 110px 70px 10px 40px; }
       .card-pod-td-tablet a.card article .content > p {
         margin-top: 8px; }
         .card-pod-td-tablet a.card article .content > p:before {
@@ -20403,47 +20429,63 @@ body.channel.supporters p {
       margin-left: -90px; } }
 
 @media screen and (max-width: 767px) {
-  .card-pod-td-mobile a.card article > figure {
-    display: none; }
-    .card-pod-td-mobile a.card article > figure > img {
+  .card-pod-td-mobile a.card article {
+    position: relative; }
+    .card-pod-td-mobile a.card article > figure {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      width: 55%;
+      height: 100%; }
+      .card-pod-td-mobile a.card article > figure:after {
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to bottom, rgba(25, 44, 84, 0), #222);
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        content: ''; }
+      .card-pod-td-mobile a.card article > figure > img {
+        object-fit: cover; }
+    .card-pod-td-mobile a.card article .content > h2 {
+      font-size: 1.6rem;
+      color: #fd3744;
+      height: 20px;
+      font-weight: 600;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      text-transform: uppercase; }
+    .card-pod-td-mobile a.card article .content > p {
+      font-size: 1.4rem;
+      color: white;
+      height: 75px;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+    .card-pod-td-mobile a.card article .content .category {
       display: none; }
-  .card-pod-td-mobile a.card article .content > h2 {
-    font-size: 1.6rem;
-    color: #fd3744;
-    height: 20px;
-    font-weight: 600;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    text-transform: uppercase; }
-  .card-pod-td-mobile a.card article .content > p {
-    font-size: 1.4rem;
-    color: white;
-    height: 75px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-  .card-pod-td-mobile a.card article .content .category {
-    display: none; }
-  .card-pod-td-mobile a.card article .content .author img {
-    display: none; }
-  .card-pod-td-mobile a.card article .content .author p {
-    display: none; }
-  .card-pod-td-mobile a.card article .content time {
-    display: none; }
-  .card-pod-td-mobile a.card article:after {
-    content: '';
-    position: absolute;
-    background-image: url("../icons/play-arrow-red.svg?v=2");
-    background-repeat: no-repeat;
-    background-size: cover; }
+    .card-pod-td-mobile a.card article .content .author img {
+      display: none; }
+    .card-pod-td-mobile a.card article .content .author p {
+      display: none; }
+    .card-pod-td-mobile a.card article .content time {
+      display: none; }
+    .card-pod-td-mobile a.card article:after {
+      content: '';
+      position: absolute;
+      background-image: url("../icons/play-arrow-red.svg?v=2");
+      background-repeat: no-repeat;
+      background-size: cover; }
   .card-pod-td-mobile a.card {
-    background-image: url("../images/thedetail-mobile2.png?v=2");
+    background-image: url("../images/thedetail-mobile.png");
     height: 116px;
-    background-size: 115px;
-    background-position: left;
+    background-size: 35%;
+    background-position: right;
     background-repeat: no-repeat;
-    background-color: black;
     border-top: #979797 0.5px solid;
-    border-bottom: #979797 0.5px solid; }
+    border-bottom: #979797 0.5px solid;
+    position: relative; }
+    .card-pod-td-mobile a.card article figure {
+      width: 65%; }
     .card-pod-td-mobile a.card article .content {
-      padding: 20px 30px 10px 140px;
+      padding: 30px 160px 0 20px;
       float: right; }
       .card-pod-td-mobile a.card article .content > h2 {
         font-size: 1.4rem;
@@ -20456,8 +20498,8 @@ body.channel.supporters p {
       width: 9px;
       height: 12px;
       margin-left: -30px;
-      right: 30px;
-      margin-top: 22px; } }
+      right: 175px;
+      margin-top: 32px; } }
 
 @media screen and (min-width: 992px) {
   .card-pod-tc a.card article > figure {
