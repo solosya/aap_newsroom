@@ -31,7 +31,7 @@
 {% set sectionRanks = {} %}
 {% set sectionFeed = {} %}
 {% set columnArticles = {} %}
-{% set currencyArticles = {} %}
+{% set eightThingsArticles = {} %}
 {% set extraArticle = {} %}    
 {% set partialOrder = [
     'partials/pro/hero-four-light.twig',
@@ -155,10 +155,10 @@
                                     blogId: blog['id'], 
                                      
                             }) %}
-    {% elseif blog.title | lower == "currency" %}
+    {% elseif blog.title | lower == "8 things" %}
 
-         {% set currencyArticles = _Article.getRecentArticles({ 
-                                    limit: 4, 
+         {% set eightThingsArticles = _Article.getRecentArticles({ 
+                                    limit: 8, 
                                     blogId: blog['id'], 
                                      
                             }) %} 
@@ -294,11 +294,11 @@
                             {% elseif x == 3 %}
                                 {% set hiddenClass = ['','',' visible-xs-block',' visible-xs-block'] %}
                                 <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 visible-sm-block visible-xs-block">
-                                    <a href="{{networkData.defaultBlogUrl}}/@currency"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Currency</h3></a>
+                                    <a href="{{networkData.defaultBlogUrl}}/@8things"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
 
-                                    {% for i in 0..3 if currencyArticles[i] %}
+                                    {% for i in 0..3 if eightThingsArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
-                                            article         : currencyArticles[i], 
+                                            article         : eightThingsArticles[i], 
                                             swap            : false,
                                             containerClass  : 'col-sm-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
                                         }) | raw}}
@@ -371,10 +371,10 @@
                             </section>
 
                             <section class="col-sm-12 u-margin-top-40">
-                                 <a href="{{networkData.defaultBlogUrl}}/@currency"><h3 class="pro-sidebar__colheader">Currency</h3></a>
-                                {% for i in 0..3 if currencyArticles[i] %}
+                                 <a href="{{networkData.defaultBlogUrl}}/@8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
+                                {% for i in 0..3 if eightThingsArticles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                        article         : currencyArticles[i], 
+                                        article         : eightThingsArticles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile'
                                     }) | raw}}
