@@ -32897,7 +32897,7 @@ Acme.UserProfileController.prototype.fetchEmailLists = function() {
 
 
 Acme.UserProfileController.prototype.deleteUser = function(e) {
-   
+
     var user = $(e.target).closest('li');
     var userid = user.attr("id");
 
@@ -32970,6 +32970,7 @@ Acme.UserProfileController.prototype.render = function(data)
             lastname:  data[i].lastname, 
             username:  data[i].username, 
             useremail: data[i].email,
+            id: data[i].id
         });
     }
     self.renderUser(($('#mangedUsers')), users, Acme.managed_user);
