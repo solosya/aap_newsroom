@@ -21283,8 +21283,7 @@ HomeController.Listing = (function ($) {
         
         $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
-
-            var btnObj = $(this);
+			var btnObj = $(this);
             
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
@@ -21594,6 +21593,8 @@ SearchController.Listing = (function ($) {
     var attachEvents = function () {
         
         $('.loadMoreArticles').on('click', function(e){
+			console.log('woop woop');
+            
             e.preventDefault();
             var btnObj = $(this);
             $.fn.Ajax_LoadSearchArticles({

@@ -245,7 +245,7 @@ HomeController.Listing = (function ($) {
         
         $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
-
+            console.log('woop woop');
             var btnObj = $(this);
             
             $.fn.Ajax_LoadBlogArticles({

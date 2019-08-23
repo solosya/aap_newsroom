@@ -29903,7 +29903,7 @@ Acme.Feed.prototype.fetch = function()
 {
     var self = this;
     self.elem.html("Please wait...");
-
+    
     var container = $('#'+self.elem.data('container'));
 
     // blogfeed makes 2 sql calls.  
@@ -29920,12 +29920,14 @@ Acme.Feed.prototype.fetch = function()
         'limit'             :   self.elem.data('limit'),
         // 'page'              :   self.elem.data('page') || 1, // page is used for user articles
     };
-
+    
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
-
+    console.log('trying to render...');
+    console.log(self.options);
     $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
+        //console.log(data);
         if (data.success == 1) {
             self.render(data);
         }
@@ -30077,7 +30079,8 @@ Acme.View.userFeed.prototype.render = function(data)
         rendertype =   self.elem.data('rendertype')    || null;
 
     self.elem.html(label);
-
+    console.log('rendering...');
+    console.log(data);
     (users.length < self.options.limit) 
         ? self.elem.css('display', 'none')
         : self.elem.show();
@@ -31421,7 +31424,7 @@ HomeController.Listing = (function ($) {
         
         $('.loadMoreArticles, .loadMoreArticles-index').on('click', function(e){
             e.preventDefault();
-
+            console.log('woop woop');
             var btnObj = $(this);
             
             $.fn.Ajax_LoadBlogArticles({
