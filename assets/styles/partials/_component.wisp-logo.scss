@@ -6,13 +6,27 @@
 	    top: 48px;
 	}
 	@media #{$tablet}{
-		left: 425px;
+		left: 475px;
 	    top: 0;
 	}
 	@media #{$mobile}{
 		width: 100px;
 		left: 150px;
 	    top: -5px;
+	}
+	&--matatuhi{
+		@media #{$desktop-up}{
+			left: 230px;
+			top: 60px
+		}
+		@media #{$tablet}{
+			left: 490px;
+			top: 10px;
+		}
+		@media #{$mobile}{
+			left: 165px;
+			top: 5px;
+		}
 	}
 }
 .wisp-logo__text{
@@ -25,7 +39,7 @@
 	@media #{$tablet}{
 		width: 100px;
 	    top: 15px;
-	    left: 375px;
+	    left: 425px;
 	}
 	@media #{$mobile}{
 		left: 95px;

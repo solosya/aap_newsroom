@@ -299,54 +299,41 @@ p.foundingpartners {
                 height: 100%;
             }
 
-            // &.sponsor-holden {
-            //     width:200px;
-            //     height:50px;
-            //     background: url('../images/Holden_BASIC_TAG_LAND_POS_MONO.svg');
-            //     background-repeat: no-repeat;
-            //     background-size: contain;
-            //     margin-top: 15px;
-            //     margin-right: 0;
-            //     margin-left: -15px;
-            //     @media screen and (max-width: $mobile-break){
-            //         margin-left:35px;
-            //     }
-            // }
-
             &.sponsor-chorus {
                 width:200px;
                 height:40px;
-                background: url('../images/Chorus_logo-basic.svg');
+                background: url('../images/logos/Chorus_logo-basic.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left:-30px;
                 margin-top: 15px;
                 margin-right: 55px;
                 @media #{$mobile}{
-                    margin-left:50px;
+                    margin:0;
                 }
             }
 
             &.sponsor-vodafone {
                 width:155px;
                 height:50px;
-                background: url('../images/vodafone-logo.svg');
+                background: url('../images/logos/vodafone-logo.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-top: 15px;
-                @media screen and (max-width: $mobile-break){
-                   
-                    margin-right: 0;
+                @media #{$mobile}{
+                    margin:15px 0 0;
                 }
             }   
 
             &.sponsor-bellgully {
                 width:187px;
                 height:50px;
-                background: url('../images/bell-gully.svg');
+                background: url('../images/logos/bell-gully.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
-                margin-right: 40px;
+                
+                    margin-right: 40px;
+                
                 margin-top: 15px;
                 @media screen and (max-width: $mobile-break){
                    
@@ -357,37 +344,40 @@ p.foundingpartners {
             &.sponsor-vic-uni-wellington {
                 width:200px;
                 height:50px;
-                background: url('../images/VIC-mono.png?ver=1');
+                background: url('../images/logos/VIC-mono.png?ver=1');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-top: 15px;
+                @media #{$mobile}{
+                    margin:0;
+                }
             }
 
             &.sponsor-uni-auckland {
-                width:200px;
+                width:140px;
                 height:45px;
-                background: url('../images/UOA_H_Black.svg?ver=2');
+                background: url('../images/logos/UOA_H_Black.svg?ver=2');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left:40px;
-                @media screen and (max-width: $mobile-break){
-                    margin-right: -30px;
-                }
                 position: relative;
                 top: -5px;
                 margin-top: 15px;
+                @media #{$mobile}{
+                    margin:15px 0 0;
+                }
             }
 
             &.sponsor-kiwibank {
                 width:65px;
                 height:65px;
-                background: url('../images/KB_logo_black.svg');
+                background: url('../images/logos/KB_logo_black.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-bottom: -5px;
                 margin-right: 100px;
-                @media #{$mobile} {
-                    margin-left: 90px;
+                @media #{$mobile}{
+                    margin:0;
                 }
                 
             }
@@ -395,18 +385,63 @@ p.foundingpartners {
             &.sponsor-ecostore {
                 width:160px;
                 height:50px;
-                background: url('../images/eco_logo_black.svg');
+                background: url('../images/logos/eco_logo_black.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-bottom: 5px;
+                margin-right: 40px;
+                @media #{$mobile}{
+                    margin:0;
+                }
             }
 
             &.sponsor-stuff {
                 width:130px;
                 height:100px;
-                background: url('../images/stuff.svg?ver=1');
+                background: url('../images/logos/stuff.svg?ver=1');
                 background-position: 0 20px;
                 background-repeat: no-repeat;
+                @media #{$mobile}{
+                    margin:0;
+                }
+            }
+
+            &.sponsor-matatuhi {
+                width:200px;
+                height:100px;
+                background: url('../images/logos/matatuhi-mono.jpg');
+                background-position: 0 20px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                @media #{$mobile}{
+                    margin:0;
+                }
+            }
+
+            &.sponsor-beca {
+                width:130px;
+                height:65px;
+                background: url('../images/logos/BECA_mono.png');
+                background-position: 0 20px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                @media #{$mobile}{
+                    margin:0;
+                }
+            }
+
+            &.sponsor-wispa {
+                width:130px;
+                height:100px;
+                background: url('../images/logos/WISP_mono.jpg');
+                background-position: 0 20px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                
+                    margin-right: 40px;
+                @media #{$mobile}{
+                    margin:0;
+                }
             }
             @media #{$mobile}{
                 margin:0;

@@ -102,7 +102,10 @@
                         </a>
                         {% if roomInfo[0] | lower == 'lockerroom' %}
                             <a><p class="wisp-logo__text">Supported by</p>
-                            <img class="wisp-logo" src="{{networkData.templatePath}}/static/images/WISP-logo2.png"></a>
+                            <img class="wisp-logo" src="{{networkData.templatePath}}/static/images/logos/WISP-logo2.png"></a>
+                        {% elseif roomInfo[0] | lower == 'readingroom' %}
+                            <a><p class="wisp-logo__text">Supported by</p>
+                            <img class="wisp-logo wisp-logo--matatuhi" src="{{networkData.templatePath}}/static/images/logos/matatuhi-colour"></a>
                         {% endif %}
                        
                         
@@ -234,7 +237,7 @@
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right">My Account</a>
                     {# <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a> #}
                 {% else %}
-                    <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
+                    <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN TO PRO</button>
                     <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
