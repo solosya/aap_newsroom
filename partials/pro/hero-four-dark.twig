@@ -38,19 +38,28 @@
 
     {% set limit = 4 %}
 
-    {% if articles|length >= limit %}
-        {{ this.render('partials/ajaxarticles_new.twig', {
-            name            : "section-load",
-            limit           : limit,
-            offset          : limit,
-            blogid          : blogId,
-            label           : "Load more",
-            imgwidth        : "300",
-            imgheight       : "160",
-            container       : "mainAjaxArticles",
-            non_pinned      : articlesArr.existingNonPinnedCount, 
-            card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
-            buttonClass     : "loadMoreArticles"
-        }) | raw }}
-    {% endif %}
+    {% set blogguid = articles[0].blog['guid'] %}
+
+    {# <div class="col-12">{{_AppHelper.printArray(blogId)}}</div> #}
+    
+    {% set limit = 4 %}
+    <div class="col-sm-12">
+        <div class="row">
+            {% if articles|length >= limit %}
+                {{ this.render('../ajaxarticles_new.twig', {
+                    name            : "section-load",
+                    limit           : limit,
+                    offset          : limit,
+                    blogguid        : blogguid,
+                    label           : "Load more",
+                    imgwidth        : "300",
+                    imgheight       : "160",
+                    container       : "mainAjaxArticles",
+                    non_pinned      : 0, 
+                    card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
+                    buttonClass     : "loadMoreArticles"
+                }) | raw }}
+            {% endif %}
+        </div>
+    </div>
 </section>
