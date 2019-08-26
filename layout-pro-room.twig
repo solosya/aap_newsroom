@@ -13,7 +13,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑           ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+{# {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -403,16 +403,19 @@
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
-            $('.j-pro-loadmore').click( function(){
-                console.log('loadmore clicked', this) 
-                var parent = $(this).parent();
-                $(parent + '> div').removeClass('hidden');
-            });
-            $('.j-pro-loadless').click( function(){ 
-                console.log('loadless clicked', this) 
-                var parent = $(this).parent();
-                $(parent + '> div').removeClass('hidden');
-                $(parent + '> div').addClass('hidden');
+            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+            jQuery( function() {
+                $('.j-pro-loadmore').click( function(){
+                    console.log('loadmore clicked', this) 
+                    var parent = $(this).parent();
+                    $(parent + '> div').removeClass('hidden');
+                });
+                $('.j-pro-loadless').click( function(){ 
+                    console.log('loadless clicked', this) 
+                    var parent = $(this).parent();
+                    $(parent + '> div').removeClass('hidden');
+                    $(parent + '> div').addClass('hidden');
+                });
             });
         });
     </script>
