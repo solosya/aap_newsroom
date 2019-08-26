@@ -47,7 +47,7 @@
         
         {% if articles|length >= limit %}
                 {{ this.render('../ajaxarticles_new.twig', {
-                    name            : "section-load",
+                    name            : "section-load" ~ blogid,
                     limit           : limit,
                     offset          : 6,
                     blogguid        : blogguid,
