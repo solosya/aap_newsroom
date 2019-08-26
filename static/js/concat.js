@@ -27177,7 +27177,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 (function ($) {
 
     $.fn.Ajax_LoadBlogArticles_new = function(options){
-        console.log('now we here yo', options)
         var requestType = 'post';
         var url = _appJsConfig.baseHttpPath + '/home/load-articles';
 
@@ -27211,10 +27210,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
-        console.log('fetching from blog new');
-        console.log(requestData);
-        console.log(url);
-        console.log(requestType);
+        // console.log('fetching from blog new');
+        // console.log(requestData);
+        // console.log(url);
+        // console.log(requestType);
         
         return $.ajax({
             type: requestType,
@@ -27222,7 +27221,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             dataType: 'json',
             data: requestData
         }).done(function(r) {
-             console.log(r);
+            //  console.log(r);
         });        
     };
 
@@ -29903,8 +29902,8 @@ Acme.Feed = function() {};
 Acme.Feed.prototype.fetch = function()
 {
     var self = this;
-    console.log('fetching...');
-    console.log(self);
+    // console.log('fetching...');
+    // console.log(self);
     self.elem.html("Please wait...");
     
     var container = $('#'+self.elem.data('container'));
@@ -29928,7 +29927,7 @@ Acme.Feed.prototype.fetch = function()
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
     console.log('about to fecth...');
-    console.log(self.options);
+    // console.log(self.options);
     $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
         console.log(data);
 
@@ -29942,8 +29941,8 @@ Acme.Feed.prototype.events = function()
 {
     var self = this;
     self.elem.unbind().on('click', function(e) {
-        console.log('on click');
-        console.log(self);
+        // console.log('on click');
+        // console.log(self);
         e.preventDefault();
         self.fetch();
     });

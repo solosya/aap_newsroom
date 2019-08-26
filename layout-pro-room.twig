@@ -403,13 +403,17 @@
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
-            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+            
             jQuery( function() {
+                
                 $('.j-pro-loadmore').click( function(){
+                    $('.loadMore').removeClass('loadMore');
                     console.log('loadmore clicked', this) 
                     //var parent = $(this).parent();
                     $(this).prev().removeClass('hidden');
                     $(this).next().removeClass('hidden');
+                    $(this).addClass('loadMore');
+                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
                 });
                 $('.j-pro-loadless').click( function(){ 
                     console.log('loadless clicked', this) 
