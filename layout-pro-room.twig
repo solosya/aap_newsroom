@@ -399,21 +399,20 @@
         </section>
     </main>
 
-    {# <script>
+    <script>
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
             $('.j-pro-loadmore').click( function(){ 
                 var parent = $(this).parent();
-                $(parent + '> .j-pro-loadless').removeClass('hidden');
+                $(parent + '> div').removeClass('hidden');
             });
             $('.j-pro-loadless').click( function(){ 
                 var parent = $(this).parent();
-                $(parent + '> .j-pro-loadmore').removeClass('hidden');
-                $(parent + '> .j-pro-loadmore').addClass('hidden');
-                $(this).addClass('hidden');
+                $(parent + '> div').removeClass('hidden');
+                $(parent + '> div').addClass('hidden');
             });
         });
-    </script> #}
+    </script>
 
 
