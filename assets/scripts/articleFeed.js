@@ -117,6 +117,9 @@ Acme.View.articleFeed.prototype.render = function(data)
     }
 
 
+    console.log('trying to render2...');
+    console.log(self);
+
     if (articles.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
     } else {

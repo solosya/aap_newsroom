@@ -43,7 +43,7 @@
     {# <div class="col-12">{{_AppHelper.printArray(blogguid)}}</div> #}
     
     {% set limit = 4 %}
-    <div class="col-sm-12">
+    <div class="col-sm-12 u-margin-top-30">
         
         {% if articles|length >= limit %}
                 {{ this.render('../ajaxarticles_new.twig', {
@@ -56,7 +56,7 @@
                     imgheight       : "160",
                     container       : "mainAjaxArticles" ~ blogid,
                     non_pinned      : 0, 
-                    card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile u-margin-top-30",
+                    card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
                     buttonClass     : "pro-main__loadmore j-pro-loadmore" 
                 }) | raw }}
             {% endif %}
