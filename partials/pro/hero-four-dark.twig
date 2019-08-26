@@ -40,7 +40,7 @@
 
     {% set blogguid = articles[0].blog['guid'] %}
     {% set blogid = articles[0].blog['id'] %}
-    <div class="col-12">{{_AppHelper.printArray(blogid)}}</div>
+    {# <div class="col-12">{{_AppHelper.printArray(blogid)}}</div> #}
     
     {% set limit = 4 %}
     <div class="col-sm-12">
@@ -54,7 +54,7 @@
                     label           : "+ Load more",
                     imgwidth        : "300",
                     imgheight       : "160",
-                    container       : "mainAjaxArticles-"  ~ blogid ~ " j-pro-loadmore-" ~ blogid,
+                    container       : "mainAjaxArticles",
                     non_pinned      : 0, 
                     card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile u-margin-top-30",
                     buttonClass     : "pro-main__loadmore j-pro-loadmore" 
