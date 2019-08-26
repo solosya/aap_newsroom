@@ -27177,6 +27177,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 (function ($) {
 
     $.fn.Ajax_LoadBlogArticles_new = function(options){
+        console.log('now we here yo', options)
         var requestType = 'post';
         var url = _appJsConfig.baseHttpPath + '/home/load-articles';
 
@@ -27210,10 +27211,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
-        // console.log('fetching from blog new');
-        // console.log(requestData);
-        // console.log(url);
-        // console.log(requestType);
+        console.log('fetching from blog new');
+        console.log(requestData);
+        console.log(url);
+        console.log(requestType);
         
         return $.ajax({
             type: requestType,
@@ -27221,7 +27222,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             dataType: 'json',
             data: requestData
         }).done(function(r) {
-            // console.log(r);
+             console.log(r);
         });        
     };
 

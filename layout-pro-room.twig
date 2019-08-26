@@ -408,8 +408,8 @@
                 $('.j-pro-loadmore').click( function(){
                     console.log('loadmore clicked', this) 
                     //var parent = $(this).parent();
-                    this.prev().removeClass('hidden');
-                    this.next().removeClass('hidden');
+                    $(this).prev().removeClass('hidden');
+                    $(this).next().removeClass('hidden');
                 });
                 $('.j-pro-loadless').click( function(){ 
                     console.log('loadless clicked', this) 
