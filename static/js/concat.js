@@ -29902,12 +29902,12 @@ Acme.Feed = function() {};
 Acme.Feed.prototype.fetch = function()
 {
     var self = this;
-    console.log('trying to render...');
+    console.log('fetching...');
     console.log(self);
     self.elem.html("Please wait...");
     
     var container = $('#'+self.elem.data('container'));
-
+    console.log(container);
     // blogfeed makes 2 sql calls.  
     //      Offset is to get pinned contect 
     //      nonPinnedOffset gets the rest
@@ -29926,9 +29926,11 @@ Acme.Feed.prototype.fetch = function()
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
-    
+    console.log('about to fecth...');
+    console.log(self.options);
     $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
-        //console.log(data);
+        console.log(data);
+
         if (data.success == 1) {
             self.render(data);
         }

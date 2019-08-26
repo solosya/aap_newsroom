@@ -407,14 +407,18 @@
             jQuery( function() {
                 $('.j-pro-loadmore').click( function(){
                     console.log('loadmore clicked', this) 
-                    var parent = $(this).parent();
-                    $(parent + '> div').removeClass('hidden');
+                    //var parent = $(this).parent();
+                    this.prev().removeClass('hidden');
+                    this.next().removeClass('hidden');
                 });
                 $('.j-pro-loadless').click( function(){ 
                     console.log('loadless clicked', this) 
                     var parent = $(this).parent();
-                    $(parent + '> div').removeClass('hidden');
-                    $(parent + '> div').addClass('hidden');
+                    parent.children('#mainAjaxArticles').removeClass('hidden');
+                    parent.children('#mainAjaxArticles').addClass('hidden');
+                    $(this).addClass('hidden');
+                    //$(parent + '> div').removeClass('hidden');
+                    //$(parent + '> div').addClass('hidden');
                 });
             });
         });

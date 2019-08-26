@@ -64,3 +64,12 @@
     </div>
 </section>
 
+{# <script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function() {
+        jQuery( function() {
+            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false, null, null, "mainAjaxArticles" + {{blogid}});
+        });
+    });
+</script> #}
