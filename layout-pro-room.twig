@@ -138,7 +138,9 @@
                     'feed'          : _Blog.getBlogFeed({'limit':limit, 'offset': 0, 'blogid':blog.guid}),
                     'link'          : blog.link,
                     'description'   : blog.short_description,
-                    'title'         : blog.title
+                    'title'         : blog.title,
+                    'blogguid'      : blog.guid,
+                    'blogid'        : blog.id
                     }
                 }) %}
                                                        
@@ -228,7 +230,7 @@
                                         imgheight       : "160",
                                         container       : "mainAjaxArticles" ~ blogid,
                                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                                        card_class      : "col-sm-4 card-sm card-sm-tablet card-sm-mobile u-margin-bottom-30",
+                                        card_class      : "col-sm-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
                                         buttonClass     : "pro-main__loadmore j-pro-loadmore" 
                                     }) | raw }}
                                 {% endif %}
