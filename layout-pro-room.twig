@@ -451,19 +451,17 @@
                 });
                 $('.j-pro-loadless').click( function(e) {
                     e.preventDefault();
+                    //hide  or show the load more buttons and loaded-more articles
                     this.id = "j-active";
-                    console.log(self);
                     if ($('#j-active').text() == '- SHOW LESS') {
                         $('#j-active').parent().children('.row').removeClass('hidden');
                         $('#j-active').parent().children('.row').addClass('hidden');
                         $('#j-active').parent().children('a').addClass('hidden');
                         $('#j-active').text('+ SHOW MORE');
-                        $('#j-active').css('margin-left', '0');
                     } else {
                         $('#j-active').parent().children('.row').removeClass('hidden');
                         $('#j-active').parent().children('a').removeClass('hidden');
                         $('#j-active').text('- SHOW LESS');
-                        $('#j-active').css('margin-left', '');
                     }
                     $(this).removeAttr('id');
                 });
