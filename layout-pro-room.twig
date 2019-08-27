@@ -234,7 +234,7 @@
                                         buttonClass     : "pro-main__loadmore j-pro-loadmore" 
                                     }) | raw }}
                                 {% endif %}
-                            <div class="pro-main__loadless hidden j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- LOAD LESS</div>
+                            <div class="pro-main__loadless hidden j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- SHOW LESS</div>
                         </div>
                     </div>
                 </div>
@@ -435,7 +435,10 @@
                 $('.loadMore').removeClass('loadMore');
                 //replace the default click with one that selects the box
                 $('.j-pro-loadmore').click( function(e){
-                    e.preventDefault()
+                    e.preventDefault();
+                    //make sure the loaded boxes and the show less are showing 
+                    console.log($(this).parent().children('div'));
+                    $(this).parent().children('div').removeClass('hidden');
                     //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
                     //generate a new feed for the active box and fetch it
@@ -443,24 +446,25 @@
                     Acme.loadMore.fetch();
                     //clear the feed so no overlap
                     Acme.loadMore = "";
-                    //make sure the loaded boxes and the show less are showing 
-                    console.log($(this).parent().children('div'));
-                    $(this).parent().children('div').removeClass('hidden');
                     //remove loadmore from the active box so further scripts dont get confused
                     $('.loadMore').removeClass('loadMore');
                 });
-                $('.j-pro-loadless').click( function(e){ 
+                $('.j-pro-loadless').click( function(e) {
                     e.preventDefault();
-                    //hide the additional articles and the load less button
-                    console.log($(this).parent().children('div'));
-                    console.log($(this).parent().children('a'));
-                    $(this).parent().children('div').removeClass('hidden');
-                    $(this).parent().children('div').addClass('hidden');
-                    $(this).parent().children('a').removeAttr('style');
-                    $(this).addClass('hidden');
-                    //$(parent + '> div').removeClass('hidden');
-                    //$(parent + '> div').addClass('hidden');
+                    if ($(this).text() == '- SHOW LESS') {
+
+                        $(this).parent().children('.row').removeClass('hidden');
+                        $(this).parent().children('.row').addClass('hidden');
+                        $(this).parent().children('a').addClass('hidden');
+                        $(this).text('+ SHOW MORE');
+                    } else {
+                        $(this).parent().children('.row').removeClass('hidden');
+                        $(this).parent().children('a').removeClass('hidden');
+                        $(this).text('- SHOW LESS');
+                    }
                 });
+
+                
             });
             
         });
