@@ -400,20 +400,25 @@
     </main>
 
     <script>
+        var loadmores = document.getElementsByClassName('j-pro-loadmore');
+        for (var i = 0; i < loadmores.length; i++ ){
+            loadmores[i].onclick = function() {
+                console.log('loadmore clicked', this)
+                var remLMs = document.getElementsByClassName('loadMore');
+                for (var h = 0; h < loadmores.length; h++ ){
+                    remLMs[h].classList.remove('loadMore');
+                }
+                this.classList.add('loadMore');
+            }
+        }
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
-            
+            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
             jQuery( function() {
-                
                 $('.j-pro-loadmore').click( function(){
-                    $('.loadMore').removeClass('loadMore');
-                    console.log('loadmore clicked', this) 
-                    //var parent = $(this).parent();
                     $(this).prev().removeClass('hidden');
                     $(this).next().removeClass('hidden');
-                    $(this).addClass('loadMore');
-                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
                 });
                 $('.j-pro-loadless').click( function(){ 
                     console.log('loadless clicked', this) 
@@ -425,6 +430,9 @@
                     //$(parent + '> div').addClass('hidden');
                 });
             });
+
+            
+            
         });
     </script>
 

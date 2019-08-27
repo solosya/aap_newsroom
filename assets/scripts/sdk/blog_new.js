@@ -13,7 +13,7 @@
         };
 
         if (options.blogid) {
-            requestData['blogguid'] = options.blogid;
+            requestData['blogGuid'] = options.blogid;
         }
 
         if (options.loadtype == 'user') {
@@ -33,6 +33,10 @@
             requestData['s'] = options.search;
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
+            if (options.blogid) {
+                requestData['blogguid'] = options.blogid;
+                requestData['blogid'] = options.blogid;
+            }
         }
         // console.log('fetching from blog new');
         // console.log(requestData);

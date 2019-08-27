@@ -27189,7 +27189,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         };
 
         if (options.blogid) {
-            requestData['blogguid'] = options.blogid;
+            requestData['blogGuid'] = options.blogid;
         }
 
         if (options.loadtype == 'user') {
@@ -27209,6 +27209,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             requestData['s'] = options.search;
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
+            if (options.blogid) {
+                requestData['blogguid'] = options.blogid;
+                requestData['blogid'] = options.blogid;
+            }
         }
         // console.log('fetching from blog new');
         // console.log(requestData);
