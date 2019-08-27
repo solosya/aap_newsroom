@@ -29906,13 +29906,10 @@ Acme.Feed = function() {};
 Acme.Feed.prototype.fetch = function()
 {
     var self = this;
-    // console.log('fetching...');
-    // console.log(self);
     self.elem.html("Please wait...");
     
     var container = $('#'+self.elem.data('container'));
-    console.log(container);
-    // blogfeed makes 2 sql calls.  
+     // blogfeed makes 2 sql calls.  
     //      Offset is to get pinned contect 
     //      nonPinnedOffset gets the rest
     //      They're combined to return full result
@@ -29930,11 +29927,7 @@ Acme.Feed.prototype.fetch = function()
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
-    console.log('about to fecth...');
-    // console.log(self.options);
-    $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
-        console.log(data);
-
+     $.fn.Ajax_LoadBlogArticles_new(self.options).done(function(data) {
         if (data.success == 1) {
             self.render(data);
         }
@@ -29945,8 +29938,6 @@ Acme.Feed.prototype.events = function()
 {
     var self = this;
     self.elem.unbind().on('click', function(e) {
-        // console.log('on click');
-        // console.log(self);
         e.preventDefault();
         self.fetch();
     });
@@ -30025,10 +30016,6 @@ Acme.View.articleFeed.prototype.render = function(data)
         html.push( window.templates.ads_infinite );
     }
 
-
-    console.log('trying to render2...');
-    console.log(self);
-
     if (articles.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
     } else {
@@ -30091,8 +30078,6 @@ Acme.View.userFeed.prototype.render = function(data)
         rendertype =   self.elem.data('rendertype')    || null;
 
     self.elem.html(label);
-    console.log('rendering...');
-    console.log(data);
     (users.length < self.options.limit) 
         ? self.elem.css('display', 'none')
         : self.elem.show();

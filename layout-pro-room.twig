@@ -212,6 +212,29 @@
                         {% endfor %}
 
                     </div>
+                    <div class="row">
+                        {% set blogguid = blogData['guid'] %}
+                        {% set blogid = blogData['id'] %}
+                        <div class="col-sm-12 u-margin-top-30">
+                            
+                            {% if articles|length >= limit %}
+                                    {{ this.render('partials/ajaxarticles_new.twig', {
+                                        name            : "section-load",
+                                        limit           : 3,
+                                        offset          : 3,
+                                        blogguid        : blogguid,
+                                        label           : "+ Load more",
+                                        imgwidth        : "300",
+                                        imgheight       : "160",
+                                        container       : "mainAjaxArticles" ~ blogid,
+                                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                                        card_class      : "col-sm-4 card-sm card-sm-tablet card-sm-mobile u-margin-bottom-30",
+                                        buttonClass     : "pro-main__loadmore j-pro-loadmore" 
+                                    }) | raw }}
+                                {% endif %}
+                            <div class="pro-main__loadless hidden j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- LOAD LESS</div>
+                        </div>
+                    </div>
                 </div>
             </section>
         {% endif %}
@@ -406,24 +429,30 @@
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
             jQuery( function() {
+                //remove loadmore from all the loadmore boxes or the script gets confused
                 $('.loadMore').removeClass('loadMore');
+                //replace the default click with one that selects the box
                 $('.j-pro-loadmore').click( function(e){
                     e.preventDefault()
-                    console.log('loadmore clicked', this) 
-                    //var parent = $(this).parent();
+                    //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
+                    //generate a new feed for the active box and fetch it
                     Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
                     Acme.loadMore.fetch();
+                    //clear the feed so no overlap
                     Acme.loadMore = "";
+                    //make sure the loaded boxes and the show less are showing 
                     $(this).prev().removeClass('hidden');
                     $(this).next().removeClass('hidden');
+                     //remove loadmore from the active box so further scripts dont get confused
                     $('.loadMore').removeClass('loadMore');
                 });
-                $('.j-pro-loadless').click( function(){ 
-                    console.log('loadless clicked', this) 
+                $('.j-pro-loadless').click( function(e){ 
+                    e.preventDefault();
                     var parent = $(this).parent();
-                    parent.children('#mainAjaxArticles').removeClass('hidden');
-                    parent.children('#mainAjaxArticles').addClass('hidden');
+                    //hide the additional articles and the load less button
+                    parent.children('div').removeClass('hidden');
+                    parent.children('div').addClass('hidden');
                     $(this).addClass('hidden');
                     //$(parent + '> div').removeClass('hidden');
                     //$(parent + '> div').addClass('hidden');
