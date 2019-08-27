@@ -10,7 +10,7 @@
 
 {% if template != '' and feedArr[0] %}
     {% set params = {
-        articlesArr : blogFeeds[section].feed
+        articlesArr : blogFeeds[section].feed,
         articles    : blogFeeds[section].feed.articles,
         link        : blogFeeds[ section ].link,
         title       : title,
