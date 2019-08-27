@@ -444,18 +444,19 @@
                     //clear the feed so no overlap
                     Acme.loadMore = "";
                     //make sure the loaded boxes and the show less are showing 
-                    var parent = $(this).parent();
-                    parent.children('div').removeClass('hidden');
+                    console.log($(this).parent().children('div'));
+                    $(this).parent().children('div').removeClass('hidden');
                     //remove loadmore from the active box so further scripts dont get confused
                     $('.loadMore').removeClass('loadMore');
                 });
                 $('.j-pro-loadless').click( function(e){ 
                     e.preventDefault();
-                    var parent = $(this).parent();
                     //hide the additional articles and the load less button
-                    parent.children('div').removeClass('hidden');
-                    parent.children('div').addClass('hidden');
-                    parent.children('a').removeAttr('style');
+                    console.log($(this).parent().children('div'));
+                    console.log($(this).parent().children('a'));
+                    $(this).parent().children('div').removeClass('hidden');
+                    $(this).parent().children('div').addClass('hidden');
+                    $(this).parent().children('a').removeAttr('style');
                     $(this).addClass('hidden');
                     //$(parent + '> div').removeClass('hidden');
                     //$(parent + '> div').addClass('hidden');
