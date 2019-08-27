@@ -445,7 +445,6 @@
                     Acme.loadMore = "";
                     //make sure the loaded boxes and the show less are showing 
                     var parent = $(this).parent();
-                    parent.children('div').addClass('hidden');
                     parent.children('div').removeClass('hidden');
                     //remove loadmore from the active box so further scripts dont get confused
                     $('.loadMore').removeClass('loadMore');
@@ -456,6 +455,7 @@
                     //hide the additional articles and the load less button
                     parent.children('div').removeClass('hidden');
                     parent.children('div').addClass('hidden');
+                    parent.children('a').removeAttr('style');
                     $(this).addClass('hidden');
                     //$(parent + '> div').removeClass('hidden');
                     //$(parent + '> div').addClass('hidden');
