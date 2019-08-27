@@ -26,7 +26,7 @@
     {% set borderOptions = ["pro-main__border",""] %}
     {% set mobBorders = [' u-mobile-no-border-bottom',''] %}      
     {% for i in 0..1 if articles[articleCount] %}
-        <div class="col-sm-6 col-xs-12 {{borderOptions[i]}}">
+        <div class="col-sm-6 {{borderOptions[i]}}">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
