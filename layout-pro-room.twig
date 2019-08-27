@@ -444,9 +444,10 @@
                     //clear the feed so no overlap
                     Acme.loadMore = "";
                     //make sure the loaded boxes and the show less are showing 
-                    $(this).prev().removeClass('hidden');
-                    $(this).next().removeClass('hidden');
-                     //remove loadmore from the active box so further scripts dont get confused
+                    var parent = $(this).parent();
+                    parent.children('div').addClass('hidden');
+                    parent.children('div').removeClass('hidden');
+                    //remove loadmore from the active box so further scripts dont get confused
                     $('.loadMore').removeClass('loadMore');
                 });
                 $('.j-pro-loadless').click( function(e){ 
