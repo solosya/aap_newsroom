@@ -400,26 +400,24 @@
     </main>
 
     <script>
-        var loadmores = document.getElementsByClassName('j-pro-loadmore');
-        for (var i = 0; i < loadmores.length; i++ ){
-            loadmores[i].onclick = function() {
-                console.log('loadmore clicked', this)
-                var remLMs = document.getElementsByClassName('loadMore');
-                for (var h = 0; h < remLMs.length; h++ ){
-                    remLMs[h].classList.remove('loadMore');
-                }
-                this.classList.add('loadMore');
-                Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
-            }
-        }
+
+        
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
-            
             jQuery( function() {
-                $('.j-pro-loadmore').click( function(){
+                $('.loadMore').removeClass('loadMore');
+                $('.j-pro-loadmore').click( function(e){
+                    e.preventDefault()
+                    console.log('loadmore clicked', this) 
+                    //var parent = $(this).parent();
+                    $(this).addClass('loadMore');
+                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+                    Acme.loadMore.fetch();
+                    Acme.loadMore = "";
                     $(this).prev().removeClass('hidden');
                     $(this).next().removeClass('hidden');
+                    $('.loadMore').removeClass('loadMore');
                 });
                 $('.j-pro-loadless').click( function(){ 
                     console.log('loadless clicked', this) 
@@ -431,8 +429,6 @@
                     //$(parent + '> div').addClass('hidden');
                 });
             });
-
-            
             
         });
     </script>
