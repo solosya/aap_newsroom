@@ -38,6 +38,10 @@
             "feed": "",
             "link": ""
         }, 
+         "greenroom": {
+            "feed": "",
+            "link": ""
+        }, 
         "sportsroom": {
             "feed": "",
             "link": ""
@@ -328,6 +332,10 @@
 
                 {% if sections['lockerroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
+                {% if sections['greenroom'].feed.articles|length > 0 %}
+                    {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['investigations'].feed.articles|length > 0 %}
