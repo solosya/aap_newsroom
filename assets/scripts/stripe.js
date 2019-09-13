@@ -119,8 +119,6 @@ if ($('#stripekey').length > 0) {
         function submitForm() {
             formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                console.log(response);
-
                 if (response.success == 1) {
 
                     if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
@@ -164,7 +162,7 @@ if ($('#stripekey').length > 0) {
             modal.render("spinner", "Your request is being processed.");
 
             var stripeCall = stripe.createToken(card).then(function(result) {
-                console.log(result);
+
                 if (result.error) {
                     modal.closeWindow();
                     // Inform the user if there was an error
@@ -172,7 +170,6 @@ if ($('#stripekey').length > 0) {
                     errorElement.textContent = result.error.message;
                 } else {
                     // Send the token to your server
-                    console.log("here");
 
                     self.data['stripetoken'] = result.token.id;
                     self.data['planid'] = $('#planid').val();

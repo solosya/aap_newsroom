@@ -31,7 +31,7 @@ Acme.IPCheck = function() {
         
                         var userAccount = false;
                         var userIPInt = dot2num(json.ip);
-                        console.log(userIPInt);
+
                         for (var i = 0 ; i < IPAdresses.length ; i++) {
                             if (IPAdresses[i].indexOf('//') === 0 ) {
                                 continue;
@@ -74,9 +74,7 @@ Acme.IPCheck = function() {
                     });
 
 
-                } else {
-                    return;
-                }
+                } 
             }).fail(function(r) { console.log(r);return;});
 
 
