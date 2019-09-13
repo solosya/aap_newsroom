@@ -1,4 +1,8 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
+
+{% cache 'indexCache_1' 300 %}
+
+
 {% set networkData   = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
@@ -374,3 +378,5 @@
          </section>
 
     </main>
+    
+{% endcache %}
