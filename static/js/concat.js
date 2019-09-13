@@ -30976,7 +30976,7 @@ Acme.IPCheck = function() {
         
                         var userAccount = false;
                         var userIPInt = dot2num(json.ip);
-                        console.log(userIPInt);
+
                         for (var i = 0 ; i < IPAdresses.length ; i++) {
                             if (IPAdresses[i].indexOf('//') === 0 ) {
                                 continue;
@@ -31019,9 +31019,7 @@ Acme.IPCheck = function() {
                     });
 
 
-                } else {
-                    return;
-                }
+                } 
             }).fail(function(r) { console.log(r);return;});
 
 
@@ -31812,20 +31810,18 @@ $('document').ready(function() {
     var mobileView = 620;
     var desktopView = 1119;
     var scrollMetric = [$(window).scrollTop()];
-    var foldawayPanel = $("#foldaway-panel");
-    var menuContainer = $("#menuContainer");
     var menu_top_foldaway = $("#menu-top-foldaway");
     var menu_bottom_foldaway = $("#menu-bottom-foldaway");
     var foldaway_search = false;
 
-    var isMenuBroken = function() {
+    isMenuBroken = function() {
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             return false;
         }
         return true;
     };
 
-    var isMobile = function(){
+    isMobile = function(){
         if (window.innerWidth < mobileView) {
             return true;
         }
@@ -31869,17 +31865,49 @@ $('document').ready(function() {
     };   
 
 
-    var scrollUpMenu = function() {
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
-            foldawayPanel.addClass('showMenuPanel');
-            menuContainer.show();
-        } else if (!foldaway_search) {
-            menu_top_foldaway.addClass('hide');
-            menu_bottom_foldaway.addClass('hide');
-            foldawayPanel.removeClass('showMenuPanel');
-            menuContainer.show();
+
+    Acme.HeaderMenu = function() {
+        this.parent = $("#menuContainer");
+        this.menu = $("#foldaway-panel");
+        this.subscriptions = Acme.PubSub.subscribe({
+            'Acme.headerMenu.listener' : ["update_state"]
+        });
+
+        this.listeners = {
+            "fixedMenu": function(data) {
+                if (data.fixedMenu === 'hide') {
+                    this.hideFixed();
+                } else {
+                    this.showFixed();
+                }
+            }
         }
     }
+
+    Acme.HeaderMenu.prototype = new Acme._View();
+    Acme.HeaderMenu.constructor = Acme.HeaderMenu;
+    Acme.HeaderMenu.prototype.showFixed = function() {
+        this.parent.show();
+        this.menu.addClass('showMenuPanel');
+    }
+    Acme.HeaderMenu.prototype.hideFixed = function() {
+        this.parent.hide();
+        this.menu.removeClass('showMenuPanel');
+    }
+
+    Acme.headerMenu = new Acme.HeaderMenu();
+
+
+    var scrollUpMenu = function() {
+        // var isMob = isMobile();
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ) {
+            Acme.headerMenu.showFixed();
+        } else if (!foldaway_search) {
+            Acme.headerMenu.hideFixed();
+        }
+    }
+
+
 
 
     //Onload and resize events
@@ -32310,8 +32338,7 @@ var layouts = {
     "spinner"       : 'spinnerTmpl',
     "expired"       : 'expiredNotice',
     "userPlan"      : 'userPlanMessage',
-    "userPlanChange" : 'userPlanOkCancel',
-
+    "userPlanChange" : 'userPlanOkCancel'
 }
 
 
@@ -32455,8 +32482,6 @@ if ($('#stripekey').length > 0) {
         function submitForm() {
             formhandler(self.data, '/auth/paywall-signup').then(function(response) {
 
-                console.log(response);
-
                 if (response.success == 1) {
 
                     if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
@@ -32500,7 +32525,7 @@ if ($('#stripekey').length > 0) {
             modal.render("spinner", "Your request is being processed.");
 
             var stripeCall = stripe.createToken(card).then(function(result) {
-                console.log(result);
+
                 if (result.error) {
                     modal.closeWindow();
                     // Inform the user if there was an error
@@ -32508,7 +32533,6 @@ if ($('#stripekey').length > 0) {
                     errorElement.textContent = result.error.message;
                 } else {
                     // Send the token to your server
-                    console.log("here");
 
                     self.data['stripetoken'] = result.token.id;
                     self.data['planid'] = $('#planid').val();

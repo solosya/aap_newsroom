@@ -119,8 +119,7 @@ var layouts = {
     "spinner"       : 'spinnerTmpl',
     "expired"       : 'expiredNotice',
     "userPlan"      : 'userPlanMessage',
-    "userPlanChange" : 'userPlanOkCancel',
-
+    "userPlanChange" : 'userPlanOkCancel'
 }
 
 
