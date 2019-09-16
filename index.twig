@@ -21,8 +21,15 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑           ↑                 ↑            ↑              #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+{# {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
 
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        jQuery( function() {
+            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+        });
+    });
+</script>
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
