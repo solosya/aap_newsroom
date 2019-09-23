@@ -29,6 +29,34 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
+
+{% if blogName | lower == 'ideasroom' %}
+
+    {# rotate every n hours #}
+    {% set rotation  = 2 %}
+    {# rotate n amount of cards #}
+    {% set cardCount  = 3 %} 
+
+    {% set articlesBottom  = articles[cardCount:] %} 
+
+    {% set hour =  _AppHelper.getDefaultTimezoneDateTime(_AppHelper.getCurrentTimestampBasedOnTimezone(),'g') %}
+    {% set start = ( ( hour - (hour % rotation) ) / rotation ) % cardCount %}
+    
+    {% set top = [] %}
+    {% for i in 0 .. cardCount - 1 %}
+        {% if start == cardCount %}
+            {% set start = 0 %}
+        {% endif %}
+        {% set top = top | merge([articles[start]]) %}
+        {% set start = start + 1 %}
+    {% endfor %}
+
+    {% set articles = top | merge(articlesBottom) %}
+
+{% endif %}
+
+
+
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
 {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
