@@ -368,6 +368,21 @@ p.foundingpartners {
                 }
             }
 
+            &.sponsor-uni-otago {
+                width:143px;
+                height:73px;
+                background: url('../images/logos/otago-uni-logo.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-left:40px;
+                position: relative;
+                top: 8px;
+                margin-top: 15px;
+                @media #{$mobile}{
+                    margin:15px 0 0;
+                }
+            }
+
             &.sponsor-kiwibank {
                 width:65px;
                 height:65px;
