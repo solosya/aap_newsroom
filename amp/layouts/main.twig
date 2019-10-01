@@ -1,5 +1,15 @@
 {% set networkData = _Network.getNetworkData() %}
-{% set blogData = _Blog.getBlog() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set pageClass   = _Page.getBodyClass() %}
+{% set blogName    = blogData.title %}
+
+{% set pptoken = 'AbkE2e7ZwQgwLPFzVowC2cKm' %}
+{% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %}
+    {% set pptoken = '9Ac35CVe5uEb9P8vFFb5YjFu' %}
+{% endif %}
+
+
+
 {{ this.beginPage() }}
 <!doctype html>
 <html amp lang="en">
@@ -17,6 +27,17 @@
         <script async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js"></script>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
         <title>{{this.title | raw}}</title>
+
+
+
+        <!-- Required PressPatron AMP components -->
+        <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js" ></script>
+        <script  async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"  ></script>
+        <!-- End of Required PressPatron AMP components -->
+
+
+
+
 
         <!-- Favicon Icon -->
         {% set favicon = ''%}
@@ -37,6 +58,12 @@
             {% set logo = _Media.getMediaUrl(networkData.logoMedia, 177, 65, {'crop': 'limit'} )%}
         {% endif %}
         
+
+
+
+
+
+
         {% set themeColors = networkData['styling']['colours'] %}
         <style amp-custom>
             {{this.render('/../static/css/amp.css')}}
@@ -115,6 +142,56 @@
             {% if customCss != "" %}
                     {{customCss | raw }}
             {% endif %}
+
+
+
+            /* PressPatron custom styles - place after your own styles */
+            .presspatron-modal-link {
+                padding: 0.5em 1em;
+                background-color: #e74a52;
+                font-size: 14px;
+                color: #fff;
+                display: inline-block;
+                margin: 0;
+                box-sizing: border-box;
+                border-radius: 5px;
+                font-size: 14px;
+                text-decoration: none;
+                font-family: "Helvetica Neue", arial, sans-serif, helvetica;
+                position: relative;
+                top: -12px;
+                height: 35px;
+            }
+            .presspatron-modal-link:hover {
+                background-color: #e01e28;
+            }
+            #presspatron-modal .pp-modal-content {
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                background-color: black;
+            }
+            #presspatron-modal .pp-modal-close {
+                position: absolute;
+                right: 1em;
+                top: 1em;
+                z-index: 10000;
+                opacity: 0.8;
+            }
+            #presspatron-modal .pp-placeholder-content {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                background: black no-repeat 50% 25%
+                url("//dashboard.presspatron.com/images/loading-modal.gif");
+            }
+            /* End of PressPatron custom styles */
+
+
+
         </style>
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         
@@ -128,6 +205,36 @@
             {{ content | raw}}
         </main>
         {{ this.render('partials/_footer.twig', {network : networkData, blogData: blogData}) | raw }}
+        
+        <!-- PressPatron AMP lightbox that serves as the popup modal -->
+        <amp-lightbox id="presspatron-modal" layout="nodisplay">
+        <a href="#" class="pp-modal-close" on="tap:presspatron-modal.close">
+            <amp-img
+                src="//dashboard.presspatron.com/images/close-icon.svg"
+                alt="Close PressPatron modal"
+                width="24"
+                height="24"
+            ></amp-img>
+        </a>
+        <div class="pp-modal-content">
+            <amp-iframe
+                width="200"
+                height="100"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                layout="fill"
+                frameborder="0"
+                src="https://dashboard.presspatron.com/donations/new?amp=1&frame=1&t={{pptoken}}"
+            >
+            <!-- The below placeholder contains PressPatron branding and an AMP placeholder for while the modal is loading -->
+            <!-- Note: the placeholder is required for PressPatron to display near the top of the page. Removing the placeholder will likely stop the modal from working -->
+            <div placeholder>
+                <div class="pp-placeholder-content"></div>
+            </div>
+            </amp-iframe>
+        </div>
+        </amp-lightbox>
+        
+        
         {{ this.endBody() }}
     </body>
 </html>
