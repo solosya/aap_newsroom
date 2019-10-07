@@ -6,11 +6,12 @@
 	    top: 48px;
 	}
 	@media #{$tablet}{
-		left: 475px;
+		width: 100px;
+		left: 455px;
 	    top: 0;
 	}
 	@media #{$mobile}{
-		width: 100px;
+		width: 70px;
 		left: 150px;
 	    top: -5px;
 	}
@@ -39,10 +40,27 @@
 	@media #{$tablet}{
 		width: 100px;
 	    top: 15px;
-	    left: 425px;
+	    left: 400px;
 	}
 	@media #{$mobile}{
 		left: 95px;
 	    top: 5px;
+	}
+}
+.sky-logo{
+	position: absolute;
+	width: 75px;
+	@media #{$desktop-up}{
+		left: 380px;
+	    top: 65px;
+	}
+	@media #{$tablet}{
+		width: 55px;
+		left: 555px;
+	    top: 10px;
+	}
+	@media #{$mobile}{
+		width: 40px;
+		left: 220px;
 	}
 }
