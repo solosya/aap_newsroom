@@ -7024,6 +7024,11 @@ p.foundingpartners {
         background-repeat: no-repeat;
         background-size: contain;
         position: relative; }
+        @media screen and (min-width: 992px) {
+          .sponsor-logos ul li.sponsor-sky {
+            margin-left: 40px;
+            width: 73px;
+            height: 55px; } }
         @media screen and (max-width: 767px) {
           .sponsor-logos ul li.sponsor-sky {
             margin: 15px 0 0; } }
@@ -12265,22 +12270,39 @@ input[type=radio].inline {
     .pod-partial {
       margin-bottom: 20px; } }
 
+.sky-logo {
+  position: absolute;
+  width: 75px; }
+  @media screen and (min-width: 992px) {
+    .sky-logo {
+      left: 230px;
+      top: 65px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .sky-logo {
+      width: 55px;
+      left: 465px;
+      top: 10px; } }
+  @media screen and (max-width: 767px) {
+    .sky-logo {
+      width: 40px;
+      left: 160px; } }
+
 .wisp-logo {
   position: absolute;
   width: 150px; }
   @media screen and (min-width: 992px) {
     .wisp-logo {
-      left: 220px;
+      left: 310px;
       top: 48px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .wisp-logo {
       width: 100px;
-      left: 455px;
+      left: 520px;
       top: 0; } }
   @media screen and (max-width: 767px) {
     .wisp-logo {
       width: 70px;
-      left: 150px;
+      left: 200px;
       top: -5px; } }
   @media screen and (min-width: 992px) {
     .wisp-logo--matatuhi {
@@ -12311,23 +12333,6 @@ input[type=radio].inline {
     .wisp-logo__text {
       left: 95px;
       top: 5px; } }
-
-.sky-logo {
-  position: absolute;
-  width: 75px; }
-  @media screen and (min-width: 992px) {
-    .sky-logo {
-      left: 380px;
-      top: 65px; } }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .sky-logo {
-      width: 55px;
-      left: 555px;
-      top: 10px; } }
-  @media screen and (max-width: 767px) {
-    .sky-logo {
-      width: 40px;
-      left: 220px; } }
 
 .beca-section__channel {
   padding-bottom: 10px;

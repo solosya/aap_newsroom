@@ -1,18 +1,36 @@
+
+.sky-logo{
+	position: absolute;
+	width: 75px;
+	@media #{$desktop-up}{
+		left: 230px;
+	    top: 65px;
+	}
+	@media #{$tablet}{
+		width: 55px;
+		left: 465px;
+	    top: 10px;
+	}
+	@media #{$mobile}{
+		width: 40px;
+		left: 160px;
+	}
+}
 .wisp-logo{
 	position: absolute;
 	width: 150px;
 	@media #{$desktop-up}{
-		left: 220px;
+		left: 310px;
 	    top: 48px;
 	}
 	@media #{$tablet}{
 		width: 100px;
-		left: 455px;
+		left: 520px;
 	    top: 0;
 	}
 	@media #{$mobile}{
 		width: 70px;
-		left: 150px;
+		left: 200px;
 	    top: -5px;
 	}
 	&--matatuhi{
@@ -45,22 +63,5 @@
 	@media #{$mobile}{
 		left: 95px;
 	    top: 5px;
-	}
-}
-.sky-logo{
-	position: absolute;
-	width: 75px;
-	@media #{$desktop-up}{
-		left: 380px;
-	    top: 65px;
-	}
-	@media #{$tablet}{
-		width: 55px;
-		left: 555px;
-	    top: 10px;
-	}
-	@media #{$mobile}{
-		width: 40px;
-		left: 220px;
 	}
 }

@@ -389,6 +389,11 @@ p.foundingpartners {
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: relative;
+                @media #{$desktop-up}{
+                    margin-left: 40px;
+                    width: 73px;
+                    height: 55px;
+                }
                 @media #{$mobile}{
                     margin:15px 0 0;
                 }
