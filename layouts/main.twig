@@ -272,7 +272,7 @@
 >
 {{ this.beginBody() }}
 
-    {% if paywallSection == false %}
+    {% if paywallSection == false and 'edit-profile' not in pageClass %}
         <hr class="add__gap visible-xs-block">
         <div class="add add-header__topbanner">
             <div id="newAdBanner"></div> 
