@@ -66,3 +66,51 @@
     </div>
     <script>loadTwoAds('');</script>
 </main>
+
+
+ <script>
+
+        
+        // main script is defered so event listener makes sure
+        // defered script is loaded before this runs
+        document.addEventListener("DOMContentLoaded", function() {
+            jQuery( function() {
+                //remove loadmore from all the loadmore boxes or the script gets confused
+                $('.loadMore').removeClass('loadMore');
+                //replace the default click with one that selects the box
+                $('.j-pro-loadmore').click( function(e){
+                    e.preventDefault();
+                    //make sure the loaded boxes and the show less are showing 
+                    $(this).parent().children('div').removeClass('hidden');
+                    //set the clicked box to be the active loadmore one
+                    $(this).addClass('loadMore');
+                    //generate a new feed for the active box and fetch it
+                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+                    Acme.loadMore.fetch();
+                    //clear the feed so no overlap
+                    Acme.loadMore = "";
+                    //remove loadmore from the active box so further scripts dont get confused
+                    $('.loadMore').removeClass('loadMore');
+                });
+                $('.j-pro-loadless').click( function(e) {
+                    e.preventDefault();
+                    //hide  or show the load more buttons and loaded-more articles
+                    this.id = "j-active";
+                    if ($('#j-active').text() == '- SHOW LESS') {
+                        $('#j-active').parent().children('.row').removeClass('hidden');
+                        $('#j-active').parent().children('.row').addClass('hidden');
+                        $('#j-active').parent().children('a').addClass('hidden');
+                        $('#j-active').text('+ SHOW MORE');
+                    } else {
+                        $('#j-active').parent().children('.row').removeClass('hidden');
+                        $('#j-active').parent().children('a').removeClass('hidden');
+                        $('#j-active').text('- SHOW LESS');
+                    }
+                    $(this).removeAttr('id');
+                });
+
+                
+            });
+            
+        });
+    </script>
