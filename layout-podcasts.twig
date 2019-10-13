@@ -19,6 +19,7 @@
     }
 %}
 
+{% set limit = 4 %}
 
 
 {% for key, value in sections %}
@@ -85,7 +86,7 @@
                     //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
                     //generate a new feed for the active box and fetch it
-                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, 6, 4, false);
                     Acme.loadMore.fetch();
                     //clear the feed so no overlap
                     Acme.loadMore = "";
