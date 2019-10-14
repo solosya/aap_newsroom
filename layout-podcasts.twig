@@ -61,7 +61,12 @@
                 {% endif %}
 
                 {% if sections["podcast: two cents' worth"].feed.articles|length > 0 %}
-                    {{this.render('render.twig', {'section' : "podcast: two cents' worth",'blogFeeds' : sections,'template' : 'partials/pro/hero-three-dark.twig','title' : "podcast: two cents' worth"}) | raw}}
+                    {{this.render('render.twig', {
+                        'section' : "podcast: two cents' worth",
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : "podcast: two cents' worth"
+                    }) | raw}}
                 {% endif %}
             </div>
             <div class="col-sm-12 col-md-4">
