@@ -30,7 +30,9 @@
                     'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
                     'link' : blog.link,
                     'description'   : blog.short_description,
-                    'title'         : blog.title
+                    'title'         : blog.title,
+                    'blogguid'      : blog.guid,
+                    'blogid'        : blog.id
                     }
                 }) %}
         {% endif %}
@@ -50,7 +52,12 @@
                         
                             
                 {% if sections['podcast: the detail'].feed.articles|length > 0 %}
-                    {{this.render('render.twig', {'section' : 'podcast: the detail','blogFeeds' : sections,'template' : 'partials/pro/hero-four-light.twig','title' : 'podcast: the detail'}) | raw}}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: the detail',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-light.twig',
+                        'title' : 'podcast: the detail'
+                    }) | raw}}
                 {% endif %}
 
                 {% if sections["podcast: two cents' worth"].feed.articles|length > 0 %}
