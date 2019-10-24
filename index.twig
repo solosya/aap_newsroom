@@ -23,13 +23,13 @@
                                                      {#            ↑           ↑                 ↑            ↑              #}
 {# {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
 
-<script type="text/javascript">
+{# <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
         jQuery( function() {
             Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
         });
     });
-</script>
+</script> #}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -274,7 +274,7 @@
                             container       : "mainAjaxArticles",
                             non_pinned      : articlesArr.existingNonPinnedCount, 
                             card_class      : "col-sm-4 card-sm card-sm-tablet card-sm-mobile",
-                            buttonClass     : "loadMoreArticles-index",
+                            buttonClass     : "loadMoreArticles-index j-pro-loadmore",
                         }) | raw }}
 
                     </div><!-- .col-sm-8-->
@@ -385,5 +385,34 @@
          </section>
 
     </main>
+
+    <script>
+
+        
+        // main script is defered so event listener makes sure
+        // defered script is loaded before this runs
+        document.addEventListener("DOMContentLoaded", function() {
+            jQuery( function() {
+                //remove loadmore from all the loadmore boxes or the script gets confused
+                $('.loadMore').removeClass('loadMore');
+                //replace the default click with one that selects the box
+                $('.j-pro-loadmore').click( function(e){
+                    e.preventDefault();
+                    //make sure the loaded boxes and the show less are showing 
+                    //$(this).parent().children('div').removeClass('hidden');
+                    //set the clicked box to be the active loadmore one
+                    $(this).addClass('loadMore');
+                    //generate a new feed for the active box and fetch it
+                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+                    Acme.loadMore.fetch();
+                    //clear the feed so no overlap
+                    Acme.loadMore = "";
+                    //remove loadmore from the active box so further scripts dont get confused
+                    $('.loadMore').removeClass('loadMore');
+                });
+            });
+            
+        });
+    </script>
     
 {% endcache %}
