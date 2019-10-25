@@ -340,6 +340,9 @@ p.foundingpartners {
                     margin-right: 40px;
                 
                 margin-top: 15px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
                 @media screen and (max-width: $mobile-break){
                    
                     margin-right: 0;
@@ -398,7 +401,6 @@ p.foundingpartners {
                 background-size: contain;
                 position: relative;
                 @media #{$desktop-up}{
-                    margin-left: 40px;
                     width: 85px;
                     height: 67px;
                 }
@@ -427,6 +429,9 @@ p.foundingpartners {
                 background-size: contain;
                 margin-bottom: 5px;
                 margin-right: 40px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
                 @media #{$mobile}{
                     margin:0;
                 }
@@ -462,6 +467,10 @@ p.foundingpartners {
                 background-position: 0 20px;
                 background-repeat: no-repeat;
                 background-size: contain;
+                margin-right: 40px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
                 @media #{$mobile}{
                     margin:0;
                 }
