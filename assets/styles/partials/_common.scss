@@ -371,6 +371,9 @@ p.foundingpartners {
                 position: relative;
                 top: -5px;
                 margin-top: 15px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
                 @media #{$mobile}{
                     margin:15px 0 0;
                 }
