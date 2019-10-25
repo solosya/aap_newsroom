@@ -6919,7 +6919,11 @@ span.leadsentence {
 p.foundingpartners {
   margin: 0 0 25px 0;
   text-align: center;
-  color: #8a8b93; }
+  color: #000;
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "tinos", Helvetica, Arial, sans-serif; }
 
 @media screen and (max-width: 767px) {
   .edit-profile .add-header__topbanner, .layout-subscribe .add-header__topbanner, .search .add-header__topbanner, .layout-awards .add-header__topbanner {
@@ -7006,29 +7010,32 @@ p.foundingpartners {
           .sponsor-logos ul li.sponsor-uni-auckland {
             margin: 15px 0 0; } }
       .sponsor-logos ul li.sponsor-uni-otago {
-        width: 143px;
-        height: 73px;
+        width: 123px;
+        height: 60px;
         background: url("../images/logos/otago-uni-logo.png");
         background-repeat: no-repeat;
         background-size: contain;
         position: relative;
-        top: 8px;
+        top: 3px;
         margin-top: 15px; }
+        @media screen and (min-width: 992px) {
+          .sponsor-logos ul li.sponsor-uni-otago {
+            margin-left: 40px; } }
         @media screen and (max-width: 767px) {
           .sponsor-logos ul li.sponsor-uni-otago {
             margin: 15px 0 0; } }
       .sponsor-logos ul li.sponsor-sky {
         width: 93px;
         height: 85px;
-        background: url("../images/logos/sky-logo-mono.png");
+        background: url("../images/logos/sky-logo-mono.svg");
         background-repeat: no-repeat;
         background-size: contain;
         position: relative; }
         @media screen and (min-width: 992px) {
           .sponsor-logos ul li.sponsor-sky {
             margin-left: 40px;
-            width: 73px;
-            height: 55px; } }
+            width: 85px;
+            height: 67px; } }
         @media screen and (max-width: 767px) {
           .sponsor-logos ul li.sponsor-sky {
             margin: 15px 0 0; } }

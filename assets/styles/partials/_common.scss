@@ -250,7 +250,12 @@ span.leadsentence{
 p.foundingpartners {
     margin:0 0 25px 0;
     text-align:center;
-    color: #8a8b93;
+    color: #000;
+    font-style: italic;
+    font-size: rem(20);
+    font-weight: bold;
+    font-family: $base-font-family;
+
 }
 
 .edit-profile,.layout-subscribe,.search,.layout-awards{
@@ -369,14 +374,17 @@ p.foundingpartners {
             }
 
             &.sponsor-uni-otago {
-                width:143px;
-                height:73px;
+                width:123px;
+                height:60px;
                 background: url('../images/logos/otago-uni-logo.png');
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: relative;
-                top: 8px;
+                top: 3px;
                 margin-top: 15px;
+                @media #{$desktop-up}{
+                    margin-left: 40px;
+                }
                 @media #{$mobile}{
                     margin:15px 0 0;
                 }
@@ -385,14 +393,14 @@ p.foundingpartners {
             &.sponsor-sky {
                 width: 93px;
                 height: 85px;
-                background: url('../images/logos/sky-logo-mono.png');
+                background: url('../images/logos/sky-logo-mono.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: relative;
                 @media #{$desktop-up}{
                     margin-left: 40px;
-                    width: 73px;
-                    height: 55px;
+                    width: 85px;
+                    height: 67px;
                 }
                 @media #{$mobile}{
                     margin:15px 0 0;
