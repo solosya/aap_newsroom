@@ -403,6 +403,9 @@ p.foundingpartners {
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: relative;
+                @media #{$tablet}{
+                    top: 15px;
+                }
                 @media #{$desktop-up}{
                     width: 85px;
                     height: 67px;
