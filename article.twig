@@ -2,7 +2,17 @@
 
 
 {{ set(this, 'title', article.title) }}
-{% set networkData      = _Network.getNetworkData() %}
+
+{# {% set networkData      = _Network.getNetworkData() %} #}
+{% set networkData = getCache("networkData") %}
+{% if (networkData is empty) %}
+    {% set networkData = _Network.getNetworkData() %} 
+    {% set cache = setCache("networkData", networkData, 500) %} 
+{% endif %}
+
+
+
+
 {% set blogData         = _Blog.getBlog() %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
@@ -105,7 +115,6 @@
     For the rest get most recent network wide. #}
 {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
 
-
 {% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom' %}
     {% set recentLabel = blogName %}
     {% set recentParams = recentParams | merge({
@@ -119,6 +128,15 @@
     }) %}
 {% endif %}
 
+{# {% set recentArticles = _Article.getRecentArticles(recentParams) %} #}
+{% set cacheKey = "articleRecent" ~ recentLabel %}
+{% set recentArticles = getCache(cacheKey) %}
+{% if (recentArticles is empty) %}
+    {% set recentArticles = _Article.getRecentArticles(recentParams) %}
+    {% set cache = setCache(cacheKey, recentArticles, 500) %} 
+{% endif %} 
+
+
 
 {% set totalstring = "" %}
 {% set totals = (article.total is defined) ? article.total : false %}
@@ -130,9 +148,7 @@
 
 
 
-
-{% set recentArticles = _Article.getRecentArticles(recentParams) %}
-    <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3">
+    <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}">
         <article class="article-main">
 
 
