@@ -1,5 +1,14 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
+
+{% set recentArticles = getCache("indexRecent") %}
+{% if (recentArticles is empty) %}
+    {% set recentArticles = _Article.getRecentArticles({'limit': 5}) %}
+    {% set cache = setCache("indexRecent", recentArticles, 500) %} 
+{% endif %}
+
+
+
 {% cache 'indexCache_1' 300 %}
 
 
@@ -23,7 +32,11 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
-{% set recentArticles = _Article.getRecentArticles({'limit': 5}) %}
+
+
+
+
+
 
 {% set sections =  {
         "viewingroom": {
@@ -379,10 +392,8 @@
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
-        jQuery( function() {
-            Acme.cards = CardController();
-            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
-        });
+        Acme.cards = CardController();
+        Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
     });
 </script>
 
