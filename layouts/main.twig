@@ -208,10 +208,9 @@
 
     {% set menuItems = getCache("menuItems") %}
     {% if (menuItems is empty) %}
-        {% set headermenu = _Menu.get({'menuType': 'header'}) %}
+        {% set menuItems = _Menu.get({'menuType': 'header'}) %}
         {% set cache = setCache("menuItems", menuItems, 500) %} 
     {% endif %}
-
 
     {% set rooms = [] %}
     {% for room in menuItems  %}
