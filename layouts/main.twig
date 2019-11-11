@@ -205,11 +205,13 @@
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
     {% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
-    {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        {% set menuItems = _Menu.get({'menuType': 'header'}) %}
-    {% else %}
-        {% set menuItems = _Menu.get({'menuType': 'header','menuGroupName':'header-main'}) %}
+
+    {% set menuItems = getCache("menuItems") %}
+    {% if (menuItems is empty) %}
+        {% set headermenu = _Menu.get({'menuType': 'header'}) %}
+        {% set cache = setCache("menuItems", menuItems, 500) %} 
     {% endif %}
+
 
     {% set rooms = [] %}
     {% for room in menuItems  %}
