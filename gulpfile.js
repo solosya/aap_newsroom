@@ -36,14 +36,14 @@ gulp.task('cache',  function() {
 });
 
 gulp.task('jscache', function () {
-  var filename = 'main-temp.twig';
+  var filename = '_javascript-temp.twig';
 
-  gulp.src('layouts/main.twig')
+  gulp.src('layouts/partials/_javascript.twig')
       .pipe(concat(filename))
-      .pipe(gulp.dest('layouts/'));
+      .pipe(gulp.dest('layouts/partials/'));
 
-  return gulp.src('layouts/main.twig', { base: './' }) //must define base so I can overwrite the src file below. Per http://stackoverflow.com/questions/22418799/can-gulp-overwrite-all-src-files
-      .pipe(replace(/\/(concat\.min\.css)\?v=[0-9a-z.]+/g, '/concat.min.css?v=' + Math.floor(Math.random() * 10000000).toString(16)))  //so find the script tag with an id of bundle, and replace its src.
+  return gulp.src('layouts/partials/_javascript.twig', { base: './' }) //must define base so I can overwrite the src file below. Per http://stackoverflow.com/questions/22418799/can-gulp-overwrite-all-src-files
+      .pipe(replace(/(\/static\/js\/scripts\.js)\?v(er)*=[0-9a-z.]+/g, '/static/js/scripts.js?ver=' + Math.floor(Math.random() * 10000000).toString(16)))  //so find the script tag with an id of bundle, and replace its src.
       .pipe(gulp.dest('./')); //Write the file back to the same spot.
 });
 
