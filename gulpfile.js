@@ -5,23 +5,24 @@ var gp_rename   = require("gulp-rename");
 var gutil       = require('gulp-util');
 var sass        = require('gulp-sass');
 var sourcemaps  = require('gulp-sourcemaps');
-var minifyCss   = require("gulp-minify-css");
+var minifyCss   = require('gulp-minify-css');
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
+var replace     = require('gulp-replace');
 // var rev         = require('gulp-rev');
 // var collect     = require('gulp-rev-collector');
 // var revdel      = require('rev-del');
 
-var runSequence = require('run-sequence');
+// var runSequence = require('run-sequence');
 
 
-gulp.task('styles', function(callback) {
-  runSequence('sass', 'concat', 'minify-css', 'cache',  callback);
-});
+// gulp.task('styles', function(callback) {
+//   runSequence('sass', 'concat', 'minify-css', 'cache',  callback);
+// });
 
-gulp.task('stylesTest', function(callback) {
-    runSequence('sass', 'concat', 'minify-css', 'revision:rename',   callback);
-  });
+// gulp.task('stylesTest', function(callback) {
+//     runSequence('sass', 'concat', 'minify-css', 'revision:rename',   callback);
+//   });
   
 
 gulp.task('cache',  function() {
@@ -32,6 +33,18 @@ gulp.task('cache',  function() {
       hashes: hasher.hashes,
     }))
     .pipe(gulp.dest('layouts/'));
+});
+
+gulp.task('jscache', function () {
+  var filename = 'main-temp.twig';
+
+  gulp.src('layouts/main.twig')
+      .pipe(concat(filename))
+      .pipe(gulp.dest('layouts/'));
+
+  return gulp.src('layouts/main.twig', { base: './' }) //must define base so I can overwrite the src file below. Per http://stackoverflow.com/questions/22418799/can-gulp-overwrite-all-src-files
+      .pipe(replace(/\/(concat\.min\.css)\?v=[0-9a-z.]+/g, '/concat.min.css?v=' + Math.floor(Math.random() * 10000000).toString(16)))  //so find the script tag with an id of bundle, and replace its src.
+      .pipe(gulp.dest('./')); //Write the file back to the same spot.
 });
 
 
@@ -157,4 +170,9 @@ gulp.task('watch', function (){
 	gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache',  'jscache', function (done) {
+  done();
+}));
+
+
+gulp.task('default', gulp.parallel('scripts', 'styles'));

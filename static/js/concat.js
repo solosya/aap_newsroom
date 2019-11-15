@@ -32262,7 +32262,16 @@ Acme.Signin.prototype.handle = function(e) {
             Acme.server.create('/api/auth/login', formData).done(function(r) {
 
                 if (r.success === 1) {
+                    
+                    // if password reset must return to home page, else 
+                    // get an error when staying on auth endpoint.
+                    if (window.location.pathname === "/auth/reset-thanks") {
+                        window.location.replace(_appJsConfig.appHostName);
+                        return;
+                    }
+
                     window.location.reload();
+
 
                 } else {
                     $elem.text("Sign in")
@@ -32362,6 +32371,8 @@ $('a.j-register').on('click', function(e) {
 
 }(jQuery));
 // Create a Stripe client
+var botTimer = 0;
+
 if ($('#stripekey').length > 0) {
 
 
@@ -32371,6 +32382,10 @@ if ($('#stripekey').length > 0) {
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
     var stripe = Stripe(stripekey);
+
+    setInterval(function(){
+        botTimer = botTimer + 1;
+    }, 1000);
 
     // Create an instance of Elements
     var elements = stripe.elements();
@@ -32420,7 +32435,6 @@ if ($('#stripekey').length > 0) {
             "group[1149][1]": true,
             "group[1149][2]": true,
         };
-
         this.errorFields = [];
 
         this.validateRules = {
@@ -32451,6 +32465,7 @@ if ($('#stripekey').length > 0) {
 
     SubscribeForm.prototype.render = function(checkTerms) 
     {
+
         this.clearInlineErrors();
         this.addInlineErrors();
         if (checkTerms) {
@@ -32477,6 +32492,11 @@ if ($('#stripekey').length > 0) {
             $('#card-errors').text('Password fields do not match.');
             return;
         }
+
+        if (botTimer < 5 || $('#email-confirm').val() !== "") {
+            window.location.href = location.origin + "/auth/thank-you";
+        }
+
 
 
         function submitForm() {
@@ -32584,6 +32604,7 @@ if ($('#stripekey').length > 0) {
             });
         }
 
+        $('#email-confirm').addClass("email-confirm");
 
     };
 
