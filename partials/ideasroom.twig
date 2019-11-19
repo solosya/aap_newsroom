@@ -1,3 +1,26 @@
+    
+{% set articleFeed = sections['ideasroom'].feed.articles %}
+
+{# rotate every n hours #}
+{% set rotation  = 2 %}
+{# rotate n amount of cards #}
+{% set cardCount  = 3 %} 
+
+
+{% set hour =  _AppHelper.getDefaultTimezoneDateTime(_AppHelper.getCurrentTimestampBasedOnTimezone(),'g') %}
+{% set start = ( ( hour - (hour % rotation) ) / rotation ) % cardCount %}
+
+{% set articles = [] %}
+{% for i in 0 .. cardCount - 1 %}
+    {% if start == cardCount %}
+        {% set start = 0 %}
+    {% endif %}
+    {% set articles = articles | merge([articleFeed[start]]) %}
+    {% set start = start + 1 %}
+{% endfor %}
+
+ 
+ 
  <section class="room-ideas">
      <header class="row">
          <a href="{{ sections['ideasroom'].link }}" class="col-sm-6 col-xs-12">
@@ -15,7 +38,7 @@
      </header>
 
     {{this.render('_single-article.twig', {
-        article: sections['ideasroom'].feed.articles[0], 
+        article: articles[0], 
         position: 1, 
         containerClass: 'featured ideas', 
         imageSize: {width:1140, height:430},
@@ -27,9 +50,9 @@
          <div class="row">
              
              {% for i in 1..2 %}
-                 {% if sections['ideasroom'].feed.articles[i] %}        
+                 {% if articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article: sections['ideasroom'].feed.articles[i], 
+                        article: articles[i], 
                         position: i+1, 
                         containerClass: 'col-sm-12 col-md-6', 
                         imageSize: {width:203, height:129},
