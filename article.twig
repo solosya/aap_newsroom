@@ -72,11 +72,10 @@
     </script>
 
 
-
 {% if showPaywall == true %}
-    {% set storySplit = article.content | split('<p>')  %}
-    {% set para2 = storySplit[2] | replace({'</p>': ''}) | slice(0, 190) ~ '</p>'  %}
-    {% set content = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
+    {% set storySplit = article.content | split('</p>')  %}
+    {% set para2      = storySplit[1] | slice(0, 190) ~ '</p>'  %}
+    {% set content    = [storySplit[0], para2] | join('</p>') %}
     {% set paywall_content_style = "content-paywalled" %}
 {% endif %}
 
