@@ -78,7 +78,7 @@
         {% set author = author ~  "</p>" %}
 
     {% else %}
-        {% set author = author ~  '<img src=' ~ profileImg ~ ' class="img-circle">' %}
+        {% set author = author ~  '<img height="34" width="34" src=' ~ profileImg ~ ' class="img-circle">' %}
         {% set author = author ~  '<p>' ~ article.createdBy['displayName'] ~ '</p>' %}
     {% endif %}    
 
