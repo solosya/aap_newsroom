@@ -1,6 +1,6 @@
 {% import "quotes.twig" as quotes %}
 
-
+{% set lazyload      = lazyload      is defined and lazyload == false       ? false     : true    %}
 
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
     {% set articleImg = '' %}
@@ -118,9 +118,9 @@
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
                     <figure class="{{figureClass}}">
                         {% if lazyload == false %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}">
                         {%endif%}
                     </figure>
                 {% endif %}

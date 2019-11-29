@@ -133,7 +133,7 @@ Acme.View.articleFeed.prototype.render = function(data)
 
     $(".card .content > p, .card h2, .card .content .author > p").dotdotdot();     
     // $('.video-player').videoPlayer();
-    $("div.lazyload").lazyload({
+    $("img.lazyload").lazyload({
         effect: "fadeIn"
     });
 

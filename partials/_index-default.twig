@@ -7,7 +7,8 @@
             {% if articles[0] %}                                                                
                 {{this.render('_single-article.twig', {
                 article: articles[0], 
-                position: 1, 
+                position: 1,
+                lazyload: false,
                 containerClass: 'swiper-slide', 
                 imageSize: {width:1168, height:587}
             }) | raw}}

@@ -292,7 +292,7 @@ $('document').ready(function() {
 
     $('.video-player').videoPlayer();
 
-    $("div.lazyload").lazyload({
+    $("img.lazyload").lazyload({
         effect : "fadeIn"
     });
 
