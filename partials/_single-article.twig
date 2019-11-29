@@ -120,7 +120,7 @@
                         {% if lazyload == false %}
                             <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}">
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-responsive lazyload" data-original="{{articleImg}}" src="{{placeholder}}">
                         {%endif%}
                     </figure>
                 {% endif %}
