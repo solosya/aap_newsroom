@@ -52,6 +52,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[0], 
                                 position: 1, 
+                                lazyload:false,
                                 containerClass: 'swiper-slide',
                                 imageSize: {width:660, height:440}
                             }) | raw}}
