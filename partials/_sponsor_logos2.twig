@@ -1,0 +1,193 @@
+{% set assetDimensions = {
+    "kw-logo-bw": 65, 
+    "eco_logo_black": 160,
+    "chorus_logo-basic": 200,
+    "bell-gully": 187,
+    "beca_mono": 130,
+    "wisp_mono": 130,
+
+    "matatuhi-mono": 200,
+    "otago-uni-logo": 123,
+    "sky-logo-mono": 93,
+    "stuff": 130,
+    "uoa_h_black": 130,
+
+    "vodafone-logo": 130,
+    "vic-mono": 130,
+    "kb_logo_black": 65,
+
+
+} %}
+
+
+{% set assets = _Media.getAssetCollections() %}
+
+{% set collectionId = null %}
+
+{% for asset in assets %} 
+    {% if asset['name'] | lower == "sponsor logos" | lower %} 
+        {% set collectionId = asset['id'] %}
+    {% endif %}
+{% endfor %}
+
+
+{% set logoArray = {} %}
+
+{% if collectionId != null %}
+    {% set sponsorLogos = _Media.get({'collections': collectionId}) %}
+{% endif %}
+
+{% for logo in sponsorLogos %}
+    {% set image = {
+        id: logo.cloudinary_public_id,
+        cloudName: logo.cloudinary_cloud_name,
+        path: logo.cdn_path,    
+    } %}
+
+
+    {% set width = assetDimensions[logo.title | lower] %}
+    {# {% set log = _AppHelper.log(width) %} #}
+    {% if width == null %}
+        {% set width = 150 %}
+        {% set log = _AppHelper.log(logo.title) %}
+    {% endif %}
+    {% set url = _Media.getMediaUrl(image, width, 0, {'crop': 'fill', 'gravity': 'auto', "effect":'sharpen', 'quality': 100} ) %}
+    {% set logo = logo | merge({"url": url}) %}
+    {% set logoArray = logoArray | merge({(logo.title | lower): logo}) %}
+{% endfor %}
+
+
+{# {% set log = _AppHelper.log(logoArray) %} #}
+
+
+
+<div class="container hidden-print">
+ <p class="foundingpartners">With thanks to our partners </p>
+ <section class="sponsor-logos2">
+     <div class="visible-sm-block visible-md-block visible-lg-block">
+         
+         <div class="logos">
+            <a href="https://www.kiwibank.co.nz" class="sponsor-kiwibank" target="_blank">
+                <img src="{{logoArray['kb_logo_black'].url}}" alt="kiwibank logo" />
+            </a>
+
+            <a href="https://www.vodafone.co.nz/business/" class="sponsor-vodafone" target="_blank">
+                <img src="{{logoArray['vodafone-logo'].url}}" alt="vodafone logo" />
+            </a>
+
+            <a href="https://www.kiwiwealth.co.nz/home" class="sponsor-kiwiwealth" target="_blank">
+                <img src="{{logoArray['kw-logo-bw'].url}}" alt="kiwiwealth logo" />
+            </a>
+         </div>
+
+
+         <div class="logos u-margin-top-20">
+            <a href="http://www.ecostore.co.nz" class="sponsor-ecostore" target="_blank">
+                <img src="{{logoArray['eco_logo_black'].url}}" alt="ecostore logo" />
+            </a>
+
+            <a href="http://www.bellgully.com" class="sponsor-bellgully" target="_blank">
+                <img src="{{logoArray['bell-gully'].url}}" alt="bellgully logo" />
+            </a>
+
+            <a href="https://www.beca.com/" class="sponsor-beca" target="_blank">
+                <img src="{{logoArray['beca_mono'].url}}" alt="beca logo" />
+            </a>
+
+            <a href="https://www.sky.co.nz/sport" class="sponsor-sky" target="_blank">
+                <img src="{{logoArray['sky-logo-mono'].url}}" alt="sky logo" />
+            </a>
+         </div>
+
+
+         <div class="logos">
+            <a href="http://www.victoria.ac.nz/capital-thinking" class="sponsor-vic-uni-wellington" target="_blank">
+                <img src="{{logoArray['vic-mono'].url}}" alt="vic uni wellington logo" />
+
+            </a>
+            
+            <a href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" class="sponsor-uni-auckland" target="_blank">
+                <img src="{{logoArray['uoa_h_black'].url}}" alt="University of Auckland logo" />
+
+            </a>
+
+            <a href="https://www.otago.ac.nz" class="sponsor-uni-otago" target="_blank">
+                <img src="{{logoArray['otago-uni-logo'].url}}" alt="uni otago logo" />
+
+            </a>
+         </div>
+
+
+
+         <div class="logos u-margin-top-20">
+            <a href="https://womeninsport.org.nz" class="sponsor-wispa" target="_blank">
+                <img src="{{logoArray.wisp_mono.url}}" alt="Kiwi bank logo" />
+            </a>
+
+            <a href="https://www.matatuhifoundation.co.nz" class="sponsor-matatuhi" target="_blank">
+                <img src="{{logoArray['matatuhi-mono'].url}}" alt="matatuhi logo" />
+            </a>
+         </div>
+     </div>
+
+
+
+
+
+
+
+     <div class="container visible-xs-block">
+         <ul>
+             <li class="sponsor-kiwibank"><a href="https://www.kiwibank.co.nz" target="_blank"></a></li>
+        </ul>
+         <br>
+         <ul>
+             <li class="sponsor-vodafone"><a href="https://www.vodafone.co.nz/business/" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-kiwiwealth"><a href="https://www.kiwiwealth.co.nz/home" target="_blank"></a></li>
+        </ul>
+         <br>
+         <ul>
+             <li class="sponsor-bellgully"><a href="http://www.bellgully.com" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-ecostore"><a href="http://www.ecostore.co.nz" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-beca"><a href="https://www.beca.com/" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-sky"><a href="https://www.sky.co.nz/sport" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-vic-uni-wellington"><a href="http://www.victoria.ac.nz/capital-thinking" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-uni-auckland"><a href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-uni-otago"><a href="https://www.otago.ac.nz" target="_blank"></a></li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-wispa">
+                <a href="https://womeninsport.org.nz" target="_blank">
+                    <img src="{{logoArray.wisp_mono.url}}" alt="Kiwi bank logo" />
+                </a>
+            </li>
+         </ul>
+         <br>
+         <ul>
+             <li class="sponsor-matatuhi"><a href="https://www.matatuhifoundation.co.nz" target="_blank"></a></li>
+         </ul>
+     </div>
+ </section>  
+</div>
