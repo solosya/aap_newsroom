@@ -64,8 +64,8 @@
                         
                         try {
                             adPush(keys[0]);
-                        } catch {
-                            console.log('no ad found to push at advertisment__'+keys[0])
+                        } catch(err) {
+                            console.log('no ad found to push at advertisment__'+keys[0],err)
                         }
                         
                     },
@@ -94,11 +94,11 @@
         }
     }
 
-    Acme.LoadAds()
+    Acme.LoadAds();
 }(jQuery));
 
 
-function adPush(slot){
+adPush = function(slot){
     var idNo = document.getElementById('g-ad-id').dataset.accno;
     var keywordCont = document.getElementsByClassName('j-keyword-cont');
     var keyword = '';
