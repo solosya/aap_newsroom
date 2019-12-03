@@ -36,7 +36,7 @@
                 console.log(keysString, _appJsConfig.appHostName);
                 $.ajax({
                     type: 'GET',
-                    url: _appJsConfig.appHostName + ':8080/api/ad/get-all',
+                    url: _appJsConfig.appHostName + '/api/ad/get-all',
                     dataType: 'json',
                     data: {
                         'keywords': keysString,
