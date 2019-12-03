@@ -440,6 +440,6 @@
         {% elseif blogData.keywords is defined and blogData.keywords != '' %}
             {% set theKeywords = blogData.keywords %}
         {% endif %}
-        <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} adsection="ideasroom"{% endif %}></div>
+        <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="ideasroom"{% endif %}></div>
     </main>
 
