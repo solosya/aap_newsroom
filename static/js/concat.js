@@ -29932,9 +29932,9 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                         console.log(self);
                         keys = self.keywords.split(',');
                         if (self.media.path){
-                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+" class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
+                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+"' class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
                         } else if (self.description){
-                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+" class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
+                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+"' class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
                         }
                         
                         try {
