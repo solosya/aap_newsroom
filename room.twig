@@ -2,7 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
-
+{% set config       = _Network.getThemeConfig() %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
 {% set limit = 13 %}
@@ -154,14 +154,15 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                         
                         <div class="row">
-                            {% if (this.title | lower) == 'lockerroom' %}
+                            {# {% if (this.title | lower) == 'lockerroom' %}
                                 <section class="" style="width:300px;margin:auto;">
                                     <a href="https://bit.ly/2LRypQC"><img src="{{networkData.templatePath}}/static/images/LockerRoomv2a.gif"></a>
                                 </section>
-                            {% endif %}
+                            {% endif %} #}
                             <section class="col-sm-6 col-md-12 add sidebar-add">
-                                <div id="newAdHalf"></div>
-                                <script>loadTwoAds('');</script>
+                                {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                    <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage"></div>
+                                {% endif %}
                                 <span class="add-text">Advertisement</span>
                             </section>
 
@@ -253,4 +254,6 @@
 
             </div>
         </section>
+           
+        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""{% if (this.title | lower) == 'ideasroom' %} adsection="ideasroom"{% endif %}></div>
     </main>

@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogInfo = _Blog.getBlog() %}
-
+{% set config       = _Network.getThemeConfig() %}
 {{this.registerJs("HomeController.listing();")}}
 {% set limit = 19 %}
 
@@ -104,8 +104,9 @@
 
 
                         <section class="add sidebar-add hidden-sm hidden-xs">
-                            <div id="newAdHalf"></div>
-                            <script>loadNextHalfAd('',992);</script>
+                            {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                <div class="j-adslot" id="{{config['inventory']['hpage']['mrec'][0]}}" data-adshape="hpage"></div>
+                            {% endif %}
                             <span class="add-text">Advertisement</span>
                         </section>
 
@@ -118,5 +119,5 @@
         </section>
         <div id="tagdiv">
         </div>
-
+         <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="awards" data-pageType="awards" data-pageTags=""></div>
     </main><!-- .site-main -->

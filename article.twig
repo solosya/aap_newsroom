@@ -18,7 +18,7 @@
 {% set recentLabel      = 'Newsroom' %}
 {% set articleBlogData  = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
 {% set proBlogId        = '' %}
-
+{% set config       = _Network.getThemeConfig() %}
 
 {% set showPaywall              = false %}
 {% set content                  = article.content %}
@@ -355,7 +355,9 @@
                                     {% endif %}
 
                                     <section class="add sidebar-add ">
-                                        <div id="newAdHalf"></div>
+                                        {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                            <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="side-fix"></div>
+                                        {% endif %}
                                         <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                     </section>
 
@@ -410,10 +412,8 @@
                 </div>
             </div>
 
-            {% if 'RWC2019' in article.keywords %}
-                {# <section class="u-desktop-margin-bottom-60">
-                    <div id="canon-banner"></div>
-                </section> #}
+            {# {% if 'RWC2019' in article.keywords %}
+                
                 <script>loadCanonAds();</script>
             {% endif %}
 
@@ -428,12 +428,18 @@
                     {% endif %}
                 {% endif %}
 
-            {% endif %}
+            {% endif %} #}
 
         </article>
 
         {# {{ this.render('partials/_sponsor_logos.twig') | raw }} #}
         {{ this.render('partials/_sponsor_logos2.twig') | raw }}
-        
+        {% set theKeywords = '' %}
+        {% if article.keywords is defined and article.keywords != '' %}
+            {% set theKeywords = article.keywords %}
+        {% elseif blogData.keywords is defined and blogData.keywords != '' %}
+            {% set theKeywords = blogData.keywords %}
+        {% endif %}
+        <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} adsection="ideasroom"{% endif %}></div>
     </main>
 

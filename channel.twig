@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData  = _Network.getNetworkData() %}
 {% set blogData     = _Blog.getBlog() %}
-
+{% set config       = _Network.getThemeConfig() %}
 {{this.registerJs("Acme.cards = CardController();")}}
 
 {% set limit = 15 %}
@@ -105,7 +105,9 @@
                         <div class="col-sm-12 col-md-4 sidebar">
                    
                             <section class="add channel-ad" >
-                                <div id="newAdHalf"></div>
+                                {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                    <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage"></div>
+                                {% endif %}
                                 <span class="add-text">Advertisement</span>
                             </section>
                         </div>
@@ -303,6 +305,7 @@
 
 
 
-            <script>loadTwoAds('');</script>
+            
             </div>
+            <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""{% if (this.title | lower) == 'ideasroom' %} adsection="ideasroom"{% endif %}></div>
         </section>
