@@ -29888,7 +29888,8 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                 self.removeClass("j-adslot");
                 self.addClass("j-adslot-filled");
                 var keysArray = [elem.id];
-                if (deviceSize != ""){
+
+                if ((!elem.dataset.responsive || elem.dataset.responsive == "0") && deviceSize != ""){
                     keysArray.push(deviceSize);
                 }
                 
@@ -29909,9 +29910,11 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                 }
                 var keysString = keysArray.join(',')
                 console.log(keysString, _appJsConfig.appHostName);
+                var devkey = '';
+                if (_appJsConfig.appHostName == 'http://www.publish.io'){devkey = ':8080'};
                 $.ajax({
                     type: 'GET',
-                    url: _appJsConfig.appHostName + '/api/ad/get-all',
+                    url: _appJsConfig.appHostName + devkey + '/api/ad/get-all',
                     dataType: 'json',
                     data: {
                         'keywords': keysString,
@@ -29929,9 +29932,15 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                         console.log(self);
                         keys = self.keywords.split(',');
                         if (self.media.path){
-                            $("#"+keys[0]).html("<div class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
+                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+" class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
                         } else if (self.description){
-                            $("#"+keys[0]).html("<div class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
+                            $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+" class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
+                        }
+                        
+                        try {
+                            Acme.adPush(keys[0]);
+                        } catch {
+                            console.log('no ad found to push at advertisment__'+keys[0])
                         }
                         
                     },
@@ -29940,6 +29949,9 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                         $('#createUserErrorMessage').text(textStatus);
                     },
                 });
+
+                
+                
             }
         }
 
@@ -29957,8 +29969,98 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
         }
     }
 
-    Acme.LoadAds()
+    Acme.LoadAds();
+
+    Acme.adPush = function(slot)
+    {
+        var idNo = $('#g-ad-id').data('accno');
+        var keywordCont = $('.j-keyword-cont');
+        var keyword = '';
+        var pageName = '';
+        var pageType = '';
+        var pageTag  = '';
+        var adsection = '';
+        
+        //set values of the page if the data items exist
+        if (keywordCont[0]){      
+            keyword = keywordCont[0].data('keyword');
+            pageName = keywordCont[0].data('pagename').replace(/ /g,"_");
+            pageType = keywordCont[0].data('pagetype');
+            pageTag  = keywordCont[0].data('pagetag');
+            if (keywordCont[0].data('adsection')){
+                adsection = keywordCont[0].data('adsection');
+            }
+        }
+    
+        googletag.cmd.push(function() {
+            //declare mapping variables
+            var mappingBanner = googletag.sizeMapping()
+                            .addSize([1000, 200], [[970, 250], [970, 90], [728, 250],[728, 90]])
+                            .addSize([768, 200], [[728, 250],[728, 90]])
+                            .addSize([480, 200], [[300, 75]])
+                            .addSize([360, 400], [[300, 75]])
+                            .addSize([320, 400], [[300, 75]])
+                            .build();
+            var mappingMrec = googletag.sizeMapping()
+                            .addSize([320, 400], [[300, 250],[300, 75]])
+                            .build();
+            var mappingHpage = googletag.sizeMapping()
+                            .addSize([1000, 200], [[300, 600],[300, 250]])
+                            .addSize([320, 400], [[300, 250],[300, 75]])
+                            .build();
+            var mappingTag = googletag.sizeMapping()
+                            .addSize([0, 0], [[1, 1]])
+                            .build();         
+            //cycle through the ad slots on the page and define the associated google slot
+            
+            var theId = slot;
+            var slotId = 'div-gpt-ad-'+theId;
+            //find the ad shape
+            var theSlot = $('#'+theId);
+            var slotType = theSlot.data('adshape');
+            var inventory =   $('#'+slotId);
+            if (adsection == ''){
+                invSlot = idNo + inventory.data('inventory');
+            } else {
+                invSlot = idNo + adsection;
+            }
+            //set the POS
+            var pos = theId.slice(-1);
+            // if size and mapping needs to be set for the shape set it here
+            var sizes = [0,0];
+            var mapping = mappingTag;
+            if (slotType == 'banner'){
+                sizes = [[970,250],[970,90],[728,90],[728,250],[300,75]];
+                mapping = mappingBanner;
+            } else if (slotType == 'mrec'){
+                sizes = [[300,250],[300,75]];
+                mapping = mappingMrec;
+            } else if (slotType == 'hpage' || slotType == 'side-fix'){
+                sizes = [[300,600], [300,250],[300,75]];
+                mapping = mappingHpage;
+            }
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().setTargeting('section', [pageName])
+                    .setTargeting('keyword', [keyword])
+                    .setTargeting('page-type', [pageType])
+                    .setTargeting('tag', [pageTag]);
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+            //define the slot with all required data
+            console.log(invSlot, sizes, slotId);
+            console.log( document.getElementById(slotId));
+            googletag.defineSlot(invSlot, sizes, slotId)
+                .setTargeting('POS', [pos])
+                .defineSizeMapping(mapping)
+                .addService(googletag.pubads());
+            
+            googletag.cmd.push(function() { googletag.display(slotId); });
+        });
+    }
+
 }(jQuery));
+
+
 
 // var ArticleController = (function ($) {
 //     return {

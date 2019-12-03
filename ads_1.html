@@ -1,23 +1,8 @@
-<!-- Google Tag Manager -->
-    <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-T27NL3S');
-    </script>
-<!-- End Google Tag Manager -->
+
     
     
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129973159-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'UA-129973159-1');
-    </script>
 <!-- End Google Analytics -->
     
 <!-- Google Tag Manager (noscript) -->
@@ -28,106 +13,34 @@
 
 <!-- Google AD Code here -->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-<script>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-</script>
-
+<meta id="g-ad-id" data-accno="/268436641/">
+<!-- Google AD Code end -->
 <script>
      // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-        // declare the ad server and overall inventory name
-        
-        //get data from the page about what kind of page it is
-         //get data from the page about what kind of page it is
-        var keywordCont = document.getElementsByClassName('j-keyword-cont');
-        var keyword = '';
-        var pageName = '';
-        var pageType = '';
-        var pageTag  = '';
-        var adsection = 'newsroom';
-        var slotsToPush = [];
-       
-        //set values of the page if the data items exist
-        if (keywordCont[0]){
-            keyword = keywordCont[0].dataset.keyword;
-            pageName = keywordCont[0].dataset.pagename.replace(/ /g,"_");
-            pageType = keywordCont[0].dataset.pagetype;
-            pageTag  = keywordCont[0].dataset.pagetag;
-            if (keywordCont[0].dataset.adsection){
-                adsection = keywordCont[0].dataset.adsection;
-            }
-        }
-        var idNo = '/268436641/'+adsection;
-        
-        //find all the adslots on the page
-        var adSlots = document.querySelectorAll('.j-adslot,.j-adslot-filled');
-        //start the google ad code
+        // Google Tag Manager -->
+    
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-T27NL3S');
+            
+        // End Google Tag Manager -->
 
-        googletag.cmd.push(function() {
-            //declare mapping variables
-            var mappingBanner = googletag.sizeMapping()
-                            .addSize([1000, 200], [[970, 250], [970, 90], [728, 250],[728, 90]])
-                            .addSize([768, 200], [[728, 250],[728, 90]])
-                            .addSize([480, 200], [[300, 75]])
-                            .addSize([360, 400], [[300, 75]])
-                            .addSize([320, 400], [[300, 75]])
-                            .build();
-            var mappingMrec = googletag.sizeMapping()
-                            .addSize([320, 400], [[300, 250],[300, 75]])
-                            .build();
-            var mappingHpage = googletag.sizeMapping()
-                            .addSize([1000, 200], [[300, 600],[300, 250]])
-                            .addSize([320, 400], [[300, 250],[300, 75]])
-                            .build();
-            var mappingTag = googletag.sizeMapping()
-                            .addSize([0, 0], [[1, 1]])
-                            .build();                
-            //cycle through the ad slots on the page and define the associated google slot
-            for (var i = 0; i< adSlots.length; i++){
-                var theId = adSlots[i].id;
-                var slotId = 'div-gpt-ad-'+theId;
-                //find the ad shape
-                var theSlot = document.getElementById(theId);
-                var slotType = theSlot.dataset.adshape;
+        // Google Analytics -->
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-129973159-1');
+        // End Google Analytics -->
 
-                //set the POS
-                var pos = theId.slice(-1);
-                // if size and mapping needs to be set for the shape set it here
-                var sizes = [0,0];
-                var mapping = mappingTag;
-                if (slotType == 'banner'){
-                    sizes = [[970,250],[970,90],[728,90],[728,250],[300,75]];
-                    mapping = mappingBanner;
-                } else if (slotType == 'mrec'){
-                    sizes = [[300,250],[300,75]];
-                    mapping = mappingMrec;
-                } else if (slotType == 'hpage' || slotType == 'side-fix'){
-                    sizes = [[300,600], [300,250],[300,75]];
-                    mapping = mappingHpage;
-                }
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().setTargeting('section', [pageName])
-                        .setTargeting('keyword', [keyword])
-                        .setTargeting('page-type', [pageType])
-                        .setTargeting('tag', [pageTag]);
-                googletag.pubads().collapseEmptyDivs();
-                googletag.enableServices();
-                //define the slot with all required data
-                console.log(idNo, sizes, slotId);
-                googletag.defineSlot(idNo, sizes, slotId)
-                    .setTargeting('POS', [pos])
-                    .defineSizeMapping(mapping)
-                    .addService(googletag.pubads());
-
-                
-                
-                if (theSlot.innerHTML != ""){
-                    googletag.cmd.push(function() { googletag.display(slotId); });
-                }
-            }
-        });
+        // AD Manager -->
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+        // end ad manager
 
         var setTags = {
 
@@ -145,7 +58,7 @@
         function addClassTagListeners(itemId,tagType,listener) {
             var theItem = document.getElementsByClassName(itemId);
             for (i = 0;i<theItem.length;i++){
-            theItem[i].addEventListener(listener,function(){ theTag(tagType); });
+                theItem[i].addEventListener(listener,function(){ theTag(tagType); });
             }
         }
 
@@ -165,17 +78,28 @@
             addTagListeners('learnmorebutton','learnmore','click');
         }
         // Facebook Pixel Code
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '193452251391850'); 
-        fbq('track', 'PageView');
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '193452251391850'); 
+            fbq('track', 'PageView');
         // end Facebook Pixel Code
+        // declare the ad server and overall inventory name
+        
+        //get data from the page about what kind of page it is
+         //get data from the page about what kind of page it is
+               
+        
+        //find all the adslots on the page
+        // var adSlots = document.querySelectorAll('.j-adslot,.j-adslot-filled');
+        //start the google ad code
+        
+        
     });
 </script>
 

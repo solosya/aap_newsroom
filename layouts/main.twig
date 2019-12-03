@@ -101,7 +101,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%} {# ?v=00000387 <- ACTUAL CACHE NUMBER, raise by one each time for clean caching #}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=00000387" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=d3744ac3" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
@@ -275,7 +275,7 @@
     {% if paywallSection == false and 'edit-profile' not in pageClass %}
         <hr class="add__gap visible-xs-block">
         {% if config['inventory']['adSpace']['banner'][0] is defined %}
-            <div class="j-adslot add add-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner"></div>
+            <div class="j-adslot add add-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
         {% endif %}
     <!--add add-header-top-->
     {% else %}
