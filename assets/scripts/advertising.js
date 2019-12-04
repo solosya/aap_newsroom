@@ -8,7 +8,6 @@
             var deviceSize = getDeviceForAd();
             for (var i=0;i<adslots.length;i++) {
                 var elem = adslots[i];
-                console.log(elem);
                 var self = $("#"+elem.id);
                 self.removeClass("j-adslot");
                 self.addClass("j-adslot-filled");
@@ -34,7 +33,6 @@
                     keysArray.push('default');
                 }
                 var keysString = keysArray.join(',')
-                console.log(keysString, _appJsConfig.appHostName);
                 var devkey = '';
                 if (_appJsConfig.appHostName == 'http://www.publish.io'){devkey = ':8080'};
                 $.ajax({
@@ -54,19 +52,19 @@
                             var k = 0;
                         }
                         var self = data[k];
-                        console.log(self);
                         keys = self.keywords.split(',');
                         if (self.media.path){
                             $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+"' class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
                         } else if (self.description){
                             $("#"+keys[0]).html("<div id='advertisment__"+keys[0]+"' class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
+                            try {
+                                adPush(keys[0]);
+                            } catch(err) {
+                                console.log('no ad found to push at advertisment__'+keys[0],err)
+                            }
                         }
                         
-                        try {
-                            adPush(keys[0]);
-                        } catch(err) {
-                            console.log('no ad found to push at advertisment__'+keys[0],err)
-                        }
+                        
                         
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -173,8 +171,6 @@ adPush = function(slot){
         googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
         //define the slot with all required data
-        console.log(invSlot, sizes, slotId);
-        console.log( document.getElementById(slotId));
         googletag.defineSlot(invSlot, sizes, slotId)
             .setTargeting('POS', [pos])
             .defineSizeMapping(mapping)
