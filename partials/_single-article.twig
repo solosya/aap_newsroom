@@ -69,7 +69,7 @@
 
     {% set author = "" %}
     {% if article['createdBy']['coauthors'] %}
-        {% set author = author ~  "<p style=''>" ~ article.createdBy['displayName'] %}
+        {% set author = author ~  '<p class="j-truncate">' ~ article.createdBy['displayName'] %}
 
         {% for i, authors in article['createdBy']['coauthors'] %}
             {% set divider = (loop.last) ? ' and ' : ', ' %}
@@ -79,7 +79,7 @@
 
     {% else %}
         {% set author = author ~  '<img height="34" width="34" src=' ~ profileImg ~ ' class="img-circle">' %}
-        {% set author = author ~  '<p>' ~ article.createdBy['displayName'] ~ '</p>' %}
+        {% set author = author ~  '<p class="j-truncate">' ~ article.createdBy['displayName'] ~ '</p>' %}
     {% endif %}    
 
     {% if article.label | lower == 'investigations' and containerClass | lower == 'card-investigations-feature card-investigations-feature-tablet card-investigations-feature-mobile' %}
@@ -128,10 +128,10 @@
                 <div class="content">
                     <div class="category">{{article.label}}</div>
                     
-                    <h2>{{ articleTitle }}</h2>
+                    <h2 class="j-truncate">{{ articleTitle }}</h2>
                     
                     {% if cardClass != 'instagram no-caption' %}  
-                        <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
+                        <p class="j-truncate">{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
                     
                     <time datetime="">{{publishDate}}</time>

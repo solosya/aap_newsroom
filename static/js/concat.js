@@ -30824,7 +30824,8 @@ Card.prototype.initDroppable = function()
                         $.fn.General_ShowNotification({message: "Articles swapped successfully"});
                     }
                     
-                    $(".card p, .card h2").dotdotdot();
+                    // $(".card p, .card h2").dotdotdot();
+                    $(".j-truncate").dotdotdot();
                     self.events();
                 },
             });
@@ -32112,7 +32113,6 @@ $('document').ready(function() {
 
 
     $('#batch-add').on('click', function(e) {
-        console.log('adding batch users');
         var input = $('#batch-user-input').val();
         var send = JSON.parse( input );
         var url = _appJsConfig.baseHttpPath + '/api/user/batch-add';
@@ -32286,7 +32286,7 @@ $('document').ready(function() {
     var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2, .card .content > .author > p').dotdotdot({
+        $('.j-truncate').dotdotdot({
             watch: true
         });
     }), 750);
