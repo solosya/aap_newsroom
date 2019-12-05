@@ -313,7 +313,9 @@
                                 {% endif %}
                             {% endif %}
                      
-
+                            {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                                <div class="j-adslot d-md-none" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="1"></div>
+                            {% endif %} 
 
 
                             <div class="comments hidden-print">
