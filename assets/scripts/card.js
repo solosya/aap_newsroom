@@ -399,7 +399,8 @@ Card.prototype.initDroppable = function()
                         $.fn.General_ShowNotification({message: "Articles swapped successfully"});
                     }
                     
-                    $(".card p, .card h2").dotdotdot();
+                    // $(".card p, .card h2").dotdotdot();
+                    $(".j-truncate").dotdotdot();
                     self.events();
                 },
             });
