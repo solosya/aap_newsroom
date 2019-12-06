@@ -224,7 +224,6 @@
     {# futurelearning to be treated like a room kinda #}
     {% set rooms = rooms | merge(['futurelearning']) %}
 
-
     {% if (submenu | length == 0 and blogName | lower not in rooms) %}
         {% for room in menuItems if submenu | length == 0 %}
             {% for childItem in room.children if submenu | length == 0 %}
