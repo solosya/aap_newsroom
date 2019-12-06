@@ -121,7 +121,14 @@
                             color: #27aae1;
                         }
 
+                        @media #{$tablet-up} {
+                            > .author {
+                                display:flex;
+                            }
+                        }
                         > .author p{
+                            height:40px;
+                            width:185px;
                             color: #FFF;
                         }
 
@@ -131,9 +138,24 @@
                         > p {
                             display: none;
                         }
+                    }
+                }
+            }
+            @media #{$tablet} {
+                > a.card{
+
+                > article > .content{
+
+                    > .author {
+                        margin-top:30px;
+                    }
+                    > .author p { 
+                        width: 245px;
+                    }
                 }
             }
         }
+
     }
 
 
