@@ -19,6 +19,35 @@
     {% set start = start + 1 %}
 {% endfor %}
 
+{% set assets = _Media.getAssetCollections() %}
+
+{% set collectionId = null %}
+
+{% for asset in assets %} 
+    {% if asset['name'] | lower == "ideasroom logos" | lower %} 
+        {% set collectionId = asset['id'] %}
+    {% endif %}
+{% endfor %}
+
+
+{% set logoArray = {} %}
+
+{% if collectionId != null %}
+    {% set sponsorLogos = _Media.get({'collections': collectionId}) %}
+{% endif %}
+
+{% for logo in sponsorLogos %}
+    {% set image = {
+        id: logo.cloudinary_public_id,
+        cloudName: logo.cloudinary_cloud_name,
+        path: logo.cdn_path,    
+    } %}
+
+    {% set url = _Media.getMediaUrl(image, 200, 0, {'crop': 'fill', 'gravity': 'auto', "effect":'sharpen', 'quality': 100} ) %}
+    {% set logo = logo | merge({"url": url}) %}
+    {% set logoArray = logoArray | merge({(logo.title | lower): logo}) %}
+{% endfor %}
+
  
  
  <section class="room-ideas">
@@ -27,13 +56,13 @@
              <img src="{{networkData.templatePath}}/static/images/ideasroom-logo.svg?v=8" alt="ideas room" class="img-responsive ideas-logo">
          </a>
             <div class="future-learning-sponsors col-sm-6 col-xs-12">
-                <a class="hidden-xs" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/otago-uni-logo.png" alt="otagouni" style="margin-left:5px"></a>
-                <a class="hidden-xs" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/UOA-H-Blue.svg" alt="UOA" style="margin-left:5px"></a>
-                <a class="hidden-xs" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/VIC-clr.png?ver=0" alt="vicuni"></a>
+                <a class="hidden-xs" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
+                <a class="hidden-xs" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
+                <a class="hidden-xs" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
                 <p>Sponsored by</p>
-                <a class="visible-xs-block" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/VIC-clr.png?ver=0" alt="vicuni"></a>
-                <a class="visible-xs-block" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/UOA-H-Blue.svg" alt="UOA" style="margin-left:5px"></a>
-                <a class="visible-xs-block" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{networkData.templatePath}}/static/images/logos/otago-uni-logo.png" alt="otagouni" style="margin-left:5px"></a>
+                <a class="visible-xs-block" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
+                <a class="visible-xs-block" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
+                <a class="visible-xs-block" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
             </div><!-- .sponsors-->
      </header>
 
