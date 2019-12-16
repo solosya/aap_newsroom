@@ -29661,7 +29661,7 @@ Acme.templates.modal =
         <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
             <div class="{{name}}__header"> \
                 <h2 class="{{name}}__title">{{title}}</h2> \
-                <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg?v=567" alt="logo"> \
+                <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
                 <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
             <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
@@ -29677,7 +29677,7 @@ Acme.templates.modal =
 Acme.templates.modalVideo = 
 '<div id="popupVideo" class="popup-video"> \
     <div class="popupVideo__logo-container"> \
-        <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg?v=567" alt="logo"> \
+        <img class="popupVideo__logo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
     </div> \
     <video class="popupVideo__video" controls autoplay poster="{{path}}/static/videos/newsroom_awards_full.jpg"> \
          <source src="https://s3-ap-southeast-2.amazonaws.com/cog-aap/themes/g02Ei4J8TjnbLiR/static/videos/Newsroom_Awards_Full.mp4" type="video/mp4"/> \
