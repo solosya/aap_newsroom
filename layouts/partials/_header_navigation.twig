@@ -69,7 +69,7 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=8" alt="">
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=567" alt="">
                                     </a>
                                 </li>
                             {% endif  %}
@@ -98,7 +98,7 @@
 
                     {% else %} 
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=8" alt="logo" class="main-logo">
+                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=567" alt="logo" class="main-logo">
                         </a>
                         {% if roomInfo[0] | lower == 'lockerroom' %}
                             <p class="wisp-logo__text">Supported by</p>
@@ -113,7 +113,7 @@
                         
                         <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
-                            {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg" alt="logo" class="mobile-logo-summer"> #}
+                            <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg" alt="logo" class="mobile-logo-summer">
                         </a>
                     {% endif %}
                 </div>
@@ -199,7 +199,7 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=8" alt="">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=567" alt="">
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -261,7 +261,7 @@
             <div class="section-left col-md-4 col-sm-6">
                 <div class="logo pull-left">
                     <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=8" alt="logo" class="mobile-logo">
+                        <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=567" alt="logo" class="mobile-logo">
                     </a>
                 </div>
             </div><!--section-left-->
@@ -320,7 +320,7 @@
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=8" alt="">
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=567" alt="">
                                         </a>
                                     </li>
                                 {% endif  %}
