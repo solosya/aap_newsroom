@@ -96,6 +96,7 @@
 
 
 
+
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
@@ -178,7 +179,7 @@
                             {% endif %}
 
 
-                            {% if sections['podcast card'].feed.articles|length == 0 %}
+                            {% if not sections['podcast card'].feed.articles[0] is defined %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
@@ -194,7 +195,7 @@
 
 
 
-                        {% if sections['podcast card'].feed.articles|length > 0 %}
+                        {% if sections['podcast card'].feed.articles[0] is defined %}
                             {% if 'The Detail' in sections['podcast card'].feed.articles[0].label %}
                                 {% set podCardClass = 'card-pod-td card-pod-td-tablet card-pod-td-mobile' %}
                             {% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
