@@ -198,7 +198,7 @@
 
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=569" alt="">
                                         </a>
                                     </li>
@@ -319,7 +319,7 @@
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=569" alt="">
                                         </a>
                                     </li>
