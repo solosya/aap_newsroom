@@ -191,6 +191,7 @@
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
                         {% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
+                            </div>
                             {% set podCardClass = 'card-pod-tc card-pod-tc-tablet card-pod-tc-mobile' %}
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
@@ -206,7 +207,7 @@
                             {% endif %}
                         {% endif %}
 
-                            <div>
+                        </div>
 
                         <section class="add row sidebar-add sidebar-add__idx hidden-md hidden-lg u-tablet-no-margin-top">
                             <div class="col-sm-6">
