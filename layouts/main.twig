@@ -23,7 +23,7 @@
 {% set blogName      = blogData.title %}
 {% set layout        = _Page.getLayoutName() %}
 {% set pageURL       = _AppHelper.getCurrentUrl(true) %}
-{% set config       = _Network.getThemeConfig() %}
+
 
 
 {% set showPaywall = false %}
@@ -100,8 +100,8 @@
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
-    {% if _AppHelper.getApplicationEnv() == 'PROD'%} {# ?v=00000389 <- ACTUAL CACHE NUMBER, raise by one each time for clean caching #}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=170d5684" type="text/css" media="all">
+    {% if _AppHelper.getApplicationEnv() == 'PROD'%} {# ?v=00000393 <- ACTUAL CACHE NUMBER, raise by one each time for clean caching #}
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=63eebcf6" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
@@ -254,10 +254,10 @@
 
 
 
-    {# {{ this.render('partials/ads.twig', {
+    {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
-    }) | raw }} #}
+    }) | raw }}
 
 
 </head>
@@ -273,10 +273,9 @@
 
     {% if paywallSection == false and 'edit-profile' not in pageClass %}
         <hr class="add__gap visible-xs-block">
-        {% if config['inventory']['adSpace']['banner'][0] is defined %}
-            <div class="j-adslot add add-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
-        {% endif %}
-    <!--add add-header-top-->
+        <div class="add add-header__topbanner">
+            <div id="newAdBanner"></div> 
+        </div><!--add add-header-top-->
     {% else %}
          <div class="add add-header__topbanner u-mobile-margin-top-125" ></div>
     {% endif %}

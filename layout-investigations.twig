@@ -2,7 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
-{% set config       = _Network.getThemeConfig() %}
+
 
 {{this.registerJs("Acme.cards = CardController();")}}
 {% set limit = 13 %}
@@ -41,7 +41,7 @@
     
     <main id="main" class="site-main roompage investigations u-margin-top-40" role="main">
         <a class="visible-xs-block" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none;height:50px;margin-top:-15px;">
-            <img src="{{networkData.templatePath}}/static/images/investigations-logo.svg?v=568" alt="logo" class="main-logo" style="height:30px;margin-left:20px;">
+            <img src="{{networkData.templatePath}}/static/images/investigations-logo.svg?v=569" alt="logo" class="main-logo" style="height:30px;margin-left:20px;">
         </a>
         <section class="featured-slider container-fluid">
 
@@ -114,9 +114,8 @@
                         
                         <div class="row">
                             <section class="col-sm-6 col-md-12 add sidebar-add">
-                                {% if config['inventory']['adSpace']['hpage'][0] is defined %}
-                                    <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
-                                {% endif %}
+                                <div id="newAdHalf"></div>
+                                <script>loadTwoAds('');</script>
                                 <span class="add-text">Advertisement</span>
                             </section>
 
@@ -195,5 +194,4 @@
 
             </div>
         </section>
-         <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="section" data-pageType="investigations" data-pageTags=""></div>
     </main>

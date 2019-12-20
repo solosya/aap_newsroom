@@ -2,7 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
-{% set config       = _Network.getThemeConfig() %}
+
 {% macro smartquotes(text) %}
     {{text|replace({'/[^"]/': '&ldquo;', "/[^'']/": '&lsquo;', "'": '&rsquo;', '"': '&rdquo;'})}}
 {% endmacro %}
@@ -67,7 +67,7 @@
     {% endfor %}
 {% endfor %}
 
-
+<script>loadNextBannerAd('');</script>
 
 
     <main id="main" class="site-main index-special" role="main">
@@ -87,7 +87,7 @@
                 </div><!-- .swiper-wrapper-->
 
                 <div class="newsroom-icon">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=568" alt="newsroom ic">
+                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=569" alt="newsroom ic">
                 </div><!-- .newsroom-icon-->
 
             </div><!-- .swiper-container-->
