@@ -69,11 +69,7 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-<<<<<<< HEAD
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=568" alt="">
-=======
                                         <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
->>>>>>> master
                                     </a>
                                 </li>
                             {% endif  %}
@@ -202,13 +198,8 @@
 
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
                                     <li>
-<<<<<<< HEAD
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=568" alt="">
-=======
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
->>>>>>> master
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -270,11 +261,7 @@
             <div class="section-left col-md-4 col-sm-6">
                 <div class="logo pull-left">
                     <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-<<<<<<< HEAD
-                        <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=568" alt="logo" class="mobile-logo">
-=======
                         <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
->>>>>>> master
                     </a>
                 </div>
             </div><!--section-left-->
@@ -332,13 +319,8 @@
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
-<<<<<<< HEAD
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=568" alt="">
-=======
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
->>>>>>> master
                                         </a>
                                     </li>
                                 {% endif  %}
