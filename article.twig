@@ -190,9 +190,7 @@
                         <div class="col-md-8">
                             
                             <div class="content-wrapper">
-                                {% if _User.isAdminUser() %}
-                                    <p class="article__totals">{{totalstring}}</p>
-                                {% endif %}
+                                
 
                                 <div class="content-block-top hidden-print">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
@@ -211,6 +209,9 @@
                                         {% endif %}
                                     </div>
                                 </div>
+                                {% if _User.isAdminUser() %}
+                                    <p class="article__totals">{{totalstring}}</p>
+                                {% endif %}
 
 
                                 <div class="content-author">

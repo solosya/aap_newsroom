@@ -6,6 +6,14 @@
 
 {% set limit = 15 %}
 
+{% set paywallSection = false %}
+{% if blogData['additionalInfo'] is defined             and 
+      blogData['additionalInfo']['paywall'] is defined  and 
+      blogData['additionalInfo']['paywall'] == 'on' %}
+    {% set paywallSection = true %}
+    {% set limit = 17 %}
+{% endif %}
+
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
@@ -16,12 +24,7 @@
 
 
 
-{% set paywallSection = false %}
-{% if blogData['additionalInfo'] is defined             and 
-      blogData['additionalInfo']['paywall'] is defined  and 
-      blogData['additionalInfo']['paywall'] == 'on' %}
-    {% set paywallSection = true %}
-{% endif %}
+
 
 
 

@@ -23,6 +23,11 @@
 
             .content {
                 height: 175px;
+                >h2{
+                    @media #{$desktop-up}{
+                        max-height: 90px;
+                    }
+                }
                 div.logo {
                     position:absolute;
                     right:10px;
