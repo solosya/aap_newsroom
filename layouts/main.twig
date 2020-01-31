@@ -212,14 +212,17 @@
         {% set cache = setCache("menuItems", menuItems, 500) %} 
     {% endif %}
 
+    {% set roomtest = menuItems | length %}
     {% set rooms = [] %}
     {% for room in menuItems  %}
+
         {% set rooms = rooms | merge([room.blogTitle | lower]) %}
         {% if (room.blogTitle == blogName) %}
             {% set submenu = room.children %}
             {% set roomInfo = [room.blogTitle, room.link] %}
         {% endif %} 
     {% endfor %}
+    {% set menutest = submenu | length %}
 
     {# futurelearning to be treated like a room kinda #}
     {% set rooms = rooms | merge(['futurelearning']) %}
@@ -268,6 +271,8 @@
     data-isAdmin="{{ isAdmin }}" 
     data-paywall="{{blogData['showPaywall']}}"
     data-networkid="{{networkData['id']}}"
+    data-roomtest="{{roomtest}}"
+    data-menutest="{{menutest}}"
 >
 {{ this.beginBody() }}
 
