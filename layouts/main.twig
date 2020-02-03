@@ -198,7 +198,23 @@
         var a = axel * 10000000000000;
         document.write('<iframe src="https://8621311.fls.doubleclick.net/activityi;src=8621311;type=pansite;cat=pansi0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
     </script>
-
+    {% set useremail = '' %}
+    {% if not _User.isGuest() %}
+        {% set user = _User.getUser() %}
+        {% set useremail = "'user_email': '"~user.email~"'" %}
+    {% endif %}
+    <script id="profitwell-js" data-pw-auth="39e1c7788f6a7b23602afc0b12646e50"> 
+        (function(i,s,o,g,r,a,m){
+            i[o]=i[o]||function(){(i[o].q=i[o].q||[]).push(arguments)}; 
+            a=s.createElement(g);
+            m=s.getElementsByTagName(g)[0];
+            a.async=1;
+            a.src=r+'?auth='+ s.getElementById(o+'-js').getAttribute('data-pw-auth');
+            m.parentNode.insertBefore(a,m);
+        })
+         (window,document,'profitwell','script','https://public.profitwell.com/js/profitwell.js');
+         profitwell('start', { {{useremail|raw}} }); 
+    </script>
 
 
 
