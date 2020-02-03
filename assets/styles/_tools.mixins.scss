@@ -205,6 +205,11 @@
 	letter-spacing:0.5px;
 }
 
+@mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
+	font-size: ($sizeValue / 16) + rem;
+	line-height: ($line / 16) + rem;
+}
+
 
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;

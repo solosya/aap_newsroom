@@ -7775,12 +7775,19 @@ section.subscribe {
     @media screen and (max-width: 767px) {
       .site-footer .footer-top {
         padding-top: 155px; } }
-    @media screen and (max-width: 767px) {
-      .site-footer .footer-top .logo-wrapper {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0; } }
+    .site-footer .footer-top .logo-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end; }
+      @media screen and (max-width: 767px) {
+        .site-footer .footer-top .logo-wrapper {
+          justify-content: center; } }
+      @media screen and (max-width: 767px) {
+        .site-footer .footer-top .logo-wrapper {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0; } }
     .site-footer .footer-top .icon-wrapper {
       position: relative; }
       @media screen and (max-width: 767px) {
@@ -7805,6 +7812,9 @@ section.subscribe {
       display: inline-block;
       width: 202px;
       padding-top: 61px; }
+      @media screen and (max-width: 767px) {
+        .site-footer .footer-top .footer-brand {
+          padding-top: 71px; } }
     .site-footer .footer-top .symbol {
       margin-right: 46px;
       padding-top: 15px; }
@@ -7815,7 +7825,7 @@ section.subscribe {
       @media screen and (max-width: 767px) {
         .site-footer .footer-top .symbol {
           padding-top: 155px;
-          width: 55px;
+          width: 95px;
           padding-top: 45px; } }
     .site-footer .footer-top .social-links {
       margin-top: 25px;
@@ -11260,29 +11270,33 @@ input[type=radio].inline {
   padding: 10px;
   padding-top: 20px;
   float: right;
-  text-align: center; }
+  text-align: left; }
   @media screen and (max-width: 767px) {
     .footer-subscribe {
       float: right; } }
   .footer-subscribe__heading {
-    font-family: 'IM Fell Great Primer', serif;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
     color: #FFF;
-    font-size: 16px;
-    font-weight: normal;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    margin-bottom: 4px; }
+  .footer-subscribe__tagline {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 11px; }
   .footer-subscribe__container {
     background-color: white;
-    margin-top: 20px; }
+    margin-top: 10px; }
   .footer-subscribe__email {
     font-family: 'PT Sans', Tahoma, Arial, serif;
     color: #000;
     margin: 0 !important;
-    height: 22px !important;
+    height: 35px !important;
     border-radius: 0 !important; }
   .footer-subscribe__submit {
     width: 15px;
-    height: 21px;
     display: flex;
     background: url("../images/arrow-small-red.svg") no-repeat center;
     border: none;

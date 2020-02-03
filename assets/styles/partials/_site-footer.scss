@@ -31,6 +31,14 @@
             padding-top: 155px;
         }
         .logo-wrapper{
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+            @media #{$media-mobile} {
+                justify-content: center;
+            }
+
             @media screen and (max-width: $sm-break-down) {
                 position: absolute;
                 top: 0;
@@ -73,6 +81,9 @@
             display: inline-block;
             width: 202px;
             padding-top: 61px;
+            @media #{$mobile}{
+                padding-top: 71px;
+            }
         }
 
         .symbol{
@@ -84,7 +95,7 @@
             }
             @media #{$mobile}{
                 padding-top: 155px;
-                width: 55px;
+                width: 95px;
                 padding-top: 45px;
             }
         }
