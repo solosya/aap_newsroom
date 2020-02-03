@@ -23,7 +23,7 @@
 {% set blogName      = blogData.title %}
 {% set layout        = _Page.getLayoutName() %}
 {% set pageURL       = _AppHelper.getCurrentUrl(true) %}
-
+{% set config       = _Network.getThemeConfig() %}
 
 
 {% set showPaywall = false %}
@@ -271,10 +271,10 @@
 
 
 
-    {{ this.render('partials/ads.twig', {
+    {# {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
-    }) | raw }}
+    }) | raw }} #}
 
 
 </head>
@@ -290,9 +290,11 @@
 
     {% if paywallSection == false and 'edit-profile' not in pageClass %}
         <hr class="add__gap visible-xs-block">
-        <div class="add add-header__topbanner">
-            <div id="newAdBanner"></div> 
-        </div><!--add add-header-top-->
+        {% if config['inventory']['adSpace']['banner'][0] is defined %}
+            <div class="j-adslot add add-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
+        {% endif %}
+    <!--add add-header-top-->
+
     {% else %}
          <div class="add add-header__topbanner u-mobile-margin-top-125" ></div>
     {% endif %}
