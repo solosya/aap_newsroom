@@ -32142,7 +32142,7 @@ $('document').ready(function() {
 
         var input = $('#batch-user-input').val();
         
-        const lines = input.split(/\n/);    
+        var lines = input.split(/\n/);    
         var owner = lines[0].split(',');
         payload.owner.email = owner[owner.length - 1];
 
