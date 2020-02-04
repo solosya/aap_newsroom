@@ -154,16 +154,15 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                         
                         <div class="row">
-                            {% if (this.title | lower) == 'lockerroom' %}
+                            {# {% if (this.title | lower) == 'lockerroom' %}
                                 <section class="" style="width:300px;margin:auto;">
                                     <a href="https://bit.ly/2LRypQC"><img src="{{networkData.templatePath}}/static/images/LockerRoomv2a.gif"></a>
                                 </section>
+                            {% endif %} #}
+                            {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage"></div>
                             {% endif %}
-                            <section class="col-sm-6 col-md-12 add sidebar-add">
-                                <div id="newAdHalf"></div>
-                                <script>loadTwoAds('');</script>
-                                <span class="add-text">Advertisement</span>
-                            </section>
+
 
 
                         <section class="col-sm-12 sidebar-news recent-articles"{% if (this.title | lower) == 'lockerroom' %}style="display:none;"{% endif %}>
