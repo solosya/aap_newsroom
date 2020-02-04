@@ -216,7 +216,7 @@ $('document').ready(function() {
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
         $(".header-signin__row").toggleClass('header-signin__hide');
-        $('body').toggleClass('acme-modal-active');
+        // $('body').toggleClass('acme-modal-active');
 
         e.preventDefault();
     });

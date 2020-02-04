@@ -93,6 +93,8 @@
     //     z-index: 100;
     // }
     .site-branding-top{
+
+        background:white;
         @media #{$tablet} {
             display: none;
         }
@@ -168,8 +170,6 @@
         &.foldaway {
             border-bottom:1px solid #6c6c6c;
             border-top:1px solid #6c6c6c;
-            margin-top:50px;
-
 
             .rooms-link{
                 float: none;
@@ -218,6 +218,7 @@
 
     .site-branding-bottom{
         padding-top: 6px;
+        background:white;
         // padding-bottom: 40px;
         @media #{$tablet} {
             position: absolute;
@@ -330,20 +331,26 @@
 
 
     .site-branding-bottom-foldaway {
-        height:108px;
         @include transition(100000s);
         background:white;
         position:fixed;
         top:-108px;
         right:0;
-        padding:10px 0 5px 0;
+        padding:0;
         margin:0;
         width:100%;
         border-bottom: solid 1px #6c6c6c;
         z-index:2147483647;
         @include flexbox;
-        @include align-items(center);
+        @include flex-direction(column);
         @include justify-content(flex-start);
+
+        .main-panel {
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(flex-start);
+            height:108px;
+        }
 
         .navbar-brand{
             padding:0;

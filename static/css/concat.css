@@ -8399,61 +8399,63 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       top: 0;
       position: absolute;
       width: 100%; } }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .site-header .site-branding-top {
-      display: none; } }
-  .site-header .site-branding-top .social-links a {
-    color: #000; }
-  .site-header .site-branding-top .social-links .logedin {
-    margin-left: 20px; }
-  .site-header .site-branding-top .secondary-menu > ul {
-    font-size: 1.4em;
-    font-weight: 600; }
-    .site-header .site-branding-top .secondary-menu > ul li {
-      margin-right: 20px; }
-      .site-header .site-branding-top .secondary-menu > ul li a {
-        color: #8a8b93; }
-  .site-header .site-branding-top .section-right {
-    margin-right: 0; }
-  @media screen and (max-width: 767px) {
-    .site-header .site-branding-top {
-      display: none; } }
-  .site-header .site-branding-top .rooms-link {
-    float: right;
-    margin-left: -30px; }
-    @media screen and (max-width: 1120px) {
-      .site-header .site-branding-top .rooms-link {
+  .site-header .site-branding-top {
+    background: white; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .site-header .site-branding-top {
         display: none; } }
-    .site-header .site-branding-top .rooms-link > ul li a {
-      display: block;
-      margin-left: 25px; }
-      .site-header .site-branding-top .rooms-link > ul li a img {
-        height: 20px;
+    .site-header .site-branding-top .social-links a {
+      color: #000; }
+    .site-header .site-branding-top .social-links .logedin {
+      margin-left: 20px; }
+    .site-header .site-branding-top .secondary-menu > ul {
+      font-size: 1.4em;
+      font-weight: 600; }
+      .site-header .site-branding-top .secondary-menu > ul li {
+        margin-right: 20px; }
+        .site-header .site-branding-top .secondary-menu > ul li a {
+          color: #8a8b93; }
+    .site-header .site-branding-top .section-right {
+      margin-right: 0; }
+    @media screen and (max-width: 767px) {
+      .site-header .site-branding-top {
+        display: none; } }
+    .site-header .site-branding-top .rooms-link {
+      float: right;
+      margin-left: -30px; }
+      @media screen and (max-width: 1120px) {
+        .site-header .site-branding-top .rooms-link {
+          display: none; } }
+      .site-header .site-branding-top .rooms-link > ul li a {
+        display: block;
+        margin-left: 25px; }
+        .site-header .site-branding-top .rooms-link > ul li a img {
+          height: 20px;
+          width: auto;
+          max-width: 100%; }
+    .site-header .site-branding-top.foldaway {
+      border-bottom: 1px solid #6c6c6c;
+      border-top: 1px solid #6c6c6c; }
+      .site-header .site-branding-top.foldaway .rooms-link {
+        float: none;
+        margin-left: 0; }
+      .site-header .site-branding-top.foldaway .press-patron {
+        display: none; }
+      .site-header .site-branding-top.foldaway .section-left {
+        padding-top: 10px; }
+      .site-header .site-branding-top.foldaway .section-right {
         width: auto;
-        max-width: 100%; }
-  .site-header .site-branding-top.foldaway {
-    border-bottom: 1px solid #6c6c6c;
-    border-top: 1px solid #6c6c6c;
-    margin-top: 50px; }
-    .site-header .site-branding-top.foldaway .rooms-link {
-      float: none;
-      margin-left: 0; }
-    .site-header .site-branding-top.foldaway .press-patron {
-      display: none; }
-    .site-header .site-branding-top.foldaway .section-left {
-      padding-top: 10px; }
-    .site-header .site-branding-top.foldaway .section-right {
-      width: auto;
-      margin-right: 65px; }
-    .site-header .site-branding-top.foldaway .social-links {
-      display: inline-block; }
-    .site-header .site-branding-top.foldaway .secondary-menu {
-      display: inline-block; }
-      .site-header .site-branding-top.foldaway .secondary-menu > ul > li > a {
-        color: #6c6c6c;
-        font-weight: normal; }
+        margin-right: 65px; }
+      .site-header .site-branding-top.foldaway .social-links {
+        display: inline-block; }
+      .site-header .site-branding-top.foldaway .secondary-menu {
+        display: inline-block; }
+        .site-header .site-branding-top.foldaway .secondary-menu > ul > li > a {
+          color: #6c6c6c;
+          font-weight: normal; }
   .site-header .site-branding-bottom {
-    padding-top: 6px; }
+    padding-top: 6px;
+    background: white; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .site-header .site-branding-bottom {
         position: absolute;
@@ -8525,7 +8527,6 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
           color: #6c6c6c;
           font-weight: normal; }
   .site-header .site-branding-bottom-foldaway {
-    height: 108px;
     transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
@@ -8535,7 +8536,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     position: fixed;
     top: -108px;
     right: 0;
-    padding: 10px 0 5px 0;
+    padding: 0;
     margin: 0;
     width: 100%;
     border-bottom: solid 1px #6c6c6c;
@@ -8545,16 +8546,34 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     -webkit-justify-content: flex-start;
     -moz-justify-content: flex-start;
     justify-content: flex-start; }
+    .site-header .site-branding-bottom-foldaway .main-panel {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      -moz-justify-content: flex-start;
+      justify-content: flex-start;
+      height: 108px; }
     .site-header .site-branding-bottom-foldaway .navbar-brand {
       padding: 0;
       height: auto; }

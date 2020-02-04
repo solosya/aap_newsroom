@@ -265,26 +265,28 @@
                                 LOCKED HEADER
         ********************************************************** #}
         <div id="foldaway-panel" class="site-branding-bottom-foldaway row">
-            <div class="logo">
-                <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
-                </a>
-            </div>
+            
+            <div class="main-panel">
+                <div class="logo">
+                    <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                        <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
+                    </a>
+                </div>
 
-            <div class="auth">
-            {% if not _User.isGuest() %}
-                <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account">My Account</a>
-                <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red">SIGN OUT</a>
-            {% else %}
-                <button id="signinBtn" type="submit" class="_btn _btn--black header-signin__signbtn">SIGN IN TO PRO</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red  header-signin__subbtn">SUBSCRIBE TO PRO</a>
-            {% endif %}
-            </div>
+                <div class="auth">
+                {% if not _User.isGuest() %}
+                    <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account">My Account</a>
+                    <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red">SIGN OUT</a>
+                {% else %}
+                    <button id="signinBtn" type="submit" class="_btn _btn--black header-signin__signbtn">SIGN IN TO PRO</button>
+                    <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red  header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                {% endif %}
+                </div>
 
-            <nav class="sb-custom-menu-foldaway">
-                <a id="menu-foldaway" href="#" class="menu-mobile"></a>
-            </nav>
-        </div>
+                <nav class="sb-custom-menu-foldaway">
+                    <a id="menu-foldaway" href="#" class="menu-mobile"></a>
+                </nav>
+            </div>
 
 
 
@@ -305,7 +307,7 @@
         _____________________________________________________  #}
 
 
-            <div id="menu-top-foldaway" class="site-branding-top row foldaway">
+            <div id="menu-top-foldaway" class="site-branding-top row hide foldaway">
                 <div class="section-left col-md-3 col-sm-6">
                     <div class="social-links">
                         <ul>
@@ -334,7 +336,8 @@
                                 {% if (parentItem.blogTitle != pageClass) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
+                                            {{parentItem.blogTitle}}
+                                            {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt=""> #}
                                         </a>
                                     </li>
                                 {% endif  %}
@@ -353,7 +356,7 @@
 
 
 
-            <div id="menu-bottom-foldaway" class="site-branding-bottom row foldaway">
+            <div id="menu-bottom-foldaway" class="site-branding-bottom row hide foldaway">
 
                 <div class="section-right col-sm-12">
                     <nav class="sb-custom-menu">
