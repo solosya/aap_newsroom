@@ -262,6 +262,43 @@
 					}
 				}
 
+
+                ol,
+                ul {
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                    padding-left: 25px;
+        
+                    li {
+                        width: 100%;
+                        float: left;
+                        list-style-position: outside;
+                        padding-left: 7px;
+                        font-family: $font-family-sans-serif !important;
+                        font-size: 20px !important;
+                        line-height: 1.6 !important;
+        
+                        >p {
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+        
+                ul li {
+                    list-style-type: disc !important;
+        
+                    span {
+                        position: relative;
+                        left: -22px;
+                        font-family: $font-family-sans-serif !important;
+                    }
+                }
+        
+                ol li {
+                    list-style-type: decimal !important;
+                }
+
+
 				&.pro {
 					blockquote {
 						font-family: $font-family-sans-serif;
