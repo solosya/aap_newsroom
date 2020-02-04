@@ -123,81 +123,14 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-    <!-- Google Tag Manager -->
-    {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
-        {{networkData.thirdPartyIntegrations['googleTagManager']['script'] | raw}}
-    {% endif %}
-
-
-{# {% if _User.isGuest() and showPaywall == false %} #}
-{% if 'article' not in pageClass %}
-    {% if (blogName | replace({" ": "_"}) | lower) == 'lockerroom' %}
-        {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-    {% else %}
-        {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-    {% endif %}
-
-        <script>
-            (function(d) {
-            var el, fjs = d.getElementsByTagName('script')[0];
-                el = d.createElement('script');
-                el.id = "js-pp-banner";
-                el.src = "{{ppsrc}}";
-                fjs.parentNode.insertBefore(el, fjs);
-            }(document));
-        </script>
-{% endif %}
-
-
-
-    {% set googleAnalyitcsId = ''%}
-    {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
-        {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
-    {% endif %}
-
-    {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
-        <!-- Google Analytics u -->
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', '{{googleAnalyitcsId}}', 'auto');
-        ga('send', 'pageview');
-        </script>
-        <!-- End Google Analytics -->
-    {% endif %}
-    
+    {{ this.render('partials/_tags.twig', {
+        networkData: networkData,
+        blogData: blogData,
+        pageClass: pageClass,
+        blogName: blogName,
+    }) | raw }}
 
     {{ this.head() }}
-    
-
-
-
-
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-9270963482105934",
-        enable_page_level_ads: true
-      });
-    </script>
-    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-    <script>
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      // googletag.pubads().setTargeting('pagename', '{{ blogName | lower }}');
-
-    </script>
-
-    <script type="text/javascript">
-        var axel = Math.random() + "";
-        var a = axel * 10000000000000;
-        document.write('<iframe src="https://8621311.fls.doubleclick.net/activityi;src=8621311;type=pansite;cat=pansi0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
-    </script>
 
 
 
@@ -255,10 +188,7 @@
 
 
 
-    {{ this.render('partials/ads.twig', {
-        networkData: networkData,
-        blogData: blogData
-    }) | raw }}
+   
 
 
 </head>

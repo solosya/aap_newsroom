@@ -2,7 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
-
+{% set config       = _Network.getThemeConfig() %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
 {% set limit = 13 %}
@@ -114,10 +114,12 @@
                         
                         <div class="row">
                             <section class="col-sm-6 col-md-12 add sidebar-add">
-                                <div id="newAdHalf"></div>
-                                <script>loadTwoAds('');</script>
+                                {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                    <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
+                                {% endif %}
                                 <span class="add-text">Advertisement</span>
                             </section>
+
 
 
                         <section class="col-sm-12 sidebar-news recent-articles">
@@ -194,4 +196,5 @@
 
             </div>
         </section>
+        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="section" data-pageType="investigations" data-pageTags=""></div>
     </main>
