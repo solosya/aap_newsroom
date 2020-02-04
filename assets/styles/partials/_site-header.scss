@@ -293,8 +293,8 @@
             color:#6c6c6c;
             padding:0;
             padding-top:10px;
-            // border:1px solid green;
 
+            
             .sb-custom-menu{
 
                 @media (max-width: 1370px){
@@ -330,17 +330,21 @@
 
 
     .site-branding-bottom-foldaway {
+        height:108px;
         @include transition(100000s);
         background:white;
         position:fixed;
-        top:-60px;
+        top:-108px;
         right:0;
         padding:10px 0 5px 0;
         margin:0;
         width:100%;
         border-bottom: solid 1px #6c6c6c;
         z-index:2147483647;
-        
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(flex-start);
+
         .navbar-brand{
             padding:0;
             height:auto;
@@ -351,12 +355,25 @@
             }
         }
 
+        .logo {
+            margin-left:50px;
+        }
+
+        .auth {
+            @include flexbox;
+            @include align-items(center); 
+            @include justify-content(flex-start);
+            margin-left:auto;
+        }
+
+
         .sb-custom-menu-foldaway {
-            float:right;
             margin-right: 50px;
+            margin-left: 50px;
             .menu-mobile{
                 display: block;
-                width: 95px;
+                width: 40px;
+                height:40px;
                 background-image: url(../images/mobile-menu.svg);
                 background-size: 45px 30px;
                 background-position: right;

@@ -5,23 +5,11 @@
     {% set layout = 'layout-marketing' %}    
 {% endif %}
 
+{% if not _User.isGuest() %}
+    {% set user = _User.getUser() %}
+{% endif %}
 
 
-
-
-{# <div class="row u-mobile-no-margins{% if pageURL == '/auth/thank-you' %} hidden-xs{% endif %}" style="margin-bottom:-25px;">
-    <div class="col-xs-12 header-signin visible-xs-block u-margin-top-15 u-margin-bottom-15">
-        {% if not _User.isGuest() %}
-            {% set user = _User.getUser() %}
-
-            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout u-float-right">SIGN OUT</a>
-            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-left">Hi, {{user.firstname}}</a>
-        {% else %}
-            <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-left header-signin__subbtn{% if layout == 'layout-marketing' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
-        {% endif %}
-    </div>
-</div> #}
 
 {# {{ this.render('../../partials/newsroom_pro_banner.twig', {networkData : networkData}) | raw }} #}
 
@@ -36,12 +24,6 @@
                         <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
                         <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
 
-                        {# {% if not _User.isGuest() %}
-                            {% set user = _User.getUser() %}
-                            <li class="logedin"><a href="javscript:void(0)" class="" id="profile">
-                                {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                            </a></li>
-                        {% endif %}  #}
 
                     </ul>
                 </div><!-- .social-links-->
@@ -49,12 +31,17 @@
                 <div class="secondary-menu">
                     <ul>
                         <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                        <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
                         <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
                     </ul>
                 </div><!-- .secondary-menu-->
             </div><!-- .menu-left-->  
 
+
+
+            {# **********************************************************
+                                    ROOM LINKS
+            ********************************************************** #}
             <div class="section-right navbar-right col-md-10 col-sm-2">
                 <div class="rooms-link">
                     <ul>
@@ -69,7 +56,8 @@
                             {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                 <li>
                                     <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
+                                        {{parentItem.blogTitle}}
+                                        {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle}}"> #}
                                     </a>
                                 </li>
                             {% endif  %}
@@ -79,20 +67,29 @@
                     </ul>
                 </div><!-- .rooms-link-->
 
-                {# <a href="#" class="btn btn-primary pull-right">Become a supporter</a> #}
-             </div>
+            </div>
         </div><!-- .site-branding-top -->
+
+
+
+
 
 
         <div class="site-branding-bottom row">
             <div class="section-left col-md-5 col-sm-8">
+                
+
+
+            {# **********************************************************
+                                    NEWSROOM LOGO
+            ********************************************************** #}
                 <div class="logo header-logos pull-left">
                     
                     {% if paywallSection %}
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
                             <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
                         </a>
-                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/@pro" rel="Home" tabindex="-1" title="Home">
+                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
                             <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
                         </a>
 
@@ -100,6 +97,7 @@
                         <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
                             <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=572" alt="logo" class="main-logo">
                         </a>
+                        
                         {% if roomInfo[0] | lower == 'lockerroom' %}
                             <p class="wisp-logo__text">Supported by</p>
                             <a href="https://womeninsport.org.nz"><img class="wisp-logo" src="{{networkData.templatePath}}/static/images/logos/WISP-logo2.png"></a>
@@ -119,6 +117,11 @@
                 </div>
             </div><!--section-left-->
 
+
+
+
+
+
             <div class="section-right col-md-7 col-sm-4 u-tablet-margin-top-20">
                 <nav class="sb-custom-menu">
                     <a href="#" class="menu-mobile"></a>
@@ -128,20 +131,20 @@
                         {# ___________________________
 
                                 SIGN IN BAR 
-                         ___________________________#}
+                        ___________________________#}
                         {# <ul class="menu-signin visible-xs-block visible-sm-block">
                             {% if not _User.isGuest() %}
-                                {% set user = _User.getUser() %}
                                 <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
                                 <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
                             {% else %}
-                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/@pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
+                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
                             {% endif %}
                         </ul>  #}
-                           
-                           
-                           
-                            <div id="menu-search" class="secondary-menu menu-search">
+
+
+
+
+                        <div id="menu-search" class="secondary-menu menu-search">
                             <ul><li>
                                 <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
                                     <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
@@ -152,6 +155,11 @@
                             </ul></li>
                         </div>
 
+
+
+                        {# **********************************************************
+                                                SUBMENU
+                        ********************************************************** #}
                         <ul id="menu-primary-menu" class="menu channels">
                             {% for childItem in submenu %}
                                 {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
@@ -170,7 +178,7 @@
                                                 <label for="header-search" class="assistive-text sr-only"></label>
                                                 <input type="text" class="field" name="s" id="header-search" placeholder="" required="">
                                                 <button class="search-button" type="submit" id="searchsubmit">
-                                                   <span class="screen-reader-text">SEARCH</span>
+                                                    <span class="screen-reader-text">SEARCH</span>
                                                 </button>
                                             </form>
                                         </fieldset>
@@ -210,9 +218,9 @@
                         {# ___________________________
 
                                 ABOUT AND CONTACT 
-                         ___________________________#}
+                        ___________________________#}
                         <ul class="pages">
-                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
                             <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
                         </ul>
                     </div>
@@ -232,15 +240,12 @@
         <div class="row hidden-xs">
             <div class="col-sm-12 header-signin u-margin-top-30">
                 {% if not _User.isGuest() %}
-                    {% set user = _User.getUser() %}
-
                     <p class="header-signin__name">Hi, {{user.firstname}} </p>
                     <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right">My Account</a>
-                    {# <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a> #}
                 {% else %}
                     <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN TO PRO</button>
-                    <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                    <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
                 {% endif %}
             </div>
         </div>
@@ -256,21 +261,30 @@
 
 
 
-
-        <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
-            <div class="section-left col-md-4 col-sm-6">
-                <div class="logo pull-left">
-                    <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                        <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
-                    </a>
-                </div>
-            </div><!--section-left-->
-
-            <div class="section-right col-md-8 col-sm-6">
-                <nav class="sb-custom-menu-foldaway">
-                    <a id="menu-foldaway" href="#" class="menu-mobile">MENU</a>
-                </nav>
+        {# **********************************************************
+                                LOCKED HEADER
+        ********************************************************** #}
+        <div id="foldaway-panel" class="site-branding-bottom-foldaway row">
+            <div class="logo">
+                <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
+                </a>
             </div>
+
+            <div class="auth">
+            {% if not _User.isGuest() %}
+                <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account">My Account</a>
+                <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red">SIGN OUT</a>
+            {% else %}
+                <button id="signinBtn" type="submit" class="_btn _btn--black header-signin__signbtn">SIGN IN TO PRO</button>
+                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red  header-signin__subbtn">SUBSCRIBE TO PRO</a>
+            {% endif %}
+            </div>
+
+            <nav class="sb-custom-menu-foldaway">
+                <a id="menu-foldaway" href="#" class="menu-mobile"></a>
+            </nav>
+        </div>
 
 
 
@@ -291,7 +305,7 @@
         _____________________________________________________  #}
 
 
-            <div id="menu-top-foldaway" class="site-branding-top row hide foldaway">
+            <div id="menu-top-foldaway" class="site-branding-top row foldaway">
                 <div class="section-left col-md-3 col-sm-6">
                     <div class="social-links">
                         <ul>
@@ -303,7 +317,7 @@
 
                     <div class="secondary-menu">
                         <ul>
-                            <li><a href="{{networkData.defaultBlogUrl}}/@about">About</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div><!-- .secondary-menu-->
@@ -339,7 +353,7 @@
 
 
 
-            <div id="menu-bottom-foldaway" class="site-branding-bottom row hide foldaway">
+            <div id="menu-bottom-foldaway" class="site-branding-bottom row foldaway">
 
                 <div class="section-right col-sm-12">
                     <nav class="sb-custom-menu">
@@ -394,37 +408,7 @@
 
 
 
-    {#  _____________________________________________________
 
-                            PROFILE WINDOW
-        _____________________________________________________  #}
-
-
-
-
-        {# <div id="header__menu">
-            <div class="profile__menu">
-                 {% if user.profileMedia.id != '' %}
-                        {% set profileImg = _Media.getMediaUrl(user.profileMedia, 80, 80, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
-                    {% else %}
-                        {% set profileImg = networkData.templatePath ~ "/static/images/icons/profile.svg" %}
-                    {% endif %}
-              <div class="profile__menu-image" style="background-image: url({{ profileImg }})"></div>
-              <div class="profile__menu-content">
-                <div class="profile__menu-name">{{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}</div>
-                <div class="profile__menu-email">{{user.email | truncate(23)}}</div>
-                <a href="{{_AppHelper.buildUrl('user/my-news')}}" class="profile__menu-button">My News</a>
-              </div>
-              <ul class="profile__menu-navigation">
-                  {% if _User.isAdminUser() %}
-                      <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
-                  {% endif %}
-                  <li><a class="profile__menu-navigation-link" href="{{blogUrl}}/profile/{{user.username}}">View Profile</a></li>
-                  <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
-                  <li><a class="profile__menu-navigation-link" href="{{_AppHelper.getLogoffUrl()}}">Sign Out</a></li>
-              </ul>
-            </div>
-        </div> #}
 
 
     </div><!-- .site-header-main -->
@@ -441,7 +425,7 @@
                 <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
             {% else %}
                 <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right header-signin__signbtn">SIGN IN</button>
-                <a href="{{networkData.defaultBlogUrl}}/@pro" type="submit" class="_btn _btn--black u-float-right header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
+                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
             {% endif %}
         </div>
     </div>

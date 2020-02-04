@@ -209,9 +209,9 @@ $('document').ready(function() {
         $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
         if (window.innerWidth < 768) { 
             $(thisMenuElem).find('.menuContainer').css("z-index","-1");
-         } else {
+        } else {
             $(thisMenuElem).find('.menuContainer').css("z-index","100");
-         }
+        }
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
         $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
