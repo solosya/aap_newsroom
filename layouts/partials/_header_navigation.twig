@@ -16,58 +16,50 @@
 <header id="masthead" class="site-header container-fluid {# site-header-extra-padding #} hidden-print ">
     <div class="site-header-main">
             
-        <div class="site-branding-top row">
-            <div class="section-left col-md-2 col-sm-6">
-                <div class="social-links">
-                    <ul>
-                        <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
-                        <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
-                        <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
+        <div class="site-branding-top">
+            
+            <div class="section-left">
+                
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
+                    <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
+                    <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
+                </ul>
 
-
-                    </ul>
-                </div><!-- .social-links-->
-
-                <div class="secondary-menu">
-                    <ul>
-                        <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
-                        <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
-                        <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
-                    </ul>
-                </div><!-- .secondary-menu-->
-            </div><!-- .menu-left-->  
+                <ul class="secondary-menu">
+                    <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
+                </ul>
+            </div>
 
 
 
             {# **********************************************************
                                     ROOM LINKS
             ********************************************************** #}
-            <div class="section-right navbar-right col-md-10 col-sm-2">
-                <div class="rooms-link">
-                    <ul>
+            <ul class="rooms-link">
 
-                        {% set menuItems = headerMenu %}
+                {% set menuItems = headerMenu %}
 
-                        {% for parentItem in menuItems  %}
+                {% for parentItem in menuItems  %}
 
-                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                            {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                <li>
-                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        {{parentItem.blogTitle}}
-                                        {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle}}"> #}
-                                    </a>
-                                </li>
-                            {% endif  %}
+                    {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
+                        <li>
+                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                {{parentItem.blogTitle}}
+                                {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle}}"> #}
+                            </a>
+                        </li>
+                    {% endif  %}
 
-                        {% endfor %}
+                {% endfor %}
 
-                    </ul>
-                </div><!-- .rooms-link-->
+            </ul>
 
-            </div>
         </div><!-- .site-branding-top -->
 
 
@@ -75,159 +67,129 @@
 
 
 
-        <div class="site-branding-bottom row">
-            <div class="section-left col-md-5 col-sm-8">
+        <div class="site-branding-bottom">
                 
 
 
             {# **********************************************************
                                     NEWSROOM LOGO
             ********************************************************** #}
-                <div class="logo header-logos pull-left">
+                <div class="logo header-logos">
                     
-                    {% if paywallSection %}
-                        <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                            <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
-                        </a>
-                        <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
-                            <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
-                        </a>
+                {% if paywallSection %}
+                    <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
+                    </a>
+                    <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
+                        <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
+                    </a>
 
-                    {% else %} 
-                        <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=572" alt="logo" class="main-logo">
-                        </a>
-                        
-                        {% if roomInfo[0] | lower == 'lockerroom' %}
-                            <p class="wisp-logo__text">Supported by</p>
-                            <a href="https://womeninsport.org.nz"><img class="wisp-logo" src="{{networkData.templatePath}}/static/images/logos/WISP-logo2.png"></a>
-                            <a href="https://www.sky.co.nz/sport"><img class="sky-logo visible-xs-block visible-sm-block" src="{{networkData.templatePath}}/static/images/logos/sky-logo-mono.svg"></a>
-                            <a href="https://www.sky.co.nz/sport"><img class="sky-logo visible-md-block visible-lg-block" src="{{networkData.templatePath}}/static/images/logos/sky-hoz-logo-mono.svg"></a>
-                        {% elseif roomInfo[0] | lower == 'readingroom' %}
-                            <a href="https://www.matatuhifoundation.co.nz"><p class="wisp-logo__text">Supported by</p>
-                            <img class="wisp-logo wisp-logo--matatuhi" src="{{networkData.templatePath}}/static/images/logos/matatuhi-colour.jpg"></a>
-                        {% endif %}
-                       
-                        
-                        <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                            <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
-                            {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg" alt="logo" class="mobile-logo-summer"> #}
-                        </a>
+                {% else %} 
+                    <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
+                        {# <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=572" alt="logo" class="main-logo"> #}
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?v=572" alt="logo" class="main-logo">
+                    </a>
+                    
+                    {% if roomInfo[0] | lower == 'lockerroom' %}
+                        <p class="wisp-logo__text">Supported by</p>
+                        <a href="https://womeninsport.org.nz"><img class="wisp-logo" src="{{networkData.templatePath}}/static/images/logos/WISP-logo2.png"></a>
+                        <a href="https://www.sky.co.nz/sport"><img class="sky-logo visible-xs-block visible-sm-block" src="{{networkData.templatePath}}/static/images/logos/sky-logo-mono.svg"></a>
+                        <a href="https://www.sky.co.nz/sport"><img class="sky-logo visible-md-block visible-lg-block" src="{{networkData.templatePath}}/static/images/logos/sky-hoz-logo-mono.svg"></a>
+                    {% elseif roomInfo[0] | lower == 'readingroom' %}
+                        <a href="https://www.matatuhifoundation.co.nz"><p class="wisp-logo__text">Supported by</p>
+                        <img class="wisp-logo wisp-logo--matatuhi" src="{{networkData.templatePath}}/static/images/logos/matatuhi-colour.jpg"></a>
                     {% endif %}
+                    
+                    <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+                        <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                        {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg" alt="logo" class="mobile-logo-summer"> #}
+                    </a>
+                {% endif %}
+            </div>
+
+
+
+
+
+
+            <nav class="section-menu">
+                <div class="menu-mobile o-hamburger js-menu"  style="height:25px;width:35px;"></div>
+
+
+
+                <div id="menu-search" class="secondary-menu menu-search">
+                    <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search"  class="u-hide">
+                        <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
+                        <button class="btn btn-default" type="submit" id="searchsubmit">
+                            <span class="icon-search icon"></span>
+                        </button>
+                    </form>
                 </div>
-            </div><!--section-left-->
+
+
+
+                    {# **********************************************************
+                                            SUBMENU
+                    ********************************************************** #}
+                <ul id="menu-primary-menu" class="submenu">
+                    {% for childItem in submenu %}
+                        {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                        <li class="submenu__item">
+                            <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+                        </li>
+                    {% endfor %}
+
+                    <li id="menu-item-search" class="submenu__item menu-item-search">
+                        <a href="#" class="submenu__link search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+            
+                        <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search" class="u-hide">
+                            <label for="header-search" class="assistive-text sr-only"></label>
+                            <input type="text" class="field" name="s" id="header-search" placeholder="" required="">
+                            <button class="search-button" type="submit" id="searchsubmit">
+                                <span class="screen-reader-text">SEARCH</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
 
 
 
 
 
 
-            <div class="section-right col-md-7 col-sm-4 u-tablet-margin-top-20">
-                <nav class="sb-custom-menu">
-                    <a href="#" class="menu-mobile"></a>
-                    
 
-                    <div class="menuContainer">
-                        {# ___________________________
+                {#  _____________________________________________________
 
-                                SIGN IN BAR 
-                        ___________________________#}
-                        {# <ul class="menu-signin visible-xs-block visible-sm-block">
-                            {% if not _User.isGuest() %}
-                                <li><a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="menu-signin__account u-float-left" style="padding: 12px 20px 6px 20px;">Hi, {{user.firstname}} </a></li>
-                                <li><a href="/auth/logoff" class="menu-signin__signout u-float-right">SIGN OUT</a></li>
-                            {% else %}
-                                <li><button onclick="window.location='{{networkData.defaultBlogUrl}}/pro'" class="_btn menu-signin__subscribe">SUBSCRIBE TO PRO</button><button id="signinBtn" type="submit" class="_btn menu-signin__signin">SIGN IN</button></li>
-                            {% endif %}
-                        </ul>  #}
+                                        MOBILE ROOM LIST
+                    _____________________________________________________  #}
 
+                    <div id="menu-secondary-menu" class="secondary-menu u-hide">
+                        <ul>
+                        {% for parentItem in menuItems  %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-
-
-                        <div id="menu-search" class="secondary-menu menu-search">
-                            <ul><li>
-                                <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
-                                    <div><input type="text" class="field" name="s" id="header-search" placeholder="Search" required=""></div>
-                                    <button class="btn btn-default" type="submit" id="searchsubmit">
-                                        <span class="icon-search icon"></span>
-                                    </button>
-                                </form>
-                            </ul></li>
-                        </div>
-
-
-
-                        {# **********************************************************
-                                                SUBMENU
-                        ********************************************************** #}
-                        <ul id="menu-primary-menu" class="menu channels">
-                            {% for childItem in submenu %}
-                                {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                <li class="menu-item">
-                                    <a class="{{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+                            {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
+                                    </a>
                                 </li>
-                            {% endfor %}
+                            {% endif  %}
 
-                            <li id="menu-item-search" class="menu-item menu-item-search">
-                                <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                    
-                                <ul class="sub-menu normal-sub search-sub-menu">
-                                    <li class="search-container">
-                                        <fieldset>
-                                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                                <label for="header-search" class="assistive-text sr-only"></label>
-                                                <input type="text" class="field" name="s" id="header-search" placeholder="" required="">
-                                                <button class="search-button" type="submit" id="searchsubmit">
-                                                    <span class="screen-reader-text">SEARCH</span>
-                                                </button>
-                                            </form>
-                                        </fieldset>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-
-
-
-
-
-
-                    {#  _____________________________________________________
-
-                                            MOBILE ROOM LIST
-                        _____________________________________________________  #}
-
-                        <div id="menu-secondary-menu" class="secondary-menu">
-                            <ul>
-                            {% for parentItem in menuItems  %}
-                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} icon icon-right-angle{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
-                                        </a>
-                                    </li>
-                                {% endif  %}
-
-                            {% endfor %}
-                            </ul>
-                        </div>
-                        {# ___________________________
-
-                                ABOUT AND CONTACT 
-                        ___________________________#}
-                        <ul class="pages">
-                            <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
+                        {% endfor %}
                         </ul>
                     </div>
 
-                </nav>  
-            </div><!--section-right-->
-        </div><!-- .site-branding-bottom -->
+
+
+                    <ul class="pages u-hide">
+                        <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
+                    </ul>
+
+            </nav>  
+        </div>
 
 
 
@@ -235,19 +197,19 @@
 
 
 
-
-
-        <div class="row hidden-xs">
-            <div class="col-sm-12 header-signin u-margin-top-30">
-                {% if not _User.isGuest() %}
-                    <p class="header-signin__name">Hi, {{user.firstname}} </p>
-                    <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
+        <div class="header-signin u-margin-top-30 hidden-xs">
+            {% if not _User.isGuest() %}
+                <p class="header-signin__name">Hi, {{user.firstname}} </p>
+                <div class="auth">
                     <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right">My Account</a>
+                    <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red u-float-right">SIGN OUT</a>
+                </div>
                 {% else %}
+                <div class="auth">
                     <button id="signinBtn" type="submit" class="_btn _btn--black u-float-right header-signin__signbtn">SIGN IN TO PRO</button>
                     <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red u-float-right header-signin__subbtn">SUBSCRIBE TO PRO</a>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
 
 
@@ -283,8 +245,10 @@
                 {% endif %}
                 </div>
 
-                <nav class="sb-custom-menu-foldaway">
-                    <a id="menu-foldaway" href="#" class="menu-mobile"></a>
+                <nav class="section-menu-foldaway">
+                    {# <a id="menu-foldaway" href="#" class="menu-mobile"></a> #}
+                    <div id="menu-foldaway"  class="o-hamburger js-menu" style="height:25px;width:35px;"></div>
+
                 </nav>
             </div>
 
@@ -301,54 +265,59 @@
 
 
 
-    {#  _____________________________________________________
 
+
+
+
+
+
+
+
+    {#  **********************************************************
                             FOLDAWAY MENU
-        _____________________________________________________  #}
+        **********************************************************  #}
 
 
-            <div id="menu-top-foldaway" class="site-branding-top row hide foldaway">
-                <div class="section-left col-md-3 col-sm-6">
-                    <div class="social-links">
-                        <ul>
-                            <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
-                            <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
-                            <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
-                        </ul>
-                    </div><!-- .social-links-->
+            <div id="menu-top-foldaway" class="site-branding-top foldaway u-hide">
 
-                    <div class="secondary-menu">
-                        <ul>
-                            <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div><!-- .secondary-menu-->
-                </div><!-- .menu-left-->  
-                
-                <div class="section-right navbar-right col-md-8 col-sm-2">
-                    <div class="rooms-link u-padding-top-13">
-                        <ul>
+                <div class="section-left">
+                    
+                    <ul class="social-links">
+                        <li><a href="https://www.facebook.com/newsroomnz"><span class="sr-only">Facebook</span><span class="icon-facebook"></span></a></li>
+                        <li><a href="https://twitter.com/NewsroomNZ"><span class="sr-only">Twitter</span><span class="icon-twitter"></span></a></li>
+                        <li><a href="https://www.linkedin.com/company/newsroom-new-zealand"><span class="sr-only">Linkedin</span><span class="icon-linkedin"></span></a></li>
+                    </ul>
 
-                            {% set menuItems = headerMenu %}
-                            {% for parentItem in menuItems  %}
-                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                                {% if (parentItem.blogTitle != pageClass) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {{parentItem.blogTitle}}
-                                            {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt=""> #}
-                                        </a>
-                                    </li>
-                                {% endif  %}
+                    <ul class="secondary-menu">
+                        <li><a href="{{networkData.defaultBlogUrl}}">Home</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/about">About</a></li>
+                        <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact</a></li>
+                    </ul>
+                </div>
 
-                            {% endfor %}
 
-                        </ul>
-                    </div><!-- .rooms-link-->
-                    <a href="#" class="btn btn-primary pull-right press-patron">Press Patron Donations</a>
-                 </div>
-            </div><!-- .site-branding-top -->
+                <ul class="rooms-link">
+
+                    {% set menuItems = headerMenu %}
+                    {% for parentItem in menuItems  %}
+                        {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                        {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                        {% if (parentItem.blogTitle != pageClass) %}
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {{parentItem.blogTitle}}
+                                    {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt=""> #}
+                                </a>
+                            </li>
+                        {% endif  %}
+
+                    {% endfor %}
+
+                </ul>
+
+                <a href="#" class="btn btn-primary pull-right press-patron">Press Patron Donations</a>
+
+            </div>
 
 
 
@@ -356,40 +325,32 @@
 
 
 
-            <div id="menu-bottom-foldaway" class="site-branding-bottom row hide foldaway">
+            <div id="menu-bottom-foldaway" class="site-branding-bottom foldaway u-hide">
 
-                <div class="section-right col-sm-12">
-                    <nav class="sb-custom-menu">
-                        <div id="menuContainer" class="menuContainer">
-                            <ul id="menu-primary-menu" class="menu">
+                <nav class="section-menu">
 
-                                {% for i, childItem in submenu %}
-                                    <li class="menu-item">
-                                        <a href="{{ childItem.link }}">{{ childItem.label }}</a>
-                                    </li>
-                                {% endfor %}
+                    <ul class="submenu">
 
-                                <li id="menu-item-search" class="menu-item menu-item-search-foldaway">
-                                    <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        {% for i, childItem in submenu %}
+                            <li class="submenu__item">
+                                <a class="submenu__link" href="{{ childItem.link }}">{{ childItem.label }}</a>
+                            </li>
+                        {% endfor %}
 
-                                    <ul class="sub-menu normal-sub search-sub-menu search-foldaway">
-                                        <li class="search-container">
-                                            <fieldset>
-                                                <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                                    <label for="header-search-foldaway" class="assistive-text sr-only"></label>
-                                                    <input type="text" class="field" name="s" id="header-search-foldaway" placeholder="" required="">
-                                                    <button class="search-button" type="submit" id="searchsubmit">
-                                                       <span class="screen-reader-text">SEARCH</span>
-                                                    </button>
-                                                </form>
-                                            </fieldset>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>  
-                </div><!--section-right-->
+                        <li id="menu-item-search" class="submenu__item menu-item-search-foldaway">
+                            <a href="#" class="submenu__link search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+
+                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search" class="u-hide">
+                                <label for="header-search-foldaway" class="assistive-text sr-only"></label>
+                                <input type="text" class="field" name="s" id="header-search-foldaway" placeholder="" required="">
+                                <button class="search-button" type="submit" id="searchsubmit">
+                                    <span class="screen-reader-text">SEARCH</span>
+                                </button>
+                            </form>
+                        
+                        </li>
+                    </ul>
+                </nav>  
             </div><!-- .site-branding-bottom -->
 
         </div> <!-- #foldaway-panel -->

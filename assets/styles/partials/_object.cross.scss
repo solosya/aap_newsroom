@@ -1,0 +1,35 @@
+.o-close {
+    @include transition(.3s);
+
+    position:relative;
+    &:hover {
+        cursor:pointer;
+    }
+    // width: 28px;
+    // height: 28px;
+}
+.o-close:hover {
+    opacity: 1;
+}
+.o-close:before, .o-close:after {
+    content: ' ';
+    position: absolute;
+    left: 17px;
+    top: -5px;
+    height: 120%;
+    width: 1px;
+}
+.o-close:before {
+    transform: rotate(45deg);
+}
+.o-close:after {
+    transform: rotate(-45deg);
+}
+
+.o-close:before, .o-close:after {
+    background-color: $dark-color;
+}
+
+.o-close--dark:before, .o-close--dark:after {
+    background-color: $dark-color;
+}

@@ -62,7 +62,9 @@ $('document').ready(function() {
 
 
     Acme.HeaderMenu = function() {
-        this.parent = $("#menuContainer");
+        this.topMenu = $('#menu-top-foldaway');
+        this.bottomMenu = $('#menu-bottom-foldaway');
+        
         this.menu = $("#foldaway-panel");
         this.subscriptions = Acme.PubSub.subscribe({
             'Acme.headerMenu.listener' : ["update_state"]
@@ -82,12 +84,13 @@ $('document').ready(function() {
     Acme.HeaderMenu.prototype = new Acme._View();
     Acme.HeaderMenu.constructor = Acme.HeaderMenu;
     Acme.HeaderMenu.prototype.showFixed = function() {
-        this.parent.show();
         this.menu.addClass('showMenuPanel');
     }
     Acme.HeaderMenu.prototype.hideFixed = function() {
-        this.parent.hide();
+        menu_top_foldaway.addClass('u-hide');
+        menu_bottom_foldaway.addClass('u-hide');
         this.menu.removeClass('showMenuPanel');
+        $("#menu-foldaway").removeClass('o-close').addClass('o-hamburger');
     }
 
     Acme.headerMenu = new Acme.HeaderMenu();
@@ -95,7 +98,7 @@ $('document').ready(function() {
 
     var scrollUpMenu = function() {
         // var isMob = isMobile();
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ) {
+        if ( isScolledPast(300) && isDesktop() ) {
             Acme.headerMenu.showFixed();
         } else if (!foldaway_search) {
             Acme.headerMenu.hideFixed();
@@ -194,8 +197,9 @@ $('document').ready(function() {
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-            menu_top_foldaway.toggleClass('hide');
-            menu_bottom_foldaway.toggleClass('hide');
+            $(e.target).toggleClass('o-hamburger').toggleClass('o-close');
+            menu_top_foldaway.toggleClass('u-hide');
+            menu_bottom_foldaway.toggleClass('u-hide');
             if (foldaway_search) {
                 foldaway_search = false;
                 $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');

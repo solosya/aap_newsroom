@@ -85,21 +85,51 @@
         position: absolute;
         width: 100%;
     }
-    // @media screen and (max-width: $mobile-break){
-    //     position: fixed;
-    //     top:0;
-    //     width: 100%;
-    //     background: #FFF;
-    //     z-index: 100;
-    // }
+
+
+    .main {
+        @include flexbox;
+        @include flex-direction(column);
+
+    }
+
+    .section-menu {
+        margin-left:auto;
+    }
+
+    .auth {
+        @include flexbox;
+        @include align-items(center); 
+        @include justify-content(flex-start);
+        margin-left:auto;
+        margin-right:50px;
+    }
+
+
+
     .site-branding-top{
+        @include flexbox;
+        // @include flex-direction(row);
+        // @include justify-content(flex-start);
+        // @include align-items(center);
 
         background:white;
         @media #{$tablet} {
             display: none;
         }
+        .section-left {
+            @include flexbox;
+            @include flex-direction(column);
+        }
+
 
         .social-links{
+            @include flexbox;
+            padding:0;
+            font-size: em(18);
+            >li {
+                list-style:none;
+            }
             a {
                 color: $gray-base;
             }
@@ -109,16 +139,16 @@
         }
 
         .secondary-menu{
-            > ul {
-                @extend %ulmenu;
-                font-size: em(14);
-                font-weight: 600;
+            @include flexbox;
+            padding:0;
 
-                li{
-                    margin-right: 20px;
-                    a {
-                        color:#8a8b93;
-                    }
+            font-size: em(14);
+            font-weight: 600;
+
+            li{
+                margin-right: 20px;
+                a {
+                    color:#8a8b93;
                 }
             }
         }
@@ -135,32 +165,24 @@
         }
     
         .rooms-link{
-            float: right;
-            margin-left: -30px;
-            
+
+            @include flexbox;
+            margin:0;
+            margin-left:auto;
             @media screen and (max-width: $header-break){
                 display: none;
             }
 
-            > ul{
-                @extend %ulmenu;
 
-                li{
-                    a{
-                        display: block;
-                        margin-left: 25px;
+            li{
+                a{
+                    display: block;
+                    margin-left: 25px;
 
-                        img{
-                            height: 20px;
-                            width: auto;
-                            max-width: 100%;
-                        }
-                        // &.newsroom{
-                        //     img{
-                        //         height: 14px;
-                        //         margin-top: 3px;
-                        //     }
-                        // }
+                    img{
+                        height: 20px;
+                        width: auto;
+                        max-width: 100%;
                     }
                 }
             }
@@ -168,22 +190,30 @@
         }
 
         &.foldaway {
-            border-bottom:1px solid #6c6c6c;
-            border-top:1px solid #6c6c6c;
-
-            .rooms-link{
-                float: none;
-                // padding-top: 0;
-                margin-left: 0;
-            }
-
+            border-bottom:1px solid #8a8b93;
+            border-top:1px solid #8a8b93;
+            padding: 0 50px;
+            height:50px;
+            @include align-items(center);
 
             .press-patron {
                 display:none;
             }
 
             .section-left {
-                padding-top:10px;
+                @include flex-direction(row);
+                @include align-items(center);
+
+
+                .social-links {
+                    margin:0;
+                }
+                
+                .secondary-menu {
+                    margin:0;
+                    margin-left:20px;
+                }
+
             }
 
             .section-right {
@@ -191,22 +221,6 @@
                 margin-right: 65px;
             }
 
-
-            .social-links{
-                display:inline-block;
-                
-            }
-            
-            .secondary-menu {
-                display:inline-block;
-
-                > ul > li > a {
-                    color:#6c6c6c;
-                    font-weight:normal;
-
-                }
-
-            }
         }
 
     }
@@ -217,7 +231,9 @@
 
 
     .site-branding-bottom{
-        padding-top: 6px;
+        @include flexbox;
+
+        // padding-top: 6px;
         background:white;
         // padding-bottom: 40px;
         @media #{$tablet} {
@@ -293,7 +309,6 @@
         &.foldaway {
             color:#6c6c6c;
             padding:0;
-            padding-top:10px;
 
             
             .sb-custom-menu{
@@ -301,7 +316,6 @@
                 @media (max-width: 1370px){
                     
                     > ul{
-                        display:block;
                         
                         > li {
                             width: auto;
@@ -366,12 +380,6 @@
             margin-left:50px;
         }
 
-        .auth {
-            @include flexbox;
-            @include align-items(center); 
-            @include justify-content(flex-start);
-            margin-left:auto;
-        }
 
 
         .sb-custom-menu-foldaway {
