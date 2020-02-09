@@ -1,0 +1,31 @@
+.magnify {
+    display:block;
+    position:relative;
+    height:100px;
+    width:100px;
+    background:#000;
+    border-radius: 50%;
+    
+    &:before {
+        content: '';
+        position:absolute;
+        height:80%;
+        width:80%;
+        border-radius: 50%;
+        left:10%;
+        top:10%;
+        background:#fff;
+    }
+
+    &:after {
+        content: '';
+        position:absolute;
+        width:20%;
+        height:25%;
+        background:#000;
+        top:99%;
+        left:40%;
+    }
+
+}
+

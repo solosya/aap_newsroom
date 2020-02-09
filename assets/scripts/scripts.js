@@ -207,30 +207,35 @@ $('document').ready(function() {
             }
     });
 
-    $(".menu-mobile").on("click", function (e) {
+    $(".menu-mobile, #mobile-search-close").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
-        $(this).toggleClass("active");
-        $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
-        if (window.innerWidth < 768) { 
-            $(thisMenuElem).find('.menuContainer').css("z-index","-1");
-        } else {
-            $(thisMenuElem).find('.menuContainer').css("z-index","100");
-        }
+        // $(this).toggleClass("active");
+        $('#mobile-menu').toggleClass("mobile-menu--active");
+        
+        // if (window.innerWidth < 768) { 
+        //     $(thisMenuElem).find('.menuContainer').css("z-index","-1");
+        // } else {
+        //     $(thisMenuElem).find('.menuContainer').css("z-index","100");
+        // }
         // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
-        $(thisMenuElem).toggleClass('open');
+        // $(thisMenuElem).toggleClass('open');
         $("#masthead").toggleClass('site-header-active');
-        $(".header-signin__row").toggleClass('header-signin__hide');
+        // $(".header-signin__row").toggleClass('header-signin__hide');
         // $('body').toggleClass('acme-modal-active');
 
         e.preventDefault();
     });
 
-    $(".menuContainer > ul > li.menu-item-search").on("click", function (e) {
+    $("#desktop-search, #desktop-search-close").on("click", function (e) {
+        console.log('clicked search');
         if (window.innerWidth > sbCustomMenuBreakPoint) {
-            $(this).children("ul").stop(true, false).slideToggle(225);
-            $(this).toggleClass('now-active');
+            console.log('doing all manner of thing');
+            $("#desktop-searchform").toggleClass('site-header-search--active');
+            $("#menu-primary-menu").toggleClass('submenu--hidden');
+            $("#desktop-nav-menu").toggleClass('section-menu--search');
+            
             if (window.innerWidth > sbCustomMenuBreakPoint) {
-                $("input#header-search").focus();
+                $("#desktop-header-search").focus();
             }
         }
     });
