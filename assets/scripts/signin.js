@@ -36,7 +36,7 @@ Acme.Signin.prototype.handle = function(e) {
             var formData = {};
 
             $.each($('#loginForm').serializeArray(), function () {
-                formData[this.name] = this.value;
+                formData[this.name] = this.value.trim();
             });
             // rememberMe sets flag to store login for 30 days in cookie
             formData['rememberMe'] = 1;

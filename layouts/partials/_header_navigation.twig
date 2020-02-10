@@ -59,7 +59,7 @@
                 {% endif  %}
 
             {% endfor %}
-
+                    
         </ul>
 
     </div>
@@ -76,7 +76,7 @@
         {# **********************************************************
                                 NEWSROOM LOGO
         ********************************************************** #}
-            <div class="logo header-logos">
+            <div class="site-header-logos">
                 
             {% if paywallSection %}
                 <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
@@ -127,9 +127,56 @@
                         <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
                     </li>
                 {% endfor %}
+
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 2</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 34</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 4</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 5 </a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 6</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 7</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 8</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 9</a>
+                    </li>
+                    {# <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 10</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 11</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 12</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 13</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a class="submenu__link {{activeClass}}" href="{{childItem.link}}">Section 14</a>
+                    </li>
+ #}
+
+
+
             </ul>
 
-            <a id="desktop-search" href="#" class="submenu__link search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+            <a id="desktop-search" href="#" class="submenu__link submenu__link--search"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
             {# <a id="desktop-search" href="#" class="submenu__link search-icon"><span class="magnify"></span><span class="sr-only">Expand search</span></a> #}
 
             <form method="get" id="desktop-searchform" action="{{networkData.defaultBlogUrl}}/search" class="site-header-search">
@@ -173,79 +220,6 @@
             </div>
         {% endif %}
     </div>
-
-
-
-
-
-
-
-
-    {# **********************************************************
-                        MOBILE/TABLE MENU
-    ********************************************************** #}
-
-    <div id="mobile-menu" class="mobile-menu">
-        
-        <div class="mobile-menu__close-container">
-            <div id="mobile-search-close" class="o-close" style="width:20px;height:20px;"></div>
-        </div>
-
-        {# SEARCH #}
-        <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search"  class="mobile-menu__search">
-            <input type="text" class="mobile-menu__search-input" name="s" id="header-search" placeholder="Search" required="">
-            <button class="mobile-menu__search-button btn btn-default" type="submit">
-                <span class="icon-search icon"></span>
-            </button>
-        </form>
-
-
-        {# SECTIONS #}
-        <ul class="mobile-menu__submenu">
-            {% for childItem in submenu %}
-                {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                <li class="mobile-menu__submenu-item">
-                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-
-
-
-        {# ROOMS #}
-        <ul class="mobile-menu__rooms">
-        {% for parentItem in menuItems  %}
-            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-            {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
-                <li class="mobile-menu__rooms-item">
-                    <a href="{{parentItem.link |raw}}" class="mobile-menu__rooms-link {{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                        {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt=""> #}
-                        <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt="">
-                    </a>
-                </li>
-            {% endif  %}
-
-        {% endfor %}
-        </ul>
-
-
-        {# PAGES #}
-        <ul class="mobile-menu__pages">
-            <li class="mobile-menu__pages-item">
-                <a class="mobile-menu__pages-link" href="{{networkData.defaultBlogUrl}}/about">About</a>
-            </li>
-            <li class="mobile-menu__pages-item">
-                <a class="mobile-menu__pages-link" href="{{networkData.defaultBlogUrl}}/contact">Contact</a>
-            </li>
-        </ul>
-    </div>
-
-
-
-
-
 
 
 
@@ -324,11 +298,6 @@
         </div>
 
 
-
-
-
-
-
         <div id="menu-bottom-foldaway" class="site-header__bottom foldaway u-hide">
 
             <nav class="section-menu">
@@ -365,20 +334,121 @@
 
 
 
-        <div class="site-header-signin visible-xs-block">
-            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %}style="width:80.5%;"{% endif %}>
-                <p><b  style="font-weight:700;">Become a supporter</b><br />via PressPatron</p>
-            </a>
-            {% if not _User.isGuest() %}
-                {% set user = _User.getUser() %}
+    <div class="site-header-signin visible-xs-block">
+        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %}style="width:80.5%;"{% endif %}>
+            <p><b  style="font-weight:700;">Become a supporter</b><br />via PressPatron</p>
+        </a>
+        {% if not _User.isGuest() %}
+            {% set user = _User.getUser() %}
 
-                <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout u-float-right site-header-signin__signbtn">SIGN OUT</a>
-                <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="site-header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
-            {% else %}
-                <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right site-header-signin__signbtn">SIGN IN</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
-            {% endif %}
-        </div>
+            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout u-float-right site-header-signin__signbtn">SIGN OUT</a>
+            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="site-header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
+        {% else %}
+            <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right site-header-signin__signbtn">SIGN IN</button>
+            <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
+        {% endif %}
+    </div>
 
 
 </header>
+
+
+
+
+
+
+
+
+
+{# **********************************************************
+                    MOBILE/TABLE MENU
+********************************************************** #}
+
+<div id="mobile-menu" class="mobile-menu">
+    
+    <div class="mobile-menu__close-container">
+        <div id="mobile-search-close" class="o-close" style="width:20px;height:20px;"></div>
+    </div>
+
+    {# SEARCH #}
+    <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search"  class="mobile-menu__search">
+        <input type="text" class="mobile-menu__search-input" name="s" id="header-search" placeholder="Search" required="">
+        <button class="mobile-menu__search-button btn btn-default" type="submit">
+            <span class="icon-search icon"></span>
+        </button>
+    </form>
+
+
+    {# SECTIONS #}
+    <ul class="mobile-menu__submenu">
+        {% for childItem in submenu %}
+            {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+            <li class="mobile-menu__submenu-item">
+                <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">{{ childItem.label }}</a>
+            </li>
+        {% endfor %}
+
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 2</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 34</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 4</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 5 </a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 6</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 7</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 8</a>
+                </li>
+                <li class="mobile-menu__submenu-item">
+                    <a class="mobile-menu__submenu-link {{activeClass}}" href="{{childItem.link}}">Section 9</a>
+                </li>
+
+
+    </ul>
+
+
+
+    {# ROOMS #}
+    <ul class="mobile-menu__rooms">
+    {% for parentItem in menuItems  %}
+        {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+        {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+        {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
+            <li class="mobile-menu__rooms-item">
+                <a href="{{parentItem.link |raw}}" class="mobile-menu__rooms-link {{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                    {# <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt=""> #}
+                    <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt="">
+                </a>
+            </li>
+        {% endif  %}
+
+    {% endfor %}
+    </ul>
+
+
+    {# PAGES #}
+    <ul class="mobile-menu__pages">
+        <li class="mobile-menu__pages-item">
+            <a class="mobile-menu__pages-link" href="{{networkData.defaultBlogUrl}}/about">About</a>
+        </li>
+        <li class="mobile-menu__pages-item">
+            <a class="mobile-menu__pages-link" href="{{networkData.defaultBlogUrl}}/contact">Contact</a>
+        </li>
+    </ul>
+</div>
+
+<div class="mobile-menu__overlay"></div>

@@ -20,9 +20,6 @@
 
 }
 
-// .website-award {
-//     width:500px;
-// }
 
 
 @media #{$mobile} {
@@ -103,6 +100,7 @@
     .section-menu {
         margin-left:auto;
         @include flexbox;
+        @include align-items(center); 
 
         &--search {
         }
@@ -182,6 +180,10 @@
             @include flexbox;
             margin:0;
             margin-left:auto;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+
             @media screen and (max-width: $header-break){
                 display: none;
             }
@@ -265,20 +267,15 @@
             }
             @media screen and (min-width: $header-break){
                 padding-left: 0;
-                // padding-right: 0;
                 float: right;
                 margin-left: 0;
-                // margin-right: 15px;
-            }
-            > .sb-custom-menu{
-                border-top: solid 4px #000000;
-
-                @media screen and (max-width: $header-break){
-                    border: 0;
-                }
             }
         }
+    }
 
+
+    &-logos {
+        margin-right:30px; 
 
 
         .navbar-brand{
@@ -317,11 +314,7 @@
                 }
             }
         }
-
     }
-
-
-
 
 
 

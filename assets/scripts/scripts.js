@@ -209,19 +209,21 @@ $('document').ready(function() {
 
     $(".menu-mobile, #mobile-search-close").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
+        var overlay = $(".mobile-menu__overlay");
         // $(this).toggleClass("active");
         $('#mobile-menu').toggleClass("mobile-menu--active");
         
-        // if (window.innerWidth < 768) { 
-        //     $(thisMenuElem).find('.menuContainer').css("z-index","-1");
-        // } else {
-        //     $(thisMenuElem).find('.menuContainer').css("z-index","100");
-        // }
-        // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
-        // $(thisMenuElem).toggleClass('open');
-        $("#masthead").toggleClass('site-header-active');
-        // $(".header-signin__row").toggleClass('header-signin__hide');
-        // $('body').toggleClass('acme-modal-active');
+        $("body").toggleClass('acme-modal-active');
+
+        overlay.animate({
+            "opacity": "toggle"
+        }, {
+            duration: 500
+        }, function () {
+            overlay.fadeIn();
+        });
+
+
 
         e.preventDefault();
     });

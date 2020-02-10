@@ -29,6 +29,7 @@
         height: 40px;
         margin: 0;
         padding-left: 0;
+        flex-wrap:wrap;
 
         @media (max-width: $header-break){
             display:none;
@@ -44,6 +45,10 @@
             padding:0;
             margin:0;
             margin-left:20px;
+
+            &:first-child {
+                margin-left:0;
+            }
         }
 
         &__link {
@@ -54,7 +59,8 @@
             display: block;
             padding: 0;
             position: relative; 
- 
+            white-space:nowrap;
+
             &:active {
                 color:#8a8b93;
             }
@@ -67,131 +73,171 @@
             @media (max-width: $header-break){
                 color:#fff;
             }
+        
+        
+            &--search {
+                margin-left:10px;
+    
+            }
+        
         }
 
 
     }
 
 
-
-    // .secondary-menu{
-    //     display:none;
-    // }
-
-    // .menu-item {
-    //     display:inline-block;
-    // }
 }
 
 
 .mobile-menu {
-        display:none;
-        z-index:20;
-        width: auto;
-        min-width: 330px;
-        position: absolute;
-        top: 40px;
-        right: 15px;
+    background: #fff;
+    display:none;
+    z-index:20;
+    width: auto;
+    min-width: 330px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width:50%;
+    height: 100%;
+    padding-top: 20px;
+    overflow:auto;
 
-        &--active {
-            display:block;
+
+    @media #{$mobile} {
+        width:100%;
+    }
+    
+
+
+
+
+    &--active {
+        display:block;
+    }
+
+    &__close-container {
+        @include flexbox;
+        @include justify-content(flex-end);
+        padding-right: 17px;
+        margin-bottom: 15px;
+    }
+
+    &__submenu {
+        background: #1d1d1d;
+        width: 100%;
+        padding:0;
+        margin:0;
+    }
+
+    &__submenu-item {
+        display: inline-block;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+        padding: 0;
+        margin: 0;
+    }
+
+    &__submenu-link{
+        font-size: em(14);
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 400;
+        padding: 12px 20px;
+        display: block;
+        position: relative;
+
+        &:hover{
+            color: $gray-3-color;
         }
 
-        &__close-container {
-            @include flexbox;
-            @include justify-content(flex-end);
-            padding-right: 10px;
-            margin-bottom: 5px;
-        }
 
-        &__submenu {
-            background: #1d1d1d;
-            width: 100%;
-            padding:0;
-            margin:0;
-        }
+    }
+    &__rooms {
+        background: #fff;
+        width: 100%;
+        padding:0;
+        margin:0;
+    }
 
-        &__submenu-item {
-            display: inline-block;
-            width: 100%;
-            display: block;
-            border-bottom: 1px solid rgba(255,255,255,.3);
-            padding: 0;
-            margin: 0;
-        }
+    &__rooms-item {
+        border-bottom: 1px solid #000;
+    }
+    
+    &__rooms-link {
+        position: relative;
+        display: block;
+        padding: 15px 20px;
+    }
 
-        &__submenu-link{
-            font-size: em(14);
-            text-transform: uppercase;
+    &__rooms-link-logo {
+        height: 25px;
+        vertical-align: middle;
+    }
+
+    &__pages {
+        display:block;
+        margin:0;
+        padding:5px 10px;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+        background-color: rgb(29, 29, 29)
+    }
+
+    &__pages-item {
+        border:none;
+        width:auto;
+        display:inline-block;
+        color:#8a8b93;
+        margin-right:20px;
+    }
+    &__pages-link {
+        padding: 10px 10px;
+        color: #8a8b93;
+        display: block;
+        position: relative;
+        font-size: em(14);
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &:hover{
             color: #fff;
-            font-weight: 400;
-            padding: 12px 20px;
-            display: block;
-            position: relative;
-        }
-        &__rooms {
-            background: #fff;
-            width: 100%;
-            padding:0;
-            margin:0;
         }
 
-        &__rooms-item {
-            border-bottom: 1px solid #000;
-        }
-        
-        &__rooms-link {
-            position: relative;
-            display: block;
-            padding: 15px 20px;
-        }
 
-        &__rooms-link-logo {
-            height: 25px;
-            vertical-align: middle;
-        }
+    }
 
-        &__pages {
-            display:block;
-            margin:0;
-            padding:5px 10px;
-            border-bottom: 1px solid rgba(255,255,255,.3);
-            background-color: rgb(29, 29, 29)
-        }
-
-        &__pages-item {
+    &__search {
+        display: flex;
+        padding-left: 20px;
+        flex: 1;
+        // border-top: 1px solid rgba(0,0,0,0.4);
+    }
+    &__search-input {
+        font-size: 1.4rem;
+        width: 100%;
+        border: none;
+        color: #000;
+        &:focus {
+            outline:none;
             border:none;
-            width:auto;
-            display:inline-block;
-            color:#8a8b93;
-            margin-right:20px;
-        }
-        &__pages-link {
-            padding: 10px 10px;
-            color: #8a8b93;
-            display: block;
-            position: relative;
-            font-size: em(14);
-            font-weight: 600;
-            text-transform: uppercase;
         }
 
-        &__search {
-            display: flex;
-            padding-left: 20px;
-            flex: 1;
-            border-top: 1px solid rgba(0,0,0,0.4);
-        }
-        &__search-input {
-            font-size: 1.4rem;
-            width: 100%;
-            border: none;
-            color: #000;
-        }
-        &__search-button {
-            border: none;
-        }
+    }
+    &__search-button {
+        border: none;
+    }
 
+
+    &__overlay {
+        display: none;
+        background: rgba($black, 0.7);
+        position: fixed;
+        @include size(#{$viewportSize});
+        top: 0;
+        z-index: 10;
+        left: 0;
+    }
 }
 
 /* Search box */

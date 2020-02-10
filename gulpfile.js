@@ -18,13 +18,6 @@ var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
 var replace     = require('gulp-replace');
 
-// gulp.task('styles', function(callback) {
-//   runSequence('sass', 'concat', 'minify-css', 'cache',  callback);
-// });
-
-// gulp.task('stylesTest', function(callback) {
-//     runSequence('sass', 'concat', 'minify-css', 'revision:rename',   callback);
-//   });
   
 
 gulp.task('cache',  function() {
@@ -51,20 +44,20 @@ gulp.task('jscache', function () {
 
 
 // https://medium.com/@felipebernardes/solving-browser-cache-hell-with-gulp-rev-6349a293abb9
-gulp.task("revision:rename", function() {
-  gulp.src(["./static/css/concat.min.css"])
-  .pipe(rev())
-  .pipe(revdel())
-  .pipe(gulp.dest("./static/css"))
-  .pipe(rev.manifest({ path: "manifest.json" }))
-  .pipe(gulp.dest("./static/css"))
-});
+// gulp.task("revision:rename", function() {
+//   gulp.src(["./static/css/concat.min.css"])
+//   .pipe(rev())
+//   .pipe(revdel())
+//   .pipe(gulp.dest("./static/css"))
+//   .pipe(rev.manifest({ path: "manifest.json" }))
+//   .pipe(gulp.dest("./static/css"))
+// });
 
-gulp.task("revision:updateReferences", function() {
-   gulp.src(["manifest.json","./static/css/*.json"])
-   .pipe(collect())
-   .pipe(gulp.dest("./static/css"))
-});
+// gulp.task("revision:updateReferences", function() {
+//    gulp.src(["manifest.json","./static/css/*.json"])
+//    .pipe(collect())
+//    .pipe(gulp.dest("./static/css"))
+// });
 
 
 
