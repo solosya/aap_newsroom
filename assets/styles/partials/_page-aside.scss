@@ -57,7 +57,7 @@
                     flex: 1 0;
                     
                     > .category{
-                        font-size: em(14);
+                        @include font-size(14);
                         font-weight: bold;
                         display: block;
                         line-height: 1;
@@ -70,7 +70,7 @@
 
                     > h2{
                         font-weight: normal;
-                        font-size: em(19);
+                        @include font-size(19);
                         min-height: 85px;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -86,7 +86,7 @@
                         line-height: 1;
                         float: left;
                         color: #8a8b93;
-                        font-size: em(12);
+                        @include font-size(12);
                     }
                 }
 

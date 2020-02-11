@@ -112,23 +112,23 @@
 
             > .category{
                 margin:15px 0;
-                font-size: em(14);
+                @include font-size(14);
                 font-weight: bold;
                 color: #73459B;
                 text-transform: uppercase;
                 line-height: 1;
                 display: block;
                 @media screen and (max-width: $md-break){
-                    font-size: em(11);
+                    @include font-size(11);
                 }
             }
 
             > h2{
-                font-size: em(20);
+                @include font-size(20);
                 font-weight: normal;
                 height: 22px;
                 @media screen and (max-width: $md-break){
-                    font-size: em(16);
+                    @include font-size(16);
                     margin-top: 5px;
                 }
             }
@@ -141,7 +141,7 @@
                 float:none;
                 padding: 0;
                 border: 0;
-                font-size: em(14);
+                @include font-size(14);
                 font-weight: bold;
                 color: #73459B;
                 
@@ -203,7 +203,7 @@
 
                     @media screen and (max-width: $mobile-break) {
                         font-family: $font-family-sans-serif;
-                        font-size: em(12);
+                        @include font-size(12);
                         text-transform: uppercase;
                     }
                 }
@@ -316,21 +316,21 @@
 
                 @media screen and (max-width: $mobile-break) {
                     font-family: $font-family-sans-serif;
-                    font-size: em(12);
+                    @include font-size(12);
                     text-transform: uppercase;
                 }
             }
 
             > h2{
                 margin:20px 0;
-                font-size: em(44);
+                @include font-size(44);
                 font-weight: bold;
                 height: 100px;
                 @media screen and (max-width: $md-break){
-                    font-size: em(38);
+                    @include font-size(38);
                 }
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(24);
+                    @include font-size(24);
                 }
             }
 
@@ -347,7 +347,7 @@
                 margin-bottom:20px;
                 font-size: 20px;
                 @media screen and (max-width: $md-break){
-                    font-size: em(16);
+                    @include font-size(16);
                 }
                 @media screen and (max-width: $mobile-break){
                     display: none;

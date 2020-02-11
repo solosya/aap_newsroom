@@ -63,7 +63,7 @@
     }
 
     h3{
-        font-size: em(14);
+        @include font-size(14);
         font-weight: bold;
         color: #8a8b93;
         font-family: $font-family-sans-serif;
@@ -175,7 +175,7 @@
         padding-top: 12px;
 
         > p {
-            font-size: em(12);
+            @include font-size(12);
             font-weight: bold;
             color: #18385f;
             display: inline-block;

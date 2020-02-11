@@ -21,7 +21,7 @@
 }
 
 .author-profile__text {
-    font-size: rem(18);
+    @include font-size(18);
     font-family: $font-family-sans-serif;
     color: #6c6c6c;
     @media #{$mobile} {
@@ -36,7 +36,7 @@
     text-transform: uppercase;
     @media #{$mobile} {
         text-align: center;
-        font-size: rem(14);
+        @include font-size(14);
     }
 }
 

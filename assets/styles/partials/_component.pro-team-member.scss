@@ -28,7 +28,7 @@
     font-family: $base-font-family;
     font-weight:normal;
     font-style:italic;
-    font-size:rem(33);
+    @include font-size(33);
     margin-top: 0;
     margin-bottom: 45px;
 }
@@ -36,14 +36,14 @@
     @media #{$tablet} {
         margin-top:30px;
         margin-bottom:20px;
-        font-size: rem(25); 
+        @include font-size(25); 
     }
 }
 .pro-team-memeber__header\@mobile {
     @media #{$mobile} {
         margin-top:0;
         margin-bottom:20px;
-        font-size: rem(22); 
+        @include font-size(22); 
     }
 }
 
@@ -93,14 +93,14 @@
     margin:0;
     padding:0;
     font-family: $base-font-family;
-    font-size: rem(26);
+    @include font-size(26);
     font-weight: normal;
     color: #000000;
     @media #{$tablet} {
-        font-size: rem(20);
+        @include font-size(20);
     }
     @media #{$mobile} {
-        font-size: rem(18);
+        @include font-size(18);
     }
 }
 
@@ -108,14 +108,14 @@
     margin:0;
     padding:0;
     font-family:$font-family-sans-serif;
-    font-size: rem(19);
+    @include font-size(19);
     font-weight: normal;
     color: color(red);
     @media #{$tablet} {
-        font-size: rem(15);
+        @include font-size(15);
     }
     @media #{$mobile} {
-        font-size: rem(14);
+        @include font-size(14);
     }
 
 }
@@ -124,14 +124,14 @@
     margin:0;
     padding:0;
     font-family:$font-family-sans-serif;
-    font-size: rem(19);
+    @include font-size(19);
     font-weight: normal;
     color: #8a8b93;
     @media #{$tablet} {
-        font-size: rem(16);
+        @include font-size(16);
     }
     @media #{$mobile} {
-        font-size: rem(14);
+        @include font-size(14);
     }
 
 }
@@ -157,9 +157,9 @@
 
 .pro-team-member__intro-text {
     font-family:$font-family-sans-serif;
-    font-size:rem(18);
+    @include font-size(18);
     @media #{$tablet} {
-        font-size:rem(16);
+        @include font-size(16);
     }
 
 }
@@ -170,10 +170,10 @@
 }
 
 .pro-team-member__contact-text {
-    font-size:rem(18);
+    @include font-size(18);
     margin:0;
     @media #{$tablet} {
-        font-size:rem(16);
+        @include font-size(16);
     }
     >strong {
         font-weight:600;

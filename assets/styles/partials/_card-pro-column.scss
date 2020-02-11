@@ -28,7 +28,7 @@
                 > h2{
                     font-family: $font-family-sans-serif;
                     font-weight: 700;
-                    font-size: rem(16);
+                    @include font-size(16);
                     line-height: 1.1;
                     height: 65px;
                     margin-left: 107px;
@@ -42,7 +42,7 @@
                 > .author{
                     position: absolute;
                      >p {
-                        font-size:  rem(15);
+                        @include font-size(15);
                         font-weight: 600;
                         color: #cb2204;
                         margin-top: 55px;
@@ -100,7 +100,7 @@
                 >.content{
                     
                     >h2{
-                        font-size: rem(18);
+                        @include font-size(18);
                     }
                 }
             }

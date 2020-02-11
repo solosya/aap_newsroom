@@ -1,13 +1,22 @@
 //Fonts
 $font-family-sans-serif:    "Source Sans Pro", Helvetica, Arial, sans-serif;
+$primaryFont:              "Source Sans Pro", Helvetica, Arial, sans-serif;
 $base-font-family: 			"tinos", Helvetica, Arial, sans-serif !default;
 $headings-font-family:      "tinos", Helvetica, Arial, sans-serif;
 
 
-$font-size-base:            10px;
+$weightLight: 300;
+$weightRegular: 400;
+$weightMedium: 500;
+$weightSemibold: 600;
+$weightBold: 700;
+$weightUltabold: 900;
+
+
+$font-size-base:            16px;
 $font-unit:                 0em; 
 $browser-context:           $font-size-base;
-$baseFontSize:              10px; /* ($baseFontSize * 1) + 0px; */
+$baseFontSize:              16px; /* ($baseFontSize * 1) + 0px; */
 $viewportSize: 100%;
 
 $headings-font-weight:      700;
@@ -143,6 +152,8 @@ $media-mobile: 			"screen and (max-width : 767px)";
 $media-desktop-up: 		"screen and (min-width : 992px)";
 $media-ipadLandscape: 	"screen and (min-width : 992px)  and (max-width : 1024px)";
 $media-iPad-to-desktop: "screen and (min-width : 768px)";
+$media-ipadSmall:       "screen and (max-width : 767px)";
+
 $media-iPad: 			"screen and (min-width : 768px)  and (max-width : 991px)";
 $media-up-to-desktop: 	"screen and (max-width : 991px)";
 

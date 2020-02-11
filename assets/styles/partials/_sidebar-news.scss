@@ -47,14 +47,14 @@
             
             > .category{
                 display:none;
-                // font-size: em(11);
+                // @include font-size(11);
                 // font-weight: bold;
                 // color: #8a8b93;
                 // display: block;
                 // line-height: 1;
                 // margin-bottom: 7px;
                 // @media screen and (max-width: $sm-break-down) {
-                //     font-size: em(22);
+                //     @include font-size(22);
                 //     // margin-bottom:5px;
                 //     text-transform:none;
                 // }
@@ -62,14 +62,14 @@
 
             > h2{
                 font-weight: 700;
-                font-size: rem(16);
+                @include font-size(16);
                 //height: 20px;
                 overflow: hidden;
                 margin-bottom: 5px;
                 text-overflow: ellipsis;
                 line-height: 1.2;
                 @media screen and (max-width: $sm-break-down) {
-                    font-size: em(20);
+                    @include font-size(20);
                 }
 
 
@@ -90,7 +90,7 @@
                 line-height: 1;
                 float: left;
                 color: #f73d30;
-                font-size: rem(12);
+                @include font-size(12);
             }
         }
 

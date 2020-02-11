@@ -65,7 +65,7 @@
                     right:20px;
                     display: inline-block;
                     font-family: $font-family-sans-serif;
-                    font-size:em(10);
+                    @include font-size(10);
                 }
 
                 a {
@@ -121,7 +121,7 @@
                 top:0;
                 right: 15px;
                 color:white;
-                font-size: em(15);
+                @include font-size(15);
                 font-family: $font-family-sans-serif;
 
                 a {
@@ -166,7 +166,7 @@
 
         .footer-menu > ul > li > a {
             color: #000;
-            font-size: em(14);
+            @include font-size(14);
             text-transform: none;
             @media  #{$desktop-up}{
                 color: #fff;

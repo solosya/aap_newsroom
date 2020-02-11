@@ -3,7 +3,7 @@
     > h2{
         font-family: $font-family-sans-serif;
         font-weight: bold;
-        font-size: rem(20);
+        @include font-size(20);
         color: #000000;
         margin:0 0 10px 15px;
     }

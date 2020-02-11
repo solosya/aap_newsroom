@@ -4,7 +4,7 @@
 }
 .article-subscribe__header {
     font-family: inherit;
-    font-size: rem(20);
+    @include font-size(20);
     color: color(red);
     font-weight:600;
     margin-bottom:25px;

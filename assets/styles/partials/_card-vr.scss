@@ -87,14 +87,14 @@
             }
 
             > .category{
-                font-size: em(14);
+                @include font-size(14);
                 font-weight: bold;
                 color: #73459B;
                 display: block;
                 line-height: 1;
                 margin-bottom: 8px;
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(11);
+                    @include font-size(11);
                     margin-bottom: 5px;
                 }
             }
@@ -105,10 +105,10 @@
                 font-weight: normal;
                 line-height: 1.14;
                 color: #000000;
-                font-size: em(26);
+                @include font-size(26);
 
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(16);
+                    @include font-size(16);
                 }
             }
 
@@ -129,7 +129,7 @@
                 // border-left: 1px solid black;
                 @media screen and (max-width: $mobile-break){
                     color: #6c6c6c;
-                    font-size: em(10);
+                    @include font-size(10);
                     margin-top: 8px;
                     position: relative;
                 }

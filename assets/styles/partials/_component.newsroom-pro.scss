@@ -37,14 +37,14 @@
 }
 .subscribe-pro__link-text {
     font-family: $font-family-sans-serif;
-    font-size: rem(20);
+    @include font-size(20);
     color: #fcfcfc;
     position: relative;
     top: 5px;
 }
 .subscribe-pro__p {
     font-family: $font-family-sans-serif;
-    font-size: rem(15);
+    @include font-size(15);
     font-weight: 600;
     line-height: 1.31;
     color: #fcfcfc;

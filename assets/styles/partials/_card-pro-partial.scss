@@ -28,7 +28,7 @@
                 height: 100%;
                 > h2 { 
                     color: #fcfcfc;
-                    font-size: rem(20);
+                    @include font-size(20);
                     max-height: 80px;
                     font-weight: 300;
                 }
@@ -39,7 +39,7 @@
                 .category{
                     color: #e22f22;
                     margin-bottom: 10px;
-                    font-size: rem(14);
+                    @include font-size(14);
                 }
                 .author {
                     display: inherit;
@@ -50,7 +50,7 @@
                         display: inherit;
                         margin-top: 10px;
                         color: #fcfcfc;
-                        font-size: rem(13);
+                        @include font-size(13);
                         font-weight: 300;
                         
                            position: absolute;
@@ -117,7 +117,7 @@
                     margin-left: 130px;
                     padding-right: 30px;
                     > h2 { 
-                      font-size: rem(16);
+                      @include font-size(16);
                       max-height: 40px;  
                       margin-bottom: 0;
                     }
@@ -126,8 +126,8 @@
                     }
 
                     .category{
-                       font-size: rem(12); 
-                       margin-bottom: 5px; 
+                        @include font-size(12);
+                        margin-bottom: 5px; 
                     }
                     .author {
                         
@@ -135,7 +135,7 @@
                            display: none; 
                         }
                         p {
-                            font-size: rem(12);
+                            @include font-size(12);
                             font-weight: 200;
                             margin-top: 0;    
                         }

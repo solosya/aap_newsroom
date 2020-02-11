@@ -162,7 +162,7 @@
                             @media screen and (max-width: $mobile-break){
                                 color:#8a8b93;
                                 margin-bottom:10px;
-                                font-size: em(12);
+                                @include font-size(12);
                                 text-transform: uppercase;
                             }
 
@@ -174,7 +174,7 @@
                             margin-bottom:40px;
                             @media screen and (max-width: $mobile-break){
                                 font-weight: normal;
-                                font-size: em(22);
+                                @include font-size(22);
                                 margin-top: 5px;
                                 margin-bottom:0;
                             }
@@ -184,7 +184,7 @@
                         }
     
                         > p {
-                            font-size: em(20);
+                            @include font-size(20);
                             height:85px;
 
                             @media screen and (max-width: $mobile-break){
@@ -199,7 +199,7 @@
                             padding:20px 0;
                             padding-left:0;
                             color:#fff;
-                            font-size: em(14);
+                            @include font-size(14);
                             
                             @media screen and (max-width: $mobile-break){
                                 color:#7fc241;
@@ -281,11 +281,11 @@
                     }
                     > .category{
                         color:white;
-                        font-size: em(14);
+                        @include font-size(14);
                         text-transform: uppercase;
 
                         @media screen and (max-width: $mobile-break){
-                            font-size: em(9.2);
+                            @include font-size(9.2);
                         }
                     }
 
@@ -293,9 +293,9 @@
                         margin-top:21px;
                         // font-style: italic;
                         font-weight: normal;
-                        font-size: em(26);
+                        @include font-size(26);
                         @media screen and (max-width: $mobile-break){
-                            font-size: em(16);
+                            @include font-size(16);
                             margin-top: 5px;
                         }
                     }
@@ -329,11 +329,11 @@
 
                             padding-left:0;
                             color:white;
-                            font-size: em(16.5);
+                            @include font-size(16.5);
                             font-weight: bold;
                             font-family: $base-font-family;
                             @media screen and (max-width: $mobile-break){
-                                font-size: em(11);
+                                @include font-size(11);
                             }
                         }
                         > img {

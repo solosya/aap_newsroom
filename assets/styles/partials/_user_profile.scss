@@ -4,7 +4,7 @@
 
 .change-password {
     font-style: italic;
-    font-size: rem(12);
+    @include font-size(12);
     color: color(lightgrey);
     position: relative;
     top: -25px;
@@ -16,7 +16,7 @@
 
 .name {
     span {
-        font-size: rem(25);
+        @include font-size(25);
         font-weight: normal;
         line-height: 1.2;
         color: color(red);
@@ -36,7 +36,7 @@
     background-color: #f3f3f3;
 
     label {
-        font-size: rem(15);
+        @include font-size(15);
         // height: 44px;
         // line-height: 44px;
         color: color(darkblue);

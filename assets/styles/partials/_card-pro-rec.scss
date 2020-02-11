@@ -83,7 +83,7 @@
                 // -webkit-flex: 1 0;
                 // flex: 1 0;
                 > .category{
-                    font-size: em(14);
+                    @include font-size(14);
                     font-weight: bold;
                     color: #e22f22;
                     display: block;
@@ -93,7 +93,7 @@
 
                 > h2{
                     font-weight: bold;
-                    font-size: em(30);
+                    @include font-size(30);
                     height: 70px;
                 }
                 
@@ -125,7 +125,7 @@
             
                     > p {
                         display:block;
-                        font-size: em(24);
+                        @include font-size(24);
                         height:127px;
                         padding-bottom:27px;
                     }
@@ -275,7 +275,7 @@
                 // -webkit-flex: 1 0;
                 // flex: 1 0;
                 > .category{
-                    font-size: rem(13);
+                    @include font-size(13);
                     font-weight: 600;
                     color: #e22f22;
                     display: block;
@@ -285,7 +285,7 @@
 
                 > h2{
                     font-weight: 600;
-                    font-size: rem(20);
+                    @include font-size(20);
                     height: 50px;
                 }
                 
@@ -300,7 +300,7 @@
                     overflow: hidden;
                     white-space: nowrap;
                     p{
-                        font-size: rem(12);
+                        @include font-size(12);
                     }
                     img {
                         height: 25px;
@@ -326,7 +326,7 @@
             
                     > p {
                         display:block;
-                        font-size: em(18);
+                        @include font-size(18);
                         height:80px;
                         padding-bottom:27px;
                     }
@@ -401,11 +401,11 @@
                     h2{
                         margin-top: 15px;
                         height: 52px;
-                        font-size: rem(16);
+                        @include font-size(16);
                     }
                     .category{
                         color: #e22f22;
-                        font-size: rem(12);
+                        @include font-size(12);
                     }
                     .author {
                        display: none;
@@ -439,7 +439,7 @@
                     .content {
                        >p {
                             display: block;
-                            font-size: rem(16);
+                            @include font-size(16);
                             height: 62px;
                             font-weight: 600;
                        }

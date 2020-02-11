@@ -61,7 +61,7 @@
             }
 
             > .category{
-                font-size: em(14);
+                @include font-size(14);
                 font-weight: bold;
                 color: #fff;
                 display: block;
@@ -71,7 +71,7 @@
                 @media screen and (max-width: $mobile-break){
                     color: white;
                     font-family: $font-family-sans-serif;
-                    font-size: em(12);
+                    @include font-size(12);
                     margin-bottom:15px;
                     text-transform:uppercase;
                 }
@@ -80,7 +80,7 @@
             > p {
                 margin-top:20px;
                 width:85%;
-                font-size:rem(18);
+                @include font-size(18);
                 height: 75px;
                 max-height: 150px;
 
@@ -91,7 +91,7 @@
 
             > h2{
                 font-weight: bold;
-                font-size: em(40);
+                @include font-size(40);
                 padding-top: 15px;
                 max-height: 110px;
 
@@ -104,7 +104,7 @@
                 }
 
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(20);
+                    @include font-size(20);
                     height: 60px;;
                     padding-top: 0;
                     border: 0;
@@ -141,7 +141,7 @@
                     float: none;
                     border: 0;
                     padding: 0;
-                    font-size: em(10);
+                    @include font-size(10);
                 }
             }
         }
@@ -155,7 +155,7 @@
         
                 > p {
                     display:block;
-                    font-size: em(18);
+                    @include font-size(18);
                     height: 280px;
                     margin-top:40px;
 

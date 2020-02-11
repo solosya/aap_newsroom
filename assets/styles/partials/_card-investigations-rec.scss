@@ -99,10 +99,10 @@
 
             > h2{
                 font-weight: bold;
-                font-size: em(30);
+                @include font-size(30);
                 height: 70px;
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(20);
+                    @include font-size(20);
                     border: 0;
                     height: 50px;
                 }
@@ -155,7 +155,7 @@
                 > p {
 
                     @media screen and (max-width: $sm-break-down) {
-                        font-size: em(15);
+                        @include font-size(15);
                     }
                 }
 
@@ -193,7 +193,7 @@
                     float: left;
                     border: 0;
                     padding: 0;
-                    font-size: em(10);
+                    @include font-size(10);
                     position: absolute;
                     bottom: 5px;
                 }
