@@ -27,21 +27,13 @@
 
 
 {% set showPaywall = false %}
-{% set paywallSection = false %}
 {% set isAdmin = _User.isAdminUser() %}
+{% set paywallSection = blogData['paywallType'] | lower == 'section' ? true : false %}
 
-{% if blogData['additionalInfo'] is defined             and 
-      blogData['additionalInfo']['paywall'] is defined  and 
-      blogData['additionalInfo']['paywall'] == 'on' %}
-    
-    {% set paywallSection = true %}
-{% endif %}
 
-{# {% set url = _AppHelper.getParsedUrl().path %} #}
 
 {# Pages don't have a blogName so class has to be used #}
 {% if   not _User.isAdminUser()         and
-        paywallSection == true          and
         blogData['showPaywall'] == true and
         'article' not in pageClass %}
     
@@ -50,10 +42,6 @@
     
 {% endif %}
  
-
-{# {% if _AppHelper.getApplicationEnv() != 'PROD'%}
-    {% set showPaywall = false %}
-{% endif %} #}
 
 
 

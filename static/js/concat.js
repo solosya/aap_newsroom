@@ -33064,7 +33064,7 @@ Acme.UserProfileController = function()
 {
     this.csrfToken      = $('meta[name="csrf-token"]').attr("content");
     this.mailChimpUser  = false;
-    
+    this.emailLists     = [];
     // test mailchimp accounts
     // this.newsroom       = '17ba69a02c';
     // this.group          = 'cb03aca14d'; // me
@@ -33116,7 +33116,9 @@ Acme.UserProfileController.prototype.fetchEmailLists = function() {
 
     Acme.server.fetch( _appJsConfig.baseHttpPath + '/api/integration/mailchimp-get-list-data?list='+this.newsroom+'&group='+this.group).done(function(data) {
 
-        self.emailLists = data.data.interests;
+        if (typeof data.data.interests != 'undefined') {
+            self.emailLists = data.data.interests;
+        }
 
         var emails    = Handlebars.compile(Acme.templates.mailchimpList);
 
