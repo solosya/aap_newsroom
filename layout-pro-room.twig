@@ -319,7 +319,7 @@
                             {% elseif x == 3 %}
                                 {% set hiddenClass = ['','',' visible-xs-block',' visible-xs-block'] %}
                                 <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 visible-sm-block visible-xs-block">
-                                    <a href="{{networkData.defaultBlogUrl}}/@8things"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
+                                    <a href="{{networkData.defaultBlogUrl}}/8things"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
 
                                     {% for i in 0..7 if eightThingsArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
@@ -396,7 +396,7 @@
                             </section>
 
                             <section class="col-sm-12 u-margin-top-40">
-                                 <a href="{{networkData.defaultBlogUrl}}/@8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
+                                 <a href="{{networkData.defaultBlogUrl}}8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
                                 {% for i in 0..7 if eightThingsArticles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
                                         article         : eightThingsArticles[i], 

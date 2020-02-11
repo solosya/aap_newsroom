@@ -2,7 +2,8 @@
 
 {% set redir = _Page.setHttpRedirects(
     {
-        '|/@pro/about.*|'    : networkData.defaultBlogUrl ~ '/@pro',
+        '|/@pro/about.*|'    : networkData.defaultBlogUrl ~ '/pro',
+        '|/pro/about.*|'    : networkData.defaultBlogUrl ~ '/pro',
     }, false) 
 %} 
 
