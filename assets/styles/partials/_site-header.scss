@@ -20,9 +20,6 @@
 
 }
 
-// .website-award {
-//     width:500px;
-// }
 
 
 @media #{$mobile} {
@@ -41,63 +38,107 @@
     }
 }
 @media #{$tablet} {
-    .header-logos {
-        display: flex;
-        .main-logo{
-            margin-right: 30px;
-        }
-        .website-award {
-            width: 200px;
-            margin-top: 8px;
-        }
-    }
+    // .header-logos {
+    //     display: flex;
+    //     .main-logo{
+    //         margin-right: 30px;
+    //     }
+    //     .website-award {
+    //         width: 200px;
+    //         margin-top: 8px;
+    //     }
+    // }
 }
-.voyager-logo {
-    margin-left:15px;
-    width:280px;
-}
+// .voyager-logo {
+//     margin-left:15px;
+//     width:280px;
+// }
 
-@media #{$tablet} {
-    .voyager-logo {
-        margin-left:0;
-    }
-}
+// @media #{$tablet} {
+//     .voyager-logo {
+//         margin-left:0;
+//     }
+// }
 
 
-@media #{$mobile} {
-    .voyager-logo {
-        display:none;
-    }
-}
+// @media #{$mobile} {
+//     .voyager-logo {
+//         display:none;
+//     }
+// }
 
 
 
 .site-header {
-    background:white;
+    @include flexbox;
+    @include flex-direction(column);
 
+    background:white;
     padding-top: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    @media #{$mobile} {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     @media #{$tablet} {
         padding-top: 0;
     }
+
+
     @media screen and (max-width: $sm-break-down) {
         padding-top: 0;
         top: 0;
         position: absolute;
         width: 100%;
     }
-    // @media screen and (max-width: $mobile-break){
-    //     position: fixed;
-    //     top:0;
-    //     width: 100%;
-    //     background: #FFF;
-    //     z-index: 100;
-    // }
-    .site-branding-top{
+
+    
+
+    .section-menu {
+        margin-left:auto;
+        @include flexbox;
+        @include align-items(center); 
+
+    }
+
+    .auth {
+        @include flexbox;
+        @include align-items(center); 
+        @include justify-content(flex-start);
+        margin-left:auto;
+    }
+
+
+
+    &__top {
+        @include flexbox;
+        order:1;
+        background:white;
+
+
         @media #{$tablet} {
-            display: none;
+            order:2;
+            margin-top:25px;
         }
 
+
+        .section-left {
+            @include flexbox;
+            @include flex-direction(column);
+        }
+
+
         .social-links{
+            @include flexbox;
+            margin-left:-5px;
+            padding:0;
+            font-size: em(18);
+            >li {
+                list-style:none;
+            }
             a {
                 color: $gray-base;
             }
@@ -107,16 +148,16 @@
         }
 
         .secondary-menu{
-            > ul {
-                @extend %ulmenu;
-                font-size: em(14);
-                font-weight: 600;
+            @include flexbox;
+            padding:0;
 
-                li{
-                    margin-right: 20px;
-                    a {
-                        color:#8a8b93;
-                    }
+            font-size: em(14);
+            font-weight: 600;
+
+            li{
+                margin-right: 20px;
+                a {
+                    color:#8a8b93;
                 }
             }
         }
@@ -133,32 +174,28 @@
         }
     
         .rooms-link{
-            float: right;
-            margin-left: -30px;
-            
+
+            @include flexbox;
+            margin:0;
+            margin-left:auto;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+
             @media screen and (max-width: $header-break){
                 display: none;
             }
 
-            > ul{
-                @extend %ulmenu;
 
-                li{
-                    a{
-                        display: block;
-                        margin-left: 25px;
+            li{
+                a{
+                    display: block;
+                    margin-left: 25px;
 
-                        img{
-                            height: 20px;
-                            width: auto;
-                            max-width: 100%;
-                        }
-                        // &.newsroom{
-                        //     img{
-                        //         height: 14px;
-                        //         margin-top: 3px;
-                        //     }
-                        // }
+                    img{
+                        height: 20px;
+                        width: auto;
+                        max-width: 100%;
                     }
                 }
             }
@@ -166,24 +203,27 @@
         }
 
         &.foldaway {
-            border-bottom:1px solid #6c6c6c;
-            border-top:1px solid #6c6c6c;
-            margin-top:50px;
+            border-bottom:1px solid #8a8b93;
+            border-top:1px solid #8a8b93;
+            padding: 0 50px;
+            height:50px;
+            @include align-items(center);
 
-
-            .rooms-link{
-                float: none;
-                // padding-top: 0;
-                margin-left: 0;
-            }
-
-
-            .press-patron {
-                display:none;
-            }
 
             .section-left {
-                padding-top:10px;
+                @include flex-direction(row);
+                @include align-items(center);
+
+
+                .social-links {
+                    margin:0;
+                }
+                
+                .secondary-menu {
+                    margin:0;
+                    margin-left:20px;
+                }
+
             }
 
             .section-right {
@@ -191,41 +231,27 @@
                 margin-right: 65px;
             }
 
-
-            .social-links{
-                display:inline-block;
-                
-            }
-            
-            .secondary-menu {
-                display:inline-block;
-
-                > ul > li > a {
-                    color:#6c6c6c;
-                    font-weight:normal;
-
-                }
-
-            }
         }
-
     }
+    
 
 
 
+    &__bottom {
+        @include flexbox;
+        @include align-items(center);
+        order:2;
+        background:white;
 
-
-
-    .site-branding-bottom{
-        padding-top: 6px;
-        // padding-bottom: 40px;
         @media #{$tablet} {
-            position: absolute;
-            top: 0;
-            width: 100%;
+            order:1;
             padding-bottom: 15px;
             border-bottom: 1px solid #8a8b93;
-
+        }
+        @media #{$mobile} {
+            order:1;
+            padding-left:15px;
+            padding-right:15px;
         }
 
         @media screen and (max-width: $sm-break-down) {
@@ -239,25 +265,47 @@
             }
             @media screen and (min-width: $header-break){
                 padding-left: 0;
-                // padding-right: 0;
                 float: right;
                 margin-left: 0;
-                // margin-right: 15px;
-            }
-            > .sb-custom-menu{
-                border-top: solid 4px #000000;
-
-                @media screen and (max-width: $header-break){
-                    border: 0;
-                }
             }
         }
+    }
 
+    &__sponsor-logos {
+        @include flexbox;
+        @media #{$desktop-up} {
+            position:absolute;
+        }
+        @media #{$tablet} {
+            margin-left: 50px;
+            @include align-items(center);
+        }
+
+        @media #{$mobile} {
+            margin-left: 30px;
+            @include align-items(center);
+        }
+
+        margin-left: 160px;
+    }
+
+    &-logos {
+        margin-right:30px; 
+        @include flexbox;
+        @include flex-direction(row);
+
+        @media #{$desktop-up} {
+            display:block;
+        }
 
 
         .navbar-brand{
             padding: 0;
             height: auto;
+            &:focus {
+                outline:none;
+            }
+
             @media screen and (max-width: $sm-break-down) {
                 display: flex;
                 flex-direction: row;
@@ -280,6 +328,7 @@
                     height:45px;
                 }
             }
+
             .mobile-logo-summer {
                 display: none;
                 @media screen and (max-width: $sm-break-down) {
@@ -289,58 +338,44 @@
                 }
             }
         }
-        &.foldaway {
-            color:#6c6c6c;
-            padding:0;
-            padding-top:10px;
-            // border:1px solid green;
-
-            .sb-custom-menu{
-
-                @media (max-width: 1370px){
-                    
-                    > ul{
-                        display:block;
-                        
-                        > li {
-                            width: auto;
-                            float: none;
-                            display: inline-block;
-                            border: none;
-                        }
-
-                    }
-                }
-
-
-                border-top: none;
-                text-align: right;
-
-                a {
-                    text-transform:none;
-                    color:#6c6c6c;
-                    font-weight: normal;
-                }
-            }
-        }
     }
 
 
-        
 
 
-    .site-branding-bottom-foldaway {
+
+    &-signin {
+        order:3;
+
+        &__signbtn {
+            margin-right:10px;
+        }
+    }
+
+    &__bottom-foldaway {
         @include transition(100000s);
         background:white;
         position:fixed;
-        top:-60px;
+        top:-108px;
         right:0;
-        padding:10px 0 5px 0;
+        padding:0;
         margin:0;
         width:100%;
         border-bottom: solid 1px #6c6c6c;
         z-index:2147483647;
-        
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(flex-start);
+        order:5;
+
+        .main-panel {
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(flex-start);
+            height:108px;
+            padding: 0 50px;
+        }
+
         .navbar-brand{
             padding:0;
             height:auto;
@@ -351,24 +386,35 @@
             }
         }
 
-        .sb-custom-menu-foldaway {
-            float:right;
-            margin-right: 50px;
-            .menu-mobile{
-                display: block;
-                width: 95px;
-                background-image: url(../images/mobile-menu.svg);
-                background-size: 45px 30px;
-                background-position: right;
-                background-repeat: no-repeat;
-                padding: 5px 0;
-                color: #f73d30;
+        .section-menu {
+            border:0;
+        }
+
+        .submenu__link {
+            text-transform: initial;
+            color:#8a8b93;
+            font-weight: 400;
+
+            &:active {
+                color:black;
             }
         }
-        .site-branding-bottom {
+
+        .site-header__bottom {
             margin-right: 50px;
         }
 
     }
+
+
+
+
+
+    .mobile-menu {
+        order:4
+    }
+
+
+
 
 }

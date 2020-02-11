@@ -1,68 +1,41 @@
 
 .sky-logo{
-	position: absolute;
-	width: 175px;
-	@media #{$desktop-up}{
-		left: 235px;
-	    top: 65px;
-	}
-	@media #{$tablet}{
-		width: 52px;
-		left: 465px;
-	    top: 5px;
-	}
-	@media #{$mobile}{
-		width: 35px;
-		left: 160px;
-	}
+    width: 175px;
+    @media #{$desktop-up}{
+
+    }
+    @media #{$tablet}{
+        width: 52px;
+
+    }
+    @media #{$mobile}{
+        width: 35px;
+
+    }
 }
 .wisp-logo{
-	position: absolute;
-	width: 150px;
-	@media #{$desktop-up}{
-		left: 415px;
-	    top: 56px;
-	}
-	@media #{$tablet}{
-		width: 100px;
-		left: 520px;
-	    top: 0;
-	}
-	@media #{$mobile}{
-		width: 70px;
-		left: 200px;
-	    top: -5px;
-	}
-	&--matatuhi{
-		@media #{$desktop-up}{
-			left: 230px;
-			top: 60px
-		}
-		@media #{$tablet}{
-			left: 490px;
-			top: 10px;
-		}
-		@media #{$mobile}{
-			left: 165px;
-			top: 5px;
-		}
-	}
+
+    width: 150px;
+
+    @media #{$desktop-up}{
+        margin-top: -8px;
+    }
+    @media #{$tablet}{
+        width: 100px;
+    }
+    @media #{$mobile}{
+        width: 70px;
+    }
+    &--matatuhi{
+        margin:0;
+    }
 }
+
 .wisp-logo__text{
-	position: absolute;   
-	font-weight: 600;
-	@media #{$desktop-up}{
-		left: 155px;
-		font-size: 12px;
-		margin-top: 8px;
-	}
-	@media #{$tablet}{
-		width: 100px;
-	    top: 15px;
-	    left: 400px;
-	}
-	@media #{$mobile}{
-		left: 95px;
-	    top: 5px;
-	}
+    font-weight: 600;
+    margin-right:10px;
+    @media #{$desktop-up}{
+        font-size: 12px;
+        margin-top: 6px;
+    }
 }

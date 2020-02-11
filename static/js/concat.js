@@ -32049,7 +32049,9 @@ $('document').ready(function() {
 
 
     Acme.HeaderMenu = function() {
-        this.parent = $("#menuContainer");
+        this.topMenu = $('#menu-top-foldaway');
+        this.bottomMenu = $('#menu-bottom-foldaway');
+        
         this.menu = $("#foldaway-panel");
         this.subscriptions = Acme.PubSub.subscribe({
             'Acme.headerMenu.listener' : ["update_state"]
@@ -32069,12 +32071,13 @@ $('document').ready(function() {
     Acme.HeaderMenu.prototype = new Acme._View();
     Acme.HeaderMenu.constructor = Acme.HeaderMenu;
     Acme.HeaderMenu.prototype.showFixed = function() {
-        this.parent.show();
         this.menu.addClass('showMenuPanel');
     }
     Acme.HeaderMenu.prototype.hideFixed = function() {
-        this.parent.hide();
+        menu_top_foldaway.addClass('u-hide');
+        menu_bottom_foldaway.addClass('u-hide');
         this.menu.removeClass('showMenuPanel');
+        $("#menu-foldaway").removeClass('o-close').addClass('o-hamburger');
     }
 
     Acme.headerMenu = new Acme.HeaderMenu();
@@ -32082,7 +32085,7 @@ $('document').ready(function() {
 
     var scrollUpMenu = function() {
         // var isMob = isMobile();
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ) {
+        if ( isScolledPast(300) && isDesktop() ) {
             Acme.headerMenu.showFixed();
         } else if (!foldaway_search) {
             Acme.headerMenu.hideFixed();
@@ -32181,8 +32184,9 @@ $('document').ready(function() {
     // $(".sb-custom-menu > ul").before("<a href=\"#\" class=\"menu-mobile\">MENU</a>");
 
     $("#menu-foldaway").on("click", function (e) {
-            menu_top_foldaway.toggleClass('hide');
-            menu_bottom_foldaway.toggleClass('hide');
+            $(e.target).toggleClass('o-hamburger').toggleClass('o-close');
+            menu_top_foldaway.toggleClass('u-hide');
+            menu_bottom_foldaway.toggleClass('u-hide');
             if (foldaway_search) {
                 foldaway_search = false;
                 $("li.menu-item-search-foldaway>ul.search-foldaway").removeAttr('style');
@@ -32190,33 +32194,68 @@ $('document').ready(function() {
             }
     });
 
-    $(".menu-mobile").on("click", function (e) {
+    $(".menu-mobile, #mobile-search-close").on("click", function (e) {
         var thisMenuElem = $(this).parent('.sb-custom-menu');
-        $(this).toggleClass("active");
-        $(thisMenuElem).find('.menuContainer').toggleClass("show-on-tablet");
-        if (window.innerWidth < 768) { 
-            $(thisMenuElem).find('.menuContainer').css("z-index","-1");
-         } else {
-            $(thisMenuElem).find('.menuContainer').css("z-index","100");
-         }
-        // $(thisMenuElem).find('div.menu').toggleClass("show-on-tablet");
-        $(thisMenuElem).toggleClass('open');
-        $("#masthead").toggleClass('site-header-active');
-        $(".header-signin__row").toggleClass('header-signin__hide');
-        $('body').toggleClass('acme-modal-active');
+        var overlay = $(".mobile-menu__overlay");
+        // $(this).toggleClass("active");
+        $('#mobile-menu').toggleClass("mobile-menu--active");
+        
+        $("body").toggleClass('acme-modal-active');
+
+        overlay.animate({
+            "opacity": "toggle"
+        }, {
+            duration: 500
+        }, function () {
+            overlay.fadeIn();
+        });
+
+
 
         e.preventDefault();
     });
 
-    $(".menuContainer > ul > li.menu-item-search").on("click", function (e) {
+
+
+
+    // this search handler is for normal desktop header, locked header search handler below
+    $("#desktop-search").on("click", function (e) {
+
         if (window.innerWidth > sbCustomMenuBreakPoint) {
-            $(this).children("ul").stop(true, false).slideToggle(225);
-            $(this).toggleClass('now-active');
-            if (window.innerWidth > sbCustomMenuBreakPoint) {
-                $("input#header-search").focus();
+
+            var icon = $('#desktop-search > span:first-child');
+            if (icon.hasClass('icon-search')) {
+                icon.removeClass('icon-search').addClass('o-close');
+            } else {
+                icon.removeClass('o-close').addClass('icon-search');
             }
+            $("#desktop-searchform").toggleClass('site-header-search--active');
+            $("#menu-primary-menu").toggleClass('submenu--hidden');
+            $("#desktop-header-search").focus();
         }
     });
+
+
+    // locked header search handler
+    $("#locked-header-search-button").on("click", function (e) {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+
+            var icon = $('#locked-header-search-button > span:first-child');
+            if (icon.hasClass('icon-search')) {
+                icon.removeClass('icon-search').addClass('o-close');
+            } else {
+                icon.removeClass('o-close').addClass('icon-search');
+            }
+            $("#locked-searchform").toggleClass('site-header-search--active');
+            $("#menu-locked").toggleClass('submenu--hidden');
+
+            $("#locked-header-search").focus();
+        }
+    });
+
+
+
+
 
     $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
         if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
@@ -32436,7 +32475,7 @@ Acme.Signin.prototype.handle = function(e) {
             var formData = {};
 
             $.each($('#loginForm').serializeArray(), function () {
-                formData[this.name] = this.value;
+                formData[this.name] = this.value.trim();
             });
             // rememberMe sets flag to store login for 30 days in cookie
             formData['rememberMe'] = 1;

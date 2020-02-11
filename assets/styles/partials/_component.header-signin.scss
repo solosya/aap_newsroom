@@ -1,19 +1,20 @@
-.header-signin {
+.site-header-signin {
+
+    @include flexbox;
     font-family: $font-family-sans-serif;
     font-weight:600;
 }
 
 
 
-.header-signin__name {
+.site-header-signin__name {
     font-family: inherit;
     font-weight:inherit;
     font-size: rem(16);
     float:left;
     margin-top: 15px;
 }
-.header-signin__account {
-    margin-top:10px;
+.site-header-signin__account {
     font-family: inherit;
     font-weight:inherit;
     font-size: rem(16);
@@ -63,7 +64,7 @@
     }
 }
 
-.header-signin__signbtn {
+.site-header-signin__signbtn {
     width: 161px;
     margin-left: 20px;
     @media #{$mobile}{
@@ -76,7 +77,7 @@
     }
 }
 
-.header-signin__subbtn {
+.site-header-signin__subbtn {
     width: 161px;
     @media #{$mobile}{
         width: 37.5%;
@@ -87,7 +88,7 @@
     }
 }
 
-.header-signin__pp {
+.site-header-signin__pp {
     width: auto;
     border-top: solid 0.5px #dadada;
     border-bottom: solid 0.5px #dadada;
@@ -117,6 +118,6 @@
     }
 }
 
-.header-signin__hide{
+.site-header-signin__hide{
     display:none !important;
 }
