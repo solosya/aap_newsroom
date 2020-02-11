@@ -13,7 +13,7 @@ var gp_rename   = require("gulp-rename");
 var gutil       = require('gulp-util');
 var sass        = require('gulp-sass');
 var sourcemaps  = require('gulp-sourcemaps');
-var minifyCss   = require("gulp-clean-css");
+var minifyCss   = require('gulp-clean-css');
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
 var replace     = require('gulp-replace');
@@ -105,11 +105,11 @@ gulp.task('sass', function() {
 
 
 gulp.task('scripts', function(){
-	return gulp.src([
-		'./bower_components/jquery/dist/jquery.js',
-		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-		// './bower_components/swiper/dist/js/swiper.jquery.js',
-		
+    return gulp.src([
+        './bower_components/jquery/dist/jquery.js',
+        './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+        // './bower_components/swiper/dist/js/swiper.jquery.js',
+        
         './assets/scripts/plugins/slick.js',
         './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
         './assets/scripts/plugins/bootstrap-modalmanager.js',
@@ -148,12 +148,14 @@ gulp.task('scripts', function(){
         './assets/scripts/!(framework)*.js', // all files that end in .js EXCEPT common*.js
 
 
-		// './assets/scripts/*.js',
-		])
-		.pipe(concat('concat.js'))
-		.pipe(gulp.dest('./static/js'))
-		.pipe(gp_rename('scripts.js'))
-		.pipe(uglify().on('error', gutil.log))
+        // './assets/scripts/*.js',
+        ])
+        .pipe(concat('concat.js'))
+        .pipe(gulp.dest('./static/js'))
+        .pipe(gp_rename('scripts.js'))
+        .pipe(uglify().on('error', function(err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString())
+        }))
         .pipe(gulp.dest('./static/js'));
 
 });
@@ -161,8 +163,8 @@ gulp.task('scripts', function(){
 
 
 gulp.task('watch', function (){
-	gulp.watch('./assets/styles/**/*.scss', ['styles']);
-	gulp.watch('./assets/scripts/**/*.js', ['scripts']);
+    gulp.watch('./assets/styles/**/*.scss', ['styles']);
+    gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
 gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache',  'jscache', function (done) {

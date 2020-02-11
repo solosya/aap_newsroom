@@ -37,6 +37,7 @@
 
         &--hidden {
             opacity:0;
+            display:none;
         }
 
         &__item {
@@ -77,7 +78,14 @@
         
             &--search {
                 margin-left:10px;
-    
+                cursor:pointer;
+                display:none;
+                
+                @media (min-width: $header-break){
+                    display:block;
+                }
+                
+        
             }
         
         }

@@ -38,34 +38,34 @@
     }
 }
 @media #{$tablet} {
-    .header-logos {
-        display: flex;
-        .main-logo{
-            margin-right: 30px;
-        }
-        .website-award {
-            width: 200px;
-            margin-top: 8px;
-        }
-    }
+    // .header-logos {
+    //     display: flex;
+    //     .main-logo{
+    //         margin-right: 30px;
+    //     }
+    //     .website-award {
+    //         width: 200px;
+    //         margin-top: 8px;
+    //     }
+    // }
 }
-.voyager-logo {
-    margin-left:15px;
-    width:280px;
-}
+// .voyager-logo {
+//     margin-left:15px;
+//     width:280px;
+// }
 
-@media #{$tablet} {
-    .voyager-logo {
-        margin-left:0;
-    }
-}
+// @media #{$tablet} {
+//     .voyager-logo {
+//         margin-left:0;
+//     }
+// }
 
 
-@media #{$mobile} {
-    .voyager-logo {
-        display:none;
-    }
-}
+// @media #{$mobile} {
+//     .voyager-logo {
+//         display:none;
+//     }
+// }
 
 
 
@@ -95,15 +95,13 @@
         width: 100%;
     }
 
-
+    
 
     .section-menu {
         margin-left:auto;
         @include flexbox;
         @include align-items(center); 
 
-        &--search {
-        }
     }
 
     .auth {
@@ -273,14 +271,40 @@
         }
     }
 
+    &__sponsor-logos {
+        @include flexbox;
+        @media #{$desktop-up} {
+            position:absolute;
+        }
+        @media #{$tablet} {
+            margin-left: 50px;
+            @include align-items(center);
+        }
+
+        @media #{$mobile} {
+            margin-left: 30px;
+            @include align-items(center);
+        }
+
+        margin-left: 160px;
+    }
 
     &-logos {
         margin-right:30px; 
+        @include flexbox;
+        @include flex-direction(row);
+
+        @media #{$desktop-up} {
+            display:block;
+        }
 
 
         .navbar-brand{
             padding: 0;
             height: auto;
+            &:focus {
+                outline:none;
+            }
 
             @media screen and (max-width: $sm-break-down) {
                 display: flex;
@@ -321,7 +345,11 @@
 
 
     &-signin {
-        order:3
+        order:3;
+
+        &__signbtn {
+            margin-right:10px;
+        }
     }
 
     &__bottom-foldaway {

@@ -158,7 +158,7 @@ $('document').ready(function() {
 
         var input = $('#batch-user-input').val();
         
-        const lines = input.split(/\n/);    
+        var lines = input.split(/\n/);    
         var owner = lines[0].split(',');
         payload.owner.email = owner[owner.length - 1];
 
@@ -228,19 +228,47 @@ $('document').ready(function() {
         e.preventDefault();
     });
 
-    $("#desktop-search, #desktop-search-close").on("click", function (e) {
-        console.log('clicked search');
+
+
+
+    // this search handler is for normal desktop header, locked header search handler below
+    $("#desktop-search").on("click", function (e) {
+
         if (window.innerWidth > sbCustomMenuBreakPoint) {
-            console.log('doing all manner of thing');
+
+            var icon = $('#desktop-search > span:first-child');
+            if (icon.hasClass('icon-search')) {
+                icon.removeClass('icon-search').addClass('o-close');
+            } else {
+                icon.removeClass('o-close').addClass('icon-search');
+            }
             $("#desktop-searchform").toggleClass('site-header-search--active');
             $("#menu-primary-menu").toggleClass('submenu--hidden');
-            $("#desktop-nav-menu").toggleClass('section-menu--search');
-            
-            if (window.innerWidth > sbCustomMenuBreakPoint) {
-                $("#desktop-header-search").focus();
-            }
+            $("#desktop-header-search").focus();
         }
     });
+
+
+    // locked header search handler
+    $("#locked-header-search-button").on("click", function (e) {
+        if (window.innerWidth > sbCustomMenuBreakPoint) {
+
+            var icon = $('#locked-header-search-button > span:first-child');
+            if (icon.hasClass('icon-search')) {
+                icon.removeClass('icon-search').addClass('o-close');
+            } else {
+                icon.removeClass('o-close').addClass('icon-search');
+            }
+            $("#locked-searchform").toggleClass('site-header-search--active');
+            $("#menu-locked").toggleClass('submenu--hidden');
+
+            $("#locked-header-search").focus();
+        }
+    });
+
+
+
+
 
     $(".menuContainer > ul > li.menu-item-search-foldaway").on("click", function (e) {
         if (!foldaway_search) {foldaway_search = true} else {foldaway_search = false};
