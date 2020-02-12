@@ -7869,8 +7869,9 @@ h4.modal-title {
   line-height: 1.425rem;
   font-weight: bold;
   border: 0;
-  padding: 2px 12px;
-  margin-right: 2px; }
+  padding: 4px 12px;
+  margin-right: 2px;
+  height: 100%; }
   .btn-post:hover, .btn-post:focus {
     color: #FFF; }
 
@@ -7883,7 +7884,8 @@ h4.modal-title {
   font-weight: bold;
   border: 0;
   padding: 0 10px;
-  margin-right: 2px; }
+  margin-right: 2px;
+  height: 100%; }
   .btn-tweet:hover, .btn-tweet:focus {
     color: #FFF; }
 
@@ -7896,7 +7898,8 @@ h4.modal-title {
   font-weight: bold;
   border: 0;
   padding: 2px 12px;
-  margin-right: 2px; }
+  margin-right: 2px;
+  height: 100%; }
   .btn-linkedin:hover, .btn-linkedin:focus {
     color: #FFF; }
 
@@ -7908,7 +7911,8 @@ h4.modal-title {
   line-height: 1.425rem;
   font-weight: bold;
   border: 0;
-  padding: 2px 12px; }
+  padding: 2px 12px;
+  height: 100%; }
   .btn-share:hover, .btn-share:focus {
     color: #FFF; }
 
@@ -7920,7 +7924,8 @@ h4.modal-title {
   line-height: 1.2rem;
   font-weight: bold;
   border: 0;
-  padding: 5px 17px 4px 10px; }
+  padding: 5px 17px 4px 10px;
+  height: 100%; }
   .btn-email:hover, .btn-email:focus {
     color: #FFF; }
 
@@ -8830,7 +8835,7 @@ section.subscribe {
           .site-footer .footer-top .icon-wrapper span {
             position: absolute;
             bottom: 0;
-            right: 20px;
+            right: 40px;
             display: inline-block;
             font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
             font-size: 0.625rem;
@@ -12949,15 +12954,16 @@ input[type=radio].inline {
         padding-bottom: 0;
         margin-left: -15px;
         margin-right: -15px; } }
-    .pro-partial .articles .row > div {
-      border-right: 1px solid #dadada; }
-      .pro-partial .articles .row > div > a > article > figure {
-        max-height: 129px; }
-        @media screen and (max-width: 767px) {
-          .pro-partial .articles .row > div > a > article > figure {
-            max-height: 90px; } }
-      .pro-partial .articles .row > div:last-child {
-        border-right: 0; }
+    @media screen and (min-width: 992px) {
+      .pro-partial .articles .row > div {
+        border-right: 1px solid #dadada; } }
+    .pro-partial .articles .row > div > a > article > figure {
+      max-height: 129px; }
+      @media screen and (max-width: 767px) {
+        .pro-partial .articles .row > div > a > article > figure {
+          max-height: 90px; } }
+    .pro-partial .articles .row > div:last-child {
+      border-right: 0; }
   .pro-partial > .featured {
     height: 430px;
     position: relative;
@@ -13876,9 +13882,8 @@ input[type=radio].inline {
   .room-view .content-wrapper {
     background: #000;
     color: #FFF;
-    display: table;
     padding-bottom: 20px; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .content-wrapper {
         padding-bottom: 0; } }
   .room-view a {
@@ -13887,7 +13892,7 @@ input[type=radio].inline {
   .room-view article {
     padding-left: 25px;
     padding-right: 25px; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view article {
         border-right: 0;
         display: -webkit-box;
@@ -13900,7 +13905,7 @@ input[type=radio].inline {
       border: 0; }
     .room-view article > figure {
       position: relative; }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-view article > figure {
           width: 115px;
           flex: 0 0 115px;
@@ -13923,7 +13928,7 @@ input[type=radio].inline {
             height: 40px;
             margin-left: -20px;
             margin-top: -20px; } }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-view article > figure.video:after {
             width: 30px;
             height: 30px;
@@ -13970,19 +13975,19 @@ input[type=radio].inline {
         display: none; }
   .room-view .subfeature {
     border-right: 1px solid #d4d4d4; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .subfeature > a {
         padding-top: 10px;
         padding-bottom: 15px; } }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .subfeature {
         border-right: none;
         border-top: 1px solid #dadada;
         padding-left: 0; } }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .subfeature article {
         padding: 10px 0 0 0; } }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .subfeature article > .content > .category {
         font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
         font-size: 0.75rem;
@@ -13992,7 +13997,7 @@ input[type=radio].inline {
       display: none; }
     .room-view .subfeature article > .content > h2 {
       margin-top: 6px; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .subfeature article > .content > time {
         display: none; } }
   .room-view .subfeature:last-child {
@@ -14009,7 +14014,7 @@ input[type=radio].inline {
     padding-bottom: 20px;
     border-bottom: 1px solid #dadada;
     margin-bottom: 25px; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-view .featured article {
         flex-wrap: wrap;
         -webkit-flex-wrap: wrap;
@@ -14023,7 +14028,7 @@ input[type=radio].inline {
         .room-view .featured article > figure {
           width: 54%;
           flex: 0 0 54%; } }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-view .featured article > figure {
           width: 100%;
           flex: 0 0 100%; } }
@@ -14040,7 +14045,7 @@ input[type=radio].inline {
           left: 43%;
           height: 100px;
           width: 100px; } }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-view .featured article > figure:after {
           top: 45%;
           left: 43%;
@@ -14056,7 +14061,7 @@ input[type=radio].inline {
       @media screen and (max-width: 1200px) {
         .room-view .featured article > .content {
           padding: 15px 20px 5px 25px; } }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-view .featured article > .content > .category {
           font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
           font-size: 0.75rem;
@@ -14072,7 +14077,7 @@ input[type=radio].inline {
           .room-view .featured article > .content > h2 {
             font-size: 2.375rem;
             line-height: 2.85rem; } }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-view .featured article > .content > h2 {
             font-size: 1.5rem;
             line-height: 1.8rem; } }
@@ -14088,7 +14093,7 @@ input[type=radio].inline {
           .room-view .featured article > .content > p {
             font-size: 1rem;
             line-height: 1.2rem; } }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-view .featured article > .content > p {
             display: none; } }
 
@@ -16051,14 +16056,15 @@ input[type=radio].inline {
     border-bottom: solid 1px #d4d4d4;
     padding-top: 25px;
     padding-bottom: 20px; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-investigations .articles {
         border-bottom: 0;
         padding-top: 15px; } }
-    .room-investigations .articles .row > div {
-      border-right: 1px solid #d4d4d4; }
-      .room-investigations .articles .row > div:last-child {
-        border-right: 0; }
+    @media screen and (min-width: 992px) {
+      .room-investigations .articles .row > div {
+        border-right: 1px solid #d4d4d4; } }
+    .room-investigations .articles .row > div:last-child {
+      border-right: 0; }
   .room-investigations article {
     display: -webkit-box;
     display: -webkit-flex;
@@ -16066,7 +16072,7 @@ input[type=radio].inline {
     display: flex;
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-investigations article {
         flex-wrap: nowrap;
         -webkit-flex-wrap: nowrap;
@@ -16091,7 +16097,7 @@ input[type=radio].inline {
         text-transform: uppercase;
         display: block;
         line-height: 1; }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-investigations article > .content > .category {
             font-size: 0.75rem;
             line-height: 0.9rem; } }
@@ -16117,7 +16123,7 @@ input[type=radio].inline {
     height: 100%; }
     .room-investigations .subfeature-investigations article > .content .category {
       color: #aa272e; }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-investigations .subfeature-investigations article > .content .category {
           font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
           font-size: 0.75rem;
@@ -16148,7 +16154,7 @@ input[type=radio].inline {
     @media screen and (max-width: 1200px) {
       .room-investigations > .featured {
         height: auto; } }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .room-investigations > .featured {
         margin-left: -15px;
         margin-right: -15px; } }
@@ -16170,7 +16176,7 @@ input[type=radio].inline {
       -webkit-flex-direction: row-reverse;
       flex-direction: row-reverse;
       border: 0; }
-      @media screen and (max-width: 620px) {
+      @media screen and (max-width: 767px) {
         .room-investigations > .featured > a > article {
           display: block;
           flex-direction: column; } }
@@ -16188,7 +16194,7 @@ input[type=radio].inline {
         @media screen and (max-width: 991px) {
           .room-investigations > .featured > a > article > .content {
             max-width: 290px; } }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-investigations > .featured > a > article > .content {
             max-width: initial; } }
         @media screen and (max-width: 1200px) {
@@ -16262,7 +16268,7 @@ input[type=radio].inline {
             -webkit-flex: 0 0 60%;
             -ms-flex: 0 0 60%;
             flex: 0 0 60%; } }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 767px) {
           .room-investigations > .featured > a > article > figure {
             width: 100%;
             flex: 0 0 100%;
@@ -16291,11 +16297,24 @@ input[type=radio].inline {
   line-height: 0.75rem;
   position: absolute; }
 
+.article__headline {
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-size: 3.625rem;
+  line-height: 4.35rem;
+  margin-top: 40px;
+  margin-bottom: 47px;
+  font-weight: 700; }
+  @media screen and (max-width: 767px) {
+    .article__headline {
+      font-size: 1.875rem;
+      line-height: 2.25rem; } }
+
 .article article.article-main .page-content {
   clear: both;
   margin-top: 70px; }
   .article article.article-main .page-content .content-block-top {
-    margin-bottom: 17px; }
+    margin-bottom: 17px;
+    height: 30px; }
     .article article.article-main .page-content .content-block-top div.articleTimes {
       float: right;
       text-align: right; }
@@ -16423,14 +16442,6 @@ input[type=radio].inline {
       /* IE6-9 */ }
   .article article.article-main .page-content .article_content a {
     color: #8a8b93; }
-  .article article.article-main .page-content .article_content h1 {
-    margin-top: 40px;
-    margin-bottom: 47px;
-    font-weight: 700; }
-    @media screen and (max-width: 767px) {
-      .article article.article-main .page-content .article_content h1 {
-        font-size: 1.875rem;
-        line-height: 2.25rem; } }
   .article article.article-main .page-content .article_content > p {
     font-size: 1.25rem;
     line-height: 1.5rem;

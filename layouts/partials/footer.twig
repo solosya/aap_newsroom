@@ -3,13 +3,13 @@
     <div class="footer-top">
         <div class="container">        
             <div class="row">
-                <div class="col-sm-5 col-md-3 icon-wrapper">
+                <div class="col-md-5 col-lg-3 icon-wrapper">
                     <a class="footer-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                         <img class="footer-logo__reversed" src="{{networkData.templatePath}}/static/images/newsroom-reversed2.png" alt="logo">
                     </a>
                     <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
                 </div><!-- .col-sm-3-->
-                <div class="col-sm-7 pull-right text-right logo-wrapper u-mobile-margin-bottom-50">
+                <div class="col-md-7 pull-right text-right logo-wrapper u-mobile-margin-bottom-50">
                     <img src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" class="symbol">
 
                     <div class="footer-subscribe">
@@ -46,7 +46,7 @@
             </div><!--row-->
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <div class="social-links">
                         <ul>
 
@@ -63,7 +63,7 @@
                     <p style="color:white;font-size:12px">*Joint winner of Voyager Media Awards 'Website of the Year' with Stuff.co.nz</p><!-- .footer-menu -->
                 </div><!-- .col-sm-12--> #}
 
-                <div class="col-sm-12" style="">
+                <div class="col-md-12" style="">
                     <div class="footer-menu">
                         <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
                     </div><!-- .footer-menu -->
@@ -73,44 +73,35 @@
     </div><!-- .footer-top-->
 
     <div class="footer-btm">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/terms-and-conditions">Terms and Conditions</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/faq">Pro FAQ</a></li>
-                            <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">New Zealand Media Council</a></li>
-                            
-                        </ul>
-                    </div><!-- .footer-menu -->
-                </div><!-- .col-sm-6-->
+        <div class="footer-menu">
+            <ul>
+                <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
+                <li><a href="{{networkData.defaultBlogUrl}}/terms-and-conditions">Terms and Conditions</a></li>
+                <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
+                <li><a href="{{networkData.defaultBlogUrl}}/faq">Pro FAQ</a></li>
+                <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">New Zealand Media Council</a></li>
+                
+            </ul>
+        </div><!-- .footer-menu -->
+        <div class="rooms-link">
+            <ul>
+                {% set menuItems = headerMenu %}
+                {% for i, parentItem in menuItems %}
+                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                    
+                    {% if (parentItem.blogTitle != "" and parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
+                        <li>
+                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
+                            </a>
+                        </li>
+                    {% endif %}
 
-                <div class="col-sm-12">
-                    <div class="rooms-link">
-                        <ul>
-                            {% set menuItems = headerMenu %}
-                            {% for i, parentItem in menuItems %}
-                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                                
-                                {% if (parentItem.blogTitle != "" and parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
-                                        </a>
-                                    </li>
-                                {% endif %}
+                {% endfor %}
 
-                            {% endfor %}
-
-                        </ul>
-                    </div>
-                </div><!-- .col-sm-6-->
-            </div><!-- .row-->
-        </div><!-- .container-->
+            </ul>
+        </div>
     </div><!-- .footer-btm-->
 
 <script>

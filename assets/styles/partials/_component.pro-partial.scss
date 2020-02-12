@@ -197,8 +197,12 @@
         }
 
         .row > div{
-			border-right: 1px solid #dadada;
-			>a>article>figure{
+            
+            @media #{$desktop-up}{
+                border-right: 1px solid #dadada;
+            }
+
+            >a>article>figure{
                 max-height: 129px;
                 @media #{$mobile}{
                     max-height: 90px;

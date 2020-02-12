@@ -1,4 +1,4 @@
-<div id="pp-banner" class="hidden-print u-desktop-margin-bottom-20 u-desktop-padding-bottom-10 hidden-xs"></div>
+<div id="pp-banner" class="hidden-print u-desktop-margin-bottom-20 u-desktop-padding-bottom-10 d-none d-md-block"></div>
 
 {% if pageClass | lower == 'subscribe' or pageURL == '/auth/thank-you' %}
     {% set paywallSection = true %}
@@ -117,10 +117,10 @@
                     <div class="site-header__sponsor-logos">
                         <p class="wisp-logo__text">Supported by</p>
                         <a href="https://www.sky.co.nz/sport">
-                            <img class="sky-logo visible-xs-block visible-sm-block" src="{{networkData.templatePath}}/static/images/logos/sky-logo-mono.svg">
+                            <img class="sky-logo visible-xs-block visible-sm-block d-md-none" src="{{networkData.templatePath}}/static/images/logos/sky-logo-mono.svg">
                         </a>
                         <a href="https://www.sky.co.nz/sport">
-                            <img class="sky-logo visible-md-block visible-lg-block" src="{{networkData.templatePath}}/static/images/logos/sky-hoz-logo-mono.svg">
+                            <img class="sky-logo visible-md-block visible-lg-block d-none d-md-block" src="{{networkData.templatePath}}/static/images/logos/sky-hoz-logo-mono.svg">
                         </a>
                         <a href="https://womeninsport.org.nz">
                             <img class="wisp-logo" src="{{networkData.templatePath}}/static/images/logos/WISP-logo2.png">
@@ -184,7 +184,7 @@
     {# **********************************************************
                             SIGN-IN
     ********************************************************** #}
-    <div class="site-header-signin u-margin-top-30 hidden-xs">
+    <div class="site-header-signin u-margin-top-30 d-none d-md-flex">
         {% if loggedin %}
             <p class="site-header-signin__name">Hi, {{user.firstname}} </p>
             <div class="auth">
@@ -311,7 +311,7 @@
 
 
 
-    <div class="site-header-signin d-block d-sm-none">
+    <div class="site-header-signin d-block d-md-none">
         
         <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %}style="width:80.5%;"{% endif %}>
             <p><b style="font-weight:700;">Become a supporter</b><br />via PressPatron</p>
@@ -322,7 +322,7 @@
             <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="site-header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
         {% else %}
             <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right site-header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} hidden-xs{% endif %}">SUBSCRIBE TO PRO</a>
+            <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
         {% endif %}
     
     </div>

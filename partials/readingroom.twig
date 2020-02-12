@@ -6,7 +6,7 @@
     </header>
 
 {{this.render('_single-article.twig', {
-    article: sections['readingroom'].feed.articles[0], 
+    article: sections['sportsroom'].feed.articles[0], 
     position: 1, 
     containerClass: 'featured reading', 
     imageSize: {width:1140, height:430},
@@ -18,11 +18,11 @@
         <div class="row">
             
             {% for i in 1..2 %}
-                {% if sections['readingroom'].feed.articles[i] %}        
+                {% if sections['sportsroom'].feed.articles[i] %}        
                 {{this.render('_single-article.twig', {
-                    article: sections['readingroom'].feed.articles[i], 
+                    article: sections['sportsroom'].feed.articles[i], 
                     position: i+1, 
-                    containerClass: 'col-sm-12 col-md-6', 
+                    containerClass: 'col-md-12 col-lg-6', 
                     imageSize: {width:203, height:129},
                     swap: 'false'
                 }) | raw}}

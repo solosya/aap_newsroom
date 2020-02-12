@@ -1,14 +1,14 @@
 <section class="pro-partial">
-    <header class="pro-partial__header hidden-xs">
+    <header class="pro-partial__header d-none d-md-flex">
 
         <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
             <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg?v=572" alt="Newsroom Pro" class="img-responsive">
-            
         </a>
         <p class=" pro-partial__header__text d-none d-lg-block">Our subscription service for in-depth political and business analysis – $6.70 a week for two users</p>
         <p class=" pro-partial__header__text d-block d-lg-none" style="margin-top: 5px;">In-depth political and business analysis <br />$6.70 a week for two users</p>
      </header>
-    <header class="pro-partial__headermobile d-block d-sm-none">
+
+    <header class="pro-partial__headermobile d-block d-md-none">
         <a href="{{ sections['newsroom pro'].link }}" class="pro-partial__header__logo">
             <img src="{{networkData.templatePath}}/static/images/newsroom pro-logo.svg?v=572" alt="Newsroom Pro">
             
@@ -33,7 +33,7 @@
                     {{this.render('_single-article.twig', {
                         article         : sections['newsroom pro'].feed.articles[i], 
                         position        : i+1, 
-                        containerClass  : 'col-sm-12 col-md-6', 
+                        containerClass  : 'col-md-12 col-lg-6', 
                         imageSize       : {width:203, height:129},
                         swap            : 'false'
 

@@ -357,11 +357,11 @@
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['investigations'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['readingroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
@@ -369,7 +369,7 @@
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['viewingroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 

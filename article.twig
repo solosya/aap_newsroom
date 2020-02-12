@@ -187,7 +187,7 @@
 
                 <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             
                             <div class="content-wrapper">
                                 
@@ -254,13 +254,15 @@
 
                                <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
+                                    
                                     {% if articleBlog == 'new auckland' %}
                                         <div class="beca-section beca-section__article visible-sm-block visible-xs-block">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
                                     {% endif %}
-                                    <h1>{{ quotes.smarten(article.title) }}</h1>
+                                    
+                                    <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
 
                                     {{ content  | _resizeImages({"width":750}) 
                                                 | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
