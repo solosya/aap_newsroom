@@ -8,7 +8,14 @@
             var deviceSize = getDeviceForAd();
             for (var i=0;i<adslots.length;i++) {
                 var elem = adslots[i];
-                var self = $("#"+elem.id);
+                var self = '';
+                if (elem.id){
+                    self = $("#"+elem.id);
+                } else {
+                    console.log('ad slot has no id');
+                    continue;
+                }
+
                 self.removeClass("j-adslot");
                 self.addClass("j-adslot-filled");
                 var keysArray = [elem.id];
