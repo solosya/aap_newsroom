@@ -190,7 +190,7 @@
 {{ this.beginBody() }}
 
     {% if paywallSection == false and 'edit-profile' not in pageClass %}
-        <hr class="add__gap d-block d-sm-none">
+        <hr class="add__gap d-block d-md-none">
         {% if config['inventory']['adSpace']['banner'][0] is defined %}
             <div class="j-adslot add add-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
         {% endif %}
