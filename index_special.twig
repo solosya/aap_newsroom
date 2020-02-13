@@ -149,7 +149,7 @@
                                 <span class="add-text">Advertisement</span>
                             <!--block-->
                             </div>
-                            <div class="col-sm-6 hidden-xs">
+                            <div class="col-sm-6 d-none d-sm-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData}) | raw }}
                             </div>
                         </section>
@@ -220,7 +220,7 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                         <div class="row subscriptions">
                             <div class="col-sm-12">
-                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'd-none d-md-block'}) | raw }}
                             </div>
                             <div class="col-sm-6 col-md-12">
                                 {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
@@ -229,7 +229,7 @@
                                 {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
                         </div>
-                        {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }} #}
+                        {# {{ this.render('partials/subscribe_pro_grey_bg.twig', {networkData : networkData, class: 'd-none d-md-block'}) | raw }} #}
 
                         <section class="sidebar-news">
                             <header>
@@ -257,7 +257,7 @@
 
 
 
-                        <section class="add sidebar-add hidden-sm hidden-xs">
+                        <section class="add sidebar-add d-none d-md-block">
                                 <div id='sidepanelAd' style='height:600px; width:300px;'>
                                         <script>
                                             document.currentScript.parentNode.id = sidepanelID;

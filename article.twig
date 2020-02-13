@@ -277,7 +277,7 @@
                                     <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                     <a href="/pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
                                     <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
-                                    <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="hidden-xs" />Newsroom Pro for 28 days.</p>
+                                    <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="d-none d-sm-block" />Newsroom Pro for 28 days.</p>
                                     <a href="{{networkData.defaultBlogUrl}}/pro" class="article-subscribe__link">View our subscription options</a>
                                 </div>
                             {% endif %}
@@ -347,7 +347,7 @@
                                     {% endif %}
 
                                     {% if articleBlog == 'new auckland' %}
-                                        <div class="beca-section beca-section__article visible-md-block visible-lg-block">
+                                        <div class="beca-section beca-section__article .d-none .d-lg-block">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
@@ -391,7 +391,7 @@
 
 
 
-                                    <section class="col-sm-12 sidebar-news recent-articles hidden-xs" data-proid="{{proBlogId}}">
+                                    <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
                                         <h3 class="most-viewed__header">MOST VIEWED</h3>
                                         {% set popularArticles = _Article.getPopularArticles({ 
                                                 limit: 5, 
