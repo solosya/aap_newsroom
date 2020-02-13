@@ -1,6 +1,6 @@
 .card-lg-short{
     margin-bottom: 79.5px;
-    @media screen and (max-width: $mobile-break){
+    @media #{$mobile}{
         margin-bottom: 0;
         background: #000;
         margin-left: -15px;
@@ -27,7 +27,7 @@
         position: relative;
         overflow:hidden;
         // height: 517px;
-        @media screen and (max-width: $mobile-break){
+        @media #{$mobile}{
             height: auto;
         }
 
@@ -38,9 +38,6 @@
             height:100%;
             width: 100%;
 
-            @media screen and (max-width: $mobile-break){
-                // display: none;
-            }
 
             > img{
                 max-width: 100%;
@@ -56,7 +53,7 @@
             color: #FFF;
             height:100%;
 
-            @media screen and (max-width: $mobile-break){
+            @media #{$mobile}{
                 padding: 10px 22px;
             }
 
@@ -68,7 +65,7 @@
                 line-height: 1;
                 margin-bottom: 3px;
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile}{
                     color: white;
                     font-family: $font-family-sans-serif;
                     @include font-size(12);
@@ -92,7 +89,7 @@
                     height: auto;
                 }
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile}{
                     @include font-size(20);
                     height: 60px;;
                     padding-top: 0;
@@ -110,7 +107,7 @@
                 bottom:10px;
 
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile}{
                     display: none;
                 }
                 p{
@@ -125,7 +122,7 @@
                 bottom:10px;
                 right:20px;
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile}{
                     float: none;
                     border: 0;
                     padding: 0;
@@ -147,7 +144,7 @@
                     height: 280px;
                     margin-top:40px;
 
-                    @media screen and (max-width: $mobile-break){
+                    @media #{$mobile}{
                         height:auto;
                     }
 

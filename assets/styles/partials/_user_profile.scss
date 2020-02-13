@@ -33,12 +33,13 @@
     
 
     font-family: $font-family-sans-serif;
-    background-color: #f3f3f3;
+    @media #{$tablet-up} {
+        background-color: #f3f3f3;
+    }
 
     label {
         @include font-size(15);
-        // height: 44px;
-        // line-height: 44px;
+        line-height:44px;
         color: color(darkblue);
         // font-weight: bold;
     }
@@ -54,11 +55,11 @@
 
     // }
 
-	.user_profile_section {
-        margin: 36px auto;
-        width: 722px;
+    .user_profile_section {
+        margin: 36px auto 0 auto;
+        max-width: 722px;
 
-		background-color:#fff;
+        background-color:#fff;
         @include padding(40px);
 
         @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
@@ -66,7 +67,7 @@
           @include padding(0);
           margin-top:0;
         }
-	}
+    }
 
     // .no-listings {
     //     color:color(lightgrey);

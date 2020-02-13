@@ -206,7 +206,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'col-sm-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card', 
+                                    containerClass: 'col-md-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card', 
                                     imageSize: {width:99, height:88}
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
@@ -217,7 +217,7 @@
                     <div class="row">
                         {% set blogguid = blogData['guid'] %}
                         {% set blogid = blogData['id'] %}
-                        <div class="col-sm-12 u-margin-top-30">
+                        <div class="col-md-12 u-margin-top-30">
                             
                             {% if articles|length >= limit %}
                                     {{ this.render('partials/ajaxarticles_new.twig', {
@@ -230,7 +230,7 @@
                                         imgheight       : "160",
                                         container       : "mainAjaxArticles" ~ blogid,
                                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                                        card_class      : "col-sm-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
+                                        card_class      : "col-md-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
                                         buttonClass     : "pro-main__loadmore j-pro-loadmore" 
                                     }) | raw }}
                                 {% endif %}
@@ -247,7 +247,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-12 col-md-8 partials-block">
+                    <div class="col-md-12 col-lg-8 partials-block">
                         
                     <!-- INSERT SECTION PARTIALS HERE -->
 
@@ -267,7 +267,7 @@
                             
                             {% if x == 1 %}
                                 <section class="row u-margin-bottom-30 visible-sm-block visible-xs-block">
-                                    <div class="col-sm-6 u-no-margin-top u-mobile-no-padding">
+                                    <div class="col-md-6 u-no-margin-top u-mobile-no-padding">
                                         <div class="pro-sidebar__headerdiv">
                                             <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
                                              <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
@@ -294,7 +294,7 @@
                                             {% endfor %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 u-mobile-margin-top-30 u-mobile-no-padding u-tablet-margin-bottom-40">
+                                    <div class="col-md-6 u-mobile-margin-top-30 u-mobile-no-padding u-tablet-margin-bottom-40">
                                         <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
                                         {% for i in 0..4 if columnArticles[i] %}
                                             {{this.render('/partials/_single-article_column.twig', {
@@ -305,7 +305,7 @@
                                             }) | raw}}
                                         {% endfor %}
                                     </div>
-                                    <div class="col-sm-12 u-margin-top-40 u-margin-bottom-40 visible-xs-block ">
+                                    <div class="col-md-12 u-margin-top-40 u-margin-bottom-40 visible-xs-block ">
                                         {% if extraArticle[0] %}
                                             {{this.render('/partials/_single-article.twig', {
                                                     article         : extraArticle[0], 
@@ -319,13 +319,13 @@
                             {% elseif x == 3 %}
                                 {% set hiddenClass = ['','',' d-block d-sm-none',' d-block d-sm-none'] %}
                                 <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 d-block d-md-none">
-                                    <a href="{{networkData.defaultBlogUrl}}/8things"><h3 class="col-sm-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
+                                    <a href="{{networkData.defaultBlogUrl}}/8things"><h3 class="col-md-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
 
                                     {% for i in 0..7 if eightThingsArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
                                             article         : eightThingsArticles[i], 
                                             swap            : false,
-                                            containerClass  : 'col-sm-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
+                                            containerClass  : 'col-md-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
                                         }) | raw}}
                                     {% endfor %}
                                 </section>
@@ -335,7 +335,7 @@
                                         {{this.render('/partials/_single-article.twig', {
                                                 article         : extraArticle[0], 
                                                 swap            : false,
-                                                containerClass  : 'col-sm-12 card-rec-tablet-extra inverted', 
+                                                containerClass  : 'col-md-12 card-rec-tablet-extra inverted', 
                                                 imageSize: {width:300, height:334}
                                             }) | raw}}
                                     {% endif %}
@@ -347,11 +347,11 @@
                     
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-lg-offset-1 pro-sidebar visible-md-block visible-lg-block">
+                    <div class="col-md-12 col-lg-4 col-lg-3 col-lg-offset-1 pro-sidebar visible-md-block visible-lg-block">
                         
                         <div class="row">
                         
-                            <section class="col-sm-12 u-no-margin-top">
+                            <section class="col-md-12 u-no-margin-top">
                                 <div class="pro-sidebar__headerdiv">
                                     <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
                                      <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
@@ -382,7 +382,7 @@
                                 </div>
 
                             </section>
-                            <section class="col-sm-12 u-margin-top-40">
+                            <section class="col-md-12 u-margin-top-40">
                                 <h3 class="pro-sidebar__colheader">Columnists</h3>
                                 {% for i in 0..4 if columnArticles[i] %}
                                     {{this.render('/partials/_single-article_column.twig', {
@@ -395,7 +395,7 @@
 
                             </section>
 
-                            <section class="col-sm-12 u-margin-top-40">
+                            <section class="col-md-12 u-margin-top-40">
                                  <a href="{{networkData.defaultBlogUrl}}8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
                                 {% for i in 0..7 if eightThingsArticles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
@@ -407,7 +407,7 @@
 
                             </section>
 
-                            <section class="col-sm-12 u-margin-top-40">
+                            <section class="col-md-12 u-margin-top-40">
                                 {% if extraArticle[0] %}
                                     {{this.render('/partials/_single-article.twig', {
                                             article         : extraArticle[0], 

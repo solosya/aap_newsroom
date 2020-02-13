@@ -85,7 +85,7 @@
         </a>
         <section class="featured-slider container-fluid">
 
-                <div class="swiper-container">
+                <div class="swiper-container  u-mobile-margin-left-minus-15 u-mobile-margin-right-minus-15">
                     <div class="swiper-wrapper">
 
                         {% if articles[0] %}                                                                
@@ -113,7 +113,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-sm-6 card-top-story card-top-story-tablet card-top-story-mobile room',
+                                containerClass: 'col-md-6 card-top-story card-top-story-tablet card-top-story-mobile room',
                                 imageSize: {width:203, height:130}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -131,8 +131,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-12 col-md-8">
-                        <div class="card-group">
+                    <div class="col-md-12 col-lg-8">
                             {% if articles[articleCount] %}                                                                
 
                                 {% for i in 0..4 %}
@@ -148,10 +147,9 @@
                                 {% endfor %}
                             {% endif %}
 
-                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-4 sidebar">
+                    <div class="col-md-12 col-lg-4 sidebar">
                         
                         <div class="row">
                             {# {% if (this.title | lower) == 'lockerroom' %}
@@ -165,7 +163,7 @@
 
 
 
-                        <section class="col-sm-12 sidebar-news recent-articles"{% if (this.title | lower) == 'lockerroom' %}style="display:none;"{% endif %}>
+                        <section class="col-md-12 sidebar-news recent-articles"{% if (this.title | lower) == 'lockerroom' %}style="display:none;"{% endif %}>
                             <h3 class="recent-articles__header">
                                 <span class="recent-articles__header-bold">Latest</span> on {{recentPanelBlogName}} 
                             </h3>
@@ -192,13 +190,13 @@
 
 
                             {% if 'livingroom' == blogName | lower %}
-                                <section class="col-sm-12">
+                                <section class="col-md-12">
                                     {{this.render('partials/_livingroom-ad.twig', {containerClass: 'card-sm card-sm-tablet card-sm-mobile advert', networkData: networkData }) | raw}}
                                 </section>
                             {% else %}
 
                                 {% if articles[articleCount] %}                                                               
-                                    <section class="col-sm-12 sidebar-inverted"> 
+                                    <section class="col-md-12 sidebar-inverted"> 
                                             {{this.render('partials/_single-article.twig', {
                                                 article: articles[articleCount], 
                                                 position: (articleCount+1), 
@@ -224,7 +222,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-sm-6 col-md-3 card-sm card-sm-tablet card-sm-mobile',
+                                containerClass: 'col-md-6 col-lg-3 card-sm card-sm-tablet card-sm-mobile',
                                 imageSize: {width:255, height:208}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -245,7 +243,7 @@
                     imgheight       : "208",
                     container       : "mainAjaxArticles",
                     non_pinned      : articlesArr.existingNonPinnedCount, 
-                    card_class      : "col-sm-3 card-sm card-sm-tablet card-sm-mobile",
+                    card_class      : "col-md-4 col-lg-3 card-sm card-sm-tablet card-sm-mobile",
                     buttonClass     : "loadMoreArticles"
                 }) | raw }}
             {% endif %}

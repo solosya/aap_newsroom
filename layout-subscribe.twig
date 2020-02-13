@@ -42,13 +42,13 @@
 
 
 <main id="main" class="" role="main">
-    <div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
+    <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
 
 
     {# <section class="market-hero u-margin-top-40 u-margin-bottom-70">
         <div class="market-hero__content container-fluid">
             <div class="row">
-                <div class="col-md-offset-1 col-md-11">
+                <div class="col-lg-offset-1 col-lg-11">
                     <h1 class="market-hero__headline">Behind the <br class="hidden-xs"/>headlines</h1>
                     <h3 class="market-hero__tagline">You’re just one step away from<br class="hidden-xs" /> reading Newsroom Pro.</h3>
                 </div>
@@ -65,9 +65,9 @@
 
         <section class="row">
 
-            <div class="col-md-offset-1 col-md-7">
+            <div class="offset-lg-1 col-lg-7">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-lg-10">
 
 
                         {% if plan == false  %}
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
 
 
                         <form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
@@ -113,18 +113,18 @@
                             <label>Include 14 day trial period</label>
                         {% endif %} #}
 
-                            <p class="account-form__section-label">Your information</p>
+                            <p class="account-form__section-label  u-margin-bottom-10">Your information</p>
                             {# <input type="text"	 	class="account-form__input" name="username"			id="username" 		value="" placeholder="Username">
                             <p class="account-form__explainer"><i>Username must be at least five characters long and contain no spaces or special characters</i></p> #}
 
-                            <input type="email" 	class="account-form__input" name="email" 			id="email" 			value="" placeholder="Email">
-                            <input type="email" 	class="account-form__input" name="email-confirm" 	id="email-confirm" 	value="" placeholder="Confirm Email">
-                            <input type="text" 		class="account-form__input" name="firstname" 		id="firstname" 		value="" placeholder="First name">
-                            <input type="text" 		class="account-form__input" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
-                            <input type="password" 	class="account-form__input" name="password" 		id="password" 		value="" placeholder="Password">
-                            <p class="account-form__explainer"><i>Passwords must be at least six characters with upper case, lower case and digit</i></p>
+                            <input type="email" 	class="account-form__input u-margin-bottom-10" name="email" 			id="email" 			value="" placeholder="Email">
+                            <input type="email" 	class="account-form__input u-margin-bottom-10" name="email-confirm" 	id="email-confirm" 	value="" placeholder="Confirm Email">
+                            <input type="text" 		class="account-form__input u-margin-bottom-10" name="firstname" 		id="firstname" 		value="" placeholder="First name">
+                            <input type="text" 		class="account-form__input u-margin-bottom-10" name="lastname" 		id="lastname" 		value="" placeholder="Last name">
+                            <input type="password" 	class="account-form__input u-margin-bottom-10" name="password" 		id="password" 		value="" placeholder="Password">
+                            <p class="account-form__explainer u-margin-bottom-10"><i>Passwords must be at least six characters with upper case, lower case and digit</i></p>
                             
-                            <input type="password" 	class="account-form__input" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
+                            <input type="password" 	class="account-form__input u-margin-bottom-10" name="verifypassword" 	id="verifypassword" value="" placeholder="Password verify">
                             <input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
                             
                             {# <div id="countrySelect" class="countrySelect"></div>  #}
@@ -192,7 +192,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-12 u-mobile-no-padding">
+            <div class="col-lg-3 col-md-12 u-mobile-no-padding">
                 <div class="plan-type">
 
                     {% if plan != false %}
@@ -200,15 +200,15 @@
                         <div class="plan-type__body">
 
                             {% set val = plan.plan_value / 100 %}
-                            <div class="col-md-12 col-sm-4">	
+                            <div class="col-lg-12 col-md-4">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
                                 <p class="plan-type__users">{{plan.user_count}} Users</p>
                                 <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
                             </div>
-                            <div class="col-md-12 col-sm-3">
+                            <div class="col-lg-12 col-md-3">
                                 <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
                             </div>
-                            <div class="col-md-12 col-sm-5">
+                            <div class="col-lg-12 col-md-5">
                                 <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
                                 <ul class="plan-type__features">
                                     {{plan.description | raw }}

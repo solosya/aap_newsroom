@@ -345,15 +345,15 @@
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['ideasroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['lockerroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['greenroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 

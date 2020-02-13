@@ -26,14 +26,14 @@
         <section class="card-group search-page__container">
             <div class="container">
                 <div class="row clearfix">
-                    <h1 class="search-page__header col-sm-12">Search Results</h1>
+                    <h1 class="search-page__header col-md-12">Search Results</h1>
                     
                     {% for i in 0..20 %}
                         {% if articles[i] %}                                                                
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-sm-4 card-search card-search-tablet card-search-mobile', 
+                                containerClass: 'col-md-4 card-search card-search-tablet card-search-mobile', 
                                 imageSize: {width:360, height:215}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
@@ -55,7 +55,7 @@
                         container       : "mainAjaxArticles",
                         searchTerm      : search,
                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-4 card-search card-search-tablet card-search-mobile",
+                        card_class      : "col-md-4 card-search card-search-tablet card-search-mobile",
                         buttonClass     : "loadMoreArticles"
                     }) | raw }}
                 {% endif %}

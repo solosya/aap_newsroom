@@ -1,4 +1,5 @@
 .subscription {
+
     // margin-top:90px;
     @media #{$mobile} {
         margin-top:32px;
@@ -38,6 +39,15 @@
     padding-bottom: 21px;
     text-align:center;
     background: color(marketgrey);
+
+    @media #{$tablet} {
+        min-height: 270px;
+    }
+
+
+    @media #{$desktop-up} {
+        min-height: 326px;
+    }
 
     @media screen and (max-width: $sm-break-down) {
         margin-bottom: 30px;
@@ -183,6 +193,7 @@
 
 
 .pro-offers {
+    @include flexbox();
     background: rgba(216,216,216,.3);
 }
 

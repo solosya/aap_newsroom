@@ -53,8 +53,10 @@ input[type=radio] {
     }
 }
 .account-form__label--mobile {
-    @media screen and (max-width: $sm-break-down){
+
+    @media #{$mobile} {
         display: inherit;
+        font-weight: $weightBold;
         margin-bottom: -10px;
         min-width: 130px;
     }
@@ -70,7 +72,7 @@ input[type=radio] {
     height: 44px;
     padding: 7px;
     width:100%;
-    margin-bottom:12px;
+    // margin-bottom:12px;
     padding-left:15px;
     border-radius:6px;
     border: 1px solid color(lightergrey);
@@ -121,8 +123,10 @@ input[type=radio] {
 
 
 .account-form__inline-inputs {
-    display: flex;
-    flex-direction: row;
+
+    @include flexbox();
+    @include align-items(center);
+
     label {
         flex: 2;
     }
