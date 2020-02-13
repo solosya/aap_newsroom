@@ -1,5 +1,5 @@
 .rnz-widget{
-	width: 300px;
+	// width: 300px;
 	@media #{$mobile}{
 		width: 100%;
 		padding: 0;
@@ -39,7 +39,7 @@
 	font-family: $base-font-family;
 	@include font-size(15);
 	font-weight: 600;
-	padding: 10px 23px 10px 0;
+	padding: 10px 23px 10px 40px;
 
 	&:before{
 		counter-increment: rnz-counter;

@@ -290,27 +290,33 @@
                                             SIDEBAR
                     ******************************************************** #}
                     <div class="col-sm-12 col-lg-4 sidebar">
-                        {% if _Page.getPageData("rnz") is defined %}
-                            {% set rnzpage = _Page.getPageData("rnz", false) %}
-                            {{rnzpage.content | raw}}
-                        {% endif %}
+                        <div class="row">
+                            {% if _Page.getPageData("rnz") is defined %}
+                                <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
+                                    {% set rnzpage = _Page.getPageData("rnz", false) %}
+                                    {{rnzpage.content | raw}}
+                                </div>
+                            {% endif %}
 
-                        <section class="add col-md-12 no-padding u-margin-top-30 u-margin-bottom-30">
+
+
+                            <section class="add col-12 no-padding u-margin-top-30 u-margin-bottom-30 u-tablet-order-3 u-desktop-order-2">
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                                 {% endif %}
                                 <span class="add-text">Advertisement</span>
-                        </section>
+                            </section>
 
-                        <div class="row subscriptions">
-                            <div class="col-sm-12 d-none d-lg-block" id='subscribebutton'>
+                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
 
-                            <div class="col-sm-6 col-md-12 u-desktop-margin-top-40 u-mobile-margin-top-40">
+                            <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40 u-tablet-order-2 u-desktop-order-4">
                                 {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
+
                         </div>
+
 
 
                         <section class="sidebar-news recent-articles">
@@ -361,7 +367,7 @@
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['readingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
@@ -369,7 +375,7 @@
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['viewingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
