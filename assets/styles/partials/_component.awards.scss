@@ -4,7 +4,7 @@
 
 .awards__headline {
     font-family: $font-family-sans-serif;
-    font-size: rem(34);
+    @include font-size(34);
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -15,7 +15,7 @@
 
 .awards__p {
     font-family: $font-family-sans-serif;
-    font-size: rem(20);
+    @include font-size(20);
     margin-bottom:10px;
 
 }

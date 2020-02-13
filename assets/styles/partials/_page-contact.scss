@@ -1,7 +1,7 @@
 body.channel.contact, body.section.contact{
     h1{
         font-family:$font-family-sans-serif;
-        font-size: em(47);
+        @include font-size(47);
         font-weight: bold;
         margin-bottom: 45px;
         padding-bottom:30px;
@@ -10,7 +10,7 @@ body.channel.contact, body.section.contact{
 
     h2{
         font-family:$font-family-sans-serif;
-        font-size: em(22);
+        @include font-size(22);
         font-weight: bold;
         margin-top:10px;
         margin-bottom:5px;
@@ -23,7 +23,7 @@ body.channel.contact, body.section.contact{
     }
 
     p {
-        font-size: em(20);
+        @include font-size(20);
 
         span {
             margin-top: 10px;
@@ -60,7 +60,7 @@ body.channel.contact, body.section.contact{
 
     // .form {
     //     p {
-    //         font-size: em(13);
+    //         @include font-size(13);
     //     }
         
 
@@ -77,7 +77,7 @@ body.channel.contact, body.section.contact{
 
 
     // h2{
-    //     font-size: em(33);
+    //     @include font-size(33);
     //     font-weight: normal;
     //     font-style: italic;
     //     border-bottom: solid 1px #dadada;
@@ -85,7 +85,7 @@ body.channel.contact, body.section.contact{
     //     margin-bottom: 60px;
     // }
     // p{
-    //     font-size: em(20);
+    //     @include font-size(20);
     //     line-height: 1.45;
     // }
 }

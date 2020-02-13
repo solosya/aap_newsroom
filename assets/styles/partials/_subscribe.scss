@@ -18,13 +18,13 @@
         > p {
             color: #e22f22;
             margin:0;
-            font-size: em(14);
+            @include font-size(14);
 
             > span {
                 position:relative;
                 top:2px;
                 padding-top:5px;
-                font-size: em(20);
+                @include font-size(20);
             }
         }
     }
@@ -45,7 +45,7 @@ section.subscribe{
 
     h3{
         margin:0;
-        font-size: em(16);
+        @include font-size(16);
         font-weight: 700;
         margin-bottom:2px;
     }
@@ -69,7 +69,7 @@ section.subscribe{
             border: solid 1px #000000;
             border-right: 0;
             color: #6c6c6c;
-            font-size: em(18);
+            @include font-size(18);
         }
 
         .btn{
@@ -87,7 +87,7 @@ section.subscribe{
     > a > button {
         width: 120px;
         height: 40px;
-        font-size: em(16);
+        @include font-size(16);
         display:block;
         margin: 0 auto;
         margin-top:15px;
@@ -97,7 +97,7 @@ section.subscribe{
     }
 
     > p {
-        font-size:rem(14);
+        @include font-size(14);
         margin:5px auto;
     }
 }
@@ -124,7 +124,7 @@ section.subscribe{
 
 
     h3{
-        font-size: em(20);
+        @include font-size(20);
         font-weight: 700;
         margin-bottom:2px;
     }
@@ -148,7 +148,7 @@ section.subscribe{
             border: solid 1px #000000;
             border-right: 0;
             color: #6c6c6c;
-            font-size: em(18);
+            @include font-size(18);
         }
 
         .btn{
@@ -166,7 +166,7 @@ section.subscribe{
     > a > button {
         width: 160px;
         height: 45px;
-        font-size: em(16);
+        @include font-size(16);
         display:block;
         margin: 0 auto;
         color: white;
@@ -176,7 +176,7 @@ section.subscribe{
     }
 
     > p {
-        font-size: rem(14);
+        @include font-size(14);
         margin:10px auto;
     }
 }

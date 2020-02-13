@@ -50,7 +50,7 @@
     }
     
     > p {
-        font-size: em(12.5);
+        @include font-size(12.5);
         color: #6c6c6c;
         font-style: italic;
         font-family: $base-font-family;

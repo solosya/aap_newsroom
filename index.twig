@@ -137,7 +137,7 @@
             <div class="container">
                 <div class="row">
                     
-                    <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-lg-8">
 
 
                         {% if layoutTitle | lower == 'newsroom_opinion' %}
@@ -166,7 +166,7 @@
 
 
 
-                        <div class="card-group">     
+                        <div class="">     
 
                             {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {
@@ -209,14 +209,14 @@
 
                         </div>
 
-                        <section class="add row sidebar-add sidebar-add__idx hidden-md hidden-lg u-tablet-no-margin-top">
-                            <div class="col-sm-6">
+                        <section class="add row sidebar-add sidebar-add__idx  d-lg-none   u-tablet-no-margin-top">
+                            <div class="col-md-6">
                                 {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="0"></div>
                                 {% endif %}
                                 <span class="add-text">Advertisement</span>
                             </div>
-                            <div class="col-sm-6 hidden-xs">
+                            <div class="col-md-6 d-none d-sm-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
                             </div>
                         </section>
@@ -226,7 +226,6 @@
 
 
                         <div class="row">
-                            <div class="card-group">
                                
                             {% for i in 0..2 %}
                                 {% if articles[articleCount] %}
@@ -240,7 +239,6 @@
                                 {% endif %}
                             {% endfor %}
 
-                            </div>
                         </div>
 
 
@@ -285,7 +283,13 @@
 
 
 
-                    <div class="col-sm-12 col-md-4 sidebar">
+
+
+
+                    {# ********************************************************
+                                            SIDEBAR
+                    ******************************************************** #}
+                    <div class="col-sm-12 col-lg-4 sidebar">
                         {% if _Page.getPageData("rnz") is defined %}
                             {% set rnzpage = _Page.getPageData("rnz", false) %}
                             {{rnzpage.content | raw}}
@@ -299,7 +303,7 @@
                         </section>
 
                         <div class="row subscriptions">
-                            <div class="col-sm-12 hidden-sm" id='subscribebutton'>
+                            <div class="col-sm-12 d-none d-lg-block" id='subscribebutton'>
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
 
@@ -341,23 +345,23 @@
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['ideasroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['lockerroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['greenroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['investigations'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['readingroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
@@ -365,7 +369,7 @@
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['viewingroom'].feed.articles|length > 0 %}
+                {% if sections['sportsroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 

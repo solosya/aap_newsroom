@@ -12,7 +12,7 @@
     > .container > h2{
         font-family: $font-family-sans-serif;
         font-weight: bold;
-        font-size: em(20);
+        @include font-size(20);
         color: #000000;
         @media screen and (max-width: $sm-break-down) {
             padding-bottom:10px;

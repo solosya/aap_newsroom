@@ -33,7 +33,7 @@
     margin-top:0;
     margin-bottom:43px;
     font-family: $base-font-family;
-    font-size:rem(33);
+    @include font-size(33);
     font-weight:normal;
     font-style: italic;
 }
@@ -45,7 +45,7 @@
 
 .newsroom-pro-offers__header\@mobile {
     @media #{$mobile} {
-        font-size:rem(22);
+        @include font-size(22);
         margin-top:0;
         margin-bottom:20px;
     }
@@ -54,7 +54,7 @@
 
 .newsroom-pro-offers__text {
     font-family: $font-family-sans-serif;
-    font-size: rem(18);
+    @include font-size(18);
     font-weight: normal;
     font-style: normal;
     letter-spacing: 0.8px;
@@ -64,12 +64,12 @@
 
 .newsroom-pro-offers__text\@tablet {
     @media #{$tablet} {
-        font-size: rem(14);
+        @include font-size(14);
     }
 }
 .newsroom-pro-offers__text\@mobile {
     @media #{$mobile} {
-        font-size: rem(16);
+        @include font-size(16);
         width:auto;
         max-width:none;
     }

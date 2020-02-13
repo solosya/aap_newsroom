@@ -135,7 +135,7 @@
             @include flexbox;
             margin-left:-5px;
             padding:0;
-            font-size: em(18);
+            @include font-size(18);
             >li {
                 list-style:none;
             }
@@ -151,7 +151,7 @@
             @include flexbox;
             padding:0;
 
-            font-size: em(14);
+            @include font-size(14);
             font-weight: 600;
 
             li{

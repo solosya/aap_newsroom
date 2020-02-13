@@ -4,9 +4,7 @@
 }
 
 .profile-section__managed-header{
-    @media #{$desktop-up} {
-        margin-bottom: 25px;
-    }
+    margin-bottom: 25px;
 }
 
 .profile-section--border {
@@ -15,16 +13,16 @@
 }
 
 .profile-section__users-left {
-    font-size:rem(10);
+    @include font-size(10);
     font-weight:400;
     color:rgb(151, 153, 156);
     @media #{$tablet-up} {
         margin-left: 15px;
     }
 }
-.profile-section__cancel {
-    margin-top: -15px;
-}
+// .profile-section__cancel {
+//     margin-top: -15px;
+// }
 .profile-section__cancel-account {
     font-style: italic;
     position: absolute;
@@ -48,7 +46,7 @@
 }
 .profile-section__heading {
     display: inline;
-    font-size: rem(15);
+    @include font-size(15);
     font-weight: bold;
     line-height: 1.33;
     color: black;
@@ -56,7 +54,7 @@
 }
 
 .profile-section__card-errors {
-    font-size:rem(15);
+    @include font-size(15);
     font-weight:600;
     color:color(red);
     margin-top:25px;

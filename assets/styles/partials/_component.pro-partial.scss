@@ -52,7 +52,7 @@
 }
 
 .pro-partial__header__text{
-	font-size: rem(18);
+	@include font-size(18);
 	font-weight: 600;
 	color: black;
 	flex-direction: row;
@@ -65,7 +65,7 @@
 		margin-top: 10px;
 	}
 	@media #{$mobile} {
-		font-size: rem(14);
+		@include font-size(14);
 		margin-top: 0;
 	}
 }
@@ -121,19 +121,19 @@
 			max-height: 100%;
 
             > .category{
-                font-size: em(14);
+                @include font-size(14);
                 color: #e22f22;
                 text-transform: uppercase;
                 display: block;
                 line-height: 1;
 
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(12);
+                    @include font-size(12);
                 }
             }
 
             > h2{
-                font-size: em(28);
+                @include font-size(28);
 				font-weight:normal;
 				color: #fff;
 				height: 85px;
@@ -144,13 +144,13 @@
 				}
 
                 @media #{$mobile}{
-                    font-size: em(20);
+                    @include font-size(20);
                     height: 50px;
                 }
             }
 
             time{
-                font-size: rem(16.5);
+                @include font-size(16.5);
 				color: white;
                 text-transform: uppercase;
                 border-left: 0;
@@ -197,8 +197,12 @@
         }
 
         .row > div{
-			border-right: 1px solid #dadada;
-			>a>article>figure{
+            
+            @media #{$desktop-up}{
+                border-right: 1px solid #dadada;
+            }
+
+            >a>article>figure{
                 max-height: 129px;
                 @media #{$mobile}{
                     max-height: 90px;
@@ -298,13 +302,13 @@
                 }
 
                 .category{
-                    font-size: em(14);
+                    @include font-size(14);
                     font-weight: bold;
                     color: #fff;
                   
                     @media screen and (max-width: $mobile-break) {
                         font-family: $font-family-sans-serif;
-                        font-size: em(14);
+                        @include font-size(14);
                         text-transform: uppercase;
                     }
 
@@ -313,7 +317,7 @@
                 }
 
                 > h2{
-                    font-size: em(44);
+                    @include font-size(44);
                     font-weight: bold;
                     line-height: 1.02;
                     color: #fff;
@@ -322,7 +326,7 @@
 					height: 100px;
 
                     @media screen and (max-width: $md-break){
-                        font-size: em(30);
+                        @include font-size(30);
                     }
 
                     @media screen and (max-width: $mobile-break){
@@ -333,7 +337,7 @@
 
                 > p{
 					display: block;
-                    font-size: em(20);
+                    @include font-size(20);
                     line-height: 1.25;
                     color: #fff;
                     margin-bottom: 30px;

@@ -14,7 +14,7 @@ body.channel, body.section {
     h1.sectionpage {
         color:#1d4a72;
         font-family:$font-family-sans-serif;
-        font-size: em(40);
+        @include font-size(40);
         font-weight:600;
         text-transform:uppercase;
         margin-bottom:25px;
@@ -79,9 +79,9 @@ body.channel, body.section {
                     padding: 70px 15px 10px 31px;
 
                     h2 {
-                        // font-size: em(40);
+                        // @include font-size(40);
                         @media screen and (min-width: $sm-break) and (max-width: $md-break) {
-                            font-size: em(35) !important;
+                            @include font-size(35);
                         }
 
                         
@@ -124,7 +124,7 @@ body.channel, body.section {
                     padding-left: 11px;
                     padding: 10px;
                     font-family: $font-family-sans-serif;
-                    font-size: em(12);
+                    @include font-size(12);
                     font-weight: normal;
                     border-left: solid 1px #dadada;
                     color: #6c6c6c;

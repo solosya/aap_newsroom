@@ -7,7 +7,7 @@
         background: black;
         padding:10px;
         color:white;
-        font-size:rem(18);
+        @include font-size(18);
         font-weight:600;
     }
 
@@ -21,17 +21,17 @@
     }
 
     .plan-type__users {
-        font-size: rem(13);
+        @include font-size(13);
         font-family: $font-family-sans-serif;
         @media #{$mobile} {
-            font-size: rem(16);
+            @include font-size(16);
         }
     }
 
     .plan-type__name {
         margin-top: -20px;
         color:color(red);
-        font-size:rem(18);
+        @include font-size(18);
         font-weight:600;
         letter-spacing: 0.4px;
         font-family: $font-family-sans-serif;
@@ -47,12 +47,12 @@
     }
     
     .plan-type__label {
-        font-size: rem(14);
+        @include font-size(14);
         color:color(red);
         margin-bottom:12px;
         font-weight:700;
         @media #{$mobile} {
-            font-size: rem(16);
+            @include font-size(16);
         }
     }
 
@@ -64,22 +64,22 @@
         margin-top:15px;
         float:right;
         font-style:italic;
-        font-size: rem(14);
+        @include font-size(14);
     }
     .plan-type__features {
         text-align: left;
         font-weight: 600;
-        font-size: rem(13);
+        @include font-size(13);
         li {
             margin-bottom: 10px;
         }
         @media #{$tablet} {
-            font-size: rem(12);   
+            @include font-size(12);   
             li {
                 margin-bottom: 5px;
             }
         }
         @media #{$mobile} {
-            font-size: rem(16);   
+            @include font-size(16);   
         }
     }

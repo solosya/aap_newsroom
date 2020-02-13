@@ -20,7 +20,7 @@
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
-
+    {% set log = _AppHelper.log(hasArticleMediaClass) %}
 
 
 

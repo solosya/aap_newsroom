@@ -1,5 +1,5 @@
 <div class="recent-articles">
-    <header class="sub-header"><span class='hidden-xs'>Recent </span>Articles<span class='hidden-xs'> {% if myArticles is defined and myArticles | length > 0 %}(<a href='{{ _AppHelper.buildUrl('profile/user-posts',{name :  Html.encode(myArticles[0].createdBy['username'])})}}' class='view-more'>View all articles</a>){% endif %}</span>
+    <header class="sub-header"><span class='d-none d-sm-block'>Recent </span>Articles<span class='d-none d-sm-block'> {% if myArticles is defined and myArticles | length > 0 %}(<a href='{{ _AppHelper.buildUrl('profile/user-posts',{name :  Html.encode(myArticles[0].createdBy['username'])})}}' class='view-more'>View all articles</a>){% endif %}</span>
     </header>
     <div id="news-profile">
         <div class="section__content">

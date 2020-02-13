@@ -42,8 +42,8 @@
 <!-- 3 is job, 4 is property, 5 is event -->
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
-<main id="main" class="user_profile account-form u-desktop-margin-top-40 u-mobile-margin-top-150" role="main">
-    <div id="stripekey" class="hidden" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
+<main id="main" class="user_profile account-form u-tablet-margin-top-40 u-desktop-margin-top-40 u-mobile-margin-top-150 u-padding-bottom-40 u-padding-top-20" role="main">
+    <div id="stripekey" class="u-hide" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
     {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
     <div class="container">
 
@@ -64,61 +64,58 @@
                                 <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                                 <input type="hidden" name="profileImage" id="userProfileImage" value="" />
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="firstname">First name</label>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="firstname">First name</label>
+
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="firstname">First name</label>
+                                <div class="account-form__inline-inputs u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for="firstname">First name</label>
                                     <input type="text" id="firstname" class="account-form__input" name="firstname" value="{{user.firstname}}" placeholder="First name" >
                                 </div>
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="lastname">Last name</label>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="lastname">Last name</label>
+
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="lastname">Last name</label>
+                                <div class="account-form__inline-inputs  u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for="lastname">Last name</label>
                                     <input type="text" id="lastname" class="account-form__input" name="lastname" value="{{user.lastname}}" placeholder="Last name" >
                                 </div>                            
                                
                              
-                                {# <label class="account-form__label account-form__label--mobile visible-xs-block" for="username">Username</label>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="username">Username</label>
-                                    <input type="text" id="username" class="account-form__input" name="username" value="{{user.username}}" placeholder="Username" >
-                                </div> #}
 
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="email">Email</label>
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="email">Email</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="email">Email</label>
+                                    <label class="account-form__label d-none d-md-block" for="email">Email</label>
                                     <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" >
                                 </div>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for=""></label>
+                                <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for=""></label>
                                     <p class="account-form__explainer">This is the email address you will sign in with</p>
                                 </div>
 
 
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Change password</label>
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Change password</label>
                                 <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="password">Password</label>
+                                    <label class="account-form__label d-none d-md-block" for="password">Password</label>
                                     <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" >
                                 </div>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for=""></label>
-                                    <p class="account-form__explainer">Passwords must be at least six characters long and contain no spaces</p>
+                                <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for=""></label>
+                                    <p class="account-form__explainer">Passwords must be at least six characters with upper case, lower case and digit</p>
                                 </div>
 
 
 
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Verify Password</label>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="password">Verify Password</label>
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Verify Password</label>
+                                <div class="account-form__inline-inputs  u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for="password">Verify Password</label>
                                     <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password" >
                                 </div>
                                 
 
-                                <label class="account-form__label account-form__label--mobile visible-xs-block" for="password">Organisation</label>
-                                <div class="account-form__inline-inputs">
-                                    <label class="account-form__label hidden-xs" for="organisation">Organisation</label>
+                                <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Organisation</label>
+                                <div class="account-form__inline-inputs  u-margin-bottom-10">
+                                    <label class="account-form__label d-none d-md-block" for="organisation">Organisation</label>
                                     <input type="text" id="organisation" class="account-form__input" value="{{user.business_name}}" name="abn_business_name" placeholder="Organisation (optional)" >
                                 </div>
 
@@ -194,34 +191,34 @@
                                     
                                     {% if pwstats['type'] == 'time' %}
 
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Current Plan</label>
                                             <p type="text" id="currentplan" class="account-form__value">{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}</p>
                                         </div>
 
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="planstatus">Plan Status</label>
                                             <p style="cursor: pointer; cursor: hand;" type="text" id="planstatus" class="account-form__value">{{ pwstats['status'] | capitalize }}</p>
                                         </div>
-                                        <div class="account-form__inline-inputs u-margin-bottom-20 profile-section__cancel">
+                                        <div class="account-form__inline-inputs profile-section__cancel">
                                             {% if pwstats['status'] == 'cancelled' %}
                                                 
                                                 <span  class="profile-section__users-left text-button--italic">Your account will be permanently deleted 30 days after the most recent payment date.</span>
                                                 <a  id='cancelAccount' style="cursor:hand; cursor:pointer;margin-top:-2px;" class="text-button text-button--italic">Restart Subscription</a>
                                                 
                                             {% else %} 
-                                                <a  id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button profile-section__cancel-account">Cancel Subscription</a>
+                                                <a href="#" id='cancelAccount' style="cursor:hand; cursor:pointer;" class="text-button profile-section__cancel-account">Cancel Subscription</a>
                                             {% endif %} 
                                         </div>
 
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="totalusers">My Users</label>
                                             <p type="text" id="totalusers" class="account-form__value">{{ remainingUsers }}</p>
                                         </div>                            
                                        
 
                                         {% if pwstats['status'] != 'free' %}
-                                            <div class="account-form__inline-inputs u-margin-bottom-20">
+                                            <div class="account-form__inline-inputs">
                                                 <label class="account-form__label account-form__label--red account-form__label--mobile" for="expires">Next Payment</label>
                                                 <p type="text" id="expires" class="account-form__value">{{ pwstats['expiry_date']}}</p>
                                             </div>
@@ -229,12 +226,12 @@
 
                                     {% else %} 
 
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Current Plan</label>
                                             <p type="text" id="currentplan" class="account-form__value">{{ pwstats['plan_value']/100}}/{{pwstats['total_articles']}}</p>
                                         </div>
 
-                                        <div class="account-form__inline-inputs u-margin-bottom-20">
+                                        <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="remaining">Articles Remaining</label>
                                             <p type="text" id="remaining" class="account-form__value">{{ pwstats['article_count']}}</p>
                                         </div>                            
@@ -254,7 +251,7 @@
                             <hr class="divide30" style="border-top:1px solid #97999c;">
 
 
-                            <div class='update-card' style="overflow:auto">
+                            <div class='update-card'>
                                 <div class="">
 
                                     <div class="profile-section__header">
@@ -269,7 +266,7 @@
 
                                         <!-- Used to display Element errors -->
                                         <div id="profile-section__card-errors" role="alert"></div>
-                                        <button type="submit" class="text-button text-button--italic u-float-right u-margin-top-20">Change</button>
+                                        <button type="submit" class="text-button text-button--italic u-margin-top-20">Change</button>
                                     </form>
                                 </div>
                             </div>

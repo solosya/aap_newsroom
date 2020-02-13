@@ -9,7 +9,7 @@
 	}
 
 	&__input {
-		font-size: rem(16);
+		@include font-size(16);
 		margin: 0 !important;
 		padding-left:10px;
 		line-height: 46px;
@@ -27,7 +27,7 @@
 		min-width:95px;
 		height: 48px;
 		color:white;
-		font-size: rem(16);
+		@include font-size(16);
 		background:color(red);
 		border:none;
 		@media screen and (max-width: $sm-break-down) {

@@ -29735,7 +29735,7 @@ var systemCardTemplate =
 '<div class="{{containerClass}} "> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap" \
+        class="card swap {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
@@ -29783,7 +29783,7 @@ var cardTemplateTop =
 '<div class="{{cardClass}} "> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap {{articleStatus}}" \
+        class="card swap {{articleStatus}}  {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-status="{{articleStatus}}" \
@@ -30457,7 +30457,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
-    card['hasArticleMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
+    card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
     
     // mainly for screen to turn off lazyload and loading background img
     card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';

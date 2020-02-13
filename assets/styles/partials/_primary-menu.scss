@@ -53,7 +53,7 @@
         }
 
         &__link {
-            font-size:  em(14);
+            @include font-size(14);
             font-weight: 600;
             text-transform: uppercase;
     
@@ -148,7 +148,7 @@
     }
 
     &__submenu-link{
-        font-size: em(14);
+        @include font-size(14);
         text-transform: uppercase;
         color: #fff;
         font-weight: 400;
@@ -209,7 +209,7 @@
         color: #8a8b93;
         display: block;
         position: relative;
-        font-size: em(14);
+        @include font-size(14);
         font-weight: 600;
         text-transform: uppercase;
 
@@ -264,7 +264,7 @@
 //         width: 100%;
 //         background-color: transparent;
 //         color: #000;
-//         font-size: rem(19);
+//         @include font-size(19);
 //         border: 0;
 //         padding-bottom: 2px;
 //         border-bottom: solid 1px #d4d4d4;
@@ -448,7 +448,7 @@
 //                         &:after {
 //                             position: absolute;
 //                             right: 20px;
-//                             font-size: em(20);
+//                             @include font-size(20);
 //                         }
 //                     } 
 //                 }
@@ -636,7 +636,7 @@
 //     .menu-search{
 //         display:flex;
 //         input{
-//             font-size:rem(14);
+//             @include font-size(14);
 //             width:100%;
 //             border:none;
 //             color:black;

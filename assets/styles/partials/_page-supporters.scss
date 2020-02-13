@@ -8,7 +8,7 @@ body.channel.supporters{
 
     h1{
         font-family:$font-family-sans-serif;
-        font-size: em(47);
+        @include font-size(47);
         font-weight: normal;
         margin-bottom: 30px;
         margin-top: 45px;
@@ -16,7 +16,7 @@ body.channel.supporters{
 
     h2{
         font-family:$font-family-sans-serif;
-        font-size: em(18);
+        @include font-size(18);
         font-weight: bold;
         margin-top:38px;
         margin-bottom:15px;
@@ -46,7 +46,7 @@ body.channel.supporters{
     }
 
     p {
-        font-size: em(18);
+        @include font-size(18);
 
         span {
             margin-top: 10px;

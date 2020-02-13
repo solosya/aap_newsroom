@@ -63,22 +63,22 @@
             -ms-flex: 1 0;
 
             > .category{
-                font-size: em(14);
+                @include font-size(14);
                 color: #8a8b93;
                 text-transform: uppercase;
                 display: block;
                 line-height: 1;
 
                 @media screen and (max-width: $mobile-break){
-                    font-size: em(12);
+                    @include font-size(12);
                 }
             }
 
             > h2{
-                font-size: em(20);
+                @include font-size(20);
                 font-weight:normal;
                 @media screen and (max-width: $mmd-break-down){
-                    font-size: em(16);
+                    @include font-size(16);
                 }
             }
 
@@ -108,7 +108,7 @@
               
                 @media screen and (max-width: $mobile-break) {
                     font-family: $font-family-sans-serif;
-                    font-size: em(12);
+                    @include font-size(12);
                     text-transform: uppercase;
                 }
             }
@@ -121,7 +121,7 @@
             }
             > h2 {
                 margin-top:21px;
-                font-size: em(18);
+                @include font-size(18);
                 height:38px;
                 @media screen and (max-width: $mmd-break-down) {
                     height:58px;
@@ -218,13 +218,13 @@
                 }
 
                 .category{
-                    font-size: em(14);
+                    @include font-size(14);
                     font-weight: bold;
                     color: #8a8b93;
                   
                     @media screen and (max-width: $mobile-break) {
                         font-family: $font-family-sans-serif;
-                        font-size: em(14);
+                        @include font-size(14);
                         text-transform: uppercase;
                     }
 
@@ -233,7 +233,7 @@
                 }
 
                 > h2{
-                    font-size: em(44);
+                    @include font-size(44);
                     font-weight: bold;
                     line-height: 1.02;
                     color: #8a8b93;
@@ -241,17 +241,17 @@
                     margin-top:21px;
 
                     @media screen and (max-width: $md-break){
-                        font-size: em(30);
+                        @include font-size(30);
                     }
 
                     @media screen and (max-width: $mobile-break){
-                        font-size: em(22);
+                        @include font-size(22);
                         margin-bottom: 15px;
                     }
                 }
 
                 > p{
-                    font-size: em(20);
+                    @include font-size(20);
                     line-height: 1.25;
                     color: #8a8b93;
                     margin-bottom: 30px;

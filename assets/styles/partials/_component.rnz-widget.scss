@@ -11,7 +11,7 @@
 	color: #FFF !important;
     background: black;
     padding: 5px 0 5px 10px;
-    font-size: rem(23);
+    @include font-size(23);
     font-weight: 600;
     font-family: $font-family-sans-serif;
     &:after{
@@ -36,8 +36,8 @@
 .rnz-widget__li{
 	border-bottom: 1px solid white;
 	list-style: none;
-	font-family: $font-family-serif;
-	font-size: rem(15);
+	font-family: $base-font-family;
+	@include font-size(15);
 	font-weight: 600;
 	padding: 10px 23px 10px 0;
 

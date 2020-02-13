@@ -1,5 +1,5 @@
     
-{% set articleFeed = sections['ideasroom'].feed.articles %}
+{% set articleFeed = sections['sportsroom'].feed.articles %}
 
 {# rotate every n hours #}
 {% set rotation  = 2 %}
@@ -52,17 +52,17 @@
  
  <section class="room-ideas">
      <header class="row">
-         <a href="{{ sections['ideasroom'].link }}" class="col-sm-6 col-xs-12">
+         <a href="{{ sections['ideasroom'].link }}" class="col-12 col-md-6">
              <img src="{{networkData.templatePath}}/static/images/ideasroom-logo.svg?v=572" alt="ideas room" class="img-responsive ideas-logo">
          </a>
-            <div class="future-learning-sponsors col-sm-6 col-xs-12">
-                <a class="hidden-xs" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
-                <a class="hidden-xs" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
-                <a class="hidden-xs" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
+            <div class="future-learning-sponsors col-12 col-md-6">
+                <a class="d-none d-sm-block" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
+                <a class="d-none d-sm-block" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
+                <a class="d-none d-sm-block" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
                 <p>Sponsored by</p>
-                <a class="visible-xs-block" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
-                <a class="visible-xs-block" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
-                <a class="visible-xs-block" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
+                <a class="d-block d-sm-none" href="http://www.victoria.ac.nz/capital-thinking" target="_blank"><img src="{{logoArray['vic-colour'].url}}" alt="vicuni"></a>
+                <a class="d-block d-sm-none" href="https://www.auckland.ac.nz/en/about-us/about-the-university/our-ranking-and-reputation/New-Zealands-world-ranked-University.html" target="_blank"><img src="{{logoArray['uoa-h-blue'].url}}" alt="UOA" style="margin-left:5px"></a>
+                <a class="d-block d-sm-none" href="https://www.otago.ac.nz/postgraduate/?utm_source=newsroom&utm_medium=banner&utm_campaign=postgraduate" target="_blank"><img src="{{logoArray['otago-uni-logo'].url}}" alt="otagouni" style="margin-left:5px"></a>
             </div><!-- .sponsors-->
      </header>
 
@@ -83,7 +83,7 @@
                     {{this.render('_single-article.twig', {
                         article: articles[i], 
                         position: i+1, 
-                        containerClass: 'col-sm-12 col-md-6', 
+                        containerClass: 'col-12 col-lg-6', 
                         imageSize: {width:203, height:129},
                         swap: 'false'
                     }) | raw}}

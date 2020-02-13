@@ -3,14 +3,14 @@
 }
 
 .menu-signin__signout {
-	font-size: rem(14);
+	@include font-size(14);
 	color: #fff;
 	height: 30px;
 	margin: auto;
 }
 
 .menu-signin__subscribe {
-	font-size: rem(14);
+	@include font-size(14);
 	color: #fff;
 	height: 21px;
 	width: 165px;
@@ -24,7 +24,7 @@
 }
 
 .menu-signin__signin {
-	font-size: rem(14);
+	@include font-size(14);
 	color: #fff;
 	height: 41px;
 	width: 80px;
@@ -35,7 +35,7 @@
 }
 
 .menu-signin__account {
-	font-size: rem(14) !important;
+	@include font-size(14);
 	text-transform: unset !important;
 	&:before {
         content: '';

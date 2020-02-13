@@ -23,7 +23,7 @@
 
     .add-text{
         color: $gray-text;
-        font-size: em(12);
+        @include font-size(12);
     }
     &.channel-ad{
          margin-bottom: 80px;

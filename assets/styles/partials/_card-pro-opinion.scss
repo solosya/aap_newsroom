@@ -28,14 +28,14 @@
                 > h2{
                     margin-top: 35px;
                     font-weight: 600;
-                    font-size: rem(20);
+                    @include font-size(20);
                     height:50px;
                 }
 
                 > .author{
                     position: absolute;
                     >p{
-                        font-size: rem(14);
+                        @include font-size(14);
                         font-weight: 600;
                         color: #8a8b93;
                     }
@@ -46,7 +46,7 @@
                 }
 
                 > time{
-                    font-size: rem(12);
+                    @include font-size(12);
                     text-transform: uppercase;
                     color: #e12e21;
                     border-left: none;
@@ -55,7 +55,7 @@
 
                 >p {
                     font-family: $base-font-family;
-                    font-size: rem(18);
+                    @include font-size(18);
                     height:80px; 
                 }
             }

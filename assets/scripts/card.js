@@ -25,7 +25,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
-    card['hasArticleMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
+    card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
     
     // mainly for screen to turn off lazyload and loading background img
     card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';

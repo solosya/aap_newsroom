@@ -89,7 +89,7 @@
                     <div class="col-sm-12 col-md-4 sidebar">
                         <div class="row subscriptions">
                             <div class="col-sm-12" id='subscribebutton'>
-                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'hidden-sm'}) | raw }}
+                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: 'd-none d-md-block'}) | raw }}
                             </div>
                             <div class="col-sm-6 col-md-12">
                                 {{ this.render('partials/newsroom_pro.twig', {networkData : networkData, class: ''}) | raw }}
@@ -103,7 +103,7 @@
 
 
 
-                        <section class="add sidebar-add hidden-sm hidden-xs">
+                        <section class="add sidebar-add d-none d-md-block">
                             {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                 <div class="j-adslot" id="{{config['inventory']['hpage']['mrec'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                             {% endif %}

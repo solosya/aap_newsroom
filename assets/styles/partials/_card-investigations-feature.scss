@@ -125,7 +125,7 @@
                         border-bottom: 1px solid #dadada;
                         min-height:100px;
                         max-height: 100px;
-                        font-size: rem(22);
+                        @include font-size(22);
                         margin-top: 45px;
                         &:before{
                             background-size: 80px;
@@ -139,7 +139,7 @@
                         }
                     }  
                     .category {
-                        font-size: rem(10);
+                        @include font-size(10);
                     }
                     .author{
                         display: block;
@@ -152,7 +152,7 @@
                         }
                         >p{
                             height: 24px;
-                            font-size: rem(12);
+                            @include font-size(12);
                         }
                     }
                     time{
@@ -203,7 +203,7 @@
                         max-height: 15px;
                         margin: 0;
                         >p{
-                            font-size: rem(12);
+                            @include font-size(12);
                             height: 15px;
                             color: #fff;
                         }  
