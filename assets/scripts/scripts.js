@@ -323,7 +323,7 @@ $('document').ready(function() {
     $('.j-recent-header').click(function(e){
         if ($(this).hasClass('faded')) {
             $('.j-recent-header').toggleClass('faded');
-            $('.j-recent-toggle').toggleClass('hidden');
+            $('.j-recent-toggle').toggleClass('u-hide');
         }
     });
 

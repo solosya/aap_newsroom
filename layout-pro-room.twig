@@ -11,21 +11,19 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑           ↑                 ↑            ↑            #}
-{# {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
 
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
 {% set sections =  {
-    0 : "corporate",
-    1 : "government"
-    } 
+    0 : "australia",
+    1 : "sportsroom"
+} 
 %}
 
-{% set variableSections = ['economy','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %}
+{# {% set variableSections = ['economy','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %} #}
+{% set variableSections = ['newsroom pro','business','classifieds','news','sport'] %}
 
 {% set feedCompare = {} %}
 {% set sectionRanks = {} %}
@@ -47,29 +45,18 @@
     ] 
 %}
 
-{% set popularArticles = _Article.getPopularArticles({ 
-        limit: 6, 
-        blogId: blogData['id'], 
-        interval: 168 
-    }) %}
-
-{% set recentArticles = _Article.getRecentArticles({ 
-        limit: 6, 
-        blogId: blogData['id'], 
-         
-    }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
+{% set recentArticles  = _Article.getRecentArticles( { limit: 6, blogId: blogData['id'] }) %}
 
 
 {% for vSection in variableSections %}
-
     {% set vBlog = "" %}
-
-    {% for blog in networkData.networkBlogs %}
-
+    {% set break = false %}
+    {% for blog in networkData.networkBlogs if not break %}
         {% if blog.title | lower == vSection %}
             {% set vBlog = blog.id %}
+            {% set break = true %}
         {% endif %}
-
     {% endfor %}
 
 
@@ -77,24 +64,28 @@
     {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
     {% set feedCompare = feedCompare | merge({  
         (vSection) : {
-            'time' : (publishTime), 
+            'time'    : (publishTime), 
             'section' : (vSection)
         } 
     }) %}
-    
-
 {% endfor %}
+
+
+
+{# {% set log = _AppHelper.log(feedCompare) %} #}
+
+
 
 {% for fSection in feedCompare %}
 
     {% set rank = 0 %}
     {% for vSection in feedCompare %}
-        
         {% if vSection.section != fSection.section and fSection.time > vSection.time %}
-
             {% set rank = rank + 1 %}
         {% endif %}
     {% endfor %}
+
+
     {% if fSection.section %}
         {% set sectionRanks  = sectionRanks | merge({ 
             (fSection.section) : { 
@@ -103,16 +94,15 @@
             } 
         })  %}
     {% endif %}
-
 {% endfor %}
 
 
+{# {% set log = _AppHelper.log(sectionRanks) %} #}
 
 {% set x = 2 %}
 {% for i in 0..7 %}
     {% for section in sectionRanks %}
         {% if section.rank == i  %}
-
             {% set sections = sections | merge({ (x) : section.section }) %}
             {% set x = x + 1 %}
         {% endif %}
@@ -120,13 +110,16 @@
     {% endfor %}
 {% endfor %}
 
+{# {% set log = _AppHelper.log(sections) %} #}
+
+
+
 
 {% set x = 0 %}
 {% for i in sections %}
+    {% set limit = 3 %}
     {% if x == 0 or x == 4 or x == 8 %}
         {% set limit = 4 %}
-    {% else %}
-        {% set limit = 3 %}
     {% endif %}
 
     {% for blog in networkData.networkBlogs %}
@@ -143,38 +136,33 @@
                     'blogid'        : blog.id
                     }
                 }) %}
-                                                       
+
         {% endif %}
     {% endfor %}
     {% set x = x + 1 %}
 {% endfor %}
 
+
+
+
 {% for blog in networkData.networkBlogs %}
+
     {% if blog.title | lower == "columnists" %}
+        {% set columnArticles = _Article.getRecentArticles({ limit: 5,  blogId: blog['id'] }) %}
 
-         {% set columnArticles = _Article.getRecentArticles({ 
-                                    limit: 5, 
-                                    blogId: blog['id'], 
-                                     
-                            }) %}
     {% elseif blog.title | lower == "8 things" %}
+        {% set eightThingsArticles = _Article.getRecentArticles({ limit: 8,  blogId: blog['id'] }) %}
 
-         {% set eightThingsArticles = _Article.getRecentArticles({ 
-                                    limit: 8, 
-                                    blogId: blog['id'], 
-                                     
-                            }) %} 
     {% elseif blog.title | lower == "pro-extra" %}
-
-         {% set extraArticle = _Article.getRecentArticles({ 
-                                    limit: 1, 
-                                    blogId: blog['id'], 
-                                     
-                            }) %}                                               
+        {% set extraArticle = _Article.getRecentArticles({ limit: 1,  blogId: blog['id'] }) %}
     {% endif %}
 
 {% endfor %}
     
+
+
+
+
     <main id="main" class="site-main pro-room {{this.title | lower}}" role="main">
         <section class="featured-slider container-fluid">
                 <div class="swiper-container">
@@ -214,10 +202,11 @@
                         {% endfor %}
 
                     </div>
+                    
                     <div class="row">
                         {% set blogguid = blogData['guid'] %}
                         {% set blogid = blogData['id'] %}
-                        <div class="col-md-12 u-margin-top-30">
+                        <div class="col-lg-12 u-margin-top-30">
                             
                             {% if articles|length >= limit %}
                                     {{ this.render('partials/ajaxarticles_new.twig', {
@@ -230,11 +219,11 @@
                                         imgheight       : "160",
                                         container       : "mainAjaxArticles" ~ blogid,
                                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                                        card_class      : "col-md-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
+                                        card_class      : "col-lg-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
                                         buttonClass     : "pro-main__loadmore j-pro-loadmore" 
                                     }) | raw }}
                                 {% endif %}
-                            <div class="pro-main__loadless hidden j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- SHOW LESS</div>
+                            <div class="pro-main__loadless u-hide j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- SHOW LESS</div>
                         </div>
                     </div>
                 </div>
@@ -247,7 +236,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-12 col-lg-8 partials-block">
+                    <div class="col-lg-8 partials-block">
                         
                     <!-- INSERT SECTION PARTIALS HERE -->
 
@@ -265,13 +254,21 @@
                         
                             {{this.render('render.twig', params) | raw}} 
                             
+
+
+
+
+
+
+
                             {% if x == 1 %}
-                                <section class="row u-margin-bottom-30 visible-sm-block visible-xs-block">
+                                <section class="row u-margin-bottom-30 d-flex d-lg-none">
+                                    
                                     <div class="col-md-6 u-no-margin-top u-mobile-no-padding">
                                         <div class="pro-sidebar__headerdiv">
                                             <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
-                                             <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
-                                         </div>
+                                            <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
+                                        </div>
                                         
 
                                         <div class="j-recent-toggle">
@@ -284,7 +281,7 @@
                                             {% endfor %}
                                         </div> 
 
-                                        <div class="j-recent-toggle hidden">
+                                        <div class="j-recent-toggle u-hide">
                                             {% for i in 0..5 if recentArticles[i] %}
                                                 {{this.render('/partials/_single-article_recent.twig', {
                                                     article         : recentArticles[i], 
@@ -294,21 +291,24 @@
                                             {% endfor %}
                                         </div>
                                     </div>
+
+
                                     <div class="col-md-6 u-mobile-margin-top-30 u-mobile-no-padding u-tablet-margin-bottom-40">
                                         <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
-                                        {% for i in 0..4 if columnArticles[i] %}
+                                        {% for i in 0..4 if articles[i] %}
                                             {{this.render('/partials/_single-article_column.twig', {
-                                                article         : columnArticles[i], 
+                                                article         : articles[i], 
                                                 swap            : false,
                                                 containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
                                                 imageSize: {width:1, height:1}
                                             }) | raw}}
                                         {% endfor %}
                                     </div>
-                                    <div class="col-md-12 u-margin-top-40 u-margin-bottom-40 visible-xs-block ">
-                                        {% if extraArticle[0] %}
+
+                                    <div class="col-lg-12 u-margin-top-40 u-margin-bottom-40 d-block d-sm-none ">
+                                        {% if articles[0] %}
                                             {{this.render('/partials/_single-article.twig', {
-                                                    article         : extraArticle[0], 
+                                                    article         : articles[0], 
                                                     swap            : false,
                                                     containerClass  : 'card-sm-mobile-inverted', 
                                                     imageSize: {width:136, height:135}
@@ -317,25 +317,36 @@
                                     </div>
                                 </section>
                             {% elseif x == 3 %}
-                                {% set hiddenClass = ['','',' d-block d-sm-none',' d-block d-sm-none'] %}
-                                <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 d-block d-md-none">
-                                    <a href="{{networkData.defaultBlogUrl}}/8things"><h3 class="col-md-12 pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
 
-                                    {% for i in 0..7 if eightThingsArticles[i] %}
-                                        {{this.render('/partials/_single-article.twig', {
-                                            article         : eightThingsArticles[i], 
-                                            swap            : false,
-                                            containerClass  : 'col-md-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
-                                        }) | raw}}
-                                    {% endfor %}
+
+                                {% set hiddenClass = ['','',' d-block d-sm-none',' d-block d-sm-none'] %}
+                                <section class="row u-no-margin-top u-margin-bottom-60 u-mobile-margin-bottom-30 d-block d-lg-none">
+                                    <div class="col-12">
+                                        <a href="{{networkData.defaultBlogUrl}}/8things"><h3 class="pro-sidebar__colheader u-mobile-no-padding">Today's 8 things</h3></a>
+                                    </div>
+                                    {# eight things #}
+                                    {# <div class="row"> #}
+                                    <div class="col-12">
+                                        <div class="row">
+                                            {% for i in 0..7 if articles[i] %}
+                                                {{this.render('/partials/_single-article.twig', {
+                                                    article         : articles[i], 
+                                                    swap            : false,
+                                                    containerClass  : 'col-md-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
+                                                }) | raw}}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                 </section>
+
+
                             {% elseif x == 7 %}
                                 <section class="row u-margin-top-40 d-block d-sm-none">
                                     {% if extraArticle[0] %}
                                         {{this.render('/partials/_single-article.twig', {
                                                 article         : extraArticle[0], 
                                                 swap            : false,
-                                                containerClass  : 'col-md-12 card-rec-tablet-extra inverted', 
+                                                containerClass  : 'col-lg-12 card-rec-tablet-extra inverted', 
                                                 imageSize: {width:300, height:334}
                                             }) | raw}}
                                     {% endif %}
@@ -347,14 +358,25 @@
                     
                     </div>
 
-                    <div class="col-md-12 col-lg-4 col-lg-3 col-lg-offset-1 pro-sidebar d-none d-lg-block">
+
+
+
+
+
+
+
+
+                    {# *******************************************
+                                    SIDEBAR
+                    ******************************************* #}
+                    <div class="col-md-12 col-lg-4 col-xl-3 offset-xl-1 pro-sidebar d-none d-lg-block">
                         
                         <div class="row">
                         
-                            <section class="col-md-12 u-no-margin-top">
+                            <section class="col-12 u-no-margin-top">
                                 <div class="pro-sidebar__headerdiv">
                                     <h3 class="pro-sidebar__header pro-sidebar__border j-recent-header">Most Viewed</h3>
-                                     <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
+                                    <h3 class="pro-sidebar__header j-recent-header faded">Most Recent</h3>
                                  </div>
                                 
 
@@ -368,25 +390,28 @@
                                 {% endfor %}
                                 </div> 
 
-                                <div class="j-recent-toggle hidden">
-                                    
-
-                                
-                                {% for i in 0..5 if recentArticles[i] %}
-                                    {{this.render('/partials/_single-article_recent.twig', {
-                                        article         : recentArticles[i], 
-                                        swap            : false,
-                                        containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
-                                    }) | raw}}
-                                {% endfor %}
+                                <div class="j-recent-toggle u-hide">
+                                    {% for i in 0..5 if recentArticles[i] %}
+                                        {{this.render('/partials/_single-article_recent.twig', {
+                                            article         : recentArticles[i], 
+                                            swap            : false,
+                                            containerClass  : 'card-pro-most card-pro-most-tablet card-pro-most-mobile'
+                                        }) | raw}}
+                                    {% endfor %}
                                 </div>
 
                             </section>
-                            <section class="col-md-12 u-margin-top-40">
+
+
+
+
+
+
+                            <section class="col-lg-12 u-margin-top-40">
                                 <h3 class="pro-sidebar__colheader">Columnists</h3>
-                                {% for i in 0..4 if columnArticles[i] %}
+                                {% for i in 0..4 if articles[i] %}
                                     {{this.render('/partials/_single-article_column.twig', {
-                                        article         : columnArticles[i], 
+                                        article         : articles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
                                         imageSize: {width:141, height:113}
@@ -395,11 +420,11 @@
 
                             </section>
 
-                            <section class="col-md-12 u-margin-top-40">
+                            <section class="col-lg-12 u-margin-top-40">
                                  <a href="{{networkData.defaultBlogUrl}}8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
-                                {% for i in 0..7 if eightThingsArticles[i] %}
+                                {% for i in 0..7 if articles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                        article         : eightThingsArticles[i], 
+                                        article         : articles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile'
                                     }) | raw}}
@@ -407,12 +432,12 @@
 
                             </section>
 
-                            <section class="col-md-12 u-margin-top-40">
-                                {% if extraArticle[0] %}
+                            <section class="col-lg-12 u-margin-top-40">
+                                {% if articles[0] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                            article         : extraArticle[0], 
+                                            article         : articles[0], 
                                             swap            : false,
-                                            containerClass  : 'card-sm card-sm-tablet card-sm-mobile inverted', 
+                                            containerClass  : 'card-sm card-sm--reverse card-sm-tablet card-sm-tablet--reverse card-sm-mobile card-sm-mobile--reverse', 
                                             imageSize: {width:300, height:334}
                                         }) | raw}}
                                 {% endif %}
@@ -424,9 +449,15 @@
         </section>
     </main>
 
-    <script>
 
-        
+
+
+
+
+
+
+    <script>
+       
         // main script is defered so event listener makes sure
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function() {
@@ -437,7 +468,7 @@
                 $('.j-pro-loadmore').click( function(e){
                     e.preventDefault();
                     //make sure the loaded boxes and the show less are showing 
-                    $(this).parent().children('div').removeClass('hidden');
+                    $(this).parent().children('div').removeClass('u-hide');
                     //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
                     //generate a new feed for the active box and fetch it
@@ -453,13 +484,13 @@
                     //hide  or show the load more buttons and loaded-more articles
                     this.id = "j-active";
                     if ($('#j-active').text() == '- SHOW LESS') {
-                        $('#j-active').parent().children('.row').removeClass('hidden');
-                        $('#j-active').parent().children('.row').addClass('hidden');
-                        $('#j-active').parent().children('a').addClass('hidden');
+                        $('#j-active').parent().children('.row').removeClass('u-hide');
+                        $('#j-active').parent().children('.row').addClass('u-hide');
+                        $('#j-active').parent().children('a').addClass('u-hide');
                         $('#j-active').text('+ SHOW MORE');
                     } else {
-                        $('#j-active').parent().children('.row').removeClass('hidden');
-                        $('#j-active').parent().children('a').removeClass('hidden');
+                        $('#j-active').parent().children('.row').removeClass('u-hide');
+                        $('#j-active').parent().children('a').removeClass('u-hide');
                         $('#j-active').text('- SHOW LESS');
                     }
                     $(this).removeAttr('id');

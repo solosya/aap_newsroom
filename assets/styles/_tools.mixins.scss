@@ -473,6 +473,19 @@
 //
 // (Placeholder selectors for each type, for those who rather @extend)
 
+
+@mixin flex-height($int) { 
+	height: $int;
+	min-height: $int;
+	max-height: $int;
+}
+@mixin flex-width($int) { 
+	width: $int;
+	min-width: $int;
+	max-width: $int;
+}
+
+
 @mixin flexbox {
 	display:-webkit-box;
 	display:-webkit-flex;

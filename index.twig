@@ -216,7 +216,7 @@
                                 {% endif %}
                                 <span class="add-text">Advertisement</span>
                             </div>
-                            <div class="col-md-6 d-none d-sm-block">
+                            <div class="col-md-6 d-none d-md-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
                             </div>
                         </section>
@@ -232,7 +232,7 @@
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount], 
                                         position: (articleCount+1), 
-                                        containerClass: 'col-sm-4 card-sm card-sm-tablet card-sm-mobile',
+                                        containerClass: 'col-md-4 card-sm card-sm--reverse card-sm-tablet card-sm-tablet--reverse card-sm-mobile card-sm-mobile--reverse',
                                         imageSize: {width:230, height:208}
                                     }) | raw}}
                                     {% set articleCount = articleCount + 1 %}
