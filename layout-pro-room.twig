@@ -3,6 +3,10 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 
+{% set dev = false %}
+{% if _AppHelper.getApplicationEnv() != 'PROD' %}
+    {% set dev = true %}
+{% endif %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
 {% set limit = 4 %}
@@ -17,13 +21,24 @@
 {% set articleCount = 0 %}
 
 {% set sections =  {
-    0 : "australia",
-    1 : "sportsroom"
+    0 : "corporate",
+    1 : "government"
 } 
 %}
 
-{# {% set variableSections = ['economy','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %} #}
-{% set variableSections = ['newsroom pro','business','classifieds','news','sport'] %}
+{% if dev %}
+    {% set sections =  {
+        0 : "australia",
+        1 : "sportsroom"
+    } %}
+{% endif %}
+
+{% set variableSections = ['economy','foreign affairs','infrastructure','primary industries','tech and media','housing','transport','investing'] %}
+{% if dev %}
+    {% set variableSections = ['newsroom pro','business','classifieds','news','sport'] %}
+{% endif %}
+
+
 
 {% set feedCompare = {} %}
 {% set sectionRanks = {} %}
@@ -72,7 +87,6 @@
 
 
 
-{# {% set log = _AppHelper.log(feedCompare) %} #}
 
 
 
@@ -97,7 +111,6 @@
 {% endfor %}
 
 
-{# {% set log = _AppHelper.log(sectionRanks) %} #}
 
 {% set x = 2 %}
 {% for i in 0..7 %}
@@ -110,7 +123,6 @@
     {% endfor %}
 {% endfor %}
 
-{# {% set log = _AppHelper.log(sections) %} #}
 
 
 
@@ -149,7 +161,7 @@
 
     {% if blog.title | lower == "columnists" %}
         {% set columnArticles = _Article.getRecentArticles({ limit: 5,  blogId: blog['id'] }) %}
-
+        
     {% elseif blog.title | lower == "8 things" %}
         {% set eightThingsArticles = _Article.getRecentArticles({ limit: 8,  blogId: blog['id'] }) %}
 
@@ -159,6 +171,12 @@
 
 {% endfor %}
     
+
+{% if dev %}
+    {% set columnArticles = articles %}
+    {% set eightThingsArticles = articles %}
+    {% set extraArticle = articles %}
+{% endif %}
 
 
 
@@ -295,9 +313,9 @@
 
                                     <div class="col-md-6 u-mobile-margin-top-30 u-mobile-no-padding u-tablet-margin-bottom-40">
                                         <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
-                                        {% for i in 0..4 if articles[i] %}
+                                        {% for i in 0..4 if columnArticles[i] %}
                                             {{this.render('/partials/_single-article_column.twig', {
-                                                article         : articles[i], 
+                                                article         : columnArticles[i], 
                                                 swap            : false,
                                                 containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
                                                 imageSize: {width:1, height:1}
@@ -306,9 +324,9 @@
                                     </div>
 
                                     <div class="col-lg-12 u-margin-top-40 u-margin-bottom-40 d-block d-sm-none ">
-                                        {% if articles[0] %}
+                                        {% if extraArticle[0] %}
                                             {{this.render('/partials/_single-article.twig', {
-                                                    article         : articles[0], 
+                                                    article         : extraArticle[0], 
                                                     swap            : false,
                                                     containerClass  : 'card-sm-mobile-inverted', 
                                                     imageSize: {width:136, height:135}
@@ -328,9 +346,9 @@
                                     {# <div class="row"> #}
                                     <div class="col-12">
                                         <div class="row">
-                                            {% for i in 0..7 if articles[i] %}
+                                            {% for i in 0..7 if eightThingsArticles[i] %}
                                                 {{this.render('/partials/_single-article.twig', {
-                                                    article         : articles[i], 
+                                                    article         : eightThingsArticles[i], 
                                                     swap            : false,
                                                     containerClass  : 'col-md-6 card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile u-mobile-no-padding' ~ hiddenClass[i]
                                                 }) | raw}}
@@ -341,7 +359,7 @@
 
 
                             {% elseif x == 7 %}
-                                <section class="row u-margin-top-40 d-block d-sm-none">
+                                <section class="row u-margin-top-40 d-none d-md-flex d-lg-none">
                                     {% if extraArticle[0] %}
                                         {{this.render('/partials/_single-article.twig', {
                                                 article         : extraArticle[0], 
@@ -409,9 +427,9 @@
 
                             <section class="col-lg-12 u-margin-top-40">
                                 <h3 class="pro-sidebar__colheader">Columnists</h3>
-                                {% for i in 0..4 if articles[i] %}
+                                {% for i in 0..4 if columnArticles[i] %}
                                     {{this.render('/partials/_single-article_column.twig', {
-                                        article         : articles[i], 
+                                        article         : columnArticles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-column card-pro-column-tablet card-pro-column-mobile', 
                                         imageSize: {width:141, height:113}
@@ -422,9 +440,9 @@
 
                             <section class="col-lg-12 u-margin-top-40">
                                  <a href="{{networkData.defaultBlogUrl}}8things"><h3 class="pro-sidebar__colheader">Today's 8 things</h3></a>
-                                {% for i in 0..7 if articles[i] %}
+                                {% for i in 0..7 if eightThingsArticles[i] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                        article         : articles[i], 
+                                        article         : eightThingsArticles[i], 
                                         swap            : false,
                                         containerClass  : 'card-pro-opinion card-pro-opinion-tablet card-pro-opinion-mobile'
                                     }) | raw}}
@@ -433,9 +451,9 @@
                             </section>
 
                             <section class="col-lg-12 u-margin-top-40">
-                                {% if articles[0] %}
+                                {% if extraArticle[0] %}
                                     {{this.render('/partials/_single-article.twig', {
-                                            article         : articles[0], 
+                                            article         : extraArticle[0], 
                                             swap            : false,
                                             containerClass  : 'card-sm card-sm--reverse card-sm-tablet card-sm-tablet--reverse card-sm-mobile card-sm-mobile--reverse', 
                                             imageSize: {width:300, height:334}
