@@ -22,6 +22,10 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         card['cardClass'] += " draft"; 
     }
 
+    card['cardType'] = options.type || "";
+    card['lightbox'] = options.lightbox || "";
+
+
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';

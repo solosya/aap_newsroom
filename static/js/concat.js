@@ -29792,7 +29792,7 @@ var cardTemplateTop =
         data-article-text="{{title}}" \
         title="{{titleString}}"> \
     \
-        <article class="">';
+        <article class="{{cardType}}c-cards-view">';
 
 var cardTemplateBottom = 
         '</article>'+
@@ -29818,16 +29818,16 @@ var cardTemplateBottom =
 Acme.systemCardTemplate = 
     cardTemplateTop + 
         '{{#if hasMedia}}\
-            <figure>\
+            <figure class="{{cardType}}c-cards-view__media">\
                 <img class="img-responsive {{imgClass}}" data-original="{{imageUrl}}" src="{{imageUrl}}" {{imgBackgroundStyle}}">\
             </figure>\
         {{/if}} \
         \
-        <div class="content">\
-            <div class="category">{{label}}</div>\
-            <h2>{{{ title }}}</h2>\
-            <p>{{{ excerpt }}}</p>\
-            <div class="author">\
+        <div class="{{cardType}}c-cards-view__container content">\
+            <div class="{{cardType}}c-cards-view__category category">{{label}}</div>\
+            <h2 class="{{cardType}}c-cards-view__heading j-truncate">{{{ title }}}</h2>\
+            <p class="{{cardType}}c-cards-view__description j-truncate">{{{ excerpt }}}</p>\
+            <div class="{{cardType}}c-cards-view__author-name author">\
                 <img src="{{profileImg}}" class="img-circle">\
                 <p>{{ createdBy.displayName }}</p>\
             </div>\
@@ -30453,6 +30453,10 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         card['articleStatus'] = "draft";
         card['cardClass'] += " draft"; 
     }
+
+    card['cardType'] = options.type || "";
+    card['lightbox'] = options.lightbox || "";
+
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
