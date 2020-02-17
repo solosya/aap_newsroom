@@ -56,9 +56,9 @@
             data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title="{{totalstring}}">
 
-            <article class="">
+            <article class="{{params.cardType}}c-cards-view">
                 {% if article.hasMedia == 'TRUE' %}
-                    <figure class="{{figureClass}}">
+                    <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}
                             <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {% else %}
@@ -75,15 +75,15 @@
                 {% endif %}
 
 
-                <div class="content">
+                <div class="{{params.cardType}}c-cards-view__container content">
                     <div class="category">{{article.blog.title}}</div>
-                    <h2>{{ articleTitle | raw }}</h2>
+                    <h2 class="{{params.cardType}}c-cards-view__heading">{{ articleTitle | raw }}</h2>
                     {% if cardClass != 'instagram no-caption' %}  
                         <p>{{ article.excerpt | raw }}</p>
                     {% endif %}
                     
                     {# <time datetime="">{{publishDate | upper}}</time> #}
-                    <div class="author">
+                    <div class="{{params.cardType}}c-cards-view__author-name author">
 
                         <img src="{{profileImg}}" class="columnist-img">
                         <p>{{ article.createdBy['displayName'] }}</p>
