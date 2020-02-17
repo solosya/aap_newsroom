@@ -28,7 +28,7 @@
         overflow:hidden;
         // height: 517px;
         @media #{$mobile}{
-            height: auto;
+            height: 50vw;
         }
 
         > article > figure{
@@ -54,7 +54,7 @@
             height:100%;
 
             @media #{$mobile}{
-                padding: 10px 22px;
+                padding: 30px 32px;
             }
 
             > .category{
@@ -81,16 +81,17 @@
                 height: 75px;
                 max-height: 150px;
 
-                @media #{$mobile}{
-                    display: none;
-                }
+                // @media #{$mobile}{
+                //     display: none;
+                // }
             }
 
             > h2{
                 font-weight: bold;
                 @include font-size(40);
                 padding-top: 15px;
-                max-height: 110px;
+                max-height: 120px;
+                // background:pink;
 
                 @media screen and (max-width: $md-break){
                     height: 310px;
@@ -101,8 +102,9 @@
                 }
 
                 @media #{$mobile}{
-                    @include font-size(20);
-                    height: 60px;;
+                    @include font-size(35);
+                    height: auto;
+                    max-height:150px;
                     padding-top: 0;
                     border: 0;
                 }
@@ -110,7 +112,9 @@
             }
 
             > .author{
-                @include clearfix;
+                @include flexbox;
+                @include align-items(center);
+
                 border-top: 1px solid #dadada;
                 padding-top:15px;
                 position:absolute;

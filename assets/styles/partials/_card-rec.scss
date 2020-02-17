@@ -168,7 +168,10 @@
             }
 
             > .author{
-                // width: 220px;
+                @include flexbox;
+                @include align-items(center);
+
+                margin-top: 6px;
                 overflow: hidden;
                 white-space: nowrap;
                 > p {
@@ -190,7 +193,7 @@
 
             > time{
                 
-                margin-top:6px;
+                margin-top:15px;
                 padding-top:4px;
 
                 @media screen and (max-width: $mmd-break-down){

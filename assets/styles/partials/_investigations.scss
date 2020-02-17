@@ -180,7 +180,7 @@
             background: #aa272e;
             position: absolute;
 
-            @media screen and (max-width: $mobile-break){
+            @media #{$mobile} {
                 display: none;
             }
         }
@@ -226,7 +226,7 @@
                     padding: 38px 30px 10px 59px;
                 }
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile} {
                     width: 100%;
                     flex: 0 0 100%;
                     padding: 19px 15px;
@@ -237,7 +237,7 @@
                     font-weight: bold;
                     color: #aa272e;
                     text-transform: uppercase;
-                    @media screen and (max-width: $mobile-break){
+                    @media #{$mobile} {
                         font-family: $font-family-sans-serif;
                         @include font-size(12);
                         text-transform: upper;

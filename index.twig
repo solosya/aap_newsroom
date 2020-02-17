@@ -246,6 +246,7 @@
 
 
                         {% if articles[articleCount] %}
+                        <div class="u-mobile-margin-top-60">
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
@@ -253,6 +254,7 @@
                                 imageSize: {width:750, height:518}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
+                        </div>
                         {% endif %}   
 
                         {% if articles[articleCount] %}
@@ -290,7 +292,7 @@
                                             SIDEBAR
                     ******************************************************** #}
                     <div class="col-sm-12 col-lg-4 sidebar">
-                        <div class="row">
+                        <div class="row u-mobile-margin-top-40">
                             {% if _Page.getPageData("rnz") is defined %}
                                 <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
                                     {% set rnzpage = _Page.getPageData("rnz", false) %}

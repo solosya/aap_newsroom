@@ -245,7 +245,7 @@
             background: #e22f22;
 			position: absolute;
 
-            @media screen and (max-width: $mobile-break){
+            @media #{$mobile} {
                 display: none;
             }
         }
@@ -260,7 +260,7 @@
 			@media  #{$tablet}{
                 padding-bottom: 25px;
             }
-            @media screen and (max-width: $mobile-break){
+            @media #{$mobile} {
                 display:block;
 				flex-direction: column;
 				padding-top: 0;
@@ -283,7 +283,7 @@
                     max-width: 290px;
                 }
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile} {
                     max-width: initial;
                 }
 
@@ -295,7 +295,7 @@
                     padding: 38px 30px 10px 59px;
                 }
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile} {
                     width: 100%;
                     flex: 0 0 100%;
                     padding: 19px 15px;
@@ -306,7 +306,7 @@
                     font-weight: bold;
                     color: #fff;
                   
-                    @media screen and (max-width: $mobile-break) {
+                    @media #{$mobile} {
                         font-family: $font-family-sans-serif;
                         @include font-size(14);
                         text-transform: uppercase;
@@ -329,7 +329,7 @@
                         @include font-size(30);
                     }
 
-                    @media screen and (max-width: $mobile-break){
+                    @media #{$mobile} {
                         margin-bottom: 15px;
 						height: 75px;
                     }
@@ -386,7 +386,7 @@
                     flex: 0 0 60%;
                 }
 
-                @media screen and (max-width: $mobile-break){
+                @media #{$mobile} {
                     width: 100%;
                     flex: 0 0 100%;
                     position: relative;
