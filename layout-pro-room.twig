@@ -323,12 +323,12 @@
                                         {% endfor %}
                                     </div>
 
-                                    <div class="col-lg-12 u-margin-top-40 u-margin-bottom-40 d-block d-sm-none ">
+                                    <div class="col-lg-12 u-margin-top-40 u-margin-bottom-40 d-block d-md-none ">
                                         {% if extraArticle[0] %}
                                             {{this.render('/partials/_single-article.twig', {
                                                     article         : extraArticle[0], 
                                                     swap            : false,
-                                                    containerClass  : 'card-sm-mobile-inverted', 
+                                                    containerClass  : 'card-sm-mobile card-sm-mobile--reverse', 
                                                     imageSize: {width:136, height:135}
                                                 }) | raw}}
                                         {% endif %}
