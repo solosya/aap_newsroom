@@ -184,6 +184,11 @@
     data-networkid="{{networkData['id']}}"
 >
 {{ this.beginBody() }}
+    <!-- Google Tag Manager body -->
+    {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
+        {{networkData.thirdPartyIntegrations['googleTagManager']['noscript'] | raw}}
+    {% endif %}
+    <!-- Google Tag Manager body - END -->
 
 
     {% if paywallSection == false and 'edit-profile' not in pageClass %}

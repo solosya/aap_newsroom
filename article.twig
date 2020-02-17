@@ -340,23 +340,11 @@
 
                                 {% if not paywallSection %}
 
-                                    {% if articleBlog == 'lockerroom' %}
-                                            <section class="" style="width:300px;margin:auto;">
-                                                <a href="https://bit.ly/2LRypQC"><img src="{{networkData.templatePath}}/static/images/LockerRoomv2a.gif"></a>
-                                            </section>
-                                    {% endif %}
-
                                     {% if articleBlog == 'new auckland' %}
                                         <div class="beca-section beca-section__article d-none d-lg-block">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
-                                    {% endif %}
-
-                                    {% if 'RWC2019' in article.keywords %}
-                                        <section class="add sidebar-add ">
-                                            <div id="canon-mrec"></div>
-                                        </section>
                                     {% endif %}
 
                                     <section class="add sidebar-add d-none d-md-block">
