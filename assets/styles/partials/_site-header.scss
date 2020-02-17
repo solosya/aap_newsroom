@@ -101,8 +101,11 @@
         margin-left:auto;
         @include flexbox;
         @include align-items(center); 
-        @media #{$desktop-up} {
-            margin-top:-35px;
+        
+        &--main {
+            @media #{$desktop-up} {
+                margin-top:-35px;
+            }
         }
     }
 
