@@ -29742,20 +29742,20 @@ var systemCardTemplate =
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="">\
+        <article class="{{cardType}}c-cards-view">\
             {{#if hasMedia}}\
-                <figure>\
-                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
+                <figure class="{{cardType}}c-cards-view__media">\
+                    <img class="img-fluid lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
                 </figure>\
             {{/if}} \
         \
-            <div class="content">\
-                    <div class="category">{{label}}</div>\
-                    <h2>{{{ title }}}</h2>\
-                    <p>{{{ excerpt }}}</p>\
-                    <div class="author">\
+            <div class="{{cardType}}c-cards-view__container content">\
+                    <div class="{{cardType}}c-cards-view__category category">{{label}}</div>\
+                    <h2 class="{{cardType}}c-cards-view__heading j-truncate">{{{ title }}}</h2class="">\
+                    <p class="{{cardType}}c-cards-view__description j-truncate">{{{ excerpt }}}</p>\
+                    <div class="{{cardType}}c-cards-view__author-name author">\
                         <img src="{{profileImg}}" class="img-circle">\
-                        <p>{{ createdBy.displayName }}</p>\
+                        <p class="">{{ createdBy.displayName }}</p>\
                     </div>\
             </div>\
         </article>'+

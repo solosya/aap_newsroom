@@ -2,6 +2,55 @@
     position:relative;
     margin-bottom: 79.5px;
 
+    >a.without__image {
+        .c-cards-view {
+            &__container {
+                height:333px;
+
+            }
+
+            &__heading {
+                margin-top: 60px;
+                font-size: 30px;
+                height: 190px;
+            }
+        }
+    }
+
+
+
+    >a.social {
+        .content {
+            .category {
+                margin-top:0;
+                margin-bottom:8px;
+            }
+    
+            > p {
+                display:block;
+                @include font-size(18);
+            }
+            .author {
+
+            }
+        }
+
+        &.without__image {
+
+            .content {
+                height:100%;
+
+                > p {
+                    height: 225px;
+                    margin-bottom:52px;
+                }
+            }
+        }
+    }
+
+
+
+
     .c-cards-view {
         height: 100%;
         @include flexbox();
@@ -56,53 +105,6 @@
     }
 
 
-        &.without__image {
-            .c-cards-view {
-
-                &__container {
-                    height:333px;
-
-                }
-
-                &__heading {
-                    margin-top: 60px;
-                    font-size: 30px;
-                    height: 190px;
-                }
-        }
-
-
-
-        &.social {
-            .content {
-                .category {
-                    margin-top:0;
-                    margin-bottom:8px;
-                }
-        
-                > p {
-                    display:block;
-                    @include font-size(18);
-                }
-                .author {
-
-                }
-            }
-
-            &.without__image {
-
-                .content {
-                    height:100%;
-
-                    > p {
-                        height: 225px;
-                        margin-bottom:52px;
-                    }
-                }
-            }
-        }
-    }
-
     &--reverse {
         .c-cards-view {
             background: #000;
@@ -121,8 +123,6 @@
             }
         }
     }
-
-
 }
 
 

@@ -126,7 +126,7 @@
             data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title="{{totalstring}}">
 
-            <article class="{{cardType}}c-cards-view">
+            <article class="{{params.cardType}}c-cards-view">
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
                     <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}

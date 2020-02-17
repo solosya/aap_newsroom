@@ -7,15 +7,17 @@
     }, false) 
 %} 
 
+{% set aboutpage = false %}
+
+
 <main id="main" class="site-main" role="main">
     <article class="article-main">
         <div class="container">
-            {% if _Page.getPageData("about-content") is defined %}
-                {% set aboutpage = _Page.getPageData("about-content") %}
+            {% set aboutpage = _Page.getPageData("about-content", false) %}
+            {% if aboutpage %}
                 {{aboutpage.content | raw}}
-            {% else %}
-                <h4>About page not found</h4>
             {% endif %}
+
         </div><!-- .container -->
     </article><!-- .article-main -->
 </main><!-- .site-main -->
