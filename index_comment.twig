@@ -177,12 +177,12 @@
 
                          </div><!--card-group-->
 
-                        <section class="add row sidebar-add hidden-md hidden-lg">
+                        <section class="ad row sidebar-ad hidden-md hidden-lg">
                             <div class="col-sm-6">
                                 {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="0"></div>
                                 {% endif %}
-                                <span class="add-text">Advertisement</span>
+                                <span class="ad-text">Advertisement</span>
                             <!--block-->
                             </div>
                             <div class="col-sm-6 d-none d-sm-block">
@@ -296,11 +296,11 @@
 
 
 
-                        <section class="add sidebar-add">
+                        <section class="ad sidebar-ad">
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                                 {% endif %}
-                                <span class="add-text">Advertisement</span>
+                                <span class="ad-text">Advertisement</span>
                         </section>
 
                         {# {{ this.render('partials/subscribe.twig', {networkData : networkData, class: 'd-none d-md-block'}) | raw }} #}

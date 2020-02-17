@@ -112,7 +112,7 @@
 
 {#  Get most recent articles for sports section if article published on Sportsroom
     For the rest get most recent network wide. #}
-{% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
+{# {% set recentParams = {'limit': 3, excludeArticleIds : article.id } %}
 
 {% if blogName | lower == 'sportsroom' or blogName | lower == 'lockerroom' %}
     {% set recentLabel = blogName %}
@@ -125,15 +125,28 @@
     {% set recentParams = recentParams | merge({
         'scope': 'network',
     }) %}
-{% endif %}
+{% endif %} #}
 
 {# {% set recentArticles = _Article.getRecentArticles(recentParams) %} #}
-{% set cacheKey = "articleRecent" ~ recentLabel %}
+{# {% set cacheKey = "articleRecent" ~ recentLabel %}
 {% set recentArticles = getCache(cacheKey) %}
 {% if (recentArticles is empty) %}
     {% set recentArticles = _Article.getRecentArticles(recentParams) %}
     {% set cache = setCache(cacheKey, recentArticles, 500) %} 
+{% endif %}  #}
+
+
+{% set cacheKey = "articlePopular_articlePage" %}
+{% set popular = getCache(cacheKey) %}
+{% if (popular is empty) %}
+    {% set popular = _Article.getPopularArticles({
+            limit: 3, 
+            scope: 'network', 
+            interval: 168 
+    }) %}
+    {% set cache = setCache(cacheKey, popular, 500) %} 
 {% endif %} 
+
 
 
 
@@ -192,7 +205,7 @@
                             <div class="content-wrapper">
                                 
 
-                                <div class="content-block-top hidden-print">
+                                <div class="content-block-top d-print-none">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
                                     ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
                                     ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
@@ -224,7 +237,7 @@
 
                                     <p class="bio">{{ article.createdBy['bio'] }}</p>
                                     {% if article.createdBy['bio'] != "" %}
-                                        <a class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
+                                        <a class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
                                     {% endif %}
 
                                 </div><!-- .content-author-->
@@ -242,7 +255,7 @@
 
                                             <p class="bio">{{ author['bio'] }}</p>
                                             {% if author['bio'] != "" %}
-                                                <a  class="bio-show-more showmore visible-xs-block hidden-print">Show more <span class="arrow down"></span></a>
+                                                <a  class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
                                             {% endif %}
                                         </div>
                                     {% endfor %}
@@ -256,7 +269,7 @@
                                     <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                     
                                     {% if articleBlog == 'new auckland' %}
-                                        <div class="beca-section beca-section__article visible-sm-block visible-xs-block">
+                                        <div class="beca-section beca-section__article d-block d-lg-none">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
@@ -292,16 +305,13 @@
                                             <p class="article-supoort__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
                                         </div>
                                         <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                            <div class="hidden-print article-supoort__button">Become a Supporter</div>
+                                            <div class="d-print-none article-supoort__button">Become a Supporter</div>
                                         </a>
                                     </div>
                                     
 
                                 {% else %}
-                                   {#  <div class="article-supoort">
-                                        <p class="article-supoort__text">We recently launched a crowdfunding campaign to sustain and expand LockerRoom, our section dedicated to covering New Zealand women in sport. We created LockerRoom to fill a gap in sports journalism, sharing inspirational, compelling and important stories that would otherwise go untold. To join our team as a supporter, simply click the red button.</p>
-                                        <div id="pp-donate-button" class="hidden-print article-supoort__button"></div>
-                                    </div> #}
+
                                     <div class="article-supoort">
                                         <p class="article-supoort__head">We value fearless, independent journalism. We hope you do too.</p>
                                         <div class="article-supoort__text">
@@ -310,18 +320,43 @@
                                             <p class="article-supoort__content">But we need your support to continue, whether it is great, small, ongoing or a one-off donation. If you believe in high quality journalism being available for all please <strong>click to become a Newsroom supporter</strong>.</p>
                                         </div>
                                         <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                            <div class="hidden-print article-supoort__button">Become a Supporter</div>
+                                            <div class="d-print-none article-supoort__button">Become a Supporter</div>
                                         </a>
                                     </div>
                                 {% endif %}
                             {% endif %}
                      
+
+
+
+
+
+                            {% if popular|length > 0 %}
+                                <div class="u-margin-top-70">
+                                    <h3 class="u-text-center u-uppercase u-margin-bottom-30 u-font-size-24">Most popular on newsroom</h3>
+                                    
+                                    <div class="row">
+                                    {% for i in 0..2 if popular[i] %}
+                                        {{ this.render('partials/_single-article.twig', {
+                                            article: popular[i], 
+                                            containerClass: 'col-12 col-md-4 card-sm card-sm-tablet card-sm-mobile', 
+                                            swap: 'false', 
+                                        }) | raw }}
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+
+
+
                             {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                 <div class="j-adslot d-md-none u-mobile-margin-top-30" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
                             {% endif %} 
 
 
-                            <div class="comments hidden-print">
+                            <div class="comments d-print-none">
                                 <h3>Comments</h3>
                                 <p>
                                     Newsroom does not allow comments directly on this website. 
@@ -332,6 +367,10 @@
                                     Thank you.
                                 </p>
                             </div>
+
+
+
+
                         </div>
 
 
@@ -354,20 +393,22 @@
                                         </div>
                                     {% endif %}
 
-                                    <section class="add sidebar-add d-none d-md-block">
+                                    <section class="ad sidebar-ad d-none d-md-block">
                                         {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
-                                            <span class="add-text hidden-print" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                            <span class="ad-text d-print-none" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
                                         {% endif %}
                                         
                                     </section>
 
-                                    <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                        <h3 class="recent-articles__header">
-                                            <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
-                                        </h3>
 
-                                        {% if recentArticles|length > 0 %}
+
+                                    {% if recentArticles|length > 0 %}
+                                        <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                            <h3 class="recent-articles__header">
+                                                <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                            </h3>
+
                                             {% for i in 0..6 %}
                                                 {% if recentArticles[i] %}
                                                     {{
@@ -379,9 +420,10 @@
                                                     }}
                                                 {% endif %}
                                             {% endfor %}
-                                        {% endif %}
 
-                                    </section>
+                                        </section>
+                                    {% endif %}
+
                                 {% else %}
 
 
@@ -413,27 +455,11 @@
                 </div>
             </div>
 
-            {# {% if 'RWC2019' in article.keywords %}
-                
-                <script>loadCanonAds();</script>
-            {% endif %}
 
-            {% if article.additionalInfo.adswitch is defined and article.additionalInfo.adswitch == 'off' %}
-            {% else %}
-
-                {% if articleBlog == 'ideasroom' %}
-                        <script>loadTwoAds('futurelearning');</script>
-                {% else %}
-                    {% if not paywallSection %}
-                        <script>loadTwoAds('{{articleBlog}}');</script>
-                    {% endif %}
-                {% endif %}
-
-            {% endif %} #}
 
         </article>
 
-        {# {{ this.render('partials/_sponsor_logos.twig') | raw }} #}
+
         {{ this.render('partials/_sponsor_logos2.twig') | raw }}
         {% set theKeywords = '' %}
         {% if article.keywords is defined and article.keywords != '' %}

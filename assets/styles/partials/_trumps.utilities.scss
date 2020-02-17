@@ -17,6 +17,7 @@
 .u-padding-top-60 { padding-top: 60px; }
 .u-margin-top-100 { margin-top: 100px; }
 .u-margin-top-80 { margin-top: 80px; }
+.u-margin-top-70 { margin-top: 70px; }
 .u-margin-top-60 { margin-top: 60px; }
 .u-margin-top-50 { margin-top: 50px; }
 .u-margin-top-40 { margin-top: 40px; }
@@ -368,7 +369,28 @@
 .u-block {display:block;}
 .u-hide {display:none !important;}
 
-
+.u-font-size-50 {@include font-size(50);}
+.u-font-size-45 {@include font-size(45);}
+.u-font-size-40 {@include font-size(40);}
+.u-font-size-35 {@include font-size(35);}
+.u-font-size-30 {@include font-size(30);}
+.u-font-size-25 {@include font-size(25);}
+.u-font-size-24 {@include font-size(24);}
+.u-font-size-23 {@include font-size(23);}
+.u-font-size-22 {@include font-size(22);}
+.u-font-size-21 {@include font-size(21);}
+.u-font-size-20 {@include font-size(20);}
+.u-font-size-19 {@include font-size(19);}
+.u-font-size-18 {@include font-size(18);}
+.u-font-size-17 {@include font-size(17);}
+.u-font-size-16 {@include font-size(16);}
+.u-font-size-15 {@include font-size(15);}
+.u-font-size-14 {@include font-size(14);}
+.u-font-size-13 {@include font-size(13);}
+.u-font-size-12 {@include font-size(12);}
+.u-font-size-11 {@include font-size(11);}
+.u-font-size-10 {@include font-size(10);}
+.u-font-size-9 {@include font-size(9);}
 
 .divide {
     margin-top: 32px;
@@ -414,7 +436,9 @@ hr {
 
 .clearfix {overflow:hidden;overflow-x:hidden}
 .centerContent { display:inline; text-align: center;}
-.centerText {text-align: center;}
+.u-text-center {text-align: center;}
+.u-uppercase {text-transform: uppercase;}
+
 .centerBlock {margin-left:auto;margin-right:auto}
 // 20px gutter
 .gutter-60.row {

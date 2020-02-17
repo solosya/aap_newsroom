@@ -8,7 +8,7 @@
     }
 }
 
-.add{
+.ad{
     &__gap{
         display: none;
         @media #{$mobile}{
@@ -21,7 +21,7 @@
     }
     z-index:1024;
 
-    .add-text{
+    .ad-text{
         color: $gray-text;
         @include font-size(12);
     }
@@ -29,11 +29,11 @@
          margin-bottom: 80px;
     }
 
-    &.sidebar-add{
+    &.sidebar-ad{
         margin-bottom: 20px;
         margin-top: 20px;
         // text-align:center;
-        &.sidebar-add__idx{
+        &.sidebar-ad__idx{
             @media #{$mobile} {
                 margin-top: 30px;
                 margin-bottom: 30px;
@@ -49,7 +49,7 @@
         @media screen and (max-width: $sm-break-down) {
             
         }
-        .add-text{
+        .ad-text{
             float: left;
 
             @media screen and (max-width: $sm-break-down){
@@ -86,7 +86,7 @@
                 margin-right: auto;
             }
         }
-        .add-text{
+        .ad-text{
             display: block;
             text-align: right;
             width: 970px;
@@ -98,7 +98,7 @@
     }
 
 }
-.add-header-top{
+.ad-header-top{
     width: 100%;
     // background-color: $gray-bck;
     // text-align: center;
@@ -125,7 +125,7 @@
             margin-right: auto;
         }
         
-        .add-text{
+        .ad-text{
             display: block;
             text-align: right;
             width: 970px;
@@ -137,7 +137,7 @@
     }
 }
 
-.add-header-mob{
+.ad-header-mob{
     width: 100%;
     text-align: center;
     padding-top: 20px;
@@ -157,7 +157,7 @@
     }
 
 }
-.add-header__topbanner {
+.ad-header__topbanner {
     margin: 15px 0;
     
     @media #{$tablet} {

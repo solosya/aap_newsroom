@@ -203,14 +203,14 @@
 {{ this.beginBody() }}
 
     {% if paywallSection == false and 'edit-profile' not in pageClass %}
-        <hr class="add__gap d-block d-sm-none">
-        <div class="add add-header__topbanner">
+        <hr class="ad__gap d-block d-sm-none">
+        <div class="ad ad-header__topbanner">
            {% if config['inventory']['adSpace']['banner'][0] is defined %}
                 <div class="j-adslot" id="{{config['inventory']['hpage']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
             {% endif %}
-        </div><!--add add-header-top-->
+        </div><!--add ad-header-top-->
     {% else %}
-         <div class="add add-header__topbanner u-mobile-margin-top-125" ></div>
+         <div class="ad ad-header__topbanner u-mobile-margin-top-125" ></div>
     {% endif %}
 
     {{ this.render('partials/_header_navigation.twig', {
