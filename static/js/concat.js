@@ -30454,8 +30454,8 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         card['cardClass'] += " draft"; 
     }
 
-    card['cardType'] = options.type || "";
-    card['lightbox'] = options.lightbox || "";
+    card['cardType'] = card.type || "";
+    card['lightbox'] = card.lightbox || "";
 
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
