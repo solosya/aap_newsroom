@@ -12,7 +12,7 @@
     <hr class="divide15 d-block d-sm-none">
         
     {% for i in 0..2 if articles[articleCount] %}
-        <div class="col-12 col-md-4u-mobile-no-padding">
+        <div class="col-12 col-md-4 u-mobile-no-padding">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
