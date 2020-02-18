@@ -141,39 +141,49 @@
         .c-cards-view {
 
             &__media {
-                // width: 98px;
                 height: 194px;
-
             }
     
             &__container {
                 height:116px;
             }
-    
-            &__category {
-            }
-    
-            &__heading {
-            }
-    
-            &__author-name {
-            }
-    
-            &__time {
-            }
-    
-            &__description {
-            }
-    
+
         }
     }
 }
 
 .card-sm-mobile {
     @media #{$mobile}{
+
+
+        &:last-child() {
+            border-bottom: 1px solid #dadada;
+        }
+
+
         @include card-sm-base;
         
         margin-bottom:0;
+
+
+        >a.without__image {
+            .c-cards-view {
+                &__container {
+                    height:auto;
+                }
+    
+                &__heading {
+                    margin-top: 0;
+                    font-size: 30px;
+                    height: 190px;
+                }
+                &__time {
+                    position:relative;
+                }
+
+            }
+        }
+
 
         .c-cards-view {
             @include flex-direction(row);
@@ -192,9 +202,6 @@
                 padding:10px;
                 height:100%;
 
-                &:last-child() {
-                    border-bottom: 1px solid #dadada;
-                }
             }
         }
     }

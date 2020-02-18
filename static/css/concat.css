@@ -13887,10 +13887,16 @@ input[type=radio].inline {
 .article-chimp-subscribe {
   background-color: #e22f22;
   color: #FFF;
-  text-align: left; }
+  text-align: left;
+  max-width: 300px;
+  margin: auto; }
   .article-chimp-subscribe__top {
     background: black;
     padding: 10px; }
+  .article-chimp-subscribe__logo {
+    width: 54px;
+    margin-top: 5px;
+    margin-bottom: 5px; }
   .article-chimp-subscribe__heading {
     font-family: "tinos", Helvetica, Arial, sans-serif;
     color: #FFF;
@@ -19337,6 +19343,8 @@ body.channel.supporters p {
     position: relative;
     margin-bottom: 79.5px;
     margin-bottom: 0; }
+    .card-sm-mobile:last-child {
+      border-bottom: 1px solid #dadada; }
     .card-sm-mobile > a.without__image .c-cards-view__container {
       height: 333px; }
     .card-sm-mobile > a.without__image .c-cards-view__heading {
@@ -19410,6 +19418,14 @@ body.channel.supporters p {
         color: #27aae1; }
       .card-sm-mobile--reverse .c-cards-view__time {
         color: white; }
+    .card-sm-mobile > a.without__image .c-cards-view__container {
+      height: auto; }
+    .card-sm-mobile > a.without__image .c-cards-view__heading {
+      margin-top: 0;
+      font-size: 30px;
+      height: 190px; }
+    .card-sm-mobile > a.without__image .c-cards-view__time {
+      position: relative; }
     .card-sm-mobile .c-cards-view {
       -webkit-box-direction: normal;
       -webkit-box-orient: horizontal;
@@ -19431,9 +19447,7 @@ body.channel.supporters p {
         border: none;
         border-top: 1px solid #dadada;
         padding: 10px;
-        height: 100%; }
-        .card-sm-mobile .c-cards-view__container:last-child {
-          border-bottom: 1px solid #dadada; } }
+        height: 100%; } }
 
 @media screen and (min-width: 992px) {
   .card-sm-black {
