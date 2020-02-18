@@ -198,9 +198,8 @@ So you don't have to create all the sections on dev #}
                             {% endif %}
 
 
-                            
 
-                         
+
 
 
 
@@ -245,7 +244,7 @@ So you don't have to create all the sections on dev #}
 
 
                         <div class="row">
-                               
+
                             {% for i in 0..2 %}
                                 {% if articles[articleCount] %}
                                     {{this.render('partials/_single-article.twig', {
@@ -285,7 +284,7 @@ So you don't have to create all the sections on dev #}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
-                       
+
                         {{ this.render('partials/ajaxarticles_new.twig', {
                             name            : "section-load",
                             limit           : limit,
@@ -373,7 +372,7 @@ So you don't have to create all the sections on dev #}
                 {% endif %}
 
                 {% if sections['ideasroom'].feed.articles|length > 0 %}
-                     {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                    {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['lockerroom'].feed.articles|length > 0 %}
@@ -417,8 +416,8 @@ So you don't have to create all the sections on dev #}
 
             {{ this.render('partials/_sponsor_logos2.twig') | raw }}
             
-         </section>
-         <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
+        </section>
+        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
     </main>
 
     
