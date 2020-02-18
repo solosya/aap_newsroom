@@ -58,7 +58,6 @@
         ********************************************************** #}
         <ul class="rooms-link">
 
-            {% set menuItems = headerMenu %}
 
             {% for parentItem in menuItems  %}
 
@@ -69,7 +68,6 @@
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                             <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle}}">
-                            {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt="{{parentItem.blogTitle}}"> #}
                         </a>
                     </li>
                 {% endif  %}
@@ -256,7 +254,6 @@
 
             <ul class="rooms-link">
 
-                {% set menuItems = headerMenu %}
                 {% for parentItem in menuItems  %}
                     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}

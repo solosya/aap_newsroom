@@ -202,9 +202,13 @@
          <div class="ad ad-header__topbanner u-mobile-margin-top-125" ></div>
     {% endif %}
 
+
+    {% set log = _AppHelper.log(roomInfo) %}
+    {% set log = _AppHelper.log(menuItems) %}
+
     {{ this.render('partials/_header_navigation.twig', {
         networkData : networkData, 
-        headerMenu  : menuItems, 
+        menuItems   : menuItems, 
         pageClass   : blogName,
         roomInfo    : roomInfo,
         submenu     : submenu,
@@ -260,9 +264,9 @@
                 {'video' : 'modalVideo'}, 
                 {path: _appJsConfig.templatePath});")}} #}
     
-    {% if _User.isGuest() %}
+    {# {% if _User.isGuest() %}
         {{this.registerJs("var popup = new Acme.registerPopUp('register_popup');")}}
-    {% endif %}
+    {% endif %} #}
 
     {{ this.endBody() }}
 

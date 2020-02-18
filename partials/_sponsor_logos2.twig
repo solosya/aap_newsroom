@@ -46,10 +46,9 @@
 
 
     {% set width = assetDimensions[logo.title | lower] %}
-    {# {% set log = _AppHelper.log(width) %} #}
+
     {% if width == null %}
         {% set width = 150 %}
-        {% set log = _AppHelper.log(logo.title) %}
     {% endif %}
     {% set url = _Media.getMediaUrl(image, width, 0, {'crop': 'fill', 'gravity': 'auto', "effect":'sharpen', 'quality': 100} ) %}
     {% set logo = logo | merge({"url": url}) %}
@@ -57,7 +56,7 @@
 {% endfor %}
 
 
-{# {% set log = _AppHelper.log(logoArray) %} #}
+
 
 
 
