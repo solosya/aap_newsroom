@@ -232,7 +232,7 @@ So you don't have to create all the sections on dev #}
                                 {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="0"></div>
                                 {% endif %}
-                                <span class="ad-text">Advertisement</span>
+                                {# <span class="ad-text">Advertisement</span> #}
                             </div>
                             <div class="col-md-6 d-none d-md-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
@@ -324,7 +324,7 @@ So you don't have to create all the sections on dev #}
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                                 {% endif %}
-                                <span class="ad-text">Advertisement</span>
+                                {# <span class="ad-text">Advertisement</span> #}
                             </section>
 
                             <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3" id='subscribebutton'>

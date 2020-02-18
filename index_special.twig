@@ -138,18 +138,15 @@
 
                          </div><!--card-group-->
 
-                        <section class="ad row sidebar-ad hidden-md hidden-lg">
+                        <section class="ad row sidebar-ad d-lg-none">
                             <div class="col-sm-6">
-                                <div id='boxad' class="" style='height:250px; width:300px;'>
-                                    <script>
-                                        document.currentScript.parentNode.id = boxadID;
-                                        googletag.cmd.push(function() { googletag.display(boxadID); });
-                                    </script>
-                                </div>
-                                <span class="ad-text">Advertisement</span>
+                                {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                                    <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="hpage" data-responsive="1"></div>
+                                {% endif %}
+                                {# <span class="ad-text">Advertisement</span> #}
                             <!--block-->
                             </div>
-                            <div class="col-sm-6 d-none d-sm-block">
+                            <div class="col-sm-6 d-none d-md-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData}) | raw }}
                             </div>
                         </section>
@@ -264,7 +261,7 @@
                                             googletag.cmd.push(function() { googletag.display(sidepanelID); });
                                         </script>
                                     </div>
-                                <span class="ad-text">Advertisement</span>
+                                {# <span class="ad-text">Advertisement</span> #}
                         </section>
 
 

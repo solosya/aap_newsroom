@@ -376,13 +376,6 @@
 
                                 {% if not paywallSection %}
 
-                                    {% if articleBlog == 'lockerroom' %}
-                                        <section class="" style="width:300px;margin:auto;">
-                                            <a href="https://bit.ly/2LRypQC"><img src="{{networkData.templatePath}}/static/images/LockerRoomv2a.gif"></a>
-                                        </section>
-                                    {% endif %}
-
-
                                     {% if articleBlog == 'new auckland' %}
                                         <div class="beca-section beca-section__article d-none d-lg-block">
                                             <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
@@ -390,10 +383,18 @@
                                         </div>
                                     {% endif %}
 
-                                    <section class="ad sidebar-ad d-none d-md-block">
+                                    <section class="ad sidebar-ad">
+                                        {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                                            <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="1"></div>
+                                            
+                                        {% endif %}
+                                        
+                                    </section>
+
+                                    <section class="ad sidebar-ad">
                                         {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
-                                            <span class="ad-text d-print-none" style="display:block;width:300px;margin:0 auto;padding-left:17px;">Advertisement</span>
+                                            
                                         {% endif %}
                                         
                                     </section>
