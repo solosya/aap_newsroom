@@ -290,6 +290,8 @@
 
 .card-featured-desktop {
     @media #{$desktop} {
+        @include card-featured-base;
+
         .c-cards-view {
 
             &__media {

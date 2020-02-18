@@ -4,9 +4,6 @@
     margin-bottom: 22px;
     position: relative;
 
-    @media screen and (max-width: $md-break){
-        height: auto;
-    }
     &:before{
         content: '';
         width: 20px;
@@ -47,14 +44,13 @@
 
 
 
-
     .c-cards-view {
         @include flexbox();
         flex-wrap: nowrap;
         -webkit-flex-wrap: nowrap;
 
         width: 100%;
-        height: auto;
+        height: 100%;
         -ms-flex-direction: row-reverse;
         -webkit-flex-direction: row-reverse;
         flex-direction: row-reverse;
@@ -66,7 +62,7 @@
             -webkit-flex: 0 0 55%;
             -ms-flex: 0 0 55%;
             flex: 0 0 55%;
-            height: auto;
+            // height: auto;
 
             @media screen and (max-width: $md-break){
                 width: 60%;
