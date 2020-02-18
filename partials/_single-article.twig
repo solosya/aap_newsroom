@@ -193,9 +193,9 @@
                     <figure>
 
                         {% if lazyload == false %}
-                            <img class="img-responsive" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img class="img-fluid" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {% else %}
-                            <img class="img-responsive lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img class="img-fluid lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
 
 

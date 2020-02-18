@@ -27,7 +27,7 @@
                 {% if follower.follower['media']['path'] is defined and follower.follower['media']['path'] is not empty %}
                     {% set followerImage = _Media.getMediaUrl(follower.follower['media'], 80, 80, {crop: 'thumb', gravity: 'face'})%}
                 {% endif %}
-            <div class="img-thumbnail"><img class="img-responsive" src="{{ followerImage}}" alt="{{follower.follower['name']}}" ></div>
+            <div class="img-thumbnail"><img class="img-fluid" src="{{ followerImage}}" alt="{{follower.follower['name']}}" ></div>
             <div class="description">
                 <h4>{{follower.follower['name'] | truncate(20)}}</h4>
                 <p>View Profile</p>

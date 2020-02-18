@@ -11,14 +11,13 @@
 
     > header{
         margin-bottom: 20px;
-        .ideas-logo{
+        .room-logo{
             @media #{$tablet-up}{
-                width: 250px;
+                min-height:40px;
             }
             
-            @media #{$mobile}{
-                width: 200px;
-                margin-bottom:15px;
+            @media #{$mobile} {
+                height:45px;
             }
         }    
     }

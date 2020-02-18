@@ -10,10 +10,16 @@
 
     > header{
         margin-bottom: 20px;
-
-        @media screen and (max-width: $sm-mobile-break){
-            width:205px;
+        .room-logo{
+            @media #{$tablet-up}{
+                max-height:40px;
+            }
+            
+            @media #{$mobile} {
+                height:40px;
+            }
         }    
+
     }
 
 }

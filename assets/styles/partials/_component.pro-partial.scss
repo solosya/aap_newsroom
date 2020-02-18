@@ -229,7 +229,8 @@
 		background: black;
 		
 
-        @media screen and (max-width: $mobile-break){
+        @media #{$mobile} {
+            height:auto;
             margin-left: -15px;
             margin-right: -15px;
         }

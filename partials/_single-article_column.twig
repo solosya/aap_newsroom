@@ -60,9 +60,9 @@
                 {% if article.hasMedia == 'TRUE' %}
                     <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}
-                            <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img class="img-fluid" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {% else %}
-                            <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img class="img-fluid lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                         {%endif%}
 
                     </figure>

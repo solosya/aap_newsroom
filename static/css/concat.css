@@ -12990,8 +12990,9 @@ input[type=radio].inline {
     height: 430px;
     position: relative;
     background: black; }
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 767px) {
       .pro-partial > .featured {
+        height: auto;
         margin-left: -15px;
         margin-right: -15px; } }
     .pro-partial > .featured:before {
@@ -14602,9 +14603,12 @@ input[type=radio].inline {
       border-bottom: 0; } }
   .room-sports > header {
     margin-bottom: 20px; }
-    @media screen and (max-width: 490px) {
-      .room-sports > header {
-        width: 205px; } }
+    @media screen and (min-width: 768px) {
+      .room-sports > header .room-logo {
+        max-height: 40px; } }
+    @media screen and (max-width: 767px) {
+      .room-sports > header .room-logo {
+        height: 40px; } }
 
 .coporate-news-room {
   max-width: none;
@@ -15061,12 +15065,11 @@ input[type=radio].inline {
   .room-green > header {
     margin-bottom: 20px; }
     @media screen and (min-width: 768px) {
-      .room-green > header .ideas-logo {
-        width: 250px; } }
+      .room-green > header .room-logo {
+        min-height: 40px; } }
     @media screen and (max-width: 767px) {
-      .room-green > header .ideas-logo {
-        width: 200px;
-        margin-bottom: 15px; } }
+      .room-green > header .room-logo {
+        height: 45px; } }
 
 .room-ideas {
   border-bottom: 1px solid #d4d4d4;
@@ -15080,12 +15083,11 @@ input[type=radio].inline {
   .room-ideas > header {
     margin-bottom: 20px; }
     @media screen and (min-width: 768px) {
-      .room-ideas > header .ideas-logo {
-        width: 250px; } }
+      .room-ideas > header .room-logo {
+        min-height: 40px; } }
     @media screen and (max-width: 767px) {
-      .room-ideas > header .ideas-logo {
-        width: 200px;
-        margin-bottom: 15px; } }
+      .room-ideas > header .room-logo {
+        height: 45px; } }
 
 .room-reading {
   border-bottom: 1px solid #d4d4d4;
@@ -15099,12 +15101,11 @@ input[type=radio].inline {
   .room-reading > header {
     margin-bottom: 20px; }
     @media screen and (min-width: 768px) {
-      .room-reading > header .reading-logo {
-        width: 330px; } }
+      .room-reading > header .room-logo {
+        min-height: 40px; } }
     @media screen and (max-width: 767px) {
-      .room-reading > header .reading-logo {
-        width: 250px;
-        margin-bottom: 15px; } }
+      .room-reading > header .room-logo {
+        height: 45px; } }
 
 .room-investigations {
   margin-bottom: 80px;
@@ -15113,13 +15114,13 @@ input[type=radio].inline {
     margin-bottom: 20px; }
     @media screen and (min-width: 992px) {
       .room-investigations > header img {
-        height: 50px; } }
+        height: 40px; } }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .room-investigations > header img {
-        width: 355px; } }
+        height: 40px; } }
     @media screen and (max-width: 490px) {
       .room-investigations > header img {
-        width: 255px; } }
+        height: 40px; } }
   .room-investigations .articles {
     border-top: solid 1px #d4d4d4;
     border-bottom: solid 1px #d4d4d4;
