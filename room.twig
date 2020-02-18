@@ -200,7 +200,7 @@
                                             {{this.render('partials/_single-article.twig', {
                                                 article: articles[articleCount], 
                                                 position: (articleCount+1), 
-                                                containerClass: 'card-sm card-sm-tablet card-sm-mobile inverted',
+                                                containerClass: 'card-sm card-sm-tablet card-sm-mobile card-sm--reverse card-sm-tablet--reverse card-sm-mobile--reverse',
                                                 imageSize: {width:335, height:260}
                                             }) | raw}}
                                             {% set articleCount = articleCount + 1 %}
