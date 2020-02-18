@@ -1,0 +1,54 @@
+.article-chimp-subscribe {
+    background-color: #e22f22;
+    color: #FFF;
+    text-align:left;
+
+    &__top {
+        background:black;
+        padding:10px;
+    }
+
+    &__heading {
+        font-family: $base-font-family;
+        color: #FFF;
+        @include font-size(22);
+        font-weight: 600;
+        font-style:italic;
+        margin:0;
+        padding:0;
+        margin-bottom:4px;
+    }
+
+    &__tagline {
+        font-family: $font-family-sans-serif;
+        @include font-size(13);
+        margin-top:7px;
+    }
+
+    &__container {
+        margin-top: 5px;
+        padding:10px;
+    }
+
+    &__email{
+        font-family: 'PT Sans', Tahoma, Arial, serif;
+        color: #000;
+        margin:0 !important; 
+        height:35px !important;
+        border-radius: 0 !important;
+    }
+
+    &__submit {
+        width: 15px; 
+        display:flex;
+        background: url('../images/arrow-small-red.svg') no-repeat center; 
+        border:none; 
+        outline: none; 
+        box-shadow: none;
+        margin-right:10px;
+        &:focus {
+            outline:none;
+        }
+    }
+
+}
