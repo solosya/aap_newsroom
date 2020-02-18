@@ -73,10 +73,9 @@
             overflow: hidden;
             float: left;
 
-            @media screen and (max-width: $md-break){
+            @media screen and (max-width: $md-break) {
                 width: 256px;
                 flex: 0 0 256px;
-
             }
 
 
@@ -108,12 +107,6 @@
 
             }
 
-
-
-
-            > img{
-                // max-width: 100%;
-            }
 
         }
 
@@ -148,10 +141,10 @@
 
             > h2{
                 font-weight: bold;
-                @include font-size(30);
+                @include font-size(30, 32);
                 height: 75px;
                 @media #{$mobile}{
-                    @include font-size(20);
+                    @include font-size(20, 23);
                     border: 0;
                     height: 50px;
                 }
@@ -161,6 +154,7 @@
                 height: 60px;
                 border-bottom: 1px solid #dadada;
                 padding-bottom: 15px;
+                @include font-size(13.5, 16);
 
                 @media #{$mobile}{
                     display:none;
