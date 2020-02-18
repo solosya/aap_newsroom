@@ -7,9 +7,9 @@
 
 
     {{this.render('_single-article.twig', {
-        article         : sections['sportsroom'].feed.articles[0],
+        article         : sections['lockerroom'].feed.articles[0],
         position        : 1, 
-        containerClass  : 'featured board', 
+        containerClass  : 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up locker', 
         imageSize       : {width:627, height:415},
         swap            : 'false'
     }) | raw}}
@@ -18,9 +18,9 @@
         <div class="row">
             
             {% for i in 1..3 %}
-                {% if sections['sportsroom'].feed.articles[i] %}        
+                {% if sections['lockerroom'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article         : sections['sportsroom'].feed.articles[i], 
+                        article         : sections['lockerroom'].feed.articles[i], 
                         position        : i+1, 
                         containerClass  : 'subfeature-board col-md-4', 
                         imageSize       : {width:92, height:100},

@@ -6,9 +6,9 @@
      </header>
 
     {{this.render('_single-article.twig', {
-        article: sections['sportsroom'].feed.articles[0], 
+        article: sections['greenroom'].feed.articles[0], 
         position: 1, 
-        containerClass: 'featured ideas', 
+        containerClass: 'card-featured-mobile card-featured-tablet card-featured-desktop card-featured-desktop-up green', 
         imageSize: {width:1140, height:430},
         swap: 'false'
     }) | raw}}
@@ -18,9 +18,9 @@
          <div class="row">
              
              {% for i in 1..2 %}
-                 {% if sections['sportsroom'].feed.articles[i] %}        
+                 {% if sections['greenroom'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article: sections['sportsroom'].feed.articles[i], 
+                        article: sections['greenroom'].feed.articles[i], 
                         position: i+1, 
                         containerClass: 'col-12 col-lg-6', 
                         imageSize: {width:203, height:129},

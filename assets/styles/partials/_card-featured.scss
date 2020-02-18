@@ -1,0 +1,312 @@
+@mixin card-featured-base {
+    // 73459B - view color
+    // 27aae1 - sport color
+    // F58131 - reading
+    // 169058 - green
+    // 006386 - ideas
+    // F6AE00 - locker
+    // aa272e - investigations
+
+    height: 430px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+
+    &:before{
+        content: '';
+        width: 20px;
+        height: 100%;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        z-index: 2;
+
+    }
+
+    &.investigations {
+        &:before{
+            background: #aa272e;
+        }
+    }
+
+    &.locker {
+        &:before{
+            background: #F6AE00;
+        }
+    }
+
+    &.sport {
+        &:before{
+            background: #27aae1;
+        }
+    }
+    
+    &.reading {
+        &:before{
+            background: #F58131;
+        }
+    }
+
+    &.green {
+        &:before{
+            background: #169058;
+        }
+    }
+
+    &.ideas {
+        &:before{
+            background: #006386;
+        }
+    }
+
+
+    .c-cards-view {
+
+        &__media {
+            width: 100%;
+            height: 430px;
+            position: absolute;
+            z-index: 1;
+            
+            // @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
+            @media screen and (max-width: $sm-mobile-break){
+                max-height: 260px;
+            }
+    
+            &:after{
+                position: absolute;
+                background: rgba(0,0,0,0.5);
+                left: 0;
+                top: 0;
+                content: '';
+                width: 100%;
+                height: 430px;
+            }
+        }
+
+        &__container {
+            position: absolute;
+            z-index: 2;
+            width: 470px;
+            padding-left: 60px;
+            padding-top:80px;
+            color: #FFF;
+        }
+
+        &__category {
+            @include font-size(14);
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        &__heading {
+            @include font-size(44);
+            font-weight: bold;
+            line-height: 1.02;
+            color: #FFF;
+            margin-bottom: 40px;
+            margin-top: 21px;
+        }
+
+        &__author-name {
+            display:none;
+        }
+
+        &__time {
+            padding:0;
+            border:none;
+            float:none;
+            @include font-size(14);
+            font-weight: bold;
+            color: #FFF;
+
+        }
+
+        &__description {
+            height:75px;
+            @include font-size(20);
+            line-height: 1.25;
+            color: #FFF;
+            margin-bottom: 30px;
+
+        }
+
+    }
+
+}
+
+
+
+.card-featured-mobile {
+    @media #{$mobile} {
+        @include card-featured-base;
+        height: auto;
+        margin-left: -15px;
+        margin-right: -15px;
+        &:before{
+            display: none;
+        }
+        
+        &.sport {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #27aae1;
+                    }
+                }
+            }
+        }
+        &.reading {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #F58131;
+                    }
+                }
+            }
+        }
+
+        &.green {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #169058;
+                    }
+                }
+            }
+        }
+
+        &.ideas {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #006386;
+                    }
+                }
+            }
+        }
+
+        &.locker {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #F6AE00;
+                    }
+                }
+            }
+        }
+
+        &.investigations {
+            .c-cards-view {
+                &__media {
+                    &:after{
+                        background: #aa272e;
+                    }
+                }
+            }
+        }
+
+        
+        
+        .c-cards-view {
+
+            &__media {
+                position: relative;
+                max-height: 415px;
+                &:after{
+                    content: '';
+                    width: 20px;
+                    height: 100%;
+                    bottom: 0;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    z-index: 2;
+
+                    &.sport {
+                        background: #27aae1;
+                    }
+                }
+            }
+    
+            &__container {
+                position: relative;
+                width: 100%;
+                color: #000;
+                border-bottom: 1px solid #d4d4d4;
+                padding: 19px 15px;
+            }
+    
+            &__category {
+                color: #8a8b93;
+                font-family: $font-family-sans-serif;
+                @include font-size(12);
+                text-transform: uppercase;
+            }
+    
+            &__heading {
+                color: #000;
+                @include font-size(22);
+                margin-top: 13px;
+                margin-bottom: 13px;
+            }
+  
+            &__time {
+                color: #000;
+            }
+    
+            &__description {
+                display: none;
+            }
+    
+        }
+    }
+}
+
+
+.card-featured-tablet {
+    @media #{$tablet} {
+        @include card-featured-base;
+
+        .c-cards-view {
+
+            &__media {
+                &.video {
+                    &:before {
+                        transform:none;
+                        right:20px;
+                        top:20px;
+                        left:unset;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.card-featured-desktop {
+    @media #{$desktop} {
+        .c-cards-view {
+
+            &__media {
+                &.video {
+                    &:before {
+                        left:75%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card-featured-desktop-up {
+    @media #{$desktop-up} {
+        @include card-featured-base;
+
+        .c-cards-view {
+
+        }
+    }
+}

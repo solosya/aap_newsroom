@@ -26,7 +26,7 @@
 
         position: relative;
         overflow:hidden;
-        // height: 517px;
+
         @media #{$mobile}{
             height: 50vw;
         }
@@ -38,10 +38,16 @@
             height:100%;
             width: 100%;
 
-
-            > img{
-                max-width: 100%;
+            &.video {
+                &:before {
+                    transform:none;
+                    right:20px;
+                    top:20px;
+                    left:unset;
+                }
             }
+
+
         }
 
         > article > .content{

@@ -1,5 +1,8 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
+{% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : true %}
+
+
 
 {% set recentArticles = getCache("indexRecent") %}
 {% if (recentArticles is empty) %}
@@ -24,7 +27,6 @@
 {% set limit = 10 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
-
 {% set firstCount = articles | length %}
 
 
@@ -109,6 +111,23 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
+
+
+
+
+{# Fill all sections with content from a single section
+So you don't have to create all the sections on dev #}
+{% if dev %}
+    {% set devSection = sections['sportsroom']%}
+    {% for key, section in sections %}
+        {% set sections = sections | merge({
+            (key) : {
+                'feed': devSection.feed,
+                'link' : blog.link
+                }
+            }) %}
+    {% endfor %}
+{% endif %}
 
 
 
@@ -353,19 +372,19 @@
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['ideasroom'].feed.articles|length > 0 %}
                      {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['lockerroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['greenroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
+                {% if sections['investigations'].feed.articles|length > 0 %}
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 

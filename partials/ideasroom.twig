@@ -1,5 +1,5 @@
     
-{% set articleFeed = sections['sportsroom'].feed.articles %}
+{% set articleFeed = sections['ideasroom'].feed.articles %}
 
 {# rotate every n hours #}
 {% set rotation  = 2 %}
@@ -69,7 +69,7 @@
     {{this.render('_single-article.twig', {
         article: articles[0], 
         position: 1, 
-        containerClass: 'featured ideas', 
+        containerClass: 'card-featured-mobile card-featured-tablet card-featured-desktop card-featured-desktop-up ideas', 
         imageSize: {width:1140, height:430},
         swap: 'false'
     }) | raw}}
