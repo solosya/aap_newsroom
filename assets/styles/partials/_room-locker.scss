@@ -84,7 +84,7 @@
             }
             
             &__heading{
-                @include font-size(20);
+                @include font-size(20, 23);
                 font-weight:normal;
                 @media screen and (max-width: $mmd-break-down){
                     @include font-size(16);
@@ -129,9 +129,9 @@
                     display:none;
                 }
                 > h2 {
-                    margin-top:21px;
-                    @include font-size(18);
-                    height:38px;
+                    margin-top:14px;
+                    @include font-size(20, 24);
+                    height:50px;
                     @media screen and (max-width: $mmd-break-down) {
                         height:58px;
                         margin-top:8px;
