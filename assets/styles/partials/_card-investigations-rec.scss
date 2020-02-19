@@ -89,7 +89,7 @@
             &:before{
                 content: '';
                 background-color: black;
-                width: 56%;
+                width: 54.7%;
                 padding: 0;
                 position: absolute;
                 top: 30px;
@@ -100,7 +100,7 @@
             > h2{
                 font-weight: bold;
                 @include font-size(30);
-                height: 70px;
+                height: 80px;
                 @media #{$mobile}{
                     @include font-size(20);
                     border: 0;
@@ -140,7 +140,8 @@
             }
             
             > p {
-                height: 50px;
+                height: 55px;
+                padding-bottom: 10px;
                 border-bottom: 1px solid #dadada;
 
                 @media #{$mobile}{
@@ -210,6 +211,9 @@
                 .content{
                     > .category{
                         display: none;
+                    }
+                    >h2{
+                        height: 80px;
                     }
                 }
             }
