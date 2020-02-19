@@ -382,23 +382,16 @@
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
                                     {% endif %}
-
-                                    <section class="ad sidebar-ad">
-                                        {% if config['inventory']['adSpace']['mrec'][1] is defined %}
+                                    {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
+                                        <section class="ad sidebar-ad u-desktop-no-margin-top">
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
-                                            
-                                        {% endif %}
-                                        
-                                    </section>
-
-                                    <section class="ad sidebar-ad">
-                                        {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                        </section>
+                                    {% endif %}
+                                    {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                        <section class="ad sidebar-ad u-desktop-margin-top-40">
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
-                                            
-                                        {% endif %}
-                                        
-                                    </section>
-
+                                        </section>
+                                    {% endif %}
 
 
 
@@ -448,7 +441,7 @@
 
 
 
-                                <div class="article-chimp-subscribe">
+                                <div class="article-chimp-subscribe u-desktop-margin-top-40">
                                     <div class="article-chimp-subscribe__top">
                                         <img class="article-chimp-subscribe__logo" src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" alt="Newsroom logo">
                                         <h3 class="article-chimp-subscribe__heading">Get your free daily briefing</h3>
