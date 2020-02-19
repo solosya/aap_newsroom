@@ -49,6 +49,9 @@
         @media screen and (max-width:1600px){
             height: auto;
         }
+        @media #{$tablet}{
+            height: 268px;
+        }
 
         @media screen and (max-width: $sm-break-down) {
             position: relative;
@@ -95,9 +98,8 @@
                     max-height: 587px;
                 }
 
-                @media screen and (max-width: $sm-break-down) {
-                    max-width: 60%;
-                    height: 350px;
+                @media #{$tablet} {
+                    max-width: 55%;
                 }
 
                 @media #{$mobile} {
@@ -164,7 +166,7 @@
 
                                 // Not under:                     Not over:
                 @media #{$tablet}{
-                    padding: 90px 15px 15px 15px;
+                    padding: 40px 15px 15px 15px;
                 }
 
 
@@ -186,6 +188,9 @@
                     -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
                     min-height:0;
                     max-height:20px;
+                    @media #{$tablet}{
+                        font-size: rem(8.5);
+                    }
                     @media screen and (max-width: $mobile-break){
                         color: white;
                         font-family: $font-family-sans-serif;
@@ -216,18 +221,20 @@
                     }
 
 
-                    @media screen and (max-width: $md-break){
-                       @include font-size(24);
-                    }
+                   
 
-                    @media screen and (max-width: $mmd-break-down){
-                       padding-bottom: 5px;
-                       margin-top:10px;
-                    }
+                    
 
                     @media screen and (max-width: $sm-break-down) {
                          @include font-size(28);
                          border: 0;
+                    }
+
+                    @media #{$tablet}{
+                        font-size: rem(28);
+                        line-height: 1.08;
+                        max-height: 100px;
+                    
                     }
                 }
 
@@ -250,7 +257,10 @@
                     //     }
                     // }
 
-
+                    @media #{$tablet}{
+                        font-size: rem(9.2);
+                        line-height: 1.25;
+                    }
 
 
                     @media #{$mobile} {
