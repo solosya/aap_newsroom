@@ -11,9 +11,11 @@
     
     div.logos {
         display:flex;
-        flex-direction:row;
-        justify-content: center;
-        align-items:baseline;
+        @include flexbox();
+        // flex-direction:row;
+        @include justify-content(center);
+        @include align-items(center);
+        // align-items:baseline;
         margin: 0 auto;
         @media screen and (max-width: $mobile-break){
             padding: 0;
