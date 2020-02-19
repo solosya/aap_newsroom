@@ -41,7 +41,7 @@
     
     <main id="main" class="site-main roompage investigations u-margin-top-40" role="main">
         <a class="d-block d-md-none" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none;height:50px;margin-top:-15px;">
-            <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=572" alt="logo" class="main-logo" style="height:30px;margin-left:20px;">        
+            <img src="{{networkData.templatePath}}/static/images/investigations-logo.svg?v=572" alt="logo" class="main-logo" style="height:30px;margin-left:20px;">        
         </a>
         <section class="featured-slider container-fluid">
 
@@ -66,7 +66,7 @@
         <section class="top-stories">
             <div class="container">
                 <div class="row">
-                    {% set marginclass = ['','u-tablet-no-margin-bottom'] %}
+                    {% set marginclass = ['',' u-tablet-no-margin-bottom'] %}
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
                             {{this.render('partials/_single-article.twig', {

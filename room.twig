@@ -107,7 +107,7 @@
         <section class="top-stories">
             <div class="container">
                 <div class="row">
-                    {% set marginclass = ['','u-tablet-no-margin-bottom'] %}
+                    {% set marginclass = ['',' u-tablet-no-margin-bottom'] %}
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
                             {{this.render('partials/_single-article.twig', {
