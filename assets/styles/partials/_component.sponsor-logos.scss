@@ -1,24 +1,17 @@
 .sponsor-logos2 {
-    // margin-top:80px;
     width:100%;
     text-align: center;
     margin-bottom: 35px;
-    // @media screen and (max-width: $sm-break-down) {
-    //     margin-bottom: 35px;
-    // }
-
 
     
     div.logos {
         display:flex;
         @include flexbox();
-        // flex-direction:row;
         @include justify-content(center);
         @include align-items(center);
-        // align-items:baseline;
         margin: 0 auto;
         margin-top:20px;
-        @media screen and (max-width: $mobile-break){
+        @media #{$mobile} {
             padding: 0;
         }
 
@@ -31,12 +24,7 @@
 
             &.sponsor-chorus {
                 width:200px;
-                // height:40px;
-                // background: url('../images/logos/Chorus_logo-basic.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-left:-30px;
-                // margin-top: 15px;
                 margin-right: 55px;
                 @media #{$mobile}{
                     margin:0;
@@ -45,11 +33,6 @@
 
             &.sponsor-vodafone {
                 width:155px;
-                // height:50px;
-                // background: url('../images/logos/vodafone-logo.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                // margin-top: 15px;
                 margin-right: 40px;
                 @media #{$mobile}{
                     margin:15px 0 0;
@@ -58,29 +41,17 @@
 
             &.sponsor-bellgully {
                 width:187px;
-                // height:50px;
-                // background: url('../images/logos/bell-gully.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                
                 margin-right: 40px;
-                // margin-top: 15px;
                 @media #{$tablet}{
                     margin-right: 30px;
                 }
-                @media screen and (max-width: $mobile-break){
-                    
+                @media #{$mobile} {
                     margin-right: 0;
                 }
             }
 
             &.sponsor-vic-uni-wellington {
                 width:200px;
-                // height:50px;
-                // background: url('../images/logos/VIC-mono.png?ver=1');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                // margin-top: 15px;
                 @media #{$mobile}{
                     margin:0;
                 }
@@ -88,14 +59,7 @@
 
             &.sponsor-uni-auckland {
                 width:140px;
-                // height:45px;
-                // background: url('../images/logos/UOA_H_Black.svg?ver=2');
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-left:20px;
-                // position: relative;
-                // top: -5px;
-                // margin-top: 15px;
                 @media #{$tablet}{
                     margin-right: 30px;
                 }
@@ -106,13 +70,6 @@
 
             &.sponsor-uni-otago {
                 width:123px;
-                // height:60px;
-                // background: url('../images/logos/otago-uni-logo.png');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                // position: relative;
-                // top: 3px;
-                // margin-top: 15px;
                 @media #{$desktop-up}{
                     margin-left: 40px;
                 }
@@ -123,14 +80,6 @@
 
             &.sponsor-sky {
                 width: 93px;
-                // height: 85px;
-                // background: url('../images/logos/sky-logo-mono.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                // position: relative;
-                @media #{$tablet}{
-                    // top: 15px;
-                }
                 @media #{$desktop-up}{
                     width: 85px;
                     height: 67px;
@@ -140,10 +89,6 @@
 
             &.sponsor-kiwibank {
                 width:65px;
-                // height:65px;
-                // background: url('../images/logos/KB_logo_black.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-bottom: -5px;
                 margin-right: 100px;
                 @media #{$mobile}{
@@ -154,10 +99,6 @@
 
             &.sponsor-kiwiwealth {
                 width: 72px;
-                // height: 72px;
-                // background: url(../images/logos/KW-logo-bw.png);
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-bottom: -9px;
                 margin-left: 50px;
                 @media #{$mobile}{
@@ -168,11 +109,6 @@
 
             &.sponsor-ecostore {
                 width:160px;
-                // height:50px;
-                // background: url('../images/logos/eco_logo_black.svg');
-                // background-repeat: no-repeat;
-                // background-size: contain;
-                // margin-bottom: 5px;
                 margin-right: 40px;
                 @media #{$tablet}{
                     margin-right: 30px;
@@ -184,10 +120,6 @@
 
             &.sponsor-stuff {
                 width:130px;
-                // height:100px;
-                // background: url('../images/logos/stuff.svg?ver=1');
-                // background-position: 0 20px;
-                // background-repeat: no-repeat;
                 @media #{$mobile}{
                     margin:0;
                 }
@@ -195,11 +127,6 @@
 
             &.sponsor-matatuhi {
                 width:200px;
-                // height:100px;
-                // background: url('../images/logos/matatuhi-mono.jpg');
-                // background-position: 0 20px;
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 @media #{$mobile}{
                     margin:0;
                 }
@@ -207,11 +134,6 @@
 
             &.sponsor-beca {
                 width:130px;
-                // height:65px;
-                // background: url('../images/logos/BECA_mono.png');
-                // background-position: 0 20px;
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-right: 40px;
                 @media #{$tablet}{
                     margin-right: 30px;
@@ -223,11 +145,6 @@
 
             &.sponsor-wispa {
                 width:130px;
-                // height:100px;
-                // background: url('../images/logos/WISP_mono.jpg');
-                // background-position: 0 20px;
-                // background-repeat: no-repeat;
-                // background-size: contain;
                 margin-left:40px;
                 margin-right: 40px;
                 @media #{$mobile}{
