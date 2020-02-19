@@ -107,13 +107,13 @@
         <section class="top-stories">
             <div class="container">
                 <div class="row">
-
+                    {% set marginclass = ['','u-tablet-no-margin-bottom'] %}
                     {% for i in 0..1 %}
                         {% if articles[i] %}                                                                
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'col-md-6 card-top-story card-top-story-tablet card-top-story-mobile room',
+                                containerClass: 'col-12 col-lg-6 card-top-story card-rec-tablet card-top-story-mobile room',
                                 imageSize: {width:203, height:130}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
