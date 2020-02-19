@@ -17101,6 +17101,9 @@ body.channel.supporters p {
     @media screen and (max-width: 1600px) {
       .featured-slider .card {
         height: auto; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .featured-slider .card {
+        height: 268px; } }
     @media screen and (max-width: 767px) {
       .featured-slider .card {
         position: relative;
@@ -17131,10 +17134,9 @@ body.channel.supporters p {
           .featured-slider .card article figure {
             max-width: 65%;
             max-height: 587px; } }
-        @media screen and (max-width: 767px) {
+        @media screen and (min-width: 768px) and (max-width: 991px) {
           .featured-slider .card article figure {
-            max-width: 60%;
-            height: 350px; } }
+            max-width: 55%; } }
         @media screen and (max-width: 767px) {
           .featured-slider .card article figure {
             min-width: 100%;
@@ -17188,7 +17190,7 @@ body.channel.supporters p {
             padding: 165px 15px 5px 15px; } }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .featured-slider .card article .content {
-            padding: 90px 15px 15px 15px; } }
+            padding: 40px 15px 15px 15px; } }
         @media screen and (max-width: 767px) {
           .featured-slider .card article .content {
             width: 100%;
@@ -17206,6 +17208,9 @@ body.channel.supporters p {
           -moz-flex: 1 0 0;
           min-height: 0;
           max-height: 20px; }
+          @media screen and (min-width: 768px) and (max-width: 991px) {
+            .featured-slider .card article .content .category {
+              font-size: 0.53125rem; } }
           @media screen and (max-width: 620px) {
             .featured-slider .card article .content .category {
               color: white;
@@ -17233,19 +17238,16 @@ body.channel.supporters p {
             .featured-slider .card article .content h2 {
               font-size: 2rem;
               line-height: 2.4rem; } }
-          @media screen and (max-width: 1200px) {
-            .featured-slider .card article .content h2 {
-              font-size: 1.5rem;
-              line-height: 1.8rem; } }
-          @media screen and (max-width: 991px) {
-            .featured-slider .card article .content h2 {
-              padding-bottom: 5px;
-              margin-top: 10px; } }
           @media screen and (max-width: 767px) {
             .featured-slider .card article .content h2 {
               font-size: 1.75rem;
               line-height: 2.1rem;
               border: 0; } }
+          @media screen and (min-width: 768px) and (max-width: 991px) {
+            .featured-slider .card article .content h2 {
+              font-size: 1.75rem;
+              line-height: 1.08;
+              max-height: 100px; } }
         .featured-slider .card article .content > p {
           -webkit-flex: 1 0 0;
           -ms-flex: 1 0 0;
@@ -17256,6 +17258,10 @@ body.channel.supporters p {
           padding-bottom: 20px;
           margin-bottom: 7px;
           border-bottom: 1px solid #dadada; }
+          @media screen and (min-width: 768px) and (max-width: 991px) {
+            .featured-slider .card article .content > p {
+              font-size: 0.575rem;
+              line-height: 1.25; } }
           @media screen and (max-width: 767px) {
             .featured-slider .card article .content > p {
               display: none; } }
