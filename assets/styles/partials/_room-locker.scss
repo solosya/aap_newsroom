@@ -1,5 +1,6 @@
 .room-locker{
     margin-bottom: 80px;
+
     
     > header{
         margin-bottom: 20px;
@@ -13,6 +14,30 @@
             width:205px;
         }
 
+    }
+
+    &__header__text{
+        
+        @include font-size(18);
+        font-weight: 600;
+        color: black;
+        flex-direction: row;
+        margin-top: 5px;
+        
+        @media #{$desktop-up}{
+            margin-left: auto;
+            margin-top: auto;
+            float:   right;
+            margin-top: 20px;
+        }
+        @media #{$tablet} {
+            margin-top: 20px;
+            float:   right;
+        }
+        @media #{$mobile} {
+            @include font-size(14);
+            margin-top: 0;
+        }
     }
 
     .articles{
