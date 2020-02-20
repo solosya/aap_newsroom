@@ -3,7 +3,6 @@
 
 {{ set(this, 'title', article.title) }}
 
-{# {% set networkData      = _Network.getNetworkData() %} #}
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
@@ -21,6 +20,8 @@
 {% set config       = _Network.getThemeConfig() %}
 
 {% set showPaywall              = false %}
+{% set paywallSection           = false %}
+
 {% set content                  = article.content %}
 {% set paywall_content_style    = "" %}
 {% set newsroom_pro_style       = "" %}
@@ -140,9 +141,9 @@
 {% set popular = getCache(cacheKey) %}
 {% if (popular is empty) %}
     {% set popular = _Article.getPopularArticles({
-            limit: 3, 
+            limit: 4, 
             scope: 'network', 
-            interval: 168 
+            interval: 24 
     }) %}
     {% set cache = setCache(cacheKey, popular, 500) %} 
 {% endif %} 
@@ -299,6 +300,7 @@
 
 
                             {% if not paywallSection %}
+                                
                                 {% if articleBlog == 'lockerroom' %}
                                     <div class="article-supoort">
                                         <div class="article-supoort__text">
@@ -324,28 +326,35 @@
                                         </a>
                                     </div>
                                 {% endif %}
+
+
+
+                                {% if popular|length > 0 %}
+                                    <div class="u-margin-top-70 u-margin-bottom-minus-60">
+                                        <h3 class="u-text-center u-uppercase u-margin-bottom-30 u-font-size-24">Most popular on newsroom</h3>
+                                            
+                                        {% set count = 0 %}
+                                        <div class="row">
+                                            {% for pop in popular  %}
+                                                {% if pop.guid != article.guid and count < 3 %}
+                                                    {{ this.render('partials/_single-article.twig', {
+                                                        article: pop, 
+                                                        containerClass: 'col-12 col-md-4 card-sm card-sm-tablet card-sm-mobile', 
+                                                        swap: 'false', 
+                                                    }) | raw }}
+                                                    {% set count = count + 1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+
                             {% endif %}
                      
 
 
 
-
-
-                            {% if popular|length > 0 %}
-                                <div class="u-margin-top-70">
-                                    <h3 class="u-text-center u-uppercase u-margin-bottom-30 u-font-size-24">Most popular on newsroom</h3>
-                                    
-                                    <div class="row">
-                                    {% for i in 0..2 if popular[i] %}
-                                        {{ this.render('partials/_single-article.twig', {
-                                            article: popular[i], 
-                                            containerClass: 'col-12 col-md-4 card-sm card-sm-tablet card-sm-mobile', 
-                                            swap: 'false', 
-                                        }) | raw }}
-                                    {% endfor %}
-                                    </div>
-                                </div>
-                            {% endif %}
 
 
 
@@ -356,7 +365,7 @@
                             {% endif %} 
 
 
-                            <div class="comments d-print-none">
+                            <div class="comments d-print-none u-margin-top-60">
                                 <h3>Comments</h3>
                                 <p>
                                     Newsroom does not allow comments directly on this website. 
