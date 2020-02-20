@@ -391,11 +391,11 @@
                                             <p class="beca-section__arttext">In association with</p>
                                         </div>
                                     {% endif %}
-                                    {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
+                                    {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
                                         <section class="ad sidebar-ad u-desktop-no-margin-top">
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
                                         </section>
-                                    {% endif %}
+                                    {% endif %} #}
                                     {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                         <section class="ad sidebar-ad {% if articleBlog == 'ideasroom' %}u-desktop-no-margin-top{% else %}u-desktop-margin-top-40{% endif %}">
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>

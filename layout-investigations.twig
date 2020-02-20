@@ -110,7 +110,7 @@
                          </div>
                     </div>
 
-                    <div class="col-md-12 col-lg-4 sidebar">
+                    <div class="col-12 col-lg-4 sidebar">
                         
                         <div class="row">
                             <section class="col-md-6 col-lg-12 ad sidebar-ad">
@@ -122,7 +122,7 @@
 
 
 
-                        <section class="col-md-12 sidebar-news recent-articles">
+                        <section class="col-12 sidebar-news recent-articles">
                             <h3 class="recent-articles__header">
                                 <span class="recent-articles__header-bold">Latest</span> on {{recentPanelBlogName}} 
                             </h3>
@@ -145,11 +145,11 @@
 
                         </section>
                             {% if articles[articleCount] %}                                                               
-                                <section class="col-md-12 sidebar-inverted"> 
+                                <section class="col-12 sidebar-inverted"> 
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'card-sm card-sm-tablet card-sm-mobile inverted',
+                                            containerClass: 'card-sm card-rec-tablet card-sm-mobile inverted',
                                             imageSize: {width:335, height:260}
                                         }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
