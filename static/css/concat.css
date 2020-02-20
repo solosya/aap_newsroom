@@ -14957,6 +14957,28 @@ input[type=radio].inline {
     @media screen and (max-width: 490px) {
       .room-locker > header {
         width: 205px; } }
+  .room-locker__header__text {
+    font-size: 1.125rem;
+    line-height: 1.35rem;
+    font-weight: 600;
+    color: black;
+    flex-direction: row;
+    margin-top: 5px; }
+    @media screen and (min-width: 992px) {
+      .room-locker__header__text {
+        margin-left: auto;
+        margin-top: auto;
+        float: right;
+        margin-top: 20px; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .room-locker__header__text {
+        margin-top: 10px;
+        float: right; } }
+    @media screen and (max-width: 767px) {
+      .room-locker__header__text {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        margin-top: 0; } }
   .room-locker .articles {
     border-top: solid 1px #d4d4d4;
     border-bottom: solid 1px #d4d4d4;
