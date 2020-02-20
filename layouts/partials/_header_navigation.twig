@@ -192,7 +192,7 @@
             {% else %}
             <div class="auth">
                 <button id="signinBtn" type="submit" class="_btn _btn--black site-header-signin__signbtn">SIGN IN TO PRO</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--red site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
             </div>
         {% endif %}
     </div>
@@ -219,7 +219,7 @@
                 <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red">SIGN OUT</a>
             {% else %}
                 <button id="signinBtn" type="submit" class="_btn _btn--black site-header-signin__signbtn">SIGN IN TO PRO</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--red  site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--red  site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
             {% endif %}
             </div>
 
@@ -319,7 +319,7 @@
             <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="site-header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
         {% else %}
             <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right site-header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/pro" type="submit" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
+            <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
         {% endif %}
     
     </div>
