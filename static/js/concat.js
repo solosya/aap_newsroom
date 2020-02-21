@@ -29580,7 +29580,7 @@ Acme.templates.signinFormTmpl =
             <div class="login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \
-        <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+        <button id="modal-signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
         \
         <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
         <div class="reset"> \
@@ -31165,6 +31165,10 @@ Acme.IPCheck = function() {
             Acme.server.fetch(_appJsConfig.appHostName + '/api/theme/get-config').done(function(r) {
 
                 if (r.success === 1) {
+
+                    if (typeof r.data.IPAdresses == 'undefined' || r.data.IPAdresses.length > 1) {
+                        return;
+                    }
                     IPAdresses = r.data.IPAdresses;
                     
                     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
