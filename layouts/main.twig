@@ -29,13 +29,12 @@
 {% set showPaywall = false %}
 {% set adminUser = _User.isAdminUser() %}
 
-
 {% set paywallSectionBlocked = blogData['showPaywall'] is defined ? blogData['showPaywall'] : false %}
 {% set paywallSectionType    = blogData['paywallType'] is defined ? blogData['paywallType'] : "" %}
 {% set paywallSection        = paywallSectionType | lower == 'section' ? true : false %}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if not adminUser and paywallSectionBlocked and 'article' not in pageClass %}
+{% if not adminUser and paywallSectionBlocked and paywallSection == 'section' and 'article' not in pageClass %}
     {% set showPaywall = true %}
     {% set layout = "layout-marketing" %}
 {% endif %}
