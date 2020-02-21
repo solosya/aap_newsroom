@@ -27,19 +27,18 @@
 
 
 {% set showPaywall = false %}
-{% set isAdmin = _User.isAdminUser() %}
-{% set paywallSection = blogData['paywallType'] | lower == 'section' ? true : false %}
+{% set adminUser = _User.isAdminUser() %}
 
 
+{# {% set log = _AppHelper.log(blogData) %} #}
+{% set paywallSectionBlocked = blogData['showPaywall'] is defined ? blogData['showPaywall'] : false %}
+{% set paywallSectionType    = blogData['paywallType'] is defined ? blogData['paywallType'] : "" %}
+{% set paywallSection        = paywallSectionType | lower == 'section' ? true : false %}
 
 {# Pages don't have a blogName so class has to be used #}
-{% if   not _User.isAdminUser()         and
-        blogData['showPaywall'] == true and
-        'article' not in pageClass %}
-    
-        {% set showPaywall = true %}
-        {% set layout = "layout-marketing" %}
-    
+{% if not adminUser and paywallSectionBlocked and 'article' not in pageClass %}
+    {% set showPaywall = true %}
+    {% set layout = "layout-marketing" %}
 {% endif %}
  
 
@@ -179,7 +178,7 @@
 
 
 <body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" 
-    data-isAdmin="{{ isAdmin }}" 
+    data-isAdmin="{{ adminUser }}" 
     data-paywall="{{blogData['showPaywall']}}"
     data-networkid="{{networkData['id']}}"
 >

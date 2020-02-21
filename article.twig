@@ -15,37 +15,39 @@
 {% set blogData         = _Blog.getBlog() %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
-{% set articleBlogData  = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
 {% set proBlogId        = '' %}
-{% set config       = _Network.getThemeConfig() %}
+{% set config           = _Network.getThemeConfig() %}
+{% set adminUser        = _User.isAdminUser() %}
+{% set guestUser        = _User.isGuest() %}
 
-{% set showPaywall              = false %}
-{% set paywallSection           = false %}
 
 {% set content                  = article.content %}
 {% set paywall_content_style    = "" %}
 {% set newsroom_pro_style       = "" %}
+{% set articleBlog              = article.blog.title | lower %}
 
-{% if articleBlogData['additionalInfo'] is defined            and 
-      articleBlogData['additionalInfo']['paywall'] is defined and 
-      articleBlogData['additionalInfo']['paywall'] == 'on' %}
+
+{% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
+
+{# The below checks which message to show a user blocked by the paywall #}
+{% set paywallType = "subscribe" %}
+{% if showPaywall and not guestUser %}
+    {% set pwstats = _User.getPaywallStats(false) %}
+    {% set paywallType = "upgrade" %}
     
-    {% set paywallSection = true %}
-
+    {% if pwstats['type'] == 'article' %}
+        {% set paywallType = "topup" %}
+    {% elseif pwstats['type'] == 'time' %}
+        {% set paywallType = "renew" %}
+    {% elseif pwstats['type'] == 'signup' %}
+        {% set paywallType = "signup" %}
+    {% endif %}
 {% endif %}
 
 
-{% set articleBlog = article.blog.title | lower %}
-
-{% if   not _User.isAdminUser()     and
-        paywallSection == true      and
-        articleBlogData['showPaywall'] == true  %}
-    
-    {% set showPaywall = true %}
-{% endif %}
 
 
-{% if paywallSection == true %}
+{% if showPaywall %}
     {% set newsroom_pro_style = "pro" %}
 
     {% for blog in networkData.networkBlogs %}
@@ -56,10 +58,10 @@
 
 {% endif %}
 
+
+{% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
 {% if articleBlog == 'lockerroom' %}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{% else %}
-    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
 {% endif %}
 
     <script>
@@ -73,7 +75,7 @@
     </script>
 
 
-{% if showPaywall == true %}
+{% if showPaywall %}
     {% set storySplit = article.content | split('</p>')  %}
     {% set para2      = storySplit[1] | slice(0, 190) ~ '</p>'  %}
     {% set content    = [storySplit[0], para2] | join('</p>') %}
@@ -165,7 +167,7 @@
         <article class="article-main">
 
 
-        {% if paywallSection %}
+        {% if showPaywall %}
             <div class="article-pro__image-container">
         {% endif %}
 
@@ -190,7 +192,7 @@
 
 
 
-            {% if paywallSection %}
+            {% if showPaywall %}
                 </div>
                 </div>
                 <div class="container">
@@ -199,7 +201,7 @@
 
 
 
-                <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
+                <div class="page-content {% if showPaywall %}u-mobile-margin-top-15{% endif %}" >
                     <div class="row">
                         <div class="col-lg-8">
                             
@@ -286,7 +288,7 @@
                             </div>
                             
 
-                            {% if showPaywall == true %}
+                            {% if showPaywall %}
                                 <div class="article-subscribe">
                                     <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                     <a href="/pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
@@ -299,7 +301,7 @@
 
 
 
-                            {% if not paywallSection %}
+                            {% if not showPaywall %}
                                 
                                 {% if articleBlog == 'lockerroom' %}
                                     <div class="article-supoort">
@@ -383,7 +385,7 @@
                         <div class="col-lg-4">
                             <aside>
 
-                                {% if not paywallSection %}
+                                {% if not showPaywall %}
 
                                     {% if articleBlog == 'new auckland' %}
                                         <div class="beca-section beca-section__article d-none d-lg-block">
