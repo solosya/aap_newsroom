@@ -23,17 +23,23 @@ describe('Article paywall guest', function() {
 });
   
 
-// describe('Article paywall user', function() {
-//     it('shows full article for singed in user', function() {
-        
-//         cy.visit('/');
-//         cy.get("#signinBtn").click();
-//         cy.get("#loginName").type(Cypress.env('admin.username')).should('have.value', Cypress.env('admin.username'));
-//         cy.get("#loginPass").type(Cypress.env('admin.password')).should('have.value', Cypress.env('admin.password'));
-//         cy.get("#modal-signinBtn").click();
-        
-//         cy.visit('/paywall-type-section/test-paywalled-article-paid');
+describe('Article paywall user', function() {
+    it('shows full article for singed in user', function() {
+        cy.server();
+        cy.route({
+            method: 'POST',
+            url: '/api/auth/login',
+          }).as('loginRoute')
+          
+        cy.visit('/');
+        cy.get("#signinBtn").click();
+        cy.get("#loginName").type(Cypress.env('username')).should('have.value', Cypress.env('username'));
+        cy.get("#loginPass").type(Cypress.env('password')).should('have.value', Cypress.env('password'));
+        cy.get("#modal-signinBtn").click();
+        cy.wait('@loginRoute');
+        cy.visit('/paywall-type-section/test-paywalled-article-paid');
+        cy.get('[data-test=article]')
 
-//     });
-// });
+    });
+});
   
