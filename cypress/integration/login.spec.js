@@ -1,17 +1,23 @@
 
+// /paywall-type-section/test-paywalled-article-paid
+// /paywall-type-section/test-paywalled-article
+// /paywall-type-article/test-paywalled-article-section-article
+
 describe('Article paywall guest', function() {
-    // it('shows article paywall for guest user', function() {
-    //     cy.visit('/paywall-type-section/test-paywalled-article-paid');
-    //     cy.get('.article-subscribe__header').should('have.text', 'TO READ THE FULL STORY ON NEWSROOM PRO');
-    // });
+    it('shows article paywall for guest user', function() {
+        cy.visit('/paywall-type-section/test-paywalled-article-paid');
+        cy.get('[data-test=paywall]')
+        cy.get('.article-subscribe__header').should('have.text', 'TO READ THE FULL STORY ON NEWSROOM PRO');
+    });
 
     it('redirects to paywall for guest user', function() {
         cy.visit('/paywall-type-section/');
-        cy.get('section.market-hero');
+        cy.get('[data-test=paywall]')
     });
 
     it('shows section for guest user', function() {
         cy.visit('/paywall-type-article/');
+        cy.get('[data-test=section]')
     });
 
 });
