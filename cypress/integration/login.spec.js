@@ -30,7 +30,7 @@ describe('Article paywall user', function() {
             method: 'POST',
             url: '/api/auth/login',
           }).as('loginRoute')
-          
+                            
         cy.visit('/');
         cy.get("#signinBtn").click();
         cy.get("#loginName").type(Cypress.env('username')).should('have.value', Cypress.env('username'));
