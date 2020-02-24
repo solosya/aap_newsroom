@@ -19,6 +19,7 @@ describe('Logging In - XHR Web Form', function () {
     const username = Cypress.env('username');
     const password = Cypress.env('password');
     const loginurl = '/api/auth/login';
+    const sessionID = Cypress.env('sessionId');
   
     context('XHR form submission', function () {
       
@@ -29,52 +30,50 @@ describe('Logging In - XHR Web Form', function () {
 
 
 
-    //   it('successfully logs in', () => {
-    //     cy.server();
-    //     cy.route({
-    //         method: 'POST',
-    //         url: loginurl,
-    //     }).as('loginRoute')
+      it('successfully logs in', () => {
+        cy.server();
+        cy.route({
+            method: 'POST',
+            url: loginurl,
+        }).as('loginRoute')
 
-    //     cy.get("#signinBtn").click();
-    //     cy.get("#loginName").type(username).should('have.value', username);
-    //     cy.get("#loginPass").type(password).should('have.value', password);
-    //     cy.get("#modal-signinBtn").click();
-    //     cy.wait('@loginRoute');
+        cy.get("#signinBtn").click();
+        cy.get("#loginName").type(username).should('have.value', username);
+        cy.get("#loginPass").type(password).should('have.value', password);
+        cy.get("#modal-signinBtn").click();
+        cy.wait('@loginRoute');
 
-    //     cy.visit('/paywall-type-section/test-paywalled-article-paid');
-    //     cy.get('[data-test=article]')
-    //   });
+        cy.visit('/paywall-type-section/test-paywalled-article-paid');
+        cy.get('[data-test=article]')
+      });
   
 
 
-    //   it('displays errors on login', function () {
-    //     cy.server()
+      it('displays errors on login', function () {
+        cy.server()
   
-    //     // alias this route so we can wait on it later
-    //     cy.route('POST', loginurl).as('postLogin')
+        // alias this route so we can wait on it later
+        cy.route('POST', loginurl).as('postLogin')
   
-    //     // incorrect username on password
-    //     cy.get("#signinBtn").click();
-    //     cy.get("#loginName").type(username).should('have.value', username);
-    //     cy.get("#loginPass").type('password123').should('have.value', 'password123');
-    //     cy.get("#modal-signinBtn").click();
+        // incorrect username on password
+        cy.get("#signinBtn").click();
+        cy.get("#loginName").type(username).should('have.value', username);
+        cy.get("#loginPass").type('password123').should('have.value', 'password123');
+        cy.get("#modal-signinBtn").click();
 
-    //     cy.wait('@postLogin')
+        cy.wait('@postLogin')
   
-    //     cy.get('.login-form__error_text')
-    //     .should('be.visible')
-    //     .and('contain', 'Invalid Email or Password')
+        cy.get('.login-form__error_text')
+        .should('be.visible')
+        .and('contain', 'Invalid Email or Password')
   
-    //   })
+      })
   
-      it('can stub the XHR to force it to fail', function () {
-        // instead of letting this XHR hit our backend we can instead
-        // control its behavior programmatically by stubbing it
+      it('can stub the XHR to force it to fail', function () 
+    {
+
         cy.server();
   
-        // simulate the server returning 503 with
-        // empty JSON response body
         cy.route({
           method: 'POST',
           url: loginurl,
@@ -82,28 +81,20 @@ describe('Logging In - XHR Web Form', function () {
           response: {},
         }).as('postLogin');
   
-        // incorrect username on purpose
         cy.get("#signinBtn").click();
         cy.get("#loginName").type(username).should('have.value', username);
-        cy.get("#loginPass").type(password).should('have.value', password);
+        cy.get("#loginPass").type('password123').should('have.value', 'password123');
         cy.get("#modal-signinBtn").click();
 
-        // we can even test that the correct request
-        // body was sent in this XHR
-        cy.wait('@postLogin');
-        // .its('requestBody')
-        // .should('deep.eq', {
-        //   username: username,
-        //   password: password,
-        // });
+        cy.wait('@postLogin')
+        .its('requestBody')
+        .should('eq', "username="+username+"&password=password123&rememberMe=1");
   
         // we should have visible errors now
-        cy.get('p.error')
+        cy.get('.login-form__error_text')
         .should('be.visible')
-        .and('contain', 'An error occurred: 503 Service Unavailable');
+        .and('contain', 'Invalid Email or Password');
   
-        // and still be on the same URL
-        // cy.url().should('include', '/login')
       });
   
 
@@ -112,21 +103,35 @@ describe('Logging In - XHR Web Form', function () {
 
 
 
-    //   it('redirects to /dashboard on success', function () {
-    //     // we can submit form using "cy.submit" command
-    //     // https://on.cypress.io/submit
-    //     cy.get("#loginName").type(username).should('have.value', username);
-    //     cy.get("#loginPass").type(password).should('have.value', password);
-    //     cy.get("#modal-signinBtn").click();
+      it('sets cookie on success', function () 
+      {
 
-    //     // we should be redirected to /dashboard
-    //     // cy.url().should('include', '/dashboard')
-    //     // cy.get('h1').should('contain', 'jane.lane')
+        cy.server()
+        cy.route('POST', loginurl).as('postLogin')
+        cy.get("#signinBtn").click();
+        cy.get("#loginName").type(username).should('have.value', username);
+        cy.get("#loginPass").type(password).should('have.value', password);
+        cy.get("#modal-signinBtn").click();
+
+
+        cy.wait('@postLogin')
+
+        // we should be redirected to /dashboard
+        // cy.url().should('include', '/dashboard')
+        // cy.get('h1').should('contain', 'jane.lane')
   
-    //     // and our cookie should be set to 'cypress-session-cookie'
-    //     cy.getCookie('cypress-session-cookie').should('exist')
-    //   })
+        // and our cookie should be set to 'cypress-session-cookie'
+        cy.getCookie(sessionID).should('exist');
+        cy.getCookie('cog-product-user').should('exist');
+
+      });
   
+
+
+
+
+
+
     //   it('redirects on a stubbed XHR', function () {
     //     // When we stub the XHR we will no longer have a valid
     //     // cookie which means that on our Login.onSuccess callback
@@ -153,10 +158,9 @@ describe('Logging In - XHR Web Form', function () {
     //         // simulate a redirect to another page
     //         redirect: '/error',
     //       },
-    //     })
-    //     // alias this route so we can wait on it later
-    //     .as('postLogin')
-  
+    //     }).as('postLogin')
+        
+    //     cy.get("#signinBtn").click();
     //     cy.get("#loginName").type(username).should('have.value', username);
     //     cy.get("#loginPass").type(password).should('have.value', password);
     //     cy.get("#modal-signinBtn").click();
@@ -171,8 +175,8 @@ describe('Logging In - XHR Web Form', function () {
     //       // the right arguments from the stubbed routed
     //       expect(this.redirect).to.be.calledWith('/error')
     //     })
-    //   })
+    //   });
 
 
-    })
-  })
+    });
+  });

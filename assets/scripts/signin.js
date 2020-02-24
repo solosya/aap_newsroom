@@ -28,7 +28,7 @@ Acme.Signin.prototype.handle = function(e) {
     }
     if ($elem.is('button')) {
 
-        $('.message').addClass('hide');
+        $('.message').addClass('u-hide');
         if ($elem.hasClass('signin')) {
             $elem.text('')
                  .addClass('spinner');
@@ -59,7 +59,12 @@ Acme.Signin.prototype.handle = function(e) {
                          .removeClass('spinner');
                     self.errorMsg();
                 }
-            }).fail(function(r) { console.log(r);});
+            }).fail(function(r) { 
+                $elem.text("Sign in")
+                     .removeClass('spinner');
+                self.errorMsg();
+                console.log(r);
+            });
         }
 
 

@@ -109,7 +109,7 @@ Acme.templates.registerTmpl =
         <input id="name" class="" type="text" name="name" placeholder="Name"> \
         <input id="email" class="" type="email" name="email" placeholder="Email"> \
         \
-        <div class="message active hide"> \
+        <div class="message active u-hide"> \
             <div class="account-modal__error_text">Done!</div> \
         </div> \
         \
@@ -123,7 +123,7 @@ Acme.templates.forgotFormTmpl =
         <p class="password-reset-form__p">Enter your email below and we will send you a link to set your password.</p> \
         <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
         \
-        <div class="message active hide"> \
+        <div class="message active u-hide"> \
             <div class="password-reset-form__error_text">No user with that email found.</div> \
         </div> \
         \
