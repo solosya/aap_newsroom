@@ -29576,7 +29576,7 @@ Acme.templates.signinFormTmpl =
             <p class="layout" data-layout="forgot" class="">Forgot password</p> \
         </div> \
         \
-        <div class="message active hide"> \
+        <div class="message active u-hide"> \
             <div class="login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \
@@ -32467,7 +32467,7 @@ Acme.Signin = function(template, parent, layouts) {
 Acme.Signin.prototype = new Acme.modal();
 Acme.Signin.constructor = Acme.Signin;
 Acme.Signin.prototype.errorMsg = function(msg) {
-    $('.message').removeClass('hide');
+    $('.message').removeClass('u-hide');
 };
 Acme.Signin.prototype.handle = function(e) {
     var self = this;

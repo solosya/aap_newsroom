@@ -89,7 +89,7 @@ Acme.templates.signinFormTmpl =
             <p class="layout" data-layout="forgot" class="">Forgot password</p> \
         </div> \
         \
-        <div class="message active hide"> \
+        <div class="message active u-hide"> \
             <div class="login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \

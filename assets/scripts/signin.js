@@ -10,7 +10,7 @@ Acme.Signin = function(template, parent, layouts) {
 Acme.Signin.prototype = new Acme.modal();
 Acme.Signin.constructor = Acme.Signin;
 Acme.Signin.prototype.errorMsg = function(msg) {
-    $('.message').removeClass('hide');
+    $('.message').removeClass('u-hide');
 };
 Acme.Signin.prototype.handle = function(e) {
     var self = this;
