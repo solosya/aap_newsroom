@@ -152,39 +152,35 @@
                     <div class="col-md-12 col-lg-4 sidebar">
                         
                         <div class="row">
-                            {# {% if (this.title | lower) == 'lockerroom' %}
-                                <section class="" style="width:300px;margin:auto;">
-                                    <a href="https://bit.ly/2LRypQC"><img src="{{networkData.templatePath}}/static/images/LockerRoomv2a.gif"></a>
-                                </section>
-                            {% endif %} #}
+                            
                             {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                 <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                             {% endif %}
 
 
 
-                        <section class="col-md-12 sidebar-news recent-articles"{% if (this.title | lower) == 'lockerroom' %}style="display:none;"{% endif %}>
-                            <h3 class="recent-articles__header">
-                                <span class="recent-articles__header-bold">Latest</span> on {{recentPanelBlogName}} 
-                            </h3>
+                            <section class="col-md-12 sidebar-news recent-articles">
+                                <h3 class="recent-articles__header">
+                                    <span class="recent-articles__header-bold">Latest</span> on {{recentPanelBlogName}} 
+                                </h3>
 
-                            {% if recentArticles|length > 0 %}
+                                {% if recentArticles|length > 0 %}
 
-                                {% for i in 0..5 %}
-                                    {% if recentArticles[i] %}
-                                        {{
-                                            this.render('partials/_single-article_recent.twig', {
-                                                article: recentArticles[i], 
-                                                containerClass: '', 
-                                                swap: 'false', 
-                                                isArticle: 'true'}) | raw
-                                        }}
-                                    {% endif %}
-                                {% endfor %}
+                                    {% for i in 0..5 %}
+                                        {% if recentArticles[i] %}
+                                            {{
+                                                this.render('partials/_single-article_recent.twig', {
+                                                    article: recentArticles[i], 
+                                                    containerClass: '', 
+                                                    swap: 'false', 
+                                                    isArticle: 'true'}) | raw
+                                            }}
+                                        {% endif %}
+                                    {% endfor %}
 
-                            {% endif %}
+                                {% endif %}
 
-                        </section>
+                            </section>
                             
                             
 
