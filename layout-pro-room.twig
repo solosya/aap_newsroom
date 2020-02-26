@@ -159,7 +159,7 @@
 
 {% for blog in networkData.networkBlogs %}
 
-    {% if blog.title | lower == "columnists" %}
+    {% if blog.title | lower == "featured" %}
         {% set columnArticles = _Article.getRecentArticles({ limit: 5,  blogId: blog['id'] }) %}
         
     {% elseif blog.title | lower == "8 things" %}
@@ -312,7 +312,7 @@
 
 
                                     <div class="col-md-6 u-mobile-margin-top-30 u-mobile-no-padding u-tablet-margin-bottom-40">
-                                        <h3 class="pro-sidebar__colheader u-no-margin-top">Columnists</h3>
+                                        <h3 class="pro-sidebar__colheader u-no-margin-top">Featured</h3>
                                         {% for i in 0..4 if columnArticles[i] %}
                                             {{this.render('/partials/_single-article_column.twig', {
                                                 article         : columnArticles[i], 
@@ -426,7 +426,7 @@
 
 
                             <section class="col-lg-12 u-margin-top-40">
-                                <h3 class="pro-sidebar__colheader">Columnists</h3>
+                                <h3 class="pro-sidebar__colheader">Featured</h3>
                                 {% for i in 0..4 if columnArticles[i] %}
                                     {{this.render('/partials/_single-article_column.twig', {
                                         article         : columnArticles[i], 
