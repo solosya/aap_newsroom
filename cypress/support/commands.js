@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('loginByModal', (username, password, url) => {
+    Cypress.log({
+      name: 'login by Modal',
+      message: `${username} | ${password}`,
+    });
+  
+
+    cy.request({
+        method: 'POST',
+        url: url,
+        form: true,
+        body: {
+          "username": username,
+          "password": password,
+          "rememberme" : 1
+        },
+    })
+
+});
+  

@@ -6,7 +6,6 @@ if ($('#stripekey').length > 0) {
 
     var stripekey = $('#stripekey').html();
 
-
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
     var stripe = Stripe(stripekey);

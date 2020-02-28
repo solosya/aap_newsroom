@@ -1,7 +1,7 @@
-{% if _AppHelper.getApplicationEnv() == 'PROD'%}
+{% if _AppHelper.getApplicationEnv() != 'PROD'%}
     {# http://d31nhj1t453igc.cloudfront.net/sdk/sdk-v1.0.0.min.js #}
     
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=c6064ee0"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=5de0aa8a"></script>
 
 
 {% else %}
@@ -25,6 +25,7 @@
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/moment.js"></script>
 
 
 

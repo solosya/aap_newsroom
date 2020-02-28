@@ -124,6 +124,8 @@ gulp.task('scripts-concat', function(){
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
+        './assets/scripts/plugins/moment.js',
+
         // './assets/scripts/plugins/owl.carousel2.thumbs.js',
 
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
