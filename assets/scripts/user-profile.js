@@ -503,7 +503,6 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('.j-setplan').on('click', function(e) {
-        console.log("clicked on set plan");
         e.stopPropagation();
         var newPlan = $(e.target);
         if (!newPlan.hasClass('j-setplan')) {
@@ -526,7 +525,6 @@ Acme.UserProfileController.prototype.events = function ()
         var newdays          =  newPlan.data('planperiod');
         var newPlanType      =  newPlan.data('plantype');
 
-        console.log(newPlanType);
 
         if (currentUserCount > 0 && currentUserCount >= planusers) {
             Acme.SigninView.render("userPlan", "You have too many users to change to that plan.");

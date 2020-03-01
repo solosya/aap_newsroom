@@ -231,6 +231,7 @@ if ($('#stripekey').length > 0) {
             });
         }
 
+        console.log('removing email confirm');
         $('#email-confirm').addClass("email-confirm");
 
     };
