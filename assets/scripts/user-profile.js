@@ -504,6 +504,13 @@ Acme.UserProfileController.prototype.events = function ()
 
     $('.j-setplan').on('click', function(e) {
         e.stopPropagation();
+
+        var modal = new Acme.modal('modal', 'signin-modal', {
+            "userPlan" : 'userPlanMessage',
+            "userPlanChange" : 'userPlanOkCancel'
+        });
+
+
         var newPlan = $(e.target);
         if (!newPlan.hasClass('j-setplan')) {
             newPlan = $(e.target.parentNode);
@@ -527,7 +534,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
         if (currentUserCount > 0 && currentUserCount >= planusers) {
-            Acme.SigninView.render("userPlan", "You have too many users to change to that plan.");
+            modal.render("userPlan", "You have too many users to change to that plan.");
             return;
         }
 
@@ -572,7 +579,7 @@ Acme.UserProfileController.prototype.events = function ()
 
         if (cardSupplied === 'f' ) {
             msg = msg + "<br /><br />However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
-            Acme.SigninView.render("userPlan", "Almost there!", {message: msg});
+            modal.render("userPlan", "Almost there!", {message: msg});
             return;
         }
 
@@ -582,10 +589,10 @@ Acme.UserProfileController.prototype.events = function ()
         };
 
 
-        Acme.SigninView.render("userPlanChange", "Are you sure you want to change plan?" + msg)
+        modal.render("userPlanChange", "Are you sure you want to change plan?" + msg)
             .done(function() {
                 $('#dialog').parent().remove();
-                
+
                 $.ajax({
                     type: 'post',
                     url: _appJsConfig.baseHttpPath + '/user/change-paywall-plan',
