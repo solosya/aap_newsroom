@@ -7614,10 +7614,6 @@ body {
     html,
     body {
       overflow-x: hidden; } }
-  html.acme-modal-active,
-  body.acme-modal-active {
-    overflow: hidden;
-    height: 100%; }
 
 body {
   height: auto;
@@ -24135,6 +24131,9 @@ body.channel.supporters p {
   -webkit-justify-content: flex-start;
   -moz-justify-content: flex-start;
   justify-content: flex-start; }
+
+.u-noscroll {
+  overflow-y: hidden; }
 
 .u-display-none {
   display: none; }

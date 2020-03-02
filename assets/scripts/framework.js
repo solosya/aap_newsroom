@@ -565,8 +565,8 @@
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
-        
-            $('body').addClass('acme-modal-active').append(tmp);
+            $('html').addClass('u-noscroll')
+            $('body').addClass('u-noscroll').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
             }
@@ -613,7 +613,8 @@
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
-            $('body').removeClass('acme-modal-active');
+            $('html').removeClass('u-noscroll');
+            $('body').removeClass('u-noscroll');
             $('#'+this.parentCont).remove();
         };
     

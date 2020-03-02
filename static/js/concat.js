@@ -33878,8 +33878,8 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
 
-        
-            $('body').addClass('acme-modal-active').append(tmp);
+            $('html').addClass('u-noscroll')
+            $('body').addClass('u-noscroll').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
             }
@@ -33926,7 +33926,8 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
-            $('body').removeClass('acme-modal-active');
+            $('html').removeClass('u-noscroll');
+            $('body').removeClass('u-noscroll');
             $('#'+this.parentCont).remove();
         };
     
