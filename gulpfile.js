@@ -20,27 +20,18 @@ var replace     = require('gulp-replace');
 
   
 
-gulp.task('cache',  function() {
-  return gulp.src('layouts/main.twig')
-    .pipe(buster({
-      tokenRegExp: /\/(concat\.min\.css)\?v=[0-9a-z]+/,
-      assetRoot: __dirname + '/static/css/',
-      hashes: hasher.hashes,
-    }))
-    .pipe(gulp.dest('layouts/'));
-});
 
-gulp.task('jscache', function () {
-  var filename = '_javascript-temp.twig';
 
-  gulp.src('layouts/partials/_javascript.twig')
-      .pipe(concat(filename))
+gulp.task('jscache',  function() {
+    return gulp.src('layouts/partials/_javascript.twig')
+      .pipe(buster({
+        tokenRegExp: /\/(js\/scripts\.js)\?v=[0-9a-z]+/,
+        assetRoot: __dirname + '/static/',
+        hashes: hasher.hashes,
+      }))
       .pipe(gulp.dest('layouts/partials/'));
-
-  return gulp.src('layouts/partials/_javascript.twig', { base: './' }) //must define base so I can overwrite the src file below. Per http://stackoverflow.com/questions/22418799/can-gulp-overwrite-all-src-files
-      .pipe(replace(/(\/static\/js\/scripts\.js)\?v(er)*=[0-9a-z.]+/g, '/static/js/scripts.js?ver=' + Math.floor(Math.random() * 10000000).toString(16)))  //so find the script tag with an id of bundle, and replace its src.
-      .pipe(gulp.dest('./')); //Write the file back to the same spot.
-});
+  });
+  
 
 
 // https://medium.com/@felipebernardes/solving-browser-cache-hell-with-gulp-rev-6349a293abb9
@@ -61,7 +52,17 @@ gulp.task('jscache', function () {
 
 
 
+gulp.task('cache',  function() {
 
+    return gulp.src('layouts/main.twig')
+      .pipe(buster({
+        tokenRegExp: /\/(concat\.min\.css)\?v=[0-9a-z]+/,
+        assetRoot: __dirname + '/static/css/',
+        hashes: hasher.hashes,
+      }))
+      .pipe(gulp.dest('layouts/'));
+});
+  
 gulp.task('minify-css', function () {
     return gulp.src([
         './static/css/concat.css',
@@ -104,7 +105,7 @@ gulp.task('sass', function() {
 
 
 
-gulp.task('scripts', function(){
+gulp.task('scripts-concat', function(){
     return gulp.src([
         './bower_components/jquery/dist/jquery.js',
         './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
@@ -123,6 +124,8 @@ gulp.task('scripts', function(){
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
+        './assets/scripts/plugins/moment.js',
+
         // './assets/scripts/plugins/owl.carousel2.thumbs.js',
 
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
@@ -156,7 +159,10 @@ gulp.task('scripts', function(){
         .pipe(uglify().on('error', function(err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString())
         }))
-        .pipe(gulp.dest('./static/js'));
+        .pipe(gulp.dest('./static/js'))
+        .pipe(hasher())
+        ;
+        
 
 });
 
@@ -167,9 +173,13 @@ gulp.task('watch', function (){
     gulp.watch('./assets/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache',  'jscache', function (done) {
+gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', function (done) {
   done();
 }));
 
+gulp.task('scripts', gulp.series('scripts-concat', 'jscache', function (done) {
+    done();
+  }));
+  
 
 gulp.task('default', gulp.parallel('scripts', 'styles'));

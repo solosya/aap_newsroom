@@ -24,6 +24,10 @@ Acme.IPCheck = function() {
             Acme.server.fetch(_appJsConfig.appHostName + '/api/theme/get-config').done(function(r) {
 
                 if (r.success === 1) {
+
+                    if (typeof r.data.IPAdresses == 'undefined' || r.data.IPAdresses.length > 1) {
+                        return;
+                    }
                     IPAdresses = r.data.IPAdresses;
                     
                     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",

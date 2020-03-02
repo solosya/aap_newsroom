@@ -6,7 +6,6 @@ if ($('#stripekey').length > 0) {
 
     var stripekey = $('#stripekey').html();
 
-
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
     var stripe = Stripe(stripekey);
@@ -232,6 +231,7 @@ if ($('#stripekey').length > 0) {
             });
         }
 
+        console.log('removing email confirm');
         $('#email-confirm').addClass("email-confirm");
 
     };

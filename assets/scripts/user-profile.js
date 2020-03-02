@@ -503,74 +503,108 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('.j-setplan').on('click', function(e) {
-
-        var listelem = $(e.target);
-        if (!listelem.hasClass('j-setplan')) {
-            listelem = $(e.target.parentNode);
+        e.stopPropagation();
+        var newPlan = $(e.target);
+        if (!newPlan.hasClass('j-setplan')) {
+            newPlan = $(e.target.parentNode);
         }
-        var planusers = Number(listelem.find('#planusercount').val());
-        var usercount = Number(listelem.find('#currentusers').val());
+        
+        var currentPlan = $('#currentPlanStats');
+        var cardSupplied     = currentPlan.data("cardsupplied");
 
+        var currentUserCount = +currentPlan.data('currentusers');
+        var oldcost          = +currentPlan.data('currentcost');
+        var oldPlanPeriod    = +currentPlan.data('currentplanperiodcount');
+        var expDate          =  currentPlan.data('expiry');
+        var olddays          =  currentPlan.data('currentperiod');
+        var oldPlanType      =  currentPlan.data('currenttype');
+
+        var planusers        = +newPlan.data('planusercount');
+        var newcost          = +newPlan.data('plancost');
+        var newPlanPeriod    = +newPlan.data('planperiodcount');
+        var newdays          =  newPlan.data('planperiod');
+        var newPlanType      =  newPlan.data('plantype');
+
+
+        if (currentUserCount > 0 && currentUserCount >= planusers) {
+            Acme.SigninView.render("userPlan", "You have too many users to change to that plan.");
+            return;
+        }
+
+
+        if (newdays == 'week')  {newdays = 7;}
+        if (newdays == 'month') {newdays = 365/12;}
+        if (newdays == 'year')  {newdays = 365;}
+        if (olddays == 'week')  {olddays = 7;}
+        if (olddays == 'month') {olddays = 365/12;}
+        if (olddays == 'year')  {olddays = 365;}
+        newdays = newdays * newPlanPeriod;
+        olddays = olddays * oldPlanPeriod;
+        var newplandailycost = newcost / newdays;
+        var plandailycost = oldcost/olddays;
+
+        var diffDays = moment(expDate).diff(moment(), 'days');
+
+        var msg = "";
+        var newCharge = 0;
+        if (( newPlanType == 'article' && oldPlanType !== 'time') || ( newPlanType == 'time' && oldPlanType === 'article') ) {
+            newCharge = newcost / 100;
+        }
+
+        if (oldPlanType === 'signup' ) {
+            newCharge = newcost / 100;
+        }
+        
+        if (oldPlanType === 'time' && newPlanType === 'time' && newcost < oldcost ) {
+            newCharge = 0;
+        }
+
+        // more expensive time base plan changes require a charge that is the difference in cost between the two
+        if (oldPlanType === 'time' && newPlanType === 'time' && diffDays > 0) {
+            if ((newplandailycost-plandailycost) * diffDays >= 0) {
+                newCharge = Math.round((( newplandailycost-plandailycost) * diffDays) / 100 );
+            }
+        }
+
+        if (newCharge > 0) {
+            msg = "This will cost $" + newCharge.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+        }
+
+        if (cardSupplied === 'f' ) {
+            msg = msg + "<br /><br />However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
+            Acme.SigninView.render("userPlan", "Almost there!", {message: msg});
+            return;
+        }
 
         var requestData = { 
-            planid: listelem.find('#planid').val(), 
-            _csrf: listelem.find('#_csrf').text(), 
+            planid: newPlan.data('planid'), 
+            _csrf: $('meta[name="csrf-token"]').attr("content"), 
         };
 
-        if (Number(usercount) <= Number(planusers)) {
-            var newcost = listelem.find('#plancost').val();
-            var oldcost = listelem.find('#currentcost').val();
-            var newdays = listelem.find('#planperiod').val();
-            var olddays = listelem.find('#currentperiod').val();
-            if (newdays == 'week')  {newdays = 7;}
-            if (newdays == 'month') {newdays = 30;}
-            if (newdays == 'year')  {newdays = 365;}
-            if (olddays == 'week')  {olddays = 7;}
-            if (olddays == 'month') {olddays = 30;}
-            if (olddays == 'year')  {olddays = 365;}
-            var newplandailycost = newcost/newdays;
-            var plandailycost = oldcost/olddays;
-            var expDate = listelem.find('#expdate').val();
 
-            var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-            var firstDate = new Date();
-            var secondDate = new Date(expDate.split('-')[0],expDate.split('-')[1]-1,expDate.split('-')[2]);
+        Acme.SigninView.render("userPlanChange", "Are you sure you want to change plan?" + msg)
+            .done(function() {
+                $('#dialog').parent().remove();
+                
+                $.ajax({
+                    type: 'post',
+                    url: _appJsConfig.baseHttpPath + '/user/change-paywall-plan',
+                    dataType: 'json',
+                    data: requestData,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.success == 1) {
+                            window.location.reload();
+                        } else {
+                            $('#dialog').parent().remove();
+                            Acme.SigninView.render("userPlan", data.error);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                            $('#createUserErrorMessage').text(textStatus);
+                    },
+                });        
+            }); 
 
-            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-
-            var msg = "";
-            if ($('#planstatus').text() != 'Trial') {
-                if ((newplandailycost-plandailycost) * diffDays >= 0) {
-                    msg = " This will cost $" + Math.round((newplandailycost-plandailycost) * diffDays);
-                    msg = msg.replace(/(.+)(\d\d)$/g, "$1.$2");
-                }
-            }
-            Acme.SigninView.render("userPlanChange", "Are you sure you want to change plan?" + msg)
-                .done(function() {
-                    $('#dialog').parent().remove();
-                    
-                    $.ajax({
-                        type: 'post',
-                        url: _appJsConfig.baseHttpPath + '/user/change-paywall-plan',
-                        dataType: 'json',
-                        data: requestData,
-                        success: function (data, textStatus, jqXHR) {
-                            if (data.success == 1) {
-                                window.location.reload();
-                            } else {
-                                $('#dialog').parent().remove();
-                                Acme.SigninView.render("userPlan", data.error);
-                            }
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                                $('#createUserErrorMessage').text(textStatus);
-                        },
-                    });        
-                }); 
-
-        } else {
-            Acme.SigninView.render("userPlan", "You have too many users to change to that plan.");
-        }
     });
 
 };

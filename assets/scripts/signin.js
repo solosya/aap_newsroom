@@ -10,7 +10,7 @@ Acme.Signin = function(template, parent, layouts) {
 Acme.Signin.prototype = new Acme.modal();
 Acme.Signin.constructor = Acme.Signin;
 Acme.Signin.prototype.errorMsg = function(msg) {
-    $('.message').removeClass('hide');
+    $('.message').removeClass('u-hide');
 };
 Acme.Signin.prototype.handle = function(e) {
     var self = this;
@@ -28,7 +28,7 @@ Acme.Signin.prototype.handle = function(e) {
     }
     if ($elem.is('button')) {
 
-        $('.message').addClass('hide');
+        $('.message').addClass('u-hide');
         if ($elem.hasClass('signin')) {
             $elem.text('')
                  .addClass('spinner');
@@ -59,7 +59,12 @@ Acme.Signin.prototype.handle = function(e) {
                          .removeClass('spinner');
                     self.errorMsg();
                 }
-            }).fail(function(r) { console.log(r);});
+            }).fail(function(r) { 
+                $elem.text("Sign in")
+                     .removeClass('spinner');
+                self.errorMsg();
+                console.log(r);
+            });
         }
 
 

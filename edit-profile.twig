@@ -175,6 +175,7 @@
 
 
                     {% set remainingUsers       = totalPlanUserCount - managedUserCount %}
+                    {% set cardSupplied = pwstats['card_last_4'] ? 't' : 'f' %}
 
                     <div class="profile-section">
                        
@@ -279,7 +280,15 @@
                                 <p class="profile-section__heading">Change Plan</p>
                             </div>
 
-                            <div class="plans">
+                            <div id="currentPlanStats" class="plans"
+                                data-cardsupplied="{{cardSupplied}}"
+                                data-currentUsers="{{managedUserCount}}"
+                                data-currentPeriod="{{pwstats['period']}}"
+                                data-currentCost="{{pwstats['plan_value']}}"
+                                data-currentType="{{pwstats['type']}}"
+                                data-expiry="{{pwstats['expiry_date']}}"
+                                data-currentplanperiodcount="{{pwstats['period_count']}}"
+                            >
 
                             {% for plan in plans %}
                                 {# {% if pwstats['status'] != 'paid' and pwstats['status'] != 'trial' %} #}
@@ -291,21 +300,27 @@
                                 {% endif %}
 
 
-                                <div class="{% if plan.guid != pwstats['plan_guid'] %}j-setplan{% else %}plans__current{% endif %} plans__item" style="cursor:hand; cursor:pointer;">
-                                    <h3 class="plans__name">{{plan.plan_name}}</h3>
-                                    <p class="plans__usercount">{{userCount}} Users</p>
-                                    <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{planCost|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
-                                                            per {{plan.period}}</p>
+                                <div class="{% if plan.guid != pwstats['plan_guid'] %} j-setplan {% else %}plans__current{% endif %} plans__item" style="cursor:hand; cursor:pointer;"
+                                    data-planid          = "{{plan.guid}}"
+                                    data-planusercount   = "{{userCount}}"
+                                    data-plancost        = "{{plan.plan_value}}"
+                                    data-planperiod      = "{{plan.period}}"
+                                    data-trialstatus     = "{{plan['trial_status']}}"
+                                    data-planType        = "{{plan.type}}"
+                                    data-planPeriodCount = "{{plan.period_count}}"
 
-                                    <input type="hidden" id="planid"        value="{{plan.guid}}">
-                                    <input type="hidden" id="planusercount" value="{{userCount}}">
-                                    <input type="hidden" id="plancost"      value="{{plan.plan_value}}">
-                                    <input type="hidden" id="planperiod"    value="{{plan.period}}">
-                                    <input type="hidden" id="currentcost"   value="{{pwstats['plan_value']}}">
-                                    <input type="hidden" id="currentperiod" value="{{pwstats['period']}}">
-                                    <input type="hidden" id="currentusers"  value="{{managedUserCount}}">
-                                    <input type="hidden" id="expdate"       value="{{ pwstats['expiry_date']}}">
-                                    <input type="hidden" id="_csrf"         value="{{_AppHelper.getCsrfToken()}}" /> 
+                                >
+                                    <h3 class="plans__name">{{plan.plan_name}}</h3>
+                                    
+                                    {% if plan.type == 'time' and userCount > 0 %}
+                                        <p class="plans__usercount">{{userCount}} Users</p>
+                                    {% endif %}
+
+                                    {% if plan.type != 'signup' %}
+                                        <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{planCost|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
+                                                            per {{plan.period}}</p>
+                                    {% endif %}
+
                                 </div>
                                 {# {% endif %} #}
                             {% endfor %}

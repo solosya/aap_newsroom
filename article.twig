@@ -15,37 +15,38 @@
 {% set blogData         = _Blog.getBlog() %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
-{% set articleBlogData  = _Blog.getBlog({'guid' : article['blog']['guid']}) %}
 {% set proBlogId        = '' %}
-{% set config       = _Network.getThemeConfig() %}
+{% set config           = _Network.getThemeConfig() %}
+{% set adminUser        = _User.isAdminUser() %}
+{% set guestUser        = _User.isGuest() %}
 
-{% set showPaywall              = false %}
-{% set paywallSection           = false %}
 
 {% set content                  = article.content %}
 {% set paywall_content_style    = "" %}
 {% set newsroom_pro_style       = "" %}
+{% set articleBlog              = article.blog.title | lower %}
 
-{% if articleBlogData['additionalInfo'] is defined            and 
-      articleBlogData['additionalInfo']['paywall'] is defined and 
-      articleBlogData['additionalInfo']['paywall'] == 'on' %}
+
+{% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
+
+{# The below checks which message to show a user blocked by the paywall #}
+{% set paywallType = "subscribe" %}
+{% if showPaywall and not guestUser %}
+    {% set pwstats = _User.getPaywallStats(false) %}
+    {% set paywallType = "upgrade" %}
     
-    {% set paywallSection = true %}
-
+    {% if pwstats['type'] == 'article' %}
+        {% set paywallType = "topup" %}
+    {% elseif pwstats['type'] == 'time' %}
+        {% set paywallType = "renew" %}
+    {% elseif pwstats['type'] == 'signup' %}
+        {% set paywallType = "signup" %}
+    {% endif %}
 {% endif %}
 
+{% set paywallTestParam = (showPaywall == true) ? "paywall" : "article" %}
 
-{% set articleBlog = article.blog.title | lower %}
-
-{% if   not _User.isAdminUser()     and
-        paywallSection == true      and
-        articleBlogData['showPaywall'] == true  %}
-    
-    {% set showPaywall = true %}
-{% endif %}
-
-
-{% if paywallSection == true %}
+{% if showPaywall %}
     {% set newsroom_pro_style = "pro" %}
 
     {% for blog in networkData.networkBlogs %}
@@ -56,10 +57,10 @@
 
 {% endif %}
 
+
+{% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
 {% if articleBlog == 'lockerroom' %}
     {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{% else %}
-    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
 {% endif %}
 
     <script>
@@ -73,7 +74,7 @@
     </script>
 
 
-{% if showPaywall == true %}
+{% if showPaywall %}
     {% set storySplit = article.content | split('</p>')  %}
     {% set para2      = storySplit[1] | slice(0, 190) ~ '</p>'  %}
     {% set content    = [storySplit[0], para2] | join('</p>') %}
@@ -161,197 +162,197 @@
 
 
 
-    <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}">
-        <article class="article-main">
+<main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
+    <article class="article-main">
 
 
-        {% if paywallSection %}
-            <div class="article-pro__image-container">
-        {% endif %}
+    {% if showPaywall %}
+        <div class="article-pro__image-container">
+    {% endif %}
 
 
-            <div class="container">
-               
-                {% if articleImg %} 
+        <div class="container">
+            
+            {% if articleImg %} 
 
-                    <div class="gallery-container relative">
+                <div class="gallery-container relative">
 
-                        {% if article.media|length > 0 %}
-                            {% set imageFeature = featured == 'image' ? true : false %}
-                            {{this.render('partials/gallery.twig', {
-                                media: article.media,
-                                default: imageFeature
-                            }) | raw}}
-                        {% endif %}
+                    {% if article.media|length > 0 %}
+                        {% set imageFeature = featured == 'image' ? true : false %}
+                        {{this.render('partials/gallery.twig', {
+                            media: article.media,
+                            default: imageFeature
+                        }) | raw}}
+                    {% endif %}
 
-                    </div> 
+                </div> 
 
-                {% endif %}
-
-
-
-            {% if paywallSection %}
-                </div>
-                </div>
-                <div class="container">
             {% endif %}
 
 
 
+        {% if showPaywall %}
+            </div>
+            </div>
+            <div class="container">
+        {% endif %}
 
-                <div class="page-content {% if paywallSection %}u-mobile-margin-top-15{% endif %}" >
-                    <div class="row">
-                        <div class="col-lg-8">
+
+
+
+            <div class="page-content {% if showPaywall %}u-mobile-margin-top-15{% endif %}" >
+                <div class="row">
+                    <div class="col-lg-8">
+                        
+                        <div class="content-wrapper">
                             
-                            <div class="content-wrapper">
+
+                            <div class="content-block-top d-print-none">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
+                                ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
+                                ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
+                                ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
                                 
+                                {% if _User.isAdminUser() %}
+                                    <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                                {% endif %}
 
-                                <div class="content-block-top d-print-none">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post icon-facebook"></a
-                                    ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet icon-twitter"></a
-                                    ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-linkedin icon-linkedin"></a
-                                    ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
-                                    
-                                    {% if _User.isAdminUser() %}
-                                        <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                                <div class="articleTimes">
+                                    <time>{{ publishDate | upper }}</time>
+                                    {% if updated %}
+                                        <time class="updated">Updated {{ updateDate | capitalize }}</time>
                                     {% endif %}
+                                </div>
+                            </div>
+                            {% if _User.isAdminUser() %}
+                                <p class="article__totals u-margin-bottom-20">{{totalstring}}</p>
+                            {% endif %}
 
-                                    <div class="articleTimes">
-                                        <time>{{ publishDate | upper }}</time>
-                                        {% if updated %}
-                                            <time class="updated">Updated {{ updateDate | capitalize }}</time>
+
+                            <div class="content-author">
+                                <img src="{{ profileImg }}" alt="">
+                                <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
+                                    <h3>{{ article.createdBy['displayName'] }}</h3>
+                                </a>
+
+
+
+                                <p class="bio">{{ article.createdBy['bio'] }}</p>
+                                {% if article.createdBy['bio'] != "" %}
+                                    <a class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
+                                {% endif %}
+
+                            </div><!-- .content-author-->
+
+                            {% if article['createdBy']['coauthors'] %}
+                                {% for author in article['createdBy']['coauthors'] %}
+
+                                    <div class="content-author">
+                                        <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
+                                        
+
+                                        <a href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts">
+                                            <h3>{{ author['displayName'] }}</h3>
+                                        </a>
+
+                                        <p class="bio">{{ author['bio'] }}</p>
+                                        {% if author['bio'] != "" %}
+                                            <a  class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
                                         {% endif %}
                                     </div>
-                                </div>
-                                {% if _User.isAdminUser() %}
-                                    <p class="article__totals u-margin-bottom-20">{{totalstring}}</p>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if 'investigations' in article.label | lower %}
+                                <div class="article-investigations__tag"></div>
+                            {% endif %}
+
+                            <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
+                                <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
+                                
+                                {% if articleBlog == 'new auckland' %}
+                                    <div class="beca-section beca-section__article d-block d-lg-none">
+                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
+                                        <p class="beca-section__arttext">In association with</p>
+                                    </div>
                                 {% endif %}
+                                
+                                <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
 
-
-                                <div class="content-author">
-                                    <img src="{{ profileImg }}" alt="">
-                                    <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
-                                        <h3>{{ article.createdBy['displayName'] }}</h3>
-                                    </a>
-
-
-
-                                    <p class="bio">{{ article.createdBy['bio'] }}</p>
-                                    {% if article.createdBy['bio'] != "" %}
-                                        <a class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
-                                    {% endif %}
-
-                                </div><!-- .content-author-->
-
-                                {% if article['createdBy']['coauthors'] %}
-                                    {% for author in article['createdBy']['coauthors'] %}
-
-                                        <div class="content-author">
-                                            <img src="{{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }}" alt="">
-                                            
-
-                                            <a href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts">
-                                                <h3>{{ author['displayName'] }}</h3>
-                                            </a>
-
-                                            <p class="bio">{{ author['bio'] }}</p>
-                                            {% if author['bio'] != "" %}
-                                                <a  class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
-                                            {% endif %}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-
-                                {% if 'investigations' in article.label | lower %}
-                                    <div class="article-investigations__tag"></div>
-                                {% endif %}
-
-                               <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
-                                    <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
-                                    
-                                    {% if articleBlog == 'new auckland' %}
-                                        <div class="beca-section beca-section__article d-block d-lg-none">
-                                            <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
-                                            <p class="beca-section__arttext">In association with</p>
-                                        </div>
-                                    {% endif %}
-                                    
-                                    <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
-
-                                    {{ content  | _resizeImages({"width":750}) 
-                                                | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
-                                                | raw }}
-                                    
-                                </div>
+                                {{ content  | _resizeImages({"width":750}) 
+                                            | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
+                                            | raw }}
+                                
                             </div>
+                        </div>
+                        
+
+                        {% if showPaywall %}
+                            <div class="article-subscribe">
+                                <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
+                                <a href="/pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
+                                <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
+                                <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="d-none d-sm-block" />Newsroom Pro for 28 days.</p>
+                                <a href="{{networkData.defaultBlogUrl}}/pro" class="article-subscribe__link">View our subscription options</a>
+                            </div>
+                        {% endif %}
+
+
+
+
+                        {% if not showPaywall %}
                             
+                            {% if articleBlog == 'lockerroom' %}
+                                <div class="article-supoort">
+                                    <div class="article-supoort__text">
+                                        <p class="article-supoort__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
+                                    </div>
+                                    <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
+                                        <div class="d-print-none article-supoort__button">Become a Supporter</div>
+                                    </a>
+                                </div>
+                                
 
-                            {% if showPaywall == true %}
-                                <div class="article-subscribe">
-                                    <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
-                                    <a href="/pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
-                                    <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
-                                    <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="d-none d-sm-block" />Newsroom Pro for 28 days.</p>
-                                    <a href="{{networkData.defaultBlogUrl}}/pro" class="article-subscribe__link">View our subscription options</a>
+                            {% else %}
+
+                                <div class="article-supoort">
+                                    <p class="article-supoort__head">We value fearless, independent journalism. We hope you do too.</p>
+                                    <div class="article-supoort__text">
+                
+                                        <p class="article-supoort__content">Newsroom has repeatedly broken big, important national news stories and established a platform for quality journalism on issues ranging from climate change, sexual harassment and bullying through to science, foreign affairs, women’s sports and politics.</p>
+                                        <p class="article-supoort__content">But we need your support to continue, whether it is great, small, ongoing or a one-off donation. If you believe in high quality journalism being available for all please <strong>click to become a Newsroom supporter</strong>.</p>
+                                    </div>
+                                    <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
+                                        <div class="d-print-none article-supoort__button u-margin-top-20">Become a Supporter</div>
+                                    </a>
                                 </div>
                             {% endif %}
 
 
 
-
-                            {% if not paywallSection %}
-                                
-                                {% if articleBlog == 'lockerroom' %}
-                                    <div class="article-supoort">
-                                        <div class="article-supoort__text">
-                                            <p class="article-supoort__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
-                                        </div>
-                                        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                            <div class="d-print-none article-supoort__button">Become a Supporter</div>
-                                        </a>
+                            {% if popular|length > 0 %}
+                                <div class="u-margin-top-70 u-desktop-margin-bottom-minus-60">
+                                    <h3 class="u-text-center u-uppercase u-margin-bottom-30 u-font-size-24">Most popular on newsroom</h3>
+                                        
+                                    {% set count = 0 %}
+                                    <div class="row">
+                                        {% for pop in popular  %}
+                                            {% if pop.guid != article.guid and count < 3 %}
+                                                {{ this.render('partials/_single-article.twig', {
+                                                    article: pop, 
+                                                    containerClass: 'col-12 col-md-4 card-sm card-sm-tablet card-sm-mobile', 
+                                                    swap: 'false', 
+                                                }) | raw }}
+                                                {% set count = count + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
-                                    
+                                </div>
+                            {% endif %}
 
-                                {% else %}
 
-                                    <div class="article-supoort">
-                                        <p class="article-supoort__head">We value fearless, independent journalism. We hope you do too.</p>
-                                        <div class="article-supoort__text">
+                        {% endif %}
                     
-                                            <p class="article-supoort__content">Newsroom has repeatedly broken big, important national news stories and established a platform for quality journalism on issues ranging from climate change, sexual harassment and bullying through to science, foreign affairs, women’s sports and politics.</p>
-                                            <p class="article-supoort__content">But we need your support to continue, whether it is great, small, ongoing or a one-off donation. If you believe in high quality journalism being available for all please <strong>click to become a Newsroom supporter</strong>.</p>
-                                        </div>
-                                        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                            <div class="d-print-none article-supoort__button u-margin-top-20">Become a Supporter</div>
-                                        </a>
-                                    </div>
-                                {% endif %}
-
-
-
-                                {% if popular|length > 0 %}
-                                    <div class="u-margin-top-70 u-desktop-margin-bottom-minus-60">
-                                        <h3 class="u-text-center u-uppercase u-margin-bottom-30 u-font-size-24">Most popular on newsroom</h3>
-                                            
-                                        {% set count = 0 %}
-                                        <div class="row">
-                                            {% for pop in popular  %}
-                                                {% if pop.guid != article.guid and count < 3 %}
-                                                    {{ this.render('partials/_single-article.twig', {
-                                                        article: pop, 
-                                                        containerClass: 'col-12 col-md-4 card-sm card-sm-tablet card-sm-mobile', 
-                                                        swap: 'false', 
-                                                    }) | raw }}
-                                                    {% set count = count + 1 %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                {% endif %}
-
-
-                            {% endif %}
-                     
 
 
 
@@ -360,157 +361,157 @@
 
 
 
-                            {% if config['inventory']['adSpace']['mrec'][0] is defined %}
-                                <div class="j-adslot d-md-none u-mobile-margin-top-30" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
-                            {% endif %} 
+                        {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                            <div class="j-adslot d-md-none u-mobile-margin-top-30" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
+                        {% endif %} 
 
 
-                            <div class="comments d-print-none u-margin-top-60">
-                                <h3>Comments</h3>
-                                <p>
-                                    Newsroom does not allow comments directly on this website. 
-                                    We invite all readers who wish to discuss a story or leave 
-                                    a comment to visit us on <a href="https://twitter.com/NewsroomNZ">Twitter</a> 
-                                    or <a href="https://www.facebook.com/newsroomnz">Facebook</a>. We also welcome 
-                                    your news tips and feedback via email: <a href="mailto:contact@newsroom.co.nz">contact@newsroom.co.nz</a>.
-                                    Thank you.
-                                </p>
-                            </div>
-
+                        <div class="comments d-print-none u-margin-top-60">
+                            <h3>Comments</h3>
+                            <p>
+                                Newsroom does not allow comments directly on this website. 
+                                We invite all readers who wish to discuss a story or leave 
+                                a comment to visit us on <a href="https://twitter.com/NewsroomNZ">Twitter</a> 
+                                or <a href="https://www.facebook.com/newsroomnz">Facebook</a>. We also welcome 
+                                your news tips and feedback via email: <a href="mailto:contact@newsroom.co.nz">contact@newsroom.co.nz</a>.
+                                Thank you.
+                            </p>
                         </div>
 
-
-                        <div class="col-lg-4">
-                            <aside>
-
-                                {% if not paywallSection %}
-
-                                    {% if articleBlog == 'new auckland' %}
-                                        <div class="beca-section beca-section__article d-none d-lg-block">
-                                            <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
-                                            <p class="beca-section__arttext">In association with</p>
-                                        </div>
-                                    {% endif %}
-                                    {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
-                                        <section class="ad sidebar-ad u-desktop-no-margin-top">
-                                            <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
-                                        </section>
-                                    {% endif %} #}
-                                    {% if config['inventory']['adSpace']['hpage'][0] is defined %}
-                                        <section class="ad sidebar-ad {% if articleBlog == 'ideasroom' %}u-desktop-no-margin-top{% else %}u-desktop-margin-top-40{% endif %}">
-                                            <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
-                                        </section>
-                                    {% endif %}
-
-
-
-                                    {% if recentArticles|length > 0 %}
-                                        <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                            <h3 class="recent-articles__header">
-                                                <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
-                                            </h3>
-
-                                            {% for i in 0..6 %}
-                                                {% if recentArticles[i] %}
-                                                    {{
-                                                        this.render('partials/_single-article_recent.twig', {
-                                                            article: recentArticles[i], 
-                                                            containerClass: '', 
-                                                            swap: 'false', 
-                                                            isArticle: 'true'}) | raw
-                                                    }}
-                                                {% endif %}
-                                            {% endfor %}
-
-                                        </section>
-                                    {% endif %}
-
-                                {% else %}
-
-
-
-                                    <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
-                                        <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                        {% set popularArticles = _Article.getPopularArticles({ 
-                                                limit: 5, 
-                                                blogId: proBlogId, 
-                                                interval: 168 
-                                        }) %}
-                                        
-                                        {% for i in 0..4 if popularArticles[i] %}
-                                            {{this.render('/partials/_single-article.twig', {
-                                                article         : popularArticles[i], 
-                                                swap            : false,
-                                                containerClass  : 'card-pro-popular'
-                                            }) | raw}}
-                                        {% endfor %} 
-                                    </section>
-                                
-                                {% endif %}
-
-
-
-                                <div class="article-chimp-subscribe u-desktop-margin-top-40">
-                                    <div class="article-chimp-subscribe__top">
-                                        <img class="article-chimp-subscribe__logo" src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" alt="Newsroom logo">
-                                        <h3 class="article-chimp-subscribe__heading">Get your free daily briefing</h3>
-                                    </div>
-
-                                    <!-- Begin MailChimp Signup Form -->
-                                    <div id="mc_embed_signup" class="article-chimp-subscribe__container" >
-                                        
-                                        <form   action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" 
-                                                method="post" id="mc-embedded-subscribe-form" 
-                                                name="mc-embedded-subscribe-form" 
-                                                class="validate" 
-                                                target="_blank" 
-                                                novalidate 
-                                                style="background-color:white">
-
-                                            <div id="mc_embed_signup_scroll" style="display:flex">
-                                        
-                                                <div class="mc-field-group" style="width:100%">
-                                                    <input type="email" value="" name="EMAIL" class="article-chimp-subscribe__email required " id="mce-EMAIL" placeholder="Enter your email" style="color:black; border:none">
-                                                </div >
-
-                                                <div id="mce-responses" class="clear">
-                                                    <div class="response" id="mce-error-response" style="display:none"></div>
-                                                    <div class="response" id="mce-success-response" style="display:none"></div>
-                                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                
-                                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
-                                                
-                                                <button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="article-chimp-subscribe__submit tag-register-button"></button>
-                                            </div>
-                                        </form>
-
-                                        <p class="article-chimp-subscribe__tagline">Start your day with our best stories in your inbox</p>
-                                    </div>
-
-                                </div>
-
-
-                            </aside>
-                        </div>
                     </div>
 
 
+                    <div class="col-lg-4">
+                        <aside>
 
+                            {% if not showPaywall %}
+
+                                {% if articleBlog == 'new auckland' %}
+                                    <div class="beca-section beca-section__article d-none d-lg-block">
+                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
+                                        <p class="beca-section__arttext">In association with</p>
+                                    </div>
+                                {% endif %}
+                                {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
+                                    <section class="ad sidebar-ad u-desktop-no-margin-top">
+                                        <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
+                                    </section>
+                                {% endif %} #}
+                                {% if config['inventory']['adSpace']['hpage'][0] is defined %}
+                                    <section class="ad sidebar-ad {% if articleBlog == 'ideasroom' %}u-desktop-no-margin-top{% else %}u-desktop-margin-top-40{% endif %}">
+                                        <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
+                                    </section>
+                                {% endif %}
+
+
+
+                                {% if recentArticles|length > 0 %}
+                                    <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
+                                        <h3 class="recent-articles__header">
+                                            <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
+                                        </h3>
+
+                                        {% for i in 0..6 %}
+                                            {% if recentArticles[i] %}
+                                                {{
+                                                    this.render('partials/_single-article_recent.twig', {
+                                                        article: recentArticles[i], 
+                                                        containerClass: '', 
+                                                        swap: 'false', 
+                                                        isArticle: 'true'}) | raw
+                                                }}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </section>
+                                {% endif %}
+
+                            {% else %}
+
+
+
+                                <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
+                                    <h3 class="most-viewed__header">MOST VIEWED</h3>
+                                    {% set popularArticles = _Article.getPopularArticles({ 
+                                            limit: 5, 
+                                            blogId: proBlogId, 
+                                            interval: 168 
+                                    }) %}
+                                    
+                                    {% for i in 0..4 if popularArticles[i] %}
+                                        {{this.render('/partials/_single-article.twig', {
+                                            article         : popularArticles[i], 
+                                            swap            : false,
+                                            containerClass  : 'card-pro-popular'
+                                        }) | raw}}
+                                    {% endfor %} 
+                                </section>
+                            
+                            {% endif %}
+
+
+
+                            <div class="article-chimp-subscribe u-desktop-margin-top-40">
+                                <div class="article-chimp-subscribe__top">
+                                    <img class="article-chimp-subscribe__logo" src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" alt="Newsroom logo">
+                                    <h3 class="article-chimp-subscribe__heading">Get your free daily briefing</h3>
+                                </div>
+
+                                <!-- Begin MailChimp Signup Form -->
+                                <div id="mc_embed_signup" class="article-chimp-subscribe__container" >
+                                    
+                                    <form   action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" 
+                                            method="post" id="mc-embedded-subscribe-form" 
+                                            name="mc-embedded-subscribe-form" 
+                                            class="validate" 
+                                            target="_blank" 
+                                            novalidate 
+                                            style="background-color:white">
+
+                                        <div id="mc_embed_signup_scroll" style="display:flex">
+                                    
+                                            <div class="mc-field-group" style="width:100%">
+                                                <input type="email" value="" name="EMAIL" class="article-chimp-subscribe__email required " id="mce-EMAIL" placeholder="Enter your email" style="color:black; border:none">
+                                            </div >
+
+                                            <div id="mce-responses" class="clear">
+                                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                                <div class="response" id="mce-success-response" style="display:none"></div>
+                                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            
+                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
+                                            
+                                            <button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="article-chimp-subscribe__submit tag-register-button"></button>
+                                        </div>
+                                    </form>
+
+                                    <p class="article-chimp-subscribe__tagline">Start your day with our best stories in your inbox</p>
+                                </div>
+
+                            </div>
+
+
+                        </aside>
+                    </div>
                 </div>
+
+
+
             </div>
+        </div>
 
 
 
-        </article>
+    </article>
 
 
-        {{ this.render('partials/_sponsor_logos2.twig') | raw }}
-        {% set theKeywords = '' %}
-        {% if article.keywords is defined and article.keywords != '' %}
-            {% set theKeywords = article.keywords %}
-        {% elseif blogData.keywords is defined and blogData.keywords != '' %}
-            {% set theKeywords = blogData.keywords %}
-        {% endif %}
-        <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
-    </main>
+    {{ this.render('partials/_sponsor_logos2.twig') | raw }}
+    {% set theKeywords = '' %}
+    {% if article.keywords is defined and article.keywords != '' %}
+        {% set theKeywords = article.keywords %}
+    {% elseif blogData.keywords is defined and blogData.keywords != '' %}
+        {% set theKeywords = blogData.keywords %}
+    {% endif %}
+    <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
+</main>
 

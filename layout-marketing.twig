@@ -7,7 +7,7 @@
 {{this.registerJs("var signin = new Acme.Signin('signinForm', '#signin');")}}
  
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main" role="main" data-test="paywall">
 
 
 
@@ -103,8 +103,14 @@
                     <div class="subscriptionPlan__card">
                         {% set val = plan.plan_value / 100 %}
                         <h3 class="subscriptionPlan__name">{{plan.plan_name}}</h3>
-                        <p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
-                        <p class="subscriptionPlan__price">{% if 'Household' in plan.plan_name %}$6.70 per week<br />${{val}} per {{plan.period}}{% else %}${{val}} per {{plan.period}}<br />&nbsp;{% endif %}</p>
+                        
+                        {% if plan.type == 'time' and plan.user_count > 0 %}
+                            <p class="subscriptionPlan__usercount">{{plan.user_count}} Users</p>
+                        {% endif %}
+
+                        {% if plan.type != 'signup' %}
+                            <p class="subscriptionPlan__price">{% if 'Household' in plan.plan_name %}$6.70 per week<br />${{val}} per {{plan.period}}{% else %}${{val}} per {{plan.period}}<br />&nbsp;{% endif %}</p>
+                        {% endif %}
 
                         <a href="{{networkData.defaultBlogUrl}}/subscribe?plan={{plan.guid}}">
                             <p class="centerBlock _btn _btn--red _btn__subscribe subscriptionPlan__mktbutton">
