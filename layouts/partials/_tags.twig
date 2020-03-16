@@ -67,7 +67,7 @@
     </script> #}
     
 
-    {# <!-- profitwell code - no local edit -->
+    <!-- profitwell code - no local edit -->
     {% set useremail = '' %}
     {% if not _User.isGuest() %}
         {% set user = _User.getUser() %}
@@ -85,7 +85,7 @@
          (window,document,'profitwell','script','https://public.profitwell.com/js/profitwell.js');
          profitwell('start', { {{useremail|raw}} }); 
     </script>
-    <!-- profitwell code end --> #}
+    <!-- profitwell code end -->
 
 
 
