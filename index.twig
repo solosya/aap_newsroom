@@ -57,7 +57,7 @@
             "feed": "",
             "link": ""
         }, 
-        "sportsroom": {
+        "covid-19": {
             "feed": "",
             "link": ""
         },
@@ -365,7 +365,9 @@ So you don't have to create all the sections on dev #}
                 </div>
 
 
-
+                {% if sections['covid-19'].feed.articles|length > 0 %}
+                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['newsroom pro'].feed.articles|length > 0 %}
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
@@ -389,10 +391,6 @@ So you don't have to create all the sections on dev #}
 
                 {% if sections['readingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
-
-                {% if sections['sportsroom'].feed.articles|length > 0 %}
-                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['viewingroom'].feed.articles|length > 0 %}

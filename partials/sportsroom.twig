@@ -1,12 +1,12 @@
  <section class="room-sports">
      <header>
-         <a href="{{ sections['sportsroom'].link }}">
-             <img src="{{networkData.templatePath}}/static/images/sportsroom-logo.svg?v=572" alt="board room" class="img-fluid room-logo">
+         <a href="{{ sections['covid-19'].link }}">
+             <img src="{{networkData.templatePath}}/static/images/covid-19-logo.svg?v=572" alt="board room" class="img-fluid room-logo">
          </a>
      </header>
 
     {{this.render('_single-article.twig', {
-        article: sections['sportsroom'].feed.articles[0], 
+        article: sections['covid-19'].feed.articles[0], 
         position: 1, 
         containerClass: 'card-featured-mobile card-featured-tablet card-featured-desktop card-featured-desktop-up sport', 
         imageSize: {width:1140, height:430},
@@ -18,9 +18,9 @@
          <div class="row">
              
              {% for i in 1..2 %}
-                 {% if sections['sportsroom'].feed.articles[i] %}        
+                 {% if sections['covid-19'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article: sections['sportsroom'].feed.articles[i], 
+                        article: sections['covid-19'].feed.articles[i], 
                         position: i+1, 
                         containerClass: 'col-md-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up sport', 
                         imageSize: {width:203, height:129},
