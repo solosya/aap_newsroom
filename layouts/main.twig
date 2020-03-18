@@ -88,8 +88,8 @@
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
-    {% if _AppHelper.getApplicationEnv() == 'PROD' %} {# ?v=00000398 <- ACTUAL CACHE NUMBER, raise by one each time for clean caching #}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=f2e239ad" type="text/css" media="all">
+    {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=f2e239ae" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
