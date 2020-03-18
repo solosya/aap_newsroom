@@ -364,13 +364,12 @@ So you don't have to create all the sections on dev #}
                     </div>
                 </div>
 
+                {% if sections['newsroom pro'].feed.articles|length > 0 %}
+                    {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
 
                 {% if sections['covid-19'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
-
-                {% if sections['newsroom pro'].feed.articles|length > 0 %}
-                    {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['ideasroom'].feed.articles|length > 0 %}
