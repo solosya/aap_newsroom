@@ -10599,7 +10599,7 @@ input[type=radio].inline {
   color: #e22f22;
   line-height: 1.2; }
 
-.account-form__input[type=text], input[type=password], input[type=email], input[type=search] {
+.account-form__input[type=text], .account-form__input[type=password], .account-form__input[type=email], .account-form__input[type=search] {
   display: block;
   border: none;
   height: 44px;
@@ -10610,39 +10610,39 @@ input[type=radio].inline {
   border: 1px solid #E5E5E5;
   font-size: 0.9375rem;
   line-height: 1.125rem; }
-  .account-form__input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=search]:focus {
+  .account-form__input[type=text]:focus, .account-form__input[type=password]:focus, .account-form__input[type=email]:focus, .account-form__input[type=search]:focus {
     outline: none;
     border: 1px solid #97999c; }
   @media screen and (max-width: 767px) {
-    .account-form__input[type=text], input[type=password], input[type=email], input[type=search] {
+    .account-form__input[type=text], .account-form__input[type=password], .account-form__input[type=email], .account-form__input[type=search] {
       font-size: 0.75rem;
       line-height: 0.9rem; } }
-  .account-form__input[type=text].formError, input[type=password].formError, input[type=email].formError, input[type=search].formError {
+  .account-form__input[type=text].formError, .account-form__input[type=password].formError, .account-form__input[type=email].formError, .account-form__input[type=search].formError {
     border-color: #e22f22 !important; }
-  .account-form__input[type=text]::placeholder, input[type=password]::placeholder, input[type=email]::placeholder, input[type=search]::placeholder {
+  .account-form__input[type=text]::placeholder, .account-form__input[type=password]::placeholder, .account-form__input[type=email]::placeholder, .account-form__input[type=search]::placeholder {
     font-size: 0.875rem;
     line-height: 1.05rem;
     color: #97999c; }
-  .account-form__input[type=text]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=search]::-webkit-input-placeholder {
+  .account-form__input[type=text]::-webkit-input-placeholder, .account-form__input[type=password]::-webkit-input-placeholder, .account-form__input[type=email]::-webkit-input-placeholder, .account-form__input[type=search]::-webkit-input-placeholder {
     font-size: 0.875rem;
     line-height: 1.05rem;
     color: #97999c; }
-  .account-form__input[type=text]::-moz-placeholder, input[type=password]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=search]::-moz-placeholder {
+  .account-form__input[type=text]::-moz-placeholder, .account-form__input[type=password]::-moz-placeholder, .account-form__input[type=email]::-moz-placeholder, .account-form__input[type=search]::-moz-placeholder {
     /* Firefox 19+ */
     font-size: 0.875rem;
     line-height: 1.05rem;
     color: #97999c; }
-  .account-form__input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=search]:-ms-input-placeholder {
+  .account-form__input[type=text]:-ms-input-placeholder, .account-form__input[type=password]:-ms-input-placeholder, .account-form__input[type=email]:-ms-input-placeholder, .account-form__input[type=search]:-ms-input-placeholder {
     /* IE 10+ */
     font-size: 0.875rem;
     line-height: 1.05rem;
     color: #97999c; }
-  .account-form__input[type=text]:-moz-placeholder, input[type=password]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=search]:-moz-placeholder {
+  .account-form__input[type=text]:-moz-placeholder, .account-form__input[type=password]:-moz-placeholder, .account-form__input[type=email]:-moz-placeholder, .account-form__input[type=search]:-moz-placeholder {
     /* Firefox 18- */
     font-size: 0.875rem;
     line-height: 1.05rem;
     color: #97999c; }
-  .account-form__input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=search]:disabled {
+  .account-form__input[type=text]:disabled, .account-form__input[type=password]:disabled, .account-form__input[type=email]:disabled, .account-form__input[type=search]:disabled {
     background: none;
     border: none;
     webkit-box-shadow: none;
@@ -13942,6 +13942,93 @@ input[type=radio].inline {
     margin-right: 10px; }
     .article-chimp-subscribe__submit:focus {
       outline: none; }
+
+.c-signups__head {
+  font-size: 2.25rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.89;
+  letter-spacing: normal;
+  color: #000000; }
+
+.c-signups__subhead {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.875rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #e22f22; }
+
+.c-signups-newsletter {
+  border-top: solid 1px #000000;
+  padding: 30px 0;
+  height: 215px; }
+  .c-signups-newsletter:nth-child(1), .c-signups-newsletter:nth-child(3) {
+    padding-right: 0;
+    margin-right: 20px; }
+  .c-signups-newsletter__figure {
+    height: 100%;
+    width: 100%; }
+  .c-signups-newsletter__image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%; }
+  .c-signups-newsletter__head {
+    font-size: 1.625rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000; }
+  .c-signups-newsletter__logo {
+    padding: 5px;
+    height: 20px;
+    object-fit: contain; }
+  .c-signups-newsletter__blurb {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #000000; }
+  .c-signups-newsletter__days {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 0.65625rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.9;
+    letter-spacing: normal;
+    color: #000000;
+    text-transform: uppercase; }
+  .c-signups-newsletter__form {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 45px; }
+  .c-signups-newsletter__textbox {
+    width: calc(100% - 56px);
+    height: 100%;
+    border: 1px solid #000000;
+    border-right: none;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal; }
+  .c-signups-newsletter__submit {
+    height: 100%;
+    width: 56px;
+    position: absolute;
+    right: 0; }
 
 .room-view {
   margin-top: 70px;
