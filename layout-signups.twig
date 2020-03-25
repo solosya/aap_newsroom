@@ -44,6 +44,17 @@
 
 
 <main id="main" class="site-main u-margin-top-40" role="main">
+    <div class="c-signups-popup" id="mcpopup">
+        <div class="row">
+            <div class="col-12 col-md-4" id="j-mccheckbox-daily">
+                <input type="checkbox" 	class="" value="true" id="mccheckbox-daily"> 
+                <label class="c-signups-popup__label">
+                    Day In Review
+                </label>
+                <p class="c-signups-popup__text"></p>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -68,12 +79,12 @@
                                         <h4 class="c-signups-newsletter__head u-margin-bottom-10">Daily Briefing</h4>
                                         <p class="c-signups-newsletter__blurb">Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox. </p>
                                         <p class="c-signups-newsletter__days">Monday - Friday</p>
-                                        <form action="/" class="c-signups-newsletter__form">
+                                        <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="daily-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="daily-submit" class="c-signups-newsletter__submit" name="email-submit">
+                                            <button type="submit" id="daily-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-input="daily-email" data-group[3][1]="1">
                                                 <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,12 +99,12 @@
                                         <h4 class="c-signups-newsletter__head u-margin-bottom-10">Weekly Briefing</h4>
                                         <p class="c-signups-newsletter__blurb">Catch up on the week's top stories, written by our award winning authors. </p>
                                         <p class="c-signups-newsletter__days">every friday </p>
-                                        <form action="/" class="c-signups-newsletter__form">
+                                        <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="weekly-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit" name="email-submit">
+                                            <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-input="weekly-email" data-group[3][2]="2">
                                                 <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,12 +121,12 @@
                                         </div>
                                         <p class="c-signups-newsletter__blurb">Sports every luiatem ra cuptaspis magnatur sitatem si blaborro qui ommo dio ther ssum reriasit.</p>
                                         <p class="c-signups-newsletter__days">every wednesday</p>
-                                        <form action="/" class="c-signups-newsletter__form">
+                                        <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="lockerroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit" name="email-submit">
+                                            <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-input="lockerroom-email" data-group[3][4]="4">
                                                 <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -132,12 +143,12 @@
                                         </div>
                                         <p class="c-signups-newsletter__blurb">Authors rauptaspis magnatur sitatem si blaborro qui ommo dio ther ssum reriasit. </p>
                                         <p class="c-signups-newsletter__days">every saturday</p>
-                                        <form action="/" class="c-signups-newsletter__form">
+                                        <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="readingroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit" name="email-submit">
+                                            <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-input="readingroom-email" data-group[3][8]="8">
                                                 <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
