@@ -568,7 +568,7 @@
             $('html').addClass('u-noscroll')
             $('body').addClass('u-noscroll').append(tmp);
             if (layout) {
-                this.renderLayout(layout, data);
+                this.renderLayout(layout, this.data);
             }
             this.events();
             this.rendered(); // lifecycle hook that can be overriden
