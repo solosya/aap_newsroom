@@ -34157,7 +34157,8 @@ Acme.templates.ipnotice =
     </div>';
 
 Acme.templates.userPlanMessage = 
-'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+'<p class="{{name}}__message centerText">{{{message}}}</p> \
+<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
      <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
 </form>';
 
