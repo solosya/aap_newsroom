@@ -557,7 +557,8 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
+            this.data = data || this.data;
+            
             if (title) {
                 this.data['title'] = title;
             }

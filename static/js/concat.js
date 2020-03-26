@@ -33870,7 +33870,8 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
+            this.data = data || this.data;
+            
             if (title) {
                 this.data['title'] = title;
             }
