@@ -156,7 +156,7 @@ Acme.templates.ipnotice =
 
 Acme.templates.userPlanMessage = 
 '<p class="{{name}}__message centerText">{{{message}}}</p> \
-<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+<form name="loginForm" id="loginForm" class="active u-margin-top-20" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
      <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
 </form>';
 
