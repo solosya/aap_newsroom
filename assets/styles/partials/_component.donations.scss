@@ -1,0 +1,244 @@
+.donations {
+
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(78);
+        line-height:1;
+        &--red {
+            color:$brand-secondary;
+        }
+    }
+
+    &__text {
+        font-family:$primaryFont;
+        @include font-size(22);
+        line-height:1.36;
+        margin-bottom:22px;
+
+    }
+
+
+    &__byline-img {
+        width:98px;
+        height:98px;
+        background-color:#dadada;
+        border-radius:50%;
+        margin-right:30px;
+    }
+
+    &__byline {
+        font-family:$primaryFont;
+        @include font-size(22);
+        font-style:italic;
+    }
+}
+
+
+.supporter {
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        line-height:.9;
+        margin-bottom:40px;
+
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height:55px;
+        width:253px;
+        text-transform: uppercase;
+        background-color:$brand-secondary;
+        @include font-size(21);
+        font-weight:600;
+        color:#fcfcfc;
+
+        &--black {
+            background-color:black;
+        }
+
+        &--grey {
+            background-color:#8a8b93;
+        }
+
+
+        &--space {
+            margin:0 60px;
+        }
+    }
+
+    &__patron {
+        margin-top:42px;
+        text-transform: uppercase;
+        @include font-size(14);
+
+    }
+}
+
+
+.writers {
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+    }
+
+    &__container {
+        margin-bottom:50px;
+    }
+    &__img {
+        width:98px;
+        height:98px;
+        background-color:#dadada;
+        border-radius:50%;
+        margin-right:30px;
+    }
+    &__text {
+
+    }
+    &__name {
+        font-family: $base-font-family;
+        @include font-size(20);
+        font-weight:700;
+        margin-bottom:10px;
+        margin-top:24px;
+
+    }
+    &__jobtitle {
+        font-family: $primaryFont;
+        @include font-size(18);
+        text-transform: uppercase;
+        color:#979797;
+        margin-bottom:15px;
+
+    }
+    &__about {
+        font-family: $base-font-family;
+        @include font-size(13.5);
+        line-height:1.18;
+        color:#8a8b93;
+        font-style: italic;
+    }
+
+
+
+}
+
+.support-breakout {
+    background-color:black;
+    padding-bottom:42px;
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        color:white;
+        margin-top:44px;
+        margin-bottom:35px;
+        text-align:center;
+    }
+}
+
+
+.faq {
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        margin-bottom:50px;
+    }
+
+    &__question-box {
+        border-bottom: 1px solid #979797;
+        // padding-bottom:38px;
+        align-items: center;
+        height:75px;
+
+        &--open {
+            height:auto;
+        }
+    }
+
+    &__question {
+        @include font-size(18);
+        font-weight:600;
+        margin-bottom:10px;
+
+        &--open {
+            margin-top: 20px;
+        }
+
+    }
+    &__answer-container {
+        &--open {
+            padding-bottom: 38px;
+        }
+    }
+
+    &__answer {
+        @include font-size(18);
+        color: #696969;
+    }
+
+    &__button {
+        height:30px;
+        width:50px;
+        background-color:#adadad;
+        cursor:pointer;
+        position:relative;
+        margin-left:auto;
+        
+    }
+    &__arrow-container {
+        position:relative;
+        width: 15px;
+        height:15px;
+        margin: auto;
+        top:4px;
+        border-color:white;
+        transform:rotate(180deg);
+
+        &--up {
+            top: 12px;
+            transform:none;
+        }
+
+
+    }
+}
+
+.awards {
+
+    padding-top: 60px;
+    padding-bottom:60px;
+    background: rgba(0,0,0,.07);
+
+    &__container {
+        margin-bottom:43px;
+    }
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        margin-bottom:50px;
+    }
+
+    &__award {
+        font-family:$primaryFont;
+        @include font-size(20);
+        line-height:1.1;
+        font-weight:700;
+        margin-bottom:25px;
+        color: $brand-secondary;
+    }
+
+    &__winners {
+        font-family:$primaryFont;
+        @include font-size(18);
+    }
+}
