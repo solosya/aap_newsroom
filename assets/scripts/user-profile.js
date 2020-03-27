@@ -578,7 +578,7 @@ Acme.UserProfileController.prototype.events = function ()
         }
 
         if (cardSupplied === 'f' ) {
-            msg = msg + "<br /><br />However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
+            msg = msg + "However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
             modal.render("userPlan", "Almost there!", {message: msg});
             return;
         }

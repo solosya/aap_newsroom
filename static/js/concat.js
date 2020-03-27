@@ -33870,7 +33870,8 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
+            this.data = data || this.data;
+            
             if (title) {
                 this.data['title'] = title;
             }
@@ -33881,7 +33882,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             $('html').addClass('u-noscroll')
             $('body').addClass('u-noscroll').append(tmp);
             if (layout) {
-                this.renderLayout(layout, data);
+                this.renderLayout(layout, this.data);
             }
             this.events();
             this.rendered(); // lifecycle hook that can be overriden
@@ -34157,7 +34158,8 @@ Acme.templates.ipnotice =
     </div>';
 
 Acme.templates.userPlanMessage = 
-'<form name="loginForm" id="loginForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+'<p class="{{name}}__message centerText">{{{message}}}</p> \
+<form name="loginForm" id="loginForm" class="active u-margin-top-20" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
      <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
 </form>';
 
@@ -38262,7 +38264,7 @@ Acme.UserProfileController.prototype.events = function ()
         }
 
         if (cardSupplied === 'f' ) {
-            msg = msg + "<br /><br />However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
+            msg = msg + "However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
             modal.render("userPlan", "Almost there!", {message: msg});
             return;
         }

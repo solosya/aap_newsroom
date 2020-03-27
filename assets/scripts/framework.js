@@ -557,7 +557,8 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
-
+            this.data = data || this.data;
+            
             if (title) {
                 this.data['title'] = title;
             }
@@ -568,7 +569,7 @@
             $('html').addClass('u-noscroll')
             $('body').addClass('u-noscroll').append(tmp);
             if (layout) {
-                this.renderLayout(layout, data);
+                this.renderLayout(layout, this.data);
             }
             this.events();
             this.rendered(); // lifecycle hook that can be overriden
