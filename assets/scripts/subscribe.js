@@ -37,8 +37,15 @@ $('.j-mcmultisubscribe').click(function(event){
     Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
     .then(function(r) {
         console.log(r);
-    });   
-
+    });
+    
+    $( "#j-box-daily" ).addClass("d-none");
+    $( "#j-box-weekly" ).addClass("d-none");
+    $( "#j-box-lockerroom" ).addClass("d-none");
+    $( "#j-box-readingroom" ).addClass("d-none");
+    $('#j-mcpopup-blurb').text("You're all set! To change your subscriptions later click the link inside our emails.");
+    $('#j-mcpopup-cancel').text('CLOSE');
+    $('#j-mcpopup-signup').addClass('d-none');
 });
 
 $('.j-mccancel').click(function(){
@@ -52,6 +59,10 @@ $('.j-mccancel').click(function(){
     $( "#j-box-lockerroom" ).removeClass("d-none");
     $( "#j-mccheckbox-readingroom" ).prop( "checked", false );
     $( "#j-box-readingroom" ).removeClass("d-none");
+    $('#j-mcpopup-signup').removeClass('d-none');
+    $('#j-mcpopup-cancel').html('NO THANKS');
+    $('#j-mcpopup-blurb').html("While you’re here would you like to sign up to any of our other email newsletters?");
+    
 });
 
 
