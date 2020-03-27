@@ -34,10 +34,10 @@ $('.j-mcmultisubscribe').click(function(event){
 
     //console.log(subscribeData);
 
-    // Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
-    // .then(function(r) {
-    //     console.log(r);
-    // });   
+    Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
+    .then(function(r) {
+        console.log(r);
+    });   
 
 });
 
@@ -77,9 +77,9 @@ mcSubscribe = function(object){
     }
     //console.log(subscribeData);
     
-    // Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
-    //     .then(function(r) {
-    //         console.log(r);
-    //     });   
+    Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
+        .then(function(r) {
+            console.log(r);
+        });   
 };                     
             

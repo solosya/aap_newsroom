@@ -1,12 +1,9 @@
-.c-signups-newsletter{
+.c-signups-podcast{
     border-top: solid 1px $black;
     padding: 30px 0;
-    //height: 215px;
-    @media #{$mobile}{
-        padding-bottom: 90px;
-    }
+    height: 215px;
 
-    &:nth-child(1), &:nth-child(3){
+    &:nth-child(1){
         @media #{$tablet-up}{
             padding-right: 0;
             margin-right: 20px;
@@ -26,6 +23,7 @@
 
     &__head{
         font-size: rem(26);
+        font-family: $base-font-family;
         font-weight: $weightSemibold;
         font-stretch: normal;
         font-style: normal;
@@ -37,19 +35,9 @@
         }
     }
 
-    &__logo{
-        padding: 5px 0;
-        height: 30px;
-        object-fit: contain;
-        @media #{$mobile}{
-            padding: 4px 0;
-            height: 25px;
-        }
-    }
-
     &__blurb{
         font-family: $font-family-sans-serif;
-        font-size: rem(15);
+        font-size: rem(14);
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
@@ -58,12 +46,19 @@
         color: $black;
         @media #{$mobile}{
             font-size: rem(12);
-            line-height: 1.2;
         }
        
     }
 
-    &__days{
+    &__links{
+        position: absolute;
+        bottom: 5px;
+        @media #{$mobile}{
+            bottom: -20px;
+        }
+    }
+
+    &__listen{
         font-family: $font-family-sans-serif;
         font-size: rem(10.5);
         font-weight: normal;
@@ -73,46 +68,28 @@
         letter-spacing: normal;
         color: $black;
         text-transform: uppercase;
-        position: absolute;
-        bottom: 60px;
         @media #{$mobile}{
-            bottom: 0;
+            width: max-content;
         }
     }
 
-    &__form{
-        position: absolute;
-        bottom: 10px;
-        display: block;
-        width: calc(100% - 30px);
-        height: 45px;
-        @media #{$mobile}{
-            left: calc(-50% + 15px);
-            width: calc(150% - 30px);
-            bottom: -60px;
+    &__spotify{
+        width: 55px;
+        height: 37px;
+        float: left;
+        margin-left: -5px;
+        &__image{
+            object-fit: cover;
         }
     }
 
-    &__textbox{
-        width: calc(100% - 56px);
-        height: 100%;
-        border: 1px solid $black;
-        border-right: none;
-        font-family: $font-family-sans-serif;
-        font-size: 15px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        padding: 0 15px;
+    &__itunes{
+        width: 30px;
+        height: 38px;
+        float: left;
+        &__image{
+            object-fit: cover;
+        }
     }
-
-    &__submit{
-        height: 100%;
-        width: 56px;
-        position: absolute;
-        right: 0;
-
-    }
+    
 }

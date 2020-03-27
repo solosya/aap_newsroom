@@ -1,12 +1,21 @@
 .c-signups{
     &__head{
         font-size: rem(36);
+        font-family: $base-font-family;   
         font-weight: $weightSemibold;
         font-stretch: normal;
         font-style: normal;
         line-height: 0.89;
         letter-spacing: normal;
         color: $black;
+        @media #{$tablet-up}{
+            margin-left: -15px;
+        }
+        @media #{$mobile}{
+            font-size: rem(28);
+            line-height: 1.11;
+        }
+        
     }
     &__subhead{
         font-family: $font-family-sans-serif;
@@ -17,6 +26,12 @@
         line-height: normal;
         letter-spacing: normal;
         color: color(red);
+        @media #{$tablet-up}{
+            margin-left: -15px;
+        }
+        @media #{$mobile}{
+            font-size: rem(28);
+        }
     }
 
 }

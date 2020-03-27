@@ -13945,12 +13945,20 @@ input[type=radio].inline {
 
 .c-signups__head {
   font-size: 2.25rem;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: 0.89;
   letter-spacing: normal;
   color: #000000; }
+  @media screen and (min-width: 768px) {
+    .c-signups__head {
+      margin-left: -15px; } }
+  @media screen and (max-width: 767px) {
+    .c-signups__head {
+      font-size: 1.75rem;
+      line-height: 1.11; } }
 
 .c-signups__subhead {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -13961,14 +13969,23 @@ input[type=radio].inline {
   line-height: normal;
   letter-spacing: normal;
   color: #e22f22; }
+  @media screen and (min-width: 768px) {
+    .c-signups__subhead {
+      margin-left: -15px; } }
+  @media screen and (max-width: 767px) {
+    .c-signups__subhead {
+      font-size: 1.75rem; } }
 
 .c-signups-newsletter {
   border-top: solid 1px #000000;
-  padding: 30px 0;
-  height: 215px; }
-  .c-signups-newsletter:nth-child(1), .c-signups-newsletter:nth-child(3) {
-    padding-right: 0;
-    margin-right: 20px; }
+  padding: 30px 0; }
+  @media screen and (max-width: 767px) {
+    .c-signups-newsletter {
+      padding-bottom: 90px; } }
+  @media screen and (min-width: 768px) {
+    .c-signups-newsletter:nth-child(1), .c-signups-newsletter:nth-child(3) {
+      padding-right: 0;
+      margin-right: 20px; } }
   .c-signups-newsletter__figure {
     height: 100%;
     width: 100%; }
@@ -13984,10 +14001,17 @@ input[type=radio].inline {
     line-height: normal;
     letter-spacing: normal;
     color: #000000; }
+    @media screen and (max-width: 767px) {
+      .c-signups-newsletter__head {
+        font-size: 1rem; } }
   .c-signups-newsletter__logo {
-    padding: 5px;
-    height: 20px;
+    padding: 5px 0;
+    height: 30px;
     object-fit: contain; }
+    @media screen and (max-width: 767px) {
+      .c-signups-newsletter__logo {
+        padding: 4px 0;
+        height: 25px; } }
   .c-signups-newsletter__blurb {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 0.9375rem;
@@ -13997,6 +14021,10 @@ input[type=radio].inline {
     line-height: 1.4;
     letter-spacing: normal;
     color: #000000; }
+    @media screen and (max-width: 767px) {
+      .c-signups-newsletter__blurb {
+        font-size: 0.75rem;
+        line-height: 1.2; } }
   .c-signups-newsletter__days {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 0.65625rem;
@@ -14006,12 +14034,23 @@ input[type=radio].inline {
     line-height: 1.9;
     letter-spacing: normal;
     color: #000000;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 60px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-newsletter__days {
+        bottom: 0; } }
   .c-signups-newsletter__form {
-    position: relative;
+    position: absolute;
+    bottom: 10px;
     display: block;
-    width: 100%;
+    width: calc(100% - 30px);
     height: 45px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-newsletter__form {
+        left: calc(-50% + 15px);
+        width: calc(150% - 30px);
+        bottom: -60px; } }
   .c-signups-newsletter__textbox {
     width: calc(100% - 56px);
     height: 100%;
@@ -14023,7 +14062,8 @@ input[type=radio].inline {
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
-    letter-spacing: normal; }
+    letter-spacing: normal;
+    padding: 0 15px; }
   .c-signups-newsletter__submit {
     height: 100%;
     width: 56px;
@@ -14044,7 +14084,13 @@ input[type=radio].inline {
     margin: 0 auto;
     background: #ffffff;
     padding: 70px;
-    margin-top: 200px; }
+    margin-top: 200px;
+    border-radius: 6px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__box {
+        margin-top: 40px;
+        width: calc(100% - 30px);
+        height: unset; } }
   .c-signups-popup__head {
     font-family: "tinos", Helvetica, Arial, sans-serif;
     font-size: 2.25rem;
@@ -14053,6 +14099,9 @@ input[type=radio].inline {
     font-style: normal;
     line-height: 0.89;
     letter-spacing: normal; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__head {
+        font-size: 1.75rem; } }
   .c-signups-popup__subhead {
     font-size: 1.1875rem;
     font-weight: normal;
@@ -14061,6 +14110,9 @@ input[type=radio].inline {
     line-height: 1.32;
     letter-spacing: normal;
     color: #4B4B4B; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__subhead {
+        font-size: 0.875rem; } }
   .c-signups-popup__label {
     font-family: "tinos", Helvetica, Arial, sans-serif;
     font-size: 1.3125rem;
@@ -14072,6 +14124,9 @@ input[type=radio].inline {
     color: #000000;
     height: 30px;
     padding-left: 5px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__label {
+        margin-bottom: 15px; } }
   .c-signups-popup__logo {
     height: 30px;
     padding: 5px 0; }
@@ -14085,6 +14140,9 @@ input[type=radio].inline {
     letter-spacing: normal;
     color: #000000;
     padding-left: 35px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__text {
+        display: none; } }
   .c-signups-popup__checkbox {
     width: 25px;
     height: 30px;
@@ -14092,6 +14150,165 @@ input[type=radio].inline {
   .c-signups-popup__button {
     width: 100%;
     cursor: pointer; }
+    @media screen and (max-width: 767px) {
+      .c-signups-popup__button {
+        margin: 0; } }
+
+.c-signups-propanel {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080; }
+  .c-signups-propanel__content {
+    padding: 20px 0;
+    height: 357px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-propanel__content {
+        z-index: 2;
+        position: relative; } }
+    @media screen and (max-width: 767px) {
+      .c-signups-propanel__content {
+        height: 450px; } }
+  .c-signups-propanel__head {
+    font-size: 1.875rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #e22f22; }
+  .c-signups-propanel__subhead {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.09;
+    letter-spacing: normal; }
+  .c-signups-propanel__li {
+    position: relative;
+    padding-left: 35px;
+    font-size: 0.9375rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-propanel__li {
+        font-size: 0.8125rem; } }
+    .c-signups-propanel__li:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 10px;
+      width: 15px;
+      margin-top: 5px;
+      background-image: url(../icons/tick.svg);
+      background-repeat: no-repeat;
+      background-size: contain; }
+  .c-signups-propanel__button {
+    width: 100%; }
+  .c-signups-propanel__figure {
+    position: relative;
+    height: 357px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-propanel__figure {
+        width: 200%;
+        position: absolute;
+        right: 15px; } }
+    @media screen and (max-width: 767px) {
+      .c-signups-propanel__figure {
+        height: 150px;
+        overflow: hidden; } }
+    .c-signups-propanel__figure:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      background-image: linear-gradient(to left, transparent 0%, white 100%);
+      content: ''; }
+      @media screen and (max-width: 767px) {
+        .c-signups-propanel__figure:after {
+          display: none; } }
+  .c-signups-propanel__image {
+    height: 357px;
+    object-fit: cover; }
+    @media screen and (max-width: 767px) {
+      .c-signups-propanel__image {
+        width: 100%;
+        height: unset; } }
+
+.c-signups-podcast {
+  border-top: solid 1px #000000;
+  padding: 30px 0;
+  height: 215px; }
+  @media screen and (min-width: 768px) {
+    .c-signups-podcast:nth-child(1) {
+      padding-right: 0;
+      margin-right: 20px; } }
+  .c-signups-podcast__figure {
+    height: 100%;
+    width: 100%; }
+  .c-signups-podcast__image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%; }
+  .c-signups-podcast__head {
+    font-size: 1.625rem;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__head {
+        font-size: 1rem; } }
+  .c-signups-podcast__blurb {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #000000; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__blurb {
+        font-size: 0.75rem; } }
+  .c-signups-podcast__links {
+    position: absolute;
+    bottom: 5px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__links {
+        bottom: -20px; } }
+  .c-signups-podcast__listen {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 0.65625rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.9;
+    letter-spacing: normal;
+    color: #000000;
+    text-transform: uppercase; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__listen {
+        width: max-content; } }
+  .c-signups-podcast__spotify {
+    width: 55px;
+    height: 37px;
+    float: left;
+    margin-left: -5px; }
+    .c-signups-podcast__spotify__image {
+      object-fit: cover; }
+  .c-signups-podcast__itunes {
+    width: 30px;
+    height: 38px;
+    float: left; }
+    .c-signups-podcast__itunes__image {
+      object-fit: cover; }
 
 .room-view {
   margin-top: 70px;
