@@ -38,10 +38,12 @@
 
 
     {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDateTime,'d M Y h:ia') %} #}
-    {% set publishDate = article.publishDate %}
-    {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
+    {% set publishedDate = article.publishDate is defined ? article.publishDate : article.publishedDate %}
+    {% set publishedDateTime = article.publishDateTime is defined ? article.publishDate : article.publishedDateTime %}
+    {% set publishDate = publishedDate %}
+    {% set publishedAgo = _AppHelper.getSecondsSincePublished(publishedDateTime) %}
     {% if publishedAgo < 86400 %}
-        {% set publishDate = _AppHelper.getRelativeTime(article.publishDateTime) ~ " ago" %}
+        {% set publishDate = _AppHelper.getRelativeTime(publishedDateTime) ~ " ago" %}
     {% endif %}
 
 
@@ -118,7 +120,18 @@
         {% set containerClass = 'featured' %}
     {% endif %} 
 
-
+{% set log = _AppHelper.log("title") %}
+{% set log = _AppHelper.log(articleTitle) %}
+{% set log = _AppHelper.log("label") %}
+{% set log = _AppHelper.log(article.label) %}
+{% set log = _AppHelper.log("excerpt") %}
+{% set log = _AppHelper.log(article.excerpt) %}
+{% set log = _AppHelper.log("image") %}
+{% set log = _AppHelper.log(articleImg) %}
+{% set log = _AppHelper.log("date") %}
+{% set log = _AppHelper.log(publishDate) %}
+{% set log = _AppHelper.log("author") %}
+{% set log = _AppHelper.log(author) %}
 
     <div class="{{containerClass}}{{invLabel}}" data-title="{{ articleTitle | raw }}">
         

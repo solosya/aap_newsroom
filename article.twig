@@ -137,6 +137,9 @@
     {% set cache = setCache(cacheKey, recentArticles, 500) %} 
 {% endif %}  #}
 
+{% set relatedArticles = [] %}
+{# {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %} #}
+
 
 {% set cacheKey = "articlePopular_articlePage" %}
 {% set popular = getCache(cacheKey) %}
@@ -452,10 +455,12 @@
                             {% else %}
 
 
-
+                                {#  *********************************************
+                                                  PRO ARTICLE PAGE 
+                                    ********************************************* #}
                                 <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
                                     <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                    {% set popularArticles = _Article.getPopularArticles({ 
+                                    {# {% set popularArticles = _Article.getPopularArticles({ 
                                             limit: 5, 
                                             blogId: proBlogId, 
                                             interval: 168 
@@ -467,7 +472,7 @@
                                             swap            : false,
                                             containerClass  : 'card-pro-popular'
                                         }) | raw}}
-                                    {% endfor %} 
+                                    {% endfor %}  #}
                                 </section>
                             
                             {% endif %}
@@ -512,6 +517,29 @@
                                 </div>
 
                             </div>
+
+                            {% if relatedArticles | length > 0 %}
+                            <section class="col-sm-12 recent-articles" data-proid="{{proBlogId}}">
+                                
+                                <h3 class="u-font-size-20 u-font-uppercase u-color-red u-font-weight-thin u-margin-bottom-10 u-margin-top-80">Recommended reads</h3>
+                                
+                                <div class="row">
+                                {% for related in relatedArticles %}
+
+                                    <div class="col-lg-12 col-md-6">
+                                    {{this.render('/partials/_single-article.twig', {
+                                        article         : related, 
+                                        swap            : false,
+                                        isArticle       : 'true',
+                                        containerClass  : 'card-recommend card-recommend-tablet card-recommend-mobile'
+                                    }) | raw}}
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </section>
+                            {% endif %} 
+
+
 
 
                         </aside>
