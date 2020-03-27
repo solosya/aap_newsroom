@@ -1,0 +1,182 @@
+@mixin card-recommend-base {
+    position:relative;
+    margin-bottom: 20px;
+
+    >a.without__image {
+        .c-cards-view {
+            &__container {
+                height:333px;
+
+            }
+
+            &__heading {
+                margin-top: 60px;
+                font-size: 30px;
+                height: 190px;
+            }
+        }
+    }
+
+
+
+
+    .c-cards-view {
+        height: 100%;
+        @include flexbox();
+        @include flex-direction(row);
+
+        &__media {
+            margin-top:18px;
+            @include flex-height(110px);
+            @include flex-width(110px);
+            overflow: hidden;
+            margin-right:12px;
+        }
+    
+
+        &__container {
+            padding-top:15px;
+            height: 125px;
+        }
+
+        &__category {
+            @include font-size(14);
+            position:absolute;
+            top:0;
+            left:0;
+            font-weight: bold;
+            color: #8a8b93;
+            display: block;
+            line-height: 1;
+            margin-bottom: 8px;
+
+        }
+
+        &__heading {
+            font-weight: normal;
+            @include font-size(19);
+            max-height: 110px;
+        }
+
+        &__author-name {
+            display: none;
+        }
+
+        &__time {
+            padding:0;
+            border:0;
+            margin-top: auto;
+            @include font-size(12);
+            color:#8a8b93;
+        }
+
+        &__description {
+            display: none;
+        }
+        
+    }
+
+
+    &--reverse {
+        .c-cards-view {
+            background: #000;
+            &__heading {
+                color:white;
+            }
+            &__container {
+                border:none;
+            }
+            &__category {
+                color: #27aae1;
+            }
+
+            &__time {
+                color:white;
+            }
+        }
+    }
+}
+
+
+.card-recommend{
+    @media #{$desktop-up}{
+        @include card-recommend-base;
+    }
+}
+
+
+
+.card-recommend-tablet {
+    @media #{$tablet}{
+        @include card-recommend-base;
+        height: 132px;
+        margin-bottom: 27px;
+        .c-cards-view {
+
+            &__media {
+                margin-top:0;
+                @include flex-height(132px);
+                @include flex-width(110px);
+            }
+    
+            &__container {
+                padding:0;
+                position:relative;
+                min-height:100%;
+                height:100%;
+            }
+            &__category {
+                position:relative;
+            }
+        }
+    }
+}
+
+.card-recommend-mobile {
+    @media #{$mobile}{
+
+
+        @include card-recommend-base;
+        
+        >a.without__image {
+            .c-cards-view {
+                &__container {
+                    height:auto;
+                }
+    
+                &__heading {
+                    margin-top: 0;
+
+                }
+                &__time {
+                    position:relative;
+                }
+
+            }
+        }
+
+
+        .c-cards-view {
+            @include flex-direction(row);
+            height: 70px;
+
+            &__media {
+                margin-top:0;
+                @include flex-height(70px);
+                @include flex-width(70px);
+            }
+
+            &__container {
+                padding:0;
+                border:none;
+                height:100%;
+            }
+
+            &__category {
+                position:relative;
+            }
+
+        }
+    }
+}
+
