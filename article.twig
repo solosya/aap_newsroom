@@ -137,8 +137,8 @@
     {% set cache = setCache(cacheKey, recentArticles, 500) %} 
 {% endif %}  #}
 
-{% set relatedArticles = [] %}
-{# {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %} #}
+
+{% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
 
 
 {% set cacheKey = "articlePopular_articlePage" %}
@@ -460,7 +460,7 @@
                                     ********************************************* #}
                                 <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
                                     <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                    {# {% set popularArticles = _Article.getPopularArticles({ 
+                                    {% set popularArticles = _Article.getPopularArticles({ 
                                             limit: 5, 
                                             blogId: proBlogId, 
                                             interval: 168 
@@ -472,7 +472,7 @@
                                             swap            : false,
                                             containerClass  : 'card-pro-popular'
                                         }) | raw}}
-                                    {% endfor %}  #}
+                                    {% endfor %}
                                 </section>
                             
                             {% endif %}
