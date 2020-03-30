@@ -44,8 +44,12 @@
         line-height: 1.4;
         letter-spacing: normal;
         color: $black;
+        @media #{$tablet}{
+            font-size: rem(15.2); 
+        }
         @media #{$mobile}{
             font-size: rem(12);
+            line-height: 1.25;
         }
        
     }
@@ -54,7 +58,7 @@
         position: absolute;
         bottom: 5px;
         @media #{$mobile}{
-            bottom: -20px;
+            bottom: 0;
         }
     }
 
@@ -87,6 +91,7 @@
         width: 30px;
         height: 38px;
         float: left;
+        margin-left: 10px;
         &__image{
             object-fit: cover;
         }

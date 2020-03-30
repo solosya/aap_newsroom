@@ -13954,7 +13954,8 @@ input[type=radio].inline {
   color: #000000; }
   @media screen and (min-width: 768px) {
     .c-signups__head {
-      margin-left: -15px; } }
+      margin-left: -15px;
+      line-height: 1.15; } }
   @media screen and (max-width: 767px) {
     .c-signups__head {
       font-size: 1.75rem;
@@ -13996,6 +13997,7 @@ input[type=radio].inline {
   .c-signups-newsletter__head {
     font-size: 1.625rem;
     font-weight: 600;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -14021,10 +14023,13 @@ input[type=radio].inline {
     line-height: 1.4;
     letter-spacing: normal;
     color: #000000; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-newsletter__blurb {
+        font-size: 0.95rem; } }
     @media screen and (max-width: 767px) {
       .c-signups-newsletter__blurb {
         font-size: 0.75rem;
-        line-height: 1.2; } }
+        line-height: 1.25; } }
   .c-signups-newsletter__days {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 0.65625rem;
@@ -14274,15 +14279,19 @@ input[type=radio].inline {
     line-height: 1.4;
     letter-spacing: normal;
     color: #000000; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-podcast__blurb {
+        font-size: 0.95rem; } }
     @media screen and (max-width: 767px) {
       .c-signups-podcast__blurb {
-        font-size: 0.75rem; } }
+        font-size: 0.75rem;
+        line-height: 1.25; } }
   .c-signups-podcast__links {
     position: absolute;
     bottom: 5px; }
     @media screen and (max-width: 767px) {
       .c-signups-podcast__links {
-        bottom: -20px; } }
+        bottom: 0; } }
   .c-signups-podcast__listen {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 0.65625rem;
@@ -14306,7 +14315,8 @@ input[type=radio].inline {
   .c-signups-podcast__itunes {
     width: 30px;
     height: 38px;
-    float: left; }
+    float: left;
+    margin-left: 10px; }
     .c-signups-podcast__itunes__image {
       object-fit: cover; }
 
