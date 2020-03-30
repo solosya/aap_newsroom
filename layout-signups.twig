@@ -41,53 +41,68 @@
 {% endfor %}
 
 {# {{_AppHelper.printArray(sections)}} #}
-
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <div class="c-signups-popup d-none" id="j-mcpopup">
     <div class="c-signups-popup__box">
-        <div class="row">
-            <div class="col-12 u-margin-bottom-40">
-                <h4 class="c-signups-popup__head u-margin-bottom-20">Thank you for signing up</h4>
-                <p class="c-signups-popup__subhead" id="j-mcpopup-blurb">While you’re here would you like to sign up to any of our other email newsletters?</p>
-            </div>
-            <div class="col-12 col-md-4" id="j-box-daily">
-                <input type="checkbox" 	class="c-signups-popup__checkbox" value="" id="j-mccheckbox-daily" style="margin-top: -5px;"> 
-                <label class="c-signups-popup__label">
-                    Daily Briefing
-                </label>
-                <p class="c-signups-popup__text">Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox. </p>
-            </div>
-            <div class="col-12 col-md-4" id="j-box-weekly">
-                <input type="checkbox" 	class="c-signups-popup__checkbox" value="" id="j-mccheckbox-weekly" style="margin-top: -5px;"> 
-                <label class="c-signups-popup__label">
-                    Week in Review
-                </label>
-                <p class="c-signups-popup__text">Catch up on the week's top stories, written by our award winning authors.</p>
-            </div>
-            <div class="col-12 col-md-4" id="j-box-lockerroom">
-                <input type="checkbox" 	class="c-signups-popup__checkbox" value="" id="j-mccheckbox-lockerroom" style="margin-top: -25px;"> 
-                <label class="c-signups-popup__label">
-                    <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-popup__logo" style="padding-bottom: 6.5px;">
-                </label>
-                <p class="c-signups-popup__text">Love sport? Keep up with the play with LockerRoom’s weekly newsletter dedicated to shining a light on NZ women in sport, curated by Suzanne McFadden.</p>
-            </div>
-            <div class="col-12 col-md-4" id="j-box-readingroom">
-                <input type="checkbox" 	class="c-signups-popup__checkbox" value="" id="j-mccheckbox-readingroom" style="margin-top: -25px;"> 
-                <label class="c-signups-popup__label">
-                    <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-popup__logo">                        
-                </label>
-                <p class="c-signups-popup__text">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ with reviews, essays, and yarns to entertain and inform you every Saturday.</p>
-            </div>
-            <div class="col-12 u-margin-top-40">
-                <div class="row justify-content-end">
-                    <div class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
-                        <div class="_btn _btn--outline c-signups-popup__button c-signups-popup__button--cancel j-mccancel" id="j-mcpopup-cancel"> NO THANKS</div>
+        <form action="https://newsroom.us14.list-manage.com/subscribe/post" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+                <input type="hidden" name="u" value="e0ae259e8f9472b9c54037c25">
+                <input type="hidden" name="id" value="71de5c4b35">
+                <input type="hidden" type="email" name="EMAIL" value="" id="mce-EMAIL">
+                <div class="row">
+                    <div class="col-12 u-margin-bottom-40">
+                        <h4 class="c-signups-popup__head u-margin-bottom-20" id="j-mcpopup-thankyou">Thank you!</h4>
+                        <p class="c-signups-popup__subhead" id="j-mcpopup-blurb">While you’re here would you like to sign up to any of our other email newsletters?</p>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 order-1 order-md-2 u-mobile-margin-bottom-10" id="j-mcpopup-signup">
-                        <div class="_btn _btn--red c-signups-popup__button c-signups-popup__button--signup j-mcmultisubscribe">SIGN ME UP</div>
+                    <div class="col-12 col-md-4" id="j-box-3-0">
+                        <input type="checkbox" 	class="c-signups-popup__checkbox"  value="1" name="group[3][1]" id="mce-group[3]-3-0" style="margin-top: -5px;"> 
+                        <label class="c-signups-popup__label">
+                            Daily Briefing
+                        </label>
+                        <p class="c-signups-popup__text">Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox. </p>
+                    </div>
+                    <div class="col-12 col-md-4" id="j-box-3-1">
+                        <input type="checkbox" 	class="c-signups-popup__checkbox"  value="2" name="group[3][2]" id="mce-group[3]-3-1" style="margin-top: -5px;"> 
+                        <label class="c-signups-popup__label">
+                            Week in Review
+                        </label>
+                        <p class="c-signups-popup__text">Catch up on the week's top stories, written by our award winning authors.</p>
+                    </div>
+                    <div class="col-12 col-md-4" id="j-box-3-2">
+                        <input type="checkbox" 	class="c-signups-popup__checkbox" value="4" name="group[3][4]" id="mce-group[3]-3-2" style="margin-top: -25px;"> 
+                        <label class="c-signups-popup__label">
+                            <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-popup__logo" style="padding-bottom: 6.5px;">
+                        </label>
+                        <p class="c-signups-popup__text">Love sport? Keep up with the play with LockerRoom’s weekly newsletter dedicated to shining a light on NZ women in sport, curated by Suzanne McFadden.</p>
+                    </div>
+                    <div class="col-12 col-md-4" id="j-box-3-3">
+                        <input type="checkbox" 	class="c-signups-popup__checkbox" value="8" name="group[3][8]" id="mce-group[3]-3-3" style="margin-top: -25px;"> 
+                        <label class="c-signups-popup__label">
+                            <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-popup__logo">                        
+                        </label>
+                        <p class="c-signups-popup__text">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ with reviews, essays, and yarns to entertain and inform you every Saturday.</p>
+                    </div>
+                    <div class="col-12">
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
+                    </div>
+                    <div class="col-12 u-margin-top-40">
+                        <div class="row justify-content-end">
+                            <div class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
+                                <div class="_btn _btn--outline c-signups-popup__button c-signups-popup__button--cancel j-mccancel" id="j-mcpopup-cancel"> NO THANKS</div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-3 order-1 order-md-2 u-mobile-margin-bottom-10" id="j-mcpopup-signup">
+                                <input type="submit" name="subscribe" class="_btn _btn--red c-signups-popup__button c-signups-popup__button--signup j-mcmultisubscribe"  id="mc-embedded-subscribe" value="SIGN ME UP">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+        
     </div>
 </div>
 <main id="main" class="site-main u-margin-bottom-40 u-tablet-margin-top-60" role="main">
@@ -118,7 +133,7 @@
                                         <p class="c-signups-newsletter__days">Monday - Friday</p>
                                         <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="daily-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="daily-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="daily" data-input="daily-email" data-group[3][1]="1">
+                                            <button type="submit" id="daily-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-0" data-input="daily-email" data-title="Daily Briefing" data-group[3][1]="1">
                                                 <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
                                         </div>
@@ -138,7 +153,7 @@
                                         <p class="c-signups-newsletter__days">every friday </p>
                                         <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="weekly-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="weekly" data-input="weekly-email" data-group[3][2]="2">
+                                            <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-1" data-input="weekly-email" data-title="Weekly Briefing" data-group[3][2]="2">
                                                 <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
                                         </div>
@@ -160,7 +175,7 @@
                                         <p class="c-signups-newsletter__days">every wednesday</p>
                                         <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="lockerroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="lockerroom" data-input="lockerroom-email" data-group[3][4]="4">
+                                            <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-2" data-input="lockerroom-email" data-title="Lockerroom Newsletter" data-group[3][4]="4">
                                                 <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
                                         </div>
@@ -182,7 +197,7 @@
                                         <p class="c-signups-newsletter__days">every saturday</p>
                                         <div class="c-signups-newsletter__form">
                                             <input type="email"	class="c-signups-newsletter__textbox" name="email" id="readingroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="readingroom" data-input="readingroom-email" data-group[3][8]="8">
+                                            <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-3" data-input="readingroom-email" data-title="Readingroom Newsletter" data-group[3][8]="8">
                                                 <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                             </button>
                                         </div>
