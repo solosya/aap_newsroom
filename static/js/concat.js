@@ -37434,51 +37434,72 @@ if ($('#stripekey').length > 0) {
     }
 } 
 $('.j-mcsubscribe').click(function(event){
-    mcSubscribe(event.currentTarget);
     var email = $('#'+$(event.currentTarget).data('input')).val();
-    //console.log(email);
+    document.getElementById("mce-group[3]-"+$(event.currentTarget).data('type')).checked = true;
     $('#j-box-'+$(event.currentTarget).data('type')).addClass('d-none');
-    $('#j-mcpopup').data('email',email);
+    //$('#j-mcpopup-thankyou').text('You are signing up to the '+$(event.currentTarget).data('title')+'.');
+    $('#mce-EMAIL').val(email);
     $('#j-mcpopup').removeClass('d-none');
 });
 
 $('.j-mcmultisubscribe').click(function(event){
-    var doSubscribe = false;
-    var subscribeData = {
-        "EMAIL":  $('#j-mcpopup').data('email'), 
-        "u": "e0ae259e8f9472b9c54037c25",
-        "id": "71de5c4b35"
-    };
+    // var doSubscribe = false;
+    // var subscribeData = {
+    //     "EMAIL":  $('#j-mcpopup').data('email'), 
+    //     "u": "e0ae259e8f9472b9c54037c25",
+    //     "id": "71de5c4b35"
+    // };
 
-    if ($('#j-mccheckbox-daily').is(":checked")){
-        doSubscribe = true;
-        subscribeData["group[3][1]"] = 1;
-    };
-    if ($('#j-mccheckbox-weekly').is(":checked")){
-        doSubscribe = true;
-        subscribeData["group[3][2]"] = 2;
-    };
-    if ($('#j-mccheckbox-lockerroom').is(":checked")){
-        doSubscribe = true;
-        subscribeData["group[3][4]"] = 4;
-    };
-    if ($('#j-mccheckbox-readingroom').is(":checked")){
-        doSubscribe = true;
-        subscribeData["group[3][8]"] = 8;
-    };
+    // if ($('#j-mccheckbox-daily').is(":checked")){
+    //     doSubscribe = true;
+    //     subscribeData["group[3][1]"] = 1;
+    // };
+    // if ($('#j-mccheckbox-weekly').is(":checked")){
+    //     doSubscribe = true;
+    //     subscribeData["group[3][2]"] = 2;
+    // };
+    // if ($('#j-mccheckbox-lockerroom').is(":checked")){
+    //     doSubscribe = true;
+    //     subscribeData["group[3][4]"] = 4;
+    // };
+    // if ($('#j-mccheckbox-readingroom').is(":checked")){
+    //     doSubscribe = true;
+    //     subscribeData["group[3][8]"] = 8;
+    // };
 
     //console.log(subscribeData);
 
-    Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
-    .then(function(r) {
-        console.log(r);
-    });
+    // Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
+    // .then(function(r) {
+    //     console.log(r);
+    // });
+
+
+    // requestData = {
+    //     email   : $('#j-mcpopup').data('email'),
+    //     list    : "71de5c4b35",
+    //     group   : "group[3][4]",
+    //     action  : 'post'
+    // };
+
+    // Acme.server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData )
+    //     .done(function(r) {
+    //         if (r.success == 1) {
+               
+    //             console.log(r);
+    //             // var msg = 'Succesfully ' + action + 'd ' + actionVerb + ' ' + self.emailLists[requestData['list']];
+    //             // $("#account-form__email").prepend('<p>' + msg + '</p>');
+    //         }
+    //     }).fail(function(e) {
+    //         console.log(e);
+    //         $('#createUserErrorMessage').text(e.errorText);
+    //     });
     
-    $( "#j-box-daily" ).addClass("d-none");
-    $( "#j-box-weekly" ).addClass("d-none");
-    $( "#j-box-lockerroom" ).addClass("d-none");
-    $( "#j-box-readingroom" ).addClass("d-none");
-    $('#j-mcpopup-blurb').text("You're all set! To change your subscriptions later click the link inside our emails.");
+    $( "#j-box-3-0" ).addClass("d-none");
+    $( "#j-box-3-1" ).addClass("d-none");
+    $( "#j-box-3-2" ).addClass("d-none");
+    $( "#j-box-3-3" ).addClass("d-none");
+    $('#j-mcpopup-blurb').text("To unsubscribe, click the link in the email.");
     $('#j-mcpopup-cancel').text('CLOSE');
     $('#j-mcpopup-signup').addClass('d-none');
 });
@@ -37486,48 +37507,19 @@ $('.j-mcmultisubscribe').click(function(event){
 $('.j-mccancel').click(function(){
     $('#j-mcpopup').data('email','');
     $('#j-mcpopup').addClass('d-none');
-    $( "#j-mccheckbox-daily" ).prop( "checked", false );
-    $( "#j-box-daily" ).removeClass("d-none");
-    $( "#j-mccheckbox-weekly" ).prop( "checked", false );
-    $( "#j-box-weekly" ).removeClass("d-none");
-    $( "#j-mccheckbox-lockerroom" ).prop( "checked", false );
-    $( "#j-box-lockerroom" ).removeClass("d-none");
-    $( "#j-mccheckbox-readingroom" ).prop( "checked", false );
-    $( "#j-box-readingroom" ).removeClass("d-none");
+    $( "#j-mccheckbox-3-0" ).prop( "checked", false );
+    $( "#j-box-3-0" ).removeClass("d-none");
+    $( "#j-mccheckbox-3-1" ).prop( "checked", false );
+    $( "#j-box-3-1" ).removeClass("d-none");
+    $( "#j-mccheckbox-3-2" ).prop( "checked", false );
+    $( "#j-box-3-2" ).removeClass("d-none");
+    $( "#j-mccheckbox-3-3" ).prop( "checked", false );
+    $( "#j-box-3-3" ).removeClass("d-none");
     $('#j-mcpopup-signup').removeClass('d-none');
     $('#j-mcpopup-cancel').html('NO THANKS');
     $('#j-mcpopup-blurb').html("While you’re here would you like to sign up to any of our other email newsletters?");
     
-});
-
-
-mcSubscribe = function(object){
-    self = $(object);
-    //console.log(self.data('input'));
-    var subscribeData = {
-        "EMAIL": $('#'+self.data('input')).val(), 
-        "u": "e0ae259e8f9472b9c54037c25",
-        "id": "71de5c4b35"
-    };
-    if (self.data("group[3][1]")) {
-        subscribeData["group[3][1]"] = 1;
-    }
-    if (self.data("group[3][2]")) {
-        subscribeData["group[3][2]"] = 2;
-    }
-    if (self.data("group[3][4]")) {
-        subscribeData["group[3][4]"] = 4;
-    }
-    if (self.data("group[3][8]")) {
-        subscribeData["group[3][8]"] = 8;
-    }
-    //console.log(subscribeData);
-    
-    Acme.server.create("https://newsroom.us14.list-manage.com/subscribe/post", subscribeData)
-        .then(function(r) {
-            console.log(r);
-        });   
-};                     
+});    
             
 
 Acme.Token = function(tokenName) 
