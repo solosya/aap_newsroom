@@ -225,9 +225,9 @@
                     <div class="category {{social.source}}">{{social.source}}</div>
                     
                     <p id="updateSocial{{article.socialId}}" data-update="0">
-                             {{ quotes.smarten(social.content 
-                                            | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
-                                            | raw) }}
+                            {{ quotes.smarten(social.content 
+                                | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
+                                | raw) }}
                     </p>
 
                     <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
