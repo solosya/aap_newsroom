@@ -120,18 +120,6 @@
         {% set containerClass = 'featured' %}
     {% endif %} 
 
-{% set log = _AppHelper.log("title") %}
-{% set log = _AppHelper.log(articleTitle) %}
-{% set log = _AppHelper.log("label") %}
-{% set log = _AppHelper.log(article.label) %}
-{% set log = _AppHelper.log("excerpt") %}
-{% set log = _AppHelper.log(article.excerpt) %}
-{% set log = _AppHelper.log("image") %}
-{% set log = _AppHelper.log(articleImg) %}
-{% set log = _AppHelper.log("date") %}
-{% set log = _AppHelper.log(publishDate) %}
-{% set log = _AppHelper.log("author") %}
-{% set log = _AppHelper.log(author) %}
 
     <div class="{{containerClass}}{{invLabel}}" data-title="{{ articleTitle | raw }}">
         
