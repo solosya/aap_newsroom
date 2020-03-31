@@ -3,8 +3,15 @@
 
 
 
-<main id="main" class="u-margin-top-60 u-margin-bottom-100" role="main">
-    <div class="container">
+<main id="main" class="" role="main">
+    
+    <div class="donations__header  u-margin-top-30">
+        <a class="donations__nr-logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
+        </a>
+    </div>
+    
+    <div class="container u-margin-top-60">
 
         <div class="row donations">
             <div class="col-lg-5">
@@ -15,7 +22,7 @@
                 <p class="donations__text">By supporting Newsroom with your contribution, you’ll be helping to strengthen our team as we bring quality journalism to the top of the agenda.</p>
                 <p class="donations__text">If you’d like to come on board as supporter, simply click on one of the buttons below. Thanks for believing in our mission. We’re excited to have you join us on this journey.</p>
                 <div class="flex_row u-align-center">
-                    <img src="" class="donations__byline-img">
+                    <img src="{{networkData.templatePath}}/static/headshots/tim-mark-bw@2x.jpg" class="donations__byline-img">
                     <p class="donations__byline">– Tim, Mark and the team at Newsroom</p>
                 </div>
             </div>
@@ -35,108 +42,275 @@
         </div>
 
 
-
+        {# Visbile #}
         <div class="row writers u-margin-top-60">
             <div class="col-12">
-                <h1 class="supporter__title">Meet the writers</h1>
+                <h1 class="writers__title">Meet the writers</h1>
             </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/reid@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Melanie Reid</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/oram@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Rod Oram</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXX XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/jennings@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Mark Jennings</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/hickey@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Bernard Hickey</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/murphy@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Tim Murphy</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/mcfadden@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Suzanne McFadden</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/hancock@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Farah Hancock</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/mandow@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Nikki Mandow</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/braunias@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Steve Braunias</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        {# Hidden #}
+        <div id="hidden-writers" class="row writers u-hide">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/sachdeva@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Sam Sachdeva</h1>
+                        <p class="writers__jobtitle">XXXXXXXX XXXXXXXX XXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/russell@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Alexia Russell</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/daalder@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Marc Daalder</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/grieveson@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Lyn Grieveson</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/brett-kelly@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Sharon BrettKelly</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/williams@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">David Williams</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/mason@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">Cassandra Mason</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+                <div class="d-flex writers__container">
+                    <img src="{{networkData.templatePath}}/static/headshots/elliott@2x.jpg" class="writers__img">
+                    <div class="writers__text">
+                        <h1 class="writers__name">James Elliot</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
+                        <a class="writers__about">About </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
 
             <div class="col-lg-4">
                 <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
+                    <img src="{{networkData.templatePath}}/static/headshots/donovan@2x.jpg" class="writers__img">
                     <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
+                        <h1 class="writers__name">Emile Donovan</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
                         <a class="writers__about">About </a>
                     </div>
                 </div>
 
 
                 <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
+                    <img src="{{networkData.templatePath}}/static/headshots/stanley@2x.jpg" class="writers__img">
                     <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
+                        <h1 class="writers__name">Ashley Stanley</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
                         <a class="writers__about">About </a>
                     </div>
                 </div>
 
 
                 <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
+                    <img src="{{networkData.templatePath}}/static/headshots/fonseka@2x.jpg" class="writers__img">
                     <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
-                        <a class="writers__about">About </a>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-
-            <div class="col-lg-4">
-                <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
-                    <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
+                        <h1 class="writers__name">Dileepa Fonseka</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
                         <a class="writers__about">About </a>
                     </div>
                 </div>
 
 
                 <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
+                    <img src="{{networkData.templatePath}}/static/headshots/deane@2x.jpg" class="writers__img">
                     <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
-                        <a class="writers__about">About </a>
-                    </div>
-                </div>
-
-
-                <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
-                    <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
-                        <a class="writers__about">About </a>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-
-                        <div class="col-lg-4">
-                <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
-                    <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
-                        <a class="writers__about">About </a>
-                    </div>
-                </div>
-
-
-                <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
-                    <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
-                        <a class="writers__about">About </a>
-                    </div>
-                </div>
-
-
-                <div class="d-flex writers__container">
-                    <img src="" class="writers__img">
-                    <div class="writers__text">
-                        <h1 class="writers__name">Bernard Hickey</h1>
-                        <p class="writers__jobtitle">Newsroom Pro Editor</p>
+                        <h1 class="writers__name">Steve Deane</h1>
+                        <p class="writers__jobtitle">XXXXXXXX</p>
                         <a class="writers__about">About </a>
                     </div>
                 </div>
@@ -145,6 +319,15 @@
             </div>
 
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p id="viewall" class="col-12 u-margin-bottom-20 writers__view-all">View all </p>
+            </div>
+        </div>
+
+
+
 
 
     </div>
@@ -181,7 +364,7 @@
 
             <div class="col-12">
                 <div class="faq__question-box d-flex flex-row">
-                    <div>
+                    <div class="faq__container">
                         <p class="faq__question u-font-bold">What is the difference between making a donation and subscribing to Newsroom Pro?</p>
                         <div class="faq__answer-container u-hide">
                             <p class="faq__answer">Great question, because both support Newsroom’s journalism. Donations can be any amount or frequency and all donations help Newsroom keep its journalism free for everyone to read. Newsroom Pro is our subscription service curated by Bernard Hickey, which you can find out more about here.</p>
@@ -192,7 +375,7 @@
 
 
                 <div class="faq__question-box d-flex flex-row">
-                    <div>
+                    <div class="faq__container">
                         <p class="faq__question u-font-bold">What’s the best way to keep Newsroom sustainable?</p>
                         <div class="faq__answer-container u-hide">
                             <p class="faq__answer">Donations of any kind are gratefully accepted but monthly donations go a long way towards ensuring we can continue our work into the future – and you can cancel your monthly payment any time.</p>
@@ -203,7 +386,7 @@
 
 
                 <div class="faq__question-box d-flex flex-row">
-                    <div>
+                    <div class="faq__container">
                         <p class="faq__question u-font-bold">Why does Newsroom need donations anyway? Don’t you have sponsors?</p>
                         <div class="faq__answer-container u-hide">
                             <p class="faq__answer">Yes, we do have some wonderful sponsors and corporate partners who make a huge difference in keeping Newsroom running but unfortunately it’s not enough to keep us operating. Reader donations are absolutely critical to supporting our journalists as they work to uncover the stories that matter.</p>
@@ -228,27 +411,22 @@
     
                 <h1 class="col-12 faq__title">Awards</h1>
 
-                <div class="col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <div class="awards__container">
                         <h2 class="awards__award">Marketing Magazine Media Hot List 2019</h2>
-                        <p class="awards__winners">
-                            Hottest Publisher
-                            Hottest Editors 
-                            (People’s Choice), 
-                            Mark Jennings & Tim Murphy
-                        </p>
+                        <p class="awards__winners-title">Hottest Publisher</p>
+                        <p class="awards__winners-title">Hottest Editors</p>
+                        <p class="awards__winners-title">(People’s Choice),</p>
+                        <p class="awards__winners-names">Mark Jennings & Tim Murphy</p>
                     </div>
-                    <div class="award__container">
+                    <div class="awards__container">
                         <h2 class="awards__award">2019 Citi Journalism Awards for Excellence</h2>
-                        <p class="awards__winners">
-                            General Business winner 
-                            How Fonterra hit the 
-                            wall in China, Rod Oram
-                            Young Business Journalist 
-                            of the Year 
-                            The massive conflict of interest in vehicle imports into New Zealand, Thomas Coughlan
-                            New Zealand Journalist of the Year Award
-                            – How Fonterra hit the wall in China, Rod Oram
+                        <p class="awards__winners-title">Hottest Publisher</p>
+                        <p class="awards__winners-names">How Fonterra hit the wall in China, Rod Oram<p>
+                        <p class="awards__winners-title">Young Business Journalist of the Year</p>
+                        <p class="awards__winners-names">The massive conflict of interest in vehicle imports into New Zealand, Thomas Coughlan</p>
+                        <p class="awards__winners-title">New Zealand Journalist of the Year Award</p>
+                        <p class="awards__winners-names">– How Fonterra hit the wall in China, Rod Oram</p>
                         </p>
 
                     </div>
@@ -256,60 +434,48 @@
                 </div>
 
 
-                <div class="offset-lg-1 col-lg-3">
+                <div class="col-md-6 offset-lg-1 col-lg-3">
                     <div class="awards__container">
                         <h2 class="awards__award">Voyager Media Awards 2019</h2>
-                        <p class="awards__winners">
-                            Reporting (general) winner  Melanie Reid
-                            Science and Technology Award  Eloise Gibson
-                            Features – 
-                            Crime writing and/or social issues
-                            Teuila Fuatai
-                        </p>
+                        <p class="awards__winners-title">Reporting (general) winner</p>
+                        <p class="awards__winners-names">Melanie Reid</p>
 
+                        <p class="awards__winners-title">Science and Technology Award</p>
+                        <p class="awards__winners-names">Eloise Gibson</p>
 
+                        <p class="awards__winners-title">Features</p>
+                        <p class="awards__winners-names">Crime writing and/or social issues
+                        Teuila Fuatai</p>
 
+                            
                     </div>
+
                     <div class="awards__container">
                         <h2 class="awards__award">Voyager Media Awards 2018</h2>
-                        <p class="awards__winners">
-                            Website of the Year 
-                            (joint) winner
-                            Reporter of the Year
-                            Melanie Reid
-                            Best (single) news story
-                            Police and the payout, Melanie Reid
-                            Reporting (general) winner
-                            Melanie Reid
-                        </p>
-
+                        <p class="awards__winners-title">Website of the Year</p>
+                        <p class="awards__winners-names">(joint) winner</p>
+                        <p class="awards__winners-title">Melanie Reid</p>
+                        <p class="awards__winners-names">Eloise Gibson</p>
+                        <p class="awards__winners-title">Best (single) news story</p>
+                        <p class="awards__winners-names">Police and the payout, Melanie Reid</p>
+                        <p class="awards__winners-title">Reporting (general) winner</p>
+                        <p class="awards__winners-names">Melanie Reid</p>
                     </div>
 
 
                 </div>
 
 
-                <div class="offset-lg-1 col-lg-3">
+                <div class="col-md-6 c offset-lg-1 col-lg-3">
                     <div class="awards__container">
                         <h2 class="awards__award">Huawei Mate30 Pro NZ TV Awards 2019</h2>
-                        <p class="awards__winners">
-                            Best Current Affairs Programme 
-                            – Newsroom Investigates
-                        </p>
-
-
-
-
+                        <p class="awards__winners-title">Best Current Affairs Programme </p>
+                        <p class="awards__winners-names">– Newsroom Investigates</p>
                     </div>
                     <div class="awards__container">
                         <h2 class="awards__award">Huawei Mate30 Pro NZ TV Awards 2017</h2>
-                        <p class="awards__winners">
-                            Best Current Affairs Programme 
-                            – The Politician, The Police and The Payout
-                        </p>
-
-
-
+                        <p class="awards__winners-title">Best Current Affairs Programme</p>
+                        <p class="awards__winners-names">– The Politician, The Police and The Payout</p>
                     </div>
 
                 </div>
@@ -329,27 +495,53 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
+        var hiddenWriters = $('#hidden-writers');
+
+        $('#viewall').on('click', function(e) {
+            $this = $(this);
+            if ($this.text().trim() === "View all") {
+                $this.text("View less");
+            } else {
+                $this.text("View all");
+            }
+            hiddenWriters.toggleClass('u-hide');
+        });
+
+
         $('.faq__button').on('click', function(e) {
-            console.log('clicked');
+
+            close = true;
             var box = $(e.target).closest('div.faq__question-box');
+            if (box.hasClass('faq__question-box--open')) {
+                close = false;
+            }
+
+
             var boxes = $('div.faq__question-box');
             boxes.removeClass('faq__question-box--open');
-            box.addClass('faq__question-box--open');
 
-            var question = box.find('.faq__question');
             var questions = $('.faq__question');
             questions.removeClass('faq__question--open');
-            question.addClass('faq__question--open');
 
-            var clickedAnswer = box.find('.faq__answer-container');
             var answers = $('.faq__answer-container');
             answers.addClass('u-hide').removeClass('faq__answer-container--open');
-            clickedAnswer.removeClass('u-hide').addClass('faq__answer-container--open');
             
-            var clickedArrow = box.find('.faq__arrow-container');
             var arrows = $('.faq__arrow-container');
             arrows.removeClass('faq__arrow-container--up');
-            clickedArrow.addClass('faq__arrow-container--up');
+
+            var question = box.find('.faq__question');
+            var clickedArrow = box.find('.faq__arrow-container');
+            var clickedAnswer = box.find('.faq__answer-container');
+
+            if (close) {
+                box.addClass('faq__question-box--open');
+                question.addClass('faq__question--open');
+                clickedAnswer.removeClass('u-hide').addClass('faq__answer-container--open');
+                clickedArrow.addClass('faq__arrow-container--up');
+            }
+
+
+
         });
 
 

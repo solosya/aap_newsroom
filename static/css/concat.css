@@ -13973,6 +13973,21 @@ input[type=radio].inline {
     .article-chimp-subscribe__submit:focus {
       outline: none; }
 
+.donations__header {
+  margin-left: 45px; }
+  @media screen and (max-width: 767px) {
+    .donations__header {
+      margin-left: 15px; } }
+
+.donations__nr-logo {
+  display: block;
+  width: 68px;
+  height: 45px; }
+  @media screen and (max-width: 767px) {
+    .donations__nr-logo {
+      width: 60px;
+      height: 38px; } }
+
 .donations__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 4.875rem;
@@ -13980,6 +13995,18 @@ input[type=radio].inline {
   line-height: 1; }
   .donations__title--red {
     color: #e22f22; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .donations__title {
+      font-size: 4.375rem;
+      line-height: 5.25rem; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .donations__title {
+      margin-bottom: 60px; } }
+  @media screen and (max-width: 767px) {
+    .donations__title {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      margin-bottom: 25px; } }
 
 .donations__text {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -13987,6 +14014,14 @@ input[type=radio].inline {
   line-height: 1.65rem;
   line-height: 1.36;
   margin-bottom: 22px; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .donations__text {
+      font-size: 1.25rem;
+      line-height: 1.5rem; } }
+  @media screen and (max-width: 767px) {
+    .donations__text {
+      font-size: 0.875rem;
+      line-height: 1.05rem; } }
 
 .donations__byline-img {
   width: 98px;
@@ -13994,12 +14029,21 @@ input[type=radio].inline {
   background-color: #dadada;
   border-radius: 50%;
   margin-right: 30px; }
+  @media screen and (max-width: 767px) {
+    .donations__byline-img {
+      width: 66px;
+      height: 66px;
+      margin-right: 15px; } }
 
 .donations__byline {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.375rem;
   line-height: 1.65rem;
   font-style: italic; }
+  @media screen and (max-width: 767px) {
+    .donations__byline {
+      font-size: 0.875rem;
+      line-height: 1.05rem; } }
 
 .supporter__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -14007,6 +14051,11 @@ input[type=radio].inline {
   line-height: 3rem;
   line-height: .9;
   margin-bottom: 40px; }
+  @media screen and (max-width: 767px) {
+    .supporter__title {
+      margin-bottom: 0;
+      font-size: 1.75rem;
+      line-height: 2.1rem; } }
 
 .supporter__button {
   display: inline-flex;
@@ -14026,21 +14075,57 @@ input[type=radio].inline {
     background-color: #8a8b93; }
   .supporter__button--space {
     margin: 0 60px; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .supporter__button {
+      width: 233px;
+      height: 42px; }
+      .supporter__button--space {
+        margin: 0 30px; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .supporter__button {
+      font-size: 1.1875rem;
+      line-height: 1.425rem;
+      width: 210px; }
+      .supporter__button--space {
+        margin: 0 20px; } }
+  @media screen and (max-width: 767px) {
+    .supporter__button {
+      display: flex;
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      margin: 22px auto; }
+      .supporter__button--space {
+        margin: 22px auto; } }
 
 .supporter__patron {
   margin-top: 42px;
   text-transform: uppercase;
   font-size: 0.875rem;
   line-height: 1.05rem; }
+  @media screen and (max-width: 767px) {
+    .supporter__patron {
+      font-size: 0.75rem;
+      line-height: 0.9rem;
+      margin-top: 0; } }
 
 .writers__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   line-height: 3rem;
   font-weight: 600; }
+  @media screen and (max-width: 767px) {
+    .writers__title {
+      font-size: 1.75rem;
+      line-height: 2.1rem;
+      margin-bottom: 30px; } }
 
 .writers__container {
   margin-bottom: 50px; }
+  @media screen and (max-width: 767px) {
+    .writers__container {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #dadada;
+      margin-bottom: 15px; } }
 
 .writers__img {
   width: 98px;
@@ -14048,6 +14133,10 @@ input[type=radio].inline {
   background-color: #dadada;
   border-radius: 50%;
   margin-right: 30px; }
+  @media screen and (max-width: 767px) {
+    .writers__img {
+      width: 65px;
+      height: 65px; } }
 
 .writers__name {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -14056,6 +14145,11 @@ input[type=radio].inline {
   font-weight: 700;
   margin-bottom: 10px;
   margin-top: 24px; }
+  @media screen and (max-width: 767px) {
+    .writers__name {
+      font-size: 1.0625rem;
+      line-height: 1.275rem;
+      margin-top: 0; } }
 
 .writers__jobtitle {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -14064,6 +14158,13 @@ input[type=radio].inline {
   text-transform: uppercase;
   color: #979797;
   margin-bottom: 15px; }
+  @media screen and (max-width: 767px) {
+    .writers__jobtitle {
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      color: #e12e21;
+      min-height: 37px;
+      margin-bottom: 10px; } }
 
 .writers__about {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -14072,6 +14173,13 @@ input[type=radio].inline {
   line-height: 1.18;
   color: #8a8b93;
   font-style: italic; }
+
+.writers__view-all {
+  cursor: pointer;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.2rem; }
 
 .support-breakout {
   background-color: black;
@@ -14085,6 +14193,11 @@ input[type=radio].inline {
     margin-top: 44px;
     margin-bottom: 35px;
     text-align: center; }
+    @media screen and (max-width: 767px) {
+      .support-breakout__title {
+        font-size: 1.75rem;
+        line-height: 2.1rem;
+        margin-bottom: 15px; } }
 
 .faq__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -14092,6 +14205,14 @@ input[type=radio].inline {
   line-height: 3rem;
   font-weight: 600;
   margin-bottom: 50px; }
+  @media screen and (max-width: 767px) {
+    .faq__title {
+      font-size: 1.75rem;
+      line-height: 2.1rem;
+      margin-bottom: 15px; } }
+
+.faq__container {
+  width: 90%; }
 
 .faq__question-box {
   border-bottom: 1px solid #979797;
@@ -14099,6 +14220,9 @@ input[type=radio].inline {
   height: 75px; }
   .faq__question-box--open {
     height: auto; }
+  @media screen and (max-width: 767px) {
+    .faq__question-box {
+      align-items: flex-end; } }
 
 .faq__question {
   font-size: 1.125rem;
@@ -14107,6 +14231,10 @@ input[type=radio].inline {
   margin-bottom: 10px; }
   .faq__question--open {
     margin-top: 20px; }
+  @media screen and (max-width: 767px) {
+    .faq__question {
+      font-size: 1rem;
+      line-height: 1.2rem; } }
 
 .faq__answer-container--open {
   padding-bottom: 38px; }
@@ -14115,6 +14243,10 @@ input[type=radio].inline {
   font-size: 1.125rem;
   line-height: 1.35rem;
   color: #696969; }
+  @media screen and (max-width: 767px) {
+    .faq__answer {
+      font-size: 0.875rem;
+      line-height: 1.05rem; } }
 
 .faq__button {
   height: 30px;
@@ -14123,6 +14255,10 @@ input[type=radio].inline {
   cursor: pointer;
   position: relative;
   margin-left: auto; }
+  @media screen and (max-width: 767px) {
+    .faq__button {
+      height: 20px;
+      width: 40px; } }
 
 .faq__arrow-container {
   position: relative;
@@ -14135,6 +14271,11 @@ input[type=radio].inline {
   .faq__arrow-container--up {
     top: 12px;
     transform: none; }
+  @media screen and (max-width: 767px) {
+    .faq__arrow-container {
+      top: -2px; }
+      .faq__arrow-container--up {
+        top: 7px; } }
 
 .awards {
   padding-top: 60px;
@@ -14156,10 +14297,30 @@ input[type=radio].inline {
     font-weight: 700;
     margin-bottom: 25px;
     color: #e22f22; }
-  .awards__winners {
+    @media screen and (max-width: 767px) {
+      .awards__award {
+        font-size: 1.125rem;
+        line-height: 1.35rem;
+        margin-bottom: 10px; } }
+  .awards__winners-title {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.35rem;
+    font-weight: 600; }
+    @media screen and (max-width: 767px) {
+      .awards__winners-title {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        margin-bottom: 4px;
+        margin-top: 10px; } }
+  .awards__winners-names {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.125rem;
     line-height: 1.35rem; }
+    @media screen and (max-width: 767px) {
+      .awards__winners-names {
+        font-size: 0.875rem;
+        line-height: 1.05rem; } }
 
 .room-view {
   margin-top: 70px;
