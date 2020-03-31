@@ -11,14 +11,21 @@
     }
 
     &__figure{
-       height: 100%;
-       width: 100%;
+        height: 100%;
+        width: 100%;
+        @media #{$tablet-up} {
+            height: 190px;
+           
+        }
     }
 
     &__image{
         object-fit: contain;
         height: 100%;
         width: 100%;
+        @media #{$tablet-up} {
+            object-fit: cover;
+        }
     }
 
     &__head{

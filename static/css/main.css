@@ -14254,10 +14254,16 @@ input[type=radio].inline {
   .c-signups-podcast__figure {
     height: 100%;
     width: 100%; }
+    @media screen and (min-width: 768px) {
+      .c-signups-podcast__figure {
+        height: 190px; } }
   .c-signups-podcast__image {
     object-fit: contain;
     height: 100%;
     width: 100%; }
+    @media screen and (min-width: 768px) {
+      .c-signups-podcast__image {
+        object-fit: cover; } }
   .c-signups-podcast__head {
     font-size: 1.625rem;
     font-family: "tinos", Helvetica, Arial, sans-serif;
