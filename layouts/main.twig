@@ -94,7 +94,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=84ad160b" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=06c21a5d" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
@@ -196,14 +196,14 @@
     <!-- Google Tag Manager body - END -->
 
 
-    {% if paywallSection == false and 'edit-profile' not in pageClass %}
+    {% if paywallSection == false and 'edit-profile' not in pageClass and not squeeze %}
         <hr class="ad__gap d-block d-md-none">
         {% if config['inventory']['adSpace']['banner'][0] is defined %}
             <div class="j-adslot ad ad-header__topbanner" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner" data-responsive="1"></div>
         {% endif %}
     <!--add ad-header-top-->
 
-    {% else %}
+    {% elseif not squeeze %}
         <div class="ad ad-header__topbanner u-mobile-margin-top-125"></div>
     {% endif %}
 
