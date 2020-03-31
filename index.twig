@@ -24,7 +24,7 @@
 
 
 
-{% set limit = 11 %}
+{% set limit = 14 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
@@ -274,6 +274,18 @@ So you don't have to create all the sections on dev #}
                             {% set articleCount = articleCount + 1 %}
                         </div>
                         {% endif %}   
+
+                        {% for i in 0..2 %}
+                            {% if articles[articleCount] %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile',
+                                    imageSize: {width:230, height:208}
+                                }) | raw}}
+                                {% set articleCount = articleCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
 
                         {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
