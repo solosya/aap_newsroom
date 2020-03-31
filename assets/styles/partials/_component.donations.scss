@@ -2,6 +2,7 @@
 
     &__header {
         display:flex;
+        align-items: flex-end;
         margin-left:45px;
         @media #{$mobile} {
             margin-left:15px;
@@ -23,11 +24,15 @@
         display:block;
         margin-left:auto;
         width: 25px;
-        height: 26px;
+        height: 25px;
         margin-right: 25px;
         &-icon {
             width:100%;
             height:100%;
+        }
+        @media #{$mobile} {
+            width: 20px;
+            height: 20px;
         }
 
     }
