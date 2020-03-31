@@ -1,0 +1,443 @@
+.donations {
+
+    &__header {
+        margin-left:45px;
+        @media #{$mobile} {
+            margin-left:15px;
+        }
+    }
+
+    &__nr-logo {
+        display:block;
+        width:68px;
+        height:45px;
+
+
+        @media #{$mobile} {
+            width:60px;
+            height:38px;
+        }
+    }
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(78);
+        line-height:1;
+        &--red {
+            color:$brand-secondary;
+        }
+
+        @media #{$desktop} {
+            @include font-size(70);
+        }
+
+
+        @media #{$tablet} {
+            margin-bottom:60px;
+        }
+        @media #{$mobile} {
+            @include font-size(40);
+            margin-bottom:25px;
+
+        }
+
+
+    }
+
+    &__text {
+        font-family:$primaryFont;
+        @include font-size(22);
+        line-height:1.36;
+        margin-bottom:22px;
+
+        @media #{$desktop} {
+            @include font-size(20);
+        }
+
+
+        @media #{$mobile} {
+            @include font-size(14);
+        }
+
+    }
+
+
+    &__byline-img {
+        width:98px;
+        height:98px;
+        background-color:#dadada;
+        border-radius:50%;
+        margin-right:30px;
+        @media #{$mobile} {
+            width:66px;
+            height:66px;
+            margin-right:15px;
+
+        }
+
+    }
+
+    &__byline {
+        font-family:$primaryFont;
+        @include font-size(22);
+        font-style:italic;
+        @media #{$mobile} {
+            @include font-size(14);
+        }
+    }
+}
+
+
+.supporter {
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        line-height:.9;
+        margin-bottom:40px;
+        @media #{$mobile} {
+            margin-bottom:0;
+            @include font-size(28);
+
+        }
+
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height:55px;
+        width:253px;
+        text-transform: uppercase;
+        background-color:$brand-secondary;
+        @include font-size(21);
+        font-weight:600;
+        color:#fcfcfc;
+
+        &--black {
+            background-color:black;
+        }
+
+        &--grey {
+            background-color:#8a8b93;
+        }
+
+        &--space {
+            margin:0 60px;
+        }
+
+
+        @media #{$desktop} {
+            width:233px;
+            height:42px;
+            &--space {
+                margin:0 30px;
+            }
+        }
+    
+        @media #{$tablet} {
+            @include font-size(19);
+            width:210px;
+            &--space {
+                margin:0 20px;
+            }
+        }
+
+        @media #{$mobile} {
+            display:flex;
+            @include font-size(14);
+
+            margin: 22px auto;
+            &--space {
+                margin:22px auto;
+            }
+    
+
+        }
+
+
+    }
+
+    &__patron {
+        margin-top:42px;
+        text-transform: uppercase;
+        @include font-size(14);
+        @media #{$mobile} {
+            @include font-size(12);
+            margin-top:0;
+        }
+
+    }
+}
+
+
+.writers {
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        @media #{$mobile} {
+            @include font-size(28);
+            margin-bottom:30px;
+        }
+    }
+
+    &__container {
+        margin-bottom:50px;
+        @media #{$mobile} {
+            padding-bottom:8px;
+            border-bottom:1px solid #dadada;
+            margin-bottom:15px;
+
+        }
+
+    }
+    &__img {
+        width:98px;
+        height:98px;
+        background-color:#dadada;
+        border-radius:50%;
+        margin-right:30px;
+
+        @media #{$mobile} {
+            width:65px;
+            height:65px;
+        }
+
+
+    }
+    &__text {
+
+    }
+    &__name {
+        font-family: $base-font-family;
+        @include font-size(20);
+        font-weight:700;
+        margin-bottom:10px;
+        margin-top:24px;
+
+        @media #{$mobile} {
+            @include font-size(17); 
+            margin-top:0;
+        }
+    }
+
+    &__jobtitle {
+        font-family: $primaryFont;
+        @include font-size(18);
+        text-transform: uppercase;
+        color:#979797;
+        margin-bottom:15px;
+
+        @media #{$mobile} {
+            @include font-size(14);
+            color:#e12e21;
+            min-height:37px;
+            margin-bottom:10px;
+
+        }
+
+
+    }
+    &__about {
+        font-family: $base-font-family;
+        @include font-size(13.5);
+        line-height:1.18;
+        color:#8a8b93;
+        font-style: italic;
+    }
+
+    &__view-all {
+        cursor:pointer;
+        font-family: $base-font-family;
+        font-style:italic;
+        @include font-size(16);
+
+    }
+
+}
+
+.support-breakout {
+    background-color:black;
+    padding-bottom:42px;
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        color:white;
+        margin-top:44px;
+        margin-bottom:35px;
+        text-align:center;
+        @media #{$mobile} {
+            @include font-size(28);
+            margin-bottom:15px;
+
+        }
+
+
+    }
+}
+
+
+.faq {
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        margin-bottom:50px;
+
+        @media #{$mobile} {
+            @include font-size(28);
+            margin-bottom:15px;
+
+        }
+
+
+    }
+
+    &__container {
+        width: 90%;
+    }
+
+    &__question-box {
+        border-bottom: 1px solid #979797;
+        // padding-bottom:38px;
+        align-items: center;
+        height:75px;
+
+        &--open {
+            height:auto;
+        }
+
+        @media #{$mobile} {
+            align-items: flex-end;
+        }
+
+    }
+
+    &__question {
+        @include font-size(18);
+        font-weight:600;
+        margin-bottom:10px;
+
+        &--open {
+            margin-top: 20px;
+        }
+
+        @media #{$mobile} {
+            @include font-size(16);
+        }
+
+
+    }
+    &__answer-container {
+        &--open {
+            padding-bottom: 38px;
+        }
+    }
+
+    &__answer {
+        @include font-size(18);
+        color: #696969;
+        @media #{$mobile} {
+            @include font-size(14);
+        }
+
+    }
+
+    &__button {
+        height:30px;
+        width:50px;
+        background-color:#adadad;
+        cursor:pointer;
+        position:relative;
+        margin-left:auto;
+        @media #{$mobile} {
+            height:20px;
+            width:40px;
+        }
+
+    }
+    &__arrow-container {
+        position:relative;
+        width: 15px;
+        height:15px;
+        margin: auto;
+        top:4px;
+        border-color:white;
+        transform:rotate(180deg);
+
+        &--up {
+            top: 12px;
+            transform:none;
+        }
+
+        @media #{$mobile} {
+            top: -2px;
+
+            &--up {
+                top: 7px;
+
+            }
+        }
+
+
+    }
+}
+
+.awards {
+
+    padding-top: 60px;
+    padding-bottom:60px;
+    background: rgba(0,0,0,.07);
+
+    &__container {
+        margin-bottom:43px;
+    }
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        font-weight:600;
+        margin-bottom:50px;
+    }
+
+    &__award {
+        font-family:$primaryFont;
+        @include font-size(20);
+        line-height:1.1;
+        font-weight:700;
+        margin-bottom:25px;
+        color: $brand-secondary;
+        @media #{$mobile} {
+            @include font-size(18);
+            margin-bottom:10px;
+
+        }
+
+    }
+
+    &__winners-title {
+        font-family:$primaryFont;
+        @include font-size(18);
+        font-weight:600;
+        @media #{$mobile} {
+            @include font-size(14);
+            margin-bottom:4px;
+            margin-top:10px;
+        }
+
+    }
+    &__winners-names {
+        font-family:$primaryFont;
+        @include font-size(18);
+        @media #{$mobile} {
+            @include font-size(14);
+        }
+
+    }
+
+
+}

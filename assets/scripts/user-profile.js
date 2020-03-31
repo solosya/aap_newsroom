@@ -516,7 +516,7 @@ Acme.UserProfileController.prototype.events = function ()
             newPlan = $(e.target.parentNode);
         }
         
-        var currentPlan = $('#currentPlanStats');
+        var currentPlan      = $('#currentPlanStats');
         var cardSupplied     = currentPlan.data("cardsupplied");
 
         var currentUserCount = +currentPlan.data('currentusers');
