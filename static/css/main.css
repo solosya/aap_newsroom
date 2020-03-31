@@ -13974,6 +13974,8 @@ input[type=radio].inline {
       outline: none; }
 
 .donations__header {
+  display: flex;
+  align-items: flex-end;
   margin-left: 45px; }
   @media screen and (max-width: 767px) {
     .donations__header {
@@ -13988,10 +13990,24 @@ input[type=radio].inline {
       width: 60px;
       height: 38px; } }
 
+.donations__close {
+  display: block;
+  margin-left: auto;
+  width: 25px;
+  height: 25px;
+  margin-right: 25px; }
+  .donations__close-icon {
+    width: 100%;
+    height: 100%; }
+  @media screen and (max-width: 767px) {
+    .donations__close {
+      width: 20px;
+      height: 20px; } }
+
 .donations__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 4.875rem;
-  line-height: 5.85rem;
+  font-size: 4.0625rem;
+  line-height: 4.875rem;
   line-height: 1; }
   .donations__title--red {
     color: #e22f22; }
