@@ -13954,7 +13954,6 @@ input[type=radio].inline {
   color: #000000; }
   @media screen and (min-width: 768px) {
     .c-signups__head {
-      margin-left: -15px;
       line-height: 1.15; } }
   @media screen and (max-width: 767px) {
     .c-signups__head {
@@ -13970,110 +13969,109 @@ input[type=radio].inline {
   line-height: normal;
   letter-spacing: normal;
   color: #e22f22; }
-  @media screen and (min-width: 768px) {
-    .c-signups__subhead {
-      margin-left: -15px; } }
   @media screen and (max-width: 767px) {
     .c-signups__subhead {
       font-size: 1.75rem; } }
 
-.c-signups-newsletter {
-  border-top: solid 1px #000000;
-  padding: 30px 0; }
+@media screen and (max-width: 767px) {
+  .c-signups-newsletter {
+    padding-bottom: 90px; } }
+
+.c-signups-newsletter__figure {
+  height: 100%;
+  width: 100%; }
+
+.c-signups-newsletter__image {
+  object-fit: contain;
+  height: 100%;
+  width: 100%; }
+
+.c-signups-newsletter__head {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000; }
   @media screen and (max-width: 767px) {
-    .c-signups-newsletter {
-      padding-bottom: 90px; } }
-  @media screen and (min-width: 768px) {
-    .c-signups-newsletter:nth-child(1), .c-signups-newsletter:nth-child(3) {
-      padding-right: 0;
-      margin-right: 20px; } }
-  .c-signups-newsletter__figure {
-    height: 100%;
-    width: 100%; }
-  .c-signups-newsletter__image {
-    object-fit: contain;
-    height: 100%;
-    width: 100%; }
-  .c-signups-newsletter__head {
-    font-size: 1.3125rem;
-    font-weight: 600;
-    font-family: "tinos", Helvetica, Arial, sans-serif;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #000000; }
-    @media screen and (max-width: 767px) {
-      .c-signups-newsletter__head {
-        font-size: 1rem; } }
-  .c-signups-newsletter__logo {
-    padding: 5px 0;
-    height: 30px;
-    object-fit: contain; }
-    @media screen and (max-width: 767px) {
-      .c-signups-newsletter__logo {
-        padding: 4px 0;
-        height: 25px; } }
-  .c-signups-newsletter__blurb {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-size: 0.9375rem;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.4;
-    letter-spacing: normal;
-    color: #000000; }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      .c-signups-newsletter__blurb {
-        font-size: 0.95rem; } }
-    @media screen and (max-width: 767px) {
-      .c-signups-newsletter__blurb {
-        font-size: 0.75rem;
-        line-height: 1.25; } }
-  .c-signups-newsletter__days {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-size: 0.65625rem;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.9;
-    letter-spacing: normal;
-    color: #000000;
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 60px; }
-    @media screen and (max-width: 767px) {
-      .c-signups-newsletter__days {
-        bottom: 0; } }
-  .c-signups-newsletter__form {
-    position: absolute;
-    bottom: 10px;
-    display: block;
-    width: calc(100% - 30px);
-    height: 45px; }
-    @media screen and (max-width: 767px) {
-      .c-signups-newsletter__form {
-        left: calc(-50% + 15px);
-        width: calc(150% - 30px);
-        bottom: -60px; } }
-  .c-signups-newsletter__textbox {
-    width: calc(100% - 56px);
-    height: 100%;
-    border: 1px solid #000000;
-    border-right: none;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    padding: 0 15px; }
-  .c-signups-newsletter__submit {
-    height: 100%;
-    width: 56px;
-    position: absolute;
-    right: 0; }
+    .c-signups-newsletter__head {
+      font-size: 1rem; } }
+
+.c-signups-newsletter__logo {
+  padding: 5px 0;
+  height: 30px;
+  object-fit: contain; }
+  @media screen and (max-width: 767px) {
+    .c-signups-newsletter__logo {
+      padding: 4px 0;
+      height: 25px; } }
+
+.c-signups-newsletter__blurb {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #000000; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .c-signups-newsletter__blurb {
+      font-size: 0.95rem; } }
+  @media screen and (max-width: 767px) {
+    .c-signups-newsletter__blurb {
+      font-size: 0.75rem;
+      line-height: 1.25; } }
+
+.c-signups-newsletter__days {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 0.65625rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.9;
+  letter-spacing: normal;
+  color: #000000;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 60px; }
+  @media screen and (max-width: 767px) {
+    .c-signups-newsletter__days {
+      bottom: 0; } }
+
+.c-signups-newsletter__form {
+  position: absolute;
+  bottom: 10px;
+  display: block;
+  width: calc(100% - 30px);
+  height: 45px; }
+  @media screen and (max-width: 767px) {
+    .c-signups-newsletter__form {
+      left: calc(-50% + 15px);
+      width: calc(150% - 30px);
+      bottom: -60px; } }
+
+.c-signups-newsletter__textbox {
+  width: calc(100% - 56px);
+  height: 100%;
+  border: 1px solid #000000;
+  border-right: none;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  padding: 0 15px; }
+
+.c-signups-newsletter__submit {
+  height: 100%;
+  width: 56px;
+  position: absolute;
+  right: 0; }
 
 .c-signups-popup {
   position: fixed;
@@ -14244,13 +14242,7 @@ input[type=radio].inline {
         height: unset; } }
 
 .c-signups-podcast {
-  border-top: solid 1px #000000;
-  padding: 30px 0;
   height: 215px; }
-  @media screen and (min-width: 768px) {
-    .c-signups-podcast:nth-child(1) {
-      padding-right: 0;
-      margin-right: 20px; } }
   .c-signups-podcast__figure {
     height: 100%;
     width: 100%; }
@@ -14259,7 +14251,6 @@ input[type=radio].inline {
         height: 190px; } }
   .c-signups-podcast__image {
     object-fit: contain;
-    height: 100%;
     width: 100%; }
     @media screen and (min-width: 768px) {
       .c-signups-podcast__image {
@@ -14294,10 +14285,13 @@ input[type=radio].inline {
         line-height: 1.25; } }
   .c-signups-podcast__links {
     position: absolute;
-    bottom: 5px; }
+    top: 150px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .c-signups-podcast__links {
+        top: 120px; } }
     @media screen and (max-width: 767px) {
       .c-signups-podcast__links {
-        bottom: 0; } }
+        top: 80px; } }
   .c-signups-podcast__listen {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 0.65625rem;
@@ -14308,13 +14302,17 @@ input[type=radio].inline {
     letter-spacing: normal;
     color: #000000;
     text-transform: uppercase; }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 991px) {
       .c-signups-podcast__listen {
         width: max-content; } }
   .c-signups-podcast__spotify {
     width: 110px;
     height: 33px;
     float: left; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__spotify {
+        width: 60px;
+        height: unset; } }
     .c-signups-podcast__spotify__image {
       object-fit: cover; }
   .c-signups-podcast__itunes {
@@ -14322,6 +14320,10 @@ input[type=radio].inline {
     height: 35px;
     float: left;
     margin-left: 10px; }
+    @media screen and (max-width: 767px) {
+      .c-signups-podcast__itunes {
+        width: 16px;
+        height: unset; } }
     .c-signups-podcast__itunes__image {
       object-fit: cover; }
 

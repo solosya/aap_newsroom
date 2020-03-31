@@ -1,18 +1,8 @@
 .c-signups-newsletter{
-    border-top: solid 1px $black;
-    padding: 30px 0;
-    //height: 215px;
     @media #{$mobile}{
         padding-bottom: 90px;
     }
-
-    &:nth-child(1), &:nth-child(3){
-        @media #{$tablet-up}{
-            padding-right: 0;
-            margin-right: 20px;
-        }
-    }
-
+    
     &__figure{
        height: 100%;
        width: 100%;
