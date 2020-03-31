@@ -117,10 +117,19 @@
 
         &--black {
             background-color:black;
+            &:hover {
+                background-color:$brand-secondary;
+                color:white;
+            }
+
         }
 
         &--grey {
             background-color:#8a8b93;
+            &:hover {
+                background-color:$brand-secondary;
+                color:white;
+            }
         }
 
         &--space {
@@ -257,6 +266,30 @@
     }
 
 }
+
+
+
+.writers-bio {
+    background:white;
+    padding:30px;
+
+    &__name {
+
+    }
+
+    &__jobtitle {
+
+    }
+
+    &__text {
+        font-family: $base-font-family;
+
+        @include font-size(16);
+
+    }
+}
+
+
 
 .support-breakout {
     background-color:black;

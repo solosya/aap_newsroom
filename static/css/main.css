@@ -14071,8 +14071,14 @@ input[type=radio].inline {
   color: #fcfcfc; }
   .supporter__button--black {
     background-color: black; }
+    .supporter__button--black:hover {
+      background-color: #e22f22;
+      color: white; }
   .supporter__button--grey {
     background-color: #8a8b93; }
+    .supporter__button--grey:hover {
+      background-color: #e22f22;
+      color: white; }
   .supporter__button--space {
     margin: 0 60px; }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -14180,6 +14186,14 @@ input[type=radio].inline {
   font-style: italic;
   font-size: 1rem;
   line-height: 1.2rem; }
+
+.writers-bio {
+  background: white;
+  padding: 30px; }
+  .writers-bio__text {
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.2rem; }
 
 .support-breakout {
   background-color: black;
