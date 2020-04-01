@@ -4,43 +4,39 @@
 {{ set(this, 'title', blogData.title) }}
 {{this.registerJs("Acme.cards = CardController();")}}
 
-{% set sections =  {
-        "podcast: the detail": {
-            "feed": "",
-            "link": "",
-            "description": "",
-            "title": ""
-        }, 
-        "podcast: two cents' worth": {
-            "feed": "",
-            "link": "",
-            "description": "",
-            "title": ""
-        }
+{% set searchParam = _AppHelper.getRequest('newsletter') %}
+
+{% set subSettings = {
+    "daily" : {
+        "title" : "Daily Briefing",
+        "blurb" : "Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox.",
+        "id"    : "daily",
+        "type"  : "3-0",
+        "group"  : "[3][1]='1'"
+    },
+    "weekly" : {
+        "title" : "Weekly Briefing",
+        "blurb" : "Catch up on the week's top stories, written by our award winning authors.",
+        "id"    : "weekly",
+        "type"  : "3-1",
+        "group"  : "[3][2]='2'"
+    },
+    "lockerroom" : {
+        "title" : "lockerroom Newsletter",
+        "blurb" : "Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.",
+        "id"    : "lockerroom",
+        "type"  : "3-2",
+        "group"  : "[3][4]='4'"
+    },
+    "readingroom" : {
+        "title" : "readingroom Newsletter",
+        "blurb" : "Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.",
+        "id"    : "readingroom",
+        "type"  : "3-3",
+        "group"  : "[3][8]='8'"
     }
-%}
+} %}
 
-{% set limit = 4 %}
-
-
-{% for key, value in sections %}
-    {% for blog in networkData.networkBlogs %}
-        {% if blog.title | lower == key %}
-            {% set sections = sections | merge({
-                (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
-                    'link' : blog.link,
-                    'description'   : blog.short_description,
-                    'title'         : blog.title,
-                    'blogguid'      : blog.guid,
-                    'blogid'        : blog.id
-                    }
-                }) %}
-        {% endif %}
-    {% endfor %}
-{% endfor %}
-
-{# {{_AppHelper.printArray(sections)}} #}
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <div class="c-signups-popup d-none" id="j-mcpopup">
     <div class="c-signups-popup__box">
@@ -106,220 +102,248 @@
     </div>
 </div>
 <main id="main" class="site-main u-margin-bottom-40 u-tablet-margin-top-60" role="main">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12 u-margin-bottom-40">
-                        <h2 class="c-signups__head">Sign up for the latest news and insights from the Newsroom team</h2>
-                    </div>    
-                    
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="c-signups__subhead">Newsletters</h3>
-                            </div>
-                            <div class="col-12 col-lg-6 order-lg-1">
-                                <hr class="divide30">
-                                <div class="row c-signups-newsletter">
-                                    <div class="col-4 col-lg-5">
-                                        <figure class="c-signups-newsletter__figure">
-                                            <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/daily-newsletter.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-lg-7">
-                                        <h4 class="c-signups-newsletter__head u-desktop-margin-bottom-10 u-tablet-margin-bottom-10">Daily Briefing</h4>
-                                        <p class="c-signups-newsletter__blurb">Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox. </p>
-                                        <p class="c-signups-newsletter__days">Monday - Friday</p>
-                                        <div class="c-signups-newsletter__form">
-                                            <input type="email"	class="c-signups-newsletter__textbox" name="email" id="daily-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="daily-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-0" data-input="daily-email" data-title="Daily Briefing" data-group[3][1]="1">
-                                                <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 order-lg-3">
-                                <hr class="divide30">
-                                <div class="row c-signups-newsletter">
-                                    <div class="col-4 col-lg-5">
-                                        <figure class="c-signups-newsletter__figure">
-                                            <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/weekly-newsletter.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-lg-7">
-                                        <h4 class="c-signups-newsletter__head u-desktop-margin-bottom-10 u-tablet-margin-bottom-10">Weekly Briefing</h4>
-                                        <p class="c-signups-newsletter__blurb">Catch up on the week's top stories, written by our award winning authors. </p>
-                                        <p class="c-signups-newsletter__days">every friday </p>
-                                        <div class="c-signups-newsletter__form">
-                                            <input type="email"	class="c-signups-newsletter__textbox" name="email" id="weekly-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-1" data-input="weekly-email" data-title="Weekly Briefing" data-group[3][2]="2">
-                                                <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 order-lg-2">
-                                <hr class="divide30">
-                                <div class="row c-signups-newsletter">
-                                    <div class="col-4 col-lg-5">
-                                        <figure class="c-signups-newsletter__figure">
-                                            <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-lg-7">
-                                        <div class="c-signups-newsletter__head u-desktop-margin-bottom-5 u-tablet-margin-bottom-5">
-                                            <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:6.5px">
-                                        </div>
-                                        <p class="c-signups-newsletter__blurb">Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.</p>
-                                        <p class="c-signups-newsletter__days">every wednesday</p>
-                                        <div class="c-signups-newsletter__form">
-                                            <input type="email"	class="c-signups-newsletter__textbox" name="email" id="lockerroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-2" data-input="lockerroom-email" data-title="Lockerroom Newsletter" data-group[3][4]="4">
-                                                <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 order-lg-4">
-                                <hr class="divide30">
-                                <div class="row c-signups-newsletter">
-                                    <div class="col-4 col-lg-5">
-                                        <figure class="c-signups-newsletter__figure">
-                                            <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-lg-7">
-                                        <div class="c-signups-newsletter__head u-desktop-margin-bottom-5 u-tablet-margin-bottom-5">
-                                            <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-newsletter__logo">
-                                        </div>
-                                        <p class="c-signups-newsletter__blurb">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.</p>
-                                        <p class="c-signups-newsletter__days">every saturday</p>
-                                        <div class="c-signups-newsletter__form">
-                                            <input type="email"	class="c-signups-newsletter__textbox" name="email" id="readingroom-email" value="" placeholder="Enter your email">
-                                            <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-3" data-input="readingroom-email" data-title="Readingroom Newsletter" data-group[3][8]="8">
-                                                <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row u-margin-top-60">
-            <div class="col-12">
-                <div class="c-signups-propanel">
+    {% if subSettings[searchParam] is defined and subSettings[searchParam]['title'] != '' %}
+        {% set sub = subSettings[searchParam] %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 u-margin-bottom-30">
+                    <h2 class="c-signups__head">Subscribe to the <br class="d-block d-md-none" /><strong>{{sub.title}}</strong></h2>
+                </div>  
+                <div class="col-12 col-md-10 col-lg-8 u-margin-bottom-100"> 
+                    <p class="c-signups__text u-margin-bottom-50">{{sub.blurb}}</p>
                     <div class="row">
-                        <div class="col-12 col-md-8 col-lg-5 order-2 order-md-1">
-                            <div class="c-signups-propanel__content">
-                                <h4 class="c-signups-propanel__head">Newsroom Pro</h4>
-                                <p class="c-signups-propanel__subhead u-margin-top-20">In-depth political and business analysis</p>
-                                <ul class="c-signups-propanel__ul u-margin-top-20">
-                                    <li class="c-signups-propanel__li u-margin-top-10">A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</li>
-                                    <li class="c-signups-propanel__li u-margin-top-10">Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</li>
-                                    <li class="c-signups-propanel__li u-margin-top-10">Business subscribers get access to our media monitoring service, which covers dozens of sectors</li>
-                                </ul>
-                                <div class="row u-margin-top-20">
-                                    <div class="col-12 col-md-6">
-                                        <a href="{{networkData.defaultBlogUrl}}/pro#subscriptions"><div class="_btn _btn--black c-signups-propanel__button">START 28 DAY FREE TRIAL</div></a>
-                                    </div>
-                                    <div class="col-12 col-md-6 u-mobile-margin-top-15">
-                                        <a href="{{networkData.defaultBlogUrl}}/pro#subscriptions"><div class="_btn _btn--red c-signups-propanel__button">SUBSCRIBE NOW</div></a>
-                                    </div>
-                                </div>
+                        <div class="col-12 col-md-8 col-lg-7">
+                            <div class="c-signups__form u-margin-bottom-60">
+                                <input type="email"	class="c-signups__textbox" name="email" id="{{sub.id}}-email" value="" placeholder="Enter your email">
+                                <button type="submit" id="{{sub.id}}-submit" class="c-signups__submit j-mcsubscribe" name="email-submit" data-type="{{sub.type}}" data-input="{{sub.id}}-email" data-title="{{sub.title}}" data-group{{sub.group}}>
+                                    <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
+                                </button>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 col-lg-7 order-1 order-md-2">
-                            <figure class="c-signups-propanel__figure">
-                                <img src="{{networkData.templatePath}}/static/images/signups-propanel.png" class="c-signups-propanel__image">
-                            </figure>
+                        <div class="col-12">
+                            <a href="{{networkData.defaultBlogUrl}}/signup">
+                                <p class="c-signups__text c-signups__text--link">Check out Newsroom’s other newsletters here</p>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row u-margin-top-60 u-margin-bottom-60">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12">
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 u-margin-bottom-40">
+                            <h2 class="c-signups__head">Sign up for the latest news and insights from the Newsroom team</h2>
+                        </div>    
+                        
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="c-signups__subhead">Newsletters</h3>
+                                </div>
+                                <div class="col-12 col-lg-6 order-lg-1">
+                                    <hr class="divide30">
+                                    <div class="row c-signups-newsletter">
+                                        <div class="col-4 col-lg-5">
+                                            <figure class="c-signups-newsletter__figure">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/daily-newsletter.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-lg-7">
+                                            <h4 class="c-signups-newsletter__head u-desktop-margin-bottom-10 u-tablet-margin-bottom-10">Daily Briefing</h4>
+                                            <p class="c-signups-newsletter__blurb">Every morning, get a snapshot of Newsroom’s top 10 stories delivered to your inbox. </p>
+                                            <p class="c-signups-newsletter__days">Monday - Friday</p>
+                                            <div class="c-signups-newsletter__form">
+                                                <input type="email"	class="c-signups-newsletter__textbox" name="email" id="daily-email" value="" placeholder="Enter your email">
+                                                <button type="submit" id="daily-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-0" data-input="daily-email" data-title="Daily Briefing" data-group[3][1]="1">
+                                                    <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 order-lg-3">
+                                    <hr class="divide30">
+                                    <div class="row c-signups-newsletter">
+                                        <div class="col-4 col-lg-5">
+                                            <figure class="c-signups-newsletter__figure">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/weekly-newsletter.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-lg-7">
+                                            <h4 class="c-signups-newsletter__head u-desktop-margin-bottom-10 u-tablet-margin-bottom-10">Weekly Briefing</h4>
+                                            <p class="c-signups-newsletter__blurb">Catch up on the week's top stories, written by our award winning authors. </p>
+                                            <p class="c-signups-newsletter__days">every friday </p>
+                                            <div class="c-signups-newsletter__form">
+                                                <input type="email"	class="c-signups-newsletter__textbox" name="email" id="weekly-email" value="" placeholder="Enter your email">
+                                                <button type="submit" id="weekly-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-1" data-input="weekly-email" data-title="Weekly Briefing" data-group[3][2]="2">
+                                                    <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 order-lg-2">
+                                    <hr class="divide30">
+                                    <div class="row c-signups-newsletter">
+                                        <div class="col-4 col-lg-5">
+                                            <figure class="c-signups-newsletter__figure">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-lg-7">
+                                            <div class="c-signups-newsletter__head u-desktop-margin-bottom-5 u-tablet-margin-bottom-5">
+                                                <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:6.5px">
+                                            </div>
+                                            <p class="c-signups-newsletter__blurb">Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.</p>
+                                            <p class="c-signups-newsletter__days">every wednesday</p>
+                                            <div class="c-signups-newsletter__form">
+                                                <input type="email"	class="c-signups-newsletter__textbox" name="email" id="lockerroom-email" value="" placeholder="Enter your email">
+                                                <button type="submit" id="lockerroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-2" data-input="lockerroom-email" data-title="Lockerroom Newsletter" data-group[3][4]="4">
+                                                    <img class="c-signups-newsletter__icon" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 order-lg-4">
+                                    <hr class="divide30">
+                                    <div class="row c-signups-newsletter">
+                                        <div class="col-4 col-lg-5">
+                                            <figure class="c-signups-newsletter__figure">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-lg-7">
+                                            <div class="c-signups-newsletter__head u-desktop-margin-bottom-5 u-tablet-margin-bottom-5">
+                                                <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-newsletter__logo">
+                                            </div>
+                                            <p class="c-signups-newsletter__blurb">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.</p>
+                                            <p class="c-signups-newsletter__days">every saturday</p>
+                                            <div class="c-signups-newsletter__form">
+                                                <input type="email"	class="c-signups-newsletter__textbox" name="email" id="readingroom-email" value="" placeholder="Enter your email">
+                                                <button type="submit" id="readingroom-submit" class="c-signups-newsletter__submit j-mcsubscribe" name="email-submit" data-type="3-3" data-input="readingroom-email" data-title="Readingroom Newsletter" data-group[3][8]="8">
+                                                    <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row u-margin-top-60">
+                <div class="col-12">
+                    <div class="c-signups-propanel">
                         <div class="row">
-                            <div class="col-12">
-                                <h3 class="c-signups__subhead">Podcasts</h3>
-                            </div>
-                            <div class="col-12 col-lg-6 u-tablet-margin-bottom-30">
-                                <hr class="divide30">
-                                <div class="row">
-                                    <div class="col-12 d-block d-md-none">
-                                        <h4 class="c-signups-podcast__head">The Detail</h4>
-                                    </div>
-                                    <div class="col-4 col-md-3 col-lg-4">
-                                        <figure class="c-signups-podcast__figure">
-                                            <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-the-detail.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-md-9 col-lg-8">
-                                        
-                                        <h4 class="c-signups-podcast__head u-margin-bottom-10 d-none d-md-block">The Detail</h4>
-                                        <p class="c-signups-podcast__blurb">The news, explained. Join Sharon Brettkelly & Emile Donovan every weekday as they make sense of the big stories with the country’s best journalists and experts. </p>
-                                        
-                                        <div class="row c-signups-podcast__links">
-                                            <div class="col-4 col-md-12 u-margin-bottom-10">
-                                                <p class="c-signups-podcast__listen">LISTEN NOW</p>
-                                            </div>
-                                            <div class="col-8 col-md-12">
-                                                <a href="https://open.spotify.com/show/3cd97Zh9oRlNtOPqxxjErz?si=Y_C2EIxqStS9dj-6hP_HyA" target="_blank">
-                                                    <div class="c-signups-podcast__spotify">
-                                                        <img class="c-signups-podcast__spotify__image" src="{{networkData.templatePath}}/static/icons/spotify.svg">
-                                                    </div>
-                                                </a>
-                                                <a href="https://podcasts.apple.com/nz/podcast/id1459959514" target="_blank">
-                                                    <div class="c-signups-podcast__itunes">
-                                                        <img class="c-signups-podcast__itunes__image" src="{{networkData.templatePath}}/static/icons/itunes.svg">
-                                                    </div>
-                                                </a>
-                                            </div>
+                            <div class="col-12 col-md-8 col-lg-5 order-2 order-md-1">
+                                <div class="c-signups-propanel__content">
+                                    <h4 class="c-signups-propanel__head">Newsroom Pro</h4>
+                                    <p class="c-signups-propanel__subhead u-margin-top-20">In-depth political and business analysis</p>
+                                    <ul class="c-signups-propanel__ul u-margin-top-20">
+                                        <li class="c-signups-propanel__li u-margin-top-10">A daily morning email of news and insights, written by Newsroom Pro Managing Editor Bernard Hickey</li>
+                                        <li class="c-signups-propanel__li u-margin-top-10">Our team’s reporting is published first on Newsroom Pro, giving you 24 hours of exclusive access</li>
+                                        <li class="c-signups-propanel__li u-margin-top-10">Business subscribers get access to our media monitoring service, which covers dozens of sectors</li>
+                                    </ul>
+                                    <div class="row u-margin-top-20">
+                                        <div class="col-12 col-md-6">
+                                            <a href="{{networkData.defaultBlogUrl}}/pro#subscriptions"><div class="_btn _btn--black c-signups-propanel__button">START 28 DAY FREE TRIAL</div></a>
                                         </div>
-                                        
+                                        <div class="col-12 col-md-6 u-mobile-margin-top-15">
+                                            <a href="{{networkData.defaultBlogUrl}}/pro#subscriptions"><div class="_btn _btn--red c-signups-propanel__button">SUBSCRIBE NOW</div></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6 u-tablet-margin-bottom-30">
-                                <hr class="divide30">
-                                <div class="row c-signups-podcast">
-                                    
-                                    <div class="col-12 d-block d-md-none">
-                                        <h4 class="c-signups-podcast__head">Two Cents’ Worth</h4>
-                                    </div>
-                                    <div class="col-4 col-md-3 col-lg-4">
-                                        <figure class="c-signups-podcast__figure">
-                                            <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-two-cents.png?v=1">
-                                        </figure>
-                                    </div>
-                                    <div class="col-8 col-md-9 col-lg-8">
-                                        <h4 class="c-signups-podcast__head u-margin-bottom-10 d-none d-md-block">Two Cents’ Worth</h4>
-                                        <p class="c-signups-podcast__blurb">Stories that make sense of business and the economy... and how they affect your back pocket. Made by RNZ & Newsroom. Hosted by Bernard Hickey, Nikki Mandow and Gyles Beckford.</p>
-                                         <div class="row c-signups-podcast__links">
-                                            <div class="col-4 col-md-12 u-margin-bottom-10">
-                                                <p class="c-signups-podcast__listen">LISTEN NOW</p>
+                            <div class="col-12 col-md-4 col-lg-7 order-1 order-md-2">
+                                <figure class="c-signups-propanel__figure">
+                                    <img src="{{networkData.templatePath}}/static/images/signups-propanel.png" class="c-signups-propanel__image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row u-margin-top-60 u-margin-bottom-60">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="c-signups__subhead">Podcasts</h3>
+                                </div>
+                                <div class="col-12 col-lg-6 u-tablet-margin-bottom-30">
+                                    <hr class="divide30">
+                                    <div class="row">
+                                        <div class="col-12 d-block d-md-none">
+                                            <h4 class="c-signups-podcast__head">The Detail</h4>
+                                        </div>
+                                        <div class="col-4 col-md-3 col-lg-4">
+                                            <figure class="c-signups-podcast__figure">
+                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-the-detail.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-md-9 col-lg-8">
+                                            
+                                            <h4 class="c-signups-podcast__head u-margin-bottom-10 d-none d-md-block">The Detail</h4>
+                                            <p class="c-signups-podcast__blurb">The news, explained. Join Sharon Brettkelly & Emile Donovan every weekday as they make sense of the big stories with the country’s best journalists and experts. </p>
+                                            
+                                            <div class="row c-signups-podcast__links">
+                                                <div class="col-4 col-md-12 u-margin-bottom-10">
+                                                    <p class="c-signups-podcast__listen">LISTEN NOW</p>
+                                                </div>
+                                                <div class="col-8 col-md-12">
+                                                    <a href="https://open.spotify.com/show/3cd97Zh9oRlNtOPqxxjErz?si=Y_C2EIxqStS9dj-6hP_HyA" target="_blank">
+                                                        <div class="c-signups-podcast__spotify">
+                                                            <img class="c-signups-podcast__spotify__image" src="{{networkData.templatePath}}/static/icons/spotify.svg">
+                                                        </div>
+                                                    </a>
+                                                    <a href="https://podcasts.apple.com/nz/podcast/id1459959514" target="_blank">
+                                                        <div class="c-signups-podcast__itunes">
+                                                            <img class="c-signups-podcast__itunes__image" src="{{networkData.templatePath}}/static/icons/itunes.svg">
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="col-8 col-md-12">
-                                                <a href="https://open.spotify.com/show/0PhS7pUdfB8J61I4YMLMnZ?si=t0K_xky2SqmKvzWolB-PXw" target="_blank">
-                                                    <div class="c-signups-podcast__spotify">
-                                                        <img class="c-signups-podcast__spotify__image" src="{{networkData.templatePath}}/static/icons/spotify.svg">
-                                                    </div>
-                                                </a>
-                                                <a href="https://podcasts.apple.com/nz/podcast/id1441267497" target="_blank">
-                                                    <div class="c-signups-podcast__itunes">
-                                                        <img class="c-signups-podcast__itunes__image" src="{{networkData.templatePath}}/static/icons/itunes.svg">
-                                                    </div>
-                                                </a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 u-tablet-margin-bottom-30">
+                                    <hr class="divide30">
+                                    <div class="row c-signups-podcast">
+                                        
+                                        <div class="col-12 d-block d-md-none">
+                                            <h4 class="c-signups-podcast__head">Two Cents’ Worth</h4>
+                                        </div>
+                                        <div class="col-4 col-md-3 col-lg-4">
+                                            <figure class="c-signups-podcast__figure">
+                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-two-cents.png?v=1">
+                                            </figure>
+                                        </div>
+                                        <div class="col-8 col-md-9 col-lg-8">
+                                            <h4 class="c-signups-podcast__head u-margin-bottom-10 d-none d-md-block">Two Cents’ Worth</h4>
+                                            <p class="c-signups-podcast__blurb">Stories that make sense of business and the economy... and how they affect your back pocket. Made by RNZ & Newsroom. Hosted by Bernard Hickey, Nikki Mandow and Gyles Beckford.</p>
+                                            <div class="row c-signups-podcast__links">
+                                                <div class="col-4 col-md-12 u-margin-bottom-10">
+                                                    <p class="c-signups-podcast__listen">LISTEN NOW</p>
+                                                </div>
+                                                <div class="col-8 col-md-12">
+                                                    <a href="https://open.spotify.com/show/0PhS7pUdfB8J61I4YMLMnZ?si=t0K_xky2SqmKvzWolB-PXw" target="_blank">
+                                                        <div class="c-signups-podcast__spotify">
+                                                            <img class="c-signups-podcast__spotify__image" src="{{networkData.templatePath}}/static/icons/spotify.svg">
+                                                        </div>
+                                                    </a>
+                                                    <a href="https://podcasts.apple.com/nz/podcast/id1441267497" target="_blank">
+                                                        <div class="c-signups-podcast__itunes">
+                                                            <img class="c-signups-podcast__itunes__image" src="{{networkData.templatePath}}/static/icons/itunes.svg">
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -330,7 +354,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
     <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
 </main>
 

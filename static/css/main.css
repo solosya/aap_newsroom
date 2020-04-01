@@ -13989,6 +13989,8 @@ input[type=radio].inline {
     .c-signups__head {
       font-size: 1.75rem;
       line-height: 1.11; } }
+  .c-signups__head > strong {
+    color: #e22f22; }
 
 .c-signups__subhead {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -14002,6 +14004,44 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .c-signups__subhead {
       font-size: 1.75rem; } }
+
+.c-signups__text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: 0.83px;
+  color: #4B4B4B; }
+  .c-signups__text--link {
+    font-weight: 300;
+    text-decoration: underline;
+    font-style: italic;
+    overflow: visible; }
+
+.c-signups__form {
+  height: 45px;
+  position: relative; }
+
+.c-signups__textbox {
+  width: calc(100% - 56px);
+  height: 100%;
+  border: 1px solid #000000;
+  border-right: none;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  padding: 0 15px; }
+
+.c-signups__submit {
+  height: 100%;
+  width: 56px;
+  position: absolute;
+  right: 0; }
 
 @media screen and (max-width: 767px) {
   .c-signups-newsletter {
