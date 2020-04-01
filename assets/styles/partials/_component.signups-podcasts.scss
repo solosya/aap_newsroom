@@ -1,5 +1,8 @@
 .c-signups-podcast{
     height: 215px;
+    @media #{$mobile}{
+        height: unset;
+    }
 
     &__figure{
         height: 100%;

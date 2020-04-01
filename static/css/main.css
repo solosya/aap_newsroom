@@ -14315,6 +14315,9 @@ input[type=radio].inline {
 
 .c-signups-podcast {
   height: 215px; }
+  @media screen and (max-width: 767px) {
+    .c-signups-podcast {
+      height: unset; } }
   .c-signups-podcast__figure {
     height: 100%;
     width: 100%; }
