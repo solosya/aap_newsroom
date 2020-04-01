@@ -22,14 +22,14 @@
         "group"  : "[3][2]='2'"
     },
     "lockerroom" : {
-        "title" : "lockerroom Newsletter",
+        "title" : "LockerRoom Newsletter",
         "blurb" : "Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.",
         "id"    : "lockerroom",
         "type"  : "3-2",
         "group"  : "[3][4]='4'"
     },
     "readingroom" : {
-        "title" : "readingroom Newsletter",
+        "title" : "ReadingRoom Newsletter",
         "blurb" : "Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.",
         "id"    : "readingroom",
         "type"  : "3-3",
@@ -106,26 +106,30 @@
         {% set sub = subSettings[searchParam] %}
         <div class="container">
             <div class="row">
-                <div class="col-12 u-margin-bottom-30">
-                    <h2 class="c-signups__head">Subscribe to the <br class="d-block d-md-none" /><strong>{{sub.title}}</strong></h2>
+                <div class="col-12 col-md-3 d-none d-md-block">
+                    <figure class="c-signups__figure">
+                        <img class="c-signups__image" src="{{networkData.templatePath}}/static/images/{{sub.id}}-newsletter.png?v=3">
+                    </figure>
                 </div>  
-                <div class="col-12 col-md-10 col-lg-8 u-margin-bottom-100"> 
-                    <p class="c-signups__text u-margin-bottom-50">{{sub.blurb}}</p>
+                <div class="col-12 col-md-9"> 
+                    <h2 class="c-signups__head u-margin-bottom-20">Subscribe to the <br class="d-block d-lg-none" /><strong>{{sub.title}}</strong></h2>
+                    <p class="c-signups__text u-margin-bottom-20">{{sub.blurb}}</p>
                     <div class="row">
                         <div class="col-12 col-md-8 col-lg-7">
-                            <div class="c-signups__form u-margin-bottom-60">
+                            <div class="c-signups__form">
                                 <input type="email"	class="c-signups__textbox" name="email" id="{{sub.id}}-email" value="" placeholder="Enter your email">
                                 <button type="submit" id="{{sub.id}}-submit" class="c-signups__submit j-mcsubscribe" name="email-submit" data-type="{{sub.type}}" data-input="{{sub.id}}-email" data-title="{{sub.title}}" data-group{{sub.group}}>
                                     <img class="" src="{{networkData.templatePath}}/static/icons/email-submit.svg">
                                 </button>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <a href="{{networkData.defaultBlogUrl}}/signup">
-                                <p class="c-signups__text c-signups__text--link">Check out Newsroom’s other newsletters here</p>
-                            </a>
-                        </div>
+                        
                     </div>
+                </div>
+                <div class="col-12 u-margin-top-40">
+                    <a href="{{networkData.defaultBlogUrl}}/signup">
+                        <p class="c-signups__text c-signups__text--link">Check out Newsroom’s other newsletters here</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -197,7 +201,7 @@
                                         </div>
                                         <div class="col-8 col-lg-7">
                                             <div class="c-signups-newsletter__head u-margin-bottom-5">
-                                                <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:6.5px">
+                                                <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" {# style="padding-bottom:6.5px" #}>
                                             </div>
                                             <p class="c-signups-newsletter__blurb">Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.</p>
                                             <p class="c-signups-newsletter__days">every friday</p>
@@ -220,7 +224,7 @@
                                         </div>
                                         <div class="col-8 col-lg-7">
                                             <div class="c-signups-newsletter__head u-margin-bottom-5">
-                                                <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-newsletter__logo">
+                                                <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:3.5px">
                                             </div>
                                             <p class="c-signups-newsletter__blurb">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.</p>
                                             <p class="c-signups-newsletter__days">every saturday</p>
