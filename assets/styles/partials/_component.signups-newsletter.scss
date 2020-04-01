@@ -70,7 +70,9 @@
         position: absolute;
         bottom: 60px;
         @media #{$mobile}{
-            bottom: 0;
+            bottom: -30px;
+            left: calc(-50% + 15px);
+            width: calc(150% - 30px);
         }
     }
 
@@ -83,7 +85,7 @@
         @media #{$mobile}{
             left: calc(-50% + 15px);
             width: calc(150% - 30px);
-            bottom: -60px;
+            bottom: -80px;
         }
     }
 
