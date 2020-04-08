@@ -22,14 +22,14 @@
         "group"  : "[3][2]='2'"
     },
     "lockerroom" : {
-        "title" : "LockerRoom Newsletter",
+        "title" : "LockerRoom Weekly",
         "blurb" : "Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.",
         "id"    : "lockerroom",
         "type"  : "3-2",
         "group"  : "[3][4]='4'"
     },
     "readingroom" : {
-        "title" : "ReadingRoom Newsletter",
+        "title" : "ReadingRoom Weekly",
         "blurb" : "Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.",
         "id"    : "readingroom",
         "type"  : "3-3",
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="col-12 col-md-3 d-none d-md-block">
                     <figure class="c-signups__figure">
-                        <img class="c-signups__image" src="{{networkData.templatePath}}/static/images/{{sub.id}}-newsletter.png?v=3">
+                        <img class="c-signups__image" src="{{networkData.templatePath}}/static/images/{{sub.id}}-newsletter.png">
                     </figure>
                 </div>  
                 <div class="col-12 col-md-9"> 
@@ -154,11 +154,14 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/daily-newsletter.png?v=3">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/daily-newsletter.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
-                                            <h4 class="c-signups-newsletter__head u-margin-bottom-10">Daily Briefing</h4>
+                                            <div class="c-signups-newsletter__head u-margin-bottom-5">
+                                                <img src="{{networkData.templatePath}}/static/images/daily-briefing.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:2px">
+                                            </div>
+                                            {# <h4 class="c-signups-newsletter__head u-margin-bottom-10">Daily Briefing</h4> #}
                                             <p class="c-signups-newsletter__blurb">Get our editor’s picks of Newsroom’s best stories, investigations and podcasts delivered directly to your inbox every morning.</p>
                                             <p class="c-signups-newsletter__days">Monday - Friday</p>
                                             <div class="c-signups-newsletter__form">
@@ -175,10 +178,13 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/weekly-newsletter.png?v=3">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/weekly-newsletter.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
+                                            <div class="c-signups-newsletter__head u-margin-bottom-5">
+                                                <img src="{{networkData.templatePath}}/static/images/week-in-review.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:3.5px">
+                                            </div>
                                             <h4 class="c-signups-newsletter__head u-margin-bottom-10">Week in Review</h4>
                                             <p class="c-signups-newsletter__blurb">Too busy during the week for daily emails? Get our weekly curation of the best articles you need to read to catch up on the week that was.</p>
                                             <p class="c-signups-newsletter__days">every friday </p>
@@ -196,12 +202,12 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.png?v=3">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
                                             <div class="c-signups-newsletter__head u-margin-bottom-5">
-                                                <img src="{{networkData.templatePath}}/static/images/lockerroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" {# style="padding-bottom:6.5px" #}>
+                                                <img src="{{networkData.templatePath}}/static/images/lockerroom-weekly.svg" class="c-signups-newsletter__logo" style="padding-bottom:3.5px">
                                             </div>
                                             <p class="c-signups-newsletter__blurb">Keep up with the play with LockerRoom’s weekly newsletter dedicated to NZ women in sport, curated by Suzanne McFadden.</p>
                                             <p class="c-signups-newsletter__days">every friday</p>
@@ -219,12 +225,12 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.png?v=3">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
                                             <div class="c-signups-newsletter__head u-margin-bottom-5">
-                                                <img src="{{networkData.templatePath}}/static/images/readingroom-logo.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:3.5px">
+                                                <img src="{{networkData.templatePath}}/static/images/readingroom-weekly.svg" alt="logo" class="c-signups-newsletter__logo" style="padding-bottom:3.5px">
                                             </div>
                                             <p class="c-signups-newsletter__blurb">Award-winning author and writer Steve Braunias brings you the best literary coverage in NZ every Saturday.</p>
                                             <p class="c-signups-newsletter__days">every saturday</p>
@@ -291,7 +297,7 @@
                                         </div>
                                         <div class="col-4 col-md-3 col-lg-4 u-mobile-margin-bottom-30">
                                             <figure class="c-signups-podcast__figure">
-                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-the-detail.png?v=3">
+                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-the-detail.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-md-9 col-lg-8">
@@ -329,7 +335,7 @@
                                         </div>
                                         <div class="col-4 col-md-3 col-lg-4 u-mobile-margin-bottom-30">
                                             <figure class="c-signups-podcast__figure">
-                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-two-cents.png?v=3">
+                                                <img class="c-signups-podcast__image" src="{{networkData.templatePath}}/static/images/signups-two-cents.png">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-md-9 col-lg-8">

@@ -37437,7 +37437,7 @@ $('.j-mcsubscribe').click(function(event){
     var email = $('#'+$(event.currentTarget).data('input')).val();
     document.getElementById("mce-group[3]-"+$(event.currentTarget).data('type')).checked = true;
     $('#j-box-'+$(event.currentTarget).data('type')).addClass('d-none');
-    //$('#j-mcpopup-thankyou').text('You are signing up to the '+$(event.currentTarget).data('title')+'.');
+    $('#j-mcpopup-thankyou').text('You are signing up to the '+$(event.currentTarget).data('title')+'.');
     $('#mce-EMAIL').val(email);
     $('#j-mcpopup').removeClass('d-none');
 });
@@ -38205,7 +38205,7 @@ Acme.UserProfileController.prototype.events = function ()
             newPlan = $(e.target.parentNode);
         }
         
-        var currentPlan = $('#currentPlanStats');
+        var currentPlan      = $('#currentPlanStats');
         var cardSupplied     = currentPlan.data("cardsupplied");
 
         var currentUserCount = +currentPlan.data('currentusers');
