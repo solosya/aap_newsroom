@@ -1,0 +1,114 @@
+.c-signups-newsletter{
+    @media #{$mobile}{
+        padding-bottom: 90px;
+    }
+    
+    &__figure{
+       height: 100%;
+       width: 100%;
+    }
+
+    &__image{
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__head{
+        font-size: rem(21);
+        font-weight: $weightSemibold;
+        font-family: $base-font-family;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $black;
+        @media #{$mobile}{
+            font-size: rem(16);
+        }
+    }
+
+    &__logo{
+        padding: 5px 0;
+        height: 30px;
+        object-fit: contain;
+        @media #{$mobile}{
+            padding: 4px 0;
+            height: 25px;
+        }
+    }
+
+    &__blurb{
+        font-family: $font-family-sans-serif;
+        font-size: rem(15);
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.4;
+        letter-spacing: normal;
+        color: $black;
+        @media #{$tablet}{
+            font-size: rem(15.2); 
+        }
+        @media #{$mobile}{
+            font-size: rem(12);
+            line-height: 1.25;
+        }
+       
+    }
+
+    &__days{
+        font-family: $font-family-sans-serif;
+        font-size: rem(10.5);
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.9;
+        letter-spacing: normal;
+        color: $black;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 60px;
+        @media #{$mobile}{
+            bottom: -30px;
+            left: calc(-50% + 15px);
+            width: calc(150% - 30px);
+        }
+    }
+
+    &__form{
+        position: absolute;
+        bottom: 10px;
+        display: block;
+        width: calc(100% - 30px);
+        height: 45px;
+        @media #{$mobile}{
+            left: calc(-50% + 15px);
+            width: calc(150% - 30px);
+            bottom: -80px;
+        }
+    }
+
+    &__textbox{
+        width: calc(100% - 56px);
+        height: 100%;
+        border: 1px solid $black;
+        border-right: none;
+        font-family: $font-family-sans-serif;
+        font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        padding: 0 15px;
+    }
+
+    &__submit{
+        height: 100%;
+        width: 56px;
+        position: absolute;
+        right: 0;
+
+    }
+}
