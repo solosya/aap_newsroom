@@ -599,7 +599,9 @@
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
+                e.preventDefault();
                 this.closeWindow();
+                return $elem;
             }
             if ( $elem.is('button') ) {
                 if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {

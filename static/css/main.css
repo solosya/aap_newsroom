@@ -10737,6 +10737,42 @@ input[type=radio].inline {
   .error-message.active {
     display: block; }
 
+.c-checkbox {
+  position: relative; }
+  .c-checkbox__input {
+    display: none; }
+  .c-checkbox__button {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0; }
+    .c-checkbox__button::after {
+      content: "";
+      display: block;
+      height: 14px;
+      width: 14px;
+      border-radius: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-47%, -52%);
+      background-color: red;
+      opacity: 0;
+      transition: opacity .2s; }
+  .c-checkbox__label {
+    font-size: 0.875rem;
+    line-height: 1.05rem;
+    cursor: pointer;
+    position: relative;
+    padding-left: 30px; }
+  .c-checkbox__input:checked ~ .c-checkbox__label .c-checkbox__button::after {
+    opacity: 1; }
+
 .text-button {
   border: none;
   background: none;

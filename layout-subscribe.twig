@@ -40,6 +40,25 @@
 
 {% endfor %}
 
+{% if plan != false  %}
+
+{# The first payment is due on DD Month 20XX unless cancelled. #}
+    {% set val = plan.plan_value / 100 %}
+    {% if val == 19.89 %}
+        {% set val = 19.90 %}
+    {% endif %}
+    {% set planPrice = plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"}) ~ val|number_format(2, '.', ',') %}
+
+    {% set frequency = plan.period_count > 1 ? plan.period_count : ""  %}
+
+    {% set planPeriod = plan.period %}
+    {% if plan.period_count > 1 %}
+        {% set planPeriod = plan.period ~ 's' %}
+    {% endif %}
+
+    {% set frequency = frequency ~ " " ~ planPeriod  %}
+{% endif %}
+
 
 <main id="main" class="" role="main">
     <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
@@ -116,20 +135,58 @@
                             <input type="text" 		class="account-form__input" name="abn_business_name"id="company" 		value="" placeholder="Organisation (optional)">
                             
                             {# <div id="countrySelect" class="countrySelect"></div>  #}
+                            <div class="u-margin-top-20"></div>
+                            {% if trial %}
+                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                    <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
+                                    <label class="c-checkbox__label" for="changeterms">
+                                        <span class="c-checkbox__button"></span>
+                                        I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period. 
+                                    </Label>
+                                </div>
 
-                            
-                            <input type="checkbox" 	class="" name="terms" id="terms"> 
-                            
-                            
-                            <label class="account-form__cblabel">I agree to the Newsroom <a class="account-form__cblabel account-form__label--red"href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy Policy</a></label><br />
-                            
-                            <input type="checkbox" 	class="" name="group[1149][2]" id="summary-email" checked> 
-                            {# <input type="checkbox"  class="email-subscription__checkbox" name="summary-email" id="mailchimp" value="{{listId}}:{{groupId}}" checked> #}
+                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                    <input id="cancelterms" name="cancelterms" type="checkbox" class="c-checkbox__input" /> 
+                                    <label class="c-checkbox__label" for="cancelterms">
+                                        <span class="c-checkbox__button"></span>
+                                        I understand I can cancel for free before the end of the trial in My Account page, and I will be emailed a payment reminder 7 days before the end of the free trial period. I understand I can cancel my paid subscription at any time in My Account page.
+                                    </label>
+                                </div>
+                            {% endif %}
 
+
+                            <div class="button-set c-checkbox u-margin-bottom-15">
+                                <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
+                                <label class="c-checkbox__label u-padding-top-3" for="terms">
+                                    <span class="c-checkbox__button"></span>
+                                    I agree to the Newsroom <a class="account-form__cblabel account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
+                                </label>
+                            </div>
+                            
+
+                            <div class="button-set c-checkbox u-margin-bottom-15">
+                                <input id="summary-email" name="group[1149][2]" type="checkbox" class="c-checkbox__input" checked />
+                                <label class="c-checkbox__label u-padding-top-3" for="summary-email">
+                                    <span class="c-checkbox__button"></span>
+                                    Send me Bernard Hickey's <i>8 Things</i><br class="d-block d-sm-none" /> email each day
+                                </label>
+                            </div>
+
+                            <div class="button-set c-checkbox u-margin-bottom-15">
+                                <input id="breaking-email" name="group[1149][1]" type="checkbox" class="c-checkbox__input" checked />
+                                <label class="c-checkbox__label u-padding-top-3" for="breaking-email">
+                                    <span class="c-checkbox__button"></span>
+                                    Send me breaking news alerts <br class="d-block d-sm-none" />(on average once a month)
+                                </label>
+                            </div>
+
+
+
+                            {# <input type="checkbox" 	class="" name="group[1149][2]" id="summary-email" checked> 
                             <label class="account-form__cblabel">Send me Bernard Hickey's <i>8 Things</i><br class="d-block d-sm-none" /> email each day</label><br />
                             
                             <input type="checkbox" 	class="" name="group[1149][1]" id="breaking-email" checked> 
-                            <label class="account-form__cblabel">Send me breaking news alerts <br class="d-block d-sm-none" />(on average once a month)</label><br />
+                            <label class="account-form__cblabel">Send me breaking news alerts <br class="d-block d-sm-none" />(on average once a month)</label><br /> #}
                         </form>
 
                         {% if code %}
