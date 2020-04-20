@@ -138,7 +138,7 @@ adPush = function(slot){
                         .addSize([320, 400], [[300, 250],[300, 75]])
                         .build();
         var mappingHpage = googletag.sizeMapping()
-                        .addSize([1000, 200], [[300, 600]])
+                        .addSize([1000, 200], [[300, 600],[300, 250]])
                         .addSize([768, 200], [[300,600],[300, 250],[300, 75]])
                         .addSize([320, 400], [[300, 250],[300, 75]])
                         .build();
