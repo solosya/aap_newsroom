@@ -33912,7 +33912,9 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 e.preventDefault();
             }
             if ($elem.data('behaviour') == 'close') {
+                e.preventDefault();
                 this.closeWindow();
+                return $elem;
             }
             if ( $elem.is('button') ) {
                 if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {
@@ -37207,7 +37209,6 @@ if ($('#stripekey').length > 0) {
             "terms"             : ["isTrue"],
         };
 
-        this.validateFields = Object.keys(this.validateRules);
 
         this.events();
 
@@ -37215,7 +37216,10 @@ if ($('#stripekey').length > 0) {
         var trial = $('#trial').val();
         if (trial == 1) {
             this.data['trial'] = 'true';
+            this.validateRules['changeterms'] = ["isTrue"];
+            this.validateRules['cancelterms'] = ["isTrue"];
         }
+        this.validateFields = Object.keys(this.validateRules);
 
     };
 
@@ -37228,9 +37232,8 @@ if ($('#stripekey').length > 0) {
         this.clearInlineErrors();
         this.addInlineErrors();
         if (checkTerms) {
-            if (!this.data.terms) {
-
-                this.confirmView = new Acme.Confirm('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+            if (!this.data.terms || (this.data.trial === 'true' && (!this.data.cancelterms || !this.data.changeterms))) {
+                this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
                 this.confirmView.render("terms", "Terms of use");
             }
         }
