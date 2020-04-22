@@ -19,7 +19,7 @@
         var n = noty({
             type: opts.type,
             text: opts.message,
-            layout: 'topRight',
+            layout: opts.layout || 'topRight',
             timeout: opts.timeout,
             dismissQueue: true,
             animation: {

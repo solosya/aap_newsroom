@@ -11,7 +11,6 @@
 
 
 
-
 {% set blogData         = _Blog.getBlog() %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
@@ -26,6 +25,7 @@
 {% set newsroom_pro_style       = "" %}
 {% set articleBlog              = article.blog.title | lower %}
 
+{% set comments        = _Article.getArticleComments(article.guid) %}
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -301,7 +301,30 @@
                         {% endif %}
 
 
+                        <h1 class="c-comments__header u-margin-top-20">Join the converstaion</h1>
 
+
+                        <form id="comment-form" class="c-comments__form u-margin-top-20">
+                            <textarea class="c-comments__input" id="create-comment" placeholder="Enter your comment here..."></textarea>
+                            <button type="submit" id="sumbit-comment" class="c-comments__submit _btn _btn--red u-margin-top-10">Done</button>
+                        </form>
+
+
+                        <h1 class="c-comments__header u-margin-top-30">Comments</h1>
+
+                        <div id="c-comments" class="u-margin-top-10">
+                            {% for comment in comments %}
+                                {% if comment.approved == 1 %}
+                                <div class="c-comment">
+                                    <img class="c-comment__avatar img-circle" src="{{comment.profile_image}}" width="45px" height="45px">
+                                    <div class="c-comment__content-container">
+                                        <p class="c-comment__byline">At {{comment.timestamp}} {{comment.firstname}} said...</p>
+                                        <p class="c-comment__body">{{comment.comments}}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
 
                         {% if not showPaywall %}
                             
@@ -567,3 +590,22 @@
     <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </main>
 
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var comments = new Acme.Comments({
+            container: $('#comments'),
+            userName: "Lee Neenan",
+            input: $('#create-comment'),
+            form: $('#comment-form'),
+            button: $('#sumbit-comment'),
+            articleGuid:  "{{article.guid}}",
+            articleId: {{article.id}}
+        });
+
+    });
+</script>
