@@ -314,15 +314,15 @@
 
                         <div id="c-comments" class="u-margin-top-10">
                             {% for comment in comments %}
-                                {% if comment.approved == 1 %}
+                                {# {% if comment.approved == 1 %} #}
                                 <div class="c-comment">
                                     <img class="c-comment__avatar img-circle" src="{{comment.profile_image}}" width="45px" height="45px">
                                     <div class="c-comment__content-container">
-                                        <p class="c-comment__byline">At {{comment.timestamp}} {{comment.firstname}} said...</p>
+                                        <p class="c-comment__byline">On {{comment.date}} {{comment.firstname}} said...</p>
                                         <p class="c-comment__body">{{comment.comments}}
                                     </div>
                                 </div>
-                                {% endif %}
+                                {# {% endif %} #}
                             {% endfor %}
                         </div>
 
