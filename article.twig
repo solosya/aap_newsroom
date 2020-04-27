@@ -25,7 +25,7 @@
 {% set newsroom_pro_style       = "" %}
 {% set articleBlog              = article.blog.title | lower %}
 
-{% set comments        = _Article.getArticleComments(article.guid) %}
+{% set comments        = _Article.getComments(article.guid) %}
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -301,7 +301,7 @@
                         {% endif %}
 
 
-                        <h1 class="c-comments__header u-margin-top-20">Join the converstaion</h1>
+                        <h1 class="c-comments__header u-margin-top-20">Join the conversation</h1>
 
 
                         <form id="comment-form" class="c-comments__form u-margin-top-20">
@@ -315,11 +315,15 @@
                         <div id="c-comments" class="u-margin-top-10">
                             {% for comment in comments %}
                                 {# {% if comment.approved == 1 %} #}
-                                <div class="c-comment">
+                                <div class="c-comment" data-id="{{comment.id}}" data-guid="{{comment.guid}}">
                                     <img class="c-comment__avatar img-circle" src="{{comment.profile_image}}" width="45px" height="45px">
                                     <div class="c-comment__content-container">
                                         <p class="c-comment__byline">On {{comment.date}} {{comment.firstname}} said...</p>
-                                        <p class="c-comment__body">{{comment.comments}}
+                                        <p class="c-comment__body">{{comment.comment | raw}}
+                                        <a href="#" class="c-comment__like js-comment-like">Like</a>
+                                        {% if comment.data | length > 0 %}
+                                            <p>{{comment.data | length}} likes</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 {# {% endif %} #}
@@ -597,7 +601,7 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-        var comments = new Acme.Comments({
+        var commentForm = new Acme.CommentForm({
             container: $('#comments'),
             userName: "Lee Neenan",
             input: $('#create-comment'),
@@ -606,6 +610,10 @@
             articleGuid:  "{{article.guid}}",
             articleId: {{article.id}}
         });
+
+        var comments = new Acme.Comments();
+
+
 
     });
 </script>

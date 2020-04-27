@@ -3,17 +3,30 @@
         "event" : {
            "enabled" : false
         },
+        "user" : {            
+            "extendedAttributes": [
+                {
+                    "label": "Allow Comments",
+                    "type": "radio",
+                    "name": "allow_comments",
+                    "options": {
+                        "true": "Yes",
+                        "false": "No"
+                    }
+                }
+            ]
+        },
         "blog" : {            
             "extendedAttributes": [
-    			{
-    				"label": "Paywall",
-    				"type": "radio",
-    				"name": "paywall",
-    				"options": {
+                {
+                    "label": "Paywall",
+                    "type": "radio",
+                    "name": "paywall",
+                    "options": {
                         "on": "On",
                         "off": "Off"
-    				}
-    			}
+                    }
+                }
             ]
         },
         "article" : {
