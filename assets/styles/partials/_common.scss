@@ -354,6 +354,25 @@ p.foundingpartners {
                 }
             }
 
+            &.sponsor-catalyst {
+                width:187px;
+                height:50px;
+                background: url('../images/logos/bell-gully.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                
+                    margin-right: 40px;
+                
+                margin-top: 15px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
+                @media screen and (max-width: $mobile-break){
+                   
+                    margin-right: 0;
+                }
+            }
+
             &.sponsor-vic-uni-wellington {
                 width:200px;
                 height:50px;

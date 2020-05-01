@@ -278,6 +278,11 @@
                                         <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                         <p class="beca-section__arttext">In association with</p>
                                     </div>
+                                {% elseif articleBlog == 'technology' %}
+                                    <div class="catalyst-section catalyst-section__article d-block d-lg-none">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=0">
+                                        <p class="catalyst-section__arttext">In association with</p>
+                                    </div>
                                 {% endif %}
                                 
                                 <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
@@ -417,9 +422,15 @@
 
                                 {% if articleBlog == 'new auckland' %}
                                     <div class="beca-section beca-section__article d-none d-lg-block">
-                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
+                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png">
                                         <p class="beca-section__arttext">In association with</p>
                                     </div>
+                                {% elseif articleBlog == 'technology' %}
+                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png">
+                                        <p class="catalyst-section__arttext">In association with</p>
+                                    </div>
+                                
                                 {% endif %}
                                 {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
                                     <section class="ad sidebar-ad u-desktop-no-margin-top">
