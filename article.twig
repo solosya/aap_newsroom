@@ -278,7 +278,7 @@
                                         <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                         <p class="beca-section__arttext">In association with</p>
                                     </div>
-                                {% elseif articleBlog == 'technology' %}
+                                {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-block d-lg-none">
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1">
                                         <p class="catalyst-section__arttext">In association with</p>
