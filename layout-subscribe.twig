@@ -115,6 +115,7 @@
                         <form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
                             <input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
                             <input type="hidden" class="" name="trial" id="trial" value="{{trial}}">
+                            <input type="hidden" class="" name="plantype" id="plantype" value="{{plan.type}}">
                         {# {% if trial %}
                             <input type="checkbox" class="" onclick="return false;" value="true" id="trial" name="trial" checked> 
                             <label>Include 14 day trial period</label>
@@ -136,22 +137,22 @@
                             
                             {# <div id="countrySelect" class="countrySelect"></div>  #}
                             <div class="u-margin-top-20"></div>
-                            {% if trial %}
+                            {% if trial and plan.type == 'time' %}
                                 <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
                                     <label class="c-checkbox__label" for="changeterms">
                                         <span class="c-checkbox__button"></span>
-                                        I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period. 
+                                        I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period and can cancel my paid subscription at any time in My Account page. A payment reminder will be emailed 7 days before the end of the free trial period.
                                     </Label>
                                 </div>
 
-                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                {# <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="cancelterms" name="cancelterms" type="checkbox" class="c-checkbox__input" /> 
                                     <label class="c-checkbox__label" for="cancelterms">
                                         <span class="c-checkbox__button"></span>
                                         I understand I can cancel for free before the end of the trial in My Account page, and I will be emailed a payment reminder 7 days before the end of the free trial period. I understand I can cancel my paid subscription at any time in My Account page.
                                     </label>
-                                </div>
+                                </div> #}
                             {% endif %}
 
 
