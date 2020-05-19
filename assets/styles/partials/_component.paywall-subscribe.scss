@@ -1,0 +1,47 @@
+.paywall-subscribe {
+    
+}
+
+.subscribe-trial {
+    &__header {
+        font-family: $base-font-family;
+        @include font-size(36);
+        font-weight: bold;
+        line-height: 0.89;
+        color: color(red);
+        margin-bottom:32px;
+        @media #{$mobile} {
+            @include font-size(20);
+            margin-bottom: 20px;
+        }
+    }
+    &__text {
+        @include font-size(16);
+        line-height: 1.47;
+        color: inherit;
+    
+        >span {
+            font-weight:600;
+        }
+    }
+}
+
+
+.subscribe-progress {
+    @include flexbox();
+
+    &__number {
+        @include font-size(9);
+        width:18px;
+        height:18px;
+        color:red;
+        border-radius: 50%;
+        padding:5px;
+        border: 1px solid red;
+    }
+    &__line {
+        height:3px;
+        width:100px;
+        background-color:#d8d8d8;
+    }
+}

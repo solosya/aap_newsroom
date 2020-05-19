@@ -1,0 +1,260 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set plans = networkData['paywallPlans'] %}
+
+{% set code = false %}
+{% set plan = false %}
+{% set trial = false %}
+{% set trialPeriod = '14' %} {# 14 days is default in the platform #}
+{% set buttonLabel = "SUBSCRIBE" %}
+
+{% set url = _AppHelper.getParsedUrl() %}
+{% set params = url['query'] %}
+
+{% for k, p in params %}
+    {# Match the plan from the url #}
+    {% if k == 'plan' %}
+        {% for pl in plans %}
+            {% if pl.guid == p %}
+                {% set plan = pl %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# If trial asked for in url, make sure it's set for the plan #}
+    {# {% if k == 'trial' %}
+        {% if p == 'true' and plan['trial_status'] == '1' %}
+            {% set trial = true %}
+            {% set trialPeriod = plan['trial_period'] %}
+            {% set buttonLabel = "START TRIAL NOW" %}
+
+        {% endif %}
+    {% endif %} #}
+
+    {% if k == 'code' %}
+        {% if p == 'true' %}
+            {% set code = true %}
+        {% endif %}
+    {% endif %}
+
+
+{% endfor %}
+
+{% if plan != false  %}
+
+
+    {% if plan['trial_status'] == '1' %}
+        {% set trial = true %}
+        {% set trialPeriod = plan['trial_period'] %}
+        {# {% set buttonLabel = "START TRIAL NOW" %} #}
+    {% endif %}
+
+
+{# The first payment is due on DD Month 20XX unless cancelled. #}
+    {% set val = plan.plan_value / 100 %}
+    {% if val == 19.89 %}
+        {% set val = 19.90 %}
+    {% endif %}
+    {% set planPrice = plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"}) ~ val|number_format(2, '.', ',') %}
+
+    {% set frequency = plan.period_count > 1 ? plan.period_count : ""  %}
+
+    {% set planPeriod = plan.period %}
+    {% if plan.period_count > 1 %}
+        {% set planPeriod = plan.period ~ 's' %}
+    {% endif %}
+
+    {% set frequency = frequency ~ " " ~ planPeriod  %}
+{% endif %}
+
+
+<main id="main" class="" role="main">
+    <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
+
+
+
+
+
+
+    <div class="container-fluid u-margin-top-40 u-mobile-margin-top-50 u-margin-bottom-60">
+
+        <section class="row">
+
+            <div class="offset-lg-1 col-lg-7">
+                <div class="row">
+                    <div class="col-lg-10">
+
+
+                        {% if plan == false  %}
+                            <h1>You need to choose a plan from the subscriptions screen</h1>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        
+                        <div class="subscribe-progress">
+                            <div class="subscribe-progress__number">1</div>
+                            <div class="subscribe-progress__line"></div>
+                            <div class="subscribe-progress__line"></div>
+                            <div class="subscribe-progress__number">2</div>
+                            <div class="subscribe-progress__line"></div>
+                            <div class="subscribe-progress__number">3</div>
+                        </div>
+
+
+                        <div class="subscribe-trial">
+
+                            {% if trial %}
+                                <h2 class="subscribe-trial__header u-margin-top-15">Start your {{trialPeriod}}-day free trial now</h2>
+
+                                <p class="subscribe-trial__text">
+                                    The free trial requires registration with a valid credit card. <span>After {{trialPeriod}} days, 
+                                    your credit card will be charged {price}</span> unless you cancel 
+                                    before the end of the trial. You will be emailed a reminder in advance. Subscriptions 
+                                    are billed {period}.
+                                </p>
+                            {% endif %}
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <form class="u-margin-top-40" action="" method="post" id="payment-form">
+
+                            <input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
+                            <input type="hidden" class="" name="trial" id="trial" value="{{trial}}">
+                            <input type="hidden" class="" name="plantype" id="plantype" value="{{plan.type}}">
+
+
+                            <input type="email" 	class="account-form__input u-margin-bottom-10" name="email" 			id="email" 			value="" placeholder="Email">
+                            <input type="email" 	class="account-form__input u-margin-bottom-10" name="email-confirm" 	id="email-confirm" 	value="" placeholder="Confirm Email">
+
+                            
+
+                        </form>
+
+                        {% if code %}
+                            <p class="account-form__section-label u-margin-top-40 u-mobile-bigger-margins-15">Redeem Code</p>
+                            <div class="form-row ">
+                                <label for="code-redeem">
+                                Gift code
+                                </label>
+                                <input type="text" class="articleExtendedData" name="code-redeem" id="code-redeem" value="" placeholder="0a1b-2c3d-4e5f">
+                            </div>
+
+                            <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">{{buttonLabel}}</button>
+                        </form>
+                        {% else %}
+
+                            {# <form action="" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15"> #}
+                                <div class="form-row ">
+                                    <p class="stripe-form__p u-margin-top-30">Please enter your credit or debit card details. </p>
+
+                                    <div id="card-element" class="u-margin-top-10">
+                                    <!-- a Stripe Element will be inserted here. -->
+                                    </div>
+
+                                    <!-- Used to display form errors -->
+                                    <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
+
+                                    <p class="stripe-form__p u-margin-top-10">All credit card payments are processed by Stripe. 
+                                        <a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a>
+                                    </p>
+
+                                </div>
+
+
+                                <div class="u-margin-top-20"></div>
+                                {% if trial and plan.type == 'time' %}
+                                    <div class="button-set c-checkbox u-margin-bottom-15">
+                                        <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
+                                        <label class="c-checkbox__label" for="changeterms">
+                                            <span class="c-checkbox__button"></span>
+                                            I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period and can cancel my paid subscription at any time in My Account page. A payment reminder will be emailed 7 days before the end of the free trial period.
+                                        </Label>
+                                    </div>
+                                {% endif %}
+
+
+                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                    <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
+                                    <label class="c-checkbox__label u-padding-top-3" for="terms">
+                                        <span class="c-checkbox__button"></span>
+                                        I agree to the Newsroom <a class="account-form__cblabel account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
+                                    </label>
+                                </div>
+
+
+
+
+
+                                {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
+                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button">{{buttonLabel}}</button>
+                            
+
+                            
+                            </form>
+
+                        {% endif %}
+
+
+
+
+
+                    </div>			
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-12 u-mobile-no-padding">
+                <div class="plan-type">
+
+                    {% if plan != false %}
+                        <h2 class="plan-type__header">Order Summary</h2>
+                        <div class="plan-type__body">
+
+                            {% set val = plan.plan_value / 100 %}
+                            <div class="col-lg-12 col-md-4">	
+                                <h3 class="plan-type__name">{{plan.plan_name}}</h3>
+                                <p class="plan-type__users">{{plan.user_count}} Users</p>
+                                <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
+                            </div>
+                            <div class="col-lg-12 col-md-3">
+                                <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
+                            </div>
+                            <div class="col-lg-12 col-md-5">
+                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
+                                <ul class="plan-type__features">
+                                    {{plan.description | raw }}
+                                </ul>
+                            </div>
+
+                            <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/pro#subscriptions">Change subscription</a>
+                        </div>
+
+                    {# 	{{ this.render('partials/_plan-'~plan~'.twig', {
+                            networkData: networkData, 
+                        }) | raw }} #}
+
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+    <script type="text/javascript">
+        _linkedin_partner_id = "547636";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function(){var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript";b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);})();
+    </script>
+</main>
