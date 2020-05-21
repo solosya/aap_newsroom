@@ -8,15 +8,24 @@
  
 
 <main id="main" class="site-main u-margin-bottom-60" role="main" data-test="paywall">
+    
+    <div class="paywall__header">
+        <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg?v=572" alt="logo" class="mobile-logo">
+        </a>
+        <a class="paywall__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-close paywall__close-icon"></div>
+        </a>
+    </div>
 
 
 
-    <section class="paywall-hero">
-        <div class="paywall-hero__content container-fluid u-padding-bottom-20">
+    <section class="paywall-banner">
+        <div class="paywall-banner__content container-fluid u-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
-                    <h1 class="paywall-hero__headline">Daily insights <br class="d-none d-sm-block" />direct to your inbox.</h1>
-                    <h3 class="paywall-hero__tagline">In-depth analysis of politics and business curated by Bernard Hickey.</h3>
+                    <h1 class="paywall-banner__headline">Daily insights <br class="d-none d-sm-block" />direct to your inbox.</h1>
+                    <h3 class="paywall-banner__tagline">In-depth analysis of politics and business curated by Bernard Hickey.</h3>
                 </div>
             </div>
 
@@ -76,23 +85,21 @@
 
     <div class="paywall-offers u-padding-bottom-30">
         <div class="container-fluid">
+            <h1 class="paywall-offers__title">What you get with Newsroom Pro</h1>
             <section class="row paywall-offers__container">
-                <div class="col-md-12 section-title u-margin-top-30">
-                    <h1>What you get with Newsroom Pro</h1>
-                </div>
-                <div class="col-md-3 paywall-offers-card ">
+                <div class="col-lg-3 col-md-6 paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
                     <p class="paywall-offers-card__p">A daily morning email of news and insights curated by managing editor Bernard Hickey</p>
                 </div>
-                <div class="col-md-3 paywall-offers-card">
+                <div class="col-lg-3 col-md-6  paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
                     <p class="paywall-offers-card__p">Pro email breaking news alerts</p>
                 </div>
-                <div class="col-md-3 paywall-offers-card">
+                <div class="col-lg-3 col-md-6  paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
                     <p class="paywall-offers-card__p">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
                 </div>
-                <div class="col-md-3 paywall-offers-card">
+                <div class="col-lg-3 col-md-6  paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
                     <p class="paywall-offers-card__p">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
                 </div>
@@ -113,13 +120,13 @@
         <a name="subscriptions"></a>
         
         <section class="row subscription">
-        
-            <p class="offset-lg-1 col-md-10 paywall__corporate-link u-text-center u-margin-top-50">For corporate and small business subscriptions <a id="corporate-plans" href="#corporate">click here</a></p>
+            
+            <p class="offset-lg-1 col-lg-10 paywall__corporate-link u-text-center u-desktop-margin-top-50 u-tablet-margin-top-30">For corporate and small business subscriptions <a id="corporate-plans" href="#corporate">click here</a></p>
 
             <div id="corporate-plans-container" class="paywall__coporate-plans offset-lg-1 col-md-10 u-hide">
                 <div class="row">
 
-                <h1 class="offset-lg-1  paywall__corporate-header u-margin-top-50">Choose the subscription that's right for you:</h1>  
+                <h1 class="offset-lg-1 col-md-10 paywall__corporate-header u-desktop-margin-top-50 u-mobile-margin-top-20">Choose the subscription that's right for you:</h1>  
 
                 {% for plan in plans %}
                     {# {% set log = _AppHelper.log(plan) %} #}
@@ -148,7 +155,7 @@
 
                             {% if plan.trial_status == "1" %}
                                 {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
-                                <p class="paywall-plan-card-2__trial">includes {{plan.trial_period}}-day free trial</p>
+                                <p class="paywall-plan-card-2__trial">includes <br class="d-lg-none"/>{{plan.trial_period}}-day free trial</p>
                             {% endif %}
 
                             <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribe?plan={{plan.guid}}">START MY SUBSCRIPTION</a>
@@ -171,10 +178,10 @@
 
 
     <div class="container">
-        <div class="row paywall-faq u-margin-top-60">
-            <h1 class="offset-md-1 col-10 paywall-faq__title u-text-center">Why Newsroom Pro?</h1>
+        <div class="row paywall-faq u-desktop-margin-top-60 u-tablet-margin-top-40 u-mobile-margin-top-30">
+            <h1 class="offset-md-1 col-12 col-md-10 paywall-faq__title u-text-center">Why Newsroom Pro?</h1>
 
-            <div class="offset-md-1  col-10">
+            <div class="offset-md-1 col-12 col-md-10">
                 <div class="paywall-faq__question-box d-flex flex-row">
                     <div class="paywall-faq__container">
                         <p class="paywall-faq__question u-font-bold">What is the difference between making a donation and subscribing to Newsroom Pro?</p>

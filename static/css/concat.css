@@ -10815,7 +10815,7 @@ input[type=radio].inline {
   font-weight: 600; }
 
 .plan-type__body {
-  padding: 30px 20px;
+  padding: 20px 20px;
   text-align: center;
   overflow: auto; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -10823,8 +10823,9 @@ input[type=radio].inline {
       padding-top: 10px; } }
 
 .plan-type__users {
-  font-size: 0.8125rem;
-  line-height: 0.975rem;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+  margin-bottom: 15px;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
   @media screen and (max-width: 767px) {
     .plan-type__users {
@@ -10832,11 +10833,11 @@ input[type=radio].inline {
       line-height: 1.2rem; } }
 
 .plan-type__name {
-  margin-top: -20px;
   color: #e22f22;
-  font-size: 1.125rem;
-  line-height: 1.35rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   font-weight: 600;
+  margin-bottom: 10px;
   letter-spacing: 0.4px;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -15039,7 +15040,7 @@ input[type=radio].inline {
         font-size: 0.875rem;
         line-height: 1.05rem; } }
 
-.subscribe-trial__header {
+.subscribe-form-head__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 2.25rem;
   line-height: 2.7rem;
@@ -15047,39 +15048,64 @@ input[type=radio].inline {
   line-height: 0.89;
   color: #e22f22;
   margin-bottom: 32px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .subscribe-form-head__title {
+      font-size: 2rem;
+      line-height: 2.4rem;
+      margin-bottom: 20px; } }
   @media screen and (max-width: 767px) {
-    .subscribe-trial__header {
+    .subscribe-form-head__title {
       font-size: 1.25rem;
       line-height: 1.5rem;
       margin-bottom: 20px; } }
 
-.subscribe-trial__text {
+.subscribe-form-head__text {
   font-size: 1rem;
   line-height: 1.2rem;
   line-height: 1.47;
   color: inherit; }
-  .subscribe-trial__text > span {
+  .subscribe-form-head__text > span {
     font-weight: 600; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .subscribe-form-head__text {
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      line-height: 1.37; } }
 
 .subscribe-progress {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center; }
   .subscribe-progress__number {
-    font-size: 0.5625rem;
-    line-height: 0.675rem;
+    font-size: 0.75rem;
+    line-height: 0.9rem;
     width: 18px;
     height: 18px;
-    color: red;
     border-radius: 50%;
     padding: 5px;
-    border: 1px solid red; }
+    color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+    line-height: 0.5;
+    background-color: #ffffff;
+    font-weight: 600; }
+    .subscribe-progress__number--red {
+      color: red;
+      border: 1px solid red; }
   .subscribe-progress__line {
     height: 3px;
-    width: 100px;
+    width: 150px;
     background-color: #d8d8d8; }
+    .subscribe-progress__line--red {
+      background-color: red; }
+    .subscribe-progress__line--wide {
+      width: 300px; }
 
 .room-view {
   margin-top: 70px;
@@ -17742,7 +17768,10 @@ body.channel, body.section {
   font-style: italic; }
 
 .paywall-plan {
-  margin-top: 40px; }
+  margin-top: 20px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall-plan {
+      margin-top: 30px; } }
   .paywall-plan-card {
     display: -webkit-box;
     display: -webkit-flex;
@@ -17760,10 +17789,13 @@ body.channel, body.section {
     height: 343px;
     box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
     border: solid 1px #eeeeee; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-plan-card {
+        height: 270px; } }
     @media screen and (max-width: 767px) {
       .paywall-plan-card {
-        margin-bottom: 30px;
-        padding: 18px 0; } }
+        height: 200px;
+        margin-right: 30px; } }
     .paywall-plan-card__period {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       font-size: 1.125rem;
@@ -17779,15 +17811,46 @@ body.channel, body.section {
         width: 35px;
         background-color: #979797;
         margin: 13px auto; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__period {
+          margin-top: 15px;
+          font-size: 0.9375rem;
+          line-height: 1.125rem; }
+          .paywall-plan-card__period:after {
+            width: 27px; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__period {
+          margin-top: 10px;
+          font-size: 0.75rem;
+          line-height: 0.9rem; }
+          .paywall-plan-card__period:after {
+            width: 24px; } }
     .paywall-plan-card__price {
       font-size: 4.75rem;
       line-height: 5.7rem;
       margin-bottom: 18px;
       font-weight: 300; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__price {
+          font-size: 3.4375rem;
+          line-height: 4.125rem; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__price {
+          font-size: 2.5rem;
+          line-height: 3rem; } }
     .paywall-plan-card__trial {
       font-size: 1.4375rem;
       line-height: 1.725rem;
-      font-weight: 700; }
+      font-weight: 700;
+      margin: 0 5px; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__trial {
+          font-size: 1.25rem;
+          line-height: 1.5rem; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__trial {
+          font-size: 1rem;
+          line-height: 1.2rem; } }
     .paywall-plan-card__subscribe-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -17807,6 +17870,19 @@ body.channel, body.section {
       min-height: 64px;
       margin-top: auto;
       font-weight: 700; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__subscribe-button {
+          min-height: 45px;
+          max-height: 45px;
+          font-size: 0.9375rem;
+          line-height: 1.125rem; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__subscribe-button {
+          min-height: 45px;
+          max-height: 45px;
+          font-size: 0.75rem;
+          line-height: 0.9rem;
+          font-weight: 700; } }
   .paywall-plan-card-2 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -17823,16 +17899,11 @@ body.channel, body.section {
     box-shadow: 6px 8px 11px -2px rgba(175, 175, 175, 0.15);
     background-color: #e9e9e9;
     height: 343px; }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      .paywall-plan-card-2 {
-        min-height: 270px; } }
-    @media screen and (min-width: 992px) {
-      .paywall-plan-card-2 {
-        min-height: 326px; } }
     @media screen and (max-width: 767px) {
       .paywall-plan-card-2 {
-        margin-bottom: 30px;
-        padding: 18px 0; } }
+        min-height: 250px;
+        max-height: 250px;
+        margin-right: 30px; } }
     .paywall-plan-card-2__name {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       text-transform: uppercase;
@@ -17840,18 +17911,6 @@ body.channel, body.section {
       font-size: 1.375rem;
       line-height: 1.65rem;
       font-weight: 600; }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        .paywall-plan-card-2__name {
-          font-size: 1.375rem;
-          line-height: 1.65rem; } }
-      @media screen and (max-width: 767px) {
-        .paywall-plan-card-2__name {
-          height: 31px;
-          margin-bottom: 0;
-          font-size: 1.125rem;
-          line-height: 1.35rem;
-          padding: 0;
-          margin-top: -8px; } }
       .paywall-plan-card-2__name:after {
         content: "";
         display: block;
@@ -17859,6 +17918,15 @@ body.channel, body.section {
         width: 37px;
         background-color: #979797;
         margin: 13px auto; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card-2__name {
+          font-size: 1.125rem;
+          line-height: 1.35rem; }
+          .paywall-plan-card-2__name:after {
+            height: 2px;
+            width: 24px;
+            background-color: #979797;
+            margin: 10px auto; } }
     .paywall-plan-card-2__period {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       font-size: 1.125rem;
@@ -17867,32 +17935,43 @@ body.channel, body.section {
       text-transform: uppercase;
       font-weight: 600;
       color: black; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card-2__period {
+          margin-top: 0;
+          font-size: 0.75rem;
+          line-height: 0.9rem; }
+          .paywall-plan-card-2__period:after {
+            width: 24px; } }
     .paywall-plan-card-2__usercount {
       font-size: 1.125rem;
       line-height: 1.35rem;
       font-weight: 600;
       margin-top: 3px;
       color: black; }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        .paywall-plan-card-2__usercount {
-          font-size: 1rem;
-          line-height: 1.2rem;
-          margin-top: 20px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__usercount {
           margin-bottom: 10px;
-          font-size: 1rem;
-          line-height: 1.2rem;
-          margin-top: 15px; } }
+          font-size: 0.875rem;
+          line-height: 1.05rem;
+          margin-top: 5px; } }
     .paywall-plan-card-2__price {
       font-size: 4.75rem;
       line-height: 5.7rem;
       margin-bottom: 18px;
       font-weight: 300; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card-2__price {
+          font-size: 2.5rem;
+          line-height: 3rem;
+          margin-bottom: 10px; } }
     .paywall-plan-card-2__trial {
       font-size: 1.4375rem;
       line-height: 1.725rem;
       font-weight: 700; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card-2__trial {
+          font-size: 1rem;
+          line-height: 1.2rem; } }
     .paywall-plan-card-2__subscribe-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -17912,12 +17991,61 @@ body.channel, body.section {
       min-height: 64px;
       font-weight: 700;
       margin-top: auto; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card-2__subscribe-button {
+          min-height: 45px;
+          max-height: 45px;
+          font-size: 0.75rem;
+          line-height: 0.9rem;
+          font-weight: 700; } }
+
+.paywall__header {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  margin-left: 45px;
+  height: 65px; }
+  @media screen and (max-width: 767px) {
+    .paywall__header {
+      height: 57px; } }
+
+.paywall__logo {
+  display: block;
+  position: relative;
+  top: 5px; }
+
+.paywall__close {
+  display: block;
+  margin-left: auto;
+  width: 25px;
+  height: 25px;
+  margin-right: 25px; }
+  .paywall__close-icon {
+    width: 100%;
+    height: 100%; }
+  @media screen and (max-width: 767px) {
+    .paywall__close {
+      width: 20px;
+      height: 20px; } }
 
 .paywall__corporate-link {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 1.875rem;
   line-height: 2.25rem;
   color: #e22f22; }
+  @media screen and (max-width: 767px) {
+    .paywall__corporate-link {
+      font-size: 1rem;
+      line-height: 1.2rem;
+      font-weight: 600; } }
   .paywall__corporate-link > a {
     text-decoration: underline;
     color: #e22f22; }
@@ -17927,6 +18055,12 @@ body.channel, body.section {
   line-height: 1.8rem;
   font-weight: 600;
   text-align: center; }
+  @media screen and (max-width: 767px) {
+    .paywall__contact-text {
+      font-size: 1rem;
+      line-height: 1.2rem;
+      font-weight: 600;
+      text-align: left; } }
 
 .paywall__close-corporate {
   font-size: 1.125rem;
@@ -17935,12 +18069,24 @@ body.channel, body.section {
   color: #6e6e6e;
   display: block;
   float: right; }
+  @media screen and (max-width: 767px) {
+    .paywall__close-corporate {
+      font-size: 0.75rem;
+      line-height: 0.9rem;
+      float: none;
+      text-align: center; } }
 
 .paywall__corporate-header {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   line-height: 3rem;
   font-weight: 700; }
+  @media screen and (max-width: 767px) {
+    .paywall__corporate-header {
+      font-size: 1.625rem;
+      line-height: 1.95rem;
+      font-weight: 600;
+      line-height: 1.08; } }
 
 .paywall-offers {
   display: -webkit-box;
@@ -17949,81 +18095,120 @@ body.channel, body.section {
   display: -ms-flexbox;
   display: flex;
   background: rgba(216, 216, 216, 0.3); }
-
-.pro-offers__container {
-  margin: 30px auto; }
-  @media screen and (max-width: 767px) {
-    .pro-offers__container {
-      margin: 15px auto 5px auto; } }
-
-.paywall-offers-card {
-  margin-top: 55px;
-  text-align: center;
-  display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column; }
-  @media screen and (max-width: 992px) {
-    .paywall-offers-card {
-      text-align: left;
-      margin-top: 20px; } }
-  @media screen and (max-width: 767px) {
-    .paywall-offers-card {
-      padding-right: 0;
-      margin-top: 10px; } }
-  .paywall-offers-card__img {
-    align-self: flex-start; }
-    @media screen and (max-width: 992px) {
-      .paywall-offers-card__img {
-        margin-right: 36px;
-        margin-bottom: 50px; } }
+  .paywall-offers__container {
+    margin: 30px auto; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
-      .paywall-offers-card__img {
-        margin-right: 10px; } }
-    @media screen and (max-width: 768px) {
-      .paywall-offers-card__img {
-        float: left;
-        height: 30px;
-        margin-bottom: 0;
-        margin-right: 5px; } }
-    .paywall-offers-card__img__mail {
-      height: 79px; }
-    .paywall-offers-card__img__alert {
-      height: 59px; }
-    .paywall-offers-card__img__access {
-      height: 59px; }
-    .paywall-offers-card__img__users {
-      height: 67px; }
-  .paywall-offers-card__p {
-    margin-right: 20px;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    text-align: left; }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      .paywall-offers-card__p {
-        font-size: 0.75rem;
-        line-height: 0.9rem;
-        margin-left: 10px;
-        margin-right: 0; } }
+      .paywall-offers__container {
+        margin: 0; } }
     @media screen and (max-width: 767px) {
-      .paywall-offers-card__p {
-        font-size: 0.75rem;
-        line-height: 0.9rem; } }
-    @media screen and (min-width: 400px) and (max-width: 767px) {
-      .paywall-offers-card__p {
-        font-size: 0.875rem;
-        line-height: 1.05rem; } }
-    .paywall-offers-card__p:before {
-      content: "";
-      display: block;
-      width: 30px;
-      height: 2px;
-      background-color: #979797;
-      margin-bottom: 15px;
-      margin-top: 10px; }
+      .paywall-offers__container {
+        margin: 15px auto 5px auto; } }
+  .paywall-offers__title {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-top: 30px;
+    font-family: "tinos", Helvetica, Arial, sans-serif; }
+    @media screen and (max-width: 767px) {
+      .paywall-offers__title {
+        font-size: 1.625rem;
+        line-height: 1.95rem;
+        margin-top: 10px; } }
+  .paywall-offers-card {
+    margin-top: 55px;
+    text-align: center;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-offers-card {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row; } }
+    @media screen and (max-width: 767px) {
+      .paywall-offers-card {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        margin-top: 25px; } }
+    .paywall-offers-card__img {
+      align-self: flex-start; }
+      .paywall-offers-card__img__mail {
+        height: 79px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .paywall-offers-card__img__mail {
+            height: 65px;
+            margin-right: 25px; } }
+        @media screen and (max-width: 767px) {
+          .paywall-offers-card__img__mail {
+            height: 42px;
+            width: 44px;
+            margin-right: 25px; } }
+      .paywall-offers-card__img__alert {
+        height: 59px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .paywall-offers-card__img__alert {
+            margin-right: 43px; } }
+        @media screen and (max-width: 767px) {
+          .paywall-offers-card__img__alert {
+            height: 38px;
+            width: 26px;
+            margin-right: 43px; } }
+      .paywall-offers-card__img__access {
+        height: 59px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .paywall-offers-card__img__access {
+            margin-right: 30px; } }
+        @media screen and (max-width: 767px) {
+          .paywall-offers-card__img__access {
+            height: 38px;
+            width: 39px;
+            margin-right: 30px; } }
+      .paywall-offers-card__img__users {
+        height: 67px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .paywall-offers-card__img__users {
+            height: 52px;
+            margin-right: 30px; } }
+        @media screen and (max-width: 767px) {
+          .paywall-offers-card__img__users {
+            height: 38px;
+            width: 39px;
+            margin-right: 30px; } }
+    .paywall-offers-card__p {
+      margin-right: 20px;
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      text-align: left; }
+      .paywall-offers-card__p:before {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: #979797;
+        margin-bottom: 15px;
+        margin-top: 10px; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-offers-card__p:before {
+          margin-bottom: 7px;
+          margin-top: 0; } }
+      @media screen and (max-width: 767px) {
+        .paywall-offers-card__p {
+          font-size: 0.875rem;
+          line-height: 1.05rem;
+          line-height: 1.29; }
+          .paywall-offers-card__p:before {
+            margin-bottom: 7px;
+            margin-top: 0; } }
 
 .pro-mini-border {
   margin-bottom: 30px;
@@ -18037,22 +18222,6 @@ body.channel, body.section {
   width: 168px;
   background-color: #979797;
   margin-bottom: 40px; }
-
-.section-title > h1 {
-  font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  text-align: left;
-  font-weight: 700; }
-  @media screen and (max-width: 992px) {
-    .section-title > h1 {
-      font-size: 1.3125rem;
-      line-height: 1.575rem;
-      margin-top: 0; } }
-  @media screen and (max-width: 767px) {
-    .section-title > h1 {
-      font-size: 1.25rem;
-      line-height: 1.5rem; } }
 
 .subscribe__link {
   color: black; }
@@ -18169,6 +18338,87 @@ body.channel, body.section {
       top: -2px; }
       .paywall-faq__arrow-container--up {
         top: 7px; } }
+
+.paywall-banner {
+  background-image: url("../images/paywall.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  border-top: solid 1px #979797; }
+  @media screen and (max-width: 767px) {
+    .paywall-banner {
+      background-image: none; } }
+  @media screen and (min-width: 992px) {
+    .paywall-banner--thanks {
+      height: 785px; } }
+  .paywall-banner__content {
+    height: 100%; }
+  .paywall-banner__headline {
+    margin-top: 32px;
+    font-family: "tinos", Helvetica, Arial, sans-serif;
+    font-size: 4.25rem;
+    line-height: 5.1rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 0.89; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-banner__headline {
+        font-size: 2.5rem;
+        line-height: 3rem;
+        line-height: 0.89;
+        margin-top: 15px;
+        margin-bottom: 5px; } }
+    @media screen and (max-width: 767px) {
+      .paywall-banner__headline {
+        margin-top: 5px;
+        font-size: 2.125rem;
+        line-height: 2.55rem;
+        line-height: 0.89; } }
+  .paywall-banner__tagline {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 1.5625rem;
+    line-height: 1.875rem;
+    font-weight: 700;
+    margin-top: 20px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-banner__tagline {
+        font-size: 1.125rem;
+        line-height: 1.35rem;
+        margin-top: 0; } }
+    @media screen and (max-width: 767px) {
+      .paywall-banner__tagline {
+        font-size: 0.9375rem;
+        line-height: 1.125rem;
+        font-weight: normal; } }
+  .paywall-banner__button {
+    font-weight: 500; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-banner__button {
+        height: 30px;
+        width: 109px;
+        line-height: 30px;
+        font-size: 12px; } }
+    @media screen and (max-width: 767px) {
+      .paywall-banner__button {
+        height: 35px;
+        width: 140px;
+        line-height: 35px; } }
+    .paywall-banner__button__trial {
+      margin-left: 35px; }
+      .paywall-banner__button__trial:hover {
+        color: #fff;
+        text-decoration: none; }
+      @media screen and (max-width: 767px) {
+        .paywall-banner__button__trial {
+          margin-left: 15px; } }
+  .paywall-banner__email {
+    margin-top: 76px;
+    font-size: 1.125rem;
+    line-height: 1.35rem;
+    line-height: 1.61;
+    width: 350px; }
+    .paywall-banner__emaila, .paywall-banner__email > a {
+      text-decoration: underline; }
 
 @media screen and (max-width: 767px) {
   body.channel.about, body.section.about {

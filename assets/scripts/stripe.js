@@ -1,9 +1,9 @@
 // Create a Stripe client
 var botTimer = 0;
 
-if ($('#stripekey').length > 0) {
+if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
 
-
+    console.log('running from stripe code');
     var stripekey = $('#stripekey').html();
 
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
@@ -185,7 +185,7 @@ if ($('#stripekey').length > 0) {
                     self.data['stripetoken'] = result.token.id;
                     self.data['planid'] = $('#planid').val();
                     self.data['redirect'] = false;
-                    submitForm();
+                    // submitForm();
                 }
             });   
         }
