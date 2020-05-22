@@ -1,0 +1,41 @@
+.o-arrow2 {
+    position: relative;
+    // transform: translate(-50%,-50%);
+    width: 19px;
+    cursor: pointer;
+
+    &__container {
+        transform: rotate(180deg);
+    }
+
+    &__arrow {
+        position: absolute;
+        // top: 25px;
+        width: 100%;
+        height: 2px;
+        background-color: red;
+        // box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+        // animation: arrow 700ms linear infinite;
+
+
+        &::after, &::before {
+            content: '';
+            position: absolute;
+            width: 55%;
+            height: 2px;
+            right: -3px;
+            background-color: red;
+        }
+
+        &::after {
+            top: -3px;
+            transform: rotate(45deg);
+        }
+
+        &::before {
+            top: 3px;
+            // box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+            transform: rotate(-45deg);
+        }
+    }
+}
