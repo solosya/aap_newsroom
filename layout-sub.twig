@@ -109,15 +109,15 @@
 
 
 
-    <div class="container-fluid u-desktop-margin-top-80 u-mobile-margin-top-50 u-margin-bottom-60">
+    <div class="container-fluid u-desktop-margin-top-80 u-tablet-margin-top-60 u-mobile-margin-top-50 u-margin-bottom-60">
 
         <section class="row">
 
-            <div class="offset-lg-1 col-md-8">
+            <div class="offset-lg-1 col-lg-6 col-md-8">
                 
                 
                 <div class="row">
-                    <div class="col-lg-11">
+                    <div class="col-lg-12">
                         {% if plan == false  %}
                             <h1>You need to choose a plan from the subscriptions screen</h1>
                                 </div>
@@ -151,9 +151,9 @@
                 {# ***********************************************************
                                         SUBSCRIBE FORM
                 *********************************************************** #}
-                <div id="signupformview" class="u-desktop-margin-top-30">
+                <div id="signupformview" class="u-margin-top-30">
                     <div class="row">
-                        <div class="col-lg-11">
+                        <div class="col-lg-12">
                             <div class="subscribe-form-head">
                                 {% if trial %}
                                     <h2 class="subscribe-form-head__title u-margin-top-15">Start your {{trialPeriod}}-day free trial now</h2>
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-11">
+                        <div class="col-lg-12">
 
                             <form class="u-desktop-margin-top-40 u-tablet-margin-top-20 u-mobile-margin-top-20" action="" method="post" id="payment-form">
 
@@ -259,9 +259,9 @@
                 {# ***********************************************************
                                         ACTIVATE FORM
                 *********************************************************** #}
-                <div id="activeformview" class="u-hide u-desktop-margin-top-30">
+                <div id="activeformview" class="u-hide u-margin-top-30">
                     <div class="row">
-                        <div class="col-lg-11">
+                        <div class="col-lg-12">
                             <div class="subscribe-form-head">
                                 
                                 <h2 class="subscribe-form-head__title u-margin-top-15">Activate account</h2>
@@ -331,9 +331,9 @@
                 {# ***********************************************************
                                         BONUS USER
                 *********************************************************** #}
-                <div id="userformview" class="u-hide u-desktop-margin-top-30">
+                <div id="userformview" class="u-hide u-margin-top-30">
                     <div class="row">
-                        <div class="col-lg-11">
+                        <div class="col-lg-12">
                             <div class="subscribe-form-head">
                                 
                                 <h2 class="subscribe-form-head__title u-margin-top-15">Bonus Subscription</h2>
@@ -372,7 +372,7 @@
 
             </div>
 
-            <div class="col-lg-3 col-md-4 u-mobile-margin-top-60 u-mobile-no-padding">
+            <div class="offset-lg-1 col-lg-3 col-md-4 u-mobile-margin-top-60 u-mobile-no-padding">
                 <div class="plan-type">
 
                     {% if plan != false %}
