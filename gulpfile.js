@@ -16,22 +16,21 @@ var sourcemaps  = require('gulp-sourcemaps');
 var minifyCss   = require('gulp-clean-css');
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
-var replace     = require('gulp-replace');
+var terser      = require('gulp-terser');
 
-  
-
+// // var replace     = require('gulp-replace');
 
 
 gulp.task('jscache',  function() {
     return gulp.src('layouts/partials/_javascript.twig')
-      .pipe(buster({
+    .pipe(buster({
         tokenRegExp: /\/(js\/scripts\.js)\?v=[0-9a-z]+/,
         assetRoot: __dirname + '/static/',
         hashes: hasher.hashes,
-      }))
-      .pipe(gulp.dest('layouts/partials/'));
-  });
-  
+    }))
+    .pipe(gulp.dest('layouts/partials/'));
+});
+
 
 
 // https://medium.com/@felipebernardes/solving-browser-cache-hell-with-gulp-rev-6349a293abb9
@@ -53,16 +52,16 @@ gulp.task('jscache',  function() {
 
 
 gulp.task('cache',  function() {
-
     return gulp.src('layouts/main.twig')
-      .pipe(buster({
+    .pipe(buster({
         tokenRegExp: /\/(concat\.min\.css)\?v=[0-9a-z]+/,
         assetRoot: __dirname + '/static/css/',
         hashes: hasher.hashes,
-      }))
-      .pipe(gulp.dest('layouts/'));
+    }))
+    .pipe(gulp.dest('layouts/'));
 });
-  
+
+
 gulp.task('minify-css', function () {
     return gulp.src([
         './static/css/concat.css',
@@ -156,13 +155,12 @@ gulp.task('scripts-concat', function(){
         .pipe(concat('concat.js'))
         .pipe(gulp.dest('./static/js'))
         .pipe(gp_rename('scripts.js'))
-        .pipe(uglify().on('error', function(err) {
-            gutil.log(gutil.colors.red('[Error]'), err.toString())
-        }))
+        .pipe(terser())
+        // .pipe(uglify().on('error', function(err) {
+        //     gutil.log(gutil.colors.red('[Error]'), err.toString())
+        // }))
         .pipe(gulp.dest('./static/js'))
-        .pipe(hasher())
-        ;
-        
+        .pipe(hasher());        
 
 });
 
@@ -174,12 +172,12 @@ gulp.task('watch', function (){
 });
 
 gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', function (done) {
-  done();
+    done();
 }));
 
 gulp.task('scripts', gulp.series('scripts-concat', 'jscache', function (done) {
     done();
-  }));
-  
+}));
+
 
 gulp.task('default', gulp.parallel('scripts', 'styles'));
