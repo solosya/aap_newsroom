@@ -32,6 +32,9 @@
 {% if 'page-layout-sub' in pageClass %}
     {% set squeeze = true %}
 {% endif %}
+{% if 'page-layout-paywall' in pageClass %}
+    {% set squeeze = true %}
+{% endif %}
 
 
 {% if layout == "layout-paywall" %}
