@@ -319,8 +319,14 @@
         >div {
             margin-bottom:4px;
         }
-        >img {
+        &-image {
             margin-left:45px;
+            max-height:30px;
+            @media #{$mobile} {
+                margin-left:20px;
+            }
+    
+
         }
     }
     &__close {
@@ -704,7 +710,7 @@
     &__button {
         height:30px;
         width:50px;
-        background-color:#adadad;
+        // background-color:#adadad;
         cursor:pointer;
         position:relative;
         margin-left:auto;
@@ -720,7 +726,7 @@
         height:15px;
         margin: auto;
         top:4px;
-        border-color:white;
+        border-color:black;
         transform:rotate(180deg);
 
         &--up {
@@ -790,9 +796,9 @@
             margin-bottom:5px;
         }
         @media #{$mobile} {
-            margin-top:5px;
+            margin-top:10px;
             @include font-size(34);
-            line-height: 0.89;
+            line-height: 0.94;
             // margin-bottom: 5px;
         }
     }

@@ -4,14 +4,23 @@
 {% set blogName      = blogData.title %}
 {% set plans = networkData['paywallPlans'] %}
 
-{{this.registerJs("var signin = new Acme.Signin('signinForm', '#signin');")}}
- 
+
 
 <main id="main" class="site-main u-margin-bottom-60" role="main" data-test="paywall">
     
     <div class="paywall__header">
         <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-            <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg?v=572" alt="logo" class="mobile-logo">
+            <div class="o-arrow2__container">
+                <div class="o-arrow2"> 
+                    <div class="o-arrow2__arrow"></div>
+                </div>
+            </div>
+            <picture>
+                <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+                <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
+            </picture>
+
+            {# <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" alt="logo" class="mobile-logo"> #}
         </a>
         <a class="paywall__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
             <div class="o-close paywall__close-icon"></div>
@@ -31,7 +40,11 @@
 
             <div class="row">
 
-            {% for plan in plans %}
+            {% for i in 0..1 %}
+                {% set plan = plans[i] %}
+
+
+            {# {% for plan in plans %} #}
                 {# {% set log = _AppHelper.log(plan) %} #}
                 {% set period = "Monthly" %}
                 {% if plan.period == "year" %}
@@ -249,49 +262,36 @@
 
 
 
-        var hiddenWriters = $('#hidden-writers');
-
-        $('#viewall').on('click', function(e) {
-            $this = $(this);
-            if ($this.text().trim() === "View all") {
-                $this.text("View less");
-            } else {
-                $this.text("View all");
-            }
-            hiddenWriters.toggleClass('u-hide');
-        });
-
-
-        $('.faq__button').on('click', function(e) {
+        $('.paywall-faq__button').on('click', function(e) {
 
             close = true;
-            var box = $(e.target).closest('div.faq__question-box');
-            if (box.hasClass('faq__question-box--open')) {
+            var box = $(e.target).closest('div.paywall-faq__question-box');
+            if (box.hasClass('paywall-faq__question-box--open')) {
                 close = false;
             }
 
 
-            var boxes = $('div.faq__question-box');
-            boxes.removeClass('faq__question-box--open');
+            var boxes = $('div.paywall-faq__question-box');
+            boxes.removeClass('paywall-faq__question-box--open');
 
-            var questions = $('.faq__question');
-            questions.removeClass('faq__question--open');
+            var questions = $('.paywall-faq__question');
+            questions.removeClass('paywall-faq__question--open');
 
-            var answers = $('.faq__answer-container');
-            answers.addClass('u-hide').removeClass('faq__answer-container--open');
+            var answers = $('.paywall-faq__answer-container');
+            answers.addClass('u-hide').removeClass('paywall-faq__answer-container--open');
             
             var arrows = $('.faq__arrow-container');
-            arrows.removeClass('faq__arrow-container--up');
+            arrows.removeClass('paywall-faq__arrow-container--up');
 
-            var question = box.find('.faq__question');
-            var clickedArrow = box.find('.faq__arrow-container');
-            var clickedAnswer = box.find('.faq__answer-container');
+            var question = box.find('.paywall-faq__question');
+            var clickedArrow = box.find('.paywall-faq__arrow-container');
+            var clickedAnswer = box.find('.paywall-faq__answer-container');
 
             if (close) {
-                box.addClass('faq__question-box--open');
-                question.addClass('faq__question--open');
-                clickedAnswer.removeClass('u-hide').addClass('faq__answer-container--open');
-                clickedArrow.addClass('faq__arrow-container--up');
+                box.addClass('paywall-faq__question-box--open');
+                question.addClass('paywall-faq__question--open');
+                clickedAnswer.removeClass('u-hide').addClass('paywall-faq__answer-container--open');
+                clickedArrow.addClass('paywall-faq__arrow-container--up');
             }
 
 

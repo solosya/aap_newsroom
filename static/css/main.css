@@ -18094,8 +18094,12 @@ body.channel, body.section {
   top: 5px; }
   .paywall__logo > div {
     margin-bottom: 4px; }
-  .paywall__logo > img {
-    margin-left: 45px; }
+  .paywall__logo-image {
+    margin-left: 45px;
+    max-height: 30px; }
+    @media screen and (max-width: 767px) {
+      .paywall__logo-image {
+        margin-left: 20px; } }
 
 .paywall__close {
   display: block;
@@ -18388,7 +18392,6 @@ body.channel, body.section {
 .paywall-faq__button {
   height: 30px;
   width: 50px;
-  background-color: #adadad;
   cursor: pointer;
   position: relative;
   margin-left: auto; }
@@ -18403,7 +18406,7 @@ body.channel, body.section {
   height: 15px;
   margin: auto;
   top: 4px;
-  border-color: white;
+  border-color: black;
   transform: rotate(180deg); }
   .paywall-faq__arrow-container--up {
     top: 12px;
@@ -18445,10 +18448,10 @@ body.channel, body.section {
         margin-bottom: 5px; } }
     @media screen and (max-width: 767px) {
       .paywall-banner__headline {
-        margin-top: 5px;
+        margin-top: 10px;
         font-size: 2.125rem;
         line-height: 2.55rem;
-        line-height: 0.89; } }
+        line-height: 0.94; } }
   .paywall-banner__tagline {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.5625rem;
