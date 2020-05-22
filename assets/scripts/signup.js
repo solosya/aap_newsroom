@@ -79,18 +79,15 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
         var trial = $('#trial').val();
         this.data['plantype'] = $('#plantype').val();
-        console.log(typeof trial);
+
         // console.
         if (trial == "1" && this.data.plantype === 'time') {
-            console.log('setting trial');
             this.data['trial'] = 'true';
             this.validateRules['changeterms'] = ["isTrue"];
         }
         this.validateFields = Object.keys(this.validateRules);
         this.loadData();
         this.events();
-        console.log(this.data);
-
     };
 
     SubscribeForm.prototype = new Acme.Form(Acme.Validators);
@@ -107,14 +104,10 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
     };
     SubscribeForm.prototype.render = function(checkTerms) 
     {
-        console.log('rendering');
-        console.log(checkTerms);
         this.clearInlineErrors();
         this.addInlineErrors();
         if (checkTerms) {
-            console.log(this.data);
             if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
-                console.log('rendering pop up');
                 this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
                 this.confirmView.render("terms", "Terms of use");
             }
@@ -357,6 +350,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         this.numbers = [$('#num1'), $('#num2'), $('#num3')];
         this.lines = [$('#line1'), $('#line2'), $('#line3')];
         this.forms = [$('#signupformview'), $('#activeformview'), $('#userformview')];
+        this.labels = [$('#label1'), $('#label2'), $('#label3')];
         this.render();
     };
     Progress.prototype.tick = function(tick) 
@@ -390,12 +384,15 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         for (var form of this.forms) {
             form.addClass('u-hide');
         };
-
+        for (var label of this.labels) {
+            label.removeClass('subscribe-progress__label--active');
+        };
 
 
         for (var i = 0; i < this.progress; i++) {
             this.numbers[i].addClass('subscribe-progress__number--red');
             this.lines[i].addClass('subscribe-progress__line--red');
+            this.labels[i].addClass('subscribe-progress__label--active');
         }
 
         this.forms[this.progress - 1].removeClass('u-hide');

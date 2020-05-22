@@ -59,7 +59,31 @@
 
 .subscribe-progress {
     @include flexbox();
+    @include flex-direction(column);
     @include align-items(center);
+
+    &__line-container {
+        @include flexbox();
+        @include align-items(center);
+        width:100%
+    }
+    &__label-container {
+        @include flexbox();
+        width:100%;
+        margin-top:17px;
+    }
+
+    &__label {
+        color:#d8d8d8;
+        font-weight:600;
+
+        &--active {
+            color:$black;
+        }
+        &--middle {
+            margin:auto;
+        }
+    }
 
     &__number {
         @include font-size(12);
@@ -82,13 +106,13 @@
 
     &__line {
         height:3px;
-        width:150px;
+        width:25%;
         background-color:#d8d8d8;
         &--red {
             background-color:red;
         }
         &--wide {
-            width:300px;
+            width:50%;
         }
 
     }

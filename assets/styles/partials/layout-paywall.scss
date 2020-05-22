@@ -298,7 +298,6 @@
 
 
     &__header {
-        display:flex;
         @include flexbox();
         @include align-items(center);
         margin-left:45px;
@@ -309,12 +308,19 @@
     }
 
     &__logo {
-        display:block;
+        @include flexbox();
+        @include align-items(center);
         position: relative;
         top: 5px;
         @media #{$mobile} {
             // width:29px;
             // height:19px;
+        }
+        >div {
+            margin-bottom:4px;
+        }
+        >img {
+            margin-left:45px;
         }
     }
     &__close {
