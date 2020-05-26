@@ -6,12 +6,11 @@
 {% set userid = "" %}
 {% set userguid = "" %}
 {% set user = _User.getUser() %}
-{% set log = _AppHelper.log(user) %}
+{# {% set log = _AppHelper.log(user) %} #}
 {% if user %} 
-{% set userid = user['id'] %}
-{% set userguid = user['guid'] %}
+    {% set userid = user['id'] %}
+    {% set userguid = user['guid'] %}
 {% endif %}
-
 
 
 
@@ -268,7 +267,7 @@
                                     Congratulations for signing up to Newsroom Pro – you’re almost set up. Fill out your details below to 
                                     activate your account and get started with your access to daily analysis and insights from our team.
                                 </p>
-                                <p>Fill the fields below to complete your account activation</p>
+                                <p class="u-font-weight-bold u-margin-top-20">Fill the fields below to complete your account activation</p>
                             </div>
                         </div>
                     </div>
@@ -282,9 +281,10 @@
                                 <input type="text" 	class="account-form__input u-margin-bottom-10" name="lastname"          id="activate-lastname" 			value="" placeholder="Last name">
                                 <input type="password"	class="account-form__input u-margin-bottom-10" name="password"      id="activate-password" 		    value="" placeholder="Password">
                                 <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
-                                    <p class="account-form__explainer">Passwords must be at least six characters</p>
+                                    <p class="u-font-style-italic u-opacity-6">Passwords must be at least six characters</p>
                                 </div>
-                                <input type="password" id="activate-verifypassword" class="account-form__input" name="verifypassword" placeholder="Password verify">
+                                <input type="password" id="activate-verifypassword" class="account-form__input u-margin-bottom-10" name="verifypassword" placeholder="Password verify">
+                                <input type="text" 	class="account-form__input u-margin-bottom-20" name="organisation"      id="activate-organisation"      value="" placeholder="Organisation (optional)">
 
 
                                 <div class="button-set c-checkbox u-margin-bottom-15">
@@ -336,12 +336,13 @@
                                 
                                 <h2 class="subscribe-form-head__title u-margin-top-15">Bonus Subscription</h2>
                                 
-                                <p>Before you go – let us know who you’d like to add as your bonus subscriber</p>
+                                <p class="u-font-weight-bold">Before you go – let us know who you’d like to add as your bonus subscriber</p>
 
-                                <p class="subscribe-form-head__text">
+                                <p class="subscribe-form-head__text u-margin-top-20">
                                     Enter the email and the name of the person you would like to share your subscription with. They will be notified by email and asked to varify their access.
                                 </p>
-                                <p class="subscribe-form-head__text">
+                                <div class="subscribe-form-head__line-break u-margin-top-20"></div>
+                                <p class="subscribe-form-head__text u-margin-top-15">
                                     You can do this any time, visit the My Account section. For further information, please visit the FAQs.
                                 </p>
                             </div>
@@ -357,7 +358,7 @@
                                 <input type="text" 	class="account-form__input u-margin-bottom-10" name="lastname"          id="lastname"       value="" placeholder="Last name">
 
                                 <div class="flex-row u-margin-top-25">
-                                    <button data-job="invite" type="submit" class="_btn subscriptionPlan__button">Send invite</button>
+                                    <button data-job="invite" type="submit" class="_btn _btn--black subscriptionPlan__button">Send invite</button>
                                     <button data-job="skip" type="submit" class="_btn _btn--red subscriptionPlan__button">Skip &amp; finish</button>
                                 </div>
                             </form>

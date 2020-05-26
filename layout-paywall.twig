@@ -5,6 +5,83 @@
 {% set plans = networkData['paywallPlans'] %}
 
 
+{% set topPlans = [] %}
+{% set bottomPlans = [] %}
+
+
+{% for plan in plans %}
+    {% if "!*!" in plan.description %}
+        {# {% set log = _AppHelper.log(topPlans) %} #}
+
+        {% set description = plan.description | split("!*!") %}
+        {% set placement = description[0] | split(":") %}
+        {% set plan = plan | merge({ ("order") : placement[1]}) %}
+        {% if placement[0] == 'top' %}
+            {% set topPlans = topPlans | merge({ ("0") : plan}) %}
+        {% else %}
+            {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
+        {% endif %}
+    {% endif %} 
+{% endfor %}
+
+
+
+{% set orderedTop = [] %}
+{% set orderedBottom = [] %}
+
+{% for plan in topPlans %}
+    {% set added = false %}
+
+    {% if orderedTop | length == 0 %}
+        {% set added = true %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedTop if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedTop = { ("0") : plan} | merge(orderedTop) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+{% for plan in bottomPlans %}
+    {% set added = false %}
+
+    {% if orderedBottom | length == 0 %}
+        {% set added = true %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedBottom if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedBottom = { ("0") : plan} | merge(orderedBottom) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+
+
+
 
 <main id="main" class="site-main u-margin-bottom-60" role="main" data-test="paywall">
     
@@ -28,7 +105,7 @@
 
 
     <section class="paywall-banner">
-        <div class="paywall-banner__content container-fluid u-padding-bottom-20">
+        <div class="paywall-banner__content container u-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
                     <h1 class="paywall-banner__headline">Daily insights <br class="d-none d-sm-block" />direct to your inbox.</h1>
@@ -38,8 +115,7 @@
 
             <div class="row">
 
-            {% for i in 0..1 %}
-                {% set plan = plans[i] %}
+            {% for plan in orderedTop %}
 
 
             {# {% for plan in plans %} #}
@@ -50,8 +126,15 @@
                 {% endif %}
 
 
-                <div class="col-md-4 col-lg-3 paywall-plan">
-                    <div class="paywall-plan-card">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 paywall-plan">
+                    <div class="paywall-plan-card u-mobile-margin-top-10">
+                        <div class="paywall-plan-card__best-value">
+                            <div class="paywall-plan-card__ribbon"></div>
+                            <div class="paywall-plan-card__best-value-container">
+                                <p class="paywall-plan-card__best-value-label">BEST VALUE</p>
+                                <p class="paywall-plan-card__best-value-amount">SAVE $345</p>
+                            </div>
+                        </div>
                         {% set val = plan.plan_value / 100 %}
                         {# <h3 class="paywall-plan__name">{{plan.plan_name}}</h3> #}
                         <p class="paywall-plan-card__period">{{period}}</p>
@@ -95,24 +178,24 @@
 
 
     <div class="paywall-offers u-padding-bottom-30">
-        <div class="container-fluid">
+        <div class="container">
             <h1 class="paywall-offers__title">What you get with Newsroom Pro</h1>
             <section class="row paywall-offers__container">
-                <div class="col-lg-3 col-md-6 paywall-offers-card ">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
-                    <p class="paywall-offers-card__p">A daily morning email of news and insights curated by managing editor Bernard Hickey</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">A daily morning email of news and insights curated by managing editor Bernard Hickey</p>
                 </div>
-                <div class="col-lg-3 col-md-6  paywall-offers-card">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
-                    <p class="paywall-offers-card__p">Pro email breaking news alerts</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">Pro email breaking news alerts</p>
                 </div>
-                <div class="col-lg-3 col-md-6  paywall-offers-card">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
                 </div>
-                <div class="col-lg-3 col-md-6  paywall-offers-card">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
                 </div>
 
             </section>
@@ -139,7 +222,7 @@
 
                 <h1 class="offset-lg-1 col-md-10 paywall__corporate-header u-desktop-margin-top-50 u-mobile-margin-top-20">Choose the subscription that's right for you:</h1>  
 
-                {% for plan in plans %}
+                {% for plan in orderedBottom %}
                     {# {% set log = _AppHelper.log(plan) %} #}
                     {% set period = "Monthly" %}
                     {% if plan.period == "year" %}
@@ -147,8 +230,8 @@
                     {% endif %}
 
 
-                    <div class="col-md-4 col-lg-4 paywall-plan">
-                        <div class="paywall-plan-card-2">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 paywall-plan">
+                        <div class="paywall-plan-card-2  u-mobile-margin-top-10">
                             {% set val = plan.plan_value / 100 %}
                             <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
                             <p class="paywall-plan-card-2__period">{{period}}</p>
@@ -245,6 +328,7 @@
 
 
         $('#corporate-plans').on('click', function(e) {
+            e.preventDefault();
             var parent = $(this).parent();
             parent.toggleClass('u-hide');
             $("#corporate-plans-container").toggleClass('u-hide');
