@@ -45,7 +45,7 @@
         height: 343px;
         box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
         border: solid 1px #eeeeee;
-        
+        position:relative;
 
         @media #{$desktop-up} {
             // min-height: 326px;
@@ -56,12 +56,97 @@
         }
 
         @media #{$mobile} {
-            height:200px;
+            height:220px;
             margin-right:30px;
         }
 
 
+        &__best-value {
+            @include flexbox();
+            @include align-items(center);
+            padding:0 18px;
+            position:absolute;
+            width:100%;
+            @media #{$mobile} {
+                padding:0 2px;
+                @include align-items(flex-start);
+            }
 
+        }
+        &__best-value-container {
+            @include flexbox();
+            @include flex-direction(row);
+            flex:2;
+            @media #{$mobile} {
+                @include flex-direction(column);
+                @include align-items(flex-start);
+                padding-top:7px;
+            }
+
+        }
+
+        &__best-value-label {
+            @include font-size(14);
+            font-weight:600;
+            color: #e22f22;
+            margin-left:10px;
+            @media #{$tablet} {
+                @include font-size(12);
+            }
+            @media #{$mobile} {
+                @include font-size(10);
+                margin-left:5px;
+            }
+
+        }
+        &__best-value-amount {
+            @include font-size(14);
+            font-weight:600;
+            color: #e22f22;
+            margin-left:auto;
+            @media #{$tablet} {
+                @include font-size(12);
+            }
+            @media #{$mobile} {
+                @include font-size(10);
+                margin-left:5px;
+            }
+
+
+        }
+
+        &__ribbon {
+            width:28px;
+            height:33px;
+            background-color:#e22f22;
+            position:relative;
+
+            &:before{
+                content: '';
+                position: absolute;
+                z-index: 2;
+                left: 0;
+                bottom: -14px;
+                border-left: 14px solid #e22f22;
+                border-right: 14px solid #e22f22;
+                border-bottom: 14px solid transparent;
+            }
+
+            @media #{$mobile} {
+                width:18px;
+                height:25px;
+                &:before{
+                    bottom: -9px;
+                    border-left: 9px solid #e22f22;
+                    border-right: 9px solid #e22f22;
+                    border-bottom: 9px solid transparent;    
+                }
+    
+            }
+    
+    
+
+        }
 
         &__period {
             font-family: $font-family-sans-serif;
@@ -81,7 +166,7 @@
 
 
             @media #{$tablet} {
-                margin-top:15px;
+                margin-top:25px;
                 @include font-size(15);
                 &:after {
                     width:27px;
@@ -438,12 +523,12 @@
     }
 
     &-card {
-        margin-top:55px;
         text-align:center;
         display: flex;
         @include flex-direction(column);
     
         @media #{$tablet} {
+            margin-top:55px;
             @include flex-direction(row);
         }
         @media #{$mobile} {
@@ -457,7 +542,7 @@
             align-self: flex-start;
     
             &__mail {
-                height: 79px;
+                height: 72px;
                 @media #{$tablet} {
                     height: 65px;
                     margin-right:25px;
@@ -518,8 +603,7 @@
             @include font-size(20);
             text-align: left;
 
-            
-    
+
             &:before {
                 content: "";
                 display:block;
@@ -527,7 +611,33 @@
                 height:2px;
                 background-color:#979797;
                 margin-bottom:15px;
-                margin-top:10px;
+                margin-top:11px;
+            }
+
+
+            @media #{$desktop-up} {
+                &-mail {
+                    &:before {
+                        margin-bottom:13px;
+                    }
+                }
+                &-alert {
+                    &:before {
+                        margin-bottom:23px;
+                    }
+                }
+                &-access {
+                    &:before {
+                        margin-bottom:23px;
+                    }
+
+                }
+                &-users {
+                    &:before {
+                        margin-bottom:18px;
+                    }
+
+                }
             }
 
             @media #{$tablet} {
@@ -787,8 +897,8 @@
         font-family: $base-font-family;
         @include font-size(68);
         font-weight:700;
-        margin-bottom:25px;
-        line-height: 0.89;
+        margin-bottom:15px;
+        line-height: 1.03;
         @media #{$tablet} {
             @include font-size(40);
             line-height: 0.89;

@@ -15102,6 +15102,11 @@ input[type=radio].inline {
       line-height: 1.05rem;
       line-height: 1.29; } }
 
+.subscribe-form-head__line-break {
+  width: 49px;
+  height: 2px;
+  background-color: #979797; }
+
 .subscribe-progress {
   display: -webkit-box;
   display: -webkit-flex;
@@ -17851,14 +17856,117 @@ body.channel, body.section {
     background: #ffffff;
     height: 343px;
     box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
-    border: solid 1px #eeeeee; }
+    border: solid 1px #eeeeee;
+    position: relative; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-plan-card {
         height: 270px; } }
     @media screen and (max-width: 767px) {
       .paywall-plan-card {
-        height: 200px;
+        height: 220px;
         margin-right: 30px; } }
+    .paywall-plan-card__best-value {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center;
+      padding: 0 18px;
+      position: absolute;
+      width: 100%; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__best-value {
+          padding: 0 2px;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          -webkit-align-items: flex-start;
+          -moz-align-items: flex-start;
+          align-items: flex-start; } }
+    .paywall-plan-card__best-value-container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      flex: 2; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__best-value-container {
+          -webkit-box-direction: normal;
+          -webkit-box-orient: vertical;
+          -webkit-flex-direction: column;
+          -moz-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          -webkit-align-items: flex-start;
+          -moz-align-items: flex-start;
+          align-items: flex-start;
+          padding-top: 7px; } }
+    .paywall-plan-card__best-value-label {
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      font-weight: 600;
+      color: #e22f22;
+      margin-left: 10px; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__best-value-label {
+          font-size: 0.75rem;
+          line-height: 0.9rem; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__best-value-label {
+          font-size: 0.625rem;
+          line-height: 0.75rem;
+          margin-left: 5px; } }
+    .paywall-plan-card__best-value-amount {
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      font-weight: 600;
+      color: #e22f22;
+      margin-left: auto; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__best-value-amount {
+          font-size: 0.75rem;
+          line-height: 0.9rem; } }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__best-value-amount {
+          font-size: 0.625rem;
+          line-height: 0.75rem;
+          margin-left: 5px; } }
+    .paywall-plan-card__ribbon {
+      width: 28px;
+      height: 33px;
+      background-color: #e22f22;
+      position: relative; }
+      .paywall-plan-card__ribbon:before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        bottom: -14px;
+        border-left: 14px solid #e22f22;
+        border-right: 14px solid #e22f22;
+        border-bottom: 14px solid transparent; }
+      @media screen and (max-width: 767px) {
+        .paywall-plan-card__ribbon {
+          width: 18px;
+          height: 25px; }
+          .paywall-plan-card__ribbon:before {
+            bottom: -9px;
+            border-left: 9px solid #e22f22;
+            border-right: 9px solid #e22f22;
+            border-bottom: 9px solid transparent; } }
     .paywall-plan-card__period {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       font-size: 1.125rem;
@@ -17876,7 +17984,7 @@ body.channel, body.section {
         margin: 13px auto; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-plan-card__period {
-          margin-top: 15px;
+          margin-top: 25px;
           font-size: 0.9375rem;
           line-height: 1.125rem; }
           .paywall-plan-card__period:after {
@@ -18193,7 +18301,6 @@ body.channel, body.section {
         line-height: 1.95rem;
         margin-top: 10px; } }
   .paywall-offers-card {
-    margin-top: 55px;
     text-align: center;
     display: flex;
     -webkit-box-direction: normal;
@@ -18204,6 +18311,7 @@ body.channel, body.section {
     flex-direction: column; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-offers-card {
+        margin-top: 55px;
         -webkit-box-direction: normal;
         -webkit-box-orient: horizontal;
         -webkit-flex-direction: row;
@@ -18222,7 +18330,7 @@ body.channel, body.section {
     .paywall-offers-card__img {
       align-self: flex-start; }
       .paywall-offers-card__img__mail {
-        height: 79px; }
+        height: 72px; }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .paywall-offers-card__img__mail {
             height: 65px;
@@ -18275,7 +18383,16 @@ body.channel, body.section {
         height: 2px;
         background-color: #979797;
         margin-bottom: 15px;
-        margin-top: 10px; }
+        margin-top: 11px; }
+      @media screen and (min-width: 992px) {
+        .paywall-offers-card__p-mail:before {
+          margin-bottom: 13px; }
+        .paywall-offers-card__p-alert:before {
+          margin-bottom: 23px; }
+        .paywall-offers-card__p-access:before {
+          margin-bottom: 23px; }
+        .paywall-offers-card__p-users:before {
+          margin-bottom: 18px; } }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-offers-card__p:before {
           margin-bottom: 7px;
@@ -18437,8 +18554,8 @@ body.channel, body.section {
     font-size: 4.25rem;
     line-height: 5.1rem;
     font-weight: 700;
-    margin-bottom: 25px;
-    line-height: 0.89; }
+    margin-bottom: 15px;
+    line-height: 1.03; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-banner__headline {
         font-size: 2.5rem;
@@ -27091,11 +27208,44 @@ body.channel.supporters p {
   font-size: 0.5625rem;
   line-height: 0.675rem; }
 
+.u-font-style-italic {
+  font-style: italic; }
+
 .u-font-tinos {
   font-family: "tinos", Helvetica, Arial, sans-serif; }
 
 .u-font-source {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+
+.u-opacity-1 {
+  opacity: .1; }
+
+.u-opacity-2 {
+  opacity: .2; }
+
+.u-opacity-3 {
+  opacity: .3; }
+
+.u-opacity-4 {
+  opacity: .4; }
+
+.u-opacity-5 {
+  opacity: .5; }
+
+.u-opacity-6 {
+  opacity: .6; }
+
+.u-opacity-7 {
+  opacity: .7; }
+
+.u-opacity-8 {
+  opacity: .8; }
+
+.u-opacity-9 {
+  opacity: .9; }
+
+.u-opacity-10 {
+  opacity: 1; }
 
 .divide {
   margin-top: 32px;
