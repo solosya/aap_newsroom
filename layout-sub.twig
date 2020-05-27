@@ -377,6 +377,8 @@
                     {% if plan != false %}
                         <h2 class="plan-type__header">Order Summary</h2>
                         <div class="plan-type__body">
+                            {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
+                            
 
                             {% set val = plan.plan_value / 100 %}
                             <div class="col-12">	
@@ -390,7 +392,7 @@
                             <div class="col-12">
                                 <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
                                 <ul class="plan-type__features">
-                                    {{plan.description | raw }}
+                                    {{description | raw }}
                                 </ul>
                             </div>
 
