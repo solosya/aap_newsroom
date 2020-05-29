@@ -16,11 +16,18 @@
         {% set description = plan.description | split("!*!") %}
         {% set placement = description[0] | split(":") %}
         {% set plan = plan | merge({ ("order") : placement[1]}) %}
+        {% if placement[2] is defined and placement[2] == 'best' and placement[3] is defined %}
+            {% set plan = plan | merge({ ("best") : 'true'}) %}
+            {% set plan = plan | merge({ ("save") : placement[3]}) %}
+        {% endif %}
+
         {% if placement[0] == 'top' %}
             {% set topPlans = topPlans | merge({ ("0") : plan}) %}
         {% else %}
             {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
         {% endif %}
+
+
     {% endif %} 
 {% endfor %}
 
@@ -128,13 +135,16 @@
 
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 paywall-plan">
                     <div class="paywall-plan-card u-mobile-margin-top-10">
+                        
+                        {% if plan.best is defined and plan.best == 'true' %}
                         <div class="paywall-plan-card__best-value">
                             <div class="paywall-plan-card__ribbon"></div>
                             <div class="paywall-plan-card__best-value-container">
                                 <p class="paywall-plan-card__best-value-label">BEST VALUE</p>
-                                <p class="paywall-plan-card__best-value-amount">SAVE $345</p>
+                                <p class="paywall-plan-card__best-value-amount">SAVE ${{plan.save}}</p>
                             </div>
                         </div>
+                        {% endif %}
                         {% set val = plan.plan_value / 100 %}
                         {# <h3 class="paywall-plan__name">{{plan.plan_name}}</h3> #}
                         <p class="paywall-plan-card__period">{{period}}</p>
