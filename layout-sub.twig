@@ -87,7 +87,7 @@
     <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
     <div id="paywallsubscribe" class="u-hide" ></div>
 
-    <div class="paywall__header">
+    <div class="paywall__header" style="border-bottom: solid 1px #979797">
         <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
             <div class="o-arrow2__container">
                 <div class="o-arrow2"> 
@@ -339,7 +339,7 @@
                                 <p class="u-font-weight-bold">Before you go – let us know who you’d like to add as your bonus subscriber</p>
 
                                 <p class="subscribe-form-head__text u-margin-top-20">
-                                    Enter the email and the name of the person you would like to share your subscription with. They will be notified by email and asked to varify their access.
+                                    Enter the email and the name of the person you would like to share your subscription with. They will be notified by email and asked to verify their access.
                                 </p>
                                 <div class="subscribe-form-head__line-break u-margin-top-20"></div>
                                 <p class="subscribe-form-head__text u-margin-top-15">
@@ -377,6 +377,8 @@
                     {% if plan != false %}
                         <h2 class="plan-type__header">Order Summary</h2>
                         <div class="plan-type__body">
+                            {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
+                            
 
                             {% set val = plan.plan_value / 100 %}
                             <div class="col-12">	
@@ -390,7 +392,7 @@
                             <div class="col-12">
                                 <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
                                 <ul class="plan-type__features">
-                                    {{plan.description | raw }}
+                                    {{description | raw }}
                                 </ul>
                             </div>
 
