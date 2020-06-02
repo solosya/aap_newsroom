@@ -216,7 +216,7 @@
                                     {% if trial and plan.type == 'time' %}
                                         <div class="button-set c-checkbox u-margin-bottom-15">
                                             <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
-                                            <label class="c-checkbox__label" for="changeterms">
+                                            <label class="c-checkbox__label paywall__form-label" for="changeterms">
                                                 <span class="c-checkbox__button"></span>
                                                 I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period and can cancel my paid subscription at any time in My Account page. A payment reminder will be emailed 7 days before the end of the free trial period.
                                             </Label>
@@ -226,9 +226,9 @@
 
                                     <div class="button-set c-checkbox u-margin-bottom-15">
                                         <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
-                                        <label class="c-checkbox__label u-padding-top-3" for="terms">
+                                        <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="terms">
                                             <span class="c-checkbox__button"></span>
-                                            I agree to the Newsroom <a class="account-form__cblabel account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
+                                            I agree to the Newsroom <a class="account-form__label account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
                                         </label>
                                     </div>
 
@@ -289,7 +289,7 @@
 
                                 <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="summary-email" name="group[1149][2]" type="checkbox" class="c-checkbox__input" checked />
-                                    <label class="c-checkbox__label u-padding-top-3" for="summary-email">
+                                    <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="summary-email">
                                         <span class="c-checkbox__button"></span>
                                         Send me Bernard Hickey's <i>8 Things</i><br class="d-block d-sm-none" /> email each day
                                     </label>
@@ -297,7 +297,7 @@
 
                                 <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="breaking-email" name="group[1149][1]" type="checkbox" class="c-checkbox__input" checked />
-                                    <label class="c-checkbox__label u-padding-top-3" for="breaking-email">
+                                    <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="breaking-email">
                                         <span class="c-checkbox__button"></span>
                                         Send me breaking news alerts <br class="d-block d-sm-none" />(on average once a month)
                                     </label>
@@ -383,17 +383,17 @@
                             {% set val = plan.plan_value / 100 %}
                             <div class="col-12">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
-                                <p class="plan-type__users">{{plan.user_count}} Users</p>
+                                <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
                                 <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
                             </div>
                             <div class="col-12">
                                 <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
                             </div>
                             <div class="col-12">
-                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
-                                <ul class="plan-type__features">
+                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10 u-text-left">What's included in your subscription:</p>
+                                <div class="plan-type__features paywall__plan-features">
                                     {{description | raw }}
-                                </ul>
+                                </div>
                             </div>
 
                             <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/pro#subscriptions">Change subscription</a>

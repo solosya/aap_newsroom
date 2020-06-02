@@ -109,7 +109,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         if (checkTerms) {
             if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
                 this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
-                this.confirmView.render("terms", "Terms of use");
+                this.confirmView.render("terms", "Almost there");
             }
         }
     };

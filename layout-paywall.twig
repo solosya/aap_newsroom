@@ -104,6 +104,9 @@
                 <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
             </picture>
         </a>
+
+        <button id="signinBtn" type="submit" class="_btn _btn--black  paywall__signin">SIGN IN</button>
+
         <a class="paywall__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
             <div class="o-close paywall__close-icon"></div>
         </a>
@@ -201,11 +204,11 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Exclusive and unlimited access to content on Newsroom Pro</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Business subscribers get access to our media monitoring service, which covers dozens of sectors</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Bonus subscription for collegue or a friend</p>
                 </div>
 
             </section>
@@ -259,7 +262,7 @@
 
                             {% if plan.trial_status == "1" %}
                                 {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
-                                <p class="paywall-plan-card-2__trial">includes <br class="d-lg-none"/>{{plan.trial_period}}-day free trial</p>
+                                <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
                             {% endif %}
 
                             <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribe?plan={{plan.guid}}">START MY SUBSCRIPTION</a>

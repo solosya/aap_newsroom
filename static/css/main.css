@@ -9006,6 +9006,12 @@ section.subscribe {
               .site-footer .footer-btm .rooms-link > ul li a img {
                 height: 15px; } }
 
+.squeeze-footer {
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.85); }
+  .squeeze-footer__logo {
+    background-image: url("../images/paywall.jpg"); }
+
 .section-menu .menu-mobile {
   display: none; }
   @media screen and (max-width: 1120px) {
@@ -18209,9 +18215,18 @@ body.channel, body.section {
       .paywall__logo-image {
         margin-left: 20px; } }
 
+.paywall__signin {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  height: 33px;
+  width: 140px;
+  line-height: 33px;
+  margin-left: auto;
+  font-weight: 300; }
+
 .paywall__close {
   display: block;
-  margin-left: auto;
+  margin-left: 20px;
   width: 25px;
   height: 25px;
   margin-right: 25px; }
@@ -18224,10 +18239,11 @@ body.channel, body.section {
       height: 20px; } }
 
 .paywall__corporate-link {
-  font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.875rem;
   line-height: 2.25rem;
-  color: #e22f22; }
+  color: #e22f22;
+  font-weight: 600; }
   @media screen and (max-width: 767px) {
     .paywall__corporate-link {
       font-size: 1rem;
@@ -18267,13 +18283,22 @@ body.channel, body.section {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   line-height: 3rem;
-  font-weight: 700; }
+  font-weight: 700;
+  text-align: center; }
   @media screen and (max-width: 767px) {
     .paywall__corporate-header {
       font-size: 1.625rem;
       line-height: 1.95rem;
       font-weight: 600;
       line-height: 1.08; } }
+
+.paywall__form-label {
+  font-size: 1rem;
+  line-height: 1.2rem; }
+
+.paywall__plan-features {
+  font-size: 1.0625rem;
+  line-height: 1.275rem; }
 
 .paywall-offers {
   display: -webkit-box;
@@ -18373,6 +18398,7 @@ body.channel, body.section {
             margin-right: 30px; } }
     .paywall-offers-card__p {
       margin-right: 20px;
+      letter-spacing: 0.7px;
       font-size: 1.25rem;
       line-height: 1.5rem;
       text-align: left; }
@@ -18500,6 +18526,7 @@ body.channel, body.section {
 .paywall-faq__answer {
   font-size: 1.125rem;
   line-height: 1.35rem;
+  line-height: 24px;
   color: #696969; }
   @media screen and (max-width: 767px) {
     .paywall-faq__answer {
@@ -27290,6 +27317,9 @@ hr.u-row-extend {
 
 .u-text-center {
   text-align: center; }
+
+.u-text-left {
+  text-align: left; }
 
 .u-uppercase {
   text-transform: uppercase; }
