@@ -240,15 +240,20 @@
 
 
 
-    {{ this.render('partials/footer.twig', {
-        networkData : networkData, 
-        headerMenu  : menuItems, 
-        pageClass   : blogName,
-        roomInfo    : roomInfo,
-        submenu     : submenu,
-        rooms       : rooms,
-        paywallSection : paywallSection
-    }) | raw }}
+    {% if not squeeze %}
+        {{ this.render('partials/footer.twig', {
+            networkData : networkData, 
+            headerMenu  : menuItems, 
+            pageClass   : blogName,
+            roomInfo    : roomInfo,
+            submenu     : submenu,
+            rooms       : rooms,
+            paywallSection : paywallSection
+        }) | raw }}
+    {% else %}
+        <div class="squeeze-footer"></div>
+    {% endif %}
+
 
 
     {{ this.render('partials/_javascript.twig', {
