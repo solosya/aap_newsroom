@@ -458,7 +458,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('#cancelAccount').on('click', function(e) {
-
+        e.preventDefault();
         var listelem = $(e.target).closest('li');
 
         var status = 'cancelled';
