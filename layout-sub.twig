@@ -196,7 +196,7 @@
 
                                 {# <form action="" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15"> #}
                                     <div class="form-row ">
-                                        <p class="stripe-form__p u-margin-top-30">Please enter your credit or debit card details. </p>
+                                        <p class="stripe-form__p u-margin-top-30 paywall__form-label">Please enter your credit or debit card details. </p>
 
                                         <div id="card-element" class="u-margin-top-10">
                                         <!-- a Stripe Element will be inserted here. -->
@@ -205,7 +205,7 @@
                                         <!-- Used to display form errors -->
                                         <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
 
-                                        <p class="stripe-form__p u-margin-top-10">All credit card payments are processed by Stripe. 
+                                        <p class="stripe-form__p u-margin-top-10 paywall__form-label">All credit card payments are processed by Stripe. 
                                             <a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a>
                                         </p>
 
@@ -228,7 +228,7 @@
                                         <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
                                         <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="terms">
                                             <span class="c-checkbox__button"></span>
-                                            I agree to the Newsroom <a class="account-form__label account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
+                                            I agree to the Newsroom <a class=" account-form__label--red" href="{{networkData.defaultBlogUrl}}/privacy-policy" target="_blank">Privacy and Cancellation Policy</a>
                                         </label>
                                     </div>
 

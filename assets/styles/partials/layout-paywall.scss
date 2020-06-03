@@ -532,6 +532,9 @@
 
     &__form-label {
         @include font-size(16);
+        @media #{$mobile} {
+            @include font-size(12);
+        }
     }
     &__plan-features {
         @include font-size(17);
