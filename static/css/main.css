@@ -17898,6 +17898,9 @@ body.channel, body.section {
       padding: 0 18px;
       position: absolute;
       width: 100%; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card__best-value {
+          padding: 0 16px 0 6px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__best-value {
           padding: 0 2px;
@@ -17980,7 +17983,7 @@ body.channel, body.section {
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-plan-card__ribbon {
           width: 18px;
-          height: 25px; }
+          height: 20px; }
           .paywall-plan-card__ribbon:before {
             bottom: -9px;
             border-left: 9px solid #e22f22;
@@ -18098,6 +18101,10 @@ body.channel, body.section {
     box-shadow: 6px 8px 11px -2px rgba(175, 175, 175, 0.15);
     background-color: #e9e9e9;
     height: 343px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-plan-card-2 {
+        min-height: 240px;
+        max-height: 240px; } }
     @media screen and (max-width: 767px) {
       .paywall-plan-card-2 {
         min-height: 250px;
@@ -18117,6 +18124,10 @@ body.channel, body.section {
         width: 37px;
         background-color: #979797;
         margin: 13px auto; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card-2__name {
+          font-size: 1.125rem;
+          line-height: 1.35rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__name {
           font-size: 1.125rem;
@@ -18134,6 +18145,13 @@ body.channel, body.section {
       text-transform: uppercase;
       font-weight: 600;
       color: black; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card-2__period {
+          margin-top: 0;
+          font-size: 0.75rem;
+          line-height: 0.9rem; }
+          .paywall-plan-card-2__period:after {
+            width: 24px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__period {
           margin-top: 0;
@@ -18158,6 +18176,11 @@ body.channel, body.section {
       line-height: 5.7rem;
       margin-bottom: 18px;
       font-weight: 300; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card-2__price {
+          font-size: 2.5rem;
+          line-height: 3rem;
+          margin-bottom: 10px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__price {
           font-size: 2.5rem;
@@ -18167,6 +18190,10 @@ body.channel, body.section {
       font-size: 1.4375rem;
       line-height: 1.725rem;
       font-weight: 700; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card-2__trial {
+          font-size: 1rem;
+          line-height: 1.2rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__trial {
           font-size: 1rem;
@@ -18190,6 +18217,13 @@ body.channel, body.section {
       min-height: 64px;
       font-weight: 700;
       margin-top: auto; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-plan-card-2__subscribe-button {
+          min-height: 45px;
+          max-height: 45px;
+          font-size: 0.75rem;
+          line-height: 0.9rem;
+          font-weight: 700; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card-2__subscribe-button {
           min-height: 45px;
@@ -18284,6 +18318,11 @@ body.channel, body.section {
   line-height: 1.8rem;
   font-weight: 600;
   text-align: center; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall__contact-text {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+      text-align: left; } }
   @media screen and (max-width: 767px) {
     .paywall__contact-text {
       font-size: 1rem;
@@ -18311,6 +18350,10 @@ body.channel, body.section {
   line-height: 3rem;
   font-weight: 700;
   text-align: center; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall__corporate-header {
+      font-size: 2rem;
+      line-height: 2.4rem; } }
   @media screen and (max-width: 767px) {
     .paywall__corporate-header {
       font-size: 1.625rem;
