@@ -9007,10 +9007,23 @@ section.subscribe {
                 height: 15px; } }
 
 .squeeze-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
   height: 100px;
   background-color: rgba(0, 0, 0, 0.85); }
-  .squeeze-footer__logo {
-    background-image: url("../images/paywall.jpg"); }
 
 .section-menu .menu-mobile {
   display: none; }
@@ -17866,7 +17879,7 @@ body.channel, body.section {
     position: relative; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-plan-card {
-        height: 270px; } }
+        height: 231px; } }
     @media screen and (max-width: 767px) {
       .paywall-plan-card {
         height: 220px;
@@ -17990,11 +18003,11 @@ body.channel, body.section {
         margin: 13px auto; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-plan-card__period {
-          margin-top: 25px;
-          font-size: 0.9375rem;
-          line-height: 1.125rem; }
+          margin-top: 21px;
+          font-size: 0.75rem;
+          line-height: 0.9rem; }
           .paywall-plan-card__period:after {
-            width: 27px; } }
+            width: 21px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__period {
           margin-top: 10px;
@@ -18009,8 +18022,8 @@ body.channel, body.section {
       font-weight: 300; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-plan-card__price {
-          font-size: 3.4375rem;
-          line-height: 4.125rem; } }
+          font-size: 2.5rem;
+          line-height: 3rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__price {
           font-size: 2.5rem;
@@ -18022,8 +18035,8 @@ body.channel, body.section {
       margin: 0 5px; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-plan-card__trial {
-          font-size: 1.25rem;
-          line-height: 1.5rem; } }
+          font-size: 1rem;
+          line-height: 1.2rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__trial {
           font-size: 1rem;
@@ -18320,6 +18333,11 @@ body.channel, body.section {
     line-height: 3rem;
     margin-top: 30px;
     font-family: "tinos", Helvetica, Arial, sans-serif; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .paywall-offers__title {
+        font-size: 2rem;
+        line-height: 2.4rem;
+        margin-top: 10px; } }
     @media screen and (max-width: 767px) {
       .paywall-offers__title {
         font-size: 1.625rem;
@@ -18567,6 +18585,9 @@ body.channel, body.section {
   background-repeat: no-repeat;
   background-position: right;
   border-top: solid 1px #979797; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall-banner {
+      background-image: url("../images/paywall-tablet.jpg"); } }
   @media screen and (max-width: 767px) {
     .paywall-banner {
       background-image: none; } }
@@ -18585,10 +18606,10 @@ body.channel, body.section {
     line-height: 1.03; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-banner__headline {
-        font-size: 2.5rem;
-        line-height: 3rem;
-        line-height: 0.89;
-        margin-top: 15px;
+        font-size: 3rem;
+        line-height: 3.6rem;
+        line-height: 1.2;
+        margin-top: 45px;
         margin-bottom: 5px; } }
     @media screen and (max-width: 767px) {
       .paywall-banner__headline {
@@ -18604,9 +18625,10 @@ body.channel, body.section {
     margin-top: 20px; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-banner__tagline {
-        font-size: 1.125rem;
-        line-height: 1.35rem;
-        margin-top: 0; } }
+        font-size: 1.4375rem;
+        line-height: 1.725rem;
+        margin-top: 0;
+        width: 440px; } }
     @media screen and (max-width: 767px) {
       .paywall-banner__tagline {
         font-size: 0.9375rem;

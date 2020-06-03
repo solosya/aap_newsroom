@@ -52,7 +52,7 @@
         }
 
         @media #{$tablet} {
-            height:270px;
+            height:231px;
         }
 
         @media #{$mobile} {
@@ -166,10 +166,10 @@
 
 
             @media #{$tablet} {
-                margin-top:25px;
-                @include font-size(15);
+                margin-top:21px;
+                @include font-size(12);
                 &:after {
-                    width:27px;
+                    width:21px;
                 }
             }
 
@@ -189,7 +189,7 @@
             margin-bottom:18px;
             font-weight:300;
             @media #{$tablet} {
-                @include font-size(55);
+                @include font-size(40);
             }
             @media #{$mobile} {
                 @include font-size(40);
@@ -202,7 +202,7 @@
             font-weight:700;
             margin: 0 5px;
             @media #{$tablet} {
-                @include font-size(20);
+                @include font-size(16);
             }
 
             @media #{$mobile} {
@@ -535,6 +535,12 @@
         margin-top: 30px;
 
         font-family: $base-font-family;
+
+        @media #{$tablet} {
+            @include font-size(32);
+            margin-top:10px;
+        }
+
         @media #{$mobile} {
             @include font-size(26);
             margin-top:10px;
@@ -890,7 +896,7 @@
     // margin-top: 40px;
     @media #{$tablet} {
         // height:279px;
-        // background-image: url('../images/marketing-hero-tablet.png');
+        background-image: url('../images/paywall-tablet.jpg');
         
     }
     @media #{$mobile} {
@@ -922,9 +928,9 @@
         margin-bottom:15px;
         line-height: 1.03;
         @media #{$tablet} {
-            @include font-size(40);
-            line-height: 0.89;
-            margin-top:15px;
+            @include font-size(48);
+            line-height: 1.2;
+            margin-top:45px;
             margin-bottom:5px;
         }
         @media #{$mobile} {
@@ -942,8 +948,9 @@
         font-weight: 700; 
         margin-top:20px;
         @media #{$tablet} {
-            @include font-size(18);
+            @include font-size(23);
             margin-top:0;
+            width:440px;
         }
         @media #{$mobile} {
             @include font-size(15);
