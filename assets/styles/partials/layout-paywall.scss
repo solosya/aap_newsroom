@@ -61,7 +61,7 @@
             color: #e22f22;
             margin-left:10px;
             @media #{$tablet} {
-                @include font-size(12);
+                @include font-size(10);
             }
             @media #{$mobile} {
                 @include font-size(10);
@@ -75,7 +75,7 @@
             color: #e22f22;
             margin-left:auto;
             @media #{$tablet} {
-                @include font-size(12);
+                @include font-size(10);
             }
             @media #{$mobile} {
                 @include font-size(10);
@@ -101,6 +101,19 @@
                 border-right: 14px solid #e22f22;
                 border-bottom: 14px solid transparent;
             }
+
+            @media #{$tablet} {
+                width:18px;
+                height:25px;
+                &:before{
+                    bottom: -9px;
+                    border-left: 9px solid #e22f22;
+                    border-right: 9px solid #e22f22;
+                    border-bottom: 9px solid transparent;    
+                }
+    
+            }
+
 
             @media #{$mobile} {
                 width:18px;
