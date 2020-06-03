@@ -34149,7 +34149,7 @@ Acme.templates.spinner =
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
-Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red" data-role="okay">OK</button></form></div>';
 Acme.templates.ipnotice =  
     '<p class="ipdialog__p u-margin-bottom-20">You can access Pro under this subscription – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
     <div> \
@@ -35796,8 +35796,10 @@ Acme.Form = function(validators, rules) {
             var fieldname = this.validateFields[field].split('.').reverse()[0];
             var field = $('#'+fieldname);
             if (!field.length) {
-                // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
                 field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
+            }
+            if (!field.length) {
+                continue;
             }
             var fieldType = field[0].type;
             if (fieldType === 'hidden') continue;
@@ -37325,7 +37327,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         if (checkTerms) {
             if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
                 this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
-                this.confirmView.render("terms", "Terms of use");
+                this.confirmView.render("terms", "Almost there");
             }
         }
     };
@@ -37599,6 +37601,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         };
         for (var form of this.forms) {
             form.addClass('u-hide');
+            // form.removeClass('u-hide');
         };
         for (var label of this.labels) {
             label.removeClass('subscribe-progress__label--active');
@@ -38639,7 +38642,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('#cancelAccount').on('click', function(e) {
-
+        e.preventDefault();
         var listelem = $(e.target).closest('li');
 
         var status = 'cancelled';
