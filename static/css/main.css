@@ -18257,6 +18257,10 @@ body.channel, body.section {
   line-height: 2.25rem;
   color: #e22f22;
   font-weight: 600; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall__corporate-link {
+      font-size: 1.5rem;
+      line-height: 1.8rem; } }
   @media screen and (max-width: 767px) {
     .paywall__corporate-link {
       font-size: 1rem;
@@ -18438,9 +18442,12 @@ body.channel, body.section {
         .paywall-offers-card__p-users:before {
           margin-bottom: 18px; } }
       @media screen and (min-width: 768px) and (max-width: 991px) {
-        .paywall-offers-card__p:before {
-          margin-bottom: 7px;
-          margin-top: 0; } }
+        .paywall-offers-card__p {
+          font-size: 1.125rem;
+          line-height: 1.35rem; }
+          .paywall-offers-card__p:before {
+            margin-bottom: 7px;
+            margin-top: 0; } }
       @media screen and (max-width: 767px) {
         .paywall-offers-card__p {
           font-size: 0.875rem;
@@ -18506,7 +18513,14 @@ body.channel, body.section {
   font-size: 2.5rem;
   line-height: 3rem;
   font-weight: 600;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  text-align: center; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall-faq__title {
+      font-size: 2rem;
+      line-height: 2.4rem;
+      text-align: left;
+      margin-bottom: 26px; } }
   @media screen and (max-width: 767px) {
     .paywall-faq__title {
       font-size: 1.75rem;
@@ -18533,6 +18547,10 @@ body.channel, body.section {
   margin-bottom: 10px; }
   .paywall-faq__question--open {
     margin-top: 20px; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall-faq__question {
+      font-size: 1.375rem;
+      line-height: 1.65rem; } }
   @media screen and (max-width: 767px) {
     .paywall-faq__question {
       font-size: 1rem;
@@ -18546,6 +18564,10 @@ body.channel, body.section {
   line-height: 1.35rem;
   line-height: 24px;
   color: #696969; }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .paywall-faq__answer {
+      font-size: 1rem;
+      line-height: 1.2rem; } }
   @media screen and (max-width: 767px) {
     .paywall-faq__answer {
       font-size: 0.875rem;

@@ -450,6 +450,12 @@
         @include font-size(30);
         color: $brand-secondary;
         font-weight:600;
+
+        @media #{$tablet} {
+            @include font-size(24);
+            // width:500px;
+        }
+
         @media #{$mobile} {
             @include font-size(16);
             font-weight:600;
@@ -668,6 +674,8 @@
             }
 
             @media #{$tablet} {
+                @include font-size(18);
+
                 &:before {
                     margin-bottom:7px;
                     margin-top:0;
@@ -705,26 +713,6 @@
     background-color: #979797;
     margin-bottom: 40px;
 }
-
-
-
-
-// .section-title {
-//     >h1 {
-//         font-family: $base-font-family;
-//         @include font-size(40);
-//         text-align:left;
-//         font-weight:700;
-//         @media screen and (max-width: $mmd-break) {
-//             @include font-size(21);
-//             margin-top: 0;
-//         }
-//         @media screen and (max-width: $sm-break-down) {
-//             @include font-size(20);
-//         }
-
-//     }
-// }
 
 
 
@@ -784,6 +772,15 @@
         @include font-size(40);
         font-weight:600;
         margin-bottom:40px;
+        text-align:center;
+
+        @media #{$tablet} {
+            @include font-size(32);
+            text-align:left;
+            margin-bottom:26px;
+        }
+
+
 
         @media #{$mobile} {
             @include font-size(28);
@@ -823,6 +820,11 @@
             margin-top: 20px;
         }
 
+        @media #{$tablet} {
+            @include font-size(22);
+        }
+
+
         @media #{$mobile} {
             @include font-size(16);
         }
@@ -839,6 +841,11 @@
         @include font-size(18);
         line-height:24px;
         color: #696969;
+
+        @media #{$tablet} {
+            @include font-size(16);
+        }
+
         @media #{$mobile} {
             @include font-size(14);
         }
