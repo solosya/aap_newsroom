@@ -165,7 +165,7 @@
 
                         {% if plan.trial_status == "1" %}
                             {# {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %} #}
-                            <p class="paywall-plan-card__trial">includes {{plan.trial_period}}-day free trial</p>
+                            <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
                         {% endif %}
 
                         <a class="_btn--red paywall-plan-card__subscribe-button" href="{{subscribeLink}}">START MY SUBSCRIPTION</a>
