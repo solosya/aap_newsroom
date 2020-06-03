@@ -383,6 +383,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         };
         for (var form of this.forms) {
             form.addClass('u-hide');
+            // form.removeClass('u-hide');
         };
         for (var label of this.labels) {
             label.removeClass('subscribe-progress__label--active');

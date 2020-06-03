@@ -20,7 +20,7 @@
 {% set code = false %}
 {% set plan = false %}
 {% set trial = false %}
-{% set trialPeriod = '14' %} {# 14 days is default in the platform #}
+{% set trialPeriod = '' %} {# 14 days is default in the platform #}
 {% set buttonLabel = "SUBSCRIBE" %}
 
 {% set url = _AppHelper.getParsedUrl() %}
@@ -36,15 +36,6 @@
         {% endfor %}
     {% endif %}
 
-    {# If trial asked for in url, make sure it's set for the plan #}
-    {# {% if k == 'trial' %}
-        {% if p == 'true' and plan['trial_status'] == '1' %}
-            {% set trial = true %}
-            {% set trialPeriod = plan['trial_period'] %}
-            {% set buttonLabel = "START TRIAL NOW" %}
-
-        {% endif %}
-    {% endif %} #}
 
     {% if k == 'code' %}
         {% if p == 'true' %}
@@ -80,6 +71,27 @@
     {% endif %}
 
     {% set frequency = frequency ~ " " ~ planPeriod  %}
+
+
+    {% if "!*!" in plan.description %}
+        {# {% set log = _AppHelper.log(topPlans) %} #}
+
+        {% set description = plan.description | split("!*!") %}
+        {% set tags = description[0] | split(":") %}
+
+        {# {% set log = _AppHelper.log() %} #}
+        {% if tags[0] == 'bottom' %}
+            {% set plan = plan | merge({ "subscriber_type" : "corporate"}) %}
+        {% else %}
+            {% set plan = plan | merge({ "subscriber_type" : "household"}) %}
+        {% endif %}
+
+    {% endif %} 
+
+
+
+
+
 {% endif %}
 
 
@@ -135,7 +147,12 @@
                             <div class="subscribe-progress__label-container">
                                 <p id="label1" class="subscribe-progress__label subscribe-progress__label--active">Create an account</p>
                                 <p id="label2" class="subscribe-progress__label subscribe-progress__label--middle">Activate account</p>
-                                <p id="label3" class="subscribe-progress__label">Bonus + Complete</p>
+                                {% if plan.subscriber_type == "household" %}
+                                    <p id="label3" class="subscribe-progress__label">Bonus + Complete</p>
+                                {% else %}
+                                    <p id="label3" class="subscribe-progress__label">Add staff</p>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -329,6 +346,7 @@
                 {# ***********************************************************
                                         BONUS USER
                 *********************************************************** #}
+                {% if plan.subscriber_type == 'household' %}
                 <div id="userformview" class="u-hide u-margin-top-30">
                     <div class="row">
                         <div class="col-lg-12">
@@ -359,14 +377,48 @@
 
                                 <div class="flex-row u-margin-top-25">
                                     <button data-job="invite" type="submit" class="_btn _btn--black subscriptionPlan__button">Send invite</button>
-                                    <button data-job="skip" type="submit" class="_btn _btn--red subscriptionPlan__button">Skip &amp; finish</button>
                                     <a href="/auth/thank-you" data-job="skip" class="_btn _btn--red subscriptionPlan__button">Skip &amp; finish</a>
                                 </div>
                             </form>
                         </div>			
                     </div>
                 </div>
+                {% endif %}
 
+
+
+
+
+
+                {# ***********************************************************
+                                        Add staff
+                *********************************************************** #}
+                {% if plan.subscriber_type == 'corporate' %}
+
+                <div id="userformview" class="u-hide u-margin-top-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="subscribe-form-head">
+                                
+                                <h2 class="subscribe-form-head__title u-margin-top-15">Add staff to your subscription</h2>
+                                
+                                <p class="subscribe-form-head__text u-margin-top-20">
+                                    Add staff to your Newsroom subscription by submitting a list of their names and emails. Click the button to get started.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 u-margin-top-40">
+                            <div class="flex-row u-margin-top-25">
+                                <a href="#" class="_btn _btn--black subscriptionPlan__button">Send invite</a>
+                                <a href="/auth/thank-you" data-job="skip" class="_btn _btn--red subscriptionPlan__button">Skip &amp; finish</a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+                {% endif %}
 
 
 
@@ -397,7 +449,7 @@
                                 </div>
                             </div>
 
-                            <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/pro#subscriptions">Change subscription</a>
+                            <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/layout-paywall">Change subscription</a>
                         </div>
 
                     {# 	{{ this.render('partials/_plan-'~plan~'.twig', {
