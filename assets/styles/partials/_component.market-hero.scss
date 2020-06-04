@@ -6,6 +6,12 @@
     background-position: right;
     border-top:solid 1px #979797;
     margin-top: 40px;
+
+    @media #{$desktop} {
+        // height:279px;
+    }
+
+
     @media #{$tablet} {
         height:279px;
         background-image: url('../images/marketing-hero-tablet.png');
@@ -25,10 +31,22 @@
     @media #{$desktop-up} {
         height:785px;
     }
+    @media #{$desktop} {
+        height:400px;
+        background-size: contain;
+        background-image: url('../images/marketing-hero-tablet.png');
+    }
 } 
 .market-hero__content {
     padding-top:149px;
     height:100%;
+
+    &--thanks {
+        @media #{$desktop} {
+            padding-top:65px;
+        }
+    }
+
     @media #{$tablet} {
         padding-top:37px;
     }
