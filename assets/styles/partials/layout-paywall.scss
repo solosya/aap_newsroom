@@ -201,7 +201,8 @@
             @include flexbox();
             @include justify-content(center);
             @include align-items(center);
-            min-height:64px;
+            min-height:42px;
+            max-height:42px;
             margin-top:auto;
             font-weight:700;
 
@@ -356,7 +357,8 @@
             @include flexbox();
             @include justify-content(center);
             @include align-items(center);
-            min-height:64px;
+            min-height:42px;
+            max-height:42px;
             font-weight:700;
             margin-top:auto;
 
@@ -399,6 +401,8 @@
         height:65px;
         @media #{$mobile} {
             height:57px;
+            padding-left:15px;
+
         }
     }
 
@@ -432,6 +436,9 @@
         line-height:33px;
         margin-left:auto;
         font-weight:300;
+        @media #{$mobile} {
+            display:none;
+        }
 
     }
 
@@ -449,6 +456,7 @@
         @media #{$mobile} {
             width: 20px;
             height: 20px;
+            margin-left:auto;
         }
 
     }
@@ -482,10 +490,16 @@
         @include font-size(24);
         font-weight: 600;
         text-align:center;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
 
         @media #{$tablet} {
             @include font-size(24);
             text-align:left;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
         }
 
 
@@ -493,6 +507,9 @@
             @include font-size(16);
             font-weight:600;
             text-align:left;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
         }
 
         >a {
@@ -541,7 +558,8 @@
         }
     }
     &__plan-features {
-        @include font-size(17);
+        @include font-size(14);
+        line-height:1.46;
 
         > ul {
             padding-left:15px;
@@ -1004,7 +1022,8 @@
             width:440px;
         }
         @media #{$mobile} {
-            @include font-size(15);
+            @include font-size(18);
+            line-height:21px;
             font-weight: normal; 
         }
     }
