@@ -337,8 +337,8 @@
                         <div class="profile-section profile-section__managed-header">
 
                             {% set usersLeft = totalPlanUserCount > 0 ? totalPlanUserCount -1 : totalPlanUserCount %}
-                                <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{ usersLeft }} used.</span></p>
-                                <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUserCount + 1 >= totalPlanUserCount %} hidden{% endif %}">+ Add users</a>
+                            <p class="profile-section__heading">My Users <span class="profile-section__users-left">{{managedUserCount}} of {{totalPlanUserCount}} used.</span></p>
+                            <a id="addManagedUser" style="z-index:1000;" class="text-button text-button--italic u-float-right{% if managedUserCount + 1 >= totalPlanUserCount %} hidden{% endif %}">+ Add users</a>
                             </div>
 
                             {% if totalPlanUserCount > userLimit and managedUserCount >= userLimit %} 

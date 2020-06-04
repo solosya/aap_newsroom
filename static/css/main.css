@@ -10963,7 +10963,6 @@ input[type=radio].inline {
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .market-hero--thanks {
     height: 400px;
-    background-size: contain;
     background-image: url("../images/marketing-hero-tablet.png"); } }
 
 .market-hero__content {
@@ -18085,7 +18084,8 @@ body.channel, body.section {
       -webkit-align-items: center;
       -moz-align-items: center;
       align-items: center;
-      min-height: 64px;
+      min-height: 42px;
+      max-height: 42px;
       margin-top: auto;
       font-weight: 700; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -18230,7 +18230,8 @@ body.channel, body.section {
       -webkit-align-items: center;
       -moz-align-items: center;
       align-items: center;
-      min-height: 64px;
+      min-height: 42px;
+      max-height: 42px;
       font-weight: 700;
       margin-top: auto; }
       @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -18263,7 +18264,8 @@ body.channel, body.section {
   height: 65px; }
   @media screen and (max-width: 767px) {
     .paywall__header {
-      height: 57px; } }
+      height: 57px;
+      padding-left: 15px; } }
 
 .paywall__logo {
   display: -webkit-box;
@@ -18295,6 +18297,9 @@ body.channel, body.section {
   line-height: 33px;
   margin-left: auto;
   font-weight: 300; }
+  @media screen and (max-width: 767px) {
+    .paywall__signin {
+      display: none; } }
 
 .paywall__close {
   display: block;
@@ -18308,7 +18313,8 @@ body.channel, body.section {
   @media screen and (max-width: 767px) {
     .paywall__close {
       width: 20px;
-      height: 20px; } }
+      height: 20px;
+      margin-left: auto; } }
 
 .paywall__corporate-link {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -18333,18 +18339,27 @@ body.channel, body.section {
   font-size: 1.5rem;
   line-height: 1.8rem;
   font-weight: 600;
-  text-align: center; }
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .paywall__contact-text {
       font-size: 1.5rem;
       line-height: 1.8rem;
-      text-align: left; } }
+      text-align: left;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0; } }
   @media screen and (max-width: 767px) {
     .paywall__contact-text {
       font-size: 1rem;
       line-height: 1.2rem;
       font-weight: 600;
-      text-align: left; } }
+      text-align: left;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0; } }
   .paywall__contact-text > a {
     text-decoration: underline; }
 
@@ -18388,8 +18403,9 @@ body.channel, body.section {
       line-height: 0.9rem; } }
 
 .paywall__plan-features {
-  font-size: 1.0625rem;
-  line-height: 1.275rem; }
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  line-height: 1.46; }
   .paywall__plan-features > ul {
     padding-left: 15px;
     margin-top: 7px; }
@@ -18741,8 +18757,9 @@ body.channel, body.section {
         width: 440px; } }
     @media screen and (max-width: 767px) {
       .paywall-banner__tagline {
-        font-size: 0.9375rem;
-        line-height: 1.125rem;
+        font-size: 1.125rem;
+        line-height: 1.35rem;
+        line-height: 21px;
         font-weight: normal; } }
   .paywall-banner__button {
     font-weight: 500; }
