@@ -18336,6 +18336,8 @@ body.channel, body.section {
       line-height: 1.2rem;
       font-weight: 600;
       text-align: left; } }
+  .paywall__contact-text > a {
+    text-decoration: underline; }
 
 .paywall__close-corporate {
   font-size: 1.125rem;
@@ -18379,6 +18381,17 @@ body.channel, body.section {
 .paywall__plan-features {
   font-size: 1.0625rem;
   line-height: 1.275rem; }
+  .paywall__plan-features > ul {
+    padding-left: 15px;
+    margin-top: 7px; }
+    .paywall__plan-features > ul > li {
+      list-style: disc; }
+
+.paywall__stripe-card {
+  border: 1px solid #E5E5E5;
+  border-radius: 6px;
+  padding: 9px;
+  height: 44px; }
 
 .paywall-offers {
   display: -webkit-box;
@@ -18670,6 +18683,9 @@ body.channel, body.section {
   background-repeat: no-repeat;
   background-position: right;
   border-top: solid 1px #979797; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .paywall-banner {
+      background-image: url("../images/paywall-tablet-2.jpg?v=2"); } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .paywall-banner {
       background-image: url("../images/paywall-tablet-2.jpg?v=2"); } }
