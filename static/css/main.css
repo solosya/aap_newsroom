@@ -17765,7 +17765,7 @@ body.channel, body.section {
     .pro-offers-card__p {
       font-size: 0.75rem;
       line-height: 0.9rem; } }
-  @media screen and (min-width: 400px) and (max-width: 767px) {
+  @media screen and (min-width: 576px) and (max-width: 767px) {
     .pro-offers-card__p {
       font-size: 0.875rem;
       line-height: 1.05rem; } }
@@ -17895,10 +17895,14 @@ body.channel, body.section {
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-plan-card {
         height: 231px; } }
-    @media screen and (max-width: 767px) {
+    @media screen and (min-width: 576px) and (max-width: 767px) {
       .paywall-plan-card {
-        height: 220px;
-        margin-right: 30px; } }
+        height: 261px; } }
+    @media screen and (max-width: 575px) {
+      .paywall-plan-card {
+        height: 60vw;
+        margin-right: 30px;
+        margin-left: 30px; } }
     .paywall-plan-card__best-value {
       display: -webkit-box;
       display: -webkit-flex;
@@ -18042,6 +18046,9 @@ body.channel, body.section {
           line-height: 0.9rem; }
           .paywall-plan-card__period:after {
             width: 24px; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card__period {
+          font-size: 2.7vw; } }
     .paywall-plan-card__price {
       font-size: 4.75rem;
       line-height: 5.7rem;
@@ -18055,6 +18062,25 @@ body.channel, body.section {
         .paywall-plan-card__price {
           font-size: 2.5rem;
           line-height: 3rem; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card__price {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          flex-grow: 2;
+          font-size: 12vw; } }
     .paywall-plan-card__trial {
       font-size: 1.4375rem;
       line-height: 1.725rem;
@@ -18068,6 +18094,11 @@ body.channel, body.section {
         .paywall-plan-card__trial {
           font-size: 1rem;
           line-height: 1.2rem; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card__trial {
+          margin-bottom: 20px;
+          font-size: 4.5vw;
+          line-height: 5vw; } }
     .paywall-plan-card__subscribe-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -18119,13 +18150,15 @@ body.channel, body.section {
     height: 343px; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-plan-card-2 {
-        min-height: 240px;
-        max-height: 240px; } }
-    @media screen and (max-width: 767px) {
+        height: 231px; } }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
       .paywall-plan-card-2 {
-        min-height: 250px;
-        max-height: 250px;
-        margin-right: 30px; } }
+        height: 261px; } }
+    @media screen and (max-width: 575px) {
+      .paywall-plan-card-2 {
+        height: 60vw;
+        margin-right: 30px;
+        margin-left: 30px; } }
     .paywall-plan-card-2__name {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       text-transform: uppercase;
@@ -18175,6 +18208,9 @@ body.channel, body.section {
           line-height: 0.9rem; }
           .paywall-plan-card-2__period:after {
             width: 24px; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card-2__period {
+          font-size: 2.7vw; } }
     .paywall-plan-card-2__usercount {
       font-size: 1.125rem;
       line-height: 1.35rem;
@@ -18202,6 +18238,25 @@ body.channel, body.section {
           font-size: 2.5rem;
           line-height: 3rem;
           margin-bottom: 10px; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card-2__price {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          flex-grow: 2;
+          font-size: 12vw; } }
     .paywall-plan-card-2__trial {
       font-size: 1.4375rem;
       line-height: 1.725rem;
@@ -18214,6 +18269,11 @@ body.channel, body.section {
         .paywall-plan-card-2__trial {
           font-size: 1rem;
           line-height: 1.2rem; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card-2__trial {
+          margin-bottom: 20px;
+          font-size: 4.5vw;
+          line-height: 5vw; } }
     .paywall-plan-card-2__subscribe-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -18248,6 +18308,19 @@ body.channel, body.section {
           font-size: 0.75rem;
           line-height: 0.9rem;
           font-weight: 700; } }
+
+@media screen and (max-width: 575px) {
+  .paywall__top-plans {
+    background: white;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=0 );
+    /* IE6-9 */ } }
 
 .paywall__header {
   display: -webkit-box;
@@ -18389,6 +18462,7 @@ body.channel, body.section {
       line-height: 2.4rem; } }
   @media screen and (max-width: 767px) {
     .paywall__corporate-header {
+      text-align: left;
       font-size: 1.625rem;
       line-height: 1.95rem;
       font-weight: 600;
@@ -18447,7 +18521,7 @@ body.channel, body.section {
       .paywall-offers__title {
         font-size: 1.625rem;
         line-height: 1.95rem;
-        margin-top: 10px; } }
+        margin-top: 30px; } }
   .paywall-offers-card {
     text-align: center;
     display: flex;
@@ -26761,6 +26835,22 @@ body.channel.supporters p {
 
 .u-padding-bottom-40 {
   padding-bottom: 40px; }
+
+@media screen and (max-width: 767px) {
+  .u-mobile-padding-bottom-20 {
+    padding-bottom: 20px; } }
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .u-mobile-large-padding-bottom-20 {
+    padding-bottom: 20px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .u-tablet-padding-bottom-20 {
+    padding-bottom: 20px; } }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .u-dektop-padding-bottom-20 {
+    padding-bottom: 20px; } }
 
 @media screen and (max-width: 767px) {
   .u-mobile-no-margins {
