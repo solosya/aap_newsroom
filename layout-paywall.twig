@@ -115,7 +115,7 @@
 
 
     <section class="paywall-banner">
-        <div class="paywall-banner__content container u-padding-bottom-20">
+        <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
                     <h1 class="paywall-banner__headline">Daily insights <br class="d-none d-sm-block" />direct to your inbox.</h1>
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row paywall__top-plans">
 
             {% for plan in orderedTop %}
 
@@ -192,7 +192,7 @@
 
     <div class="paywall-offers u-padding-bottom-30">
         <div class="container">
-            <h1 class="paywall-offers__title">What you get with Newsroom Pro</h1>
+            <h1 class="paywall-offers__title">What you get with <br class="d-block d-sm-none" />Newsroom Pro</h1>
             <section class="row paywall-offers__container">
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
@@ -233,7 +233,7 @@
             <div id="corporate-plans-container" class="paywall__coporate-plans offset-lg-1 col-lg-10 u-hide">
                 <div class="row">
 
-                <h1 class="offset-lg-1 col-12 col-lg-10 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the subscription that's right for you:</h1>  
+                <h1 class="offset-lg-1 col-12 col-lg-10 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the subscription <br class="d-block d-sm-none" />that's right for you:</h1>  
 
                 {% for plan in orderedBottom %}
                     {# {% set log = _AppHelper.log(plan) %} #}
