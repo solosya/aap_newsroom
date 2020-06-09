@@ -37811,7 +37811,7 @@ if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
                     self.data['stripetoken'] = result.token.id;
                     self.data['planid'] = $('#planid').val();
                     self.data['redirect'] = false;
-                    // submitForm();
+                    submitForm();
                 }
             });   
         }
