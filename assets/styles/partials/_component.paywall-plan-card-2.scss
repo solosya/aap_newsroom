@@ -1,0 +1,192 @@
+.paywall-plan-card-2 {
+    @include flexbox();
+    @include flex-direction(column);
+
+    text-align:center;
+    box-shadow: 6px 8px 11px -2px rgba(175, 175, 175, 0.15);
+    background-color: #e9e9e9;
+    height: 343px;
+    
+
+    @media #{$desktop-up} {
+        // min-height: 326px;
+    }
+
+    @media #{$tablet} {
+        height:231px;
+    }
+
+    @media #{$mobile-large} {
+        height:261px;
+    }
+
+    @media #{$mobile-small} {
+        height:50vw;
+    } 
+    
+    &__name {
+        font-family: $font-family-sans-serif;
+        text-transform: uppercase;
+        margin-top:12px;
+
+        @include font-size(22);
+        font-weight:600;
+        
+        &:after {
+            content: "";
+            display:block;
+            height:1px;
+            width:37px;
+            background-color:#979797;
+            margin: 13px auto;
+        }
+
+        @media #{$tablet} {
+            @include font-size(18);
+        }
+
+        @media #{$mobile} {
+            @include font-size(18);
+            &:after {
+                height:2px;
+                width:24px;
+                background-color:#979797;
+                margin: 10px auto;
+            }
+
+        }
+        @media #{$mobile-small} {
+            font-size:4vw;
+        }
+
+    }
+
+    &__period {
+        font-family: $font-family-sans-serif;
+        @include font-size(18);
+        margin-top:3px;
+        text-transform: uppercase;
+        font-weight:600;
+        color: black;
+
+
+        @media #{$tablet} {
+            margin-top:0;
+            @include font-size(12);
+            &:after {
+                width:24px;
+            }
+        }
+
+
+        @media #{$mobile} {
+            margin-top:0;
+            @include font-size(12);
+            &:after {
+                width:24px;
+            }
+        }
+        @media #{$mobile-small} {
+            // font-size: calc(12px + 1vw);
+            font-size:2.7vw;
+            // @include responsive-font-size(12);
+        }
+
+    }
+
+
+    &__usercount {
+        @include font-size(18);
+        font-weight:600;
+        margin-top:3px;
+        color:black;
+        // @media #{$tablet} {
+        //     @include font-size(16);
+        //     margin-top:20px;
+        // }
+        @media #{$mobile} {
+            margin-bottom:10px;
+            @include font-size(14);
+            margin-top: 5px;
+        }
+    }
+
+    &__price {
+        @include font-size(76);
+        margin-bottom:18px;
+        font-weight:300;
+
+        @media #{$tablet} {
+            @include font-size(40);
+            margin-bottom:10px;
+        }
+
+        @media #{$mobile} {
+            @include font-size(60);
+            margin-bottom: 20px;
+            margin-top: 12px;
+        }
+        
+        @media #{$mobile-small} {
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(center);
+            flex-grow:2;
+            font-size: 11vw;
+            line-height:1.2;
+            margin-top: 0;
+            margin-bottom:5%;
+        }
+
+    }
+
+    &__trial {
+        @include font-size(23);
+        font-weight:700;
+        @media #{$tablet} {
+            @include font-size(16);
+        }
+        @media #{$mobile} {
+            @include font-size(18);
+        }
+        @media #{$mobile-small} {
+            margin-bottom:5%;
+            font-size: 3.5vw;
+            line-height: 4vw;
+        }
+
+    }
+    &__subscribe-button {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        min-height:42px;
+        max-height:42px;
+        font-weight:700;
+        margin-top:auto;
+
+
+        @media #{$tablet} {
+            min-height:45px;
+            max-height:45px;
+            @include font-size(12);
+            font-weight:700;
+        }
+
+        @media #{$mobile} {
+            min-height:45px;
+            max-height:45px;
+            @include font-size(12);
+            font-weight:700;
+        }
+
+        @media #{$mobile-small} {
+            min-height:7vw;
+            max-height:7vw;
+            font-size: 3vw;
+            font-weight:600;
+        }
+
+    }
+
+}
