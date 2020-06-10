@@ -118,28 +118,32 @@
         <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
-                    <h1 class="paywall-banner__headline">Daily insights <br class="d-none d-sm-block" />direct to your inbox.</h1>
+                    <h1 class="paywall-banner__headline">Daily insights <br class="d-sm-block" />direct to your inbox.</h1>
                     <h3 class="paywall-banner__tagline">In-depth analysis of politics and business <br />curated by Bernard Hickey.</h3>
                 </div>
             </div>
 
-            <div class="row paywall__top-plans">
+            <div class="row paywall__top-plans u-mobile-margin-top-10">
 
             {% for plan in orderedTop %}
-
-
+            
+            {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+        
             {# {% for plan in plans %} #}
                 {# {% set log = _AppHelper.log(plan) %} #}
                 {% set period = "Monthly" %}
                 {% if plan.period == "year" %}
                     {% set period = "Annual" %}
+                {% elseif plan.period == "week" %}
+                    {% set period = "Weekly" %}
                 {% endif %}
 
 
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 paywall-plan">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 paywall-plan {{paddingClass}}">
                     <div class="paywall-plan-card u-mobile-margin-top-10">
                         
                         {% if plan.best is defined and plan.best == 'true' %}
+
                         <div class="paywall-plan-card__best-value">
                             <div class="paywall-plan-card__ribbon"></div>
                             <div class="paywall-plan-card__best-value-container">
@@ -161,7 +165,7 @@
                         {% endif %}
 
                         {% set subscribeLink = networkData.defaultBlogUrl ~ "/layout-sub?plan="~ plan.guid %}
-                        {% set log = _AppHelper.log(subscribeLink) %}
+
 
                         {% if plan.trial_status == "1" %}
                             {# {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %} #}
@@ -243,7 +247,7 @@
                     {% endif %}
 
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 paywall-plan">
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 paywall-plan">
                         <div class="paywall-plan-card-2  u-mobile-margin-top-10">
                             {% set val = plan.plan_value / 100 %}
                             <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
@@ -326,7 +330,7 @@
                     <div class="paywall-faq__container">
                         <p class="paywall-faq__question u-font-bold">Do you have discounts for group subscriptions?</p>
                         <div class="paywall-faq__answer-container u-hide">
-                            <p class="paywall-faq__answer">Yes, we do. We’ve got a variety of corporate subscription packages for companies big and small. For more information on what we offer click here (link to corporate subs page).</p>
+                            <p class="paywall-faq__answer">Yes, we do. We’ve got a variety of corporate subscription packages for companies big and small. See the link above for pay-monthly corporate and small business subscription options. For annual rates, or enterprise deals for businesses with 200+ staff, email <a href="mailto:pro@newsroom.co.nz">pro@newsroom.co.nz</a></p>
                         </div>
                     </div>
                     <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>

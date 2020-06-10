@@ -17882,9 +17882,7 @@ body.channel, body.section {
         height: 261px; } }
     @media screen and (max-width: 575px) {
       .paywall-plan-card {
-        height: 60vw;
-        margin-right: 30px;
-        margin-left: 30px; } }
+        height: 50vw; } }
     .paywall-plan-card__best-value {
       display: -webkit-box;
       display: -webkit-flex;
@@ -17904,7 +17902,7 @@ body.channel, body.section {
           padding: 0 16px 0 6px; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__best-value {
-          padding: 0 2px;
+          padding: 0 0;
           -webkit-box-align: start;
           -ms-flex-align: start;
           -webkit-align-items: flex-start;
@@ -17925,18 +17923,9 @@ body.channel, body.section {
       flex: 2; }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__best-value-container {
-          -webkit-box-direction: normal;
-          -webkit-box-orient: vertical;
-          -webkit-flex-direction: column;
-          -moz-flex-direction: column;
-          -ms-flex-direction: column;
-          flex-direction: column;
-          -webkit-box-align: start;
-          -ms-flex-align: start;
-          -webkit-align-items: flex-start;
-          -moz-align-items: flex-start;
-          align-items: flex-start;
-          padding-top: 7px; } }
+          position: absolute;
+          top: -19px;
+          left: -5px; } }
     .paywall-plan-card__best-value-label {
       font-size: 0.875rem;
       line-height: 1.05rem;
@@ -17949,8 +17938,8 @@ body.channel, body.section {
           line-height: 0.75rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__best-value-label {
-          font-size: 0.625rem;
-          line-height: 0.75rem;
+          font-size: 0.875rem;
+          line-height: 1.05rem;
           margin-left: 5px; } }
     .paywall-plan-card__best-value-amount {
       font-size: 0.875rem;
@@ -17964,8 +17953,8 @@ body.channel, body.section {
           line-height: 0.75rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__best-value-amount {
-          font-size: 0.625rem;
-          line-height: 0.75rem;
+          font-size: 0.875rem;
+          line-height: 1.05rem;
           margin-left: 5px; } }
     .paywall-plan-card__ribbon {
       width: 28px;
@@ -18042,8 +18031,10 @@ body.channel, body.section {
           line-height: 3rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__price {
-          font-size: 2.5rem;
-          line-height: 3rem; } }
+          font-size: 3.75rem;
+          line-height: 4.5rem;
+          margin-bottom: 20px;
+          margin-top: 12px; } }
       @media screen and (max-width: 575px) {
         .paywall-plan-card__price {
           display: -webkit-box;
@@ -18062,7 +18053,9 @@ body.channel, body.section {
           -moz-justify-content: center;
           justify-content: center;
           flex-grow: 2;
-          font-size: 12vw; } }
+          font-size: 11vw;
+          margin-top: 0;
+          margin-bottom: 5%; } }
     .paywall-plan-card__trial {
       font-size: 1.4375rem;
       line-height: 1.725rem;
@@ -18074,13 +18067,13 @@ body.channel, body.section {
           line-height: 1.2rem; } }
       @media screen and (max-width: 767px) {
         .paywall-plan-card__trial {
-          font-size: 1rem;
-          line-height: 1.2rem; } }
+          font-size: 1.125rem;
+          line-height: 1.35rem; } }
       @media screen and (max-width: 575px) {
         .paywall-plan-card__trial {
-          margin-bottom: 20px;
-          font-size: 4.5vw;
-          line-height: 5vw; } }
+          margin-bottom: 5%;
+          font-size: 3.5vw;
+          line-height: 4vw; } }
     .paywall-plan-card__subscribe-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -18114,6 +18107,13 @@ body.channel, body.section {
           font-size: 0.75rem;
           line-height: 0.9rem;
           font-weight: 700; } }
+      @media screen and (max-width: 575px) {
+        .paywall-plan-card__subscribe-button {
+          min-height: 7vw;
+          max-height: 7vw;
+          font-size: 0.75rem;
+          line-height: 0.9rem;
+          font-weight: 700; } }
   .paywall-plan-card-2 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -18138,9 +18138,7 @@ body.channel, body.section {
         height: 261px; } }
     @media screen and (max-width: 575px) {
       .paywall-plan-card-2 {
-        height: 60vw;
-        margin-right: 30px;
-        margin-left: 30px; } }
+        height: 60vw; } }
     .paywall-plan-card-2__name {
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
       text-transform: uppercase;
@@ -18295,11 +18293,11 @@ body.channel, body.section {
   .paywall__top-plans {
     background: white;
     /* Old browsers */
-    background: -moz-linear-gradient(top, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    background: -moz-linear-gradient(top, white 0%, white 50%, rgba(216, 216, 216, 0.3) 50%, rgba(216, 216, 216, 0.3) 100%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    background: -webkit-linear-gradient(top, white 0%, white 50%, rgba(216, 216, 216, 0.3) 50%, rgba(216, 216, 216, 0.3) 100%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, white 0%, white 30%, rgba(216, 216, 216, 0.3) 30%, rgba(216, 216, 216, 0.3) 100%);
+    background: linear-gradient(to bottom, white 0%, white 50%, rgba(216, 216, 216, 0.3) 50%, rgba(216, 216, 216, 0.3) 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=0 );
     /* IE6-9 */ } }
@@ -26820,7 +26818,11 @@ body.channel.supporters p {
 
 @media screen and (max-width: 767px) {
   .u-mobile-padding-bottom-20 {
-    padding-bottom: 20px; } }
+    padding-bottom: 20px; }
+  .u-mobile-padding-right-5 {
+    padding-right: 5px; }
+  .u-mobile-padding-left-5 {
+    padding-left: 5px; } }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
   .u-mobile-large-padding-bottom-20 {
