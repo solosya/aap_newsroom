@@ -240,14 +240,18 @@
                 <h1 class="offset-lg-1 col-12 col-lg-10 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the subscription <br class="d-block d-sm-none" />that's right for you:</h1>  
 
                 {% for plan in orderedBottom %}
-                    {# {% set log = _AppHelper.log(plan) %} #}
+                    {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+                    
                     {% set period = "Monthly" %}
                     {% if plan.period == "year" %}
                         {% set period = "Annual" %}
+                    {% elseif plan.period == "week" %}
+                        {% set period = "Weekly" %}
                     {% endif %}
 
 
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 paywall-plan">
+
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 paywall-plan {{paddingClass}}">
                         <div class="paywall-plan-card-2  u-mobile-margin-top-10">
                             {% set val = plan.plan_value / 100 %}
                             <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
