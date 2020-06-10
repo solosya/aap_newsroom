@@ -30,9 +30,7 @@
         }
 
         @media #{$mobile-small} {
-            height:60vw;
-            margin-right:30px;
-            margin-left:30px;
+            height:50vw;
         }       
 
         
@@ -48,7 +46,7 @@
             }
 
             @media #{$mobile} {
-                padding:0 2px;
+                padding:0 0;
                 @include align-items(flex-start);
             }
 
@@ -58,9 +56,9 @@
             @include flex-direction(row);
             flex:2;
             @media #{$mobile} {
-                @include flex-direction(column);
-                @include align-items(flex-start);
-                padding-top:7px;
+                position: absolute;
+                top: -19px;
+                left: -5px;
             }
 
         }
@@ -74,7 +72,7 @@
                 @include font-size(10);
             }
             @media #{$mobile} {
-                @include font-size(10);
+                @include font-size(14);
                 margin-left:5px;
             }
 
@@ -88,7 +86,7 @@
                 @include font-size(10);
             }
             @media #{$mobile} {
-                @include font-size(10);
+                @include font-size(14);
                 margin-left:5px;
             }
 
@@ -191,7 +189,9 @@
                 @include font-size(40);
             }
             @media #{$mobile} {
-                @include font-size(40);
+                @include font-size(60);
+                margin-bottom: 20px;
+                margin-top: 12px;
             }
             
             @media #{$mobile-small} {
@@ -199,7 +199,9 @@
                 @include align-items(center);
                 @include justify-content(center);
                 flex-grow:2;
-                font-size: 12vw;
+                font-size: 11vw;
+                margin-top: 0;
+                margin-bottom:5%;
             }
 
         }
@@ -213,12 +215,12 @@
             }
 
             @media #{$mobile} {
-                @include font-size(16);
+                @include font-size(18);
             }
             @media #{$mobile-small} {
-                margin-bottom:20px;
-                font-size: 4.5vw;
-                line-height: 5vw;
+                margin-bottom:5%;
+                font-size: 3.5vw;
+                line-height: 4vw;
             }
 
         }
@@ -244,6 +246,15 @@
                 @include font-size(12);
                 font-weight:700;
             }
+
+            @media #{$mobile-small} {
+                min-height:7vw;
+                max-height:7vw;
+                @include font-size(12);
+                font-weight:700;
+            }
+
+
         }
     }
 
@@ -273,8 +284,6 @@
 
         @media #{$mobile-small} {
             height:60vw;
-            margin-right:30px;
-            margin-left:30px;
         } 
         
         &__name {
