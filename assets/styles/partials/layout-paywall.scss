@@ -4,6 +4,10 @@
     @media #{$tablet} {
         margin-top:30px;
     }
+    @media #{$mobile-small} {
+        margin-top:50px;
+    }
+
 }
 
 
@@ -469,12 +473,16 @@
             margin-bottom:26px;
         }
 
-
-
         @media #{$mobile} {
+            text-align:left;
             @include font-size(28);
             margin-bottom:15px;
+        }
 
+        @media #{$mobile-small} {
+            text-align:left;
+            @include font-size(28);
+            margin-bottom:0;
         }
 
 
@@ -495,7 +503,7 @@
         }
 
         @media #{$mobile} {
-            align-items: flex-end;
+            // align-items: flex-end;
         }
 
     }

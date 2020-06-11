@@ -1,3 +1,6 @@
+
+$padding: 2.5vw;
+
 .paywall-plan-card-2 {
     @include flexbox();
     @include flex-direction(column);
@@ -13,17 +16,50 @@
     }
 
     @media #{$tablet} {
-        height:231px;
+        // height:231px;
+        min-height:239px;
+        max-height:239px;
+
     }
 
     @media #{$mobile-large} {
-        height:261px;
+        // height:261px;
+        min-height:291px;
+        max-height:291px;
+        margin-top:10px;
+
     }
 
     @media #{$mobile-small} {
-        height:50vw;
+        // height:30vw;
+        height:104px;
+        @include flex-direction(row);
+        text-align:left;
     } 
     
+
+    &__left {
+        @include flexbox();
+        @include flex-direction(column);
+
+        @media #{$mobile-small} {
+            flex-grow:2;
+            padding:$padding;
+        }
+
+    }
+
+    &__name-users-container {
+        @media #{$mobile-small} {
+            @include flexbox();
+            @include flex-direction(row);
+            position:absolute;
+            top:-23px;
+            margin-left:-$padding;
+        }
+    }
+
+
     &__name {
         font-family: $font-family-sans-serif;
         text-transform: uppercase;
@@ -43,6 +79,9 @@
 
         @media #{$tablet} {
             @include font-size(18);
+            &:after {
+                margin: 8px auto;
+            }
         }
 
         @media #{$mobile} {
@@ -56,7 +95,16 @@
 
         }
         @media #{$mobile-small} {
-            font-size:4vw;
+            // font-size:3.8vw;
+            @include font-size(15);
+            line-height:1.2;
+            margin-top:0;
+            color:#121212;
+            &:after {
+                content: "";
+                display:none;
+            }
+    
         }
 
     }
@@ -87,9 +135,22 @@
             }
         }
         @media #{$mobile-small} {
-            // font-size: calc(12px + 1vw);
-            font-size:2.7vw;
-            // @include responsive-font-size(12);
+            // font-size:2.7vw;
+            @include font-size(12);
+
+            margin-top: 7px;
+            margin-left: 7px;
+
+            &:after {
+                content: "";
+                display:block;
+                height:1px;
+                width:27px;
+                background-color:black;
+                margin-top: 7px;
+            }
+    
+
         }
 
     }
@@ -109,6 +170,24 @@
             @include font-size(14);
             margin-top: 5px;
         }
+
+        @media #{$mobile-small} {
+            margin-bottom:0;
+            margin-top: 0;
+            // font-size: 3.8vw;
+            @include font-size(15);
+            line-height:1.2;
+        }
+
+
+    }
+
+    &__price-period-container {
+        @media #{$mobile-small} {
+            @include flexbox();
+            @include flex-direction(row);
+        }
+
     }
 
     &__price {
@@ -123,19 +202,16 @@
 
         @media #{$mobile} {
             @include font-size(60);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             margin-top: 12px;
         }
         
         @media #{$mobile-small} {
-            @include flexbox();
-            @include align-items(center);
-            @include justify-content(center);
-            flex-grow:2;
-            font-size: 11vw;
-            line-height:1.2;
+            // font-size: 11vw;
+            @include font-size(40);
+            line-height:1;
             margin-top: 0;
-            margin-bottom:5%;
+            margin-bottom:0;
         }
 
     }
@@ -150,9 +226,11 @@
             @include font-size(18);
         }
         @media #{$mobile-small} {
-            margin-bottom:5%;
-            font-size: 3.5vw;
-            line-height: 4vw;
+            margin-top:10px;
+            // font-size: 3.5vw;
+            // line-height: 4vw;
+            @include font-size(14);
+            line-height: 1.14
         }
 
     }
@@ -181,10 +259,15 @@
         }
 
         @media #{$mobile-small} {
-            min-height:7vw;
-            max-height:7vw;
-            font-size: 3vw;
+            min-height:auto;
+            max-height:none;
+            margin-top:0;
+            // font-size: 3vw;
+            @include font-size(13);
+
             font-weight:600;
+            min-width:100px;
+            max-width:100px;
         }
 
     }
