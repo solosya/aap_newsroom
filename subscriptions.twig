@@ -251,29 +251,39 @@
 
 
 
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 paywall-plan {{paddingClass}}">
-                        <div class="paywall-plan-card-2  u-mobile-margin-top-10">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 paywall-plan">
+                        <div class="paywall-plan-card-2">
                             {% set val = plan.plan_value / 100 %}
-                            <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
-                            <p class="paywall-plan-card-2__period">{{period}}</p>
-                            
-                            {% if plan.type == 'time' and plan.user_count > 0 %}
-                                <p class="paywall-plan-card-2__usercount">{{plan.user_count}} Users</p>
-                            {% endif %}
-                            
-                            {% if plan.type != 'signup' %}
-                                <p class="paywall-plan-card-2__price">${{val}}</p>
-                            {% endif %}
+                            <div class="paywall-plan-card-2__left">
+                                <div class="paywall-plan-card-2__name-users-container">
+                                    <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
+                                    {% if plan.type == 'time' and plan.user_count > 0 %}
+                                        <p class="paywall-plan-card-2__usercount d-block d-sm-none">&nbsp;-&nbsp;{{plan.user_count}} Users</p>
+                                    {% endif %}
+                                </div>
+                                
+                                <p class="paywall-plan-card-2__period d-none d-sm-block">{{period}}</p>
+                                
+                                {% if plan.type == 'time' and plan.user_count > 0 %}
+                                    <p class="paywall-plan-card-2__usercount d-none d-sm-block">{{plan.user_count}} Users</p>
+                                {% endif %}
+                                
+                                {% if plan.type != 'signup' %}
+                                    <div class="paywall-plan-card-2__price-period-container">
+                                        <p class="paywall-plan-card-2__price">${{val}}</p>
+                                        <p class="paywall-plan-card-2__period d-block d-sm-none">{{period}}</p>
+                                    </div>
+                                {% endif %}
 
 
-                            {% set subscribeLink = "{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}" %}
+                                {% set subscribeLink = "{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}" %}
 
-                            {% if plan.trial_status == "1" %}
-                                {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
-                                <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
-                            {% endif %}
-
-                            <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}">START MY SUBSCRIPTION</a>
+                                {% if plan.trial_status == "1" %}
+                                    {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
+                                    <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
+                                {% endif %}
+                            </div>
+                            <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
                         </div>
                     </div>
                     
@@ -281,9 +291,9 @@
                 </div>
 
                     <a id="close-coporate" href="#" class="paywall__close-corporate u-margin-top-10">Close</a>
-                    <p class="paywall__contact-text u-margin-top-40 u-tablet-margin-top-60">
+                    {# <p class="paywall__contact-text u-margin-top-40 u-tablet-margin-top-60">
                         For information on annual billing or custom arrangements for enterprises with 200 + users, <a href="mailto:pro@newsroom.co.nz">please email us.</a>
-                    </p>
+                    </p> #}
             </div>
         </section>
 
