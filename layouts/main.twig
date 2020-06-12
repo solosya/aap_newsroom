@@ -57,12 +57,12 @@
 
         {% if not _User.isAdminUser() and paywallSection and showPaywall == true %}
             
-                {% set redir = _Page.setHttpRedirects(
+                {# {% set redir = _Page.setHttpRedirects(
                     {
-                        '|^/.*|': networkData.defaultBlogUrl ~ '/subscriptions',
+                        '|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',
                         
                     }, false) 
-                %} 
+                %}  #}
         {% endif %}
 
 
