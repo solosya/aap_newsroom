@@ -35799,6 +35799,9 @@ Acme.Form = function(validators, rules) {
                 // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
                 field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
             }
+            if (!field.length) {
+                continue;
+            }
             var fieldType = field[0].type;
             if (fieldType === 'hidden') continue;
             
@@ -37523,7 +37526,6 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         }
 
 
-        // http://www.publish.io/layout-sub?plan=684d45c0-4030-49f4-8cf8-0ba437dbb33c&step=3
 
         var validated = self.validate();
         self.render(true);
