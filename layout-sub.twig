@@ -74,18 +74,14 @@
 
 
     {% if "!*!" in plan.description %}
-        {# {% set log = _AppHelper.log(topPlans) %} #}
-
         {% set description = plan.description | split("!*!") %}
         {% set tags = description[0] | split(":") %}
 
-        {# {% set log = _AppHelper.log() %} #}
         {% if tags[0] == 'bottom' %}
             {% set plan = plan | merge({ "subscriber_type" : "corporate"}) %}
         {% else %}
             {% set plan = plan | merge({ "subscriber_type" : "household"}) %}
         {% endif %}
-
     {% endif %} 
 
 
@@ -391,6 +387,12 @@
                 *********************************************************** #}
                 {% if plan.subscriber_type == 'corporate' %}
 
+                    <script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        var JFL_201560736780052 = new JotformFeedback({ formId: '201560736780052', base: 'https://form.jotform.com/', windowTitle: 'Form', background: '#000000', fontColor: '#FFFFFF', type: '2', height: 500, width: 700, openOnLoad: false }); 
+                    </script>
+
+
                 <div id="userformview" class="u-hide u-margin-top-30">
                     <div class="row">
                         <div class="col-lg-12">
@@ -408,7 +410,8 @@
                     <div class="row">
                         <div class="col-lg-12 u-margin-top-40">
                             <div class="flex-row u-margin-top-25">
-                                <a href="https://form.jotform.com/201560736780052" class="_btn _btn--black subscriptionPlan__button" target="_blank">Add staff</a>
+                                {# <a href="https://form.jotform.com/201560736780052" class="_btn _btn--black subscriptionPlan__button" target="_blank">Add staff</a> #}
+                                <a href="#" class="_btn _btn--black subscriptionPlan__button lightbox-201560736780052" target="_blank">Add staff</a>
                                 <a href="/auth/thank-you" data-job="skip" class="_btn _btn--red subscriptionPlan__button">Skip &amp; finish</a>
                             </div>
                         </div>			
@@ -432,14 +435,13 @@
                             {% set val = plan.plan_value / 100 %}
                             <div class="col-12">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
-                                <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
+                                <p class="plan-type__users">{{plan.user_count}} Users</p>
                                 <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
                             </div>
                             <div class="col-12">
                                 <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
                             </div>
                             <div class="col-12">
-                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10 u-text-left">What's included in your subscription:</p>
                                 <div class="plan-type__features paywall__plan-features">
                                     {{description | raw }}
                                 </div>
@@ -461,6 +463,7 @@
 
 
     <script type="text/javascript">
+
         _linkedin_partner_id = "547636";
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
         window._linkedin_data_partner_ids.push(_linkedin_partner_id);
