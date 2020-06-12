@@ -12,16 +12,22 @@
     }
 
     .plan-type__body {
-        padding:30px 20px;
+        padding:20px 20px;
         text-align:center;
         overflow:auto;
+        @media #{$tablet} {
+            padding: 10px;
+        }
+
+
         @media #{$tablet} {
             padding-top: 10px;
         }
     }
 
     .plan-type__users {
-        @include font-size(13);
+        @include font-size(18);
+        margin-bottom:15px;
         font-family: $font-family-sans-serif;
         @media #{$mobile} {
             @include font-size(16);
@@ -29,10 +35,10 @@
     }
 
     .plan-type__name {
-        margin-top: -20px;
         color:color(red);
-        @include font-size(18);
+        @include font-size(20);
         font-weight:600;
+        margin-bottom:10px;
         letter-spacing: 0.4px;
         font-family: $font-family-sans-serif;
         @media #{$tablet} {

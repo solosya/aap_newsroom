@@ -1,0 +1,477 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set plans = networkData['paywallPlans'] %}
+
+
+{% set userid = "" %}
+{% set userguid = "" %}
+{% set user = _User.getUser() %}
+{# {% set log = _AppHelper.log(user) %} #}
+{% if user %} 
+    {% set userid = user['id'] %}
+    {% set userguid = user['guid'] %}
+{% endif %}
+
+
+
+
+
+
+{% set code = false %}
+{% set plan = false %}
+{% set trial = false %}
+{% set trialPeriod = '' %} {# 14 days is default in the platform #}
+{% set buttonLabel = "SUBSCRIBE" %}
+
+{% set url = _AppHelper.getParsedUrl() %}
+{% set params = url['query'] %}
+
+{% for k, p in params %}
+    {# Match the plan from the url #}
+    {% if k == 'plan' %}
+        {% for pl in plans %}
+            {% if pl.guid == p %}
+                {% set plan = pl %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+    {% if k == 'code' %}
+        {% if p == 'true' %}
+            {% set code = true %}
+        {% endif %}
+    {% endif %}
+
+
+{% endfor %}
+
+{% if plan != false  %}
+
+
+    {% if plan['trial_status'] == '1' %}
+        {% set trial = true %}
+        {% set trialPeriod = plan['trial_period'] %}
+        {# {% set buttonLabel = "START TRIAL NOW" %} #}
+    {% endif %}
+
+
+{# The first payment is due on DD Month 20XX unless cancelled. #}
+    {% set val = plan.plan_value / 100 %}
+    {% if val == 19.89 %}
+        {% set val = 19.90 %}
+    {% endif %}
+    {% set planPrice = plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"}) ~ val|number_format(2, '.', ',') %}
+
+    {% set frequency = plan.period_count > 1 ? plan.period_count : ""  %}
+
+    {% set planPeriod = plan.period %}
+    {% if plan.period_count > 1 %}
+        {% set planPeriod = plan.period ~ 's' %}
+    {% endif %}
+
+    {% set frequency = frequency ~ " " ~ planPeriod  %}
+
+
+    {% if "!*!" in plan.description %}
+        {% set description = plan.description | split("!*!") %}
+        {% set tags = description[0] | split(":") %}
+
+        {% if tags[0] == 'bottom' %}
+            {% set plan = plan | merge({ "subscriber_type" : "corporate"}) %}
+        {% else %}
+            {% set plan = plan | merge({ "subscriber_type" : "household"}) %}
+        {% endif %}
+    {% endif %} 
+
+
+
+
+
+{% endif %}
+
+
+<main id="main" class="" role="main" data-userid="{{userid}}" data-userguid="{{userguid}}">
+    <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
+    <div id="paywallsubscribe" class="u-hide" ></div>
+
+    <div class="paywall__header" style="border-bottom: solid 1px #979797">
+        <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-arrow2__container">
+                <div class="o-arrow2"> 
+                    <div class="o-arrow2__arrow"></div>
+                </div>
+            </div>
+            <picture>
+                <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+                <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
+            </picture>
+        </a>
+    </div>
+
+
+
+
+
+
+    <div class="container-fluid u-desktop-margin-top-80 u-tablet-margin-top-60 u-mobile-margin-top-50 u-margin-bottom-60">
+
+        <section class="row">
+
+            <div class="offset-lg-1 col-xl-6 col-lg-7 col-md-8">
+                
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% if plan == false  %}
+                            <h1>You need to choose a plan from the subscriptions screen</h1>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        
+
+                        <div id="progress" class="subscribe-progress">
+                            <div class="subscribe-progress__line-container">
+                                <div id="num1" class="subscribe-progress__number subscribe-progress__number--red">1</div>
+                                <div id="line1"class="subscribe-progress__line subscribe-progress__line--red"></div>
+                                <div id="line2"class="subscribe-progress__line"></div>
+                                <div id="num2" class="subscribe-progress__number">2</div>
+                                <div id="line3"class="subscribe-progress__line subscribe-progress__line--wide"></div>
+                                <div id="num3" class="subscribe-progress__number">3</div>
+                            </div>
+                            <div class="subscribe-progress__label-container">
+                                <p id="label1" class="subscribe-progress__label subscribe-progress__label--active">Create an account</p>
+                                <p id="label2" class="subscribe-progress__label subscribe-progress__label--middle">Activate account</p>
+                                {% if plan.subscriber_type == "household" %}
+                                    <p id="label3" class="subscribe-progress__label">Bonus + Complete</p>
+                                {% else %}
+                                    <p id="label3" class="subscribe-progress__label">Add staff</p>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                {# ***********************************************************
+                                        SUBSCRIBE FORM
+                *********************************************************** #}
+                <div id="signupformview" class="u-margin-top-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="subscribe-form-head">
+                                {% if trial %}
+                                    <h2 class="subscribe-form-head__title u-margin-top-15">Start your {{trialPeriod}}-day free trial now</h2>
+
+                                    <p class="subscribe-form-head__text">
+                                        The free trial requires registration with a valid credit card. <span>After {{trialPeriod}} days, 
+                                        your credit card will be charged {{planPrice}}</span> unless you cancel 
+                                        before the end of the trial. You will be emailed a reminder in advance. Subscriptions 
+                                        are billed {{planPeriod ~ "ly"}}.
+                                    </p>
+                                {% endif %}
+            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <form class="u-desktop-margin-top-40 u-tablet-margin-top-20 u-mobile-margin-top-20" action="" method="post" id="payment-form">
+
+                                <input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
+                                <input type="hidden" class="" name="trial" id="trial" value="{{trial}}">
+                                <input type="hidden" class="" name="plantype" id="plantype" value="{{plan.type}}">
+
+
+                                <input type="email" 	class="account-form__input u-margin-bottom-10" name="email" 			id="email" 			value="" placeholder="Email">
+                                <input type="email" 	class="u-hide" name="email-confirm" 	id="email-confirm" 	value="" placeholder="Confirm Email">
+
+
+                            {% if code %}
+                                <p class="account-form__section-label u-margin-top-40 u-mobile-bigger-margins-15">Redeem Code</p>
+                                <div class="form-row ">
+                                    <label for="code-redeem">
+                                    Gift code
+                                    </label>
+                                    <input type="text" class="articleExtendedData" name="code-redeem" id="code-redeem" value="" placeholder="0a1b-2c3d-4e5f">
+                                </div>
+
+                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">{{buttonLabel}}</button>
+                            </form>
+                            {% else %}
+
+                                {# <form action="" method="post" id="payment-form" class="stripe-form u-mobile-bigger-margins-15"> #}
+                                    <div class="form-row ">
+                                        <p class="stripe-form__p u-margin-top-30 paywall__form-label">Please enter your credit or debit card details. </p>
+
+                                        <div id="card-element" class="u-margin-top-10 paywall__stripe-card">
+                                        <!-- a Stripe Element will be inserted here. -->
+                                        </div>
+
+                                        <!-- Used to display form errors -->
+                                        <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
+
+                                        <p class="stripe-form__p u-margin-top-10 paywall__form-label">All credit card payments are processed by Stripe. 
+                                            <a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security">Learn more about Stripe’s security.</a>
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="u-margin-top-20"></div>
+                                    {% if trial and plan.type == 'time' %}
+                                        <div class="button-set c-checkbox u-margin-bottom-15">
+                                            <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
+                                            <label class="c-checkbox__label paywall__form-label" for="changeterms">
+                                                <span class="c-checkbox__button"></span>
+                                                I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period and can cancel my paid subscription at any time in My Account page.
+                                            </Label>
+                                        </div>
+                                    {% endif %}
+
+
+                                    <div class="button-set c-checkbox u-margin-bottom-15">
+                                        <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
+                                        <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="terms">
+                                            <span class="c-checkbox__button"></span>
+                                            I agree to the Newsroom <a class=" account-form__label--red" href="{{networkData.defaultBlogUrl}}/terms-and-conditions" target="_blank">Terms and Conditions</a>
+                                        </label>
+                                    </div>
+
+                                    {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
+                                    <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscribe-form__button">{{buttonLabel}}</button>
+                                
+                                </form>
+                            {% endif %}
+                        </div>			
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {# ***********************************************************
+                                        ACTIVATE FORM
+                *********************************************************** #}
+                <div id="activeformview" class="u-hide u-margin-top-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="subscribe-form-head">
+                                
+                                <h2 class="subscribe-form-head__title u-margin-top-15">Activate account</h2>
+
+                                <p class="u-font-weight-bold u-margin-top-20">You're almost set up - fill the fields below to complete your account activation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <form class="u-margin-top-40" action="" method="post" id="activate-form">
+
+                                <input type="text" 	class="account-form__input u-margin-bottom-10" name="firstname"         id="activate-firstname" 		value="" placeholder="First name">
+                                <input type="text" 	class="account-form__input u-margin-bottom-10" name="lastname"          id="activate-lastname" 			value="" placeholder="Last name">
+                                <input type="password"	class="account-form__input u-margin-bottom-10" name="password"      id="activate-password" 		    value="" placeholder="Password">
+                                <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
+                                    <p class="u-font-style-italic u-opacity-6">Passwords must be at least six characters</p>
+                                </div>
+                                <input type="password" id="activate-verifypassword" class="account-form__input u-margin-bottom-10" name="verifypassword" placeholder="Password verify">
+                                <input type="text" 	class="account-form__input u-margin-bottom-20" name="abn_business_name"      id="activate-organisation"      value="" placeholder="Organisation (optional)">
+
+
+                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                    <input id="summary-email" name="group[1149][2]" type="checkbox" class="c-checkbox__input" checked />
+                                    <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="summary-email">
+                                        <span class="c-checkbox__button"></span>
+                                        Send me Bernard Hickey's <i>8 Things</i><br class="d-block d-sm-none" /> email each day
+                                    </label>
+                                </div>
+
+                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                    <input id="breaking-email" name="group[1149][1]" type="checkbox" class="c-checkbox__input" checked />
+                                    <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="breaking-email">
+                                        <span class="c-checkbox__button"></span>
+                                        Send me breaking news alerts <br class="d-block d-sm-none" />
+                                    </label>
+                                </div>
+
+
+
+
+                                <button type="submit" class="_btn _btn--red u-margin-top-25 subscribe-form__button">Activate account</button>
+                            </form>                         
+                        </div>			
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {# ***********************************************************
+                                        BONUS USER
+                *********************************************************** #}
+                {% if plan.subscriber_type == 'household' %}
+                <div id="userformview" class="u-hide u-margin-top-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="subscribe-form-head">
+                                
+                                <h2 class="subscribe-form-head__title u-margin-top-15">Bonus Subscription</h2>
+                                
+                                <p class="u-font-weight-bold">Before you go – let us know who you’d like to add as your bonus subscriber</p>
+
+                                <p class="subscribe-form-head__text u-margin-top-20">
+                                    Enter the email and the name of the person you would like to share your subscription with. They will be notified by email and given instructions to set up their account.
+                                </p>
+                                <div class="subscribe-form-head__line-break u-margin-top-20"></div>
+                                <p class="subscribe-form-head__text u-margin-top-15">
+                                    You can do this any time by visiting the My Account section. For further information, please visit the FAQs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <form class="u-margin-top-40" action="" method="post" id="bonusform">
+                                <input type="email" 	class="account-form__input u-margin-bottom-10" name="email" 		id="managedemail"   value="" placeholder="Email">
+                                <input type="text" 	class="account-form__input u-margin-bottom-10" name="firstname"         id="firstname"      value="" placeholder="First name">
+                                <input type="text" 	class="account-form__input u-margin-bottom-10" name="lastname"          id="lastname"       value="" placeholder="Last name">
+
+                                <div class="flex-row u-margin-top-25">
+                                    <button data-job="invite" type="submit" class="_btn _btn--black subscribe-form__button">Send invite</button>
+                                    <a href="/auth/thank-you" data-job="skip" class="_btn _btn--red subscribe-form__button">Skip &amp; finish</a>
+                                </div>
+                            </form>
+                        </div>			
+                    </div>
+                </div>
+                {% endif %}
+
+
+
+
+
+
+                {# ***********************************************************
+                                        Add staff
+                *********************************************************** #}
+                {% if plan.subscriber_type == 'corporate' %}
+
+                    <script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        var JFL_201560736780052 = new JotformFeedback({ formId: '201560736780052', base: 'https://form.jotform.com/', windowTitle: 'Form', background: '#000000', fontColor: '#FFFFFF', type: '2', height: 500, width: 700, openOnLoad: false }); 
+                    </script>
+
+
+                <div id="userformview" class="u-hide u-margin-top-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="subscribe-form-head">
+                                
+                                <h2 class="subscribe-form-head__title u-margin-top-15">Add staff to your subscription</h2>
+                                
+                                <p class="subscribe-form-head__text u-margin-top-20">
+                                    Add staff to your Newsroom subscription by submitting a list of their names and emails. Click the button to get started.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 u-margin-top-40">
+                            <div class="flex-row u-margin-top-25">
+                                {# <a href="https://form.jotform.com/201560736780052" class="_btn _btn--black subscribe-form__button" target="_blank">Add staff</a> #}
+                                <a href="#" class="_btn _btn--black subscribe-form__button lightbox-201560736780052">Add staff</a>
+                                <a href="/auth/thank-you" data-job="skip" class="_btn _btn--red subscribe-form__button">Skip &amp; finish</a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+                {% endif %}
+
+
+
+            </div>
+
+            <div class="offset-xl-1 col-xl-3 col-lg-4 col-md-4 u-mobile-margin-top-60 u-mobile-no-padding">
+                <div class="plan-type">
+
+                    {% if plan != false %}
+                        <h2 class="plan-type__header">Order Summary</h2>
+                        <div class="plan-type__body">
+                            {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
+                            
+
+                            {% set val = plan.plan_value / 100 %}
+                            <div class="col-12">	
+                                <h3 class="plan-type__name">{{plan.plan_name}}</h3>
+                                <p class="plan-type__users">{{plan.user_count}} Users</p>
+                                <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
+                            </div>
+                            <div class="col-12">
+                                <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
+                            </div>
+                            <div class="col-12">
+                                <div class="plan-type__features paywall__plan-features">
+                                    {{description | raw }}
+                                </div>
+                            </div>
+
+                            <a id="changeplan" class="plan-type__link" href="{{networkData.defaultBlogUrl}}/prosubscribe">Change subscription</a>
+                        </div>
+
+                    {# 	{{ this.render('partials/_plan-'~plan~'.twig', {
+                            networkData: networkData, 
+                        }) | raw }} #}
+
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+
+
+    <script type="text/javascript">
+
+        _linkedin_partner_id = "547636";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+
+        (function(){var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript";b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);})();
+    </script>
+</main>

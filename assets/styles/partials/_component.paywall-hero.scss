@@ -1,51 +1,37 @@
-.market-hero {
-    height:596px;
-    background-image: url('../images/marketing-hero-desk.png');
+.paywall-hero {
+    background-image: url('../images/paywall.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
     border-top:solid 1px #979797;
     margin-top: 40px;
-
-    @media #{$desktop} {
-        // height:279px;
-    }
-
-
     @media #{$tablet} {
-        height:279px;
-        background-image: url('../images/marketing-hero-tablet.png');
+        // height:279px;
+        // background-image: url('../images/marketing-hero-tablet.png');
         
     }
+    @media #{$mobile} {
+        background-image: none;
+    }
+
     @media screen and (max-width: $sm-break-down) {
-        height:320px;
+        // height:320px;
         margin-bottom: 150px;
-        background-image: url('../images/marketing-hero-mobile2.png');
+        // background-image: url('../images/marketing-hero-mobile2.png');
         background-position: top;
         margin-top: 125px;
     }
     
 }   
 
-.market-hero--thanks {
+.paywall-hero--thanks {
     @media #{$desktop-up} {
         height:785px;
     }
-    @media #{$desktop} {
-        height:400px;
-        background-image: url('../images/marketing-hero-tablet.png');
-    }
 } 
-.market-hero__content {
+.paywall-hero__content {
     padding-top:149px;
     height:100%;
-
-    &--thanks {
-        @media #{$desktop} {
-            padding-top:65px;
-        }
-    }
-
     @media #{$tablet} {
         padding-top:37px;
     }
@@ -57,7 +43,7 @@
 }
 
 
-.market-hero__headline {
+.paywall-hero__headline {
     font-family: $base-font-family;
     @include font-size(82);
     font-weight:700;
@@ -72,7 +58,7 @@
         margin-bottom: 5px;
     }
 }
-.market-hero__tagline {
+.paywall-hero__tagline {
     font-family: $font-family-sans-serif;
     @include font-size(25);
     font-weight: 600; 
@@ -91,7 +77,7 @@
     }
 }
 
-.market-hero__button {
+.paywall-hero__button {
     font-weight: 500;
     @media #{$tablet} {
         height: 30px;
@@ -105,11 +91,11 @@
         line-height: 35px;
     }
 }
-.market-hero__button__subscribe {
+.paywall-hero__button__subscribe {
     float: left;
 }
 
-.market-hero__button__trial {
+.paywall-hero__button__trial {
     margin-left: 35px;
     &:hover {
         color: #fff;
@@ -120,7 +106,7 @@
     }
 }
 
-.market-hero__email {
+.paywall-hero__email {
     &a,>a{
         text-decoration: underline;
     }

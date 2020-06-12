@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open" : "cypress open"
+    "cypress:open": "cypress open"
   },
   "author": "",
   "license": "ISC",
@@ -23,5 +23,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "gulp-terser": "^1.2.0"
+  }
 }

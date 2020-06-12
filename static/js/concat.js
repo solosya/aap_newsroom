@@ -34149,7 +34149,7 @@ Acme.templates.spinner =
 
 Acme.templates.spinnerTmpl = '<div class="spinner"></div>';
 
-Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red">Okay</button></form></div>';
+Acme.templates.subscribeTerms =  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red" data-role="okay">OK</button></form></div>';
 Acme.templates.ipnotice =  
     '<p class="ipdialog__p u-margin-bottom-20">You can access Pro under this subscription – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \
     <div> \
@@ -35783,12 +35783,35 @@ Acme.IPNotice = function(template, parent, layouts) {
     Base Class for all Forms
 ***                              ****/
 Acme.Form = function(validators, rules) {
+    this.data;
     this.errorField;
     this.validators = validators || null;
     this.validateRules = rules || {};
 };
     Acme.Form.prototype = new Acme._View();
     Acme.Form.constructor = Acme.Form;
+    Acme.Form.prototype.loadData = function()
+    {
+        for (var field in this.validateFields) {
+            var fieldname = this.validateFields[field].split('.').reverse()[0];
+            var field = $('#'+fieldname);
+            if (!field.length) {
+                // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
+                field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
+            }
+            var fieldType = field[0].type;
+            if (fieldType === 'hidden') continue;
+            
+            if (fieldType === 'checkbox') {
+                // console.log(field[0].checked);
+                this.data[fieldname] = field[0].checked;
+            } else {
+                this.data[fieldname] = field.val();
+            }
+            // console.log(fieldname);
+            // console.log(field[0].type);
+        }
+    };
     Acme.Form.prototype.clearInlineErrors = function()
     {
         if (this.errorField) {
@@ -35796,7 +35819,12 @@ Acme.Form = function(validators, rules) {
         }
         for (var field in this.validateFields) {
             var fieldname = this.validateFields[field].split('.').reverse()[0];
-            $('#'+fieldname).removeClass('formError');
+            var field = $('#'+fieldname);
+            if (!field.length) {
+                // console.log('#'+ this.id + ' input[name="'+this.errorFields[field] + '"]');
+                field = $('#'+ this.id + ' input[name="'+this.errorFields[field] + '"]');
+            }
+            field.removeClass('formError');
         }
     };
     Acme.Form.prototype.addInlineErrors = function()
@@ -35805,11 +35833,21 @@ Acme.Form = function(validators, rules) {
             this.errorField.addClass('active');
         }
         for (var field in this.errorFields) {
-            $('#'+this.errorFields[field]).addClass('formError');
+            var field = $('#'+this.errorFields[field]);
+
+            if (!field.length) {
+                // console.log('#'+ this.id + ' input[name="'+this.errorFields[field] + '"');
+                field = $('#'+ this.id + ' input[name="'+this.errorFields[field] + '"');
+            }
+            field.addClass('formError');
         }
     };
-
+    Acme.Form.prototype.render = function() {
+        this.clearInlineErrors();
+        this.addInlineErrors();
+    };
     Acme.Form.prototype.validate = function( /* Array */ checkFields)  {
+        // console.log(checkFields);
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
 
@@ -35826,6 +35864,7 @@ Acme.Form = function(validators, rules) {
 
         var validated = true, fields = [];
         if (checkFields && this.validateFields) {
+            console.log('checkfields exists');
             var fields = intersect(this.validateFields, checkFields);
             for (var j=0; j<fields.length;j++) {
                 var fieldName = fields[j].split('.').reverse()[0];
@@ -35835,10 +35874,12 @@ Acme.Form = function(validators, rules) {
             }
         } else {
             var fields = this.validateFields || [];
+            console.log(fields);
             this.errorFields = []; // reset and re-calcuate all fields
         }
         for (var i=0;i<fields.length; i++) {
             var key = fields[i];
+            // console.log(key);
             var keySplit = key.split('.');
             var scope = this.data;
             for(var j=0; j<keySplit.length; j++) {
@@ -35853,13 +35894,15 @@ Acme.Form = function(validators, rules) {
                 }
                 scope = scope[keySplit[j]];
             }
-
+            // console.log('doing the validate');
             // DO THE VALIDATE!!!
             var fieldValidators = this.validateRules[key];
             if (fieldValidators.length > 0) {
 
                 var fieldname = fields[i].split('.').reverse()[0];
+                // console.log(fieldname);
                 for (var k=0; k<fieldValidators.length; k++) {
+                    // console.log(scope);
                     if ( !this.validators[ fieldValidators[k] ](scope) ) {
                         this.errorFields.push(fieldname); 
                         // console.log(this.errorFields);
@@ -35872,6 +35915,45 @@ Acme.Form = function(validators, rules) {
         return validated;
     };
 
+    Acme.Form.prototype.events = function( /* Array */ checkFields)  {
+        var self = this;
+        // console.log('running events from parent');
+        // console.log(this.id);
+        // console.log($("#"+this.id));
+        // console.log('#'+this.id +' input, #'+this.id +' textarea');
+        $('#'+this.id +' input, #'+this.id +' textarea').on("change", function(e) {
+        // $('input, textarea').on("change", '#'+this.id, function(e) {
+                console.log('input changing');
+            e.stopPropagation();
+            e.preventDefault();
+            var data = {};
+            var elem = $(e.target);
+            var elemid = elem.attr('name');
+            var inputType = elem.attr('type');
+
+            if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
+                data[elemid] = elem.val();
+
+            } else if (inputType =='checkbox') {
+                var value = elem.is(":checked");
+                data[elemid] = value;
+            }
+
+            self.updateData(data);
+
+            var validated = self.validate([elemid]);
+            self.render();
+        });
+
+        var form = document.getElementById(this.id);
+        if (form != null) {
+            form.addEventListener('submit', function(event) {
+                self.submit(event);
+            });
+        }
+
+
+    }
 
 
 
@@ -37135,9 +37217,420 @@ $('a.j-register').on('click', function(e) {
 // Create a Stripe client
 var botTimer = 0;
 
-if ($('#stripekey').length > 0) {
+if ($('#stripekey').length && $('#paywallsubscribe').length) {
+
+    console.log('running from signup code');
+
+    var stripekey = $('#stripekey').html();
+
+    var stripe = Stripe(stripekey);
+
+    setInterval(function(){
+        botTimer = botTimer + 1;
+    }, 1000);
+
+    // Create an instance of Elements
+    var elements = stripe.elements();
+
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+        base: {
+            color: '#32325d',
+            lineHeight: '24px',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    // Create an instance of the card Element
+    var card = elements.create('card', {style: style});
+
+    // Add an instance of the card Element into the `card-element` <div>
+    var cardElement = document.getElementById('card-element');
+    if (cardElement != null) {
+        card.mount('#card-element');
+    }
+
+    // Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    }); 
+
+    // Handle form submission
+
+    var SubscribeForm = function(id, user) {
+        this.id = id || null;
+        this.parent = Acme.Form.prototype;
+
+        this.data = {
+            "firstname": "firstName",
+            "password": this.random(25),
+            "username": this.random(15),
+            "user_id": user.user_id,
+            "user_guid": user.user_guid
+        };
 
 
+        this.errorFields = [];
+
+        this.validateRules = {
+            "email"             : ["notEmpty"],
+            "trial"             : [],
+            "terms"             : ["isTrue"],
+        };
+
+        var trial = $('#trial').val();
+        this.data['plantype'] = $('#plantype').val();
+
+        // console.
+        if (trial == "1" && this.data.plantype === 'time') {
+            this.data['trial'] = 'true';
+            this.validateRules['changeterms'] = ["isTrue"];
+        }
+        this.validateFields = Object.keys(this.validateRules);
+        this.loadData();
+        this.events();
+    };
+
+    SubscribeForm.prototype = new Acme.Form(Acme.Validators);
+    SubscribeForm.constructor = SubscribeForm;
+
+    SubscribeForm.prototype.random = function(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    };
+    SubscribeForm.prototype.render = function(checkTerms) 
+    {
+        this.clearInlineErrors();
+        this.addInlineErrors();
+        if (checkTerms) {
+            if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
+                this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+                this.confirmView.render("terms", "Almost there");
+            }
+        }
+    };
+
+
+
+    SubscribeForm.prototype.submit = function(event) 
+    {
+        var self = this;
+        event.preventDefault();
+        var validated = self.validate();
+        self.render(true);
+        if (!validated) return;
+
+        if (botTimer < 5 || $('#email-confirm').val() !== "") {
+            window.location.href = location.origin + "/auth/thank-you";
+        }
+
+    // var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+
+        this.signup = new Acme.modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+
+        if ($("#code-redeem").length > 0) {
+            this.signup.render("spinner", "Authorising code");
+            self.data['planid'] = $('#planid').val();
+            self.data['giftcode'] = $('#code-redeem').val();
+            self.data['stripetoken'] = null;
+            Acme.server.create('/auth/paywall-signup', self.data);
+
+        } else {
+
+            // modal.render("spinner", "Your request is being processed.");
+            this.signup.render("spinner", "Your request is being processed.");
+            var stripeCall = stripe.createToken(card).then(function(result) {
+
+                if (result.error) {
+                    self.signup.closeWindow();
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+
+                    self.data['stripetoken'] = result.token.id;
+                    self.data['planid'] = $('#planid').val();
+                    self.data['redirect'] = false;
+                    Acme.server.create('/auth/paywall-signup', self.data).done(function(r) {
+                        console.log(r);
+                        if (r.success == 1) {
+                            self.data.user_id = r.user_id;
+                            self.data.user_guid = r.user_guid;
+                            Acme.progress.next();
+                            // window.history.pushState( {} , '', '&step=2' );
+                            console.log(window.location.search);
+                        } else {
+                            // var errorElement = document.getElementById('card-errors');
+                            // errorElement.textContent = result.error.message;
+                        }
+                        self.signup.closeWindow();
+                    }).fail(function(r) {
+                        self.signup.closeWindow();
+                    });
+                }
+            });   
+        }
+
+            
+    };
+
+    var main = $('main');
+    var user = {
+        user_id : main.data('userid'),
+        user_guid : main.data('userguid')
+    };
+    Acme.subscribe = new SubscribeForm('payment-form', user);
+
+
+
+
+
+
+
+
+    var ActivateForm = function(id, subscription) {
+        this.subscription = subscription;
+        this.id = id || null;
+        this.parent = Acme.Form.prototype;
+        this.data = {
+            "group[1149][1]": true,
+            "group[1149][2]": true,
+        };
+        this.errorFields = [];
+
+        this.validateRules = {
+         // this.data              Rule
+            "password"          : ["notEmpty"],
+            "verifypassword"    : ["notEmpty"],
+            "firstname"         : ["notEmpty"], 
+            "lastname"          : ["notEmpty"], 
+        };
+
+        this.validateFields = Object.keys(this.validateRules);
+        this.loadData();
+        this.events();
+    };
+
+    ActivateForm.prototype = new Acme.Form(Acme.Validators);
+    ActivateForm.constructor = ActivateForm;
+    ActivateForm.prototype.submit = function(event) 
+    {
+        var self = this;
+        event.preventDefault();
+        var validated = self.validate();
+
+        this.data.user_id = this.subscription.data.user_id;
+        this.data.user_guid = this.subscription.data.user_guid;
+
+        self.render(true);
+        if (!validated) return;
+
+        // var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+
+        this.signup = new Acme.modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+        // modal.render("spinner", "Your request is being processed.");
+        this.signup.render("spinner", "Activating account");
+        Acme.server.create('/api/user/edit-profile', this.data).done(function(r) {
+            console.log(r);
+            if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+                console.log('sending mailchimp signup');
+                console.log(self.data);
+                // var subscribeData = {
+                //     "EMAIL": self.data['email'], 
+                //     "FNAME": self.data['firstname'],
+                //     "LNAME": self.data['lastname'],
+                // };
+                // if (self.data["group[1149][1]"]) {
+                //     subscribeData["group[1149][1]"] = 1;
+                // }
+                // if (self.data["group[1149][2]"]) {
+                //     subscribeData["group[1149][2]"] = 2;
+                // }
+
+                // Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                //     .then(function(r) {
+                //         console.log(r);
+                //     });                        
+            }
+            Acme.progress.next();
+            self.signup.closeWindow();
+        }).fail(function(r) {
+            console.log('failed', r);
+        });
+
+    };
+
+
+    Acme.subscribe = new ActivateForm('activate-form', Acme.subscribe);
+
+
+
+
+
+    var ManagedForm = function(id, user) {
+        this.id = id || null;
+        this.parent = Acme.Form.prototype;
+        this.data = {};
+        this.errorFields = [];
+
+        this.validateRules = {
+            "firstname"         : ["notEmpty"], 
+            "lastname"          : ["notEmpty"], 
+            "email"             : ["notEmpty"],
+        };
+
+        
+        this.validateFields = Object.keys(this.validateRules);
+        this.loadData();
+        this.events();
+
+    };
+
+    ManagedForm.prototype = new Acme.Form(Acme.Validators);
+    ManagedForm.constructor = ManagedForm;
+
+    ManagedForm.prototype.submit = function(event) 
+    {
+        var self = this;
+        event.preventDefault();
+
+        var button = $(event.submitter).data('job');
+        if (button === 'skip') {
+            // setTimeout('window.location.href = location.origin + "/auth/thank-you";', 1000);
+            window.location.href = location.origin + '/auth/thank-you';
+            return;
+        }
+
+
+        // http://www.publish.io/layout-sub?plan=684d45c0-4030-49f4-8cf8-0ba437dbb33c&step=3
+
+        var validated = self.validate();
+        self.render(true);
+        if (!validated) return;
+
+        // var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+
+        this.signup = new Acme.modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+        // modal.render("spinner", "Your request is being processed.");
+        this.signup.render("spinner", "Sending invite");
+        Acme.server.create('/api/user/create-paywall-managed-user', this.data).done(function(r) {
+            console.log(r);
+            if (r.success == 1) {
+                    // set time out used for Firefox which seems to need a little bit more time to figure things out
+                    // setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
+                    window.location.href = location.origin + '/auth/thank-you';
+            } else {
+                self.signup.closeWindow();
+            }
+
+        }).fail(function(r) {
+            console.log('failed', r);
+            self.signup.closeWindow();
+        });
+
+            
+    };
+
+
+    Acme.managedForm = new ManagedForm('bonusform', Acme.subscribe);
+
+
+
+
+
+
+    var Progress = function(step) 
+    {
+        this.progress = step > 0 && step < 4 ? step : 1;
+        this.numbers = [$('#num1'), $('#num2'), $('#num3')];
+        this.lines = [$('#line1'), $('#line2'), $('#line3')];
+        this.forms = [$('#signupformview'), $('#activeformview'), $('#userformview')];
+        this.labels = [$('#label1'), $('#label2'), $('#label3')];
+        this.render();
+    };
+    Progress.prototype.tick = function(tick) 
+    {
+        this.progress = tick;
+        this.render();
+    };
+    Progress.prototype.next = function() 
+    {
+        if (this.progress < 3 ) {
+            this.progress++;
+        }
+        this.render();
+    };
+    Progress.prototype.previous = function() 
+    {
+        if (this.progress > 0 ) {
+            this.progress--;
+        }
+        this.render();
+    };
+
+    Progress.prototype.render = function()
+    {
+        for (var num of this.numbers) {
+            num.removeClass('subscribe-progress__number--red');
+        };
+        for (var line of this.lines) {
+            line.removeClass('subscribe-progress__line--red');
+        };
+        for (var form of this.forms) {
+            form.addClass('u-hide');
+            // form.removeClass('u-hide');
+        };
+        for (var label of this.labels) {
+            label.removeClass('subscribe-progress__label--active');
+        };
+
+
+        for (var i = 0; i < this.progress; i++) {
+            this.numbers[i].addClass('subscribe-progress__number--red');
+            this.lines[i].addClass('subscribe-progress__line--red');
+            this.labels[i].addClass('subscribe-progress__label--active');
+        }
+
+        this.forms[this.progress - 1].removeClass('u-hide');
+        
+        if (this.progress > 1 ) {
+            $('#changeplan').addClass('u-hide');
+        }
+    };
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var step = urlParams.get('step');    
+    Acme.progress = new Progress(step);
+    Acme.progress.render();
+
+} 
+// Create a Stripe client
+var botTimer = 0;
+
+if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
+
+    console.log('running from stripe code');
     var stripekey = $('#stripekey').html();
 
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
@@ -38150,7 +38643,7 @@ Acme.UserProfileController.prototype.events = function ()
 
 
     $('#cancelAccount').on('click', function(e) {
-
+        e.preventDefault();
         var listelem = $(e.target).closest('li');
 
         var status = 'cancelled';

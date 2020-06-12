@@ -1,9 +1,9 @@
 // Create a Stripe client
 var botTimer = 0;
 
-if ($('#stripekey').length > 0) {
+if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
 
-
+    console.log('running from stripe code');
     var stripekey = $('#stripekey').html();
 
     var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});

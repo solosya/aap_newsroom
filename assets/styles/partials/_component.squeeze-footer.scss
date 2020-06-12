@@ -1,0 +1,11 @@
+.squeeze-footer {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    height:100px;
+    background-color: rgba(0, 0, 0, 0.85);
+    &__logo {
+        // background-image: url('../images/paywall.jpg');
+
+    }
+}
