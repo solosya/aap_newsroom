@@ -37615,7 +37615,10 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         }
 
         this.forms[this.progress - 1].removeClass('u-hide');
-
+        
+        if (this.progress > 1 ) {
+            $('#changeplan').addClass('u-hide');
+        }
     };
 
     var urlParams = new URLSearchParams(window.location.search);

@@ -7,7 +7,7 @@
 
 {% set topPlans = [] %}
 {% set bottomPlans = [] %}
-
+{% set signupurl = '/signup' %}
 
 {% for plan in plans %}
     {% if "!*!" in plan.description %}
@@ -164,11 +164,9 @@
                             <p class="paywall-plan-card__price">${{val}}</p>
                         {% endif %}
 
-                        {% set subscribeLink = networkData.defaultBlogUrl ~ "/layout-sub?plan="~ plan.guid %}
-
-
+                        {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
                         {% if plan.trial_status == "1" %}
-                            {# {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %} #}
+                            {# {% set subscribeLink = subscribeLink ~ "&trial=true" %} #}
                             <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
                         {% endif %}
 
@@ -276,14 +274,14 @@
                                 {% endif %}
 
 
-                                {% set subscribeLink = "{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}" %}
+                                {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
 
                                 {% if plan.trial_status == "1" %}
-                                    {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
+                                    {% set subscribeLink = subscribeLink ~ "&trial=true" %}
                                     <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
                                 {% endif %}
                             </div>
-                            <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
+                            <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{subscribeLink}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
                         </div>
                     </div>
                     
