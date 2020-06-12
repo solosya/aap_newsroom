@@ -255,7 +255,7 @@
                                 <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
                             </div>
                             <div class="col-lg-12 col-md-5">
-                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
+
                                 <ul class="plan-type__features">
                                     {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
                                     {{description | raw }}
