@@ -18,6 +18,9 @@ Acme.Form = function(validators, rules) {
                 // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
                 field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
             }
+            if (!field.length) {
+                continue;
+            }
             var fieldType = field[0].type;
             if (fieldType === 'hidden') continue;
             
