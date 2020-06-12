@@ -307,7 +307,6 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         }
 
 
-        // http://www.publish.io/layout-sub?plan=684d45c0-4030-49f4-8cf8-0ba437dbb33c&step=3
 
         var validated = self.validate();
         self.render(true);
