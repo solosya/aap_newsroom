@@ -263,7 +263,7 @@
                     {% if (parentItem.blogTitle != pageClass) %}
                         <li>
                             <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle | lower}}" {% if {{parentItem.blogTitle | lower}} == 'covid-19' %} style="height:16px" {% endif %}>
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
                                 {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt=""> #}
                             </a>
                         </li>
