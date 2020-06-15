@@ -35799,6 +35799,9 @@ Acme.Form = function(validators, rules) {
                 // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
                 field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
             }
+            if (!field.length) {
+                continue;
+            }
             var fieldType = field[0].type;
             if (fieldType === 'hidden') continue;
             
@@ -37108,6 +37111,10 @@ Acme.Signin.prototype.handle = function(e) {
                         window.location.replace(_appJsConfig.appHostName);
                         return;
                     }
+                    if (window.location.pathname === "/prosubscribe") {
+                        window.location.replace(_appJsConfig.appHostName + "/pro");
+                        return;
+                    }
 
                     window.location.reload();
 
@@ -37456,22 +37463,23 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
             if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
                 console.log('sending mailchimp signup');
                 console.log(self.data);
-                // var subscribeData = {
-                //     "EMAIL": self.data['email'], 
-                //     "FNAME": self.data['firstname'],
-                //     "LNAME": self.data['lastname'],
-                // };
-                // if (self.data["group[1149][1]"]) {
-                //     subscribeData["group[1149][1]"] = 1;
-                // }
-                // if (self.data["group[1149][2]"]) {
-                //     subscribeData["group[1149][2]"] = 2;
-                // }
+                var subscribeData = {
+                    "EMAIL": self.subscription.data['email'], 
+                    "FNAME": self.data['firstname'],
+                    "LNAME": self.data['lastname'],
+                };
+                if (self.data["group[1149][1]"]) {
+                    subscribeData["group[1149][1]"] = 1;
+                }
+                if (self.data["group[1149][2]"]) {
+                    subscribeData["group[1149][2]"] = 2;
+                }
+                console.log(subscribeData);
 
-                // Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                //     .then(function(r) {
-                //         console.log(r);
-                //     });                        
+                Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                    .then(function(r) {
+                        console.log(r);
+                    });                        
             }
             Acme.progress.next();
             self.signup.closeWindow();
@@ -37523,7 +37531,6 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         }
 
 
-        // http://www.publish.io/layout-sub?plan=684d45c0-4030-49f4-8cf8-0ba437dbb33c&step=3
 
         var validated = self.validate();
         self.render(true);
