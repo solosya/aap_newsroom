@@ -35796,7 +35796,6 @@ Acme.Form = function(validators, rules) {
             var fieldname = this.validateFields[field].split('.').reverse()[0];
             var field = $('#'+fieldname);
             if (!field.length) {
-                // console.log('#'+ this.id + ' input[name="'+fieldname + '"]');
                 field = $('#'+ this.id + ' input[name="'+fieldname + '"]');
             }
             if (!field.length) {
