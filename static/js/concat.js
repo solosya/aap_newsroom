@@ -37110,6 +37110,10 @@ Acme.Signin.prototype.handle = function(e) {
                         window.location.replace(_appJsConfig.appHostName);
                         return;
                     }
+                    if (window.location.pathname === "/prosubscribe") {
+                        window.location.replace(_appJsConfig.appHostName + "/pro");
+                        return;
+                    }
 
                     window.location.reload();
 
