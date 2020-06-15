@@ -166,7 +166,7 @@
 
 
 <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
-    <article class="article-main">
+    <article itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
 
 
     {% if showPaywall %}
@@ -221,9 +221,12 @@
                                 {% endif %}
 
                                 <div class="articleTimes">
-                                    <time>{{ publishDate | upper }}</time>
+
+                                    {% set publishDateTime = article.publishedDateTime | replace(" ", "T") %}
+                                    <time itemprop="datePublished" datetime="{{publishDateTime}}">{{ publishDate | upper }}</time>
                                     {% if updated %}
-                                        <time class="updated">Updated {{ updateDate | capitalize }}</time>
+                                        {% set updateDateTime = article.updatedDateTime | replace(" ", "T") %}
+                                        <time itemprop="dateModified" datetime="{{updateDateTime}}" class="updated">Updated {{ updateDate | capitalize }}</time>
                                     {% endif %}
                                 </div>
                             </div>
@@ -232,15 +235,14 @@
                             {% endif %}
 
 
-                            <div class="content-author">
-                                <img src="{{ profileImg }}" alt="">
+                            <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
+                                <img itemprop="photo" src="{{ profileImg }}" alt="">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
-                                    <h3>{{ article.createdBy['displayName'] }}</h3>
+                                    <h3 itemprop="name">{{ article.createdBy['displayName'] }}</h3>
                                 </a>
 
 
-
-                                <p class="bio">{{ article.createdBy['bio'] }}</p>
+                                <p itemprop="description" class="bio">{{ article.createdBy['bio'] }}</p>
                                 {% if article.createdBy['bio'] != "" %}
                                     <a class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
                                 {% endif %}
@@ -270,8 +272,8 @@
                                 <div class="article-investigations__tag"></div>
                             {% endif %}
 
-                            <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
-                                <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
+                            <div itemprop="articleBody" class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
+                                <p itemprop="articleSection" class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                 
                                 {% if articleBlog == 'new auckland' %}
                                     <div class="beca-section beca-section__article d-block d-lg-none">
@@ -285,7 +287,7 @@
                                     </div>
                                 {% endif %}
                                 
-                                <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
+                                <h1 itemprop="headline" class="article__headline">{{ quotes.smarten(article.title) }}</h1>
 
                                 {{ content  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
