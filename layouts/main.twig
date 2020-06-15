@@ -52,17 +52,17 @@
         'article' not in pageClass %}
     
         {% set showPaywall = true %}
-        {% set layout = "layout-marketing" %}
+        {# {% set layout = "layout-marketing" %} #}
 
 
         {% if not _User.isAdminUser() and paywallSection and showPaywall == true %}
             
-                {# {% set redir = _Page.setHttpRedirects(
+                {% set redir = _Page.setHttpRedirects(
                     {
                         '|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',
                         
                     }, false) 
-                %}  #}
+                %} 
         {% endif %}
 
 
@@ -244,11 +244,11 @@
 
 
 
-    {% if showPaywall %}
+    {# {% if showPaywall %}
         {{ this.render('/layout-marketing.twig', {networkData: networkData}) | raw }}
-    {% else %}
-        {{ content | raw }}
-    {% endif %}
+    {% else %} #}
+    {{ content | raw }}
+    {# {% endif %} #}
 
 
 
