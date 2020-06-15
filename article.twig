@@ -236,7 +236,7 @@
 
 
                             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
-                                <img itemprop="photo" src="{{ profileImg }}" alt="">
+                                <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
                                     <h3 itemprop="name">{{ article.createdBy['displayName'] }}</h3>
                                 </a>
