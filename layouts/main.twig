@@ -115,7 +115,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=763d4c80" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=0a389e3e" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
@@ -207,7 +207,6 @@
     data-isAdmin="{{ isAdmin }}" 
     data-paywall="{{blogData['showPaywall']}}"
     data-networkid="{{networkData['id']}}"
-    data-ver="2"
 >
 {{ this.beginBody() }}
     <!-- Google Tag Manager body -->
