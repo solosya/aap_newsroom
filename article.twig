@@ -169,7 +169,9 @@
     <article itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
             <meta itemprop="name" content="Newsroom">
-            <meta itemprop="logo url" content="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+            <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+            </div>
         </div>
 
     {% if showPaywall %}
