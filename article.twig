@@ -166,12 +166,15 @@
 
 
 <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
-    <article itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
+    <article itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
             <meta itemprop="name" content="Newsroom">
             <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
             </div>
+        </div>
+        <div itemscope itemtype="https://schema.org/mainEntityOfPage">
+            <meta itemprop="url" content="{{article.url}}">
         </div>
 
     {% if showPaywall %}
