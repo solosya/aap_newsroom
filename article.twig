@@ -2,7 +2,7 @@
 
 
 {% set pageTitle = article.title %}
-{% if article.crabble.title is defined %}
+{% if article.meta.title is defined %}
     {% set pageTitle = article.meta.title %}
 {% endif %}
 
