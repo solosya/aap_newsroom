@@ -1,7 +1,13 @@
 {% import "partials/quotes.twig" as quotes %}
 
 
-{{ set(this, 'title', article.title) }}
+{% set pageTitle = article.title %}
+{% if article.crabble.title is defined %}
+    {% set pageTitle = article.meta.title %}
+{% endif %}
+
+{{ set(this, 'title', pageTitle) }}
+
 
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
