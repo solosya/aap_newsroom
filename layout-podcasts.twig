@@ -22,6 +22,12 @@
             "link": "",
             "description": "",
             "title": ""
+        }, 
+        "podcast: a neesh audience": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -73,11 +79,20 @@
                     }) | raw}}
                 {% endif %}
 
+                {% if sections['podcast: a neesh audience'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: a neesh audience',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : 'podcast: a neesh audience'
+                    }) | raw}}
+                {% endif %}
+
                 {% if sections["podcast: two cents' worth"].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
                         'section' : "podcast: two cents' worth",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'template' : 'partials/pro/hero-four-light.twig',
                         'title' : "podcast: two cents' worth"
                     }) | raw}}
                 {% endif %}
