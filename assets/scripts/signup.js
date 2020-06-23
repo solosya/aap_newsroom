@@ -161,7 +161,31 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                         if (r.success == 1) {
                             self.data.user_id = r.user_id;
                             self.data.user_guid = r.user_guid;
+                        
+                            console.log('gta-pay-now');
+                            if  ($('.j-gtasubpay')[0]){
+                                self = $($('.j-gtasubpay')[0]);
+                                dataLayer.push({
+                                    'event':'purchase',
+                                    'ecommerce': {
+                                        'purchase': {
+                                            'actionField': {
+                                                'id': 'n/a',                         // Transaction ID. Required for purchases and refunds.
+                                                'revenue': self.data('price')
+                                            },
+                                            'products': [{                            // List of productFieldObjects.
+                                                'name': self.data('name'),
+                                                'id': self.data('id'),
+                                                'category': 'Pro Subscription',
+                                                'price': self.data('price'),
+                                                'quantity': 1
+                                            }]
+                                        }
+                                    }
+                                });
+                            }
                             Acme.progress.next();
+
                             // window.history.pushState( {} , '', '&step=2' );
                             console.log(window.location.search);
                         } else {

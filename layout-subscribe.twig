@@ -205,7 +205,7 @@
                             <input type="text" class="articleExtendedData" name="code-redeem" id="code-redeem" value="" placeholder="0a1b-2c3d-4e5f">
                         </div>
 
-                        <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">{{buttonLabel}}</button>
+                        <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 j-gtasubpay" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                         </form>
                         {% else %}
 
@@ -223,7 +223,7 @@
                                 </div>
 
                                 {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button">{{buttonLabel}}</button>
+                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button j-gtasubpay" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                             
                                 <!-- Used to display form errors -->
                                 <div id="card-errors" class="profile-section__card-errors u-margin-bottom-100" role="alert"></div>
@@ -279,12 +279,38 @@
         _linkedin_partner_id = "547636";
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
         window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script>
-    <script type="text/javascript">
+    
         (function(){var s = document.getElementsByTagName("script")[0];
         var b = document.createElement("script");
         b.type = "text/javascript";b.async = true;
         b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
         s.parentNode.insertBefore(b, s);})();
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            $('.j-gtasubpay').mousedown(function(){
+                dataLayer.push({
+                    'event': 'checkout',
+                        'ecommerce': {
+                        'checkout': {
+                            'actionField': {'step': 2, 'option': 'Activate Account'},
+                            'products': [{
+                                'name': $(this).data('name'),
+                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                'price': $(this).data('price'),
+                                'category': 'Pro Subscription',
+                                'quantity': 1
+                            }]
+                        }
+                    },
+                });
+            });
+            console.log('gta-trypaying',dataLayer);
+            
+        });
+
+
+
     </script>
+
+    
 </main>
