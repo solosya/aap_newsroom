@@ -170,7 +170,7 @@
                             <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
                         {% endif %}
 
-                        <a class="_btn--red paywall-plan-card__subscribe-button" href="{{subscribeLink}}">START MY SUBSCRIPTION</a>
+                        <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}">START MY SUBSCRIPTION</a>
                     </div>
                 </div>
                 
@@ -281,7 +281,7 @@
                                     <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
                                 {% endif %}
                             </div>
-                            <a class="_btn--red paywall-plan-card-2__subscribe-button" href="{{subscribeLink}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
+                            <a class="_btn--red paywall-plan-card-2__subscribe-button j-gtasubstart" href="{{subscribeLink}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
                         </div>
                     </div>
                     
@@ -381,7 +381,24 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-
+        $('.j-gtasubstart').mousedown(function(){
+            dataLayer.push({
+            'event': 'addToCart',
+                'ecommerce': {
+                    'currencyCode': 'NZD',
+                    'add': {                                // 'add' actionFieldObject measures.
+                        'products': [{                        //  adding a product to a shopping cart.
+                            'name': $(this).data('name'),
+                            'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                            'price': $(this).data('price'),
+                            'category': 'Pro Subscription',
+                            'quantity': 1
+                        }]
+                    }
+                }
+            });
+             console.log('gta-subpress',dataLayer);
+        });
 
         $('#corporate-plans').on('click', function(e) {
             e.preventDefault();

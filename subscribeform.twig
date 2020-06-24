@@ -203,7 +203,7 @@
                                     <input type="text" class="articleExtendedData" name="code-redeem" id="code-redeem" value="" placeholder="0a1b-2c3d-4e5f">
                                 </div>
 
-                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">{{buttonLabel}}</button>
+                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 j-gtasubcreate" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                             </form>
                             {% else %}
 
@@ -246,7 +246,7 @@
                                     </div>
 
                                     {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-                                    <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscribe-form__button">{{buttonLabel}}</button>
+                                    <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscribe-form__button j-gtasubcreate" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                                 
                                 </form>
                             {% endif %}
@@ -315,7 +315,7 @@
 
 
 
-                                <button type="submit" class="_btn _btn--red u-margin-top-25 subscribe-form__button">Activate account</button>
+                                <button type="submit" class="_btn _btn--red u-margin-top-25 subscribe-form__button j-gtasubpay" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">Activate account</button>
                             </form>                         
                         </div>			
                     </div>
@@ -473,5 +473,46 @@
         b.type = "text/javascript";b.async = true;
         b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
         s.parentNode.insertBefore(b, s);})();
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            $('.j-gtasubcreate').mousedown(function(){
+                dataLayer.push({
+                    'event': 'checkout',
+                        'ecommerce': {
+                        'checkout': {
+                            'actionField': {'step': 1, 'option': 'Create an Account'},
+                            'products': [{
+                                'name': $(this).data('name'),
+                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                'price': $(this).data('price'),
+                                'category': 'Pro Subscription',
+                                'quantity': 1
+                            }]
+                        }
+                    },
+                });
+            });
+            console.log('gta-trypaying',dataLayer);
+
+            $('.j-gtasubpay').mousedown(function(){
+                dataLayer.push({
+                    'event': 'checkout',
+                        'ecommerce': {
+                        'checkout': {
+                            'actionField': {'step': 2, 'option': 'Activate Account'},
+                            'products': [{
+                                'name': $(this).data('name'),
+                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                'price': $(this).data('price'),
+                                'category': 'Pro Subscription',
+                                'quantity': 1
+                            }]
+                        }
+                    },
+                });
+            });
+            console.log('gta-trypaying',dataLayer);
+            
+        });
     </script>
 </main>

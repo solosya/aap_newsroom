@@ -37621,18 +37621,18 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
     Progress.prototype.render = function()
     {
-        for (var num of this.numbers) {
-            num.removeClass('subscribe-progress__number--red');
+        for (var i=0;i<this.numbers.length;i++) {
+            this.numbers[i].removeClass('subscribe-progress__number--red');
         };
-        for (var line of this.lines) {
-            line.removeClass('subscribe-progress__line--red');
+        for (var i=0;i<this.lines.length;i++) {
+            this.lines[i].removeClass('subscribe-progress__line--red');
         };
-        for (var form of this.forms) {
-            form.addClass('u-hide');
+        for (var i=0;i<this.forms.length;i++) {
+            this.forms[i].addClass('u-hide');
             // form.removeClass('u-hide');
         };
-        for (var label of this.labels) {
-            label.removeClass('subscribe-progress__label--active');
+        for (var i=0;i<this.labels.length;i++) {
+            this.labels[i].removeClass('subscribe-progress__label--active');
         };
 
 
