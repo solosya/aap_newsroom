@@ -68,7 +68,7 @@
                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower|replace({' ':'-'}) }}-logo.svg" alt="{{parentItem.blogTitle}}">
+                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg" alt="{{parentItem.blogTitle}}">
                         </a>
                     </li>
                 {% endif  %}
