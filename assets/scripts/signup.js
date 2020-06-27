@@ -61,7 +61,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         this.parent = Acme.Form.prototype;
 
         this.data = {
-            "firstname": "firstName",
+            "firstname": "Subscriber",
             "password": this.random(25),
             "username": this.random(15),
             "user_id": user.user_id,
@@ -165,24 +165,26 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                             console.log('gta-pay-now');
                             if  ($('.j-gtasubpay')[0]){
                                 var payitem = $($('.j-gtasubpay')[0]);
-                                dataLayer.push({
-                                    'event':'purchase',
-                                    'ecommerce': {
-                                        'purchase': {
-                                            'actionField': {
-                                                'id': 'n/a',                         // Transaction ID. Required for purchases and refunds.
-                                                'revenue': payitem.data('price')
-                                            },
-                                            'products': [{                            // List of productFieldObjects.
-                                                'name': payitem.data('name'),
-                                                'id': payitem.data('id'),
-                                                'category': 'Pro Subscription',
-                                                'price': payitem.data('price'),
-                                                'quantity': 1
-                                            }]
+                                if (typeof dataLayer !== 'undefined') {
+                                    dataLayer.push({
+                                        'event':'purchase',
+                                        'ecommerce': {
+                                            'purchase': {
+                                                'actionField': {
+                                                    'id': 'n/a',                         // Transaction ID. Required for purchases and refunds.
+                                                    'revenue': payitem.data('price')
+                                                },
+                                                'products': [{                            // List of productFieldObjects.
+                                                    'name': payitem.data('name'),
+                                                    'id': payitem.data('id'),
+                                                    'category': 'Pro Subscription',
+                                                    'price': payitem.data('price'),
+                                                    'quantity': 1
+                                                }]
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                }
                             }
                             Acme.progress.next();
 
