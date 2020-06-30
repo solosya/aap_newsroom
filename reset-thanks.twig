@@ -1,7 +1,7 @@
 {{ set(this, 'title', "Thank You") }}
 
-{% set user =  %}
-
+{% set user = _User.getUser() %}
+{{_AppHelper.printArray(user)}}
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <main id="main" class="site-main u-margin-bottom-40 u-tablet-margin-top-60" role="main">
     <div class="login-page">
