@@ -170,7 +170,7 @@
                             <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
                         {% endif %}
 
-                        <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}">START MY SUBSCRIPTION</a>
+                        <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">START MY SUBSCRIPTION</a>
                     </div>
                 </div>
                 
@@ -281,7 +281,7 @@
                                     <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
                                 {% endif %}
                             </div>
-                            <a class="_btn--red paywall-plan-card-2__subscribe-button j-gtasubstart" href="{{subscribeLink}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
+                            <a class="_btn--red paywall-plan-card-2__subscribe-button j-gtasubstart" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}" href="{{subscribeLink}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
                         </div>
                     </div>
                     

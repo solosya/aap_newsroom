@@ -15200,7 +15200,7 @@ input[type=radio].inline {
   flex-direction: column;
   text-align: center;
   background: #ffffff;
-  height: 343px;
+  height: 327px;
   box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
   border: solid 1px #eeeeee;
   position: relative; }
@@ -15351,8 +15351,8 @@ input[type=radio].inline {
       .paywall-plan-card__period {
         font-size: 2.9vw; } }
   .paywall-plan-card__price {
-    font-size: 4.75rem;
-    line-height: 5.7rem;
+    font-size: 4.375rem;
+    line-height: 5.25rem;
     margin-bottom: 18px;
     font-weight: 300; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -18458,8 +18458,8 @@ body.channel, body.section {
 
 .paywall__corporate-link {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+  font-size: 1.75rem;
+  line-height: 2.1rem;
   color: #e22f22;
   font-weight: 600; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -18575,8 +18575,8 @@ body.channel, body.section {
       .paywall-offers__container {
         margin: 15px auto 5px auto; } }
   .paywall-offers__title {
-    font-size: 2.5rem;
-    line-height: 3rem;
+    font-size: 2.25rem;
+    line-height: 2.7rem;
     margin-top: 30px;
     font-family: "tinos", Helvetica, Arial, sans-serif; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -18615,11 +18615,25 @@ body.channel, body.section {
         -moz-flex-direction: row;
         -ms-flex-direction: row;
         flex-direction: row;
-        margin-top: 25px; } }
+        margin-top: 25px;
+        padding-bottom: 10px;
+        position: relative; }
+        .paywall-offers-card:after {
+          content: "";
+          display: block;
+          width: 30px;
+          height: 2px;
+          background-color: #979797;
+          position: absolute;
+          bottom: 0;
+          left: 0; } }
     .paywall-offers-card__img {
       align-self: flex-start; }
       .paywall-offers-card__img__mail {
         height: 72px; }
+        @media screen and (min-width: 992px) {
+          .paywall-offers-card__img__mail {
+            margin-bottom: 10px; } }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .paywall-offers-card__img__mail {
             height: 65px;
@@ -18631,6 +18645,9 @@ body.channel, body.section {
             margin-right: 25px; } }
       .paywall-offers-card__img__alert {
         height: 59px; }
+        @media screen and (min-width: 992px) {
+          .paywall-offers-card__img__alert {
+            margin-bottom: 23px; } }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .paywall-offers-card__img__alert {
             margin-right: 43px; } }
@@ -18641,6 +18658,9 @@ body.channel, body.section {
             margin-right: 43px; } }
       .paywall-offers-card__img__access {
         height: 59px; }
+        @media screen and (min-width: 992px) {
+          .paywall-offers-card__img__access {
+            margin-bottom: 23px; } }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .paywall-offers-card__img__access {
             margin-right: 30px; } }
@@ -18651,6 +18671,9 @@ body.channel, body.section {
             margin-right: 30px; } }
       .paywall-offers-card__img__users {
         height: 67px; }
+        @media screen and (min-width: 992px) {
+          .paywall-offers-card__img__users {
+            margin-bottom: 15px; } }
         @media screen and (min-width: 768px) and (max-width: 991px) {
           .paywall-offers-card__img__users {
             height: 52px;
@@ -18663,8 +18686,8 @@ body.channel, body.section {
     .paywall-offers-card__p {
       margin-right: 20px;
       letter-spacing: 0.7px;
-      font-size: 1.25rem;
-      line-height: 1.5rem;
+      font-size: 1.125rem;
+      line-height: 1.35rem;
       text-align: left; }
       .paywall-offers-card__p:before {
         content: "";
@@ -18673,16 +18696,10 @@ body.channel, body.section {
         height: 2px;
         background-color: #979797;
         margin-bottom: 15px;
-        margin-top: 11px; }
-      @media screen and (min-width: 992px) {
-        .paywall-offers-card__p-mail:before {
-          margin-bottom: 13px; }
-        .paywall-offers-card__p-alert:before {
-          margin-bottom: 23px; }
-        .paywall-offers-card__p-access:before {
-          margin-bottom: 23px; }
-        .paywall-offers-card__p-users:before {
-          margin-bottom: 18px; } }
+        margin-top: 0px; }
+        @media screen and (max-width: 767px) {
+          .paywall-offers-card__p:before {
+            display: none; } }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         .paywall-offers-card__p {
           font-size: 1.125rem;
@@ -18752,8 +18769,8 @@ body.channel, body.section {
 
 .paywall-faq__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 2.5rem;
-  line-height: 3rem;
+  font-size: 2.25rem;
+  line-height: 2.7rem;
   font-weight: 600;
   margin-bottom: 40px;
   text-align: center; }
@@ -18788,8 +18805,8 @@ body.channel, body.section {
 
 .paywall-faq__question {
   font-family: "tinos", Helvetica, Arial, sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.8rem;
+  font-size: 1.375rem;
+  line-height: 1.65rem;
   margin-bottom: 10px; }
   .paywall-faq__question--open {
     margin-top: 20px; }
@@ -18848,7 +18865,7 @@ body.channel, body.section {
         top: 7px; } }
 
 .paywall-banner {
-  background-image: url("../images/paywall.jpg");
+  background-image: url("../images/paywall2.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
@@ -18870,8 +18887,8 @@ body.channel, body.section {
   .paywall-banner__headline {
     margin-top: 32px;
     font-family: "tinos", Helvetica, Arial, sans-serif;
-    font-size: 4.25rem;
-    line-height: 5.1rem;
+    font-size: 3.75rem;
+    line-height: 4.5rem;
     font-weight: 700;
     margin-bottom: 15px;
     line-height: 1.03; }
@@ -18892,8 +18909,8 @@ body.channel, body.section {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     font-size: 1.5625rem;
     line-height: 1.875rem;
-    font-weight: 700;
-    margin-top: 20px; }
+    font-weight: 600;
+    margin-top: 16px; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .paywall-banner__tagline {
         font-size: 1.4375rem;
