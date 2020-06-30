@@ -38027,6 +38027,7 @@ $('.j-mcmultisubscribe').click(function(event){
     $( "#j-box-3-1" ).addClass("d-none");
     $( "#j-box-3-2" ).addClass("d-none");
     $( "#j-box-3-3" ).addClass("d-none");
+    $('#j-mcpopup-thankyou').text('Thank you for signing up');
     $('#j-mcpopup-blurb').text("To unsubscribe, click the link in the email.");
     $('#j-mcpopup-cancel').text('CLOSE');
     $('#j-mcpopup-signup').addClass('d-none');
@@ -38044,10 +38045,14 @@ $('.j-mccancel').click(function(){
     $( "#j-mccheckbox-3-3" ).prop( "checked", false );
     $( "#j-box-3-3" ).removeClass("d-none");
     $('#j-mcpopup-signup').removeClass('d-none');
-    $('#j-mcpopup-cancel').html('NO THANKS');
+    $('#j-mcpopup-cancel').html('CANCEL');
     $('#j-mcpopup-blurb').html("While you’re here would you like to sign up to any of our other email newsletters?");
     
-});    
+});   
+
+$('.j-mcprosubscribe').click(function(event){
+    $('#j-mcpopup').removeClass('d-none');
+});
             
 
 Acme.Token = function(tokenName) 

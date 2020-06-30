@@ -1,82 +1,113 @@
+{% set networkData = _Network.getNetworkData() %}
+
 {{ set(this, 'title', "Thank You") }}
 
 {% set user = _User.getUser() %}
 {{_AppHelper.printArray(user)}}
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+<div class="c-signups-popup d-none" id="j-mcpopup">
+   
+
+
+    <div class="c-signups-popup__box">
+         <div class="row">
+            <div class="col-12 u-margin-bottom-40">
+                <h4 class="c-signups-popup__head u-margin-bottom-20" id="j-mcpopup-thankyou">Thank you for signing up to our mailing list! </h4>
+                <p class="c-signups-popup__subhead" id="j-mcpopup-blurb">To update your details, please follow the link in the email. <br>Click below to head home</p>
+            </div>
+
+            <div class="col-12 u-margin-top-40">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4 col-lg-3 order-1 order-md-2 u-mobile-margin-bottom-10">
+                        <a href="{{networkData.defaultBlogUrl}}"><div class="_btn _btn--red c-signups-popup__button c-signups-popup__button--signup">Home</div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <main id="main" class="site-main u-margin-bottom-40 u-tablet-margin-top-60" role="main">
     <div class="login-page">
         <div class="container">
-            <div class="tab-content">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="password-forget__helper">Password has been created.</p>
-                        <p class="password-forget__helper">To receive a daily roundup and breaking news direct to your inbox, sign up here:</p>
-                    </div>
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="password-forget__helper"><strong>Password has been created.</strong></p>
+                    <p class="password-forget__helper">To receive a daily roundup and breaking news direct to your inbox, sign up here:</p>
+                </div>
 
-                    <div class="col-12">
-                        <form action="https://hivenews.us7.list-manage.com/subscribe" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                            <div id="mc_embed_signup_scroll">
-                                <input type="hidden" name="u" value="9cf8330209dae95121b0d58a6">
-                                <input type="hidden" name="id" value="2412c1d355">
-                                <input type="hidden" type="email" name="EMAIL" value="" id="mce-EMAIL">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="col-12 col-lg-6">
-                                            <hr class="divide30">
-                                            <div class="row c-signups-newsletter">
-                                                <div class="col-4 col-lg-5">
-                                                    <figure class="c-signups-newsletter__figure">
-                                                        <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/bernard-newsletter.svg">
-                                                    </figure>
-                                                </div>
-                                                <div class="col-8 col-lg-7">
-                                                    <h4 class="c-signups-newsletter__head u-margin-bottom-10">Bernard Hickey's daily 8 Things</h4>
-                                                    <p class="c-signups-newsletter__blurb">Our signature morning email of news and in-depth analysis curated by managing editor Bernard Hickey.</p>
-                                                    <input type="checkbox" 	class="c-signups-popup__checkbox"  value="1" name="group[1149][2]" id="mce-group[1149][2]" style="margin-top: -5px;">
-                                                </div>
+                <div class="col-12">
+                    <form action="https://hivenews.us7.list-manage.com/subscribe" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <input type="hidden" name="u" value="9cf8330209dae95121b0d58a6">
+                            <input type="hidden" name="id" value="2412c1d355">
+                            <div class="row justify-content-center">
+                                    <div class="col-12 col-md-8 u-margin-top-60">
+                                        <input class="account-form__input" type="email" name="EMAIL" value="" id="mce-EMAIL" placeholder="Enter your email" >
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <hr class="divide30">
+                                        <div class="row c-signups-newsletter">
+                                            <div class="col-2">
+                                                <figure class="c-signups-newsletter__figure">
+                                                    <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/bernard-newsletter.svg">
+                                                </figure>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <hr class="divide30">
-                                            <div class="row c-signups-newsletter">
-                                                <div class="col-4 col-lg-5">
-                                                    <figure class="c-signups-newsletter__figure">
-                                                        <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/breaking-newsletter.svg">
-                                                    </figure>
-                                                </div>
-                                                <div class="col-8 col-lg-7">
-                                                    <h4 class="c-signups-newsletter__head u-margin-bottom-10">Breaking News alerts</h4>
-                                                    <p class="c-signups-newsletter__blurb">Send me an email about important breaking news in New Zealand.</p>
-                                                    <input type="checkbox" 	class="c-signups-popup__checkbox"  value="2" name="group[1149][1]" id="mce-group[1149][1]" style="margin-top: -5px;"> 
-                                                </div>
+                                            <div class="col-8">
+                                                <h4 class="c-signups-newsletter__head u-margin-bottom-10">Bernard Hickey's daily 8 Things</h4>
+                                                <p class="c-signups-newsletter__blurb">Our signature morning email of news and in-depth analysis curated by managing editor Bernard Hickey.</p>
+                                                
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="checkbox" 	class="c-signups-popup__checkbox"  value="1" name="group[1149][2]" id="mce-group[1149][2]" style="margin-top: -5px;">
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12 col-lg-6">
+                                        <hr class="divide30">
+                                        <div class="row c-signups-newsletter">
+                                            <div class="col-2">
+                                                <figure class="c-signups-newsletter__figure">
+                                                    <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/breaking-newsletter.svg">
+                                                </figure>
+                                            </div>
+                                            <div class="col-8">
+                                                <h4 class="c-signups-newsletter__head u-margin-bottom-10">Breaking News alerts</h4>
+                                                <p class="c-signups-newsletter__blurb">Send me an email about important breaking news in New Zealand.</p> 
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="checkbox" 	class="c-signups-popup__checkbox"  value="2" name="group[1149][1]" id="mce-group[1149][1]" style="margin-top: -5px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div id="mce-responses" class="clear">
-                                            <div class="response" id="mce-error-response" style="display:none"></div>
-                                            <div class="response" id="mce-success-response" style="display:none"></div>
-                                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
-                                    </div>
-                                    <div class="col-12 u-margin-top-40">
-                                        <div class="row justify-content-center">
-                                            <div class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
-                                                <div class="_btn _btn--outline c-signups-popup__button c-signups-popup__button--cancel j-mccancel" id="j-mcpopup-cancel"> NO THANKS</div>
-                                            </div>
-                                            <div class="col-12 col-md-4 col-lg-3 order-1 order-md-2 u-mobile-margin-bottom-10" id="j-mcpopup-signup">
-                                                <input type="submit" name="subscribe" class="_btn _btn--red c-signups-popup__button c-signups-popup__button--signup j-mcmultisubscribe"  id="mc-embedded-subscribe" value="SIGN ME UP">
-                                            </div>
+                                <div class="col-12 u-margin-top-40">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
+                                            <a href="{{networkData.defaultBlogUrl}}"><div class="_btn _btn--outline c-signups-popup__button c-signups-popup__button--cancel"> NO THANKS</div></a>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-3 order-1 order-md-2 u-mobile-margin-bottom-10">
+                                            <input type="submit" name="subscribe" class="_btn _btn--red c-signups-popup__button c-signups-popup__button--signup j-mcprosubscribe"  id="mc-embedded-subscribe" value="SIGN ME UP">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            
         </div>
     </div> 
 </main>
