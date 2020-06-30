@@ -15206,7 +15206,7 @@ input[type=radio].inline {
   position: relative; }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .paywall-plan-card {
-      height: 231px; } }
+      height: 241px; } }
   @media screen and (min-width: 576px) and (max-width: 767px) {
     .paywall-plan-card {
       height: 261px; } }
@@ -18437,9 +18437,6 @@ body.channel, body.section {
   line-height: 33px;
   margin-left: auto;
   font-weight: 300; }
-  @media screen and (max-width: 767px) {
-    .paywall__signin {
-      display: none; } }
 
 .paywall__close {
   display: block;
@@ -18689,6 +18686,10 @@ body.channel, body.section {
       font-size: 1.125rem;
       line-height: 1.35rem;
       text-align: left; }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .paywall-offers-card__p {
+          font-size: 1rem;
+          line-height: 1.2rem; } }
       .paywall-offers-card__p:before {
         content: "";
         display: block;
@@ -18783,14 +18784,14 @@ body.channel, body.section {
   @media screen and (max-width: 767px) {
     .paywall-faq__title {
       text-align: left;
-      font-size: 1.75rem;
-      line-height: 2.1rem;
+      font-size: 1.625rem;
+      line-height: 1.95rem;
       margin-bottom: 15px; } }
   @media screen and (max-width: 575px) {
     .paywall-faq__title {
       text-align: left;
-      font-size: 1.75rem;
-      line-height: 2.1rem;
+      font-size: 1.625rem;
+      line-height: 1.95rem;
       margin-bottom: 0; } }
 
 .paywall-faq__container {
@@ -18845,7 +18846,8 @@ body.channel, body.section {
   @media screen and (max-width: 767px) {
     .paywall-faq__button {
       height: 20px;
-      width: 40px; } }
+      width: 40px;
+      padding: 4px 8px; } }
 
 .paywall-faq__arrow-container {
   position: relative;
@@ -18919,8 +18921,8 @@ body.channel, body.section {
         width: 440px; } }
     @media screen and (max-width: 767px) {
       .paywall-banner__tagline {
-        font-size: 1.125rem;
-        line-height: 1.35rem;
+        font-size: 0.9375rem;
+        line-height: 1.125rem;
         line-height: 21px;
         font-weight: normal; } }
   .paywall-banner__button {

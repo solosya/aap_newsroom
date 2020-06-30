@@ -71,9 +71,9 @@
         line-height:33px;
         margin-left:auto;
         font-weight:300;
-        @media #{$mobile} {
-            display:none;
-        }
+        // @media #{$mobile} {
+        //     display:none;
+        // }
 
     }
 
@@ -361,6 +361,9 @@
             letter-spacing:0.7px;
             @include font-size(18);
             text-align: left;
+            @media #{$tablet} {
+                @include font-size(16);
+            }
 
 
             &:before {
@@ -511,13 +514,13 @@
 
         @media #{$mobile} {
             text-align:left;
-            @include font-size(28);
+            @include font-size(26);
             margin-bottom:15px;
         }
 
         @media #{$mobile-small} {
             text-align:left;
-            @include font-size(28);
+            @include font-size(26);
             margin-bottom:0;
         }
 
@@ -595,6 +598,7 @@
         @media #{$mobile} {
             height:20px;
             width:40px;
+            padding: 4px 8px;
         }
 
     }
@@ -693,7 +697,7 @@
             width:440px;
         }
         @media #{$mobile} {
-            @include font-size(18);
+            @include font-size(15);
             line-height:21px;
             font-weight: normal; 
         }
