@@ -14445,6 +14445,8 @@ input[type=radio].inline {
     position: relative;
     width: max-content;
     height: max-content;
+    max-width: 816px;
+    max-height: 505px;
     margin: 0 auto;
     background: #ffffff;
     padding: 70px;
@@ -14454,7 +14456,9 @@ input[type=radio].inline {
       .c-signups-popup__box {
         margin-top: 40px;
         width: calc(100% - 30px);
-        height: unset; } }
+        height: unset;
+        max-width: unset;
+        max-height: unset; } }
   .c-signups-popup__head {
     font-family: "tinos", Helvetica, Arial, sans-serif;
     font-size: 2.25rem;
