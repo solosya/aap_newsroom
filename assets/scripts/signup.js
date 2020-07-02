@@ -161,7 +161,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                         if (r.success == 1) {
                             self.data.user_id = r.user_id;
                             self.data.user_guid = r.user_guid;
-                        
+                            var purchaseId = Math.floor(Math.random()*60000000000);
                             console.log('gta-pay-now');
                             if  ($('.j-gtasubpay')[0]){
                                 var payitem = $($('.j-gtasubpay')[0]);
@@ -171,7 +171,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                                         'ecommerce': {
                                             'purchase': {
                                                 'actionField': {
-                                                    'id': 'n/a',                         // Transaction ID. Required for purchases and refunds.
+                                                    'id': purchaseId,                         // Transaction ID. Required for purchases and refunds.
                                                     'revenue': payitem.data('price')
                                                 },
                                                 'products': [{                            // List of productFieldObjects.
