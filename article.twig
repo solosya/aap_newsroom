@@ -381,6 +381,12 @@
                             {% endif %}
 
 
+                            <div id="notify" data-env="{{env}}">notify</div>
+
+                            <div id="comment-container" data-env="{{env}}">comments</div>
+
+
+
 
                             {% if popular|length > 0 %}
                                 <div class="u-margin-top-70 u-desktop-margin-bottom-minus-60">
@@ -596,3 +602,9 @@
     <div class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </main>
 
+
+
+{{this.render('partials/_comments.twig', {
+    config: config,
+    networkData: networkData
+}) | raw}}
