@@ -19,7 +19,7 @@ Acme.IPCheck = function() {
         Acme.IPToken = new Acme.Token("IP_ACCOUNT");
         var token = Acme.IPToken.getToken();
         var IPAdresses = [];
-        console.log(token);
+        console.log("token", token);
 
         if (!token) {
 
@@ -32,9 +32,11 @@ Acme.IPCheck = function() {
                         return;
                     }
                     IPAdresses = r.data.IPAdresses;
-                    
+                    console.log(IPAdresses[0]);
+
                     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
                     function(json) {
+                        console.log('ret');
                         console.log(json.ip);
                         var userAccount = false;
                         var userIPInt = dot2num(json.ip);
