@@ -28,7 +28,8 @@ Acme.IPCheck = function() {
                 if (r.success === 1) {
                     console.log("gtc");
 
-                    if (typeof r.data.IPAdresses == 'undefined' || r.data.IPAdresses.length > 1) {
+                    if (typeof r.data.IPAdresses == 'undefined') {
+                        console.log('returning');
                         return;
                     }
                     IPAdresses = r.data.IPAdresses;
