@@ -19,29 +19,22 @@ Acme.IPCheck = function() {
         Acme.IPToken = new Acme.Token("IP_ACCOUNT");
         var token = Acme.IPToken.getToken();
         var IPAdresses = [];
-        console.log("token", token);
 
         if (!token) {
 
             Acme.server.fetch(_appJsConfig.appHostName + '/api/theme/get-config').done(function(r) {
 
                 if (r.success === 1) {
-                    console.log("gtc");
 
                     if (typeof r.data.IPAdresses == 'undefined') {
-                        console.log('returning');
                         return;
                     }
                     IPAdresses = r.data.IPAdresses;
-                    console.log(IPAdresses[0]);
 
                     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
                     function(json) {
-                        console.log('ret');
-                        console.log(json.ip);
                         var userAccount = false;
                         var userIPInt = dot2num(json.ip);
-                        console.log(userIPInt);
 
                         for (var i = 0 ; i < IPAdresses.length ; i++) {
                             if (IPAdresses[i].indexOf('//') === 0 ) {
