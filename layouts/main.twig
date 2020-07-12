@@ -26,6 +26,12 @@
 {% set config        = _Network.getThemeConfig() %}
 {% set squeeze       = false %}
 
+
+{% set metaTitle = networkData.title ~ ' | ' ~ this.title %}
+{% if ("blog-" in pageClass or 'section-' in pageClass) and (blogData.meta.title is defined and blogData.meta.title != '') %}
+    {% set metaTitle = networkData.title ~ ' | ' ~ blogData.meta.title %}
+{% endif %}
+
 {% if 'page-donations' in pageClass %}
     {% set squeeze = true %}
 {% endif %}
@@ -70,9 +76,6 @@
 {% endif %}
  
 
-
-
-
 {{ this.beginPage() }}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
@@ -83,7 +86,7 @@
     <meta name="google-site-verification" content="K-ToGDFxKuQdd_Ykjo1EJDCtGoS7xmid2Pge0cqUxPw" />
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <title>{{ this.title }}</title>
+    <title>{{ metaTitle }}</title>
     {{ Html.csrfMetaTags | raw }}
 
     {% set favicon = '' %}

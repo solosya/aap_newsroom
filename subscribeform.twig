@@ -435,7 +435,7 @@
                             {% set val = plan.plan_value / 100 %}
                             <div class="col-12">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
-                                <p class="plan-type__users">{{plan.user_count}} Users</p>
+                                <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
                                 <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
                             </div>
                             <div class="col-12">

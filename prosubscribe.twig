@@ -256,14 +256,14 @@
                                 <div class="paywall-plan-card-2__name-users-container">
                                     <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
                                     {% if plan.type == 'time' and plan.user_count > 0 %}
-                                        <p class="paywall-plan-card-2__usercount d-block d-sm-none">&nbsp;-&nbsp;{{plan.user_count}} Users</p>
+                                        <p class="paywall-plan-card-2__usercount d-block d-sm-none">&nbsp;-&nbsp;{{plan.user_count + 1}} Users</p>
                                     {% endif %}
                                 </div>
                                 
                                 <p class="paywall-plan-card-2__period d-none d-sm-block">{{period}}</p>
                                 
                                 {% if plan.type == 'time' and plan.user_count > 0 %}
-                                    <p class="paywall-plan-card-2__usercount d-none d-sm-block">{{plan.user_count}} Users</p>
+                                    <p class="paywall-plan-card-2__usercount d-none d-sm-block">{{plan.user_count + 1}} Users</p>
                                 {% endif %}
                                 
                                 {% if plan.type != 'signup' %}
