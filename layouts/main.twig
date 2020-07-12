@@ -27,9 +27,9 @@
 {% set squeeze       = false %}
 
 
-{% set metaTitle = networkData.title ~ ' | ' ~ this.title %}
+{% set metaTitle = this.title %}
 {% if ("blog-" in pageClass or 'section-' in pageClass) and (blogData.meta.title is defined and blogData.meta.title != '') %}
-    {% set metaTitle = networkData.title ~ ' | ' ~ blogData.meta.title %}
+    {% set metaTitle = blogData.meta.title %}
 {% endif %}
 
 {% if 'page-donations' in pageClass %}
