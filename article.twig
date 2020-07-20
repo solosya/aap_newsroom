@@ -173,11 +173,11 @@
 {% set articleDonateText = ['As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.','As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.'] %}
 {% if config['donate-text']['article'] %}
     {% if config['donate-text']['article']['title'] is defined and config['donate-text']['article']['title'] != '' %}
-        {% set articleDonatetitle = config['donate-text']['article']['title'] %}
+        {% set articleDonateTitle = config['donate-text']['article']['title'] %}
     {% endif %}
 
     {% if config['donate-text']['article']['text'] is defined and config['donate-text']['article']['text'] != '' %}
-        {% set articleDonatetitle = config['donate-text']['article']['text'] %}
+        {% set articleDonateText = config['donate-text']['article']['text'] %}
     {% endif %}
 
 {% endif %}
