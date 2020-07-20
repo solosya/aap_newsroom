@@ -169,6 +169,21 @@
 
 
 
+{% set articleDonateTitle = 'Help us create a sustainable future for independent local journalism' %}
+{% set articleDonateText = ['As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.','As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.'] %}
+{% if config['donate-text']['article'] %}
+    {% if config['donate-text']['article']['title'] is defined and config['donate-text']['article']['title'] != '' %}
+        {% set articleDonatetitle = config['donate-text']['article']['title'] %}
+    {% endif %}
+
+    {% if config['donate-text']['article']['text'] is defined and config['donate-text']['article']['text'] != '' %}
+        {% set articleDonatetitle = config['donate-text']['article']['text'] %}
+    {% endif %}
+
+{% endif %}
+
+
+
 
 
 <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
@@ -345,10 +360,12 @@
                                 <div class="article-supoort">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                            <p class="article-supoort__head">Help us create a sustainable future for independent local journalism</p>
+                                            <p class="article-supoort__head">{{articleDonateTitle}}</p>
                                             <div class="article-supoort__text">
-                                                <p class="article-supoort__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
-                                                <p class="article-supoort__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
+                                                {% for text in articleDonateText %}
+                                                    <p class="article-supoort__content">{{text}}</p>
+                                                {% endfor %}
+
                                             </div>
                                         </div>
                                         <div class="col-8 col-md-4">
