@@ -607,5 +607,7 @@
 
 {{this.render('partials/_comments.twig', {
     config: config,
-    networkData: networkData
+    networkData: networkData,
+    articleId: article.id,
+    articleGuid: article.guid
 }) | raw}}
