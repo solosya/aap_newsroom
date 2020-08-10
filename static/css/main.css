@@ -14527,6 +14527,9 @@ input[type=radio].inline {
 .c-signups-propanel {
   border-top: 1px solid #808080;
   border-bottom: 1px solid #808080; }
+  @media screen and (max-width: 767px) {
+    .c-signups-propanel {
+      border-bottom: 0; } }
   .c-signups-propanel__content {
     padding: 20px 0;
     height: 357px; }
