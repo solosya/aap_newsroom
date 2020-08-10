@@ -93,6 +93,13 @@
             left: 0;
             background-image: linear-gradient(to left, transparent 0%, white 100%);
             content: '';
+            @media #{$desktop}{
+                background-size: 50%;
+                background-repeat: no-repeat;
+            }
+            @media #{$tablet}{
+                background-image: linear-gradient(to left, transparent 0%, white 60%);
+            }
             @media #{$mobile}{
                 display: none;
             }
