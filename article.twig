@@ -17,6 +17,7 @@
 
 
 
+
 {% set blogData         = _Blog.getBlog() %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
@@ -31,7 +32,7 @@
 {% set newsroom_pro_style       = "" %}
 {% set articleBlog              = article.blog.title | lower %}
 
-{% set comments        = _Article.getComments(article.guid) %}
+{# {% set comments        = _Article.getComments(article.guid) %} #}
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -165,21 +166,6 @@
 {% set totals = (article.total is defined) ? article.total : false %}
 {% if totals and _User.isAdminUser() %}
     {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
-{% endif %}
-
-
-
-{% set articleDonateTitle = 'Help us create a sustainable future for independent local journalism' %}
-{% set articleDonateText = ['As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.','As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.'] %}
-{% if config['donate-text']['article'] %}
-    {% if config['donate-text']['article']['title'] is defined and config['donate-text']['article']['title'] != '' %}
-        {% set articleDonateTitle = config['donate-text']['article']['title'] %}
-    {% endif %}
-
-    {% if config['donate-text']['article']['text'] is defined and config['donate-text']['article']['text'] != '' %}
-        {% set articleDonateText = config['donate-text']['article']['text'] %}
-    {% endif %}
-
 {% endif %}
 
 
@@ -334,34 +320,7 @@
                         {% endif %}
 
 
-                        <h1 class="c-comments__header u-margin-top-20">Join the conversation</h1>
 
-
-                        <form id="comment-form" class="c-comments__form u-margin-top-20">
-                            <textarea class="c-comments__input" id="create-comment" placeholder="Enter your comment here..."></textarea>
-                            <button type="submit" id="sumbit-comment" class="c-comments__submit _btn _btn--red u-margin-top-10">Done</button>
-                        </form>
-
-
-                        <h1 class="c-comments__header u-margin-top-30">Comments</h1>
-
-                        <div id="c-comments" class="u-margin-top-10">
-                            {% for comment in comments %}
-                                {# {% if comment.approved == 1 %} #}
-                                <div class="c-comment" data-id="{{comment.id}}" data-guid="{{comment.guid}}">
-                                    <img class="c-comment__avatar img-circle" src="{{comment.profile_image}}" width="45px" height="45px">
-                                    <div class="c-comment__content-container">
-                                        <p class="c-comment__byline">On {{comment.date}} {{comment.firstname}} said...</p>
-                                        <p class="c-comment__body">{{comment.comment | raw}}
-                                        <a href="#" class="c-comment__like js-comment-like">Like</a>
-                                        {% if comment.data | length > 0 %}
-                                            <p>{{comment.data | length}} likes</p>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {# {% endif %} #}
-                            {% endfor %}
-                        </div>
 
                         {% if not showPaywall %}
                             
@@ -387,12 +346,10 @@
                                 <div class="article-supoort">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                            <p class="article-supoort__head">{{articleDonateTitle}}</p>
+                                            <p class="article-supoort__head">Help us create a sustainable future for independent local journalism</p>
                                             <div class="article-supoort__text">
-                                                {% for text in articleDonateText %}
-                                                    <p class="article-supoort__content">{{text}}</p>
-                                                {% endfor %}
-
+                                                <p class="article-supoort__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
+                                                <p class="article-supoort__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
                                             </div>
                                         </div>
                                         <div class="col-8 col-md-4">
@@ -423,6 +380,12 @@
                                     </div>
                                 </div>
                             {% endif %}
+
+
+                            <div id="notify" data-env="{{env}}">notify</div>
+
+                            <div id="comment-container" data-env="{{env}}">comments</div>
+
 
 
 
@@ -642,24 +605,9 @@
 
 
 
-
-<script>
-    // main script is defered so event listener makes sure
-    // defered script is loaded before this runs
-    document.addEventListener("DOMContentLoaded", function(event) {
-        var commentForm = new Acme.CommentForm({
-            container: $('#comments'),
-            userName: "Lee Neenan",
-            input: $('#create-comment'),
-            form: $('#comment-form'),
-            button: $('#sumbit-comment'),
-            articleGuid:  "{{article.guid}}",
-            articleId: {{article.id}}
-        });
-
-        var comments = new Acme.Comments();
-
-
-
-    });
-</script>
+{{this.render('partials/_comments.twig', {
+    config: config,
+    networkData: networkData,
+    articleId: article.id,
+    articleGuid: article.guid
+}) | raw}}

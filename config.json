@@ -1,7 +1,26 @@
 {
     "module" : {
         "event" : {
-           "enabled" : false
+            "enabled" : false
+        },
+        "user" : {            
+            "extendedAttributes": [
+                {
+                    "label": "Allow Comments",
+                    "type": "radio",
+                    "name": "allow_comments",
+                    "options": {
+                        "true": "Yes",
+                        "false": "No"
+                    }
+                },
+                {
+                    "label": "Job position",
+                    "type": "inputbox",
+                    "name": "job_position"
+                }
+
+            ]
         },
         "user" : {            
             "extendedAttributes": [

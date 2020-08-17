@@ -58,7 +58,7 @@ Acme.CommentForm.prototype.events = function() {
 Acme.Comments = function(params) {
     this.csrfToken = $('meta[name="csrf-token"]').attr("content");
     this.comments = [];
-    this.events();
+    this.events();p
 };
 
 Acme.Comments.prototype.like = function(guid) {
