@@ -1,7 +1,13 @@
 {% import "partials/quotes.twig" as quotes %}
 
 
-{{ set(this, 'title', article.title) }}
+{% set pageTitle = article.title %}
+{% if article.meta.title is defined %}
+    {% set pageTitle = article.meta.title %}
+{% endif %}
+
+{{ set(this, 'title', pageTitle) }}
+
 
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
@@ -163,11 +169,31 @@
 
 
 
+{% set articleDonateTitle = 'Help us create a sustainable future for independent local journalism' %}
+{% set articleDonateText = ['As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.','As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.'] %}
+{% if config['donate-text']['article'] %}
+    {% if config['donate-text']['article']['title'] is defined and config['donate-text']['article']['title'] != '' %}
+        {% set articleDonateTitle = config['donate-text']['article']['title'] %}
+    {% endif %}
+
+    {% if config['donate-text']['article']['text'] is defined and config['donate-text']['article']['text'] != '' %}
+        {% set articleDonateText = config['donate-text']['article']['text'] %}
+    {% endif %}
+
+{% endif %}
+
+
+
 
 
 <main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
-    <article class="article-main">
-
+    <article itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="Newsroom">
+            <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+            </div>
+        </div>
 
     {% if showPaywall %}
         <div class="article-pro__image-container">
@@ -221,9 +247,12 @@
                                 {% endif %}
 
                                 <div class="articleTimes">
-                                    <time>{{ publishDate | upper }}</time>
+
+                                    {% set publishDateTime = article.publishedDateTime | replace(" ", "T") %}
+                                    <time itemprop="datePublished" datetime="{{publishDateTime}}">{{ publishDate | upper }}</time>
                                     {% if updated %}
-                                        <time class="updated">Updated {{ updateDate | capitalize }}</time>
+                                        {% set updateDateTime = article.updatedDateTime | replace(" ", "T") %}
+                                        <time itemprop="dateModified" datetime="{{updateDateTime}}" class="updated">Updated {{ updateDate | capitalize }}</time>
                                     {% endif %}
                                 </div>
                             </div>
@@ -232,15 +261,14 @@
                             {% endif %}
 
 
-                            <div class="content-author">
-                                <img src="{{ profileImg }}" alt="">
+                            <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
+                                <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
-                                    <h3>{{ article.createdBy['displayName'] }}</h3>
+                                    <h3 itemprop="name">{{ article.createdBy['displayName'] }}</h3>
                                 </a>
 
 
-
-                                <p class="bio">{{ article.createdBy['bio'] }}</p>
+                                <p itemprop="description" class="bio">{{ article.createdBy['bio'] }}</p>
                                 {% if article.createdBy['bio'] != "" %}
                                     <a class="bio-show-more showmore d-block d-sm-none d-print-none">Show more <span class="arrow down"></span></a>
                                 {% endif %}
@@ -270,17 +298,22 @@
                                 <div class="article-investigations__tag"></div>
                             {% endif %}
 
-                            <div class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
-                                <p class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
+                            <div itemprop="articleBody" class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
+                                <p itemprop="articleSection" class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                 
                                 {% if articleBlog == 'new auckland' %}
                                     <div class="beca-section beca-section__article d-block d-lg-none">
                                         <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
                                         <p class="beca-section__arttext">In association with</p>
                                     </div>
+                                {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
+                                    <div class="catalyst-section catalyst-section__article d-block d-lg-none">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1">
+                                        <p class="catalyst-section__arttext">In association with</p>
+                                    </div>
                                 {% endif %}
                                 
-                                <h1 class="article__headline">{{ quotes.smarten(article.title) }}</h1>
+                                <h1 itemprop="headline name" class="article__headline">{{ quotes.smarten(article.title) }}</h1>
 
                                 {{ content  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
@@ -293,10 +326,10 @@
                         {% if showPaywall %}
                             <div class="article-subscribe">
                                 <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
-                                <a href="/pro" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
+                                <a href="/prosubscribe" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
                                 <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
                                 <p class="article-subscribe__p">Subscribe now to start a free trial of <br class="d-none d-sm-block" />Newsroom Pro for 28 days.</p>
-                                <a href="{{networkData.defaultBlogUrl}}/pro" class="article-subscribe__link">View our subscription options</a>
+                                <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="article-subscribe__link">View our subscription options</a>
                             </div>
                         {% endif %}
 
@@ -345,23 +378,33 @@
 
                             {% else %}
 
+
+
+
+
+
+
                                 <div class="article-supoort">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                            <p class="article-supoort__head">Credible information is crucial in a crisis.</p>
+                                            <p class="article-supoort__head">{{articleDonateTitle}}</p>
                                             <div class="article-supoort__text">
-                        
-                                                <p class="article-supoort__content">The pandemic is pushing us into an unknown and uncertain future.  As the crisis unfolds the need for accurate, balanced and thorough reporting will be vital.  Newsroom’s team of journalists is working hard to bring you the facts but, now more than ever, we need your support.</p>
-                                                <p class="article-supoort__content">Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
+                                                {% for text in articleDonateText %}
+                                                    <p class="article-supoort__content">{{text}}</p>
+                                                {% endfor %}
+
                                             </div>
                                         </div>
                                         <div class="col-8 col-md-4">
-                                            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
+                                            {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
                                                 data-pp-page="pwyw" 
                                                 data-pp-frequency="monthly" 
                                                 data-pp-amount="15" 
                                                 data-pp-metadata="membership-pwyw"
-                                                ><div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Become a Supporter</div></a>
+                                                ><div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Become a Supporter</div></a> #}
+                                                <a href="{{networkData.defaultBlogUrl}}/donations">
+                                                    <div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Become a Supporter</div>
+                                                </a>
                                         </div>
                                         {# <div class="col-12 col-md offset-md-1">
                                             <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
@@ -439,11 +482,13 @@
 
                             {% if not showPaywall %}
 
-                                {% if articleBlog == 'new auckland' %}
-                                    <div class="beca-section beca-section__article d-none d-lg-block">
-                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
-                                        <p class="beca-section__arttext">In association with</p>
+                               
+                                {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
+                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1">
+                                        <p class="catalyst-section__arttext">In association with</p>
                                     </div>
+                                
                                 {% endif %}
                                 {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
                                     <section class="ad sidebar-ad u-desktop-no-margin-top">
@@ -527,6 +572,7 @@
                                     
                                             <div class="mc-field-group" style="width:100%">
                                                 <input type="email" value="" name="EMAIL" class="article-chimp-subscribe__email required " id="mce-EMAIL" placeholder="Enter your email" style="color:black; border:none">
+                                                <input type="hidden" class="u-hide" value="1" name="group[3][1]" id="mce-group[3]-3-0">
                                             </div >
 
                                             <div id="mce-responses" class="clear">

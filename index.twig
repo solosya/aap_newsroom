@@ -57,7 +57,7 @@
             "feed": "",
             "link": ""
         }, 
-        "covid-19": {
+        "economic recovery": {
             "feed": "",
             "link": ""
         },
@@ -380,7 +380,7 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['covid-19'].feed.articles|length > 0 %}
+                {% if sections['economic recovery'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
@@ -396,9 +396,9 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {# {% if sections['investigations'].feed.articles|length > 0 %}
+                {% if sections['investigations'].feed.articles|length > 0 %}
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %} #}
+                {% endif %}
 
                 {% if sections['readingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}

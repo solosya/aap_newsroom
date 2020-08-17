@@ -1,0 +1,461 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+{% set plans = networkData['paywallPlans'] %}
+
+
+{% set topPlans = [] %}
+{% set bottomPlans = [] %}
+
+
+{% for plan in plans %}
+    {% if "!*!" in plan.description %}
+        {# {% set log = _AppHelper.log(topPlans) %} #}
+
+        {% set description = plan.description | split("!*!") %}
+        {% set placement = description[0] | split(":") %}
+        {% set plan = plan | merge({ ("order") : placement[1]}) %}
+        {% if placement[2] is defined and placement[2] == 'best' and placement[3] is defined %}
+            {% set plan = plan | merge({ ("best") : 'true'}) %}
+            {% set plan = plan | merge({ ("save") : placement[3]}) %}
+        {% endif %}
+
+        {% if placement[0] == 'top' %}
+            {% set topPlans = topPlans | merge({ ("0") : plan}) %}
+        {% else %}
+            {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
+        {% endif %}
+
+
+    {% endif %} 
+{% endfor %}
+
+
+
+{% set orderedTop = [] %}
+{% set orderedBottom = [] %}
+
+{% for plan in topPlans %}
+    {% set added = false %}
+
+    {% if orderedTop | length == 0 %}
+        {% set added = true %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedTop if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedTop = { ("0") : plan} | merge(orderedTop) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+{% for plan in bottomPlans %}
+    {% set added = false %}
+
+    {% if orderedBottom | length == 0 %}
+        {% set added = true %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedBottom if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedBottom = { ("0") : plan} | merge(orderedBottom) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+
+
+
+
+<main id="main" class="site-main u-margin-bottom-60" role="main" data-test="paywall">
+    
+    <div class="paywall__header">
+        <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-arrow2__container">
+                <div class="o-arrow2"> 
+                    <div class="o-arrow2__arrow"></div>
+                </div>
+            </div>
+            <picture>
+                <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+                <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
+            </picture>
+        </a>
+
+        <button id="signinBtn" type="submit" class="_btn _btn--black  paywall__signin">SIGN IN</button>
+
+        <a class="paywall__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-close paywall__close-icon"></div>
+        </a>
+    </div>
+
+
+
+    <section class="paywall-banner">
+        <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h1 class="paywall-banner__headline">Daily insights <br class="d-sm-block" />direct to your inbox.</h1>
+                    <h3 class="paywall-banner__tagline">In-depth analysis of politics and business <br />curated by Bernard Hickey.</h3>
+                </div>
+            </div>
+
+            <div class="row paywall__top-plans u-mobile-margin-top-10">
+
+            {% for plan in orderedTop %}
+            
+            {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+        
+            {# {% for plan in plans %} #}
+                {# {% set log = _AppHelper.log(plan) %} #}
+                {% set period = "Monthly" %}
+                {% if plan.period == "year" %}
+                    {% set period = "Annual" %}
+                {% elseif plan.period == "week" %}
+                    {% set period = "Weekly" %}
+                {% endif %}
+
+
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 paywall-plan {{paddingClass}}">
+                    <div class="paywall-plan-card u-mobile-margin-top-10">
+                        
+                        {% if plan.best is defined and plan.best == 'true' %}
+
+                        <div class="paywall-plan-card__best-value">
+                            <div class="paywall-plan-card__ribbon"></div>
+                            <div class="paywall-plan-card__best-value-container">
+                                <p class="paywall-plan-card__best-value-label">BEST VALUE</p>
+                                <p class="paywall-plan-card__best-value-amount">SAVE ${{plan.save}}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% set val = plan.plan_value / 100 %}
+                        {# <h3 class="paywall-plan__name">{{plan.plan_name}}</h3> #}
+                        <p class="paywall-plan-card__period">{{period}}</p>
+                        
+                        {# {% if plan.type == 'time' and plan.user_count > 3 %}
+                            <p class="paywall-plan__usercount">{{plan.user_count}} Users</p>
+                        {% endif %}#}
+
+                        {% if plan.type != 'signup' %}
+                            <p class="paywall-plan-card__price">${{val}}</p>
+                        {% endif %}
+
+                        {% set subscribeLink = networkData.defaultBlogUrl ~ "/layout-sub?plan="~ plan.guid %}
+
+
+                        {% if plan.trial_status == "1" %}
+                            {# {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %} #}
+                            <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
+                        {% endif %}
+
+                        <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}" data-price="{{val}}" data-name="{{period}}" data-id="{{plan.guid}}">START MY SUBSCRIPTION</a>
+                    </div>
+                </div>
+                
+            {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="paywall-offers u-padding-bottom-30">
+        <div class="container">
+            <h1 class="paywall-offers__title">What you get with <br class="d-block d-sm-none" />Newsroom Pro</h1>
+            <section class="row paywall-offers__container">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">A daily morning email of news and insights curated by managing editor Bernard Hickey</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">Pro email breaking news alerts</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Exclusive and unlimited access to content on Newsroom Pro</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Bonus subscription for colleague or a friend</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="container">
+        
+        <a name="subscriptions"></a>
+        
+        <section class="row subscription">
+            
+            <p class="offset-lg-1 col-12 col-lg-10 paywall__corporate-link u-text-center u-desktop-margin-top-50 u-tablet-margin-top-30">For corporate and small business subscriptions <a id="corporate-plans" href="#corporate">click here</a></p>
+
+            <div id="corporate-plans-container" class="paywall__coporate-plans offset-lg-1 col-lg-10 u-hide">
+                <div class="row">
+
+                <h1 class="offset-lg-1 col-12 col-lg-10 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the subscription <br class="d-block d-sm-none" />that's right for you:</h1>  
+
+                {% for plan in orderedBottom %}
+                    {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+                    
+                    {% set period = "Monthly" %}
+                    {% if plan.period == "year" %}
+                        {% set period = "Annual" %}
+                    {% elseif plan.period == "week" %}
+                        {% set period = "Weekly" %}
+                    {% endif %}
+
+
+
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 paywall-plan">
+                        <div class="paywall-plan-card-2">
+                            {% set val = plan.plan_value / 100 %}
+                            <div class="paywall-plan-card-2__left">
+                                <div class="paywall-plan-card-2__name-users-container">
+                                    <h3 class="paywall-plan-card-2__name">{{plan.plan_name}}</h3>
+                                    {% if plan.type == 'time' and plan.user_count > 0 %}
+                                        <p class="paywall-plan-card-2__usercount d-block d-sm-none">&nbsp;-&nbsp;{{plan.user_count}} Users</p>
+                                    {% endif %}
+                                </div>
+                                
+                                <p class="paywall-plan-card-2__period d-none d-sm-block">{{period}}</p>
+                                
+                                {% if plan.type == 'time' and plan.user_count > 0 %}
+                                    <p class="paywall-plan-card-2__usercount d-none d-sm-block">{{plan.user_count}} Users</p>
+                                {% endif %}
+                                
+                                {% if plan.type != 'signup' %}
+                                    <div class="paywall-plan-card-2__price-period-container">
+                                        <p class="paywall-plan-card-2__price">${{val}}</p>
+                                        <p class="paywall-plan-card-2__period d-block d-sm-none">{{period}}</p>
+                                    </div>
+                                {% endif %}
+
+
+                                {% set subscribeLink = "{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}" %}
+
+                                {% if plan.trial_status == "1" %}
+                                    {% set subscribeLink = subscribeLink ~ "&amp;trial=true" %}
+                                    <p class="paywall-plan-card-2__trial">includes <br />{{plan.trial_period}}-day free trial</p>
+                                {% endif %}
+                            </div>
+                            <a class="_btn--red paywall-plan-card-2__subscribe-button j-gtasubstart" href="{{networkData.defaultBlogUrl}}/layout-sub?plan={{plan.guid}}" data-price="{{val}}" data-name="{{period}}" data-id="{{plan.guid}}">START MY <br class="d-block d-sm-none"/>SUBSCRIPTION</a>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+                </div>
+
+                    <a id="close-coporate" href="#" class="paywall__close-corporate u-margin-top-10">Close</a>
+                    {# <p class="paywall__contact-text u-margin-top-40 u-tablet-margin-top-60">
+                        For information on annual billing or custom arrangements for enterprises with 200 + users, <a href="mailto:pro@newsroom.co.nz">please email us.</a>
+                    </p> #}
+            </div>
+        </section>
+
+
+    </div>
+
+
+
+    <div class="container">
+        <div class="row paywall-faq u-desktop-margin-top-60 u-tablet-margin-top-40 u-mobile-margin-top-30">
+            <h1 class="offset-lg-1 col-12 col-lg-10 paywall-faq__title">FAQs</h1>
+
+            <div class="offset-lg-1 col-12 col-lg-10">
+                <div class="paywall-faq__question-box d-flex flex-row">
+                    <div class="paywall-faq__container">
+                        <p class="paywall-faq__question u-font-bold">What does my free trial include?</p>
+                        <div class="paywall-faq__answer-container u-hide">
+                            <p class="paywall-faq__answer">Your Newsroom Pro trial gives you access to all of Newsroom Pro’s features; a daily email of news and insights, Pro alerts for breaking news, access to Newsroom Pro exclusive content - and you will not be charged during the free trial period.</p>
+                        </div>
+                    </div>
+                    <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="paywall-faq__question-box d-flex flex-row">
+                    <div class="paywall-faq__container">
+                        <p class="paywall-faq__question u-font-bold">When does the trial end and when will I be charged?</p>
+                        <div class="paywall-faq__answer-container u-hide">
+                            <p class="paywall-faq__answer">After 28 days, your credit card will be charged for your chosen subscription unless you cancel at least two days before the end of the free period. Subscriptions are billed monthly.</p>
+                        </div>
+                    </div>
+                    <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="paywall-faq__question-box d-flex flex-row">
+                    <div class="paywall-faq__container">
+                        <p class="paywall-faq__question u-font-bold">Can I cancel any time?</p>
+                        <div class="paywall-faq__answer-container u-hide">
+                            <p class="paywall-faq__answer">Yes. Whether you are on a trial or if you decide the subscription isn’t for you – you’re not locked in so give it a go. After you have cancelled, your subscription will continue to the end of your billing month.</p>
+                        </div>
+                    </div>
+                    <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="paywall-faq__question-box d-flex flex-row">
+                    <div class="paywall-faq__container">
+                        <p class="paywall-faq__question u-font-bold">Do you have discounts for group subscriptions?</p>
+                        <div class="paywall-faq__answer-container u-hide">
+                            <p class="paywall-faq__answer">Yes, we do. We’ve got a variety of corporate subscription packages for companies big and small. See the link above for pay-monthly corporate and small business subscription options. For annual rates, or enterprise deals for businesses with 200+ staff, email <a href="mailto:pro@newsroom.co.nz">pro@newsroom.co.nz</a></p>
+                        </div>
+                    </div>
+                    <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="paywall-faq__question-box d-flex flex-row">
+                    <div class="paywall-faq__container">
+                        <p class="paywall-faq__question u-font-bold">What is the difference between making a donation and subscribing to Newsroom Pro?</p>
+                        <div class="paywall-faq__answer-container u-hide">
+                            <p class="paywall-faq__answer">Great question, because both support Newsroom’s journalism. <a href="{{networkData.defaultBlogUrl}}/donations">Donations</a> can be any amount or frequency and all donations help Newsroom keep its journalism free for everyone to read. Newsroom Pro gives you advanced access to our business and political reporting as well as our Daily 8 Things email and news.</p>
+                        </div>
+                    </div>
+                    <div class="paywall-faq__button"><div class="paywall-faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</main>
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    // testing GTA stuff
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        $('.j-gtasubstart').mousedown(function(){
+            dataLayer.push({
+            'event': 'addToCart',
+                'ecommerce': {
+                    'currencyCode': 'NZD',
+                    'add': {                                // 'add' actionFieldObject measures.
+                        'products': [{                        //  adding a product to a shopping cart.
+                            'name': $(this).data('name'),
+                            'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                            'price': $(this).data('price'),
+                            'category': 'Pro Subscription',
+                            'quantity': 1
+                        }]
+                    }
+                }
+            });
+             console.log('gta-subpress',dataLayer);
+        });
+
+        
+
+
+
+        $('#corporate-plans').on('click', function(e) {
+            e.preventDefault();
+            var parent = $(this).parent();
+            parent.toggleClass('u-hide');
+            $("#corporate-plans-container").toggleClass('u-hide');
+        });
+
+        $('#close-coporate').on('click', function(e) {
+            e.preventDefault();
+            var parent = $('#corporate-plans').parent();
+            parent.toggleClass('u-hide');
+            $("#corporate-plans-container").toggleClass('u-hide');
+        });
+
+
+
+
+        $('.paywall-faq__button').on('click', function(e) {
+
+            close = true;
+            var box = $(e.target).closest('div.paywall-faq__question-box');
+            if (box.hasClass('paywall-faq__question-box--open')) {
+                close = false;
+            }
+
+
+            var boxes = $('div.paywall-faq__question-box');
+            boxes.removeClass('paywall-faq__question-box--open');
+
+            var questions = $('.paywall-faq__question');
+            questions.removeClass('paywall-faq__question--open');
+
+            var answers = $('.paywall-faq__answer-container');
+            answers.addClass('u-hide').removeClass('paywall-faq__answer-container--open');
+            
+            var arrows = $('.faq__arrow-container');
+            arrows.removeClass('paywall-faq__arrow-container--up');
+
+            var question = box.find('.paywall-faq__question');
+            var clickedArrow = box.find('.paywall-faq__arrow-container');
+            var clickedAnswer = box.find('.paywall-faq__answer-container');
+
+            if (close) {
+                box.addClass('paywall-faq__question-box--open');
+                question.addClass('paywall-faq__question--open');
+                clickedAnswer.removeClass('u-hide').addClass('paywall-faq__answer-container--open');
+                clickedArrow.addClass('paywall-faq__arrow-container--up');
+            }
+
+
+
+        });
+
+
+    });
+</script>

@@ -8,8 +8,10 @@
 
     &__box{
         position: relative;
-        width: 816px;
-        height: 505px;
+        width: max-content;
+        height: max-content;
+        max-width: 816px;
+        max-height: 505px;
         margin: 0 auto;
         background: $white;
         padding: 70px;
@@ -19,6 +21,9 @@
             margin-top: 40px;
             width: calc(100% - 30px);
             height: unset;
+            max-width: unset;
+            max-height: unset;
+        
         }
     }
 

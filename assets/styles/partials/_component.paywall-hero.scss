@@ -1,0 +1,117 @@
+.paywall-hero {
+    background-image: url('../images/paywall.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    border-top:solid 1px #979797;
+    margin-top: 40px;
+    @media #{$tablet} {
+        // height:279px;
+        // background-image: url('../images/marketing-hero-tablet.png');
+        
+    }
+    @media #{$mobile} {
+        background-image: none;
+    }
+
+    @media screen and (max-width: $sm-break-down) {
+        // height:320px;
+        margin-bottom: 150px;
+        // background-image: url('../images/marketing-hero-mobile2.png');
+        background-position: top;
+        margin-top: 125px;
+    }
+    
+}   
+
+.paywall-hero--thanks {
+    @media #{$desktop-up} {
+        height:785px;
+    }
+} 
+.paywall-hero__content {
+    padding-top:149px;
+    height:100%;
+    @media #{$tablet} {
+        padding-top:37px;
+    }
+    @media screen and (max-width: $sm-break-down) {
+        padding-top:335px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+
+.paywall-hero__headline {
+    font-family: $base-font-family;
+    @include font-size(82);
+    font-weight:700;
+    margin-bottom:25px;
+    line-height: 0.89;
+    @media #{$tablet} {
+        @include font-size(47);
+        margin-bottom:15px;
+    }
+    @media screen and (max-width: $sm-break-down) {
+        @include font-size(28);
+        margin-bottom: 5px;
+    }
+}
+.paywall-hero__tagline {
+    font-family: $font-family-sans-serif;
+    @include font-size(25);
+    font-weight: 600; 
+    margin-top:40px;
+    margin-bottom:50px;
+    @media #{$tablet} {
+        @include font-size(14);
+        margin-top:0;
+        margin-bottom: 25px;
+    }
+    @media screen and (max-width: $sm-break-down) {
+        @include font-size(14);
+        margin-top: 0;
+        margin-bottom: 10px;
+
+    }
+}
+
+.paywall-hero__button {
+    font-weight: 500;
+    @media #{$tablet} {
+        height: 30px;
+        width: 109px;
+        line-height: 30px;
+        font-size: 12px;
+    }
+    @media #{$mobile}{
+        height: 35px;
+        width: 140px;
+        line-height: 35px;
+    }
+}
+.paywall-hero__button__subscribe {
+    float: left;
+}
+
+.paywall-hero__button__trial {
+    margin-left: 35px;
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+    @media #{$mobile}{
+        margin-left: 15px;
+    }
+}
+
+.paywall-hero__email {
+    &a,>a{
+        text-decoration: underline;
+    }
+    margin-top:76px;
+    @include font-size(18);
+    line-height: 1.61;
+    width:350px;
+}

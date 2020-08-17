@@ -68,6 +68,7 @@ div.fancybox-title {
 .loadMoreArticles {
     text-decoration: none;
     display: block;
+    cursor:pointer;
     margin: 0 auto 40px auto;
     border: 1px solid #e12e21;
     width: 170px;
@@ -88,6 +89,7 @@ div.fancybox-title {
     font-weight: 600;
     text-transform: uppercase;
     display: block;
+    cursor:pointer;
     // margin-left: 15px;
     // position: relative;
     // top: -70px;
@@ -336,6 +338,25 @@ p.foundingpartners {
             }   
 
             &.sponsor-bellgully {
+                width:187px;
+                height:50px;
+                background: url('../images/logos/bell-gully.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                
+                    margin-right: 40px;
+                
+                margin-top: 15px;
+                @media #{$tablet}{
+                    margin-right: 30px;
+                }
+                @media screen and (max-width: $mobile-break){
+                   
+                    margin-right: 0;
+                }
+            }
+
+            &.sponsor-catalyst {
                 width:187px;
                 height:50px;
                 background: url('../images/logos/bell-gully.svg');

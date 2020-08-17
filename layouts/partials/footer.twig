@@ -7,7 +7,7 @@
                     <a class="footer-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
                         <img class="footer-logo__reversed" src="{{networkData.templatePath}}/static/images/newsroom-reversed2.png" alt="logo">
                     </a>
-                    <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
+                    <span><a href="https://pagemasters.com.au">POWERED BY PAGEMASTERS</a></span>
                 </div><!-- .col-sm-3-->
                 <div class="col-md-7 col-lg-9 pull-right text-right logo-wrapper u-mobile-margin-bottom-50">
                     <img src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" class="symbol">
@@ -30,6 +30,7 @@
                                     <div class="mc-field-group" style="">
                                     {# <label for="mce-EMAIL">Email Address </label> #}
                                         <input type="email" value="" name="EMAIL" class="footer-subscribe__email required " id="mce-EMAIL" placeholder="Enter your email" style="color:black; border:none">
+                                        <input type="hidden" class="u-hide" value="1" name="group[3][1]" id="mce-group[3]-3-0">
                                     </div >
                                     <div id="mce-responses" class="clear">
                                         <div class="response" id="mce-error-response" style="display:none"></div>
@@ -65,7 +66,7 @@
 
                 <div class="col-md-12" style="">
                     <div class="footer-menu">
-                        <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
+                        <span><a href="https://pagemasters.com.au">POWERED BY PAGEMASTERS</a></span>
                     </div><!-- .footer-menu -->
                 </div><!-- .col-sm-12-->
             </div><!-- .row-->
@@ -93,7 +94,7 @@
                     {% if (parentItem.blogTitle != "" and parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                         <li>
                             <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="">
                             </a>
                         </li>
                     {% endif %}

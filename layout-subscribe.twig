@@ -68,7 +68,7 @@
 
 
 
-    <div class="container-fluid u-margin-top-40 u-mobile-margin-top-50">
+    <div id="paywalloldsubscribe" class="container-fluid u-margin-top-40 u-mobile-margin-top-50">
 
         <section class="row">
 
@@ -115,6 +115,7 @@
                         <form class="account-form u-mobile-bigger-margins-15" method="post" action="" id="listingForm">
                             <input type="hidden" class="" name="planid" id="planid" value="{{plan.guid}}">
                             <input type="hidden" class="" name="trial" id="trial" value="{{trial}}">
+                            <input type="hidden" class="" name="plantype" id="plantype" value="{{plan.type}}">
                         {# {% if trial %}
                             <input type="checkbox" class="" onclick="return false;" value="true" id="trial" name="trial" checked> 
                             <label>Include 14 day trial period</label>
@@ -136,22 +137,22 @@
                             
                             {# <div id="countrySelect" class="countrySelect"></div>  #}
                             <div class="u-margin-top-20"></div>
-                            {% if trial %}
+                            {% if trial and plan.type == 'time' %}
                                 <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="changeterms" name="changeterms" type="checkbox" class="c-checkbox__input" /> 
                                     <label class="c-checkbox__label" for="changeterms">
                                         <span class="c-checkbox__button"></span>
-                                        I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period. 
+                                        I agree to my card being charged {{planPrice}} every {{frequency}} at the end of the {{trialPeriod}}-day free trial period and can cancel my paid subscription at any time in My Account page. A payment reminder will be emailed 7 days before the end of the free trial period.
                                     </Label>
                                 </div>
 
-                                <div class="button-set c-checkbox u-margin-bottom-15">
+                                {# <div class="button-set c-checkbox u-margin-bottom-15">
                                     <input id="cancelterms" name="cancelterms" type="checkbox" class="c-checkbox__input" /> 
                                     <label class="c-checkbox__label" for="cancelterms">
                                         <span class="c-checkbox__button"></span>
                                         I understand I can cancel for free before the end of the trial in My Account page, and I will be emailed a payment reminder 7 days before the end of the free trial period. I understand I can cancel my paid subscription at any time in My Account page.
                                     </label>
-                                </div>
+                                </div> #}
                             {% endif %}
 
 
@@ -204,7 +205,7 @@
                             <input type="text" class="articleExtendedData" name="code-redeem" id="code-redeem" value="" placeholder="0a1b-2c3d-4e5f">
                         </div>
 
-                        <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25">{{buttonLabel}}</button>
+                        <button id="subscribe" class="_btn _btn--red u-margin-top-25 u-margin-bottom-25 j-gtasubpay" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                         </form>
                         {% else %}
 
@@ -222,7 +223,7 @@
                                 </div>
 
                                 {# <button id="subscribe-trial" class="_btn _btn--red u-margin-top-25">SIGN UP FOR A 14 DAY TRIAL</button> #}
-                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button">{{buttonLabel}}</button>
+                                <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscriptionPlan__button j-gtasubpay" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">{{buttonLabel}}</button>
                             
                                 <!-- Used to display form errors -->
                                 <div id="card-errors" class="profile-section__card-errors u-margin-bottom-100" role="alert"></div>
@@ -254,13 +255,14 @@
                                 <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png">
                             </div>
                             <div class="col-lg-12 col-md-5">
-                                <p class="plan-type__label u-margin-top-40 u-tablet-margin-top-10">What's included in your subscription:</p>
+
                                 <ul class="plan-type__features">
-                                    {{plan.description | raw }}
+                                    {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
+                                    {{description | raw }}
                                 </ul>
                             </div>
 
-                            <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/pro#subscriptions">Change subscription</a>
+                            <a  class="plan-type__link" href="{{networkData.defaultBlogUrl}}/pro">Change subscription</a>
                         </div>
 
                     {# 	{{ this.render('partials/_plan-'~plan~'.twig', {
@@ -277,12 +279,38 @@
         _linkedin_partner_id = "547636";
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
         window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script>
-    <script type="text/javascript">
+    
         (function(){var s = document.getElementsByTagName("script")[0];
         var b = document.createElement("script");
         b.type = "text/javascript";b.async = true;
         b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
         s.parentNode.insertBefore(b, s);})();
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            $('.j-gtasubpay').mousedown(function(){
+                dataLayer.push({
+                    'event': 'checkout',
+                        'ecommerce': {
+                        'checkout': {
+                            'actionField': {'step': 2, 'option': 'Activate Account'},
+                            'products': [{
+                                'name': $(this).data('name'),
+                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                'price': $(this).data('price'),
+                                'category': 'Pro Subscription',
+                                'quantity': 1
+                            }]
+                        }
+                    },
+                });
+            });
+            console.log('gta-trypaying',dataLayer);
+            
+        });
+
+
+
     </script>
+
+    
 </main>

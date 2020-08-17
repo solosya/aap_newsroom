@@ -39,6 +39,14 @@
 }
 
 
+@mixin plan-gradient() {
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(216,216,216,.3) 50%, rgba(216,216,216,.3) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(216,216,216,.3) 50%,rgba(216,216,216,.3) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(216,216,216,.3) 50%,rgba(216,216,216,.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=0 ); /* IE6-9 */
+}
+
 
 @mixin gradientafter() {
 	&:after {
@@ -212,6 +220,11 @@
 @mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
 	font-size: ($sizeValue / 16) + rem;
 	line-height: ($line / 16) + rem;
+}
+
+@mixin responsive-font-size($sizeValue: 16, $width: 1) {
+    // font-size: ($sizeValue / 16) + rem;
+    font-size: calc(12rem + 1vw);
 }
 
 

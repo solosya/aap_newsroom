@@ -1,6 +1,9 @@
 .c-signups-propanel{
     border-top: 1px solid $grey;
     border-bottom: 1px solid $grey;
+    @media #{$mobile}{
+        border-bottom: 0;
+    }
 
     &__content{
         padding: 20px 0;
@@ -90,6 +93,13 @@
             left: 0;
             background-image: linear-gradient(to left, transparent 0%, white 100%);
             content: '';
+            @media #{$desktop-up}{
+                background-size: 50%;
+                background-repeat: no-repeat;
+            }
+            @media #{$tablet}{
+                background-image: linear-gradient(to left, transparent 0%, white 60%);
+            }
             @media #{$mobile}{
                 display: none;
             }

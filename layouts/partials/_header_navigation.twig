@@ -68,7 +68,7 @@
                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="{{parentItem.blogTitle}}">
+                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg" alt="{{parentItem.blogTitle}}">
                         </a>
                     </li>
                 {% endif  %}
@@ -95,20 +95,20 @@
                 
             {% if paywallSection %}
                 <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                    <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="logo" class="main-logo pro-logo__icon--desk">
+                    <img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg" alt="Newsroom Pro" class="main-logo pro-logo__icon--desk">
                 </a>
                 <a class="mobile-logo navbar-brand " href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
-                    <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="logo" class="mobile-logo pro-logo__icon__mobile">
+                    <img src="{{networkData.templatePath}}/static/images/nr-pro-icon.png" alt="Newsroom Pro" class="mobile-logo pro-logo__icon__mobile">
                 </a>
 
             {% else %} 
                 <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                    <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=572" alt="logo" class="main-logo main-logo--{{roomInfo[0] | lower}}">
-                    {# <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?v=572" alt="logo" class="main-logo"> #}
+                    <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
+                    {# <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg" alt="logo" class="main-logo"> #}
                 </a>
 
                 <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                    <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="logo" class="mobile-logo">
+                    <img src="{{networkData.templatePath}}/static/images/newsroom-icon.png" alt="Newsroom" class="mobile-logo">
                     {# <img src="{{networkData.templatePath}}/static/images/nr-logo-summer.svg" alt="logo" class="mobile-logo-summer"> #}
                 </a>
 
@@ -193,7 +193,7 @@
             {% else %}
             <div class="auth">
                 <button id="signinBtn" type="submit" class="_btn _btn--black site-header-signin__signbtn">SIGN IN TO PRO</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--red site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="_btn _btn--red site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
             </div>
         {% endif %}
     </div>
@@ -210,7 +210,7 @@
         <div class="main-panel">
             <div class="logo">
                 <a class="navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg?v=572" alt="logo" class="mobile-logo">
+                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="Newsroom" class="mobile-logo">
                 </a>
             </div>
 
@@ -220,7 +220,7 @@
                 <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red">SIGN OUT</a>
             {% else %}
                 <button id="signinBtn" type="submit" class="_btn _btn--black site-header-signin__signbtn">SIGN IN TO PRO</button>
-                <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--red  site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
+                <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="_btn _btn--red  site-header-signin__subbtn">SUBSCRIBE TO PRO</a>
             {% endif %}
             </div>
 
@@ -263,8 +263,8 @@
                     {% if (parentItem.blogTitle != pageClass) %}
                         <li>
                             <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
-                                {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt=""> #}
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
+                                {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                             </a>
                         </li>
                     {% endif  %}
@@ -313,7 +313,7 @@
 
     <div class="site-header-signin d-block d-md-none">
         
-        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} style="width:80.5%;" {% endif %}>
+        <a href="{{networkData.defaultBlogUrl}}/donations" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} style="width:80.5%;" {% endif %}>
             <p><b style="font-weight:700;">Become a supporter</b><br />via PressPatron</p>
         </a>
         
@@ -322,7 +322,7 @@
             <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="site-header-signin__account _btn _btn--black u-float-right"><p>Hi, {{user.firstname}}</p></a>
         {% else %}
             <button id="signinBtn" type="submit" class="_btn _btn--red u-float-right site-header-signin__signbtn">SIGN IN</button>
-            <a href="{{networkData.defaultBlogUrl}}/pro" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
+            <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="_btn _btn--black u-float-right site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
         {% endif %}
     
     </div>
@@ -379,8 +379,8 @@
         {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
             <li class="mobile-menu__rooms-item">
                 <a href="{{parentItem.link |raw}}" class="mobile-menu__rooms-link {{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                    <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=572" alt="">
-                    {# <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg?v=572" alt=""> #}
+                    <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="{{parentItem.blogTitle | lower}}">
+                    {# <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                 </a>
             </li>
         {% endif  %}

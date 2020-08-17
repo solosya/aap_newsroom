@@ -131,7 +131,7 @@ adPush = function(slot){
                         .addSize([480, 200], [[300, 75]])
                         .addSize([360, 400], [[300, 75]])
                         .addSize([320, 400], [[300, 75]])
-                        .build();
+                        .build(); 
         var mappingMrec = googletag.sizeMapping()
                         .addSize([1000, 200], [[300, 250]])                
                         .addSize([768, 200], [[300, 250],[300, 75]])
