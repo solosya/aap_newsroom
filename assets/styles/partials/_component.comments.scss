@@ -1,0 +1,19 @@
+.comments { 
+    &__header {
+        display:flex;
+        border-bottom: 4px solid black;
+        margin-bottom:25px;
+        align-items:center;
+        padding-bottom: 17px;    
+    }
+
+    &__title {
+        font-family: "Source Sans Pro";
+        font-size:22px;
+        font-weight:600;
+    
+        @media #{$mobile-small} {
+            font-size:18px;
+        }
+    }
+}

@@ -33,6 +33,7 @@
 {% set articleBlog              = article.blog.title | lower %}
 
 {# {% set comments        = _Article.getComments(article.guid) %} #}
+{% set commentCount    = 55 %}
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -382,9 +383,15 @@
                             {% endif %}
 
 
-                            <div id="notify" data-env="{{env}}">notify</div>
 
-                            <div id="comment-container" data-env="{{env}}">comments</div>
+                            <div id="comment-container" data-env="{{env}}">
+                            
+                                <div class="comments__header">
+                                    <h3 class="comments__title">{{commentCount}} comments</h3>
+                                </div>
+
+                            
+                            </div>
 
 
 
@@ -604,10 +611,21 @@
 </main>
 
 
+{% if not guestUser %}
+    {{this.render('partials/_comments.twig', {
+        config: config,
+        networkData: networkData,
+        articleId: article.id,
+        articleGuid: article.guid
+    }) | raw}}
+{% endif %}
 
-{{this.render('partials/_comments.twig', {
-    config: config,
-    networkData: networkData,
-    articleId: article.id,
-    articleGuid: article.guid
-}) | raw}}
+{% if guestUser %}
+    {{this.render('partials/_comments.twig', {
+        config: config,
+        networkData: networkData,
+        articleId: article.id,
+        articleGuid: article.guid
+    }) | raw}}
+{% endif %}
+

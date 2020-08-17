@@ -15720,6 +15720,21 @@ input[type=radio].inline {
         min-width: 100px;
         max-width: 100px; } }
 
+.comments__header {
+  display: flex;
+  border-bottom: 4px solid black;
+  margin-bottom: 25px;
+  align-items: center;
+  padding-bottom: 17px; }
+
+.comments__title {
+  font-family: "Source Sans Pro";
+  font-size: 22px;
+  font-weight: 600; }
+  @media screen and (max-width: 575px) {
+    .comments__title {
+      font-size: 18px; } }
+
 .room-view {
   margin-top: 70px;
   margin-bottom: 80px; }
