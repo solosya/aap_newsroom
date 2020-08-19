@@ -32,8 +32,20 @@
 {% set newsroom_pro_style       = "" %}
 {% set articleBlog              = article.blog.title | lower %}
 
-{# {% set comments        = _Article.getComments(article.guid) %} #}
-{% set commentCount    = 55 %}
+
+
+{% set init = _Comment.twigInit() %}
+{% set commentCount = _Comment.getArticleCommentCount(article.id) %}
+{# {% set commentCount = 0 %} #}
+
+{% set comment = null %}
+{% if commentCount > 0 %}
+    {% set comments = _Comment.getByArticle(article.id, {"limit":1, "orderBy" : {"created_at" : "ASC"}, "rootOnly" : true, "resultFormat" : 'array'}) %}
+    {% set comment = comments.comments[0] %}
+{% endif %}
+
+
+
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -326,12 +338,12 @@
                         {% if not showPaywall %}
                             
                             {% if articleBlog == 'lockerroom' %}
-                                <div class="article-supoort">
-                                    <div class="article-supoort__text">
-                                        <p class="article-supoort__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
+                                <div class="article-support">
+                                    <div class="article-support__text">
+                                        <p class="article-support__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
                                     </div>
                                     <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                        <div class="d-print-none article-supoort__button">Become a Supporter</div>
+                                        <div class="d-print-none article-support__button">Become a Supporter</div>
                                     </a>
                                 </div>
                                 
@@ -344,13 +356,13 @@
 
 
 
-                                <div class="article-supoort">
+                                <div class="article-support">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                            <p class="article-supoort__head">Help us create a sustainable future for independent local journalism</p>
-                                            <div class="article-supoort__text">
-                                                <p class="article-supoort__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
-                                                <p class="article-supoort__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
+                                            <p class="article-support__head">Help us create a sustainable future for independent local journalism</p>
+                                            <div class="article-support__text">
+                                                <p class="article-support__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
+                                                <p class="article-support__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
                                             </div>
                                         </div>
                                         <div class="col-8 col-md-4">
@@ -359,9 +371,9 @@
                                                 data-pp-frequency="monthly" 
                                                 data-pp-amount="15" 
                                                 data-pp-metadata="membership-pwyw"
-                                                ><div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Become a Supporter</div></a> #}
+                                                ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div></a> #}
                                                 <a href="{{networkData.defaultBlogUrl}}/donations">
-                                                    <div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Become a Supporter</div>
+                                                    <div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div>
                                                 </a>
                                         </div>
                                         {# <div class="col-12 col-md offset-md-1">
@@ -370,11 +382,11 @@
                                                 data-pp-frequency="annual" 
                                                data-pp-amount="10" 
                                                 data-pp-metadata="membership-$10-per-year"
-                                                ><div class="d-print-none article-supoort__button article-supoort__button--three u-margin-top-20">Annual $10</div></a>
+                                                ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Annual $10</div></a>
                                         </div>
                                         <div class="col-12 col-md offset-md-1">
                                             <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                                <div class="d-print-none article-supoort__button article-supoort__button--three article-supoort__button--black u-margin-top-20">Pay what you want</div>
+                                                <div class="d-print-none article-support__button article-support__button--three article-support__button--black u-margin-top-20">Pay what you want</div>
                                             </a>
                                          </div> #}
 
@@ -384,13 +396,63 @@
 
 
 
-                            <div id="comment-container" data-env="{{env}}">
+                            <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
                             
                                 <div class="comments__header">
                                     <h3 class="comments__title">{{commentCount}} comments</h3>
                                 </div>
 
-                            
+                                {% if comment %}
+                                {# {% set log = _AppHelper.log(comment) %} #}
+                                {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
+
+                                <div class="comments__outerComment">
+                                    <div class="comments__commentContainer">
+                                        <div class="comments__Header">
+                                            <div class="comments__author">
+                                                <img class="comments__Avatar" src={{comment.profile_image}} />
+                                                <div class="comments__AuthorDetails">
+                                                    <div class="comments__AuthorName">{{comment.firstname}} {{comment.lastname}}</div>
+                                                    <div class="comments__Company">{{comment.organisation}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="comments__Edits">
+                                                <div class="comments__CommentCountContainer">
+                                                    <div class="comments__count">{{comment.thread_count}}</div>
+                                                </div>
+                                                <div class="comments__Time">
+                                                    <div class="comments__EditTime">{{commentDate}}</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                        {% if this.props.top_pick == 1 %}
+                                            <p class="comments__TopPick">Top comment</p>
+                                        {% endif %}
+
+                                        <div class="comments__body">{{comment.comment}}</div>
+                                        
+                                    </div>
+                                    <div class="comments__Fade"></div>
+                                </div>
+                                {% endif %}
+
+                                {% if guestUser %}
+                                <div class="comment-subscribe">
+                                    <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
+                                    <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
+                                    <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
+                                    <div class="comment-subscribe__buttons">
+                                        <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
+                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button">SIGN IN TO PRO</button>
+                                    </div>
+                                    <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
+                                </div>
+                                {% endif %}
+
+
+
                             </div>
 
 
@@ -432,7 +494,7 @@
                         {% endif %} 
 
 
-                        <div class="comments d-print-none u-margin-top-60">
+                        {# <div class="comments d-print-none u-margin-top-60">
                             <h3>Comments</h3>
                             <p>
                                 Newsroom does not allow comments directly on this website. 
@@ -443,7 +505,7 @@
                                 Thank you.
                             </p>
                         </div>
-
+ #}
                     </div>
 
 
@@ -620,7 +682,7 @@
     }) | raw}}
 {% endif %}
 
-{% if guestUser %}
+{# {% if guestUser %}
     {{this.render('partials/_comments.twig', {
         config: config,
         networkData: networkData,
@@ -628,4 +690,4 @@
         articleGuid: article.guid
     }) | raw}}
 {% endif %}
-
+ #}
