@@ -36,7 +36,6 @@
 
 {% set init = _Comment.twigInit() %}
 {% set commentCount = _Comment.getArticleCommentCount(article.id) %}
-{# {% set commentCount = 0 %} #}
 
 {% set comment = null %}
 {% if commentCount > 0 %}
@@ -185,7 +184,14 @@
 
 
 
-<main id="main" class="site-main u-margin-top-40" role="main" data-ver="3" data-cacheKey="{{cacheKey}}" data-test="{{paywallTestParam}}">
+<main id="main" 
+    class="site-main u-margin-top-40"
+    role="main" 
+    data-ver="3" 
+    data-test="{{paywallTestParam}}"
+    data-comments="{{commentCount}}"
+    data-cacheKey="{{cacheKey}}" 
+    >
     <article itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
             <meta itemprop="name" content="Newsroom">
