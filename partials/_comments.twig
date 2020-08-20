@@ -3,17 +3,17 @@
 
 
 {# {% set env = 'prod' %} #}
-{% set env = 'dev' %}
+{% set env = 'prod' %}
 
-{% if config['env'] is defined %}
-    {% set env = config['env'] %}
+{% if config['comments']['env'] is defined %}
+    {% set env = config['comments']['env'] %}
 {% endif %}
 
 
-{% set themeId = 'lVWIoKHyF5Dt' %}
-{% if env == 'uat' %}
-    {% set themeId = '4IAtb6AbAuFQDlF' %}
-{% endif %}
+{# {% set themeId = '3yHy5G9CH6c9YBT' %}
+{% if config['comments']['themeid'] is defined %}
+    {% set themeId = config['comments']['themeid'] %}
+{% endif %} #}
 
 
 
