@@ -41,6 +41,6 @@
 
 
 {% if env == 'dev'%}
-    <link rel="stylesheet" href="{{networkData.templatePath}}/../comments/build/static/css/main.css?v=26" type="text/css" media="all">
-    <script  type="text/javascript" src="{{networkData.templatePath}}/../comments/build/static/js/main.js?v=26"></script>
+    <link rel="stylesheet" href="{{networkData.templatePath}}/../comments/build/static/css/main.css?v={{commentVersion}}" type="text/css" media="all">
+    <script  type="text/javascript" src="{{networkData.templatePath}}/../comments/build/static/js/main.js?v={{commentVersion}}"></script>
 {% endif %}
