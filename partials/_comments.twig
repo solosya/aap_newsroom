@@ -22,6 +22,7 @@
     window.csrfToken    = "{{_AppHelper.getCsrfToken()}}";
     window.env          = "{{env}}";
     window.articleId    = "{{articleId}}";
+    window.commentCount = "{{commentCount}}";
 </script>
 <div id="modal"></div>
 
@@ -40,6 +41,6 @@
 
 
 {% if env == 'dev'%}
-    <link rel="stylesheet" href="{{networkData.templatePath}}/../comments/build/static/css/main.css?v=25" type="text/css" media="all">
-    <script  type="text/javascript" src="{{networkData.templatePath}}/../comments/build/static/js/main.js?v=25"></script>
+    <link rel="stylesheet" href="{{networkData.templatePath}}/../comments/build/static/css/main.css?v=26" type="text/css" media="all">
+    <script  type="text/javascript" src="{{networkData.templatePath}}/../comments/build/static/js/main.js?v=26"></script>
 {% endif %}
