@@ -3,6 +3,11 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 {% set plans = networkData['paywallPlans'] %}
+{% set config       = _Network.getThemeConfig() %}
+{% set paywallSettings = {} %}
+{% if config['paywallSettings'] %}
+        {% set paywallSettings = config['paywallSettings'] %}
+{% endif %}
 
 
 {% set topPlans = [] %}
@@ -114,7 +119,11 @@
 
 
 
-    <section class="paywall-banner">
+    <section class="paywall-banner"
+    {% if paywallSettings['image']['url'] is defined and paywallSettings['image']['url'] != '' %}
+        style="background-image:url('{{paywallSettings['image']['url']}}');"
+    {% endif %}
+    >
         <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
