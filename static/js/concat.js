@@ -34583,8 +34583,9 @@ adPush = function(slot){
         googletag.cmd.push(function() { googletag.display(slotId); });
     });
 }
-Acme.Comments = function(params) {
-    console.log(params);
+Acme.CommentForm = function(params) {
+    this.csrfToken = $('meta[name="csrf-token"]').attr("content");
+
     this.articleId = params.articleId;
     this.articleGuid = params.articleGuid;
     this.container = params.container || null;
@@ -34597,31 +34598,29 @@ Acme.Comments = function(params) {
 
 };
 
-Acme.Comments.prototype.render = function() {
+Acme.CommentForm.prototype.render = function() {
     var html= "<p>This is a comment</p>";
     this.container.append(html);
 };
 
-Acme.Comments.prototype.postComment = function(comment) {
-
-    var csrfToken = $('meta[name="csrf-token"]').attr("content");
+Acme.CommentForm.prototype.postComment = function(comment) {
 
     var data = {
         guid: this.articleGuid, 
         name: this.userName, 
-        comments: comment, 
+        comment: comment, 
         approved: this.approved, 
-        _csrf: csrfToken
+        _csrf: this.csrfToken
     };
 
-    return Acme.server.create(_appJsConfig.baseHttpPath + '/article/comments', data).done(function(r) {
+    return Acme.server.create(_appJsConfig.baseHttpPath + '/api/article/post-comment', data).done(function(r) {
         console.log(r);
     });
 
 }
 
 
-Acme.Comments.prototype.events = function() {
+Acme.CommentForm.prototype.events = function() {
     var self = this;
 
     this.form.on('submit', function(e) {
@@ -34640,6 +34639,39 @@ Acme.Comments.prototype.events = function() {
     });
 }
 
+
+Acme.Comments = function(params) {
+    this.csrfToken = $('meta[name="csrf-token"]').attr("content");
+    this.comments = [];
+    this.events();p
+};
+
+Acme.Comments.prototype.like = function(guid) {
+    var data = {
+        guid: guid,
+        _csrf: this.csrfToken
+    };
+
+    return Acme.server.create(_appJsConfig.baseHttpPath + '/api/article/like-comment', data).done(function(r) {
+        console.log(r);
+    });
+
+}
+
+
+Acme.Comments.prototype.events = function() {
+    var self = this;
+
+    $('.js-comment-like').on('click', function(e) {
+        e.preventDefault();
+        var btn = $(e.target);
+        var comment = btn.closest('.c-comment');
+        var commentGuid = comment.data('guid');
+        self.like(commentGuid);
+        console.log(commentGuid);
+    });
+
+};
 Acme.Feed = function() {};
 Acme.Feed.prototype.fetch = function()
 {
@@ -37235,7 +37267,7 @@ Acme.SigninView = new Acme.Signin('modal', 'signin-modal', layouts);
 
 
 
-$('#signinBtn, #articleSigninBtn').on('click', function() {
+$('#signinBtn, #articleSigninBtn, .j-signin').on('click', function() {
     Acme.SigninView.render("signin", "Sign in");
 });
 

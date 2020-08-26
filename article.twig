@@ -419,7 +419,12 @@
 
 
                             <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
-                                {% if guestUser %}
+
+                                {% if commentCount == 0 and not show_comments %}
+                                    <p class="comments__closed">Some Newsroom articles are open to comments, <a href="#">click here</a> to learn more. </p>
+                                {% endif %}
+
+                                {% if guestUser and show_comments %}
 
                                 <div class="comments__header">
                                     <h3 class="comments__title">{{commentCount}} comments</h3>
@@ -468,7 +473,7 @@
                                     <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
                                     <div class="comment-subscribe__buttons">
                                         <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
-                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button">SIGN IN TO PRO</button>
+                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
                                     </div>
                                     <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
                                 </div>

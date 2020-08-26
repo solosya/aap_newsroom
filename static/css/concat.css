@@ -15720,6 +15720,14 @@ input[type=radio].inline {
         min-width: 100px;
         max-width: 100px; } }
 
+.comments__closed {
+  font-family: "Source sans pro";
+  font-size: 15px;
+  color: #a9a9a9;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #a9a9a9;
+  margin-bottom: 12px; }
+
 .comments__header {
   display: flex;
   border-bottom: 4px solid black;
@@ -15831,15 +15839,21 @@ input[type=radio].inline {
   display: flex;
   flex-direction: column; }
 
+.comments__Time {
+  margin-top: 7px; }
+
 .comments__body {
   font-family: "Source sans pro";
   color: black;
   font-size: 16px;
-  line-height: 1.3; }
+  line-height: 1.3;
+  max-height: 50px;
+  margin-top: 20px; }
   @media screen and (max-width: 575px) {
     .comments__body {
       font-size: 14px;
-      line-height: 1.14; } }
+      line-height: 1.14;
+      margin-top: 10px; } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .comments__body {
       font-size: 14px;
