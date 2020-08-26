@@ -418,15 +418,15 @@
                             {% endif %}
 
 
-
                             <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
-                            
+                                {% if guestUser %}
+
                                 <div class="comments__header">
                                     <h3 class="comments__title">{{commentCount}} comments</h3>
                                 </div>
 
 
-                                {% if comment and guestUser %}
+                                {% if comment %}
 
                                     {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
 
@@ -462,21 +462,18 @@
                                     </div>
                                 {% endif %}
 
-                                {% if guestUser %}
-                                    <div class="comment-subscribe">
-                                        <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
-                                        <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
-                                        <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
-                                        <div class="comment-subscribe__buttons">
-                                            <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
-                                            <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button">SIGN IN TO PRO</button>
-                                        </div>
-                                        <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
+                                <div class="comment-subscribe">
+                                    <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
+                                    <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
+                                    <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
+                                    <div class="comment-subscribe__buttons">
+                                        <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
+                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button">SIGN IN TO PRO</button>
                                     </div>
-                                {% endif %}
+                                    <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
+                                </div>
 
-
-
+                            {% endif %}
                             </div>
 
 
