@@ -438,7 +438,7 @@
                                                 <p class="comments__TopPick">Top comment</p>
                                             {% endif %}
 
-                                            <div class="comments__body">{{comment.comment}}</div>
+                                            <div class="comments__body">{{comment.comment | raw}}</div>
                                             
                                         </div>
                                         <div class="comments__Fade"></div>
