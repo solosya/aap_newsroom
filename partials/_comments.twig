@@ -1,5 +1,5 @@
 
-{% set commentVersion = '78' %}
+{% set commentVersion = '79' %}
 
 
 {# {% set env = 'prod' %} #}
@@ -16,13 +16,14 @@
 {% endif %} #}
 
 
-
+{% set log = _AppHelper.log(allowComments) %}
 
 <script>
     window.csrfToken    = "{{_AppHelper.getCsrfToken()}}";
     window.env          = "{{env}}";
     window.articleId    = "{{articleId}}";
     window.commentCount = "{{commentCount}}";
+    window.allowComments = "{{allowComments}}";
 </script>
 <div id="modal"></div>
 
