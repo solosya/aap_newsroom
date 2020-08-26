@@ -3,6 +3,11 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
 {% set plans = networkData['paywallPlans'] %}
+{% set config       = _Network.getThemeConfig() %}
+{% set paywallSettings = {} %}
+{% if config['paywallSettings'] %}
+        {% set paywallSettings = config['paywallSettings'] %}
+{% endif %}
 
 
 {% set topPlans = [] %}
@@ -114,7 +119,11 @@
 
 
 
-    <section class="paywall-banner">
+    <section class="paywall-banner j-paywall-banner"
+    {% if paywallSettings['image']['deskUrl'] is defined and paywallSettings['image']['deskUrl'] != '' %}
+        style="background-image: none;"
+    {% endif %}
+    >
         <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
@@ -452,6 +461,25 @@
 
 
         });
+
+        var deskimg = "{{paywallSettings['image']['deskUrl']}}";
+        var tabimg = "{{paywallSettings['image']['tabUrl']}}";
+        var mobimg = "{{paywallSettings['image']['mobUrl']}}";
+        var imageSet = "";
+        if ($(window).width() > 991){
+            imageSet = deskimg;
+        } else if ($(window).width() < 992 && $(window).width > 767){
+            imageSet = tabimg;
+        } else {
+            imageSet = mobimg;
+        }
+        if (deskimg != '' || tabimg != '' || mobimg != ''){
+            $('.j-paywall-banner').each(function(){
+                console.log(imageSet);
+                $(this).css("background-image", "url('"+imageSet+"')");
+            });
+        }
+
 
 
     });
