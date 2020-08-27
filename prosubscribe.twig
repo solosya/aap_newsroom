@@ -468,14 +468,13 @@
         var imageSet = "";
         if ($(window).width() > 991){
             imageSet = deskimg;
-        } else if ($(window).width() < 992 && $(window).width > 767){
+        } else if ($(window).width() > 767){
             imageSet = tabimg;
         } else {
             imageSet = mobimg;
         }
         if (deskimg != '' || tabimg != '' || mobimg != ''){
             $('.j-paywall-banner').each(function(){
-                console.log(imageSet);
                 $(this).css("background-image", "url('"+imageSet+"')");
             });
         }
