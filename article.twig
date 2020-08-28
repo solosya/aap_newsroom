@@ -420,18 +420,21 @@
 
                             <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
 
-                                {% if commentCount == 0 and not show_comments %}
+                                {# {% if commentCount == 0 and not show_comments %}
                                     <p class="comments__closed">Some Newsroom articles are open to comments, <a href="#">click here</a> to learn more. </p>
-                                {% endif %}
+                                {% endif %} #}
 
                                 {% if guestUser and show_comments %}
 
                                 <div class="comments__header">
-                                    <h3 class="comments__title">{{commentCount}} comments</h3>
+                                    {% set plural = commentCount > 1 ? "s" : "" %}
+                                    <h3 class="comments__title">{{commentCount}} comment{{plural}}</h3>
                                 </div>
 
 
                                 {% if comment %}
+
+                                    {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
 
                                     {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
 
@@ -439,7 +442,7 @@
                                         <div class="comments__commentContainer">
                                             <div class="comments__Header">
                                                 <div class="comments__author">
-                                                    <img class="comments__Avatar" src={{comment.profile_image}} />
+                                                    <img class="comments__Avatar" src={{avatar}} />
                                                     <div class="comments__AuthorDetails">
                                                         <div class="comments__AuthorName">{{comment.firstname}} {{comment.lastname}}</div>
                                                         <div class="comments__Company">{{comment.organisation}}</div>

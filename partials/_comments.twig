@@ -1,5 +1,5 @@
 
-{% set commentVersion = '90' %}
+{% set commentVersion = '91' %}
 
 
 {# {% set env = 'prod' %} #}
@@ -9,6 +9,10 @@
     {% set env = config['comments']['env'] %}
 {% endif %}
 
+{% set faqLink = "" %}
+{% if config['comments']['links'] is defined and config['comments']['links']['faq'] is defined and config['comments']['links']['faq']['link'] is defined%}
+    {% set faqLink = config['comments']['links']['faq']['link'] %}
+{% endif %}
 
 {# {% set themeId = '3yHy5G9CH6c9YBT' %}
 {% if config['comments']['themeid'] is defined %}
@@ -24,6 +28,7 @@
     window.articleId    = "{{articleId}}";
     window.commentCount = "{{commentCount}}";
     window.allowComments = "{{allowComments}}";
+    window.faqLink      = "{{faqLink}}";
 </script>
 <div id="modal"></div>
 
