@@ -34,7 +34,7 @@
 
 
 
-{# {% set init = _Comment.twigInit() %}
+{% set init = _Comment.twigInit() %}
 {% set commentCount = _Comment.getArticleCommentCount(article.id) %}
 
 {% set comment = null %}
@@ -59,13 +59,13 @@
         {% endif %}
 
     {% endif %}
-{% endif %} #}
+{% endif %}
 
 
 {% set commentSetting = false %}
 {% set allow_comments = false %}
 {% set show_comments = false %}
-{# {% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
+{% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
     {% set commentSetting = article.additionalInfo.comments %}
 {% endif %}
 
@@ -78,7 +78,7 @@
     {% if commentCount > 0 %}
         {% set show_comments = true %}
     {% endif %}
-{% endif %} #}
+{% endif %}
 
 
 
