@@ -34,7 +34,7 @@
 
 
 
-{% set init = _Comment.twigInit() %}
+{# {% set init = _Comment.twigInit() %}
 {% set commentCount = _Comment.getArticleCommentCount(article.id) %}
 
 {% set comment = null %}
@@ -59,13 +59,13 @@
         {% endif %}
 
     {% endif %}
-{% endif %}
+{% endif %} #}
 
 
 {% set commentSetting = false %}
 {% set allow_comments = false %}
 {% set show_comments = false %}
-{% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
+{# {% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
     {% set commentSetting = article.additionalInfo.comments %}
 {% endif %}
 
@@ -78,7 +78,7 @@
     {% if commentCount > 0 %}
         {% set show_comments = true %}
     {% endif %}
-{% endif %}
+{% endif %} #}
 
 
 
@@ -225,7 +225,7 @@
     role="main" 
     data-ver="3" 
     data-test="{{paywallTestParam}}"
-    data-comments="{{commentCount}}"
+    {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
     <article itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/NewsArticle" class="article-main">
@@ -451,62 +451,62 @@
 
                                 {% if guestUser and show_comments %}
 
-                                <div class="comments__header">
-                                    {% set plural = commentCount > 1 ? "s" : "" %}
-                                    <h3 class="comments__title">{{commentCount}} comment{{plural}}</h3>
-                                </div>
+                                    <div class="comments__header">
+                                        {% set plural = commentCount > 1 ? "s" : "" %}
+                                        <h3 class="comments__title">{{commentCount}} comment{{plural}}</h3>
+                                    </div>
 
 
-                                {% if comment %}
+                                    {% if comment %}
 
-                                    {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
+                                        {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
 
-                                    {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
+                                        {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
 
-                                    <div class="comments__outerComment">
-                                        <div class="comments__commentContainer">
-                                            <div class="comments__Header">
-                                                <div class="comments__author">
-                                                    <img class="comments__Avatar" src={{avatar}} />
-                                                    <div class="comments__AuthorDetails">
-                                                        <div class="comments__AuthorName">{{comment.firstname}} {{comment.lastname}}</div>
-                                                        <div class="comments__Company">{{comment.organisation}}</div>
+                                        <div class="comments__outerComment">
+                                            <div class="comments__commentContainer">
+                                                <div class="comments__Header">
+                                                    <div class="comments__author">
+                                                        <img class="comments__Avatar" src={{avatar}} />
+                                                        <div class="comments__AuthorDetails">
+                                                            <div class="comments__AuthorName">{{comment.firstname}} {{comment.lastname}}</div>
+                                                            <div class="comments__Company">{{comment.organisation}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comments__Edits">
+                                                        <div class="comments__CommentCountContainer">
+                                                            <div class="comments__count">{{comment.thread_count}}</div>
+                                                        </div>
+                                                        <div class="comments__Time">
+                                                            <div class="comments__EditTime">{{commentDate}}</div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
-                                                <div class="comments__Edits">
-                                                    <div class="comments__CommentCountContainer">
-                                                        <div class="comments__count">{{comment.thread_count}}</div>
-                                                    </div>
-                                                    <div class="comments__Time">
-                                                        <div class="comments__EditTime">{{commentDate}}</div>
-                                                    </div>
+                                                
+                                                {% if this.props.top_pick == 1 %}
+                                                    <p class="comments__TopPick">Top comment</p>
+                                                {% endif %}
 
-                                                </div>
+                                                <div class="comments__body">{{comment.comment | raw}}</div>
+                                                
                                             </div>
-                                            
-                                            {% if this.props.top_pick == 1 %}
-                                                <p class="comments__TopPick">Top comment</p>
-                                            {% endif %}
-
-                                            <div class="comments__body">{{comment.comment | raw}}</div>
-                                            
+                                            <div class="comments__Fade"></div>
                                         </div>
-                                        <div class="comments__Fade"></div>
+                                    {% endif %}
+
+                                    <div class="comment-subscribe">
+                                        <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
+                                        <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
+                                        <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
+                                        <div class="comment-subscribe__buttons">
+                                            <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
+                                            <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
+                                        </div>
+                                        <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
                                     </div>
+
                                 {% endif %}
-
-                                <div class="comment-subscribe">
-                                    <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
-                                    <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
-                                    <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
-                                    <div class="comment-subscribe__buttons">
-                                        <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
-                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
-                                    </div>
-                                    <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
-                                </div>
-
-                            {% endif %}
                             </div>
 
 
@@ -548,7 +548,7 @@
                         {% endif %} 
 
 
-                        {# <div class="comments d-print-none u-margin-top-60">
+                        <div class="comments d-print-none u-margin-top-60">
                             <h3>Comments</h3>
                             <p>
                                 Newsroom does not allow comments directly on this website. 
@@ -559,7 +559,7 @@
                                 Thank you.
                             </p>
                         </div>
- #}
+ 
                     </div>
 
 
@@ -738,12 +738,3 @@
     }) | raw}}
 {% endif %}
 
-{# {% if guestUser %}
-    {{this.render('partials/_comments.twig', {
-        config: config,
-        networkData: networkData,
-        articleId: article.id,
-        articleGuid: article.guid
-    }) | raw}}
-{% endif %}
- #}
