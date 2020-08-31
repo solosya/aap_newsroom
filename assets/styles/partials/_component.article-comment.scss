@@ -1,0 +1,69 @@
+.c-comment {
+    @include flexbox;
+
+    padding:15px 20px 10px 20px;
+    background:rgba(0,0,0,.1);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom:14px;
+
+
+    &__avatar {
+        background:grey;
+        margin-right:20px;
+        max-width:45px;
+        max-height:45px;
+        min-width:45px;
+        min-height:45px;
+    }
+    
+    &__body-container {
+    
+    }
+
+    &__byline {
+        font-family: $primaryFont;
+        @include font-size(12);
+        margin-bottom:10px;
+
+    }
+
+    &__body {
+        font-family: $font-family-serif;
+        @include font-size(16);
+
+    }
+
+}
+
+
+.c-comments {
+    &__header {
+
+    }
+
+
+    &__form {
+        @include flexbox;
+        @include flex-direction(column);
+
+
+
+    }
+    &__input {
+        width:400px;
+        height:100px;
+        border: 1px solid rgba(0,0,0,.1);
+        padding: 10px;
+        &:focus {
+            border: 1px solid rgba(0,0,0,.5);
+        }
+    }
+
+    &__submit {
+        &:focus {
+            outline:none;
+        }
+    }
+
+}

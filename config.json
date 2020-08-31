@@ -1,19 +1,38 @@
 {
     "module" : {
         "event" : {
-           "enabled" : false
+            "enabled" : false
+        },
+        "user" : {            
+            "extendedAttributes": [
+                {
+                    "label": "Allow Comments",
+                    "type": "radio",
+                    "name": "allow_comments",
+                    "options": {
+                        "true": "Yes",
+                        "false": "No"
+                    }
+                }
+                // {
+                //     "label": "Job position",
+                //     "type": "inputbox",
+                //     "name": "job_position"
+                // }
+
+            ]
         },
         "blog" : {            
             "extendedAttributes": [
-    			{
-    				"label": "Paywall",
-    				"type": "radio",
-    				"name": "paywall",
-    				"options": {
+                {
+                    "label": "Paywall",
+                    "type": "radio",
+                    "name": "paywall",
+                    "options": {
                         "on": "On",
                         "off": "Off"
-    				}
-    			}
+                    }
+                }
             ]
         },
         "article" : {
@@ -25,6 +44,15 @@
                     "options": {
                         "on": "Ads On",
                         "off": "Ads Off"
+                    }
+                },
+                {
+                    "label": "Allow comments",
+                    "type": "radio",
+                    "name": "comments",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
                     }
                 }
             ]
