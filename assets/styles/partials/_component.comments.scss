@@ -12,7 +12,21 @@ $border-width :     4px;
 
 
 .comments { 
+    &__byline {
+        margin-top:7px;
+        margin-bottom: 27px;
+        font-family: "Source sans pro";
+        font-size: 14px;
+        letter-spacing: 0.62px;
+        >span {
+            font-weight:600
+        }
+        @media #{$mobile-small} {
+            font-size:12px;
+            line-height:1.2;
+        }
 
+    }
 
     &__closed {
         font-family: "Source sans pro";
@@ -21,7 +35,7 @@ $border-width :     4px;
         padding-bottom:20px;
         border-bottom: 1px solid #a9a9a9;
         margin-bottom:12px;
-        }
+    }
 
     &__header {
         display:flex;
