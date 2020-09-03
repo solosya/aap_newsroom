@@ -11522,9 +11522,7 @@ input[type=radio].inline {
 .article-support {
   margin-top: 100px;
   position: relative;
-  overflow: auto;
-  padding: 40px;
-  border: 2px solid #1ba716; }
+  overflow: auto; }
 
 .article-support__text {
   width: 100%; }
@@ -11534,35 +11532,46 @@ input[type=radio].inline {
       width: 100%; } }
 
 .article-support__head {
-  font-size: 1.3125rem;
-  line-height: 1.375rem;
-  font-weight: 700; }
+  font-size: 1.5625rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+  padding-top: 25px;
+  margin-bottom: 20px;
+  border-top: 7px solid #e90202; }
   @media screen and (max-width: 767px) {
     .article-support__head {
-      font-size: 1.125rem;
-      line-height: 1.35rem;
+      font-size: 1.3125rem;
+      line-height: 1.575rem;
+      line-height: 1.4;
       text-align: center; } }
 
 .article-support__content {
-  font-size: 1rem;
-  line-height: 1.375rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  line-height: 1.45;
   font-weight: 400;
   margin-top: 10px; }
   .article-support__content > strong {
     font-weight: 600; }
   @media screen and (max-width: 767px) {
     .article-support__content {
-      font-size: 0.875rem;
-      line-height: 1.05rem;
+      font-size: 1rem;
+      line-height: 1.2rem;
       text-align: center; } }
 
+@media screen and (max-width: 767px) {
+  .article-support__link {
+    display: flex;
+    justify-content: center; } }
+
 .article-support__button {
-  padding: 0.5em 1em;
-  background-color: #e74a52;
-  font-size: 14px;
+  padding: 15px 30px;
+  background-color: black;
+  font-size: 17px;
+  font-weight: 700;
   color: #fff;
   display: inline-block;
-  margin: 15px calc(50% - 75px) 5px;
+  max-width: 260px;
   box-sizing: border-box;
   border-radius: 5px; }
   .article-support__button--black {
@@ -11571,10 +11580,9 @@ input[type=radio].inline {
     width: 100%;
     margin: 0;
     text-align: center; }
-  .article-support__button:hover {
-    background-color: #e01e28; }
   @media screen and (max-width: 767px) {
     .article-support__button {
+      padding: 15px 20px;
       text-align: center;
       float: none;
       margin-top: 10px; } }
