@@ -80,6 +80,13 @@ $border-width :     4px;
     
     }
 
+    &__CommentCountContainer {
+        @media #{$mobile-small} {
+            order:2;
+            margin-left:10px;
+        }
+    }
+
 
     &__topPick {
         margin-top:29px;

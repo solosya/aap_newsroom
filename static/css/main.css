@@ -15768,6 +15768,11 @@ input[type=radio].inline {
   margin-bottom: 40px;
   border-bottom: 1px solid black; }
 
+@media screen and (max-width: 575px) {
+  .comments__CommentCountContainer {
+    order: 2;
+    margin-left: 10px; } }
+
 .comments__topPick {
   margin-top: 29px;
   display: inline-block;
