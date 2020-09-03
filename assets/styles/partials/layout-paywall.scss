@@ -354,6 +354,24 @@
                     margin-right:30px;
                 }
             }
+
+            &__comments {
+                height: 69px;
+                @media #{$desktop-up}{
+                    margin-bottom: 15px;
+                }
+                @media #{$tablet} {
+                    height: 52px;
+                    margin-right:30px;
+                }
+                @media #{$mobile} {
+                    height: 38px;
+                    width: 39px;
+                    margin-right:30px;
+                }
+            }
+
+
         }
     
         &__p {
