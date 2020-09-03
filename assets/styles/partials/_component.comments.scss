@@ -413,11 +413,13 @@ $border-width :     4px;
 
 .comment-subscribe {
     font-family: $font-family-sans-serif;
-    width:80%;
-    @media #{$mobile} {
-        width:100%;
-        text-align:center;
-    }
+    width:100%;
+    text-align:center;
+
+    // @media #{$mobile} {
+    //     width:100%;
+    //     text-align:center;
+    // }
 
 }
 .comment-subscribe__header {
