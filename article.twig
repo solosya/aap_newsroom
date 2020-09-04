@@ -442,8 +442,12 @@
 
 
                                     {% if comment %}
-
-                                        {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
+                                        
+                                        {% if comment.profile_image %}
+                                            {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
+                                        {% else %}
+                                            {% set avatar = networkData.templatePath ~ '/static/images/commenter.svg'  %}
+                                        {% endif %}
 
                                         {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
 

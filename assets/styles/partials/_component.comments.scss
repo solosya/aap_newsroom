@@ -156,7 +156,9 @@ $border-width :     4px;
         height:80px;
         width:80px;
         border-radius: 50%;
-
+        object-fit: cover;
+        // background-image: url('../images/commenter.svg');
+        // background-size:cover;
         @media #{$mobile-small} {
             height:63px;
             width:63px;
