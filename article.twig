@@ -34,7 +34,7 @@
 
 
 
-{# {% set init = _Comment.twigInit() %}
+{% set init = _Comment.twigInit() %}
 {% set commentCount = _Comment.getArticleCommentCount(article.id) %}
 
 {% set comment = null %}
@@ -59,13 +59,13 @@
         {% endif %}
 
     {% endif %}
-{% endif %} #}
+{% endif %}
 
 
 {% set commentSetting = false %}
 {% set allow_comments = false %}
 {% set show_comments = false %}
-{# {% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
+{% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments != null %} 
     {% set commentSetting = article.additionalInfo.comments %}
 {% endif %}
 
@@ -78,7 +78,7 @@
     {% if commentCount > 0 %}
         {% set show_comments = true %}
     {% endif %}
-{% endif %} #}
+{% endif %}
 
 
 
@@ -404,40 +404,24 @@
 
 
 
-                                <div class="article-support">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                            <p class="article-support__head">Help us create a sustainable future for independent local journalism</p>
-                                            <div class="article-support__text">
-                                                <p class="article-support__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
-                                                <p class="article-support__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
-                                            </div>
+                                <div class="article-support row">
+                                    <div class=" col-12">
+                                        <p class="article-support__head">Help us create a sustainable future for independent local journalism</p>
+                                        <div class="article-support__text">
+                                            <p class="article-support__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
+                                            <p class="article-support__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
                                         </div>
-                                        <div class="col-8 col-md-4">
-                                            {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
-                                                data-pp-page="pwyw" 
-                                                data-pp-frequency="monthly" 
-                                                data-pp-amount="15" 
-                                                data-pp-metadata="membership-pwyw"
-                                                ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div></a> #}
-                                                <a href="{{networkData.defaultBlogUrl}}/donations">
-                                                    <div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div>
-                                                </a>
-                                        </div>
-                                        {# <div class="col-12 col-md offset-md-1">
-                                            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
-                                               data-pp-page="checkout" 
-                                                data-pp-frequency="annual" 
-                                               data-pp-amount="10" 
-                                                data-pp-metadata="membership-$10-per-year"
-                                                ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Annual $10</div></a>
-                                        </div>
-                                        <div class="col-12 col-md offset-md-1">
-                                            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                                <div class="d-print-none article-support__button article-support__button--three article-support__button--black u-margin-top-20">Pay what you want</div>
+                                    </div>
+                                    <div class="col-12">
+                                        {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
+                                            data-pp-page="pwyw" 
+                                            data-pp-frequency="monthly" 
+                                            data-pp-amount="15" 
+                                            data-pp-metadata="membership-pwyw"
+                                            ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div></a> #}
+                                            <a class="article-support__link" href="{{networkData.defaultBlogUrl}}/donations">
+                                                <div class="d-print-none article-support__button article-support__button--three u-margin-top-40">Become a Supporter</div>
                                             </a>
-                                         </div> #}
-
                                     </div>
                                 </div>
                             {% endif %}
@@ -458,8 +442,12 @@
 
 
                                     {% if comment %}
-
-                                        {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
+                                        
+                                        {% if comment.profile_image %}
+                                            {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
+                                        {% else %}
+                                            {% set avatar = networkData.templatePath ~ '/static/images/commenter.svg'  %}
+                                        {% endif %}
 
                                         {% set commentDate = _AppHelper.getDefaultTimezoneDateTime(comment.publishedDateTime,'j F Y') %}
 
@@ -498,7 +486,7 @@
                                     <div class="comment-subscribe">
                                         <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
                                         <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
-                                        <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" />28-day trial. </p>
+                                        <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" /> 28-day trial. </p>
                                         <div class="comment-subscribe__buttons">
                                             <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
                                             <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
@@ -548,7 +536,6 @@
                         {% endif %} 
 
 
- 
                     </div>
 
 

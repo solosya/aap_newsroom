@@ -1,9 +1,7 @@
 .article-support {
-	margin-top:100px;
+    margin-top:100px;
 	position:relative;
 	overflow:auto;
-	padding: 40px;
-	border: 2px solid #1ba716;
 }
 .article-support__text {
 	width:100%;
@@ -15,34 +13,54 @@
 
 }
 .article-support__head {
-	@include font-size(21, 22);
-	font-weight: 700;
+	@include font-size(25);
+    font-weight: 700;
+    padding-top:25px;
+
+    margin-bottom:20px;
+    border-top: 7px solid #e90202;
+
 	@media screen and (max-width: $sm-break-down) {
-		@include font-size(18);
+        @include font-size(21);
+        line-height: 1.4;
 		text-align:center;
 	}
 
 }
 .article-support__content {
-	@include font-size(16, 22);
+    @include font-size(20);
+    line-height:1.45;
     font-weight: 400;
     margin-top:10px;
 	>strong{
 		font-weight: 600;
 	}
 	@media screen and (max-width: $sm-break-down) {
-		@include font-size(14);
+		@include font-size(16);
 		text-align:center;
 	}
 
 }
+
+.article-support__link {
+
+	@media screen and (max-width: $sm-break-down) {
+        display:flex;
+        justify-content: center;
+    }
+
+
+}
+
 .article-support__button {
-	padding: 0.5em 1em;
-	background-color: #e74a52;
-	font-size: 14px;
+    padding: 15px 30px;
+	background-color: black;
+    font-size: 17px;
+    font-weight:700;
 	color: #fff;
-	display: inline-block;
-	margin: 15px calc(50% - 75px) 5px;
+    display: inline-block;
+    max-width:260px;
+	// margin: 15px calc(50% - 75px) 5px;
 	box-sizing: border-box;
 	border-radius: 5px;
 	&--black{
@@ -54,9 +72,10 @@
 		text-align: center;
 	}
 	&:hover{
-		background-color: #e01e28;
+		// background-color: #e01e28;
 	}
 	@media screen and (max-width: $sm-break-down) {
+        padding: 15px 20px;
 		text-align:center;
 		float:none;
 		margin-top:10px;

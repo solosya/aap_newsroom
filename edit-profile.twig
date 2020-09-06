@@ -13,6 +13,8 @@
 
 {% set jobListingsArr = [] %}
 {% set propListingsArr = [] %}
+{% set commenter = false %}
+
 {% set pwstats = _User.getPaywallStats(true) %}
 {% set plans = _Network.getNetworkData()['paywallPlans'] %}
 
@@ -22,7 +24,16 @@
 {% if user %} 
     {% set jobListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[jobsBlogId], 'status': '-1'}) %}
     {% set propListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[propBlogId], 'status': '-1'}) %}
+    {% if user.additionalInfo is defined and user.additionalInfo.allow_comments is defined and user.additionalInfo.allow_comments != null %} 
+        {% set setting = user.additionalInfo.allow_comments %}
+        {% if setting == "true" %}
+            {% set commenter = true %}
+        {% endif %}
+    {% endif %}
+
+
 {% endif %}
+            
 
 {{this.registerJs("Acme.usercard = new Acme.Usercard();")}}
 
@@ -272,7 +283,38 @@
                                 </div>
                             </div>
 
+
+
                             <hr class="divide30" style="border-top:1px solid #97999c;">
+
+
+
+
+
+                            <div class='commenter-request u-margin-bottom-40'>
+                                <div class="commenter-request__status-container">
+                                    <p class="commenter-request__status-label">Commenter Status</p>
+                                    {% if  commenter %}
+                                        <p class="commenter-request__status commenter-request__status--active">Approved</p>
+                                    {% else %}
+                                        <p class="commenter-request__status commenter-request__status--inactive">Inactive</p>
+                                    {% endif %}
+                                </div>
+
+                                {% if not commenter %}
+                                    <div class="commenter-request__form">
+                                        <script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script>
+                                        <script type="text/javascript"> var JFL_202310448358047 = new JotformFeedback({ formId: '202310448358047', base: 'https://form.jotform.com/', windowTitle: 'Join the conversation ', background: '#FFA500', fontColor: '#FFFFFF', type: 'false', height: 500, width: 700, openOnLoad: false }); </script> 
+                                        <button class="commenter-request__button lightbox-202310448358047" style="">BECOME A COMMENTER</button>
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+
+
+
+
 
 
 
