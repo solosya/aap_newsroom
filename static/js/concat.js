@@ -37341,6 +37341,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
     var SubscribeForm = function(id, user) {
         this.id = id || null;
         this.parent = Acme.Form.prototype;
+        this.code = false;
 
         this.data = {
             "firstname": "Subscriber",
@@ -37367,6 +37368,12 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
             this.data['trial'] = 'true';
             this.validateRules['changeterms'] = ["isTrue"];
         }
+        if ($("#code-redeem").length > 0) {
+            this.code = true;
+            delete this.validateRules.terms;
+            delete this.validateRules.changeterms;
+        }
+
         this.validateFields = Object.keys(this.validateRules);
         this.loadData();
         this.events();
@@ -37403,7 +37410,12 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         var self = this;
         event.preventDefault();
         var validated = self.validate();
-        self.render(true);
+        var checkTerms = true;
+        if (this.code) {
+            checkTerms = false;
+        }
+        self.render(checkTerms);
+        
         if (!validated) return;
 
         if (botTimer < 5 || $('#email-confirm').val() !== "") {
@@ -37414,7 +37426,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
         this.signup = new Acme.modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
-        if ($("#code-redeem").length > 0) {
+        if (this.code) {
             this.signup.render("spinner", "Authorising code");
             self.data['planid'] = $('#planid').val();
             self.data['giftcode'] = $('#code-redeem').val();
