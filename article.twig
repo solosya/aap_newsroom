@@ -384,47 +384,44 @@
 
 
                         {% if not showPaywall %}
-                            
-                            {% if articleBlog == 'lockerroom' %}
-                                <div class="article-support">
-                                    <div class="article-support__text">
-                                        <p class="article-support__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
-                                    </div>
-                                    <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
-                                        <div class="d-print-none article-support__button">Become a Supporter</div>
-                                    </a>
-                                </div>
-                                
-
-                            {% else %}
 
 
-
-
-
-
-
-                                <div class="article-support row">
-                                    <div class=" col-12">
-                                        <p class="article-support__head">Help us create a sustainable future for independent local journalism</p>
+                            {% if guestUser %}
+                                {% if articleBlog == 'lockerroom' %}
+                                    <div class="article-support">
                                         <div class="article-support__text">
-                                            <p class="article-support__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
-                                            <p class="article-support__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
+                                            <p class="article-support__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
+                                        </div>
+                                        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
+                                            <div class="d-print-none article-support__button">Become a Supporter</div>
+                                        </a>
+                                    </div>
+
+                                {% else %}
+                                    <div class="article-support row">
+                                        <div class=" col-12">
+                                            <p class="article-support__head">Help us create a sustainable future for independent local journalism</p>
+                                            <div class="article-support__text">
+                                                <p class="article-support__content">As New Zealand moves from crisis to recovery mode the need to support local industry has been brought into sharp relief.</p>
+                                                <p class="article-support__content">As our journalists work to ask the hard questions about our recovery, we also look to you, our readers for support. Reader donations are critical to what we do. If you can help us, please click the button to ensure we can continue to provide quality independent journalism you can trust.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
+                                                data-pp-page="pwyw" 
+                                                data-pp-frequency="monthly" 
+                                                data-pp-amount="15" 
+                                                data-pp-metadata="membership-pwyw"
+                                                ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div></a> #}
+                                                <a class="article-support__link" href="{{networkData.defaultBlogUrl}}/donations">
+                                                    <div class="d-print-none article-support__button article-support__button--three u-margin-top-40">Become a Supporter</div>
+                                                </a>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" 
-                                            data-pp-page="pwyw" 
-                                            data-pp-frequency="monthly" 
-                                            data-pp-amount="15" 
-                                            data-pp-metadata="membership-pwyw"
-                                            ><div class="d-print-none article-support__button article-support__button--three u-margin-top-20">Become a Supporter</div></a> #}
-                                            <a class="article-support__link" href="{{networkData.defaultBlogUrl}}/donations">
-                                                <div class="d-print-none article-support__button article-support__button--three u-margin-top-40">Become a Supporter</div>
-                                            </a>
-                                    </div>
-                                </div>
+                                {% endif %}
                             {% endif %}
+
+
 
 
                             <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
