@@ -55,7 +55,8 @@
         {% set pinned_position = " at position " ~ article.pinnedAt %}
     {% endif %}
 
-
+    {% set hasComments = false %}
+    {% set commentCount = 0 %}
     {% set totalstring = "" %}
     {% set totals = (article.total is defined) ? article.total : false %}
     {% if totals and _User.isAdminUser() %}
@@ -64,6 +65,15 @@
     {% endif %}
 
 
+    {% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments == 'on' %}
+        {% set hasComments = true %}
+        {% if totals and totals.comment > 0 %}
+            {% set commentCount = totals.comment %}
+        {% endif %}
+    {% endif %}
+
+    {% set hasComments = true %}
+    {% set commentCount = 247 %}
 
 
 
@@ -147,7 +157,17 @@
 
                 <div class="{{params.cardType}}c-cards-view__container content">
 
-                    <div class="{{params.cardType}}c-cards-view__category category">{{article.label}}</div>
+                    <div class="{{params.cardType}}c-cards-view__category-container">
+                        <div class="{{params.cardType}}c-cards-view__category category">{{article.label}}</div>
+                        {% if hasComments %}
+                            <div class="{{params.cardType}}c-cards-view__comment-container">
+                                <div class="{{params.cardType}}c-cards-view__comment"></div>
+                                {% if commentCount > 0 %}
+                                    <span class="{{params.cardType}}c-cards-view__comment-count">{{commentCount}}</span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
                     
                     <h2 class="{{params.cardType}}c-cards-view__heading j-truncate">{{ articleTitle }}</h2>
                     
