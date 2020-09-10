@@ -49,11 +49,22 @@
     }
 
     .c-cards-view {
+        position:relative;
         @include flexbox();
         flex-wrap: nowrap;
         -webkit-flex-wrap: nowrap;
         border-right: 2px solid #d4d4d4;
         margin-bottom: 22px;
+        &:after {
+            content: '';
+            position:absolute;
+            left:0;
+            display:block;
+            height:100%;
+            width:2px;
+            background:red;
+        }
+
 
         @media screen and (max-width: $md-break){
             flex-wrap: wrap;
