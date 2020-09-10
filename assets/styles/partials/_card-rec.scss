@@ -19,7 +19,12 @@
 
                 > article > .content{
                     border: 1px solid #000;
-
+                    .c-cards-view__comment-count {
+                        color:white;
+                    }
+                    .c-cards-view__comment {
+                        // background:red;
+                    }
                     > .category{
                         color: #27aae1;
                     }
@@ -273,56 +278,12 @@
                     time {
                         color:white;
                     }
-                    // > p {
-                    //     display: none;
-                    // }
+
                     .author {
                         > p {
                             color:white;
                         }
                     }
-                }
-            }
-        }
-
-        
-
-        &.youtube{
-            .content{
-                p{
-                }
-            }
-        }
-        &.facebook{
-            .content{
-                p{
-                }
-            }
-        }
-        &.pinterest{
-            .content{
-                p{
-                }
-            }
-        }
-        &.vimeo{
-            .content{
-                p{
-                }
-            }
-        }
-
-        &.twitter{
-            .content{
-                p{
-                    
-                }
-            }
-        }
-
-        &.instagram{
-            .content{
-                p{
                 }
             }
         }

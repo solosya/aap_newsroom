@@ -161,10 +161,10 @@
                         <div class="{{params.cardType}}c-cards-view__category category">{{article.label}}</div>
                         {% if hasComments %}
                             <div class="{{params.cardType}}c-cards-view__comment-container">
-                                <div class="{{params.cardType}}c-cards-view__comment"></div>
                                 {% if commentCount > 0 %}
                                     <span class="{{params.cardType}}c-cards-view__comment-count">{{commentCount}}</span>
                                 {% endif %}
+                                <div class="comment-icon {{params.cardType}}c-cards-view__comment"></div>
                             </div>
                         {% endif %}
                     </div>
