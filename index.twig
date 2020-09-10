@@ -3,6 +3,7 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : true %}
 
 
+{% set dev =  false %}
 
 {% set recentArticles = getCache("indexRecent") %}
 {% if (recentArticles is empty) %}
@@ -98,10 +99,11 @@
 
 
 
-
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
+
         {% if blog.title | lower == key %}
+
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
@@ -112,6 +114,7 @@
     {% endfor %}
 {% endfor %}
 
+            {% set log = _AppHelper.log(sections) %}
 
 
 
@@ -401,6 +404,8 @@ So you don't have to create all the sections on dev #}
                 {% endif %}
 
                 {% if sections['readingroom'].feed.articles|length > 0 %}
+                            {% set log = _AppHelper.log("rendering reading room") %}
+
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
