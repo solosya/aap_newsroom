@@ -11,6 +11,9 @@
     &:last-child {
         .c-cards-view {
             border-right:none;
+            &:after{
+                display:none;
+            }
         }
 
     }
@@ -57,12 +60,12 @@
         margin-bottom: 22px;
         &:after {
             content: '';
-            position:absolute;
-            left:0;
-            display:block;
-            height:100%;
-            width:2px;
-            background:red;
+            position: absolute;
+            right: -10px;
+            display: block;
+            height: 100%;
+            width: 1px;
+            background: &d4d4d4;
         }
 
 

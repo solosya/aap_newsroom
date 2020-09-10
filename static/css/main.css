@@ -23404,6 +23404,8 @@ body.channel.supporters p {
     height: auto; }
     .card-sub-featured-mobile:last-child .c-cards-view {
       border-right: none; }
+      .card-sub-featured-mobile:last-child .c-cards-view:after {
+        display: none; }
     .card-sub-featured-mobile.sport .c-cards-view__category {
       color: #73459b; }
     .card-sub-featured-mobile.ideas .c-cards-view__category {
@@ -23426,11 +23428,11 @@ body.channel.supporters p {
       .card-sub-featured-mobile .c-cards-view:after {
         content: '';
         position: absolute;
-        left: 0;
+        right: -10px;
         display: block;
         height: 100%;
-        width: 2px;
-        background: red; } }
+        width: 1px;
+        background: .card-sub-featured-mobile .c-cards-view:after d4d4d4; } }
     @media screen and (max-width: 767px) and (max-width: 1200px) {
       .card-sub-featured-mobile .c-cards-view {
         flex-wrap: wrap;
@@ -23531,6 +23533,8 @@ body.channel.supporters p {
     margin-top: 15px; }
     .card-sub-featured-tablet:last-child .c-cards-view {
       border-right: none; }
+      .card-sub-featured-tablet:last-child .c-cards-view:after {
+        display: none; }
     .card-sub-featured-tablet.sport .c-cards-view__category {
       color: #73459b; }
     .card-sub-featured-tablet.ideas .c-cards-view__category {
@@ -23553,11 +23557,11 @@ body.channel.supporters p {
       .card-sub-featured-tablet .c-cards-view:after {
         content: '';
         position: absolute;
-        left: 0;
+        right: -10px;
         display: block;
         height: 100%;
-        width: 2px;
-        background: red; } }
+        width: 1px;
+        background: .card-sub-featured-tablet .c-cards-view:after d4d4d4; } }
     @media screen and (min-width: 768px) and (max-width: 991px) and (max-width: 1200px) {
       .card-sub-featured-tablet .c-cards-view {
         flex-wrap: wrap;
@@ -23652,6 +23656,8 @@ body.channel.supporters p {
     height: 134px; }
     .card-sub-featured-desktop:last-child .c-cards-view {
       border-right: none; }
+      .card-sub-featured-desktop:last-child .c-cards-view:after {
+        display: none; }
     .card-sub-featured-desktop.sport .c-cards-view__category {
       color: #73459b; }
     .card-sub-featured-desktop.ideas .c-cards-view__category {
@@ -23674,11 +23680,11 @@ body.channel.supporters p {
       .card-sub-featured-desktop .c-cards-view:after {
         content: '';
         position: absolute;
-        left: 0;
+        right: -10px;
         display: block;
         height: 100%;
-        width: 2px;
-        background: red; } }
+        width: 1px;
+        background: .card-sub-featured-desktop .c-cards-view:after d4d4d4; } }
     @media screen and (min-width: 992px) and (max-width: 1199px) and (max-width: 1200px) {
       .card-sub-featured-desktop .c-cards-view {
         flex-wrap: wrap;
@@ -23771,6 +23777,8 @@ body.channel.supporters p {
     height: 134px; }
     .card-sub-featured-desktop-up:last-child .c-cards-view {
       border-right: none; }
+      .card-sub-featured-desktop-up:last-child .c-cards-view:after {
+        display: none; }
     .card-sub-featured-desktop-up.sport .c-cards-view__category {
       color: #73459b; }
     .card-sub-featured-desktop-up.ideas .c-cards-view__category {
@@ -23793,11 +23801,11 @@ body.channel.supporters p {
       .card-sub-featured-desktop-up .c-cards-view:after {
         content: '';
         position: absolute;
-        left: 0;
+        right: -10px;
         display: block;
         height: 100%;
-        width: 2px;
-        background: red; } }
+        width: 1px;
+        background: .card-sub-featured-desktop-up .c-cards-view:after d4d4d4; } }
     @media screen and (min-width: 992px) and (max-width: 1200px) {
       .card-sub-featured-desktop-up .c-cards-view {
         flex-wrap: wrap;
