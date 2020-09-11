@@ -39,11 +39,6 @@
             position: relative;
             color: #FFF;
             height:100%;
-
-            @media #{$mobile}{
-                padding: 30px 32px;
-            }
-
         }
 
         &__comment-container {
@@ -144,12 +139,21 @@
             &__media {
             }
 
+
+            &__container{
+                @include flexbox();
+                padding: 20px 32px;
+            }
+
             &__heading{
+                @include flexbox();
                 @include font-size(35);
+                align-items: center;
                 height: auto;
                 max-height:150px;
                 padding-top: 0;
                 border: 0;
+                flex-grow:1;
             }
             &__category{
                 color: white;
