@@ -23398,6 +23398,270 @@ body.channel.supporters p {
       margin-bottom: 30px; } }
 
 @media screen and (max-width: 767px) {
+  .subfeature-card-mobile {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .subfeature-card-mobile .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap; }
+      .subfeature-card-mobile .c-cards-view__media {
+        width: 92px;
+        -webkit-flex: 0 0 92px;
+        flex: 0 0 92px; }
+      .subfeature-card-mobile .c-cards-view__container {
+        padding-left: 27px; }
+      .subfeature-card-mobile .c-cards-view__category {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        color: #F6AE00;
+        text-transform: uppercase;
+        display: block;
+        line-height: 1; }
+      .subfeature-card-mobile .c-cards-view__description {
+        display: none; }
+      .subfeature-card-mobile .c-cards-view__heading {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        line-height: 1.1;
+        font-weight: normal;
+        height: 72px;
+        margin-top: 2px; }
+      .subfeature-card-mobile .c-cards-view__time {
+        float: none;
+        padding: 0;
+        border: none;
+        font-size: 12px;
+        color: #8a8b93;
+        bottom: 0;
+        position: absolute; }
+      .subfeature-card-mobile .c-cards-view__author-name {
+        display: none; }
+    .subfeature-card-mobile .c-cards-view {
+      border-right: 0;
+      margin-top: 15px;
+      border-bottom: 1px solid #d4d4d4;
+      padding-bottom: 13px; }
+      .subfeature-card-mobile .c-cards-view__media {
+        max-width: 105px;
+        max-height: 105px;
+        -webkit-flex: 0 0 105px;
+        flex: 0 0 105px; }
+      .subfeature-card-mobile .c-cards-view__heading {
+        margin-top: 4px; }
+      .subfeature-card-mobile .c-cards-view__time {
+        bottom: 13px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .subfeature-card-tablet {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .subfeature-card-tablet .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap; }
+      .subfeature-card-tablet .c-cards-view__media {
+        width: 92px;
+        -webkit-flex: 0 0 92px;
+        flex: 0 0 92px; }
+      .subfeature-card-tablet .c-cards-view__container {
+        padding-left: 27px; }
+      .subfeature-card-tablet .c-cards-view__category {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        color: #F6AE00;
+        text-transform: uppercase;
+        display: block;
+        line-height: 1; }
+      .subfeature-card-tablet .c-cards-view__description {
+        display: none; }
+      .subfeature-card-tablet .c-cards-view__heading {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        line-height: 1.1;
+        font-weight: normal;
+        height: 72px;
+        margin-top: 2px; }
+      .subfeature-card-tablet .c-cards-view__time {
+        float: none;
+        padding: 0;
+        border: none;
+        font-size: 12px;
+        color: #8a8b93;
+        bottom: 0;
+        position: absolute; }
+      .subfeature-card-tablet .c-cards-view__author-name {
+        display: none; }
+    .subfeature-card-tablet .c-cards-view__container {
+      padding-left: 14px; }
+    .subfeature-card-tablet .c-cards-view__media {
+      max-width: 58px;
+      max-height: 63px;
+      -webkit-flex: 0 0 58px;
+      flex: 0 0 58px; }
+    .subfeature-card-tablet .c-cards-view__category {
+      font-size: 0.625rem;
+      line-height: 0.75rem; }
+    .subfeature-card-tablet .c-cards-view__comment-container {
+      position: relative;
+      top: -2px; }
+    .subfeature-card-tablet .c-cards-view__comment-count {
+      font-size: 0.625rem;
+      line-height: 0.75rem; }
+    .subfeature-card-tablet .c-cards-view .comment-icon {
+      width: 15px;
+      height: 9px; }
+    .subfeature-card-tablet .c-cards-view__heading {
+      font-size: 1rem;
+      line-height: 1.2rem;
+      line-height: 1.1;
+      font-weight: normal;
+      height: 45px;
+      margin-top: 0; }
+    .subfeature-card-tablet .c-cards-view__time {
+      font-size: 0.625rem;
+      line-height: 0.75rem;
+      bottom: -2px; } }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .subfeature-card-desktop-sm {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .subfeature-card-desktop-sm .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap; }
+      .subfeature-card-desktop-sm .c-cards-view__media {
+        width: 92px;
+        -webkit-flex: 0 0 92px;
+        flex: 0 0 92px; }
+      .subfeature-card-desktop-sm .c-cards-view__container {
+        padding-left: 27px; }
+      .subfeature-card-desktop-sm .c-cards-view__category {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        color: #F6AE00;
+        text-transform: uppercase;
+        display: block;
+        line-height: 1; }
+      .subfeature-card-desktop-sm .c-cards-view__description {
+        display: none; }
+      .subfeature-card-desktop-sm .c-cards-view__heading {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        line-height: 1.1;
+        font-weight: normal;
+        height: 72px;
+        margin-top: 2px; }
+      .subfeature-card-desktop-sm .c-cards-view__time {
+        float: none;
+        padding: 0;
+        border: none;
+        font-size: 12px;
+        color: #8a8b93;
+        bottom: 0;
+        position: absolute; }
+      .subfeature-card-desktop-sm .c-cards-view__author-name {
+        display: none; } }
+
+@media screen and (min-width: 1200px) {
+  .subfeature-card-desktop-lg {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .subfeature-card-desktop-lg .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap; }
+      .subfeature-card-desktop-lg .c-cards-view__media {
+        width: 92px;
+        -webkit-flex: 0 0 92px;
+        flex: 0 0 92px; }
+      .subfeature-card-desktop-lg .c-cards-view__container {
+        padding-left: 27px; }
+      .subfeature-card-desktop-lg .c-cards-view__category {
+        font-size: 0.875rem;
+        line-height: 1.05rem;
+        color: #F6AE00;
+        text-transform: uppercase;
+        display: block;
+        line-height: 1; }
+      .subfeature-card-desktop-lg .c-cards-view__description {
+        display: none; }
+      .subfeature-card-desktop-lg .c-cards-view__heading {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        line-height: 1.1;
+        font-weight: normal;
+        height: 72px;
+        margin-top: 2px; }
+      .subfeature-card-desktop-lg .c-cards-view__time {
+        float: none;
+        padding: 0;
+        border: none;
+        font-size: 12px;
+        color: #8a8b93;
+        bottom: 0;
+        position: absolute; }
+      .subfeature-card-desktop-lg .c-cards-view__author-name {
+        display: none; } }
+
+@media screen and (max-width: 767px) {
   .card-sub-featured-mobile {
     height: 134px;
     margin-top: 15px;
@@ -23953,8 +24217,6 @@ body.channel.supporters p {
       .card-featured2-mobile .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
-      .card-featured2-mobile .c-cards-view__comment-count {
-        color: white; }
       .card-featured2-mobile .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -24084,8 +24346,6 @@ body.channel.supporters p {
       .card-featured2-tablet .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
-      .card-featured2-tablet .c-cards-view__comment-count {
-        color: white; }
       .card-featured2-tablet .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -24177,8 +24437,6 @@ body.channel.supporters p {
       .card-featured2-desktop .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
-      .card-featured2-desktop .c-cards-view__comment-count {
-        color: white; }
       .card-featured2-desktop .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -24273,8 +24531,6 @@ body.channel.supporters p {
       .card-featured2-desktop-up .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
-      .card-featured2-desktop-up .c-cards-view__comment-count {
-        color: white; }
       .card-featured2-desktop-up .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
