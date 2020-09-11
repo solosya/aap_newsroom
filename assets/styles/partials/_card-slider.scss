@@ -6,6 +6,8 @@
     //     margin-right: -15px;
     // }
 
+
+
     .featured {
         width:100%;
     }
@@ -50,13 +52,34 @@
             }
             &__comment-count {
                 top:0;
+
             }
             &__comment {
                 position: relative;
                 top: -1px;
             }
-    
         }
+
+
+        @media #{$mobile}{
+            &__comment-count {
+                color:white !important;
+
+            }
+            &__comment {
+                background-color: white !important; // default background color
+                &:after {
+                    border-color: white transparent transparent !important;
+                }
+
+            }
+            &__category {
+                color:white !important;
+            }
+
+        }
+
+
     }
 
 

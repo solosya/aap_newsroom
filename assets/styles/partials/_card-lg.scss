@@ -10,15 +10,16 @@
 
 
     .c-cards-view {
+
         &__comment {
-            background-color: white; // default background color
+            background-color: white !important; // default background color
             &:after {
-                border-color: white transparent transparent;
+                border-color: white transparent transparent !important;
             }
         }
 
         &__comment-count {
-            color:white;
+            color:white !important;
         }
     }
 

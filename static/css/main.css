@@ -19842,6 +19842,15 @@ body.channel.supporters p {
     .featured-slider .c-cards-view__comment {
       position: relative;
       top: -1px; } }
+  @media screen and (max-width: 767px) {
+    .featured-slider .c-cards-view__comment-count {
+      color: white !important; }
+    .featured-slider .c-cards-view__comment {
+      background-color: white !important; }
+      .featured-slider .c-cards-view__comment:after {
+        border-color: white transparent transparent !important; }
+    .featured-slider .c-cards-view__category {
+      color: white !important; } }
   .featured-slider .card {
     height: 587px; }
     @media screen and (max-width: 1600px) {
@@ -21843,11 +21852,11 @@ body.channel.supporters p {
       margin-left: -15px;
       margin-right: -15px; } }
   .card-lg .c-cards-view__comment {
-    background-color: white; }
+    background-color: white !important; }
     .card-lg .c-cards-view__comment:after {
-      border-color: white transparent transparent; }
+      border-color: white transparent transparent !important; }
   .card-lg .c-cards-view__comment-count {
-    color: white; }
+    color: white !important; }
   .card-lg a.card {
     height: 515px;
     position: relative;
@@ -22889,8 +22898,6 @@ body.channel.supporters p {
       background-color: white; }
       .card-featured-mobile .c-cards-view__comment:after {
         border-color: white transparent transparent; }
-    .card-featured-mobile .c-cards-view__comment-count {
-      color: white; }
     .card-featured-mobile .c-cards-view__category {
       font-size: 0.875rem;
       line-height: 1.05rem;
@@ -23030,8 +23037,6 @@ body.channel.supporters p {
       background-color: white; }
       .card-featured-tablet .c-cards-view__comment:after {
         border-color: white transparent transparent; }
-    .card-featured-tablet .c-cards-view__comment-count {
-      color: white; }
     .card-featured-tablet .c-cards-view__category {
       font-size: 0.875rem;
       line-height: 1.05rem;
@@ -23126,8 +23131,6 @@ body.channel.supporters p {
       background-color: white; }
       .card-featured-desktop .c-cards-view__comment:after {
         border-color: white transparent transparent; }
-    .card-featured-desktop .c-cards-view__comment-count {
-      color: white; }
     .card-featured-desktop .c-cards-view__category {
       font-size: 0.875rem;
       line-height: 1.05rem;
@@ -23219,8 +23222,6 @@ body.channel.supporters p {
       background-color: white; }
       .card-featured-desktop-up .c-cards-view__comment:after {
         border-color: white transparent transparent; }
-    .card-featured-desktop-up .c-cards-view__comment-count {
-      color: white; }
     .card-featured-desktop-up .c-cards-view__category {
       font-size: 0.875rem;
       line-height: 1.05rem;
