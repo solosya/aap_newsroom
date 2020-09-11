@@ -29,15 +29,6 @@
             -ms-flex: 0 0 55%;
             flex: 0 0 55%;
             height: auto;
-
-            @media screen and (max-width: $md-break){
-                width: 60%;
-                -webkit-flex: 0 0 60%;
-                -ms-flex: 0 0 60%;
-                flex: 0 0 60%;
-            }
-
-
         }
 
 
@@ -195,16 +186,20 @@
             padding-top: 15px;
             padding-bottom: 25px;
     
+            &__container {
+                padding: 38px 20px 10px 10px;
+            }
+
             // &__media {
-            //     width: 203px;
-            //     -webkit-flex: 0 0 203px;
-            //     flex: 0 0 203px;
+            //     width: 55%;
+            //     -webkit-flex: 0 0 55%;
+            //     -ms-flex: 0 0 55%;
+            //     flex: 0 0 55%;
             // }
     
-            // &__heading {
-            //     @include font-size(20);
-            //     height: 50px;
-            // }
+            &__heading {
+                height: 120px;
+            }
             // &__time{
             //     margin-top: 5px;
             //     @include font-size(12);
@@ -214,7 +209,7 @@
 
 
             &__description {
-                height: 50px;
+                height: 90px;
             }
     
 
