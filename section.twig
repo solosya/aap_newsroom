@@ -231,14 +231,14 @@
                 {% if articles[articleCount] %}                                                                
                 <section class="">
                     <div class="row">
-                        {% set rowCards = [' inverted','',''] %}                                                                
+
                         {% for i in 0..2 %}
                             {% if articles[articleCount] %}   
 
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'col-xs-12 col-md-6 col-lg-12 card-sm card-sm-tablet card-sm-mobile' ~ rowCards[i],
+                                    containerClass: 'col-xs-12 col-md-6 col-lg-12 card-sm card-sm-tablet card-sm-mobile',
                                     imageSize: {width:370, height:270}
                                 }) | raw}}
 
