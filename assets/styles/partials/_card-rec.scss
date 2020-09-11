@@ -119,7 +119,8 @@
             display: block;
             width:100%;
             border: 1px solid #dadada;
-            padding: 29px 24px 3px 24px;
+            padding: 25px 24px 3px 24px;
+
             // -ms-flex: 1 0;
             // -webkit-flex: 1 0;
             // flex: 1 0;
@@ -148,6 +149,7 @@
                 font-weight: bold;
                 @include font-size(30, 32);
                 height: 75px;
+                margin-top:6px;
                 @media #{$mobile}{
                     @include font-size(20, 23);
                     border: 0;
