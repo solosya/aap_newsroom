@@ -72,25 +72,23 @@
 
     <main id="main" class="site-main index-special" role="main">
         <section class="featured-slider container-fluid">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
+            <div class="">
 
-                    {% if articles[0] %}                                                                
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[0], 
-                            position: 1, 
-                            containerClass: 'swiper-slide', 
-                            imageSize: {width:1168, height:587}
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endif %}
-                </div><!-- .swiper-wrapper-->
+                {% if articles[0] %}                                                                
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[0], 
+                        position: 1, 
+                        containerClass: '', 
+                        imageSize: {width:1168, height:587}
+                    }) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            </div><!-- .swiper-wrapper-->
 
-                <div class="newsroom-icon">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
-                </div><!-- .newsroom-icon-->
+            <div class="newsroom-icon">
+                <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
+            </div><!-- .newsroom-icon-->
 
-            </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
     
 
