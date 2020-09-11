@@ -40,7 +40,7 @@
             -webkit-flex: 0 0 45%;
             flex: 0 0 45%;
             overflow: hidden;
-            padding:38px 30px 40px 59px;
+            padding:38px 30px 40px 19px;
             max-width: 510px;
 
             @media screen and (max-width: $md-break){
@@ -57,11 +57,21 @@
                 -ms-flex: 0 0 40%;
                 -webkit-flex: 0 0 40%;
                 flex: 0 0 40%;
-                padding: 38px 30px 10px 59px;
+                padding: 38px 30px 10px 19px;
             }
 
         }
         
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+
+        &__comment-count {
+            color:white;
+        }
 
 
         &__category{

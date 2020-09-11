@@ -45,7 +45,18 @@
             line-height: 1;
 
         }
-    
+        
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+
+        &__comment-count {
+            color:white;
+        }
+
         &__heading{
             @include font-size(28);
             font-weight:normal;
