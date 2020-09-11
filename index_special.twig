@@ -123,7 +123,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
-                            {% set rowCards = ['card-rec card-rec-tablet card-rec-mobile inverted', 'card-rec card-rec-tablet card-rec-mobile'] %}                                                                
+                            {% set rowCards = ['card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile', 'card-rec card-rec-tablet card-rec-mobile'] %}                                                                
                             {% for i in 0..1 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {

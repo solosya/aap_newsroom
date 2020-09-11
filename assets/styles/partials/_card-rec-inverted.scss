@@ -1,0 +1,223 @@
+@mixin card-rec-inverted-base{
+    margin-bottom: 79.5px;
+    position:relative;
+
+    background-color: #000;
+    color: #FFF;
+
+    .c-cards-view {
+        @include flexbox;
+        height: 235px;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        -ms-flex-direction: row-reverse;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+
+
+        &__media {
+            width: 330px;
+            -ms-flex: 0 0 330px;
+            -webkit-flex: 0 0 330px;
+            flex: 0 0 330px;
+            overflow: hidden;
+            float: left;
+    
+            @media screen and (max-width: $md-break) {
+                width: 256px;
+                flex: 0 0 256px;
+            }
+        }
+
+        &__container {
+            display: block;
+            width:100%;
+            // border: 1px solid #dadada;
+            padding: 25px 24px 3px 24px;
+            border: 1px solid #000;
+
+        }
+        &__category-container {
+            margin-bottom: 11px;
+        }
+
+
+        &__comment-count {
+            color:white;
+        }
+
+        &__category{
+            @include font-size(14);
+            font-weight: bold;
+            color: #27aae1;
+            display: block;
+            line-height: 1;
+        }
+        &__heading {
+            font-weight: bold;
+            @include font-size(30, 32);
+            height: 75px;
+            color:white;
+        }
+
+        &__description {
+            height: 60px;
+            border-bottom: 1px solid #dadada;
+            padding-bottom: 15px;
+            @include font-size(13.5, 16);
+            color:white;
+
+        }
+
+        &__author-name{
+            @include flexbox;
+            @include align-items(center);
+            margin-top: 6px;
+            >p {
+                color: #FFF;
+            }
+        }
+
+
+
+        &__time{
+            margin-top:15px;
+            padding-top:4px;
+            color: #FFF;
+
+            @media screen and (max-width: $mmd-break-down){
+                width: auto;
+            }
+
+            @media #{$desktop-down}{
+                width: auto;
+                height: 20px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            @media screen and (min-width: $mobile-break) and (max-width: 720px){
+                display:none;
+            }
+
+        }
+
+    }
+
+}
+
+
+
+// layout pro room
+.card-rec-inverted-tablet-extra{
+    @media #{$tablet}{
+        @include card-rec-inverted-base;
+        a.card {
+            >article {
+                >figure {
+                    width: 300px;
+                    flex: 0 0 300px;
+                }
+                >.content{
+                    >.author{
+                        display: none;
+                    }
+                    >time{
+                        display: none;
+                    }
+                    >h2{
+                        margin-bottom: 10px;
+                    }
+                    >p{
+                        height: 80px;
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card-rec-inverted-mobile{
+    @media #{$mobile}{
+
+        @include card-rec-inverted-base;
+        margin-bottom: -2px;
+        margin-left: -15px;
+        margin-right: -15px;
+        border-top: 2px solid #7e8084;
+        border-bottom: 2px solid #7e8084;
+
+        .c-cards-view {
+
+            height:auto;
+
+            &__container {
+                border: 0;
+                padding: 10px;
+            }
+
+            &__media {
+                width: 116px;
+                height: 116px;
+                flex: 0 0 116px;
+            }
+
+            &__author-name {
+                display: none;
+            }
+
+            &__category{
+
+                @include font-size(12);
+                margin-bottom: 5px;
+                text-transform:uppercase;
+            }
+
+            &__time{
+                float: left;
+                border: 0;
+                padding: 0;
+                @include font-size(10);
+                position: absolute;
+                bottom: 5px;
+            }
+            &__heading {
+                @include font-size(20, 23);
+                border: 0;
+                height: 50px;
+            }
+
+
+            &__description {
+                display:none;
+            }
+
+
+        }
+    }
+}
+
+.card-rec-inverted-tablet{
+    @media #{$tablet}{
+        @include card-rec-inverted-base;
+        .c-cards-view {
+            &__author-name {
+                width: 280px;
+            }
+        }
+    }
+}
+
+
+.card-rec-inverted-desktop{
+    @media #{$desktop-up}{
+        @include card-rec-inverted-base;
+    }
+}
+.card-rec-inverted-desktop-lg{
+    @media #{$desktop-up}{
+        @include card-rec-inverted-base;
+    }
+}
