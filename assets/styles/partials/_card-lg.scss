@@ -8,6 +8,21 @@
         // padding: 10px 22px;
     }
 
+
+    .c-cards-view {
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+
+        &__comment-count {
+            color:white;
+        }
+    }
+
+
     a.card{
         height:515px;
 
@@ -66,7 +81,7 @@
             > .category{
                 @include font-size(14);
                 font-weight: bold;
-                color: #fff;
+                color: #fff !important;
                 display: block;
                 line-height: 1;
                 margin-bottom: 3px;

@@ -98,7 +98,17 @@
             color:white;
         }
 
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
 
+        &__comment-count {
+            color:white;
+        }
+    
         &__category {
             @include font-size(14);
             font-weight: bold;
