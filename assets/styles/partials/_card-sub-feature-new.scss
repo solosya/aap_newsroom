@@ -3,9 +3,27 @@
     @include flexbox();
     @include flex-direction(column);
     $color: #6c6c6c;
+    border-right: none;
 
+    &:after{
+        content: '';
+        position: absolute;
+        background: #dadada;
+        right: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+    }
+    &:last-child {
+        &:after{
+            display:none;
+        }
+    }
     &.locker {
         $color: #F6AE00;
+    }
+    &.investigations {
+        $color: #aa272e;
     }
 
     .c-cards-view { 
@@ -65,6 +83,11 @@
 .subfeature-card-mobile{
     @media #{$mobile}{
         @include subfeature-card-base;
+
+        &:after{
+            display:none;
+        }
+
         .c-cards-view { 
             border-right: 0;
             margin-top:15px;
