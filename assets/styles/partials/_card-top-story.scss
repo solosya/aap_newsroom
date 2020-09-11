@@ -1,4 +1,12 @@
 @mixin card-top-story-base() {
+
+    .c-cards-view {
+        &__category-container {
+            position:relative;
+            top:-3px;
+        }
+    }
+
     a.card{
         > article {
             display:-webkit-box;
@@ -52,6 +60,7 @@
                     font-weight: bold;
                     @include font-size(22, 24);
                     height:50px;
+                    margin-top:3px;
                 }
 
                 > .author{
