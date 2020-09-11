@@ -42,6 +42,12 @@
             margin-bottom: 11px;
         }
 
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
 
         &__comment-count {
             color:white;
