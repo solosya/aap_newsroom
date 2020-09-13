@@ -132,7 +132,14 @@
         border-right: 1px solid #d4d4d4;
         // margin-bottom:20px;
         
-
+        &.viewing {
+            .c-cards-view { 
+                &__category{
+                    color: #73459B !important;
+                }
+            }
+        }
+    
         > a {
             @media #{$mobile} {
                 padding-top:10px;
@@ -192,7 +199,14 @@
 
     .featured {
         
-        
+        &.viewing {
+            .c-cards-view { 
+                &__category{
+                    color: #73459B !important;
+                }
+            }
+        }
+    
         article {
             position:relative;
             padding: 0;

@@ -19,8 +19,23 @@
             display:none;
         }
     }
+
+    &.viewing {
+        .c-cards-view { 
+            &__category{
+                color: #73459B !important;
+            }
+        }
+    }
+
+
+
     &.locker {
-        $color: #F6AE00;
+        .c-cards-view { 
+            &__category{
+                color: #F6AE00 !important;
+            }
+        }
     }
     &.investigations {
         $color: #aa272e;

@@ -16095,6 +16095,8 @@ input[type=radio].inline {
         display: none; }
   .room-view .subfeature {
     border-right: 1px solid #d4d4d4; }
+    .room-view .subfeature.viewing .c-cards-view__category {
+      color: #73459B !important; }
     @media screen and (max-width: 767px) {
       .room-view .subfeature > a {
         padding-top: 10px;
@@ -16124,6 +16126,8 @@ input[type=radio].inline {
           display: none; } }
   .room-view .subfeature:last-child {
     border-right: none; }
+  .room-view .featured.viewing .c-cards-view__category {
+    color: #73459B !important; }
   .room-view .featured article {
     position: relative;
     padding: 0;
@@ -23124,6 +23128,8 @@ body.channel.supporters p {
       top: 0;
       position: absolute;
       z-index: 2; }
+    .card-featured-mobile.viewing .c-cards-view__category {
+      color: #73459B !important; }
     .card-featured-mobile.investigations:before {
       background: #aa272e; }
     .card-featured-mobile.locker:before {
@@ -23263,6 +23269,8 @@ body.channel.supporters p {
       top: 0;
       position: absolute;
       z-index: 2; }
+    .card-featured-tablet.viewing .c-cards-view__category {
+      color: #73459B !important; }
     .card-featured-tablet.investigations:before {
       background: #aa272e; }
     .card-featured-tablet.locker:before {
@@ -23357,6 +23365,8 @@ body.channel.supporters p {
       top: 0;
       position: absolute;
       z-index: 2; }
+    .card-featured-desktop.viewing .c-cards-view__category {
+      color: #73459B !important; }
     .card-featured-desktop.investigations:before {
       background: #aa272e; }
     .card-featured-desktop.locker:before {
@@ -23448,6 +23458,8 @@ body.channel.supporters p {
       top: 0;
       position: absolute;
       z-index: 2; }
+    .card-featured-desktop-up.viewing .c-cards-view__category {
+      color: #73459B !important; }
     .card-featured-desktop-up.investigations:before {
       background: #aa272e; }
     .card-featured-desktop-up.locker:before {
@@ -23548,6 +23560,10 @@ body.channel.supporters p {
       height: 100%; }
     .subfeature-card-mobile:last-child:after {
       display: none; }
+    .subfeature-card-mobile.viewing .c-cards-view__category {
+      color: #73459B !important; }
+    .subfeature-card-mobile.locker .c-cards-view__category {
+      color: #F6AE00 !important; }
     .subfeature-card-mobile .c-cards-view {
       display: -webkit-box;
       display: -webkit-flex;
@@ -23630,6 +23646,10 @@ body.channel.supporters p {
       height: 100%; }
     .subfeature-card-tablet:last-child:after {
       display: none; }
+    .subfeature-card-tablet.viewing .c-cards-view__category {
+      color: #73459B !important; }
+    .subfeature-card-tablet.locker .c-cards-view__category {
+      color: #F6AE00 !important; }
     .subfeature-card-tablet .c-cards-view {
       display: -webkit-box;
       display: -webkit-flex;
@@ -23726,6 +23746,10 @@ body.channel.supporters p {
       height: 100%; }
     .subfeature-card-desktop-sm:last-child:after {
       display: none; }
+    .subfeature-card-desktop-sm.viewing .c-cards-view__category {
+      color: #73459B !important; }
+    .subfeature-card-desktop-sm.locker .c-cards-view__category {
+      color: #F6AE00 !important; }
     .subfeature-card-desktop-sm .c-cards-view {
       display: -webkit-box;
       display: -webkit-flex;
@@ -23792,6 +23816,10 @@ body.channel.supporters p {
       height: 100%; }
     .subfeature-card-desktop-lg:last-child:after {
       display: none; }
+    .subfeature-card-desktop-lg.viewing .c-cards-view__category {
+      color: #73459B !important; }
+    .subfeature-card-desktop-lg.locker .c-cards-view__category {
+      color: #F6AE00 !important; }
     .subfeature-card-desktop-lg .c-cards-view {
       display: -webkit-box;
       display: -webkit-flex;
@@ -26498,6 +26526,8 @@ body.channel.supporters p {
       -webkit-flex-direction: row-reverse;
       flex-direction: row-reverse;
       padding-top: 15px; }
+      .pro-featured-main-desktop-lg .c-cards-view__container {
+        padding: 38px 30px 40px 49px; }
       .pro-featured-main-desktop-lg .c-cards-view__heading {
         height: 120px; } }
 
