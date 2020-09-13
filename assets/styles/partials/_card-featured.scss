@@ -94,12 +94,26 @@
             color: #FFF;
         }
 
+        &__comment-count {
+            color:white;
+        }
+
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+
+    
         &__category {
             @include font-size(14);
             font-weight: bold;
             color: #FFF;
             text-transform: uppercase;
         }
+
+
 
         &__heading {
             @include font-size(44);

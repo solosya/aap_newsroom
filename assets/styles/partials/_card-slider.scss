@@ -1,10 +1,12 @@
 .featured-slider{
     margin-bottom: 22px;
-    
+    position:relative;
     // @media screen and (max-width: $sm-break-down) {
     //     margin-left: -15px;
     //     margin-right: -15px;
     // }
+
+
 
     .featured {
         width:100%;
@@ -22,9 +24,9 @@
         }
 
         @media #{$tablet}{
-           width: 65px;
-           top:  -15px;
-           right: 0;
+            width: 65px;
+            top:  -15px;
+            right: 0;
         }
 
         @media screen and (max-width: $sm-break-down) {
@@ -43,9 +45,49 @@
         }
     }
 
+    .c-cards-view {
+        @media #{$tablet}{
+            &__category-container {
+                margin-right:100px;
+            }
+            &__comment-count {
+                top:0;
+
+            }
+            &__comment {
+                position: relative;
+                top: -1px;
+            }
+        }
+
+
+        @media #{$mobile}{
+            &__comment-count {
+                color:white !important;
+
+            }
+            &__comment {
+                background-color: white !important; // default background color
+                &:after {
+                    border-color: white transparent transparent !important;
+                }
+
+            }
+            &__category {
+                color:white !important;
+            }
+
+        }
+
+
+    }
+
+
+
     .card{
 
         height: 587px;
+        border: solid 1px #7e8084;
 
 
         @media screen and (max-width:1600px){
@@ -60,21 +102,6 @@
             height: 350px;
             overflow: hidden;
 
-            // &:before{
-            //     position: absolute;
-            //     top: 0;
-            //     left: 0;
-            //     width: 100%;
-            //     height: 100%;
-            //     content: '';
-
-            //     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.36+65,1+100 */
-            //     background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.36) 65%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-            //     background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 65%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
-            //     background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.36) 65%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            //     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-
-            // }
         }
 
         article {
@@ -166,7 +193,6 @@
                     padding: 165px 15px 5px 15px;
                 }
 
-                                // Not under:                     Not over:
                 @media #{$tablet}{
                     padding: 40px 15px 15px 15px;
                 }
@@ -185,13 +211,12 @@
 
                 .category{
                     // background:red;
-                    margin-bottom: 10px;
                     display: block;
-                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    // -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
                     min-height:0;
                     max-height:20px;
                     @media #{$tablet}{
-                        font-size: rem(8.5);
+                        font-size: rem(12);
                     }
                     @media screen and (max-width: $mobile-break){
                         color: white;
@@ -205,9 +230,9 @@
                     -webkit-flex:2 2 0;-ms-flex:2 2 0;flex:2 2 0;-moz-flex:2 2 0;
                     min-height:0;
                     vertical-align:middle;
-                    min-height:70px;
+                    min-height:76px;
                     margin-bottom: 8px;
-
+                    margin-top:10px;
                     @media screen and (max-width:1427px){
                         @include font-size(42);
 

@@ -22,6 +22,11 @@
             padding: 13px 15px 8px 15px;
         }
 
+        &__comment-container {
+            margin-bottom:8px;;
+        }
+
+
         &__category {
             @include font-size(14);
             font-weight: bold;
@@ -29,7 +34,6 @@
             color: #27aae1;
             display: block;
             line-height: 1;
-            margin-bottom: 8px;
 
         }
 
@@ -79,9 +83,12 @@
 
         &.social {
             .content {
+                .c-cards-view__comment-container {
+                    margin-bottom:8px;;
+                }
+        
                 .category {
                     margin-top:0;
-                    margin-bottom:8px;
                 }
         
                 > p {

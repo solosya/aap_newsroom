@@ -49,21 +49,17 @@
         {% endif %}
 
 
-        <div class="swiper-container u-mobile-margin-top-20  u-mobile-margin-left-minus-15 u-mobile-margin-right-minus-15">
-            <div class="swiper-wrapper">
-
-                {% if articles[0] %}                                                                
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[0], 
-                        position: 1, 
-                        lazyload:false,
-                        containerClass: 'swiper-slide',
-                        imageSize: {width:660, height:440}
-                    }) | raw}}
-                    {% set articleCount = articleCount + 1 %}
-                {% endif %}
-            </div>
-
+        <div class="u-mobile-margin-top-20  u-mobile-margin-left-minus-15 u-mobile-margin-right-minus-15">
+            {% if articles[0] %}                                                                
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[0], 
+                    position: 1, 
+                    lazyload:false,
+                    containerClass: '',
+                    imageSize: {width:660, height:440}
+                }) | raw}}
+                {% set articleCount = articleCount + 1 %}
+            {% endif %}
         </div>
     </div>
 </section>
@@ -76,7 +72,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1), 
-                        containerClass: 'card-rec card-rec-tablet card-sm-mobile inverted',
+                        containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-sm-mobile',
                         imageSize: {width:330, height:236}
                     }) | raw}}
                     {% set articleCount = articleCount + 1 %}
@@ -202,7 +198,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1), 
-                        containerClass: 'card-lg u-mobile-margin-bottom-30',
+                        containerClass: 'card-lg-mobile card-lg-tablet card-lg-desktop card-lg-desktop-lg u-mobile-margin-bottom-30',
                         imageSize: {width:750, height:518}
                     }) | raw}}
                     {% set articleCount = articleCount + 1 %}
@@ -231,14 +227,14 @@
                 {% if articles[articleCount] %}                                                                
                 <section class="">
                     <div class="row">
-                        {% set rowCards = [' inverted','',''] %}                                                                
+
                         {% for i in 0..2 %}
                             {% if articles[articleCount] %}   
 
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
-                                    containerClass: 'col-xs-12 col-md-6 col-lg-12 card-sm card-sm-tablet card-sm-mobile' ~ rowCards[i],
+                                    containerClass: 'col-xs-12 col-md-6 col-lg-12 card-sm card-sm-tablet card-sm-mobile',
                                     imageSize: {width:370, height:270}
                                 }) | raw}}
 

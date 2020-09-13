@@ -1,0 +1,207 @@
+@mixin pro-sub-feature-base {
+
+    &:after{
+        content: '';
+        position: absolute;
+        background: #dadada;
+        right: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+    }
+    &:last-child {
+        &:after{
+            display:none;
+        }
+    }
+
+
+
+    .c-cards-view {
+        @include flexbox();
+        background:black;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        padding-right:10px;
+
+
+        &__media {
+            width: 203px;
+            height:129px;
+            -webkit-flex: 0 0 203px;
+            flex: 0 0 203px;
+        }
+
+   
+        &__container{
+            padding-left: 27px;
+            max-height: 100%;
+        }
+        &__category{
+            @include font-size(14);
+            color: #e22f22;
+            text-transform: uppercase;
+            display: block;
+            line-height: 1;
+
+        }
+        
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+
+        &__comment-count {
+            color:white;
+        }
+
+        &__heading{
+            @include font-size(28);
+            font-weight:normal;
+            color: #fff;
+            max-height: 85px;
+            margin-top: 10px;
+            width: 90%;
+        }
+    
+        &__time{
+            @include font-size(16.5);
+            color: white;
+            text-transform: uppercase;
+            border-left: 0;
+            padding: 0;
+            position: absolute;
+            bottom: -3px;
+        }
+        &__description {
+            display:none;
+        }
+
+        &__author-name {
+            display: none;
+        }
+    }
+}
+
+
+
+.pro-sub-feature-mobile{
+    @media #{$mobile}{
+
+        &:after{
+            display:none;
+        }
+        &:not(:last-child) {
+            .c-cards-view {
+                border-bottom: solid 1px #dadada;
+                padding-bottom: 15px;
+            }
+        }
+        &:last-child {
+            .c-cards-view {
+                padding-top: 15px;
+            }
+        }
+
+
+        @include pro-sub-feature-base;
+        .c-cards-view {
+            padding-right:10px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            border-bottom: solid 1px #dadada;
+    
+            &__media {
+                width: 130px;
+                height:90px;
+                -webkit-flex: 0 0 130px;
+                flex: 0 0 130px;
+            }
+    
+            &__heading {
+                @include font-size(20);
+                height: 50px;
+            }
+            &__time{
+                @include font-size(12);
+                bottom: 13px;
+
+            }
+
+        }
+    }
+}
+
+.pro-sub-feature-tablet{
+    @media #{$tablet}{
+        &:after{
+            display:none;
+        }
+
+        &:not(:last-child) {
+            .c-cards-view {
+                border-bottom: solid 1px #dadada;
+                padding-bottom: 15px;
+            }
+        }
+        &:last-child {
+            .c-cards-view {
+                padding-top: 15px;
+            }
+        }
+
+        @include pro-sub-feature-base;
+        .c-cards-view {
+            padding-right:10px;
+    
+    
+            &__media {
+                width: 203px;
+                -webkit-flex: 0 0 203px;
+                flex: 0 0 203px;
+            }
+    
+            &__heading {
+                @include font-size(20);
+                height: 50px;
+            }
+            &__time{
+                margin-top: 5px;
+                @include font-size(12);
+                bottom: 13px;
+
+            }
+
+            &__description {
+                height: 40px;
+                color: #fff;
+            }
+    
+
+        }
+
+    }
+}
+
+
+
+.pro-sub-feature-desktop{
+    @media #{$desktop}{
+        @include pro-sub-feature-base;
+
+        .c-cards-view {
+
+            &__heading {
+                @include font-size(24);
+            }
+        }
+    }
+}
+
+.pro-sub-feature-desktop-lg{
+    @media #{$desktop-lg}{
+        @include pro-sub-feature-base;
+    }
+}

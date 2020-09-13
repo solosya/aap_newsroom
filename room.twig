@@ -85,20 +85,18 @@
         </a>
         <section class="featured-slider container-fluid">
 
-                <div class="swiper-container  u-mobile-margin-left-minus-15 u-mobile-margin-right-minus-15">
-                    <div class="swiper-wrapper">
+                <div class="u-mobile-margin-left-minus-15 u-mobile-margin-right-minus-15">
 
-                        {% if articles[0] %}                                                                
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[0], 
-                                position: 1, 
-                                containerClass: 'featured',
-                                lazyload:false,
-                                imageSize: {width:1168, height:587}
-                            }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    </div>
+                    {% if articles[0] %}                                                                
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[0], 
+                            position: 1, 
+                            containerClass: 'featured',
+                            lazyload:false,
+                            imageSize: {width:1168, height:587}
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endif %}
 
                 </div>
         </section>

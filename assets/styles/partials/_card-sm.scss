@@ -4,6 +4,12 @@
 
     >a.without__image {
         .c-cards-view {
+
+            &__comment-container {
+                margin-bottom:8px;;
+            }
+
+
             &__container {
                 height:333px;
 
@@ -23,7 +29,6 @@
         .content {
             .category {
                 margin-top:0;
-                margin-bottom:8px;
             }
     
             > p {
@@ -69,6 +74,9 @@
             border: 1px solid #dadada;
             padding: 13px 15px 8px 15px;
         }
+        &__comment-container {
+            margin-bottom:8px;;
+        }
 
         &__category {
             @include font-size(14);
@@ -76,7 +84,6 @@
             color: #8a8b93;
             display: block;
             line-height: 1;
-            margin-bottom: 8px;
 
         }
 

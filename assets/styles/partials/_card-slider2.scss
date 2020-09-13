@@ -23,7 +23,17 @@
         }
     }
 
+
+    .c-cards-view {
+
+        &__category-container {
+            @include flexbox();
+        }
+    }
+    
+    
     .card{
+        background:red;
         height: 587px;
 
         @media screen and (max-width:1600px){
@@ -139,8 +149,14 @@
                 color: #FFF;
             }
 
+
+            &__category-container {
+                @include flexbox();
+            }
+    
+    
             .category{
-                margin-bottom: 10px;
+                // margin-bottom: 10px;
                 display: block;
 
                 @media screen and (max-width: $sm-break-down) {

@@ -72,25 +72,23 @@
 
     <main id="main" class="site-main index-special" role="main">
         <section class="featured-slider container-fluid">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
+            <div class="">
 
-                    {% if articles[0] %}                                                                
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[0], 
-                            position: 1, 
-                            containerClass: 'swiper-slide', 
-                            imageSize: {width:1168, height:587}
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endif %}
-                </div><!-- .swiper-wrapper-->
+                {% if articles[0] %}                                                                
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[0], 
+                        position: 1, 
+                        containerClass: '', 
+                        imageSize: {width:1168, height:587}
+                    }) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            </div><!-- .swiper-wrapper-->
 
-                <div class="newsroom-icon">
-                    <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
-                </div><!-- .newsroom-icon-->
+            <div class="newsroom-icon">
+                <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="newsroom ic">
+            </div><!-- .newsroom-icon-->
 
-            </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
     
 
@@ -123,7 +121,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
                         <div class="card-group">
-                            {% set rowCards = ['card-rec card-rec-tablet card-rec-mobile inverted', 'card-rec card-rec-tablet card-rec-mobile'] %}                                                                
+                            {% set rowCards = ['card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile', 'card-rec card-rec-tablet card-rec-mobile'] %}                                                                
                             {% for i in 0..1 %}
                                 {% if articles[articleCount] %}                                                                
                                     {{this.render('partials/_single-article.twig', {
@@ -176,7 +174,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
-                                containerClass: 'card-lg',
+                                containerClass: 'card-lg-mobile card-lg-tablet card-lg-desktop card-lg-desktop-lg',
                                 imageSize: {width:750, height:518}
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}

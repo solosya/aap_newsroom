@@ -39,6 +39,30 @@
             }
         }
 
+        &__category-container {
+            @include flexbox();
+        }
+
+        &__comment-container {
+            @include flexbox();
+            margin-left:auto;
+            align-items:center;
+            position:relative;
+        }
+
+        &__comment {
+            height:11px;
+            width: 17px;
+            margin-left:5px;
+
+        }
+        &__comment-count {
+            @include font-size(12);
+            font-weight:600;
+            position:relative;
+            color:#8a8b93;
+            top:1px;
+        }
 
         &__container {
             width:100%;

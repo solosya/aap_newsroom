@@ -19,7 +19,7 @@
     {{this.render('_single-article.twig', {
         article         : sections['newsroom pro'].feed.articles[0],
         position        : 1, 
-        containerClass  : 'featured pro', 
+        containerClass  : 'pro-featured-main-mobile pro-featured-main-tablet pro-featured-main-desktop pro-featured-main-desktop-lg', 
         imageSize       : {width:627, height:415},
         swap            : 'false'
     }) | raw}}
@@ -33,7 +33,7 @@
                     {{this.render('_single-article.twig', {
                         article         : sections['newsroom pro'].feed.articles[i], 
                         position        : i+1, 
-                        containerClass  : 'col-md-12 col-lg-6', 
+                        containerClass  : 'pro-sub-feature-mobile pro-sub-feature-tablet pro-sub-feature-desktop pro-sub-feature-desktop-lg col-md-12 col-lg-6', 
                         imageSize       : {width:203, height:129},
                         swap            : 'false'
 

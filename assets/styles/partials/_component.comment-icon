@@ -1,0 +1,197 @@
+$black        :     #DADADA;
+$blue         :     #3498db;
+$green        :     #1abc9c;
+$orange       :     #e67e22;
+$red          :     #e74c3c;
+$default-color:     $black;
+
+$box-width    :     150px;
+$box-height   :     100px;
+$border-width :     4px;
+
+
+/////////////////////////////////////
+// Main styles for box with arrows //
+/////////////////////////////////////
+.inverted {
+    .comment-icon {
+        background-color: white; // default background color
+        &:after {
+            border-color: white transparent transparent;
+        }
+    }
+}
+.comment-icon {
+    display:inline;
+    font-size: 12px;
+    font-weight:600;
+    color:white;
+    line-height:1;
+    // width: $box-width;
+    // height: $box-height;
+    padding:1px 8px;
+    background-color:$default-color; // default background color
+    position: relative;
+    // border-radius: 4px;
+
+    &:after {
+        content: "";
+        display: block;
+        border-width: $border-width $border-width 0;
+        border-style: solid;
+        border-color: $default-color transparent transparent;
+        margin-left: - $border-width;
+        position: absolute;
+        bottom: - $border-width;
+        left: 50%;
+    }
+
+    // &:hover {
+    //     cursor:pointer;
+    // }
+
+    &.arrow-bottom-left,
+    &.arrow-bottom-right,
+    &.arrow-top-left,
+    &.arrow-top-right,
+    &.arrow-left-top,
+    &.arrow-left-bottom,
+    &.arrow-right-top,
+    &.arrow-right-bottom &:after {
+        border-width: $border-width * 0.5;
+        margin: 0;
+    }
+    // Bottom Arrows
+
+    &.arrow-bottom-left,
+    &.arrow-bottom-right &:after {
+        border-left-color: $default-color ;   
+    }
+    &.arrow-bottom-left &:after {
+        left: 0;
+        right: auto;
+    }
+    &.arrow-bottom-right &:after {
+        border-left-color: transparent;
+        border-right-color: $default-color;
+        left: auto;
+        right: 0;
+    }
+    // Top Arrows
+
+    &.arrow-top-center,
+    &.arrow-top-left,
+    &.arrow-top-right &:after {
+        border-top-color: transparent;
+        border-bottom-color: $default-color;
+        top: - $border-width;
+        bottom: auto;
+    }
+    &.arrow-top-center &:after {
+        border-top-width: 0;
+        border-bottom-width: $border-width;
+    }
+        
+    &.arrow-top-left,
+    &.arrow-top-right &:after {
+        border-width: $border-width * 0.5;
+        border-left-color: $default-color ;
+    }
+
+
+    &.arrow-top-left &:after {
+        left: 0;
+        right: auto;
+    }
+    &.arrow-top-right &:after {
+        border-left-color: transparent;
+        border-right-color: $default-color;
+        left: auto;
+        right: 0;
+    }
+    // Left Arrows    
+
+    &.arrow-left-center,
+    &.arrow-left-top,
+    &.arrow-left-bottom &:after {
+        border-width: $border-width;
+        border-left-color: transparent;
+        border-left-width: 0;
+        border-top-color: transparent;
+        border-right-color: $default-color;
+        margin: - $border-width 0 0;
+        left: - $border-width;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+    }
+        
+    &.arrow-left-top,
+    &.arrow-left-bottom &:after {
+        border-width: $border-width * 0.5;
+        margin: 0;
+    }
+    &.arrow-left-top &:after {
+        border-top-color: $default-color ;
+        top: 0;
+    }
+    &.arrow-left-bottom &:after {
+        border-bottom-color: $default-color;
+        top: auto;
+        bottom: 0;
+    }
+
+        
+    // Right Arrows    
+
+    &.arrow-right-center,
+    &.arrow-right-top,
+    &.arrow-right-bottom &:after {
+        border-width: $border-width;
+        border-right-width: 0;
+        border-top-color: transparent;
+        border-left-color: $default-color;
+        margin: - $border-width 0 0;
+        left: auto;
+        right: - $border-width;
+        top: 50%;
+        bottom: auto;
+    }
+        
+    &.arrow-right-top,
+    &.arrow-right-bottom
+        &:after {
+            border-width: $border-width * 0.5;
+            margin: 0;
+    }
+
+    &.arrow-right-top &:after {
+        border-top-color: $default-color;
+        top: 0;
+    }
+    &.arrow-right-bottom  &:after {
+        border-bottom-color: $default-color;
+        top: auto;
+        bottom: 0;
+    }
+
+
+    // Border radius
+
+    &.arrow-bottom-left,
+    &.arrow-left-bottom {
+        border-bottom-left-radius: 0;
+    }
+    &.arrow-bottom-right,
+    &.arrow-right-bottom {
+        border-bottom-right-radius: 0;
+    }
+    &.arrow-top-left,
+    &.arrow-left-top {
+        border-top-left-radius: 0;
+    }
+    &.arrow-top-right,
+    &.arrow-right-top {
+        border-top-right-radius: 0;
+    }
+}

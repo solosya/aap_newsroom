@@ -45,21 +45,19 @@
         </a>
         <section class="featured-slider container-fluid">
 
-                <div class="swiper-container">
-                    <div class="swiper-wrapper investigations-before">
+            <div class="investigations-before">
 
-                        {% if articles[0] %}                                                                
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[0], 
-                                position: 1, 
-                                containerClass: 'card-investigations-feature card-investigations-feature-tablet card-investigations-feature-mobile',
-                                imageSize: {width:1168, height:587}
-                            }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endif %}
-                    </div>
+                {% if articles[0] %}                                                                
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[0], 
+                        position: 1, 
+                        containerClass: 'card-investigations-feature card-investigations-feature-tablet card-investigations-feature-mobile',
+                        imageSize: {width:1168, height:587}
+                    }) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            </div>
 
-                </div>
         </section>
     
         {% if articles[articleCount] %}                                                                
@@ -149,7 +147,7 @@
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'card-sm card-rec-tablet card-sm-mobile inverted',
+                                            containerClass: 'card-sm card-rec-inverted-tablet card-sm-mobile',
                                             imageSize: {width:335, height:260}
                                         }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
