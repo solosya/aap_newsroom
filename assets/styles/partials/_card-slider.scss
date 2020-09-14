@@ -292,14 +292,17 @@
                 }
 
                 time{
-                    // background:yellow;
-                    -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
-                    min-height:0;
-                    max-height:30px;
-                    position:absolute;
-                    bottom:10px;
-                    right:10px;
-                    
+                    @include flexbox();
+                    align-items:center;
+                    &:before {
+                        content: '';
+                        margin-right: 13px;
+                        display: block;
+                        height: 20px;
+                        width: 1px;
+                        background: #dadada;
+                    }
+        
                     @media screen and (max-width: $md-break){
                         display:none;
                     }
@@ -313,7 +316,8 @@
                 }
 
                 .author{
-                    display:flex;
+                    @include flexbox();
+                    align-items:center;
                     // background:orange;
                     -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
                     -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
