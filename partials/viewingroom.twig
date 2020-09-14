@@ -1,18 +1,20 @@
 
-<section class="room-view container">
-    <header>
+<section class="room-view container u-margin-top-70 u-margin-bottom-80">
+    
+    <header class="u-margin-bottom-20">
         <a href="{{ sections['viewingroom'].link }}">
             <img src="{{networkData.templatePath}}/static/images/viewingroom-logo.svg" alt="viewing room" class="img-fluid">
         </a>
     </header>
 
-    <div class="content-wrapper row">
 
+
+    <div class="content-wrapper row">
         
         {{this.render('_single-article.twig', {
             article             : sections['viewingroom'].feed.articles[0],
             position            : (1), 
-            containerClass      : 'featured viewing col-md-12', 
+            containerClass      : 'card-featured-reverse-mobile card-featured-reverse-tablet card-featured-reverse-desktop card-featured-reverse-desktop-lg viewing col-md-12', 
             swap                : 'false',
             imageSize: {width:633, height:420}
         }) | raw}}
@@ -22,7 +24,7 @@
                 {{this.render('_single-article.twig', {
                     article             : sections['viewingroom'].feed.articles[i],
                     position            : i+1, 
-                    containerClass      : 'subfeature viewing col-md-4', 
+                    containerClass      : 'view-sub-feature-mobile view-sub-feature-tablet view-sub-feature-desktop view-sub-feature-desktop-lg viewing col-md-4', 
                     swap                : 'false',
                     imageSize: {width:330, height:212}
 
@@ -30,6 +32,6 @@
             {% endif %}
         {% endfor %}
 
-    </div><!-- .content-wrapper-->
+    </div>
 
-</section><!-- .room-view-->
+</section>

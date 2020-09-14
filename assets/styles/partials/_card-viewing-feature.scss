@@ -1,4 +1,4 @@
-@mixin card-featured2-base {
+@mixin card-featured-reverse-base {
 
     height: 430px;
     margin-bottom: 22px;
@@ -10,9 +10,23 @@
         height: 100%;
         bottom: 0;
         top: 0;
+        z-index:10;
         position: absolute;
     }
 
+    &.viewing {
+        &:before{
+            background: #73459b;
+        }
+        .c-cards-view {
+            &__category {
+                color:#73459b;
+            }
+            &__time {
+                color:#73459b;
+            }
+        }
+    }
 
     &.investigations {
         &:before{
@@ -51,9 +65,6 @@
 
         width: 100%;
         height: 100%;
-        -ms-flex-direction: row-reverse;
-        -webkit-flex-direction: row-reverse;
-        flex-direction: row-reverse;
         border: 0;
 
 
@@ -63,27 +74,50 @@
             -ms-flex: 0 0 55%;
             flex: 0 0 55%;
             // height: auto;
+
+            @media screen and (max-width: $md-break){
+                width: 60%;
+                -webkit-flex: 0 0 60%;
+                -ms-flex: 0 0 60%;
+                flex: 0 0 60%;
+            }
         }
 
         &__container {
+
             max-width: 377px;
+            // width: 40%;
+            // -ms-flex: 0 0 40%;
+            // -webkit-flex: 0 0 40%;
+            // flex: 0 0 40%;
             padding: 38px 30px 10px 59px;
 
         }
+
+        // &__comment-count {
+        //     color:white;
+        // }
+
 
 
         &__category {
             @include font-size(14);
             font-weight: bold;
+            color:white;
         }
 
         &__heading {
             @include font-size(44);
             font-weight: bold;
             line-height: 1.02;
-            color: #212427;
+            color: white;
             margin-bottom: 40px;
             margin-top:21px;
+
+            @media screen and (max-width: $md-break){
+                @include font-size(30);
+            }
+
         }
 
         &__author-name {
@@ -104,22 +138,22 @@
             display:none;
             @include font-size(20);
             line-height: 1.25;
-            color: #212427;
+            color: white;
             margin-bottom: 30px;
             height: 75px;
         }
     }
 }
-
-
-
-
-
-
-
-.card-featured2-mobile {
+    
+    
+    
+    
+    
+    
+    
+.card-featured-reverse-mobile {
     @media #{$mobile} {
-        @include card-featured2-base;
+        @include card-featured-reverse-base;
         
         margin-left: -15px;
         margin-right: -15px;
@@ -178,43 +212,44 @@
     }
 }
 
-.card-featured2-tablet {
+.card-featured-reverse-tablet {
     @media #{$tablet} {
-        @include card-featured2-base;
+        @include card-featured-reverse-base;
         height: 280px;
-
+        margin-left: -15px;
         .c-cards-view {
-            &__container {
-                padding: 20px 20px 10px 39px;
+            &__contaienr {
+                padding: 38px 20px 10px 39px;
             }
 
             &__heading {
                 @include font-size(27);
-                min-height: 97px;
-                max-height:97px;
-                margin-bottom:25px;
             }
 
             &__description {
                 display: block;
                 @include font-size(13);
                 line-height: 1.25;
-                min-height: 51px;
-                max-height:51px;
+
             }
+
         }
     }
 }
 
-.card-featured2-desktop {
+.card-featured-reverse-desktop {
     @media #{$desktop} {
-        @include card-featured2-base;
-
+        @include card-featured-reverse-base;
+        margin-left: -15px;
         .c-cards-view {
     
             &__container {
+                // width: 45%;
+                // -ms-flex: 0 0 45%;
+                // -webkit-flex: 0 0 45%;
+                // flex: 0 0 45%;
                 overflow: hidden;
-                padding:38px 30px 40px 19px;
+                padding:38px 30px 40px 59px;
             }
             &__description {
                 display: block;
@@ -224,9 +259,10 @@
     }
 }
 
-.card-featured2-desktop-up {
+.card-featured-reverse-desktop-lg {
     @media #{$desktop-lg} {
-        @include card-featured2-base;
+        @include card-featured-reverse-base;
+        margin-left: -15px;
 
         .c-cards-view {
 
@@ -245,3 +281,4 @@
 }
 
 
+    

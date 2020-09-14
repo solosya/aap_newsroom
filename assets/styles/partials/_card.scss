@@ -275,30 +275,63 @@
 
 
 
+@mixin card-base() {
+    .c-cards-view {
+        &__container{
+        }
+        &__media {
+        }
+        &__category{
+        }
+        &__comment {
+            // background-color: white; // default background color
+            &:after {
+                // border-color: white transparent transparent;
+            }
+        }
+        &__comment-count {
+        }
+        &__heading {
+        }
+        &__description {
+        }
+        &__bottom {
+        }
+        &__time {
+        }
+        &__author-name {
+        }
+    }
+}
 
-// .c-cards-view {
-//     &__container{
-//     }
-//     &__media {
-//     }
-//     &__category{
-//     }
-//     &__comment {
-//         // background-color: white; // default background color
-//         &:after {
-//             // border-color: white transparent transparent;
-//         }
-//     }
-//     &__comment-count {
-//     }
-//     &__heading {
-//     }
-//     &__description {
-//     }
-//     &__bottom {
-//     }
-//     &__time {
-//     }
-//     &__author-name {
-//     }
-// }
+.card-mobile{
+    @media #{$mobile}{
+        @include card-base;
+        .c-cards-view {
+        }
+    }
+}
+
+.card-tablet{
+    @media #{$tablet}{
+        @include card-base;
+        .c-cards-view {
+        }
+    }
+}
+
+.card-desktop{
+    @media #{$desktop}{
+        @include card-base;
+        .c-cards-view {
+        }
+    }
+}
+
+.card-desktop-lg{
+    @media #{$desktop-lg}{
+        @include card-base;
+        .c-cards-view {
+        }
+    }
+}

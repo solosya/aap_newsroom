@@ -1,0 +1,129 @@
+@mixin view-sub-feature-base()
+{
+    border-right: 1px solid #d4d4d4;
+    &:last-child {
+        border-right:none;
+    }
+    .c-cards-view {
+        height:auto;
+
+        &:last-child{
+            border: 0;
+        }
+
+        padding-left: 25px;
+        padding-right: 25px;
+
+
+
+        &__container{
+        }
+        &__media {
+            position: relative;
+
+        }
+        &__category-container{
+            margin-top:7px;
+        }
+
+
+        &__category{
+            @include font-size(14);
+            font-weight: bold;
+            color: #73459B;
+            text-transform: uppercase;
+            line-height: 1;
+            display: block;
+        }
+        &__comment {
+            background-color: white; // default background color
+            &:after {
+                border-color: white transparent transparent;
+            }
+        }
+        &__comment-count {
+        }
+        &__heading {
+            @include font-size(20);
+            font-weight: normal;
+            height: 50px;
+            margin-top:6px;
+            color:white;
+
+        }
+        &__description {
+            // height:90px;
+            // line-height:1.4;
+            display:none;
+
+        }
+        &__bottom {
+        }
+        &__time {
+            padding: 0;
+            border: 0;
+            @include font-size(14);
+            font-weight: bold;
+            color: #73459B;
+
+        }
+        &__author-name {
+            display:none;
+        }
+    }
+}
+
+    
+
+
+
+.view-sub-feature-mobile{
+    @media #{$mobile} {
+        @include view-sub-feature-base;
+        .c-cards-view {
+
+            border-right: 0;
+            @include flexbox();
+            flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+
+            &__media{
+                width: 115px;
+                flex: 0 0 115px;
+                margin-right: 10px;
+            }
+            &__category {
+                font-family: $font-family-sans-serif;
+                @include font-size(12);
+                text-transform: uppercase;
+            }
+            &__time {
+                display: none;
+            }
+        }
+    }
+}
+
+.view-sub-feature-tablet{
+    @media #{$tablet}{
+        @include view-sub-feature-base;
+        .c-cards-view {
+        }
+    }
+}
+
+.view-sub-feature-desktop{
+    @media #{$desktop}{
+        @include view-sub-feature-base;
+        .c-cards-view {
+        }
+    }
+}
+
+.view-sub-feature-desktop-lg {
+    @media #{$desktop-lg} {
+        @include view-sub-feature-base;
+        .c-cards-view {
+        }
+    }
+} 
