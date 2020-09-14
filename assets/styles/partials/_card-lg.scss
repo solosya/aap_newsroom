@@ -18,9 +18,6 @@
 
 
     .c-cards-view {
-
-
-
         &__media {
             position: absolute;
             left: 0;
@@ -28,9 +25,6 @@
             height:100%;
             width: 100%;
         }
-
-
-
 
         &__container{
             display:block;
@@ -71,7 +65,6 @@
             @include font-size(40);
             padding-top: 15px;
             max-height: 120px;
-            // background:pink;
 
             @media screen and (max-width: $md-break){
                 height: 310px;
@@ -91,25 +84,34 @@
             max-height: 150px;
 
         }
+        &__bottom {
+            margin-top: 6px;
+            padding-top: 10px;
+            border-top: 1px solid #dadada;
+            position:absolute;
+            bottom: 10px;
+            width: 92%;
+        }
 
         &__time {
             color: #FFF;
-            padding-top: 15px;
-            margin-top: 10px;
-            position:absolute;
-            bottom:10px;
-            right:20px;
+            @include flexbox();
+            align-items:center;
+            margin-left:auto;
+            &:before {
+                content: '';
+                margin-right: 13px;
+                display: block;
+                height: 20px;
+                width: 1px;
+                background: #dadada;
+            }
+
         }
 
         &__author-name {
             @include flexbox;
             @include align-items(center);
-
-            border-top: 1px solid #dadada;
-            padding-top:15px;
-            position:absolute;
-            width:94%;
-            bottom:10px;
             p {
                 color: #FFF;
             }
@@ -167,14 +169,19 @@
                 display:none;
             }
 
+            &__bottom {
+                border:none;
+            }
             &__author-name {
                 display: none;
             }
             &__time {
-                float: none;
                 border: 0;
                 padding: 0;
                 @include font-size(10);
+                &:before {
+                    display:none;
+                }
             }
 
         }

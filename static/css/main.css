@@ -21707,13 +21707,29 @@ body.channel.supporters p {
       line-height: 1.35rem;
       height: 75px;
       max-height: 150px; }
-    .card-lg-mobile .c-cards-view__time {
-      color: #FFF;
-      padding-top: 15px;
-      margin-top: 10px;
+    .card-lg-mobile .c-cards-view__bottom {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid #dadada;
       position: absolute;
       bottom: 10px;
-      right: 20px; }
+      width: 92%; }
+    .card-lg-mobile .c-cards-view__time {
+      color: #FFF;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      margin-left: auto; }
+      .card-lg-mobile .c-cards-view__time:before {
+        content: '';
+        margin-right: 13px;
+        display: block;
+        height: 20px;
+        width: 1px;
+        background: #dadada; }
     .card-lg-mobile .c-cards-view__author-name {
       display: -webkit-box;
       display: -webkit-flex;
@@ -21724,12 +21740,7 @@ body.channel.supporters p {
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
-      align-items: center;
-      border-top: 1px solid #dadada;
-      padding-top: 15px;
-      position: absolute;
-      width: 94%;
-      bottom: 10px; }
+      align-items: center; }
       .card-lg-mobile .c-cards-view__author-name p {
         color: #FFF; }
     .card-lg-mobile .c-cards-view__container {
@@ -21762,14 +21773,17 @@ body.channel.supporters p {
       text-transform: uppercase; }
     .card-lg-mobile .c-cards-view__description {
       display: none; }
+    .card-lg-mobile .c-cards-view__bottom {
+      border: none; }
     .card-lg-mobile .c-cards-view__author-name {
       display: none; }
     .card-lg-mobile .c-cards-view__time {
-      float: none;
       border: 0;
       padding: 0;
       font-size: 0.625rem;
-      line-height: 0.75rem; } }
+      line-height: 0.75rem; }
+      .card-lg-mobile .c-cards-view__time:before {
+        display: none; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-lg-tablet {
@@ -21836,13 +21850,29 @@ body.channel.supporters p {
       line-height: 1.35rem;
       height: 75px;
       max-height: 150px; }
-    .card-lg-tablet .c-cards-view__time {
-      color: #FFF;
-      padding-top: 15px;
-      margin-top: 10px;
+    .card-lg-tablet .c-cards-view__bottom {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid #dadada;
       position: absolute;
       bottom: 10px;
-      right: 20px; }
+      width: 92%; }
+    .card-lg-tablet .c-cards-view__time {
+      color: #FFF;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      margin-left: auto; }
+      .card-lg-tablet .c-cards-view__time:before {
+        content: '';
+        margin-right: 13px;
+        display: block;
+        height: 20px;
+        width: 1px;
+        background: #dadada; }
     .card-lg-tablet .c-cards-view__author-name {
       display: -webkit-box;
       display: -webkit-flex;
@@ -21853,12 +21883,7 @@ body.channel.supporters p {
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
-      align-items: center;
-      border-top: 1px solid #dadada;
-      padding-top: 15px;
-      position: absolute;
-      width: 94%;
-      bottom: 10px; }
+      align-items: center; }
       .card-lg-tablet .c-cards-view__author-name p {
         color: #FFF; } }
 
@@ -21927,13 +21952,29 @@ body.channel.supporters p {
       line-height: 1.35rem;
       height: 75px;
       max-height: 150px; }
-    .card-lg-desktop .c-cards-view__time {
-      color: #FFF;
-      padding-top: 15px;
-      margin-top: 10px;
+    .card-lg-desktop .c-cards-view__bottom {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid #dadada;
       position: absolute;
       bottom: 10px;
-      right: 20px; }
+      width: 92%; }
+    .card-lg-desktop .c-cards-view__time {
+      color: #FFF;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      margin-left: auto; }
+      .card-lg-desktop .c-cards-view__time:before {
+        content: '';
+        margin-right: 13px;
+        display: block;
+        height: 20px;
+        width: 1px;
+        background: #dadada; }
     .card-lg-desktop .c-cards-view__author-name {
       display: -webkit-box;
       display: -webkit-flex;
@@ -21944,12 +21985,7 @@ body.channel.supporters p {
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
-      align-items: center;
-      border-top: 1px solid #dadada;
-      padding-top: 15px;
-      position: absolute;
-      width: 94%;
-      bottom: 10px; }
+      align-items: center; }
       .card-lg-desktop .c-cards-view__author-name p {
         color: #FFF; } }
 
@@ -22018,13 +22054,29 @@ body.channel.supporters p {
       line-height: 1.35rem;
       height: 75px;
       max-height: 150px; }
-    .card-lg-desktop-lg .c-cards-view__time {
-      color: #FFF;
-      padding-top: 15px;
-      margin-top: 10px;
+    .card-lg-desktop-lg .c-cards-view__bottom {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid #dadada;
       position: absolute;
       bottom: 10px;
-      right: 20px; }
+      width: 92%; }
+    .card-lg-desktop-lg .c-cards-view__time {
+      color: #FFF;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      margin-left: auto; }
+      .card-lg-desktop-lg .c-cards-view__time:before {
+        content: '';
+        margin-right: 13px;
+        display: block;
+        height: 20px;
+        width: 1px;
+        background: #dadada; }
     .card-lg-desktop-lg .c-cards-view__author-name {
       display: -webkit-box;
       display: -webkit-flex;
@@ -22035,12 +22087,7 @@ body.channel.supporters p {
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
-      align-items: center;
-      border-top: 1px solid #dadada;
-      padding-top: 15px;
-      position: absolute;
-      width: 94%;
-      bottom: 10px; }
+      align-items: center; }
       .card-lg-desktop-lg .c-cards-view__author-name p {
         color: #FFF; } }
 
