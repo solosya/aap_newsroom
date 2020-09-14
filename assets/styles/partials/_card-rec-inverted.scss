@@ -75,11 +75,14 @@
             color:white;
 
         }
+        &__bottom {
+            margin-top: 6px;
+        }
 
         &__author-name{
             @include flexbox;
             @include align-items(center);
-            margin-top: 6px;
+
             >p {
                 color: #FFF;
             }
@@ -88,23 +91,26 @@
 
 
         &__time{
-            margin-top:15px;
-            padding-top:4px;
+            margin-left:auto;
+            display: flex;
+            align-items: center;
             color: #FFF;
 
             @media screen and (max-width: $mmd-break-down){
                 width: auto;
             }
 
-            @media #{$desktop-down}{
-                width: auto;
-                height: 20px;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
             @media screen and (min-width: $mobile-break) and (max-width: 720px){
                 display:none;
+            }
+
+            &:before {
+                content: '';
+                margin-right: 13px;
+                display: block;
+                height: 20px;
+                width: 1px;
+                background: #dadada;
             }
 
         }

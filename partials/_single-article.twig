@@ -175,9 +175,11 @@
                         <p class="{{params.cardType}}c-cards-view__description j-truncate">{{ quotes.smarten(article.excerpt | raw) }}</p>
                     {% endif %}
                     
-                    <time class="{{params.cardType}}c-cards-view__time" datetime="">{{publishDate}}</time>
-                    
-                    <div class="{{params.cardType}}c-cards-view__author-name author">{{author | raw}}</div><!-- .author-->
+
+                    <div class="{{params.cardType}}c-cards-view__bottom">
+                        <div class="{{params.cardType}}c-cards-view__author-name author">{{author | raw}}</div><!-- .author-->
+                        <time class="{{params.cardType}}c-cards-view__time" datetime="">{{publishDate}}</time>
+                    </div>
 
                 </div>
             </article>

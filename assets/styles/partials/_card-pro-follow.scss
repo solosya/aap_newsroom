@@ -1,68 +1,67 @@
 @mixin card-pro-follow-base() {
-    a.card{
-        > article {
-            display:-webkit-box;
-            display:-webkit-flex;
-            display:-moz-flex;
-            display:-ms-flexbox;
-            display:flex;
-            height: auto;
-            flex-wrap: nowrap;
-            -webkit-flex-wrap: nowrap;
+
+
+    .c-cards-view {
+        @include flexbox();
+        height: auto;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        height: 100px;
+
+
+        &__container {
             height: 100px;
-        
-            > figure{
-                height: 100px;
-                width: 141px;
-                position: absolute;
-            }
-
-            > .content{
-                -ms-flex: 1 0;
-                height: 100px;
-                margin-left: 160px;
-                padding-right: 15px;
-                
-                > .category{
-                    font-family: $font-family-sans-serif;
-                    @include font-size(14);
-                    font-weight: bold;
-                    color: #8a8b93;
-                    display: block;
-                }
-
-                > h2{
-                    font-weight: 300;
-                    @include font-size(18);
-                    height: 60px;
-                    margin-top: 7px;
-                    margin-bottom: 8px;
-                }
-
-                > .author{
-                    display: none;
-                }
-
-                > time{
-                    @include font-size(12);
-                    text-transform: uppercase;
-                    color: #8a8b93;
-                    border-left: none;
-                    padding: 0;
-                }
-
-                p {
-                    display:none;
-                }
+            margin-left: 160px;
+            padding-right: 15px;
+        }
+        &__media {
+            height: 100px;
+            width: 141px;
+            position: absolute;
+        }
+        &__category{
+            font-family: $font-family-sans-serif;
+            @include font-size(14);
+            font-weight: bold;
+            color: #8a8b93;
+            display: block;
+        }
+        &__comment {
+            // background-color: white; // default background color
+            &:after {
+                // border-color: white transparent transparent;
             }
         }
-    } 
+        &__comment-count {
+        }
+        &__heading {
+            font-weight: 300;
+            @include font-size(18);
+            height: 60px;
+            margin-top: 7px;
+            margin-bottom: 8px;
+        }
+        &__description {
+            display:none;
+        }
+        &__bottom {
+        }
+        &__time {
+            @include font-size(12);
+            text-transform: uppercase;
+            color: #8a8b93;
+            border-left: none;
+            padding: 0;
+        }
+        &__author-name {
+            display: none;
+        }
+    }
 }
 
 .card-pro-follow{
     @media #{$desktop-up} {
         @include card-pro-follow-base;
-          
     }
 }
 
@@ -76,25 +75,22 @@
     @media #{$mobile} {
         @include card-pro-follow-base;
 
-        a.card {
-            height: 115px;
-            padding-bottom: 15px;
-            margin-top: 15px;
-            border-bottom: 0.5px #dadada solid;
-            >article {
-                > figure {
-                    width: 102px;
-                    height: 100px;
+        height: 115px;
+        padding-bottom: 15px;
+        margin-top: 15px;
+        border-bottom: 0.5px #dadada solid;
 
-                }
-                > .content {
-                    margin-left: 115px;
-                }
+
+        .c-cards-view {
+            &__media {
+                width: 102px;
+                height: 100px;
+
             }
-
+            &__container {
+                margin-left: 115px;
+            }
         }
-
-           
     }
 }
 
@@ -102,24 +98,20 @@
     @media #{$mobile} {
         @include card-pro-follow-base;
 
-        a.card {
-            height: 115px;
-            padding-bottom: 15px;
-            margin-top: 15px;
-            border-bottom: 0.5px #dadada solid;
-            >article {
-                > figure {
-                    width: 131px;
-                    height: 100px;
+        height: 115px;
+        padding-bottom: 15px;
+        margin-top: 15px;
+        border-bottom: 0.5px #dadada solid;
 
-                }
-                > .content {
-                    margin-left: 145px;
-                }
+        
+        .c-cards-view {
+            &__media {
+                width: 131px;
+                height: 100px;
             }
-
+            &__container {
+                margin-left: 145px;
+            }
         }
-
-           
     }
 }
