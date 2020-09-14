@@ -67,6 +67,18 @@
                 width:203px;
                 flex:none;
             }
+            &__heading {
+                font-weight: normal;
+                @include font-size(28);
+                margin-top: 5px;
+                height: 69px;
+                max-height: 69px;
+            }
+
+            &__time {
+                position: absolute;
+                bottom: 10px;
+            }
         }
     }
 
