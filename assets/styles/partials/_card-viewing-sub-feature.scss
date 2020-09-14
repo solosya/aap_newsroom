@@ -42,6 +42,7 @@
             }
         }
         &__comment-count {
+            color:white;
         }
         &__heading {
             @include font-size(20);
@@ -80,12 +81,24 @@
 .view-sub-feature-mobile{
     @media #{$mobile} {
         @include view-sub-feature-base;
+        border-top: 1px solid #dadada;
+        border-right: none;
+        padding:0;
+        a.card {
+            padding-top: 20px;
+            padding-bottom: 15px;
+        }
+    
+
+
         .c-cards-view {
 
             border-right: 0;
             @include flexbox();
             flex-wrap: nowrap;
             -webkit-flex-wrap: nowrap;
+            padding:0;
+            padding-right:20px;
 
             &__media{
                 width: 115px;

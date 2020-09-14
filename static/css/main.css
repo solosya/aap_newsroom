@@ -28473,10 +28473,18 @@ body.channel.supporters p {
 @media screen and (max-width: 767px) {
   .card-featured-reverse-mobile {
     height: 430px;
-    margin-bottom: 22px;
+    margin-bottom: 40px;
     position: relative;
-    margin-left: -15px;
-    margin-right: -15px; }
+    height: auto;
+    margin-bottom: 10px; }
+    .card-featured-reverse-mobile:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: white;
+      display: block;
+      position: absolute;
+      bottom: -20px; }
     .card-featured-reverse-mobile:before {
       content: '';
       width: 20px;
@@ -28518,18 +28526,16 @@ body.channel.supporters p {
         width: 55%;
         -webkit-flex: 0 0 55%;
         -ms-flex: 0 0 55%;
-        flex: 0 0 55%; } }
-      @media screen and (max-width: 767px) and (max-width: 1200px) {
-        .card-featured-reverse-mobile .c-cards-view__media {
-          width: 60%;
-          -webkit-flex: 0 0 60%;
-          -ms-flex: 0 0 60%;
-          flex: 0 0 60%; } }
-
-@media screen and (max-width: 767px) {
+        flex: 0 0 55%; }
       .card-featured-reverse-mobile .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
+      .card-featured-reverse-mobile .c-cards-view__comment {
+        background-color: white; }
+        .card-featured-reverse-mobile .c-cards-view__comment:after {
+          border-color: white transparent transparent; }
+      .card-featured-reverse-mobile .c-cards-view__comment-count {
+        color: white; }
       .card-featured-reverse-mobile .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -28566,31 +28572,26 @@ body.channel.supporters p {
         line-height: 1.25;
         color: white;
         margin-bottom: 30px;
-        height: 75px; } }
+        height: 75px; }
+    .card-featured-reverse-mobile:after {
+      display: none; } }
   @media screen and (max-width: 767px) and (max-width: 767px) {
     .card-featured-reverse-mobile:before {
       display: none; } }
 
 @media screen and (max-width: 767px) {
+    .card-featured-reverse-mobile a.card {
+      margin-left: -15px;
+      margin-right: -15px; }
     .card-featured-reverse-mobile .c-cards-view {
       display: block;
       flex-direction: column;
       padding-bottom: 15px;
-      padding-top: 15px;
-      border-bottom: solid 1px #d4d4d4;
       border-right: 0; }
       .card-featured-reverse-mobile .c-cards-view__media {
         width: 100%;
         flex: 0 0 100%;
         position: relative; }
-        .card-featured-reverse-mobile .c-cards-view__media:before {
-          content: '';
-          width: 20px;
-          height: 100%;
-          bottom: 0;
-          top: 0;
-          background: #F6AE00;
-          position: absolute; }
       .card-featured-reverse-mobile .c-cards-view__container {
         width: 100%;
         flex: 0 0 100%;
@@ -28609,10 +28610,18 @@ body.channel.supporters p {
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .card-featured-reverse-tablet {
     height: 430px;
-    margin-bottom: 22px;
+    margin-bottom: 40px;
     position: relative;
     height: 280px;
     margin-left: -15px; }
+    .card-featured-reverse-tablet:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: white;
+      display: block;
+      position: absolute;
+      bottom: -20px; }
     .card-featured-reverse-tablet:before {
       content: '';
       width: 20px;
@@ -28654,18 +28663,16 @@ body.channel.supporters p {
         width: 55%;
         -webkit-flex: 0 0 55%;
         -ms-flex: 0 0 55%;
-        flex: 0 0 55%; } }
-      @media screen and (min-width: 768px) and (max-width: 991px) and (max-width: 1200px) {
-        .card-featured-reverse-tablet .c-cards-view__media {
-          width: 60%;
-          -webkit-flex: 0 0 60%;
-          -ms-flex: 0 0 60%;
-          flex: 0 0 60%; } }
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
+        flex: 0 0 55%; }
       .card-featured-reverse-tablet .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
+      .card-featured-reverse-tablet .c-cards-view__comment {
+        background-color: white; }
+        .card-featured-reverse-tablet .c-cards-view__comment:after {
+          border-color: white transparent transparent; }
+      .card-featured-reverse-tablet .c-cards-view__comment-count {
+        color: white; }
       .card-featured-reverse-tablet .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -28719,9 +28726,17 @@ body.channel.supporters p {
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .card-featured-reverse-desktop {
     height: 430px;
-    margin-bottom: 22px;
+    margin-bottom: 40px;
     position: relative;
     margin-left: -15px; }
+    .card-featured-reverse-desktop:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: white;
+      display: block;
+      position: absolute;
+      bottom: -20px; }
     .card-featured-reverse-desktop:before {
       content: '';
       width: 20px;
@@ -28763,18 +28778,16 @@ body.channel.supporters p {
         width: 55%;
         -webkit-flex: 0 0 55%;
         -ms-flex: 0 0 55%;
-        flex: 0 0 55%; } }
-      @media screen and (min-width: 992px) and (max-width: 1199px) and (max-width: 1200px) {
-        .card-featured-reverse-desktop .c-cards-view__media {
-          width: 60%;
-          -webkit-flex: 0 0 60%;
-          -ms-flex: 0 0 60%;
-          flex: 0 0 60%; } }
-
-@media screen and (min-width: 992px) and (max-width: 1199px) {
+        flex: 0 0 55%; }
       .card-featured-reverse-desktop .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
+      .card-featured-reverse-desktop .c-cards-view__comment {
+        background-color: white; }
+        .card-featured-reverse-desktop .c-cards-view__comment:after {
+          border-color: white transparent transparent; }
+      .card-featured-reverse-desktop .c-cards-view__comment-count {
+        color: white; }
       .card-featured-reverse-desktop .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -28821,9 +28834,17 @@ body.channel.supporters p {
 @media screen and (min-width: 1200px) {
   .card-featured-reverse-desktop-lg {
     height: 430px;
-    margin-bottom: 22px;
+    margin-bottom: 40px;
     position: relative;
     margin-left: -15px; }
+    .card-featured-reverse-desktop-lg:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: white;
+      display: block;
+      position: absolute;
+      bottom: -20px; }
     .card-featured-reverse-desktop-lg:before {
       content: '';
       width: 20px;
@@ -28865,18 +28886,16 @@ body.channel.supporters p {
         width: 55%;
         -webkit-flex: 0 0 55%;
         -ms-flex: 0 0 55%;
-        flex: 0 0 55%; } }
-      @media screen and (min-width: 1200px) and (max-width: 1200px) {
-        .card-featured-reverse-desktop-lg .c-cards-view__media {
-          width: 60%;
-          -webkit-flex: 0 0 60%;
-          -ms-flex: 0 0 60%;
-          flex: 0 0 60%; } }
-
-@media screen and (min-width: 1200px) {
+        flex: 0 0 55%; }
       .card-featured-reverse-desktop-lg .c-cards-view__container {
         max-width: 377px;
         padding: 38px 30px 10px 59px; }
+      .card-featured-reverse-desktop-lg .c-cards-view__comment {
+        background-color: white; }
+        .card-featured-reverse-desktop-lg .c-cards-view__comment:after {
+          border-color: white transparent transparent; }
+      .card-featured-reverse-desktop-lg .c-cards-view__comment-count {
+        color: white; }
       .card-featured-reverse-desktop-lg .c-cards-view__category {
         font-size: 0.875rem;
         line-height: 1.05rem;
@@ -28922,7 +28941,10 @@ body.channel.supporters p {
 
 @media screen and (max-width: 767px) {
   .view-sub-feature-mobile {
-    border-right: 1px solid #d4d4d4; }
+    border-right: 1px solid #d4d4d4;
+    border-top: 1px solid #dadada;
+    border-right: none;
+    padding: 0; }
     .view-sub-feature-mobile:last-child {
       border-right: none; }
     .view-sub-feature-mobile .c-cards-view {
@@ -28947,6 +28969,8 @@ body.channel.supporters p {
         background-color: white; }
         .view-sub-feature-mobile .c-cards-view__comment:after {
           border-color: white transparent transparent; }
+      .view-sub-feature-mobile .c-cards-view__comment-count {
+        color: white; }
       .view-sub-feature-mobile .c-cards-view__heading {
         font-size: 1.25rem;
         line-height: 1.5rem;
@@ -28965,6 +28989,9 @@ body.channel.supporters p {
         color: #73459B; }
       .view-sub-feature-mobile .c-cards-view__author-name {
         display: none; }
+    .view-sub-feature-mobile a.card {
+      padding-top: 20px;
+      padding-bottom: 15px; }
     .view-sub-feature-mobile .c-cards-view {
       border-right: 0;
       display: -webkit-box;
@@ -28973,7 +29000,9 @@ body.channel.supporters p {
       display: -ms-flexbox;
       display: flex;
       flex-wrap: nowrap;
-      -webkit-flex-wrap: nowrap; }
+      -webkit-flex-wrap: nowrap;
+      padding: 0;
+      padding-right: 20px; }
       .view-sub-feature-mobile .c-cards-view__media {
         width: 115px;
         flex: 0 0 115px;
@@ -29013,6 +29042,8 @@ body.channel.supporters p {
         background-color: white; }
         .view-sub-feature-tablet .c-cards-view__comment:after {
           border-color: white transparent transparent; }
+      .view-sub-feature-tablet .c-cards-view__comment-count {
+        color: white; }
       .view-sub-feature-tablet .c-cards-view__heading {
         font-size: 1.25rem;
         line-height: 1.5rem;
@@ -29059,6 +29090,8 @@ body.channel.supporters p {
         background-color: white; }
         .view-sub-feature-desktop .c-cards-view__comment:after {
           border-color: white transparent transparent; }
+      .view-sub-feature-desktop .c-cards-view__comment-count {
+        color: white; }
       .view-sub-feature-desktop .c-cards-view__heading {
         font-size: 1.25rem;
         line-height: 1.5rem;
@@ -29105,6 +29138,8 @@ body.channel.supporters p {
         background-color: white; }
         .view-sub-feature-desktop-lg .c-cards-view__comment:after {
           border-color: white transparent transparent; }
+      .view-sub-feature-desktop-lg .c-cards-view__comment-count {
+        color: white; }
       .view-sub-feature-desktop-lg .c-cards-view__heading {
         font-size: 1.25rem;
         line-height: 1.5rem;
