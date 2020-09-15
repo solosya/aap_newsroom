@@ -1,5 +1,21 @@
 @mixin card-pro-opinion-base() {
     a.card{
+
+
+        .c-cards-view {
+            &__author-name {
+                display:none;
+            }
+            &__time {
+                @include font-size(12);
+                text-transform: uppercase;
+                color: #e12e21;
+                border-left: none;
+                padding: 0;
+            }
+        }
+
+
         > article {
             display:-webkit-box;
             display:-webkit-flex;
@@ -26,7 +42,7 @@
                 }
 
                 > h2{
-                    margin-top: 35px;
+                    margin-top: 24px;
                     font-weight: 600;
                     @include font-size(20);
                     height:50px;
