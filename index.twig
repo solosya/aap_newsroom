@@ -61,6 +61,10 @@
             "feed": "",
             "link": ""
         },
+        "election 2020" : {
+            "feed" : "",
+            "link": ""
+        },
         "readingroom": {
             "feed": "",
             "link": ""
@@ -102,7 +106,6 @@
     {% for blog in networkData.networkBlogs %}
 
         {% if blog.title | lower == key %}
-
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
@@ -381,9 +384,13 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['economic recovery'].feed.articles|length > 0 %}
+{% set log = _AppHelper.log(sections) %}
+                {% if sections['election 2020'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
+                {# {% if sections['economic recovery'].feed.articles|length > 0 %}
+                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %} #}
 
                 {% if sections['ideasroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
