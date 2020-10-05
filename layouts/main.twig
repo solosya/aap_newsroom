@@ -272,7 +272,11 @@
         </div>
     {% endif %}
 
-
+{% set ip = config['IPAdresses'] | json_encode() %}
+<script>
+    window.IPAdresses = JSON.parse('{{ip | raw }}'); 
+    console.log(window.IPAdresses[0]);
+</script>
 
     {{ this.render('partials/_javascript.twig', {
         networkData: networkData
