@@ -214,7 +214,7 @@
                     <div class="row">
 
                         {% for i in 0..2 %}
-                            {% if articles[i] %}                                                                
+                            {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
@@ -236,7 +236,7 @@
                                     {{ this.render('partials/ajaxarticles_new.twig', {
                                         name            : "section-load",
                                         limit           : 6,
-                                        offset          : 3,
+                                        offset          : 4,
                                         blogguid        : blogguid,
                                         label           : "+ Load more",
                                         imgwidth        : "300",
