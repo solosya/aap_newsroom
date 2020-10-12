@@ -10940,23 +10940,21 @@ input[type=radio].inline {
 
 .market-hero {
   height: 596px;
-  background-image: url("../images/marketing-hero-desk.png");
-  background-size: cover;
+  background-image: url("../images/paywall2.png");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
   border-top: solid 1px #979797;
   margin-top: 40px; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .market-hero {
+      background-image: url("../images/paywall-tablet-2.jpg?v=2"); } }
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .market-hero {
-      height: 279px;
-      background-image: url("../images/marketing-hero-tablet.png"); } }
+      background-image: url("../images/paywall-tablet-2.jpg?v=2"); } }
   @media screen and (max-width: 767px) {
     .market-hero {
-      height: 320px;
-      margin-bottom: 150px;
-      background-image: url("../images/marketing-hero-mobile2.png");
-      background-position: top;
-      margin-top: 125px; } }
+      background-image: none; } }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .market-hero--thanks {

@@ -38371,7 +38371,7 @@ Acme.UserProfileController.prototype.fetchEmailLists = function() {
                     }
 
                     if (self.emailLists[i].name.toLowerCase() == 'daily summaries') {
-                        name = "Send me Bernard Hickey's <i>8 Things</i> email each day";
+                        name = "Send me Jonathan Milne's <i>8 Things</i> email each day";
                     }
 
                     if (self.emailLists[i].name.toLowerCase() == 'breaking news alerts') {
