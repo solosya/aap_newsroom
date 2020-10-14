@@ -74,34 +74,42 @@
     </div><!-- .footer-top-->
 
     <div class="footer-btm">
-        <div class="footer-menu">
-            <ul>
-                <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
-                <li><a href="{{networkData.defaultBlogUrl}}/terms-and-conditions">Terms and Conditions</a></li>
-                <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
-                <li><a href="{{networkData.defaultBlogUrl}}/faq">Pro FAQ</a></li>
-                <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">New Zealand Media Council</a></li>
-                
-            </ul>
-        </div><!-- .footer-menu -->
-        <div class="rooms-link">
-            <ul>
-                {% set menuItems = headerMenu %}
-                {% for i, parentItem in menuItems %}
-                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-                    
-                    {% if (parentItem.blogTitle != "" and parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                        <li>
-                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="">
-                            </a>
-                        </li>
-                    {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/terms-and-conditions">Terms and Conditions</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/faq">Pro FAQ</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">New Zealand Media Council</a></li>
+                            {# <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">Commenting FAQ</a></li>
+                            <li><a href="{{networkData.defaultBlogUrl}}/media-council-new-zealand">Pro Community Rules</a></li> #}
+                            
+                        </ul>
+                    </div><!-- .footer-menu -->
+                    <div class="rooms-link">
+                        <ul>
+                            {% set menuItems = headerMenu %}
+                            {% for i, parentItem in menuItems %}
+                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                                
+                                {% if (parentItem.blogTitle != "" and parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
+                                    <li>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg" alt="">
+                                        </a>
+                                    </li>
+                                {% endif %}
 
-                {% endfor %}
+                            {% endfor %}
 
-            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div><!-- .footer-btm-->
 
