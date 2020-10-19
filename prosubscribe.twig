@@ -14,28 +14,31 @@
 {% set bottomPlans = [] %}
 {% set signupurl = '/subscribeform' %}
 
-
 {% for plan in plans %}
+    {% set continue = false %}
 
     {% if "!*!" in plan.description %}
 
         {% set description = plan.description | split("!*!") %}
 
         {% set data = _AppHelper.jsonDecode( description[0] ) %}
-        {# {% set log = _AppHelper.log(data) %} #}
-
-        {% set plan = plan | merge({ ("order") : data['order']}) %}
-        {% if data['best'] is defined and data['best'] == true and data['save'] is defined %}
-            {% set plan = plan | merge({ ("best") : 'true'}) %}
-            {% set plan = plan | merge({ ("save") : data['save']}) %}
+        {% if data['special'] is defined and data['special'] == true %}
+            {% set continue = true %}
         {% endif %}
 
-        {% if data['place'] == 'top' %}
-            {% set topPlans = topPlans | merge({ ("0") : plan}) %}
-        {% else %}
-            {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
-        {% endif %}
+        {% if not continue %}
+            {% set plan = plan | merge({ ("order") : data['order']}) %}
+            {% if data['best'] is defined and data['best'] == true and data['save'] is defined %}
+                {% set plan = plan | merge({ ("best") : 'true'}) %}
+                {% set plan = plan | merge({ ("save") : data['save']}) %}
+            {% endif %}
 
+            {% if data['place'] == 'top' %}
+                {% set topPlans = topPlans | merge({ ("0") : plan}) %}
+            {% else %}
+                {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
+            {% endif %}
+        {% endif %}
 
     {% endif %} 
 {% endfor %}
