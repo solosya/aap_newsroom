@@ -27,10 +27,7 @@
 
 {% if specialPlan == null %}
     {% set redir = _Page.setHttpRedirects(
-        {
-            '|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',
-            
-        }, false) 
+        {'|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',}, false) 
     %} 
 {% endif %}
 
@@ -123,7 +120,7 @@
         <div class="container">
             <div class="row">
                 <ul class="col-sm-12 paywall-offer-footer__menu">
-                    <li><a href="{{networkData.defaultBlogUrl}}/faq">FAQ</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/prosubscribe#profaq">Faq</a></li>
                     <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
                     <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
                     <li><a href="{{networkData.defaultBlogUrl}}/prosubscribe">Subscription</a></li>                            
