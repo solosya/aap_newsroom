@@ -6,89 +6,33 @@
 {% set config       = _Network.getThemeConfig() %}
 {% set paywallSettings = {} %}
 {% if config['paywallSettings'] %}
-        {% set paywallSettings = config['paywallSettings'] %}
+    {% set paywallSettings = config['paywallSettings'] %}
 {% endif %}
 
 
 
-{% set topPlans = [] %}
-{% set bottomPlans = [] %}
+{% set specialPlan = null %}
 {% set signupurl = '/subscribeform' %}
 
 {% for plan in plans %}
     {% if "!*!" in plan.description %}
-        {# {% set log = _AppHelper.log(topPlans) %} #}
-
         {% set description = plan.description | split("!*!") %}
-        {% set placement = description[0] | split(":") %}
-        {% set plan = plan | merge({ ("order") : placement[1]}) %}
-        {% if placement[2] is defined and placement[2] == 'best' and placement[3] is defined %}
-            {% set plan = plan | merge({ ("best") : 'true'}) %}
-            {% set plan = plan | merge({ ("save") : placement[3]}) %}
+        {% set data = _AppHelper.jsonDecode( description[0] ) %}
+        {% if data['special'] is defined and data['special'] == true %}
+            {% set specialPlan = plan %}
         {% endif %}
-
-        {% if placement[0] == 'top' %}
-            {% set topPlans = topPlans | merge({ ("0") : plan}) %}
-        {% else %}
-            {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
-        {% endif %}
-
-
     {% endif %} 
 {% endfor %}
 
 
-
-{% set orderedTop = [] %}
-{% set orderedBottom = [] %}
-
-{% for plan in topPlans %}
-    {% set added = false %}
-
-    {% if orderedTop | length == 0 %}
-        {% set added = true %}
-        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
-    {% else %} 
-
-    {% set break = false %}
-        {% for ordered in orderedTop if not break %}
-            {% if plan.order < ordered.order %}
-                {% set added = true %}
-                {% set orderedTop = { ("0") : plan} | merge(orderedTop) %}
-                {% set break = true %}
-            {% endif %} 
-        {% endfor %}
-    {% endif %} 
-
-    {% if added == false %}
-        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
-    {% endif %} 
-{% endfor %}
-
-
-
-{% for plan in bottomPlans %}
-    {% set added = false %}
-
-    {% if orderedBottom | length == 0 %}
-        {% set added = true %}
-        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
-    {% else %} 
-
-    {% set break = false %}
-        {% for ordered in orderedBottom if not break %}
-            {% if plan.order < ordered.order %}
-                {% set added = true %}
-                {% set orderedBottom = { ("0") : plan} | merge(orderedBottom) %}
-                {% set break = true %}
-            {% endif %} 
-        {% endfor %}
-    {% endif %} 
-
-    {% if added == false %}
-        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
-    {% endif %} 
-{% endfor %}
+{% if specialPlan == null %}
+    {% set redir = _Page.setHttpRedirects(
+        {
+            '|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',
+            
+        }, false) 
+    %} 
+{% endif %}
 
 
 
@@ -100,11 +44,6 @@
     
     <div class="paywall__header">
         <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
-            {# <div class="o-arrow2__container">
-                <div class="o-arrow2"> 
-                    <div class="o-arrow2__arrow"></div>
-                </div>
-            </div> #}
             <picture>
                 <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
                 <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
@@ -126,7 +65,7 @@
     {% endif %}
     >
     
-        {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
+        {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ specialPlan.guid %}
 
         <div class="paywall-offer-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
@@ -135,7 +74,11 @@
                     <h1 class="paywall-offer-banner__headline">Get thinking <br class="d-none d-md-block" /> about <br class="d-none d-sm-block d-md-none" />the big picture.</h1>
                     <h3 class="paywall-offer-banner__tagline">Get a year of Newsroom Pro and <br class="d-none d-sm-block d-md-none" />The Atlantic <s>$365</s> $299*</h3>
                     <p class="paywall-offer-banner__text">Newsroom Pro is proud to partner with The Atlantic ahead of the US election to offer a two for one deal to some of the best political journalism in NZ and the US. Limited Offer.</p>
-                    <button type="submit" class="_btn _btn--black  paywall-offer-banner__button">Subscribe now</button>
+                    <a class="_btn _btn--black  paywall-offer-banner__button j-gtasubstart" href="{{subscribeLink}}" 
+                        data-price="{{specialPlan.plan_value}}" 
+                        data-name="{{frequency}}" 
+                        data-id="{{plan.guid}}"
+                        >Subscribe now</a>
                     <p class="paywall-offer-banner__conditions">*Limited offer, subject to availability. Please allow up to 14 business days for activation of your subscription to <br class="d-none d-lg-block" />The Atlantic. Full value approx $365NZD.</p>
                 </div>
 
