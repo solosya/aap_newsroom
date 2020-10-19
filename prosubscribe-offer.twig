@@ -1,0 +1,293 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+{% set plans = networkData['paywallPlans'] %}
+{% set config       = _Network.getThemeConfig() %}
+{% set paywallSettings = {} %}
+{% if config['paywallSettings'] %}
+        {% set paywallSettings = config['paywallSettings'] %}
+{% endif %}
+
+
+{% set topPlans = [] %}
+{% set bottomPlans = [] %}
+{% set signupurl = '/subscribeform' %}
+
+{% for plan in plans %}
+    {% if "!*!" in plan.description %}
+        {# {% set log = _AppHelper.log(topPlans) %} #}
+
+        {% set description = plan.description | split("!*!") %}
+        {% set placement = description[0] | split(":") %}
+        {% set plan = plan | merge({ ("order") : placement[1]}) %}
+        {% if placement[2] is defined and placement[2] == 'best' and placement[3] is defined %}
+            {% set plan = plan | merge({ ("best") : 'true'}) %}
+            {% set plan = plan | merge({ ("save") : placement[3]}) %}
+        {% endif %}
+
+        {% if placement[0] == 'top' %}
+            {% set topPlans = topPlans | merge({ ("0") : plan}) %}
+        {% else %}
+            {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
+        {% endif %}
+
+
+    {% endif %} 
+{% endfor %}
+
+
+
+{% set orderedTop = [] %}
+{% set orderedBottom = [] %}
+
+{% for plan in topPlans %}
+    {% set added = false %}
+
+    {% if orderedTop | length == 0 %}
+        {% set added = true %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedTop if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedTop = { ("0") : plan} | merge(orderedTop) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+{% for plan in bottomPlans %}
+    {% set added = false %}
+
+    {% if orderedBottom | length == 0 %}
+        {% set added = true %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedBottom if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set orderedBottom = { ("0") : plan} | merge(orderedBottom) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedBottom = orderedBottom | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+
+
+
+
+<main id="main" class="site-main" role="main" data-test="paywall">
+    
+    <div class="paywall__header">
+        <a class="paywall__logo" href="{{networkData.defaultBlogUrl}}/pro" rel="Home" tabindex="-1" title="Home">
+            {# <div class="o-arrow2__container">
+                <div class="o-arrow2"> 
+                    <div class="o-arrow2__arrow"></div>
+                </div>
+            </div> #}
+            <picture>
+                <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
+                <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
+            </picture>
+        </a>
+
+        <button id="signinBtn" type="submit" class="_btn _btn--black  paywall__signin">SIGN IN</button>
+
+        <a class="paywall__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-close paywall__close-icon"></div>
+        </a>
+    </div>
+
+
+
+    <section class="paywall-offer-banner j-paywall-banner"
+    {% if paywallSettings['offer-image']['deskUrl'] is defined and paywallSettings['offer-image']['deskUrl'] != '' %}
+        style="background-image: none;"
+    {% endif %}
+    >
+    
+        {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
+
+        <div class="paywall-offer-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h2 class="paywall-offer-banner__offer">Special Offer</h2>
+                    <h1 class="paywall-offer-banner__headline">Get thinking <br class="d-none d-md-block" /> about <br class="d-none d-sm-block d-md-none" />the big picture.</h1>
+                    <h3 class="paywall-offer-banner__tagline">Get a year of Newsroom Pro and <br class="d-none d-sm-block d-md-none" />The Atlantic <s>$365</s> $299*</h3>
+                    <p class="paywall-offer-banner__text">Newsroom Pro is proud to partner with The Atlantic ahead of the US election to offer a two for one deal to some of the best political journalism in NZ and the US. Limited Offer.</p>
+                    <button type="submit" class="_btn _btn--black  paywall-offer-banner__button">Subscribe now</button>
+                    <p class="paywall-offer-banner__conditions">*Limited offer, subject to availability. Please allow up to 14 business days for activation of your subscription to <br class="d-none d-lg-block" />The Atlantic. Full value approx $365NZD.</p>
+                </div>
+
+            </div>
+
+
+    </section>
+
+
+
+
+    <div class="paywall-offers u-padding-bottom-30 u-tablet-padding-bottom-40">
+        <div class="container">
+            <h1 class="paywall-offers__title">What you get with <br class="d-block d-sm-none" />Newsroom Pro</h1>
+            <section class="row paywall-offers__container">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">A daily morning email of news and insights curated by Newsroom Pro editorial team</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">Pro email breaking news alerts</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Exclusive and unlimited access to content on Newsroom Pro</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Bonus subscription for colleague or a friend</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__comments" src="{{networkData.templatePath}}/static/images/paywall-comments.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-comments">Access to post and read comments on articles</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <section class="paywall-offer-footer">
+        <div class="container">
+            <div class="row">
+                <ul class="col-sm-12 paywall-offer-footer__menu">
+                    <li><a href="{{networkData.defaultBlogUrl}}/faq">FAQ</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/contact">Contact Us</a></li>
+                    <li><a href="{{networkData.defaultBlogUrl}}/prosubscribe">Subscription</a></li>                            
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+</main>
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $('.j-gtasubstart').mousedown(function(){
+            dataLayer.push({
+            'event': 'addToCart',
+                'ecommerce': {
+                    'currencyCode': 'NZD',
+                    'add': {                                // 'add' actionFieldObject measures.
+                        'products': [{                        //  adding a product to a shopping cart.
+                            'name': $(this).data('name'),
+                            'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                            'price': $(this).data('price'),
+                            'category': 'Pro Subscription',
+                            'quantity': 1
+                        }]
+                    }
+                }
+            });
+            
+        });
+
+        $('#corporate-plans').on('click', function(e) {
+            e.preventDefault();
+            var parent = $(this).parent();
+            parent.toggleClass('u-hide');
+            $("#corporate-plans-container").toggleClass('u-hide');
+        });
+
+        $('#close-coporate').on('click', function(e) {
+            e.preventDefault();
+            var parent = $('#corporate-plans').parent();
+            parent.toggleClass('u-hide');
+            $("#corporate-plans-container").toggleClass('u-hide');
+        });
+
+
+
+
+        $('.paywall-faq__button').on('click', function(e) {
+
+            close = true;
+            var box = $(e.target).closest('div.paywall-faq__question-box');
+            if (box.hasClass('paywall-faq__question-box--open')) {
+                close = false;
+            }
+
+
+            var boxes = $('div.paywall-faq__question-box');
+            boxes.removeClass('paywall-faq__question-box--open');
+
+            var questions = $('.paywall-faq__question');
+            questions.removeClass('paywall-faq__question--open');
+
+            var answers = $('.paywall-faq__answer-container');
+            answers.addClass('u-hide').removeClass('paywall-faq__answer-container--open');
+            
+            var arrows = $('.faq__arrow-container');
+            arrows.removeClass('paywall-faq__arrow-container--up');
+
+            var question = box.find('.paywall-faq__question');
+            var clickedArrow = box.find('.paywall-faq__arrow-container');
+            var clickedAnswer = box.find('.paywall-faq__answer-container');
+
+            if (close) {
+                box.addClass('paywall-faq__question-box--open');
+                question.addClass('paywall-faq__question--open');
+                clickedAnswer.removeClass('u-hide').addClass('paywall-faq__answer-container--open');
+                clickedArrow.addClass('paywall-faq__arrow-container--up');
+            }
+
+
+
+        });
+
+        var deskimg = "{{paywallSettings['offer-image']['deskUrl']}}";
+        var tabimg = "{{paywallSettings['offer-image']['tabUrl']}}";
+        var mobimg = "{{paywallSettings['offer-image']['mobUrl']}}";
+        var imageSet = "";
+        if ($(window).width() > 991){
+            imageSet = deskimg;
+        } else if ($(window).width() > 767){
+            imageSet = tabimg;
+        } else {
+            imageSet = mobimg;
+        }
+        if (deskimg != '' || tabimg != '' || mobimg != ''){
+            $('.j-paywall-banner').each(function(){
+                $(this).css("background-image", "url('"+imageSet+"')");
+            });
+        }
+
+
+
+    });
+</script>

@@ -658,7 +658,7 @@
     @media #{$desktop} {
         background-image: url('../images/paywall-tablet-2.jpg?v=2');   
     }
-     @media #{$tablet} {
+    @media #{$tablet} {
         background-image: url('../images/paywall-tablet-2.jpg?v=2');   
     }
     @media #{$mobile} {
@@ -763,9 +763,210 @@
 
 
 
-// .paywall-hero
-// .paywall-hero__button__subscribe {
-//     float: left;
-// }
+
+.paywall-offer-banner {
+    background-color:#E13426;
+    background-image: url('../images/subscribe-offer.png');
+    background-size: 70vh;
+    background-repeat: no-repeat;
+    background-position: top right 6%;
+    border-top:solid 1px #979797;
+    
+    @media #{$desktop-md} {
+        background-position: bottom right 6%;
+    }
+
+    @media #{$desktop} {
+        background-size: 55vh;
+        background-position: bottom 40% right -50px;
+    }
+
+    @media #{$desktop} {
+        background-size: 55vh;
+        background-position: bottom 40% right -50px;
+    }
+
+    @media #{$tablet} {
+        background-size: 50vh;
+        background-position: bottom 40% right -70px;
+    }
+    @media #{$mobile} {
+        background-image: none;
+    }
+
+    
+
+    &--thanks {
+        @media #{$desktop-up} {
+            height:785px;
+        }
+    } 
 
 
+    &__content {
+        height:100%;
+        @media #{$tablet} {
+            // padding-top:37px;
+        }
+    }
+
+    &__offer {
+        font-family:$primaryFont;
+        @include font-size(24);
+        font-weight:600;
+        text-transform: uppercase;
+        margin-top:25px;
+        @media #{$mobile} {
+            @include font-size(18);
+            margin-top:17px;
+
+        }
+
+    }
+
+    &__headline {
+        margin-top:20px;
+        font-family: $base-font-family;
+        @include font-size(68);
+        font-weight:700;
+        color:#fffcfc;
+        margin-bottom:15px;
+        line-height: 1.03;
+        @media #{$tablet} {
+            @include font-size(48);
+            line-height: 1.2;
+            margin-top:11px;
+            margin-bottom:9px;
+        }
+        @media #{$mobile} {
+            margin-top:10px;
+            @include font-size(34);
+            line-height: 0.94;
+            color:white;
+            width:80%;
+   
+            // margin-bottom: 5px;
+        }
+    }
+
+
+    &__tagline {
+        font-family: $font-family-sans-serif;
+        @include font-size(25);
+        font-weight: 700; 
+        color:#fffcfc;
+        margin-top:16px;
+        @media #{$tablet} {
+            @include font-size(23);
+            margin-top:0;
+            width:440px;
+        }
+        @media #{$mobile} {
+            @include font-size(17);
+        }
+        @media #{$mobile} {
+            color:white;
+        }
+    }
+
+
+    &__text {
+        margin-top:35px;
+        @include font-size(17);
+        line-height: 1.47;
+        font-weight: 600; 
+        color:#fffcfc;
+        width:490px;
+        @media #{$tablet} {
+            width:339px;
+            margin-top:28px;
+        }
+        @media #{$mobile} {
+            margin-top:16px;
+            width:95%;
+            color:white;
+            @include font-size(14);
+            line-height: 1.29;
+        }
+
+    }
+
+    &__button {
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        margin-top:60px;
+        @include font-size(21);
+        font-weight: 700;
+        color:#fcfcfc;
+        text-transform:uppercase;
+        width:253px;
+        height:55px;
+        @media #{$tablet} {
+            margin-top:37px;
+        }
+        @media #{$mobile} {
+            @include font-size(12);
+            padding:11px 16px;
+            margin-top:17px;
+            width:auto;
+            height:auto;
+    
+        }  
+    }
+
+    &__conditions {
+        margin-top:50px;
+        @include font-size(13);
+        font-weight: 600;
+        line-height: 1.23;
+        width:688px;
+        color:#fffcfc;
+
+        @media #{$tablet} {
+            width:366px;
+            margin-top:31px;
+        }
+        @media #{$mobile} {
+            margin-top:12px;
+            width:auto;
+            @include font-size(11);
+            line-height: 1.33;
+            margin-bottom:12px;
+        }
+
+    }
+}   
+
+.paywall-offer-footer {
+    background-color: rgba(0, 0, 0, 0.85);
+
+    &__menu {
+        @include flexbox();
+        @include justify-content(space-between);
+        color:white;
+        width:70%;
+        margin:auto;
+        padding-top:20px;
+        @media #{$mobile} {
+            max-width: 420px;
+        }
+
+        @media #{$tablet-up} {
+            max-width: 500px;
+        }
+
+        li a {
+            @include font-size(12);
+            color:white;
+            font-weight:600;
+            letter-spacing: 0.46px;
+
+            @media #{$tablet-up} {
+                @include font-size(14);
+            }
+
+        }
+    }
+
+}
