@@ -6,7 +6,7 @@
 {% set config       = _Network.getThemeConfig() %}
 {% set paywallSettings = {} %}
 {% if config['paywallSettings'] %}
-        {% set paywallSettings = config['paywallSettings'] %}
+    {% set paywallSettings = config['paywallSettings'] %}
 {% endif %}
 
 
@@ -24,9 +24,16 @@
     {% endif %} 
 {% endfor %}
 
-        {% set log = _AppHelper.log(specialPlan) %}
+        {# {% set log = _AppHelper.log(specialPlan) %} #}
 
-
+{% if specialPlan == null %}
+    {% set redir = _Page.setHttpRedirects(
+        {
+            '|^/.*|': networkData.defaultBlogUrl ~ '/prosubscribe',
+            
+        }, false) 
+    %} 
+{% endif %}
 
 
 
