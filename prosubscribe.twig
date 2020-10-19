@@ -14,19 +14,23 @@
 {% set bottomPlans = [] %}
 {% set signupurl = '/subscribeform' %}
 
+
 {% for plan in plans %}
+
     {% if "!*!" in plan.description %}
-        {# {% set log = _AppHelper.log(topPlans) %} #}
 
         {% set description = plan.description | split("!*!") %}
-        {% set placement = description[0] | split(":") %}
-        {% set plan = plan | merge({ ("order") : placement[1]}) %}
-        {% if placement[2] is defined and placement[2] == 'best' and placement[3] is defined %}
+
+        {% set data = _AppHelper.jsonDecode( description[0] ) %}
+        {# {% set log = _AppHelper.log(data) %} #}
+
+        {% set plan = plan | merge({ ("order") : data['order']}) %}
+        {% if data['best'] is defined and data['best'] == true and data['save'] is defined %}
             {% set plan = plan | merge({ ("best") : 'true'}) %}
-            {% set plan = plan | merge({ ("save") : placement[3]}) %}
+            {% set plan = plan | merge({ ("save") : data['save']}) %}
         {% endif %}
 
-        {% if placement[0] == 'top' %}
+        {% if data['place'] == 'top' %}
             {% set topPlans = topPlans | merge({ ("0") : plan}) %}
         {% else %}
             {% set bottomPlans = bottomPlans | merge({ ("0") : plan}) %}
