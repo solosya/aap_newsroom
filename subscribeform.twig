@@ -429,17 +429,25 @@
                     {% if plan != false %}
                         <h2 class="plan-type__header">Order Summary</h2>
                         <div class="plan-type__body">
-                            {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
-                            
+                            {% set data = plan.description | split("!*!") %}
+                            {% set data = _AppHelper.jsonDecode( data[0] ) %}
 
+                            {% set description = plan.description | preg_replace('/^.+!\*!/', '') %}
                             {% set val = plan.plan_value / 100 %}
+
+
+                            {% set orderImage = networkData.templatePath ~ "/static/images/newsroom-pro-device.png?ver=1" %}
+                            {% if data['special'] is defined and data['special'] == true %}
+                                {% set orderImage = networkData.templatePath ~ "/static/images/newsroom-pro-device.png?ver=1" %}
+                            {% endif %}
+
                             <div class="col-12">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
                                 <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
                                 <p class="plan-type__currency">${{val}} per {{plan.period}}</p>
                             </div>
                             <div class="col-12">
-                                <img class="plan-type__img" src="{{networkData.templatePath}}/static/images/newsroom-pro-device.png?ver=1">
+                                <img class="plan-type__img" src="{{orderImage}}">
                             </div>
                             <div class="col-12">
                                 <div class="plan-type__features paywall__plan-features">
