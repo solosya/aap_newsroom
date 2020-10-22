@@ -22,14 +22,17 @@
         {% set description = plan.description | split("!*!") %}
 
         {% set data = _AppHelper.jsonDecode( description[0] ) %}
-        {% if data['special'] is defined and data['special'] == true %}
+        {# {% if data['special'] is defined and data['special'] == true %}
             {% set continue = true %}
-        {% endif %}
+        {% endif %} #}
 
         {% if not continue %}
             {% set plan = plan | merge({ ("order") : data['order']}) %}
-            {% if data['best'] is defined and data['best'] == true and data['save'] is defined %}
+            {% if data['best'] is defined and data['best'] == true %}
                 {% set plan = plan | merge({ ("best") : 'true'}) %}
+            {% endif %}
+
+            {% if data['save'] is defined %}
                 {% set plan = plan | merge({ ("save") : data['save']}) %}
             {% endif %}
 
@@ -144,16 +147,21 @@
 
             {% for plan in orderedTop %}
             
-            {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+                {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
         
-            {# {% for plan in plans %} #}
-                {# {% set log = _AppHelper.log(plan) %} #}
                 {% set period = "Monthly" %}
                 {% if plan.period == "year" %}
                     {% set period = "Annual" %}
                 {% elseif plan.period == "week" %}
                     {% set period = "Weekly" %}
                 {% endif %}
+
+                {% set description = plan.description | split("!*!") %}
+                {% set data = _AppHelper.jsonDecode( description[0] ) %}
+                {% if data['special'] is defined and data['special'] == true %}
+                    {% set period = plan.plan_name %}
+                {% endif %}
+
 
 
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 paywall-plan {{paddingClass}}">
@@ -165,7 +173,9 @@
                             <div class="paywall-plan-card__ribbon"></div>
                             <div class="paywall-plan-card__best-value-container">
                                 <p class="paywall-plan-card__best-value-label">BEST VALUE</p>
-                                <p class="paywall-plan-card__best-value-amount">SAVE ${{plan.save}}</p>
+                                {% if plan.save is defined %}
+                                    <p class="paywall-plan-card__best-value-amount">SAVE ${{plan.save}}</p>
+                                {% endif %}
                             </div>
                         </div>
                         {% endif %}
