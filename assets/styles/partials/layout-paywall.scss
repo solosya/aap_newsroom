@@ -767,7 +767,7 @@
 .paywall-offer-banner {
     background-color:#E13426;
     background-image: url('../images/subscribe-offer.png');
-    background-size: 70vh;
+    background-size: 500px;
     background-repeat: no-repeat;
     background-position: top right 6%;
     border-top:solid 1px #979797;
@@ -777,17 +777,12 @@
     }
 
     @media #{$desktop} {
-        background-size: 55vh;
-        background-position: bottom 40% right -50px;
-    }
-
-    @media #{$desktop} {
-        background-size: 55vh;
+        background-size: 41vw;
         background-position: bottom 40% right -50px;
     }
 
     @media #{$tablet} {
-        background-size: 50vh;
+        background-size: 50vw;
         background-position: bottom 40% right -70px;
     }
     @media #{$mobile} {
