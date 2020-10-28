@@ -384,9 +384,9 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['election 2020'].feed.articles|length > 0 %}
+                {# {% if sections['election 2020'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
-                {% endif %}
+                {% endif %} #}
                 {# {% if sections['economic recovery'].feed.articles|length > 0 %}
                     {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %} #}
