@@ -53,7 +53,7 @@
             "feed": "",
             "link": ""
         }, 
-         "greenroom": {
+        "greenroom": {
             "feed": "",
             "link": ""
         }, 
@@ -167,17 +167,17 @@ So you don't have to create all the sections on dev #}
                             {% if sections['comment'].feed.articles|length > 0 %}
                                 {% if articles[articleCount] %}
                                 <section class="opinion-index">
-                                        <div class="row">
-                                            {% for i in 0..1 %}
-                                                {% if sections['comment'].feed.articles[i] %}        
-                                                    {{this.render('partials/_single-article.twig', {
-                                                        article: sections['comment'].feed.articles[i],
-                                                        position: (articleCount+1), 
-                                                        containerClass: 'col-sm-6', 
-                                                        swap: 'false'}) | raw}}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
+                                    <div class="row">
+                                        {% for i in 0..1 %}
+                                            {% if sections['comment'].feed.articles[i] %}        
+                                                {{this.render('partials/_single-article.twig', {
+                                                    article: sections['comment'].feed.articles[i],
+                                                    position: (articleCount+1), 
+                                                    containerClass: 'col-sm-6', 
+                                                    swap: 'false'}) | raw}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
                                 </section>
                                 {% endif %}
                             {% endif %}
@@ -212,11 +212,13 @@ So you don't have to create all the sections on dev #}
                             {% set podCardClass = 'card-pod-td card-pod-td-tablet card-pod-td-mobile' %}
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
+                                {% set limit = limit - 1 %}
                         {% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
                             </div>
                             {% set podCardClass = 'card-pod-tc card-pod-tc-tablet card-pod-tc-mobile' %}
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
+                                {% set limit = limit - 1 %}
                         {% else %}
                             {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {
