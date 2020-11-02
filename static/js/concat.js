@@ -37485,7 +37485,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                             console.log(window.location.search);
                         } else {
                             var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = result.error.message;
+                            errorElement.textContent = result.error;
                         }
                         self.signup.closeWindow();
                     }).fail(function(r) {
