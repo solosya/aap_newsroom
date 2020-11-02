@@ -37363,7 +37363,6 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         var trial = $('#trial').val();
         this.data['plantype'] = $('#plantype').val();
 
-        // console.
         if (trial == "1" && this.data.plantype === 'time') {
             this.data['trial'] = 'true';
             this.validateRules['changeterms'] = ["isTrue"];
@@ -37485,8 +37484,8 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                             // window.history.pushState( {} , '', '&step=2' );
                             console.log(window.location.search);
                         } else {
-                            // var errorElement = document.getElementById('card-errors');
-                            // errorElement.textContent = result.error.message;
+                            var errorElement = document.getElementById('card-errors');
+                            errorElement.textContent = result.error.message;
                         }
                         self.signup.closeWindow();
                     }).fail(function(r) {
