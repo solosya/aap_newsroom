@@ -37442,7 +37442,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                     self.signup.closeWindow();
                     // Inform the user if there was an error
                     var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
+                    errorElement.textContent = result.error;
                 } else {
                     // Send the token to your server
 

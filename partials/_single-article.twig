@@ -90,7 +90,6 @@
 
     {# {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %} #}
 
-    {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
 
@@ -143,6 +142,12 @@
             data-article-image="{{articleImg}}" 
             data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title="{{totalstring}}">
+            
+            {% if dev %}
+                <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
+                <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
+                {# <div class="{{cardType}}c-cards-view__cardId">{{cardId}}</div> #}
+            {% endif %}
 
             <article class="{{params.cardType}}c-cards-view">
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
@@ -186,11 +191,12 @@
 
 
             {# Article admin buttons to delete/edit/pin #}
-            {% if article.userHasBlogAccess == '1' and swap != '' %}
+            {% if article.userHasBlogAccess == '1' %}
                 {{ this.render('_article_admin.twig', {
                     article  : article, 
                     position : position, 
-                    type     : params.social == 0 ? "article" : "social"
+                    type     : params.social == 0 ? "article" : "social",
+                    swap     : swap
                 } ) | raw }}
             {% endif %}
 

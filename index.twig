@@ -1,6 +1,6 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : true %}
+{% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : false %}
 
 
 
@@ -174,7 +174,9 @@ So you don't have to create all the sections on dev #}
                                                     article: sections['comment'].feed.articles[i],
                                                     position: (articleCount+1), 
                                                     containerClass: 'col-sm-6', 
-                                                    swap: 'false'}) | raw}}
+                                                    swap: 'false',
+                                                    dev: dev
+                                                    }) | raw}}
                                             {% endif %}
                                         {% endfor %}
                                     </div>
@@ -196,7 +198,8 @@ So you don't have to create all the sections on dev #}
                                     article: articles[articleCount], 
                                     position: (articleCount + 1), 
                                     containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
-                                    imageSize: {width:330, height:236}
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -225,7 +228,8 @@ So you don't have to create all the sections on dev #}
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
                                     containerClass: 'card-rec card-rec-tablet card-rec-mobile',
-                                    imageSize: {width:330, height:236}
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -257,7 +261,8 @@ So you don't have to create all the sections on dev #}
                                         article: articles[articleCount], 
                                         position: (articleCount+1), 
                                         containerClass: 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
-                                        imageSize: {width:230, height:208}
+                                        imageSize: {width:230, height:208},
+                                        dev: dev
                                     }) | raw}}
                                     {% set articleCount = articleCount + 1 %}
                                 {% endif %}
@@ -275,7 +280,8 @@ So you don't have to create all the sections on dev #}
                                 article: articles[articleCount], 
                                 position: (articleCount+1), 
                                 containerClass: 'card-lg-mobile card-lg-tablet card-lg-desktop card-lg-desktop-lg',
-                                imageSize: {width:750, height:518}
+                                imageSize: {width:750, height:518},
+                                dev: dev
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         </div>
@@ -287,7 +293,8 @@ So you don't have to create all the sections on dev #}
                                     article: articles[articleCount], 
                                     position: (articleCount+1), 
                                     containerClass: 'card-rec card-rec-tablet card-rec-mobile',
-                                    imageSize: {width:330, height:236}
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
                                 }) | raw}}
                                 {% set articleCount = articleCount + 1 %}
                             {% endif %}
@@ -298,7 +305,8 @@ So you don't have to create all the sections on dev #}
                                 article: articles[articleCount], 
                                 position: (articleCount + 1), 
                                 containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
-                                imageSize: {width:330, height:236}
+                                imageSize: {width:330, height:236},
+                                dev: dev
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
