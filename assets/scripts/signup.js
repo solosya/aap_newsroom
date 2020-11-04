@@ -203,7 +203,12 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                             console.log(window.location.search);
                         } else {
                             var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = result.error;
+                            var text = '';
+                            for (var key in r.error) {
+                                text = text + r.error[key] + " ";
+                            } 
+                            console.log(text);
+                            errorElement.textContent = text;
                         }
                         self.signup.closeWindow();
                     }).fail(function(r) {
