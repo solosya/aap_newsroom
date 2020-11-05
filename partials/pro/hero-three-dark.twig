@@ -17,6 +17,7 @@
                 article: articles[articleCount], 
                 imageSize: {width:414, height:255},
                 site: site,
+                swap: 'false',  
                 containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-pro-follow-mobile u-margin-bottom-30 u-mobile-no-margin-bottom'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -33,6 +34,7 @@
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
+            swap: 'false',
             containerClass: 'card-pro-follow card-pro-follow-tablet card-pro-follow-mobile'
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}

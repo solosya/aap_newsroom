@@ -15,6 +15,7 @@
                 article: articles[articleCount], 
                 imageSize: {width:414, height:255},
                 site: site,
+                swap: 'false',
                 containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-sm-mobile u-margin-bottom-30 u-mobile-no-margin-bottom u-mobile-no-border-bottom'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -29,6 +30,7 @@
             article: articles[articleCount], 
             imageSize: {width:300, height:160},
             site: site,
+            swap: 'false',
             containerClass: 'card-sm card-sm-tablet card-sm-mobile u-no-margin-bottom'~ mobBorders[i]
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
