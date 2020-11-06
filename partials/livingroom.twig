@@ -8,7 +8,6 @@
 
         {{this.render('_single-article.twig', {
             article: sections['livingroom'].feed.articles[0], 
-            position: i+1, 
             containerClass: 'feature', 
             swap: 'false', 
             imageSize: {width:1130, height:587}
@@ -20,7 +19,6 @@
                 {% if sections['livingroom'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article: sections['livingroom'].feed.articles[i], 
-                        position: i+1, 
                         containerClass: '', 
                         swap: 'false'
                     }) | raw}}

@@ -7,7 +7,6 @@
 
     {{this.render('_single-article.twig', {
         article         : sections['investigations'].feed.articles[0],
-        position        : 1, 
         containerClass  : 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up investigations', 
         imageSize       : {width:627, height:415},
         swap            : 'false'
@@ -20,7 +19,6 @@
                 {% if sections['investigations'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article         : sections['investigations'].feed.articles[i], 
-                        position        : i+1, 
                         containerClass  : 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg investigations col-md-4', 
                         imageSize       : {width:92, height:100},
                         swap            : 'false'

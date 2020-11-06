@@ -68,7 +68,6 @@
 
     {{this.render('_single-article.twig', {
         article: articles[0], 
-        position: 1, 
         containerClass: 'card-featured-mobile card-featured-tablet card-featured-desktop card-featured-desktop-up ideas', 
         imageSize: {width:1140, height:430},
         swap: 'false'
@@ -82,7 +81,6 @@
                  {% if articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article: articles[i], 
-                        position: i+1, 
                         containerClass: 'col-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up ideas', 
                         imageSize: {width:203, height:129},
                         swap: 'false'

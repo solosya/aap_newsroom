@@ -13,7 +13,6 @@
         
         {{this.render('_single-article.twig', {
             article             : sections['viewingroom'].feed.articles[0],
-            position            : (1), 
             containerClass      : 'card-featured-reverse-mobile card-featured-reverse-tablet card-featured-reverse-desktop card-featured-reverse-desktop-lg viewing col-md-12', 
             swap                : 'false',
             imageSize: {width:633, height:420}
@@ -23,7 +22,6 @@
             {% if sections['viewingroom'].feed.articles[i] %}        
                 {{this.render('_single-article.twig', {
                     article             : sections['viewingroom'].feed.articles[i],
-                    position            : i+1, 
                     containerClass      : 'view-sub-feature-mobile view-sub-feature-tablet view-sub-feature-desktop view-sub-feature-desktop-lg viewing col-md-4', 
                     swap                : 'false',
                     imageSize: {width:330, height:212}
