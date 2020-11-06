@@ -416,6 +416,10 @@ Card.prototype.initDroppable = function()
                     $(".j-truncate").dotdotdot();
                     self.events();
                 },
+                error: function(jqXHR, textStatus, errorThrown){
+                    $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
+                },
+
             });
 
         }
