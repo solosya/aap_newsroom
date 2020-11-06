@@ -31593,7 +31593,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         var n = noty({
             type: opts.type,
             text: opts.message,
-            layout: opts.layout || 'topRight',
+            layout: opts.layout || 'bottomRight',
             timeout: opts.timeout,
             dismissQueue: true,
             animation: {
