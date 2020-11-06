@@ -31763,8 +31763,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                 e.preventDefault();
 
                 var articleId = $(elem).data('id');
-                var position = parseInt($(elem).data('position'));
-                var existingStatus = $(elem).data('status');
+                var position = parseInt($(elem).attr('data-position'));
+                var existingStatus = $(elem).attr('data-status');
                 var isSocial = $(elem).data('social');
                 
                 if(isNaN(articleId) || articleId <= 0 || isNaN(position) || position <= 0) {
@@ -31778,7 +31778,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                     dataType: 'json',
                     data: {id: articleId, status: existingStatus, social: isSocial, position: position, _csrf: csrfToken},
                     success: function(data, textStatus, jqXHR) {
-                        $(elem).data('status', ((existingStatus == 1) ? 0 : 1));
+                        $(elem).attr('data-status', ((existingStatus == 1) ? 0 : 1));
                         var msg = (existingStatus == 1) ? "Article un-pinned successfully" : "Article pinned successfully";
                         (existingStatus == 1) ? $(elem).removeClass('selected') : $(elem).addClass('selected');
                         $.fn.General_ShowNotification({message: msg});
@@ -35330,11 +35330,12 @@ Card.prototype.initDroppable = function()
                 return elem.find('a.card').eq(pos);
             }
 
-            var sourceObj       = $(ui.draggable);
-            var destObject      = $(this);
+            var sourceObj       = $(ui.draggable); //card being dragged
+            var destObject      = $(this); //card it lands on
             var sourceProxy     = null;
             var destProxy       = null;
 
+            
 
             if (typeof sourceObj.data('proxyfor') !== 'undefined') {
                 sourceProxy = sourceObj;
@@ -35351,12 +35352,16 @@ Card.prototype.initDroppable = function()
 
 
             //get positions
-            var sourcePosition      = sourceObj.data('position');
-            var sourcePostId        = sourceObj.data('id');
-            var sourceIsSocial      = parseInt(sourceObj.data('social'));
-            var destinationPosition = destObject.data('position');
-            var destinationPostId   = destObject.data('id');
-            var destinationIsSocial = parseInt(destObject.data('social'));
+            var sourcePosition       = sourceObj.data('position');
+            var sourcePostId         = sourceObj.data('id');
+            var sourceIsSocial       = parseInt(sourceObj.data('social'));
+            var sourcePinStatus      = parseInt(sourceObj.find('.PinArticleBtn').attr('data-status'));
+
+            var destinationPosition  = destObject.data('position');
+            var destinationPostId    = destObject.data('id');
+            var destinationIsSocial  = parseInt(destObject.data('social'));
+            var destinationPinStatus = parseInt(destObject.find('.PinArticleBtn').attr('data-status'));
+
 
             var swappedDestinationElement = sourceObj.clone().removeAttr('style').insertAfter( destObject );
             var swappedSourceElement = destObject.clone().insertAfter( sourceObj );
@@ -35382,10 +35387,14 @@ Card.prototype.initDroppable = function()
                 destProxy.attr('data-article-image', sourceObj.data('article-image'));
             }
             
-            swappedSourceElement.data('position', sourcePosition);
-            swappedDestinationElement.data('position', destinationPosition);
-            swappedSourceElement.find('.PinArticleBtn').data('position', sourcePosition);
-            swappedDestinationElement.find('.PinArticleBtn').data('position', destinationPosition);
+            swappedSourceElement.attr('data-position', sourcePosition);
+            swappedDestinationElement.attr('data-position', destinationPosition);
+
+            swappedSourceElement.find('.PinArticleBtn').attr('data-position', sourcePosition);
+            swappedDestinationElement.find('.PinArticleBtn').attr('data-position', destinationPosition);
+
+            swappedSourceElement.find('.PinArticleBtn').attr('data-status', destinationPinStatus);
+            swappedDestinationElement.find('.PinArticleBtn').attr('data-status', sourcePinStatus);
 
 
             $(ui.helper).remove(); //destroy clone

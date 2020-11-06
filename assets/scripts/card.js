@@ -317,11 +317,12 @@ Card.prototype.initDroppable = function()
                 return elem.find('a.card').eq(pos);
             }
 
-            var sourceObj       = $(ui.draggable);
-            var destObject      = $(this);
+            var sourceObj       = $(ui.draggable); //card being dragged
+            var destObject      = $(this); //card it lands on
             var sourceProxy     = null;
             var destProxy       = null;
 
+            
 
             if (typeof sourceObj.data('proxyfor') !== 'undefined') {
                 sourceProxy = sourceObj;
@@ -338,12 +339,16 @@ Card.prototype.initDroppable = function()
 
 
             //get positions
-            var sourcePosition      = sourceObj.data('position');
-            var sourcePostId        = sourceObj.data('id');
-            var sourceIsSocial      = parseInt(sourceObj.data('social'));
-            var destinationPosition = destObject.data('position');
-            var destinationPostId   = destObject.data('id');
-            var destinationIsSocial = parseInt(destObject.data('social'));
+            var sourcePosition       = sourceObj.data('position');
+            var sourcePostId         = sourceObj.data('id');
+            var sourceIsSocial       = parseInt(sourceObj.data('social'));
+            var sourcePinStatus      = parseInt(sourceObj.find('.PinArticleBtn').attr('data-status'));
+
+            var destinationPosition  = destObject.data('position');
+            var destinationPostId    = destObject.data('id');
+            var destinationIsSocial  = parseInt(destObject.data('social'));
+            var destinationPinStatus = parseInt(destObject.find('.PinArticleBtn').attr('data-status'));
+
 
             var swappedDestinationElement = sourceObj.clone().removeAttr('style').insertAfter( destObject );
             var swappedSourceElement = destObject.clone().insertAfter( sourceObj );
@@ -369,10 +374,14 @@ Card.prototype.initDroppable = function()
                 destProxy.attr('data-article-image', sourceObj.data('article-image'));
             }
             
-            swappedSourceElement.data('position', sourcePosition);
-            swappedDestinationElement.data('position', destinationPosition);
-            swappedSourceElement.find('.PinArticleBtn').data('position', sourcePosition);
-            swappedDestinationElement.find('.PinArticleBtn').data('position', destinationPosition);
+            swappedSourceElement.attr('data-position', sourcePosition);
+            swappedDestinationElement.attr('data-position', destinationPosition);
+
+            swappedSourceElement.find('.PinArticleBtn').attr('data-position', sourcePosition);
+            swappedDestinationElement.find('.PinArticleBtn').attr('data-position', destinationPosition);
+
+            swappedSourceElement.find('.PinArticleBtn').attr('data-status', destinationPinStatus);
+            swappedDestinationElement.find('.PinArticleBtn').attr('data-status', sourcePinStatus);
 
 
             $(ui.helper).remove(); //destroy clone

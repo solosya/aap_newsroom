@@ -17,8 +17,8 @@
                 e.preventDefault();
 
                 var articleId = $(elem).data('id');
-                var position = parseInt($(elem).data('position'));
-                var existingStatus = $(elem).data('status');
+                var position = parseInt($(elem).attr('data-position'));
+                var existingStatus = $(elem).attr('data-status');
                 var isSocial = $(elem).data('social');
                 
                 if(isNaN(articleId) || articleId <= 0 || isNaN(position) || position <= 0) {
@@ -32,7 +32,7 @@
                     dataType: 'json',
                     data: {id: articleId, status: existingStatus, social: isSocial, position: position, _csrf: csrfToken},
                     success: function(data, textStatus, jqXHR) {
-                        $(elem).data('status', ((existingStatus == 1) ? 0 : 1));
+                        $(elem).attr('data-status', ((existingStatus == 1) ? 0 : 1));
                         var msg = (existingStatus == 1) ? "Article un-pinned successfully" : "Article pinned successfully";
                         (existingStatus == 1) ? $(elem).removeClass('selected') : $(elem).addClass('selected');
                         $.fn.General_ShowNotification({message: msg});
