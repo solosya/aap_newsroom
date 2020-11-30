@@ -1,0 +1,18 @@
+.error-page {
+    &__title {
+        @include font-size(47);
+        font-weight: $weightBold;
+        text-align:center;
+    }
+    &__message {
+        @include font-size(20);
+        text-align:center;
+        letter-spacing: 0.83px;
+    }
+    &__link {
+        color:#e22f22;
+        text-align:center;
+        font-weight: $weightSemibold;
+        text-decoration:underline;
+    }
+}
