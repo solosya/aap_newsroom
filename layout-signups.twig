@@ -108,7 +108,11 @@
             <div class="row">
                 <div class="col-12 col-md-3 d-none d-md-block">
                     <figure class="c-signups__figure">
+                    {% if sub.id in ['readingroom','lockerroom'] %}
+                        <img class="c-signups__image" src="{{networkData.templatePath}}/static/images/{{sub.id}}-newsletter.jpg">
+                    {% else %}
                         <img class="c-signups__image" src="{{networkData.templatePath}}/static/images/{{sub.id}}-newsletter.png">
+                    {% endif %}
                     </figure>
                 </div>  
                 <div class="col-12 col-md-9"> 
@@ -202,7 +206,7 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.png">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/lockerroom-newsletter.jpg">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
@@ -225,7 +229,7 @@
                                     <div class="row c-signups-newsletter">
                                         <div class="col-4 col-lg-5">
                                             <figure class="c-signups-newsletter__figure">
-                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.png">
+                                                <img class="c-signups-newsletter__image" src="{{networkData.templatePath}}/static/images/readingroom-newsletter.jpg">
                                             </figure>
                                         </div>
                                         <div class="col-8 col-lg-7">
