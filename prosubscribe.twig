@@ -100,6 +100,36 @@
 {% endfor %}
 
 
+{% set header = 'Daily insights <br class="d-sm-block" />direct to your inbox.' %}
+{% set subhead = 'In-depth analysis of politics and business <br />curated by Jonathan Milne.' %}
+{% set whatyouget = 'What you get with <br class="d-block d-sm-none" />Newsroom Pro' %}
+{% set whatyougetpanels = [
+    'A daily morning email of news and insights curated by Newsroom Pro editorial team',
+    'Pro email breaking news alerts',
+    'Exclusive and unlimited access to content on Newsroom Pro',
+    'Bonus subscription for colleague or a friend',
+    'Access to post and read comments on articles'
+    ] %}
+
+{% if config['paywallSettings']['pro'] %}
+    {% set customText = config['paywallSettings']['pro'] %}
+    {# {{_AppHelper.printArray(customText)}} #}
+    {% if customText.header %}
+        {% set header = customText.header %}
+    {% endif %}
+    {% if customText.subhead %}
+        {% set subhead = customText.subhead %}
+    {% endif %}
+    {% if customText.whatyouget %}
+        {% set whatyouget = customText.whatyouget %}
+    {% endif %}
+    {% if customText.whatyougetpanels %}
+        {% set whatyougetpanels = customText.whatyougetpanels %}
+    {% endif %}
+
+{% endif %}
+
+
 
 
 
@@ -137,8 +167,8 @@
         <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
-                    <h1 class="paywall-banner__headline">Daily insights <br class="d-sm-block" />direct to your inbox.</h1>
-                    <h3 class="paywall-banner__tagline">In-depth analysis of the political economy <br />direct from the Parliamentary Press Gallery.</h3>
+                    <h1 class="paywall-banner__headline">{{header|raw}}</h1>
+                    <h3 class="paywall-banner__tagline">{{subhead|raw}}</h3>
                 </div>
 
             </div>
@@ -221,27 +251,27 @@
 
     <div class="paywall-offers u-padding-bottom-30 u-tablet-padding-bottom-40">
         <div class="container">
-            <h1 class="paywall-offers__title">What you get with <br class="d-block d-sm-none" />Newsroom Pro</h1>
+            <h1 class="paywall-offers__title">{{whatyouget|raw}}</h1>
             <section class="row paywall-offers__container">
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">A daily morning email of news and insights curated by Newsroom Pro editorial team</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[0]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">Pro email breaking news alerts</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[1]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Exclusive and unlimited access to content on Newsroom Pro</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[2]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Bonus subscription for colleague or a friend</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[3]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__comments" src="{{networkData.templatePath}}/static/images/paywall-comments.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-comments">Access to post and read comments on articles</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-comments">{{whatyougetpanels[4]}}</p>
                 </div>
 
             </section>

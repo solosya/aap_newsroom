@@ -31,7 +31,45 @@
     %} 
 {% endif %}
 
+{% set header = 'Get thinking <br class="d-none d-md-block" /> about <br class="d-none d-sm-block d-md-none" />the big picture.' %}
+{% set subhead = 'Get a year of Newsroom Pro and <br class="d-none d-sm-block d-md-none" />The Atlantic <s>$365</s> $299*' %}
+{% set blurbA = 'Newsroom Pro is proud to partner with The Atlantic ahead of the US election to offer a two for one deal to some of the best political journalism in NZ and the US.' %}
+{% set blurbB = '*Limited offer, subject to availability. Please allow up to 14 business days for activation of your subscription to <br class="d-none d-lg-block" />The Atlantic. Full value approx $365NZD.' %}
+{% set whatyouget = 'What you get with <br class="d-block d-sm-none" />Newsroom Pro' %}
+{% set whatyougetpanels = [
+    'A daily morning email of news and insights curated by Newsroom Pro editorial team',
+    'Pro email breaking news alerts',
+    'Exclusive and unlimited access to content on Newsroom Pro',
+    'Bonus subscription for colleague or a friend',
+    'Access to post and read comments on articles'
+    ] %}
+{# {{_AppHelper.printArray(config['paywallSettings'])}} #}
+{% if config['paywallSettings']['offer'] %}
+    {% set customText = config['paywallSettings']['offer'] %}
+    
+    {% if customText.header %}
+        {% set header = customText.header %}
+    {% endif %}
+    {% if customText.subhead %}
+        {% set subhead = customText.subhead %}
+    {% endif %}
+    {% if customText.blurbA %}
+        {% set blurbA = customText.blurbA %}
+    {% endif %}
+    {% if customText.blurbB %}
+        {% set blurbB = customText.blurbB %}
+    {% endif %}
+    {% if customText.subhead %}
+        {% set subhead = customText.subhead %}
+    {% endif %}
+    {% if customText.whatyouget %}
+        {% set whatyouget = customText.whatyouget %}
+    {% endif %}
+    {% if customText.whatyougetpanels %}
+        {% set whatyougetpanels = customText.whatyougetpanels %}
+    {% endif %}
 
+{% endif %}
 
 
 
@@ -47,12 +85,12 @@
             </picture>
         </a>
 
-        <a class="paywall__logo-atlantic u-mobile-margin-left-30 u-tablet-margin-left-40 u-desktop-margin-left-60" target="_blank" href="https://www.theatlantic.com/" rel="Home" tabindex="-1" title="Home">
+        {# <a class="paywall__logo-atlantic u-mobile-margin-left-30 u-tablet-margin-left-40 u-desktop-margin-left-60" target="_blank" href="https://www.theatlantic.com/" rel="Home" tabindex="-1" title="Home">
             <picture>
                 <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/atlantic-mobile.svg">
                 <img src="{{networkData.templatePath}}/static/images/atlantic-desktop.svg" class="paywall__logo-image-atlantic">
             </picture>
-        </a>
+        </a> #}
 
         <button id="signinBtn" type="submit" class="_btn _btn--black  paywall__signin">SIGN IN</button>
 
@@ -95,27 +133,27 @@
 
     <div class="paywall-offers u-padding-bottom-30 u-tablet-padding-bottom-40">
         <div class="container">
-            <h1 class="paywall-offers__title">What you get with <br class="d-block d-sm-none" />Newsroom Pro</h1>
+            <h1 class="paywall-offers__title">{{whatyouget|raw}}</h1>
             <section class="row paywall-offers__container">
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">A daily morning email of news and insights curated by Newsroom Pro editorial team</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[0]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">Pro email breaking news alerts</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[1]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-access">Exclusive and unlimited access to content on Newsroom Pro</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[2]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-users">Bonus subscription for colleague or a friend</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[3]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__comments" src="{{networkData.templatePath}}/static/images/paywall-comments.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-comments">Access to post and read comments on articles</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-comments">{{whatyougetpanels[4]}}</p>
                 </div>
 
             </section>
