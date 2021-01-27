@@ -108,7 +108,7 @@
         {% set author = author ~  "</p>" %}
 
     {% else %}
-        {% set author = author ~  '<img height="34" width="34" src=' ~ profileImg ~ ' class="img-circle">' %}
+        {% set author = author ~  '<img height="34" width="34" src=' ~ profileImg ~ ' class="img-circle" alt="' ~ article.createdBy['displayName'] ~ '">' %}
         {% set author = author ~  '<p class="j-truncate">' ~ article.createdBy['displayName'] ~ '</p>' %}
     {% endif %}    
 
@@ -136,6 +136,7 @@
 
         <a  href="{{article.url}}" 
             class="{{swap}} card {{hasArticleMediaClass}}" 
+            aria-label="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             data-id="{{article.articleId}}" 
             data-position="{{position}}" 
             data-social="0" 
@@ -153,9 +154,9 @@
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
                     <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}">
+                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
                         {%endif%}
                     </figure>
                 {% endif %}
