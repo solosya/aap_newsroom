@@ -20,13 +20,13 @@
                         </ul>
                         <ul class="social">
                             {% if businessDetails.social['facebook'] is not empty %}
-                                <li class="facebook"><a href="{{businessDetails.social['facebook']}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li class="facebook"><a href="{{businessDetails.social['facebook']}}" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a></li>
                             {% endif %}
                             {% if businessDetails.social['twitter'] is not empty %}
-                                <li class="twitter"><a href="{{businessDetails.social['twitter']}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li class="twitter"><a href="{{businessDetails.social['twitter']}}" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a></li>
                             {% endif %}
                             {% if businessDetails.social['google'] is not empty %}
-                                <li class="g-plus"><a href="{{businessDetails.social['google']}}" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="g-plus"><a href="{{businessDetails.social['google']}}" target="_blank" rel="noopener"><i class="fa fa-google-plus"></i></a></li>
                             {% endif %}
                         </ul>
                     </div>
