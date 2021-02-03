@@ -37482,6 +37482,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                         if (r.success == 1) {
                             self.data.user_id = r.userid;
                             self.data.user_guid = r.userguid;
+                            console.log(self.data);
                             var purchaseId = Math.floor(Math.random()*60000000000);
                             console.log('gta-pay-now');
                             if  ($('.j-gtasubpay')[0]){
@@ -37578,7 +37579,8 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
         this.data.user_id = this.subscription.data.user_id;
         this.data.user_guid = this.subscription.data.user_guid;
-
+        console.log(this.subscription);
+        console.log(this.data);
         self.render(true);
         if (!validated) return;
 
