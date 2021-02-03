@@ -168,7 +168,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                     self.data['planid'] = $('#planid').val();
                     self.data['redirect'] = false;
                     Acme.server.create('/auth/paywall-signup', self.data).done(function(r) {
-                        console.log(r);
+                        // console.log(r);
                         if (r.success == 1) {
                             self.data.user_id = r.userid;
                             self.data.user_guid = r.userguid;
