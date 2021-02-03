@@ -37480,8 +37480,8 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                     Acme.server.create('/auth/paywall-signup', self.data).done(function(r) {
                         console.log(r);
                         if (r.success == 1) {
-                            self.data.user_id = r.user_id;
-                            self.data.user_guid = r.user_guid;
+                            self.data.user_id = r.userid;
+                            self.data.user_guid = r.userguid;
                             var purchaseId = Math.floor(Math.random()*60000000000);
                             console.log('gta-pay-now');
                             if  ($('.j-gtasubpay')[0]){
