@@ -3,7 +3,7 @@ var botTimer = 0;
 
 if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
-    console.log('running from signup code');
+    // console.log('running from signup code');
 
     var stripekey = $('#stripekey').html();
 
@@ -168,12 +168,13 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                     self.data['planid'] = $('#planid').val();
                     self.data['redirect'] = false;
                     Acme.server.create('/auth/paywall-signup', self.data).done(function(r) {
-                        console.log(r);
+                        // console.log(r);
                         if (r.success == 1) {
-                            self.data.user_id = r.user_id;
-                            self.data.user_guid = r.user_guid;
+                            self.data.user_id = r.userid;
+                            self.data.user_guid = r.userguid;
+                            // console.log(self.data);
                             var purchaseId = Math.floor(Math.random()*60000000000);
-                            console.log('gta-pay-now');
+                            // console.log('gta-pay-now');
                             if  ($('.j-gtasubpay')[0]){
                                 var payitem = $($('.j-gtasubpay')[0]);
                                 if (typeof dataLayer !== 'undefined') {
@@ -200,14 +201,14 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                             Acme.progress.next();
 
                             // window.history.pushState( {} , '', '&step=2' );
-                            console.log(window.location.search);
+                            // console.log(window.location.search);
                         } else {
                             var errorElement = document.getElementById('card-errors');
                             var text = '';
                             for (var key in r.error) {
                                 text = text + r.error[key] + " ";
                             } 
-                            console.log(text);
+                            // console.log(text);
                             errorElement.textContent = text;
                         }
                         self.signup.closeWindow();
@@ -268,7 +269,6 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
 
         this.data.user_id = this.subscription.data.user_id;
         this.data.user_guid = this.subscription.data.user_guid;
-
         self.render(true);
         if (!validated) return;
 
@@ -280,8 +280,8 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
         Acme.server.create('/api/user/edit-profile', this.data).done(function(r) {
             console.log(r);
             if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-                console.log('sending mailchimp signup');
-                console.log(self.data);
+                // console.log('sending mailchimp signup');
+                // console.log(self.data);
                 var subscribeData = {
                     "EMAIL": self.subscription.data['email'], 
                     "FNAME": self.data['firstname'],
@@ -293,7 +293,7 @@ if ($('#stripekey').length && $('#paywallsubscribe').length) {
                 if (self.data["group[1149][2]"]) {
                     subscribeData["group[1149][2]"] = 2;
                 }
-                console.log(subscribeData);
+                // console.log(subscribeData);
 
                 Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
                     .then(function(r) {
