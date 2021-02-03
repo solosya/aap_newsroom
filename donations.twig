@@ -4,7 +4,8 @@
 
 
 <main id="main" class="" role="main">
-    
+    <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
+
     <div class="donations__header  u-margin-top-30">
         <a class="donations__nr-logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
             <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="logo" class="mobile-logo">
@@ -39,6 +40,14 @@
             </div>
         </div>
 
+
+        <div class="row supporter u-margin-top-80 d-none d-md-block">
+            <div class="col-12 u-text-center">
+                <h1 class="supporter__title">Become a donater</h1>
+                <div id="stripe-products" class=""></div>
+                <button id="checkout">Purchase</button>
+            </div>
+        </div>
 
         <div class="row supporter u-margin-top-80 d-none d-md-block">
             <div class="col-12 u-text-center">
@@ -672,5 +681,59 @@
         });
 
 
+
+        var stripekey = $('#stripekey').html();
+
+        var stripe = Stripe(stripekey);
+
+
+
+        Acme.server.fetch('/api/paywall/stripe-products', {}).done( function(r) {
+            console.log(r);
+            var html = "";
+            for (let i = 0; i < r.data.length; i++) {
+                console.log(r.data[i]);
+                html += '<button data-id="'+ r.data[i].id+'">BUTTON for '+r.data[i].id+' </button>';
+            }
+            var container = document.getElementById('stripe-products');
+            container.innerHTML = html;
+
+            container.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('clicked', e.target, e.target.dataset.id);
+                
+                Acme.server.create('/api/paywall/checkout-session', {
+                    productId: e.target.dataset.id
+                }).done( function(r) {
+                    console.log(r);
+
+
+                    stripe.redirectToCheckout({
+                        sessionId: r.sessionId
+                    }).then(function(r) {
+                            console.log(r);
+                    });
+
+
+                });
+
+            });
+        });
+
+
     });
 </script>
+
+    {# stripe.redirectToCheckout({
+                            sessionId: r.sessionId
+                            })
+                            .then(handleResult);
+                        }); #}
+
+
+
+        {# console.log('creating session');
+        Acme.server.create('/api/paywall/checkout-session', {}).done( function(r) {
+            console.log(r);
+        });
+ #}
