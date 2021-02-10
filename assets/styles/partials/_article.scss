@@ -213,6 +213,38 @@
                     // }
                 }
 
+                h1{
+                    font-family: $font-family-serif;
+                    @include font-size(58);
+                    font-weight: $weightBold;
+                    margin-bottom: 15px;
+                }
+                h2{
+                    font-family:$font-family-sans-serif;
+                    @include font-size(40);
+                    font-weight: $weightSemibold;
+                    margin-bottom: 15px;
+                }
+                h3{
+                    font-family:$font-family-sans-serif;
+                    @include font-size(32);
+                    font-weight: $weightSemibold;
+                    margin-bottom: 10px;
+                }
+                h4{
+                    font-family:$font-family-sans-serif;
+                    @include font-size(24);
+                    font-weight: $weightSemibold;
+                    margin-bottom: 10px;
+                }
+                h5{
+                    font-family:$font-family-sans-serif;
+                    @include font-size(20);
+                    font-weight: $weightSemibold;
+                    margin-bottom: 10px;
+                    color: $brand-secondary;
+                }
+
 
                 blockquote {
                     @include font-size(32);

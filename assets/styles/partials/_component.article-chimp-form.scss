@@ -1,5 +1,5 @@
 .article-chimp-subscribe {
-    background-color: #e22f22;
+    background-color: $lblue;
     color: #FFF;
     text-align:left;
     max-width:300px;
@@ -7,42 +7,65 @@
 
     &__top {
         background:black;
-        padding:10px;
+        padding:30px 20px;
+    }
+
+    &__bottom {
+        background:black;
+        padding:15px 20px;
+        height: 49px;
     }
 
     &__logo {
-        width:54px;
+        width:226px;
         margin-top:5px;
         margin-bottom:5px;
 
     }
 
     &__heading {
-        font-family: $base-font-family;
+        font-family: $font-family-sans-serif;
         color: #FFF;
-        @include font-size(22);
+        @include font-size(16);
         font-weight: 600;
-        font-style:italic;
         margin:0;
         padding:0;
         margin-bottom:4px;
     }
 
-    &__tagline {
+    &__book{
+        float: left;
+        margin-right: 10px;
+        width: 26px;
+    }
+
+    &__readline {
+        float: left;
         font-family: $font-family-sans-serif;
         @include font-size(13);
-        margin-top:7px;
+        color: #FFF;
+        margin-top: 2px;
+    }
+    &__tagline {
+        
+        font-family: $font-family-sans-serif;
+        @include font-size(16);
+        color: $black;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-weight: $weightSemibold;
+
     }
 
     &__container {
         margin-top: 5px;
-        padding:10px;
+        padding:20px;
     }
 
     &__email{
         font-family: 'PT Sans', Tahoma, Arial, serif;
         color: #000;
-        margin:0 !important; 
+        margin: 0 0 0 10px !important;
         height:35px !important;
         border-radius: 0 !important;
     }

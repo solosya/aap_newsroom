@@ -612,13 +612,15 @@
 
                             <div class="article-chimp-subscribe u-desktop-margin-top-40">
                                 <div class="article-chimp-subscribe__top">
-                                    <img class="article-chimp-subscribe__logo" src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" alt="Newsroom logo">
-                                    <h3 class="article-chimp-subscribe__heading">Get your free daily briefing</h3>
+                                    
+                                    <p class="article-chimp-subscribe__heading">Get your free</p>
+                                    <img class="article-chimp-subscribe__logo" src="{{networkData.templatePath}}/static/images/daily-briefing-cta.svg" alt="Daily Briefing">
+                                    <p class="article-chimp-subscribe__heading">Start your day with a curation of <br />our top stories in your inbox</p>
                                 </div>
 
                                 <!-- Begin MailChimp Signup Form -->
                                 <div id="mc_embed_signup" class="article-chimp-subscribe__container" >
-                                    
+                                    <p class="article-chimp-subscribe__tagline">Sign up free today</p>
                                     <form   action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" 
                                             method="post" id="mc-embedded-subscribe-form" 
                                             name="mc-embedded-subscribe-form" 
@@ -630,7 +632,7 @@
                                         <div id="mc_embed_signup_scroll" style="display:flex">
                                     
                                             <div class="mc-field-group" style="width:100%">
-                                                <input type="email" value="" name="EMAIL" class="article-chimp-subscribe__email required " id="mce-EMAIL" placeholder="Enter your email" style="color:black; border:none">
+                                                <input type="email" value="" name="EMAIL" class="article-chimp-subscribe__email required " id="mce-EMAIL" placeholder="Email" style="color:black; border:none">
                                                 <input type="hidden" class="u-hide" value="1" name="group[3][1]" id="mce-group[3]-3-0">
                                             </div >
 
@@ -641,13 +643,18 @@
                                             
                                             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
                                             
-                                            <button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="article-chimp-subscribe__submit tag-register-button" aria-label="Newsletter subscribe"></button>
+                                            <button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="article-chimp-subscribe__submit tag-register-button"></button>
                                         </div>
                                     </form>
 
-                                    <p class="article-chimp-subscribe__tagline">Start your day with our best stories in your inbox</p>
+                                    
                                 </div>
-
+                                <a href="{{config['mailchimp']['ctalink']}}">
+                                    <div class="article-chimp-subscribe__bottom">
+                                        <img class="article-chimp-subscribe__book" src="{{networkData.templatePath}}/static/images/book.svg" alt="Read the daily briefing">
+                                        <p class="article-chimp-subscribe__readline">Read today’s Daily Briefing newsletter</p>
+                                    </div>
+                                </a>
                             </div>
 
                             {% if relatedArticles | length > 0 %}
