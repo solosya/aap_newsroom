@@ -628,7 +628,6 @@
                                             target="_blank" 
                                             novalidate 
                                             style="background-color:white">
-                                            
 
                                         <div id="mc_embed_signup_scroll" style="display:flex">
                                     
@@ -650,12 +649,12 @@
 
                                     
                                 </div>
-                                <a href="{{config['mailchimp']['ctalink']}}" target="_blank">
+                                {# <a href="{{config['mailchimp']['ctalink']}}" target="_blank">
                                     <div class="article-chimp-subscribe__bottom">
                                         <img class="article-chimp-subscribe__book" src="{{networkData.templatePath}}/static/images/book.svg" alt="Read the daily briefing">
                                         <p class="article-chimp-subscribe__readline">Read today’s Daily Briefing newsletter</p>
                                     </div>
-                                </a>
+                                </a> #}
                             </div>
 
                             {% if relatedArticles | length > 0 %}
@@ -697,7 +696,6 @@
     </article>
 
     {{ this.render('partials/_sponsor_logos2.twig') | raw }}
-    
     {% set theKeywords = '' %}
     {% if article.additionalInfo.adswitch == 'off' %}
         {% set theKeywords = 'no_ad' %}
