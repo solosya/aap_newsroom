@@ -4,6 +4,14 @@
             width:205px;
             margin-left:15px;
         }
+        > a{
+            >img{
+                height: 45px;
+                @media #{$tablet-up}{
+                    height: 50px;
+                }
+            }
+        }
     }
 
     .content-wrapper{
