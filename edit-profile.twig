@@ -11,27 +11,27 @@
 
 <!-- Begin User Profile Page -->
 
-{% set jobListingsArr = [] %}
-{% set propListingsArr = [] %}
+{# {% set jobListingsArr = [] %}
+{% set propListingsArr = [] %} #}
 {% set commenter = false %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
+{% set log = _AppHelper.log(pwstats) %}
 {% set plans = _Network.getNetworkData()['paywallPlans'] %}
+{# {% set plans = _Paywall.getActiveNetworkPaywallPlans() %} #}
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
 
 {% if user %} 
-    {% set jobListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[jobsBlogId], 'status': '-1'}) %}
-    {% set propListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[propBlogId], 'status': '-1'}) %}
+    {# {% set jobListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[jobsBlogId], 'status': '-1'}) %}
+    {% set propListingsArr = _User.getUserArticles(user.guid, 0, 20, {'blogs':[propBlogId], 'status': '-1'}) %} #}
     {% if user.additionalInfo is defined and user.additionalInfo.allow_comments is defined and user.additionalInfo.allow_comments != null %} 
         {% set setting = user.additionalInfo.allow_comments %}
         {% if setting == "true" %}
             {% set commenter = true %}
         {% endif %}
     {% endif %}
-
-
 {% endif %}
             
 
@@ -49,9 +49,9 @@
 
 
 
-{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{# {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %} #}
 <!-- 3 is job, 4 is property, 5 is event -->
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{# {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %} #}
 
 <main id="main" class="user_profile account-form u-tablet-margin-top-40 u-desktop-margin-top-40 u-mobile-margin-top-150 u-padding-bottom-40 u-padding-top-20" role="main">
     <div id="stripekey" class="u-hide" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div>
@@ -64,10 +64,14 @@
                     {{this.render('layouts/partials/messages.twig') | raw}}
 
                     <div class="profile-section" style="padding-bottom:18px;">
+                        <form id="portal-session" method="POST" action="/api/user/user-portal-session">
+                            <button type="submit">Manage billing</button>
+                        </form>
+
+
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
                         </div>
-
 
 
                         <div class="">
@@ -278,6 +282,12 @@
                                 {# </form> #}
 
                             </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <div class="profile-section">
+                        <div id="userPlanSection">
 
                             <hr class="divide30" style="border-top:1px solid #97999c;">
 
@@ -449,7 +459,7 @@
                         </div>
                     {% endif %}
 
-                {% endif %}
+                {# {% endif %} #}
 
 
 

@@ -1,6 +1,34 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 
+{% set guestUser = _User.isGuest() %}
+
+
+{% set url = _AppHelper.getParsedUrl %}
+
+{% set params = url['query'] %}
+
+{#remove all images if url param set#}
+
+{# {% set log = _AppHelper.log(params) %} #}
+{% set session_id = false %}
+{% for k, p in params %}
+    {% if k == 'session_id' %}
+    {% set log = _AppHelper.log(p) %}
+
+        {% set session_id = p %}
+    {% endif %}
+{% endfor %}
+
+{% set pwstats = _User.getPaywallStats(true) %}
+
+{% if session_id %}
+    {# {% set log = _AppHelper.log("calling sdk") %}
+
+    {% set session = _Paywall.getStripeSession(session_id) %}
+    {% set log = _AppHelper.log(session) %} #}
+{% endif %}
+
 
 
 <main id="main" class="" role="main">
@@ -42,10 +70,11 @@
 
 
         <div class="row supporter u-margin-top-80 d-none d-md-block">
-            <div class="col-12 u-text-center">
+            <div class="col-12 u-text-center donate-form">
                 <h1 class="supporter__title">Become a donater</h1>
+                <p id="donations" class="_btn">Click</p>
                 <div id="stripe-products" class=""></div>
-                <button id="checkout">Purchase</button>
+                {# <button class="donate-form__button u-margin-top-10" id="checkout" data-elem="checkout">Purchase</button> #}
             </div>
         </div>
 
@@ -680,50 +709,19 @@
 
         });
 
-
-
         var stripekey = $('#stripekey').html();
-
         var stripe = Stripe(stripekey);
-
-
-
-        Acme.server.fetch('/api/paywall/stripe-products', {}).done( function(r) {
-            console.log(r);
-            var html = "";
-            for (let i = 0; i < r.data.length; i++) {
-                console.log(r.data[i]);
-                html += '<button data-id="'+ r.data[i].id+'">BUTTON for '+r.data[i].id+' </button>';
-            }
-            var container = document.getElementById('stripe-products');
-            container.innerHTML = html;
-
-            container.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('clicked', e.target, e.target.dataset.id);
-                
-                Acme.server.create('/api/paywall/checkout-session', {
-                    productId: e.target.dataset.id
-                }).done( function(r) {
-                    console.log(r);
-
-
-                    stripe.redirectToCheckout({
-                        sessionId: r.sessionId
-                    }).then(function(r) {
-                            console.log(r);
-                    });
-
-
-                });
-
-            });
+        Acme.donations = new Acme.Donations(stripe, {
+            container: 'stripe-products',
+            guest: "{{guestUser}}"
         });
-
 
     });
 </script>
 
+            {# html += '<button class="btn u-margin-right-10" data-product_id="'+ productId + '" data-price_id="'+ r.data[j].id+'">$'+ (r.data[j].unit_amount / 100 )+' </button>'; #} #}
+
+            {# console.log("price", r.data[j]);
     {# stripe.redirectToCheckout({
                             sessionId: r.sessionId
                             })

@@ -283,6 +283,20 @@ Acme.UserProfileController.prototype.userEvents = function()
 Acme.UserProfileController.prototype.events = function () 
 {
     var self = this;
+
+    $('#portal-session').on('click', function(e) {
+        console.log('portal button click');
+        e.preventDefault();
+        Acme.server.create(_appJsConfig.baseHttpPath + '/api/paywall/user-portal-session').then(function(r){
+            console.log(r.session.url);
+            if (typeof r.session.url !== 'undefined') {
+                window.location.replace(r.session.url)
+            }
+        });
+
+    });
+
+
     $('#account-form__email').unbind().on('click', function(e) {
         var elem = $(e.target);
         
@@ -550,7 +564,6 @@ Acme.UserProfileController.prototype.events = function ()
         var newplandailycost = newcost / newdays;
         var plandailycost = oldcost/olddays;
 
-        var diffDays = moment(expDate).diff(moment(), 'days');
 
         var msg = "";
         var newCharge = 0;
@@ -566,6 +579,13 @@ Acme.UserProfileController.prototype.events = function ()
             newCharge = 0;
         }
 
+        var expiryObj = new Date(expDate);
+        var today = new Date();
+        var diffTime = Math.abs(today - expiryObj);
+        var diffDays1 = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        console.log("JS", diffDays1);
+        var diffDays = moment(expDate).diff(moment(), 'days');
+        console.log("Moment", diffDays);
         // more expensive time base plan changes require a charge that is the difference in cost between the two
         if (oldPlanType === 'time' && newPlanType === 'time' && diffDays > 0) {
             if ((newplandailycost-plandailycost) * diffDays >= 0) {

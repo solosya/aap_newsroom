@@ -1,0 +1,104 @@
+.donate-form {
+    @include flexbox();
+    @include flex-direction(column);
+    height: 400px;
+
+    &__layouts {
+        position:absolute;
+        top:5px;
+    }
+
+    &__button {
+        padding: 10px;
+        border-radius: 4px;
+        background: white;
+        color: #4096ee;
+        &:hover {
+            // border: 1px solid #ffffff;
+        }
+        &:focus, &:active {
+            outline:none;
+        }
+    }
+
+
+    &__product-container {
+        @include flexbox();
+        @include justify-content(center);
+    }
+
+    &__product {
+    }
+
+    &__product-title {
+        font-family: $primaryFont;
+        font-weight: 300;
+        @include font-size(35);
+        // font-size: 27px;
+        color:white;
+    }
+
+
+    &__text {
+        margin:20px;
+        color:white;
+    }
+
+    &__period-button {
+        // background:rgb(247, 165, 165);
+        outline:none;
+        color:rgba(255,255,255,1);
+        border-radius: 10%;
+        padding:10px;
+
+        &:focus, &:active {
+            outline:none;
+        }
+
+        &--active {
+            color:white;
+            border-bottom: 1px solid white;
+            border-radius: 0;
+        }
+    }
+
+
+    &__price-button {
+        // background:rgb(247, 165, 165);
+        outline:none;
+        color:white;
+        @include font-size(25);
+        border-radius: 10%;
+        padding:10px;
+        &:focus, &:active {
+            outline:none;
+        }
+
+        &--active {
+            color:white;
+            border-bottom: 1px solid white;
+            border-radius: 0;
+        }
+    }
+
+
+
+
+    &__input {
+        background: transparent;
+        color: white;
+        border: 1px solid #ffffff75;
+        padding: 5px;
+        text-align: center;
+        &:focus {
+            outline:none;
+            border: 1px solid #ffffff;
+        }
+
+        &:active {
+            outline:none;
+            border: 1px solid #ffffff;
+
+        }
+    }
+}

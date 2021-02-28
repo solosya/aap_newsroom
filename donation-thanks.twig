@@ -1,0 +1,39 @@
+{{ set(this, 'title', 'Reset Password') }}
+
+{{this.registerJs('AuthController.resetPassword()')}}
+<div class="login-page">
+    <div class="container">
+        <div class="tab-content password-forget">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" id="login-social">
+                    <h3 class="password-forget__heading">Set my password</h3>
+                    <div class="WriteAnArticleForm">
+                        <form id="resetPasswordForm" class="form-horizontal" action="" method="post">
+                            <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
+                            {% if errors | length > 0 %}
+                                <div class="password-forget__server-error" role="alert">
+                                    <button class="password-forget__server-error-close close" aria-label="Close" data-dismiss="alert" type="button"><span aria-hidden="true">×</span></button>
+                                    <ul class="password-forget__server-error-list">
+                                        {% for errorArr in errors %}
+                                            {% for error in errorArr %}
+                                                <li class="password-forget__server-error-text">{{error}}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <div class="controls-full">
+                                {{_AppForm.input({type:'password', name: 'password', value: '', id: 'password', class: 'form-control password-forget__input', placeholder: 'New Password'}) | raw }}
+                            </div>
+                            <p class="password-forget__reminder">Passwords must be at least six characters</p>
+                            <div class="controls-full">
+                                {{_AppForm.input({type:'password', name: 'verifypassword', value: '', class: 'form-control password-forget__input', placeholder: 'Verify Password'}) | raw }}
+                            </div>
+                            {{_AppForm.button({type:'submit', name: 'resetPassword', class: 'btn btn-success__red forget_btn float-left password-forget__button', label:'Submit'}) | raw }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

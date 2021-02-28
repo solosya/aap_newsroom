@@ -1,8 +1,8 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=2ac5277f"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/plugins/jquery3.3.1.js?ver=1"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js"></script>
 
 {% else %}
 
@@ -35,13 +35,13 @@
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/blog_new.js?ver=3"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/article.js?ver=1"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/search.js?ver=2"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/disqus.js"></script>
+    {# <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/disqus.js"></script> #}
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/video-player.js?ver=3"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/user-articles.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/follow.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/login.js"></script>
+    {# <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/follow.js"></script> #}
+    {# <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/login.js"></script> #}
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/image.js"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/social-share.js"></script>
+    {# <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/social-share.js"></script> #}
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/yii/yii.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/yii/yii.captcha.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/sdk/uploadfile.js"></script>
@@ -69,6 +69,7 @@
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/stripe.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/signup.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/subscribe.js"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/donations.js"></script>
 
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/user-profile.js"></script>
     <script type="text/javascript" src="{{networkData.templatePath}}/assets/scripts/scripts.js?ver=3"></script>

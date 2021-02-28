@@ -10470,6 +10470,231 @@ button.swiper-pagination-bullet {
   position: relative;
   bottom: 3px; }
 
+.donate-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.8); }
+
+.donate-modal__window {
+  margin: auto auto;
+  width: 468px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00b7ea+0,009ec3+100;Blue+3D+%2315 */
+  background: #00b7ea;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #00b7ea 0%, #009ec3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 );
+  /* IE6-9 */
+  border: 1px solid #00000017;
+  border-radius: 5px;
+  padding: 5px 5px 30px 5px;
+  box-shadow: 5px -4px 6px #25252529;
+  min-height: 260px; }
+  @media screen and (max-width: 767px) {
+    .donate-modal__window {
+      width: auto; } }
+
+.donate-modal__container {
+  position: relative;
+  margin: auto; }
+
+.donate-modal__header {
+  overflow: auto;
+  padding-top: 5px; }
+  .donate-modal__header .popupVideo__headerlogo {
+    display: none; }
+
+.donate-modal__title {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  float: left;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  width: 90%;
+  overflow: hidden; }
+
+.donate-modal__close {
+  display: block;
+  float: right;
+  height: 20px;
+  width: 20px;
+  background: url("../icons/cross-black.svg");
+  background-repeat: no-repeat;
+  position: relative;
+  bottom: 3px; }
+
+.donate-modal__content-window {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  position: relative;
+  height: 100%; }
+
+.donate-login-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  width: 100%; }
+  .donate-login-form__input {
+    display: block;
+    border: none;
+    height: 44px;
+    padding: 7px;
+    width: 100%;
+    margin-bottom: 12px;
+    padding-left: 15px;
+    border-radius: 6px;
+    background: transparent;
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.5rem; }
+    .donate-login-form__input--password {
+      font-size: 3.125rem;
+      line-height: 3.75rem; }
+    .donate-login-form__input::placeholder {
+      font-size: 0.9375rem;
+      line-height: 1.125rem; }
+    .donate-login-form__input::-webkit-input-placeholder {
+      font-size: 0.9375rem;
+      line-height: 1.125rem; }
+    .donate-login-form__input::-moz-placeholder {
+      /* Firefox 19+ */
+      font-size: 0.9375rem;
+      line-height: 1.125rem; }
+    .donate-login-form__input:-ms-input-placeholder {
+      /* IE 10+ */
+      font-size: 0.9375rem;
+      line-height: 1.125rem; }
+    .donate-login-form__input:-moz-placeholder {
+      /* Firefox 18- */
+      font-size: 0.9375rem;
+      line-height: 1.125rem; }
+    .donate-login-form__input:focus, .donate-login-form__input:active {
+      outline: none;
+      background: transparent; }
+    .donate-login-form__input:disabled {
+      padding: 0px !important;
+      border: none; }
+  .donate-login-form__email-share {
+    color: white;
+    font-size: 1.25rem;
+    line-height: 1.5rem; }
+  .donate-login-form__email-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+  .donate-login-form__spinner {
+    right: 40px;
+    top: 43%;
+    position: absolute; }
+  .donate-login-form .remember {
+    overflow: auto;
+    padding-right: 2px; }
+    .donate-login-form .remember > p.layout {
+      float: right;
+      font-size: 0.75rem;
+      line-height: 0.9rem;
+      color: #97999c;
+      font-style: italic; }
+      @media screen and (max-width: 767px) {
+        .donate-login-form .remember > p.layout {
+          float: none; } }
+      .donate-login-form .remember > p.layout:hover {
+        cursor: pointer; }
+  .donate-login-form .reset {
+    overflow: auto;
+    margin-top: 20px; }
+    .donate-login-form .reset > p.layout {
+      float: right;
+      font-size: 1rem;
+      line-height: 1.2rem;
+      color: black;
+      font-style: italic;
+      font-weight: 600;
+      text-decoration: underline; }
+      @media screen and (max-width: 767px) {
+        .donate-login-form .reset > p.layout {
+          float: none; } }
+      .donate-login-form .reset > p.layout:hover {
+        cursor: pointer; }
+  .donate-login-form__button-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end; }
+  .donate-login-form__button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px;
+    color: white; }
+    .donate-login-form__button:after {
+      content: " >";
+      display: block;
+      color: white; }
+    .donate-login-form__button:focus {
+      outline: none;
+      border: 1px solid #dfdfdf;
+      color: #dfdfdf; }
+
+.donate-login-form-faq {
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+  color: #97999c;
+  font-style: italic; }
+
+.donate-login-form-faq__link {
+  color: #97999c;
+  text-decoration: underline; }
+
+.donate-login-form__error_text {
+  color: #e22f22;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  margin: 26px 0; }
+
 .spinner-modal {
   position: fixed;
   top: 0;
@@ -14847,6 +15072,86 @@ input[type=radio].inline {
       .awards__winners-names {
         font-size: 0.875rem;
         line-height: 1.05rem; } }
+
+.donate-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 400px; }
+  .donate-form__layouts {
+    position: absolute;
+    top: 5px; }
+  .donate-form__button {
+    padding: 10px;
+    border-radius: 4px;
+    background: white;
+    color: #4096ee; }
+    .donate-form__button:focus, .donate-form__button:active {
+      outline: none; }
+  .donate-form__product-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center; }
+  .donate-form__product-title {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 2.1875rem;
+    line-height: 2.625rem;
+    color: white; }
+  .donate-form__text {
+    margin: 20px;
+    color: white; }
+  .donate-form__period-button {
+    outline: none;
+    color: white;
+    border-radius: 10%;
+    padding: 10px; }
+    .donate-form__period-button:focus, .donate-form__period-button:active {
+      outline: none; }
+    .donate-form__period-button--active {
+      color: white;
+      border-bottom: 1px solid white;
+      border-radius: 0; }
+  .donate-form__price-button {
+    outline: none;
+    color: white;
+    font-size: 1.5625rem;
+    line-height: 1.875rem;
+    border-radius: 10%;
+    padding: 10px; }
+    .donate-form__price-button:focus, .donate-form__price-button:active {
+      outline: none; }
+    .donate-form__price-button--active {
+      color: white;
+      border-bottom: 1px solid white;
+      border-radius: 0; }
+  .donate-form__input {
+    background: transparent;
+    color: white;
+    border: 1px solid #ffffff75;
+    padding: 5px;
+    text-align: center; }
+    .donate-form__input:focus {
+      outline: none;
+      border: 1px solid #ffffff; }
+    .donate-form__input:active {
+      outline: none;
+      border: 1px solid #ffffff; }
 
 .subscribe-form-head__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -29548,7 +29853,7 @@ body.channel.supporters p {
   overflow-y: hidden; }
 
 .u-display-none {
-  display: none; }
+  display: none !important; }
 
 .relative {
   position: relative; }

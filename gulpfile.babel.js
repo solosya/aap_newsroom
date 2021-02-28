@@ -8,6 +8,7 @@
 
 var gulp        = require('gulp');
 var concat      = require('gulp-concat');
+var webpack     = require('webpack-stream');
 var uglify      = require('gulp-uglify');
 var gp_rename   = require("gulp-rename");
 var gutil       = require('gulp-util');
@@ -106,18 +107,18 @@ gulp.task('sass', function() {
 
 gulp.task('scripts-concat', function(){
     return gulp.src([
-        './bower_components/jquery/dist/jquery.js',
-        './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+        // './bower_components/jquery/dist/jquery.js',
+        // './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
         // './bower_components/swiper/dist/js/swiper.jquery.js',
         
-        './assets/scripts/plugins/slick.js',
-        './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
-        './assets/scripts/plugins/bootstrap-modalmanager.js',
-        './assets/scripts/plugins/bootstrap-modal.js',
+        // './assets/scripts/plugins/slick.js',
+        // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
+        // './assets/scripts/plugins/bootstrap-modalmanager.js',
+        // './assets/scripts/plugins/bootstrap-modal.js',
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
-        './assets/scripts/plugins/bootbox.min.js',
-        './assets/scripts/plugins/jquery.validate/jquery.validate.min.js',
+        // './assets/scripts/plugins/bootbox.min.js',
+        // './assets/scripts/plugins/jquery.validate/jquery.validate.min.js',
         './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
         './assets/scripts/plugins/handlebars-v4.0.5.js',
         './assets/scripts/plugins/jquery.lazyload.min.js',
@@ -133,15 +134,15 @@ gulp.task('scripts-concat', function(){
         './assets/scripts/sdk/blog_new.js',
         './assets/scripts/sdk/article.js',
         './assets/scripts/sdk/search.js',
-        './assets/scripts/sdk/disqus.js',
+        // './assets/scripts/sdk/disqus.js',
         './assets/scripts/sdk/video-player.js',
         './assets/scripts/sdk/user-articles.js',
-        './assets/scripts/sdk/follow.js',
-        './assets/scripts/sdk/login.js',
+        // './assets/scripts/sdk/follow.js',
+        // './assets/scripts/sdk/login.js',
         './assets/scripts/sdk/image.js',
-        './assets/scripts/sdk/social-share.js',
-        './assets/scripts/sdk/yii/yii.js',
-        './assets/scripts/sdk/yii/yii.captcha.js',
+        // './assets/scripts/sdk/social-share.js',
+        // './assets/scripts/sdk/yii/yii.js',
+        // './assets/scripts/sdk/yii/yii.captcha.js',
         './assets/scripts/sdk/uploadfile.js',
         './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
 
@@ -154,6 +155,7 @@ gulp.task('scripts-concat', function(){
         ])
         .pipe(concat('concat.js'))
         .pipe(gulp.dest('./static/js'))
+        // .pipe(webpack())
         .pipe(gp_rename('scripts.js'))
         .pipe(terser())
         // .pipe(uglify().on('error', function(err) {
