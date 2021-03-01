@@ -80,7 +80,7 @@ with width taken up with borders on the side #}
                         {% set mediaUrl = "//www.youtube.com/embed/" ~ image.videoId ~ '?enablejsapi=1&version=3&playerapiid=ytplayer' %}
                     
                     {% elseif image.source == 'vimeo' %}
-                        {% set mediaUrl = "//player.vimeo.com/video/" ~ image.videoId ~ "?autoplay=1"  %}
+                        {% set mediaUrl = "//player.vimeo.com/video/" ~ image.videoId ~ "?autoplay=1&muted=1"  %}
                         {{this.registerJsFile("https://player.vimeo.com/api/player.js")}}
                     
                     {% elseif image.source == 'brightcove' %}
@@ -97,6 +97,7 @@ with width taken up with borders on the side #}
 
                     <iframe src="{{mediaUrl}}" 
                         class="external-article-video"
+                        allow=autoplay
                         data-source={{image.source}}
                         allowfullscreen
                         webkitallowfullscreen
