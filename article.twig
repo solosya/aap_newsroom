@@ -80,7 +80,8 @@
     {% endif %}
 {% endif %}
 
-
+{% set commentSettingString = commentSetting == false ? 'false' : commentSetting %}
+{% set guestString = guestUser == false ? 'false' : guestUser %}
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
@@ -218,13 +219,13 @@
 
 
 
-
-
 <main id="main" 
     class="site-main u-margin-top-40"
     role="main" 
     data-ver="3" 
     data-test="{{paywallTestParam}}"
+    data-comment-setting="{{commentSettingString}}"
+    data-guest="{{guestString}}"
     {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
