@@ -191,9 +191,6 @@
                 {% if data['special'] is defined and data['special'] == true %}
                     {% set period = plan.plan_name %}
                 {% endif %}
-                {% if data['name'] is defined and data['name'] == 'title' %}
-                    {% set period = plan.plan_name %}
-                {% endif %}
 
 
 
@@ -213,8 +210,8 @@
                         </div>
                         {% endif %}
                         {% set val = plan.plan_value / 100 %}
-                        {# <h3 class="paywall-plan__name">{{plan.plan_name}}</h3> #}
-                        <p class="paywall-plan-card__period">{{period}}</p>
+                        <h3 class="paywall-plan-card__period">{{plan.plan_name}}</h3>
+                        {# <p class="paywall-plan-card__period">{{period}}</p> #}
                         
                         {# {% if plan.type == 'time' and plan.user_count > 3 %}
                             <p class="paywall-plan__usercount">{{plan.user_count}} Users</p>
