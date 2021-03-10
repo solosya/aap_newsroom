@@ -191,6 +191,9 @@
                 {% if data['special'] is defined and data['special'] == true %}
                     {% set period = plan.plan_name %}
                 {% endif %}
+                {% if data['name'] is defined and data['name'] == 'title' %}
+                    {% set period = plan.plan_name %}
+                {% endif %}
 
 
 
