@@ -38,7 +38,6 @@ console.log('loading donations code');
 Acme.Donations = function(Stripe, params) {
     this.pricing = {};
     this.container = document.getElementById(params.container);
-    this.guest = params.guest || true;
     this.active = {};
     this.selected = {};
     this.products = [];
@@ -46,8 +45,11 @@ Acme.Donations = function(Stripe, params) {
     this.Stripe = Stripe;
     this.priceRequests = [];
     this.pages = [];
+    this.guest = params.guest || true;
+    this.validEmail = null;
     this.user = {};
     this.emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    self.next = "email-check";
 
     if (this.guest !== "1") {
         this.fetchUser().done(function(r) {
@@ -55,13 +57,13 @@ Acme.Donations = function(Stripe, params) {
                 this.user = r.self;
         });
     }
-    this.modal = new Acme.DonateModal('modal', 'donate-modal', {
-        "donate"    : 'donations',
-        "spinner"   : 'spinnerTmpl',
-        "register"  : 'registerTmpl',
-        "signin"    : 'donateSignupForm',
-        "register"  : 'registerTmpl',
-        "forgot"    : 'forgotFormTmpl',
+    this.modal = new Acme.DonateModal('donate_modal', 'donate-modal', {
+        "donate"        : 'donations',
+        "spinner"       : 'spinnerTmpl',
+        "register"      : 'registerTmpl',
+        "signin"        : 'donateSignupForm',
+        "register"      : 'registerTmpl',
+        "reset-success" : 'donateResetPassword',
     }, this.handler );
 
     this.events();
@@ -69,8 +71,7 @@ Acme.Donations = function(Stripe, params) {
 
 Acme.Donations.prototype.load = function(force) {
     var self = this;
-    console.log(Object.keys(self.pricing).length);
-    console.log(self.pricing.constructor !== Object);
+
     if (Object.keys(self.pricing).length > 0) {
         self.renderPrices();
         return;
@@ -119,15 +120,12 @@ Acme.Donations.prototype.fetchPrices = function() {
     var self = this;
 
     for (var i=0; i<this.products.length; i++) {
-        console.log(this.products);
         if (typeof this.products[i].metadata.active !== 'undefined' && this.products[i].metadata.active !== "true") {
             continue;
         }
         this.products[i].prices = [];
-        console.log('fetching prices');
         this.priceRequests.push( this.fetchPrice(this.products[i]) );
     }
-    console.log(this.priceRequests);
     return $.when.apply(undefined, this.priceRequests);
 }
 
@@ -218,23 +216,30 @@ Acme.Donations.prototype.renderPrices = function(r) {
 
 
 Acme.Donations.prototype.renderLayout = function(layout, data) {
-    this.pages.push(layout);
-    if (layout === "signin") {
-        data = {"class-prefix": "donate-"}
+    console.log('rendering layout');
+    if (typeof data === "undefined" || !data || Object.keys(data).length < 1) {
+        data= {};
     }
-    console.log(layout);
+
+    this.pages.push(layout);
+    // if (layout === "signin") {
+    data["class-prefix"] = "donate-";
+    data["logo"] = _appJsConfig.templatePath + "/static/images/newsroom-logo.svg";
+    data['user'] = this.user;
+    data['guest'] = this.guest;
+    data['validEmail'] = this.validEmail;
+
+    // }
     this.modal.renderLayout(layout, data);
     this.layoutEvents();
-    console.log('run evetns');
-
 }
 
 
 Acme.Donations.prototype.renderBack = function() {
-    console.log('rendering back');
     this.pages.pop();
     var data = {};
     var layout = this.pages[this.pages.length - 1];
+    console.log("rendering layout");
     console.log(layout);
 
     if (layout === "donate") {
@@ -248,74 +253,18 @@ Acme.Donations.prototype.renderBack = function() {
 
 Acme.Donations.prototype.layoutEvents = function() {
     var self = this;
+    console.log(self);
+    // self.next = "email-check";
+
+    var componentPrefix = "donate-login-form";
     var amountInput = document.querySelector('.j-donate-input');
     var usernameInput = document.querySelector('.j-register-username');
     var passwordInput = document.querySelector('.j-signin-password');
+    var hide = 'u-display-none';
+    var spinner = document.getElementById("email_spinner");
+    var retryButton = document.querySelector('.j-retry');
+    var proceed = document.querySelector('.j-continue');
 
-    if (usernameInput) {
-        var spinner = document.getElementById("email_spinner");
-        var password = document.getElementById('loginPass');
-        var shareText = document.querySelector('.j-email-text');
-        var proceed = document.getElementById('modal-signinBtn');
-        var hide = 'u-display-none';
-
-        usernameInput.focus();
-        usernameInput.oninput = function(e) {
-            var email = e.target.value
-            self.user['username'] = email;
-            proceed.classList.add(hide);
-
-            if (this.emailTimeout) {
-                clearTimeout(this.emailTimeout);
-            }
-
-            if (self.emailRegex.test(email)) {
-                this.emailTimeout = setTimeout( function() {
-                    spinner.classList.remove(hide);
-                    self.checkEmail(e.target.value).done(function(r) {
-                        console.log(r);
-
-                        // USER IS A GUEST
-                        if (r.exists === false) {
-                            shareText.innerText = "It looks like you don't have an account with us. Would you like to contine with this email address?";
-                            spinner.classList.add(hide);
-                            proceed.classList.remove(hide);
-
-
-                        // USER EXISTS
-                        } else if (r.exists === true) {
-                            spinner.classList.add(hide);
-                            shareText.innerText = "It looks like you have an account with us! Please enter your password to continue.";
-                            password.classList.remove(hide);
-                            password.focus();
-                            proceed.innerText = "Sign in";
-                            proceed.classList.remove(hide);
-
-                        }
-
-                    });
-                }, 1000);
-
-            } else {
-                spinner.classList.add('u-display-none');
-                // shareText.classList.remove('u-display-none');
-                password.classList.add('u-display-none');
-                proceed.classList.add('u-display-none');
-
-            }
-        
-        };
-
-        usernameInput.onChange = function() {
-            // console.log('onChange');
-            // console.log(e.target.value);
-        }
-    }
-    if (passwordInput) {
-        passwordInput.oninput = function(e) {
-            self.user.password = e.target.value;
-        };
-    }
 
     if (amountInput) {
         amountInput.oninput = function(e) {
@@ -333,14 +282,93 @@ Acme.Donations.prototype.layoutEvents = function() {
 
 
 
+    if (passwordInput) {
+        passwordInput.oninput = function(e) {
+            self.user.password = e.target.value;
+        };
+    }
+
+
+
+
+    if (usernameInput) {
+        usernameInput.focus();
+        usernameInput.oninput = function(e) {
+            var email = e.target.value
+            self.user['username'] = email;
+
+            if ( email != "" ) {
+                e.target.classList.add("shrink");
+            } else {
+                e.target.classList.remove("shrink");
+            }
+            if (self.emailRegex.test(email)) {
+                proceed.classList.add(componentPrefix + '__button--active')
+            } else {
+                proceed.classList.remove(componentPrefix + '__button--active');
+            }
+        };
+    }
+
+
+
+
+    if (proceed) {
+        proceed.addEventListener('click', function(e) {
+            console.log(self.next);
+            e.target.innerText = "";
+            spinner.classList.remove(hide);
+
+            
+            if (typeof self.next === "undefined" || self.next === null) {
+    
+                self.checkEmail(self.user.username).done(function(r) {
+                    console.log(r);
+                    self.validEmail = null;
+    
+                    // USER IS A GUEST
+                    if (r.exists === false) {
+                        self.validEmail = false;
+                        self.next = "signin";
+        
+                    // USER EXISTS
+                    } else if (r.exists === true) {
+                        self.validEmail = true;
+                        self.next = "signin";
+                    }
+                    self.renderLayout('signin');
+                });
+            }
+    
+    
+            if (self.next === 'signin') {
+                self.signin(e.target);
+            }
+
+        });
+
+
+        if (retryButton) {
+            retryButton.addEventListener('click', function(e) {
+                e.target.classList.add(hide);
+                self.user.username = "";
+                self.next = null;
+                self.validEmail = null;
+                self.renderLayout('signin');
+            });
+        }
+
+
+
+    }
+
+
 }
 Acme.Donations.prototype.handler = function(e) {
-    console.log(e);
-    console.log('handling from donations');
+    // console.log(e);
     var self = this;
     e.preventDefault();
-    console.log(self);
-    if (typeof e.target.dataset.elem ==- "undefined") {
+    if (typeof e.target.dataset.elem === "undefined") {
         return;
     }
 
@@ -348,18 +376,40 @@ Acme.Donations.prototype.handler = function(e) {
     var layout = e.target.dataset.layout;
     var behaviour = e.target.dataset.behaviour;
 
-    if (behaviour === "back") {
-        self.renderBack();
+    if (behaviour === "forgot") {
+        var text = document.querySelector('.j-email-text');
+        text.classList.remove('highlight');
+
+        if (!self.user.username) {
+            text.classList.add('highlight');
+            return false;
+        }
+    
+        self.forgot().done(function(r) {
+            console.log(r);
+            if (r.success === 1) {
+                text.innerHTML = "<strong>A password reset link has been sent to your email.</strong> <br />After reset, enter your new password to continue.";
+            } else {
+                return {
+                    "success": r.success,
+                    "error": r.error.email
+                };
+            }
+    
+        }).fail(function(r) { console.log(r);});
         return;
     }
 
     if (layout) {
+        console.log(layout);
         self.renderLayout(layout);
         return;
     }
 
+
     if (elem === "signin") {
         self.signin(e.target);
+        return;
     }
 
     if (elem === "period") {
@@ -381,30 +431,26 @@ Acme.Donations.prototype.handler = function(e) {
 
 
     if (elem === "checkout") {
-        console.log('calling checkout from handler');
+        if ( self.guest === "1" ) {
+            self.renderLayout("signin");
+            return;
+        }
+    
         this.checkout();
+        return;
     }
-
+    console.log("reached the bottom of handler");
 
 
 };
 
 Acme.Donations.prototype.checkout = function() {
     var self = this;
-    console.log('going to purchase');
-    console.log(self);
+
     if (typeof self.selected.product_id === "undefined") {
         return;
     }
 
-    if (self.guest === "1" && !self.user.username) {
-        console.log(self);
-        console.log('redirecing to email page');
-        self.renderLayout("signin");
-        return;
-    }
-
-    console.log('purchasing for realze');
 
     var data = {
         product_id : self.selected.product_id
@@ -431,6 +477,8 @@ Acme.Donations.prototype.checkout = function() {
         data['email'] = self.user.email;
     }
 
+
+    console.log('purchasing for realze');
     console.log(data);
     // return;
     Acme.server.create('/api/paywall/checkout-session', data).done( function(r) {
@@ -441,22 +489,24 @@ Acme.Donations.prototype.checkout = function() {
                 console.log(r);
         });
     });
-    return;
 }
 
 Acme.Donations.prototype.signin = function(elem) {
+    console.log('IN THE SIGNIN');
     var self = this;
     elem.innerText = "";
 
-
     var password = document.getElementById('loginPass');
-    password.classList.add("u-display-none");
-
-    var shareText = document.querySelector('.j-email-text');
-    shareText.innerText = "";
-
-    elem.classList.add("spinner");
-
+    var errorText = document.querySelector('.j-error-text');
+    var spinner = document.getElementById('email_spinner');
+    var textElem = document.querySelector('.j-email-text');
+    
+    var text = "<strong>It looks like you have an account with us!</strong> <br />Please enter your password to continue.";
+    textElem.innerText = "";
+    
+    spinner.classList.remove("u-display-none");
+    errorText.classList.add("u-display-none");
+    errorText.innerHTML = "";
 
     var loginData = {};
     var action = 'register';
@@ -464,7 +514,6 @@ Acme.Donations.prototype.signin = function(elem) {
     if (self.user.username && self.user.password) {
         action = 'signin';
     }
-    console.log(action);
 
     if (action === 'signin') {
         loginData['username'] = self.user.username;
@@ -482,19 +531,24 @@ Acme.Donations.prototype.signin = function(elem) {
                     console.log(r);
                     self.checkout();
                 });
-    
-    
-    
+        
             } else {
+
                 elem.innerText = "Sign in";
-                elem.classList.remove("spinner");
-                // self.errorMsg();
+                password.classList.remove("u-display-none");
+                textElem.innerHTML = text;
+                spinner.classList.add("u-display-none");
+                errorText.innerHTML = r.error.password.join("<br />");
+                errorText.classList.remove("u-display-none");
             }
+        
         }).fail(function(r) { 
-            // $elem.text("Sign in")
-            //     .removeClass('spinner');
-            // self.errorMsg();
-            console.log(r);
+            elem.innerText = "Sign in";
+            password.classList.remove("u-display-none");
+            textElem.innerHTML = text;
+            spinner.classList.add("u-display-none");
+            errorText.innerHTML = r.error.password.join("<br />");
+            errorText.classList.remove("u-display-none");
         });
     }
 
@@ -504,7 +558,12 @@ Acme.Donations.prototype.signin = function(elem) {
     }
 
 }
-// data['username'] = Math.floor(100000000 + Math.random() * 9000000000000000);
+
+Acme.Donations.prototype.forgot = function() {
+    var self = this;
+    return Acme.server.create('/api/auth/forgot-password', {"email": self.user.username});
+
+}
 
 Acme.Donations.prototype.register = function() {
     console.log('registering user');
@@ -563,11 +622,14 @@ Acme.Donations.prototype.fetchUser = function() {
 }
 Acme.Donations.prototype.events = function() {
     var self = this;
+    self.pages.push("spinner");
+    self.modal.render("spinner");
 
-    $('#donations').on('click', function(e) {
+    self.load();
+
+    $('#donations, .j-donation').on('click', function(e) {
         self.pages.push("spinner");
         self.modal.render("spinner");
-        console.log('loaded spinner');
         self.load();
     });
    

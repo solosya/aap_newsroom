@@ -9,30 +9,14 @@
 
 .donate-modal__window {
     margin: auto auto;
-    width:468px;
-    // /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
-    // background: #7abcff; /* Old browsers */
-    // background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6-15 */
-    // background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10-25,Safari5.1-6 */
-    // background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+    width:445px;
+    // background: black; /* Old browsers */
 
-
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00b7ea+0,009ec3+100;Blue+3D+%2315 */
-background: #00b7ea; /* Old browsers */
-background: -moz-linear-gradient(top,  #00b7ea 0%, #009ec3 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #00b7ea 0%,#009ec3 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #00b7ea 0%,#009ec3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
-
-
-
-
-    border: 1px solid #00000017;
-    border-radius: 5px;
-    padding: 5px 5px 30px 5px;
-    box-shadow: 5px -4px 6px #25252529;
-    min-height:260px;
+    // border: 1px solid #00000017;
+    // border-radius: 5px;
+    // padding: 5px 5px 30px 5px;
+    // box-shadow: 5px -4px 6px #25252529;
+    min-height:235px;
 
     
     @media screen and (max-width: $sm-break-down) {
@@ -47,9 +31,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', end
 
 .donate-modal__header {
     overflow:auto;
-    // margin-bottom: 20px;
+    background:black;
     padding-top: 5px;
-    
+    height: 47px;
     .popupVideo__headerlogo {
         display: none;
     }
@@ -66,23 +50,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', end
     overflow: hidden;
 }
 
-.donate-modal__close {
-    display:block;
-    float:right;
-    height:20px;
-    width:20px;
-    background:url("../icons/cross-black.svg");
-    background-repeat:no-repeat;
-    position:relative;
-    bottom:3px;
-
-}
 
 .donate-modal__content-window {
     @include flexbox();
+    // @include flex-direction(column);
     @include justify-content(center);
     position:relative;
     height:100%;
-
+    background:white;
+    padding-bottom: 30px;
 }
 
