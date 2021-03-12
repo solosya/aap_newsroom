@@ -14,7 +14,6 @@
 {% set session_id = false %}
 {% for k, p in params %}
     {% if k == 'session_id' %}
-    {# {% set log = _AppHelper.log(p) %} #}
         {% set session_id = p %}
     {% endif %}
 {% endfor %}

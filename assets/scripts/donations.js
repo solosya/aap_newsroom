@@ -476,11 +476,12 @@ Acme.Donations.prototype.checkout = function() {
     if (typeof self.user.email !== 'undefined') {
         data['email'] = self.user.email;
     }
+    
+    data['success'] = "http://www.publish.io/donations";
+    data['cancel'] = "http://www.publish.io";
 
 
-    console.log('purchasing for realze');
-    console.log(data);
-    // return;
+
     Acme.server.create('/api/paywall/checkout-session', data).done( function(r) {
         console.log(r);
         self.Stripe.redirectToCheckout({
