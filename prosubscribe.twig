@@ -47,13 +47,11 @@
 {% endfor %}
 
 
-
 {% set orderedTop = [] %}
 {% set orderedBottom = [] %}
 
 {% for plan in topPlans %}
     {% set added = false %}
-
     {% if orderedTop | length == 0 %}
         {% set added = true %}
         {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
@@ -63,7 +61,10 @@
         {% for ordered in orderedTop if not break %}
             {% if plan.order < ordered.order %}
                 {% set added = true %}
-                {% set orderedTop = { ("0") : plan} | merge(orderedTop) %}
+                {% set before = orderedTop | slice(0, loop.index0) %}
+                {% set after = orderedTop  | slice(loop.index0, orderedTop | length) %}
+                {% set orderedTop = before | merge({ ("0") : plan}) %}
+                {% set orderedTop = orderedTop | merge( after) %}
                 {% set break = true %}
             {% endif %} 
         {% endfor %}
