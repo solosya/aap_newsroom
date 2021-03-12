@@ -89,7 +89,10 @@
         {% for ordered in orderedBottom if not break %}
             {% if plan.order < ordered.order %}
                 {% set added = true %}
-                {% set orderedBottom = { ("0") : plan} | merge(orderedBottom) %}
+                {% set before = orderedBottom | slice(0, loop.index0) %}
+                {% set after = orderedBottom  | slice(loop.index0, orderedBottom | length) %}
+                {% set orderedBottom = before | merge({ ("0") : plan}) %}
+                {% set orderedBottom = orderedBottom | merge( after) %}
                 {% set break = true %}
             {% endif %} 
         {% endfor %}
