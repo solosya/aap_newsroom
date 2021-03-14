@@ -72,29 +72,6 @@ Acme.Signin.prototype.handle = function(e) {
         }
 
 
-        if ($elem.hasClass('register')) {
-            e.preventDefault();
-            var formData = {};
-            $.each($('#registerForm').serializeArray(), function () {
-                formData[this.name] = this.value;
-            });
-
-            if (formData['email'] !== '' && formData['name'] !== ''){
-                $.get( 'https://submit.pagemasters.com.au/ubt/submit.php?email='+encodeURI(formData['email'])+'&name='+encodeURI(formData['name']) );
-                $elem.addClass('spinner');
-                function close() {
-                    self.closeWindow();
-                    self.render('userPlan', "Thank you for registering.");
-
-                };
-                setTimeout(close, 2000);
-
-            } else {
-                alert ("Please fill out all fields.");
-            }
-        }
-
-
         if ($elem.hasClass('forgot')) {
             e.preventDefault();
             var formData = {};

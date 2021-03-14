@@ -1,7 +1,202 @@
 /**
  * Handlebar Article templates for listing
  */
+
+Handlebars.registerHelper('labelFix', function(text) {
+    if (!text) return "";
+    var label = text.split(/[ _]/).map(function(l) {
+        return l[0].toUpperCase() + l.substring(1);
+    }).join(" ");
+    return label;
+});
+
+
+
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
+
+
+
 Acme.templates = {};
+
+Acme.templates.modal = 
+// style="scrolling == unusable position:fixed element might be fixing login for ios safari
+// also margin-top:10px
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
+                <a class="{{name}}__close-icon" href="#" data-behaviour="close"></a> \
+            </div> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+        </div> \
+    </div> \
+</div>';
+
+
+Acme.templates.donate_modal = 
+// style="scrolling == unusable position:fixed element might be fixing login for ios safari
+// also margin-top:10px
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
+        </div> \
+    </div> \
+</div>';
+
+
+
+Acme.templates.donations = 
+'<div id="{{id}}" class="donate-form" data-selected="{{selected.price_id}}"> \
+    \
+    <div class="donate-form__header"> \
+        <div class="donate-form__periods j-donation-periods" data-active="{{active}}"> \
+            {{#each prices}} \
+                {{#each this}} \
+                    <button data-elem="period" data-period="{{@key}}" data-product="{{../../id}}" class="donate-form__period-button {{# ifCond @key "==" ../../active}} donate-form__period-button--active {{/ifCond}} u-margin-right-10">{{labelFix @key}}</button>\
+                {{/each}} \
+            {{/each}} \
+        </div> \
+        \
+        <div class="donate-form__close"> \
+            <a class="donate-form__close-icon o-close" href="#" data-behaviour="close"></a> \
+        </div> \
+    </div> \
+    \
+    \
+    <img src="{{logo}}" class="donate-form__logo"/> \
+    \
+    <p class="donate-form__text">How much would you like to contribute each {{active}}?</p> \
+    \
+    {{#each prices}} \
+        {{#each this}} \
+            {{# ifCond @key "==" ../../active}} \
+                <div data-key="{{@key}}" data-active="{{../../active}}" class="donate-form__prices j-donation-price"> \
+                    {{#each this}} \
+                        <button data-selected="{{../../../selected.price_id}}" class="donate-form__price-button  {{# ifCond ../../../selected.price_id "==" this.id}} donate-form__price-button--active {{/ifCond}}    u-margin-right-10" data-elem="price" data-product="{{this.product}}" data-price_id="{{this.id}}">${{this.price}}</button>\
+                    {{/each}} \
+                </div> \
+            {{/ifCond}} \
+        {{/each}} \
+    {{/each}} \
+    \
+    <div class="donations__amount"> \
+        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" placeholder="Specify an amount" /> \
+    </div> \
+    <button class="donate-form__button" data-elem="checkout">Donate</button> \
+</div>';
+
+
+
+{/* <div id="email_spinner" class="{{class-prefix}}login-form__spinner u-display-none"><div class="spinner"></div></div> \ */}
+
+Acme.templates.donateSignupForm = 
+    // <script> tag possible ios safari login fix
+'<div id="{{id}}" class="donate-form" data-selected="{{selected.price_id}}"> \
+    <div class="donate-form__header"> \
+        <div class="donate-form__close"> \
+            <a class="donate-form__close-icon o-close" href="#" data-behaviour="close"></a> \
+        </div> \
+    </div> \
+    \
+    <img src="{{logo}}" class="donate-form__logo"/> \
+    \
+    \
+    {{# ifCond validEmail "==" null}} \
+        <p class="{{class-prefix}}login-form__email-share j-email-text">Please enter your email address</p> \
+    {{/ifCond}} \
+    {{# ifCond validEmail "==" false}} \
+        <p class="{{class-prefix}}login-form__email-share j-email-text">It looks like you don\'t have an account with us.<br />Would you like to contine with this email address?</p> \
+    {{/ifCond}} \
+    \
+    {{# ifCond validEmail "==" true}} \
+        <p class="{{class-prefix}}login-form__email-share j-email-text"><strong>It looks like you have an account with us!</strong> <br />Please enter your password to continue.</p> \
+    {{/ifCond}} \
+    \
+    \
+    {{# ifCond validEmail "==" false}} \
+        <p class="{{class-prefix}}login-form__input-result {{class-prefix}}login-form__input-result--active j-email-result">{{user.username}}</p> \
+    {{/ifCond}} \
+    \
+    <form name="loginForm" id="loginForm" class="{{class-prefix}}login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        \
+        <div class="{{class-prefix}}login-form__email-container j-email-container u-margin-top-20"> \
+            {{#if user.username }} \
+                {{#if validEmail }} \
+                    <input id="loginPass" class="{{class-prefix}}login-form__input {{class-prefix}}login-form__input--password j-signin-password" type="password" name="password"  value="" /> \
+                {{/if}} \
+            {{/if}} \
+            \
+            {{# ifCond validEmail "==" null}} \
+                <input id="loginName" class="{{class-prefix}}login-form__input j-register-username" type="text" name="username" value="" placeholder="" /> \
+                <label for="loginName" class="{{class-prefix}}login-form__input-label input__label">Enter your email address</label> \
+            {{/ifCond}} \
+            \
+            {{# ifCond validEmail "==" false}} \
+                <button data-elem="" id="" type="" class="{{class-prefix}}login-form__button-back j-retry">Use a different email</button> \
+            {{/ifCond}} \
+        </div> \
+        \
+        <div class="{{class-prefix}}login-form__error_text u-display-none j-error-text"></div> \
+        \
+        <div class="{{class-prefix}}login-form__button-container"> \
+            <button data-elem="" id="modal-signinBtn" type="submit" class="{{class-prefix}}login-form__button {{# ifCond validEmail "==" false}}{{class-prefix}}login-form__button--active{{/ifCond}} j-continue">Continue</button> \
+            <div id="email_spinner" class="{{class-prefix}}login-form__spinner u-display-none"><div class="spinner"></div></div> \
+        </div> \
+        \
+        {{# ifCond validEmail "==" true}} \
+            <p class="{{class-prefix}}login-form__forgot  j-forgot" data-elem="forgot" data-behaviour="forgot" class="">Forgot password?</p> \
+        {{/ifCond}} \
+        <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script> \
+    </form> \
+</div>';
+
+// Acme.templates.donateResetPassword = 
+
+// '<div id="{{id}}" class="donate-form" data-selected="{{selected.price_id}}"> \
+//     <div class="donate-form__header"> \
+//         <div class="donate-form__close"> \
+//             <a class="donate-form__close-icon o-close" href="#" data-behaviour="close"></a> \
+//         </div> \
+//     </div> \
+//     \
+//     <img src="{{logo}}" class="donate-form__logo"/> \
+//     \
+//     <p class="donate-form__text j-email-text">Success! A password reset link has been sent to your email, please check your inbox</p> \
+//     \
+//     <button id="forgotBtn" type="submit" data-behaviour="login" class="{{class-prefix}}login-form__button {{class-prefix}}login-form__button--active u-margin-top-20">Back to login</button> \
+// </div>';
+
+
 
 Acme.templates.mailchimpList = 
     '<div> \
@@ -80,28 +275,36 @@ Acme.managed_user =
 
 Acme.templates.signinFormTmpl = 
     // <script> tag possible ios safari login fix
-    '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+    '<form name="loginForm" id="loginForm" class="{{class-prefix}}login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
         \
-        <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
-        <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
+        <input id="loginName" class="{{class-prefix}}login-form__input j-register-username" type="text" name="username" placeholder="Email address" value="" /> \
+        <input id="loginPass" class="{{class-prefix}}login-form__input j-signin-password" type="password" name="password" placeholder="Password" value="" /> \
         \
         <div class="remember"> \
-            <p class="layout" data-layout="forgot" class="">Forgot password</p> \
+            <p class="{{class-prefix}}login-form__forgot layout" data-layout="forgot" class="">Forgot password</p> \
         </div> \
         \
-        <div class="message active u-hide"> \
-            <div class="login-form__error_text">Invalid Email or Password</div> \
+        <div class="{{class-prefix}}login-form__error message active u-hide"> \
+            <div class="{{class-prefix}}login-form__error_text">Invalid Email or Password</div> \
         </div> \
         \
-        <button id="modal-signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+        <button data-elem="signin" id="modal-signinBtn" type="submit" class="{{class-prefix}}login-form__button _btn _btn--red signin">SIGN IN</button> \
         \
-        <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
-        <div class="reset"> \
-            <p class="layout" data-layout="forgot" class="">Set my password</p> \
-        </div> \
+        <p class="{{class-prefix}}login-form__faq u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
         \
+        {{# ifCond name "!=" "donate-"}} \
+            <div class="reset"> \
+                <p class="layout" data-layout="forgot" class="">Set my password</p> \
+            </div> \
+        {{/ifCond}} \
         <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
     </form>';
+
+
+
+
+
+
 
 Acme.templates.registerTmpl = 
     '<form name="registerForm" id="registerForm" class="active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
@@ -166,21 +369,9 @@ Acme.templates.userPlanOkCancel =
      <button id="cancelbutton" class="_btn _btn--gray close" data-role="cancel">Cancel</button> \
 </form>';
 
+{/* <a class="{{name}}__back" href="#" data-behaviour="back">Back</a> \ */}
 
-Acme.templates.modal = 
-// style="scrolling == unusable position:fixed element might be fixing login for ios safari
-// also margin-top:10px
-'<div id="{{name}}" class="flex_col {{name}}"> \
-    <div id="dialog" class="{{name}}__window"> \
-        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
-            <div class="{{name}}__header"> \
-                <h2 class="{{name}}__title">{{title}}</h2> \
-                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
-            </div> \
-            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
-        </div> \
-    </div> \
-</div>';
+
 
     // <video class="popupVideo__video" controls poster="{{image.path}}"> \
     //     <source src="{{video}}" type="video/mp4"/> \

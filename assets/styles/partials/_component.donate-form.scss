@@ -1,0 +1,164 @@
+.donate-form {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+
+    width: 100%;
+    
+    &__layouts {
+        position:absolute;
+        top:5px;
+    }
+    &__header {
+        height:47px;
+        width: 100%;
+        background:black;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+    }
+    &__close {
+        display:block;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        right: 20px;
+        top: 8px;
+
+        &-icon {
+            width:100%;
+            height:100%;
+        }
+
+        @media #{$mobile} {
+            width: 20px;
+            height: 20px;
+        }
+        .o-close:before, .o-close:after {
+            background-color: white !important;
+        }
+        
+        .o-close--dark:before, .o-close--dark:after {
+            background-color: white !important;
+        }
+    }
+
+    &__logo {
+        height: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 37px;
+    }
+
+
+    &__button {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        font-weight: 600;
+        text-transform: uppercase;
+        width: 176px;
+        height: 44px;
+
+        border-radius: 4px;
+        background: #2792e1;
+        color: white;
+        margin-top:11px;
+        &:hover {
+            background: #3598df;
+        }
+        &:focus, &:active {
+            outline:none;
+        }
+    }
+
+
+    &__product-container {
+        @include flexbox();
+        @include justify-content(center);
+    }
+
+    &__product {
+    }
+
+    &__product-title {
+        font-family: $primaryFont;
+        font-weight: 300;
+        @include font-size(35);
+        // font-size: 27px;
+        color:black;
+    }
+
+
+    &__text {
+        font-family: $primaryFont;
+        @include font-size(17);
+        color: #4a4a4a;
+        color:black;
+        line-height:25px;
+        width: 220px;
+        margin-top:7px;
+    }
+
+    &__period-button {
+        font-family: $primaryFont;
+        @include font-size(15);
+        font-weight: 600;
+        text-transform: uppercase;
+        outline:none;
+        color:rgba(255,255,255,.5);
+        border-radius: 10%;
+        // padding:10px;
+
+        &:focus, &:active {
+            outline:none;
+        }
+
+        &--active {
+            color:white;
+            border-bottom: 1px solid white;
+            border-radius: 0;
+        }
+    }
+
+    &__prices {
+        margin-top: 30px;
+    }
+
+    &__price-button {
+        // background:rgb(247, 165, 165);
+        outline:none;
+        color:white;
+        @include font-size(25);
+        width: 63px;
+        height: 63px;
+        border-radius: 50%;
+        background-color:#a9a9a9;
+        &:focus, &:active {
+            outline:none;
+        }
+
+        &--active {
+            color:white;
+            background-color:#2792e1;
+        }
+    }
+
+
+
+
+    &__input {
+        background: transparent;
+        color: black;
+        border: 1px solid #97999c;
+        border-radius:6px;
+        padding: 10px 15px;
+        text-align: center;
+        margin-top:30px;
+        &:focus, &:active {
+            outline:none;
+            border: 1px solid #838588;
+        }
+    }
+}

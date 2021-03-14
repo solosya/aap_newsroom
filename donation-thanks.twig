@@ -1,0 +1,29 @@
+{{ set(this, 'title', 'Signup Successful') }}
+{% set networkData = _Network.getNetworkData() %}
+{% set pwstats = _User.getPaywallStats(true) %}
+
+<main id="main" class="site-main" role="main">
+
+	{# <div class="container-fluid">
+		<section class="row">
+			<div class="col-sm-12 market-header u-margin-top-40">
+				<img class="market-header__logo" src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-dark.svg">
+			</div>
+		</section>
+	</div> #}
+
+	<section class="donate-thanks donate-thanks--thanks u-margin-top-40">
+		<div class="donate-thanks__content donate-thanks__content--thanks container">
+			<div class="row">
+				<div class="col-lg-offset-1 col-lg-11">
+					<h1 class="donate-thanks__headline">Thanks for <br />your donation!</h1>
+					<p class="donate-thanks__tagline">We have emailed you a link to create a Newsroom password to access your donor page.</p>
+					<p class="donate-thanks__tagline">You can then sign in to Newsroom, visit My Account and click on ‘Manage my donations’.</p> 
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <div class="">
+    </div>
+</main>
