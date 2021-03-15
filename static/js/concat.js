@@ -18675,7 +18675,6 @@ Acme.DonateModal.prototype.handle = function(e) {
 
 
 
-console.log('loading donations code');
 Acme.Donations = function(Stripe, params) {
     this.pricing = {};
     this.container = document.getElementById(params.container);
@@ -18719,7 +18718,7 @@ Acme.Donations.prototype.load = function(force) {
     }
 
     self.pricing = {};
-    console.log('loading...');
+
     // self.renderLayout('donate', {});
     // return;
     this.fetchProducts().done( function(r) {
@@ -18844,7 +18843,7 @@ Acme.Donations.prototype.parsePrices = function(r) {
         }
 
     }
-    console.log(this.pricing);
+
 }
 
 Acme.Donations.prototype.renderPrices = function(r) {
@@ -18858,7 +18857,6 @@ Acme.Donations.prototype.renderPrices = function(r) {
 
 
 Acme.Donations.prototype.renderLayout = function(layout, data) {
-    console.log('rendering layout');
     if (typeof data === "undefined" || !data || Object.keys(data).length < 1) {
         data= {};
     }
@@ -18881,8 +18879,6 @@ Acme.Donations.prototype.renderBack = function() {
     this.pages.pop();
     var data = {};
     var layout = this.pages[this.pages.length - 1];
-    console.log("rendering layout");
-    console.log(layout);
 
     if (layout === "donate") {
         this.renderPrices();
@@ -18895,8 +18891,6 @@ Acme.Donations.prototype.renderBack = function() {
 
 Acme.Donations.prototype.layoutEvents = function() {
     var self = this;
-    console.log(self);
-    // self.next = "email-check";
 
     var componentPrefix = "donate-login-form";
     var amountInput = document.querySelector('.j-donate-input');
@@ -18957,7 +18951,6 @@ Acme.Donations.prototype.layoutEvents = function() {
 
     if (proceed) {
         proceed.addEventListener('click', function(e) {
-            console.log(self.next);
             e.target.innerText = "";
             spinner.classList.remove(hide);
 
@@ -18965,7 +18958,6 @@ Acme.Donations.prototype.layoutEvents = function() {
             if (typeof self.next === "undefined" || self.next === null) {
     
                 self.checkEmail(self.user.username).done(function(r) {
-                    console.log(r);
                     self.validEmail = null;
     
                     // USER IS A GUEST
@@ -19007,7 +18999,6 @@ Acme.Donations.prototype.layoutEvents = function() {
 
 }
 Acme.Donations.prototype.handler = function(e) {
-    // console.log(e);
     var self = this;
     e.preventDefault();
     if (typeof e.target.dataset.elem === "undefined") {
@@ -19028,7 +19019,6 @@ Acme.Donations.prototype.handler = function(e) {
         }
     
         self.forgot().done(function(r) {
-            console.log(r);
             if (r.success === 1) {
                 text.innerHTML = "<strong>A password reset link has been sent to your email.</strong> <br />After reset, enter your new password to continue.";
             } else {
@@ -19043,7 +19033,6 @@ Acme.Donations.prototype.handler = function(e) {
     }
 
     if (layout) {
-        console.log(layout);
         self.renderLayout(layout);
         return;
     }
@@ -19081,8 +19070,6 @@ Acme.Donations.prototype.handler = function(e) {
         this.checkout();
         return;
     }
-    console.log("reached the bottom of handler");
-
 
 };
 
@@ -19125,7 +19112,6 @@ Acme.Donations.prototype.checkout = function() {
 
 
     Acme.server.create('/api/paywall/checkout-session', data).done( function(r) {
-        console.log(r);
         self.Stripe.redirectToCheckout({
             sessionId: r.sessionId
         }).then(function(r) {
@@ -19162,7 +19148,6 @@ Acme.Donations.prototype.signin = function(elem) {
         loginData['password'] = self.user.password;
         loginData['rememberMe'] = 1;
         Acme.server.create('/api/auth/login', loginData).done(function(r) {
-            console.log(r);
     
             if (r.success === 1) {
                 self.fetchUser().done(function(r) {
@@ -19264,10 +19249,6 @@ Acme.Donations.prototype.fetchUser = function() {
 }
 Acme.Donations.prototype.events = function() {
     var self = this;
-    self.pages.push("spinner");
-    self.modal.render("spinner");
-
-    self.load();
 
     $('#donations, .j-donation').on('click', function(e) {
         self.pages.push("spinner");

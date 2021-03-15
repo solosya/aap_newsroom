@@ -30,7 +30,6 @@
 
 
 <main id="main" class="" role="main">
-    <div id="stripekey" class="u-hide" >{{networkData['stripe_publishable_key']}}</div>
 
     <div class="donations__header  u-margin-top-30">
         <a class="donations__nr-logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
@@ -50,9 +49,14 @@
 
             <div class="col-12 d-md-none justify-content-center">
 
-                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="monthly" data-pp-amount="15" data-pp-metadata="membership-$15-per-month" target="_blank" class="supporter__button" rel="noopener">Monthly $15</a>
+                <button data-interval="month" data-amount="150"  class="supporter__button j-donation">Monthly $15</a>
+                <button data-interval="year"  data-amount="1000" class="supporter__button supporter__button--space j-donation">Annual $100</a>
+                <button class="supporter__button supporter__button--black j-donation">Pay what you want</a>
+
+
+                {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="monthly" data-pp-amount="15" data-pp-metadata="membership-$15-per-month" target="_blank" class="supporter__button" rel="noopener">Monthly $15</a>
                 <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="annual" data-pp-amount="100" data-pp-metadata="membership-$100-per-year" target="_blank" class="supporter__button supporter__button--space" rel="noopener">Annual $100</a>
-                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="supporter__button supporter__button--black" rel="noopener">Pay what you want</a>
+                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="supporter__button supporter__button--black" rel="noopener">Pay what you want</a> #}
             </div>
 
             <div class="col-lg-7">
@@ -694,15 +698,6 @@
                 clickedArrow.addClass('faq__arrow-container--up');
             }
 
-
-
-        });
-
-        var stripekey = $('#stripekey').html();
-        var stripe = Stripe(stripekey);
-        Acme.donations = new Acme.Donations(stripe, {
-            container: 'stripe-products',
-            guest: "{{guestUser}}"
         });
 
     });
