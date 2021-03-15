@@ -95,7 +95,7 @@ Acme.templates.donations =
     \
     <img src="{{logo}}" class="donate-form__logo"/> \
     \
-    <p class="donate-form__text">How much would you like to contribute each {{active}}?</p> \
+    <p class="donate-form__text">How much would you like to contribute{{intervalString}}?</p> \
     \
     {{#each prices}} \
         {{#each this}} \

@@ -227,6 +227,10 @@ Acme.Donations.prototype.renderLayout = function(layout, data) {
     data['user'] = this.user;
     data['guest'] = this.guest;
     data['validEmail'] = this.validEmail;
+    data['intervalString'] = "";
+    if (this.selected.interval === "month" || this.selected.interval === "year") {
+        data['intervalString'] = " each " + this.selected.interval;
+    }
 
     // }
     this.modal.renderLayout(layout, data);

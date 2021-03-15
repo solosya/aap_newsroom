@@ -16855,7 +16855,7 @@ Acme.templates.donations =
     \
     <img src="{{logo}}" class="donate-form__logo"/> \
     \
-    <p class="donate-form__text">How much would you like to contribute each {{active}}?</p> \
+    <p class="donate-form__text">How much would you like to contribute{{intervalString}}?</p> \
     \
     {{#each prices}} \
         {{#each this}} \
@@ -18868,6 +18868,10 @@ Acme.Donations.prototype.renderLayout = function(layout, data) {
     data['user'] = this.user;
     data['guest'] = this.guest;
     data['validEmail'] = this.validEmail;
+    data['intervalString'] = "";
+    if (this.selected.interval === "month" || this.selected.interval === "year") {
+        data['intervalString'] = " each " + this.selected.interval;
+    }
 
     // }
     this.modal.renderLayout(layout, data);
