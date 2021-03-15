@@ -19117,9 +19117,9 @@ Acme.Donations.prototype.checkout = function() {
     if (typeof self.user.email !== 'undefined') {
         data['email'] = self.user.email;
     }
-    
-    data['success'] = "http://www.publish.io/donations";
-    data['cancel'] = "http://www.publish.io";
+
+    data['success'] = _appJsConfig.appHostName + "/donation-thanks";
+    data['cancel'] = _appJsConfig.appHostName;
 
 
 
