@@ -18731,7 +18731,7 @@ Acme.Donations.prototype.load = function(force) {
         }
 
         self.fetchPrices().done(function(r) {
-            // console.log(r);
+            console.log(r);
             var args = Array.prototype.slice.call(arguments);
             if (args[1] === 'success') {
                 args = [args];
@@ -18799,6 +18799,7 @@ Acme.Donations.prototype.parsePrices = function(r) {
         }
 
         this.active[product.id] = order[0];
+        this.selected.interval = order[0];
 
         this.pricing[product.id] = {
             id: product.id,
@@ -18818,7 +18819,7 @@ Acme.Donations.prototype.parsePrices = function(r) {
                 interval = price.recurring.interval;
             }
             
-            this.selected.interval = interval;
+            // this.selected.interval = interval;
 
             if (typeof pricesByInterval[interval] === 'undefined') {
                 pricesByInterval[interval] = [];
@@ -19107,7 +19108,7 @@ Acme.Donations.prototype.checkout = function() {
         data['interval'] = self.selected.interval;
     }
 
-    if (typeof self.selected.interval !== 'undefined') {
+    if (typeof self.selected.currency !== 'undefined') {
         data['currency'] = self.selected.currency;
     }
 
@@ -19134,7 +19135,6 @@ Acme.Donations.prototype.checkout = function() {
 }
 
 Acme.Donations.prototype.signin = function(elem) {
-    console.log('IN THE SIGNIN');
     var self = this;
     elem.innerText = "";
 
@@ -19276,14 +19276,6 @@ Acme.Donations.prototype.events = function() {
     });
    
 }
-
-
-
-
-
-
-
-
 /***                             ****
     Base Class for all Forms
 ***                              ****/
