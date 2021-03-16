@@ -1,12 +1,11 @@
 .donate-thanks {
     height:596px;
-    background-image: url('../images/paywall2.png');
+    // background-image: url('../images/donate-thanks.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
-    border-top:solid 1px #979797;
     margin-top: 40px;
-
+    margin-top: 40px;
 
     // @media #{$tablet} {
     //     height:279px;
@@ -21,35 +20,67 @@
     //     margin-top: 125px;
     // }
     
-
-    @media #{$desktop} {
-        background-image: url('../images/paywall-tablet-2.jpg?v=2');   
-    }
-    @media #{$tablet} {
-        background-image: url('../images/paywall-tablet-2.jpg?v=2');   
-    }
     @media #{$mobile} {
         background-image: none;
     }
 
+    &__img-container {
+        // @include gradientbefore();
+        &:before {
+            content:"";
+            display:block;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            height:100%;
+            width:100%;
+            background:#2792e1;
+            opacity: 0.76;
+            z-index:10;
+        }
+        &:after {
+            position:absolute;
+            left: 50%;
+            top: 50%;
+            content:"";
+            @include flexbox;
+            @include justify-content(center);
+            @include align-items(center);
+            background-image: url("../images/nr-logo-reverse.svg");
+            background-repeat: no-repeat;
+            width:176px;
+            height:116px;
+            z-index:10;
+        }
+
+    }
+    &__picture {
+        position:relative;
+        height:598px;
+        width:100%;
 
 
+    }
+
+    &__right {
+        padding:0;
+    }
+
+
+    &__left {
+        padding-left: 10%;
+        padding-top: 122px;
+        padding-right:90px;
+    }
 
 }   
 
-.donate-thanks--thanks {
-    @media #{$desktop-up} {
-        // height:785px;
-    }
-    @media #{$desktop} {
-        height:400px;
-        background-image: url('../images/marketing-hero-tablet.png');
-    }
-} 
 .donate-thanks__content {
-    padding-top:149px;
     height:100%;
-
+    max-width:none;
+    padding:0;
     &--thanks {
         @media #{$desktop} {
             padding-top:65px;
@@ -69,10 +100,10 @@
 
 .donate-thanks__headline {
     font-family: $base-font-family;
-    @include font-size(82);
+    @include font-size(50);
     font-weight:700;
     margin-bottom:25px;
-    line-height: 0.89;
+    line-height: 1.04;
     @media #{$tablet} {
         @include font-size(47);
         margin-bottom:15px;
@@ -84,10 +115,11 @@
 }
 .donate-thanks__tagline {
     font-family: $font-family-sans-serif;
-    @include font-size(25);
-    font-weight: 600; 
-    margin-top:40px;
-    margin-bottom:50px;
+    @include font-size(24);
+    line-height:1.4;
+    font-weight: 400; 
+    margin-top:20px;
+    margin-bottom:20px;
     @media #{$tablet} {
         @include font-size(14);
         margin-top:0;
