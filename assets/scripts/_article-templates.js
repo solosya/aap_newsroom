@@ -4,10 +4,21 @@
 
 Handlebars.registerHelper('labelFix', function(text) {
     if (!text) return "";
-    var label = text.split(/[ _]/).map(function(l) {
-        return l[0].toUpperCase() + l.substring(1);
-    }).join(" ");
+    if (text === "year") return "Annual";
+    if (text === "month") return "Monthly";
+    if (text === "one_time") return "One-time";
+    // var label = text.split(/[ _]/).map(function(l) {
+    //     return l[0].toUpperCase() + l.substring(1);
+    // }).join(" ");
+
     return label;
+});
+
+Handlebars.registerHelper('priceFix', function(price) {
+    if (!price) return "";
+    price = parseInt(price);
+    price = price/100;
+    return price;
 });
 
 
@@ -110,9 +121,13 @@ Acme.templates.donations =
     {{/each}} \
     \
     <div class="donations__amount"> \
-        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" placeholder="Specify an amount" /> \
+        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="Or specify an amount in $NZD" /> \
     </div> \
-    <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate</button> \
+    {{# ifCond selected.amount ">" 0}} \
+        <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \
+    {{ else }} \
+        <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate</button> \
+    {{/ifCond}} \
 </div>';
 
 

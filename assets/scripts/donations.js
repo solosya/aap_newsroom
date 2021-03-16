@@ -35,19 +35,34 @@ Acme.DonateModal.prototype.handle = function(e) {
 
 
 Acme.Donations = function(Stripe, params) {
-    this.pricing = {};
     this.container = document.getElementById(params.container);
+
     this.active = {};
+    this.defaults = {};
+    this.userSelected = false;
+
+    // set price on modal load from button click
+    this.selectedInterval = null;
+    this.selectedAmount = null;
+    
+    // user selection from ui or defaults
     this.selected = {};
+
     this.products = [];
+    this.pricing = {};
+
     this.stripe_key = params.stripe_key;
     this.Stripe = Stripe;
+
+    // ajax requests
     this.priceRequests = [];
-    this.pages = [];
+
     this.guest = params.guest || true;
-    this.validEmail = null;
     this.user = {};
+
+    this.validEmail = null;
     this.emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    
     self.next = "email-check";
 
     if (this.guest !== "1") {
@@ -104,8 +119,9 @@ Acme.Donations.prototype.load = function(force) {
                     correctProduct['prices'] = data;
                 });
     
-                self.parsePrices();
-                self.renderPrices();
+                if (self.parsePrices() ) {
+                    self.renderPrices();
+                }
             });
         });
     
@@ -176,6 +192,7 @@ Acme.Donations.prototype.parsePrices = function(r) {
 
         for (price in product.prices) {
             var price = product.prices[price];
+            
 
             var interval = null;
             if (price.type === "one_time") {
@@ -188,7 +205,14 @@ Acme.Donations.prototype.parsePrices = function(r) {
                 pricesByInterval[interval] = [];
             }
 
+
+            // set the default price for each product
+            if (typeof price.metadata.default !== 'undefined' && price.metadata.default === 'true') {
+                this.defaults[interval] = [price.product, price.id];
+            }
+
             
+
 
             var newPrice = {
                 "unit_amount": price.unit_amount,
@@ -197,6 +221,20 @@ Acme.Donations.prototype.parsePrices = function(r) {
                 "product": price.product,
                 "currency" : price.currency
             };
+            
+            if (this.selectedAmount === newPrice.unit_amount && this.selectedInterval === interval) {
+                this.selected.product_id = price.product;
+                this.selected.price_id = price.id;
+                this.userSelected = true;
+                if ( this.guest === "1" ) {
+                    this.renderLayout("signin");
+                    return false;
+                }
+                this.checkout();
+                return false;
+        
+            }
+
 
             var added = false;
             for (var o=0; o < pricesByInterval[interval].length; o++) {
@@ -220,6 +258,9 @@ Acme.Donations.prototype.parsePrices = function(r) {
             });
         }
 
+
+        return true;
+
     }
 
 }
@@ -239,8 +280,9 @@ Acme.Donations.prototype.renderLayout = function(layout, data) {
         data= {};
     }
 
-    this.pages.push(layout);
+    // this.pages.push(layout);
     // if (layout === "signin") {
+
     data["class-prefix"] = "donate-";
     data["logo"] = _appJsConfig.templatePath + "/static/images/newsroom-logo.svg";
     data['user'] = this.user;
@@ -251,23 +293,14 @@ Acme.Donations.prototype.renderLayout = function(layout, data) {
         data['intervalString'] = " each " + this.selected.interval;
     }
 
+    if (!this.userSelected && typeof this.defaults[data.active] !== 'undefined') {
+        data.selected.price_id = this.defaults[data.active][1];
+        data.selected.product_id = this.defaults[data.active][0];
+    } 
     this.modal.renderLayout(layout, data);
     this.layoutEvents();
 }
 
-
-Acme.Donations.prototype.renderBack = function() {
-    this.pages.pop();
-    var data = {};
-    var layout = this.pages[this.pages.length - 1];
-
-    if (layout === "donate") {
-        this.renderPrices();
-        return;
-    }
-
-    this.modal.renderLayout(layout, data);
-}
 
 
 Acme.Donations.prototype.layoutEvents = function() {
@@ -288,13 +321,14 @@ Acme.Donations.prototype.layoutEvents = function() {
             var product = e.target.dataset.product;
             var amount = e.target.value.replace(/[^0-9.]/g, '');
             if (amount > 0) {
+                self.userSelected = true;
                 delete self.selected.price_id;
                 self.selected.amount = (parseFloat( amount ) * 100);
                 self.selected.product_id = product;
                 self.selected.currency = 'aud';
                 donate_button.innerText = "DONATE $" + self.selected.amount / 100;
-                console.log(self.selected.amount);
             } else {
+                self.userSelected = false;
                 delete self.selected.amount;
                 donate_button.innerText = "DONATE";
             }
@@ -376,9 +410,6 @@ Acme.Donations.prototype.layoutEvents = function() {
                 self.renderLayout('signin');
             });
         }
-
-
-
     }
 
 
@@ -441,6 +472,8 @@ Acme.Donations.prototype.handler = function(e) {
         self.selected['price_id'] = e.target.dataset.price_id;
         self.selected['product_id'] = e.target.dataset.product;
         delete self.selected.price;
+        self.selected.amount = null;
+        self.userSelected = true;
         self.renderPrices();
         return;
     }
@@ -475,15 +508,12 @@ Acme.Donations.prototype.checkout = function() {
     if (typeof self.selected.amount !== 'undefined') {
         data['amount'] = self.selected.amount * 100;
     }
-
     if (typeof self.selected.interval !== 'undefined') {
         data['interval'] = self.selected.interval;
     }
-
     if (typeof self.selected.currency !== 'undefined') {
         data['currency'] = self.selected.currency;
     }
-
     if (typeof self.user.username !== 'undefined') {
         data['email'] = self.user.username;
     }
@@ -492,7 +522,7 @@ Acme.Donations.prototype.checkout = function() {
     }
 
     data['success'] = _appJsConfig.appHostName + "/donation-thanks";
-    data['cancel'] = _appJsConfig.appHostName;
+    data['cancel'] = _appJsConfig.appHostName + "/donations";
 
 
 
@@ -500,7 +530,7 @@ Acme.Donations.prototype.checkout = function() {
         self.Stripe.redirectToCheckout({
             sessionId: r.sessionId
         }).then(function(r) {
-                console.log(r);
+            console.log(r);
         });
     });
 }
@@ -578,8 +608,6 @@ Acme.Donations.prototype.forgot = function() {
 }
 
 Acme.Donations.prototype.register = function() {
-    console.log('registering user');
-    console.log(this);
     var self = this;
     var password = this.random(20);
     loginData = {
@@ -593,7 +621,6 @@ Acme.Donations.prototype.register = function() {
     };
     
     Acme.server.create('/api/auth/signup', loginData).done(function(r) {
-        console.log(r);
 
         if (r.success === 1) {
             self.fetchUser().done(function(r) {
@@ -632,12 +659,20 @@ Acme.Donations.prototype.checkEmail = function(email) {
 Acme.Donations.prototype.fetchUser = function() {
     return Acme.server.fetch('/api/user/self');
 }
+
+
 Acme.Donations.prototype.events = function() {
     var self = this;
 
     $('#donations, .j-donation').on('click', function(e) {
-        self.pages.push("spinner");
         self.modal.render("spinner");
+        var elem = e.target;
+        var data = elem.dataset;
+        if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+            self.selectedInterval = data.interval;
+            self.selectedAmount = parseInt(data.amount);
+            
+        }
         self.load();
     });
    
