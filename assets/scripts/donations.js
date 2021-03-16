@@ -70,44 +70,51 @@ Acme.Donations = function(Stripe, params) {
 
 Acme.Donations.prototype.load = function(force) {
     var self = this;
+    try {
 
-    if (Object.keys(self.pricing).length > 0) {
-        self.renderPrices();
-        return;
-    }
-
-    self.pricing = {};
-
-    // self.renderLayout('donate', {});
-    // return;
-    this.fetchProducts().done( function(r) {
-
-        for (let i = 0; i < r.data.length; i++) {
-            if (r.data[i].active) {
-                self.products.push(r.data[i]);
-            }
-        }
-
-        self.fetchPrices().done(function(r) {
-            console.log(r);
-            var args = Array.prototype.slice.call(arguments);
-            if (args[1] === 'success') {
-                args = [args];
-            }
-            args.forEach(function(priceData) {
-                var data = priceData[0].data;
-                var productId  = priceData[2].productId;       
-    
-                var correctProduct = self.products.filter(function(p) {
-                    return p.id == productId;
-                })[0]; 
-                
-                correctProduct['prices'] = data;
-            });
-            self.parsePrices();
+        if (Object.keys(self.pricing).length > 0) {
             self.renderPrices();
+            return;
+        }
+    
+        self.pricing = {};
+    
+        // self.renderLayout('donate', {});
+        // return;
+        this.fetchProducts().done( function(r) {
+    
+            for (let i = 0; i < r.data.length; i++) {
+                if (r.data[i].active) {
+                    self.products.push(r.data[i]);
+                }
+            }
+    
+            self.fetchPrices().done(function(r) {
+                // console.log(r);
+                var args = Array.prototype.slice.call(arguments);
+                if (args[1] === 'success') {
+                    args = [args];
+                }
+                args.forEach(function(priceData) {
+                    var data = priceData[0].data;
+                    var productId  = priceData[2].productId;       
+        
+                    var correctProduct = self.products.filter(function(p) {
+                        return p.id == productId;
+                    })[0]; 
+                    
+                    correctProduct['prices'] = data;
+                });
+                // debugger;
+    
+                self.parsePrices();
+                self.renderPrices();
+            });
         });
-    });
+    
+    } catch(e) {
+        console.log(e);
+    }
 }
 
 Acme.Donations.prototype.fetchProducts = function()
@@ -144,13 +151,14 @@ Acme.Donations.prototype.fetchPrice = function(product)
 Acme.Donations.prototype.parsePrices = function(r) {
 
     for (product in this.products) {
+
         product = this.products[product];
         
         if (typeof product.metadata.active === 'undefined' || product.metadata.active !== 'true') {
             continue;
         }
 
-         
+        
         var order = ["month", "year", "one_time"];
         if (typeof product.metadata.order !== 'undefined') {
             order = product.metadata.order.split(',');
@@ -167,29 +175,44 @@ Acme.Donations.prototype.parsePrices = function(r) {
             intervals: []
         }
         var pricesByInterval = {};
+
+
         for (price in product.prices) {
             var price = product.prices[price];
-    
+
             var interval = null;
             if (price.type === "one_time") {
                 interval = price.type;
             } else {
                 interval = price.recurring.interval;
             }
-            
-            // this.selected.interval = interval;
 
             if (typeof pricesByInterval[interval] === 'undefined') {
                 pricesByInterval[interval] = [];
             }
-            // this.pricing[product.id].intervals.push(interval);
-            pricesByInterval[interval].push({
+
+            
+
+            var newPrice = {
                 "unit_amount": price.unit_amount,
                 "price" : price.unit_amount / 100,
                 "id" : price.id,
                 "product": price.product,
                 "currency" : price.currency
-            });
+            };
+
+            var added = false;
+            for (var o=0; o < pricesByInterval[interval].length; o++) {
+                var current = pricesByInterval[interval][o];
+                if (current.unit_amount > newPrice.unit_amount) {
+                    pricesByInterval[interval].splice(o,0,newPrice);
+                    var added = true;
+                    break;
+                }
+            }
+            if (!added) {
+                pricesByInterval[interval].push(newPrice);
+            }
         }
 
         for (var i = 0; i < order.length; i++) {
@@ -232,7 +255,6 @@ Acme.Donations.prototype.renderLayout = function(layout, data) {
         data['intervalString'] = " each " + this.selected.interval;
     }
 
-    // }
     this.modal.renderLayout(layout, data);
     this.layoutEvents();
 }
