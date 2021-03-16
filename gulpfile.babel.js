@@ -111,12 +111,14 @@ gulp.task('scripts-concat', function(){
         // './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
         // './bower_components/swiper/dist/js/swiper.jquery.js',
         // './assets/scripts/plugins/slick.js',
-        // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
         // './assets/scripts/plugins/bootstrap-modalmanager.js',
         // './assets/scripts/plugins/bootstrap-modal.js',
         // './assets/scripts/plugins/bootbox.min.js',
         // './assets/scripts/plugins/jquery.validate/jquery.validate.min.js',
 
+
+        // used for Droppable/card swap
+        './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
 
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
