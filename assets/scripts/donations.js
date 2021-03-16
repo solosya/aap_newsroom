@@ -79,8 +79,6 @@ Acme.Donations.prototype.load = function(force) {
     
         self.pricing = {};
     
-        // self.renderLayout('donate', {});
-        // return;
         this.fetchProducts().done( function(r) {
     
             for (let i = 0; i < r.data.length; i++) {
@@ -90,7 +88,7 @@ Acme.Donations.prototype.load = function(force) {
             }
     
             self.fetchPrices().done(function(r) {
-                // console.log(r);
+
                 var args = Array.prototype.slice.call(arguments);
                 if (args[1] === 'success') {
                     args = [args];
@@ -105,7 +103,6 @@ Acme.Donations.prototype.load = function(force) {
                     
                     correctProduct['prices'] = data;
                 });
-                // debugger;
     
                 self.parsePrices();
                 self.renderPrices();
@@ -210,9 +207,8 @@ Acme.Donations.prototype.parsePrices = function(r) {
                     break;
                 }
             }
-            if (!added) {
-                pricesByInterval[interval].push(newPrice);
-            }
+
+            if (!added) pricesByInterval[interval].push(newPrice);
         }
 
         for (var i = 0; i < order.length; i++) {
@@ -285,18 +281,22 @@ Acme.Donations.prototype.layoutEvents = function() {
     var spinner = document.getElementById("email_spinner");
     var retryButton = document.querySelector('.j-retry');
     var proceed = document.querySelector('.j-continue');
-
+    var donate_button = document.getElementById("donate-button");
 
     if (amountInput) {
         amountInput.oninput = function(e) {
             var product = e.target.dataset.product;
-            if (e.target.value.length > 0) {
+            var amount = e.target.value.replace(/[^0-9.]/g, '');
+            if (amount > 0) {
                 delete self.selected.price_id;
-                self.selected.amount = e.target.value;
+                self.selected.amount = (parseFloat( amount ) * 100);
                 self.selected.product_id = product;
                 self.selected.currency = 'aud';
+                donate_button.innerText = "DONATE $" + self.selected.amount / 100;
+                console.log(self.selected.amount);
             } else {
                 delete self.selected.amount;
+                donate_button.innerText = "DONATE";
             }
         };
     }

@@ -112,7 +112,7 @@ Acme.templates.donations =
     <div class="donations__amount"> \
         <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" placeholder="Specify an amount" /> \
     </div> \
-    <button class="donate-form__button" data-elem="checkout">Donate</button> \
+    <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate</button> \
 </div>';
 
 
