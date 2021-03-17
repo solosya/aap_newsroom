@@ -8946,6 +8946,9 @@ section.subscribe {
       font-size: 0.9375rem;
       line-height: 1.125rem;
       font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+      @media screen and (min-width: 992px) {
+        .site-footer .footer-top .footer-menu span {
+          top: -15px; } }
       .site-footer .footer-top .footer-menu span a {
         color: white;
         text-decoration: none; }
@@ -11549,6 +11552,76 @@ input[type=radio].inline {
   width: 350px; }
   .paywall-hero__emaila, .paywall-hero__email > a {
     text-decoration: underline; }
+
+.c-cta-footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: left;
+  margin: auto;
+  border-bottom: solid 2px #ffffff; }
+  @media screen and (min-width: 992px) {
+    .c-cta-footer {
+      height: 77px; } }
+  .c-cta-footer__logo {
+    width: 226px;
+    margin: 23px 0; }
+  .c-cta-footer__tagline {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    color: #FFF;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0;
+    height: 30px;
+    padding: 5px 0 0 25px;
+    border-left: 1px solid #ffffff; }
+  .c-cta-footer__container {
+    padding: 20px;
+    background-color: #aad9ed; }
+  .c-cta-footer__input {
+    width: calc(100% - 30px); }
+  .c-cta-footer__email {
+    font-family: 'PT Sans', Tahoma, Arial, serif;
+    color: #000;
+    height: 35px !important;
+    border-radius: 0 !important;
+    width: calc(100% - 15px);
+    padding-left: 15px; }
+  .c-cta-footer__submit {
+    width: 25px;
+    display: flex;
+    background: url("../icons/arrow-small.svg") no-repeat center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-right: 10px; }
+    .c-cta-footer__submit:focus {
+      outline: none; }
+  .c-cta-footer__button {
+    font-size: 0.84375rem;
+    font-weight: 700;
+    line-height: 1.33;
+    color: #000000;
+    cursor: pointer;
+    width: max-content; }
+    .c-cta-footer__button:hover {
+      background-color: #ffffff; }
+    @media screen and (min-width: 768px) {
+      .c-cta-footer__button {
+        float: right; } }
+  .c-cta-footer__buttonblue {
+    margin: 15px 15px 0 0;
+    padding: 12px 20px;
+    background-color: #aad9ed; }
+  .c-cta-footer__buttonblack {
+    margin: 15px 0 0 0;
+    padding: 11px 19px;
+    color: #ffffff;
+    border: 1px solid #ffffff; }
+    .c-cta-footer__buttonblack:hover {
+      padding: 12px 20px;
+      border: none;
+      color: #000000; }
 
 .top-stories {
   margin-bottom: 78px; }
