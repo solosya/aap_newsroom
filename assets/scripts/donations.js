@@ -506,7 +506,7 @@ Acme.Donations.prototype.checkout = function() {
         data['price_id'] = self.selected.price_id;
     }
     if (typeof self.selected.amount !== 'undefined') {
-        data['amount'] = self.selected.amount * 100;
+        data['amount'] = self.selected.amount;
     }
     if (typeof self.selected.interval !== 'undefined') {
         data['interval'] = self.selected.interval;

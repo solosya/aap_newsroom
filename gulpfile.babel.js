@@ -118,10 +118,10 @@ gulp.task('scripts-concat', function(){
 
 
         // used for Droppable/card swap
-        './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
+        // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
 
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
-        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
+        // './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
         './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
         './assets/scripts/plugins/handlebars-v4.0.5.js',
         './assets/scripts/plugins/jquery.lazyload.min.js',
@@ -130,6 +130,7 @@ gulp.task('scripts-concat', function(){
         './assets/scripts/plugins/moment.js',
 
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
+
         './assets/scripts/sdk/common.js',
         './assets/scripts/sdk/blog.js',
         './assets/scripts/sdk/blog_new.js',
@@ -151,7 +152,7 @@ gulp.task('scripts-concat', function(){
 
 
         './assets/scripts/framework.js',
-        './assets/scripts/!(framework)*.js', // all files that end in .js EXCEPT common*.js
+        './assets/scripts/!(framework)*.js', // all files that end in .js EXCEPT framework*.js
 
 
         // './assets/scripts/*.js',
