@@ -121,7 +121,8 @@ Acme.templates.donations =
     {{/each}} \
     \
     <div class="donations__amount"> \
-        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="Or specify an amount in $NZD" /> \
+        <p class="donate-form__amount-label">or specify an amount</p> \
+        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="$NZD" /> \
     </div> \
     {{# ifCond selected.amount ">" 0}} \
         <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \

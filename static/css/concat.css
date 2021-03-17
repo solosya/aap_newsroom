@@ -14428,6 +14428,113 @@ input[type=radio].inline {
     .article-chimp-subscribe__submit:focus {
       outline: none; }
 
+.briefing-strap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  background-color: black;
+  color: #FFF;
+  height: 70px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white; }
+  .briefing-strap__container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    height: 100%; }
+  .briefing-strap__text {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-left: 30px;
+    margin-right: 180px; }
+    .briefing-strap__text:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -24px;
+      top: -6px;
+      height: 33px;
+      width: 1px;
+      background-color: white; }
+  .briefing-strap__logo {
+    height: 45%;
+    margin-right: 15px; }
+  .briefing-strap__sign-up {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    background-color: #aad9ed;
+    color: black;
+    height: 41px;
+    padding: 0 20px;
+    margin-right: 10px; }
+  .briefing-strap__newsletter {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 41px;
+    padding: 0 20px;
+    border: 1px solid white; }
+
 .c-signups__head {
   font-size: 2.25rem;
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -15326,6 +15433,10 @@ input[type=radio].inline {
     margin-right: auto;
     display: block;
     margin-top: 37px; }
+  .donate-form__amount-label {
+    margin-top: 30px;
+    font-size: 1.0625rem;
+    line-height: 1.275rem; }
   .donate-form__button {
     display: -webkit-box;
     display: -webkit-flex;
@@ -15344,12 +15455,12 @@ input[type=radio].inline {
     align-items: center;
     font-weight: 600;
     text-transform: uppercase;
-    width: 230px;
+    width: 176px;
     height: 44px;
     border-radius: 4px;
     background: #2792e1;
     color: white;
-    margin-top: 11px; }
+    margin-top: 30px; }
     .donate-form__button:hover {
       background: #3598df; }
     .donate-form__button:focus, .donate-form__button:active {
@@ -15400,10 +15511,10 @@ input[type=radio].inline {
   .donate-form__price-button {
     outline: none;
     color: white;
-    font-size: 1.5625rem;
-    line-height: 1.875rem;
-    width: 63px;
-    height: 63px;
+    font-size: 1.0625rem;
+    line-height: 1.275rem;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: #a9a9a9; }
     .donate-form__price-button:focus, .donate-form__price-button:active {
@@ -15418,14 +15529,13 @@ input[type=radio].inline {
     border-radius: 6px;
     padding: 10px 15px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 12px;
     width: 230px; }
     .donate-form__input:focus, .donate-form__input:active {
       outline: none;
       border: 1px solid #838588; }
 
 .donate-thanks {
-  height: 596px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
@@ -15434,88 +15544,71 @@ input[type=radio].inline {
   @media screen and (max-width: 767px) {
     .donate-thanks {
       background-image: none; } }
-  .donate-thanks__img-container:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background: #2792e1;
-    opacity: 0.76;
-    z-index: 10; }
-  .donate-thanks__img-container:after {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    content: "";
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    background-image: url("../images/nr-logo-reverse.svg");
-    background-repeat: no-repeat;
-    width: 176px;
-    height: 116px;
-    z-index: 10; }
+  .donate-thanks__img-container {
+    height: 100%; }
+    .donate-thanks__img-container:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background: #2792e1;
+      opacity: 0.76;
+      z-index: 10; }
+    .donate-thanks__img-container:after {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-30%, -50%);
+      content: "";
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center;
+      background-image: url("../images/nr-logo-reverse.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 176px;
+      height: 116px;
+      z-index: 10; }
   .donate-thanks__picture {
     position: relative;
-    height: 598px;
+    height: 100%;
     width: 100%; }
   .donate-thanks__right {
     padding: 0; }
   .donate-thanks__left {
     padding-left: 10%;
-    padding-top: 122px;
+    padding-top: 97px;
     padding-right: 90px; }
 
 .donate-thanks__content {
   height: 100%;
   max-width: none;
   padding: 0; }
-  @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .donate-thanks__content--thanks {
-      padding-top: 65px; } }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .donate-thanks__content {
-      padding-top: 37px; } }
-  @media screen and (max-width: 767px) {
-    .donate-thanks__content {
-      padding-top: 335px;
-      margin-left: 15px;
-      margin-right: 15px; } }
 
 .donate-thanks__headline {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 3.125rem;
   line-height: 3.75rem;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 32px;
   line-height: 1.04; }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .donate-thanks__headline {
-      font-size: 2.9375rem;
-      line-height: 3.525rem;
-      margin-bottom: 15px; } }
-  @media screen and (max-width: 767px) {
-    .donate-thanks__headline {
-      font-size: 1.75rem;
-      line-height: 2.1rem;
-      margin-bottom: 5px; } }
 
 .donate-thanks__tagline {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -15525,53 +15618,13 @@ input[type=radio].inline {
   font-weight: 400;
   margin-top: 20px;
   margin-bottom: 20px; }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .donate-thanks__tagline {
-      font-size: 0.875rem;
-      line-height: 1.05rem;
-      margin-top: 0;
-      margin-bottom: 25px; } }
-  @media screen and (max-width: 767px) {
-    .donate-thanks__tagline {
-      font-size: 0.875rem;
-      line-height: 1.05rem;
-      margin-top: 0;
-      margin-bottom: 10px; } }
+  .donate-thanks__tagline--bold {
+    font-weight: 700; }
+  .donate-thanks__tagline > a {
+    text-decoration: underline; }
 
 .donate-thanks__button {
   font-weight: 500; }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .donate-thanks__button {
-      height: 30px;
-      width: 109px;
-      line-height: 30px;
-      font-size: 12px; } }
-  @media screen and (max-width: 767px) {
-    .donate-thanks__button {
-      height: 35px;
-      width: 140px;
-      line-height: 35px; } }
-
-.donate-thanks__button__subscribe {
-  float: left; }
-
-.donate-thanks__button__trial {
-  margin-left: 35px; }
-  .donate-thanks__button__trial:hover {
-    color: #fff;
-    text-decoration: none; }
-  @media screen and (max-width: 767px) {
-    .donate-thanks__button__trial {
-      margin-left: 15px; } }
-
-.donate-thanks__email {
-  margin-top: 76px;
-  font-size: 1.125rem;
-  line-height: 1.35rem;
-  line-height: 1.61;
-  width: 350px; }
-  .donate-thanks__emaila, .donate-thanks__email > a {
-    text-decoration: underline; }
 
 .subscribe-form-head__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
@@ -31252,6 +31305,9 @@ hr.u-row-extend {
 .gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"] {
   padding-right: 0;
   padding-left: 0; }
+
+.u-height-100 {
+  height: 100%; }
 
 .row-eq-height {
   display: -webkit-box;

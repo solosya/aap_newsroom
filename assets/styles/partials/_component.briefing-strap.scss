@@ -1,0 +1,68 @@
+.briefing-strap {
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    background-color: black;
+    color: #FFF;
+    height:70px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+
+    &__container {
+        @include flexbox();
+        @include flex-direction(row);
+        @include align-items(center);    
+        height:100%;
+    }
+
+
+    &__text {
+        @include font-size(16);
+        font-weight:600;
+        color:white;
+        margin-left: 30px;
+        margin-right: 180px;
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -24px;
+            top: -6px;
+            height: 33px;
+            width: 1px;
+            background-color: white;
+        }
+    }
+
+    &__logo {
+        height:45%;
+        margin-right:15px;
+    }
+
+    &__sign-up {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        background-color:#aad9ed;
+        color:black;
+        height:41px;
+        padding: 0 20px;
+        margin-right:10px;
+    }
+
+    &__newsletter {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        background-color:black;
+        color:white;
+        height:41px;
+        padding: 0 20px;
+        border: 1px solid white;
+    }
+
+
+
+}

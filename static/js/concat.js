@@ -14861,7 +14861,8 @@ Acme.templates.donations =
     {{/each}} \
     \
     <div class="donations__amount"> \
-        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="Or specify an amount in $NZD" /> \
+        <p class="donate-form__amount-label">or specify an amount</p> \
+        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="$NZD" /> \
     </div> \
     {{# ifCond selected.amount ">" 0}} \
         <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \
@@ -16959,10 +16960,23 @@ Acme.Donations.prototype.layoutEvents = function() {
     var proceed = document.querySelector('.j-continue');
     var donate_button = document.getElementById("donate-button");
 
+
+    
     if (amountInput) {
         amountInput.oninput = function(e) {
             var product = e.target.dataset.product;
+            
+            // remove the highlight from any selected prices
+            var priceButtons = document.querySelector('.j-donation-price');
+            if (priceButtons) {
+                for(var i=0; i<priceButtons.children.length; i++) {
+                    priceButtons.children[i].classList.remove("donate-form__price-button--active");
+                }
+            }
+
+            // remove all non numeric symbols
             var amount = e.target.value.replace(/[^0-9.]/g, '');
+            
             if (amount > 0) {
                 self.userSelected = true;
                 delete self.selected.price_id;

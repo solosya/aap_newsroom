@@ -1,6 +1,6 @@
 <script src="https://js.stripe.com/v3/"></script>
 
-{% if _AppHelper.getApplicationEnv() != 'PROD' %}
+{% if _AppHelper.getApplicationEnv() == 'PROD' %}
 
     {% if _User.isAdminUser() %}
         {# used only for draging and dropping cards #}
@@ -8,7 +8,7 @@
     {% endif %}
 
     <script type="text/javascript" src="{{networkData.templatePath}}/static/js/jquery-ui-1.10.1.custom.min.js?ver=1"></script>
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=46820643"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=6c1c8bfb"></script>
 {% else %}
 
     <script type="text/javascript" src="{{networkData.templatePath}}/bower_components/jquery/dist/jquery.js"></script>
