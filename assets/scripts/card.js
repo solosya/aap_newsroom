@@ -281,8 +281,9 @@ Card.prototype.bindSocialPostPopup = function()
 
 Card.prototype.initDraggable = function()
 {
-
+    console.log($.ui);
     if ( $.ui ) {
+        console.log("is function");
 
         $('.swap').draggable({
             helper: 'clone',
