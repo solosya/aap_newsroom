@@ -11724,7 +11724,8 @@ Card.prototype.bindSocialPostPopup = function()
 
 Card.prototype.initDraggable = function()
 {
-    if ( $.draggable ) {
+
+    if ( $.ui ) {
 
         $('.swap').draggable({
             helper: 'clone',
@@ -11756,7 +11757,7 @@ Card.prototype.initDroppable = function()
     var self = this;
 
 
-    if ( $.droppable ) {
+    if ( $.ui ) {
 
         $('.swap').droppable({
             hoverClass: "ui-state-hover",
