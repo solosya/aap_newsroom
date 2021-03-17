@@ -583,6 +583,7 @@
         };
         Acme.modal.prototype.events = function() 
         {
+            console.log('adding events to modal');
             var self = this;
             $('#'+this.parentCont).on("click", function(e) {
                 console.log(self.handler);
@@ -594,6 +595,7 @@
             return true;
         };
         Acme.modal.prototype.handle = function(e) {
+            console.log('handling');
             var $elem = $(e.target);
 
             if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {
