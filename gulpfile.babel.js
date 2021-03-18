@@ -127,7 +127,8 @@ gulp.task('scripts-concat', function(){
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
 
-        // './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
+        // used for load more?
+        './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
 
         './assets/scripts/sdk/common.js',
         './assets/scripts/sdk/blog.js',
