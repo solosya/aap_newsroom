@@ -1,0 +1,126 @@
+.donate-thanks {
+    // height:596px;
+    // background-image: url('../images/donate-thanks.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-top: 40px;
+    margin-top: 40px;
+
+    // @media #{$tablet} {
+    //     height:279px;
+    //     background-image: url('../images/marketing-hero-tablet.png');
+        
+    // }
+    // @media screen and (max-width: $sm-break-down) {
+    //     height:320px;
+    //     margin-bottom: 150px;
+    //     background-image: url('../images/marketing-hero-mobile2.png');
+    //     background-position: top;
+    //     margin-top: 125px;
+    // }
+    
+    @media #{$mobile} {
+        background-image: none;
+    }
+
+    &__img-container {
+        height:100%;
+        // @include gradientbefore();
+        &:before {
+            content:"";
+            display:block;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            height:100%;
+            width:100%;
+            background:#2792e1;
+            opacity: 0.76;
+            z-index:10;
+        }
+        &:after {
+            position:absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-30%, -50%);
+            content:"";
+            @include flexbox;
+            @include justify-content(center);
+            @include align-items(center);
+            background-image: url("../images/nr-logo-reverse.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:176px;
+            height:116px;
+            z-index:10;
+        }
+
+    }
+    &__picture {
+        position:relative;
+        height:100%;
+        width:100%;
+
+
+    }
+
+    &__right {
+        padding:0;
+    }
+
+
+    &__left {
+        padding-left: 10%;
+        padding-top: 97px;
+        padding-right:90px;
+    }
+
+}   
+
+.donate-thanks__content {
+    height:100%;
+    max-width:none;
+    padding:0;
+
+}
+
+
+.donate-thanks__headline {
+    font-family: $base-font-family;
+    @include font-size(50);
+    font-weight:700;
+    margin-bottom:32px;
+    line-height: 1.04;
+}
+.donate-thanks__tagline {
+    font-family: $font-family-sans-serif;
+    @include font-size(24);
+    line-height:1.4;
+    font-weight: 400; 
+    margin-top:20px;
+    margin-bottom:20px;
+    &--bold {
+        font-weight: 700; 
+    }
+    >a {
+        text-decoration:underline;
+    }
+}
+
+.donate-thanks__button {
+    font-weight: 500;
+    // @media #{$tablet} {
+    //     height: 30px;
+    //     width: 109px;
+    //     line-height: 30px;
+    //     font-size: 12px;
+    // }
+    // @media #{$mobile}{
+    //     height: 35px;
+    //     width: 140px;
+    //     line-height: 35px;
+    // }
+}

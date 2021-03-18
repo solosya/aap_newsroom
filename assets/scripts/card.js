@@ -48,7 +48,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         width = card.imageOptions.width || width;
         height = card.imageOptions.height || height;
     }
-
+    card['draggable'] = "false";
     card['profileImg'] = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
     card['imageUrl'] = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
     card['titleString'] = "";
@@ -60,6 +60,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
             totalstring = totalstring + " Published " + card.publishedDateTime;
         }
         card['titleString'] = totalstring;
+        card['draggable'] = "true";
     }
 
     var articleId = parseInt(card.articleId);
@@ -281,150 +282,259 @@ Card.prototype.bindSocialPostPopup = function()
 
 Card.prototype.initDraggable = function()
 {
-    $('.swap').draggable({
-        helper: 'clone',
-        revert: true,
-        zIndex: 100,
-        scroll: true,
-        scrollSensitivity: 100,
-        cursorAt: { left: 150, top: 50 },
-        appendTo:'body',
-        start: function( event, ui ) {
-            ui.helper.attr('class', '');
-            var postImage = $(ui.helper).data('article-image');
-            var postText = $(ui.helper).data('article-text');
-            if(postImage !== "") {
-                $('div.SwappingHelper img.article-image').attr('src', postImage);
+
+    if ( $.ui ) {
+        $('.swap').draggable({
+            helper: 'clone',
+            revert: true,
+            zIndex: 100,
+            scroll: true,
+            scrollSensitivity: 100,
+            cursorAt: { left: 150, top: 50 },
+            appendTo:'body',
+            start: function( event, ui ) {
+                ui.helper.attr('class', '');
+                var postImage = $(ui.helper).data('article-image');
+                var postText = $(ui.helper).data('article-text');
+                if(postImage !== "") {
+                    $('div.SwappingHelper img.article-image').attr('src', postImage);
+                }
+                else {
+                    $('div.SwappingHelper img.article-image').attr('src', 'http://www.placehold.it/100x100/EFEFEF/AAAAAA&amp;text=no+image');
+                }
+                $('div.SwappingHelper p.article-text').html(postText);
+                $(ui.helper).html($('div.SwappingHelper').html());    
             }
-            else {
-                $('div.SwappingHelper img.article-image').attr('src', 'http://www.placehold.it/100x100/EFEFEF/AAAAAA&amp;text=no+image');
-            }
-            $('div.SwappingHelper p.article-text').html(postText);
-            $(ui.helper).html($('div.SwappingHelper').html());    
-        }
-    });
+        });
+    }
 };
 
 Card.prototype.initDroppable = function()
 {
     var self = this;
 
-    $('.swap').droppable({
-        hoverClass: "ui-state-hover",
-        drop: function(event, ui) {
-            
-            function getElementAtPosition(elem, pos) {
-                return elem.find('a.card').eq(pos);
-            }
 
-            var sourceObj       = $(ui.draggable); //card being dragged
-            var destObject      = $(this); //card it lands on
-            var sourceProxy     = null;
-            var destProxy       = null;
+    if ( $.ui ) {
 
-            
-
-            if (typeof sourceObj.data('proxyfor') !== 'undefined') {
-                sourceProxy = sourceObj;
-                sourceObj   = getElementAtPosition($( '.' + sourceProxy.data('proxyfor')), sourceProxy.data('position') -1);
-                sourceObj.attr('data-position', destObject.data('position'));
-
-            }
-            if (typeof destObject.data('proxyfor') !== 'undefined') {
-                destProxy = destObject;
-                destObject = getElementAtPosition($( '.' + destObject.data('proxyfor')), destObject.data('position') -1);
-                destObject.attr('data-position', sourceObj.data('position'));
-            }
-
-
-
-            //get positions
-            var sourcePosition       = sourceObj.data('position');
-            var sourcePostId         = sourceObj.data('id');
-            var sourceIsSocial       = parseInt(sourceObj.data('social'));
-            var sourcePinStatus      = parseInt(sourceObj.find('.PinArticleBtn').attr('data-status'));
-
-            var destinationPosition  = destObject.data('position');
-            var destinationPostId    = destObject.data('id');
-            var destinationIsSocial  = parseInt(destObject.data('social'));
-            var destinationPinStatus = parseInt(destObject.find('.PinArticleBtn').attr('data-status'));
-
-
-            var swappedDestinationElement = sourceObj.clone().removeAttr('style').insertAfter( destObject );
-            var swappedSourceElement = destObject.clone().insertAfter( sourceObj );
-            
-
-            if (sourceProxy) {
-                sourceProxy.find('h2').text(destObject.find('h2').text());
-                swappedDestinationElement.addClass('swap');
-                swappedSourceElement.removeClass('swap');
-                sourceProxy.attr('data-article-text', destObject.data('article-text'));
-                sourceProxy.attr('data-article-image', destObject.data('article-image'));
-            }
-
-            if (destProxy) {
-                if (sourceIsSocial) {
-                    destProxy.find('h2').text( sourceObj.find('p').text() );
-                } else {
-                    destProxy.find('h2').text( sourceObj.find('h2').text() );
+        $('.swap').droppable({
+            hoverClass: "ui-state-hover",
+            drop: function(event, ui) {
+                
+                function getElementAtPosition(elem, pos) {
+                    return elem.find('a.card').eq(pos);
                 }
-                swappedSourceElement.addClass('swap');
-                swappedDestinationElement.removeClass('swap');
-                destProxy.attr('data-article-text', sourceObj.data('article-text'));
-                destProxy.attr('data-article-image', sourceObj.data('article-image'));
-            }
-            
-            swappedSourceElement.attr('data-position', sourcePosition);
-            swappedDestinationElement.attr('data-position', destinationPosition);
 
-            swappedSourceElement.find('.PinArticleBtn').attr('data-position', sourcePosition);
-            swappedDestinationElement.find('.PinArticleBtn').attr('data-position', destinationPosition);
+                var sourceObj       = $(ui.draggable); //card being dragged
+                var destObject      = $(this); //card it lands on
+                var sourceProxy     = null;
+                var destProxy       = null;
 
-            swappedSourceElement.find('.PinArticleBtn').attr('data-status', destinationPinStatus);
-            swappedDestinationElement.find('.PinArticleBtn').attr('data-status', sourcePinStatus);
-
-
-            $(ui.helper).remove(); //destroy clone
-            sourceObj.remove();
-            destObject.remove();
-            
-            var csrfToken = $('meta[name="csrf-token"]').attr("content");
-            var postData = {
-                sourcePosition: sourcePosition,
-                sourceArticleId: sourcePostId,
-                sourceIsSocial: sourceIsSocial,
                 
-                destinationPosition: destinationPosition,
-                destinationArticleId: destinationPostId,
-                destinationIsSocial: destinationIsSocial,
+
+                if (typeof sourceObj.data('proxyfor') !== 'undefined') {
+                    sourceProxy = sourceObj;
+                    sourceObj   = getElementAtPosition($( '.' + sourceProxy.data('proxyfor')), sourceProxy.data('position') -1);
+                    sourceObj.attr('data-position', destObject.data('position'));
+
+                }
+                if (typeof destObject.data('proxyfor') !== 'undefined') {
+                    destProxy = destObject;
+                    destObject = getElementAtPosition($( '.' + destObject.data('proxyfor')), destObject.data('position') -1);
+                    destObject.attr('data-position', sourceObj.data('position'));
+                }
+
+
+
+                //get positions
+                var sourcePosition       = sourceObj.data('position');
+                var sourcePostId         = sourceObj.data('id');
+                var sourceIsSocial       = parseInt(sourceObj.data('social'));
+                var sourcePinStatus      = parseInt(sourceObj.find('.PinArticleBtn').attr('data-status'));
+
+                var destinationPosition  = destObject.data('position');
+                var destinationPostId    = destObject.data('id');
+                var destinationIsSocial  = parseInt(destObject.data('social'));
+                var destinationPinStatus = parseInt(destObject.find('.PinArticleBtn').attr('data-status'));
+
+
+                var swappedDestinationElement = sourceObj.clone().removeAttr('style').insertAfter( destObject );
+                var swappedSourceElement = destObject.clone().insertAfter( sourceObj );
                 
-                _csrf: csrfToken
-            };
 
-            $.ajax({
-                url: _appJsConfig.baseHttpPath + '/home/swap-article',
-                type: 'post',
-                data: postData,
-                dataType: 'json',
-                success: function(data){
+                if (sourceProxy) {
+                    sourceProxy.find('h2').text(destObject.find('h2').text());
+                    swappedDestinationElement.addClass('swap');
+                    swappedSourceElement.removeClass('swap');
+                    sourceProxy.attr('data-article-text', destObject.data('article-text'));
+                    sourceProxy.attr('data-article-image', destObject.data('article-image'));
+                }
 
-                    if(data.success) {
-                        $.fn.General_ShowNotification({message: "Articles swapped successfully"});
+                if (destProxy) {
+                    if (sourceIsSocial) {
+                        destProxy.find('h2').text( sourceObj.find('p').text() );
+                    } else {
+                        destProxy.find('h2').text( sourceObj.find('h2').text() );
                     }
+                    swappedSourceElement.addClass('swap');
+                    swappedDestinationElement.removeClass('swap');
+                    destProxy.attr('data-article-text', sourceObj.data('article-text'));
+                    destProxy.attr('data-article-image', sourceObj.data('article-image'));
+                }
+                
+                swappedSourceElement.attr('data-position', sourcePosition);
+                swappedDestinationElement.attr('data-position', destinationPosition);
+
+                swappedSourceElement.find('.PinArticleBtn').attr('data-position', sourcePosition);
+                swappedDestinationElement.find('.PinArticleBtn').attr('data-position', destinationPosition);
+
+                swappedSourceElement.find('.PinArticleBtn').attr('data-status', destinationPinStatus);
+                swappedDestinationElement.find('.PinArticleBtn').attr('data-status', sourcePinStatus);
+
+
+                $(ui.helper).remove(); //destroy clone
+                sourceObj.remove();
+                destObject.remove();
+                
+                var csrfToken = $('meta[name="csrf-token"]').attr("content");
+                var postData = {
+                    sourcePosition: sourcePosition,
+                    sourceArticleId: sourcePostId,
+                    sourceIsSocial: sourceIsSocial,
                     
-                    // $(".card p, .card h2").dotdotdot();
-                    $(".j-truncate").dotdotdot();
-                    self.events();
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
-                },
+                    destinationPosition: destinationPosition,
+                    destinationArticleId: destinationPostId,
+                    destinationIsSocial: destinationIsSocial,
+                    
+                    _csrf: csrfToken
+                };
 
-            });
+                $.ajax({
+                    url: _appJsConfig.baseHttpPath + '/home/swap-article',
+                    type: 'post',
+                    data: postData,
+                    dataType: 'json',
+                    success: function(data){
 
-        }
-    }); 
+                        if(data.success) {
+                            $.fn.General_ShowNotification({message: "Articles swapped successfully"});
+                        }
+                        
+                        // $(".card p, .card h2").dotdotdot();
+                        $(".j-truncate").dotdotdot();
+                        self.events();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
+                    },
+
+                });
+
+            }
+        }); 
+    }
 };
+
+
+
+Card.prototype.dragndrop = function() {
+    
+    var dragOver = function(event) {
+        event.preventDefault();
+    };
+    
+    var dragStart = function(event) {
+        event.dataTransfer.setData('text/plain', event.target.id);
+    }
+
+    var drop = function(event) {
+        var id = event.dataTransfer.getData('text');
+        var found = false;
+        var element = event.target;
+
+        while (element.parentNode) {
+            if (element.tagName.toLowerCase() !== 'a') {
+                element = element.parentNode;
+            } else if ( element.classList.contains('swap') ) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+        
+        var sourceObj       = document.getElementById(id);
+        var destObject      = element; //card it lands on
+
+        var sourcePosition       = sourceObj.dataset.position;
+        var sourcePostId         = sourceObj.dataset.id;
+        var sourceIsSocial       = parseInt(sourceObj.dataset.social);
+        var sourcePinStatus      = parseInt(sourceObj.querySelector('.PinArticleBtn').getAttribute('data-status'));
+
+
+        var destinationPosition  = destObject.dataset.position;
+        var destinationPostId    = destObject.dataset.id;
+        var destinationIsSocial  = parseInt(destObject.dataset.social);
+        var destinationPinStatus = parseInt(destObject.querySelector('.PinArticleBtn').getAttribute('data-status'));
+
+
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        var postData = {
+            sourcePosition: sourcePosition,
+            sourceArticleId: sourcePostId,
+            sourceIsSocial: sourceIsSocial,
+            
+            destinationPosition: destinationPosition,
+            destinationArticleId: destinationPostId,
+            destinationIsSocial: destinationIsSocial,
+            
+            _csrf: csrfToken
+        };
+
+        sourceParent = sourceObj.parentNode;
+        destParent = destObject.parentNode;
+        sourceParent.removeChild(sourceObj);
+        sourceParent.appendChild(destObject);
+        destParent.appendChild(sourceObj);
+
+
+        $.ajax({
+            url: _appJsConfig.baseHttpPath + '/home/swap-article',
+            type: 'post',
+            data: postData,
+            dataType: 'json',
+            success: function(data){
+
+                if(data.success) {
+                    $.fn.General_ShowNotification({message: "Articles swapped successfully"});
+                }
+                
+                // $(".card p, .card h2").dotdotdot();
+                $(".j-truncate").dotdotdot();
+                self.events();
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
+            },
+
+        });
+
+
+    };
+    // var enter = function(event) {
+    //     event.preventDefault();
+    // };
+
+    var cards = document.getElementsByClassName('swap');
+    for(var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('dragstart', dragStart);
+        cards[i].addEventListener('dragover', dragOver);
+        cards[i].addEventListener('drop', drop);
+    }
+}
+
+
+
 
 Card.prototype.events = function() 
 {

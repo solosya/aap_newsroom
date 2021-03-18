@@ -23,6 +23,11 @@
 {% set config       = _Network.getThemeConfig() %}
 
 
+{% set donations = "pp" %}
+{% if config.donations is defined and config.donations == "nr" %}
+    {% set donations = config.donations %}
+{% endif %}
+
 
 {% set limit = 11 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
@@ -357,10 +362,13 @@ So you don't have to create all the sections on dev #}
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
 
-                            <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40 u-tablet-order-2 u-desktop-order-4">
-                                {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
-                            </div>
 
+
+                            {% if donations == "pp" %}
+                                <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40 u-tablet-order-2 u-desktop-order-4">
+                                    {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
+                                </div>
+                            {% endif %}
                         </div>
 
 
