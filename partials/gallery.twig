@@ -44,7 +44,7 @@ with width taken up with borders on the side #}
         {% set articleImgMedium = _Media.getMediaUrl(image,0, 500, {'crop': 'fill', 'gravity': gravity} ) %}
         {% set articleImg = _Media.getMediaUrl(image, imgWidth, imgHeight, {'crop': 'fill', 'gravity': gravity} ) %}
 
-        <figure itemprop="image" itemscope itemtype="http://schema.org/ImageObject"  class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
+        <figure draggable="false" itemprop="image" itemscope itemtype="http://schema.org/ImageObject"  class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">

@@ -456,6 +456,7 @@ var systemCardTemplate =
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{hasMediaClass}}" \
+        draggable="true" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
@@ -465,7 +466,7 @@ var systemCardTemplate =
         <article class="{{cardType}}c-cards-view">\
             {{#if hasMedia}}\
                 <figure class="{{cardType}}c-cards-view__media">\
-                    <img class="img-fluid lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
+                    <img draggable="false" class="img-fluid lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")> \
                 </figure>\
             {{/if}} \
         \
@@ -504,6 +505,7 @@ var cardTemplateTop =
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{articleStatus}}  {{hasMediaClass}}" \
+        draggable="{{draggable}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-status="{{articleStatus}}" \
@@ -539,7 +541,7 @@ Acme.systemCardTemplate =
     cardTemplateTop + 
         '{{#if hasMedia}}\
             <figure class="{{cardType}}c-cards-view__media">\
-                <img class="img-responsive {{imgClass}}" data-original="{{imageUrl}}" src="{{imageUrl}}" {{imgBackgroundStyle}}">\
+                <img draggable="false" class="img-responsive {{imgClass}}" data-original="{{imageUrl}}" src="{{imageUrl}}" {{imgBackgroundStyle}}">\
             </figure>\
         {{/if}} \
         \
