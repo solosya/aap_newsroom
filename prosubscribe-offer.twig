@@ -43,6 +43,7 @@
     'Bonus subscription for colleague or a friend',
     'Access to post and read comments on articles'
     ] %}
+{% set buttonText = 'Subscribe now' %}
 {# {{_AppHelper.printArray(config['paywallSettings'])}} #}
 {% if config['paywallSettings']['offer'] %}
     {% set customText = config['paywallSettings']['offer'] %}
@@ -67,6 +68,10 @@
     {% endif %}
     {% if customText.whatyougetpanels %}
         {% set whatyougetpanels = customText.whatyougetpanels %}
+    {% endif %}
+
+    {% if customText.button %}
+        {% set buttonText = customText.button %}
     {% endif %}
 
 {% endif %}
@@ -119,7 +124,7 @@
                         data-price="{{specialPlan.plan_value}}" 
                         data-name="{{frequency}}" 
                         data-id="{{plan.guid}}"
-                        >Subscribe now</a>
+                        >{{ buttonText }}</a>
                     <p class="paywall-offer-banner__conditions">{{blurbB|raw}}</p>
                 </div>
 
