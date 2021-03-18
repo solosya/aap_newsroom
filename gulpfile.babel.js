@@ -146,8 +146,8 @@ gulp.task('scripts-concat', function(){
         // './assets/scripts/sdk/follow.js',
         // './assets/scripts/sdk/login.js',
         // './assets/scripts/sdk/social-share.js',
-        // './assets/scripts/sdk/yii/yii.js',
-        // './assets/scripts/sdk/yii/yii.captcha.js',
+        './assets/scripts/sdk/yii/yii.js',
+        './assets/scripts/sdk/yii/yii.captcha.js',
 
 
         './assets/scripts/framework.js',
