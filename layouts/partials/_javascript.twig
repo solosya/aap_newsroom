@@ -2,14 +2,14 @@
 
 {% if _AppHelper.getApplicationEnv() == 'PROD' %}
 
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/jquery3.3.1.js?ver=1"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/jquery3.6.js?ver=1"></script>
 
     {% if _User.isAdminUser() %}
         {# used only for draging and dropping cards #}
         <script type="text/javascript" src="{{networkData.templatePath}}/static/js/jquery-ui-1.10.1.custom.min.js?ver=1"></script>
     {% endif %}
 
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=1d611c08"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/js/scripts.js?v=03edd8f5"></script>
 
 {% else %}
 

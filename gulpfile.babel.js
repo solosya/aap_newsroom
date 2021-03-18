@@ -124,7 +124,7 @@ gulp.task('scripts-concat', function(){
 
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
-        './assets/scripts/plugins/handlebars-v4.0.5.js',
+        './assets/scripts/plugins/handlebars-v4.7.7.js',
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
