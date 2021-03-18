@@ -579,12 +579,23 @@ Acme.UserProfileController.prototype.events = function ()
             newCharge = 0;
         }
 
+        var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        function dateDiffInDays(a, b) {
+            // Discard the time and time-zone information.
+            const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+            const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+          
+            return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+          }
+          
+
         var expiryObj = new Date(expDate);
         var today = new Date();
-        var diffTime = Math.abs(today - expiryObj);
-        var diffDays1 = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-
-        var diffDays = moment(expDate).diff(moment(), 'days');
+        
+        // var diffTime = Math.abs(today.getTime() - expiryObj.getTime());
+        // var diffDays1 = Math.ceil(diffTime / (1000 * 3600 * 24)); 
+        var diffDays = dateDiffInDays(today, expiryObj); 
+        // var diffDays = moment(expDate).diff(moment(), 'days');
 
         // more expensive time base plan changes require a charge that is the difference in cost between the two
         if (oldPlanType === 'time' && newPlanType === 'time' && diffDays > 0) {

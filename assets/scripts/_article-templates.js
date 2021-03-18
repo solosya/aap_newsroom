@@ -65,7 +65,7 @@ Acme.templates.modal =
         <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
             <div class="{{name}}__header"> \
                 <h2 class="{{name}}__title">{{title}}</h2> \
-                <a class="{{name}}__close-icon" href="#" data-behaviour="close"></a> \
+                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
             <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
@@ -121,7 +121,8 @@ Acme.templates.donations =
     {{/each}} \
     \
     <div class="donations__amount"> \
-        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="Or specify an amount in $NZD" /> \
+        <p class="donate-form__amount-label">or specify an amount</p> \
+        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="$NZD" /> \
     </div> \
     {{# ifCond selected.amount ">" 0}} \
         <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \
@@ -375,7 +376,7 @@ Acme.templates.ipnotice =
 Acme.templates.userPlanMessage = 
 '<p class="{{name}}__message centerText">{{{message}}}</p> \
 <form name="loginForm" id="loginForm" class="active u-margin-top-20" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
-     <button id="cancelbutton" class="_btn _btn--red close">OK</button> \
+     <button id="cancelbutton" class="_btn _btn--red close" data-role="cancel">OK</button> \
 </form>';
 
 Acme.templates.userPlanOkCancel = 

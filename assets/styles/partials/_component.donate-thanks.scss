@@ -1,5 +1,5 @@
 .donate-thanks {
-    height:596px;
+    // height:596px;
     // background-image: url('../images/donate-thanks.jpg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -25,6 +25,7 @@
     }
 
     &__img-container {
+        height:100%;
         // @include gradientbefore();
         &:before {
             content:"";
@@ -44,12 +45,14 @@
             position:absolute;
             left: 50%;
             top: 50%;
+            transform: translate(-30%, -50%);
             content:"";
             @include flexbox;
             @include justify-content(center);
             @include align-items(center);
             background-image: url("../images/nr-logo-reverse.svg");
             background-repeat: no-repeat;
+            background-size: cover;
             width:176px;
             height:116px;
             z-index:10;
@@ -58,7 +61,7 @@
     }
     &__picture {
         position:relative;
-        height:598px;
+        height:100%;
         width:100%;
 
 
@@ -71,7 +74,7 @@
 
     &__left {
         padding-left: 10%;
-        padding-top: 122px;
+        padding-top: 97px;
         padding-right:90px;
     }
 
@@ -81,20 +84,7 @@
     height:100%;
     max-width:none;
     padding:0;
-    &--thanks {
-        @media #{$desktop} {
-            padding-top:65px;
-        }
-    }
 
-    @media #{$tablet} {
-        padding-top:37px;
-    }
-    @media screen and (max-width: $sm-break-down) {
-        padding-top:335px;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
 }
 
 
@@ -102,16 +92,8 @@
     font-family: $base-font-family;
     @include font-size(50);
     font-weight:700;
-    margin-bottom:25px;
+    margin-bottom:32px;
     line-height: 1.04;
-    @media #{$tablet} {
-        @include font-size(47);
-        margin-bottom:15px;
-    }
-    @media screen and (max-width: $sm-break-down) {
-        @include font-size(28);
-        margin-bottom: 5px;
-    }
 }
 .donate-thanks__tagline {
     font-family: $font-family-sans-serif;
@@ -120,54 +102,25 @@
     font-weight: 400; 
     margin-top:20px;
     margin-bottom:20px;
-    @media #{$tablet} {
-        @include font-size(14);
-        margin-top:0;
-        margin-bottom: 25px;
+    &--bold {
+        font-weight: 700; 
     }
-    @media screen and (max-width: $sm-break-down) {
-        @include font-size(14);
-        margin-top: 0;
-        margin-bottom: 10px;
-
+    >a {
+        text-decoration:underline;
     }
 }
 
 .donate-thanks__button {
     font-weight: 500;
-    @media #{$tablet} {
-        height: 30px;
-        width: 109px;
-        line-height: 30px;
-        font-size: 12px;
-    }
-    @media #{$mobile}{
-        height: 35px;
-        width: 140px;
-        line-height: 35px;
-    }
-}
-.donate-thanks__button__subscribe {
-    float: left;
-}
-
-.donate-thanks__button__trial {
-    margin-left: 35px;
-    &:hover {
-        color: #fff;
-        text-decoration: none;
-    }
-    @media #{$mobile}{
-        margin-left: 15px;
-    }
-}
-
-.donate-thanks__email {
-    &a,>a{
-        text-decoration: underline;
-    }
-    margin-top:76px;
-    @include font-size(18);
-    line-height: 1.61;
-    width:350px;
+    // @media #{$tablet} {
+    //     height: 30px;
+    //     width: 109px;
+    //     line-height: 30px;
+    //     font-size: 12px;
+    // }
+    // @media #{$mobile}{
+    //     height: 35px;
+    //     width: 140px;
+    //     line-height: 35px;
+    // }
 }

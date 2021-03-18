@@ -51,6 +51,11 @@
         margin-top: 37px;
     }
 
+    &__amount-label {
+        margin-top:30px;
+        @include font-size(17);
+
+    }
 
     &__button {
         @include flexbox();
@@ -58,13 +63,13 @@
         @include align-items(center);
         font-weight: 600;
         text-transform: uppercase;
-        width:230px;
+        width:176px;
         height: 44px;
 
         border-radius: 4px;
         background: #2792e1;
         color: white;
-        margin-top:11px;
+        margin-top:30px;
         &:hover {
             background: #3598df;
         }
@@ -130,9 +135,9 @@
         // background:rgb(247, 165, 165);
         outline:none;
         color:white;
-        @include font-size(25);
-        width: 63px;
-        height: 63px;
+        @include font-size(17);
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background-color:#a9a9a9;
         &:focus, &:active {
@@ -155,7 +160,7 @@
         border-radius:6px;
         padding: 10px 15px;
         text-align: center;
-        margin-top:30px;
+        margin-top:12px;
         width:230px;
         &:focus, &:active {
             outline:none;

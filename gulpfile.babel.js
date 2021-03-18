@@ -119,15 +119,15 @@ gulp.task('scripts-concat', function(){
 
         // used for Droppable/card swap
         // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
+        // './assets/scripts/plugins/moment.js',
+        // './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
 
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
-        // './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
         './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
         './assets/scripts/plugins/handlebars-v4.0.5.js',
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
-        './assets/scripts/plugins/moment.js',
 
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
 
