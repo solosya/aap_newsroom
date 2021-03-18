@@ -5,8 +5,8 @@
 
 
 {% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "internal" %}
-    {% set donations = "nr" %}
+{% if config.donations is defined and config.donations == "nr" %}
+    {% set donations = config.donations %}
 {% endif %}
 
 
