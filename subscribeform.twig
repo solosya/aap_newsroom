@@ -184,8 +184,7 @@
                                     <p class="subscribe-form-head__text">
                                         The free trial requires registration with a valid credit card. <span>After {{trialPeriod}} days, 
                                         your credit card will be charged {{planPrice}}</span> unless you cancel 
-                                        before the end of the trial. You will be emailed a reminder in advance. Subscriptions 
-                                        are billed {{planPeriod ~ "ly"}}.
+                                        before the end of the trial. You will be emailed a reminder in advance.
                                     </p>
                                 {% endif %}
             
@@ -504,41 +503,47 @@
 
         document.addEventListener("DOMContentLoaded", function(event) {
             $('.j-gtasubcreate').mousedown(function(){
-                dataLayer.push({
-                    'event': 'checkout',
-                        'ecommerce': {
-                        'checkout': {
-                            'actionField': {'step': 1, 'option': 'Create an Account'},
-                            'products': [{
-                                'name': $(this).data('name'),
-                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
-                                'price': $(this).data('price'),
-                                'category': 'Pro Subscription',
-                                'quantity': 1
-                            }]
-                        }
-                    },
-                });
+                if (typeof dataLayer !== 'undefined') {
+                    dataLayer.push({
+                        'event': 'checkout',
+                            'ecommerce': {
+                            'checkout': {
+                                'actionField': {'step': 1, 'option': 'Create an Account'},
+                                'products': [{
+                                    'name': $(this).data('name'),
+                                    'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                    'price': $(this).data('price'),
+                                    'category': 'Pro Subscription',
+                                    'quantity': 1
+                                }]
+                            }
+                        },
+                    });
+                }
                 
             });
             
 
+
             $('.j-gtasubpay').mousedown(function(){
-                dataLayer.push({
-                    'event': 'checkout',
-                        'ecommerce': {
-                        'checkout': {
-                            'actionField': {'step': 2, 'option': 'Activate Account'},
-                            'products': [{
-                                'name': $(this).data('name'),
-                                'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
-                                'price': $(this).data('price'),
-                                'category': 'Pro Subscription',
-                                'quantity': 1
-                            }]
-                        }
-                    },
-                });
+                if (typeof dataLayer !== 'undefined') {
+
+                    dataLayer.push({
+                        'event': 'checkout',
+                            'ecommerce': {
+                            'checkout': {
+                                'actionField': {'step': 2, 'option': 'Activate Account'},
+                                'products': [{
+                                    'name': $(this).data('name'),
+                                    'id': $(this).data('id'), 		//Name or ID is required (both should be sent if available)
+                                    'price': $(this).data('price'),
+                                    'category': 'Pro Subscription',
+                                    'quantity': 1
+                                }]
+                            }
+                        },
+                    });
+                }
                 
             });
             

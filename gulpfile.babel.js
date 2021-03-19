@@ -117,18 +117,17 @@ gulp.task('scripts-concat', function(){
         // './assets/scripts/plugins/jquery.validate/jquery.validate.min.js',
 
 
-        // used for Droppable/card swap
-        // './assets/scripts/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
         // './assets/scripts/plugins/moment.js',
         // './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
 
         './assets/scripts/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './assets/scripts/plugins/waypoint/lib/jquery.waypoints.min.js',
-        './assets/scripts/plugins/handlebars-v4.0.5.js',
+        './assets/scripts/plugins/handlebars-v4.7.7.js',
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
 
+        // used for load more?
         './assets/scripts/sdk/cloudinary/jquery.cloudinary.js',
 
         './assets/scripts/sdk/common.js',
@@ -147,8 +146,8 @@ gulp.task('scripts-concat', function(){
         // './assets/scripts/sdk/follow.js',
         // './assets/scripts/sdk/login.js',
         // './assets/scripts/sdk/social-share.js',
-        // './assets/scripts/sdk/yii/yii.js',
-        // './assets/scripts/sdk/yii/yii.captcha.js',
+        './assets/scripts/sdk/yii/yii.js',
+        './assets/scripts/sdk/yii/yii.captcha.js',
 
 
         './assets/scripts/framework.js',

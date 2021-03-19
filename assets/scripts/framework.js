@@ -30,7 +30,13 @@
             queryParams = (typeof queryParams !== 'undefined') ? queryParams : {};
             
             var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
-
+            var token = $('meta[name="csrf-token"]').attr("content");
+            $.ajaxSetup({
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Csrf-Token', token);
+                }
+            });
+        
             return $.ajax({
                 url: url,
                 data: queryParams,

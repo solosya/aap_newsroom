@@ -4,9 +4,10 @@
 {% set config = _Network.getThemeConfig() %}
 
 
+
 {% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "internal" %}
-    {% set donations = "nr" %}
+{% if config.donations is defined and config.donations == "nr" %}
+    {% set donations = config.donations %}
 {% endif %}
 
 
@@ -459,6 +460,10 @@
                     <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="supporter__button supporter__button--grey">Pay what you want</a>
                 {% endif %}
 
+
+                {% if _User.isAdminUser %}
+                    <button class="supporter__button supporter__button--black j-donation">Pay what you want</a>
+                {% endif %}
 
                 
                 </div>

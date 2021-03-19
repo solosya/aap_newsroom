@@ -20,6 +20,14 @@
 {{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
+{% set donations = "pp" %}
+{% if config.donations is defined and config.donations == "nr" %}
+    {% set donations = config.donations %}
+{% endif %}
+
+
+
+
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
@@ -260,9 +268,13 @@
                             <div class="col-sm-6 col-md-12">
                                 {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
-                            <div class="col-sm-6 col-md-12">
-                                {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
-                            </div>
+
+                            {% if donations == "pp" %}
+                                <div class="col-sm-6 col-md-12">
+                                    {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
+                                </div>
+                            {% endif %}
+
                         </div>
 
 

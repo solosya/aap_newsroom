@@ -48,7 +48,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         width = card.imageOptions.width || width;
         height = card.imageOptions.height || height;
     }
-
+    card['draggable'] = "false";
     card['profileImg'] = $.image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
     card['imageUrl'] = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
     card['titleString'] = "";
@@ -60,6 +60,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
             totalstring = totalstring + " Published " + card.publishedDateTime;
         }
         card['titleString'] = totalstring;
+        card['draggable'] = "true";
     }
 
     var articleId = parseInt(card.articleId);
@@ -281,8 +282,8 @@ Card.prototype.bindSocialPostPopup = function()
 
 Card.prototype.initDraggable = function()
 {
-    if ( $.ui ) {
 
+    if ( $.ui ) {
         $('.swap').draggable({
             helper: 'clone',
             revert: true,
@@ -432,6 +433,108 @@ Card.prototype.initDroppable = function()
         }); 
     }
 };
+
+
+
+Card.prototype.dragndrop = function() {
+    
+    var dragOver = function(event) {
+        event.preventDefault();
+    };
+    
+    var dragStart = function(event) {
+        event.dataTransfer.setData('text/plain', event.target.id);
+    }
+
+    var drop = function(event) {
+        var id = event.dataTransfer.getData('text');
+        var found = false;
+        var element = event.target;
+
+        while (element.parentNode) {
+            if (element.tagName.toLowerCase() !== 'a') {
+                element = element.parentNode;
+            } else if ( element.classList.contains('swap') ) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+        
+        var sourceObj       = document.getElementById(id);
+        var destObject      = element; //card it lands on
+
+        var sourcePosition       = sourceObj.dataset.position;
+        var sourcePostId         = sourceObj.dataset.id;
+        var sourceIsSocial       = parseInt(sourceObj.dataset.social);
+        var sourcePinStatus      = parseInt(sourceObj.querySelector('.PinArticleBtn').getAttribute('data-status'));
+
+
+        var destinationPosition  = destObject.dataset.position;
+        var destinationPostId    = destObject.dataset.id;
+        var destinationIsSocial  = parseInt(destObject.dataset.social);
+        var destinationPinStatus = parseInt(destObject.querySelector('.PinArticleBtn').getAttribute('data-status'));
+
+
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        var postData = {
+            sourcePosition: sourcePosition,
+            sourceArticleId: sourcePostId,
+            sourceIsSocial: sourceIsSocial,
+            
+            destinationPosition: destinationPosition,
+            destinationArticleId: destinationPostId,
+            destinationIsSocial: destinationIsSocial,
+            
+            _csrf: csrfToken
+        };
+
+        sourceParent = sourceObj.parentNode;
+        destParent = destObject.parentNode;
+        sourceParent.removeChild(sourceObj);
+        sourceParent.appendChild(destObject);
+        destParent.appendChild(sourceObj);
+
+
+        $.ajax({
+            url: _appJsConfig.baseHttpPath + '/home/swap-article',
+            type: 'post',
+            data: postData,
+            dataType: 'json',
+            success: function(data){
+
+                if(data.success) {
+                    $.fn.General_ShowNotification({message: "Articles swapped successfully"});
+                }
+                
+                // $(".card p, .card h2").dotdotdot();
+                $(".j-truncate").dotdotdot();
+                self.events();
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
+            },
+
+        });
+
+
+    };
+    // var enter = function(event) {
+    //     event.preventDefault();
+    // };
+
+    var cards = document.getElementsByClassName('swap');
+    for(var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('dragstart', dragStart);
+        cards[i].addEventListener('dragover', dragOver);
+        cards[i].addEventListener('drop', drop);
+    }
+}
+
+
+
 
 Card.prototype.events = function() 
 {

@@ -11,8 +11,10 @@
 {# This can add a prefix to the card class to segregate its styles #}
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
 
-
-
+{% set draggable = 'false' %}
+{% if _User.isAdminUser %}
+    {% set draggable = swap is defined and swap == 'swap' ? "true" : 'false' %}
+{% endif %}
 
 
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
@@ -134,11 +136,13 @@
         
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
 
-        <a  href="{{article.url}}" 
+        <a  href="{{article.url}}"
+            id="{{article.articleId}}"
             class="{{swap}} card {{hasArticleMediaClass}}" 
             aria-label="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             data-id="{{article.articleId}}" 
-            data-position="{{position}}" 
+            data-position="{{position}}"
+            draggable="{{draggable}}" 
             data-social="0" 
             data-article-image="{{articleImg}}" 
             data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
@@ -154,9 +158,9 @@
                 {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
                     <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                            <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
-                            <img  width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
+                            <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
                         {%endif%}
                     </figure>
                 {% endif %}
