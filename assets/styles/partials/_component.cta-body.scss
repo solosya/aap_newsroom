@@ -1,0 +1,214 @@
+@media #{$mobile}{
+    .c-cta-body {
+        background-color: $black;
+        color: $white;
+        text-align:left;
+        
+        margin:auto -15px;
+        // border-bottom: solid 2px $white;
+        // @media #{$desktop-up}{
+        // 	height: 77px;
+        // }
+        padding: 30px 30px 0 30px;
+    
+        &__logo {
+            width:100%;
+            margin:23px 0 0 0;
+            
+    
+        }
+    
+        &__tagline {
+            font-family: $font-family-sans-serif;
+            color: #FFF;
+            @include font-size(16);
+            font-weight: 600;
+            margin: 10px 0 30px 0;
+            height: 30px;
+            padding:5px 0;
+            text-align: center;
+            // border-left: 1px solid $white;
+        }
+    
+        
+    
+        &__container {
+            padding:20px 30px;
+            background-color: $lblue;
+            
+            width: calc(100% + 60px);
+            margin-left: -30px;
+        }
+    
+        &__input{
+            width: calc(100% - 30px);
+        }
+    
+        &__email{
+            font-family: 'PT Sans', Tahoma, Arial, serif;
+            color: #000;
+            // margin: 0 0 0 10px !important;
+            height:35px !important;
+            border-radius: 0 !important;
+            width: calc(100% - 15px);
+            padding-left: 15px;
+        }
+    
+        &__submit {
+            width: 25px; 
+            display:flex;
+            background: url('../icons/arrow-small.svg') no-repeat center; 
+            border:none; 
+            outline: none; 
+            box-shadow: none;
+            margin-right:10px;
+            &:focus {
+                outline:none;
+            }
+        }
+    
+        &__button{
+            font-size: rem(13.5);
+            font-weight: $weightBold;
+            line-height: 1.33;
+            color: $black;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            &:hover{
+                background-color: $white;
+            }
+            // @media #{$tablet-up}{
+            // 	float: right;
+            // }
+        }
+    
+        &__buttonblue{
+            margin: 0 0 30px 0;
+            padding: 12px 20px;
+            background-color: $lblue;
+            
+        }
+    
+        &__buttonblack{
+            margin: 15px 0 15px 0;
+            padding: 11px 19px;
+            color: $white;
+            border: 1px solid $white;
+            &:hover{
+                padding: 12px 20px;
+                border: none;
+                color: $black;
+            }
+        }
+    
+    }
+}
+
+@media #{$tablet-up}{
+    .c-cta-body {
+        background-color: $black;
+        color: $white;
+        text-align:left;
+        
+        margin:35px auto;
+        // border-bottom: solid 2px $white;
+        padding: 0 0 0 25px;
+        
+        height: 114px;
+        
+
+        &__logo {
+            width:100%;
+            margin:23px 0;
+            
+
+        }
+
+        &__tagline {
+            font-family: $font-family-sans-serif;
+            color: $white;
+            @include font-size(12);
+            @media #{$desktop-up}{
+                @include font-size(13);
+            }
+            font-weight: 600;
+            margin: 30px 0;
+            letter-spacing: -0.3px;
+            padding:2px 0 0 15px;
+            border-left: 1px solid $white;
+        }
+
+        
+
+        &__container {
+            padding: 39.5px 30px;
+            background-color: $lblue;
+        }
+
+        &__input{
+            width: calc(100% - 30px);
+        }
+
+        &__email{
+            font-family: 'PT Sans', Tahoma, Arial, serif;
+            color: #000;
+            // margin: 0 0 0 10px !important;
+            height:35px !important;
+            border-radius: 0 !important;
+            width: calc(100% - 15px);
+            padding-left: 15px;
+        }
+
+        &__submit {
+            width: 25px; 
+            display:flex;
+            background: url('../icons/arrow-small.svg') no-repeat center; 
+            border:none; 
+            outline: none; 
+            box-shadow: none;
+            margin-right:10px;
+            &:focus {
+                outline:none;
+            }
+        }
+
+        &__button{
+            font-size: rem(12);
+            @media #{$desktop-up}{
+                font-size: rem(13.5);
+            }
+            font-weight: $weightBold;
+            line-height: 1.33;
+            color: $black;
+            cursor: pointer;
+            width: max-content;
+            &:hover{
+                background-color: $white;
+            }
+            @media #{$tablet-up}{
+                float: right;
+            }
+        }
+
+        &__buttonblue{
+            margin: 35px 15px 0 0;
+            padding: 12px 20px;
+            background-color: $lblue;
+            
+        }
+
+        &__buttonblack{
+            margin: 35px 25px 0 0;
+            padding: 11px 19px;
+            color: $white;
+            border: 1px solid $white;
+            &:hover{
+                padding: 12px 20px;
+                border: none;
+                color: $black;
+            }
+        }
+
+    }
+}

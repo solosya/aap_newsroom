@@ -1,23 +1,21 @@
-.c-cta-footer {
+.c-cta-side {
     background-color: $black;
     color: $white;
     text-align:left;
     
     margin:auto;
-	border-bottom: solid 2px $white;
-	@media #{$desktop-up}{
-		height: 77px;
-	}
-    
+	// border-bottom: solid 2px $white;
+	// @media #{$desktop-up}{
+	// 	height: 77px;
+	// }
+    @media #{$mobile}{
+        margin:auto -30px;
+    }
+    padding: 30px 30px 0 30px;
 
     &__logo {
         width:100%;
-        margin:18px 0;
-        @media #{$desktop-up}{
-            width:226px;
-            margin:23px 0;
-		}
-       
+        margin:23px 0 0 0;
         
 
     }
@@ -25,26 +23,28 @@
     &__tagline {
         font-family: $font-family-sans-serif;
         color: #FFF;
-        @include font-size(12);
-        @media #{$desktop-up}{
-            @include font-size(16);
-        }
+        @include font-size(16);
         font-weight: 600;
-        margin: 20px 0;
-        padding:0 0 0 15px;
-        @media #{$desktop-up}{
-		    height: 30px;
-            padding:5px 0 0 25px;
+        margin: 0 0 30px 0;
+        @media #{$mobile}{
+            margin: 10px 0 30px 0;
         }
-        
-		border-left: 1px solid $white;
+		height: 30px;
+        padding:5px 0;
+        text-align: center;
+		// border-left: 1px solid $white;
     }
 
     
 
     &__container {
-        padding:20px;
+        padding:20px 30px;
 		background-color: $lblue;
+        width: 100%;
+        @media #{$mobile}{
+            width: calc(100% + 60px);
+            margin-left: -30px;
+        }
     }
 
 	&__input{
@@ -75,38 +75,30 @@
     }
 
 	&__button{
-		font-size: rem(12);
-        @media #{$desktop-up}{
-            font-size: rem(13.5);
-        }
+		font-size: rem(13.5);
 		font-weight: $weightBold;
 		line-height: 1.33;
 		color: $black;
 		cursor: pointer;
-		width: max-content;
+		width: 100%;
+        text-align: center;
 		&:hover{
 			background-color: $white;
 		}
-		@media #{$tablet-up}{
-			float: right;
-		}
+		// @media #{$tablet-up}{
+		// 	float: right;
+		// }
 	}
 
 	&__buttonblue{
-        margin: 25px 15px 0 0;
-        @media #{$desktop-up}{
-		    margin: 15px 15px 0 0;
-        }
+		margin: 0 0 30px 0;
 		padding: 12px 20px;
 		background-color: $lblue;
 		
 	}
 
 	&__buttonblack{
-		margin: 25px 0 0 0;
-        @media #{$desktop-up}{
-		    margin: 15px 0 0 0;
-        }
+		margin: 15px 0 15px 0;
 		padding: 11px 19px;
 		color: $white;
 		border: 1px solid $white;

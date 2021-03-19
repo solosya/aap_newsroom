@@ -11563,18 +11563,29 @@ input[type=radio].inline {
     .c-cta-footer {
       height: 77px; } }
   .c-cta-footer__logo {
-    width: 226px;
-    margin: 23px 0; }
+    width: 100%;
+    margin: 18px 0; }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__logo {
+        width: 226px;
+        margin: 23px 0; } }
   .c-cta-footer__tagline {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     color: #FFF;
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: 0.75rem;
+    line-height: 0.9rem;
     font-weight: 600;
     margin: 20px 0;
-    height: 30px;
-    padding: 5px 0 0 25px;
+    padding: 0 0 0 15px;
     border-left: 1px solid #ffffff; }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__tagline {
+        font-size: 1rem;
+        line-height: 1.2rem; } }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__tagline {
+        height: 30px;
+        padding: 5px 0 0 25px; } }
   .c-cta-footer__container {
     padding: 20px;
     background-color: #aad9ed; }
@@ -11598,30 +11609,265 @@ input[type=radio].inline {
     .c-cta-footer__submit:focus {
       outline: none; }
   .c-cta-footer__button {
-    font-size: 0.84375rem;
+    font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.33;
     color: #000000;
     cursor: pointer;
     width: max-content; }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__button {
+        font-size: 0.84375rem; } }
     .c-cta-footer__button:hover {
       background-color: #ffffff; }
     @media screen and (min-width: 768px) {
       .c-cta-footer__button {
         float: right; } }
   .c-cta-footer__buttonblue {
-    margin: 15px 15px 0 0;
+    margin: 25px 15px 0 0;
     padding: 12px 20px;
     background-color: #aad9ed; }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__buttonblue {
+        margin: 15px 15px 0 0; } }
   .c-cta-footer__buttonblack {
-    margin: 15px 0 0 0;
+    margin: 25px 0 0 0;
     padding: 11px 19px;
     color: #ffffff;
     border: 1px solid #ffffff; }
+    @media screen and (min-width: 992px) {
+      .c-cta-footer__buttonblack {
+        margin: 15px 0 0 0; } }
     .c-cta-footer__buttonblack:hover {
       padding: 12px 20px;
       border: none;
       color: #000000; }
+
+.c-cta-side {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: left;
+  margin: auto;
+  padding: 30px 30px 0 30px; }
+  @media screen and (max-width: 767px) {
+    .c-cta-side {
+      margin: auto -30px; } }
+  .c-cta-side__logo {
+    width: 100%;
+    margin: 23px 0 0 0; }
+  .c-cta-side__tagline {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    color: #FFF;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+    height: 30px;
+    padding: 5px 0;
+    text-align: center; }
+    @media screen and (max-width: 767px) {
+      .c-cta-side__tagline {
+        margin: 10px 0 30px 0; } }
+  .c-cta-side__container {
+    padding: 20px 30px;
+    background-color: #aad9ed;
+    width: 100%; }
+    @media screen and (max-width: 767px) {
+      .c-cta-side__container {
+        width: calc(100% + 60px);
+        margin-left: -30px; } }
+  .c-cta-side__input {
+    width: calc(100% - 30px); }
+  .c-cta-side__email {
+    font-family: 'PT Sans', Tahoma, Arial, serif;
+    color: #000;
+    height: 35px !important;
+    border-radius: 0 !important;
+    width: calc(100% - 15px);
+    padding-left: 15px; }
+  .c-cta-side__submit {
+    width: 25px;
+    display: flex;
+    background: url("../icons/arrow-small.svg") no-repeat center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-right: 10px; }
+    .c-cta-side__submit:focus {
+      outline: none; }
+  .c-cta-side__button {
+    font-size: 0.84375rem;
+    font-weight: 700;
+    line-height: 1.33;
+    color: #000000;
+    cursor: pointer;
+    width: 100%;
+    text-align: center; }
+    .c-cta-side__button:hover {
+      background-color: #ffffff; }
+  .c-cta-side__buttonblue {
+    margin: 0 0 30px 0;
+    padding: 12px 20px;
+    background-color: #aad9ed; }
+  .c-cta-side__buttonblack {
+    margin: 15px 0 15px 0;
+    padding: 11px 19px;
+    color: #ffffff;
+    border: 1px solid #ffffff; }
+    .c-cta-side__buttonblack:hover {
+      padding: 12px 20px;
+      border: none;
+      color: #000000; }
+
+@media screen and (max-width: 767px) {
+  .c-cta-body {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    margin: auto -15px;
+    padding: 30px 30px 0 30px; }
+    .c-cta-body__logo {
+      width: 100%;
+      margin: 23px 0 0 0; }
+    .c-cta-body__tagline {
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      color: #FFF;
+      font-size: 1rem;
+      line-height: 1.2rem;
+      font-weight: 600;
+      margin: 10px 0 30px 0;
+      height: 30px;
+      padding: 5px 0;
+      text-align: center; }
+    .c-cta-body__container {
+      padding: 20px 30px;
+      background-color: #aad9ed;
+      width: calc(100% + 60px);
+      margin-left: -30px; }
+    .c-cta-body__input {
+      width: calc(100% - 30px); }
+    .c-cta-body__email {
+      font-family: 'PT Sans', Tahoma, Arial, serif;
+      color: #000;
+      height: 35px !important;
+      border-radius: 0 !important;
+      width: calc(100% - 15px);
+      padding-left: 15px; }
+    .c-cta-body__submit {
+      width: 25px;
+      display: flex;
+      background: url("../icons/arrow-small.svg") no-repeat center;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      margin-right: 10px; }
+      .c-cta-body__submit:focus {
+        outline: none; }
+    .c-cta-body__button {
+      font-size: 0.84375rem;
+      font-weight: 700;
+      line-height: 1.33;
+      color: #000000;
+      cursor: pointer;
+      width: 100%;
+      text-align: center; }
+      .c-cta-body__button:hover {
+        background-color: #ffffff; }
+    .c-cta-body__buttonblue {
+      margin: 0 0 30px 0;
+      padding: 12px 20px;
+      background-color: #aad9ed; }
+    .c-cta-body__buttonblack {
+      margin: 15px 0 15px 0;
+      padding: 11px 19px;
+      color: #ffffff;
+      border: 1px solid #ffffff; }
+      .c-cta-body__buttonblack:hover {
+        padding: 12px 20px;
+        border: none;
+        color: #000000; } }
+
+@media screen and (min-width: 768px) {
+  .c-cta-body {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    margin: 35px auto;
+    padding: 0 0 0 25px;
+    height: 114px; }
+    .c-cta-body__logo {
+      width: 100%;
+      margin: 23px 0; }
+    .c-cta-body__tagline {
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      color: #ffffff;
+      font-size: 0.75rem;
+      line-height: 0.9rem;
+      font-weight: 600;
+      margin: 30px 0;
+      letter-spacing: -0.3px;
+      padding: 2px 0 0 15px;
+      border-left: 1px solid #ffffff; } }
+    @media screen and (min-width: 768px) and (min-width: 992px) {
+      .c-cta-body__tagline {
+        font-size: 0.8125rem;
+        line-height: 0.975rem; } }
+
+@media screen and (min-width: 768px) {
+    .c-cta-body__container {
+      padding: 39.5px 30px;
+      background-color: #aad9ed; }
+    .c-cta-body__input {
+      width: calc(100% - 30px); }
+    .c-cta-body__email {
+      font-family: 'PT Sans', Tahoma, Arial, serif;
+      color: #000;
+      height: 35px !important;
+      border-radius: 0 !important;
+      width: calc(100% - 15px);
+      padding-left: 15px; }
+    .c-cta-body__submit {
+      width: 25px;
+      display: flex;
+      background: url("../icons/arrow-small.svg") no-repeat center;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      margin-right: 10px; }
+      .c-cta-body__submit:focus {
+        outline: none; }
+    .c-cta-body__button {
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.33;
+      color: #000000;
+      cursor: pointer;
+      width: max-content; } }
+    @media screen and (min-width: 768px) and (min-width: 992px) {
+      .c-cta-body__button {
+        font-size: 0.84375rem; } }
+
+@media screen and (min-width: 768px) {
+      .c-cta-body__button:hover {
+        background-color: #ffffff; } }
+    @media screen and (min-width: 768px) and (min-width: 768px) {
+      .c-cta-body__button {
+        float: right; } }
+
+@media screen and (min-width: 768px) {
+    .c-cta-body__buttonblue {
+      margin: 35px 15px 0 0;
+      padding: 12px 20px;
+      background-color: #aad9ed; }
+    .c-cta-body__buttonblack {
+      margin: 35px 25px 0 0;
+      padding: 11px 19px;
+      color: #ffffff;
+      border: 1px solid #ffffff; }
+      .c-cta-body__buttonblack:hover {
+        padding: 12px 20px;
+        border: none;
+        color: #000000; } }
 
 .top-stories {
   margin-bottom: 78px; }

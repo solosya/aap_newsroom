@@ -97,3 +97,12 @@ $('.j-cta-footer-signtoggle').on('click',function(event){
     $('.j-cta-footer-buttons').addClass('d-none');
     $('.j-cta-footer-form').removeClass('d-none');
 });
+$('.j-cta-body-signtoggle').on('click',function(event){
+    $('.j-cta-body-buttons').addClass('d-none');
+    $('.j-cta-body-form').removeClass('d-none');
+});
+
+$('.j-cta-side-signtoggle').on('click',function(event){
+    $('.j-cta-side-buttons').addClass('d-none');
+    $('.j-cta-side-form').removeClass('d-none');
+});
