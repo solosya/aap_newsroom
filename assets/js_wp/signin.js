@@ -1,18 +1,17 @@
-(function ($) {
+import { Modal, Server } from './framework'
 
-
-Acme.Signin = function(template, parent, layouts) {
+export const SigninModal = function(template, parent, layouts) {
     this.template = template;
     this.parentCont = parent;
     this.layouts = layouts;
-    this.parent = Acme.modal.prototype;
+    this.parent = Modal.prototype;
 };
-Acme.Signin.prototype = new Acme.modal();
-Acme.Signin.constructor = Acme.Signin;
-Acme.Signin.prototype.errorMsg = function(msg) {
+SigninModal.prototype = new Modal();
+SigninModal.constructor = SigninModal;
+SigninModal.prototype.errorMsg = function(msg) {
     $('.message').removeClass('u-hide');
 };
-Acme.Signin.prototype.handle = function(e) {
+SigninModal.prototype.handle = function(e) {
     var self = this;
 
     var $elem = this.parent.handle.call(this, e);
@@ -40,7 +39,7 @@ Acme.Signin.prototype.handle = function(e) {
             });
             // rememberMe sets flag to store login for 30 days in cookie
             formData['rememberMe'] = 1;
-            Acme.server.create('/api/auth/login', formData).done(function(r) {
+            Server.create('/api/auth/login', formData).done(function(r) {
 
                 if (r.success === 1) {
                     
@@ -79,7 +78,7 @@ Acme.Signin.prototype.handle = function(e) {
                 formData[this.name] = this.value;
             });
 
-            Acme.server.create('/api/auth/forgot-password', formData).done(function(r) {
+            Server.create('/api/auth/forgot-password', formData).done(function(r) {
                 if (r.success === 1) {
                     location.reload();
                 } else {
@@ -120,7 +119,7 @@ var layouts = {
 
 
 
-Acme.SigninView = new Acme.Signin('modal', 'signin-modal', layouts);
+Acme.SigninView = new SigninModal('modal', 'signin-modal', layouts);
 
 
 
@@ -136,4 +135,3 @@ $('a.j-register').on('click', function(e) {
 
 
 
-}(jQuery));

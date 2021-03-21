@@ -1,15 +1,18 @@
+import { View } from './framework'
+
+
 /***                             ****
     Base Class for all Forms
 ***                              ****/
-Acme.Form = function(validators, rules) {
+export const Form = function(validators, rules) {
     this.data;
     this.errorField;
     this.validators = validators || null;
     this.validateRules = rules || {};
 };
-    Acme.Form.prototype = new Acme._View();
-    Acme.Form.constructor = Acme.Form;
-    Acme.Form.prototype.loadData = function()
+    Form.prototype = new View();
+    Form.constructor = Form;
+    Form.prototype.loadData = function()
     {
         for (var field in this.validateFields) {
             var fieldname = this.validateFields[field].split('.').reverse()[0];
@@ -24,16 +27,13 @@ Acme.Form = function(validators, rules) {
             if (fieldType === 'hidden') continue;
             
             if (fieldType === 'checkbox') {
-                // console.log(field[0].checked);
                 this.data[fieldname] = field[0].checked;
             } else {
                 this.data[fieldname] = field.val();
             }
-            // console.log(fieldname);
-            // console.log(field[0].type);
         }
     };
-    Acme.Form.prototype.clearInlineErrors = function()
+    Form.prototype.clearInlineErrors = function()
     {
         if (this.errorField) {
             this.errorField.removeClass('active');
@@ -48,7 +48,7 @@ Acme.Form = function(validators, rules) {
             field.removeClass('formError');
         }
     };
-    Acme.Form.prototype.addInlineErrors = function()
+    Form.prototype.addInlineErrors = function()
     {
         if (this.errorFields.length > 0 && this.errorField) {
             this.errorField.addClass('active');
@@ -63,11 +63,11 @@ Acme.Form = function(validators, rules) {
             field.addClass('formError');
         }
     };
-    Acme.Form.prototype.render = function() {
+    Form.prototype.render = function() {
         this.clearInlineErrors();
         this.addInlineErrors();
     };
-    Acme.Form.prototype.validate = function( /* Array */ checkFields)  {
+    Form.prototype.validate = function( /* Array */ checkFields)  {
         // console.log(checkFields);
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
@@ -136,7 +136,7 @@ Acme.Form = function(validators, rules) {
         return validated;
     };
 
-    Acme.Form.prototype.events = function( /* Array */ checkFields)  {
+    Form.prototype.events = function( /* Array */ checkFields)  {
         var self = this;
         // console.log('running events from parent');
         // console.log(this.id);
@@ -178,7 +178,7 @@ Acme.Form = function(validators, rules) {
 
 
 
-Acme.Validators = {
+export const Validators = {
     'notEmpty' : function(input) {
         return !input ? false : true;
     },

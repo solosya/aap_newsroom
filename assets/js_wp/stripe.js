@@ -1,12 +1,13 @@
-// Create a Stripe client
+import { Form, Validators } from './form'
+import { SigninModal } from './signin'
 var botTimer = 0;
 
-if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
 
-    console.log('running from stripe code');
+
+function setup() {
     var stripekey = $('#stripekey').html();
 
-    var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+    var modal = new SigninModal('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
     var stripe = Stripe(stripekey);
 
@@ -54,251 +55,261 @@ if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
             displayError.textContent = '';
         }
     }); 
-
-    // Handle form submission
-
-    var SubscribeForm = function() {
-        this.data = {
-            "group[1149][1]": true,
-            "group[1149][2]": true,
-        };
-        this.errorFields = [];
-
-        this.validateRules = {
-            "verifypassword"    : ["notEmpty"],
-            "firstname"         : ["notEmpty"], 
-            "lastname"          : ["notEmpty"], 
-            "username"          : [], 
-            "password"          : ["notEmpty"],
-            "email"             : ["notEmpty"],
-            "trial"             : [],
-            "terms"             : ["isTrue"],
-        };
+}
 
 
-        this.events();
-        var trial = $('#trial').val();
-        this.data['plantype'] = $('#plantype').val();
+// Handle form submission
 
-        if (trial == 1 && this.data.plantype === 'time') {
-            this.data['trial'] = 'true';
-            this.validateRules['changeterms'] = ["isTrue"];
-            // this.validateRules['cancelterms'] = ["isTrue"];
-        }
-        this.validateFields = Object.keys(this.validateRules);
+export const SubscribeForm = function() {
 
+    if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
+        return;
+    }
+
+    setup();
+
+
+    this.data = {
+        "group[1149][1]": true,
+        "group[1149][2]": true,
     };
+    this.errorFields = [];
 
-    SubscribeForm.prototype = new Acme.Form(Acme.Validators);
-    SubscribeForm.constructor = SubscribeForm;
-
-    SubscribeForm.prototype.render = function(checkTerms) 
-    {
-
-        this.clearInlineErrors();
-        this.addInlineErrors();
-        if (checkTerms) {
-            if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
-                this.confirmView = new Acme.modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
-                this.confirmView.render("terms", "Terms of use");
-            }
-        }
+    this.validateRules = {
+        "verifypassword"    : ["notEmpty"],
+        "firstname"         : ["notEmpty"], 
+        "lastname"          : ["notEmpty"], 
+        "username"          : [], 
+        "password"          : ["notEmpty"],
+        "email"             : ["notEmpty"],
+        "trial"             : [],
+        "terms"             : ["isTrue"],
     };
 
 
+    this.events();
+    var trial = $('#trial').val();
+    this.data['plantype'] = $('#plantype').val();
 
-    SubscribeForm.prototype.submit = function(event) 
-    {
-        var self = this;
-        event.preventDefault();
-        var validated = self.validate();
-        self.render(true);
-        if (!validated) return;
+    if (trial == 1 && this.data.plantype === 'time') {
+        this.data['trial'] = 'true';
+        this.validateRules['changeterms'] = ["isTrue"];
+        // this.validateRules['cancelterms'] = ["isTrue"];
+    }
+    this.validateFields = Object.keys(this.validateRules);
 
-        $('#card-errors').text('');
-        if ( $('#password').val() !== $('#verifypassword').val() ) {
-            $('#card-errors').text('Password fields do not match.');
-            return;
+};
+
+SubscribeForm.prototype = new Form(Validators);
+SubscribeForm.constructor = SubscribeForm;
+
+SubscribeForm.prototype.render = function(checkTerms) 
+{
+
+    this.clearInlineErrors();
+    this.addInlineErrors();
+    if (checkTerms) {
+        if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
+            this.confirmView = new Modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+            this.confirmView.render("terms", "Terms of use");
         }
-
-        if (botTimer < 5 || $('#email-confirm').val() !== "") {
-            window.location.href = location.origin + "/auth/thank-you";
-        }
+    }
+};
 
 
 
-        function submitForm() {
-            formhandler(self.data, '/auth/paywall-signup').then(function(response) {
+SubscribeForm.prototype.submit = function(event) 
+{
+    var self = this;
+    event.preventDefault();
+    var validated = self.validate();
+    console.log(validated);
+    self.render(true);
+    if (!validated) return;
 
-                if (response.success == 1) {
+    $('#card-errors').text('');
+    if ( $('#password').val() !== $('#verifypassword').val() ) {
+        $('#card-errors').text('Password fields do not match.');
+        return;
+    }
 
-                    if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+    if (botTimer < 5 || $('#email-confirm').val() !== "") {
+        window.location.href = location.origin + "/auth/thank-you";
+    }
 
-                        var subscribeData = {
-                            "EMAIL": self.data['email'], 
-                            "FNAME": self.data['firstname'],
-                            "LNAME": self.data['lastname'],
-                        };
-                        if (self.data["group[1149][1]"]) {
-                            subscribeData["group[1149][1]"] = 1;
-                        }
-                        if (self.data["group[1149][2]"]) {
-                            subscribeData["group[1149][2]"] = 2;
-                        }
 
-                        Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                            .then(function(r) {
-                                console.log(r);
-                            });                        
+
+    function submitForm() {
+        formhandler(self.data, '/auth/paywall-signup').then(function(response) {
+
+            if (response.success == 1) {
+
+                if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+
+                    var subscribeData = {
+                        "EMAIL": self.data['email'], 
+                        "FNAME": self.data['firstname'],
+                        "LNAME": self.data['lastname'],
+                    };
+                    if (self.data["group[1149][1]"]) {
+                        subscribeData["group[1149][1]"] = 1;
                     }
-                    
-                    // set time out used for Firefox which seems to need a little bit more time to figure things out
-                    setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
-                    // window.location.href = location.origin + '/auth/thank-you';
+                    if (self.data["group[1149][2]"]) {
+                        subscribeData["group[1149][2]"] = 2;
+                    }
+
+                    Acme.server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+                        .then(function(r) {
+                            console.log(r);
+                        });                        
                 }
                 
-            });
-        }
-
-
-        if ($("#code-redeem").length > 0) {
-            modal.render("spinner", "Authorising code");
-            self.data['planid'] = $('#planid').val();
-            self.data['giftcode'] = $('#code-redeem').val();
-            self.data['stripetoken'] = null;
-            submitForm();
-
-        } else {
-
-            modal.render("spinner", "Your request is being processed.");
-
-            var stripeCall = stripe.createToken(card).then(function(result) {
-
-                if (result.error) {
-                    modal.closeWindow();
-                    // Inform the user if there was an error
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server
-
-                    self.data['stripetoken'] = result.token.id;
-                    self.data['planid'] = $('#planid').val();
-                    self.data['redirect'] = false;
-                    submitForm();
-                }
-            });   
-        }
-
-            
-         
-    };
-    SubscribeForm.prototype.events = function()
-    {
-        var self = this;
-        $('input, textarea').on("change", function(e) {
-
-            e.stopPropagation();
-            e.preventDefault();
-            var data = {};
-            var elem = $(e.target);
-            var elemid = elem.attr('name');
-            var inputType = elem.attr('type');
-
-            if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
-                data[elemid] = elem.val();
-                // username is created from the email plus a random number
-                if (inputType == 'email') {
-                    data['username'] = Math.floor(100000000 + Math.random() * 9000000000000000);
-                }
-
-            } else if (inputType =='checkbox') {
-                var value = elem.is(":checked");
-                data[elemid] = value;
+                // set time out used for Firefox which seems to need a little bit more time to figure things out
+                setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
+                // window.location.href = location.origin + '/auth/thank-you';
             }
-
-            self.updateData(data);
-
-            var validated = self.validate([elemid]);
-            self.render();
+            
         });
-
-        var form = document.getElementById('payment-form');
-
-        if (form != null) {
-            form.addEventListener('submit', function(event) {
-                self.submit(event);
-
-            });
-        }
-
-        console.log('removing email confirm');
-        $('#email-confirm').addClass("email-confirm");
-
-    };
-
-    Acme.subscribe = new SubscribeForm();
-
-   
+    }
 
 
-    var formhandler = function(formdata, path) {
-        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+    if ($("#code-redeem").length > 0) {
+        modal.render("spinner", "Authorising code");
+        self.data['planid'] = $('#planid').val();
+        self.data['giftcode'] = $('#code-redeem').val();
+        self.data['stripetoken'] = null;
+        submitForm();
 
-        return $.ajax({
-            url: _appJsConfig.appHostName + path,
-            type: 'post',
-            data: formdata,
-            dataType: 'json',
-            success: function(data) {
+    } else {
 
-                if(data.success) {
-                    $('#card-errors').text('Completed successfully.');
-                } else {
-                    modal.closeWindow();
+        modal.render("spinner", "Your request is being processed.");
 
-                    var text = ''
-                    for (var key in data.error) {
-                        text = text + data.error[key] + " ";
-                    } 
-                    $('#card-errors').text(text);
-                }   
-            },
-            error: function(data) {
+        var stripeCall = stripe.createToken(card).then(function(result) {
+
+            if (result.error) {
                 modal.closeWindow();
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server
+
+                self.data['stripetoken'] = result.token.id;
+                self.data['planid'] = $('#planid').val();
+                self.data['redirect'] = false;
+                submitForm();
+            }
+        });   
+    }
+
+        
+        
+};
+SubscribeForm.prototype.events = function()
+{
+    var self = this;
+    $('input, textarea').on("change", function(e) {
+
+        e.stopPropagation();
+        e.preventDefault();
+        var data = {};
+        var elem = $(e.target);
+        var elemid = elem.attr('name');
+        var inputType = elem.attr('type');
+
+        if (inputType == 'text' || inputType == 'email' || inputType == 'password') {
+            data[elemid] = elem.val();
+            // username is created from the email plus a random number
+            if (inputType == 'email') {
+                data['username'] = Math.floor(100000000 + Math.random() * 9000000000000000);
+            }
+
+        } else if (inputType =='checkbox') {
+            var value = elem.is(":checked");
+            data[elemid] = value;
+        }
+
+        self.updateData(data);
+
+        var validated = self.validate([elemid]);
+        self.render();
+    });
+
+    var form = document.getElementById('payment-form');
+
+    if (form != null) {
+        form.addEventListener('submit', function(event) {
+            self.submit(event);
+
+        });
+    }
+
+    console.log('removing email confirm');
+    $('#email-confirm').addClass("email-confirm");
+
+};
+
+Acme.subscribe = new SubscribeForm();
+
+
+
+
+var formhandler = function(formdata, path) {
+    var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+    return $.ajax({
+        url: _appJsConfig.appHostName + path,
+        type: 'post',
+        data: formdata,
+        dataType: 'json',
+        success: function(data) {
+
+            if(data.success) {
+                $('#card-errors').text('Completed successfully.');
+            } else {
+                modal.closeWindow();
+
+                var text = ''
+                for (var key in data.error) {
+                    text = text + data.error[key] + " ";
+                } 
+                $('#card-errors').text(text);
+            }   
+        },
+        error: function(data) {
+            modal.closeWindow();
+        }
+    });
+}
+
+
+
+var udform = document.getElementById('update-card-form');
+
+if (udform != null) {
+
+    udform.addEventListener('submit', function(event) {
+        event.preventDefault();
+        modal.render("spinner", "Your request is being processed.");
+
+        $('#card-errors').text('');
+        
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                modal.closeWindow();
+
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server
+
+                formdata = {"stripetoken":result.token.id}
+                formhandler(formdata, '/user/update-payment-details').then(function() {
+                    modal.closeWindow();
+                    location.reload();
+                });
             }
         });
-    }
-
-
-
-    var udform = document.getElementById('update-card-form');
-
-    if (udform != null) {
-
-        udform.addEventListener('submit', function(event) {
-            event.preventDefault();
-            modal.render("spinner", "Your request is being processed.");
-
-            $('#card-errors').text('');
-            
-            stripe.createToken(card).then(function(result) {
-                if (result.error) {
-                    modal.closeWindow();
-
-                    // Inform the user if there was an error
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server
-
-                    formdata = {"stripetoken":result.token.id}
-                    formhandler(formdata, '/user/update-payment-details').then(function() {
-                        modal.closeWindow();
-                        location.reload();
-                    });
-                }
-            });
-        });
-    }
-} 
+    });
+}

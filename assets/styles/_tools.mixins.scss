@@ -300,12 +300,23 @@
 
 /* Transition */
 @mixin transition($transition) {
-	transition: all $transition ease-in;
-	-moz-transition: all $transition ease-in;
-	-o-transition: all $transition ease-in;
-	-webkit-transition: all $transition ease-in;
-	-ms-transition: all $transition ease-in;
+	transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	-o-transition: all 0.3s ease-in;
+	-webkit-transition: all 0.3s ease-in;
+	-ms-transition: all 0.3s ease-in;
 }
+
+
+
+// /* Transition */
+// @mixin transition($transition) {
+// 	transition: all $transition ease-in;
+// 	-moz-transition: all $transition ease-in;
+// 	-o-transition: all $transition ease-in;
+// 	-webkit-transition: all $transition ease-in;
+// 	-ms-transition: all $transition ease-in;
+// }
 
 /* Sizes */
 @mixin size($width, $height: $width) {

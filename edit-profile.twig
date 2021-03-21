@@ -12,7 +12,6 @@
 {% set commenter = false %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
-{% set log = _AppHelper.log(pwstats) %}
 {% set plans = _Network.getNetworkData()['paywallPlans'] %}
 {# {% set plans = _Paywall.getActiveNetworkPaywallPlans() %} #}
 
