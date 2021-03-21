@@ -8,7 +8,7 @@
     {% set dev = true %}
 {% endif %}
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = new Acme.Card();")}}
 {% set limit = 4 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
@@ -496,7 +496,7 @@
                     //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
                     //generate a new feed for the active box and fetch it
-                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+                    Acme.loadMore = new Acme.ArticleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
                     Acme.loadMore.fetch();
                     //clear the feed so no overlap
                     Acme.loadMore = "";

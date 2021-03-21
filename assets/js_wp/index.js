@@ -1,9 +1,10 @@
-import { ArticleFeed, UserFeed, UserCard }  from './articleFeed'
+import { ArticleFeed, UserFeed, UserCard }  from './articleFeed2'
 import { UserProfileController }            from './user-profile'
 import { View, PubSub }                     from './framework'
 import { Subscribe }                        from './signup'
 import { Donations }                        from './donations'
 import { Card }                             from './card'
+import { IPCheck }                          from './dialog-ip'
 
 window.Acme = {};
 window.Acme.View = {};
@@ -15,7 +16,7 @@ window.Acme.ArticleFeed = ArticleFeed;
 window.Acme.Donations = Donations;
 window.Acme.Usercard = UserCard;
 window.Acme.Card = Card;
-
+window.Acme.IPCheck = IPCheck;
 
 
 

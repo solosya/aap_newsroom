@@ -1,71 +1,18 @@
 import { Form, Validators } from './form'
 import { SigninModal } from './signin'
+import { Modal, Server } from './framework'
 
 
-var botTimer = 0;
-
-function setup() {
-    var stripekey = $('#stripekey').html();
-
-    var modal = new SigninModal('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
-
-    var stripe = Stripe(stripekey);
-
-    setInterval(function(){
-        botTimer = botTimer + 1;
-    }, 1000);
-
-    // Create an instance of Elements
-    var elements = stripe.elements();
-
-    // Custom styling can be passed to options when creating an Element.
-    // (Note that this demo uses a wider set of styles than the guide below.)
-    var style = {
-        base: {
-            color: '#32325d',
-            lineHeight: '24px',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    };
-
-    // Create an instance of the card Element
-    var card = elements.create('card', {style: style});
-
-    // Add an instance of the card Element into the `card-element` <div>
-    var cardElement = document.getElementById('card-element');
-    if (cardElement != null) {
-        card.mount('#card-element');
-    }
-
-    // Handle real-time validation errors from the card Element.
-    card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    }); 
-}
-    // Handle form submission
 
 export const SubscribeForm = function(id, user) {
-
-    if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
+    console.log( )
+    if ($('#stripekey').length < 1 || $('#paywalloldsubscribe').length < 1 ) {
         return;
     }
 
-    setup();
+    // var modal = new SigninModal('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
     
+    this.botTimer = 0;
     this.id = id || null;
     this.parent = Form.prototype;
     this.code = false;
@@ -101,13 +48,65 @@ export const SubscribeForm = function(id, user) {
     }
 
     this.validateFields = Object.keys(this.validateRules);
+    this.stripeSetup();
     this.loadData();
     this.events();
 };
 
 SubscribeForm.prototype = new Form(Validators);
 SubscribeForm.constructor = SubscribeForm;
+SubscribeForm.prototype.stripeSetup = function () {
+    var self = this;
+    var stripekey = $('#stripekey').html();
 
+    this.stripe = Stripe(stripekey);
+
+    setInterval(function(){
+        self.botTimer = self.botTimer + 1;
+        console.log("BotTimer = ", self.botTimer);
+    }, 1000);
+
+    // Create an instance of Elements
+    var elements = this.stripe.elements();
+
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+        base: {
+            color: '#32325d',
+            lineHeight: '24px',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    // Create an instance of the card Element
+    this.card = elements.create('card', {style: style});
+
+    // Add an instance of the card Element into the `card-element` <div>
+    var cardElement = document.getElementById('card-element');
+    if (cardElement != null) {
+        this.card.mount('#card-element');
+    }
+
+    // Handle real-time validation errors from the card Element.
+    this.card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    }); 
+}
 SubscribeForm.prototype.random = function(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -144,7 +143,7 @@ SubscribeForm.prototype.submit = function(event)
     
     if (!validated) return;
 
-    if (botTimer < 5 || $('#email-confirm').val() !== "") {
+    if (self.botTimer < 5 || $('#email-confirm').val() !== "") {
         window.location.href = location.origin + "/auth/thank-you";
     }
 
@@ -162,7 +161,7 @@ SubscribeForm.prototype.submit = function(event)
 
         // modal.render("spinner", "Your request is being processed.");
         this.signup.render("spinner", "Your request is being processed.");
-        var stripeCall = stripe.createToken(card).then(function(result) {
+        var stripeCall = this.stripe.createToken(self.card).then(function(result) {
 
             if (result.error) {
                 self.signup.closeWindow();

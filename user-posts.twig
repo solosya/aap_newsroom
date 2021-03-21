@@ -3,7 +3,7 @@
 
 {% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = Acme.Card();")}}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -14,7 +14,7 @@
 {% set firstCount = userArticles | length %}
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑           ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+{{this.registerJs("Acme.loadMore = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 <section class="container min-hight">

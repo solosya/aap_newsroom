@@ -1,4 +1,4 @@
-Acme.Token = function(tokenName) 
+export const Token = function(tokenName) 
 {
 	this.hasLocal	= typeof localStorage != "undefined" ? true : false;
 	this.keyName 	= tokenName;
@@ -7,7 +7,7 @@ Acme.Token = function(tokenName)
 
 };
 
-Acme.Token.prototype.getToken = function() 
+Token.prototype.getToken = function() 
 {
 	if ( this.hasLocal ) {
 	    this.token = localStorage.getItem(this.keyName);
@@ -15,13 +15,13 @@ Acme.Token.prototype.getToken = function()
 
 	} 
 };
-Acme.Token.prototype.setToken = function(value) 
+Token.prototype.setToken = function(value) 
 {
 	if ( this.hasLocal ) {
 	    localStorage.setItem(this.keyName, value);
 	}
 };
-Acme.Token.prototype.removeToken = function() 
+Token.prototype.removeToken = function() 
 {	
 	if ( this.hasLocal ) {
 	    return localStorage.removeItem(this.keyName);

@@ -4,7 +4,7 @@
 {% set blogName      = blogData.title %}
 {% set config       = _Network.getThemeConfig() %}
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = Acme.Card();")}}
 {% set limit = 13 %}
 
 {% set recentPanelBlogName = "Newsroom" %}
@@ -59,7 +59,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+{{this.registerJs("Acme.loadMore = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 {% set recentArticles = _Article.getRecentArticles(recentParams) %}
 

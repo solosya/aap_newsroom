@@ -8,60 +8,63 @@ import { faces } from "@cloudinary/base/qualifiers/focusOn";
 import { focusOn } from "@cloudinary/base/qualifiers/gravity";
 
 
-export const Card = function() {
+export const Card = function(attrs = {}) {
+    this.data = attrs;
     this.events();
 };
 
-Card.prototype.renderCard = function(card, cardClass, template, type)
+Card.prototype.render = function(options = {})
 {
-
     var self = this;
-    var template = (template) ? Templates[template] : Templates.systemCardTemplate;
+    var template = (options.template) ? Templates[options.template] : Templates.systemCardTemplate;
 
-    card['cardClass'] = cardClass;
-    if (card.status == "draft") {
-        card['articleStatus'] = "draft";
-        card['cardClass'] += " draft"; 
+    this.data['cardClass'] = options.cardClass || "";
+    if (this.data.status == "draft") {
+        this.data['articleStatus'] = "draft";
+        this.data['cardClass'] += " draft"; 
     }
 
-    card['cardType'] = card.type || "";
-    card['lightbox'] = card.lightbox || "";
+    this.data['cardType'] = this.data.type || "";
+    this.data['lightbox'] = this.data.lightbox || "";
 
 
-    card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
-    card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
-    card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
-    card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
+    this.data['pinTitle'] = (this.data.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
+    this.data['pinText']  = (this.data.isPinned == 1) ? 'Un-Pin' : 'Pin';
+    this.data['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
+    this.data['hasMediaClass'] = (this.data.hasMedia == 1)? 'withImage__content' : 'without__image';
     
     // mainly for screen to turn off lazyload and loading background img
-    card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
-    card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
+    this.data['imgClass'] = (this.data.lazyloadImage == false) ? '' : 'lazyload';
+    this.data['imgBackgroundStyle'] = (this.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
     
-    card['readingTime']= self.renderReadingTime(card.readingTime);
-    card['blogClass']= '';
-    if(card.blog['id'] !== null) {
-       card['blogClass']= 'card--blog_'+card.blog['id'];
-    } 
-    
-    var width = 500;
-    var height = 350;
+    this.data['readingTime'] = self.renderReadingTime(this.data.readingTime);
 
-    if (card.imageOptions) {
-        width = card.imageOptions.width || width;
-        height = card.imageOptions.height || height;
+    var width = typeof options.imageWidth !== "undefined" ? options.imageWidth : 500;
+    var height = typeof options.imageHeight !== "undefined" ? options.imageHeight : 350;
+    var gravity = typeof options.imageGravity !== "undefined" ? options.imageGravity : null;
+
+    if (options.imageOriginal) {
+        var width = this.featuredMedia.width;
+        var height = this.featuredMedia.height;
     }
-    // console.log(card);
-    card['draggable'] = "false";
+
+    if (this.imageOptions) {
+        width = this.imageOptions.width || width;
+        height = this.imageOptions.height || height;
+    }
+    
+    this.data['draggable'] = "false";
 
 
-    const profileImage = card['createdBy']['media'];
-    const articleImage = card['featuredMedia'];
+    const profileImage = this.data['createdBy']['media'];
+    const articleImage = this.data['featuredMedia'];
 
     const cld = new Cloudinary({
         cloud: {
           cloudName: articleImage.cloudName
         }
     });
+
     // Docs:
     // https://cloudinary.com/documentation/javascript2_image_transformations
     const articleImg = cld.image(articleImage.id);
@@ -71,22 +74,22 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
 
     // card['profileImg'] = Image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
     // card['imageUrl'] = Image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
-    card['profileImg'] = profileImg.toURL();
-    card['imageUrl'] = articleImg.toURL();
+    this.data['profileImg'] = profileImg.toURL();
+    this.data['imageUrl'] = articleImg.toURL();
 
-    card['titleString'] = "";
+    this.data['titleString'] = "";
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
         var totalstring = "";
-        var totals = (card.total ) ? card.total : false;
+        var totals = (this.data.total ) ? this.data.total : false;
         if ( totals ) {
             totalstring = "Viewed " + totals.view + " times";
-            totalstring = totalstring + " Published " + card.publishedDateTime;
+            totalstring = totalstring + " Published " + this.data.publishedDateTime;
         }
-        card['titleString'] = totalstring;
-        card['draggable'] = "true";
+        this.data['titleString'] = totalstring;
+        this.data['draggable'] = "true";
     }
 
-    var articleId = parseInt(card.articleId);
+    var articleId = parseInt(this.data.articleId);
     var articleTemplate;
 
     if (isNaN(articleId) || articleId <= 0) {
@@ -98,7 +101,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     } else {
         articleTemplate = Handlebars.compile(template);
     }
-    return articleTemplate(card);
+    return articleTemplate(this);
 }
 
 Card.prototype.renderReadingTime = function (time) 

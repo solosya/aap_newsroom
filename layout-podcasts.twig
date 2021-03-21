@@ -2,7 +2,7 @@
 {% set blogData     = _Blog.getBlog() %}
 {% set config       = _Network.getThemeConfig() %}
 {{ set(this, 'title', blogData.title) }}
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = Acme.Card();")}}
 
 {% set sections =  {
         "podcast: the detail": {
@@ -130,7 +130,7 @@
                     //set the clicked box to be the active loadmore one
                     $(this).addClass('loadMore');
                     //generate a new feed for the active box and fetch it
-                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, 6, 4, false);
+                    Acme.loadMore = new Acme.ArticleFeed(Acme.cards, 6, 4, false);
                     Acme.loadMore.fetch();
                     //clear the feed so no overlap
                     Acme.loadMore = "";

@@ -1,11 +1,15 @@
-window.Acme       = {};
-Acme.View         = {};
-Acme.Model        = {};
-Acme.Collection   = {};
-Acme.Controller   = {};
-Acme.State        = {};
-Acme.SigninView   = {};
-Acme.SigninView   = {};
+import Handlebars from 'handlebars'
+import { Templates } from './article-templates'
+
+
+window.Acme       = window.Acme || {};
+Acme.View         = Acme.View   || {};
+Acme.Model        = Acme.Model  || {};
+// Acme.Collection   = {};
+// Acme.Controller   = {};
+// Acme.State        = {};
+// Acme.SigninView   = {};
+// Acme.SigninView   = {};
 
 
 
@@ -24,13 +28,17 @@ export const Server = {
         queryParams = (typeof queryParams !== 'undefined') ? queryParams : {};
         
         var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
-        var token = $('meta[name="csrf-token"]').attr("content");
-        $.ajaxSetup({
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader('Csrf-Token', token);
-            }
-        });
-    
+        
+        if (type !== 'get') {
+            var token = $('meta[name="csrf-token"]').attr("content");
+            console.log(token);
+            $.ajaxSetup({
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Csrf-Token', token);
+                }
+            });
+        }
+
         return $.ajax({
             url: url,
             data: queryParams,
@@ -290,7 +298,7 @@ export const Modal = function(template, name, layouts, data) {
             this.data['title'] = title;
         }
         this.data['name'] = this.parentCont;
-        var tmp = Handlebars.compile(Acme.templates[this.template]);
+        var tmp = Handlebars.compile(Templates[this.template]);
         var tmp = tmp(this.data);
 
         $('html').addClass('u-noscroll')
@@ -304,7 +312,7 @@ export const Modal = function(template, name, layouts, data) {
     };
     Modal.prototype.renderLayout = function(layout, data) {
         var data = data || {};
-        var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
+        var tmp = Handlebars.compile(Templates[this.layouts[layout]]);
         var layout = tmp(data);
         $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
     };
@@ -354,64 +362,64 @@ export const Modal = function(template, name, layouts, data) {
 
 
 
-Acme.dialog = {
-    type : '',
-    state : {},
+// Acme.dialog = {
+//     type : '',
+//     state : {},
 
-    show : function(message, type, callback, self, data) {
-        var that = this;
-        var template  = '<div id="wrapper" class="flex_col"> <div id="dialog"><div><p id="dialogTitle">{{title}}</p><div id="dialogMessage">{{message}}</div>';
-            template += '<ul id="dialogButtons"><button>Okay</button><button>Cancel</button></div></div></div>';
+//     show : function(message, type, callback, self, data) {
+//         var that = this;
+//         var template  = '<div id="wrapper" class="flex_col"> <div id="dialog"><div><p id="dialogTitle">{{title}}</p><div id="dialogMessage">{{message}}</div>';
+//             template += '<ul id="dialogButtons"><button>Okay</button><button>Cancel</button></div></div></div>';
 
-        template = template.replace( /{{title}}/ig, type || "");
-        template = template.replace( /{{message}}/ig, message);
-        var dfd = $.Deferred();
+//         template = template.replace( /{{title}}/ig, type || "");
+//         template = template.replace( /{{message}}/ig, message);
+//         var dfd = $.Deferred();
 
-        $('body').append(template);
-        $('#dialog').on("click", function(e) {
-            var $elem = $(e.target);
-            if (!$elem.is('input')) {
-                e.preventDefault();
-            }
+//         $('body').append(template);
+//         $('#dialog').on("click", function(e) {
+//             var $elem = $(e.target);
+//             if (!$elem.is('input')) {
+//                 e.preventDefault();
+//             }
 
-            if ( $elem.is('button') ) {
-                if ($elem.text() === "Cancel") {
-                    Acme.dialog.closeWindow();
-                } else if ($elem.text() === "Okay") {
-                    Acme.dialog.closeWindow();
+//             if ( $elem.is('button') ) {
+//                 if ($elem.text() === "Cancel") {
+//                     Acme.dialog.closeWindow();
+//                 } else if ($elem.text() === "Okay") {
+//                     Acme.dialog.closeWindow();
 
-                    // State can be provided by client external to 'show' call
-                    if (data === undefined && that.state) {
-                        data = that.state;
-                    // If data is also provided we merge the two
-                    } else if (that.state) {
-                        var keys = Object.keys(that.state)
-                        for (var k=0; k<keys.length;k++) {
-                            data[keys[k]] = that.state[keys[k]];
-                        }
-                    }
+//                     // State can be provided by client external to 'show' call
+//                     if (data === undefined && that.state) {
+//                         data = that.state;
+//                     // If data is also provided we merge the two
+//                     } else if (that.state) {
+//                         var keys = Object.keys(that.state)
+//                         for (var k=0; k<keys.length;k++) {
+//                             data[keys[k]] = that.state[keys[k]];
+//                         }
+//                     }
 
-                    if (self != undefined) {
-                        if (data != undefined) {
-                            var result = callback.call(self, data);
-                            dfd.resolve(result);
-                        } else {
-                            var result = callback.call(self);
-                            dfd.resolve(result);
-                        }
-                    } else {
-                        var result = callback();
-                        dfd.resolve(result);
-                    }
-                }
-            }
-        });
-        return dfd.promise();
-    },
-    closeWindow : function() {
-        $('#dialog').closest('#wrapper').remove();
-    }
-};
+//                     if (self != undefined) {
+//                         if (data != undefined) {
+//                             var result = callback.call(self, data);
+//                             dfd.resolve(result);
+//                         } else {
+//                             var result = callback.call(self);
+//                             dfd.resolve(result);
+//                         }
+//                     } else {
+//                         var result = callback();
+//                         dfd.resolve(result);
+//                     }
+//                 }
+//             }
+//         });
+//         return dfd.promise();
+//     },
+//     closeWindow : function() {
+//         $('#dialog').closest('#wrapper').remove();
+//     }
+// };
 
 
 

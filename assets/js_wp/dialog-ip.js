@@ -1,8 +1,11 @@
+import { Token } from './token'
+import { Modal } from './framework'
+
 /***                      ****
   Dialog Confirmation Box
 ***                       ****/
 
-Acme.IPCheck = function() {
+export const IPCheck = function() {
 
     function dot2num(dot) {
         var d = dot.split(".");
@@ -16,8 +19,8 @@ Acme.IPCheck = function() {
 
     $(function() {
 
-        Acme.IPToken = new Acme.Token("IP_ACCOUNT");
-        var token = Acme.IPToken.getToken();
+        const IPToken = new Token("IP_ACCOUNT");
+        var token = IPToken.getToken();
         var IPAdresses = [];
 
         if (!token) {
@@ -72,24 +75,20 @@ Acme.IPCheck = function() {
                     }
     
                     if ( userAccount ) {
-                        Acme.IPNoticePopup = new Acme.IPNotice("modal", "ipdialog", {"main": "ipnotice"});
-                        Acme.IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
+                        IPNoticePopup = new IPNotice("modal", "ipdialog", {"main": "ipnotice"});
+                        IPNoticePopup.render("main", "Did you know your employer is a subscriber to Newsroom Pro?");
                     }
                 });
 
 
             //     } 
             // }).fail(function(r) { console.log(r);return;});
-
-
-
-
         }
     });
 }
 
 
-Acme.IPNotice = function(template, parent, layouts) {
+export const IPNotice = function(template, parent, layouts) {
 
     this.template = template;
     this.parentCont = parent;
@@ -97,24 +96,24 @@ Acme.IPNotice = function(template, parent, layouts) {
     this.parent = Acme.modal.prototype;
     this.data = {};
 };
-    Acme.IPNotice.prototype = new Acme.modal();
-    Acme.IPNotice.constructor = Acme.IPNotice;
-    Acme.IPNotice.prototype.errorMsg = function(msg) {
+    IPNotice.prototype = new Modal();
+    IPNotice.constructor = IPNotice;
+    IPNotice.prototype.errorMsg = function(msg) {
         $('.message').toggleClass('hide');
     };
-    Acme.IPNotice.prototype.handle = function(e) {
+    IPNotice.prototype.handle = function(e) {
         var self = this;
         this.parent.handle.call(this, e);
         var $elem = $(e.target);
 
         if ( $elem.is('a') || $elem.parent().is('a') ) {
             self.closeWindow();
-            Acme.IPToken.setToken('true');
+            IPToken.setToken('true');
         }
         if ($elem.is('button')) {
             if ($elem.data('role') === 'close') {
                 self.closeWindow();
             }
-            Acme.IPToken.setToken('true');
+            IPToken.setToken('true');
         }
     };

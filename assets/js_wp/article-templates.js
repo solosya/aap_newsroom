@@ -52,7 +52,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 
 const cardTemplateTop = 
-'<div class="{{cardClass}} "> \
+'<div class="{{cardClass}} {{containerClass}} walla walla"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{articleStatus}}  {{hasMediaClass}}" \
