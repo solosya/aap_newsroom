@@ -458,8 +458,8 @@ So you don't have to create all the sections on dev #}
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
-        Acme.cards = CardController();
-        Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+        var card = new Acme.Card();
+        Acme.loadMore = new Acme.ArticleFeed(card, {{limit}}, {{firstCount}}, false);
     });
 </script>
 

@@ -132,7 +132,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=b2ac62c3" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=05b74fae" type="text/css" media="all">
 
     {% else %}
         {# <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
@@ -324,6 +324,8 @@
     {% endif %} #}
 
 
+    
+    
     {% set guestUser = _User.isGuest() %}
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
@@ -336,6 +338,8 @@
             });
         });
     </script>
+    
+    
     {{ this.endBody() }}
 </body>
 
