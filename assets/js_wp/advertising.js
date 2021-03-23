@@ -4,7 +4,13 @@ export default class AdLoader {
     
     constructor() {
         this.AccountNumber = null;
-        this.page_keywords = document.getElementById('ad-keywords')
+        this.keywords = null;
+        this.keyWordsElem = document.getElementById('ad-keywords');
+        console.log(this.keyWordsElem);
+        if (this.keyWordsElem && typeof this.keyWordsElem.dataset.keywords !== 'undefined' && this.keyWordsElem.dataset.keywords !== "") {
+            this.keywords = keyWordsElem.dataset.keywords;
+        }
+
         const gaAccount = document.getElementById('g-ad-id');
         if (gaAccount && typeof gaAccount.dataset.accno !== 'undefined') {
             this.AccountNumber = gaAccount.dataset.accno;
@@ -42,11 +48,11 @@ export default class AdLoader {
                 keysArray.push(this.deviceSize);
             }
 
-            if (this.page_keywords.length < 1 || typeof this.page_keywords.dataset.keywords === 'undefined' || this.page_keywords.dataset.keywords === "") {
-                keysArray.push('default');
-            } else {
-                var keysExtra = this.page_keywords.dataset.keywords.split(',');
+            if (this.keywords) {
+                var keysExtra = this.keywords.split(',');
                 keysArray.push( keysArray.concat(keysExtra).filter((item) => item !== '') );
+            } else {
+                keysArray.push('default');
             }
     
 
@@ -107,14 +113,14 @@ export default class AdLoader {
         var invSlot = null;
 
         //set values of the page if the data items exist
-        if (this.page_keywords){
-            const dataset = this.page_keywords.dataset;
+        if (this.keyWordsElem){
+            const dataset = this.keyWordsElem.dataset;
             keyword = dataset.keyword;
             pageName = dataset.pagename.replace(/ /g,"_");
             pageType = dataset.pagetype;
             pageTag  = dataset.pagetag;
             if (dataset.adsection) {
-                adsection = page_keywords.dataset.adsection;
+                adsection = keyWordsElem.dataset.adsection;
             }
         }
 
