@@ -6,7 +6,7 @@ export default class AdLoader {
         this.AccountNumber = null;
         this.keywords = null;
         this.keyWordsElem = document.getElementById('ad-keywords');
-        console.log(this.keyWordsElem);
+
         if (this.keyWordsElem && typeof this.keyWordsElem.dataset.keywords !== 'undefined' && this.keyWordsElem.dataset.keywords !== "") {
             this.keywords = keyWordsElem.dataset.keywords;
         }
@@ -22,7 +22,7 @@ export default class AdLoader {
 
 
     LoadAds() {
-        var self = this;
+        const self = this;
 
         if (!this.AccountNumber) {
             console.log('Missing account number for Ads');
@@ -34,22 +34,22 @@ export default class AdLoader {
             return;
         }
     
-        for (var i=0;i<this.adslots.length;i++) {
-            var elem = this.adslots[i];
+        for (let i=0;i<this.adslots.length;i++) {
+            const elem = this.adslots[i];
             if (!elem.id) continue;
 
             
             elem.classList.remove("j-adslot");
             elem.classList.add("j-adslot-filled");
             
-            var keysArray = [elem.id];
+            const keysArray = [elem.id];
 
             if ((!elem.dataset.responsive || elem.dataset.responsive == "0") && this.deviceSize != "") {
                 keysArray.push(this.deviceSize);
             }
 
             if (this.keywords) {
-                var keysExtra = this.keywords.split(',');
+                const keysExtra = this.keywords.split(',');
                 keysArray.push( keysArray.concat(keysExtra).filter((item) => item !== '') );
             } else {
                 keysArray.push('default');
@@ -57,11 +57,11 @@ export default class AdLoader {
     
 
             
-            var keysString = keysArray.join(',')
+            const keysString = keysArray.join(',');
             
             Server.fetch(_appJsConfig.appHostName + '/api/ad/get-all?keywords='+keysString).done((data) => {
                 
-                var k = 0;
+                const k = 0;
 
                 if (data.length < 1 ){
                     console.log('no ads found with those keywords', keysString)
@@ -73,9 +73,9 @@ export default class AdLoader {
                     k = Math.round(Math.random()*(data.length-1));
                 } 
 
-                var item = data[k];
-                var keys = item.keywords.split(',');
-                var adElem = document.getElementById(keys[0]);
+                const item = data[k];
+                const keys = item.keywords.split(',');
+                const adElem = document.getElementById(keys[0]);
 
                 if (item.media.path){
                     const html ='<div id="advertisment__' + keys[0] + '" class="advertisment advertisment__' + keys[0] + ' advertisment__' + keys[1] + '"> \
@@ -104,18 +104,18 @@ export default class AdLoader {
 
     adPush(slot) {
 
-        var self = this;
-        var keyword = '';
-        var pageName = '';
-        var pageType = '';
-        var pageTag  = '';
-        var adsection = '';
-        var invSlot = null;
+        const self = this;
+        let keyword = '';
+        let pageName = '';
+        let pageType = '';
+        let pageTag  = '';
+        let adsection = '';
+        let invSlot = null;
 
         //set values of the page if the data items exist
         if (this.keyWordsElem){
             const dataset = this.keyWordsElem.dataset;
-            keyword = dataset.keyword;
+            keyword  = this.keywords;
             pageName = dataset.pagename.replace(/ /g,"_");
             pageType = dataset.pagetype;
             pageTag  = dataset.pagetag;
@@ -126,33 +126,33 @@ export default class AdLoader {
 
         googletag.cmd.push(function() {
             //declare mapping variables
-            var mappingBanner = googletag.sizeMapping()
+            const mappingBanner = googletag.sizeMapping()
                             .addSize([1000, 200], [[970, 250], [970, 90], [728, 250],[728, 90]])
                             .addSize([768, 200], [[728, 250],[728, 90]])
                             .addSize([480, 200], [[300, 75]])
                             .addSize([360, 400], [[300, 75]])
                             .addSize([320, 400], [[300, 75]])
                             .build(); 
-            var mappingMrec = googletag.sizeMapping()
+            const mappingMrec = googletag.sizeMapping()
                             .addSize([1000, 200], [[300, 250]])                
                             .addSize([768, 200], [[300, 250],[300, 75]])
                             .addSize([320, 400], [[300, 250],[300, 75]])
                             .build();
-            var mappingHpage = googletag.sizeMapping()
+            const mappingHpage = googletag.sizeMapping()
                             .addSize([1000, 200], [[300, 600],[300, 250]])
                             .addSize([768, 200], [[300,600],[300, 250],[300, 75]])
                             .addSize([320, 400], [[300, 250],[300, 75]])
                             .build();
-            var mappingTag = googletag.sizeMapping()
+            const mappingTag = googletag.sizeMapping()
                             .addSize([0, 0], [[1, 1]])
                             .build();         
             //cycle through the ad slots on the page and define the associated google slot
             
-            var slotId = 'div-gpt-ad-'+slot;
+            const slotId = 'div-gpt-ad-'+slot;
             //find the ad shape
-            var theSlot = document.getElementById(slot);
-            var slotType = theSlot.dataset.adshape;
-            var inventory =  document.getElementById(slotId);
+            const theSlot = document.getElementById(slot);
+            const slotType = theSlot.dataset.adshape;
+            const inventory =  document.getElementById(slotId);
             
             invSlot = self.AccountNumber + adsection;
             if (adsection == ''){
@@ -160,11 +160,11 @@ export default class AdLoader {
             } 
 
             //set the POS
-            var pos = slot.slice(-1);
+            const pos = slot.slice(-1);
 
             // if size and mapping needs to be set for the shape set it here
-            var sizes = [0,0];
-            var mapping = mappingTag;
+            let sizes = [0,0];
+            let mapping = mappingTag;
             if (slotType == 'banner'){
                 sizes = [[970,250],[970,90],[728,90],[728,250],[300,75]];
                 mapping = mappingBanner;

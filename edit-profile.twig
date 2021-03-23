@@ -18,10 +18,8 @@
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
 {% set donor = false %}
-{% set donorString = "false" %}
 
 {% if user['additional_info']['donor'] is defined and user['additional_info']['donor'] != "" %}
-    {% set donorString = user['additional_info']['donor'] %}
     {% set donor = true %}
 {% endif %}
 
@@ -48,9 +46,7 @@
     {# <div id="stripekey" class="u-hide" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div> #}
     {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
     <div id="" class="container">
-        <pre>
-        {{ donorString }}
-        </pre>
+
         <div class="user_profile_section">
             <div class="row">
                 <div class="col-sm-12">
