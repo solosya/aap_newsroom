@@ -12,15 +12,17 @@
 {% set commenter = false %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
-{% set log = _AppHelper.log(pwstats) %}
+
 {% set plans = _Network.getNetworkData()['paywallPlans'] %}
 {# {% set plans = _Paywall.getActiveNetworkPaywallPlans() %} #}
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
 {% set donor = false %}
+    {% set donorInfo = 'false' %}
+
 {% if user['additional_info']['donor'] is defined and user['additional_info']['donor'] != "" %}
-    {# {% set donorInfo = _AppHelper.jsonDecode(user['additional_info']['donor']) %} #}
+    {% set donorInfo = user['additional_info']['donor'] %}
     {% set donor = true %}
 {% endif %}
 
@@ -66,8 +68,9 @@
 
                     <div class="profile-section" style="padding-bottom:18px;">
                         
-                        
-                        
+                        <pre>
+                            {{donorInfo}}
+                        </pre>
 
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
