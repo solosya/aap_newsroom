@@ -146,7 +146,6 @@ Acme.HeaderMenu = function() {
 Acme.HeaderMenu.prototype = new View();
 Acme.HeaderMenu.constructor = Acme.HeaderMenu;
 Acme.HeaderMenu.prototype.showFixed = function() {
-    console.log('showing fixed');
     this.menu.addClass('showMenuPanel');
 }
 Acme.HeaderMenu.prototype.hideFixed = function() {

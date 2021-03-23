@@ -7,20 +7,19 @@ Acme.DonateModal = function(template, parent, layouts, handler) {
 };
 Acme.DonateModal.prototype = new Acme.modal();
 Acme.DonateModal.constructor = Acme.DonateModal;
-Acme.DonateModal.prototype.errorMsg = function(msg) {
-    $('.message').removeClass('u-hide');
-};
+// Acme.DonateModal.prototype.errorMsg = function(msg) {
+//     $('.message').removeClass('u-hide');
+// };
 Acme.modal.prototype.events = function() 
 {
     var self = this;
     $('#'+this.parentCont).on("click", function(e) {
-        // console.log(self.handler);
         self.handle(e);
     });
 };
 
 Acme.DonateModal.prototype.handle = function(e) {
-    var $elem = this.parent.handle.call(this, e);
+    this.parent.handle.call(this, e);
     this.handler.call(Acme.donations, e);
 };
 
@@ -118,7 +117,7 @@ Acme.Donations.prototype.load = function(force) {
                     
                     correctProduct['prices'] = data;
                 });
-    
+                console.log("parsingPrices");
                 if (self.parsePrices() ) {
                     self.renderPrices();
                 }
@@ -162,7 +161,7 @@ Acme.Donations.prototype.fetchPrice = function(product)
 
 
 Acme.Donations.prototype.parsePrices = function(r) {
-
+    console.log(this.products);
     for (product in this.products) {
 
         product = this.products[product];
@@ -266,7 +265,7 @@ Acme.Donations.prototype.parsePrices = function(r) {
 }
 
 Acme.Donations.prototype.renderPrices = function(r) {
-    for (pricing in this.pricing) {
+   for (pricing in this.pricing) {
         data = this.pricing[pricing];
         data.active = this.active[data.id];
         data.selected = this.selected;

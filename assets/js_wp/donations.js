@@ -120,7 +120,7 @@ Donations.prototype.load = function(force) {
                     
                     correctProduct['prices'] = data;
                 });
-    
+
                 if (self.parsePrices() ) {
                     self.renderPrices();
                 }
@@ -140,7 +140,7 @@ Donations.prototype.fetchProducts = function()
 Donations.prototype.fetchPrices = function() {
     var self = this;
 
-    for (var i=0; i<this.products.length; i++) {
+    for (let i=0; i<this.products.length; i++) {
         if (typeof this.products[i].metadata.active !== 'undefined' && this.products[i].metadata.active !== "true") {
             continue;
         }
@@ -165,16 +165,15 @@ Donations.prototype.fetchPrice = function(product)
 
 Donations.prototype.parsePrices = function(r) {
 
-    for (product in this.products) {
+    for (let idx = 0; idx < this.products.length; idx++) {
+        const product = this.products[idx];
 
-        product = this.products[product];
-        
         if (typeof product.metadata.active === 'undefined' || product.metadata.active !== 'true') {
             continue;
         }
 
-        
         var order = ["month", "year", "one_time"];
+
         if (typeof product.metadata.order !== 'undefined') {
             order = product.metadata.order.split(',');
         }
@@ -195,7 +194,6 @@ Donations.prototype.parsePrices = function(r) {
         for (price in product.prices) {
             var price = product.prices[price];
             
-
             var interval = null;
             if (price.type === "one_time") {
                 interval = price.type;
@@ -215,7 +213,6 @@ Donations.prototype.parsePrices = function(r) {
 
             
 
-
             var newPrice = {
                 "unit_amount": price.unit_amount,
                 "price" : price.unit_amount / 100,
@@ -223,13 +220,15 @@ Donations.prototype.parsePrices = function(r) {
                 "product": price.product,
                 "currency" : price.currency
             };
-            
+
             if (this.selectedAmount === newPrice.unit_amount && this.selectedInterval === interval) {
                 this.selected.product_id = price.product;
                 this.selected.price_id = price.id;
                 this.userSelected = true;
                 if ( this.guest === "1" ) {
                     this.renderLayout("signin");
+                    console.log("returning false");
+
                     return false;
                 }
                 this.checkout();
@@ -251,7 +250,7 @@ Donations.prototype.parsePrices = function(r) {
             if (!added) pricesByInterval[interval].push(newPrice);
         }
 
-        for (var i = 0; i < order.length; i++) {
+        for (let i = 0; i < order.length; i++) {
             if (typeof pricesByInterval[order[i]] === 'undefined') {
                 continue;
             }
@@ -260,16 +259,15 @@ Donations.prototype.parsePrices = function(r) {
             });
         }
 
-        console.log(this.pricing);
         return true;
 
     }
-
 }
 
 Donations.prototype.renderPrices = function(r) {
-    for (pricing in this.pricing) {
-        data = this.pricing[pricing];
+
+    for (let pricing in this.pricing) {
+        const data = this.pricing[pricing];
         data.active = this.active[data.id];
         data.selected = this.selected;
         this.renderLayout("donate", data);
@@ -327,7 +325,7 @@ Donations.prototype.layoutEvents = function() {
             // remove the highlight from any selected prices
             var priceButtons = document.querySelector('.j-donation-price');
             if (priceButtons) {
-                for(var i=0; i<priceButtons.children.length; i++) {
+                for(let i=0; i<priceButtons.children.length; i++) {
                     priceButtons.children[i].classList.remove("donate-form__price-button--active");
                 }
             }
@@ -658,7 +656,7 @@ Donations.prototype.random = function(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    for ( let i = 0; i < length; i++ ) {
        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
