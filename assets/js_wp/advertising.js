@@ -25,7 +25,6 @@ export default class AdLoader {
 
         this.adslots = document.querySelectorAll(".j-adslot");
         if (this.adslots.length < 1) {
-            console.log('returning');
             return;
         }
     

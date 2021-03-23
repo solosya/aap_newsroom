@@ -4,6 +4,7 @@ module.exports = {
   entry: './assets/js_wp/index.js',
   mode:'production',
   devtool: 'source-map',
+  watch:true,
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'static/dist'),
