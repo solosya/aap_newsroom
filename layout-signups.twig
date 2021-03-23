@@ -2,7 +2,7 @@
 {% set blogData     = _Blog.getBlog() %}
 {% set config       = _Network.getThemeConfig() %}
 {{ set(this, 'title', blogData.title) }}
-{{this.registerJs("Acme.cards = CardController();")}}
+{# {{this.registerJs("Acme.cards = CardController();")}} #}
 
 {% set searchParam = _AppHelper.getRequest('newsletter') %}
 
@@ -372,7 +372,7 @@
             </div>
         </div>
     {% endif %}
-    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
+    <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
 </main>
 
 

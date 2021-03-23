@@ -34,7 +34,7 @@ export const Server = {
             console.log(token);
             $.ajaxSetup({
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Csrf-Token', token);
+                    xhr.setRequestHeader('X-CSRF-Token', token);
                 }
             });
         }

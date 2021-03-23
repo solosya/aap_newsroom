@@ -266,13 +266,13 @@
                 <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
                 
                 <section class="loadmore__section {{site}}">
-                    {# {% if articles|length >= limit %} #}
+                    {% if articles|length >= limit %}
                         {{ this.render('/partials/load_more.twig', {
                             name            : "section-load",
                             label           : "Load more",
                             buttonClass     : "loadMoreArticles",
                         }) | raw }}
-                    {# {% endif %} #}
+                    {% endif %}
                 </section>
 
                 {# {% if articles|length >= limit %}
@@ -300,7 +300,7 @@
 
     
     </div>
-    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""{% if (this.title | lower) == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
+    <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""{% if (this.title | lower) == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </section>
 
 {# {{this.registerJs("Acme.searchFeed = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
@@ -316,8 +316,6 @@
 
 
 <script>
-    // main script is defered so event listener makes sure
-    // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
 
         Acme.loadMore = new Acme.ArticleFeed({
@@ -325,12 +323,11 @@
             container       : 'loadmore_section',
             offset          : {{limit}},
             limit           : 12,
+            label           : "Load more",
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
             non_pinned      : {{articleCount}}
         });
-
-
     });
 </script>

@@ -2,9 +2,8 @@
 {% set blogData     = _Blog.getBlog() %}
 {% set config       = _Network.getThemeConfig() %}
 {{ set(this, 'title', blogData.title) }}
-{{this.registerJs("Acme.cards = Acme.Card();")}}
 
-{% set sections =  {
+{# {% set sections =  {
         "podcast: the detail": {
             "feed": "",
             "link": "",
@@ -30,7 +29,38 @@
             "title": ""
         }
     }
+%} #}
+
+
+
+{% set sections =  {
+        "australia": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }, 
+        "news": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }, 
+        "podcast: book bubble": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }, 
+        "podcast: a neesh audience": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        }
+    }
 %}
+
 
 {% set limit = 4 %}
 
@@ -60,6 +90,28 @@
         <h1 class="sectionpage u-mobile-margin-left-20">{{blogData.title}}</h1>
         <div class="row">
             <div class="col-md-12 col-lg-8 partials-block">
+
+                {% if sections['australia'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'australia',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : 'australia'
+                    }) | raw}}
+                {% endif %}
+                {% if sections['news'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'news',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-light.twig',
+                        'title' : 'news'
+                    }) | raw}}
+                {% endif %}
+
+
+
+
+
 
                 {% if sections['podcast: the detail'].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
@@ -109,53 +161,7 @@
             </div>
         </div>
     </div>
-    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
+    <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
 </main>
 
 
- <script>
-
-        
-        // main script is defered so event listener makes sure
-        // defered script is loaded before this runs
-        document.addEventListener("DOMContentLoaded", function() {
-            jQuery( function() {
-                //remove loadmore from all the loadmore boxes or the script gets confused
-                $('.loadMore').removeClass('loadMore');
-                //replace the default click with one that selects the box
-                $('.j-pro-loadmore').click( function(e){
-                    e.preventDefault();
-                    //make sure the loaded boxes and the show less are showing 
-                    $(this).parent().children('div').removeClass('hidden');
-                    //set the clicked box to be the active loadmore one
-                    $(this).addClass('loadMore');
-                    //generate a new feed for the active box and fetch it
-                    Acme.loadMore = new Acme.ArticleFeed(Acme.cards, 6, 4, false);
-                    Acme.loadMore.fetch();
-                    //clear the feed so no overlap
-                    Acme.loadMore = "";
-                    //remove loadmore from the active box so further scripts dont get confused
-                    $('.loadMore').removeClass('loadMore');
-                });
-                $('.j-pro-loadless').click( function(e) {
-                    e.preventDefault();
-                    //hide  or show the load more buttons and loaded-more articles
-                    this.id = "j-active";
-                    if ($('#j-active').text() == '- SHOW LESS') {
-                        $('#j-active').parent().children('.row').removeClass('hidden');
-                        $('#j-active').parent().children('.row').addClass('hidden');
-                        $('#j-active').parent().children('a').addClass('hidden');
-                        $('#j-active').text('+ SHOW MORE');
-                    } else {
-                        $('#j-active').parent().children('.row').removeClass('hidden');
-                        $('#j-active').parent().children('a').removeClass('hidden');
-                        $('#j-active').text('- SHOW LESS');
-                    }
-                    $(this).removeAttr('id');
-                });
-
-                
-            });
-            
-        });
-    </script>

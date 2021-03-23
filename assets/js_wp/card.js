@@ -1,6 +1,5 @@
 import Handlebars from 'handlebars'
 import { pinUnpinArticle, deleteArticle } from './sdk/article'
-// import { Image } from './sdk/image'
 import { Templates } from './article-templates';
 import { Cloudinary } from '@cloudinary/base'
 import { fill, thumbnail } from "@cloudinary/base/actions/resize";
@@ -13,31 +12,37 @@ export const Card = function(attrs = {}) {
     this.events();
 };
 
+
 Card.prototype.render = function(options = {})
 {
     var self = this;
     var template = (options.template) ? Templates[options.template] : Templates.systemCardTemplate;
 
-    this.data['cardClass'] = options.cardClass || "";
+    const card = {};
+
+    card['cardClass'] = options.cardClass || "";
     if (this.data.status == "draft") {
-        this.data['articleStatus'] = "draft";
-        this.data['cardClass'] += " draft"; 
+        card['articleStatus'] = "draft";
+        card['cardClass'] += " draft"; 
     }
+    card['url'] = this.data.url;
 
-    this.data['cardType'] = this.data.type || "";
-    this.data['lightbox'] = this.data.lightbox || "";
+    card['cardType'] = this.data.type || "";
+    card['lightbox'] = this.data.lightbox || "";
+    card['position'] = this.data.position;
 
 
-    this.data['pinTitle'] = (this.data.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
-    this.data['pinText']  = (this.data.isPinned == 1) ? 'Un-Pin' : 'Pin';
-    this.data['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
-    this.data['hasMediaClass'] = (this.data.hasMedia == 1)? 'withImage__content' : 'without__image';
+    card['pinTitle'] = (this.data.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
+    card['pinText']  = (this.data.isPinned == 1) ? 'Un-Pin' : 'Pin';
+    card['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
+    card['hasMediaClass'] = (this.data.hasMedia == 1)? 'withImage__content' : 'without__image';
+    card['hasMedia'] = (this.data.hasMedia == 1)? true : false;
     
+    card['imgBackgroundStyle'] = (this.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
     // mainly for screen to turn off lazyload and loading background img
-    this.data['imgClass'] = (this.data.lazyloadImage == false) ? '' : 'lazyload';
-    this.data['imgBackgroundStyle'] = (this.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
+    card['imgClass'] = (this.data.lazyloadImage == false) ? '' : 'lazyload';
     
-    this.data['readingTime'] = self.renderReadingTime(this.data.readingTime);
+    card['readingTime'] = self.renderReadingTime(this.data.readingTime);
 
     var width = typeof options.imageWidth !== "undefined" ? options.imageWidth : 500;
     var height = typeof options.imageHeight !== "undefined" ? options.imageHeight : 350;
@@ -53,7 +58,7 @@ Card.prototype.render = function(options = {})
         height = this.imageOptions.height || height;
     }
     
-    this.data['draggable'] = "false";
+    card['draggable'] = "false";
 
 
     const profileImage = this.data['createdBy']['media'];
@@ -74,10 +79,16 @@ Card.prototype.render = function(options = {})
 
     // card['profileImg'] = Image({media:card['createdBy']['media'], mediaOptions:{width: 34 ,height:34, crop: 'thumb', gravity: 'face'} });
     // card['imageUrl'] = Image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
-    this.data['profileImg'] = profileImg.toURL();
-    this.data['imageUrl'] = articleImg.toURL();
+    card['profileImg'] = profileImg.toURL();
+    card['imageUrl'] = articleImg.toURL();
 
-    this.data['titleString'] = "";
+    card['label'] = this.data.label;
+    card['excerpt'] = this.data.excerpt;
+    card['title'] = this.data.title;
+    card['author'] = this.data.createdBy.displayName;
+    card['titleString'] = "";
+
+
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
         var totalstring = "";
         var totals = (this.data.total ) ? this.data.total : false;
@@ -85,8 +96,8 @@ Card.prototype.render = function(options = {})
             totalstring = "Viewed " + totals.view + " times";
             totalstring = totalstring + " Published " + this.data.publishedDateTime;
         }
-        this.data['titleString'] = totalstring;
-        this.data['draggable'] = "true";
+        card['titleString'] = totalstring;
+        card['draggable'] = "true";
     }
 
     var articleId = parseInt(this.data.articleId);
@@ -99,9 +110,10 @@ Card.prototype.render = function(options = {})
         // }
         articleTemplate = Handlebars.compile(template);
     } else {
+        card['articleId'] = this.data.articleId;
         articleTemplate = Handlebars.compile(template);
     }
-    return articleTemplate(this);
+    return articleTemplate(card);
 }
 
 Card.prototype.renderReadingTime = function (time) 
@@ -147,77 +159,6 @@ Card.prototype.bindDeleteHideArticle = function()
 };
 
 
-
-// Card.prototype.lightbox = function(elem, isRequestSent)
-// {
-//     var csrfToken = $('meta[name="csrf-token"]').attr("content");
-//     var isSocial = elem.data('social');
-    
-//     if (isSocial) {
-//         var url = '/api/social/get-social-post';
-//         var blogGuid = elem.data('blog-guid');
-//         var postGuid = elem.data('guid');
-//         var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
-//     } else {
-//         var url = '/api/article/get-article';
-//         var articleId = elem.data('id');
-//         var payload = {articleId: articleId, _csrf: csrfToken}
-//     }
-
-//     if (!isRequestSent) {
-
-//         $.ajax({
-//             type: 'GET',
-//             url: _appJsConfig.appHostName + url,
-//             dataType: 'json',
-//             data: payload,
-//             success: function (data, textStatus, jqXHR) {
-//                 data.hasMediaVideo = false;
-//                 if (data.media['type'] === 'video') {
-//                     data.hasMediaVideo = true;
-//                 }1
-                
-//                 if (data.source == 'youtube') {
-//                     var watch = data.media.videoUrl.split("=");
-//                     data.media.videoUrl = "https://www.youtube.com/embed/" + watch[1];
-//                 }
-                
-//                 data.templatePath = _appJsConfig.templatePath;
-
-//                 var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
-//                 var article = articleTemplate(data);
-//                 $('.modal').html(article);
-
-//                 setTimeout(function () {
-//                     $('.modal').modal('show');
-//                 }, 500);
-//             },
-//             error: function (jqXHR, textStatus, errorThrown) {
-//                 isRequestSent = false;
-//             },
-//             beforeSend: function (jqXHR, settings) {
-//                 isRequestSent = true;
-//             },
-//             complete: function (jqXHR, textStatus) {
-//                 isRequestSent = false;
-//             }
-//         });
-//     }
-// }
-
-// Card.prototype.BindLightboxArticleBtn = function() 
-// {
-//     var self = this;
-
-//     $('.LightboxArticleBtn').on('click', function (e) {
-//         e.stopPropagation();
-//         e.preventDefault();
-//         var parentElement = $(this).parent().parent();
-//         self.lightbox(parentElement);
-//         return;
-//     });
-
-// };
 
 
 
@@ -337,7 +278,7 @@ Card.prototype.initDroppable = function()
                 sourceObj.remove();
                 destObject.remove();
                 
-                var csrfToken = $('meta[name="csrf-token"]').attr("content");
+                // var csrfToken = $('meta[name="csrf-token"]').attr("content");
                 var postData = {
                     sourcePosition: sourcePosition,
                     sourceArticleId: sourcePostId,
@@ -347,7 +288,7 @@ Card.prototype.initDroppable = function()
                     destinationArticleId: destinationPostId,
                     destinationIsSocial: destinationIsSocial,
                     
-                    _csrf: csrfToken
+                    // _csrf: csrfToken
                 };
 
                 $.ajax({
@@ -420,7 +361,7 @@ Card.prototype.dragndrop = function() {
         var destinationPinStatus = parseInt(destObject.querySelector('.PinArticleBtn').getAttribute('data-status'));
 
 
-        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        // var csrfToken = $('meta[name="csrf-token"]').attr("content");
         var postData = {
             sourcePosition: sourcePosition,
             sourceArticleId: sourcePostId,
@@ -430,7 +371,7 @@ Card.prototype.dragndrop = function() {
             destinationArticleId: destinationPostId,
             destinationIsSocial: destinationIsSocial,
             
-            _csrf: csrfToken
+            // _csrf: csrfToken
         };
 
         sourceParent = sourceObj.parentNode;

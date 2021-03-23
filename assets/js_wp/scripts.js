@@ -1,5 +1,7 @@
-$('document').ready(function() {
-
+document.addEventListener("DOMContentLoaded", function(event) {
+    
+    // Lazyload, dotdotdot and owlCarousel curently run externallly to webpack bundle
+    
     $("img.lazyload").lazyload({
         effect : "fadeIn"
     });
@@ -27,7 +29,4 @@ $('document').ready(function() {
             ""
         ]
     });   
-
-
-
 });

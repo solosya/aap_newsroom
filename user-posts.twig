@@ -3,7 +3,6 @@
 
 {% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {radius: 'max', crop: 'thumb', gravity: 'face', type:'user'} )%}
 
-{{this.registerJs("Acme.cards = Acme.Card();")}}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -12,9 +11,7 @@
 
 
 {% set firstCount = userArticles | length %}
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑           ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+
 
 
 <section class="container min-hight">
@@ -58,26 +55,39 @@
 
             </div>
             
+            <section id="loadmore_section" class="row {{site}}"></section>
 
-
-            {% if totalArticles >= limit %}
-                {{ this.render('partials/ajaxarticles_new.twig', {
-                    name            : "section-load",
-                    limit           : limit,
-                    offset          : limit,
-                    label           : "Load more",
-                    loadtype        : "user_articles",
-                    imgwidth        : "220",
-                    imgheight       : "208",
-                    container       : "mainAjaxArticles",
-                    non_pinned      : articlesArr.existingNonPinnedCount, 
-                    card_class      : "col-sm-3 card-vr",
-                    buttonClass     : "loadMoreArticles",
-                }) | raw }}
-            {% endif %}
+            <section class="loadmore__section {{site}}">
+                {# {% if articles|length >= limit %} #}
+                    {{ this.render('/partials/load_more.twig', {
+                        name            : "user-load",
+                        label           : "Load more",
+                        buttonClass     : "loadMoreArticles",
+                    }) | raw }}
+                {# {% endif %} #}
+            </section>
 
         </div>
 
 
     </div>
 </section>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        Acme.loadMore = new Acme.ArticleFeed({
+            model           : Acme.Card,
+            container       : 'loadmore_section',
+            offset          : 20,
+            limit           : 20,
+            label           : "Load more",
+            loadtype        : 'user_articles',
+            name            : 'user-load',
+            card_class      : 'col-sm-3 card-vr'
+        });
+
+    });
+</script>

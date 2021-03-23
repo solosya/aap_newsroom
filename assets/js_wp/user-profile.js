@@ -1,5 +1,5 @@
-import { Server } from './framework'
 import Handlebars from 'handlebars'
+import { Server, Modal } from './framework'
 import { Templates } from './article-templates'
 
 export const UserProfileController = function()
@@ -521,7 +521,7 @@ UserProfileController.prototype.events = function ()
     $('.j-setplan').on('click', function(e) {
         e.stopPropagation();
 
-        var modal = new modal('modal', 'signin-modal', {
+        var modal = new Modal('modal', 'signin-modal', {
             "userPlan" : 'userPlanMessage',
             "userPlanChange" : 'userPlanOkCancel'
         });
@@ -607,12 +607,12 @@ UserProfileController.prototype.events = function ()
         }
 
         if (newCharge > 0) {
-            msg = "This will cost $" + newCharge.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+            msg = "This will cost $" + newCharge.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ".<br /><br />";
         }
 
         if (cardSupplied === 'f' ) {
-            msg = msg + "However, we need you to supply your credit card details. <br />You can enter those a little lower on the page and then we can finalise the plan change.";
-            modal.render("userPlan", "Almost there!", {message: msg});
+            msg = msg + "However, you will need to supply your credit card details. You can enter those on this page and then we can finalise the plan change.";
+            modal.render("userPlan", "Almost there! ", {message: msg});
             return;
         }
 

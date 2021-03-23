@@ -102,36 +102,6 @@ SigninModal.prototype.handle = function(e) {
         var layout = $elem.data('layout');
         this.renderLayout(layout);
     }
-
-
 };
-
-var layouts = {
-    "signin"        : 'signinFormTmpl',
-    "register"      : 'registerTmpl',
-    "forgot"        : 'forgotFormTmpl',
-    "spinner"       : 'spinnerTmpl',
-    "expired"       : 'expiredNotice',
-    "userPlan"      : 'userPlanMessage',
-    "userPlanChange" : 'userPlanOkCancel'
-}
-
-
-
-
-Acme.SigninView = new SigninModal('modal', 'signin-modal', layouts);
-
-
-
-$('#signinBtn, #articleSigninBtn, .j-signin').on('click', function() {
-    Acme.SigninView.render("signin", "Sign in");
-});
-
-$('a.j-register').on('click', function(e) {
-    e.preventDefault();
-    Acme.SigninView.render("register", "Register your interest");
-});
-
-
 
 

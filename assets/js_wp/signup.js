@@ -1,16 +1,9 @@
 import { Form, Validators } from './form'
-import { SigninModal } from './signin'
 import { Modal, Server } from './framework'
 
 
 
 export const SubscribeForm = function(id, user) {
-    console.log( )
-    if ($('#stripekey').length < 1 || $('#paywalloldsubscribe').length < 1 ) {
-        return;
-    }
-
-    // var modal = new SigninModal('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
     
     this.botTimer = 0;
     this.id = id || null;
@@ -63,7 +56,7 @@ SubscribeForm.prototype.stripeSetup = function () {
 
     setInterval(function(){
         self.botTimer = self.botTimer + 1;
-        console.log("BotTimer = ", self.botTimer);
+        // console.log("BotTimer = ", self.botTimer);
     }, 1000);
 
     // Create an instance of Elements
@@ -127,13 +120,11 @@ SubscribeForm.prototype.render = function(checkTerms)
         }
     }
 };
-
-
-
 SubscribeForm.prototype.submit = function(event) 
 {
     var self = this;
     event.preventDefault();
+
     var validated = self.validate();
     var checkTerms = true;
     if (this.code) {
@@ -179,9 +170,9 @@ SubscribeForm.prototype.submit = function(event)
                     if (r.success == 1) {
                         self.data.user_id = r.userid;
                         self.data.user_guid = r.userguid;
-                        // console.log(self.data);
+
                         var purchaseId = Math.floor(Math.random()*60000000000);
-                        // console.log('gta-pay-now');
+
                         if  ($('.j-gtasubpay')[0]){
                             var payitem = $($('.j-gtasubpay')[0]);
                             if (typeof dataLayer !== 'undefined') {
@@ -207,8 +198,6 @@ SubscribeForm.prototype.submit = function(event)
                         }
                         Acme.progress.next();
 
-                        // window.history.pushState( {} , '', '&step=2' );
-                        // console.log(window.location.search);
                     } else {
                         var errorElement = document.getElementById('card-errors');
                         var text = '';
@@ -229,12 +218,7 @@ SubscribeForm.prototype.submit = function(event)
         
 };
 
-var main = $('main');
-var user = {
-    user_id : main.data('userid'),
-    user_guid : main.data('userguid')
-};
-Acme.subscribe = new SubscribeForm('payment-form', user);
+
 
 
 
@@ -279,16 +263,13 @@ ActivateForm.prototype.submit = function(event)
     self.render(true);
     if (!validated) return;
 
-    // var modal = new Acme.Signin('spinner', 'spinner-modal', {"spinner": 'spinnerTmpl'});
-
     this.signup = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
-    // modal.render("spinner", "Your request is being processed.");
+
     this.signup.render("spinner", "Activating account");
     Server.create('/api/user/edit-profile', this.data).done(function(r) {
         console.log(r);
         if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-            // console.log('sending mailchimp signup');
-            // console.log(self.data);
+
             var subscribeData = {
                 "EMAIL": self.subscription.data['email'], 
                 "FNAME": self.data['firstname'],
@@ -300,8 +281,8 @@ ActivateForm.prototype.submit = function(event)
             if (self.data["group[1149][2]"]) {
                 subscribeData["group[1149][2]"] = 2;
             }
-            // console.log(subscribeData);
 
+            
             Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
                 .then(function(r) {
                     console.log(r);
@@ -315,8 +296,6 @@ ActivateForm.prototype.submit = function(event)
 
 };
 
-
-Acme.subscribe = new ActivateForm('activate-form', Acme.subscribe);
 
 
 
@@ -384,9 +363,6 @@ ManagedForm.prototype.submit = function(event)
 };
 
 
-Acme.managedForm = new ManagedForm('bonusform', Acme.subscribe);
-
-
 
 
 
@@ -450,8 +426,25 @@ Progress.prototype.render = function()
     }
 };
 
-var urlParams = new URLSearchParams(window.location.search);
-var step = urlParams.get('step');    
-Acme.progress = new Progress(step);
-Acme.progress.render();
+
+
+
+
+
+if ($('#stripekey').length > 0 && $('#paywallsubscribe').length > 0 ) {
+    var urlParams = new URLSearchParams(window.location.search);
+    var step = urlParams.get('step');    
+    Acme.progress = new Progress(step);
+    Acme.progress.render();
+    
+    var main = $('main');
+    var user = {
+        user_id : main.data('userid'),
+        user_guid : main.data('userguid')
+    };
+    Acme.subscribe = new SubscribeForm('payment-form', user);
+    Acme.subscribe = new ActivateForm('activate-form', Acme.subscribe);
+    Acme.managedForm = new ManagedForm('bonusform', Acme.subscribe);
+}
+
 

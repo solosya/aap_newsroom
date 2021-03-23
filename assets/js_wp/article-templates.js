@@ -472,7 +472,7 @@ systemCardTemplate:
             <p class="{{cardType}}c-cards-view__description j-truncate">{{{ excerpt }}}</p>\
             <div class="{{cardType}}c-cards-view__author-name author">\
                 <img src="{{profileImg}}" class="img-circle">\
-                <p>{{ createdBy.displayName }}</p>\
+                <p>{{ author }}</p>\
             </div>\
         </div>' + 
     cardTemplateBottom
