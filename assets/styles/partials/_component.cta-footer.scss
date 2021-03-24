@@ -5,45 +5,64 @@
     
     margin:auto;
 	border-bottom: solid 2px $white;
-	@media #{$desktop-up}{
-		height: 77px;
-	}
+    height: 70px;
     
+    &__container {
+        @include flexbox();
+        @include align-items(center);
+        height:100%;
+        position:relative;
+    }
+
 
     &__logo {
         width:100%;
-        margin:18px 0;
-        @media #{$desktop-up}{
-            width:226px;
-            margin:23px 0;
-		}
-       
-        
 
+        @media #{$desktop-up}{
+            width:164px;
+		}
+        margin-right:43px;
+
+    }
+
+    &__mail {
+        width: 37px;
+        height: 23px;
+        margin-right:20px;
+        position: relative;
+        top: -3px;
     }
 
     &__tagline {
         font-family: $font-family-sans-serif;
         color: #FFF;
+        position:relative;
         @include font-size(12);
         @media #{$desktop-up}{
             @include font-size(16);
         }
         font-weight: 600;
-        margin: 20px 0;
-        padding:0 0 0 15px;
-        @media #{$desktop-up}{
-		    height: 30px;
-            padding:5px 0 0 25px;
+
+        &:before {
+            content: "";
+            display:block;
+            position:absolute;
+            width:1px;
+            height:30px;
+            background:white;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
-        
-		border-left: 1px solid $white;
     }
 
     
 
-    &__container {
-        padding:20px;
+    &__email-container {
+        @include flexbox();
+        @include align-items(center);
+        padding: 0 20px;
+        height: 100%;
 		background-color: $lblue;
     }
 
@@ -58,7 +77,9 @@
         height:35px !important;
         border-radius: 0 !important;
 		width: calc(100% - 15px);
-		padding-left: 15px;
+        &:focus, &:active { 
+            outline: none;
+        }
     }
 
     &__submit {
@@ -68,13 +89,25 @@
         border:none; 
         outline: none; 
         box-shadow: none;
-        margin-right:10px;
         &:focus {
             outline:none;
         }
     }
 
+
+    &__signup-container {
+        @include flexbox();
+        @include align-items(center);
+        height:100%;
+        margin-left:auto;
+
+    }
+
+
 	&__button{
+        @include flexbox();
+        @include align-items(center);
+        padding: 0 20px;
 		font-size: rem(12);
         @media #{$desktop-up}{
             font-size: rem(13.5);
@@ -83,38 +116,31 @@
 		line-height: 1.33;
 		color: $black;
 		cursor: pointer;
+
+        height: 41px;
 		width: max-content;
 		&:hover{
 			background-color: $white;
 		}
-		@media #{$tablet-up}{
-			float: right;
-		}
-	}
 
-	&__buttonblue{
-        margin: 25px 15px 0 0;
-        @media #{$desktop-up}{
-		    margin: 15px 15px 0 0;
-        }
-		padding: 12px 20px;
-		background-color: $lblue;
-		
-	}
 
-	&__buttonblack{
-		margin: 25px 0 0 0;
-        @media #{$desktop-up}{
-		    margin: 15px 0 0 0;
+        &--blue{
+            background-color: $lblue;
         }
-		padding: 11px 19px;
-		color: $white;
-		border: 1px solid $white;
-		&:hover{
-			padding: 12px 20px;
-			border: none;
-			color: $black;
-		}
+    
+        &--black{
+            padding: 11px 19px;
+            color: $white;
+            border: 1px solid $white;
+            margin-left:10px;
+            min-width: 209px;
+            &:hover{
+                padding: 12px 20px;
+                border: none;
+                color: $black;
+            }
+        }
+
 	}
 
 }

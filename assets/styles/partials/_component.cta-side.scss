@@ -1,53 +1,42 @@
 .c-cta-side {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+
     background-color: $black;
     color: $white;
     text-align:left;
-    
-    margin:auto;
-	// border-bottom: solid 2px $white;
-	// @media #{$desktop-up}{
-	// 	height: 77px;
-	// }
-    @media #{$mobile}{
-        margin:auto -30px;
-    }
+    margin: 0 10px;
     padding: 30px 30px 0 30px;
 
     &__logo {
-        width:100%;
-        margin:23px 0 0 0;
-        
-
+        margin-top:28px;
     }
+
+    &__mail {
+        width: 37px;
+        height: 23px;
+    }
+
 
     &__tagline {
         font-family: $font-family-sans-serif;
         color: #FFF;
         @include font-size(16);
         font-weight: 600;
-        margin: 0 0 30px 0;
-        @media #{$mobile}{
-            margin: 10px 0 30px 0;
-        }
-		height: 30px;
+        margin: 16px 0 30px 0;
         padding:5px 0;
         text-align: center;
-		// border-left: 1px solid $white;
     }
-
-    
 
     &__container {
         padding:20px 30px;
-		background-color: $lblue;
-        width: 100%;
-        @media #{$mobile}{
-            width: calc(100% + 60px);
-            margin-left: -30px;
-        }
+        background-color: $lblue;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
-	&__input{
+    &__input{
         width: calc(100% - 30px);
     }
 
@@ -57,8 +46,8 @@
         // margin: 0 0 0 10px !important;
         height:35px !important;
         border-radius: 0 !important;
-		width: calc(100% - 15px);
-		padding-left: 15px;
+        width: calc(100% - 15px);
+        padding-left: 15px;
     }
 
     &__submit {
@@ -74,39 +63,35 @@
         }
     }
 
-	&__button{
-		font-size: rem(13.5);
-		font-weight: $weightBold;
-		line-height: 1.33;
-		color: $black;
-		cursor: pointer;
-		width: 100%;
+    &__button{
+        font-size: rem(13.5);
+        font-weight: $weightBold;
+        line-height: 1.33;
+        color: $black;
+        cursor: pointer;
+        width: 100%;
         text-align: center;
-		&:hover{
-			background-color: $white;
-		}
-		// @media #{$tablet-up}{
-		// 	float: right;
-		// }
-	}
+        &:hover{
+            background-color: $white;
+        }
 
-	&__buttonblue{
-		margin: 0 0 30px 0;
-		padding: 12px 20px;
-		background-color: $lblue;
-		
-	}
-
-	&__buttonblack{
-		margin: 15px 0 15px 0;
-		padding: 11px 19px;
-		color: $white;
-		border: 1px solid $white;
-		&:hover{
-			padding: 12px 20px;
-			border: none;
-			color: $black;
-		}
-	}
-
+        &--blue{
+            margin: 0 0 30px 0;
+            padding: 13px 20px;
+            background-color: $lblue;
+            
+        }
+    
+        &--black{
+            margin-bottom: 15px;
+            padding: 13px 19px;
+            color: $white;
+            border: 1px solid $white;
+            &:hover{
+                padding: 12px 20px;
+                border: none;
+                color: $black;
+            }
+        }
+    }
 }
