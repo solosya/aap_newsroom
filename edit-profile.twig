@@ -224,9 +224,21 @@
                                     
                                     {% if pwstats['type'] == 'time' %}
 
+                                        {% set planPeriod = pwstats.period %}
+                                        {% set planPeriodCount = "" %}
+
+                                        {% if pwstats.period_count > 1 %}
+                                            {% set planPeriodCount = pwstats.period_count ~ " " %}
+                                            {% set planPeriod = pwstats.period ~ 's' %}
+                                        {% endif %}
+
+
+
+
+
                                         <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="currentplan">Current Plan</label>
-                                            <p type="text" id="currentplan" class="account-form__value">{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{pwstats['period']}}</p>
+                                            <p type="text" id="currentplan" class="account-form__value">{{pwstats['name']}}: {{pwstats['currency']|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{ pwstats['plan_value']/100}} per {{planPeriodCount}}{{planPeriod}}</p>
                                         </div>
 
                                         <div class="account-form__inline-inputs">
@@ -350,6 +362,13 @@
                                     {% set planCost = 19.90 %}
                                 {% endif %}
 
+                                {% set planPeriod = plan.period %}
+                                {% set planPeriodCount = "" %}
+
+                                {% if plan.period_count > 1 %}
+                                    {% set planPeriodCount = plan.period_count ~ " " %}
+                                    {% set planPeriod = plan.period ~ 's' %}
+                                {% endif %}
 
                                 <div class="{% if plan.guid != pwstats['plan_guid'] %} j-setplan {% else %}plans__current{% endif %} plans__item" style="cursor:hand; cursor:pointer;"
                                     data-planid          = "{{plan.guid}}"
@@ -369,7 +388,7 @@
 
                                     {% if plan.type != 'signup' %}
                                         <p class="plans__price">{{plan.currency|replace({"AUD": "$", "NZD": "$", "GBP": "£", "USD": "$", "EUR": "€"})}}{{planCost|number_format(2, '.', ',')}}({{plan.currency|raw}})<br />
-                                                            per {{plan.period}}</p>
+                                                            per {{planPeriodCount}}{{planPeriod}}</p>
                                     {% endif %}
 
                                 </div>
