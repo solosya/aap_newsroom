@@ -358,14 +358,13 @@ So you don't have to create all the sections on dev #}
                                 {# <span class="ad-text">Advertisement</span> #}
                             </section>
 
-                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3" id='subscribebutton'>
+                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3">
                                 {{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
                                     extraClass: 'd-none d-lg-flex'
                                 }) | raw}}
                             </div>
-
 
 
                             {% if donations == "pp" %}
