@@ -1,33 +1,44 @@
 @media #{$mobile}{
     .c-cta-body {
+        @include flexbox();
+        @include flex-direction(column);
+        @include align-items(center);
+    
         background-color: $black;
         color: $white;
         text-align:left;
         
         margin:auto -15px;
-        // border-bottom: solid 2px $white;
-        // @media #{$desktop-up}{
-        // 	height: 77px;
-        // }
         padding: 30px 30px 0 30px;
     
-        &__logo {
-            width:100%;
-            margin:23px 0 0 0;
-            
+        &__logo-container {
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items(center);
     
+            position:relative;
+            margin-right:27px;
         }
-    
+
+        &__mail {
+            width:37px;
+            height:23px;
+            margin-bottom:27px;
+        }
+
+        &__logo {
+            // margin:23px 0;
+        }
+        
+        
         &__tagline {
             font-family: $font-family-sans-serif;
             color: #FFF;
             @include font-size(16);
             font-weight: 600;
-            margin: 10px 0 30px 0;
-            height: 30px;
+            margin: 15px 0 30px 0;
             padding:5px 0;
             text-align: center;
-            // border-left: 1px solid $white;
         }
     
         
@@ -47,7 +58,6 @@
         &__email{
             font-family: 'PT Sans', Tahoma, Arial, serif;
             color: #000;
-            // margin: 0 0 0 10px !important;
             height:35px !important;
             border-radius: 0 !important;
             width: calc(100% - 15px);
@@ -78,68 +88,87 @@
             &:hover{
                 background-color: $white;
             }
-            // @media #{$tablet-up}{
-            // 	float: right;
-            // }
-        }
-    
-        &__buttonblue{
-            margin: 0 0 30px 0;
-            padding: 12px 20px;
-            background-color: $lblue;
-            
-        }
-    
-        &__buttonblack{
-            margin: 15px 0 15px 0;
-            padding: 11px 19px;
-            color: $white;
-            border: 1px solid $white;
-            &:hover{
+
+            &--blue{
+                margin: 0 0 30px 0;
                 padding: 12px 20px;
-                border: none;
-                color: $black;
+                background-color: $lblue;
+                
+            }
+        
+            &--black{
+                margin: 15px 0 15px 0;
+                padding: 11px 19px;
+                color: $white !important;
+                border: 1px solid $white;
+                &:hover{
+                    padding: 12px 20px;
+                    border: none;
+                    color: $black !important;
+                }
             }
         }
-    
+        &__form {
+            width:100%;
+        }
+
+
     }
 }
 
+
+
+
+
+
 @media #{$tablet-up}{
     .c-cta-body {
+        @include flexbox();
+        @include align-items(center);
         background-color: $black;
         color: $white;
         text-align:left;
-        
         margin:35px auto;
-        // border-bottom: solid 2px $white;
-        padding: 0 0 0 25px;
-        
+        padding: 0 25px 0 25px;
         height: 114px;
         
 
-        &__logo {
-            width:100%;
-            margin:23px 0;
-            
+        &__logo-container {
+            position:relative;
+            margin-right:27px;
+        }
 
+        &__mail {
+            position:absolute;
+            right:0;
+            width:31px;
+            height:19px;
         }
 
         &__tagline {
             font-family: $font-family-sans-serif;
             color: $white;
+            position:relative;
             @include font-size(12);
             @media #{$desktop-up}{
                 @include font-size(13);
             }
             font-weight: 600;
-            margin: 30px 0;
             letter-spacing: -0.3px;
             padding:2px 0 0 15px;
-            border-left: 1px solid $white;
+            &:before {
+                content: "";
+                display:block;
+                position:absolute;
+                width:1px;
+                height:50px;
+                background:white;
+                left: -3px;
+                top: 50%;
+                transform: translateY(-50%);
+            }    
         }
 
-        
 
         &__container {
             padding: 39.5px 30px;
@@ -153,11 +182,13 @@
         &__email{
             font-family: 'PT Sans', Tahoma, Arial, serif;
             color: #000;
-            // margin: 0 0 0 10px !important;
             height:35px !important;
             border-radius: 0 !important;
             width: calc(100% - 15px);
             padding-left: 15px;
+            &:active, &:focus {
+                outline:none;
+            }
         }
 
         &__submit {
@@ -178,6 +209,7 @@
             @media #{$desktop-up}{
                 font-size: rem(13.5);
             }
+            text-align:center;
             font-weight: $weightBold;
             line-height: 1.33;
             color: $black;
@@ -186,29 +218,45 @@
             &:hover{
                 background-color: $white;
             }
-            @media #{$tablet-up}{
-                float: right;
+            &:active, &:focus {
+                outline:none;
             }
-        }
 
-        &__buttonblue{
-            margin: 35px 15px 0 0;
-            padding: 12px 20px;
-            background-color: $lblue;
-            
-        }
 
-        &__buttonblack{
-            margin: 35px 25px 0 0;
-            padding: 11px 19px;
-            color: $white;
-            border: 1px solid $white;
-            &:hover{
+            &--blue{
+                margin-left:auto;
                 padding: 12px 20px;
-                border: none;
-                color: $black;
+                background-color: $lblue;
+                @media #{$desktop}{
+                    width:110px;
+                }
+            }
+    
+            &--black{
+                padding: 11px 15px;
+
+                // article styles interfere
+                color: $white !important; 
+                border: 1px solid $white;
+                margin-left:15px;
+
+                @media #{$desktop}{
+                    padding: 11px 5px;
+                    width:120px;
+                }
+
+                &:hover{
+                    padding: 12px 16px;
+                    border: none;
+                    color: $black !important;
+                }
             }
         }
 
+        &__form {
+            margin-left:auto;
+            width:55%;
+            margin-right:-25px;
+        }
     }
 }
