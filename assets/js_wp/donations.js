@@ -339,7 +339,11 @@ Donations.prototype.layoutEvents = function() {
                 self.selected.amount = (parseFloat( amount ) * 100);
                 self.selected.product_id = product;
                 self.selected.currency = 'aud';
-                donate_button.innerText = "DONATE $" + self.selected.amount / 100;
+                let displayAmount = self.selected.amount / 100;
+                if (displayAmount % 1 !== 0) {
+                    displayAmount = displayAmount.toFixed(2);
+                }
+                donate_button.innerText = "DONATE $" + displayAmount;
             } else {
                 self.userSelected = false;
                 delete self.selected.amount;
@@ -557,7 +561,7 @@ Donations.prototype.signin = function(elem) {
     var spinner = document.getElementById('email_spinner');
     var textElem = document.querySelector('.j-email-text');
     
-    var text = "<strong>It looks like you have an account with us!</strong> <br />Please enter your password to continue.";
+    var text = "<strong>It looks like you already have a Newsroom account!</strong> <br />Please enter your password to continue.";
     textElem.innerText = "";
     
     spinner.classList.remove("u-display-none");

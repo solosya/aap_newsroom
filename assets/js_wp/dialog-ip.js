@@ -35,15 +35,15 @@ export const IPCheck = function() {
             $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
             function(json) {
                 console.log(json);
-                var userAccount = false;
-                var userIPInt = dot2num(json.ip);
+                let userAccount = false;
+                const userIPInt = dot2num(json.ip);
 
-                for (var i = 0 ; i < IPAdresses.length ; i++) {
+                for (let i = 0 ; i < IPAdresses.length ; i++) {
                     if (IPAdresses[i].indexOf('//') === 0 ) {
                         continue;
                     }
 
-                    var range = IPAdresses[i].split("-");
+                    const range = IPAdresses[i].split("-");
                     
                     // All IP addresses are converted to a range, however
                     // we can start by just listing one.  The second ip
@@ -53,7 +53,7 @@ export const IPCheck = function() {
                         // check for a wildcard character and replace with a zero
                         // for the first item in the range, and 255 for the second item in the range
                         if (range[0].indexOf("*") > -1) {
-                            var ip1 = range[0];
+                            let ip1 = range[0];
                             range[0] = dot2num( ip1.replace(/\*/g, "0") );
                             range.push( dot2num( ip1.replace(/\*/g, "255") ) );
                         } else {

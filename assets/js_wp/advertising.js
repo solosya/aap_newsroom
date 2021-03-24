@@ -182,7 +182,7 @@ export default class AdLoader {
                     .setTargeting('tag', [pageTag]);
             googletag.pubads().collapseEmptyDivs();
             googletag.enableServices();
-            //define the slot with all required data
+
             googletag.defineSlot(invSlot, sizes, slotId)
                 .setTargeting('POS', [pos])
                 .defineSizeMapping(mapping)

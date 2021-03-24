@@ -20,7 +20,7 @@
                     
                     {% if _User.isGuest() %}
                         <p class="donate-thanks__tagline">We have emailed you a link to create a Newsroom password to access your donor page.</p>
-                        <p class="donate-thanks__tagline">You can then sign in to Newsroom, visit <a href="{{networkData.defaultBlogUrl ~ '/user/edit-profile'}} ">My Account</a> and click on ‘Manage my donations’.</p> 
+                        <p class="donate-thanks__tagline">You can then sign in to Newsroom, visit My Account and click on ‘Manage my donations’.</p> 
                     {% else %}
                         <p class="donate-thanks__tagline donate-thanks__tagline--bold">A receipt has been emailed to you.</p>
                         <p class="donate-thanks__tagline">To manage your donor account, visit <a href="{{networkData.defaultBlogUrl ~ '/user/edit-profile'}} ">My Account</a> and click on ‘Manage my donations’.</p> 
@@ -38,20 +38,6 @@
 
             </div>
 
-
-
-            <div class="row">
-                <div class="briefing-strap col-12">
-                    <div class="briefing-strap__container">
-                        <img src="{{networkData.templatePath}}/static/images/daily-briefing-cta.svg" class="briefing-strap__logo"/>
-                        <p class="briefing-strap__text">Start your day with a curation of our top stories in your inbox</p>
-                        <button class="briefing-strap__sign-up">Sign up for free</button>
-                        <a class="briefing-strap__newsletter" href="{{config['mailchimp']['ctalink']}}" target="_blank">Read today’s newsletter</a>
-                    </div>
-
-                </div>
-
-            </div>
         </div>
     </section>
 </main>
