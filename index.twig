@@ -358,8 +358,12 @@ So you don't have to create all the sections on dev #}
                                 {# <span class="ad-text">Advertisement</span> #}
                             </section>
 
-                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3" id='subscribebutton'>
-                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ''}) | raw }}
+                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3">
+                                {{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: 'd-none d-lg-flex'
+                                }) | raw}}
                             </div>
 
 
