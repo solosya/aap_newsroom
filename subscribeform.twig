@@ -1,10 +1,10 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
-{% if not _User.isGuest() %}
+{# {% if not _User.isGuest() %}
     {% set redir = _Page.setHttpRedirects(
         { '|^/.*|': networkData.defaultBlogUrl ~ '/user/edit-profile', }, false) 
     %} 
-{% endif %}
+{% endif %} #}
 
 
 
@@ -19,7 +19,7 @@
 {% set userid = "" %}
 {% set userguid = "" %}
 {% set user = _User.getUser() %}
-{# {% set log = _AppHelper.log(user) %} #}
+
 {% if user %} 
     {% set userid = user['id'] %}
     {% set userguid = user['guid'] %}

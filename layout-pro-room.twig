@@ -8,7 +8,7 @@
     {% set dev = true %}
 {% endif %}
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = new Acme.Card();")}}
 {% set limit = 4 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
@@ -228,26 +228,19 @@
                     </div>
                     
                     <div class="row">
-                        {% set blogguid = blogData['guid'] %}
-                        {% set blogid = blogData['id'] %}
+
+                    {# *****************************************************
+                                        LOAD MOAR
+                    ***************************************************** #}
                         <div class="col-lg-12 u-margin-top-30">
-                            
-                            {% if articles|length >= limit %}
-                                    {{ this.render('partials/ajaxarticles_new.twig', {
-                                        name            : "section-load",
-                                        limit           : 6,
-                                        offset          : 4,
-                                        blogguid        : blogguid,
-                                        label           : "+ Load more",
-                                        imgwidth        : "300",
-                                        imgheight       : "160",
-                                        container       : "mainAjaxArticles" ~ blogid,
-                                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                                        card_class      : "col-lg-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30",
-                                        buttonClass     : "pro-main__loadmore j-pro-loadmore" 
-                                    }) | raw }}
-                                {% endif %}
-                            <div class="pro-main__loadless u-hide j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- SHOW LESS</div>
+                            <section class="row" id="pro-section" class="loadmore__section {{site}}"></section>
+                            <a href="#" id="pro-section-load" class="pro-main__loadmore j-pro-loadmore" >+ Load more</a>
+                            <div id="less-pro-section-load" 
+                                class="pro-main__loadless j-pro-loadless" 
+                                style="display:none" 
+                                data-loadcont="j-pro-loadmore-{{blogid}}"
+                                data-section="pro-section"
+                                >- SHOW LESS</div>
                         </div>
                     </div>
                 </div>
@@ -481,49 +474,25 @@
 
 
     <script>
-       
-        // main script is defered so event listener makes sure
-        // defered script is loaded before this runs
-        document.addEventListener("DOMContentLoaded", function() {
-            jQuery( function() {
-                //remove loadmore from all the loadmore boxes or the script gets confused
-                $('.loadMore').removeClass('loadMore');
-                //replace the default click with one that selects the box
-                $('.j-pro-loadmore').click( function(e){
-                    e.preventDefault();
-                    //make sure the loaded boxes and the show less are showing 
-                    $(this).parent().children('div').removeClass('u-hide');
-                    //set the clicked box to be the active loadmore one
-                    $(this).addClass('loadMore');
-                    //generate a new feed for the active box and fetch it
-                    Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
-                    Acme.loadMore.fetch();
-                    //clear the feed so no overlap
-                    Acme.loadMore = "";
-                    //remove loadmore from the active box so further scripts dont get confused
-                    $('.loadMore').removeClass('loadMore');
-                });
-                $('.j-pro-loadless').click( function(e) {
-                    e.preventDefault();
-                    //hide  or show the load more buttons and loaded-more articles
-                    this.id = "j-active";
-                    if ($('#j-active').text() == '- SHOW LESS') {
-                        $('#j-active').parent().children('.row').removeClass('u-hide');
-                        $('#j-active').parent().children('.row').addClass('u-hide');
-                        $('#j-active').parent().children('a').addClass('u-hide');
-                        $('#j-active').text('+ SHOW MORE');
-                    } else {
-                        $('#j-active').parent().children('.row').removeClass('u-hide');
-                        $('#j-active').parent().children('a').removeClass('u-hide');
-                        $('#j-active').text('- SHOW LESS');
-                    }
-                    $(this).removeAttr('id');
-                });
-
-                
-            });
-            
-        });
+   
+   
     </script>
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const events = new Acme.Card();
+
+        Acme.loadMore = new Acme.ArticleFeed({
+            model           : Acme.Card,
+            container       : 'pro-section',
+            offset          : 4,
+            limit           : 6,
+            label           : "Load more",
+            name            : 'pro-section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-lg-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30',
+            non_pinned      : {{articleCount}}
+        });
+    });
+</script>

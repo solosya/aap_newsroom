@@ -40,31 +40,35 @@
 
     <div class="col-sm-12 u-margin-top-30">
         
-        {% if articles|length >= 4 %}
-                {{ this.render('../ajaxarticles_new.twig', {
-                    name            : "section-load",
-                    limit           : 6,
-                    offset          : 4,
-                    blogguid        : blogguid,
-                    label           : "+ Load more",
-                    imgwidth        : "300",
-                    imgheight       : "160",
-                    non_pinned      : articlesArr.existingNonPinnedCount, 
-                    container       : "mainAjaxArticles" ~ blogid,
-                    card_class      : "col-md-4 card-sm card-sm-tablet card-pro-follow-mobile u-margin-bottom-30 u-mobile-margin-bottom-15 u-mobile-no-padding",
-                    buttonClass     : "pro-main__loadmore j-pro-loadmore" 
-                }) | raw }}
-            {% endif %}
-        <div class="pro-main__loadless u-hide j-pro-loadless" data-loadcont="j-pro-loadmore-{{blogid}}">- SHOW LESS</div>
+        
+        {% if articles|length >= 3 %}
+            <section class="row" id="pro-section-{{blogid}}" class="loadmore__section {{site}}"></section>
+            <a href="#" id="pro-section-load-{{blogid}}" class="pro-main__loadmore j-pro-loadmore" >+ Load more</a>
+            <div id="less-pro-section-load-{{blogid}}" 
+                class="pro-main__loadless" 
+                style="display:none" 
+                data-section="pro-section-{{blogid}}"
+                >- SHOW LESS</div>
+        {% endif %}
+
     </div>
 </section>
 
-{# <script>
-    // main script is defered so event listener makes sure
-    // defered script is loaded before this runs
-    document.addEventListener("DOMContentLoaded", function() {
-        jQuery( function() {
-            Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false, null, null, "mainAjaxArticles" + {{blogid}});
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        Acme.loadMore = new Acme.ArticleFeed({
+            model           : Acme.Card,
+            container       : 'pro-section-{{blogid}}',
+            name            : 'pro-section-load-{{blogid}}',
+            offset          : 4,
+            limit           : 6,
+            label           : "+ Load more",
+            imgwidth        : "300",
+            imgheight       : "160",
+            blogid          : "{{blogguid}}",
+            card_class      : 'col-md-4 card-sm card-sm-tablet card-pro-follow-mobile u-margin-bottom-30 u-mobile-margin-bottom-15 u-mobile-no-padding',
+            non_pinned      : {{articleCount}}
         });
     });
-</script> #}
+</script>
