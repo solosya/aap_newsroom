@@ -85,7 +85,7 @@ export const Form = function(validators, rules) {
 
         var validated = true, fields = [];
         if (checkFields && this.validateFields) {
-            console.log('checkfields exists');
+
             var fields = intersect(this.validateFields, checkFields);
             for (var j=0; j<fields.length;j++) {
                 var fieldName = fields[j].split('.').reverse()[0];
@@ -95,7 +95,7 @@ export const Form = function(validators, rules) {
             }
         } else {
             var fields = this.validateFields || [];
-            console.log(fields);
+
             this.errorFields = []; // reset and re-calcuate all fields
         }
         for (var i=0;i<fields.length; i++) {
@@ -144,7 +144,7 @@ export const Form = function(validators, rules) {
         // console.log('#'+this.id +' input, #'+this.id +' textarea');
         $('#'+this.id +' input, #'+this.id +' textarea').on("change", function(e) {
         // $('input, textarea').on("change", '#'+this.id, function(e) {
-                console.log('input changing');
+
             e.stopPropagation();
             e.preventDefault();
             var data = {};

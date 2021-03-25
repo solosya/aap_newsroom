@@ -1,11 +1,13 @@
-import Handlebars from 'handlebars'
-import { General_ShowNotification, General_ShowErrorMessage } from './sdk/common'
-import { pinUnpinArticle, deleteArticle } from './sdk/article'
-import { Templates } from './article-templates';
-import { Cloudinary } from '@cloudinary/base'
-import { fill, thumbnail } from "@cloudinary/base/actions/resize";
-import { faces } from "@cloudinary/base/qualifiers/focusOn";
-import { focusOn } from "@cloudinary/base/qualifiers/gravity";
+import Handlebars                           from 'handlebars'
+import { General_ShowNotification, 
+         General_ShowErrorMessage }         from './sdk/common'
+import { pinUnpinArticle, deleteArticle }   from './sdk/article'
+import { Templates }                        from './article-templates';
+import { Server }                           from './framework';
+import { Cloudinary }                       from '@cloudinary/base'
+import { fill, thumbnail }                  from "@cloudinary/base/actions/resize";
+import { faces }                            from "@cloudinary/base/qualifiers/focusOn";
+import { focusOn }                          from "@cloudinary/base/qualifiers/gravity";
 
 
 export const Card = function(attrs = {}) {
@@ -292,7 +294,7 @@ Card.prototype.initDroppable = function()
                 };
 
 
-                Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(r) {
+                Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(data) {
                     if(data.success) {
                         General_ShowNotification({message: "Articles swapped successfully"});
                     }
@@ -373,7 +375,7 @@ Card.prototype.dragndrop = function() {
         destParent.appendChild(sourceObj);
 
 
-        Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(r) {
+        Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(data) {
             if(data.success) {
                 General_ShowNotification({message: "Articles swapped successfully"});
             }

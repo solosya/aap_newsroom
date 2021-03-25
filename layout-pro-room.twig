@@ -474,50 +474,14 @@
 
 
     <script>
-       
-        {# document.addEventListener("DOMContentLoaded", function() {
-            //remove loadmore from all the loadmore boxes or the script gets confused
-            $('.loadMore').removeClass('loadMore');
-            //replace the default click with one that selects the box
-            $('.j-pro-loadmore').click( function(e){
-                e.preventDefault();
-                //make sure the loaded boxes and the show less are showing 
-                $(this).parent().children('div').removeClass('u-hide');
-                //set the clicked box to be the active loadmore one
-                $(this).addClass('loadMore');
-                //generate a new feed for the active box and fetch it
-                Acme.loadMore = new Acme.ArticleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
-                Acme.loadMore.fetch();
-                //clear the feed so no overlap
-                Acme.loadMore = "";
-                //remove loadmore from the active box so further scripts dont get confused
-                $('.loadMore').removeClass('loadMore');
-            });
-            $('.j-pro-loadless').click( function(e) {
-                e.preventDefault();
-                //hide  or show the load more buttons and loaded-more articles
-                this.id = "j-active";
-                if ($('#j-active').text() == '- SHOW LESS') {
-                    $('#j-active').parent().children('.row').removeClass('u-hide');
-                    $('#j-active').parent().children('.row').addClass('u-hide');
-                    $('#j-active').parent().children('a').addClass('u-hide');
-                    $('#j-active').text('+ SHOW MORE');
-                } else {
-                    $('#j-active').parent().children('.row').removeClass('u-hide');
-                    $('#j-active').parent().children('a').removeClass('u-hide');
-                    $('#j-active').text('- SHOW LESS');
-                }
-                $(this).removeAttr('id');
-            });
-
-                
-            
-        }); #}
+   
+   
     </script>
 
 
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
+        const events = new Acme.Card();
 
         Acme.loadMore = new Acme.ArticleFeed({
             model           : Acme.Card,
