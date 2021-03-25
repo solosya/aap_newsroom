@@ -275,22 +275,6 @@
                     {% endif %}
                 </section>
 
-                {# {% if articles|length >= limit %}
-                    {{ this.render('partials/ajaxarticles_new.twig', {
-                        name            : "section-load",
-                        limit           : limit,
-                        offset          : limit,
-                        label           : "Load more",
-                        imgwidth        : "262",
-                        imgheight       : "208",
-                        container       : "mainAjaxArticles",
-                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-md-4 card-sm card-sm-tablet card-sm-mobile",
-                        buttonClass     : "loadMoreArticles"
-                    }) | raw }}
-                {% endif %} #}
-
-
             </div>
         </div>
         {% endif %}
@@ -302,17 +286,6 @@
     </div>
     <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""{% if (this.title | lower) == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </section>
-
-{# {{this.registerJs("Acme.searchFeed = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}} #}
-{# 
-<script>
-    // main script is defered so event listener makes sure
-    // defered script is loaded before this runs
-    document.addEventListener("DOMContentLoaded", function(event) {
-        Acme.loadMore = new Acme.ArticleFeed(new Acme.Card(), {{limit}}, {{firstCount}}, false);
-    });
-</script> #}
-
 
 
 <script>

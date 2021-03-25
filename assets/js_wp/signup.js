@@ -1,6 +1,6 @@
 import { Form, Validators } from './form'
 import { Modal, Server } from './framework'
-
+import Card from './StripeCard'
 
 
 export const SubscribeForm = function(id, user) {
@@ -46,59 +46,20 @@ export const SubscribeForm = function(id, user) {
     this.events();
 };
 
+
+
 SubscribeForm.prototype = new Form(Validators);
 SubscribeForm.constructor = SubscribeForm;
 SubscribeForm.prototype.stripeSetup = function () {
     var self = this;
     var stripekey = $('#stripekey').html();
-
     this.stripe = Stripe(stripekey);
+    const StripeCard = new Card();
+    this.card = StripeCard.get(this.stripe);
 
     setInterval(function(){
         self.botTimer = self.botTimer + 1;
-        // console.log("BotTimer = ", self.botTimer);
     }, 1000);
-
-    // Create an instance of Elements
-    var elements = this.stripe.elements();
-
-    // Custom styling can be passed to options when creating an Element.
-    // (Note that this demo uses a wider set of styles than the guide below.)
-    var style = {
-        base: {
-            color: '#32325d',
-            lineHeight: '24px',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    };
-
-    // Create an instance of the card Element
-    this.card = elements.create('card', {style: style});
-
-    // Add an instance of the card Element into the `card-element` <div>
-    var cardElement = document.getElementById('card-element');
-    if (cardElement != null) {
-        this.card.mount('#card-element');
-    }
-
-    // Handle real-time validation errors from the card Element.
-    this.card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    }); 
 }
 SubscribeForm.prototype.random = function(length) {
     var result           = '';

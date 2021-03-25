@@ -1,10 +1,12 @@
 import Handlebars from 'handlebars'
 import { Server, Modal } from './framework'
 import { Templates } from './article-templates'
+import { SigninModal }  from './signinModal'
+import Card from './StripeCard'
+
 
 export const UserProfileController = function()
 {
-    this.csrfToken      = $('meta[name="csrf-token"]').attr("content");
     this.mailChimpUser  = false;
     this.emailLists     = [];
     // test mailchimp accounts
@@ -15,18 +17,35 @@ export const UserProfileController = function()
     this.newsroom       = '2412c1d355';
     this.group          = 'f6f5aaa06b';
 
+    this.modal = new SigninModal('modal', 'signin-modal', {
+        // "signin"        : 'signinFormTmpl',
+        // "register"      : 'registerTmpl',
+        // "forgot"        : 'forgotFormTmpl',
+        "spinner"       : 'spinnerTmpl',
+        // "expired"       : 'expiredNotice',
+        "userPlan"      : 'userPlanMessage',
+        "userPlanChange" : 'userPlanOkCancel'
+    } );
+
+    this.stripekey = $('#stripekey').html();
+    this.stripe = Stripe(this.stripekey);
+    const StripeCard = new Card();
+    this.card = StripeCard.get(this.stripe);
+
     this.events();
     this.userEvents();
-    this.listingEvents();
+    // this.listingEvents();
     this.fetchEmailLists();
 };
 
+UserProfileController.prototype.updateCardForm = function() {
 
+
+}
 UserProfileController.prototype.subscribeToEmail = function(user, group) {
     
 
     var data = {
-        _csrf  : this.csrfToken,
         list   : this.newsroom,
         group  : group,
         user   : user,
@@ -121,35 +140,27 @@ UserProfileController.prototype.deleteUser = function(e) {
 
         var requestData = { 
             id: userid, 
-            _csrf: this.csrfToken
         };
 
-        // then delete the user
-        return $.ajax({
-            type: 'post',
-            url: _appJsConfig.baseHttpPath + '/user/delete-managed-user',
-            dataType: 'json',
-            data: requestData,
-            success: function (data, textStatus, jqXHR) {
-                if (data.success == 1) {
-                    user.remove();
-                    $('#addManagedUser').removeClass('hidden');
-                    var usertxt = $('.profile-section__users-left').text();
-                    var usercount = usertxt.split(" ");
-                    var total = usercount[2];
-                    usercount = parseInt(usercount[0]);
-                    $('.profile-section__users-left').text((usercount - 1) + " of " + total + " used.");
-                } else {
-                    var text = '';
-                    for (var key in data.error) {
-                        text = text + data.error[key] + " ";
-                    } 
-                    $('#createUserErrorMessage').text(text);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#createUserErrorMessage').text(textStatus);
-            },
+
+        Server.create(_appJsConfig.baseHttpPath + '/user/delete-managed-user', requestData).done(function(data) {
+            if (data.success == 1) {
+                user.remove();
+                $('#addManagedUser').removeClass('hidden');
+                var usertxt = $('.profile-section__users-left').text();
+                var usercount = usertxt.split(" ");
+                var total = usercount[2];
+                usercount = parseInt(usercount[0]);
+                $('.profile-section__users-left').text((usercount - 1) + " of " + total + " used.");
+            } else {
+                var text = '';
+                for (var key in data.error) {
+                    text = text + data.error[key] + " ";
+                } 
+                $('#createUserErrorMessage').text(text);
+            }
+        }).fail((r)=> {
+            $('#createUserErrorMessage').text(r.textStatus);
         });
     });
 };
@@ -182,7 +193,7 @@ UserProfileController.prototype.render = function(data)
             id: data[i].id
         });
     }
-    self.renderUser(($('#mangedUsers')), users, managed_user);
+    self.renderUser(($('#mangedUsers')), users);
     self.userEvents();
 };
 
@@ -243,36 +254,30 @@ UserProfileController.prototype.userEvents = function()
 
             var requestData = getUserData("val");
             requestData.id = userid;
-            requestData._csrf = this.csrfToken;
-            $.ajax({
-                type: 'post',
-                url: _appJsConfig.baseHttpPath + '/user/edit-managed-profile',
-                dataType: 'json',
-                data: requestData,
-                success: function (data, textStatus, jqXHR) {
-                    if (data.success == 1) {
-                        self.renderUser(listelem, requestData);
-                        $('#addManagedUser').removeClass('hidden');
-                        $('#createUserErrorMessage').text('');
 
-                    } else {
-                        var text = '';
-                        for (var key in data.error) {
-                            text = text + data.error[key] + " ";
-                        } 
-                        $('#createUserErrorMessage').text(text);
-                    }
-                    self.userEvents();
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                        $('#createUserErrorMessage').text(textStatus);
-                },
-            });        
+            Server.create(_appJsConfig.baseHttpPath + '/home/edit-managed-profile', requestData).done((data) => {
+                if (data.success == 1) {
+                    self.renderUser(listelem, requestData);
+                    $('#addManagedUser').removeClass('hidden');
+                    $('#createUserErrorMessage').text('');
+
+                } else {
+                    var text = '';
+                    for (var key in data.error) {
+                        text = text + data.error[key] + " ";
+                    } 
+                    $('#createUserErrorMessage').text(text);
+                }
+                self.userEvents();
+
+            }).fail((r) => {
+                $('#createUserErrorMessage').text(r.textStatus);
+            });     
         });
     });  
 
     $('.j-delete').unbind().on('click', function(e) {
-        SigninView.render("userPlanChange", "Are you sure you want to delete this user?")
+        self.modal.render("userPlanChange", "Are you sure you want to delete this user?")
             .done(function() {
                 self.deleteUser(e);
             });
@@ -287,10 +292,10 @@ UserProfileController.prototype.events = function ()
     var self = this;
 
     $('#portal-session').on('click', function(e) {
-        console.log('portal button click');
+
         e.preventDefault();
         Server.create(_appJsConfig.baseHttpPath + '/api/paywall/user-portal-session').then(function(r){
-            console.log(r.session.url);
+            // console.log(r.session.url);
             if (typeof r.session.url !== 'undefined') {
                 window.location.replace(r.session.url)
             }
@@ -407,7 +412,6 @@ UserProfileController.prototype.events = function ()
                 lastname:  $('#newuserlastname').val(), 
                 username:  Math.floor(100000000 + Math.random() * 9000000000000000), 
                 useremail: $('#newuseruseremail').val(),
-                _csrf: this.csrfToken
             };
             
             var errorText = "";
@@ -431,37 +435,29 @@ UserProfileController.prototype.events = function ()
             
             $('#user-editor__spinner').addClass('spinner');
 
+            Server.create(_appJsConfig.baseHttpPath + '/user/create-paywall-managed-user', requestData).done((data) => {
+                $('#user-editor__spinner').removeClass('spinner');
 
-            $.ajax({
-                type: 'post',
-                url: _appJsConfig.appHostName + '/user/create-paywall-managed-user',
-                dataType: 'json',
-                data: requestData,
-                success: function (data, textStatus, jqXHR) {
-                    $('#user-editor__spinner').removeClass('spinner');
+                if (data.success == 1) {
 
-                    if (data.success == 1) {
+                    var groups = self.emailLists.map(function(g) {
+                        return g['id'];
+                    });
 
-                        var groups = self.emailLists.map(function(g) {
-                            return g['id'];
-                        });
+                    self.subscribeToEmail(data.user, groups);
 
-                        self.subscribeToEmail(data.user, groups);
-
-                        location.reload(false);             
-                    } else {
-                        var text = '';
-                        for (var key in data.error) {
-                            text = text + data.error[key] + " ";
-                        } 
-                        $('#createUserErrorMessage').text(text);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    $('#user-editor-buttons').removeClass('spinner');
-                    $('#createUserErrorMessage').text(textStatus);
-                },
-            });        
+                    location.reload(false);             
+                } else {
+                    var text = '';
+                    for (var key in data.error) {
+                        text = text + data.error[key] + " ";
+                    } 
+                    $('#createUserErrorMessage').text(text);
+                }
+            }).fail((r) => {
+                $('#user-editor-buttons').removeClass('spinner');
+                $('#createUserErrorMessage').text(r.textStatus);
+            });
         });
 
         $('#cancelUserCreate').on('click', function(e) {
@@ -475,45 +471,40 @@ UserProfileController.prototype.events = function ()
 
     $('#cancelAccount').on('click', function(e) {
         e.preventDefault();
-        var listelem = $(e.target).closest('li');
+        // var listelem = $(e.target).closest('li');
 
-        var status = 'cancelled';
-        message = "Are you sure you want to cancel your plan?"
+        let status = 'cancelled';
+        let message = "Are you sure you want to cancel your plan?"
         if ($(e.target).text() == 'Restart Subscription') {
             message = "Do you want to reactivate your plan? You will be billed on the next payment date."
             status = 'paid'
         }
-        var requestData = { 
+        const requestData = { 
             status: status, 
-            _csrf: this.csrfToken, 
         };
 
-        SigninView.render("userPlanChange", message)
-            .done(function() {
+        self.modal.render("userPlanChange", message)
+            .done(function(r) {
+
                 $('#dialog').parent().remove();
-                
-                $.ajax({
-                    type: 'post',
-                    url: _appJsConfig.baseHttpPath + '/user/paywall-account-status',
-                    dataType: 'json',
-                    data: requestData,
-                    success: function (data, textStatus, jqXHR) {
 
-                        if (data.success == 1) {
-                            window.location.reload(false);             
-                        } else {
-                            var text = '';
-                            for (var key in data.error) {
-                                text = text + data.error[key] + " ";
-                            } 
-                            $('#createUserErrorMessage').text(text);
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
 
-                            $('#createUserErrorMessage').text(textStatus);
-                    },
-                });        
+                Server.create(_appJsConfig.baseHttpPath + '/user/paywall-account-status', requestData).done((data) => {
+                    
+                    if (data.success == 1) {
+                        window.location.reload(false);             
+                    } else {
+                        let text = '';
+                        for (let key in data.error) {
+                            text = text + data.error[key] + " ";
+                        } 
+                        $('#createUserErrorMessage').text(text);
+                    }
+
+                }).fail((r) => {
+                    $('#createUserErrorMessage').text(r.textStatus);
+                });
+       
             }); 
     });       
 
@@ -521,36 +512,36 @@ UserProfileController.prototype.events = function ()
     $('.j-setplan').on('click', function(e) {
         e.stopPropagation();
 
-        var modal = new Modal('modal', 'signin-modal', {
-            "userPlan" : 'userPlanMessage',
-            "userPlanChange" : 'userPlanOkCancel'
-        });
+        // const modal = new Modal('modal', 'signin-modal', {
+        //     "userPlan" : 'userPlanMessage',
+        //     "userPlanChange" : 'userPlanOkCancel'
+        // });
 
 
-        var newPlan = $(e.target);
+        let newPlan = $(e.target);
         if (!newPlan.hasClass('j-setplan')) {
             newPlan = $(e.target.parentNode);
         }
         
-        var currentPlan      = $('#currentPlanStats');
-        var cardSupplied     = currentPlan.data("cardsupplied");
+        const currentPlan      = $('#currentPlanStats');
+        const cardSupplied     = currentPlan.data("cardsupplied");
 
-        var currentUserCount = +currentPlan.data('currentusers');
-        var oldcost          = +currentPlan.data('currentcost');
-        var oldPlanPeriod    = +currentPlan.data('currentplanperiodcount');
-        var expDate          =  currentPlan.data('expiry');
-        var olddays          =  currentPlan.data('currentperiod');
-        var oldPlanType      =  currentPlan.data('currenttype');
+        const currentUserCount = +currentPlan.data('currentusers');
+        const oldcost          = +currentPlan.data('currentcost');
+        const oldPlanPeriod    = +currentPlan.data('currentplanperiodcount');
+        const expDate          =  currentPlan.data('expiry');
+        let olddays            =  currentPlan.data('currentperiod');
+        const oldPlanType      =  currentPlan.data('currenttype');
 
-        var planusers        = +newPlan.data('planusercount');
-        var newcost          = +newPlan.data('plancost');
-        var newPlanPeriod    = +newPlan.data('planperiodcount');
-        var newdays          =  newPlan.data('planperiod');
-        var newPlanType      =  newPlan.data('plantype');
+        const planusers        = +newPlan.data('planusercount');
+        const newcost          = +newPlan.data('plancost');
+        const newPlanPeriod    = +newPlan.data('planperiodcount');
+        let newdays            =  newPlan.data('planperiod');
+        const newPlanType      =  newPlan.data('plantype');
 
 
         if (currentUserCount > 0 && currentUserCount >= planusers) {
-            modal.render("userPlan", "You have too many users to change to that plan.");
+            self.modal.render("userPlan", "You have too many users to change to that plan.");
             return;
         }
 
@@ -563,12 +554,12 @@ UserProfileController.prototype.events = function ()
         if (olddays == 'year')  {olddays = 365;}
         newdays = newdays * newPlanPeriod;
         olddays = olddays * oldPlanPeriod;
-        var newplandailycost = newcost / newdays;
-        var plandailycost = oldcost/olddays;
+        const newplandailycost = newcost / newdays;
+        const plandailycost = oldcost/olddays;
 
 
-        var msg = "";
-        var newCharge = 0;
+        let msg = "";
+        let newCharge = 0;
         if (( newPlanType == 'article' && oldPlanType !== 'time') || ( newPlanType == 'time' && oldPlanType === 'article') ) {
             newCharge = newcost / 100;
         }
@@ -581,7 +572,7 @@ UserProfileController.prototype.events = function ()
             newCharge = 0;
         }
 
-        var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
         function dateDiffInDays(a, b) {
             // Discard the time and time-zone information.
             const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
@@ -591,12 +582,12 @@ UserProfileController.prototype.events = function ()
           }
           
 
-        var expiryObj = new Date(expDate);
-        var today = new Date();
+        const expiryObj = new Date(expDate);
+        const today = new Date();
         
         // var diffTime = Math.abs(today.getTime() - expiryObj.getTime());
         // var diffDays1 = Math.ceil(diffTime / (1000 * 3600 * 24)); 
-        var diffDays = dateDiffInDays(today, expiryObj); 
+        const diffDays = dateDiffInDays(today, expiryObj); 
         // var diffDays = moment(expDate).diff(moment(), 'days');
 
         // more expensive time base plan changes require a charge that is the difference in cost between the two
@@ -607,65 +598,98 @@ UserProfileController.prototype.events = function ()
         }
 
         if (newCharge > 0) {
-            msg = "This will cost $" + newCharge.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ".<br /><br />";
+            msg = "<p>This will cost $" + newCharge.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ".</p>";
         }
 
         if (cardSupplied === 'f' ) {
             msg = msg + "However, you will need to supply your credit card details. You can enter those on this page and then we can finalise the plan change.";
-            modal.render("userPlan", "Almost there! ", {message: msg});
+            self.modal.render("userPlan", "Almost there! ", {message: msg});
             return;
         }
 
-        var requestData = { 
-            planid: newPlan.data('planid'), 
-            _csrf: $('meta[name="csrf-token"]').attr("content"), 
+        const requestData = { 
+            planid: newPlan.data('planid') 
         };
 
 
-        modal.render("userPlanChange", "Are you sure you want to change plan?" + msg)
+        self.modal.render("userPlanChange", "Are you sure you want to change plan?" + msg)
             .done(function() {
                 $('#dialog').parent().remove();
 
-                $.ajax({
-                    type: 'post',
-                    url: _appJsConfig.baseHttpPath + '/user/change-paywall-plan',
-                    dataType: 'json',
-                    data: requestData,
-                    success: function (data, textStatus, jqXHR) {
-                        if (data.success == 1) {
-                            window.location.reload();
-                        } else {
-                            $('#dialog').parent().remove();
-                            SigninView.render("userPlan", data.error);
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                            $('#createUserErrorMessage').text(textStatus);
-                    },
-                });        
-            }); 
+                Server.create(_appJsConfig.baseHttpPath + '/user/change-paywall-plan', requestData).done((data) => {
+                    if (data.success == 1) {
+                        window.location.reload();
+                    } else {
+                        $('#dialog').parent().remove();
+                        self.modal.render("userPlan", data.error);
+                    }
 
+                }).fail((r) => {
+                    $('#createUserErrorMessage').text(r.textStatus);
+                });
+            }); 
     });
 
-};
 
 
+    var udform = document.getElementById('update-card-form');
+    if (udform != null) {
+        udform.addEventListener('submit', function(event) {
 
+            event.preventDefault();
 
-UserProfileController.prototype.listingEvents = function() {
-    $('.j-deleteListing').unbind().on('click', function(e) {
-        e.preventDefault();
-        var listing = $(e.target).closest('a.card');
-        var id      = listing.data("guid");
-        SigninView.render("userPlanChange", "Are you sure you want to delete this listing?")
-            .done(function() {
-                Server.create('/api/article/delete-user-article', {"articleguid": id}).done(function(r) {
-                    listing.remove();
-                }).fail(function(r) {
-                    // console.log(r);
-                });
+            
+            self.modal.render("spinner", "Your request is being processed.");
+
+            const errorElement = document.getElementById('card-errors');
+
+            errorElement.textContent = '';
+            // const stripe = Stripe(self.stripekey);
+            self.stripe.createToken(self.card).then(function(result) {
+                console.log(result);
+                if (result.error) {
+                    self.modal.closeWindow();
+
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+
+                    const formdata = {"stripetoken":result.token.id}
+                    Server.create(_appJsConfig.baseHttpPath + '/user/update-payment-details', formdata).done((r) => {
+                        console.log(r);
+                        self.modal.closeWindow();
+                        // location.reload();
+
+                    });
+                }
             });
-    });  
+        });
+    }
+
+
 };
+
+
+
+
+// UserProfileController.prototype.listingEvents = function() {
+//     var self = this;
+
+//     $('.j-deleteListing').unbind().on('click', function(e) {
+//         e.preventDefault();
+//         const listing = $(e.target).closest('a.card');
+//         const id      = listing.data("guid");
+//         self.modal.render("userPlanChange", "Are you sure you want to delete this listing?")
+//             .done(function() {
+//                 Server.create('/api/article/delete-user-article', {"articleguid": id}).done(function(r) {
+//                     listing.remove();
+//                 }).fail(function(r) {
+//                     // console.log(r);
+//                 });
+//             });
+//     });  
+// };
 
     

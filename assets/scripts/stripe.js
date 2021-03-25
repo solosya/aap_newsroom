@@ -272,33 +272,4 @@ if ($('#stripekey').length > 0 && $('#paywalloldsubscribe').length ) {
 
 
 
-    var udform = document.getElementById('update-card-form');
-
-    if (udform != null) {
-
-        udform.addEventListener('submit', function(event) {
-            event.preventDefault();
-            modal.render("spinner", "Your request is being processed.");
-
-            $('#card-errors').text('');
-            
-            stripe.createToken(card).then(function(result) {
-                if (result.error) {
-                    modal.closeWindow();
-
-                    // Inform the user if there was an error
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server
-
-                    formdata = {"stripetoken":result.token.id}
-                    formhandler(formdata, '/user/update-payment-details').then(function() {
-                        modal.closeWindow();
-                        location.reload();
-                    });
-                }
-            });
-        });
-    }
 } 

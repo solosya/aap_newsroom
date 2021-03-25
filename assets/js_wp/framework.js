@@ -31,7 +31,7 @@ export const Server = {
         
         if (type !== 'get') {
             var token = $('meta[name="csrf-token"]').attr("content");
-            console.log(token);
+            // console.log(token);
             $.ajaxSetup({
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('X-CSRF-Token', token);
@@ -311,17 +311,18 @@ export const Modal = function(template, name, layouts, data) {
         return this.dfd.promise();
     };
     Modal.prototype.renderLayout = function(layout, data) {
+
         var data = data || {};
         var tmp = Handlebars.compile(Templates[this.layouts[layout]]);
         var layout = tmp(data);
+
         $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
     };
     Modal.prototype.events = function() 
     {
-        console.log('adding events to modal');
         var self = this;
         $('#'+this.parentCont).on("click", function(e) {
-            console.log(self.handler);
+            // console.log(self.handler);
             self.handle(e);
         });
 
@@ -330,7 +331,6 @@ export const Modal = function(template, name, layouts, data) {
         return true;
     };
     Modal.prototype.handle = function(e) {
-        console.log('handling');
         var $elem = $(e.target);
 
         if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {

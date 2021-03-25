@@ -1,10 +1,11 @@
 import { Templates } from './article-templates'
+import { Server } from './framework'
 
 
 
 const Feed = function() {
     this.domain = _appJsConfig.appHostName;
-    this.requestType = 'post';
+    this.requestType = 'create';
     this.dataType = 'json';
 };
 
@@ -42,7 +43,7 @@ Feed.prototype.fetch = function()
 
     if (this.options.loadtype == 'user') {
         this.url = this.domain + '/api/'+options.loadtype+'/load-more-managed';
-        this.requestType = 'get';
+        this.requestType = 'fetch';
     }
     
     if (this.options.loadtype == 'user_articles') {
@@ -51,10 +52,9 @@ Feed.prototype.fetch = function()
         this.url = this.domain + '/profile/'+ username + '/posts';
     }
 
-    console.log(this.options);
 
     if (this.options.search) {
-        console.log('searching');
+
         var refinedSearch = this.options.search;
         if (this.options.blogid) {
             this.requestData['blogguid'] = this.options.blogid;
@@ -66,20 +66,14 @@ Feed.prototype.fetch = function()
             this.requestData['s'] = refinedSearch;
         }
         this.url = this.domain + '/'+ this.options.loadtype;
-        this.requestType = 'get';
+        this.requestType = 'fetch';
     }
 
-
-    return $.ajax({
-        url      : this.url,
-        data     : this.requestData,
-        type     : this.requestType,
-        dataType : this.dataType,
-    }).done(function(data) {
-        if (data.success == 1) {
-            self.render(data);
+    return Server[this.requestType](this.url, this.requestData).done(function(r) {
+        if (r.success == 1) {
+            self.render(r);
         }
-    });       
+    });
 
 };
 

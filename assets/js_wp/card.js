@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars'
+import { General_ShowNotification, General_ShowErrorMessage } from './sdk/common'
 import { pinUnpinArticle, deleteArticle } from './sdk/article'
 import { Templates } from './article-templates';
 import { Cloudinary } from '@cloudinary/base'
@@ -167,6 +168,7 @@ Card.prototype.initDraggable = function()
 {
 
     if ( $.ui ) {
+        console.log('initing draggable');
         $('.swap').draggable({
             helper: 'clone',
             revert: true,
@@ -278,7 +280,7 @@ Card.prototype.initDroppable = function()
                 sourceObj.remove();
                 destObject.remove();
                 
-                // var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
                 var postData = {
                     sourcePosition: sourcePosition,
                     sourceArticleId: sourcePostId,
@@ -287,31 +289,21 @@ Card.prototype.initDroppable = function()
                     destinationPosition: destinationPosition,
                     destinationArticleId: destinationPostId,
                     destinationIsSocial: destinationIsSocial,
-                    
-                    // _csrf: csrfToken
                 };
 
-                $.ajax({
-                    url: _appJsConfig.baseHttpPath + '/home/swap-article',
-                    type: 'post',
-                    data: postData,
-                    dataType: 'json',
-                    success: function(data){
 
-                        if(data.success) {
-                            $.fn.General_ShowNotification({message: "Articles swapped successfully"});
-                        }
-                        
-                        // $(".card p, .card h2").dotdotdot();
-                        $(".j-truncate").dotdotdot();
-                        self.events();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown){
-                        $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
-                    },
+                Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(r) {
+                    if(data.success) {
+                        General_ShowNotification({message: "Articles swapped successfully"});
+                    }
+        
+                    $(".j-truncate").dotdotdot();
+                    self.events();
 
+                }).fail((e) => {
+                    General_ShowErrorMessage({message: e.responseText});
                 });
-
+    
             }
         }); 
     }
@@ -381,28 +373,17 @@ Card.prototype.dragndrop = function() {
         destParent.appendChild(sourceObj);
 
 
-        $.ajax({
-            url: _appJsConfig.baseHttpPath + '/home/swap-article',
-            type: 'post',
-            data: postData,
-            dataType: 'json',
-            success: function(data){
+        Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(r) {
+            if(data.success) {
+                General_ShowNotification({message: "Articles swapped successfully"});
+            }
 
-                if(data.success) {
-                    $.fn.General_ShowNotification({message: "Articles swapped successfully"});
-                }
-                
-                // $(".card p, .card h2").dotdotdot();
-                $(".j-truncate").dotdotdot();
-                self.events();
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
-            },
+            $(".j-truncate").dotdotdot();
+            self.events();
 
+        }).fail((e) => {
+            General_ShowErrorMessage({message: e.responseText});
         });
-
-
     };
     // var enter = function(event) {
     //     event.preventDefault();

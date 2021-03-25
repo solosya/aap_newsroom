@@ -43,8 +43,7 @@
 {# {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %} #}
 
 <main id="main" class="user_profile account-form u-tablet-margin-top-40 u-desktop-margin-top-40 u-mobile-margin-top-150 u-padding-bottom-40 u-padding-top-20" role="main">
-    {# <div id="stripekey" class="u-hide" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div> #}
-    {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
+
     <div id="" class="container">
 
         <div class="user_profile_section">
@@ -171,7 +170,7 @@
                 {% if pwstats.userManager == true %}
                     <hr class="divide30 " style="border-top:1px solid #97999c;">
 
-                    {% set totalPlanUserCount       = pwstats['user_count'] %}
+                    {% set totalPlanUserCount = pwstats['user_count'] %}
 
                     {% set managedUsersObj = _User.getPaywallManagedUsers({"limit": userLimit}) %}
 
@@ -231,7 +230,7 @@
 
                                         <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="totalusers">My Users</label>
-                                            <p type="text" id="totalusers" class="account-form__value">{{ remainingUsers }}</p>
+                                            <p type="text" id="totalusers" class="account-form__value">{{ managedUserScreenCount }} of {{totalPlanUserCount}}</p>
                                         </div>                            
                                        
 
@@ -300,7 +299,7 @@
                                         </div>
 
                                         <!-- Used to display Element errors -->
-                                        <div id="profile-section__card-errors" role="alert"></div>
+                                        <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
                                         <button type="submit" class="text-button text-button--italic u-margin-top-20">Change</button>
                                     </form>
                                 </div>
@@ -368,8 +367,7 @@
 
 
 
-                    {# {% set log = _AppHelper.log(plan.type) %} #}
-                    {% if pwstats['type'] == 'time' %}
+                    {% if pwstats['type'] == 'time' and totalPlanUserCount > 0 %}
                         <div class="profile-section profile-section__managed-header">
 
                             {% set usersLeft = totalPlanUserCount > 0 ? totalPlanUserCount -1 : totalPlanUserCount %}

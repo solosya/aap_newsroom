@@ -3,7 +3,7 @@
 {% set config       = _Network.getThemeConfig() %}
 {{ set(this, 'title', blogData.title) }}
 
-{# {% set sections =  {
+{% set sections =  {
         "podcast: the detail": {
             "feed": "",
             "link": "",
@@ -29,18 +29,18 @@
             "title": ""
         }
     }
-%} #}
+%}
 
 
 
-{% set sections =  {
-        "australia": {
+{# {% set sections =  {
+        "TEST_PAYWALL_SECTION": {
             "feed": "",
             "link": "",
             "description": "",
             "title": ""
         }, 
-        "news": {
+        "TEST_PAYWALL_SECTION": {
             "feed": "",
             "link": "",
             "description": "",
@@ -59,15 +59,14 @@
             "title": ""
         }
     }
-%}
+%} #}
 
 
 {% set limit = 4 %}
 
-
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
-        {% if blog.title | lower == key %}
+        {% if blog.title | lower == key | lower %}
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
@@ -90,13 +89,13 @@
         <h1 class="sectionpage u-mobile-margin-left-20">{{blogData.title}}</h1>
         <div class="row">
             <div class="col-md-12 col-lg-8 partials-block">
-
-                {% if sections['australia'].feed.articles|length > 0 %}
+{# 
+                {% if sections['TEST_PAYWALL_SECTION'].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
-                        'section' : 'australia',
+                        'section' : 'TEST_PAYWALL_SECTION',
                         'blogFeeds' : sections,
                         'template' : 'partials/pro/hero-four-dark.twig',
-                        'title' : 'australia'
+                        'title' : 'TEST_PAYWALL_SECTION'
                     }) | raw}}
                 {% endif %}
                 {% if sections['news'].feed.articles|length > 0 %}
@@ -108,7 +107,7 @@
                     }) | raw}}
                 {% endif %}
 
-
+ #}
 
 
 
