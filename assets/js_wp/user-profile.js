@@ -18,11 +18,7 @@ export const UserProfileController = function()
     this.group          = 'f6f5aaa06b';
 
     this.modal = new SigninModal('modal', 'signin-modal', {
-        // "signin"        : 'signinFormTmpl',
-        // "register"      : 'registerTmpl',
-        // "forgot"        : 'forgotFormTmpl',
         "spinner"       : 'spinnerTmpl',
-        // "expired"       : 'expiredNotice',
         "userPlan"      : 'userPlanMessage',
         "userPlanChange" : 'userPlanOkCancel'
     } );
@@ -143,7 +139,7 @@ UserProfileController.prototype.deleteUser = function(e) {
         };
 
 
-        Server.create(_appJsConfig.baseHttpPath + '/user/delete-managed-user', requestData).done(function(data) {
+        Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/delete-managed-user', requestData).done(function(data) {
             if (data.success == 1) {
                 user.remove();
                 $('#addManagedUser').removeClass('hidden');
@@ -277,7 +273,11 @@ UserProfileController.prototype.userEvents = function()
     });  
 
     $('.j-delete').unbind().on('click', function(e) {
-        self.modal.render("userPlanChange", "Are you sure you want to delete this user?")
+
+        const modal = new Modal('modal', 'signin-modal', {
+            "userPlanChange" : 'userPlanOkCancel'
+        });
+        modal.render("userPlanChange", "Are you sure you want to delete this user?")
             .done(function() {
                 self.deleteUser(e);
             });
@@ -294,7 +294,7 @@ UserProfileController.prototype.events = function ()
     $('#portal-session').on('click', function(e) {
 
         e.preventDefault();
-        Server.create(_appJsConfig.baseHttpPath + '/api/paywall/user-portal-session').then(function(r){
+        Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/user-portal-session').then(function(r){
             // console.log(r.session.url);
             if (typeof r.session.url !== 'undefined') {
                 window.location.replace(r.session.url)
@@ -435,7 +435,7 @@ UserProfileController.prototype.events = function ()
             
             $('#user-editor__spinner').addClass('spinner');
 
-            Server.create(_appJsConfig.baseHttpPath + '/user/create-paywall-managed-user', requestData).done((data) => {
+            Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/create-paywall-managed-user', requestData).done((data) => {
                 $('#user-editor__spinner').removeClass('spinner');
 
                 if (data.success == 1) {
@@ -483,13 +483,18 @@ UserProfileController.prototype.events = function ()
             status: status, 
         };
 
-        self.modal.render("userPlanChange", message)
+
+        const modal = new Modal('modal', 'signin-modal', {
+            "userPlanChange" : 'userPlanOkCancel'
+        });
+
+        modal.render("userPlanChange", message)
             .done(function(r) {
 
                 $('#dialog').parent().remove();
 
 
-                Server.create(_appJsConfig.baseHttpPath + '/user/paywall-account-status', requestData).done((data) => {
+                Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/paywall-account-status', requestData).done((data) => {
                     
                     if (data.success == 1) {
                         window.location.reload(false);             
@@ -512,10 +517,10 @@ UserProfileController.prototype.events = function ()
     $('.j-setplan').on('click', function(e) {
         e.stopPropagation();
 
-        // const modal = new Modal('modal', 'signin-modal', {
-        //     "userPlan" : 'userPlanMessage',
-        //     "userPlanChange" : 'userPlanOkCancel'
-        // });
+        const modal = new Modal('modal', 'signin-modal', {
+            "userPlan" : 'userPlanMessage',
+            "userPlanChange" : 'userPlanOkCancel'
+        });
 
 
         let newPlan = $(e.target);
@@ -541,7 +546,7 @@ UserProfileController.prototype.events = function ()
 
 
         if (currentUserCount > 0 && currentUserCount >= planusers) {
-            self.modal.render("userPlan", "You have too many users to change to that plan.");
+            modal.render("userPlan", "You have too many users to change to that plan.");
             return;
         }
 
@@ -612,11 +617,17 @@ UserProfileController.prototype.events = function ()
         };
 
 
-        self.modal.render("userPlanChange", "Are you sure you want to change plan?" + msg)
+
+        const changeModal = new Modal('modal', 'signin-modal', {
+            "userPlanChange" : 'userPlanOkCancel'
+        });
+
+        changeModal.render("userPlanChange", "Are you sure you want to change plan?" + msg)
             .done(function() {
+                // console.log('donee!!');
                 $('#dialog').parent().remove();
 
-                Server.create(_appJsConfig.baseHttpPath + '/user/change-paywall-plan', requestData).done((data) => {
+                Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/change-paywall-plan', requestData).done((data) => {
                     if (data.success == 1) {
                         window.location.reload();
                     } else {
@@ -646,7 +657,7 @@ UserProfileController.prototype.events = function ()
             errorElement.textContent = '';
             // const stripe = Stripe(self.stripekey);
             self.stripe.createToken(self.card).then(function(result) {
-                console.log(result);
+                // console.log(result);
                 if (result.error) {
                     self.modal.closeWindow();
 
@@ -657,8 +668,8 @@ UserProfileController.prototype.events = function ()
                     // Send the token to your server
 
                     const formdata = {"stripetoken":result.token.id}
-                    Server.create(_appJsConfig.baseHttpPath + '/user/update-payment-details', formdata).done((r) => {
-                        console.log(r);
+                    Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/update-payment-details', formdata).done((r) => {
+                        // console.log(r);
                         self.modal.closeWindow();
                         // location.reload();
 
