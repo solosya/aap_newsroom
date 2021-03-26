@@ -30,15 +30,15 @@ export const Server = {
         var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
         
         if (type !== 'get') {
-            // var token = $('meta[name="csrf-token"]').attr("content");
+            var token = $('meta[name="csrf-token"]').attr("content");
             // queryParams._csrf =  token;
 
-            // $.ajaxSetup({
-            //     beforeSend: function(xhr) {
-            //         xhr.setRequestHeader('x-csrf-token', token);
+            $.ajaxSetup({
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('x-csrf-token', token);
                     
-            //     }
-            // });
+                }
+            });
         }
 
         return $.ajax({
