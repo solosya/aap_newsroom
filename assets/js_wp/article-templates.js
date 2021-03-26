@@ -183,7 +183,7 @@ donateSignupForm:
         <p class="{{class-prefix}}login-form__email-share j-email-text">Please enter your email address</p> \
     {{/ifCond}} \
     {{# ifCond validEmail "==" false}} \
-        <p class="{{class-prefix}}login-form__email-share j-email-text">It looks like you don\'t have an account with us.<br />Would you like to contine with this email address?</p> \
+        <p class="{{class-prefix}}login-form__email-share j-email-text">It looks like you don\'t have an account with us.<br />Would you like to continue with this email address?</p> \
     {{/ifCond}} \
     \
     {{# ifCond validEmail "==" true}} \
