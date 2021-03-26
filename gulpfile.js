@@ -95,6 +95,7 @@ gulp.task('scripts-concat', function(){
         './assets/js_wp/vendor/jquery.dotdotdot.min.js',
         './assets/js_wp/vendor/owl.carousel.min.js',
         './assets/js_wp/scripts.js',
+        './assets/scripts/sdk/yii/yii.js',
         ])
         .pipe(concat('concat.js'))
         .pipe(gulp.dest('./static/js'))
