@@ -5,7 +5,7 @@
     <p class="c-cta-side__tagline">Start your day with a curation <br /> of our top stories in your inbox</p>
         
     {% if config['mailchimp']['ctalink'] is defined %}
-        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="c-cta-side__button c-cta-side__button--black">READ TODAY'S NEWSLETTER</a>
+        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="c-cta-side__button c-cta-side__button--black" rel="noopener">READ TODAY'S NEWSLETTER</a>
     {% endif %}
     <div class="c-cta-side__button c-cta-side__button--blue j-cta-side-signtoggle">SIGN UP FOR FREE</div>
 </div>

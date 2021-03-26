@@ -7,15 +7,15 @@
     <p class="c-cta-body__tagline d-none d-md-block">Start your day with <br />a curation of our top <br />stories in your inbox</p>
     <p class="c-cta-body__tagline d-md-none">Start your day with a curation of <br />our top stories in your inbox</p>
 
-    {# {% if config['mailchimp']['ctalink'] is defined %} #}
-        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="d-md-none c-cta-body__button c-cta-body__button--black j-cta-body-buttons">READ TODAY'S NEWSLETTER</a>
-    {# {% endif %} #}
+    {% if config['mailchimp']['ctalink'] is defined %}
+        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="d-md-none c-cta-body__button c-cta-body__button--black j-cta-body-buttons" rel="noopener">READ TODAY'S NEWSLETTER</a>
+    {% endif %}
 
 
     <button id="cta-body-signtoggle" class="c-cta-body__button c-cta-body__button--blue">SIGN UP FOR FREE</button>
-    {# {% if config['mailchimp']['ctalink'] is defined %} #}
-        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="c-cta-body__button c-cta-body__button--black d-none d-md-block j-cta-body-buttons">READ TODAY'S NEWSLETTER</a>
-    {# {% endif %} #}
+    {% if config['mailchimp']['ctalink'] is defined %}
+        <a href="{{config['mailchimp']['ctalink']}}" target="_blank" class="c-cta-body__button c-cta-body__button--black d-none d-md-block j-cta-body-buttons" rel="noopener">READ TODAY'S NEWSLETTER</a>
+    {% endif %}
                 
                 
     <div class="c-cta-body__form d-none j-cta-body-form">
