@@ -161,7 +161,7 @@
                             <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
                             <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
-                        {%endif%}
+                        {% endif %}
                     </figure>
                 {% endif %}
 
@@ -234,10 +234,10 @@
                     <figure>
 
                         {% if lazyload == false %}
-                            <img class="img-fluid" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                            <img class="img-fluid" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
                         {% else %}
-                            <img class="img-fluid lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
-                        {%endif%}
+                            <img class="img-fluid lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                        {% endif %}
 
 
                         {# <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div> #}

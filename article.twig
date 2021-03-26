@@ -318,7 +318,7 @@
 
 
                             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
-                                <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}">
+                                <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}" alt="author">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
                                     <h3 itemprop="name">{{ article.createdBy['displayName'] }}</h3>
                                 </a>
@@ -365,12 +365,12 @@
                                 
                                 {% if articleBlog == 'new auckland' %}
                                     <div class="beca-section beca-section__article d-block d-lg-none">
-                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0">
+                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0" alt="logo">
                                         <p class="beca-section__arttext">In association with</p>
                                     </div>
                                 {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-block d-lg-none">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
                                 {% endif %}
@@ -483,7 +483,7 @@
                                             <div class="comments__commentContainer">
                                                 <div class="comments__Header">
                                                     <div class="comments__author">
-                                                        <img class="comments__Avatar" src={{avatar}} />
+                                                        <img class="comments__Avatar" src={{avatar}} alt="commenter avatar" />
                                                         <div class="comments__AuthorDetails">
                                                             <div class="comments__AuthorName">{{comment.firstname}} {{comment.lastname}}</div>
                                                             <div class="comments__Company">{{comment.organisation}}</div>
@@ -575,7 +575,7 @@
                                
                                 {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-none d-lg-block">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
                                 
