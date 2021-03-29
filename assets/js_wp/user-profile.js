@@ -292,12 +292,16 @@ UserProfileController.prototype.events = function ()
     var self = this;
 
     $('#portal-session').on('click', function(e) {
-
+        const button = $(this);
+        button.text('Opening...');
         e.preventDefault();
         Server.create(_appJsConfig.baseHttpPath + '/api/paywall/user-portal-session').then(function(r){
             // console.log(r.session.url);
             if (typeof r.session.url !== 'undefined') {
-                window.location.replace(r.session.url)
+                const blah = window.open(r.session.url, 'donations', '_blank');
+                button.text("mange my donations");
+                // window.location = r.session.url;
+                // window.location.replace(r.session.url)
             }
         });
 
