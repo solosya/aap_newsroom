@@ -324,7 +324,20 @@
 
 
 
+{% if config is defined and config.donations is defined and config.donations == "nr" %}
+    <div class="nr-site-header-signin d-flex d-md-none">
+       
+        {% if loggedin %}
+            <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="nr-site-header-signin__account _btn _btn--black"><p>Hi, {{user.firstname}}</p></a>
+            <a href="{{_AppHelper.getLogoffUrl()}}" class="_btn _btn--red _btn--signout nr-site-header-signin__signbtn">SIGN OUT</a>
+        {% else %}
+            <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="_btn _btn--black nr-site-header-signin__subbtn{% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} d-none d-md-block {% endif %}">SUBSCRIBE TO PRO</a>
+            <button id="signinBtn" type="submit" class="_btn _btn--red nr-site-header-signin__signbtn">SIGN IN</button>
+        {% endif %}
+    
+    </div>
 
+{% else %}
     <div class="site-header-signin d-block d-md-none">
         
         <a href="{{networkData.defaultBlogUrl}}/donations" class="site-header-signin__pp" {% if layout == 'layout-marketing' or layout == 'layout-subscribe' %} style="width:80.5%;" {% endif %}>
@@ -340,6 +353,9 @@
         {% endif %}
     
     </div>
+
+{% endif %}
+
 
 
 </header>
