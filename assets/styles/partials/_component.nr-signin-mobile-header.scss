@@ -1,5 +1,5 @@
 .nr-site-header-signin {
-    background:pink;
+    // background:pink;
     @include flexbox;
     font-family: $font-family-sans-serif;
     font-weight:600;
@@ -81,8 +81,12 @@
 
 .nr-site-header-signin__subbtn {
     width: 161px;
+    flex-grow:1;
+    // text-align:left;
+    // padding-left:20px;
+
     @media #{$mobile}{
-        width: 37.5%;
+        // width: 37.5%;
         height: 37px;
         @include font-size(12);
         font-weight: 300;

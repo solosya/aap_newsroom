@@ -11013,7 +11013,6 @@ button.swiper-pagination-bullet {
   display: none !important; }
 
 .nr-site-header-signin {
-  background: pink;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -11089,10 +11088,10 @@ button.swiper-pagination-bullet {
       line-height: 3.2; } }
 
 .nr-site-header-signin__subbtn {
-  width: 161px; }
+  width: 161px;
+  flex-grow: 1; }
   @media screen and (max-width: 767px) {
     .nr-site-header-signin__subbtn {
-      width: 37.5%;
       height: 37px;
       font-size: 0.75rem;
       line-height: 0.9rem;
