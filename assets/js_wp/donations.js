@@ -542,13 +542,13 @@ Donations.prototype.checkout = function() {
     data['cancel'] = _appJsConfig.appHostName + "/donations";
 
 
-
     Server.create('/api/paywall/checkout-session', data).done( function(r) {
-        self.Stripe.redirectToCheckout({
-            sessionId: r.sessionId
-        }).then(function(r) {
-            console.log(r);
-        });
+        console.log(data);
+        // self.Stripe.redirectToCheckout({
+        //     sessionId: r.sessionId
+        // }).then(function(r) {
+        //     console.log(r);
+        // });
     });
 }
 
@@ -580,9 +580,10 @@ Donations.prototype.signin = function(elem) {
         loginData['password'] = self.user.password;
         loginData['rememberMe'] = 1;
         Server.create('/api/auth/login', loginData).done(function(r) {
-    
+            console.log(r);
             if (r.success === 1) {
                 self.fetchUser().done(function(r) {
+                    console.log(r);
                     if (r.success === 1) {
                         self.user = r.self;
                         self.guest = "0";

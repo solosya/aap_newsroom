@@ -299,7 +299,7 @@ UserProfileController.prototype.events = function ()
             // console.log(r.session.url);
             if (typeof r.session.url !== 'undefined') {
                 const blah = window.open(r.session.url, 'donations', '_blank');
-                button.text("mange my donations");
+                button.text("Manage my donations");
                 // window.location = r.session.url;
                 // window.location.replace(r.session.url)
             }
