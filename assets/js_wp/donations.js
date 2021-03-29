@@ -543,12 +543,12 @@ Donations.prototype.checkout = function() {
 
 
     Server.create('/api/paywall/checkout-session', data).done( function(r) {
-        console.log(data);
-        // self.Stripe.redirectToCheckout({
-        //     sessionId: r.sessionId
-        // }).then(function(r) {
-        //     console.log(r);
-        // });
+        // console.log(data);
+        self.Stripe.redirectToCheckout({
+            sessionId: r.sessionId
+        }).then(function(r) {
+            console.log(r);
+        });
     });
 }
 
