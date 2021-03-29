@@ -139,7 +139,7 @@ UserProfileController.prototype.deleteUser = function(e) {
         };
 
 
-        Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/delete-managed-user', requestData).done(function(data) {
+        Server.create(_appJsConfig.baseHttpPath + '/user/delete-managed-user', requestData).done(function(data) {
             if (data.success == 1) {
                 user.remove();
                 $('#addManagedUser').removeClass('hidden');
@@ -294,7 +294,7 @@ UserProfileController.prototype.events = function ()
     $('#portal-session').on('click', function(e) {
 
         e.preventDefault();
-        Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/user-portal-session').then(function(r){
+        Server.create(_appJsConfig.baseHttpPath + '/api/paywall/user-portal-session').then(function(r){
             // console.log(r.session.url);
             if (typeof r.session.url !== 'undefined') {
                 window.location.replace(r.session.url)
@@ -435,7 +435,7 @@ UserProfileController.prototype.events = function ()
             
             $('#user-editor__spinner').addClass('spinner');
 
-            Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/create-paywall-managed-user', requestData).done((data) => {
+            Server.create(_appJsConfig.baseHttpPath + '/user/create-paywall-managed-user', requestData).done((data) => {
                 $('#user-editor__spinner').removeClass('spinner');
 
                 if (data.success == 1) {
@@ -494,7 +494,7 @@ UserProfileController.prototype.events = function ()
                 $('#dialog').parent().remove();
 
 
-                Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/paywall-account-status', requestData).done((data) => {
+                Server.create(_appJsConfig.baseHttpPath + '/user/paywall-account-status', requestData).done((data) => {
                     
                     if (data.success == 1) {
                         window.location.reload(false);             
@@ -627,7 +627,7 @@ UserProfileController.prototype.events = function ()
                 // console.log('donee!!');
                 $('#dialog').parent().remove();
 
-                Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/change-paywall-plan', requestData).done((data) => {
+                Server.create(_appJsConfig.baseHttpPath + '/user/change-paywall-plan', requestData).done((data) => {
                     if (data.success == 1) {
                         window.location.reload();
                     } else {
@@ -668,7 +668,7 @@ UserProfileController.prototype.events = function ()
                     // Send the token to your server
 
                     const formdata = {"stripetoken":result.token.id}
-                    Server.create(_appJsConfig.baseHttpPath + '/pm-paywall/update-payment-details', formdata).done((r) => {
+                    Server.create(_appJsConfig.baseHttpPath + '/user/update-payment-details', formdata).done((r) => {
                         // console.log(r);
                         self.modal.closeWindow();
                         // location.reload();
