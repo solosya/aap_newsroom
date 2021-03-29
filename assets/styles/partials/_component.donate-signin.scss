@@ -111,6 +111,12 @@
             color:red;
         }
 
+        @media #{$mobile}{
+            width: 80%;
+        }
+    
+
+
     }
     &__email-container {
         @include flexbox();

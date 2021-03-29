@@ -129,7 +129,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=979ca38a" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=d258c91e" type="text/css" media="all">
 
     {% else %}
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=17' type='text/css' media='all' />
@@ -213,6 +213,7 @@
 
 
 
+{% set log = _AppHelper.log(pageClass) %}
 
 <body class="{{ pageTypeClass }} {{layout}} {{ blogName | replace({" ": "_"}) | lower }} {{ pageClass }}" 
     data-isAdmin="{{ isAdmin }}" 
