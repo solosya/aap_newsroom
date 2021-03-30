@@ -8877,31 +8877,23 @@ section.subscribe {
   .site-footer .footer-top {
     background: #000;
     position: relative; }
-    @media screen and (max-width: 767px) {
-      .site-footer .footer-top {
-        padding-top: 155px; } }
     .site-footer .footer-top .logo-wrapper {
-      display: flex; }
-      @media screen and (max-width: 767px) {
+      display: flex;
+      justify-content: flex-end; }
+      @media screen and (max-width: 991px) {
         .site-footer .footer-top .logo-wrapper {
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0; } }
+          justify-content: flex-start; } }
     .site-footer .footer-top .icon-wrapper {
       position: relative; }
       @media screen and (max-width: 767px) {
         .site-footer .footer-top .icon-wrapper {
-          position: absolute;
-          top: 75px;
-          width: 100%; } }
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end; } }
       .site-footer .footer-top .icon-wrapper span {
         display: none; }
         @media screen and (max-width: 767px) {
           .site-footer .footer-top .icon-wrapper span {
-            position: absolute;
-            bottom: 0;
-            right: 40px;
             display: inline-block;
             font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
             font-size: 0.625rem;
@@ -8912,22 +8904,17 @@ section.subscribe {
     .site-footer .footer-top .footer-brand {
       display: inline-block;
       width: 202px;
-      padding-top: 61px; }
-      @media screen and (max-width: 767px) {
+      padding-top: 20px; }
+      @media screen and (max-width: 991px) {
         .site-footer .footer-top .footer-brand {
           padding-top: 71px; } }
     .site-footer .footer-top .symbol {
       margin-right: 46px;
       padding-top: 15px; }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
+      @media screen and (min-width: 992px) {
         .site-footer .footer-top .symbol {
-          float: left;
-          margin-right: 20px; } }
-      @media screen and (max-width: 767px) {
-        .site-footer .footer-top .symbol {
-          padding-top: 155px;
-          width: 95px;
-          padding-top: 45px; } }
+          margin-top: 20px;
+          width: 64px; } }
     .site-footer .footer-top .social-links {
       margin-top: 25px;
       margin-bottom: 57px; }
