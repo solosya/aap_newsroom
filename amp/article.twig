@@ -8,6 +8,18 @@
 {% set content                  = article.content %}
 {% set paywall_content_style    = "" %}
 
+
+{# Puzzles articles don't work with amp #}
+{% if articleBlogData.title | lower == 'puzzles' %} #}
+    {% set redir = _Page.setHttpRedirects(
+        {'|^/.*|': article.url,}, false) 
+    %}  
+{% endif %}
+
+
+
+
+
 {% if articleBlogData['additionalInfo'] is defined            and 
       articleBlogData['additionalInfo']['paywall'] is defined and 
       articleBlogData['additionalInfo']['paywall'] == 'on' %}
