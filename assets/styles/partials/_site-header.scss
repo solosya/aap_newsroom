@@ -3,7 +3,6 @@
 }
 
 .showMenuPanel {
-
     top:0 !important;
     left:0;
     right:0;
@@ -260,16 +259,16 @@
     &__bottom {
         @include flexbox;
         @include align-items(center);
-        order:2;
+        // order:2;
         background:white;
 
         @media #{$tablet} {
-            order:1;
+            // order:1;
             padding-bottom: 15px;
             border-bottom: 1px solid #8a8b93;
         }
         @media #{$mobile} {
-            order:1;
+            // order:1;
             padding-left:15px;
             padding-right:15px;
         }

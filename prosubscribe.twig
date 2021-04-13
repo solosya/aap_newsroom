@@ -447,6 +447,9 @@
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
         $('.j-gtasubstart').mousedown(function(){
+            if (typeof dataLayer === 'undefined') {
+                return;
+            }
             dataLayer.push({
             'event': 'addToCart',
                 'ecommerce': {

@@ -1,0 +1,146 @@
+.c-cta-footer {
+    background-color: $black;
+    color: $white;
+    text-align:left;
+    
+    margin:auto;
+	border-bottom: solid 2px $white;
+    height: 70px;
+    
+    &__container {
+        @include flexbox();
+        @include align-items(center);
+        height:100%;
+        position:relative;
+    }
+
+
+    &__logo {
+        width:100%;
+
+        @media #{$desktop-up}{
+            width:164px;
+		}
+        margin-right:43px;
+
+    }
+
+    &__mail {
+        width: 37px;
+        height: 23px;
+        margin-right:20px;
+        position: relative;
+        top: -3px;
+    }
+
+    &__tagline {
+        font-family: $font-family-sans-serif;
+        color: #FFF;
+        position:relative;
+        @include font-size(12);
+        @media #{$desktop-up}{
+            @include font-size(16);
+        }
+        font-weight: 600;
+
+        &:before {
+            content: "";
+            display:block;
+            position:absolute;
+            width:1px;
+            height:30px;
+            background:white;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    
+
+    &__email-container {
+        @include flexbox();
+        @include align-items(center);
+        padding: 0 20px;
+        height: 100%;
+		background-color: $lblue;
+    }
+
+	&__input{
+        width: calc(100% - 30px);
+    }
+
+    &__email{
+        font-family: 'PT Sans', Tahoma, Arial, serif;
+        color: #000;
+        // margin: 0 0 0 10px !important;
+        height:35px !important;
+        border-radius: 0 !important;
+		width: calc(100% - 15px);
+        &:focus, &:active { 
+            outline: none;
+        }
+    }
+
+    &__submit {
+        width: 25px; 
+        display:flex;
+        background: url('../icons/arrow-small.svg') no-repeat center; 
+        border:none; 
+        outline: none; 
+        box-shadow: none;
+        &:focus {
+            outline:none;
+        }
+    }
+
+
+    &__signup-container {
+        @include flexbox();
+        @include align-items(center);
+        height:100%;
+        margin-left:auto;
+
+    }
+
+
+	&__button{
+        @include flexbox();
+        @include align-items(center);
+        padding: 0 20px;
+		font-size: rem(12);
+        @media #{$desktop-up}{
+            font-size: rem(13.5);
+        }
+		font-weight: $weightBold;
+		line-height: 1.33;
+		color: $black;
+		cursor: pointer;
+
+        height: 41px;
+		width: max-content;
+		&:hover{
+			background-color: $white;
+		}
+
+
+        &--blue{
+            background-color: $lblue;
+        }
+    
+        &--black{
+            padding: 11px 19px;
+            color: $white;
+            border: 1px solid $white;
+            margin-left:10px;
+            min-width: 209px;
+            &:hover{
+                padding: 12px 20px;
+                border: none;
+                color: $black;
+            }
+        }
+
+	}
+
+}

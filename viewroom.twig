@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
+{% set blogData     = _Blog.getBlog() %}
 {% set config       = _Network.getThemeConfig() %}
-{{this.registerJs("Acme.cards = CardController();")}}
 
 {% set limit = 19 %}
 
@@ -10,9 +10,6 @@
 
 {% set firstCount = articles | length %}
 
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑           ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -55,7 +52,21 @@
                 </div>
 
 
-                    {% if articles|length >= limit %}
+                <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+                
+                <section class="loadmore__section {{site}}">
+                    {# {% if articles|length >= limit %} #}
+                        {{ this.render('/partials/load_more.twig', {
+                            name            : "section-load",
+                            label           : "Load more",
+                            buttonClass     : "loadMoreArticles",
+                        }) | raw }}
+                    {# {% endif %} #}
+                </section>
+
+
+
+                    {# {% if articles|length >= limit %}
                         {{ this.render('partials/ajaxarticles_new.twig', {
                             name            : "section-load",
                             limit           : limit,
@@ -68,12 +79,33 @@
                             card_class      : "col-md-6 col-lg-4 card-vr",
                             buttonClass     : "loadMoreArticles"
                         }) | raw }}
-                    {% endif %}
+                    {% endif %} #}
 
 
 
 
             </div>
         </section>
-        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""></div>
+        <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="{{articleBlog}}" data-pageType="section" data-pageTags=""></div>
     </main>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        Acme.loadMore = new Acme.ArticleFeed({
+            model           : Acme.Card,
+            container       : 'loadmore_section',
+            offset          : {{limit}},
+            limit           : 19,
+            label           : "Load more",
+            imgwidth        : "360",
+            imgheight       : "215",
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-md-6 col-lg-4 card-vr',
+            non_pinned      : {{articleCount}}
+        });
+    });
+</script>

@@ -2,7 +2,6 @@
 {% set blogData     = _Blog.getBlog() %}
 {% set config       = _Network.getThemeConfig() %}
 {{ set(this, 'title', blogData.title) }}
-{{this.registerJs("Acme.cards = CardController();")}}
 
 {% set searchParam = _AppHelper.getRequest('newsletter') %}
 
@@ -37,7 +36,7 @@
     }
 } %}
 
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
 <div class="c-signups-popup d-none" id="j-mcpopup">
     <div class="c-signups-popup__box">
         <form action="https://newsroom.us14.list-manage.com/subscribe/post" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -372,8 +371,10 @@
             </div>
         </div>
     {% endif %}
-    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
+    <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="podcasts" data-pageType="section" data-pageTags=""></div>
 </main>
 
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 
  

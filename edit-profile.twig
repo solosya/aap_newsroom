@@ -12,15 +12,15 @@
 {% set commenter = false %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
-{% set log = _AppHelper.log(pwstats) %}
+
 {% set plans = _Network.getNetworkData()['paywallPlans'] %}
 {# {% set plans = _Paywall.getActiveNetworkPaywallPlans() %} #}
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
 {% set donor = false %}
+
 {% if user['additional_info']['donor'] is defined and user['additional_info']['donor'] != "" %}
-    {# {% set donorInfo = _AppHelper.jsonDecode(user['additional_info']['donor']) %} #}
     {% set donor = true %}
 {% endif %}
 
@@ -36,17 +36,6 @@
 {% endif %}
             
 
-{{this.registerJs("Acme.usercard = new Acme.Usercard();")}}
-
-
-{{this.registerJs("Acme.userController = new Acme.UserProfileController();")}}
-
-
-
-                                                 {# renders the card    fetch-limit  fetch-offset    infinite scroll            #}
-                                                 {#            ↑             ↑          ↑            ↑                          #}
-{{this.registerJs("Acme.userFeed = new Acme.View.userFeed(Acme.usercard, " ~ userLimit ~ ",     20,         false,          null, Acme.userController);")}}
-
 
 
 
@@ -55,9 +44,8 @@
 {# {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %} #}
 
 <main id="main" class="user_profile account-form u-tablet-margin-top-40 u-desktop-margin-top-40 u-mobile-margin-top-150 u-padding-bottom-40 u-padding-top-20" role="main">
-    {# <div id="stripekey" class="u-hide" >{{_Network.getNetworkData()['stripe_publishable_key']}}</div> #}
-    {# <div id="stripekey" class="hidden" >pk_live_0xvvL0i2RAw7vjUbw5xI7L7O</div> #}
-    <div id="paywalloldsubscribe" class="container">
+
+    <div id="" class="container">
 
         <div class="user_profile_section">
             <div class="row">
@@ -66,9 +54,6 @@
 
                     <div class="profile-section" style="padding-bottom:18px;">
                         
-                        
-                        
-
                         <div class="profile-section__header">
                             <p class="profile-section__heading">My details</p>                                    
                         </div>
@@ -183,7 +168,7 @@
                 {% if pwstats.userManager == true %}
                     <hr class="divide30 " style="border-top:1px solid #97999c;">
 
-                    {% set totalPlanUserCount       = pwstats['user_count'] %}
+                    {% set totalPlanUserCount = pwstats['user_count'] %}
 
                     {% set managedUsersObj = _User.getPaywallManagedUsers({"limit": userLimit}) %}
 
@@ -255,7 +240,7 @@
 
                                         <div class="account-form__inline-inputs">
                                             <label class="account-form__label account-form__label--red account-form__label--mobile" for="totalusers">My Users</label>
-                                            <p type="text" id="totalusers" class="account-form__value">{{ remainingUsers }}</p>
+                                            <p type="text" id="totalusers" class="account-form__value">{{ managedUserScreenCount }} of {{totalPlanUserCount}}</p>
                                         </div>                            
                                        
 
@@ -295,15 +280,15 @@
 
 
                 {% if donor %}
-                    <form class="u-margin-top-20" id="portal-session" method="POST" action="/api/user/user-portal-session">
-                        <button class="profile-section__donate-button" type="submit">Manage my donations</button>
+                    <form class="u-margin-top-20"  method="POST" action="/api/user/user-portal-session">
+                        <button id="portal-session" class="profile-section__donate-button" type="submit">Manage my donations</button>
                     </form>
                 {% endif %}
 
 
 
 
-                {% if pwstats.plan_id %}
+                {% if pwstats.userManager == true %}
                     <div class="profile-section">
                         <div id="userPlanSection">
 
@@ -324,7 +309,7 @@
                                         </div>
 
                                         <!-- Used to display Element errors -->
-                                        <div id="profile-section__card-errors" role="alert"></div>
+                                        <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
                                         <button type="submit" class="text-button text-button--italic u-margin-top-20">Change</button>
                                     </form>
                                 </div>
@@ -399,8 +384,7 @@
 
 
 
-                    {# {% set log = _AppHelper.log(plan.type) %} #}
-                    {% if pwstats['type'] == 'time' %}
+                    {% if pwstats['type'] == 'time' and totalPlanUserCount > 0 %}
                         <div class="profile-section profile-section__managed-header">
 
                             {% set usersLeft = totalPlanUserCount > 0 ? totalPlanUserCount -1 : totalPlanUserCount %}
@@ -509,43 +493,16 @@
 </main>
 
 
-{# {{this.registerJs("(function(){
-    var w=window;
-    var ic=w.Intercom;
-    if(typeof ic==='function'){
-        ic('reattach_activator');
-        ic('update',intercomSettings);
-    }else{
-        var d=document;
-        var i=function(){
-            i.c(arguments)
-        };
-        i.q=[];
-        i.c=function(args){
-            i.q.push(args)
-        };
-        w.Intercom=i;
-        function l(){
-            var s=d.createElement('script');
-            s.type='text/javascript';
-            s.async=true;
-            s.src='https://widget.intercom.io/widget/zxwsoz9f';
-            var x=d.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s,x);
-        }
-        if(w.attachEvent){
-            w.attachEvent('onload',l);
-        }else{
-            w.addEventListener('load',l,false);
-        }
-    }
-})()")}}
- #}
 
 
 <script>
-  window.intercomSettings = {
-    app_id: "zxwsoz9f"
-  };    
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.intercomSettings = {
+            app_id: "zxwsoz9f"
+        }; 
+
+        Acme.usercard = new Acme.Usercard();
+        Acme.userController = new Acme.UserProfileController();
+        Acme.userFeed = new Acme.View.UserFeed(Acme.usercard, "{{userLimit}}", 20, false, null, Acme.userController);
+    });
 </script>
-<!-- //End User Profile Page -->

@@ -1,6 +1,3 @@
-{{ use('yii/web/JqueryAsset') }}
-{{ register_jquery_asset() }}
-
 
 {% set redir = _Page.setHttpRedirects(
     {
@@ -132,12 +129,9 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=ddb15e07" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=259605b5" type="text/css" media="all">
 
     {% else %}
-        {# <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.css?ver=2" />
-        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/plugins/jquery.noty-2.3.8/demo/animate.css?ver=1" />
-        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/assets/scripts/sdk/media-player/mediaelementplayer.css?ver=1" /> #}
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=17' type='text/css' media='all' />
     {% endif %}
 
@@ -229,6 +223,13 @@
 
 {{ this.beginBody() }}
     <!-- Google Tag Manager body -->
+
+
+    {% if _AppHelper.getApplicationEnv() != 'PROD' %} 
+        {{ this.render('../tag-manager_head.twig')  | raw }}
+    {% endif %}
+
+
     {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
         {{networkData.thirdPartyIntegrations['googleTagManager']['noscript'] | raw}}
     {% endif %}
@@ -264,11 +265,12 @@
 
 
 
-    {# {% if showPaywall %}
-        {{ this.render('/layout-marketing.twig', {networkData: networkData}) | raw }}
-    {% else %} #}
+
+
+
     {{ content | raw }}
-    {# {% endif %} #}
+
+
 
 
 
@@ -285,7 +287,7 @@
         }) | raw }}
     {% else %}
         <div class="squeeze-footer">
-            <a href="{{networkData.defaultBlogUrl}}"><img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-inverse-2.svg" ></a>
+            <a href="{{networkData.defaultBlogUrl}}"><img src="{{networkData.templatePath}}/static/images/newsroom-pro-logo-inverse-2.svg" alt="newsroom logo"></a>
         </div>
     {% endif %}
 
@@ -302,15 +304,12 @@
 
     <div class="SwappingHelper" style="display:none">
         <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">
-            <img class="article-image" src="{{networkData.placeHolder100x100}}" style="width:97px; height: 97px; float: left;" />
+            <img class="article-image" src="{{networkData.placeHolder100x100}}" style="width:97px; height: 97px; float: left;" alt="placeholder image" />
             <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;">Dummy text  </p>
         </div>
     </div>
 
 
-    {% if _User.isGuest() %}
-        {{this.registerJs('var ipChecker = new Acme.IPCheck()')}}
-    {% endif %}
 
     
     
@@ -324,10 +323,23 @@
     {% endif %} #}
 
 
+    
+
+
+    
     {% set guestUser = _User.isGuest() %}
+
+    {% if guestUser %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                var ipChecker = new Acme.IPCheck()
+            });
+        </script>
+    {% endif %}
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
-
             var stripekey = $('#stripekey').html();
             var stripe = Stripe(stripekey);
             Acme.donations = new Acme.Donations(stripe, {
@@ -336,6 +348,8 @@
             });
         });
     </script>
+    
+    
     {{ this.endBody() }}
 </body>
 

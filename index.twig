@@ -243,15 +243,15 @@ So you don't have to create all the sections on dev #}
                         </div>
 
                         <section class="ad row sidebar-ad sidebar-ad__idx  d-lg-none   u-tablet-no-margin-top">
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="0"></div>
                                 {% endif %}
                                 {# <span class="ad-text">Advertisement</span> #}
                             </div>
-                            <div class="col-md-6 d-none d-md-block">
+                            {# <div class="col-md-6 d-none d-md-block">
                                 {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
-                            </div>
+                            </div> #}
                         </section>
 
 
@@ -316,18 +316,20 @@ So you don't have to create all the sections on dev #}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %} #}
 
-                        {{ this.render('partials/ajaxarticles_new.twig', {
-                            name            : "section-load",
-                            limit           : limit,
-                            offset          : articleCount,
-                            label           : "Load more articles",
-                            imgwidth        : "220",
-                            imgheight       : "208",
-                            container       : "mainAjaxArticles",
-                            non_pinned      : articlesArr.existingNonPinnedCount, 
-                            card_class      : "col-md-4 card-sm card-sm-tablet card-sm-mobile",
-                            buttonClass     : "loadMoreArticles-index u-desktop-margin-top-minus-60",
-                        }) | raw }}
+
+                        <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+                        
+                        <section class="loadmore__section {{site}}">
+                            {# {% if articles|length >= limit %} #}
+                                {{ this.render('/partials/load_more.twig', {
+                                    name            : "section-load",
+                                    label           : "Load more articles",
+                                    buttonClass     : "loadMoreArticles-index u-desktop-margin-top-minus-60",
+                                }) | raw }}
+                            {# {% endif %} #}
+                        </section>
+
+
 
                     </div><!-- .col-sm-8-->
 
@@ -351,24 +353,27 @@ So you don't have to create all the sections on dev #}
 
 
 
-                            <section class="ad col-12 no-padding u-margin-top-30 u-margin-bottom-30 u-tablet-order-3 u-desktop-order-2">
+                            <section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30 u-tablet-order-3 u-desktop-order-2">
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                                 {% endif %}
                                 {# <span class="ad-text">Advertisement</span> #}
                             </section>
 
-                            <div class="col-sm-12 d-none d-lg-block u-tablet-order-4 u-desktop-order-3" id='subscribebutton'>
-                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ''}) | raw }}
+                            <div class="col-12 col-md-6 col-lg-12 d-none d-md-block u-tablet-order-4 u-desktop-order-3">
+                                {{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: 'd-none d-md-flex'
+                                }) | raw}}
                             </div>
 
 
-
-                            {% if donations == "pp" %}
+                            {# {% if donations == "pp" %}
                                 <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40 u-tablet-order-2 u-desktop-order-4">
                                     {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                                 </div>
-                            {% endif %}
+                            {% endif %} #}
                         </div>
 
 
@@ -451,15 +456,34 @@ So you don't have to create all the sections on dev #}
             {{ this.render('partials/_sponsor_logos2.twig') | raw }}
             
         </section>
-        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
+        <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
     </main>
 
     
 
-<script type="text/javascript">
+{# <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
-        Acme.cards = CardController();
-        Acme.loadMore = new Acme.View.articleFeed(Acme.cards, {{limit}}, {{firstCount}}, false);
+        var card = new Acme.Card();
+        Acme.loadMore = new Acme.ArticleFeed(card, {{limit}}, {{firstCount}}, false);
+    });
+</script> #}
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const events = new Acme.Card();
+
+        Acme.loadMore = new Acme.ArticleFeed({
+            model           : Acme.Card,
+            container       : 'loadmore_section',
+            offset          : {{articleCount}},
+            limit           : 12,
+            label           : "Load more articles",
+            imgwidth        : "220",
+            imgheight       : "208",
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
+            non_pinned      : {{articleCount}}
+        });
     });
 </script>
 

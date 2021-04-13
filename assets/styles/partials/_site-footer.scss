@@ -28,22 +28,18 @@
         background: #000;
         position: relative;
         @media screen and (max-width: $sm-break-down) {
-            padding-top: 155px;
+            // padding-top: 155px;
         }
         .logo-wrapper{
             display: flex;
+            // justify-content: flex-end;
+            // align-items: flex-end;
             justify-content: flex-end;
-            align-items: flex-end;
 
-            @media #{$media-mobile} {
-                justify-content: center;
-            }
+            
+            @media #{$media-up-to-desktop} {
+                justify-content: flex-start;
 
-            @media screen and (max-width: $sm-break-down) {
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
             }
         }
 
@@ -51,18 +47,18 @@
             position:relative;
             // width:100%;
             @media screen and (max-width: $sm-break-down) {
-                position: absolute;
-                top: 75px;
-                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
             }
 
             span {
                 display:none;
 
                 @media screen and (max-width: $sm-break-down) {
-                    position:absolute;
-                    bottom:0;
-                    right:40px;
+                    // position:absolute;
+                    // bottom:0;
+                    // right:40px;
                     display: inline-block;
                     font-family: $font-family-sans-serif;
                     @include font-size(10);
@@ -80,8 +76,8 @@
         .footer-brand{
             display: inline-block;
             width: 202px;
-            padding-top: 61px;
-            @media #{$mobile}{
+            padding-top: 20px;
+            @media #{$media-up-to-desktop}{
                 padding-top: 71px;
             }
         }
@@ -89,15 +85,22 @@
         .symbol{
             margin-right: 46px;
             padding-top: 15px;
-            @media #{$tablet} {
-                float: left;
-                margin-right: 20px;
+
+            @media #{$media-desktop-up} {
+                margin-top:20px;
+                width:64px;
             }
-            @media #{$mobile}{
-                padding-top: 155px;
-                width: 95px;
-                padding-top: 45px;
-            }
+
+
+            // @media #{$tablet} {
+            //     float: left;
+            //     margin-right: 20px;
+            // }
+            // @media #{$mobile}{
+            //     padding-top: 155px;
+            //     width: 95px;
+            //     padding-top: 45px;
+            // }
         }
 
 

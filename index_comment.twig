@@ -8,7 +8,7 @@
 {% endmacro %}
 
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.cards = Acme.Card();")}}
 {% set limit = 12 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
@@ -17,7 +17,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.loadMore = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
+{{this.registerJs("Acme.loadMore = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
 {% set donations = "pp" %}
@@ -383,5 +383,5 @@
             {{ this.render('partials/_sponsor_logos.twig') | raw }}
 
         </section><!-- .home-page-content-->
-        <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
+        <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pageName="home" data-pageType="home" data-pageTags=""></div>
     </main><!-- .site-main -->
