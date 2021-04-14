@@ -554,7 +554,8 @@ UserProfileController.prototype.events = function ()
             return;
         }
 
-
+        // if it looks like there's a bug where the price to change plan
+        // seem ridiculously high, check the expiry date of the user!!!
         if (newdays == 'week')  {newdays = 7;}
         if (newdays == 'month') {newdays = 365/12;}
         if (newdays == 'year')  {newdays = 365;}
