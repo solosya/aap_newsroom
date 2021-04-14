@@ -37,7 +37,7 @@ export const Server = {
             beforeSend: function(xhr) {
                 if (type !== 'get' && url.indexOf('https://hivenews') === -1) {
                     var token = $('meta[name="csrf-token"]').attr("content");
-                    console.log('adding token2', token);
+                    // console.log('adding token2', token);
                     xhr.setRequestHeader('x-csrf-token', token);
                 }
             }
