@@ -549,7 +549,7 @@ UserProfileController.prototype.events = function ()
         const newPlanType      =  newPlan.data('plantype');
 
 
-        if (currentUserCount > 0 && currentUserCount >= planusers) {
+        if (currentUserCount > 0 && currentUserCount > planusers) {
             modal.render("userPlan", "You have too many users to change to that plan.");
             return;
         }
