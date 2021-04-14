@@ -37,7 +37,7 @@ export const Server = {
             beforeSend: function(xhr) {
                 if (type !== 'get' && url.indexOf('https://hivenews') === -1) {
                     var token = $('meta[name="csrf-token"]').attr("content");
-                    console.log('adding token', token);
+                    console.log('adding token2', token);
                     xhr.setRequestHeader('x-csrf-token', token);
                 }
             }
@@ -46,16 +46,6 @@ export const Server = {
             if (r.status == 501 || r.status == 404) console.log(r.responseText);
             if (r.responseJSON) console.log(r.responseJSON);
             console.log(r.responseText);
-        });
-    },
-    callClient: function(uri, queryParams, type) {
-        type = (typeof type !== 'undefined') ? type : 'get';
-        queryParams = (typeof queryParams !== 'undefined') ? queryParams : '';
-        return $.ajax({
-            url: window.location.origin + uri,
-            data: queryParams,
-            dataType: "json",
-            type: type
         });
     }
 }
