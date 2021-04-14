@@ -38,6 +38,7 @@
                 type: type,
                 beforeSend: function(xhr) {
                     if (type !== 'get' && url.indexOf('https://hivenews') === -1) {
+                        console.log('adding token');
                         var token = $('meta[name="csrf-token"]').attr("content");
                         xhr.setRequestHeader('x-csrf-token', token);
                     }
