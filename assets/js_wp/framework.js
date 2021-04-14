@@ -29,23 +29,17 @@ export const Server = {
         
         var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
         
-        if (type !== 'get') {
-            var token = $('meta[name="csrf-token"]').attr("content");
-            // queryParams._csrf =  token;
-
-            $.ajaxSetup({
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('x-csrf-token', token);
-                    
-                }
-            });
-        }
-
         return $.ajax({
             url: url,
             data: queryParams,
             dataType: datatype || "json",
-            type: type
+            type: type,
+            beforeSend: function(xhr) {
+                if (type !== 'get' && url.indexOf('https://hivenews') === -1) {
+                    var token = $('meta[name="csrf-token"]').attr("content");
+                    xhr.setRequestHeader('x-csrf-token', token);
+                }
+            }
         }).fail(function(r) {
             // console.log(r);
             if (r.status == 501 || r.status == 404) console.log(r.responseText);
