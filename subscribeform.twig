@@ -88,18 +88,15 @@
 
     {% if "!*!" in plan.description %}
         {% set description = plan.description | split("!*!") %}
-        {% set tags = description[0] | split(":") %}
 
-        {% if tags[0] == 'bottom' %}
+        {% set data = _AppHelper.jsonDecode( description[0] ) %}
+        {% if data['place'] is defined and data['place'] == 'bottom' %}
             {% set plan = plan | merge({ "subscriber_type" : "corporate"}) %}
         {% else %}
             {% set plan = plan | merge({ "subscriber_type" : "household"}) %}
         {% endif %}
+
     {% endif %} 
-
-
-
-
 
 {% endif %}
 
