@@ -40,7 +40,7 @@ Card.prototype.render = function(options = {})
     card['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
     card['hasMediaClass'] = (this.data.hasMedia == 1)? 'withImage__content' : 'without__image';
     card['hasMedia'] = (this.data.hasMedia == 1)? true : false;
-    
+    card['userHasBlogAccess']  = _appJsConfig.userHasBlogAccess;
     card['imgBackgroundStyle'] = (this.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
     // mainly for screen to turn off lazyload and loading background img
     card['imgClass'] = (this.data.lazyloadImage == false) ? '' : 'lazyload';
