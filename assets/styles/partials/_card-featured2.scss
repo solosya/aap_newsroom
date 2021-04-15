@@ -42,6 +42,47 @@
         }
     }
 
+    &.green {
+        &:before{
+            background: #169058;
+        }
+        .c-cards-view {
+            &__category {
+                color:#169058;
+            }
+            &__time {
+                color:#169058;
+            }
+        }
+    }
+
+    &.ideas {
+        &:before{
+            background: #006386;
+        }
+        .c-cards-view {
+            &__category {
+                color:#006386;
+            }
+            &__time {
+                color:#006386;
+            }
+        }
+    }
+
+    &.reading {
+        &:before{
+            background: #F58131;
+        }
+        .c-cards-view {
+            &__category {
+                color:#F58131;
+            }
+            &__time {
+                color:#F58131;
+            }
+        }
+    }
 
 
     .c-cards-view {
