@@ -13,7 +13,6 @@
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': 16, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
-{% set firstCount = articles | length %}
 
 
 <!-- used to index each article as we loop over throughout the template -->

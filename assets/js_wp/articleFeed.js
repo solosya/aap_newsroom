@@ -69,8 +69,12 @@ Feed.prototype.fetch = function()
         this.requestType = 'fetch';
     }
 
+    console.log(this.requestType);
+    console.log(this.url);
+    console.log(this.requestData);
     return Server[this.requestType](this.url, this.requestData).done(function(r) {
         if (r.success == 1) {
+            console.log(r);
             self.render(r);
         }
     });
