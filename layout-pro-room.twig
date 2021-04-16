@@ -11,7 +11,7 @@
 {# {{this.registerJs("Acme.cards = new Acme.Card();")}} #}
 {% set limit = 4 %}
 
-{% set articlesArr = _Blog.getBlogFeed({'limit': 16, 'offset': 0}) %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
 
@@ -182,11 +182,11 @@
     <main id="main" class="site-main pro-room {{this.title | lower}}" data-blogName="{{blogData.title}}" data-blogGuid="{{blogData.guid}}" role="main">
         
 
-        <div style="display:none">
+        {# <div style="display:none">
             {% for article in articles %}
                 <p style="display:none">{{article.title}}</p>
             {% endfor %}
-        </div>
+        </div> #}
 
 
         <section class="container-fluid 
