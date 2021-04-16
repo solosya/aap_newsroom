@@ -105,7 +105,7 @@
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-md-6 col-lg-4 card-vr',
-            non_pinned      : {{articleCount}}
+            non_pinned      : "{{ articlesArr.existingNonPinnedCount }}"
         });
     });
 </script>

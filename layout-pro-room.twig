@@ -498,7 +498,7 @@
             name            : 'pro-section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-lg-4 card-top-story card-top-story-tablet card-top-story-mobile pro-card u-margin-bottom-30',
-            non_pinned      : {{articleCount}}
+            non_pinned      : "{{ articlesArr.existingNonPinnedCount }}"
         });
     });
 </script>

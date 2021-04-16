@@ -89,7 +89,7 @@
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-md-4 card-search card-search-tablet card-search-mobile',
-            non_pinned      : {{articleCount}}
+            non_pinned      : "{{ articlesArr.existingNonPinnedCount }}"
         });
     });
 </script>

@@ -482,7 +482,7 @@ So you don't have to create all the sections on dev #}
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
-            non_pinned      : {{articleCount}}
+            non_pinned      : "{{ articlesArr.existingNonPinnedCount }}"
         });
     });
 </script>
