@@ -25,7 +25,7 @@
 {% set articleCount = 0 %}
     
 
-<section class="featured-slider channel container-fluid u-margin-top-40" data-test="section">
+<section class="featured-slider channel container-fluid u-margin-top-40" data-test="section" data-blogName="{{blogData.title}}" data-blogGuid="{{blogData.guid}}">
     <div class="container u-mobile-no-padding">
 
         {% if 'futurelearning' != blogData.title | lower %}
