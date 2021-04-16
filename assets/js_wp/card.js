@@ -28,8 +28,12 @@ Card.prototype.render = function(options = {})
         card['articleStatus'] = "draft";
         card['cardClass'] += " draft"; 
     }
-    card['url'] = this.data.url;
 
+
+
+    card['url'] = this.data.url;
+    card['editUrl'] = this.data.editUrl;
+    
     card['cardType'] = this.data.type || "";
     card['lightbox'] = this.data.lightbox || "";
     card['position'] = this.data.position;

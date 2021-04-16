@@ -8,7 +8,7 @@
     {% set dev = true %}
 {% endif %}
 
-{{this.registerJs("Acme.cards = new Acme.Card();")}}
+{# {{this.registerJs("Acme.cards = new Acme.Card();")}} #}
 {% set limit = 4 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
