@@ -94,6 +94,7 @@ Feed.prototype.events = function()
             $('#' + section).empty();
             $(this).hide();
             self.options.nonPinnedOffset = self.originalCount;
+            self.options.offset = self.originalOffset;
             self.elem.show();
         });
     }
@@ -143,6 +144,7 @@ export const ArticleFeed = function(options)
     this.ads        = options.ads        || false;
     // when clicking less, reset the original offset count
     this.originalCount = options.non_pinned;
+    this.originalOffset = options.offset || 0;
     this.options    = {
         'nonPinnedOffset'   :   options.non_pinned  || -1,
         'search'            :   options.searchterm  || null,
