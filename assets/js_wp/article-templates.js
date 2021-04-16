@@ -78,7 +78,7 @@ const cardTemplateBottom =
                 '<button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button">'+
                     '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
                 '</button>'+
-                '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn" type="button" data-status="{{isPinned}}">'+
+                '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn {{#if isPinned}}selected {{/if}}" type="button" data-status="{{isPinned}}">'+
                     '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+
                 '</button>'+
             '</div>'+

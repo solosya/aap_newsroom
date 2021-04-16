@@ -38,7 +38,7 @@ Card.prototype.render = function(options = {})
     card['lightbox'] = this.data.lightbox || "";
     card['position'] = this.data.position;
 
-
+    card['isPinned'] = this.data.isPinned;
     card['pinTitle'] = (this.data.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (this.data.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
