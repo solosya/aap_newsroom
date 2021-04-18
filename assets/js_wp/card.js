@@ -38,7 +38,7 @@ Card.prototype.render = function(options = {})
     card['lightbox'] = this.data.lightbox || "";
     card['position'] = this.data.position;
 
-    card['isPinned'] = this.data.isPinned;
+    card['isPinned'] =  this.data.isPinned;
     card['pinTitle'] = (this.data.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (this.data.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (this.data.isPromoted == 1)? 'ad_icon' : '';
@@ -50,7 +50,7 @@ Card.prototype.render = function(options = {})
     card['imgClass'] = (this.data.lazyloadImage == false) ? '' : 'lazyload';
     
     card['readingTime'] = self.renderReadingTime(this.data.readingTime);
-
+    console.log(card);
     var width = typeof options.imageWidth !== "undefined" ? options.imageWidth : 500;
     var height = typeof options.imageHeight !== "undefined" ? options.imageHeight : 350;
     var gravity = typeof options.imageGravity !== "undefined" ? options.imageGravity : null;
