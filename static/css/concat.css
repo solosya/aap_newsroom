@@ -23197,7 +23197,7 @@ body.channel.supporters p {
           border-bottom: 1px solid #dadada; } }
 
 .card-vr {
-  margin-bottom: 79.5px; }
+  margin-bottom: 65px; }
   @media screen and (max-width: 767px) {
     .card-vr {
       margin-bottom: -2px; } }
@@ -23246,7 +23246,6 @@ body.channel.supporters p {
       max-width: 100%; }
   .card-vr a.card > article > .content {
     position: relative;
-    height: 139px;
     padding: 13px 0; }
     @media screen and (max-width: 767px) {
       .card-vr a.card > article > .content {
@@ -23268,15 +23267,18 @@ body.channel.supporters p {
     .card-vr a.card > article > .content > h2 {
       margin-top: 10px;
       font-family: "tinos", Helvetica, Arial, sans-serif;
+      font-size: 1.625rem;
+      line-height: 1.95rem;
       font-weight: normal;
       line-height: 1.14;
-      color: #000000;
-      font-size: 1.625rem;
-      line-height: 1.95rem; }
+      color: #000000; }
       @media screen and (max-width: 767px) {
         .card-vr a.card > article > .content > h2 {
           font-size: 1rem;
           line-height: 1.2rem; } }
+      @media screen and (min-width: 768px) {
+        .card-vr a.card > article > .content > h2 {
+          max-height: 65px; } }
     .card-vr a.card > article > .content > .author {
       display: none; }
     .card-vr a.card > article > .content > time {
@@ -24348,16 +24350,25 @@ body.channel.supporters p {
         @media screen and (max-width: 767px) {
           .viewingroom.featured > a > article > .content > p {
             display: none; } }
-      .viewingroom.featured > a > article > .content > .author {
-        display: none; }
-      .viewingroom.featured > a > article > .content > time {
+      .viewingroom.featured > a > article > .content .author {
+        display: flex;
+        flex-direction: row; }
+        .viewingroom.featured > a > article > .content .author > img {
+          display: inline-flex; }
+        .viewingroom.featured > a > article > .content .author > p {
+          margin-top: 8px;
+          display: inline-flex;
+          color: #FFF; }
+      .viewingroom.featured > a > article > .content time {
         float: none;
         border: 0;
         padding: 0;
         font-size: 0.875rem;
         line-height: 1.05rem;
         font-weight: bold;
-        color: #FFF; }
+        color: #FFF;
+        margin-left: 50px;
+        margin-top: 3px; }
     .viewingroom.featured > a > article > figure {
       width: 100%;
       height: 587px;

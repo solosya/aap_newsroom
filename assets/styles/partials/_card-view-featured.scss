@@ -68,17 +68,28 @@
                     }
                 }
 
-                > .author {
-                    display: none;
+                .author {
+                    display: flex;
+                    flex-direction: row;
+                    >img{
+                        display: inline-flex;
+                    }
+                    >p{
+                        margin-top: 8px;
+                        display: inline-flex;
+                        color: #FFF;
+                    }
                 }
 
-                > time{
+                time{
                     float:none;
                     border:0;
                     padding:0;
                     @include font-size(14);
                     font-weight: bold;
                     color: #FFF;
+                    margin-left: 50px;
+                    margin-top: 3px;
                 }
             }
             > figure{

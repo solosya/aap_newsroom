@@ -1,6 +1,6 @@
 .card-vr{
 
-    margin-bottom: 79.5px;
+    margin-bottom: 65px;
     @media #{$mobile}{
         margin-bottom: -2px;
     }
@@ -82,7 +82,7 @@
 
         > article > .content{
             position:relative;
-            height: 139px;
+            // height: 139px;
 
             padding: 13px 0;
             @media #{$mobile}{
@@ -106,13 +106,17 @@
             > h2{
                 margin-top:10px;
                 font-family: $base-font-family;
+                @include font-size(26);
                 font-weight: normal;
                 line-height: 1.14;
                 color: #000000;
-                @include font-size(26);
+                
 
                 @media #{$mobile}{
                     @include font-size(16);
+                }
+                @media #{$tablet-up}{
+                    max-height: 65px;
                 }
             }
 
