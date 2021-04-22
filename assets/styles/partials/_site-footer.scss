@@ -27,8 +27,8 @@
     .footer-top{
         background: #000;
         position: relative;
-        @media screen and (max-width: $sm-break-down) {
-            // padding-top: 155px;
+        @media #{$desktop-up} {
+            padding-bottom: 30px;
         }
         .logo-wrapper{
             display: flex;
@@ -116,29 +116,6 @@
                 }
             }
         }
-
-        .footer-menu {
-
-            span {
-                position:absolute;
-                top:0;
-                right: 15px;
-                color:white;
-                @include font-size(15);
-                font-family: $font-family-sans-serif;
-                @media #{$desktop-up}{
-                    top:-13px;
-                }
-
-                a {
-                    color:white;
-                    text-decoration:none;
-                }
-
-
-            }
-        }
-
     }
 
     .footer-btm{
@@ -164,12 +141,33 @@
                     margin-right: 30px;
                     line-height:20px;
                     @media #{$desktop-up}{
-                        margin-top: -45px;
+                        margin-top: -75px;
                     }
                     @media screen and (max-width: $sm-break-down) {
                         margin-right: 20px;
                     }
                 }
+            }
+            span {
+                position:absolute;
+                top: -40px;
+                left: 15px;
+                color:white;
+                @include font-size(15);
+                font-family: $font-family-sans-serif;
+                // @media #{$tablet}{
+                //     top:0;
+                // }
+                @media #{$desktop-up}{
+                    top:-50px;
+                }
+
+                a {
+                    color:white;
+                    text-decoration:none;
+                }
+
+
             }
 
         }

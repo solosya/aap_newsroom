@@ -8877,6 +8877,9 @@ section.subscribe {
   .site-footer .footer-top {
     background: #000;
     position: relative; }
+    @media screen and (min-width: 992px) {
+      .site-footer .footer-top {
+        padding-bottom: 30px; } }
     .site-footer .footer-top .logo-wrapper {
       display: flex;
       justify-content: flex-end; }
@@ -8920,20 +8923,6 @@ section.subscribe {
       margin-bottom: 57px; }
       .site-footer .footer-top .social-links > ul > li > a {
         color: #e22f22; }
-    .site-footer .footer-top .footer-menu span {
-      position: absolute;
-      top: 0;
-      right: 15px;
-      color: white;
-      font-size: 0.9375rem;
-      line-height: 1.125rem;
-      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
-      @media screen and (min-width: 992px) {
-        .site-footer .footer-top .footer-menu span {
-          top: -13px; } }
-      .site-footer .footer-top .footer-menu span a {
-        color: white;
-        text-decoration: none; }
   .site-footer .footer-btm {
     padding-top: 12px;
     padding-bottom: 14px; }
@@ -8957,10 +8946,24 @@ section.subscribe {
           line-height: 20px; }
           @media screen and (min-width: 992px) {
             .site-footer .footer-btm .footer-menu > ul > li {
-              margin-top: -45px; } }
+              margin-top: -75px; } }
           @media screen and (max-width: 767px) {
             .site-footer .footer-btm .footer-menu > ul > li {
               margin-right: 20px; } }
+      .site-footer .footer-btm .footer-menu span {
+        position: absolute;
+        top: -40px;
+        left: 15px;
+        color: white;
+        font-size: 0.9375rem;
+        line-height: 1.125rem;
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; }
+        @media screen and (min-width: 992px) {
+          .site-footer .footer-btm .footer-menu span {
+            top: -50px; } }
+        .site-footer .footer-btm .footer-menu span a {
+          color: white;
+          text-decoration: none; }
     .site-footer .footer-btm .footer-menu > ul > li > a {
       color: #000;
       font-size: 0.875rem;
@@ -22648,6 +22651,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm > a.social .content .category {
       margin-top: 0; }
     .card-sm > a.social .content > p {
@@ -22729,6 +22734,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm-tablet > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm-tablet > a.social .content .category {
       margin-top: 0; }
     .card-sm-tablet > a.social .content > p {
@@ -22817,6 +22824,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm-mobile > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm-mobile > a.social .content .category {
       margin-top: 0; }
     .card-sm-mobile > a.social .content > p {
@@ -22928,6 +22937,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm-black > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm-black > a.social .content .category {
       margin-top: 0; }
     .card-sm-black > a.social .content > p {
@@ -23009,6 +23020,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm-black-tablet > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm-black-tablet > a.social .content .category {
       margin-top: 0; }
     .card-sm-black-tablet > a.social .content > p {
@@ -23095,6 +23108,8 @@ body.channel.supporters p {
       margin-top: 60px;
       font-size: 30px;
       height: 190px; }
+    .card-sm-black-mobile > a.without__image .c-cards-view__time {
+      margin-top: 20px; }
     .card-sm-black-mobile > a.social .content .category {
       margin-top: 0; }
     .card-sm-black-mobile > a.social .content > p {
