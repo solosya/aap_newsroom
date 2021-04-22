@@ -16236,6 +16236,12 @@ input[type=radio].inline {
 .donate-thanks__button {
   font-weight: 500; }
 
+.c-episodes__heading {
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+  font-weight: 700; }
+
 .subscribe-form-head__title {
   font-family: "tinos", Helvetica, Arial, sans-serif;
   font-size: 2.25rem;
@@ -26527,6 +26533,365 @@ body.channel.supporters p {
         border-left: none;
         bottom: 0;
         right: 15px; } }
+
+@media screen and (max-width: 767px) {
+  .card-episode-mobile {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 10px; }
+    .card-episode-mobile .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      background: black;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      padding: 10px 15px;
+      position: relative; }
+      .card-episode-mobile .c-cards-view__media {
+        width: 116px;
+        height: 110px;
+        -webkit-flex: 0 0 116px;
+        flex: 0 0 116px; }
+        .card-episode-mobile .c-cards-view__media:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          /* Chrome, Safari, Opera */
+          -moz-transform: translate(-50%, -50%);
+          /* Mozilla Firefox */
+          -o-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          /* IE 9 */
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-image: url("../images/play-icon.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: 15; }
+      .card-episode-mobile .c-cards-view__container {
+        padding-left: 27px;
+        max-height: 100%; }
+      .card-episode-mobile .c-cards-view__category {
+        display: none; }
+      .card-episode-mobile .c-cards-view__comment {
+        background-color: #ffffff; }
+        .card-episode-mobile .c-cards-view__comment:after {
+          border-color: #ffffff transparent transparent; }
+      .card-episode-mobile .c-cards-view__comment-count {
+        color: #ffffff; }
+      .card-episode-mobile .c-cards-view__heading {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        max-height: 46px;
+        margin-top: 0;
+        width: 90%;
+        margin-bottom: 5px; }
+      .card-episode-mobile .c-cards-view__time {
+        display: none; }
+      .card-episode-mobile .c-cards-view__description {
+        display: block;
+        font-size: 0.6875rem;
+        line-height: 0.825rem;
+        line-height: 1.27;
+        letter-spacing: 0.46px;
+        color: #ffffff;
+        max-height: 50px; }
+      .card-episode-mobile .c-cards-view__author-name {
+        display: none; }
+      .card-episode-mobile .c-cards-view:after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        padding: 8px 45px;
+        content: 'GO TO EPISODE';
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-align: right;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-image: url(../icons/episode.svg);
+        background-position-x: right; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-episode-tablet {
+    margin-bottom: 10px; }
+    .card-episode-tablet .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      background: black;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      padding: 10px 15px;
+      position: relative; }
+      .card-episode-tablet .c-cards-view__media {
+        width: 116px;
+        height: 110px;
+        -webkit-flex: 0 0 116px;
+        flex: 0 0 116px; }
+        .card-episode-tablet .c-cards-view__media:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          /* Chrome, Safari, Opera */
+          -moz-transform: translate(-50%, -50%);
+          /* Mozilla Firefox */
+          -o-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          /* IE 9 */
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-image: url("../images/play-icon.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: 15; }
+      .card-episode-tablet .c-cards-view__container {
+        padding-left: 27px;
+        max-height: 100%; }
+      .card-episode-tablet .c-cards-view__category {
+        display: none; }
+      .card-episode-tablet .c-cards-view__comment {
+        background-color: #ffffff; }
+        .card-episode-tablet .c-cards-view__comment:after {
+          border-color: #ffffff transparent transparent; }
+      .card-episode-tablet .c-cards-view__comment-count {
+        color: #ffffff; }
+      .card-episode-tablet .c-cards-view__heading {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        max-height: 46px;
+        margin-top: 0;
+        width: 90%;
+        margin-bottom: 5px; }
+      .card-episode-tablet .c-cards-view__time {
+        display: none; }
+      .card-episode-tablet .c-cards-view__description {
+        display: block;
+        font-size: 0.6875rem;
+        line-height: 0.825rem;
+        line-height: 1.27;
+        letter-spacing: 0.46px;
+        color: #ffffff;
+        max-height: 50px; }
+      .card-episode-tablet .c-cards-view__author-name {
+        display: none; }
+      .card-episode-tablet .c-cards-view:after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        padding: 8px 45px;
+        content: 'GO TO EPISODE';
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-align: right;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-image: url(../icons/episode.svg);
+        background-position-x: right; } }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .card-episode-desktop {
+    margin-bottom: 10px; }
+    .card-episode-desktop .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      background: black;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      padding: 10px 15px;
+      position: relative; }
+      .card-episode-desktop .c-cards-view__media {
+        width: 116px;
+        height: 110px;
+        -webkit-flex: 0 0 116px;
+        flex: 0 0 116px; }
+        .card-episode-desktop .c-cards-view__media:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          /* Chrome, Safari, Opera */
+          -moz-transform: translate(-50%, -50%);
+          /* Mozilla Firefox */
+          -o-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          /* IE 9 */
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-image: url("../images/play-icon.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: 15; }
+      .card-episode-desktop .c-cards-view__container {
+        padding-left: 27px;
+        max-height: 100%; }
+      .card-episode-desktop .c-cards-view__category {
+        display: none; }
+      .card-episode-desktop .c-cards-view__comment {
+        background-color: #ffffff; }
+        .card-episode-desktop .c-cards-view__comment:after {
+          border-color: #ffffff transparent transparent; }
+      .card-episode-desktop .c-cards-view__comment-count {
+        color: #ffffff; }
+      .card-episode-desktop .c-cards-view__heading {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        max-height: 46px;
+        margin-top: 0;
+        width: 90%;
+        margin-bottom: 5px; }
+      .card-episode-desktop .c-cards-view__time {
+        display: none; }
+      .card-episode-desktop .c-cards-view__description {
+        display: block;
+        font-size: 0.6875rem;
+        line-height: 0.825rem;
+        line-height: 1.27;
+        letter-spacing: 0.46px;
+        color: #ffffff;
+        max-height: 50px; }
+      .card-episode-desktop .c-cards-view__author-name {
+        display: none; }
+      .card-episode-desktop .c-cards-view:after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        padding: 8px 45px;
+        content: 'GO TO EPISODE';
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-align: right;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-image: url(../icons/episode.svg);
+        background-position-x: right; } }
+
+@media screen and (min-width: 1200px) {
+  .card-episode-desktop-lg {
+    margin-bottom: 10px; }
+    .card-episode-desktop-lg .c-cards-view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      background: black;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      padding: 10px 15px;
+      position: relative; }
+      .card-episode-desktop-lg .c-cards-view__media {
+        width: 116px;
+        height: 110px;
+        -webkit-flex: 0 0 116px;
+        flex: 0 0 116px; }
+        .card-episode-desktop-lg .c-cards-view__media:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          /* Chrome, Safari, Opera */
+          -moz-transform: translate(-50%, -50%);
+          /* Mozilla Firefox */
+          -o-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          /* IE 9 */
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-image: url("../images/play-icon.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: 15; }
+      .card-episode-desktop-lg .c-cards-view__container {
+        padding-left: 27px;
+        max-height: 100%; }
+      .card-episode-desktop-lg .c-cards-view__category {
+        display: none; }
+      .card-episode-desktop-lg .c-cards-view__comment {
+        background-color: #ffffff; }
+        .card-episode-desktop-lg .c-cards-view__comment:after {
+          border-color: #ffffff transparent transparent; }
+      .card-episode-desktop-lg .c-cards-view__comment-count {
+        color: #ffffff; }
+      .card-episode-desktop-lg .c-cards-view__heading {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        max-height: 46px;
+        margin-top: 0;
+        width: 90%;
+        margin-bottom: 5px; }
+      .card-episode-desktop-lg .c-cards-view__time {
+        display: none; }
+      .card-episode-desktop-lg .c-cards-view__description {
+        display: block;
+        font-size: 0.6875rem;
+        line-height: 0.825rem;
+        line-height: 1.27;
+        letter-spacing: 0.46px;
+        color: #ffffff;
+        max-height: 50px; }
+      .card-episode-desktop-lg .c-cards-view__author-name {
+        display: none; }
+      .card-episode-desktop-lg .c-cards-view:after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        padding: 8px 45px;
+        content: 'GO TO EPISODE';
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-align: right;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-image: url(../icons/episode.svg);
+        background-position-x: right; } }
 
 @media screen and (min-width: 992px) {
   .card-pro-rec {

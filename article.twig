@@ -255,7 +255,7 @@
         <div class="article-pro__image-container">
     {% endif %}
 
-
+        
         <div class="container">
             
             {% if articleImg %} 
@@ -415,6 +415,14 @@
 
 
                         {% if not showPaywall %}
+                            {# {{_AppHelper.printArray(article.additionalInfo.series)}} #}
+                            {% if article.additionalInfo.series is defined and  article.additionalInfo.series != '' %}
+                                {{this.render('/partials/_episodes.twig', {
+                                    networkData: networkData,
+                                    episodes: article.additionalInfo.series,
+                                    articleid: article.id
+                                }) | raw}}
+                            {% endif %}
 
 
                             {% if guestUser %}
