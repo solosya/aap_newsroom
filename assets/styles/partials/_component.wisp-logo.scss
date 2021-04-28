@@ -29,6 +29,15 @@
     &--matatuhi{
         margin:0;
     }
+    &--creative-nz{
+        width: 122px; 
+        @media #{$tablet}{
+            width: 81px;
+        }
+        @media #{$mobile}{
+            width: 56px;
+        }
+    }
 }
 
 .wisp-logo__text{
@@ -39,3 +48,4 @@
         margin-top: 6px;
     }
 }
+
