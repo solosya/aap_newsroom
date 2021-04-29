@@ -180,15 +180,20 @@
             <div class="row paywall__top-plans u-mobile-margin-top-10">
 
             {% for plan in orderedTop %}
-            
+                {# {{_AppHelper.printArray(plan)}} #}
                 {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
         
                 {% set period = "Monthly" %}
+                {% set yearDiv = 12 %}
                 {% if plan.period == "year" %}
                     {% set period = "Annual" %}
+                    {% set yearDiv = 1 %}
                 {% elseif plan.period == "week" %}
                     {% set period = "Weekly" %}
+                    {% set yearDiv = 52 %}
                 {% endif %}
+                {% set yearDiv = 12 %}
+
 
                 {% set description = plan.description | split("!*!") %}
                 {% set data = _AppHelper.jsonDecode( description[0] ) %}
@@ -214,6 +219,7 @@
                         </div>
                         {% endif %}
                         {% set val = plan.plan_value / 100 %}
+                        {% set weekVal = ((yearDiv / plan.period_count) * val) / 52 %}
                         <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
                         {# <p class="paywall-plan-card__period">{{period}}</p> #}
                         
@@ -223,15 +229,22 @@
 
                         {% if plan.type != 'signup' %}
                             <p class="paywall-plan-card__price">${{val}}</p>
+                            <p class="paywall-plan-card__weekly">${{weekVal|number_format(2, '.', ',')}} per week</p>
+                            <p class="paywall-plan-card__users">{{plan.user_count}} users</p>
                         {% endif %}
+
+                        
 
                         {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
-                        {% if plan.trial_status == "1" %}
+                        
                             {# {% set subscribeLink = subscribeLink ~ "&trial=true" %} #}
-                            <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p>
+                            {# <p class="paywall-plan-card__trial">includes <br /> {{plan.trial_period}}-day free trial</p> #}
+                        
+                        {% if plan.trial_status == "1" %}
+                            <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">START {{plan.trial_period}}-DAY TRIAL</a>
+                        {% else %}
+                            <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">START MY SUBSCRIPTION</a>
                         {% endif %}
-
-                        <a class="_btn--red paywall-plan-card__subscribe-button j-gtasubstart" href="{{subscribeLink}}" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">START MY SUBSCRIPTION</a>
                     </div>
                 </div>
                 
@@ -257,21 +270,21 @@
         <div class="container">
             <h1 class="paywall-offers__title">{{whatyouget|raw}}</h1>
             <section class="row paywall-offers__container">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[0]}}</p>
+                </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[0]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[1]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[1]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[2]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[2]}}</p>
-                </div>
-                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
-                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[3]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[3]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__comments" src="{{networkData.templatePath}}/static/images/paywall-comments.svg">

@@ -14564,6 +14564,7 @@ input[type=radio].inline {
       width: 35px; } }
 
 .wisp-logo {
+  margin: 0;
   width: 150px; }
   @media screen and (min-width: 992px) {
     .wisp-logo {
@@ -14575,16 +14576,13 @@ input[type=radio].inline {
     .wisp-logo {
       width: 80px;
       margin-top: 15px; } }
-  .wisp-logo--matatuhi {
-    margin: 0; }
   .wisp-logo--creative-nz {
     width: 122px;
     margin-top: 5px;
     margin-left: 10px; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .wisp-logo--creative-nz {
-        width: 81px;
-        margin-top: 15px; } }
+        width: 81px; } }
     @media screen and (max-width: 767px) {
       .wisp-logo--creative-nz {
         width: 70px;
@@ -16390,7 +16388,7 @@ input[type=radio].inline {
   flex-direction: column;
   text-align: center;
   background: #ffffff;
-  height: 327px;
+  height: 300px;
   box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
   border: solid 1px #eeeeee;
   position: relative; }
@@ -16577,24 +16575,29 @@ input[type=radio].inline {
         line-height: 1.2;
         margin-top: 0;
         margin-bottom: 5%; } }
-  .paywall-plan-card__trial {
-    font-size: 1.4375rem;
-    line-height: 1.725rem;
+  .paywall-plan-card__weekly {
+    font-size: 1.125rem;
+    line-height: 1.35rem;
     font-weight: 700;
-    margin: 0 5px; }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      .paywall-plan-card__trial {
-        font-size: 1rem;
-        line-height: 1.2rem; } }
+    letter-spacing: 0.6px;
+    text-align: center;
+    color: #dc3545; }
     @media screen and (max-width: 767px) {
-      .paywall-plan-card__trial {
-        font-size: 1.125rem;
-        line-height: 1.35rem; } }
-    @media screen and (max-width: 575px) {
-      .paywall-plan-card__trial {
-        margin-bottom: 5%;
-        font-size: 3.5vw;
-        line-height: 4vw; } }
+      .paywall-plan-card__weekly {
+        font-size: 0.875rem;
+        line-height: 1.05rem; } }
+  .paywall-plan-card__users {
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #000000; }
+    @media screen and (max-width: 767px) {
+      .paywall-plan-card__users {
+        font-size: 0.8125rem;
+        line-height: 0.975rem;
+        margin-bottom: 10px; } }
   .paywall-plan-card__subscribe-button {
     display: -webkit-box;
     display: -webkit-flex;

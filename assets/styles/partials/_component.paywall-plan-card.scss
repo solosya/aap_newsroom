@@ -6,7 +6,7 @@
     text-align:center;
     background: $white;
     // width: 268px;
-    height: 327px;
+    height: 300px;
     box-shadow: 6px 8px 11px -2px rgba(144, 143, 143, 0.15);
     border: solid 1px #eeeeee;
     position:relative;
@@ -201,24 +201,47 @@
 
     }
 
-    &__trial {
-        @include font-size(23);
-        font-weight:700;
-        margin: 0 5px;
-        @media #{$tablet} {
-            @include font-size(16);
-        }
-
+    &__weekly{
+        @include font-size(18);
+        font-weight: $weightBold;
+        letter-spacing: 0.6px;
+        text-align: center;
+        color: $red;
         @media #{$mobile} {
-            @include font-size(18);
+            @include font-size(14);
         }
-        @media #{$mobile-small} {
-            margin-bottom:5%;
-            font-size: 3.5vw;
-            line-height: 4vw;
-        }
-
     }
+
+    &__users{
+        @include font-size(15);
+        font-weight: $weightBold;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: $black;
+        @media #{$mobile} {
+            @include font-size(13);
+            margin-bottom: 10px;
+        }
+    }
+
+    // &__trial {
+    //     @include font-size(23);
+    //     font-weight:700;
+    //     margin: 0 5px;
+    //     @media #{$tablet} {
+    //         @include font-size(16);
+    //     }
+
+    //     @media #{$mobile} {
+    //         @include font-size(18);
+    //     }
+    //     @media #{$mobile-small} {
+    //         margin-bottom:5%;
+    //         font-size: 3.5vw;
+    //         line-height: 4vw;
+    //     }
+
+    // }
     &__subscribe-button {
         @include flexbox();
         @include justify-content(center);
