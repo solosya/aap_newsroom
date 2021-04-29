@@ -37,10 +37,10 @@
 {% set blurbB = '*Limited offer, subject to availability. Please allow up to 14 business days for activation of your subscription to <br class="d-none d-lg-block" />The Atlantic. Full value approx $365NZD.' %}
 {% set whatyouget = 'What you get with <br class="d-block d-sm-none" />Newsroom Pro' %}
 {% set whatyougetpanels = [
+    'Bonus subscription for colleague or a friend',
     'A daily morning email of news and insights curated by Newsroom Pro editorial team',
     'Pro email breaking news alerts',
     'Exclusive and unlimited access to content on Newsroom Pro',
-    'Bonus subscription for colleague or a friend',
     'Access to post and read comments on articles'
     ] %}
 {% set buttonText = 'Subscribe now' %}
@@ -140,21 +140,21 @@
         <div class="container">
             <h1 class="paywall-offers__title">{{whatyouget|raw}}</h1>
             <section class="row paywall-offers__container">
+                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
+                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
+                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[0]}}</p>
+                </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card ">
                     <img class="paywall-offers-card__img paywall-offers-card__img__mail" src="{{networkData.templatePath}}/static/images/paywall-morning-email.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[0]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-mail">{{whatyougetpanels[1]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__alert" src="{{networkData.templatePath}}/static/images/paywall-alerts.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[1]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-alert">{{whatyougetpanels[2]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__access" src="{{networkData.templatePath}}/static/images/paywall-access.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[2]}}</p>
-                </div>
-                <div class="col-12 col-sm-6 col-lg paywall-offers-card">
-                    <img class="paywall-offers-card__img paywall-offers-card__img__users" src="{{networkData.templatePath}}/static/images/paywall-add-user.svg">
-                    <p class="paywall-offers-card__p paywall-offers-card__p-users">{{whatyougetpanels[3]}}</p>
+                    <p class="paywall-offers-card__p paywall-offers-card__p-access">{{whatyougetpanels[3]}}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-lg paywall-offers-card">
                     <img class="paywall-offers-card__img paywall-offers-card__img__comments" src="{{networkData.templatePath}}/static/images/paywall-comments.svg">
