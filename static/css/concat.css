@@ -14573,17 +14573,22 @@ input[type=radio].inline {
       width: 100px; } }
   @media screen and (max-width: 767px) {
     .wisp-logo {
-      width: 70px; } }
+      width: 80px;
+      margin-top: 15px; } }
   .wisp-logo--matatuhi {
     margin: 0; }
   .wisp-logo--creative-nz {
-    width: 122px; }
+    width: 122px;
+    margin-top: 5px;
+    margin-left: 10px; }
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .wisp-logo--creative-nz {
-        width: 81px; } }
+        width: 81px;
+        margin-top: 15px; } }
     @media screen and (max-width: 767px) {
       .wisp-logo--creative-nz {
-        width: 56px; } }
+        width: 70px;
+        margin-top: 15px; } }
 
 .wisp-logo__text {
   font-weight: 600;
@@ -14592,6 +14597,10 @@ input[type=radio].inline {
     .wisp-logo__text {
       font-size: 12px;
       margin-top: 6px; } }
+  @media screen and (max-width: 767px) {
+    .wisp-logo__text {
+      position: absolute;
+      top: 10px; } }
 
 .beca-section__channel {
   padding-bottom: 10px;
