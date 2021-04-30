@@ -192,7 +192,7 @@
                     {% set period = "Weekly" %}
                     {% set yearDiv = 52 %}
                 {% endif %}
-                {% set yearDiv = 12 %}
+                
 
 
                 {% set description = plan.description | split("!*!") %}
@@ -230,7 +230,7 @@
                         {% if plan.type != 'signup' %}
                             <p class="paywall-plan-card__price">${{val}}</p>
                             <p class="paywall-plan-card__weekly">${{weekVal|number_format(2, '.', ',')}} per week</p>
-                            <p class="paywall-plan-card__users">{{plan.user_count}} users</p>
+                            <p class="paywall-plan-card__users">{{plan.user_count + 1}} users</p>
                         {% endif %}
 
                         
