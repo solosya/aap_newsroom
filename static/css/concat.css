@@ -9380,7 +9380,11 @@ section.subscribe {
       margin: 0;
       margin-left: auto;
       flex-wrap: wrap;
-      justify-content: flex-end; }
+      justify-content: flex-end;
+      max-width: calc(100vw - 560px); }
+      @media screen and (min-width: 992px) {
+        .site-header__top .rooms-link {
+          max-width: calc(100vw - 560px); } }
       @media screen and (max-width: 1120px) {
         .site-header__top .rooms-link {
           display: none; } }
@@ -11024,11 +11028,11 @@ button.swiper-pagination-bullet {
   padding-left: 20px; }
   @media screen and (max-width: 767px) {
     .nr-site-header-signin__account {
-      height: 50px;
+      height: 37px;
       font-size: 0.75rem;
       line-height: 0.9rem;
       font-weight: 300;
-      line-height: 50px;
+      line-height: 37px;
       margin: 0; }
       .nr-site-header-signin__account p {
         display: inline-block;
@@ -11065,23 +11069,23 @@ button.swiper-pagination-bullet {
   @media screen and (max-width: 767px) {
     .nr-site-header-signin__signbtn {
       width: 29%;
-      height: 50px;
+      height: 37px;
       font-size: 0.75rem;
       line-height: 0.9rem;
       margin: 0;
       font-weight: 300;
-      line-height: 50px; } }
+      line-height: 37px; } }
 
 .nr-site-header-signin__subbtn {
   width: 161px;
   flex-grow: 1; }
   @media screen and (max-width: 767px) {
     .nr-site-header-signin__subbtn {
-      height: 50px;
+      height: 37px;
       font-size: 0.75rem;
       line-height: 0.9rem;
       font-weight: 300;
-      line-height: 50px; } }
+      line-height: 3.2; } }
 
 .nr-site-header-signin__pp {
   width: auto;

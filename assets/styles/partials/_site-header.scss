@@ -188,6 +188,10 @@
             margin-left:auto;
             flex-wrap: wrap;
             justify-content: flex-end;
+            @media #{$desktop-up}{
+                max-width: calc(100vw - 560px);
+            }
+            max-width: calc(100vw - 560px);
 
 
             @media screen and (max-width: $header-break){
