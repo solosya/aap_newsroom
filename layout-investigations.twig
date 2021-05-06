@@ -140,11 +140,11 @@
 
                         </section>
                             {% if articles[articleCount] %}                                                               
-                                <section class="col-12 sidebar-inverted"> 
+                                <section class="col-12 "> 
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[articleCount], 
                                             position: (articleCount+1), 
-                                            containerClass: 'card-sm card-rec-inverted-tablet card-sm-mobile',
+                                            containerClass: 'card-sm card-rec-inverted-tablet card-sm-mobile u-no-border-bottom',
                                             imageSize: {width:335, height:260}
                                         }) | raw}}
                                         {% set articleCount = articleCount + 1 %}
