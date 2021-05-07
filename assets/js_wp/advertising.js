@@ -5,10 +5,10 @@ export default class AdLoader {
     constructor() {
         this.AccountNumber = null;
         this.keywords = null;
-        this.keyWordsElem = document.getElementById('ad-keywords');
-
-        if (this.keyWordsElem && typeof this.keyWordsElem.dataset.keywords !== 'undefined' && this.keyWordsElem.dataset.keywords !== "") {
-            this.keywords = keyWordsElem.dataset.keywords;
+        const keyWordElement = document.getElementById('ad-keywords');
+        
+        if (keyWordElement && typeof keyWordElement.dataset.keywords !== 'undefined' && keyWordElement.dataset.keywords !== "") {
+            this.keywords = keyWordElement.dataset.keywords;
         }
 
         const gaAccount = document.getElementById('g-ad-id');
