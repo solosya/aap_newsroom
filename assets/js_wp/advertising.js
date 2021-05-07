@@ -47,18 +47,16 @@ export default class AdLoader {
             if ((!elem.dataset.responsive || elem.dataset.responsive == "0") && this.deviceSize != "") {
                 keysArray.push(this.deviceSize);
             }
-
             if (this.keywords) {
                 const keysExtra = this.keywords.split(',');
-                keysArray.push( keysArray.concat(keysExtra).filter((item) => item !== '') );
+                keysArray = keysArray.concat(keysExtra).filter((item) => item !== '');
+                
             } else {
                 keysArray.push('default');
             }
-    
-
+            
             
             const keysString = keysArray.join(',');
-            
             Server.fetch(_appJsConfig.appHostName + '/api/ad/get-all?keywords='+keysString).done((data) => {
                 
                 const k = 0;
