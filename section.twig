@@ -305,3 +305,14 @@
         });
     });
 </script>
+{% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            googletag.cmd.push(function() {
+                var slot = googletag.defineSlot('/268436641/technology', [[300, 250]], 'div-gpt-ad-hpage-2').setTargeting().defineSizeMapping([[[0,250],[300,250]]]).addService(googletag.pubads());
+                googletag.display('div-gpt-ad-hpage-2');
+
+                });
+        });
+    </script>
+{% endif %}
