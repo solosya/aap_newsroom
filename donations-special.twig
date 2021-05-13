@@ -21,6 +21,20 @@
 ] %}
 {% set donationsCause = 'Donate to our cause' %}
 {% set donationsPPno = 'AbkE2e7ZwQgwLPFzVowC2cKm' %}
+{% set donationsFAQ = [
+    {
+        'faq-title' :   'What is the difference between making a donation and subscribing to Newsroom Pro?',
+        'faq-text'  :   'Great question, because both support Newsroom’s journalism. Donations can be any amount or frequency and all donations help Newsroom keep its journalism free for everyone to read. Newsroom Pro is our subscription service curated by Jonathan Milne, which you can find out more about <a href="{{networkData.defaultBlogUrl}}/prosubscribe">here</a>.'
+    },
+    {
+        'faq-title' :   'What’s the best way to keep Newsroom sustainable?What’s the best way to keep Newsroom sustainable?',
+        'faq-text'  :   'Donations of any kind are gratefully accepted but monthly donations go a long way towards ensuring we can continue our work into the future – and you can cancel your monthly payment any time.'
+    },
+    {
+        'faq-title' :   'Why does Newsroom need donations anyway? Don’t you have sponsors?',
+        'faq-text'  :   'Yes, we do have some wonderful sponsors and corporate partners who make a huge difference in keeping Newsroom running but unfortunately it’s not enough to keep us operating. Reader donations are absolutely critical to supporting our journalists as they work to uncover the stories that matter.'
+    },  
+] %}
 
 
 {% if config['donations-special'] is defined %}
@@ -38,6 +52,9 @@
     {% endif %}
     {% if config['donations-special']['cause'] is defined and config['donations-special']['cause'] != '' %}
         {% set donationsCause = config['donations-special']['cause'] %}
+    {% endif %}
+    {% if config['donations-special']['faq'] is defined and config['donations-special']['faq'] != '' %}
+        {% set donationsFAQ = config['donations-special']['faq'] %}
     {% endif %}
     {% if config['donations-special']['press-patron'] is defined and config['donations-special']['press-patron'] != '' %}
         {% set donationsPPno = config['donations-special']['press-patron'] %}
@@ -137,7 +154,7 @@
             <h1 class="col-12 faq__title">FAQs</h1>
 
             <div class="col-12">
-                <div class="faq__question-box d-flex flex-row">
+                {# <div class="faq__question-box d-flex flex-row">
                     <div class="faq__container">
                         <p class="faq__question u-font-bold">What is the difference between making a donation and subscribing to Newsroom Pro?</p>
                         <div class="faq__answer-container u-hide">
@@ -145,29 +162,22 @@
                         </div>
                     </div>
                     <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
-                </div>
+                </div> #}
 
-
-                <div class="faq__question-box d-flex flex-row">
-                    <div class="faq__container">
-                        <p class="faq__question u-font-bold">What’s the best way to keep Newsroom sustainable?</p>
-                        <div class="faq__answer-container u-hide">
-                            <p class="faq__answer">Donations of any kind are gratefully accepted but monthly donations go a long way towards ensuring we can continue our work into the future – and you can cancel your monthly payment any time.</p>
+                {% for faq in donationsFAQ %}
+                    <div class="faq__question-box d-flex flex-row">
+                        <div class="faq__container">
+                            <p class="faq__question u-font-bold">{{faq['faq-title']|raw}}</p>
+                            <div class="faq__answer-container u-hide">
+                                <p class="faq__answer">{{faq['faq-text']|raw}}</p>
+                            </div>
                         </div>
+                        <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
                     </div>
-                    <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
-                </div>
+                {% endfor %}
 
 
-                <div class="faq__question-box d-flex flex-row">
-                    <div class="faq__container">
-                        <p class="faq__question u-font-bold">Why does Newsroom need donations anyway? Don’t you have sponsors?</p>
-                        <div class="faq__answer-container u-hide">
-                            <p class="faq__answer">Yes, we do have some wonderful sponsors and corporate partners who make a huge difference in keeping Newsroom running but unfortunately it’s not enough to keep us operating. Reader donations are absolutely critical to supporting our journalists as they work to uncover the stories that matter.</p>
-                        </div>
-                    </div>
-                    <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
-                </div>
+                
 
 
             </div>
