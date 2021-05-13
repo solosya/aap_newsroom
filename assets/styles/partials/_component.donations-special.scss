@@ -1,0 +1,235 @@
+.c-donations-special {
+
+    &__container{
+        background-color:#E13426;
+        border-top:solid 1px #979797;
+        margin-top: 20px;
+        padding-bottom: 25px;
+        @media #{$tablet-up}{
+            min-height: 460px;
+        }
+    }
+
+    &__header {
+        display:flex;
+        align-items: flex-end;
+        color: $white;
+        @media #{$mobile} {
+            margin-left:15px;
+        }
+    }
+
+    &__nr-logo {
+        display:block;
+        width:68px;
+        height:45px;
+
+
+        @media #{$mobile} {
+            width:29px;
+            height:19px;
+        }
+    }
+
+
+    &__close {
+        display:block;
+        margin-left:auto;
+        width: 25px;
+        height: 25px;
+        margin-right: 25px;
+        &-icon {
+            width:100%;
+            height:100%;
+        }
+
+        @media #{$mobile} {
+            width: 20px;
+            height: 20px;
+        }
+
+    }
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(65);
+        line-height:1;
+        &--white{
+            color: $white;
+        }
+        &--red {
+            color:$brand-secondary;
+        }
+
+        @media #{$desktop} {
+            @include font-size(70);
+        }
+
+
+        @media #{$tablet} {
+            margin-bottom:60px;
+        }
+        @media #{$mobile} {
+            @include font-size(25);
+            line-height: 1.1;
+        }
+    }
+
+    &__text {
+        font-family:$primaryFont;
+        @include font-size(22);
+        line-height:1.36;
+        margin-bottom:22px;
+        color: $white;
+        @media #{$desktop} {
+            @include font-size(20);
+        }
+
+
+        @media #{$mobile} {
+            @include font-size(14);
+            line-height:1.35;
+            letter-spacing: 0.58px;
+        }
+
+    }
+
+
+    &__byline-img {
+        width:98px;
+        height:98px;
+        background-color:#dadada;
+        border-radius:50%;
+        margin-right:30px;
+        @media #{$mobile} {
+            width:66px;
+            height:66px;
+            margin-right:15px;
+
+        }
+
+    }
+
+    &__byline {
+        font-family:$primaryFont;
+        @include font-size(22);
+        font-style:italic;
+        @media #{$mobile} {
+            @include font-size(14);
+        }
+    }
+
+    &__image{
+        width: calc(100% - 80px);
+        @media #{$tablet-up} {
+            position: absolute;
+        }
+        @media #{$tablet}{
+            max-width: 205px;
+            right: 0;
+        }
+        
+
+    }
+}
+
+
+.c-supporter-special {
+
+    &__title {
+        font-family:$base-font-family;
+        @include font-size(40);
+        line-height:.9;
+        margin-bottom:40px;
+        @media #{$mobile} {
+            margin-bottom:0;
+            @include font-size(28);
+            text-align: center;
+        }
+
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height:45px;
+        width:200px;
+        text-transform: uppercase;
+        background-color:$brand-secondary;
+        @include font-size(16);
+        font-weight:600;
+        color:#fcfcfc;
+        
+
+        &--black {
+            background-color:black;
+            &:hover {
+                background-color:$brand-secondary;
+                color:white;
+            }
+
+        }
+
+        &--grey {
+            background-color:#8a8b93;
+            &:hover {
+                background-color:$brand-secondary;
+                color:white;
+            }
+        }
+
+        &--space {
+            margin:0 0 0 10px;
+            @media #{$mobile} {
+                margin:0 auto;
+            }
+        }
+        @media #{$mobile} {
+            margin:0 auto;
+            display: flex;
+        }
+
+        // @media #{$desktop} {
+        //     width:233px;
+        //     height:42px;
+        //     &--space {
+        //         margin:0 30px;
+        //     }
+        // }
+    
+        // @media #{$tablet} {
+        //     @include font-size(19);
+        //     width:210px;
+        //     &--space {
+        //         margin:0 20px;
+        //     }
+        // }
+
+        // @media #{$mobile} {
+        //     display:flex;
+        //     @include font-size(14);
+
+        //     margin: 22px auto;
+        //     &--space {
+        //         margin:22px auto;
+        //     }
+    
+
+        // }
+
+
+    }
+
+    &__patron {
+        margin-top:42px;
+        text-transform: uppercase;
+        @include font-size(14);
+        @media #{$mobile} {
+            @include font-size(12);
+            margin-top:0;
+        }
+
+    }
+}
+
+

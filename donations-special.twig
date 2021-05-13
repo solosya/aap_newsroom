@@ -1,0 +1,255 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+{% set config = _Network.getThemeConfig() %}
+
+
+
+{% set donations = "pp" %}
+{% if config.donations is defined and config.donations == "nr" %}
+    {% set donations = config.donations %}
+{% endif %}
+
+
+{% set donationsSupport = 'Support our special cause' %}
+{% set donationsImage = '' %}
+{% set donationsAmount = [15,25,100,0] %}
+{% set donationsText = [
+    'Newsroom exists because we believe in fearless, independent, provocative journalism for New Zealand. It’s a belief shared by readers like you.',
+    'By supporting Newsroom with your contribution, you’ll be helping to strengthen our team as we bring quality journalism to the top of the agenda.',
+    'If you’d like to come on board as supporter, simply click on one of the buttons below. Thanks for believing in our mission. We’re excited to have you join us on this journey.'
+] %}
+{% set donationsCause = 'Donate to our cause' %}
+{% set donationsPPno = 'AbkE2e7ZwQgwLPFzVowC2cKm' %}
+
+
+{% if config['donations-special'] is defined %}
+    {% if config['donations-special']['support'] is defined and config['donations-special']['support'] != '' %}
+        {% set donationsSupport = config['donations-special']['support'] %}
+    {% endif %}
+    {% if config['donations-special']['image'] is defined and config['donations-special']['image'] != '' %}
+        {% set donationsImage = config['donations-special']['image'] %}
+    {% endif %}
+    {% if config['donations-special']['amount'] is defined and config['donations-special']['amount'] != '' %}
+        {% set donationsAmount = config['donations-special']['amount'] %}
+    {% endif %}
+    {% if config['donations-special']['text'] is defined and config['donations-special']['text'] != '' %}
+        {% set donationsText = config['donations-special']['text'] %}
+    {% endif %}
+    {% if config['donations-special']['cause'] is defined and config['donations-special']['cause'] != '' %}
+        {% set donationsCause = config['donations-special']['cause'] %}
+    {% endif %}
+    {% if config['donations-special']['press-patron'] is defined and config['donations-special']['press-patron'] != '' %}
+        {% set donationsPPno = config['donations-special']['press-patron'] %}
+    {% endif %}
+{% endif %}
+
+
+
+<main id="main" class="" role="main">
+
+    <div class="c-donations-special__header  u-margin-top-30">
+        <a class="c-donations-special__nr-logo" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <img src="{{networkData.templatePath}}/static/images/nr-logo.svg" alt="logo" class="mobile-logo">
+        </a>
+        <a class="c-donations-special__close" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
+            <div class="o-close donations__close-icon"></div>
+        </a>
+    </div>
+    <div class="c-donations-special__container">
+        <div class="container u-margin-top-60 u-mobile-margin-top-25">
+
+            <div class="row c-donations-special">
+                <div class="col-lg-5">
+                    <h1 class="c-donations-special__title c-donations-special__title--white">{{donationsSupport}}</h1>
+                    {% if donationsImage is defined and donationsImage != '' %}
+                        <image class="c-donations-special__image d-none d-md-block u-margin-top-30" src="{{donationsImage}}">
+                    {% endif %}
+                </div>
+
+                <div class="col-md-7">
+                    {% for i in donationsText %}
+                        {% if loop.index == 1 %}
+                            <p class="c-donations-special__text u-font-weight-bold u-mobile-margin-bottom-10">{{i}}</p>
+                        {% else %}
+                            <p class="c-donations-special__text u-mobile-margin-bottom-10">{{i}}</p>
+                        {% endif %}
+
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="row c-supporter-special u-margin-top-40 justify-content-end">
+            <div class="col-12 col-lg-7">
+                <h1 class="c-supporter-special__title">{{donationsCause}}</h1>
+            </div>
+            <div class="col-lg-7 justify-content-center">
+
+                {% if donations == "nr" %}
+                    {% for i in donationsAmount %}
+                        {% if i == 0 %}
+                            <button class="c-supporter-special__button c-supporter-special__button--black j-donation u-mobile-margin-top-20{% if loop.index in [2,3,5,6] %} c-supporter-special__button--space{% endif %}{% if loop.index > 3 %} u-margin-top-20{% endif %}">Pay what you want</a>
+                        {% else %}
+                            <button data-amount="{{i}}0" class="c-supporter-special__button j-donation u-mobile-margin-top-20{% if loop.index in [2,3,5,6] %} c-supporter-special__button--space{% endif %}{% if loop.index > 3 %} u-margin-top-20{% endif %}">Donate ${{i}}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for i in donationsAmount %}
+                        {% if i == 0 %}
+                            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t={{donationsPPno}}" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="c-supporter-special__button c-supporter-special__button--black{% if loop.index in [2,3,5,6] %} c-supporter-special__button--space{% endif %} u-mobile-margin-top-20{% if loop.index > 3 %} u-margin-top-20{% endif %}" rel="noopener">Pay what you want</a>
+                        {% else %}
+                            <a href="https://dashboard.presspatron.com/donations/new?frame=1&t={{donationsPPno}}" data-pp-page="checkout" data-pp-amount="{{i}}" data-pp-metadata="membership-pwyw" target="_blank" class="c-supporter-special__button{% if loop.index in [2,3,5,6] %} c-supporter-special__button--space{% endif %} u-mobile-margin-top-20{% if loop.index > 3 %} u-margin-top-20{% endif %}" rel="noopener">Donate ${{i}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+
+        
+
+
+
+
+
+    </div>
+
+
+
+
+ 
+
+ 
+
+
+    <div class="container">
+        <div class="row faq u-margin-top-60">
+            <h1 class="col-12 faq__title">FAQs</h1>
+
+            <div class="col-12">
+                <div class="faq__question-box d-flex flex-row">
+                    <div class="faq__container">
+                        <p class="faq__question u-font-bold">What is the difference between making a donation and subscribing to Newsroom Pro?</p>
+                        <div class="faq__answer-container u-hide">
+                            <p class="faq__answer">Great question, because both support Newsroom’s journalism. Donations can be any amount or frequency and all donations help Newsroom keep its journalism free for everyone to read. Newsroom Pro is our subscription service curated by Jonathan Milne, which you can find out more about <a href="{{networkData.defaultBlogUrl}}/prosubscribe">here</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="faq__question-box d-flex flex-row">
+                    <div class="faq__container">
+                        <p class="faq__question u-font-bold">What’s the best way to keep Newsroom sustainable?</p>
+                        <div class="faq__answer-container u-hide">
+                            <p class="faq__answer">Donations of any kind are gratefully accepted but monthly donations go a long way towards ensuring we can continue our work into the future – and you can cancel your monthly payment any time.</p>
+                        </div>
+                    </div>
+                    <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+                <div class="faq__question-box d-flex flex-row">
+                    <div class="faq__container">
+                        <p class="faq__question u-font-bold">Why does Newsroom need donations anyway? Don’t you have sponsors?</p>
+                        <div class="faq__answer-container u-hide">
+                            <p class="faq__answer">Yes, we do have some wonderful sponsors and corporate partners who make a huge difference in keeping Newsroom running but unfortunately it’s not enough to keep us operating. Reader donations are absolutely critical to supporting our journalists as they work to uncover the stories that matter.</p>
+                        </div>
+                    </div>
+                    <div class="faq__button"><div class="faq__arrow-container "><div class="o-arrow"></div></div> </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    
+
+
+</main>
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var hiddenWriters = $('#hidden-writers');
+
+        $('#viewall').on('click', function(e) {
+            $this = $(this);
+            if ($this.text().trim() === "View all") {
+                $this.text("View less");
+            } else {
+                $this.text("View all");
+            }
+            hiddenWriters.toggleClass('u-hide');
+        });
+
+
+        $('.faq__button').on('click', function(e) {
+
+            close = true;
+            var box = $(e.target).closest('div.faq__question-box');
+            if (box.hasClass('faq__question-box--open')) {
+                close = false;
+            }
+
+
+            var boxes = $('div.faq__question-box');
+            boxes.removeClass('faq__question-box--open');
+
+            var questions = $('.faq__question');
+            questions.removeClass('faq__question--open');
+
+            var answers = $('.faq__answer-container');
+            answers.addClass('u-hide').removeClass('faq__answer-container--open');
+            
+            var arrows = $('.faq__arrow-container');
+            arrows.removeClass('faq__arrow-container--up');
+
+            var question = box.find('.faq__question');
+            var clickedArrow = box.find('.faq__arrow-container');
+            var clickedAnswer = box.find('.faq__answer-container');
+
+            if (close) {
+                box.addClass('faq__question-box--open');
+                question.addClass('faq__question--open');
+                clickedAnswer.removeClass('u-hide').addClass('faq__answer-container--open');
+                clickedArrow.addClass('faq__arrow-container--up');
+            }
+
+        });
+
+    });
+</script>
+
+            {# html += '<button class="btn u-margin-right-10" data-product_id="'+ productId + '" data-price_id="'+ r.data[j].id+'">$'+ (r.data[j].unit_amount / 100 )+' </button>'; #}
+
+            {# console.log("price", r.data[j]); #}
+    {# stripe.redirectToCheckout({
+                            sessionId: r.sessionId
+                            })
+                            .then(handleResult);
+                        }); #}
+
+
+
+        {# console.log('creating session');
+        Acme.server.create('/api/paywall/checkout-session', {}).done( function(r) {
+            console.log(r);
+        }); #}
