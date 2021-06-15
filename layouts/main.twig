@@ -69,7 +69,7 @@
         {% elseif not _User.isAdminUser() %}
             {% set redir = _Page.setHttpRedirects(
                 {
-                    '|^/subscribe*|'        : networkData.defaultBlogUrl ~ '/prosubscribe',
+                    '|^/subscribe/.*|'        : networkData.defaultBlogUrl ~ '/prosubscribe',
                 }, false) 
             %} 
         {% endif %}
