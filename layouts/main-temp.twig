@@ -15,6 +15,13 @@
     }, true) 
 %} 
 
+{% set redir = _Page.setHttpRedirects(
+    {
+        '|^/subscribe*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
+        
+    }, false) 
+%}
+
 
 {% set networkData   = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
@@ -47,6 +54,12 @@
     
         {% set showPaywall = true %}
         {% set layout = "layout-marketing" %}
+{% elseif not _User.isAdminUser() %}
+    {% set redir = _Page.setHttpRedirects(
+        {
+            '|^/subscribe/.*|'        : networkData.defaultBlogUrl ~ '/prosubscribe',
+        }, false) 
+    %} 
     
 {% endif %}
  
