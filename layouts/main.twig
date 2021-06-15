@@ -9,8 +9,16 @@
         '|^/assets.*|'       : 'http://service.newsroom.co.nz',
         '|^/users.*|'        : 'http://service.newsroom.co.nz',
         '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
+        
     }, true) 
 %} 
+
+{% set redir = _Page.setHttpRedirects(
+    {
+        '|^/subscribe.*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
+        
+    }, false) 
+%}
 
 
 {% set networkData   = _Network.getNetworkData() %}
@@ -66,12 +74,6 @@
                         
                     }, false) 
                 %} 
-        {% elseif not _User.isAdminUser() %}
-            {% set redir = _Page.setHttpRedirects(
-                {
-                    '|^/subscribe.*|'        : networkData.defaultBlogUrl ~ '/prosubscribe',
-                }, false) 
-            %} 
         {% endif %}
 
 

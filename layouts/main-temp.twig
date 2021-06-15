@@ -15,6 +15,13 @@
     }, true) 
 %} 
 
+{% set redir = _Page.setHttpRedirects(
+    {
+        '|^/subscribe.*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
+        
+    }, false) 
+%}
+
 
 {% set networkData   = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
