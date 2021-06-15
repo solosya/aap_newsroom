@@ -17,7 +17,7 @@
 
 {% set redir = _Page.setHttpRedirects(
     {
-        '|^/subscribe.*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
+        '|^/subscribe/.*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
         
     }, false) 
 %}
