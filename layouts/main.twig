@@ -9,14 +9,12 @@
         '|^/assets.*|'       : 'http://service.newsroom.co.nz',
         '|^/users.*|'        : 'http://service.newsroom.co.nz',
         '|^/feeds.*|'        : 'http://service.newsroom.co.nz',
-        
     }, true) 
 %} 
 
 {% set redir = _Page.setHttpRedirects(
     {
-        '|^/subscribe*|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
-        
+        '|^/subscribe/?$|'    : _AppHelper.getBaseUrl() ~ '/prosubscribe',
     }, false) 
 %}
 
