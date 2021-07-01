@@ -388,10 +388,10 @@
                                     {{ contentPartOne  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
                                             | raw }}
-                                    {{this.render('/partials/cta-body.twig', {
+                                    {# {{this.render('/partials/cta-body.twig', {
                                         networkData: networkData,
                                         config: config
-                                    }) | raw}}
+                                    }) | raw}} #}
                                     {{ contentPartTwo  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
                                             | raw }}
@@ -647,11 +647,11 @@
                             
                             {% endif %}
 
-                            {# {{this.render('/partials/cta-side.twig', {
+                            {{this.render('/partials/cta-side.twig', {
                                 networkData: networkData,
                                 config: config,
                                 extraClass: 'd-none d-lg-flex'
-                            }) | raw}} #}
+                            }) | raw}}
 
                             {% if relatedArticles | length > 0 %}
                             <section class="col-sm-12 recent-articles" data-proid="{{proBlogId}}">
