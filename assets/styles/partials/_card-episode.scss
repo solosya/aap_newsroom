@@ -13,18 +13,20 @@
             height:110px;
             -webkit-flex: 0 0 116px;
             flex: 0 0 116px;
-            &:before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                @include translate(-50%, -50%);
-                display: block;
-                @include size(56px);
-                background-image: url('../images/play-icon.svg');
-                background-repeat: no-repeat;
-                background-size:cover;
-                z-index: 15;
+            &.video {
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    @include translate(-50%, -50%);
+                    display: block;
+                    @include size(56px);
+                    background-image: url('../images/play-icon.svg');
+                    background-repeat: no-repeat;
+                    background-size:cover;
+                    z-index: 15;
+                }
             }
         }
 

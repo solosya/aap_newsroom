@@ -375,6 +375,24 @@ p.foundingpartners {
                 }
             }
 
+            &.sponsor-spark {
+                width:160px;
+                height:59px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                
+                margin-left: 50px;
+                
+                margin-top: 15px;
+                @media #{$tablet}{
+                    margin-left: 30px;
+                }
+                @media screen and (max-width: $mobile-break){
+                   
+                    margin-left: 0;
+                }
+            }
+
             &.sponsor-vic-uni-wellington {
                 width:200px;
                 height:50px;

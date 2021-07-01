@@ -8080,6 +8080,19 @@ p.foundingpartners {
         @media screen and (max-width: 620px) {
           .sponsor-logos ul li.sponsor-catalyst {
             margin-right: 0; } }
+      .sponsor-logos ul li.sponsor-spark {
+        width: 160px;
+        height: 59px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 50px;
+        margin-top: 15px; }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+          .sponsor-logos ul li.sponsor-spark {
+            margin-left: 30px; } }
+        @media screen and (max-width: 620px) {
+          .sponsor-logos ul li.sponsor-spark {
+            margin-left: 0; } }
       .sponsor-logos ul li.sponsor-vic-uni-wellington {
         width: 200px;
         height: 50px;
@@ -26782,7 +26795,7 @@ body.channel.supporters p {
         height: 110px;
         -webkit-flex: 0 0 116px;
         flex: 0 0 116px; }
-        .card-episode-mobile .c-cards-view__media:before {
+        .card-episode-mobile .c-cards-view__media.video:before {
           content: '';
           position: absolute;
           left: 50%;
@@ -26871,7 +26884,7 @@ body.channel.supporters p {
         height: 110px;
         -webkit-flex: 0 0 116px;
         flex: 0 0 116px; }
-        .card-episode-tablet .c-cards-view__media:before {
+        .card-episode-tablet .c-cards-view__media.video:before {
           content: '';
           position: absolute;
           left: 50%;
@@ -26960,7 +26973,7 @@ body.channel.supporters p {
         height: 110px;
         -webkit-flex: 0 0 116px;
         flex: 0 0 116px; }
-        .card-episode-desktop .c-cards-view__media:before {
+        .card-episode-desktop .c-cards-view__media.video:before {
           content: '';
           position: absolute;
           left: 50%;
@@ -27049,7 +27062,7 @@ body.channel.supporters p {
         height: 110px;
         -webkit-flex: 0 0 116px;
         flex: 0 0 116px; }
-        .card-episode-desktop-lg .c-cards-view__media:before {
+        .card-episode-desktop-lg .c-cards-view__media.video:before {
           content: '';
           position: absolute;
           left: 50%;
