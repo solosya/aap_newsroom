@@ -153,8 +153,11 @@ export default class AdLoader {
             const inventory =  document.getElementById(slotId);
             
             invSlot = self.AccountNumber + adsection;
+            var theAdSection = true;
+            console.log(invSlot);
             if (adsection == ''){
                 invSlot = self.AccountNumber + inventory.dataset.inventory;
+                theAdSection = false;
             } 
 
             //set the POS
@@ -185,6 +188,10 @@ export default class AdLoader {
                 .setTargeting('POS', [pos])
                 .defineSizeMapping(mapping)
                 .addService(googletag.pubads());
+
+                if (theadSection){
+                    console.log(invSlot);
+                }
             
             googletag.cmd.push(function() { googletag.display(slotId); });
         });
