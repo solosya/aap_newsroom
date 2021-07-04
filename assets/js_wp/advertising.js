@@ -189,7 +189,7 @@ export default class AdLoader {
                 .defineSizeMapping(mapping)
                 .addService(googletag.pubads());
 
-                if (theadSection){
+                if (theAdSection){
                     console.log(invSlot);
                 }
             
