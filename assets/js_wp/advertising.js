@@ -110,12 +110,13 @@ export default class AdLoader {
         let adsection = '';
         let invSlot = null;
 
-        //set values of the page if the data items exist
+        //set values of the page if the data items exist 
+        // had to redefine this variable as it wasn't available to this function for some reason
         const keyWordElement = document.getElementById('ad-keywords');
-        console.log('keywordelement',keyWordElement);
+        
         if (keyWordElement){
             const dataset = keyWordElement.dataset;
-            console.log(dataset);
+           
             keyword  = dataset.keywords;
             pageName = dataset.pagename.replace(/ /g,"_");
             pageType = dataset.pagetype;
@@ -156,11 +157,10 @@ export default class AdLoader {
             const inventory =  document.getElementById(slotId);
             
             invSlot = self.AccountNumber + adsection;
-            var theAdSection = true;
-            console.log(invSlot);
+            
             if (adsection == ''){
                 invSlot = self.AccountNumber + inventory.dataset.inventory;
-                theAdSection = false;
+                
             } 
 
             //set the POS
@@ -192,9 +192,7 @@ export default class AdLoader {
                 .defineSizeMapping(mapping)
                 .addService(googletag.pubads());
 
-                if (theAdSection){
-                    console.log(invSlot);
-                }
+                
             
             googletag.cmd.push(function() { googletag.display(slotId); });
         });
