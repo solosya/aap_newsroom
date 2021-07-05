@@ -113,6 +113,7 @@ export default class AdLoader {
         //set values of the page if the data items exist
         if (this.keyWordsElem){
             const dataset = this.keyWordsElem.dataset;
+            console.log(dataset);
             keyword  = this.keywords;
             pageName = dataset.pagename.replace(/ /g,"_");
             pageType = dataset.pagetype;
