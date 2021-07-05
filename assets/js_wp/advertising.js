@@ -111,11 +111,12 @@ export default class AdLoader {
         let invSlot = null;
 
         //set values of the page if the data items exist
-        console.log('keywordelement',this.keyWordElement);
-        if (this.keyWordElement){
-            const dataset = this.keyWordElement.dataset;
+        const keyWordElement = document.getElementById('ad-keywords');
+        console.log('keywordelement',keyWordElement);
+        if (keyWordElement){
+            const dataset = keyWordElement.dataset;
             console.log(dataset);
-            keyword  = this.keywords;
+            keyword  = dataset.keywords;
             pageName = dataset.pagename.replace(/ /g,"_");
             pageType = dataset.pagetype;
             pageTag  = dataset.pagetag;
