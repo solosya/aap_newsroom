@@ -111,7 +111,7 @@ export default class AdLoader {
         let invSlot = null;
 
         //set values of the page if the data items exist
-        console.log('keywordelement',keyWordElement);
+        console.log('keywordelement',this.keyWordElement);
         if (this.keyWordElement){
             const dataset = this.keyWordElement.dataset;
             console.log(dataset);
