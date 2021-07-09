@@ -304,10 +304,10 @@
 
                                 <div class="articleTimes">
 
-                                    {% set publishDateTime = article.publishedDateTime | replace({" ": "T"}) %}
-                                    <time itemprop="datePublished" datetime="{{publishDateTime}}">{{ publishDate | upper }}</time>
+                                    {% set publishDateTime = article.publishedDateTime | replace({" ", "T"}) %}
+                                    <time itemprop="datePublished" datetime="{{publishDateTime}}">First published {{ publishDate | upper }}</time>
                                     {% if updated %}
-                                        {% set updateDateTime = article.updatedDateTime | replace({" ": "T"}) %}
+                                        {% set updateDateTime = article.updatedDateTime | replace({" ", "T"}) %}
                                         <time itemprop="dateModified" datetime="{{updateDateTime}}" class="updated">Updated {{ updateDate | capitalize }}</time>
                                     {% endif %}
                                 </div>
