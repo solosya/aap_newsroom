@@ -22,7 +22,7 @@
                 <img src="{{profileImage}}" class="author-profile__image img-fluid">
                 
                 <div class="inner-descr">
-                    <h4 class="user-name author-profile__user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h4>
+                    <h4 class="user-name author-profile__user-name">{{user.firstname | raw}} {{user.lastname | raw}}</h4>
 
                     <a class="mail-icon author-profile__mail-icon" href="mailto:{{user.email}}"></a>
 
