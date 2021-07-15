@@ -19,3 +19,21 @@
 	}
 }
 
+.c-search__head {
+	margin-bottom: 40px;
+	.search-page__header {
+		margin-bottom: 15px;
+	}
+	&__search-string {
+		@include font-size(18);
+		font-family: $font-family-sans-serif;
+		.c-search__name {
+			font-family: $font-family-sans-serif;
+			font-weight: 600;
+		}
+	}
+	@media #{$mobile} {
+		margin-bottom: 20px;
+	}
+}
+
