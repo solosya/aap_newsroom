@@ -7,15 +7,15 @@
 var gulp = require("gulp");
 var concat = require("gulp-concat");
 // var webpack     = require('webpack-stream');
-var uglify = require("gulp-uglify");
-var gp_rename = require("gulp-rename");
-var gutil = require("gulp-util");
-var sass = require("gulp-sass");
-var sourcemaps = require("gulp-sourcemaps");
-var minifyCss = require("gulp-clean-css");
-var hasher = require("gulp-hasher");
-var buster = require("gulp-cache-buster");
-var terser = require("gulp-terser");
+var uglify      = require('gulp-uglify');
+var gp_rename   = require("gulp-rename");
+var gutil       = require('gulp-util');
+var sass        = require("gulp-sass")(require("sass"));
+var sourcemaps  = require('gulp-sourcemaps');
+var minifyCss   = require('gulp-clean-css');
+var hasher      = require('gulp-hasher');
+var buster      = require('gulp-cache-buster');
+var terser      = require('gulp-terser');
 
 // // var replace     = require('gulp-replace');
 
@@ -106,9 +106,11 @@ gulp.task("scripts-concat", function () {
   );
 });
 
-gulp.task("watch", function () {
-  gulp.watch("./assets/styles/**/*.scss", gulp.series(["styles"]));
-  gulp.watch("./assets/scripts/**/*.js", gulp.series(["scripts"]));
+
+
+gulp.task('watch', function (){
+    gulp.watch('./assets/styles/**/*.scss', gulp.series(['styles']));
+    gulp.watch('./assets/scripts/**/*.js', gulp.series(['scripts']));
 });
 
 gulp.task(

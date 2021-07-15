@@ -17,8 +17,14 @@
         <section class="card-group search-page__container">
             <div class="container">
                 <div class="row clearfix">
-                    <h1 class="search-page__header col-md-12">Search Results</h1>
-                    
+                    <div class="c-search__head col-12">
+                        <h1 class="search-page__header">Search Results</h1>
+                        <div class="c-search__head__search-string">
+                            {% set resultString = firstCount < 2 ? 'result' : 'results' %}
+                            Showing <span>{{firstCount}}</span>  {{resultString}} for '<span class="c-search__name">{{search | raw}}</span>'
+                        </div>
+                    </div>
+
                     {% for i in 0..20 %}
                         {% if articles[i] %}                                                                
                             {{this.render('partials/_single-article.twig', {
