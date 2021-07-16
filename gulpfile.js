@@ -113,7 +113,7 @@ gulp.task('scripts-concat', function(){
 
 gulp.task('watch', function (){
     gulp.watch('./assets/styles/**/*.scss', gulp.series(['styles']));
-    gulp.watch('./assets/scripts/**/*.js', gulp.series(['scripts']));
+    // gulp.watch('./assets/scripts/**/*.js', gulp.series(['scripts']));
 });
 
 gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', function (done) {
