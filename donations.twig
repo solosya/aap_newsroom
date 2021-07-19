@@ -10,6 +10,10 @@
     {% set donations = config.donations %}
 {% endif %}
 
+{% set donations_img = "" %}
+{% if config.donations_page is defined and config.donations_page.main_image is defined and config.donations_page.main_image  %}
+    {% set donations_img = config.donations_page.main_image %}
+{% endif %}
 
 
 {% set guestUser = _User.isGuest() %}
@@ -53,6 +57,10 @@
         <div class="row donations">
             <div class="col-lg-5">
                 <h1 class="donations__title d-lg-none"><span class="donations__title--red">Support</span> Newsroom's journalism</h1>
+                {% if donations_img %}
+                    <img src="{{donations_img}}" class="donations__main-image d-none d-lg-block" alt="donation">
+                {% endif %}
+
             </div>
 
             <div class="col-12 d-md-none justify-content-center">
