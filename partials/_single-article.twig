@@ -47,6 +47,7 @@
     {% if publishedAgo < 86400 %}
         {% set publishDate = _AppHelper.getRelativeTime(publishedDateTime) ~ " ago" %}
     {% endif %}
+    {% set updatedDate = article.updatedDateTime |date("M d Y", false) %}
 
 
     {% set isPinned = article.isPinned == 1 ? "Pinned" : "Unpinned" %}
@@ -131,7 +132,6 @@
         {% set containerClass = 'featured' %}
     {% endif %} 
 
-
     <div class="{{containerClass}}{{invLabel}}" data-title="{{ articleTitle | raw }}">
         
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
@@ -188,7 +188,7 @@
 
                     <div class="{{params.cardType}}c-cards-view__bottom">
                         <div class="{{params.cardType}}c-cards-view__author-name author">{{author | raw}}</div><!-- .author-->
-                        <time class="{{params.cardType}}c-cards-view__time" datetime="">{{publishDate}}</time>
+                        <time class="{{params.cardType}}c-cards-view__time" datetime="">{{updatedDate}}</time>
                     </div>
 
                 </div>
