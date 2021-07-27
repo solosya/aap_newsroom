@@ -47,16 +47,13 @@
     {% if publishedAgo < 86400 %}
         {% set publishDate = _AppHelper.getRelativeTime(publishedDateTime) ~ " ago" %}
     {% endif %}
-
+    
     {% set updatedDateTime = article.updatedDateTime %}
     {% set updatedDate = article.updatedDateTime |date("M d Y", false) %}
     {% set updatededAgo = _AppHelper.getSecondsSincePublished(article.updatedDateTime) %}
     {% if updatededAgo < 86400 %}
         {% set updatedDate = _AppHelper.getRelativeTime(article.updatedDateTime) ~ " ago" %}
     {% endif %}
-
-
-
 
     {% set isPinned = article.isPinned == 1 ? "Pinned" : "Unpinned" %}
     {% set pinned_position = "" %}
@@ -196,7 +193,7 @@
 
                     <div class="{{params.cardType}}c-cards-view__bottom">
                         <div class="{{params.cardType}}c-cards-view__author-name author">{{author | raw}}</div><!-- .author-->
-                        <time class="{{params.cardType}}c-cards-view__time" datetime="">{{updatedDate}}</time>
+                        <time class="{{params.cardType}}c-cards-view__time" datetime="">{{publishDate}}</time>
                     </div>
 
                 </div>
