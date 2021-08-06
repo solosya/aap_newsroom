@@ -171,6 +171,15 @@ h4.modal-title {
     &:focus{    
         color: #FFF;
     }
+    @media #{$mobile}{
+        padding: 4px 8px;
+        &.icon-facebook{
+            &:before{
+                font-size: 15px;
+            }
+        }
+    }
+
 }
 
 .btn-tweet{
@@ -188,6 +197,17 @@ h4.modal-title {
     &:focus{    
         color: #FFF;
     }
+    @media #{$mobile}{
+        padding: 0 5.5px;
+        &.icon-tweet{
+            &:before{
+                position: relative;
+                top: 1px;
+                font-size: 15px;
+                left: 0;
+            }
+        }
+    }
 }
 
 .btn-linkedin{
@@ -204,6 +224,15 @@ h4.modal-title {
     &:hover,
     &:focus{    
         color: #FFF;
+    }
+
+    @media #{$mobile}{
+        padding: 2px 7px;
+        &.icon-linkedin{
+            &:before{
+                font-size: 13px;
+            }
+        }
     }
 }
 
@@ -237,6 +266,14 @@ h4.modal-title {
     &:hover,
     &:focus{    
         color: #FFF;
+    }
+    @media #{$mobile}{
+        padding: 5px 10px 4px 5px;
+        &.icon-linkedin{
+            &:before{
+                font-size: 12px;
+            }
+        }
     }
 }
 
