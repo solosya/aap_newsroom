@@ -11000,6 +11000,14 @@ h4.modal-title {
 .btn-post:hover, .btn-post:focus {
   color: #FFF;
 }
+@media screen and (max-width : 767px) {
+  .btn-post {
+    padding: 4px 8px;
+  }
+  .btn-post.icon-facebook:before {
+    font-size: 15px;
+  }
+}
 
 .btn-tweet {
   background-color: #21b0ee;
@@ -11016,6 +11024,17 @@ h4.modal-title {
 .btn-tweet:hover, .btn-tweet:focus {
   color: #FFF;
 }
+@media screen and (max-width : 767px) {
+  .btn-tweet {
+    padding: 0 5.5px;
+  }
+  .btn-tweet.icon-tweet:before {
+    position: relative;
+    top: 1px;
+    font-size: 15px;
+    left: 0;
+  }
+}
 
 .btn-linkedin {
   background-color: #21b0ee;
@@ -11031,6 +11050,14 @@ h4.modal-title {
 }
 .btn-linkedin:hover, .btn-linkedin:focus {
   color: #FFF;
+}
+@media screen and (max-width : 767px) {
+  .btn-linkedin {
+    padding: 2px 7px;
+  }
+  .btn-linkedin.icon-linkedin:before {
+    font-size: 13px;
+  }
 }
 
 .btn-share {
@@ -11061,6 +11088,14 @@ h4.modal-title {
 }
 .btn-email:hover, .btn-email:focus {
   color: #FFF;
+}
+@media screen and (max-width : 767px) {
+  .btn-email {
+    padding: 5px 10px 4px 5px;
+  }
+  .btn-email.icon-linkedin:before {
+    font-size: 12px;
+  }
 }
 
 span.leadsentence {
@@ -24670,9 +24705,19 @@ input[type=radio].inline {
   margin-bottom: 17px;
   height: 30px;
 }
+@media screen and (max-width : 767px) {
+  .article article.article-main .page-content .content-block-top {
+    margin-top: 10px;
+  }
+}
 .article article.article-main .page-content .content-block-top div.articleTimes {
   float: right;
   text-align: right;
+}
+@media screen and (max-width : 767px) {
+  .article article.article-main .page-content .content-block-top div.articleTimes {
+    margin-top: 8px;
+  }
 }
 .article article.article-main .page-content .content-block-top div.articleTimes time {
   display: block;
