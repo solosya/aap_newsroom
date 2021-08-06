@@ -47,10 +47,17 @@
             .content-block-top {
                 margin-bottom: 17px;
                 height:30px;
+                @media #{$mobile}{
+                    margin-top: 10px;
+                }
 
                 div.articleTimes {
                     float: right;
                     text-align:right;
+                    @media #{$mobile}{
+                        margin-top: 8px;
+                    }
+                    
 
                     time {
                         display:block;
