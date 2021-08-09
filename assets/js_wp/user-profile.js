@@ -674,10 +674,10 @@ UserProfileController.prototype.events = function ()
 
                     const formdata = {"stripetoken":result.token.id}
                     Server.create(_appJsConfig.baseHttpPath + '/user/update-payment-details', formdata).done((r) => {
-                        // console.log(r);
                         self.modal.closeWindow();
-                        // location.reload();
-
+                        if (r.success === true) {
+                            location.reload();
+                        }
                     });
                 }
             });
