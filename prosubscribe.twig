@@ -153,6 +153,9 @@
                 <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
                 <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
             </picture>
+            <picture class="d-none d-md-flex ml-3 mt-n2">
+                <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
+            </picture>
         </a>
 
         <button id="signinBtn" type="submit" class="_btn _btn--black  paywall__signin">SIGN IN</button>
@@ -163,12 +166,14 @@
     </div>
 
 
-
     <section class="paywall-banner j-paywall-banner"
     {% if paywallSettings['image']['deskUrl'] is defined and paywallSettings['image']['deskUrl'] != '' %}
         style="background-image: none;"
     {% endif %}
     >
+        <picture class="d-block d-md-none m-3">
+            <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
+        </picture>
         <div class="paywall-banner__content container u-desktop-padding-bottom-20 u-tablet-padding-bottom-20 u-mobile-large-padding-bottom-20">
             <div class="row">
                 <div class="col-lg-12 ">
