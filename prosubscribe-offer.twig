@@ -88,6 +88,9 @@
                 <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
                 <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
             </picture>
+            <picture class="d-none d-md-flex ml-3 mt-n2">
+                <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
+            </picture>
         </a>
 
         {# <a class="paywall__logo-atlantic u-mobile-margin-left-30 u-tablet-margin-left-40 u-desktop-margin-left-60" target="_blank" href="https://www.theatlantic.com/" rel="Home" tabindex="-1" title="Home">
@@ -105,6 +108,9 @@
     </div>
 
 
+    <picture class="paywall-offers__logo d-block d-md-none mt-3">
+        <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
+    </picture>
 
     <section class="paywall-offer-banner j-paywall-banner"
     {% if paywallSettings['offer-image']['deskUrl'] is defined and paywallSettings['offer-image']['deskUrl'] != '' %}
