@@ -25,7 +25,7 @@
         height: 40px;
         padding-right: 2.5px;
         @media  #{$desktop-up}{
-            padding-right: 20px;
+            padding: 10px 30px;
         }
         @media  #{$mobile}{
             margin-bottom: 15px;
@@ -47,6 +47,11 @@
         float: right;
         margin-top: 5px;
         margin-right: 10px;
+        @media  #{$desktop-up}{
+            @include font-size(12);
+            float: left;
+            margin-left: 20px;
+        }
         @media  #{$mobile}{
             @include font-size(10);
             margin-right: 5px;
@@ -60,6 +65,11 @@
         float: right;
         margin-right: -20px;
         // margin-left: -8px;
+        @media  #{$desktop-up}{
+            height: 63px;
+            float: left;
+            margin-right: 20px;
+        }
         @media  #{$mobile}{
             height: 24px;
             margin: 0;
