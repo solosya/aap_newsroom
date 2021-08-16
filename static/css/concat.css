@@ -19510,6 +19510,113 @@ input[type=radio].inline {
   }
 }
 
+.aklive-section__channel {
+  padding-bottom: 10px;
+  height: 40px;
+  padding-right: 2.5px;
+  margin-top: -65px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width : 768px) and (max-width : 991px) {
+  .aklive-section__channel {
+    margin-bottom: 15px;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__channel {
+    margin-top: 0;
+    margin-bottom: 15px;
+    height: 25px;
+    padding-right: 0;
+    width: fit-content;
+    margin-left: 25px;
+  }
+}
+.aklive-section__article {
+  padding-bottom: 10px;
+  border-bottom: solid 1px #dadada;
+  margin-bottom: 40px;
+  height: 40px;
+  padding-right: 2.5px;
+}
+@media screen and (min-width : 992px) {
+  .aklive-section__article {
+    padding-right: 20px;
+  }
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__article {
+    margin-bottom: 15px;
+    height: 45px;
+    padding-right: 0;
+    margin-top: 10px;
+  }
+}
+@media screen and (min-width : 768px) and (max-width : 991px) {
+  .aklive-section__article {
+    margin-top: -45px;
+    margin-bottom: 15px;
+    padding-right: 0;
+  }
+}
+.aklive-section__arttext {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  color: #000000;
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__arttext {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+}
+.aklive-section__artlogo {
+  height: 30px;
+  float: right;
+  margin-right: -20px;
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__artlogo {
+    height: 24px;
+    margin: 0;
+  }
+}
+.aklive-section__chatext {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  color: #000000;
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__chatext {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    margin-right: 5px;
+  }
+}
+.aklive-section__chalogo {
+  height: 35px;
+  float: right;
+  margin-right: 0;
+  margin-left: 5px;
+}
+@media screen and (max-width : 767px) {
+  .aklive-section__chalogo {
+    height: 42px;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width : 767px) {
   .rnz-widget {
     width: 100%;
