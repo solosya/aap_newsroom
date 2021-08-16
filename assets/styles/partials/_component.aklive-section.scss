@@ -26,6 +26,8 @@
         padding-right: 2.5px;
         @media  #{$desktop-up}{
             padding: 10px 30px;
+            border-top: solid 1px #dadada;
+            border-bottom: none;
         }
         @media  #{$mobile}{
             margin-bottom: 15px;
@@ -50,7 +52,8 @@
         @media  #{$desktop-up}{
             @include font-size(12);
             float: left;
-            margin-left: 20px;
+            margin: 25px 0px;
+        
         }
         @media  #{$mobile}{
             @include font-size(10);
