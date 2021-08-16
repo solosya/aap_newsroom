@@ -545,12 +545,11 @@
                             {% if not showPaywall %}
 
                                
-                                {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
-                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
-                                        <p class="catalyst-section__arttext">In association with</p>
+                                {% if articleBlog == 'puzzles' or blogName|lower == 'puzzles' or 'puzzles' in article.label | lower %}
+                                    <div class="aklive-section aklive-section__article d-none d-lg-block">
+                                        <img class="aklive-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/auckland-live_bw.png?v=1" alt="logo">
+                                        <p class="aklive-section__arttext">In association with</p>
                                     </div>
-                                
                                 {% endif %}
                                 {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
                                     <section class="ad sidebar-ad u-desktop-no-margin-top">
