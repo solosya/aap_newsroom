@@ -32,13 +32,13 @@
         @media  #{$mobile}{
             margin-bottom: 15px;
             height: 45px;
-            padding-right: 0;
+            padding-left: 20px;
             margin-top: 10px;
         }
         @media  #{$tablet}{
-            margin-top: -45px;
+            margin-top: -30px;
             margin-bottom: 15px;
-            padding-right: 0;
+            padding-left: 20px;
         }
     }
 
@@ -57,14 +57,19 @@
         }
         @media  #{$mobile}{
             @include font-size(10);
-            margin-right: 5px;
-            margin-top: 5px;
+            margin-left: 15px;
+            margin-top: 11px;
+        }
+        @media  #{$tablet}{
+            
+            float: left;
+            
         }
 
     }
 
     &__artlogo {
-        height: 30px;
+        height: 40px;
         float: right;
         margin-right: -20px;
         // margin-left: -8px;
@@ -76,6 +81,11 @@
         @media  #{$mobile}{
             height: 24px;
             margin: 0;
+        }
+        @media  #{$tablet}{
+            margin-right: 20px;
+            float: left;
+            
         }
     }
     &__chatext{
