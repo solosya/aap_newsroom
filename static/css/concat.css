@@ -19542,7 +19542,7 @@ input[type=radio].inline {
 }
 @media screen and (min-width : 992px) {
   .aklive-section__article {
-    padding-right: 20px;
+    padding: 10px 30px;
   }
 }
 @media screen and (max-width : 767px) {
@@ -19569,6 +19569,14 @@ input[type=radio].inline {
   margin-top: 5px;
   margin-right: 10px;
 }
+@media screen and (min-width : 992px) {
+  .aklive-section__arttext {
+    font-size: 0.75rem;
+    line-height: 0.9rem;
+    float: left;
+    margin-left: 20px;
+  }
+}
 @media screen and (max-width : 767px) {
   .aklive-section__arttext {
     font-size: 0.625rem;
@@ -19581,6 +19589,13 @@ input[type=radio].inline {
   height: 30px;
   float: right;
   margin-right: -20px;
+}
+@media screen and (min-width : 992px) {
+  .aklive-section__artlogo {
+    height: 63px;
+    float: left;
+    margin-right: 20px;
+  }
 }
 @media screen and (max-width : 767px) {
   .aklive-section__artlogo {
