@@ -1,0 +1,125 @@
+.aklive-section{
+    &__channel {
+        padding-bottom: 10px;
+        height: 40px;
+        padding-right: 2.5px;
+        margin-top: -65px;
+        margin-bottom: 10px;
+        @media  #{$tablet}{
+            margin-bottom: 15px;
+            padding-right: 0;
+        
+        }
+        @media  #{$mobile}{
+            margin-top: 0;
+            margin-bottom: 15px;
+            height: 25px;
+            padding-right: 0;
+            width: fit-content;
+            margin-left: 25px;
+        }
+    }
+    &__article{
+        padding-bottom: 10px;
+        border-bottom: solid 1px #dadada;
+        margin-bottom: 40px;
+        height: 40px;
+        padding-right: 2.5px;
+        @media  #{$desktop-up}{
+            padding: 10px 30px;
+            border-top: solid 1px #dadada;
+            border-bottom: none;
+        }
+        @media  #{$mobile}{
+            margin-bottom: 15px;
+            height: 45px;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        @media  #{$tablet}{
+            margin-top: -30px;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            height: 60px;
+        }
+    }
+
+    &__arttext{
+        @include font-size(16);
+        font-weight: 600;
+        color: #000000;
+        float: right;
+        margin-top: 5px;
+        margin-right: 10px;
+        @media  #{$desktop-up}{
+            @include font-size(12);
+            float: left;
+            margin: 25px 0px;
+        
+        }
+        @media  #{$mobile}{
+            @include font-size(10);
+            margin-left: 15px;
+            margin-top: 11px;
+            float: left;
+        }
+        @media  #{$tablet}{
+            @include font-size(12);
+            
+            float: left;
+            margin-top: 18px;
+        }
+
+    }
+
+    &__artlogo {
+        height: 40px;
+        float: right;
+        margin-right: -20px;
+        // margin-left: -8px;
+        @media  #{$desktop-up}{
+            height: 63px;
+            float: left;
+            margin-right: 20px;
+        }
+        @media  #{$mobile}{
+            height: 35px;
+            margin: 0;
+            float: left;
+        }
+        @media  #{$tablet}{
+            margin-right: 20px;
+            float: left;
+            height: 50px;
+        
+        }
+    }
+    &__chatext{
+        @include font-size(16);
+        font-weight: 600;
+        color: #000000;
+        float: right;
+        margin-top: 5px;
+        margin-right: 10px;
+        @media  #{$mobile}{
+            @include font-size(10);
+            margin-right: 5px;
+            // margin-top: 5px;
+        }
+    
+    }
+    
+    &__chalogo {
+        height: 35px;
+        float: right;
+        margin-right: 0;
+        margin-left: 5px;
+        @media  #{$mobile}{
+            height: 42px;
+            margin: 0;
+        }
+    }
+}
+
+
+
