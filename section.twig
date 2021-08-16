@@ -26,6 +26,12 @@
     
 
 <section class="featured-slider channel container-fluid u-margin-top-40" data-test="section" data-blogName="{{blogData.title}}" data-blogGuid="{{blogData.guid}}">
+    {% if blogData.title|lower == 'puzzles' %}
+            <div class="aklive-section aklive-section__article d-none d-md-block">
+                <img class="aklive-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/auckland-live_bw.png?v=1" alt="logo">
+                <p class="aklive-section__arttext">Puzzles in association with Auckland Live</p>
+            </div>
+        {% endif %}
     <div class="container u-mobile-no-padding">
 
         {% if 'futurelearning' != blogData.title | lower %}
