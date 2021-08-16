@@ -293,10 +293,10 @@
 
                                 <div class="articleTimes">
 
-                                    {% set publishDateTime = article.publishedDateTime | replace(" ", "T") %}
+                                    {% set publishDateTime = article.publishedDateTime | replace({" ": "T"}) %}
                                     <time itemprop="datePublished" datetime="{{publishDateTime}}">{{ publishDate | upper }}</time>
                                     {% if updated %}
-                                        {% set updateDateTime = article.updatedDateTime | replace(" ", "T") %}
+                                        {% set updateDateTime = article.updatedDateTime | replace({" ": "T"}) %}
                                         <time itemprop="dateModified" datetime="{{updateDateTime}}" class="updated">Updated {{ updateDate | capitalize }}</time>
                                     {% endif %}
                                 </div>
@@ -352,15 +352,11 @@
                             <div itemprop="articleBody" class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                 <p itemprop="articleSection" class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                 
-                                {% if articleBlog == 'new auckland' %}
-                                    <div class="beca-section beca-section__article d-block d-lg-none">
-                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0" alt="logo">
-                                        <p class="beca-section__arttext">In association with</p>
-                                    </div>
-                                {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
-                                    <div class="catalyst-section catalyst-section__article d-block d-lg-none">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
-                                        <p class="catalyst-section__arttext">In association with</p>
+                                
+                                {% if articleBlog == 'puzzles' or blogName|lower == 'puzzles' or 'puzzles' in article.label | lower %}
+                                    <div class="aklive-section aklive-section__article d-block d-lg-none">
+                                        <img class="aklive-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/auckland-live_bw.png?v=1" alt="logo">
+                                        <p class="aklive-section__arttext">In association with</p>
                                     </div>
                                 {% endif %}
                                 
