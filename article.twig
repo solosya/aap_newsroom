@@ -18,8 +18,8 @@
 
 {# PIJF used in Google Tag Manager for NZ On Air to capture published data #}
 {% set pijf_code = null %}
-{% if article.additionalInfo is defined and article.additionalInfo.pijf_code is defined and article.additionalInfo.pijf_code != null %}
-    {% set pijf_code = article.additionalInfo.pijf_code %}
+{% if article.additionalInfo is defined and article.additionalInfo.pijf is defined and article.additionalInfo.pijf != null %}
+    {% set pijf_code = article.additionalInfo.pijf %}
 {% endif %}
 
 {% if pijf_name and pijf_code %}
