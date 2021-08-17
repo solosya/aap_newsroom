@@ -22,7 +22,7 @@
     {% set pijf_code = article.additionalInfo.pijf %}
 {% endif %}
 
-{% if pijf_name and pijf_code %}
+{% if pijf_code %}
     {% set register = _AppHelper.registerMetaTag({"name": "nzoa", "content": pijf_code}) %}
 {% endif %}
 
