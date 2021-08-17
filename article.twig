@@ -16,6 +16,22 @@
 {% endif %}
 
 
+{# PIJF used in Google Tag Manager for NZ On Air to capture published data #}
+{% set pijf_name = null %}
+{% set pijf_code = null %}
+{% if article.additionalInfo is defined and article.additionalInfo.pijf_name is defined and article.additionalInfo.pijf_name != null %}
+    {% set pijf_name = article.additionalInfo.pijf_name %}
+{% endif %}
+{% if article.additionalInfo is defined and article.additionalInfo.pijf_code is defined and article.additionalInfo.pijf_code != null %}
+    {% set pijf_code = article.additionalInfo.pijf_code %}
+{% endif %}
+
+{% if pijf_name and pijf_code %}
+    {% set register = _AppHelper.registerMetaTag({"name": pijf_name, "content": pijf_code}) %}
+{% endif %}
+
+
+
 
 
 {% set blogData         = _Blog.getBlog() %}
@@ -250,6 +266,12 @@
                 <meta itemprop="url" content="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
             </div>
         </div>
+        {% if articleBlog == 'puzzles' or blogName|lower == 'puzzles' or 'puzzles' in article.label | lower %}
+            <div class="aklive-section aklive-section__article">
+                <img class="aklive-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/auckland-live_bw.png?v=1" alt="logo">
+                <p class="aklive-section__arttext">Puzzles in association with Auckland Live</p>
+            </div>
+        {% endif %}
 
     {% if showPaywall %}
         <div class="article-pro__image-container">
