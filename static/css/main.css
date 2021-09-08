@@ -16079,10 +16079,12 @@ input[type=radio].inline {
     margin-right: 27px;
   }
   .c-cta-body__mail {
-    position: absolute;
+    position: absolute !important;
     right: 0;
     width: 31px;
     height: 19px;
+    transform: none !important;
+    left: unset !important;
   }
   .c-cta-body__tagline {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;

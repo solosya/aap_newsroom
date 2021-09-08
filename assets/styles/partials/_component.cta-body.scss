@@ -139,10 +139,12 @@
         }
 
         &__mail {
-            position:absolute;
-            right:0;
-            width:31px;
-            height:19px;
+            position: absolute !important;
+            right: 0;
+            width: 31px;
+            height: 19px;
+            transform: none !important;
+            left: unset !important;
         }
 
         &__tagline {
