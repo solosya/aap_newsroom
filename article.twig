@@ -97,6 +97,8 @@
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
+{% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
+
 {# The below checks which message to show a user blocked by the paywall #}
 {% set paywallType = "subscribe" %}
 {% if showPaywall and not guestUser %}
@@ -252,6 +254,7 @@
     data-test="{{paywallTestParam}}"
     data-comment-setting="{{commentSettingString}}"
     data-guest="{{guestString}}"
+    data-paywall-reason="{{reason}}"
     {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
