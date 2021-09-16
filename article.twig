@@ -97,6 +97,8 @@
 
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 
+{% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
+
 {# The below checks which message to show a user blocked by the paywall #}
 {% set paywallType = "subscribe" %}
 {% if showPaywall and not guestUser %}
@@ -252,6 +254,7 @@
     data-test="{{paywallTestParam}}"
     data-comment-setting="{{commentSettingString}}"
     data-guest="{{guestString}}"
+    data-paywall-reason="{{reason}}"
     {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
@@ -338,7 +341,7 @@
                             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
                                 <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}" alt="author">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
-                                    <h3 itemprop="name">{{ article.createdBy['displayName'] }}</h3>
+                                    <h3 id="author" itemprop="name">{{ article.createdBy['displayName'] }}</h3>
                                 </a>
 
 
