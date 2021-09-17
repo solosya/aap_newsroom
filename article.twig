@@ -401,10 +401,12 @@
                                     {{ content  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
                                             | raw }}
-                                    {{this.render('/partials/cta-body.twig', {
-                                        networkData: networkData,
-                                        config: config
-                                    }) | raw}}
+                                    {% if not showPaywall  %}      
+                                        {{this.render('/partials/cta-body.twig', {
+                                            networkData: networkData,
+                                            config: config
+                                        }) | raw}}
+                                    {% endif %}
                                 {% else %}
                                     {{ contentPartOne  | _resizeImages({"width":750}) 
                                             | replace({'https://pres.cloudinary.com': 'https://res.cloudinary.com'})
