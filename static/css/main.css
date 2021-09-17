@@ -15884,6 +15884,11 @@ input[type=radio].inline {
   padding: 20px 30px;
   background-color: #aad9ed;
 }
+@media screen and (min-width : 992px) {
+  .c-cta-side__container {
+    min-width: 290px;
+  }
+}
 .c-cta-side__input {
   width: calc(100% - 30px);
 }
