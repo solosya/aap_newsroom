@@ -34,6 +34,9 @@
         background-color: $lblue;
         // margin-left: 10px;
         // margin-right: 10px;
+        @media #{$desktop-up}{
+            min-width: 290px;
+        }
     }
 
     &__input{
