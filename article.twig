@@ -381,20 +381,22 @@
                                 <div class="article-investigations__tag"></div>
                             {% endif %}
 
+                            {% if articleBlog == 'new auckland' %}
+                                <div class="beca-section beca-section__article d-block d-lg-none">
+                                    <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0" alt="logo">
+                                    <p class="beca-section__arttext">In association with</p>
+                                </div>
+                            {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
+                                <div class="catalyst-section catalyst-section__article d-block d-lg-none">
+                                    <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
+                                    <p class="catalyst-section__arttext">In association with</p>
+                                </div>
+                            {% endif %}
+
                             <div itemprop="articleBody" class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
                                 <p itemprop="articleSection" class="article_content__section {% if articleBlog == "newsroom pro" %}article_content__red{% endif %}">{{article.label}}</p>
                                 
-                                {% if articleBlog == 'new auckland' %}
-                                    <div class="beca-section beca-section__article d-block d-lg-none">
-                                        <img class="beca-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/BECA_bw.png?v=0" alt="logo">
-                                        <p class="beca-section__arttext">In association with</p>
-                                    </div>
-                                {% elseif articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
-                                    <div class="catalyst-section catalyst-section__article d-block d-lg-none">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
-                                        <p class="catalyst-section__arttext">In association with</p>
-                                    </div>
-                                {% endif %}
+                                
                                 
                                 <h1 itemprop="headline name" class="article__headline">{{ quotes.smarten(article.title) }}</h1>
                                 {% if articleCtaEnd == true %}
