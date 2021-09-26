@@ -88,9 +88,11 @@
           padding-bottom: 10px;
         }
 
-        h3 {
+
+        &__name {
           @include font-size(20);
           font-family: $base-font-family;
+          font-weight:700;
           margin-top: 0;
           margin-bottom: 5px;
           @media screen and (max-width: $sm-break-down) {

@@ -341,7 +341,7 @@
                             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="content-author">
                                 <img itemprop="image" src="{{ profileImg }}" alt="{{ article.createdBy['displayName'] }}" alt="author">
                                 <a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">
-                                    <h3 id="author" itemprop="name">{{ article.createdBy['displayName'] }}</h3>
+                                    <div class="content-author__name" id="author" itemprop="name">{{ article.createdBy['displayName'] }}</div>
                                 </a>
 
 
@@ -360,7 +360,7 @@
                                         
 
                                         <a href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts">
-                                            <h3>{{ author['displayName'] }}</h3>
+                                            <div class="content-author__name">{{ author['displayName'] }}</h3>
                                         </a>
 
                                         <p class="bio">{{ author['bio'] }}</p>
