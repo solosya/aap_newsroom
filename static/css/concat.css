@@ -24905,15 +24905,16 @@ input[type=radio].inline {
   border-radius: 100%;
   padding-bottom: 10px;
 }
-.article article.article-main .page-content .content-author h3 {
+.article article.article-main .page-content .content-author__name {
   font-size: 1.25rem;
   line-height: 1.5rem;
   font-family: "tinos", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   margin-top: 0;
   margin-bottom: 5px;
 }
 @media screen and (max-width: 767px) {
-  .article article.article-main .page-content .content-author h3 {
+  .article article.article-main .page-content .content-author__name {
     font-size: 0.875rem;
     line-height: 1.05rem;
     display: inline-block;
@@ -27556,6 +27557,12 @@ body.channel .section-sidepanel-news a.card .content .author p, body.section .se
 @media screen and (max-width : 767px) {
   body.channel.about, body.section.about, body.about {
     margin-top: 130px;
+  }
+  body.channel.about .site-header-signin__pp > p, body.section.about .site-header-signin__pp > p, body.about .site-header-signin__pp > p {
+    font-size: 10px !important;
+  }
+  body.channel.about .ad__gap, body.section.about .ad__gap, body.about .ad__gap {
+    padding-top: 15px;
   }
 }
 body.channel.about .email, body.section.about .email, body.about .email {
