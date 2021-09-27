@@ -179,8 +179,8 @@
 
 
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
-{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime,'F j, Y') %}
-{% set updateDate = _AppHelper.getDefaultTimezoneDateTime(article.updatedDateTime,'F j, Y') %}
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime,'M j, Y') %}
+{% set updateDate = _AppHelper.getDefaultTimezoneDateTime(article.updatedDateTime,'M j, Y') %}
 
 {% set updated = false %}
 
