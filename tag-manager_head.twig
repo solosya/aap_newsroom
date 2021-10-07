@@ -8,37 +8,47 @@
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <meta id="g-ad-id" data-accno="/268436641/">
 <!-- Google AD Code end -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQSNPQK');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
 <script>
 
-    //start the google ad code
+//start the google ad code
     var googletag = googletag || {};
     googletag.cmd = googletag.cmd || [];
+
+// Google Tag Manager -->
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T27NL3S');
     
-     // main script is defered so event listener makes sure
+// End Google Tag Manager -->
+
+
+
+    // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-        // Google Tag Manager -->
-    
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-T27NL3S');
-            
-        // End Google Tag Manager -->
 
-        // // Google Analytics -->
-        //     window.dataLayer = window.dataLayer || [];
-        //     function gtag(){dataLayer.push(arguments);}
-        //     gtag('js', new Date());
-        //     gtag('config', 'UA-92771121-1', { 'optimize_id': 'GTM-N5FK4F3'});
-            
-        // // End Google Analytics -->
 
-        // AD Manager -->
-            
-           
-        // end ad manager
+
+        
+
+
+
+        
 
         var setTags = {
 
@@ -86,6 +96,15 @@
 
             });
             console.log('hello technology');
+        }
+        if (theKeywordOfPage == 'puzzles'){
+            console.log(document.getElementById('div-gpt-ad-hpage-2'));
+            googletag.cmd.push(function() {
+                var slot = googletag.defineSlot('/268436641/puzzles', [[300, 250]], 'div-gpt-ad-hpage-2').setTargeting().defineSizeMapping([[[0,250],[300,250]]]).addService(googletag.pubads());
+                googletag.display('div-gpt-ad-hpage-2');
+
+            });
+            console.log('hello puzzles');
         }
         
     });

@@ -1,6 +1,14 @@
 body.channel.about, body.section.about, body.about {
     @media #{$mobile}{
         margin-top: 130px;
+        .site-header-signin__pp{
+            >p{
+                font-size: 10px !important;
+            }
+        }
+        .ad__gap{
+            padding-top: 15px;
+        }
     }
     .email {
         text-align:center;
