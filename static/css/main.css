@@ -14645,6 +14645,66 @@ button.swiper-pagination-bullet {
   }
 }
 
+.swap-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.swap-modal__window {
+  margin: auto auto;
+  width: 468px;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+@media screen and (max-width: 767px) {
+  .swap-modal__window {
+    width: auto;
+    margin-top: 10px;
+  }
+}
+
+.swap-modal__container {
+  position: relative;
+  margin: auto;
+}
+
+.swap-modal__header {
+  overflow: auto;
+  padding-bottom: 11px;
+  margin-bottom: 20px;
+}
+
+.swap-modal__title {
+  color: white;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2.625rem;
+  line-height: 3.15rem;
+  font-weight: 400;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.swap-modal__close {
+  display: none;
+}
+
+.swap-modal__content-window {
+  flex-grow: 1;
+  display: flex;
+  padding-top: 30px;
+  position: relative;
+  padding-right: 40px;
+}
+@media screen and (max-width : 991px) {
+  .swap-modal__content-window {
+    padding-right: 0;
+  }
+}
+
 .site-header-signin {
   display: -webkit-box;
   display: -webkit-flex;
