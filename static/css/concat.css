@@ -14590,8 +14590,7 @@ button.swiper-pagination-bullet {
 .spinner-modal__window {
   margin: auto auto;
   width: 468px;
-  background: white;
-  padding: 30px 50px;
+  padding: 10px 20px;
   border-radius: 3px;
 }
 @media screen and (max-width: 767px) {
@@ -14609,27 +14608,21 @@ button.swiper-pagination-bullet {
 .spinner-modal__header {
   overflow: auto;
   padding-bottom: 11px;
-  border-bottom: 1px solid #97999c;
   margin-bottom: 20px;
 }
 
 .spinner-modal__title {
+  color: white;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  float: left;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  font-weight: 600;
+  font-size: 2.625rem;
+  line-height: 3.15rem;
+  font-weight: 400;
   margin: 0;
   margin-right: 20px;
 }
 
 .spinner-modal__close {
-  display: block;
-  float: right;
-  height: 30px;
-  width: 30px;
-  background: url("../icons/cross-black.svg");
-  background-repeat: no-repeat;
+  display: none;
 }
 
 .spinner-modal__content-window {
@@ -14641,6 +14634,66 @@ button.swiper-pagination-bullet {
 }
 @media screen and (max-width : 991px) {
   .spinner-modal__content-window {
+    padding-right: 0;
+  }
+}
+
+.swap-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.swap-modal__window {
+  margin: auto auto;
+  width: 468px;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+@media screen and (max-width: 767px) {
+  .swap-modal__window {
+    width: auto;
+    margin-top: 10px;
+  }
+}
+
+.swap-modal__container {
+  position: relative;
+  margin: auto;
+}
+
+.swap-modal__header {
+  overflow: auto;
+  padding-bottom: 11px;
+  margin-bottom: 20px;
+}
+
+.swap-modal__title {
+  color: white;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 2.625rem;
+  line-height: 3.15rem;
+  font-weight: 400;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.swap-modal__close {
+  display: none;
+}
+
+.swap-modal__content-window {
+  flex-grow: 1;
+  display: flex;
+  padding-top: 30px;
+  position: relative;
+  padding-right: 40px;
+}
+@media screen and (max-width : 991px) {
+  .swap-modal__content-window {
     padding-right: 0;
   }
 }
