@@ -5,7 +5,7 @@ describe('Logging In - XHR Web Form', function () {
     const username = Cypress.env('username');
     const password = Cypress.env('password');
     const loginurl = '/api/auth/login';
-    const sessionID = Cypress.env('sessionId');
+    const sessionID = Cypress.env('PHPSESSID');
   
     context('XHR form submission', function () {
       

@@ -227,8 +227,6 @@ Donations.prototype.parsePrices = function(r) {
                 this.userSelected = true;
                 if ( this.guest === "1" ) {
                     this.renderLayout("signin");
-                    console.log("returning false");
-
                     return false;
                 }
                 this.checkout();
