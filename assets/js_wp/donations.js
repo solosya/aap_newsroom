@@ -224,6 +224,7 @@ Donations.prototype.parsePrices = function(r) {
             if (this.selectedAmount === newPrice.unit_amount && this.selectedInterval === interval) {
                 this.selected.product_id = price.product;
                 this.selected.price_id = price.id;
+                this.selected.interval = interval;
                 this.userSelected = true;
                 if ( this.guest === "1" ) {
                     this.renderLayout("signin");
