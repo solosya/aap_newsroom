@@ -212,7 +212,6 @@ Donations.prototype.parsePrices = function(r) {
             }
 
             
-
             var newPrice = {
                 "unit_amount": price.unit_amount,
                 "price" : price.unit_amount / 100,
@@ -227,8 +226,6 @@ Donations.prototype.parsePrices = function(r) {
                 this.userSelected = true;
                 if ( this.guest === "1" ) {
                     this.renderLayout("signin");
-                    console.log("returning false");
-
                     return false;
                 }
                 this.checkout();
