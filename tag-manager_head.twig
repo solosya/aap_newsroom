@@ -86,7 +86,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             addTagListeners('learnmorebutton','learnmore','click');
         }
 
-        var theKeywordOfPage = document.getElementById('ad-keywords').dataset.keywords.split(',')[0];
+        var theKeywordOfPage = document.getElementById('ad-keywords');
+        if (!theKeywordOfPage) {
+            return;
+        }
+        
+        theKeywordOfPage = theKeywordOfPage.dataset.keywords.split(',')[0];
 
         if (theKeywordOfPage == 'technology'){
             console.log(document.getElementById('div-gpt-ad-hpage-2'));

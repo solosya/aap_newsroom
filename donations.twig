@@ -1,7 +1,20 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
-
+{% set plans = networkData['paywallPlans'] %}
 {% set config = _Network.getThemeConfig() %}
+
+{% set signupurl = '/subscribeform' %}
+{% set specialPlans = [] %}
+{% for plan in plans %}
+    {% if "!*!" in plan.description %}
+        {% set description = plan.description | split("!*!") %}
+        {% set data = _AppHelper.jsonDecode( description[0] ) %}
+        {% if data['donatepage'] is defined and data['donatepage'] == true %}
+            {% set specialPlans = specialPlans | merge ([plan]) %}
+        {% endif %}
+    {% endif %} 
+{% endfor %}
+
 
 
 
@@ -89,31 +102,31 @@
             </div>
         </div>
     </div>
-    <div class="newDonation__section">
+    <div class="newDonation-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-11 offset-md-1">
-                    <div class="newDonation__section__head">
-                        <h2 class="newDonation__section__head--heading">Make a difference today</h2>
-                        <p class="newDonation__section__head--description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
+                    <div class="newDonation-section__head">
+                        <h2 class="newDonation-section__heading">Make a difference today</h2>
+                        <p class="newDonation-section__description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
                         this campaign will be directed into Newsroom’s climate change reporting. Newsroom Pro subscriptions give two users exclusive features and advanced access to reporting.</p>
                     </div>
-                    <div class="newDonation__section__tab">
+                    <div class="newDonation-section__tab">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                            <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">DONATE</a>
+                                <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">DONATE</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">SUBSCRIBE <span>to pro</span></a>
+                                <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">SUBSCRIBE <span>to pro</span></a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="donate" role="tabpanel" aria-labelledby="donate-tab">
+                            <div class="tab-pane active" id="donate-pane" role="tabpanel" aria-labelledby="donate-tab">
                                 <div class="buttons-wrapper">
-                                    <a href="javascript:;" class="buttons-wrapper--item">$25</a>
-                                    <a href="javascript:;" class="buttons-wrapper--item active">$50</a>
-                                    <a href="javascript:;" class="buttons-wrapper--item">$75</a>
-                                    <a href="javascript:;" class="buttons-wrapper--item">Pay what you want</a>
+                                    <button data-interval="one-time" data-amount="2500"  class="buttons-wrapper--item j-donation">$25</a>
+                                    <button data-interval="one-time"  data-amount="5000" class="buttons-wrapper--item active j-donation">$50</a>
+                                    <button data-interval="one-time"  data-amount="7500" class="buttons-wrapper--item j-donation">$75</a>
+                                    <button class="buttons-wrapper--item j-donation">Pay what you want</a>
                                 </div>
                                 <div class="links-wrapper">
                                     <a href="javascript:;" class="links-wrapper--item">Donate as an organisation</a>
@@ -121,26 +134,21 @@
                                     <a href="javascript:;" class="links-wrapper--item">Donate via bank transfer</a>
                                 </div>
                             </div>
-                            <div class="tab-pane subscribe fade" id="subscribe" role="tabpanel" aria-labelledby="subscribe-tab">
+
+                            <div class="tab-pane subscribe " id="subscribe-pane" role="tabpanel" aria-labelledby="subscribe-tab">
                                 <div class="row">
+                                {% for plan in specialPlans %}
+                                    {% set val = plan.plan_value / 100 %}
                                     <div class="col-12 col-md-6">
                                         <div class="paywall-plan-card">
-                                            <p class="paywall-plan-card__period">6 MONTH SPECIAL OFFER</p>
-                                            <p class="paywall-plan-card__price">$99</p>
-                                            <p class="paywall-plan-card__weekly"> Save $61</p>
-                                            <p class="paywall-plan-card__users">2 users</p>
-                                            <a class="paywall-plan-card__subscribe-button" href="javascript:;">SUBSCRIBE</a>
+                                            <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
+                                            <p class="paywall-plan-card__price">${{val}}</p>
+                                            <p class="paywall-plan-card__weekly">Save $61</p>
+                                            <p class="paywall-plan-card__users">{{plan.user_count}} users</p>
+                                            <a class="paywall-plan-card__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribeform?plan={{plan.guid}}">SUBSCRIBE</a>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="paywall-plan-card u-mobile-margin-top-20">
-                                            <p class="paywall-plan-card__period">ANNUAL SPECIAL OFFER</p>
-                                            <p class="paywall-plan-card__price">$180</p>
-                                            <p class="paywall-plan-card__weekly">Save $110</p>
-                                            <p class="paywall-plan-card__users">2 users</p>
-                                            <a class="paywall-plan-card__subscribe-button" href="javascript:;">SUBSCRIBE</a>
-                                        </div>
-                                    </div>
+                                {% endfor %}
                                 </div>
                                 <div class="links-wrapper">
                                     <a href="javascript:;" class="links-wrapper--item">Donate as an organisation</a>
@@ -154,7 +162,69 @@
             </div>
         </div>
     </div>
-    
+
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+       
+
+        const DonateTabs = function() {
+            this.tab = 'donate';
+            this.donateButton = document.getElementById("donate-tab");
+            this.subscribeButton = document.getElementById("subscribe-tab");
+            this.donatePane = document.getElementById("donate-pane");
+            this.subscribePane = document.getElementById("subscribe-pane");
+            this.events();
+        };
+        DonateTabs.prototype.events = function() {
+            var self = this;
+            this.donateButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (self.tab === 'donate') return;
+                self.tab = 'donate';
+                this.classList.add('active');
+                self.subscribeButton.classList.remove('active');
+                self.donatePane.classList.add('active');
+                self.subscribePane.classList.remove('active');
+            });
+            this.subscribeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (self.tab === 'subscribe') return;
+                self.tab = 'subscribe';
+                this.classList.add('active');
+                self.donateButton.classList.remove('active');
+                self.subscribePane.classList.add('active');
+                self.donatePane.classList.remove('active');
+            });
+        };
+
+        const tabber = new DonateTabs();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container">
         <div class="row supporter u-margin-top-80 d-none">
             <div class="col-12 u-text-center">
@@ -862,6 +932,7 @@
 
         });
 
+  
     });
 </script>
 

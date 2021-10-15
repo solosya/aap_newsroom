@@ -293,56 +293,57 @@
 
 }
 
-.newDonation__section {
+.newDonation-section {
     background-color: $black;
     margin: 80px 0;
     padding: 80px 0 100px;
 
     &__head {
         text-align: center;
-        &--heading {
-            font-family:$base-font-family;
-            @include font-size(60);
-            line-height: 0.58;
-            letter-spacing: 0.1px;
-            color: $white;
+    }
+    &__heading {
+        font-family:$base-font-family;
+        @include font-size(60);
+        line-height: 0.58;
+        letter-spacing: 0.1px;
+        color: $white;
 
-            @media #{$tablet} {
-                @include font-size(40);
-                line-height: 1.17;
-                letter-spacing: 0.05px;
-            }
-
-            @media #{$mobile} {
-                @include font-size(30);
-                line-height: 1.17;
-                letter-spacing: 0.05px;
-            }
+        @media #{$tablet} {
+            @include font-size(40);
+            line-height: 1.17;
+            letter-spacing: 0.05px;
         }
 
-        &--description {
-            font-family: $primaryFont;
-            @include font-size(24);
-            line-height: 1.46;
-            letter-spacing: 0.04px;
-            color: $white;
-            margin-top: 40px;
-
-            @media #{$tablet} {
-                @include font-size(18);
-                line-height: 1.17;
-                letter-spacing: normal;
-                margin-top: 22px;
-            }
-
-            @media #{$mobile} {
-                @include font-size(14);
-                line-height: 1.29;
-                letter-spacing: normal;
-                margin-top: 18px;
-            }
+        @media #{$mobile} {
+            @include font-size(30);
+            line-height: 1.17;
+            letter-spacing: 0.05px;
         }
     }
+
+    &__description {
+        font-family: $primaryFont;
+        @include font-size(24);
+        line-height: 1.46;
+        letter-spacing: 0.04px;
+        color: $white;
+        margin-top: 40px;
+
+        @media #{$tablet} {
+            @include font-size(18);
+            line-height: 1.17;
+            letter-spacing: normal;
+            margin-top: 22px;
+        }
+
+        @media #{$mobile} {
+            @include font-size(14);
+            line-height: 1.29;
+            letter-spacing: normal;
+            margin-top: 18px;
+        }
+    }
+    
 
     &__tab {
         background-color: $white;
@@ -575,6 +576,8 @@
             }
         }
     }
+
+
 
     @media #{$tablet} {
         margin: 40px 0;
