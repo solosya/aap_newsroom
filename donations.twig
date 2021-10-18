@@ -10,8 +10,11 @@
         {% set description = plan.description | split("!*!") %}
         {% set data = _AppHelper.jsonDecode( description[0] ) %}
         {% if data['donatepage'] is defined and data['donatepage'] == true %}
+            {% set save = data['save'] is defined ? data['save'] : false %}
+            {% set plan = plan | merge({"saving" : save}) %}
             {% set specialPlans = specialPlans | merge ([plan]) %}
         {% endif %}
+
     {% endif %} 
 {% endfor %}
 
@@ -143,8 +146,10 @@
                                         <div class="paywall-plan-card">
                                             <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
                                             <p class="paywall-plan-card__price">${{val}}</p>
-                                            <p class="paywall-plan-card__weekly">Save $61</p>
-                                            <p class="paywall-plan-card__users">{{plan.user_count}} users</p>
+                                            {% if plan.saving %}
+                                                <p class="paywall-plan-card__weekly">Save ${{plan.saving}}</p>
+                                            {% endif %}
+                                            <p class="paywall-plan-card__users">{{plan.user_count + 1}} users</p>
                                             <a class="paywall-plan-card__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribeform?plan={{plan.guid}}">SUBSCRIBE</a>
                                         </div>
                                     </div>
@@ -162,56 +167,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-<script>
-    // main script is defered so event listener makes sure
-    // defered script is loaded before this runs
-    document.addEventListener("DOMContentLoaded", function(event) {
-       
-
-        const DonateTabs = function() {
-            this.tab = 'donate';
-            this.donateButton = document.getElementById("donate-tab");
-            this.subscribeButton = document.getElementById("subscribe-tab");
-            this.donatePane = document.getElementById("donate-pane");
-            this.subscribePane = document.getElementById("subscribe-pane");
-            this.events();
-        };
-        DonateTabs.prototype.events = function() {
-            var self = this;
-            this.donateButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (self.tab === 'donate') return;
-                self.tab = 'donate';
-                this.classList.add('active');
-                self.subscribeButton.classList.remove('active');
-                self.donatePane.classList.add('active');
-                self.subscribePane.classList.remove('active');
-            });
-            this.subscribeButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (self.tab === 'subscribe') return;
-                self.tab = 'subscribe';
-                this.classList.add('active');
-                self.donateButton.classList.remove('active');
-                self.subscribePane.classList.add('active');
-                self.donatePane.classList.remove('active');
-            });
-        };
-
-        const tabber = new DonateTabs();
-    });
-</script>
-
-
-
-
-
-
-
 
 
 
@@ -933,6 +888,44 @@
         });
 
   
+
+
+        const DonateTabs = function() {
+            this.tab = 'donate';
+            this.donateButton = document.getElementById("donate-tab");
+            this.subscribeButton = document.getElementById("subscribe-tab");
+            this.donatePane = document.getElementById("donate-pane");
+            this.subscribePane = document.getElementById("subscribe-pane");
+            this.events();
+        };
+        DonateTabs.prototype.events = function() {
+            var self = this;
+            this.donateButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (self.tab === 'donate') return;
+                self.tab = 'donate';
+                this.classList.add('active');
+                self.subscribeButton.classList.remove('active');
+                self.donatePane.classList.add('active');
+                self.subscribePane.classList.remove('active');
+            });
+            this.subscribeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (self.tab === 'subscribe') return;
+                self.tab = 'subscribe';
+                this.classList.add('active');
+                self.donateButton.classList.remove('active');
+                self.subscribePane.classList.add('active');
+                self.donatePane.classList.remove('active');
+            });
+        };
+
+        const tabber = new DonateTabs();
+
+
+
+
+
     });
 </script>
 
