@@ -337,7 +337,13 @@
 
                             {% for plan in plans %}
                                 {# {% if pwstats['status'] != 'paid' and pwstats['status'] != 'trial' %} #}
-                                
+                                {% set description = plan.description | split("!*!") %}
+
+                                {% set data = _AppHelper.jsonDecode( description[0] ) %}
+                                {% if data['showplan'] is defined and data['showplan'] == false %}
+                                    {% set continue = true %}
+                                {% endif %}
+
                                 {% set userCount = plan.user_count %}
                                 {% set planCost = plan.plan_value / 100 %}
                                 {% if planCost == 19.89 %}
