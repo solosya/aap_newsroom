@@ -121,60 +121,66 @@
             </div>
         </div>
     </div>
-    <div class="newDonation-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-11 offset-md-1">
-                    <div class="newDonation-section__head">
-                        <h2 class="newDonation-section__heading">Make a difference today</h2>
-                        <p class="newDonation-section__description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
-                        this campaign will be directed into Newsroom’s climate change reporting. Newsroom Pro subscriptions give two users exclusive features and advanced access to reporting.</p>
-                    </div>
-                    <div class="newDonation-section__tab">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">DONATE</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">SUBSCRIBE <span>to pro</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane active" id="donate-pane" role="tabpanel" aria-labelledby="donate-tab">
-                                <div class="buttons-wrapper">
-                                    <button data-interval="one_time" data-amount="2500"  class="buttons-wrapper--item j-donation">$25</a>
-                                    <button data-interval="one_time"  data-amount="5000" class="buttons-wrapper--item active j-donation">$50</a>
-                                    <button data-interval="one_time"  data-amount="7500" class="buttons-wrapper--item j-donation">$75</a>
-                                    <button class="buttons-wrapper--item j-donation">Pay what you want</a>
-                                </div>
-                                <div class="links-wrapper">
-                                    <a href="javascript:;" class="links-wrapper--item">Donate as an organisation</a>
-                                    <a href="javascript:;" class="links-wrapper--item">Make a large donation</a>
-                                    <a href="javascript:;" class="links-wrapper--item">Donate via bank transfer</a>
-                                </div>
-                            </div>
 
-                            <div class="tab-pane subscribe " id="subscribe-pane" role="tabpanel" aria-labelledby="subscribe-tab">
-                                <div class="row">
-                                {% for plan in specialPlans %}
-                                    {% set val = plan.plan_value / 100 %}
-                                    <div class="col-12 col-md-6">
-                                        <div class="paywall-plan-card">
-                                            <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
-                                            <p class="paywall-plan-card__price">${{val}}</p>
-                                            {% if plan.saving %}
-                                                <p class="paywall-plan-card__weekly">Save ${{plan.saving}}</p>
-                                            {% endif %}
-                                            <p class="paywall-plan-card__users">{{plan.user_count + 1}} users</p>
-                                            <a class="paywall-plan-card__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribeform?plan={{plan.guid}}">SUBSCRIBE</a>
-                                        </div>
+
+
+    {% if donations == "nr" %}
+ 
+        <div class="newDonation-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-11 offset-md-1">
+                        <div class="newDonation-section__head">
+                            <h2 class="newDonation-section__heading">Make a difference today</h2>
+                            <p class="newDonation-section__description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
+                            this campaign will be directed into Newsroom’s climate change reporting. Newsroom Pro subscriptions give two users exclusive features and advanced access to reporting.</p>
+                        </div>
+                        <div class="newDonation-section__tab">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">DONATE</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">SUBSCRIBE <span>to pro</span></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane active" id="donate-pane" role="tabpanel" aria-labelledby="donate-tab">
+                                    <div class="buttons-wrapper">
+                                        <button data-interval="one_time" data-amount="2500"  class="buttons-wrapper--item j-donation">$25</a>
+                                        <button data-interval="one_time"  data-amount="5000" class="buttons-wrapper--item active j-donation">$50</a>
+                                        <button data-interval="one_time"  data-amount="7500" class="buttons-wrapper--item j-donation">$75</a>
+                                        <button class="buttons-wrapper--item j-donation">Pay what you want</a>
                                     </div>
-                                {% endfor %}
+                                    <div class="links-wrapper">
+                                        <a href="javascript:;" class="links-wrapper--item">Donate as an organisation</a>
+                                        <a href="javascript:;" class="links-wrapper--item">Make a large donation</a>
+                                        <a href="javascript:;" class="links-wrapper--item">Donate via bank transfer</a>
+                                    </div>
                                 </div>
-                                <div class="links-wrapper">
-                                    <a href="mailto: vanita.prasad@newsroom.co.nz" subject="Enquiry about donating as an organisation" class="links-wrapper--item">Donate as an organisation</a>
-                                    <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to make a large donation" class="links-wrapper--item">Make a large donation</a>
-                                    <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to donate via bank transfer" class="links-wrapper--item">Donate via bank transfer</a>
+
+                                <div class="tab-pane subscribe " id="subscribe-pane" role="tabpanel" aria-labelledby="subscribe-tab">
+                                    <div class="row">
+                                    {% for plan in specialPlans %}
+                                        {% set val = plan.plan_value / 100 %}
+                                        <div class="col-12 col-md-6">
+                                            <div class="paywall-plan-card">
+                                                <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
+                                                <p class="paywall-plan-card__price">${{val}}</p>
+                                                {% if plan.saving %}
+                                                    <p class="paywall-plan-card__weekly">Save ${{plan.saving}}</p>
+                                                {% endif %}
+                                                <p class="paywall-plan-card__users">{{plan.user_count + 1}} users</p>
+                                                <a class="paywall-plan-card__subscribe-button" href="{{networkData.defaultBlogUrl}}/subscribeform?plan={{plan.guid}}">SUBSCRIBE</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                    <div class="links-wrapper">
+                                        <a href="mailto: vanita.prasad@newsroom.co.nz" subject="Enquiry about donating as an organisation" class="links-wrapper--item">Donate as an organisation</a>
+                                        <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to make a large donation" class="links-wrapper--item">Make a large donation</a>
+                                        <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to donate via bank transfer" class="links-wrapper--item">Donate via bank transfer</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -182,8 +188,21 @@
                 </div>
             </div>
         </div>
-    </div>
 
+    {% else %}
+        <div class="row supporter u-margin-top-80 d-none d-md-block">
+            <div class="col-12 u-text-center">
+                <h1 class="supporter__title">Become a supporter</h1>
+            </div>
+            <div class="offset-lg-1 col-lg-10 justify-content-center">
+                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="monthly" data-pp-amount="15" data-pp-metadata="membership-$15-per-month" target="_blank" class="supporter__button" rel="noopener">Monthly $15</a>
+                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="annual" data-pp-amount="100" data-pp-metadata="membership-$100-per-year" target="_blank" class="supporter__button supporter__button--space" rel="noopener">Annual $100</a>
+                <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="supporter__button supporter__button--grey">Pay what you want</a>
+            </div>
+
+        </div>
+
+    {% endif %}
 
 
 
