@@ -120,7 +120,7 @@
 
 
 
-    {% if donations == "nr" %}
+    {% if donations == "nr" or _User.isAdminUser() %}
  
         <div class="newDonation-section">
             <div class="container">
