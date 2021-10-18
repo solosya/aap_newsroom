@@ -220,6 +220,7 @@ Donations.prototype.parsePrices = function(r) {
                 "currency" : price.currency
             };
 
+            
             if (this.selectedAmount === newPrice.unit_amount && this.selectedInterval === interval) {
                 this.selected.product_id = price.product;
                 this.selected.price_id = price.id;
