@@ -293,6 +293,302 @@
 
 }
 
+.newDonation-section {
+    background-color: $black;
+    margin: 80px 0;
+    padding: 80px 0 100px;
+
+    &__head {
+        text-align: center;
+    }
+    &__heading {
+        font-family:$base-font-family;
+        @include font-size(60);
+        line-height: 0.58;
+        letter-spacing: 0.1px;
+        color: $white;
+
+        @media #{$tablet} {
+            @include font-size(40);
+            line-height: 1.17;
+            letter-spacing: 0.05px;
+        }
+
+        @media #{$mobile} {
+            @include font-size(30);
+            line-height: 1.17;
+            letter-spacing: 0.05px;
+        }
+    }
+
+    &__description {
+        font-family: $primaryFont;
+        @include font-size(24);
+        line-height: 1.46;
+        letter-spacing: 0.04px;
+        color: $white;
+        margin-top: 40px;
+
+        @media #{$tablet} {
+            @include font-size(18);
+            line-height: 1.17;
+            letter-spacing: normal;
+            margin-top: 22px;
+        }
+
+        @media #{$mobile} {
+            @include font-size(14);
+            line-height: 1.29;
+            letter-spacing: normal;
+            margin-top: 18px;
+        }
+    }
+    
+
+    &__tab {
+        background-color: $white;
+        padding: 50px 30px 50px 32px;
+        margin-top: 50px;
+
+        .nav {
+            background-color: #f1f1f1;
+            @include flexbox;
+            .nav-item {
+                flex: 1;
+                height: 66px;
+
+                @media #{$mobile} {
+                    height: 40px;
+                }
+            }
+            .nav-link {
+                font-family: $primaryFont;
+                @include font-size(24);
+                font-weight: $weightBold;
+                line-height: normal;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(center);
+                height: 100%;
+                text-transform: uppercase;
+                @include transition(all 0.3s ease);
+                span {
+                    margin-left: 7px;
+                }
+                @media #{$mobile} {
+                    @include font-size(14.4);
+                    line-height: normal;
+                    span {
+                        display: none;
+                    }
+                }
+
+                &.active {
+                    background-color: #5271ff;
+                    color: $white;
+                }
+                
+            }
+        }
+
+        .tab-content {
+            > .tab-pane {
+                display: none;
+                margin-top: 40px;
+                @media #{$mobile} {
+                    margin-top: 17px;
+                }
+                &.active {
+                    display: block;
+                }
+
+                &.subscribe {
+                    > .row {
+                        @media #{$desktop-up} {
+                            margin-right: -30px;
+                            margin-left: -30px;
+
+                            > .col-md-6 {
+                                padding-right: 30px;
+                                padding-left: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .paywall-plan-card {
+                height: 270px;
+                @media #{$mobile} {
+                    height: 250px;
+                }
+                &__period {
+                    margin-top: 25px;
+                    @media #{$mobile} {
+                        @include font-size(16);
+                        line-height: normal;
+                    }
+                }
+                &__price {
+                    @include font-size(59.4);
+                    letter-spacing: 1.25px;
+                    line-height: normal;
+                    font-weight: $weightBold;
+                    margin: 0;
+
+                    @media #{$mobile} {
+                        @include font-size(53.5);
+                        line-height: normal;
+                    }
+                    
+                }
+
+                &__weekly {
+                    margin-bottom: 15px;
+                    @media #{$mobile} {
+                        @include font-size(15);
+                        line-height: normal;
+                    }
+                }
+
+                &__users {
+                    color: #383838;
+                    @media #{$mobile} {
+                        @include font-size(15);
+                        line-height: normal;
+                    }
+                }
+
+                &__subscribe-button {
+                    background-color: #e22f22;
+                    color: $white;
+                    min-height: 44px;
+                    max-height: 44px;
+
+                    @media #{$mobile} {
+                        @include font-size(14.4);
+                        line-height: normal;
+                        min-height: 44px;
+                        max-height: 44px;
+                    }
+                }
+            }
+
+            .links-wrapper {
+                margin-top: 44px;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(center);
+
+                &--item {
+                    @include font-size(20);
+                    line-height: normal;
+                    color: $black;
+                    font-family: $primaryFont;
+                    font-weight: $weightRegular;
+                    text-decoration: underline;
+
+                    + .links-wrapper--item {
+                        border-left: 1px solid $black;
+                        margin-left: 10px;
+                        padding-left: 10px;
+                    }
+
+                }
+
+                @media #{$tablet} {
+                    .links-wrapper {
+                        &--item {
+                            @include font-size(17);
+                            line-height: normal;
+                        }
+                    }
+
+                }
+
+                @media #{$mobile} {
+                    margin-top: 18px;
+                    @include flex-direction(column);
+
+                    .links-wrapper {
+                        &--item {
+                            @include font-size(14);
+                            line-height: normal;
+                            + .links-wrapper--item {
+                                border-left: none;
+                                margin-left: 0px;
+                                padding-left: 0px;
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .buttons-wrapper {
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(center);
+
+                &--item {
+                    border: 1px solid $black;
+                    color: $black;
+                    background-color: $white;
+                    @include transition(all 0.3s ease);
+                    font-family:$base-font-family;
+                    @include font-size(30);
+                    line-height: normal;
+                    font-weight: $weightBold;
+                    min-height: 66px;
+                    flex: 1;
+                    padding: 0 20px;
+                    width: 100%;
+                    @include flexbox;
+                    @include align-items(center);
+                    @include justify-content(center);
+                    white-space: nowrap;
+
+                    &:hover, &.active {
+                        color: $white;
+                        background-color: $black;
+                    }
+                    + .buttons-wrapper--item {
+                        margin-left: 15px
+                    }
+                }
+
+                @media #{$mobile} {
+                    @include flex-direction(column);
+
+                    .buttons-wrapper {        
+                        &--item {
+                            @include font-size(24);
+                            line-height: normal;
+                            min-height: 50px;
+
+                            + .buttons-wrapper--item {
+                                margin-left: 0;
+                                margin-top: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    @media #{$tablet} {
+        margin: 40px 0;
+        padding: 35px 0 40px;
+    }
+
+    @media #{$mobile} {
+        margin: 40px 0;
+        padding: 35px 0 40px;
+    }
+}
 
 
 .writers-bio {
