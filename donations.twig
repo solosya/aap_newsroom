@@ -106,10 +106,9 @@
 
             <div class="col-lg-7">
                 <h1 class="donations__title u-margin-bottom-40 d-none d-lg-block"><span class="donations__title--red">Support</span> Newsroom's journalism</h1>
-                <p class="donations__text u-font-weight-bold u-mobile-margin-bottom-10">The climate crisis has been defined by rhetoric over action. The promise of transformation without change. New Zealanders need more than words.</p>
-                <p class="donations__text u-mobile-margin-bottom-10">This October, Newsroom is raising funds to get our journalists on the ground to report on the science and solutions - from Glasgow’s COP21 summit to the glaciers of the south.</p>
-                <p class="donations__text u-mobile-margin-bottom-10">By supporting Newsroom you’ll help strengthen our resources to bring quality climate change journalism to the top of the agenda. Every little bit counts.</p>
-                <p class="donations__text u-mobile-margin-bottom-25">Help us reach our goal by 31 October by clicking on one of the buttons below.</p>
+                <p class="donations__text u-font-weight-bold u-mobile-margin-bottom-10">New Zealand’s response to the climate crisis has been mostly talk and not much action. Now, we need more than words.</p>
+                <p class="donations__text u-mobile-margin-bottom-10">This October, Newsroom wants your help to push the country into making real change. Your donation, big or small, will get our journalists on the ground to report on the science and solutions - from Glasgow’s COP26 summit to the retreating glaciers of the South Island.</p>
+                <p class="donations__text u-mobile-margin-bottom-25">Help us reach our goal by November 12 by clicking on one of the buttons below.</p>
                 <div class="flex_row u-align-center">
                     <img src="{{networkData.templatePath}}/static/headshots/tim-mark-bw@2x.jpg" class="donations__byline-img">
                     <p class="donations__byline">– Tim, Mark and the team at Newsroom</p>
@@ -126,11 +125,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-11 offset-md-1">
-                        <div class="newDonation-section__head">
-                            <h2 class="newDonation-section__heading">Make a difference today</h2>
-                            <p class="newDonation-section__description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
-                            this campaign will be directed into Newsroom’s climate change reporting. Newsroom Pro subscriptions give two users exclusive features and advanced access to reporting.</p>
-                        </div>
                         <div class="newDonation-section__tab">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -179,6 +173,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="newDonation-section__head">
+                            {# <h2 class="newDonation-section__heading">Make a difference today</h2> #}
+                            <p class="newDonation-section__description">Whether you choose to make a donation or subscribe to Newsroom Pro, all funds from 
+                            this campaign will be directed into Newsroom’s climate change reporting. Newsroom Pro subscriptions give two users exclusive features and advanced access to reporting.</p>
                         </div>
                     </div>
                 </div>
@@ -636,7 +635,7 @@
 
                 {% if donations == "nr" %}
                     <button data-interval="one_time" data-amount="5000"  class="supporter__button supporter__button--purple j-donation">Donate $50</a>
-                    <button data-interval="one_time"  data-amount="1000" class="supporter__button supporter__button--purple supporter__button--space j-donation">Donate $100</a>
+                    <button data-interval="one_time"  data-amount="7500" class="supporter__button supporter__button--purple supporter__button--space j-donation">Donate $75</a>
                     <button class="supporter__button supporter__button--black j-donation">Pay what you want</a>
                 {% else %}
                     <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=AbkE2e7ZwQgwLPFzVowC2cKm" data-pp-page="checkout" data-pp-frequency="monthly" data-pp-amount="15" data-pp-metadata="membership-$15-per-month" target="_blank" class="supporter__button">Monthly $15</a>
@@ -645,9 +644,9 @@
                 {% endif %}
 
 
-                {% if _User.isAdminUser %}
+                {# {% if _User.isAdminUser %}
                     <button class="supporter__button supporter__button--black j-donation">Pay what you want</a>
-                {% endif %}
+                {% endif %} #}
 
                 
                 </div>
