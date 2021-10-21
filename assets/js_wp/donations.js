@@ -316,7 +316,6 @@ Donations.prototype.layoutEvents = function() {
     var donate_button = document.getElementById("donate-button");
 
 
-    
     if (amountInput) {
         amountInput.oninput = function(e) {
             var product = e.target.dataset.product;
