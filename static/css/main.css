@@ -20738,6 +20738,7 @@ input[type=radio].inline {
   height: 100%;
   width: auto;
   object-fit: cover;
+  float: right;
 }
 .donations__close {
   display: block;
@@ -20763,12 +20764,12 @@ input[type=radio].inline {
   line-height: 1;
 }
 .donations__title--red {
-  color: #e22f22;
+  color: #5271ff;
 }
 @media screen and (min-width : 992px) and (max-width : 1199px) {
   .donations__title {
-    font-size: 4.375rem;
-    line-height: 5.25rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
   }
 }
 @media screen and (min-width : 768px) and (max-width : 991px) {
@@ -20781,6 +20782,7 @@ input[type=radio].inline {
     font-size: 1.5625rem;
     line-height: 1.875rem;
     line-height: 1.1;
+    margin-bottom: 20px;
   }
 }
 .donations__text {
