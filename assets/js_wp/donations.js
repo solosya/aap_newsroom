@@ -336,7 +336,7 @@ Donations.prototype.layoutEvents = function() {
                 delete self.selected.price_id;
                 self.selected.amount = (parseFloat( amount ) * 100);
                 self.selected.product_id = product;
-                self.selected.currency = 'aud';
+                self.selected.currency = 'nzd';
                 let displayAmount = self.selected.amount / 100;
                 if (displayAmount % 1 !== 0) {
                     displayAmount = displayAmount.toFixed(2);

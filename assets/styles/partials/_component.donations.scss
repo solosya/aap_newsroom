@@ -25,6 +25,7 @@
         height:100%;
         width:auto;
         object-fit: cover;
+        float:right;
     }
 
 
@@ -50,11 +51,11 @@
         @include font-size(40);
         line-height:1;
         &--red {
-            color:$brand-secondary;
+            color:$brand-purple;
         }
 
         @media #{$desktop} {
-            @include font-size(70);
+            @include font-size(40);
         }
 
 
@@ -64,6 +65,7 @@
         @media #{$mobile} {
             @include font-size(25);
             line-height: 1.1;
+            margin-bottom: 20px;
         }
     }
 
