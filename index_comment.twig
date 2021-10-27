@@ -21,10 +21,14 @@
 
 
 {% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "nr" %}
-    {% set donations = config.donations %}
+{% if config.donations is defined %}
+    {% if  config.donations == "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
 {% endif %}
-
 
 
 
