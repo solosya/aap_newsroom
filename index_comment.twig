@@ -20,11 +20,16 @@
 {{this.registerJs("Acme.loadMore = new Acme.ArticleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 
-{% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "nr" %}
-    {% set donations = config.donations %}
+{% set donations = "nr" %}
+{% if config.donations is defined %}
+    {% if config.donations != "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
 {% endif %}
-
 
 
 

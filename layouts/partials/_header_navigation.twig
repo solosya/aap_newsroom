@@ -1,8 +1,21 @@
 
 {% set pageType = _Page.getBodyClass() %}
 
+{% set donations = "nr" %}
+{% if config.donations is defined %}
+    {% if  config.donations == "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
+{% endif %}
+
+
+
+
 {% if 'edit-profile' not in pageType %}
-    {% if config is defined and config.donations is defined and config.donations == "nr" %}
+    {% if donations == "nr" %}
         <div id="nr-banner" class="donation-banner d-print-none u-desktop-margin-bottom-20">
             <div class="donation-banner__container">
                 <img src="{{networkData.templatePath}}/static/images/nr-logo-reverse.svg" class="donation-banner__logo" alt="nr logo" />
@@ -332,7 +345,7 @@
 
 
 
- {% if config is defined and config.donations is defined and config.donations == "nr" %}
+ {% if donations == "nr" %}
     <div class="nr-site-header-signin d-flex d-md-none">
        
         {% if loggedin %}

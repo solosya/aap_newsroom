@@ -23,11 +23,16 @@
 {% set config       = _Network.getThemeConfig() %}
 
 
-{% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "nr" %}
-    {% set donations = config.donations %}
+{% set donations = "nr" %}
+{% if config.donations is defined %}
+    {% if config.donations != "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
 {% endif %}
-
 
 {% set limit = 11 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}

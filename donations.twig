@@ -21,10 +21,17 @@
 
 
 
-{% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "nr" %}
-    {% set donations = config.donations %}
+{% set donations = "nr" %}
+{% if config.donations is defined %}
+    {% if config.donations != "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
 {% endif %}
+
 
 {% set donations_img = "" %}
 {% if config.donations_page is defined and config.donations_page.main_image is defined and config.donations_page.main_image  %}

@@ -5,9 +5,15 @@
 
 
 
-{% set donations = "pp" %}
-{% if config.donations is defined and config.donations == "nr" %}
-    {% set donations = config.donations %}
+{% set donations = "nr" %}
+{% if config.donations is defined %}
+    {% if config.donations != "nr" %}
+        {% set donations = config.donations %}
+    {% endif %}
+    
+    {% if config.donations.provider is defined %} 
+        {% set donations = config.donations.provider %}
+    {% endif %}
 {% endif %}
 
 
@@ -37,27 +43,27 @@
 ] %}
 
 
-{% if config['donations-special'] is defined %}
-    {% if config['donations-special']['support'] is defined and config['donations-special']['support'] != '' %}
-        {% set donationsSupport = config['donations-special']['support'] %}
+{% if config['donations']['special'] is defined %}
+    {% if config['donations']['special']['support'] is defined and config['donations']['special']['support'] != '' %}
+        {% set donationsSupport = config['donations']['special']['support'] %}
     {% endif %}
-    {% if config['donations-special']['image'] is defined and config['donations-special']['image'] != '' %}
-        {% set donationsImage = config['donations-special']['image'] %}
+    {% if config['donations']['special']['image'] is defined and config['donations']['special']['image'] != '' %}
+        {% set donationsImage = config['special']['image'] %}
     {% endif %}
-    {% if config['donations-special']['amount'] is defined and config['donations-special']['amount'] != '' %}
-        {% set donationsAmount = config['donations-special']['amount'] %}
+    {% if config['donations']['special']['amount'] is defined and config['donations']['special']['amount'] != '' %}
+        {% set donationsAmount = config['special']['amount'] %}
     {% endif %}
-    {% if config['donations-special']['text'] is defined and config['donations-special']['text'] != '' %}
-        {% set donationsText = config['donations-special']['text'] %}
+    {% if config['donations']['special']['text'] is defined and config['donations']['special']['text'] != '' %}
+        {% set donationsText = config['special']['text'] %}
     {% endif %}
-    {% if config['donations-special']['cause'] is defined and config['donations-special']['cause'] != '' %}
-        {% set donationsCause = config['donations-special']['cause'] %}
+    {% if config['donations']['special']['cause'] is defined and config['donations']['special']['cause'] != '' %}
+        {% set donationsCause = config['donations']['special']['cause'] %}
     {% endif %}
-    {% if config['donations-special']['faq'] is defined and config['donations-special']['faq'] != '' %}
-        {% set donationsFAQ = config['donations-special']['faq'] %}
+    {% if config['donations']['special']['faq'] is defined and config['donations']['special']['faq'] != '' %}
+        {% set donationsFAQ = config['donations']['special']['faq'] %}
     {% endif %}
-    {% if config['donations-special']['press-patron'] is defined and config['donations-special']['press-patron'] != '' %}
-        {% set donationsPPno = config['donations-special']['press-patron'] %}
+    {% if config['donations']['special']['press-patron'] is defined and config['donations']['special']['press-patron'] != '' %}
+        {% set donationsPPno = config['donations']['special']['press-patron'] %}
     {% endif %}
 {% endif %}
 
