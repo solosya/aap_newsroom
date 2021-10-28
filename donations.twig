@@ -34,8 +34,8 @@
 
 
 {% set donations_img = "" %}
-{% if config.donations_page is defined and config.donations_page.main_image is defined and config.donations_page.main_image  %}
-    {% set donations_img = config.donations_page.main_image %}
+{% if config['donations']['donations_page']['main_image'] is defined %}
+    {% set donations_img = config['donations']['donations_page']['main_image'] %}
 {% endif %}
 
 
