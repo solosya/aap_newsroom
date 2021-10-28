@@ -19720,6 +19720,113 @@ input[type=radio].inline {
   }
 }
 
+.circularity-section__channel {
+  padding-bottom: 10px;
+  height: 40px;
+  padding-right: 2.5px;
+  margin-top: -65px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width : 768px) and (max-width : 991px) {
+  .circularity-section__channel {
+    margin-bottom: 15px;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__channel {
+    margin-top: 0;
+    margin-bottom: 15px;
+    height: 25px;
+    padding-right: 0;
+    width: fit-content;
+    margin-left: 25px;
+  }
+}
+.circularity-section__article {
+  padding-bottom: 10px;
+  border-bottom: solid 1px #dadada;
+  margin-bottom: 40px;
+  height: 40px;
+  padding-right: 2.5px;
+}
+@media screen and (min-width : 992px) {
+  .circularity-section__article {
+    padding-right: 20px;
+  }
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__article {
+    margin-bottom: 15px;
+    height: 45px;
+    padding-right: 0;
+    margin-top: 10px;
+  }
+}
+@media screen and (min-width : 768px) and (max-width : 991px) {
+  .circularity-section__article {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-right: 20px;
+  }
+}
+.circularity-section__arttext {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  color: #000000;
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__arttext {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+}
+.circularity-section__artlogo {
+  height: 40px;
+  float: right;
+  margin-right: -20px;
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__artlogo {
+    height: 32px;
+    margin: 0;
+  }
+}
+.circularity-section__chatext {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  color: #000000;
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__chatext {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    margin-right: 5px;
+  }
+}
+.circularity-section__chalogo {
+  height: 45px;
+  float: right;
+  margin-right: 0;
+  margin-left: 5px;
+}
+@media screen and (max-width : 767px) {
+  .circularity-section__chalogo {
+    height: 32px;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width : 767px) {
   .rnz-widget {
     width: 100%;
