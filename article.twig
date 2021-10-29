@@ -391,6 +391,12 @@
                                     <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                     <p class="catalyst-section__arttext">In association with</p>
                                 </div>
+                            {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
+                                <div class="circularity-section circularity-section__article d-block d-lg-none">
+                                    <img class="circularity-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/circularity.gif?v=1" alt="logo">
+                                    <p class="circularity-section__arttext">In association with</p>
+                                </div>
+                            
                             {% endif %}
 
                             <div itemprop="articleBody" class="article_content {{paywall_content_style}} {{newsroom_pro_style}}">
@@ -611,6 +617,12 @@
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
+                                {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
+                                    <div class="circularity-section circularity-section__article d-none d-lg-block">
+                                        <img class="circularity-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/circularity.gif?v=1" alt="logo">
+                                        <p class="circularity-section__arttext">In association with</p>
+                                    </div>
+                                
                                 
                                 {% endif %}
                                 {# {% if articleBlog != 'ideasroom' and config['inventory']['adSpace']['mrec'][1] is defined %}
