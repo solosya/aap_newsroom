@@ -1,6 +1,6 @@
 import { Templates } from './article-templates'
 import { Server } from './framework'
-
+import Handlebars   from 'handlebars'
 
 
 const Feed = function() {
@@ -40,12 +40,11 @@ Feed.prototype.fetch = function()
     }
 
 
-
     if (this.options.loadtype == 'user') {
-        this.url = this.domain + '/api/'+options.loadtype+'/load-more-managed';
+        this.url = this.domain + '/api/'+this.options.loadtype+'/load-more-managed';
         this.requestType = 'fetch';
     }
-    
+
     if (this.options.loadtype == 'user_articles') {
         var urlArr = window.location.href.split('/');
         var username = decodeURIComponent(urlArr[urlArr.length - 2]);
@@ -69,9 +68,6 @@ Feed.prototype.fetch = function()
         this.requestType = 'fetch';
     }
 
-    console.log(this.requestType);
-    console.log(this.url);
-    console.log(this.requestData);
     return Server[this.requestType](this.url, this.requestData).done(function(r) {
         if (r.success == 1) {
             console.log(r);
@@ -277,17 +273,18 @@ ArticleFeed.prototype.render = function(data)
 
 
 
-export const UserFeed = function(feedModel, limit, offset, infinite, failText, controller)
+export const UserFeed = function(options)
 {
-    this.feedModel = feedModel;
-    this.controller = controller || null;
-    this.offset    = offset || 0;
-    this.limit     = limit || 10;
-    this.infinite  = infinite || false;
+    this.options = options;
+    this.feedModel = options.model;
+    this.controller = options.controller || null;
+    this.offset    = options.offset || 0;
+    this.limit     = options.limit || 10;
+    this.infinite  = options.infinite || false;
     this.waypoint  = false;
-    this.options   = {};
+    
     this.elem      = $('.loadMore');
-    this.failText  = failText || null;
+    this.failText  = options.failText || null;
     this.events();
 };
 
@@ -310,7 +307,7 @@ UserFeed.prototype.render = function(data)
         : self.elem.show();
 
     // add counts to the dom for next request
-    self.elem.data('offset', (self.options.offset + self.options.limit));
+    self.options.offset += parseInt(self.options.limit);
 
     var html = [];
 
@@ -321,11 +318,11 @@ UserFeed.prototype.render = function(data)
             html.push( self.feedModel.render(users[i], cardClass, template) );
         }
     }
-
     (rendertype === "write")
         ? self.options.container.empty().append( html.join('') )
         : self.options.container.append( html.join('') );
-        
+    
+
     if (self.waypoint) {
         (users.length < self.options.limit)
             ? self.waypoint.disable()
@@ -333,7 +330,6 @@ UserFeed.prototype.render = function(data)
     }
 
     this.controller.userEvents();
-
     $(".card .content > p, .card h2").dotdotdot();     
     // $('.video-player').videoPlayer();
     $("div.lazyload").lazyload({
@@ -352,8 +348,7 @@ UserCard.prototype.render = function(user, cardClass, template, type)
 {
     user['cardClass'] = cardClass;
     var template = (template) ? Templates[template] : Templates.systemCardTemplate;
-    userTemplate = Handlebars.compile(template);
+    const userTemplate = Handlebars.compile(template);
     return userTemplate(user);
 }
-
 

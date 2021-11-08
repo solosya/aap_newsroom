@@ -507,8 +507,17 @@
             app_id: "zxwsoz9f"
         }; 
 
-        Acme.usercard = new Acme.Usercard();
+        var usercard = new Acme.Usercard();
         Acme.userController = new Acme.UserProfileController();
-        Acme.userFeed = new Acme.View.UserFeed(Acme.usercard, "{{userLimit}}", 20, false, null, Acme.userController);
+        Acme.userFeed = new Acme.View.UserFeed({
+            model: usercard, 
+            limit: "{{userLimit}}",
+            offset: 20, 
+            container: $('#mangedUsers'),
+            loadtype: 'user',
+            inifinte: false, 
+            failtext: null, 
+            controller: Acme.userController
+        });
     });
 </script>
