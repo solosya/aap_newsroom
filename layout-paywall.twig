@@ -263,12 +263,12 @@
         
         <section class="row subscription">
             
-            <p class="offset-lg-1 col-12 col-lg-10 paywall__corporate-link u-text-center u-desktop-margin-top-50 u-tablet-margin-top-30">For corporate and small business subscriptions <a id="corporate-plans" href="#corporate">click here</a></p>
+            {# <p class="offset-lg-1 col-12 col-lg-10 paywall__corporate-link u-text-center u-desktop-margin-top-50 u-tablet-margin-top-30">For corporate and small business subscriptions <a id="corporate-plans" href="#corporate">click here</a></p> #}
 
-            <div id="corporate-plans-container" class="paywall__coporate-plans offset-lg-1 col-lg-10 u-hide">
+            <div id="corporate-plans-container" class="paywall__coporate-plans offset-lg-1 col-lg-10 ">
                 <div class="row">
 
-                <h1 class="offset-lg-1 col-12 col-lg-10 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the subscription <br class="d-block d-sm-none" />that's right for you:</h1>  
+                <h1 class="col-12 col-lg-12 paywall__corporate-header u-desktop-margin-top-50 u-tablet-margin-top-50  u-mobile-margin-top-20">Choose the business subscription <br class="d-block d-sm-none" />that's right for you:</h1>  
 
                 {% for plan in orderedBottom %}
                     {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
@@ -321,7 +321,7 @@
                 {% endfor %}
                 </div>
 
-                    <a id="close-coporate" href="#" class="paywall__close-corporate u-margin-top-10">Close</a>
+                    {# <a id="close-coporate" href="#" class="paywall__close-corporate u-margin-top-10">Close</a> #}
                     {# <p class="paywall__contact-text u-margin-top-40 u-tablet-margin-top-60">
                         For information on annual billing or custom arrangements for enterprises with 200 + users, <a href="mailto:pro@newsroom.co.nz">please email us.</a>
                     </p> #}
