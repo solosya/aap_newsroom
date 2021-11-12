@@ -788,6 +788,7 @@
         font-family:$primaryFont;
         @include font-size(18);
         font-weight:600;
+        margin-bottom: 6px;
         @media #{$mobile} {
             @include font-size(14);
             margin-bottom:4px;
@@ -798,6 +799,7 @@
     &__winners-names {
         font-family:$primaryFont;
         @include font-size(18);
+        margin-bottom: 12px;
         @media #{$mobile} {
             @include font-size(14);
         }
