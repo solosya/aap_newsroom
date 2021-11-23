@@ -459,7 +459,7 @@ So you don't have to create all the sections on dev #}
             </div>
 
             {% if sections['partner newsroom'].feed.articles|length > 0 %}
-                {{ this.render('partials/corporateroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {{ this.render('partials/partnerroom.twig', {sections: sections, networkData: networkData}) | raw }}
             {% endif %}
 
 
