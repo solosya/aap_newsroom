@@ -1,13 +1,13 @@
-<div class="container-fluid coporate-news-room">
+<div class="container-fluid corporate-news-room">
 
-    <section class="room-coporate">
+    <section class="room-corporate">
         <div class="container">
             <header>
                 <a href="{{ sections['partner newsroom'].link }}">
                     <img src="{{networkData.templatePath}}/static/images/partner-newsroom-header.svg" alt="board room">
                 </a>
             </header>
-            <div class="row partner-articles gutter-60">
+            <div class="row corporate-articles gutter-60">
                 {% for i in 0..3 %}
                     {% if sections['partner newsroom'].feed.articles[i] %}        
                         {{this.render('_single-article_corp.twig', {
