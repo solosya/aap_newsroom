@@ -1,4 +1,4 @@
- <section class="room-green">
+ <section class="room-technology">
      <header class="row">
          <a href="{{ sections['technology'].link }}" class="col-12 col-md-6">
              <img src="{{networkData.templatePath}}/static/images/technology-new-logo.svg" alt="ideas room" class="img-fluid room-logo">
@@ -7,7 +7,7 @@
 
     {{this.render('_single-article.twig', {
         article: sections['technology'].feed.articles[0], 
-        containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up green', 
+        containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up technology', 
         imageSize: {width:1140, height:430},
         swap: 'false'
     }) | raw}}
@@ -20,7 +20,7 @@
                  {% if sections['technology'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article: sections['technology'].feed.articles[i], 
-                        containerClass: 'col-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up green', 
+                        containerClass: 'col-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up technology', 
                         imageSize: {width:203, height:129},
                         swap: 'false'
                     }) | raw}}
