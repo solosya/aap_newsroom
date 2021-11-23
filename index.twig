@@ -34,7 +34,7 @@
     {% endif %}
 {% endif %}
 
-{% set limit = 11 %}
+{% set limit = 13 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
@@ -297,7 +297,7 @@ So you don't have to create all the sections on dev #}
                         </div>
                         {% endif %}   
 
-                        {% for i in 0..1 %}
+                        {% for i in 0..2 %}
                             {% if articles[articleCount] %}
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
@@ -435,6 +435,14 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
+                {% if sections['technology'].feed.articles|length > 0 %}
+                    {{ this.render('partials/technology.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
+                {% if sections['healthscience'].feed.articles|length > 0 %}
+                    {{ this.render('partials/healthscience.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
                 {% if sections['readingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
@@ -450,7 +458,7 @@ So you don't have to create all the sections on dev #}
 
             </div>
 
-            {% if sections['corporate newsroom'].feed.articles|length > 0 %}
+            {% if sections['partner newsroom'].feed.articles|length > 0 %}
                 {{ this.render('partials/corporateroom.twig', {sections: sections, networkData: networkData}) | raw }}
             {% endif %}
 
