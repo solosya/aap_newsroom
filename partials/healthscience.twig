@@ -1,13 +1,13 @@
-<section class="room-investigations">
+<section class="room-healthscience">
     <header>
         <a href="{{ sections['health & science'].link }}">
-            <img src="{{networkData.templatePath}}/static/images/healthscience-logo.svg?ver=1" alt="health & science" class="img-fluid">
+            <img src="{{networkData.templatePath}}/static/images/healthscience-logo.svg?ver=1" alt="health & science" class="img-fluid room-logo">
         </a>
     </header>
 
     {{this.render('_single-article.twig', {
         article         : sections['health & science'].feed.articles[0],
-        containerClass  : 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up investigations', 
+        containerClass  : 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up healthscience', 
         imageSize       : {width:627, height:415},
         swap            : 'false'
     }) | raw}}
@@ -19,7 +19,7 @@
                 {% if sections['health & science'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article         : sections['health & science'].feed.articles[i], 
-                        containerClass  : 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg investigations col-md-4', 
+                        containerClass  : 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg healthscience col-md-4', 
                         imageSize       : {width:92, height:100},
                         swap            : 'false'
 

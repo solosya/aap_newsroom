@@ -24922,6 +24922,58 @@ input[type=radio].inline {
   }
 }
 
+.room-technology {
+  border-bottom: 1px solid #d4d4d4;
+  margin-bottom: 65px;
+  margin-top: 80px;
+  padding-bottom: 15px;
+}
+@media screen and (max-width: 991px) {
+  .room-technology {
+    margin-bottom: 40px;
+    border-bottom: 0;
+  }
+}
+.room-technology > header {
+  margin-bottom: 20px;
+}
+@media screen and (min-width : 768px) {
+  .room-technology > header .room-logo {
+    height: 53px;
+  }
+}
+@media screen and (max-width : 767px) {
+  .room-technology > header .room-logo {
+    height: 45px;
+  }
+}
+
+.room-healthscience {
+  border-bottom: 1px solid #d4d4d4;
+  margin-bottom: 65px;
+  margin-top: 80px;
+  padding-bottom: 15px;
+}
+@media screen and (max-width: 991px) {
+  .room-healthscience {
+    margin-bottom: 40px;
+    border-bottom: 0;
+  }
+}
+.room-healthscience > header {
+  margin-bottom: 20px;
+}
+@media screen and (min-width : 768px) {
+  .room-healthscience > header .room-logo {
+    height: 53px;
+  }
+}
+@media screen and (max-width : 767px) {
+  .room-healthscience > header .room-logo {
+    height: 45px;
+  }
+}
+
 .room-ideas {
   border-bottom: 1px solid #d4d4d4;
   margin-bottom: 65px;
@@ -33047,6 +33099,12 @@ body.channel.supporters p span {
   .card-featured-mobile.green:before {
     background: #169058;
   }
+  .card-featured-mobile.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured-mobile.healthscience:before {
+    background: #b2ce97;
+  }
   .card-featured-mobile.ideas:before {
     background: #006386;
   }
@@ -33257,6 +33315,12 @@ body.channel.supporters p span {
   .card-featured-tablet.green:before {
     background: #169058;
   }
+  .card-featured-tablet.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured-tablet.healthscience:before {
+    background: #b2ce97;
+  }
   .card-featured-tablet.ideas:before {
     background: #006386;
   }
@@ -33394,6 +33458,12 @@ body.channel.supporters p span {
   .card-featured-desktop.green:before {
     background: #169058;
   }
+  .card-featured-desktop.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured-desktop.healthscience:before {
+    background: #b2ce97;
+  }
   .card-featured-desktop.ideas:before {
     background: #006386;
   }
@@ -33527,6 +33597,12 @@ body.channel.supporters p span {
   }
   .card-featured-desktop-up.green:before {
     background: #169058;
+  }
+  .card-featured-desktop-up.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured-desktop-up.healthscience:before {
+    background: #b2ce97;
   }
   .card-featured-desktop-up.ideas:before {
     background: #006386;
@@ -34714,6 +34790,24 @@ body.channel.supporters p span {
   .card-featured2-mobile.green .c-cards-view__time {
     color: #169058;
   }
+  .card-featured2-mobile.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured2-mobile.technology .c-cards-view__category {
+    color: #8a8b93;
+  }
+  .card-featured2-mobile.technology .c-cards-view__time {
+    color: #8a8b93;
+  }
+  .card-featured2-mobile.healthscience:before {
+    background: #b2ce97;
+  }
+  .card-featured2-mobile.healthscience .c-cards-view__category {
+    color: #b2ce97;
+  }
+  .card-featured2-mobile.healthscience .c-cards-view__time {
+    color: #b2ce97;
+  }
   .card-featured2-mobile.ideas:before {
     background: #006386;
   }
@@ -34882,6 +34976,24 @@ body.channel.supporters p span {
   .card-featured2-tablet.green .c-cards-view__time {
     color: #169058;
   }
+  .card-featured2-tablet.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured2-tablet.technology .c-cards-view__category {
+    color: #8a8b93;
+  }
+  .card-featured2-tablet.technology .c-cards-view__time {
+    color: #8a8b93;
+  }
+  .card-featured2-tablet.healthscience:before {
+    background: #b2ce97;
+  }
+  .card-featured2-tablet.healthscience .c-cards-view__category {
+    color: #b2ce97;
+  }
+  .card-featured2-tablet.healthscience .c-cards-view__time {
+    color: #b2ce97;
+  }
   .card-featured2-tablet.ideas:before {
     background: #006386;
   }
@@ -35021,6 +35133,24 @@ body.channel.supporters p span {
   .card-featured2-desktop.green .c-cards-view__time {
     color: #169058;
   }
+  .card-featured2-desktop.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured2-desktop.technology .c-cards-view__category {
+    color: #8a8b93;
+  }
+  .card-featured2-desktop.technology .c-cards-view__time {
+    color: #8a8b93;
+  }
+  .card-featured2-desktop.healthscience:before {
+    background: #b2ce97;
+  }
+  .card-featured2-desktop.healthscience .c-cards-view__category {
+    color: #b2ce97;
+  }
+  .card-featured2-desktop.healthscience .c-cards-view__time {
+    color: #b2ce97;
+  }
   .card-featured2-desktop.ideas:before {
     background: #006386;
   }
@@ -35148,6 +35278,24 @@ body.channel.supporters p span {
   }
   .card-featured2-desktop-up.green .c-cards-view__time {
     color: #169058;
+  }
+  .card-featured2-desktop-up.technology:before {
+    background: #8a8b93;
+  }
+  .card-featured2-desktop-up.technology .c-cards-view__category {
+    color: #8a8b93;
+  }
+  .card-featured2-desktop-up.technology .c-cards-view__time {
+    color: #8a8b93;
+  }
+  .card-featured2-desktop-up.healthscience:before {
+    background: #b2ce97;
+  }
+  .card-featured2-desktop-up.healthscience .c-cards-view__category {
+    color: #b2ce97;
+  }
+  .card-featured2-desktop-up.healthscience .c-cards-view__time {
+    color: #b2ce97;
   }
   .card-featured2-desktop-up.ideas:before {
     background: #006386;

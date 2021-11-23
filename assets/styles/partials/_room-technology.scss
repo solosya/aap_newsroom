@@ -1,0 +1,24 @@
+.room-technology{
+    border-bottom: 1px solid #d4d4d4;
+    margin-bottom: 65px;
+    margin-top: 80px;
+    padding-bottom: 15px;
+
+    @media screen and (max-width: $mmd-break-down){
+        margin-bottom: 40px;
+        border-bottom: 0;
+    }
+
+    > header{
+        margin-bottom: 20px;
+        .room-logo{
+            @media #{$tablet-up}{
+                height:53px;
+            }
+            
+            @media #{$mobile} {
+                height:45px;
+            }
+        }    
+    }
+}
