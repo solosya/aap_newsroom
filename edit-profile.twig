@@ -13,8 +13,7 @@
 
 {% set pwstats = _User.getPaywallStats(true) %}
 
-{% set plans = _Network.getNetworkData()['paywallPlans'] %}
-{# {% set plans = _Paywall.getActiveNetworkPaywallPlans() %} #}
+{% set plans = _Paywall.getActiveNetworkPaywallPlans() %}
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}

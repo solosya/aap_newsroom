@@ -10,8 +10,7 @@
 
 
 {% set networkData = _Network.getNetworkData() %}
-{% set plans = networkData['paywallPlans'] %}
-
+{% set plans       = _Paywall.getActiveNetworkPaywallPlans() %}
 
 
 
