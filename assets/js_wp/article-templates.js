@@ -231,7 +231,7 @@ donateSignupForm:
 
 
 mailchimpList:
-    '<div class="email-subscription__container> \
+    '<div class="email-subscription__container"> \
         <input type="checkbox" class="email-subscription__checkbox" name="summary-email" id="mailchimp" value="{{listId}}:{{groupId}}" {{checked}}> \
         <label class="email-subscription__label">{{{name}}}</label> \
     </div>',
