@@ -2,8 +2,12 @@
     margin-top: 35px;
     margin-bottom: 10px;
 
+    &__container {
+        @include flexbox();    
+        @include align-items(center);
+    }
     &__checkbox {
-
+        margin-top:0;
     }
 
 
