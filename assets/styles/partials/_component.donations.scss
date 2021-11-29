@@ -1,66 +1,56 @@
 .donations {
-
     &__header {
-        display:flex;
-        align-items: flex-end;
-
-        @media #{$mobile} {
-            margin-left:15px;
-        }
+        display: flex;
+        align-items: center;
     }
 
     &__nr-logo {
-        display:block;
-        width:68px;
-        height:45px;
-
+        display: block;
+        width: 68px;
+        height: 45px;
 
         @media #{$mobile} {
-            width:29px;
-            height:19px;
+            width: 29px;
+            height: 19px;
         }
     }
 
     &__main-image {
-        height:100%;
-        width:auto;
+        height: 100%;
+        width: auto;
         object-fit: cover;
-        float:right;
+        float: right;
     }
 
-
     &__close {
-        display:block;
-        margin-left:auto;
+        display: block;
+        margin-left: auto;
         width: 25px;
         height: 25px;
-        margin-right: 25px;
         &-icon {
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
         }
 
         @media #{$mobile} {
             width: 20px;
             height: 20px;
         }
-
     }
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        line-height:1;
+        line-height: 1;
         &--red {
-            color:$brand-purple;
+            color: #2692e1;
         }
 
         @media #{$desktop} {
             @include font-size(40);
         }
 
-
         @media #{$tablet} {
-            margin-bottom:60px;
+            margin-bottom: 60px;
         }
         @media #{$mobile} {
             @include font-size(25);
@@ -70,201 +60,343 @@
     }
 
     &__text {
-        font-family:$primaryFont;
+        font-family: $primaryFont;
         @include font-size(22);
-        line-height:1.36;
-        margin-bottom:22px;
+        line-height: 1.36;
+        margin-bottom: 22px;
 
         @media #{$desktop} {
             @include font-size(20);
         }
 
-
         @media #{$mobile} {
             @include font-size(14);
-            line-height:1.35;
+            line-height: 1.35;
             letter-spacing: 0.58px;
         }
-
     }
 
-
     &__byline-img {
-        width:98px;
-        height:98px;
-        background-color:#dadada;
-        border-radius:50%;
-        margin-right:30px;
+        width: 98px;
+        height: 98px;
+        background-color: #dadada;
+        border-radius: 50%;
+        margin-right: 30px;
         @media #{$mobile} {
-            width:66px;
-            height:66px;
-            margin-right:15px;
-
+            width: 66px;
+            height: 66px;
+            margin-right: 15px;
         }
-
     }
 
     &__byline {
-        font-family:$primaryFont;
+        font-family: $primaryFont;
         @include font-size(22);
-        font-style:italic;
+        font-style: italic;
         @media #{$mobile} {
             @include font-size(14);
+        }
+    }
+
+    &__subs {
+        background-color: #f1f1f1;
+        padding: 50px 0;
+
+        &-slideShow {
+            position: relative;
+
+            .owl-carousel .owl-item img {
+                width: inherit;
+            }
+            @media #{$mobile} {
+                margin: 0 25px;
+                background-color: #f1f1f1;
+                padding: 35px 0;
+            }
+
+            &:before,
+            &:after {
+                @media #{$mobile} {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    left: -100%;
+                    position: absolute;
+                    top: 0;
+                    display: block;
+                    background-color: #f1f1f1;
+                }
+            }
+
+            &:after {
+                @media #{$mobile} {
+                    right: -100%;
+                    left: auto;
+                }
+            }
+        }
+
+        &-container {
+            .newDonation-section__tab {
+                padding: 28px;
+                margin: 0;
+
+                @media #{$mobile} {
+                    margin: 0;
+                }
+
+                .nav {
+                    position: relative;
+
+                    &:before,
+                    &:after {
+                        @media #{$mobile} {
+                            content: "";
+                            width: 100%;
+                            height: 100%;
+                            left: -100%;
+                            position: absolute;
+                            top: 0;
+                            display: block;
+                            background-color: #f1f1f1;
+                        }
+                    }
+
+                    &:after {
+                        @media #{$mobile} {
+                            right: -100%;
+                            left: auto;
+                        }
+                    }
+                    .nav-link {
+
+                        &.active {
+                            border: solid 0.8px #2692e1;
+                            background-color: #bfe4ff;
+                            color: $black;
+                        }
+                        &:hover {
+                            background-color: #8a8b93;
+                            color: $white;
+                        }
+
+                        @include font-size(20);
+                        @media #{$mobile} {
+                            @include font-size(14);
+                        }
+                    }
+                }
+
+                .tab-content > .tab-pane {
+                    margin-top: 30px;
+                    .buttons-wrapper {
+                        flex-direction: column;
+                        .buttons-wrapper--item {
+                            min-height: 50px;
+                            @include font-size(20);
+                            font-family: $primaryFont;
+
+                            &.active {
+                                border-color:#2692e1;
+                                background-color: #bfe4ff;
+                                color:$black;
+                            }
+
+                            @media #{$mobile} {
+                                @include font-size(18);
+                                min-height: 46px;
+                            }
+
+                            &.donate-btn {
+                                text-transform: uppercase;
+                                background-color: #2692e1;
+                                border-color:#2692e1;
+                                color: $white;
+
+                                &:hover {
+                                    background-color: $black;
+                                    border-color:$black;
+                                }
+                            }
+                        }
+                        .btn-bx-1 {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            width: 100%;
+
+                            .buttons-wrapper--item {
+                                flex: 0 0 calc(50% - 8px);
+                                margin-bottom: 16px;
+                                + .buttons-wrapper--item {
+                                    margin-left: 0;
+
+                                    @media #{$mobile} {
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                        .btn-bx-2 {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--text {
+            font-family: $base-font-family;
+            @include font-size(25);
+            line-height: 1.12;
+            letter-spacing: 0.04px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: $black;
+            padding: 0 25px;
+        }
+
+        @media #{$mobile} {
+            background-color: $white;
         }
     }
 }
 
-
 .supporter {
-
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        line-height:.9;
-        margin-bottom:40px;
+        line-height: 0.9;
+        margin-bottom: 40px;
         @media #{$mobile} {
-            margin-bottom:0;
+            margin-bottom: 0;
             @include font-size(28);
-
         }
-
     }
 
     &__button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        height:55px;
-        width:253px;
+        height: 55px;
+        width: 253px;
         text-transform: uppercase;
-        background-color:$brand-secondary;
+        background-color: $brand-secondary;
         @include font-size(21);
-        font-weight:600;
-        color:#fcfcfc;
+        font-weight: 600;
+        color: #fcfcfc;
 
         &--black {
-            background-color:black;
+            background-color: black;
             &:hover {
-                background-color:$brand-secondary;
-                color:white;
+                background-color: $brand-secondary;
+                color: white;
             }
         }
 
         &--purple {
-            background-color:#5271ff;
+            background-color: #2692e1;
             &:hover {
-                background-color:$brand-secondary;
-                color:white;
+                background-color: white;
+                color: black;
             }
         }
 
         &--grey {
-            background-color:#8a8b93;
+            background-color: #8a8b93;
             &:hover {
-                background-color:$brand-secondary;
-                color:white;
+                background-color: $brand-secondary;
+                color: white;
             }
         }
 
         &--space {
-            margin:0 60px;
+            margin: 0 60px;
         }
-
 
         @media #{$desktop} {
-            width:233px;
-            height:42px;
+            width: 233px;
+            height: 42px;
             &--space {
-                margin:0 30px;
+                margin: 0 30px;
             }
         }
-    
+
         @media #{$tablet} {
             @include font-size(19);
-            width:210px;
+            width: 210px;
             &--space {
-                margin:0 20px;
+                margin: 0 20px;
             }
         }
 
         @media #{$mobile} {
-            display:flex;
+            display: flex;
             @include font-size(14);
 
             margin: 22px auto;
             &--space {
-                margin:22px auto;
+                margin: 22px auto;
             }
-    
-
         }
-
-
     }
 
     &__patron {
-        margin-top:42px;
+        margin-top: 42px;
         text-transform: uppercase;
         @include font-size(14);
         @media #{$mobile} {
             @include font-size(12);
-            margin-top:0;
+            margin-top: 0;
         }
-
     }
 }
 
-
 .writers {
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        font-weight:600;
-        margin-bottom:40px;
+        font-weight: 600;
+        margin-bottom: 40px;
 
         @media #{$mobile} {
             @include font-size(28);
-            margin-bottom:30px;
+            margin-bottom: 30px;
         }
     }
 
     &__container {
-        margin-bottom:50px;
+        margin-bottom: 50px;
         @media #{$mobile} {
-            padding-bottom:8px;
-            border-bottom:1px solid #dadada;
-            margin-bottom:15px;
-
+            padding-bottom: 8px;
+            border-bottom: 1px solid #dadada;
+            margin-bottom: 15px;
         }
-
     }
     &__img {
-        width:98px;
-        height:98px;
-        background-color:#dadada;
-        border-radius:50%;
-        margin-right:30px;
+        width: 98px;
+        height: 98px;
+        background-color: #dadada;
+        border-radius: 50%;
+        margin-right: 30px;
 
         @media #{$mobile} {
-            width:65px;
-            height:65px;
+            width: 65px;
+            height: 65px;
         }
-
-
     }
     &__text {
-
     }
     &__name {
         font-family: $base-font-family;
         @include font-size(20);
-        font-weight:700;
-        margin-bottom:10px;
-        margin-top:24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        margin-top: 24px;
 
         @media #{$mobile} {
-            @include font-size(17); 
-            margin-top:0;
+            @include font-size(17);
+            margin-top: 0;
         }
     }
 
@@ -272,34 +404,39 @@
         font-family: $primaryFont;
         @include font-size(18);
         text-transform: uppercase;
-        color:#E22F22;
-        margin-bottom:15px;
+        color: #2692e1;
+        font-weight: $weightSemibold;
+        margin-bottom: 15px;
 
         @media #{$mobile} {
             @include font-size(14);
-            min-height:37px;
-            margin-bottom:10px;
-
+            min-height: 37px;
+            margin-bottom: 10px;
         }
-
-
     }
     &__about {
         font-family: $base-font-family;
         @include font-size(13.5);
-        line-height:1.18;
-        color:#8a8b93;
+        line-height: 1.18;
+        color: #8a8b93;
         font-style: italic;
+
+        &:after {
+            content: "\e802";
+            font-family: "fontello";
+            display: inline-block;
+            font-style: normal;
+            font-weight: normal;
+            margin-left: 8px;
+        }
     }
 
     &__view-all {
-        cursor:pointer;
+        cursor: pointer;
         font-family: $base-font-family;
-        font-style:italic;
+        font-style: italic;
         @include font-size(16);
-
     }
-
 }
 
 .newDonation-section {
@@ -312,7 +449,7 @@
         text-align: center;
     }
     &__heading {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(60);
         line-height: 0.58;
         letter-spacing: 0.1px;
@@ -353,7 +490,6 @@
             margin-top: 18px;
         }
     }
-    
 
     &__tab {
         background-color: $white;
@@ -397,7 +533,6 @@
                     background-color: #5271ff;
                     color: $white;
                 }
-                
             }
         }
 
@@ -450,7 +585,6 @@
                         @include font-size(53.5);
                         line-height: normal;
                     }
-                    
                 }
 
                 &__weekly {
@@ -503,7 +637,6 @@
                         margin-left: 10px;
                         padding-left: 10px;
                     }
-
                 }
 
                 @media #{$tablet} {
@@ -513,7 +646,6 @@
                             line-height: normal;
                         }
                     }
-
                 }
 
                 @media #{$mobile} {
@@ -545,7 +677,7 @@
                     color: $black;
                     background-color: $white;
                     @include transition(all 0.3s ease);
-                    font-family:$base-font-family;
+                    font-family: $base-font-family;
                     @include font-size(30);
                     line-height: normal;
                     font-weight: $weightBold;
@@ -558,19 +690,20 @@
                     @include justify-content(center);
                     white-space: nowrap;
 
-                    &:hover, &.active {
+                    &:hover,
+                    &.active {
                         color: $white;
                         background-color: $black;
                     }
                     + .buttons-wrapper--item {
-                        margin-left: 15px
+                        margin-left: 15px;
                     }
                 }
 
                 @media #{$mobile} {
                     @include flex-direction(column);
 
-                    .buttons-wrapper {        
+                    .buttons-wrapper {
                         &--item {
                             @include font-size(24);
                             line-height: normal;
@@ -587,8 +720,6 @@
         }
     }
 
-
-
     @media #{$tablet} {
         margin: 40px 0;
         padding: 35px 0 40px;
@@ -600,66 +731,53 @@
     }
 }
 
-
 .writers-bio {
-    background:white;
-    padding:30px;
+    background: white;
+    padding: 30px;
 
     &__name {
-
     }
 
     &__jobtitle {
-
     }
 
     &__text {
         font-family: $base-font-family;
 
         @include font-size(16);
-
     }
 }
-
-
 
 .support-breakout {
-    background-color:black;
-    padding-bottom:42px;
+    background-color: black;
+    padding-bottom: 42px;
 
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        font-weight:600;
-        color:white;
-        margin-top:44px;
-        margin-bottom:35px;
-        text-align:center;
+        font-weight: 600;
+        color: white;
+        margin-top: 44px;
+        margin-bottom: 35px;
+        text-align: center;
         @media #{$mobile} {
             @include font-size(28);
-            margin-bottom:15px;
-
+            margin-bottom: 15px;
         }
-
-
     }
 }
-
 
 .faq {
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        font-weight:600;
-        margin-bottom:50px;
+        font-weight: 600;
+        margin-bottom: 50px;
 
         @media #{$mobile} {
             @include font-size(28);
-            margin-bottom:15px;
-
+            margin-bottom: 15px;
         }
-
-
     }
 
     &__container {
@@ -670,22 +788,21 @@
         border-bottom: 1px solid #979797;
         // padding-bottom:38px;
         align-items: center;
-        height:75px;
+        height: 75px;
 
         &--open {
-            height:auto;
+            height: auto;
         }
 
         @media #{$mobile} {
             align-items: flex-end;
         }
-
     }
 
     &__question {
         @include font-size(18);
-        font-weight:600;
-        margin-bottom:10px;
+        font-weight: 600;
+        margin-bottom: 10px;
 
         &--open {
             margin-top: 20px;
@@ -694,8 +811,6 @@
         @media #{$mobile} {
             @include font-size(16);
         }
-
-
     }
     &__answer-container {
         &--open {
@@ -709,34 +824,32 @@
         @media #{$mobile} {
             @include font-size(14);
         }
-
     }
 
     &__button {
-        height:30px;
-        width:50px;
-        background-color:#adadad;
-        cursor:pointer;
-        position:relative;
-        margin-left:auto;
+        height: 30px;
+        width: 50px;
+        background-color: #adadad;
+        cursor: pointer;
+        position: relative;
+        margin-left: auto;
         @media #{$mobile} {
-            height:20px;
-            width:40px;
+            height: 20px;
+            width: 40px;
         }
-
     }
     &__arrow-container {
-        position:relative;
+        position: relative;
         width: 15px;
-        height:15px;
+        height: 15px;
         margin: auto;
-        top:4px;
-        border-color:white;
-        transform:rotate(180deg);
+        top: 4px;
+        border-color: white;
+        transform: rotate(180deg);
 
         &--up {
             top: 12px;
-            transform:none;
+            transform: none;
         }
 
         @media #{$mobile} {
@@ -744,67 +857,57 @@
 
             &--up {
                 top: 7px;
-
             }
         }
-
-
     }
 }
 
 .awards {
-
     padding-top: 60px;
-    padding-bottom:60px;
-    background: rgba(0,0,0,.07);
+    padding-bottom: 60px;
+    background: rgba(0, 0, 0, 0.07);
 
     &__container {
-        margin-bottom:43px;
+        margin-bottom: 43px;
     }
 
     &__title {
-        font-family:$base-font-family;
+        font-family: $base-font-family;
         @include font-size(40);
-        font-weight:600;
-        margin-bottom:50px;
+        font-weight: 600;
+        margin-bottom: 50px;
     }
 
     &__award {
-        font-family:$primaryFont;
+        font-family: $primaryFont;
         @include font-size(20);
-        line-height:1.1;
-        font-weight:700;
-        margin-bottom:25px;
-        color: $brand-secondary;
+        line-height: 1.1;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #2692e1;
         @media #{$mobile} {
             @include font-size(18);
-            margin-bottom:10px;
-
+            margin-bottom: 10px;
         }
-
     }
 
     &__winners-title {
-        font-family:$primaryFont;
+        font-family: $primaryFont;
         @include font-size(18);
-        font-weight:600;
+        font-weight: 600;
         margin-bottom: 6px;
         @media #{$mobile} {
             @include font-size(14);
-            margin-bottom:4px;
-            margin-top:10px;
+            margin-bottom: 4px;
+            margin-top: 10px;
         }
-
     }
     &__winners-names {
-        font-family:$primaryFont;
+        font-family: $primaryFont;
         @include font-size(18);
         margin-bottom: 12px;
         @media #{$mobile} {
             @include font-size(14);
         }
-
     }
-
-
 }
