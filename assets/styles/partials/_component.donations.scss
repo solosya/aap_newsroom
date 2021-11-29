@@ -105,8 +105,11 @@
         &-slideShow {
             position: relative;
 
-            .owl-carousel .owl-item img {
-                width: inherit;
+            .owl-carousel {
+                display: block !important;
+                .owl-item img {
+                    width: inherit;
+                }
             }
             @media #{$mobile} {
                 margin: 0 25px;
