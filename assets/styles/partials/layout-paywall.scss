@@ -897,6 +897,10 @@
     }
 
     &__button {
+        &-container {
+            display:flex;
+        }
+
         @include flexbox();
         @include align-items(center);
         @include justify-content(center);
@@ -919,6 +923,10 @@
             max-width:150px;
     
         }  
+        &--white {
+            background: white;
+            color: color(red);
+        }
     }
 
     &__conditions {
