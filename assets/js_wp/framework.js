@@ -298,7 +298,7 @@ export const Modal = function(template, name, layouts, data) {
         return this.dfd.promise();
     };
     Modal.prototype.renderLayout = function(layout, data) {
-
+        console.log('rendering lahyout, in the modal');
         var data = data || {};
         var tmp = Handlebars.compile(Templates[this.layouts[layout]]);
         var layout = tmp(data);

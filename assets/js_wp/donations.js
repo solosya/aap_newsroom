@@ -1,4 +1,6 @@
 import { Modal, Server } from './framework';
+import Handlebars from 'handlebars';
+import { Templates } from './article-templates';
 
 const DonateModal = function(template, parent, layouts, handler) {
     this.template = template;
@@ -38,7 +40,7 @@ DonateModal.prototype.handle = function(e) {
 
 export const Donations = function(Stripe, params) {
     this.container = document.getElementById(params.container);
-
+    this.renderTo = "modal";
     this.active = {};
     this.defaults = {};
     this.userSelected = false;
@@ -297,11 +299,26 @@ Donations.prototype.renderLayout = function(layout, data) {
         data.selected.price_id = this.defaults[data.active][1];
         data.selected.product_id = this.defaults[data.active][0];
     } 
-    this.modal.renderLayout(layout, data);
+    console.log('rendering layout');
+    this.render(layout, data);
+    // this.modal.renderLayout(layout, data);
     this.layoutEvents();
 }
 
-
+Donations.prototype.render = function(layout, data) {
+    console.log('rendering');
+    console.log(this.modal);
+    if (this.renderTo === "modal") {
+        this.modal.renderLayout(layout, data)
+    } else {
+        console.log('rendering direct to page');
+        var tmp = Handlebars.compile(Templates['donations']);
+        var layout = tmp(data);
+        console.log(layout);
+        console.log(this.container);
+        this.container.innerHTML = layout; 
+    }
+}
 
 Donations.prototype.layoutEvents = function() {
     var self = this;
@@ -689,9 +706,20 @@ Donations.prototype.events = function() {
         if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
             self.selectedInterval = data.interval;
             self.selectedAmount = parseInt(data.amount);
-            
         }
         self.load();
     });
-   
+  
+    $('#donate_embed').on('click', function(e) {
+        console.log('clicked embed listener');
+        // self.modal.render("spinner");
+        self.renderTo = 'container';
+        var elem = e.target;
+        var data = elem.dataset;
+        if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+            self.selectedInterval = data.interval;
+            self.selectedAmount = parseInt(data.amount);
+        }
+        self.load();
+    });
 }

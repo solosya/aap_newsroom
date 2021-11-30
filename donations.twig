@@ -45,7 +45,6 @@
 
 {#remove all images if url param set#}
 
-{# {% set log = _AppHelper.log(params) %} #}
 {% set session_id = false %}
 {% for k, p in params %}
     {% if k == 'session_id' %}
@@ -54,13 +53,6 @@
 {% endfor %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
-
-{% if session_id %}
-    {# {% set log = _AppHelper.log("calling sdk") %}
-
-    {% set session = _Paywall.getStripeSession(session_id) %}
-    {% set log = _AppHelper.log(session) %} #}
-{% endif %}
 
 
 <main id="main" class="" role="main">
@@ -87,48 +79,7 @@
                         <div class="donations__subs--text d-block d-md-none">Help power independent fact-driven reporting</div>
                     </div>
                     {% if donations == "nr" or _User.isAdminUser() %}
-                        <div class="donations__subs-container">
-                            <div class="newDonation-section__tab ">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">Annual</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">Monthly</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="subscribe-tab" data-toggle="tab" href="#subscribe" role="tab" aria-controls="subscribe" aria-selected="false">Single</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane active" id="donate-pane" role="tabpanel" aria-labelledby="donate-tab">
-                                        <div class="buttons-wrapper">
-                                            <div class="btn-bx-1">
-                                                <button data-interval="one_time" data-amount="5000"  class="buttons-wrapper--item j-donation">$50</a>
-                                                <button data-interval="one_time"  data-amount="10000" class="buttons-wrapper--item active j-donation">$100</a>
-                                                <button data-interval="one_time"  data-amount="15000" class="buttons-wrapper--item j-donation">$150</a>
-                                                <button data-interval="one_time"  data-amount="200" class="buttons-wrapper--item j-donation">$200</a>
-                                            </div>
-                                            <div class="btn-bx-2 mb-4">
-                                                <button class="buttons-wrapper--item j-donation">Pay what you want</a>
-                                            </div>
-                                            <div class="btn-bx-2">
-                                                <button class="buttons-wrapper--item donate-btn">Donate</a>
-                                            </div>
-                                        </div>
-                                        <div class="links-wrapper">
-                                            <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to donate via bank transfer" class="links-wrapper--item">Donate via bank transfer</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane subscribe " id="subscribe-pane" role="tabpanel" aria-labelledby="subscribe-tab">
-                                        <div class="links-wrapper">
-                                            <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to donate via bank transfer" class="links-wrapper--item">Donate via bank transfer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div id="donate-container" class="donations__subs-container"></div>
                     {% endif %}
 
                 </div>
@@ -145,6 +96,7 @@
                                         <img src="{{networkData.templatePath}}/static/headshots/tim-mark-bw@2x.jpg" class="donations__byline-img">
                                         <p class="donations__byline">– Tim, Mark and the team at Newsroom</p>
                                     </div>
+                                    <button id="donate_embed">donate</button>
                                 </div>
                             </div>
                         </div>
@@ -855,3 +807,15 @@
 
     });
 </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var stripekey = $('#stripekey').html();
+            var stripe = Stripe(stripekey);
+            Acme.donations = new Acme.Donations(stripe, {
+                container: 'donate-container',
+                guest: "{{guestUser}}"
+            });
+        });
+    </script>
