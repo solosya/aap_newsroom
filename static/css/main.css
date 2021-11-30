@@ -14071,6 +14071,14 @@ button.swiper-pagination-bullet {
   color: white;
 }
 
+._btn--white {
+  color: #e22f22;
+}
+._btn--white:hover {
+  text-decoration: none;
+  color: black;
+}
+
 ._btn--black {
   background: black;
   color: white;
@@ -28243,6 +28251,9 @@ body.channel .section-sidepanel-news a.card .content .author p, body.section .se
   width: 253px;
   height: 55px;
 }
+.paywall-offer-banner__button-container {
+  display: flex;
+}
 @media screen and (min-width : 768px) and (max-width : 991px) {
   .paywall-offer-banner__button {
     margin-top: 37px;
@@ -28258,6 +28269,10 @@ body.channel .section-sidepanel-news a.card .content .author p, body.section .se
     height: auto;
     max-width: 150px;
   }
+}
+.paywall-offer-banner__button--white {
+  background: white;
+  color: #e22f22;
 }
 .paywall-offer-banner__conditions {
   margin-top: 50px;

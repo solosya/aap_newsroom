@@ -126,11 +126,19 @@
                     <h1 class="paywall-offer-banner__headline">{{header|raw}}</h1>
                     <h3 class="paywall-offer-banner__tagline">{{subhead|raw}}</h3>
                     <p class="paywall-offer-banner__text">{{blurbA|raw}}</p>
-                    <a class="_btn _btn--black  paywall-offer-banner__button j-gtasubstart" href="{{subscribeLink}}" 
-                        data-price="{{specialPlan.plan_value}}" 
-                        data-name="{{frequency}}" 
-                        data-id="{{plan.guid}}"
-                        >{{ buttonText }}</a>
+
+                    <div class="paywall-offer-banner__button-container">
+                        <a class="_btn _btn--black  paywall-offer-banner__button j-gtasubstart" href="{{subscribeLink}}" 
+                                data-price="{{specialPlan.plan_value}}" 
+                            data-name="{{frequency}}" 
+                            data-id="{{plan.guid}}"
+                            >{{ buttonText }}</a>
+                        <a class="_btn paywall-offer-banner__button paywall-offer-banner__button--white u-margin-left-20" href="{{networkData.defaultBlogUrl}}/gift-subscription-form" 
+                            data-price="{{specialPlan.plan_value}}" 
+                            data-name="{{frequency}}" 
+                            data-id="{{plan.guid}}"
+                            >BUY FOR A FRIEND</a>
+                    </div>
                     <p class="paywall-offer-banner__conditions">{{blurbB|raw}}</p>
                 </div>
 
