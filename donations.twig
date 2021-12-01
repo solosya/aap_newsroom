@@ -814,7 +814,8 @@
             var stripe = Stripe(stripekey);
             var donations = new Acme.Donations(stripe, {
                 container: 'donate-container',
-                guest: "{{guestUser}}"
+                guest: "{{guestUser}}",
+                modal: false
             });
             donations.renderToPage({
                 interval: 'annual',
