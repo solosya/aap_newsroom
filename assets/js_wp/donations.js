@@ -84,8 +84,12 @@ export const Donations = function(Stripe, params) {
         "signin"        : 'donateSignupForm',
         "register"      : 'registerTmpl',
         "reset-success" : 'donateResetPassword',
-    }; 
-    this.modal = new DonateModal('donate_modal', 'donate-modal', this.templates, this.handler );
+    };
+   
+    // if used embeded in page we don't want the modal created
+    if (typeof params['modal'] === 'undefined' || params['modal'] !== false) {
+        this.modal = new DonateModal('donate_modal', 'donate-modal', this.templates, this.handler );
+    }
 
     this.events();
 };
@@ -710,17 +714,18 @@ Donations.prototype.renderToPage = function(data){
 }
 Donations.prototype.events = function() {
     var self = this;
-
-    $('#donations, .j-donation').on('click', function(e) {
-        self.modal.render("spinner");
-        var elem = e.target;
-        var data = elem.dataset;
-        if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
-            self.selectedInterval = data.interval;
-            self.selectedAmount = parseInt(data.amount);
-        }
-        self.load();
-    
-    });
+    if (self.modal) {
+        $('#donations, .j-donation').on('click', function(e) {
+            self.modal.render("spinner");
+            var elem = e.target;
+            var data = elem.dataset;
+            if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+                self.selectedInterval = data.interval;
+                self.selectedAmount = parseInt(data.amount);
+            }
+            self.load();
+        
+        });
+    }
   
 }
