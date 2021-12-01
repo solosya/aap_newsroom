@@ -143,7 +143,6 @@ Donations.prototype.fetchProducts = function()
 
 Donations.prototype.fetchPrices = function() {
     var self = this;
-
     for (let i=0; i<this.products.length; i++) {
         if (typeof this.products[i].metadata.active !== 'undefined' && this.products[i].metadata.active !== "true") {
             continue;
