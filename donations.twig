@@ -96,7 +96,6 @@
                                         <img src="{{networkData.templatePath}}/static/headshots/tim-mark-bw@2x.jpg" class="donations__byline-img">
                                         <p class="donations__byline">– Tim, Mark and the team at Newsroom</p>
                                     </div>
-                                    <button id="donate_embed">donate</button>
                                 </div>
                             </div>
                         </div>
@@ -813,9 +812,13 @@
         document.addEventListener("DOMContentLoaded", function(event) {
             var stripekey = $('#stripekey').html();
             var stripe = Stripe(stripekey);
-            Acme.donations = new Acme.Donations(stripe, {
+            var donations = new Acme.Donations(stripe, {
                 container: 'donate-container',
                 guest: "{{guestUser}}"
+            });
+            donations.renderToPage({
+                interval: 'annual',
+                amount: 50000
             });
         });
     </script>

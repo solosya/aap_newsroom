@@ -75,14 +75,16 @@ export const Donations = function(Stripe, params) {
                 this.user = r.self;
         });
     }
-    this.modal = new DonateModal('donate_modal', 'donate-modal', {
+    this.templates = {
+        "donations"     : 'donations',
         "donate"        : 'donations',
         "spinner"       : 'spinnerTmpl',
         "register"      : 'registerTmpl',
         "signin"        : 'donateSignupForm',
         "register"      : 'registerTmpl',
         "reset-success" : 'donateResetPassword',
-    }, this.handler );
+    }; 
+    this.modal = new DonateModal('donate_modal', 'donate-modal', this.templates, this.handler );
 
     this.events();
 };
@@ -152,7 +154,6 @@ Donations.prototype.fetchPrices = function() {
     return $.when.apply(undefined, this.priceRequests);
 }
 
-
 Donations.prototype.fetchPrice = function(product)
 { 
     var req = Server.fetch('/api/paywall/stripe-product-prices', {
@@ -163,7 +164,6 @@ Donations.prototype.fetchPrice = function(product)
 
     return req;
 };
-
 
 Donations.prototype.parsePrices = function(r) {
 
@@ -276,7 +276,6 @@ Donations.prototype.renderPrices = function(r) {
     }
 }
 
-
 Donations.prototype.renderLayout = function(layout, data) {
     if (typeof data === "undefined" || !data || Object.keys(data).length < 1) {
         data= {};
@@ -284,7 +283,7 @@ Donations.prototype.renderLayout = function(layout, data) {
 
     // this.pages.push(layout);
     // if (layout === "signin") {
-
+    data['class_name'] = "donate-form";
     data["class-prefix"] = "donate-";
     data["logo"] = _appJsConfig.templatePath + "/static/images/newsroom-logo.svg";
     data['user'] = this.user;
@@ -299,29 +298,36 @@ Donations.prototype.renderLayout = function(layout, data) {
         data.selected.price_id = this.defaults[data.active][1];
         data.selected.product_id = this.defaults[data.active][0];
     } 
-    console.log('rendering layout');
     this.render(layout, data);
-    // this.modal.renderLayout(layout, data);
     this.layoutEvents();
 }
 
 Donations.prototype.render = function(layout, data) {
-    console.log('rendering');
-    console.log(this.modal);
+    var self = this;
     if (this.renderTo === "modal") {
         this.modal.renderLayout(layout, data)
     } else {
-        console.log('rendering direct to page');
-        var tmp = Handlebars.compile(Templates['donations']);
+        if (typeof data !== 'undefined')
+        data['class_name'] = "donate-embed-form";
+        var wrapper = '<div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element">';
+        var endWrapper = '</div>'
+        var tmp = Handlebars.compile(wrapper + Templates[this.templates[layout]] + endWrapper);
         var layout = tmp(data);
-        console.log(layout);
-        console.log(this.container);
         this.container.innerHTML = layout; 
+
+        $(this.container).unbind().on('click', function(e) {
+            self.handler(e);
+            return;
+        });
+
     }
 }
 
 Donations.prototype.layoutEvents = function() {
     var self = this;
+
+
+
 
     var componentPrefix = "donate-login-form";
     var amountInput = document.querySelector('.j-donate-input');
@@ -695,7 +701,15 @@ Donations.prototype.fetchUser = function() {
     return Server.fetch('/api/user/self');
 }
 
-
+Donations.prototype.renderToPage = function(data){
+    this.renderTo = 'container';
+    this.render('spinner');
+    if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+        this.selectedInterval = data.interval;
+        this.selectedAmount = parseInt(data.amount);
+    }
+    this.load();
+}
 Donations.prototype.events = function() {
     var self = this;
 
@@ -708,18 +722,7 @@ Donations.prototype.events = function() {
             self.selectedAmount = parseInt(data.amount);
         }
         self.load();
+    
     });
   
-    $('#donate_embed').on('click', function(e) {
-        console.log('clicked embed listener');
-        // self.modal.render("spinner");
-        self.renderTo = 'container';
-        var elem = e.target;
-        var data = elem.dataset;
-        if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
-            self.selectedInterval = data.interval;
-            self.selectedAmount = parseInt(data.amount);
-        }
-        self.load();
-    });
 }
