@@ -120,48 +120,49 @@ donate_modal:
 
 
 donations:
-'<div id="{{id}}" class="donate-form" data-selected="{{selected.price_id}}"> \
+'<div id="{{id}}" class="{{class_name}}" data-selected="{{selected.price_id}}"> \
     \
-    <div class="donate-form__header"> \
-        <div class="donate-form__periods j-donation-periods" data-active="{{active}}"> \
+    <div class="{{class_name}}__header"> \
+        <div class="{{class_name}}__periods j-donation-periods" data-active="{{active}}"> \
             {{#each prices}} \
                 {{#each this}} \
-                    <button data-elem="period" data-period="{{@key}}" data-product="{{../../id}}" class="donate-form__period-button {{# ifCond @key "==" ../../active}} donate-form__period-button--active {{/ifCond}} u-margin-right-10">{{labelFix @key}}</button>\
+                    <button data-elem="period" data-period="{{@key}}" data-product="{{../../id}}" class="{{../../class_name}}__period-button {{# ifCond @key "==" ../../active}} {{../../class_name}}__period-button--active {{/ifCond}} u-margin-right-10">{{labelFix @key}}</button>\
                 {{/each}} \
             {{/each}} \
         </div> \
         \
-        <div class="donate-form__close"> \
-            <a class="donate-form__close-icon o-close" href="#" data-behaviour="close"></a> \
+        <div class="{{class_name}}__close"> \
+            <a class="{{class_name}}__close-icon o-close" href="#" data-behaviour="close"></a> \
         </div> \
     </div> \
     \
     \
-    <img src="{{logo}}" class="donate-form__logo"/> \
+    <img src="{{logo}}" class="{{class_name}}__logo"/> \
     \
-    <p class="donate-form__text">How much would you like to contribute{{intervalString}}?</p> \
+    <p class="{{class_name}}__text">How much would you like to contribute{{intervalString}}?</p> \
     \
     {{#each prices}} \
         {{#each this}} \
             {{# ifCond @key "==" ../../active}} \
-                <div data-key="{{@key}}" data-active="{{../../active}}" class="donate-form__prices j-donation-price"> \
+                <div data-key="{{@key}}" data-active="{{../../active}}" class="{{../../class_name}}__prices j-donation-price"> \
                     {{#each this}} \
-                        <button data-selected="{{../../../selected.price_id}}" class="donate-form__price-button  {{# ifCond ../../../selected.price_id "==" this.id}} donate-form__price-button--active {{/ifCond}}    u-margin-right-10" data-elem="price" data-product="{{this.product}}" data-price_id="{{this.id}}">${{this.price}}</button>\
+                        <button data-selected="{{../../../selected.price_id}}" class="{{../../../class_name}}__price-button  {{# ifCond ../../../selected.price_id "==" this.id}} {{../../../class_name}}__price-button--active {{/ifCond}}    u-margin-right-10" data-elem="price" data-product="{{this.product}}" data-price_id="{{this.id}}">${{this.price}}</button>\
                     {{/each}} \
                 </div> \
             {{/ifCond}} \
         {{/each}} \
     {{/each}} \
     \
-    <div class="donations__amount"> \
-        <p class="donate-form__amount-label">or specify an amount</p> \
-        <input class="donate-form__input donate-form__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="$NZD" /> \
+    <div class="{{class_name}}__amount"> \
+        <p class="{{class_name}}__amount-label">Or specify an amount</p> \
+        <input class="{{class_name}}__input {{class_name}}__input--override j-donate-input" data-elem="input" data-product="{{id}}" type="text" value="{{priceFix selected.amount}}" placeholder="$NZD" /> \
     </div> \
     {{# ifCond selected.amount ">" 0}} \
-        <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \
+        <button id="donate-button" class="{{class_name}}__button" data-elem="checkout">Donate ${{priceFix selected.amount}}</button> \
     {{ else }} \
-        <button id="donate-button" class="donate-form__button" data-elem="checkout">Donate</button> \
+        <button id="donate-button" class="{{class_name}}__button" data-elem="checkout">Donate</button> \
     {{/ifCond}} \
+        <a href="mailto: vanita.prasad@newsroom.co.nz" subject="I would like to donate via bank transfer" class="{{class_name}}__bank-email-link">Donate via bank transfer</a> \
 </div>',
 
 

@@ -1,10 +1,10 @@
-.donate-form {
+.donate-embed-form {
     @include flexbox();
     @include flex-direction(column);
     @include align-items(center);
 
     background:white;
-
+	padding:20px;
     width: 100%;
     
     &__layouts {
@@ -12,51 +12,30 @@
         top:5px;
     }
     &__header {
-        height:47px;
+        height:51px;
         width: 100%;
-        background:black;
+        // background:black;
         @include flexbox();
         @include align-items(center);
         @include justify-content(center);
     }
     &__close {
-        display:block;
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        right: 20px;
-        top: 8px;
-
-        &-icon {
-            width:100%;
-            height:100%;
-        }
-
-        @media #{$mobile} {
-            width: 20px;
-            height: 20px;
-        }
-        .o-close:before, .o-close:after {
-            background-color: white !important;
-        }
-        
-        .o-close--dark:before, .o-close--dark:after {
-            background-color: white !important;
-        }
+		display:none;
     }
 
     &__logo {
-        height: 32px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        margin-top: 37px;
+		display:none;
     }
 
+
+	&__amount {
+		width:100%;
+	}
+	
     &__amount-label {
-        margin-top:30px;
-        @include font-size(17);
-        text-transform:lowercase;
+        margin-top:20px;
+        @include font-size(20);
+        text-align: center;
 
     }
 
@@ -66,10 +45,11 @@
         @include align-items(center);
         font-weight: 600;
         text-transform: uppercase;
-        width:176px;
-        height: 44px;
+        // width:176px;
+        height: 51px;
+		width:100%;
 
-        border-radius: 4px;
+        // border-radius: 4px;
         background: #2792e1;
         color: white;
         margin-top:30px;
@@ -100,23 +80,28 @@
 
 
     &__text {
-        font-family: $primaryFont;
-        @include font-size(17);
-        color: #4a4a4a;
-        color:black;
-        line-height:25px;
-        width: 220px;
-        margin-top:7px;
+		display:none;
     }
 
+	&__periods {
+		width:100%;
+		height:100%;
+		@include flexbox();
+        @include justify-content(center);
+	}
+
     &__period-button {
+		display:block;
+		flex-grow:1;
+		height:100%;
         font-family: $primaryFont;
-        @include font-size(15);
+		background:#f1f1f1;
+        @include font-size(20);
         font-weight: 600;
         text-transform: uppercase;
         outline:none;
-        color:rgba(255,255,255,.5);
-        border-radius: 10%;
+        color:black;
+		margin-right: 0px !important;
         // padding:10px;
 
         &:focus, &:active {
@@ -124,32 +109,52 @@
         }
 
         &--active {
-            color:white;
-            border-bottom: 1px solid white;
-            border-radius: 0;
+            color:black;
+			background: #bfe4ff;
+			border: solid 1px #2692e1;
+            // border-bottom: 1px solid white;
+            // border-radius: 0;
         }
     }
 
     &__prices {
-        margin-top: 30px;
+        margin-top: 18px;
+		width:100%;
+		display:flex;
+		flex-wrap: wrap;
+		justify-content:space-around;
+		min-height:130px;
+
     }
 
     &__price-button {
-        // background:rgb(247, 165, 165);
+        @include font-size(26);
+		font-family:$primaryFont;
+		font-weight:600;
+		display:block;
+		flex-grow:1;
+		flex-basis:45%;
+		margin-top:12px;
         outline:none;
-        color:white;
-        @include font-size(17);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color:#a9a9a9;
+        color:black;
+        height: 51px;
+		border: solid 1px #000;
+        cursor: pointer;
+
         &:focus, &:active {
             outline:none;
         }
 
-        &--active {
+
+        &:hover {
+            background-color:#2692e1;
             color:white;
-            background-color:#2792e1;
+        }
+
+        &--active {
+            color:black;
+            background-color:#bfe4ff;
+			border: solid 1px #2692e1;
         }
     }
 
@@ -159,12 +164,11 @@
     &__input {
         background: transparent;
         color: black;
-        border: 1px solid #97999c;
-        border-radius:6px;
+        border: 1px solid black;
         padding: 10px 15px;
         text-align: center;
         margin-top:12px;
-        width:230px;
+        width:100%;
         &:focus, &:active {
             outline:none;
             border: 1px solid #838588;
@@ -172,6 +176,9 @@
     }
 
     &__bank-email-link {
-        display:none;
+        @include font-size(16);
+        margin-top: 20px;
+        text-decoration: underline;
     }
+
 }

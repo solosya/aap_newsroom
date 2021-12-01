@@ -22147,6 +22147,7 @@ input[type=radio].inline {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center;
+  background: white;
   width: 100%;
 }
 .donate-form__layouts {
@@ -22208,6 +22209,7 @@ input[type=radio].inline {
   margin-top: 30px;
   font-size: 1.0625rem;
   line-height: 1.275rem;
+  text-transform: lowercase;
 }
 .donate-form__button {
   display: -webkit-box;
@@ -22321,6 +22323,9 @@ input[type=radio].inline {
   outline: none;
   border: 1px solid #838588;
 }
+.donate-form__bank-email-link {
+  display: none;
+}
 
 .donate-thanks {
   background-size: contain;
@@ -22426,6 +22431,208 @@ input[type=radio].inline {
 
 .donate-thanks__button {
   font-weight: 500;
+}
+
+.donate-embed-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  width: 100%;
+}
+.donate-embed-form__layouts {
+  position: absolute;
+  top: 5px;
+}
+.donate-embed-form__header {
+  height: 51px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+}
+.donate-embed-form__close {
+  display: none;
+}
+.donate-embed-form__logo {
+  display: none;
+}
+.donate-embed-form__amount {
+  width: 100%;
+}
+.donate-embed-form__amount-label {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+.donate-embed-form__button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  height: 51px;
+  width: 100%;
+  background: #2792e1;
+  color: white;
+  margin-top: 30px;
+}
+.donate-embed-form__button:hover {
+  background: #3598df;
+}
+.donate-embed-form__button:focus, .donate-embed-form__button:active {
+  outline: none;
+}
+.donate-embed-form__product-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+}
+.donate-embed-form__product-title {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2.1875rem;
+  line-height: 2.625rem;
+  color: black;
+}
+.donate-embed-form__text {
+  display: none;
+}
+.donate-embed-form__periods {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+}
+.donate-embed-form__period-button {
+  display: block;
+  flex-grow: 1;
+  height: 100%;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  background: #f1f1f1;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  color: black;
+  margin-right: 0px !important;
+}
+.donate-embed-form__period-button:focus, .donate-embed-form__period-button:active {
+  outline: none;
+}
+.donate-embed-form__period-button--active {
+  color: black;
+  background: #bfe4ff;
+  border: solid 1px #2692e1;
+}
+.donate-embed-form__prices {
+  margin-top: 18px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 130px;
+}
+.donate-embed-form__price-button {
+  font-size: 1.625rem;
+  line-height: 1.95rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  display: block;
+  flex-grow: 1;
+  flex-basis: 45%;
+  margin-top: 12px;
+  outline: none;
+  color: black;
+  height: 51px;
+  border: solid 1px #000;
+  cursor: pointer;
+}
+.donate-embed-form__price-button:focus, .donate-embed-form__price-button:active {
+  outline: none;
+}
+.donate-embed-form__price-button:hover {
+  background-color: #2692e1;
+  color: white;
+}
+.donate-embed-form__price-button--active {
+  color: black;
+  background-color: #bfe4ff;
+  border: solid 1px #2692e1;
+}
+.donate-embed-form__input {
+  background: transparent;
+  color: black;
+  border: 1px solid black;
+  padding: 10px 15px;
+  text-align: center;
+  margin-top: 12px;
+  width: 100%;
+}
+.donate-embed-form__input:focus, .donate-embed-form__input:active {
+  outline: none;
+  border: 1px solid #838588;
+}
+.donate-embed-form__bank-email-link {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 20px;
+  text-decoration: underline;
 }
 
 .c-episodes__heading {
