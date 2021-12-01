@@ -139,9 +139,16 @@
         color:black;
         height: 51px;
 		border: solid 1px #000;
+        cursor: pointer;
 
         &:focus, &:active {
             outline:none;
+        }
+
+
+        &:hover {
+            background-color:#2692e1;
+            color:white;
         }
 
         &--active {
@@ -167,4 +174,11 @@
             border: 1px solid #838588;
         }
     }
+
+    &__bank-email-link {
+        @include font-size(16);
+        margin-top: 20px;
+        text-decoration: underline;
+    }
+
 }

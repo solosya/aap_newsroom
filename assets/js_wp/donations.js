@@ -109,7 +109,6 @@ Donations.prototype.load = function(force) {
             }
     
             self.fetchPrices().done(function(r) {
-                console.log(r);
                 var args = Array.prototype.slice.call(arguments);
                 if (args[1] === 'success') {
                     args = [args];

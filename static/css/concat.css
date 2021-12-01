@@ -22237,6 +22237,9 @@ input[type=radio].inline {
   outline: none;
   border: 1px solid #838588;
 }
+.donate-form__bank-email-link {
+  display: none;
+}
 
 .donate-thanks {
   background-size: contain;
@@ -22512,9 +22515,14 @@ input[type=radio].inline {
   color: black;
   height: 51px;
   border: solid 1px #000;
+  cursor: pointer;
 }
 .donate-embed-form__price-button:focus, .donate-embed-form__price-button:active {
   outline: none;
+}
+.donate-embed-form__price-button:hover {
+  background-color: #2692e1;
+  color: white;
 }
 .donate-embed-form__price-button--active {
   color: black;
@@ -22533,6 +22541,12 @@ input[type=radio].inline {
 .donate-embed-form__input:focus, .donate-embed-form__input:active {
   outline: none;
   border: 1px solid #838588;
+}
+.donate-embed-form__bank-email-link {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 20px;
+  text-decoration: underline;
 }
 
 .c-episodes__heading {
