@@ -170,14 +170,14 @@ donations:
 
 donateSignupForm:
     // <script> tag possible ios safari login fix
-'<div id="{{id}}" class="donate-form" data-selected="{{selected.price_id}}"> \
-    <div class="donate-form__header"> \
-        <div class="donate-form__close"> \
-            <a class="donate-form__close-icon o-close" href="#" data-behaviour="close"></a> \
+'<div id="{{id}}" class="{{class_name}}" data-selected="{{selected.price_id}}"> \
+    <div class="{{class_name}}__header"> \
+        <div class="{{class_name}}__close"> \
+            <a class="{{class_name}}__close-icon o-close" href="#" data-behaviour="close"></a> \
         </div> \
     </div> \
     \
-    <img src="{{logo}}" class="donate-form__logo"/> \
+    <img src="{{logo}}" class="{{class_name}}__logo"/> \
     \
     \
     {{# ifCond validEmail "==" null}} \

@@ -279,9 +279,6 @@ Donations.prototype.renderLayout = function(layout, data) {
     if (typeof data === "undefined" || !data || Object.keys(data).length < 1) {
         data= {};
     }
-
-    // this.pages.push(layout);
-    // if (layout === "signin") {
     data['class_name'] = "donate-form";
     data["class-prefix"] = "donate-";
     data["logo"] = _appJsConfig.templatePath + "/static/images/newsroom-logo.svg";
@@ -306,8 +303,13 @@ Donations.prototype.render = function(layout, data) {
     if (this.renderTo === "modal") {
         this.modal.renderLayout(layout, data)
     } else {
-        if (typeof data !== 'undefined')
-        data['class_name'] = "donate-embed-form";
+        if (typeof data !== 'undefined') {
+            data['class_name'] = "donate-embed-form";
+        }
+        if (layout === 'signin') {
+            data['class_name'] = "donate-embed-login-form";
+        }
+
         var wrapper = '<div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element">';
         var endWrapper = '</div>'
         var tmp = Handlebars.compile(wrapper + Templates[this.templates[layout]] + endWrapper);
@@ -564,7 +566,6 @@ Donations.prototype.checkout = function() {
 
 
     Server.create('/api/paywall/checkout-session', data).done( function(r) {
-        // console.log(data);
         self.Stripe.redirectToCheckout({
             sessionId: r.sessionId
         }).then(function(r) {

@@ -22635,6 +22635,328 @@ input[type=radio].inline {
   text-decoration: underline;
 }
 
+.donate-embed-login-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  background: white;
+  padding-bottom: 20px;
+  width: 100%;
+}
+.donate-embed-login-form__layouts {
+  position: absolute;
+  top: 5px;
+}
+.donate-embed-login-form__header {
+  display: none;
+}
+.donate-embed-login-form__close {
+  display: none;
+}
+.donate-embed-login-form__logo {
+  height: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 37px;
+}
+.donate-embed-login-form__input {
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  background: transparent;
+  height: 44px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(151, 153, 136, 0.5);
+  color: black;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+}
+.donate-embed-login-form__input--password {
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+}
+.donate-embed-login-form__input::placeholder {
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: #a6a8ab;
+}
+.donate-embed-login-form__input::-webkit-input-placeholder {
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: #a6a8ab;
+}
+.donate-embed-login-form__input::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: #a6a8ab;
+}
+.donate-embed-login-form__input:-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: #a6a8ab;
+}
+.donate-embed-login-form__input:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: #a6a8ab;
+}
+.donate-embed-login-form__input ~ .input__label {
+  z-index: 1;
+  transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  color: #a6a8ab;
+  position: absolute;
+  top: 13px;
+}
+.donate-embed-login-form__input.shrink ~ .input__label {
+  transform: translateX(200px);
+  opacity: 0;
+}
+.donate-embed-login-form__input:focus, .donate-embed-login-form__input:active {
+  outline: none;
+  background: transparent;
+}
+.donate-embed-login-form__input:disabled {
+  padding: 0px !important;
+  border: none;
+}
+.donate-embed-login-form__input-result {
+  transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  font-size: 0.9375rem;
+  line-height: 1.125rem;
+  color: black;
+  margin-top: 20px;
+}
+.donate-embed-login-form__input-result--active {
+  padding: 3px 40px;
+  border-radius: 4px;
+  font-size: 1.0625rem;
+  line-height: 1.275rem;
+  font-weight: 700;
+}
+.donate-embed-login-form__email-share {
+  color: #4a4a4a;
+  font-size: 1.0625rem;
+  line-height: 1.275rem;
+  margin-top: 10px;
+  line-height: 26px;
+}
+.donate-embed-login-form__email-share.highlight {
+  font-weight: 700;
+  color: red;
+}
+@media screen and (max-width : 767px) {
+  .donate-embed-login-form__email-share {
+    width: 80%;
+  }
+}
+.donate-embed-login-form__email-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: relative;
+  width: 280px;
+}
+.donate-embed-login-form__email-container--active {
+  margin-top: 30px;
+}
+.donate-embed-login-form__spinner {
+  top: 50%;
+  position: absolute;
+}
+.donate-embed-login-form__button-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: relative;
+}
+.donate-embed-login-form__button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 280px;
+  height: 44px;
+  padding: 10px;
+  color: white;
+  background: #83b6dc;
+}
+.donate-embed-login-form__button--active {
+  background: #2792e1;
+}
+.donate-embed-login-form__button:focus, .donate-embed-login-form__button:active {
+  outline: 0;
+}
+.donate-embed-login-form__button-back {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  margin-bottom: 7px;
+  z-index: 3;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 280px;
+  height: 44px;
+  padding: 10px;
+  color: white;
+  background: black;
+}
+.donate-embed-login-form__button-back:focus, .donate-embed-login-form__button-back:active {
+  outline: 0;
+}
+.donate-embed-login-form__forgot {
+  font-size: 1.0625rem;
+  line-height: 1.275rem;
+  color: black;
+  margin-top: 20px;
+}
+.donate-embed-login-form__forgot:hover {
+  cursor: pointer;
+  color: #414141;
+}
+.donate-embed-login-form .reset {
+  overflow: auto;
+  margin-top: 20px;
+}
+.donate-embed-login-form .reset > p.layout {
+  float: right;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: black;
+  font-style: italic;
+  font-weight: 600;
+  text-decoration: underline;
+}
+@media screen and (max-width: 767px) {
+  .donate-embed-login-form .reset > p.layout {
+    float: none;
+  }
+}
+.donate-embed-login-form .reset > p.layout:hover {
+  cursor: pointer;
+}
+
+.donate-login-form-faq {
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+  color: #97999c;
+  font-style: italic;
+}
+
+.donate-login-form-faq__link {
+  color: #97999c;
+  text-decoration: underline;
+}
+
+.donate-login-form__error_text {
+  color: #e22f22;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-weight: 600;
+  margin: 26px 0;
+}
+
 .c-episodes__heading {
   text-transform: uppercase;
   font-size: 1.125rem;
