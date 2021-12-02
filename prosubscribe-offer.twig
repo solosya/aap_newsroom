@@ -37,7 +37,7 @@
 {% set blurbB = '*Limited offer, subject to availability. Please allow up to 14 business days for activation of your subscription to <br class="d-none d-lg-block" />The Atlantic. Full value approx $365NZD.' %}
 {% set whatyouget = 'What you get with <br class="d-block d-sm-none" />Newsroom Pro' %}
 {% set whatyougetpanels = [
-    'Bonus subscription for colleague or a friend',
+    'Access to live Newsroom Pro Talks series',
     'A daily morning email of news and insights curated by Newsroom Pro editorial team',
     'Pro email breaking news alerts',
     'Exclusive and unlimited access to content on Newsroom Pro',
@@ -132,12 +132,18 @@
                                 data-price="{{specialPlan.plan_value}}" 
                             data-name="{{frequency}}" 
                             data-id="{{plan.guid}}"
-                            >{{ buttonText }}</a>
+                            >
+                                <span>6 Month</span>
+                                <span>$99</span>
+                            </a>
                         <a class="btn lightbox-213278487899883 _btn paywall-offer-banner__button paywall-offer-banner__button--white u-margin-left-20" href="#" 
                             data-price="{{specialPlan.plan_value}}" 
                             data-name="{{frequency}}" 
                             data-id="{{plan.guid}}"
-                            >BUY AS A GIFT</a>
+                            >
+                                <span>12 Month</span>
+                                <span>$99</span>
+                            </a>
                     </div>
                     <p class="paywall-offer-banner__conditions">{{blurbB|raw}}</p>
                 </div>
