@@ -38,7 +38,8 @@
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
-
+{% set nonPinnedCount = articlesArr.existingNonPinnedCount %}
+{% set lastArticle = articles | last %}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -223,21 +224,27 @@ So you don't have to create all the sections on dev #}
 
 
 
-
-
-
                         {% if 'The Detail' in sections['podcast card'].feed.articles[0].label %}
+
                             </div>
                             {% set podCardClass = 'card-pod-td card-pod-td-tablet card-pod-td-mobile' %}
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
                                 {% set limit = limit - 1 %}
+                                {% if not lastArticle.isPinned %}
+                                    {% set nonPinnedCount = nonPinnedCount - 1 %}
+                                {% endif %}
                         {% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
+
                             </div>
                             {% set podCardClass = 'card-pod-tc card-pod-tc-tablet card-pod-tc-mobile' %}
                             <div class="row">
                                 {{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
                                 {% set limit = limit - 1 %}
+                                {% if not lastArticle.isPinned %}
+                                    {% set nonPinnedCount = nonPinnedCount - 1 %}
+                                {% endif %}
+
                         {% else %}
                             {% if articles[articleCount] %}                                                                
                                 {{this.render('partials/_single-article.twig', {
@@ -495,7 +502,7 @@ So you don't have to create all the sections on dev #}
         Acme.loadMore = new Acme.ArticleFeed({
             model           : Acme.Card,
             container       : 'loadmore_section',
-            offset          : {{articleCount}},
+            offset          : {{ articleCount }},
             limit           : 12,
             label           : "Load more articles",
             imgwidth        : "220",
@@ -503,7 +510,7 @@ So you don't have to create all the sections on dev #}
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
-            non_pinned      : "{{ articlesArr.existingNonPinnedCount }}"
+            non_pinned      : "{{ nonPinnedCount }}"
         });
     });
 </script>
