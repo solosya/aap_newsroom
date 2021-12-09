@@ -457,6 +457,7 @@ So you don't have to create all the sections on dev #}
                 {% if sections['video'].feed.articles|length > 0 %}
                     {{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
+                
 
                 {# {% if sections['livingroom'].feed.articles|length > 0 %}
                     {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}

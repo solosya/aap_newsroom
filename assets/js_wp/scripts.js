@@ -25,6 +25,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     navText: ["", ""],
   });
 
+  $("#carousel22").owlCarousel({
+    items: 1,
+    dots: false,
+    nav: false,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+  });
+
   setTimeout(function () {
     $(".article_content figure img").each(function () {
       var width = $(this).width() + "px";

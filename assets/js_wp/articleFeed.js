@@ -81,6 +81,7 @@ Feed.prototype.events = function()
 {
     var self = this;
 
+    
     if (self.elem.length > 0) {
         self.elem.unbind().on('click', function(e) {
             e.preventDefault();

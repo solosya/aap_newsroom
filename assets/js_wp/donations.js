@@ -1,4 +1,6 @@
 import { Modal, Server } from './framework';
+import Handlebars from 'handlebars';
+import { Templates } from './article-templates';
 
 const DonateModal = function(template, parent, layouts, handler) {
     this.template = template;
@@ -38,11 +40,12 @@ DonateModal.prototype.handle = function(e) {
 
 export const Donations = function(Stripe, params) {
     this.container = document.getElementById(params.container);
-
+    this.renderTo = "modal";
     this.active = {};
     this.defaults = {};
     this.userSelected = false;
 
+    
     // set price on modal load from button click
     this.selectedInterval = null;
     this.selectedAmount = null;
@@ -73,14 +76,20 @@ export const Donations = function(Stripe, params) {
                 this.user = r.self;
         });
     }
-    this.modal = new DonateModal('donate_modal', 'donate-modal', {
+    this.templates = {
+        "donations"     : 'donations',
         "donate"        : 'donations',
         "spinner"       : 'spinnerTmpl',
         "register"      : 'registerTmpl',
         "signin"        : 'donateSignupForm',
         "register"      : 'registerTmpl',
         "reset-success" : 'donateResetPassword',
-    }, this.handler );
+    };
+   
+    // if used embeded in page we don't want the modal created
+    if (typeof params['modal'] === 'undefined' || params['modal'] !== false) {
+        this.modal = new DonateModal('donate_modal', 'donate-modal', this.templates, this.handler );
+    }
 
     this.events();
 };
@@ -105,7 +114,6 @@ Donations.prototype.load = function(force) {
             }
     
             self.fetchPrices().done(function(r) {
-                console.log(r);
                 var args = Array.prototype.slice.call(arguments);
                 if (args[1] === 'success') {
                     args = [args];
@@ -139,7 +147,6 @@ Donations.prototype.fetchProducts = function()
 
 Donations.prototype.fetchPrices = function() {
     var self = this;
-
     for (let i=0; i<this.products.length; i++) {
         if (typeof this.products[i].metadata.active !== 'undefined' && this.products[i].metadata.active !== "true") {
             continue;
@@ -149,7 +156,6 @@ Donations.prototype.fetchPrices = function() {
     }
     return $.when.apply(undefined, this.priceRequests);
 }
-
 
 Donations.prototype.fetchPrice = function(product)
 { 
@@ -161,7 +167,6 @@ Donations.prototype.fetchPrice = function(product)
 
     return req;
 };
-
 
 Donations.prototype.parsePrices = function(r) {
 
@@ -212,7 +217,6 @@ Donations.prototype.parsePrices = function(r) {
             }
 
             
-
             var newPrice = {
                 "unit_amount": price.unit_amount,
                 "price" : price.unit_amount / 100,
@@ -274,15 +278,11 @@ Donations.prototype.renderPrices = function(r) {
     }
 }
 
-
 Donations.prototype.renderLayout = function(layout, data) {
     if (typeof data === "undefined" || !data || Object.keys(data).length < 1) {
         data= {};
     }
-
-    // this.pages.push(layout);
-    // if (layout === "signin") {
-
+    data['class_name'] = "donate-form";
     data["class-prefix"] = "donate-";
     data["logo"] = _appJsConfig.templatePath + "/static/images/newsroom-logo.svg";
     data['user'] = this.user;
@@ -297,14 +297,41 @@ Donations.prototype.renderLayout = function(layout, data) {
         data.selected.price_id = this.defaults[data.active][1];
         data.selected.product_id = this.defaults[data.active][0];
     } 
-    this.modal.renderLayout(layout, data);
+    this.render(layout, data);
     this.layoutEvents();
 }
 
+Donations.prototype.render = function(layout, data) {
+    var self = this;
+    if (this.renderTo === "modal") {
+        this.modal.renderLayout(layout, data)
+    } else {
+        if (typeof data !== 'undefined') {
+            data['class_name'] = "donate-embed-form";
+        }
+        if (layout === 'signin') {
+            data['class_name'] = "donate-embed-login-form";
+        }
 
+        var wrapper = '<div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element">';
+        var endWrapper = '</div>'
+        var tmp = Handlebars.compile(wrapper + Templates[this.templates[layout]] + endWrapper);
+        var layout = tmp(data);
+        this.container.innerHTML = layout; 
+
+        $(this.container).unbind().on('click', function(e) {
+            self.handler(e);
+            return;
+        });
+
+    }
+}
 
 Donations.prototype.layoutEvents = function() {
     var self = this;
+
+
+
 
     var componentPrefix = "donate-login-form";
     var amountInput = document.querySelector('.j-donate-input');
@@ -317,7 +344,6 @@ Donations.prototype.layoutEvents = function() {
     var donate_button = document.getElementById("donate-button");
 
 
-    
     if (amountInput) {
         amountInput.oninput = function(e) {
             var product = e.target.dataset.product;
@@ -543,7 +569,6 @@ Donations.prototype.checkout = function() {
 
 
     Server.create('/api/paywall/checkout-session', data).done( function(r) {
-        // console.log(data);
         self.Stripe.redirectToCheckout({
             sessionId: r.sessionId
         }).then(function(r) {
@@ -678,20 +703,29 @@ Donations.prototype.fetchUser = function() {
     return Server.fetch('/api/user/self');
 }
 
-
+Donations.prototype.renderToPage = function(data){
+    this.renderTo = 'container';
+    this.render('spinner');
+    if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+        this.selectedInterval = data.interval;
+        this.selectedAmount = parseInt(data.amount);
+    }
+    this.load();
+}
 Donations.prototype.events = function() {
     var self = this;
-
-    $('#donations, .j-donation').on('click', function(e) {
-        self.modal.render("spinner");
-        var elem = e.target;
-        var data = elem.dataset;
-        if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
-            self.selectedInterval = data.interval;
-            self.selectedAmount = parseInt(data.amount);
-            
-        }
-        self.load();
-    });
-   
+    if (self.modal) {
+        $('#donations, .j-donation').on('click', function(e) {
+            self.modal.render("spinner");
+            var elem = e.target;
+            var data = elem.dataset;
+            if (typeof data.interval !== "undefined" && typeof data.amount !== 'undefined') {
+                self.selectedInterval = data.interval;
+                self.selectedAmount = parseInt(data.amount);
+            }
+            self.load();
+        
+        });
+    }
+  
 }

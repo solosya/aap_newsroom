@@ -3,7 +3,7 @@ import { General_ShowNotification,
          General_ShowErrorMessage }         from './sdk/common'
 import { pinUnpinArticle, deleteArticle }   from './sdk/article'
 import { Templates }                        from './article-templates';
-import { Server }                           from './framework';
+import { Modal, Server }                    from './framework';
 import { Cloudinary }                       from '@cloudinary/base'
 import { fill, thumbnail }                  from "@cloudinary/base/actions/resize";
 import { faces }                            from "@cloudinary/base/qualifiers/focusOn";
@@ -210,7 +210,11 @@ Card.prototype.initDroppable = function()
         $('.swap').droppable({
             hoverClass: "ui-state-hover",
             drop: function(event, ui) {
-                
+                var spinner = new Modal('modal', 'swap-modal', {
+                    "spinner"       : 'spinnerTmpl'
+                } );                
+                spinner.render("spinner", "Swapping card"); 
+
                 function getElementAtPosition(elem, pos) {
                     return elem.find('a.card').eq(pos);
                 }
@@ -299,6 +303,7 @@ Card.prototype.initDroppable = function()
 
 
                 Server.create(_appJsConfig.baseHttpPath + '/home/swap-article', postData).done(function(data) {
+                    spinner.closeWindow();
                     if(data.success) {
                         General_ShowNotification({message: "Articles swapped successfully"});
                     }
@@ -307,6 +312,7 @@ Card.prototype.initDroppable = function()
                     self.events();
 
                 }).fail((e) => {
+                    spinner.closeWindow();
                     General_ShowErrorMessage({message: e.responseText});
                 });
     
