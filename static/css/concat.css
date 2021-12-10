@@ -21169,13 +21169,14 @@ input[type=radio].inline {
   line-height: 1.12;
   letter-spacing: 0.04px;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   color: #000000;
   padding: 0 25px;
 }
 @media screen and (max-width : 767px) {
   .donations__subs {
     background-color: #ffffff;
+    padding-top: 0;
   }
 }
 
@@ -22593,6 +22594,12 @@ input[type=radio].inline {
   justify-content: space-between;
   min-height: 130px;
 }
+@media screen and (max-width : 767px) {
+  .donate-embed-form__prices {
+    min-height: 100px;
+    margin-top: 10px;
+  }
+}
 .donate-embed-form__price-button {
   font-size: 1.625rem;
   line-height: 1.95rem;
@@ -22607,6 +22614,11 @@ input[type=radio].inline {
   height: 51px;
   border: solid 1px #000;
   cursor: pointer;
+}
+@media screen and (max-width : 767px) {
+  .donate-embed-form__price-button {
+    margin-top: 8px;
+  }
 }
 .donate-embed-form__price-button:focus, .donate-embed-form__price-button:active {
   outline: none;
