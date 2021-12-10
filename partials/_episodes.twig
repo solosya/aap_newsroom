@@ -1,7 +1,7 @@
 {% set episodeFeed = {} %}
 {% for blog in networkData.networkBlogs %}
     {% if blog.title | lower == episodes | lower %}
-        {% set episodeArr = _Blog.getBlogFeed({'limit': 12, 'offset': 0, 'blogid':blog.guid, excludeArticleIds : [article]}) %}
+        {% set episodeArr = _Blog.getBlogFeed({'limit': 18, 'offset': 0, 'blogid':blog.guid, excludeArticleIds : [article]}) %}
         {% set episodeFeed = episodeArr.articles %}
     {% endif %}
 {% endfor %}
@@ -19,7 +19,7 @@
         <div class="col-12 u-margin-bottom-30">
             <h3 class="c-episodes__heading">View more in the {{episodes}} series</h3>
         </div>
-        {% for i in 0..11 if episodeFeed[i] is defined %}
+        {% for i in 0..17 if episodeFeed[i] is defined %}
             <div class="col-12 col-md-6">
                 {{this.render('_single-article.twig', {
                     article         : episodeFeed[i], 
