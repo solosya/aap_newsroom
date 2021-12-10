@@ -125,6 +125,10 @@
 		justify-content:space-between;
 		min-height:130px;
 
+        @media #{$mobile} {
+            min-height:100px;
+            margin-top: 10px;
+        }
     }
 
     &__price-button {
@@ -141,6 +145,10 @@
         height: 51px;
 		border: solid 1px #000;
         cursor: pointer;
+
+        @media #{$mobile} {
+            margin-top:8px;
+        }
 
         &:focus, &:active {
             outline:none;
