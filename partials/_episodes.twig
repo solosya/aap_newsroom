@@ -1,7 +1,7 @@
 {% set episodeFeed = {} %}
 {% for blog in networkData.networkBlogs %}
     {% if blog.title | lower == episodes | lower %}
-        {% set episodeArr = _Blog.getBlogFeed({'limit': 12, 'offset': 0, 'blogid':blog.guid, excludeArticleIds : [article]}) %}
+        {% set episodeArr = _Blog.getBlogFeed({'limit': 18, 'offset': 0, 'blogid':blog.guid, excludeArticleIds : [article]}) %}
         {% set episodeFeed = episodeArr.articles %}
     {% endif %}
 {% endfor %}
