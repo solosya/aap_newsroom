@@ -420,7 +420,7 @@ So you don't have to create all the sections on dev #}
                         </section>
                     </div>
                 </div>
-
+                {{_AppHelper.printArray(sections)}}
                 {% if sections['newsroom pro'].feed.articles|length > 0 %}
                     {{ this.render('partials/puzzles-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}                
