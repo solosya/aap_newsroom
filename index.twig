@@ -34,7 +34,7 @@
     {% endif %}
 {% endif %}
 
-{% set limit = 15 %}
+{% set limit = 13 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
@@ -424,7 +424,7 @@ So you don't have to create all the sections on dev #}
                         </section>
                     </div>
                 </div>
-                {% if sections['newsroom pro'].feed.articles|length > 0 %}
+                {% if sections['puzzles'].feed.articles|length > 0 %}
                     {{ this.render('partials/puzzles-partial.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}                
 
