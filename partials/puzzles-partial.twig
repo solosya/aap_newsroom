@@ -1,5 +1,10 @@
-<section class="puzzles mt-5">
-    <div class="row">
+<section class="puzzles coporate-news-room mt-5">
+    <header>
+        <a href="{{ sections['partner newsroom'].link }}">
+            <img src="{{networkData.templatePath}}/static/images/puzzle-header.svg" alt="board room">
+        </a>
+    </header>
+    <div class="row corporate-articles gutter-60">
         {% for i in 0..3 %}
             {% if sections['puzzles'].feed.articles[i] %}        
                 {{this.render('_single-article_corp.twig', {
