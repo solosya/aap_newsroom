@@ -1,0 +1,20 @@
+<section class="puzzles coporate-news-room mt-5">
+    <header class="mb-4">
+        <a href="{{ sections['puzzles'].link }}" class="pro-partial__header__logo d-inline-block m-0">
+            <img src="{{networkData.templatePath}}/static/images/puzzle-header.svg" alt="board room">
+        </a>
+    </header>
+    <div class="row corporate-articles gutter-60">
+        {% for i in 0..3 %}
+            {% if sections['puzzles'].feed.articles[i] %}        
+                {{this.render('_single-article_corp.twig', {
+                    article: sections['puzzles'].feed.articles[i], 
+                    networkData: networkData, 
+                    containerClass: 'col-12 col-md-6 col-lg-3 card-sm card-sm-tablet card-sm-mobile', 
+                    swap: 'false', 
+                    imageSize: {width:255, height:208}
+                }) | raw}}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section><!-- .room-corporate-->
