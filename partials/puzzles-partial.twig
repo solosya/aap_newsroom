@@ -1,0 +1,13 @@
+<section class="puzzles corporate-articles gutter-60">
+    {% for i in 0..3 %}
+        {% if sections['puzzles'].feed.articles[i] %}        
+            {{this.render('_single-article_corp.twig', {
+                article: sections['puzzles'].feed.articles[i], 
+                networkData: networkData, 
+                containerClass: 'col-12 col-md-6 col-lg-3 card-sm card-sm-tablet card-sm-mobile', 
+                swap: 'false', 
+                imageSize: {width:255, height:208}
+            }) | raw}}
+        {% endif %}
+    {% endfor %}
+</section><!-- .room-corporate-->
