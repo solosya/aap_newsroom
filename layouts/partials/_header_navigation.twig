@@ -100,7 +100,12 @@
                     {% endif %}
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
+                            {% if (parentItem.blogTitle | lower) == 'newsroom' %}
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg-summer?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
+                            {% else %}
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
+                            {% endif %}
+                            
                         </a>
                     </li>
                 {% endif  %}
@@ -302,11 +307,7 @@
                     {% if (parentItem.blogTitle != pageClass) %}
                         <li>
                             <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                {% if (parentItem.blogTitle | lower) == 'newsroom' %}
-                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo-summer.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
-                                {% else %}
-                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
-                                {% endif %}
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
                                 {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                             </a>
                         </li>
@@ -438,7 +439,11 @@
         {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
             <li class="mobile-menu__rooms-item">
                 <a href="{{parentItem.link |raw}}" class="mobile-menu__rooms-link {{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                    <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}">
+                    {% if (parentItem.blogTitle | lower) == 'newsroom' %}
+                        <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo-summer.svg?v=04" alt="{{parentItem.blogTitle | lower}}">
+                    {% else %}
+                        <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}">
+                    {% endif %}
                     {# <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                 </a>
             </li>
