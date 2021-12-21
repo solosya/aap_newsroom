@@ -101,7 +101,7 @@
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                             {% if (parentItem.blogTitle | lower) == 'newsroom' %}
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg-summer?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
+                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo-summer.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
                             {% else %}
                                 <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
                             {% endif %}
