@@ -135,7 +135,11 @@
 
             {% else %} 
                 <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                    <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo-summer.svg?v=04" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
+                    {% if roomInfo[0] | lower == 'newsroom' %}
+                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo-summer.svg?v=04" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
+                    {% else %}
+                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=04" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
+                    {% endif %}
                     {# <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?v=04" alt="logo" class="main-logo"> #}
                 </a>
 
@@ -298,7 +302,11 @@
                     {% if (parentItem.blogTitle != pageClass) %}
                         <li>
                             <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}{% if (parentItem.blogTitle | lower) == 'newsroom' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
+                                {% if (parentItem.blogTitle | lower) == 'newsroom' %}
+                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo-summer.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
+                                {% else %}
+                                    <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}" {% if parentItem.blogTitle | lower == 'covid-19' %} style="height:16px" {% endif %}>
+                                {% endif %}
                                 {# <img src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                             </a>
                         </li>
