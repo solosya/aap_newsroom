@@ -100,12 +100,7 @@
                     {% endif %}
                     <li>
                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                            {% if (parentItem.blogTitle | lower) == 'newsroom' %}
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo-summer.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
-                            {% else %}
-                                <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg?v=04" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
-                            {% endif %}
-                            
+                            <img src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower }}-logo.svg?v=05" alt="{{parentItem.blogTitle}}" style="{{imgStyle}}">
                         </a>
                     </li>
                 {% endif  %}
@@ -140,12 +135,7 @@
 
             {% else %} 
                 <a class="navbar-brand" href="{{roomInfo[1]}}" rel="Home" tabindex="-1" title="Home" style="float:none">
-                    {% if roomInfo[0] | lower == 'newsroom' %}
-                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo-summer.svg?v=04" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
-                    {% else %}
-                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=04" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
-                    {% endif %}
-                    {# <img src="{{networkData.templatePath}}/static/images/newsroom-logo.svg?v=04" alt="logo" class="main-logo"> #}
+                        <img src="{{networkData.templatePath}}/static/images/{{roomInfo[0] | lower}}-logo.svg?v=05" alt="{{roomInfo[0] | lower}}" class="main-logo main-logo--{{roomInfo[0] | lower}}">
                 </a>
 
                 <a class="mobile-logo navbar-brand" href="{{networkData.defaultBlogUrl}}" rel="Home" tabindex="-1" title="Home">
