@@ -54,9 +54,9 @@
 
                 <div class="{{params.cardType}}c-cards-view__container content">
                     <div class="{{params.cardType}}c-cards-view__category category">{{article.label}}</div>
-                    <h2 class="{{params.cardType}}c-cards-view__heading">{{ articleTitle | raw }}</h2>
+                    <h2 class="{{params.cardType}}c-cards-view__heading j-truncate">{{ articleTitle | raw }}</h2>
                     {% if cardClass != 'instagram no-caption' %}  
-                        <p class="{{params.cardType}}c-cards-view__description">{{ article.excerpt | raw }}</p>
+                        <p class="{{params.cardType}}c-cards-view__description j-truncate">{{ article.excerpt | raw }}</p>
                     {% endif %}
                     <time class="{{params.cardType}}c-cards-view__time" datetime="2016-11-16">{{_AppHelper.getRelativeTime(publishDate) | upper}} AGO</time>
                     <div class="logo">

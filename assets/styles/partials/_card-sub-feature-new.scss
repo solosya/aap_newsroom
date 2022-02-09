@@ -199,5 +199,32 @@
     }
 }
 
+.puzzle-layout {
 
+    &:after {
+        display: none;
+    }
+
+    .card {
+        position: relative;
+        padding: 22px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #dadada;
+    }
+    .c-cards-view {
+        &__time {
+            bottom: 20px;
+        }
+        &__heading {
+            font-size: 19px;
+            line-height: 1.21;
+            height: 46px;
+        }
+        &__category {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+}
 
