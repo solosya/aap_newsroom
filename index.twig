@@ -10,10 +10,6 @@
     {% set cache = setCache("indexRecent", recentArticles, 500) %} 
 {% endif %}#}
 
-{% set recentArticles = _Article.getPopularArticles({'limit': 5}) %}
-
-
-
 
 
 {% cache 'indexCache_1' 300 %}
@@ -26,6 +22,7 @@
 {% set layoutTitle   = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 {% set config       = _Network.getThemeConfig() %}
 
+{% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
 
 {% set donations = "nr" %}
 {% if config.donations is defined %}
@@ -357,7 +354,7 @@ So you don't have to create all the sections on dev #}
 
 
 
-                    </div><!-- .col-sm-8-->
+                    </div><!-- .col-sm-8 -->
 
 
 
@@ -377,7 +374,7 @@ So you don't have to create all the sections on dev #}
                                 </div>
                             {% endif %}#}
 
-                            <div class="col-12 col-md-6 col-lg-12 d-none d-md-block u-tablet-order-4 u-desktop-order-3 u-desktop-margin-top-30">
+                            <div class="col-12 col-md-6 col-lg-12 d-none d-md-block u-desktop-margin-top-30">
                                 {{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
@@ -385,7 +382,7 @@ So you don't have to create all the sections on dev #}
                                 }) | raw}}
                             </div>
 
-                            <section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30 u-tablet-order-3 u-desktop-order-2">
+                            <section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30">
                                 {% if config['inventory']['adSpace']['mrec'][1] is defined %}
                                     <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
                                 {% endif %}
@@ -394,7 +391,7 @@ So you don't have to create all the sections on dev #}
 
 
                             {# {% if donations == "pp" %}
-                                <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40 u-tablet-order-2 u-desktop-order-4">
+                                <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40">
                                     {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
                                 </div>
                             {% endif %} #}
@@ -407,14 +404,14 @@ So you don't have to create all the sections on dev #}
                                 <span class="recent-articles__header-bold">Most popular</span> on Newsroom
                             </h3>
 
-                            
-                            {% if recentArticles|length > 0 %}
+                           
+                            {% if popularArticles|length > 0 %}
 
                                 {% for i in 0..5 %}
-                                    {% if recentArticles[i] %}
+                                    {% if popularArticles[i] %}
                                         {{
                                             this.render('partials/_single-article_recent.twig', {
-                                                article: recentArticles[i], 
+                                                article: popularArticles[i], 
                                                 containerClass: '', 
                                                 swap: 'false', 
                                                 isArticle: 'true'}) | raw
@@ -426,7 +423,7 @@ So you don't have to create all the sections on dev #}
 
                         </section>
 
-                        <section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30 u-tablet-order-3 u-desktop-order-2">
+                        <section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30">
                             {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                 <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
                             {% endif %}
