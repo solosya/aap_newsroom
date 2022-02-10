@@ -53,6 +53,8 @@
     {% set url = _Media.getMediaUrl(image, width, 0, {'crop': 'fill', 'gravity': 'auto', "effect":'sharpen', 'quality': 100} ) %}
     {% set logo = logo | merge({"url": url}) %}
     {% set logoArray = logoArray | merge({(logo.title | lower): logo}) %}
+
+    
 {% endfor %}
 
 
@@ -61,13 +63,17 @@
 
 
 <div class="container d-print-none u-mobile-margin-top-60 u-tablet-margin-top-60">
- <p class="foundingpartners">With thanks to our partners </p>
+ <p class="foundingpartners">With thanks to our partners</p>
  <section class="sponsor-logos2 j-sponsorlogos-exp">
      <div class="d-none d-md-block">
          
          <div class="logos">
-            <a href="https://www.kiwibank.co.nz/personal-banking/credit-cards/low-interest-cards/low-rate-visa/?utm_source=newsroom&utm_display&utm_content=creditcards&utm_campaign=newsroom-partnership-2020" class="sponsor-kiwibank" target="_blank" rel="noopener">
+            {#<a href="https://www.kiwibank.co.nz/personal-banking/credit-cards/low-interest-cards/low-rate-visa/?utm_source=newsroom&utm_display&utm_content=creditcards&utm_campaign=newsroom-partnership-2020" class="sponsor-kiwibank" target="_blank" rel="noopener">
                 <img src="{{logoArray['kb_logo_black'].url}}" alt="kiwibank logo" />
+            </a>#}
+
+            <a href="https://www.hyundai.co.nz" class="sponsor-spark" target="_blank" rel="noopener">
+                <img src="{{logoArray['kb_logo_black'].url}}" alt="hyundai logo" />
             </a>
 
             {# <a href="https://www.vodafone.co.nz/business/" class="sponsor-vodafone" target="_blank" rel="noopener">
