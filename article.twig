@@ -616,10 +616,6 @@
                         <aside>
 
                             {% if not showPaywall %}
-
-                                {{_AppHelper.printArray(articleBlog)}}
-                                {{_AppHelper.printArray(blogName|lower)}}
-                                {{_AppHelper.printArray(article.label)}}
                                
                                 {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-none d-lg-block">
@@ -645,6 +641,13 @@
                                         <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
                                     </section>
                                 {% endif %} #}
+
+                                {% if articleBlog == 'sustainable future' and config['inventory']['adSpace']['mrec'][1] is defined %}
+                                    <section class="ad sidebar-ad u-desktop-no-margin-top">
+                                        <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
+                                    </section>
+                                {% endif %}
+                                
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <section class="ad sidebar-ad {% if articleBlog == 'ideasroom' %}u-desktop-no-margin-top{% else %}u-desktop-margin-top-40{% endif %}">
                                         <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
