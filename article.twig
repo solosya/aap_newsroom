@@ -391,7 +391,6 @@
                                     <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                     <p class="catalyst-section__arttext">In association with</p>
                                 </div>
-                            
                             {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
                                 <div class="catalyst-section catalyst-section__article d-block d-lg-none">
                                     <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=1" alt="logo">
@@ -618,10 +617,19 @@
 
                             {% if not showPaywall %}
 
+                                {{_AppHelper.printArray(articleBlog)}}
+                                {{_AppHelper.printArray(blogName|lower)}}
+                                {{_AppHelper.printArray(article.label)}}
                                
                                 {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-none d-lg-block">
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
+                                        <p class="catalyst-section__arttext">In association with</p>
+                                    </div>
+                                    
+                                {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
+                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
                                 {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
