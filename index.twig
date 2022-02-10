@@ -452,8 +452,8 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}#}
 
-                {% if sections['climate emergency'].feed.articles|length > 0 %}
-                    {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% if sections['sustainable future'].feed.articles|length > 0 %}
+                    {{ this.render('partials/sustainablefuture.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['investigations'].feed.articles|length > 0 %}
