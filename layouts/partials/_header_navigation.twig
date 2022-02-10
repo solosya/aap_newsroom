@@ -95,7 +95,7 @@
                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                 {% set imgStyle = "" %}
                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                    {% if parentItem.blogTitle | lower == "election 2020" %}
+                    {% if parentItem.blogTitle | lower == "election 2020" or parentItem.blogTitle | lower == "sustainable future" %}
                         {% set imgStyle = "height: 15px" %}
                     {% endif %}
                     <li>
