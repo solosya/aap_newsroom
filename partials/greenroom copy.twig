@@ -1,0 +1,32 @@
+ <section class="room-green">
+     <header class="row">
+         <a href="{{ sections['climate emergency'].link }}" class="col-12 col-md-6">
+             <img src="{{networkData.templatePath}}/static/images/climate emergency-logo.svg" alt="ideas room" class="img-fluid room-logo">
+         </a>
+     </header>
+
+    {{this.render('_single-article.twig', {
+        article: sections['climate emergency'].feed.articles[0], 
+        containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up green', 
+        imageSize: {width:1140, height:430},
+        swap: 'false'
+    }) | raw}}
+
+     <div class="articles">
+         
+         <div class="row">
+             
+             {% for i in 1..2 %}
+                 {% if sections['climate emergency'].feed.articles[i] %}        
+                    {{this.render('_single-article.twig', {
+                        article: sections['climate emergency'].feed.articles[i], 
+                        containerClass: 'col-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up green', 
+                        imageSize: {width:203, height:129},
+                        swap: 'false'
+                    }) | raw}}
+                 {% endif %}
+             {% endfor %}
+
+         </div><!-- .row-->
+     </div>
+ </section><!--room-sports-->
