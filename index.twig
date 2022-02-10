@@ -374,7 +374,7 @@ So you don't have to create all the sections on dev #}
                                 </div>
                             {% endif %}#}
 
-                            <div class="col-12 col-md-6 col-lg-12 d-none d-md-block u-desktop-margin-top-30">
+                            <div class="col-12 col-md-6 col-lg-12 d-none d-md-block">
                                 {{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
@@ -407,7 +407,7 @@ So you don't have to create all the sections on dev #}
                            
                             {% if popularArticles|length > 0 %}
 
-                                {% for i in 0..5 %}
+                                {% for i in 0..4 %}
                                     {% if popularArticles[i] %}
                                         {{
                                             this.render('partials/_single-article_recent.twig', {

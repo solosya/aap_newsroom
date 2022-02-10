@@ -5,7 +5,7 @@
         </a>
     </header>
     <div class="row corporate-articles gutter-60">
-        {% for i in 0..3 %}
+        {% for i in 0..1 %}
             {% if sections['puzzles'].feed.articles[i] %}        
                 {{this.render('_single-article_corp.twig', {
                     article: sections['puzzles'].feed.articles[i], 
@@ -17,4 +17,5 @@
             {% endif %}
         {% endfor %}
     </div>
+    <a href="{{ sections['puzzles'].link }}" class="puzzle-btn">Play previous puzzles</a>
 </section><!-- .room-corporate-->

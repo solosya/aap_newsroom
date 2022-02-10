@@ -1,6 +1,20 @@
 .coporate-news-room {
     max-width:none;
     padding:0;
+
+    .puzzle-btn {
+        background-color: #5171ff;
+        @include font-size(16);
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $white;
+        font-family: $font-family-sans-serif;
+        height: 40px;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        width: 100%;
+    }
 }
 
 
