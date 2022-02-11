@@ -219,10 +219,12 @@
         &__heading {
             font-size: 19px;
             line-height: 1.21;
-            height: 46px;
         }
         &__media {
-            padding-right: 27px;
+            width: 110px;
+            @include flex(0 0 110px);
+            height: 110px;
+            margin-right: 27px;
         }
         &__container {
             padding-left: 0;
