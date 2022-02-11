@@ -1,13 +1,13 @@
  <section class="room-cricketWorld">
      <header class="row">
          <a href="{{ sections['cricket world cup'].link }}" class="col-12 col-md-6">
-             <img src="{{networkData.templatePath}}/static/images/cricket world cup-logo.svg" alt="cricket world cup" class="img-fluid room-logo">
+             <img src="{{networkData.templatePath}}/static/images/cricket world cup-logo.svg?v=1" alt="cricket world cup" class="img-fluid room-logo">
          </a>
      </header>
 
     {{this.render('_single-article.twig', {
         article: sections['cricket world cup'].feed.articles[0], 
-        containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up sustainable', 
+        containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up cricketWorld', 
         imageSize: {width:1140, height:430},
         swap: 'false'
     }) | raw}}
@@ -20,7 +20,7 @@
                  {% if sections['cricket world cup'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
                         article: sections['cricket world cup'].feed.articles[i], 
-                        containerClass: 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg locker col-md-4 sustainable', 
+                        containerClass: 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg col-md-4 cricketWorld', 
                         imageSize: {width:92, height:100},
                         swap: 'false'
                     }) | raw}}
