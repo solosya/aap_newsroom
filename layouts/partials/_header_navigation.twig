@@ -95,7 +95,7 @@
                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                 {% set imgStyle = "" %}
                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                    {% if parentItem.blogTitle | lower == "election 2020" %}
+                    {% if parentItem.blogTitle | lower == "election 2020" or parentItem.blogTitle | lower == "sustainable future" %}
                         {% set imgStyle = "height: 15px" %}
                     {% endif %}
                     <li>
@@ -427,9 +427,12 @@
         {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
         {% if (parentItem.blogTitle | lower != roomInfo[0] | lower) %}
+            {% if parentItem.blogTitle | lower == "sustainable future" %}
+                {% set imgStyle = "height: 18px" %}
+            {% endif %}
             <li class="mobile-menu__rooms-item">
                 <a href="{{parentItem.link |raw}}" class="mobile-menu__rooms-link {{activeClass}} {{externalClass}} {% if (parentItem.blogTitle | lower) == 'newsroom' or (parentItem.blogTitle | lower) == 'covid-19' %} {{parentItem.blogTitle | lower}}{% endif %}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                    <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}">
+                    <img class="mobile-menu__rooms-img" src="{{networkData.templatePath}}/static/images/{{parentItem.blogTitle | lower}}-logo.svg?v=04" alt="{{parentItem.blogTitle | lower}}" style="{{imgStyle}}" />
                     {# <img class="mobile-menu__rooms-link-logo" src="{{networkData.templatePath}}/static/images/engineroom-logo.svg" alt=""> #}
                 </a>
             </li>
