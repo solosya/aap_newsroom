@@ -391,6 +391,12 @@
                                     <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                     <p class="catalyst-section__arttext">In association with</p>
                                 </div>
+                            {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
+                                <div class="catalyst-section catalyst-section__article d-block d-lg-none">
+                                    <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=1" alt="logo">
+                                    <p class="catalyst-section__arttext">In association with</p>
+                                </div>
+
                             {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
                                 <div class="circularity-section circularity-section__article d-block d-lg-none">
                                     <img class="circularity-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/circularity.gif?v=1" alt="logo">
@@ -610,11 +616,16 @@
                         <aside>
 
                             {% if not showPaywall %}
-
                                
                                 {% if articleBlog == 'technology' or blogName|lower == 'technology' or 'technology' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-none d-lg-block">
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
+                                        <p class="catalyst-section__arttext">In association with</p>
+                                    </div>
+                                    
+                                {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
+                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
                                 {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
@@ -630,6 +641,13 @@
                                         <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
                                     </section>
                                 {% endif %} #}
+
+                                {% if articleBlog == 'sustainable future' and config['inventory']['adSpace']['mrec'][1] is defined %}
+                                    <section class="ad sidebar-ad u-desktop-no-margin-top">
+                                        <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
+                                    </section>
+                                {% endif %}
+                                
                                 {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                     <section class="ad sidebar-ad {% if articleBlog == 'ideasroom' %}u-desktop-no-margin-top{% else %}u-desktop-margin-top-40{% endif %}">
                                         <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>

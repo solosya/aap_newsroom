@@ -53,6 +53,8 @@
     {% set url = _Media.getMediaUrl(image, width, 0, {'crop': 'fill', 'gravity': 'auto', "effect":'sharpen', 'quality': 100} ) %}
     {% set logo = logo | merge({"url": url}) %}
     {% set logoArray = logoArray | merge({(logo.title | lower): logo}) %}
+
+    
 {% endfor %}
 
 
@@ -61,13 +63,17 @@
 
 
 <div class="container d-print-none u-mobile-margin-top-60 u-tablet-margin-top-60">
- <p class="foundingpartners">With thanks to our partners </p>
+ <p class="foundingpartners">With thanks to our partners</p>
  <section class="sponsor-logos2 j-sponsorlogos-exp">
      <div class="d-none d-md-block">
          
          <div class="logos">
-            <a href="https://www.kiwibank.co.nz/personal-banking/credit-cards/low-interest-cards/low-rate-visa/?utm_source=newsroom&utm_display&utm_content=creditcards&utm_campaign=newsroom-partnership-2020" class="sponsor-kiwibank" target="_blank" rel="noopener">
+            {#<a href="https://www.kiwibank.co.nz/personal-banking/credit-cards/low-interest-cards/low-rate-visa/?utm_source=newsroom&utm_display&utm_content=creditcards&utm_campaign=newsroom-partnership-2020" class="sponsor-kiwibank" target="_blank" rel="noopener">
                 <img src="{{logoArray['kb_logo_black'].url}}" alt="kiwibank logo" />
+            </a>#}
+
+            <a href="https://www.hyundai.co.nz" class="sponsor-hyundai" target="_blank" rel="noopener">
+                <img src="{{logoArray['hyundai'].url}}" alt="hyundai logo" />
             </a>
 
             {# <a href="https://www.vodafone.co.nz/business/" class="sponsor-vodafone" target="_blank" rel="noopener">
@@ -85,11 +91,11 @@
             
 
            
-         </div>
+        </div>
 
 
-         <div class="logos u-margin-top-20">
-            
+        <div class="logos u-margin-top-20">
+        
 
             <a href="http://www.bellgully.com" class="sponsor-bellgully" target="_blank" rel="noopener">
                 <img src="{{logoArray['bell-gully'].url}}" alt="bellgully logo" />
@@ -102,10 +108,10 @@
             <a href="https://www.catalyst.net.nz" class="sponsor-catalyst" target="_blank" rel="noopener">
                 <img src="{{logoArray['catalyst_mono'].url}}" alt="catalyst logo" />
             </a>
-         </div>
+        </div>
 
 
-         <div class="logos">
+        <div class="logos">
             <a href="http://www.victoria.ac.nz/capital-thinking" class="sponsor-vic-uni-wellington" target="_blank" rel="noopener">
                 <img src="{{logoArray['vic-mono'].url}}" alt="vic uni wellington logo" />
 
@@ -120,11 +126,11 @@
                 <img src="{{logoArray['otago-uni-logo'].url}}" alt="uni otago logo" />
 
             </a>
-         </div>
+        </div>
 
 
 
-         <div class="logos u-margin-top-30">
+        <div class="logos u-margin-top-30">
             <a href="https://womeninsport.org.nz" class="sponsor-wispa" target="_blank" rel="noopener">
                 <img src="{{logoArray.wisp_mono.url}}" alt="Kiwi bank logo" />
             </a>
@@ -133,10 +139,10 @@
                 <img src="{{logoArray['matatuhi-mono'].url}}" alt="matatuhi logo" />
             </a> #}
 
-             <a href="https://www.creative.govt.nz" class="sponsor-creative-nz" target="_blank" rel="noopener">
+                <a href="https://www.creative.govt.nz" class="sponsor-creative-nz" target="_blank" rel="noopener">
                 <img src="{{logoArray['creative-nz-bw'].url}}" alt="creative-nz logo" />
             </a>
-         </div>
+        </div>
      </div>
 
 
@@ -151,9 +157,14 @@
 
 
      <div class="container d-block d-md-none">
-        <div class="logos">
+        {#<div class="logos">
             <a href="https://www.kiwibank.co.nz/personal-banking/credit-cards/low-interest-cards/low-rate-visa/?utm_source=newsroom&utm_display&utm_content=creditcards&utm_campaign=newsroom-partnership-2020" class="sponsor-kiwibank" target="_blank" rel="noopener">
                 <img src="{{logoArray['kb_logo_black'].url}}" alt="kiwibank logo" />
+            </a>
+        </div>#}
+        <div class="logos">
+            <a href="https://www.hyundai.co.nz" class="sponsor-hyundai" target="_blank" rel="noopener">
+                <img src="{{logoArray['hyundai'].url}}" alt="hyundai logo" />
             </a>
         </div>
         {# <div class="logos u-margin-top-20">    

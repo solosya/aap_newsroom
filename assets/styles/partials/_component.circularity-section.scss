@@ -89,6 +89,15 @@
             height: 40px;
             margin: 0;
         }
+
+        &.hyundai-logo {
+            height: 35px;
+
+            @media  #{$mobile}{
+                height: 25px;
+                margin: 0;
+            }
+        }
     }
 }
 
