@@ -1,12 +1,12 @@
  <section class="room-cricketWorld">
      <header class="row">
-         <a href="{{ sections['sustainable future'].link }}" class="col-12 col-md-6">
+         <a href="{{ sections['cricket world cup'].link }}" class="col-12 col-md-6">
              <img src="{{networkData.templatePath}}/static/images/cricket world cup-logo.svg" alt="cricket world cup" class="img-fluid room-logo">
          </a>
      </header>
 
     {{this.render('_single-article.twig', {
-        article: sections['sustainable future'].feed.articles[0], 
+        article: sections['cricket world cup'].feed.articles[0], 
         containerClass: 'card-featured-mobile card-featured2-tablet card-featured2-desktop card-featured2-desktop-up sustainable', 
         imageSize: {width:1140, height:430},
         swap: 'false'
@@ -16,12 +16,12 @@
          
          <div class="row">
              
-             {% for i in 1..2 %}
-                 {% if sections['sustainable future'].feed.articles[i] %}        
+             {% for i in 1..3 %}
+                 {% if sections['cricket world cup'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article: sections['sustainable future'].feed.articles[i], 
-                        containerClass: 'col-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up sustainable', 
-                        imageSize: {width:203, height:129},
+                        article: sections['cricket world cup'].feed.articles[i], 
+                        containerClass: 'subfeature-card-mobile subfeature-card-tablet subfeature-card-desktop-sm subfeature-card-desktop-lg locker col-md-4 sustainable', 
+                        imageSize: {width:92, height:100},
                         swap: 'false'
                     }) | raw}}
                  {% endif %}
