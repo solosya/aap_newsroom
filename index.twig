@@ -117,6 +117,14 @@
             "feed": "",
             "link": ""
         },
+        "cricket world cup": {
+            "feed": "",
+            "link": ""
+        },
+        "sustainable future": {
+            "feed": "",
+            "link": ""
+        },
         "puzzles": {
             "feed": "",
             "link": ""
@@ -455,8 +463,17 @@ So you don't have to create all the sections on dev #}
                     {{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
-                {% if sections['climate emergency'].feed.articles|length > 0 %}
+                {#{% if sections['climate emergency'].feed.articles|length > 0 %}
                     {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}#}
+
+                
+                {% if sections['cricket world cup'].feed.articles|length > 0 %}
+                    {{ this.render('partials/cricketworldcup.twig', {sections: sections, networkData: networkData}) | raw }}
+                {% endif %}
+
+                {% if sections['sustainable future'].feed.articles|length > 0 %}
+                    {{ this.render('partials/sustainablefuture.twig', {sections: sections, networkData: networkData}) | raw }}
                 {% endif %}
 
                 {% if sections['investigations'].feed.articles|length > 0 %}
