@@ -88,7 +88,7 @@
                 <source media="(max-width: 728px)" srcset="{{networkData.templatePath}}/static/images/nr-pro-icon.png">
                 <img src="{{networkData.templatePath}}/static/images/newsroom_pro.svg" class="paywall__logo-image">
             </picture>
-            <picture class="d-none d-md-flex ml-3 mt-n2">
+            <picture class="d-none ml-3 mt-n2">
                 <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
             </picture>
         </a>
@@ -108,7 +108,7 @@
     </div>
 
 
-    <picture class="paywall-offers__logo d-block d-md-none mt-3">
+    <picture class="paywall-offers__logo d-none mt-3">
         <img src="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2" srcset="{{networkData.templatePath}}/static/images/ns-logo.png?ver=2 1x, {{networkData.templatePath}}/static/images/ns-logo@2x.png?ver=2 2x, {{networkData.templatePath}}/static/images/ns-logo@3x.png?ver=2 3x" alt="NS Logo" class="img-fluid">
     </picture>
 
@@ -128,12 +128,14 @@
                     <p class="paywall-offer-banner__text">{{blurbA|raw}}</p>
 
                     <div class="paywall-offer-banner__button-container">
-                        <a class="_btn _btn--black  paywall-offer-banner__button btn lightbox-213346997404867" href="#" 
+                        {#<a class="_btn _btn--black  paywall-offer-banner__button btn lightbox-213346997404867" href="#" 
                             data-price="{{specialPlan.plan_value}}" 
                             data-name="{{frequency}}" 
                             data-id="{{plan.guid}}"
-                            >6 Month $99</a>
-                        <a class="btn lightbox-213278487899883 _btn paywall-offer-banner__button paywall-offer-banner__button--white u-margin-left-20" href="#" 
+                            >6 Month $99</a>#}
+
+                        <a class="_btn _btn--black paywall-offer-banner__button btn" href="{{subscribeLink}}">Subscribe now</a>
+                        <a class="btn lightbox-213278487899883 _btn paywall-offer-banner__button paywall-offer-banner__button--white d-none u-margin-left-20" href="#" 
                             data-price="{{specialPlan.plan_value}}" 
                             data-name="{{frequency}}" 
                             data-id="{{plan.guid}}"
