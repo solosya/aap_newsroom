@@ -99,8 +99,7 @@
 
 {% endif %}
 
-
-<main id="main" class="" role="main" data-userid="{{userid}}" data-userguid="{{userguid}}">
+<main id="main" class="" role="main" data-userid="{{userid}}" data-userguid="{{userguid}}" data-usercount="{{plan.user_count}}">
 
     <div id="paywallsubscribe" class="u-hide" ></div>
 
@@ -139,23 +138,36 @@
                         </div>
                         {% else %}
                         
-
+                        {% set large = "" %}
+                        {% set labelPosition = "middle" %}
+                        {% if plan.user_count < 1 %}
+                            {% set large = "subscribe-progress__line--wide" %}
+                            {% set labelPosition = "end" %}
+                        {% endif %} 
                         <div id="progress" class="subscribe-progress">
                             <div class="subscribe-progress__line-container">
                                 <div id="num1" class="subscribe-progress__number subscribe-progress__number--red">1</div>
-                                <div id="line1"class="subscribe-progress__line subscribe-progress__line--red"></div>
-                                <div id="line2"class="subscribe-progress__line"></div>
+                                <div id="line1"class="subscribe-progress__line {{large}} subscribe-progress__line--red"></div>
+                                <div id="line2"class="subscribe-progress__line {{large}}"></div>
                                 <div id="num2" class="subscribe-progress__number">2</div>
-                                <div id="line3"class="subscribe-progress__line subscribe-progress__line--wide"></div>
-                                <div id="num3" class="subscribe-progress__number">3</div>
+                               
+                               
+                                {% if plan.user_count > 0 %}
+                                    <div id="line3"class="subscribe-progress__line subscribe-progress__line--wide"></div>
+                                    <div id="num3" class="subscribe-progress__number">3</div>
+                                {% endif %}
                             </div>
                             <div class="subscribe-progress__label-container">
                                 <p id="label1" class="subscribe-progress__label subscribe-progress__label--active">Create an account</p>
-                                <p id="label2" class="subscribe-progress__label subscribe-progress__label--middle">Activate account</p>
-                                {% if plan.subscriber_type == "household" %}
-                                    <p id="label3" class="subscribe-progress__label">Bonus + Complete</p>
-                                {% else %}
-                                    <p id="label3" class="subscribe-progress__label">Add staff</p>
+                                <p id="label2" class="subscribe-progress__label subscribe-progress__label--{{labelPosition}}">Activate account</p>
+                                
+                                
+                                {% if plan.user_count > 0 %}
+                                    {% if plan.subscriber_type == "household" %}
+                                        <p id="label3" class="subscribe-progress__label">Bonus + Complete</p>
+                                    {% else %}
+                                        <p id="label3" class="subscribe-progress__label">Add staff</p>
+                                    {% endif %}
                                 {% endif %}
 
                             </div>
@@ -346,7 +358,8 @@
                 {# ***********************************************************
                                         BONUS USER
                 *********************************************************** #}
-                {% if plan.subscriber_type == 'household' %}
+                {% if plan.subscriber_type == 'household' and plan.user_count > 0 %}
+                
                 <div id="userformview" class="u-hide u-margin-top-30">
                     <div class="row">
                         <div class="col-lg-12">
