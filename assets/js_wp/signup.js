@@ -4,11 +4,13 @@ import Card from './StripeCard'
 
 
 export const SubscribeForm = function(id, user) {
+
     
     this.botTimer = 0;
     this.id = id || null;
     this.parent = Form.prototype;
     this.code = false;
+    this.plan_user_count = user.plan_user_count || 0;
 
     this.data = {
         "firstname": "Subscriber",
@@ -97,6 +99,7 @@ SubscribeForm.prototype.submit = function(event)
 
     if (self.botTimer < 5 || $('#email-confirm').val() !== "") {
         window.location.href = location.origin + "/auth/thank-you";
+        return;
     }
 
 
@@ -249,8 +252,13 @@ ActivateForm.prototype.submit = function(event)
                     console.log(r);
                 });                        
         }
-        Acme.progress.next();
         self.signup.closeWindow();
+        if (self.subscription.plan_user_count < 1) {
+            window.location.href = location.origin + '/auth/thank-you';
+            return;
+        }
+
+        Acme.progress.next();
     }).fail(function(r) {
         console.log('failed', r);
     });
@@ -401,7 +409,8 @@ if ($('#stripekey').length > 0 && $('#paywallsubscribe').length > 0 ) {
     var main = $('main');
     var user = {
         user_id : main.data('userid'),
-        user_guid : main.data('userguid')
+        user_guid : main.data('userguid'),
+        plan_user_count : parseInt(main.data('usercount'))
     };
     Acme.subscribe = new SubscribeForm('payment-form', user);
     Acme.subscribe = new ActivateForm('activate-form', Acme.subscribe);
