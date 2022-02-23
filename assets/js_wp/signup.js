@@ -5,6 +5,7 @@ import Card from './StripeCard'
 
 export const SubscribeForm = function(id, user) {
 
+    
     this.botTimer = 0;
     this.id = id || null;
     this.parent = Form.prototype;
