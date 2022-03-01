@@ -16,6 +16,11 @@
 {% endif %}
 
 
+{% set logos = true %}
+{% if article.additionalInfo is defined and article.additionalInfo.logos is defined and article.additionalInfo.logos == "on" %}
+    {% set logos = false %}
+{% endif %}
+
 {# PIJF used in Google Tag Manager for NZ On Air to capture published data #}
 {% set pijf_code = null %}
 {% if article.additionalInfo is defined and article.additionalInfo.pijf is defined and article.additionalInfo.pijf != null %}
@@ -747,7 +752,11 @@
 
     </article>
 
-    {{ this.render('partials/_sponsor_logos2.twig') | raw }}
+    {% if logos %}
+        {{ this.render('partials/_sponsor_logos2.twig') | raw }}
+    {% endif %}
+
+
     {% set theKeywords = '' %}
     {% if article.additionalInfo.adswitch == 'off' %}
         {% set theKeywords = 'no_ad' %}
