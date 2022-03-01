@@ -55,11 +55,14 @@
                     }
                 },
                 {
-                    "label": "Remove sponsor logos",
-                    "type": "checkbox",
-                    "name": "logos"
-                },
-                {
+                    "label": "Hide sponsor logos",
+                    "type": "radio",
+                    "name": "logos",
+                    "options": {
+                        "on": "Hide",
+                        "off": "Show"
+                    }
+                },                {
                     "label": "PIJF",
                     "type": "dropdown",
                     "name": "pijf",
