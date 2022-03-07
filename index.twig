@@ -22,7 +22,11 @@
 {% set layoutTitle   = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 {% set config       = _Network.getThemeConfig() %}
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
+{% set popularArticles = _Article.getPopularArticles({ 
+    limit: 6, 
+    blogId: blogData['id'],  
+    interval: 36  
+}) %}
 
 {% set donations = "nr" %}
 {% if config.donations is defined %}
