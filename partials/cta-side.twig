@@ -13,11 +13,18 @@
 <div class="{# d-none #} j-cta-side-form {{extraClass}}" style="width:100%;">
     <!-- Begin MailChimp Signup Form -->
     <div id="mc_embed_signup" class="c-cta-side__container  j-cta-side-form" >
-        <form   action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" 
+        {#<form   action="//newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=71de5c4b35" 
                 method="post" id="mc-embedded-subscribe-form" 
                 name="mc-embedded-subscribe-form" 
                 class="validate" 
                 target="_blank" 
+                novalidate 
+                style="background-color:white">#}
+        
+        <form   action="javascript:;" 
+                method="post" id="mc-embedded-subscribe-form" 
+                name="mc-embedded-subscribe-form" 
+                class="validate" 
                 novalidate 
                 style="background-color:white">
 
@@ -34,8 +41,8 @@
                 </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 
                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e0ae259e8f9472b9c54037c25_71de5c4b35" tabindex="-1" value=""></div>
-                
-                <button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="c-cta-side__submit tag-register-button"></button>
+                {#<button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="c-cta-side__submit tag-register-button"></button>#}
+                <button type="submit" id="daily-submit" name="email-submit" data-type="3-0" data-input="daily-email" data-title="Daily Briefing" data-group[3][1]="1" class="c-cta-side__submit j-mcsubscribe tag-register-button"></button>
             </div>
         </form>
     </div>
