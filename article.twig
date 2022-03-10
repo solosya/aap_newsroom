@@ -730,11 +730,13 @@
                             </section>
                             {% endif %} 
 
-                            {{this.render('/partials/cta-side.twig', {
-                                networkData: networkData,
-                                config: config,
-                                extraClass: 'd-none d-lg-flex u-margin-top-80'
-                            }) | raw}}
+                            <div class="u-margin-top-80">
+                                {{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: 'd-none d-lg-flex'
+                                }) | raw}}
+                            </div>
 
 
 
