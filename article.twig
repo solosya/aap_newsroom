@@ -708,12 +708,6 @@
                             
                             {% endif %}
 
-                            {{this.render('/partials/cta-side.twig', {
-                                networkData: networkData,
-                                config: config,
-                                extraClass: 'd-none d-lg-flex'
-                            }) | raw}}
-
                             {% if relatedArticles | length > 0 %}
                             <section class="col-sm-12 recent-articles" data-proid="{{proBlogId}}">
                                 
@@ -735,6 +729,12 @@
                                 </div>
                             </section>
                             {% endif %} 
+
+                            {{this.render('/partials/cta-side.twig', {
+                                networkData: networkData,
+                                config: config,
+                                extraClass: 'd-none d-lg-flex'
+                            }) | raw}}
 
 
 
