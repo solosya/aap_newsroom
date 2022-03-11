@@ -708,16 +708,10 @@
                             
                             {% endif %}
 
-                            {{this.render('/partials/cta-side.twig', {
-                                networkData: networkData,
-                                config: config,
-                                extraClass: 'd-none d-lg-flex'
-                            }) | raw}}
-
                             {% if relatedArticles | length > 0 %}
                             <section class="col-sm-12 recent-articles" data-proid="{{proBlogId}}">
                                 
-                                <h3 class="u-font-size-20 u-font-uppercase u-color-red u-font-weight-thin u-margin-bottom-10 u-margin-top-80">Recommended reads</h3>
+                                <h3 class="u-font-size-20 u-font-uppercase u-color-red u-font-weight-thin u-margin-bottom-10">Recommended reads</h3>
                                 
                                 <div class="row">
                                 {% for related in relatedArticles %}
@@ -735,6 +729,14 @@
                                 </div>
                             </section>
                             {% endif %} 
+
+                            <div class="u-margin-top-80">
+                                {{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: 'd-none d-lg-flex'
+                                }) | raw}}
+                            </div>
 
 
 
