@@ -1,5 +1,5 @@
 {# react build files must be coppied to Newsroom theme #}
-{% set commentVersion = '104' %}
+{% set commentVersion = '106' %}
 
 
 {# {% set env = 'prod' %} #}
@@ -19,6 +19,7 @@
     {% set themeId = config['comments']['themeid'] %}
 {% endif %} #}
 
+{# {% set env = 'dev' %} #}
 
 
 <script>
@@ -28,6 +29,8 @@
     window.commentCount = "{{commentCount}}";
     window.allowComments = "{{allowComments}}";
     window.faqLink      = "{{faqLink}}";
+    window.threaded     = false;
+    window.threadLevel  = 1;
 </script>
 <div id="modal"></div>
 
