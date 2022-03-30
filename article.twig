@@ -31,7 +31,9 @@
     {% set register = _AppHelper.registerMetaTag({"name": "nzoa", "content": pijf_code}) %}
 {% endif %}
 
-
+{% if article.additionalInfo is defined and article.additionalInfo.noindex is defined and article.additionalInfo.noindex == true %}
+    {% set register = _AppHelper.registerMetaTag({"name": "robots", "content": 'noindex'}) %}
+{% endif %}
 
 
 
@@ -628,7 +630,7 @@
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/catalyst_bw.png?v=1" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
-                                 3  
+                                   
                                 {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
                                     <div class="catalyst-section catalyst-section__article d-none d-lg-block">
                                         <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=5" alt="logo">
