@@ -31,7 +31,9 @@
     {% set register = _AppHelper.registerMetaTag({"name": "nzoa", "content": pijf_code}) %}
 {% endif %}
 
-
+{% if article.additionalInfo is defined and article.additionalInfo.noindex is defined and article.additionalInfo.noindex == true %}
+    {% set register = _AppHelper.registerMetaTag({"name": "robots", "content": 'noindex'}) %}
+{% endif %}
 
 
 
