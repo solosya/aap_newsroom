@@ -86,11 +86,13 @@
 
 
     &.opinion-card{
-        &:last-child {
-            a.card article {
-                border:none;
-                padding:0;
-                margin:0;
+        &:not(&.row_cardss) {
+            &:last-child {
+                a.card article {
+                    border:none;
+                    padding:0;
+                    margin:0;
+                }
             }
         }
 
