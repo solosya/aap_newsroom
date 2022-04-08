@@ -51,15 +51,20 @@
 {% set newsroom_pro_style       = "" %}
 {% set articleBlog              = article.blog.title | lower %}
 
+{% set guestString = guestUser == false ? 'false' : guestUser %}
 
 
+
+{# ******************************************
+                COMMMENTS
+****************************************** #}
 {% set init = _Comment.twigInit() %}
 {% set commentCount = _Comment.getArticleCommentCount(article.id) %}
 
 {% set comment = null %}
 {% if commentCount > 0 %}
-    {% set comments = _Comment.getByArticle(article.id, {"limit":1, "orderBy" : {"created_at" : "ASC"}, "rootOnly" : true, "resultFormat" : 'array'}) %}
-    {% set comment = comments.comments[0] %}
+    {# {% set comments = _Comment.getByArticle(article.id, {"limit":1, "orderBy" : {"created_at" : "ASC"}, "rootOnly" : true, "resultFormat" : 'array'}) %}
+    {% set comment = comments.comments[0] %} #}
     {% set commenters = _Comment.getCommenters(article.id, {"resultFormat" :'array', "resultCount" : 'all', "limit":5}) %}
 
     {% set commentersString = false %}
@@ -100,10 +105,20 @@
 {% endif %}
 
 {% set commentSettingString = commentSetting == false ? 'false' : commentSetting %}
-{% set guestString = guestUser == false ? 'false' : guestUser %}
 
+
+
+
+
+
+
+
+
+
+{# ******************************************
+                PAYWALL
+****************************************** #}
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
-
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
 
 {# The below checks which message to show a user blocked by the paywall #}
@@ -131,24 +146,9 @@
             {% set proBlogId = blog.id %}
         {% endif %}
     {% endfor %}
-
 {% endif %}
 
 
-{% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-{% if articleBlog == 'lockerroom' %}
-    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{% endif %}
-
-    <script>
-        (function(d) {
-        var el, fjs = d.getElementsByTagName('script')[0];
-            el = d.createElement('script');
-            el.id = "js-pp-banner";
-            el.src = "{{ppsrc}}";
-            fjs.parentNode.insertBefore(el, fjs);
-        }(document));
-    </script>
 
 {% set storySplit = article.content | split('</p>')  %}
 {% set contentPartOne = "" %}
@@ -167,6 +167,28 @@
     {% endfor %}
     {% set articleCtaEnd = false %}
 {% endif %}
+
+
+
+
+
+
+{# {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
+{% if articleBlog == 'lockerroom' %}
+    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
+{% endif %}
+
+    <script>
+        (function(d) {
+        var el, fjs = d.getElementsByTagName('script')[0];
+            el = d.createElement('script');
+            el.id = "js-pp-banner";
+            el.src = "{{ppsrc}}";
+            fjs.parentNode.insertBefore(el, fjs);
+        }(document));
+    </script> #}
+
+
 
 
 
@@ -506,25 +528,35 @@
                             {% endif %}
 
 
-
-
+                            {% if guestUser and show_comments %}
+                                <div class="comment-subscribe u-margin-top-50">
+                                    <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
+                                    <p class="comment-subscribe__p">Post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
+                                    <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" /> 28-day trial. </p>
+                                    <div class="comment-subscribe__buttons">
+                                        <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
+                                        <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
+                                    </div>
+                                    <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
+                                </div>
+                            {% endif %}
                             <div id="comment-container" class="u-margin-top-80" data-env="{{env}}">
 
                                 {# {% if commentCount == 0 and not show_comments %}
                                     <p class="comments__closed">Some Newsroom articles are open to comments, <a href="#">click here</a> to learn more. </p>
                                 {% endif %} #}
 
-                                {% if guestUser and show_comments %}
+                                {# {% if guestUser and show_comments %} #}
 
-                                    <div class="comments__header">
+                                    {# <div class="comments__header">
                                         {% set plural = commentCount > 1 ? "s" : "" %}
                                         <h3 class="comments__title">{{commentCount}} comment{{plural}}</h3>
-                                    </div>
+                                    </div> #}
 
 
-                                    {% if comment %}
+                                    {# {% if comment %} #}
                                         
-                                        {% if comment.profile_image %}
+                                        {# {% if comment.profile_image %}
                                             {% set avatar = comment.profile_image | replace({'/upload/': '/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces:auto,q_auto,w_80,h_80/'}) %}
                                         {% else %}
                                             {% set avatar = networkData.templatePath ~ '/static/images/commenter.svg'  %}
@@ -561,21 +593,11 @@
                                                 
                                             </div>
                                             <div class="comments__Fade"></div>
-                                        </div>
-                                    {% endif %}
+                                        </div> #}
+                                    {# {% endif %} #}
 
-                                    <div class="comment-subscribe">
-                                        <h2 class="comment-subscribe__header">JOIN THE CONVERSATION</h2>
-                                        <p class="comment-subscribe__p">Read and post comments with a <br class="d-sm-none" />Newsroom Pro subscription. </p>
-                                        <p class="comment-subscribe__p comment-subscribe__p--bold">Subscribe now to start a free<br class="d-sm-none" /> 28-day trial. </p>
-                                        <div class="comment-subscribe__buttons">
-                                            <a href="/prosubscribe" class="_btn _btn--red comment-subscribe__button">SUBSCRIBE TO PRO</a>
-                                            <button id="commentSigninBtn" class="_btn _btn--gray u-mobile-margin-top-10 comment-subscribe__button j-signin">SIGN IN TO PRO</button>
-                                        </div>
-                                        <a href="{{networkData.defaultBlogUrl}}/prosubscribe" class="comment-subscribe__link">View our subscription options</a>
-                                    </div>
 
-                                {% endif %}
+                                {# {% endif %} #}
                             </div>
 
 
@@ -773,7 +795,7 @@
 </main>
 
 
-{% if not guestUser and show_comments %}
+{% if  show_comments %}
     {{this.render('partials/_comments.twig', {
         config: config,
         networkData: networkData,

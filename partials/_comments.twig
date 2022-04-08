@@ -1,5 +1,5 @@
 {# react build files must be coppied to Newsroom theme #}
-{% set commentVersion = '108' %}
+{% set commentVersion = '109' %}
 
 
 {# {% set env = 'prod' %} #}
@@ -52,3 +52,19 @@
     <link rel="stylesheet" href="{{networkData.templatePath}}/../comments/build/static/css/main.css?v={{commentVersion}}" type="text/css" media="all">
     <script  type="text/javascript" src="{{networkData.templatePath}}/../comments/build/static/js/main.js?v={{commentVersion}}"></script>
 {% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let waypoint = new Waypoint({
+            element: $('#get_comments_button'),
+            offset: '90%',
+            handler: function (direction) {
+                console.log('handling comments');
+                if (direction == 'down') {
+                   $('#get_comments_button').click();
+                }
+            }
+        });
+    });
+
+</script>
