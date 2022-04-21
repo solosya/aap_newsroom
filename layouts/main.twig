@@ -299,7 +299,7 @@
 
 
 
-{{this.render('../partials/email-signup.twig') | raw}}
+{{this.render('../partials/email-signup.twig', {networkData: networkData}) | raw}}
 
 {% set ip = config['IPAdresses'] | json_encode() %}
 <script>
