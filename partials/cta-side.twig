@@ -21,18 +21,13 @@
                 novalidate 
                 style="background-color:white">#}
         
-        <form   action="javascript:;" 
-                method="post" id="mc-embedded-subscribe-form" 
-                name="mc-embedded-subscribe-form" 
-                class="validate" 
-                novalidate 
-                style="background-color:white">
+        <div style="background-color:white">
 
             <div id="mc_embed_signup_scroll" style="display:flex">
         
                 <div class="mc-field-group" style="width:100%">
-                    <input type="email" value="" name="EMAIL" class="c-cta-side__email required " id="mce-EMAIL" placeholder="Email" style="color:black; border:none">
-                    <input type="hidden" class="u-hide" value="1" name="group[3][1]" id="mce-group[3]-3-0">
+                    <input type="email" value="" name="EMAIL" class="c-cta-side__email required" id="daily-email" placeholder="Email" style="color:black; border:none">
+                    {# <input type="hidden" class="u-hide" value="1" name="group[3][1]" id="mce-group[3]-3-0"> #}
                 </div >
 
                 <div id="mce-responses" class="clear">
@@ -44,6 +39,6 @@
                 {#<button type="submit" value=" " name="subscribe" id="mc-embedded-subscribe" class="c-cta-side__submit tag-register-button"></button>#}
                 <button type="submit" id="daily-submit" name="email-submit" data-type="3-0" data-input="daily-email" data-title="Daily Briefing" data-group[3][1]="1" class="c-cta-side__submit j-mcsubscribe tag-register-button"></button>
             </div>
-        </form>
+        </div>
     </div>
 </div>

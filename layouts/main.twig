@@ -297,6 +297,10 @@
         </div>
     {% endif %}
 
+
+
+{{this.render('../partials/email-signup.twig') | raw}}
+
 {% set ip = config['IPAdresses'] | json_encode() %}
 <script>
     window.IPAdresses = JSON.parse('{{ip | raw }}'); 
