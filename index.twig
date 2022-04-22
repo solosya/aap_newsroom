@@ -193,7 +193,7 @@ So you don't have to create all the sections on dev #}
                     <div class="col-sm-12 col-lg-8">
 
 
-                        {#{% if layoutTitle | lower == 'newsroom_opinion' %}
+                        {% if layoutTitle | lower == 'newsroom_opinion' %}
                             {% if sections['comment'].feed.articles|length > 0 %}
                                 {% if articles[articleCount] %}
                                 <section class="opinion-index">
