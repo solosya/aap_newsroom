@@ -260,7 +260,7 @@ So you don't have to create all the sections on dev #}
                         {% if layoutTitle | lower == 'newsroom_opinion' %}
                             {% if sections['comment'].feed.articles|length > 0 %}
                                 {% if articles[articleCount] %}
-                                <section class="opinion-index">
+                                <section class="">
                                     <div class="row">
                                         {% for i in 0..1 %}
                                             {% if sections['comment'].feed.articles[i] %}        
