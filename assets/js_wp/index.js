@@ -56,16 +56,28 @@ $('a.j-register').on('click', function(e) {
 
 
 
-
-
-$('.j-mcsubscribe').on('click',function(event){
-    var email = $('#'+$(event.currentTarget).data('input')).val();
-    document.getElementById("mce-group[3]-"+$(event.currentTarget).data('type')).checked = true;
-    $('#j-box-'+$(event.currentTarget).data('type')).addClass('d-none');
-    $('#j-mcpopup-thankyou').text('You are signing up to the '+$(event.currentTarget).data('title')+'.');
+$('.j-mcsubscribe').on('click',function(event) {
+    var target = $(event.currentTarget); 
+    var email = $('#'+target.data('input')).val();
+    var className = "j-group3-" + target.data('type');
+    var checkbox = document.getElementsByClassName(className);
+    
+    checkbox[0].checked = true;
+    $('#j-box-'+target.data('type')).addClass('d-none');
+    $('#j-mcpopup-thankyou').text('You are signing up to the '+target.data('title')+'.');
     $('#mce-EMAIL').val(email);
     $('#j-mcpopup').removeClass('d-none');
 });
+
+
+// $('.j-mcsubscribe').on('click',function(event){
+//     var email = $('#'+$(event.currentTarget).data('input')).val();
+//     document.getElementById("mce-group[3]-"+$(event.currentTarget).data('type')).checked = true;
+//     $('#j-box-'+$(event.currentTarget).data('type')).addClass('d-none');
+//     $('#j-mcpopup-thankyou').text('You are signing up to the '+$(event.currentTarget).data('title')+'.');
+//     $('#mce-EMAIL').val(email);
+//     $('#j-mcpopup').removeClass('d-none');
+// });
 
 $('.j-mcmultisubscribe').on('click',function(event){
     $( "#j-box-3-0" ).addClass("d-none");
