@@ -189,16 +189,9 @@ So you don't have to create all the sections on dev #}
                     <div class="col-sm-12 col-lg-8">
 
 
-<<<<<<< HEAD
-                        {#{% if layoutTitle | lower == 'newsroom_opinion' %}
-                            {% if sections['comment'].feed.articles|length > 0 %}
-                                {% if articles[articleCount] %}
-                                <section class="opinion-index">
-=======
                         {% if layoutTitle | lower == 'newsroom_opinion' %}
                             {% if articles[articleCount] %}
                                 <section class="">
->>>>>>> NRM020
                                     <div class="row">
                                         {% for i in 0..1 %}
                                             {% if articles[articleCount] %}        
@@ -215,7 +208,6 @@ So you don't have to create all the sections on dev #}
                                     </div>
                                 </section>
                             {% endif %}
-<<<<<<< HEAD
                         {% endif %}#}
 
                         {% if articles[articleCount] %}
@@ -236,6 +228,8 @@ So you don't have to create all the sections on dev #}
                             </section>
 =======
 >>>>>>> NRM020
+=======
+>>>>>>> 8d3c83189e9c9782ad9a9234b06315b084907793
                         {% endif %}
 
                         <div class="">     
