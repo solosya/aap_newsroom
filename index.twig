@@ -39,7 +39,15 @@
     {% endif %}
 {% endif %}
 
-{% set limit = 13 %}
+
+
+{% set limit = 12 %}
+{% if layoutTitle | lower == 'newsroom_opinion' %}
+    {% set limit = 14 %}
+{% endif %}
+
+
+
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
