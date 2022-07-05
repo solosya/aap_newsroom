@@ -7,14 +7,15 @@
 {% endif %}
 
 {{ set(this, 'title', pageTitle) }}
-
+{# {% set log = _AppHelper.log(article) %} #}
+{# {% set headers      = _AppHelper.getHttpHeaders() %} #}
+{% set params = url['query'] %}
 
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
-
 
 {% set logos = true %}
 {% if article.additionalInfo is defined and article.additionalInfo.logos is defined and article.additionalInfo.logos == "on" %}
@@ -120,6 +121,18 @@
 ****************************************** #}
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
+
+
+{# set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" #}
+{% set showcase = false %}
+{% if showPaywall and not guestUser %}
+    {% set showcaseResponse = _User.checkShowcaseAccess("newsroom.co.nz", article) %}
+    {% if showcaseResponse.success == 1 and showcaseResponse.entitlement is defined %}
+        {% set showcase = showcaseResponse.entitlement %}
+    {% endif %}
+{% endif %}
+
+
 
 {# The below checks which message to show a user blocked by the paywall #}
 {% set paywallType = "subscribe" %}
@@ -805,3 +818,90 @@
         allowComments:allow_comments ? "true" : "false"
     }) | raw}}
 {% endif %}
+
+{% set isPaywalled = article.premiumContent ? false : true %}
+<p>@@##</p>
+<script type="application/ld+json">
+{
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "isAccessibleForFree": "{{isPaywalled}}",
+        "isPartOf": {
+            "@type": ["Product"],
+            "name": "Newsroom",
+            "productID": "newsroom.co.nz:showcase"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Newsroom"
+        }
+}
+</script>
+
+
+{# Anonymous user with no access #}
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.userState = {
+            granted: false
+        };
+    });    
+</script>
+
+
+{# Registered user with access through the publisher meter #}
+{% if not showPaywall and not guestUser %}
+    {% set user = _User.getUser() %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            window.userState = {
+                id: "{{user.guid}}",
+                registrationTimestamp: "{{user.userCreated}}",
+                subscriptionTimestamp: "{{user.userCreated}}",
+                granted: true,
+                grantRease: "SUBSCRIBER"
+            };
+        });
+    </script>
+{% endif %}
+
+
+
+{# Registered user with no access #}
+{% if showPaywall and not guestUser %}
+    {% set user = _User.getUser() %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            window.userState = {
+                id: "{{user.guid}}",
+                registrationTimestamp: "{{user.userCreated}}",
+                granted: false,
+            };
+        });
+    </script>
+{% endif %}
+
+
+
+
+
+<script  subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
+<script  src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
+<script src="https://accounts.google.com/gsi/client"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        console.log(window.userState);
+                showGoogleRegwall();
+
+        console.log(showcaseEntitlement);
+        window.showcaseEntitlement = "{{showcase}}";
+
+        GaaMetering.init({
+            userState: window.userState,
+            showcaseEntitlement: window.showcaseEntitlement,
+        });
+    });
+
+</script>
