@@ -55,8 +55,12 @@
 {% endif %}
 
 
-
-{% set recentArticles = _Article.getRecentArticles(recentParams) %}
+{% set cacheKey = "room_recent" %}
+{% set recentArticles = getCache(cacheKey) %}
+{% if (recentArticles is empty) %}
+    {% set recentArticles = _Article.getRecentArticles(recentParams) %}
+    {% set cache = setCache(cacheKey, recentArticles, 900) %} 
+{% endif %} 
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
