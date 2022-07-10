@@ -4,12 +4,6 @@
 
 
 
-{#{% set recentArticles = getCache("indexRecent") %}
-{% if (recentArticles is empty) %}
-    {% set recentArticles = _Article.getRecentArticles({'limit': 5}) %}
-    {% set cache = setCache("indexRecent", recentArticles, 500) %} 
-{% endif %}#}
-
 
 
 {% cache 'indexCache_1' 300 %}
@@ -22,11 +16,19 @@
 {% set layoutTitle   = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 {% set config       = _Network.getThemeConfig() %}
 
-{% set popularArticles = _Article.getPopularArticles({ 
-    limit: 6, 
-    blogId: blogData['id'],  
-    interval: 36  
-}) %}
+
+{% set cacheKey = "index_popular" %}
+{% set popularArticles = getCache(cacheKey) %}
+{% if (popularArticles is empty) %}
+    {% set popularArticles = _Article.getPopularArticles({ 
+        limit: 6, 
+        blogId: blogData['id'],  
+        interval: 36  
+    }) %}
+    {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+{% endif %} 
+
+
 
 {% set donations = "nr" %}
 {% if config.donations is defined %}
