@@ -242,16 +242,13 @@
     }) %}
 {% endif %} #}
 
-{# {% set recentArticles = _Article.getRecentArticles(recentParams) %} #}
-{# {% set cacheKey = "articleRecent" ~ recentLabel %}
-{% set recentArticles = getCache(cacheKey) %}
-{% if (recentArticles is empty) %}
-    {% set recentArticles = _Article.getRecentArticles(recentParams) %}
-    {% set cache = setCache(cacheKey, recentArticles, 500) %} 
-{% endif %}  #}
 
-
-{% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
+{% set cacheKey = "related_articlePage" %}
+{% set relatedArticles = getCache(cacheKey) %}
+{% if (relatedArticles is empty) %}
+    {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
+    {% set cache = setCache(cacheKey, relatedArticles, 900) %} 
+{% endif %} 
 
 
 {% set cacheKey = "articlePopular_articlePage" %}
@@ -262,7 +259,7 @@
             scope: 'network', 
             interval: 24 
     }) %}
-    {% set cache = setCache(cacheKey, popular, 500) %} 
+    {% set cache = setCache(cacheKey, popular, 900) %} 
 {% endif %} 
 
 
@@ -715,12 +712,19 @@
                                     ********************************************* #}
                                 <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
                                     <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                    {% set popularArticles = _Article.getPopularArticles({ 
-                                            limit: 5, 
-                                            blogId: proBlogId, 
-                                            interval: 168 
-                                    }) %}
-                                    
+
+                                    {% set cacheKey = "pro_popular_articles" %}
+                                    {% set popularArticles = getCache(cacheKey) %}
+                                    {% if (popularArticles is empty) %}
+                                        {% set popularArticles = _Article.getPopularArticles({ 
+                                                limit: 5, 
+                                                blogId: proBlogId, 
+                                                interval: 168 
+                                        }) %}
+                                        {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+                                    {% endif %} 
+
+
                                     {% for i in 0..4 if popularArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
                                             article         : popularArticles[i], 
