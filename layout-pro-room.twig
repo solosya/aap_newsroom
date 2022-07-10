@@ -1,4 +1,9 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
+
+{% cache 'pro_roomCache_1' 300 %}
+
+
+
 {% set networkData   = _Network.getNetworkData() %}
 {% set blogData      = _Blog.getBlog() %}
 {% set blogName      = blogData.title %}
@@ -12,6 +17,8 @@
 {% set limit = 4 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+
+
 {% set articles = articlesArr.articles %}
 
 
@@ -58,8 +65,24 @@
     ] 
 %}
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
-{% set recentArticles  = _Article.getRecentArticles( { limit: 6, blogId: blogData['id'] }) %}
+
+{% set cacheKey = "pro_popular" %}
+{% set popularArticles = getCache(cacheKey) %}
+{% if (popularArticles is empty) %}
+    {% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
+    {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+{% endif %} 
+
+
+{% set cacheKey = "pro_recent" %}
+{% set recentArticles = getCache(cacheKey) %}
+{% if (recentArticles is empty) %}
+    {% set recentArticles  = _Article.getRecentArticles( { limit: 6, blogId: blogData['id'] }) %}
+    {% set cache = setCache(cacheKey, recentArticles, 900) %} 
+{% endif %} 
+
+
+
 
 
 {% for vSection in variableSections %}
@@ -73,7 +96,11 @@
     {% endfor %}
 
 
-    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vBlog}) %}     
+    {% set feed = _Article.getRecentArticles({limit: 1, blogId: vBlog}) %} 
+
+
+
+
     {% set publishTime = _AppHelper.getSecondsSincePublished(feed[0].publishDateTime) %}    
     {% set feedCompare = feedCompare | merge({  
         (vSection) : {
@@ -502,3 +529,6 @@
         });
     });
 </script>
+
+
+{% endcache %}
