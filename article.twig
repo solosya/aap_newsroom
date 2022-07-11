@@ -37,7 +37,7 @@
 
 
 
-{% set blogData         = _Blog.getBlog() %}
+{% set blogData         = _Blog.getBlog(null, {'excludeMenus' : true}) %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
 {% set proBlogId        = '' %}
