@@ -34,7 +34,7 @@ export const IPCheck = function() {
             IPAdresses = window.IPAdresses;
             $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
             function(json) {
-                console.log(json);
+                // console.log(json);
                 let userAccount = false;
                 const userIPInt = dot2num(json.ip);
 

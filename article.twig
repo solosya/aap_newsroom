@@ -8,13 +8,11 @@
 
 {{ set(this, 'title', pageTitle) }}
 
-
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
-
 
 {% set logos = true %}
 {% if article.additionalInfo is defined and article.additionalInfo.logos is defined and article.additionalInfo.logos == "on" %}
@@ -114,12 +112,23 @@
 
 
 
-
 {# ******************************************
                 PAYWALL
 ****************************************** #}
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
+{% set isGaa = _User.isGaa() %}
+
+{% set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" %}
+{% set showcase = false %}
+{% if showPaywall and not guestUser %}
+    {% set showcaseResponse = _User.checkShowcaseAccess("newsroom.co.nz", article) %}
+    {% if showcaseResponse.success == 1 and showcaseResponse.entitlement is defined and showcaseResponse.entitlement != false %}
+        {% set showcase = showcaseResponse.entitlement %}
+    {% endif %}
+{% endif %}
+
+
 
 {# The below checks which message to show a user blocked by the paywall #}
 {% set paywallType = "subscribe" %}
@@ -167,28 +176,6 @@
     {% endfor %}
     {% set articleCtaEnd = false %}
 {% endif %}
-
-
-
-
-
-
-{# {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
-{% if articleBlog == 'lockerroom' %}
-    {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=9Ac35CVe5uEb9P8vFFb5YjFu' %}
-{% endif %}
-
-    <script>
-        (function(d) {
-        var el, fjs = d.getElementsByTagName('script')[0];
-            el = d.createElement('script');
-            el.id = "js-pp-banner";
-            el.src = "{{ppsrc}}";
-            fjs.parentNode.insertBefore(el, fjs);
-        }(document));
-    </script> #}
-
-
 
 
 
@@ -271,8 +258,7 @@
     {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
 {% endif %}
 
-
-
+<meta name="google-signin-client_id" content="{{client_id}}">
 <main id="main" 
     class="site-main u-margin-top-40"
     role="main" 
@@ -467,6 +453,12 @@
 
                         {% if showPaywall %}
                             <div class="article-subscribe">
+                                {# <div class="g-signin2"  data-onsuccess="onSignIn"></div> #}
+                                <div id="g_id_onload" data-client_id="{{client_id}}"
+                                    data-callback="handleCredentialResponse">
+                                </div>
+                                <div class="g_id_signin" data-type="standard"></div>
+
                                 <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                 <a href="/prosubscribe" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
                                 <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
@@ -685,7 +677,7 @@
 
                                 {% if recentArticles|length > 0 %}
                                     <section class="sidebar-news recent-articles" style="width:300px;margin:auto;">
-                                        <h3 class="recent-articles__header">
+                                        <h3 class="recen-articles__header">
                                             <span class="recent-articles__header-bold">Latest</span> on {{recentLabel}}
                                         </h3>
 
@@ -809,3 +801,167 @@
         allowComments:allow_comments ? "true" : "false"
     }) | raw}}
 {% endif %}
+
+{% set isPaywalled = article.premiumContent ? 'false' : 'true' %}
+
+<p>@@##</p>
+<script type="application/ld+json">
+{
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "isAccessibleForFree": {{isPaywalled}},
+        "isPartOf": {
+            "@type": ["Product"],
+            "name": "Newsroom",
+            "productID": "newsroom.co.nz:showcase"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Newsroom"
+        }
+}
+</script>
+
+
+{% set user = false %}
+{% set userCreatedAt = "" %}
+{% set userGuid = "" %}
+
+{# Registered user with access through the publisher subscription #}
+{% if article.premiumContent and not showPaywall and not guestUser %}
+    {% set user = _User.getUser() %}
+    {% set userCreatedAt = user.created_at %}
+    {% set userGuid = user.guid %}
+ 
+{% endif %}
+
+{% set isPremium = article.premiumContent %}
+
+
+{# Anonymous user with no access #}
+
+<script src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
+<script subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
+<script src="https://accounts.google.com/gsi/client" ></script>
+
+
+
+
+
+
+{% if isGaa %}
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+
+        window.handleCredentialResponse = function(user)
+        {
+            console.log("in the onSignIn callback");
+            console.log(user);
+        }
+
+
+
+        let isPremium = "{{isPremium}}" == 1 ? true : false;
+        let showPaywall = "{{showPaywall}}" == 1 ? true: false;
+        let guestUser = "{{guestUser}}" == 1 ? true : false;
+
+        window.userState = {
+            granted: false
+        };
+
+        if (isPremium && !showPaywall && !guestUser) {
+            window.userState = {
+                id: "{{userGuid}}",
+                registrationTimestamp: "{{userCreatedAt}}",
+                subscriptionTimestamp: "{{userCreatedAt}}",
+                granted: true,
+                grantRease: "SUBSCRIBER"
+            };
+        }
+
+
+
+        window.showcaseEntitlement = "{{showcase}}";
+
+        // Registered user with no access #}
+        // if showPaywall and not guestUser %}
+        if (showPaywall && !guestUser) {
+            window.userState = {
+                id: "{{user.guid}}",
+                registrationTimestamp: "{{user.userCreated}}",
+                granted: false,
+            };
+        }
+
+
+
+        handleLoginPromise = new Promise((resolve) => {
+
+            //resolve(message.data);
+            // Open a login window for existing users to login.
+            const loginWindow = window.open('https://www.parent.io/auth/login');
+
+            // Wait for the login window to send a message with userState for the user.
+            window.addEventListener('message', function(message) {
+                console.log('getting message');
+                console.log(message);
+              if (loginWindow == message.source) {
+                    resolve(message.data);
+                }
+            }, false);
+        });
+
+        registerUserPromise = new Promise((resolve) => {
+            // Get the information for the user who has just registered.
+            GaaMetering.getGaaUserPromise().then((gaaUser) => {
+                console.log("inside promise", window.userState);
+                //resolve(window.userState);
+                // Send that information to your Registration endpoint to register the user and
+                // return the userState for the newly registered user.
+                //fetch('https://www.parent.io/hoo',
+                // {
+                //    method: 'POST',
+                //     headers: {
+                //         'Content-type': 'application/json'
+                //     },
+                //      body: JSON.stringify(gaaUser)
+                //  })
+                //  .then(response => response.json())
+                //  .then(userState => { resolve(userState); });
+            });
+        });
+
+        publisherEntitlementPromise = new Promise((resolve) => {
+            resolve(window.userState);
+            // Get the information for the user who has just registered.
+        });
+
+
+        GaaMetering.init({
+            googleApiClientId: "{{client_id}}", 
+            userState: window.userState,
+            handleLoginPromise: handleLoginPromise,
+            registerUserPromise: registerUserPromise,
+            publisherEntitlementPromise: publisherEntitlementPromise,
+            unlockArticle: function() {
+                console.log('unlocking article');
+            },
+            showPaywall: function() {
+                console.log('showing paywall');
+            },
+            allowedReferrers: [],
+        });
+    });   
+
+</script>
+{% endif %}
+
+
+{# www.parent.io/main-blog-article-12?gaa_at=g&gaa_ts=4848&gaa_n=jdjd&gaa_sig=dsfisi #}
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+
+    });
+</script>
