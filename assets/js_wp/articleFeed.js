@@ -101,7 +101,7 @@ Feed.prototype.events = function()
     }
     
     if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
-        self.addWayPoint.call(self);
+        // self.addWayPoint.call(self);
     }
 };
 
