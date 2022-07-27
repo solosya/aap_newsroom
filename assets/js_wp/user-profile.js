@@ -318,7 +318,7 @@ UserProfileController.prototype.events = function ()
 
         var ids = elem.val().split(':');
 
-        requestData = {
+        var requestData = {
             list    : ids[0],
             group   : ids[1],
             action  : action
