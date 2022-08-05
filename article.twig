@@ -453,10 +453,10 @@
                         {% if showPaywall %}
                             <div class="article-subscribe">
                                 {# <div class="g-signin2"  data-onsuccess="onSignIn"></div> #}
-                                <div id="g_id_onload" data-client_id="{{client_id}}"
+                                {# <div id="g_id_onload" data-client_id="{{client_id}}"
                                     data-callback="handleCredentialResponse">
                                 </div>
-                                <div class="g_id_signin" data-type="standard"></div>
+                                <div class="g_id_signin" data-type="standard"></div> #}
 
                                 <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                 <a href="/prosubscribe" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
@@ -853,11 +853,6 @@
     document.addEventListener("DOMContentLoaded", function(event) {
 
 
-        window.handleCredentialResponse = function(user)
-        {
-            console.log("in the onSignIn callback");
-            console.log(user);
-        }
 
 
 
