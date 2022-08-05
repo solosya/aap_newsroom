@@ -804,9 +804,19 @@
 {% set isPaywalled = article.premiumContent ? 'false' : 'true' %}
 
 
+{% set headers      = _AppHelper.getHttpHeaders() %}
+{% set referer = "" %}
+{% if headers['referer'][0] is defined %} 
+    {% set referer = headers['referer'][0] %}
+{% endif %}
+
+{# {% set log = _AppHelper.log(referer) %} #}
+
+
 {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
 <p>@@##</p>
 <h1> {{GaaString}}</h1>
+<h1> {{referer}}</h1>
 
 <script type="application/ld+json">
 {
