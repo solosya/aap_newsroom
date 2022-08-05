@@ -803,7 +803,11 @@
 
 {% set isPaywalled = article.premiumContent ? 'false' : 'true' %}
 
+
+{% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
 <p>@@##</p>
+<h1> {{GaaString}}</h1>
+
 <script type="application/ld+json">
 {
         "@context": "http://schema.org",
@@ -847,13 +851,9 @@
 
 
 
-
 {% if isGaa %}
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-
-
-
 
 
         let isPremium = "{{isPremium}}" == 1 ? true : false;
@@ -931,7 +931,6 @@
             // Get the information for the user who has just registered.
         });
 
-
         GaaMetering.init({
             googleApiClientId: "{{client_id}}", 
             userState: window.userState,
@@ -953,9 +952,3 @@
 
 
 {# www.parent.io/main-blog-article-12?gaa_at=g&gaa_ts=4848&gaa_n=jdjd&gaa_sig=dsfisi #}
-<script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-
-
-    });
-</script>
