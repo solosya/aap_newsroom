@@ -805,12 +805,13 @@
 
 
 {% set headers      = _AppHelper.getHttpHeaders() %}
+
 {% set referer = "no referrer" %}
 {% if headers['referer'][0] is defined %} 
     {% set referer = headers['referer'][0] %}
 {% endif %}
 
-{# {% set log = _AppHelper.log(referer) %} #}
+{% set log = _AppHelper.log(headers) %}
 
 
 {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
