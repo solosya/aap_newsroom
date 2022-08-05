@@ -901,7 +901,7 @@
 
 
         handleLoginPromise = new Promise((resolve) => {
-            //resolve(message.data);
+            console.log('handleLoginPromise');
             // Open a login window for existing users to login.
             var link = _appJsConfig.baseHttpPath + '/auth/login';
             const loginWindow = window.open(link);
@@ -948,16 +948,20 @@
             registerUserPromise: registerUserPromise,
             publisherEntitlementPromise: publisherEntitlementPromise,
             unlockArticle: function() {
-                console.log('unlocking article');
+                console.log('unlocking article???');
             },
             showPaywall: function() {
                 console.log('showing paywall');
+                var link = _appJsConfig.baseHttpPath + '/prosubscribe';
+                const loginWindow = window.open(link);
+                return;
             },
             allowedReferrers: [],
         };
 
         console.log(initData);
         GaaMetering.init(initData);
+        console.log('Gaa init finished');
     });   
 
 </script>
