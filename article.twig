@@ -805,7 +805,7 @@
 
 
 {% set headers      = _AppHelper.getHttpHeaders() %}
-{% set referer = "" %}
+{% set referer = "no referrer" %}
 {% if headers['referer'][0] is defined %} 
     {% set referer = headers['referer'][0] %}
 {% endif %}
