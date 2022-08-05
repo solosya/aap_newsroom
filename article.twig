@@ -941,7 +941,7 @@
             // Get the information for the user who has just registered.
         });
 
-        GaaMetering.init({
+        var initData = {
             googleApiClientId: "{{client_id}}", 
             userState: window.userState,
             handleLoginPromise: handleLoginPromise,
@@ -954,7 +954,10 @@
                 console.log('showing paywall');
             },
             allowedReferrers: [],
-        });
+        };
+
+        console.log(initData);
+        GaaMetering.init(initData);
     });   
 
 </script>
