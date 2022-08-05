@@ -908,8 +908,7 @@
 
             // Wait for the login window to send a message with userState for the user.
             window.addEventListener('message', function(message) {
-                console.log('getting message');
-                console.log(message);
+                console.log('handleLoginPromise:', message);
               if (loginWindow == message.source) {
                     resolve(message.data);
                 }
@@ -919,7 +918,8 @@
         registerUserPromise = new Promise((resolve) => {
             // Get the information for the user who has just registered.
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
-                console.log("inside promise", window.userState);
+                console.log(gaaUser);
+                console.log("registerUserPromise:", window.userState);
                 //resolve(window.userState);
                 // Send that information to your Registration endpoint to register the user and
                 // return the userState for the newly registered user.
