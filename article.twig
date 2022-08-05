@@ -901,10 +901,10 @@
 
 
         handleLoginPromise = new Promise((resolve) => {
-
             //resolve(message.data);
             // Open a login window for existing users to login.
-            const loginWindow = window.open('https://www.parent.io/auth/login');
+            var link = _appJsConfig.baseHttpPath . '/auth/login';
+            const loginWindow = window.open(link);
 
             // Wait for the login window to send a message with userState for the user.
             window.addEventListener('message', function(message) {
