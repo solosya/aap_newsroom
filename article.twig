@@ -811,12 +811,14 @@
     {% set referer = headers['referer'][0] %}
 {% endif %}
 
-{% set log = _AppHelper.log(headers) %}
 
 
 {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
+
+<h1>extended access code</h1>
 <h1> {{GaaString}}</h1>
 <h1> {{referer}}</h1>
+
 
 <script type="application/ld+json">
 {
@@ -904,14 +906,15 @@
             console.log('handleLoginPromise');
             // Open a login window for existing users to login.
             var link = _appJsConfig.baseHttpPath + '/auth/login';
-            const loginWindow = window.open(link);
+           // const loginWindow = window.open(link);
+            alert('handleLoginPromise');
 
             // Wait for the login window to send a message with userState for the user.
             window.addEventListener('message', function(message) {
                 console.log('handleLoginPromise:', message);
-              if (loginWindow == message.source) {
-                    resolve(message.data);
-                }
+                //if (loginWindow == message.source) {
+                  //  resolve(message.data);
+                //}
             }, false);
         });
 
