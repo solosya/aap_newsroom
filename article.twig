@@ -35,7 +35,7 @@
 
 
 
-{% set blogData         = _Blog.getBlog() %}
+{% set blogData         = _Blog.getBlog(null, {'excludeMenus' : true}) %}
 {% set blogName         = blogData.title %}
 {% set recentLabel      = 'Newsroom' %}
 {% set proBlogId        = '' %}
@@ -103,7 +103,6 @@
 {% endif %}
 
 {% set commentSettingString = commentSetting == false ? 'false' : commentSetting %}
-
 
 
 
@@ -229,16 +228,13 @@
     }) %}
 {% endif %} #}
 
-{# {% set recentArticles = _Article.getRecentArticles(recentParams) %} #}
-{# {% set cacheKey = "articleRecent" ~ recentLabel %}
-{% set recentArticles = getCache(cacheKey) %}
-{% if (recentArticles is empty) %}
-    {% set recentArticles = _Article.getRecentArticles(recentParams) %}
-    {% set cache = setCache(cacheKey, recentArticles, 500) %} 
-{% endif %}  #}
 
-
-{% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
+{% set cacheKey = "related_articlePage" %}
+{% set relatedArticles = getCache(cacheKey) %}
+{% if (relatedArticles is empty) %}
+    {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
+    {% set cache = setCache(cacheKey, relatedArticles, 900) %} 
+{% endif %} 
 
 
 {% set cacheKey = "articlePopular_articlePage" %}
@@ -249,7 +245,7 @@
             scope: 'network', 
             interval: 24 
     }) %}
-    {% set cache = setCache(cacheKey, popular, 500) %} 
+    {% set cache = setCache(cacheKey, popular, 900) %} 
 {% endif %} 
 
 
@@ -457,10 +453,10 @@
                         {% if showPaywall %}
                             <div class="article-subscribe">
                                 {# <div class="g-signin2"  data-onsuccess="onSignIn"></div> #}
-                                <div id="g_id_onload" data-client_id="{{client_id}}"
+                                {# <div id="g_id_onload" data-client_id="{{client_id}}"
                                     data-callback="handleCredentialResponse">
                                 </div>
-                                <div class="g_id_signin" data-type="standard"></div>
+                                <div class="g_id_signin" data-type="standard"></div> #}
 
                                 <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                 <a href="/prosubscribe" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
@@ -707,12 +703,19 @@
                                     ********************************************* #}
                                 <section class="col-sm-12 sidebar-news recent-articles d-none d-sm-block" data-proid="{{proBlogId}}">
                                     <h3 class="most-viewed__header">MOST VIEWED</h3>
-                                    {% set popularArticles = _Article.getPopularArticles({ 
-                                            limit: 5, 
-                                            blogId: proBlogId, 
-                                            interval: 168 
-                                    }) %}
-                                    
+
+                                    {% set cacheKey = "pro_popular_articles" %}
+                                    {% set popularArticles = getCache(cacheKey) %}
+                                    {% if (popularArticles is empty) %}
+                                        {% set popularArticles = _Article.getPopularArticles({ 
+                                                limit: 5, 
+                                                blogId: proBlogId, 
+                                                interval: 168 
+                                        }) %}
+                                        {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+                                    {% endif %} 
+
+
                                     {% for i in 0..4 if popularArticles[i] %}
                                         {{this.render('/partials/_single-article.twig', {
                                             article         : popularArticles[i], 
@@ -800,7 +803,24 @@
 
 {% set isPaywalled = article.premiumContent ? 'false' : 'true' %}
 
-<p>@@##</p>
+
+{% set headers      = _AppHelper.getHttpHeaders() %}
+
+{% set referer = "no referrer" %}
+{% if headers['referer'][0] is defined %} 
+    {% set referer = headers['referer'][0] %}
+{% endif %}
+
+{% set log = _AppHelper.log(headers) %}
+
+
+{% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
+
+<h1>extended access code</h1>
+<h1> {{GaaString}}</h1>
+<h1> {{referer}}</h1>
+
+
 <script type="application/ld+json">
 {
         "@context": "http://schema.org",
@@ -836,26 +856,17 @@
 
 {# Anonymous user with no access #}
 
-<script subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
-<script src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
-<script src="https://accounts.google.com/gsi/client" ></script>
+<script  subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
+<script  src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
+<script  src="https://accounts.google.com/gsi/client" ></script>
 
 
 
 
 
-
-{% if isGaa %}
+{# {% if isGaa %} #}
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-
-
-        window.handleCredentialResponse = function(user)
-        {
-            console.log("in the onSignIn callback");
-            console.log(user);
-        }
-
 
 
         let isPremium = "{{isPremium}}" == 1 ? true : false;
@@ -893,25 +904,26 @@
 
 
         handleLoginPromise = new Promise((resolve) => {
-
-            //resolve(message.data);
+            console.log('handleLoginPromise');
             // Open a login window for existing users to login.
-            const loginWindow = window.open('https://www.parent.io/auth/login');
+            var link = _appJsConfig.baseHttpPath + '/auth/login';
+           // const loginWindow = window.open(link);
+            alert('handleLoginPromise');
 
             // Wait for the login window to send a message with userState for the user.
             window.addEventListener('message', function(message) {
-                console.log('getting message');
-                console.log(message);
-              if (loginWindow == message.source) {
-                    resolve(message.data);
-                }
+                console.log('handleLoginPromise:', message);
+                //if (loginWindow == message.source) {
+                  //  resolve(message.data);
+                //}
             }, false);
         });
 
         registerUserPromise = new Promise((resolve) => {
             // Get the information for the user who has just registered.
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
-                console.log("inside promise", window.userState);
+                console.log(gaaUser);
+                console.log("registerUserPromise:", window.userState);
                 //resolve(window.userState);
                 // Send that information to your Registration endpoint to register the user and
                 // return the userState for the newly registered user.
@@ -933,31 +945,31 @@
             // Get the information for the user who has just registered.
         });
 
-
-        GaaMetering.init({
+        var initData = {
             googleApiClientId: "{{client_id}}", 
             userState: window.userState,
             handleLoginPromise: handleLoginPromise,
             registerUserPromise: registerUserPromise,
             publisherEntitlementPromise: publisherEntitlementPromise,
             unlockArticle: function() {
-                console.log('unlocking article');
+                console.log('unlocking article???');
             },
             showPaywall: function() {
                 console.log('showing paywall');
+                var link = _appJsConfig.baseHttpPath + '/prosubscribe';
+                const loginWindow = window.open(link);
+                return;
             },
-            allowedReferrers: [],
-        });
+            allowedReferrers: ["www.newsroom.co.nz", "newsroomtest.cognitives.link"],
+        };
+
+        console.log(initData);
+        GaaMetering.init(initData);
+        console.log('Gaa init finished');
     });   
 
 </script>
-{% endif %}
+{# {% endif %} #}
 
 
 {# www.parent.io/main-blog-article-12?gaa_at=g&gaa_ts=4848&gaa_n=jdjd&gaa_sig=dsfisi #}
-<script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-
-
-    });
-</script>
