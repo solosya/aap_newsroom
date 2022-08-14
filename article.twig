@@ -811,6 +811,7 @@
     {% set referer = headers['referer'][0] %}
 {% endif %}
 
+{% set log = _AppHelper.log(headers) %}
 
 
 {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
