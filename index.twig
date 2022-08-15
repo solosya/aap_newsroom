@@ -31,15 +31,6 @@
 
 
 {% set donations = "nr" %}
-{% if config.donations is defined %}
-    {% if config.donations != "nr" %}
-        {% set donations = config.donations %}
-    {% endif %}
-    
-    {% if config.donations.provider is defined %} 
-        {% set donations = config.donations.provider %}
-    {% endif %}
-{% endif %}
 
 
 
@@ -398,11 +389,6 @@ So you don't have to create all the sections on dev #}
                             </section>
 
 
-                            {# {% if donations == "pp" %}
-                                <div class="col-md-6 col-lg-12 u-desktop-margin-top-40 u-mobile-margin-top-40">
-                                    {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
-                                </div>
-                            {% endif %} #}
                         </div>
 
 

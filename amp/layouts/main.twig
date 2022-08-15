@@ -146,7 +146,7 @@
 
 
             /* PressPatron custom styles - place after your own styles */
-            .presspatron-modal-link {
+            {# .presspatron-modal-link {
                 padding: 0.5em 1em;
                 background-color: #e74a52;
                 font-size: 14px;
@@ -187,7 +187,7 @@
                 left: 0;
                 background: black no-repeat 50% 25%
                 url("//dashboard.presspatron.com/images/loading-modal.gif");
-            }
+            } #}
             /* End of PressPatron custom styles */
 
 
@@ -207,7 +207,7 @@
         {{ this.render('partials/_footer.twig', {network : networkData, blogData: blogData}) | raw }}
         
         <!-- PressPatron AMP lightbox that serves as the popup modal -->
-        <amp-lightbox id="presspatron-modal" layout="nodisplay">
+        {# <amp-lightbox id="presspatron-modal" layout="nodisplay">
         <a href="#" class="pp-modal-close" on="tap:presspatron-modal.close">
             <amp-img
                 src="//dashboard.presspatron.com/images/close-icon.svg"
@@ -232,7 +232,7 @@
             </div>
             </amp-iframe>
         </div>
-        </amp-lightbox>
+        </amp-lightbox> #}
         
         
         {{ this.endBody() }}

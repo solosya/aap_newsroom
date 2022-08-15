@@ -21,15 +21,6 @@
 
 
 {% set donations = "nr" %}
-{% if config.donations is defined %}
-    {% if config.donations != "nr" %}
-        {% set donations = config.donations %}
-    {% endif %}
-    
-    {% if config.donations.provider is defined %} 
-        {% set donations = config.donations.provider %}
-    {% endif %}
-{% endif %}
 
 
 
@@ -274,11 +265,6 @@
                                 {{ this.render('partials/newsroom_subscribe.twig', {networkData : networkData, class: ''}) | raw }}
                             </div>
 
-                            {% if donations == "pp" %}
-                                <div class="col-sm-6 col-md-12">
-                                    {{ this.render('partials/newsroom_support.twig', {networkData : networkData, class: ''}) | raw }}
-                                </div>
-                            {% endif %}
 
                         </div>
 
