@@ -902,22 +902,19 @@
         }
 
 
-
         handleLoginPromise = new Promise((resolve) => {
-            console.log('handleLoginPromise');
-            // Open a login window for existing users to login.
-            var link = _appJsConfig.baseHttpPath + '/auth/login';
-           // const loginWindow = window.open(link);
-            alert('handleLoginPromise');
-
+        // Open a login window for existing users to login.
+//            const loginWindow = window.open('https://examplenews.com/user/login');
+            alert('running handleLoginPromise);
             // Wait for the login window to send a message with userState for the user.
             window.addEventListener('message', function(message) {
-                console.log('handleLoginPromise:', message);
-                //if (loginWindow == message.source) {
-                  //  resolve(message.data);
-                //}
-            }, false);
+              //  if (loginWindow == message.source) {
+              //      resolve(message.data);
+              //  }
+            } , false);
         });
+
+
 
         registerUserPromise = new Promise((resolve) => {
             // Get the information for the user who has just registered.
@@ -973,3 +970,20 @@
 
 
 {# www.parent.io/main-blog-article-12?gaa_at=g&gaa_ts=4848&gaa_n=jdjd&gaa_sig=dsfisi #}
+
+
+        {# handleLoginPromise = new Promise((resolve) => {
+            console.log('handleLoginPromise');
+            // Open a login window for existing users to login.
+            var link = _appJsConfig.baseHttpPath + '/auth/login';
+           // const loginWindow = window.open(link);
+            alert('handleLoginPromise');
+
+            // Wait for the login window to send a message with userState for the user.
+            window.addEventListener('message', function(message) {
+                console.log('handleLoginPromise:', message);
+                //if (loginWindow == message.source) {
+                  //  resolve(message.data);
+                //}
+            }, false);
+        }); #}
