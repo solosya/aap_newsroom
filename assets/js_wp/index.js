@@ -2,7 +2,7 @@
 
 import { ArticleFeed, UserFeed, UserCard }  from './articleFeed'
 import { UserProfileController }            from './user-profile'
-import { View, PubSub }                     from './framework'
+import { View, PubSub, Server }             from './framework'
 import { SigninModal }                      from './signinModal'
 import { Donations }                        from './donations'
 import { IPCheck }                          from './dialog-ip'
@@ -19,6 +19,7 @@ window.Acme.Donations = Donations;
 window.Acme.Usercard = UserCard;
 window.Acme.Card = Card;
 window.Acme.IPCheck = IPCheck;
+window.Acme.Server = Server;
 
 
 
