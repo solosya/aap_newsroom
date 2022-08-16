@@ -45,7 +45,7 @@
                 });
                 // rememberMe sets flag to store login for 30 days in cookie
                 formData['rememberMe'] = 1;
-                Acme.server.create('/api/auth/login', formData).done(function(r) {
+                Acme.Server.create('/api/auth/login', formData).done(function(r) {
                     if (r.success === 1) {
                         
                         // if password reset must return to home page, else 
