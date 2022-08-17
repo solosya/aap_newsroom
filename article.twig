@@ -903,24 +903,30 @@
 
 
         handleLoginPromise = new Promise((resolve) => {
+            // ussing this method seems to work
             GaaMetering.getLoginPromise().then(() => {
-                console.log('logging in user');
+                alert('running handleLoginPromise');
                 return;
                 // Capture full URL, including URL parameters, to redirect the user to after login
-                const redirectUri = encodeURIComponent(window.location.href);
+                //const redirectUri = encodeURIComponent(window.location.href);
                 // Redirect to a login page for existing users to login.
-                window.location = `https://login.examplenews.com?redirect_uri=${redirectUri}`;
+                //window.location = `https://login.examplenews.com?redirect_uri=${redirectUri}`;
             });
 
-        // Open a login window for existing users to login.
-//            const loginWindow = window.open('https://examplenews.com/user/login');
-            //alert('running handleLoginPromise');
+
+
+
+            // This method seems to run the alert on page refresh, and cause an error
+            // when the login link is clicked on the Integration Intervention
+
+            //const loginWindow = window.open('https://examplenews.com/user/login'); 
+            alert('running handleLoginPromise');
             // Wait for the login window to send a message with userState for the user.
-            //window.addEventListener('message', function(message) {
+            window.addEventListener('message', function(message) {
               //  if (loginWindow == message.source) {
-              //      resolve(message.data);
+                    resolve(message.data);
               //  }
-            //} , false);
+            } , false);
         });
 
 
