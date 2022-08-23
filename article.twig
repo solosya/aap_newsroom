@@ -149,6 +149,10 @@
 {% if showPaywall %}
     {% set newsroom_pro_style = "pro" %}
 
+    {% set allow_comments = false %}
+    {% set show_comments = false %}
+
+
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == 'newsroom pro' %}
             {% set proBlogId = blog.id %}
@@ -452,12 +456,6 @@
 
                         {% if showPaywall %}
                             <div class="article-subscribe">
-                                {# <div class="g-signin2"  data-onsuccess="onSignIn"></div> #}
-                                {# <div id="g_id_onload" data-client_id="{{client_id}}"
-                                    data-callback="handleCredentialResponse">
-                                </div>
-                                <div class="g_id_signin" data-type="standard"></div> #}
-
                                 <h2 class="article-subscribe__header">TO READ THE FULL STORY ON NEWSROOM PRO</h2>
                                 <a href="/prosubscribe" class="_btn _btn--red u-margin-right-25">SUBSCRIBE TO PRO</a>
                                 <button id="articleSigninBtn" class="_btn _btn--gray u-mobile-margin-top-15">SIGN IN TO PRO</button>
@@ -805,20 +803,19 @@
 
 
 {% set headers      = _AppHelper.getHttpHeaders() %}
-
 {% set referer = "no referrer" %}
 {% if headers['referer'][0] is defined %} 
     {% set referer = headers['referer'][0] %}
 {% endif %}
 
-{% set log = _AppHelper.log(headers) %}
+{# {% set log = _AppHelper.log(headers) %} #}
 
 
 {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
 
-<h1>extended access code</h1>
+{# <h1>extended access code</h1>
 <h1> {{GaaString}}</h1>
-<h1> {{referer}}</h1>
+<h1> {{referer}}</h1> #}
 
 
 <script type="application/ld+json">
@@ -844,9 +841,9 @@
 {% set userGuid = "" %}
 
 {# Registered user with access through the publisher subscription #}
-{% if article.premiumContent and not showPaywall and not guestUser %}
+{% if not guestUser %}
     {% set user = _User.getUser() %}
-    {% set userCreatedAt = user.created_at %}
+    {% set userCreatedAt = user.userCreated %}
     {% set userGuid = user.guid %}
  
 {% endif %}
@@ -854,30 +851,28 @@
 {% set isPremium = article.premiumContent %}
 
 
-{# Anonymous user with no access #}
-
-<script  subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
-<script  src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
-<script  src="https://accounts.google.com/gsi/client" ></script>
-
-
-
 
 
 {# {% if isGaa %} #}
+
+<script  subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
+<script  src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
 
 
         let isPremium = "{{isPremium}}" == 1 ? true : false;
-        let showPaywall = "{{showPaywall}}" == 1 ? true: false;
+        let paywalled = "{{showPaywall}}" == 1 ? true: false;
         let guestUser = "{{guestUser}}" == 1 ? true : false;
+        let articleId = "{{article.id}}";
 
+        
         window.userState = {
             granted: false
         };
 
-        if (isPremium && !showPaywall && !guestUser) {
+        if (isPremium && !paywalled && !guestUser) {
             window.userState = {
                 id: "{{userGuid}}",
                 registrationTimestamp: "{{userCreatedAt}}",
@@ -892,8 +887,8 @@
         window.showcaseEntitlement = "{{showcase}}";
 
         // Registered user with no access #}
-        // if showPaywall and not guestUser %}
-        if (showPaywall && !guestUser) {
+        // if paywalled and not guestUser %}
+        if (paywalled && !guestUser) {
             window.userState = {
                 id: "{{user.guid}}",
                 registrationTimestamp: "{{user.userCreated}}",
@@ -902,60 +897,55 @@
         }
 
 
-        handleLoginPromise = new Promise((resolve) => {
-            // ussing this method seems to work
+        let handleLoginPromise = new Promise((resolve) => {
             GaaMetering.getLoginPromise().then(() => {
-                alert('running handleLoginPromise');
-                return;
-                // Capture full URL, including URL parameters, to redirect the user to after login
-                //const redirectUri = encodeURIComponent(window.location.href);
-                // Redirect to a login page for existing users to login.
-                //window.location = `https://login.examplenews.com?redirect_uri=${redirectUri}`;
+                GaaMeteringRegwall.remove();
+                window.loadSigninForm();
             });
-
-
-
-
-            // This method seems to run the alert on page refresh, and cause an error
-            // when the login link is clicked on the Integration Intervention
-
-            //const loginWindow = window.open('https://examplenews.com/user/login'); 
-            alert('running handleLoginPromise');
-            // Wait for the login window to send a message with userState for the user.
-            window.addEventListener('message', function(message) {
-              //  if (loginWindow == message.source) {
-                    resolve(message.data);
-              //  }
-            } , false);
         });
 
+        let unlockArticle = function() {
+            var postData = {
+                "article_id": articleId
+            };
 
+            Acme.Server.create('/auth/extended-access-unlock-article', postData ).done(function(r) {
+                console.log(r);
+                if (r.success == 1) {
+                    location.reload()
+                }
+            });
+        }
 
-        registerUserPromise = new Promise((resolve) => {
-            // Get the information for the user who has just registered.
+        let registerUserPromise = new Promise((resolve) => {
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
-                console.log(gaaUser);
-                console.log("registerUserPromise:", window.userState);
-                //resolve(window.userState);
-                // Send that information to your Registration endpoint to register the user and
-                // return the userState for the newly registered user.
-                //fetch('https://www.parent.io/hoo',
-                // {
-                //    method: 'POST',
-                //     headers: {
-                //         'Content-type': 'application/json'
-                //     },
-                //      body: JSON.stringify(gaaUser)
-                //  })
-                //  .then(response => response.json())
-                //  .then(userState => { resolve(userState); });
+
+                var postData = {
+                    "article_id": articleId,
+                    "user": JSON.stringify(gaaUser)
+                };
+
+                Acme.Server.create('/auth/extended-access-signup', postData ).done(function(r) {
+                    //console.log(r);
+                    if (r.success == 1) {
+                        location.reload()
+                    }
+                });
             });
         });
 
-        publisherEntitlementPromise = new Promise((resolve) => {
-            resolve(window.userState);
+        let publisherEntitlementPromise = new Promise((resolve) => {
             // Get the information for the user who has just registered.
+            resolve(window.userState);
         });
+
+        let showPaywall = function() {
+            var link = _appJsConfig.baseHttpPath + '/user/edit-profile';
+            const loginWindow = window.open(link);
+            return;
+        };
+
+
 
         var initData = {
             googleApiClientId: "{{client_id}}", 
@@ -963,42 +953,16 @@
             handleLoginPromise: handleLoginPromise,
             registerUserPromise: registerUserPromise,
             publisherEntitlementPromise: publisherEntitlementPromise,
-            unlockArticle: function() {
-                console.log('unlocking article???');
-            },
-            showPaywall: function() {
-                console.log('showing paywall');
-                var link = _appJsConfig.baseHttpPath + '/prosubscribe';
-                const loginWindow = window.open(link);
-                return;
-            },
-            allowedReferrers: ["www.newsroom.co.nz", "newsroomtest.cognitives.link"],
+            unlockArticle: unlockArticle,
+            showPaywall: showPaywall,
+            allowedReferrers: ["www.newsroom.co.nz", "newsroomtest.cognitives.link", "www.parent.io"],
         };
 
         console.log(initData);
         GaaMetering.init(initData);
-        console.log('Gaa init finished');
     });   
 
 </script>
 {# {% endif %} #}
 
 
-{# www.parent.io/main-blog-article-12?gaa_at=g&gaa_ts=4848&gaa_n=jdjd&gaa_sig=dsfisi #}
-
-
-        {# handleLoginPromise = new Promise((resolve) => {
-            console.log('handleLoginPromise');
-            // Open a login window for existing users to login.
-            var link = _appJsConfig.baseHttpPath + '/auth/login';
-           // const loginWindow = window.open(link);
-            alert('handleLoginPromise');
-
-            // Wait for the login window to send a message with userState for the user.
-            window.addEventListener('message', function(message) {
-                console.log('handleLoginPromise:', message);
-                //if (loginWindow == message.source) {
-                  //  resolve(message.data);
-                //}
-            }, false);
-        }); #}

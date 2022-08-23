@@ -19,9 +19,9 @@ window.Acme.Donations = Donations;
 window.Acme.Usercard = UserCard;
 window.Acme.Card = Card;
 window.Acme.IPCheck = IPCheck;
+window.Acme.SigninModal = SigninModal;
 window.Acme.Server = Server;
-
-
+// console.log(window.Acme.Server);
 
 
 const ads = new AdLoader();
@@ -45,8 +45,41 @@ var layouts = {
 
 Acme.SigninView = new SigninModal('modal', 'signin-modal', layouts);
 
-$('#signinBtn, #articleSigninBtn, .j-signin').on('click', function() {
+
+var googleLogin = function(user) {
+    var postData = {
+        "user": JSON.stringify(user)
+    };
+
+    Acme.Server.create('/auth/google-signin', postData ).done(function(r) {
+        //console.log(r);
+        if (r.success == 1) {
+            location.reload()
+        }
+    });
+}
+
+
+
+window.loadSigninForm = function() {
     Acme.SigninView.render("signin", "Sign in");
+
+    google.accounts.id.initialize({
+        client_id: "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com",
+        callback: googleLogin
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("google_signin"),
+        { 
+            theme: "outline", 
+            size: "large",
+            width: 100
+        }  // customization attributes
+      );
+}
+
+$('#signinBtn, #articleSigninBtn, .j-signin').on('click', function() {
+    loadSigninForm();
 });
 
 $('a.j-register').on('click', function(e) {

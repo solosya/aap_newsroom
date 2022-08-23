@@ -322,7 +322,7 @@ signinFormTmpl:
         </div> \
         \
         <button data-elem="signin" id="modal-signinBtn" type="submit" class="{{class-prefix}}login-form__button _btn _btn--red signin">SIGN IN</button> \
-        \
+        <div id="google_signin" class="{{class-prefix}}login-form__google"></div> \
         <p class="{{class-prefix}}login-form__faq u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
         \
         {{# ifCond name "!=" "donate-"}} \
