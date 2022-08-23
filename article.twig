@@ -843,10 +843,13 @@
 {# Registered user with access through the publisher subscription #}
 {% if not guestUser %}
     {% set user = _User.getUser() %}
-    {% set userCreatedAt = user.userCreated %}
+    {% if user.userCreated is defined %}
+        {% set userCreatedAt = user.userCreated %}
+    {% else if user.created_at is defined %}
+        {% set userCreatedAt = user.created_at %}
+    {% endif %}
+
     {% set userGuid = user.guid %}
-    {% set log = _AppHelper.log(user.userCreated) %}
-    {% set log = _AppHelper.log(user) %}
 {% endif %}
 
 {% set isPremium = article.premiumContent %}
