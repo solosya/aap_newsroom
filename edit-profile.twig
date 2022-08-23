@@ -59,7 +59,7 @@
 
 
                         <div class="">
-                            <form id="profile-form" class="form-horizontal" action="" method="post" enctype="multipart/form-data" autocomplete="off" >
+                            <form id="profile-form" class="form-horizontal" action="#" method="post" enctype="multipart/form-data" autocomplete="off" >
                                 <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                                 <input type="hidden" name="profileImage" id="userProfileImage" value="" />
 
@@ -83,7 +83,7 @@
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="email">Email</label>
                                 <div class="account-form__inline-inputs">
                                     <label class="account-form__label d-none d-md-block" for="email">Email</label>
-                                    <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" >
+                                    <input type="text" id="email" class="account-form__input" name="email" value="{{user.email}}" placeholder="email@domain.com" autocomplete="username" >
                                 </div>
                                 <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
                                     <label class="account-form__label d-none d-md-block" for=""></label>
@@ -95,7 +95,7 @@
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Change password</label>
                                 <div class="account-form__inline-inputs">
                                     <label class="account-form__label d-none d-md-block" for="password">Password</label>
-                                    <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" >
+                                    <input type="password" id="password" class="account-form__input" name="password" placeholder="new password" autocomplete="new-password">
                                 </div>
                                 <div class="account-form__inline-inputs u-margin-top-10 u-margin-bottom-10">
                                     <label class="account-form__label d-none d-md-block" for=""></label>
@@ -108,7 +108,7 @@
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Verify Password</label>
                                 <div class="account-form__inline-inputs  u-margin-bottom-10">
                                     <label class="account-form__label d-none d-md-block" for="password">Verify Password</label>
-                                    <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password" >
+                                    <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password"  autocomplete="new-password">
                                 </div>
                                 
 
