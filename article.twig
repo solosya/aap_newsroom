@@ -845,7 +845,7 @@
     {% set user = _User.getUser() %}
     {% if user.userCreated is defined %}
         {% set userCreatedAt = user.userCreated %}
-    {% else if user.created_at is defined %}
+    {% elseif user.created_at is defined %}
         {% set userCreatedAt = user.created_at %}
     {% endif %}
 
