@@ -845,7 +845,8 @@
     {% set user = _User.getUser() %}
     {% set userCreatedAt = user.userCreated %}
     {% set userGuid = user.guid %}
- 
+    {% set log = _AppHelper.log(user.userCreated) %}
+    {% set log = _AppHelper.log(user) %}
 {% endif %}
 
 {% set isPremium = article.premiumContent %}
