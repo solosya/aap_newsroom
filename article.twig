@@ -480,14 +480,14 @@
 
                             {% if guestUser %}
                                 {% if articleBlog == 'lockerroom' %}
-                                    {# <div class="article-support"> #}
-                                        {# <div class="article-support__text">
+                                    <div class="article-support">
+                                        <div class="article-support__text">
                                             <p class="article-support__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
-                                        </div> #}
-                                        {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
+                                        </div>
+                                        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
                                             <div class="d-print-none article-support__button">Become a Supporter</div>
-                                        </a> #}
-                                    {# </div> #}
+                                        </a>
+                                    </div>
 
                                 {% else %}
                                     <div class="article-support row">
@@ -891,7 +891,7 @@
         if (paywalled && !guestUser) {
             window.userState = {
                 id: "{{user.guid}}",
-                registrationTimestamp: "{{user.userCreatedAt}}",
+                registrationTimestamp: "{{userCreatedAt}}",
                 granted: false,
             };
         }
