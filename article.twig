@@ -109,24 +109,23 @@
 
 
 
-
-
 {# ******************************************
                 PAYWALL
 ****************************************** #}
 {% set showPaywall = article.showPaywall is defined and not adminUser ? article.showPaywall : false %}
+{% set isPublisherPaywalled = showPaywall %}
+
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
 {% set isGaa = _User.isGaa() %}
-
 {% set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" %}
 {% set showcase = false %}
-{% if showPaywall and not guestUser %}
+{% if showPaywall and not guestUser and isGaa %}
     {% set showcaseResponse = _User.checkShowcaseAccess("newsroom.co.nz", article) %}
     {% if showcaseResponse.success == 1 and showcaseResponse.entitlement is defined and showcaseResponse.entitlement != false %}
         {% set showcase = showcaseResponse.entitlement %}
+        {% set showPaywall = false %}
     {% endif %}
 {% endif %}
-
 
 
 {# The below checks which message to show a user blocked by the paywall #}
@@ -811,7 +810,7 @@
 {# {% set log = _AppHelper.log(headers) %} #}
 
 
-{% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %}
+{# {% set GaaString = isGaa ? "This is GAA article" : "This is not a GAA article" %} #}
 
 {# <h1>extended access code</h1>
 <h1> {{GaaString}}</h1>
@@ -868,6 +867,7 @@
 
         let isPremium = "{{isPremium}}" == 1 ? true : false;
         let paywalled = "{{showPaywall}}" == 1 ? true: false;
+        let publisherGranted = "{{isPublisherPaywalled}}" == true ? false : true;
         let guestUser = "{{guestUser}}" == 1 ? true : false;
         let articleId = "{{article.id}}";
 
@@ -881,14 +881,14 @@
                 id: "{{userGuid}}",
                 registrationTimestamp: "{{userCreatedAt}}",
                 subscriptionTimestamp: "{{userCreatedAt}}",
-                granted: true,
+                granted: publisherGranted,
                 grantRease: "SUBSCRIBER"
             };
         }
 
 
 
-        window.showcaseEntitlement = "{{showcase}}";
+        //window.showcaseEntitlement = "{{showcase}}";
 
         // Registered user with no access #}
         // if paywalled and not guestUser %}
@@ -909,30 +909,36 @@
         });
 
         let unlockArticle = function() {
-            var postData = {
-                "article_id": articleId
-            };
 
-            Acme.Server.create('/auth/extended-access-unlock-article', postData ).done(function(r) {
-                console.log(r);
-                if (r.success == 1) {
-                    location.reload()
-                }
-            });
+           // var postData = {
+           //     "article_id": articleId
+           // };
+
+           // Acme.Server.create('/auth/extended-access-unlock-article', postData ).done(function(r) {
+           //     console.log(r);
+           //     if (r.success == 1) {
+           //     }
+           // });
         }
 
         let registerUserPromise = new Promise((resolve) => {
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
-
+                    console.log(gaaUser);
                 var postData = {
                     "article_id": articleId,
-                    "user": JSON.stringify(gaaUser)
+                    "user": JSON.stringify(gaaUser),
+                    "url" : window.location.href,
                 };
 
                 Acme.Server.create('/auth/extended-access-signup', postData ).done(function(r) {
-                    //console.log(r);
+                    console.log(r);
                     if (r.success == 1) {
-                        location.reload()
+                       // window.userState.id = r.user_id;
+                        //window.userState.registrationTimestamp = r.registration;
+                        //window.userState.granted = true;
+                        //resolve(window.userState);
+                        location.reload();
+                        return;
                     }
                 });
             });

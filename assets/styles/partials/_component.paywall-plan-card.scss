@@ -1,3 +1,13 @@
+.paywall-plan-cards {
+    display: flex;
+	overflow-x: auto;
+	margin-bottom: 30px;
+	font-family:$base-font-family;
+	padding-bottom: 20px;
+	margin-top: 30px;
+}
+
+
 .paywall-plan-card {
 
     @include flexbox();
@@ -27,8 +37,12 @@
         height:50vw;
     }       
 
-    
-
+    &--account {
+        height: 260px;
+    }
+    &--unselected {
+        opacity: 0.3;
+    }
     &__best-value {
         @include flexbox();
         @include align-items(center);
@@ -176,6 +190,7 @@
     }
 
     &__price {
+        font-family: $font-family-sans-serif;
         @include font-size(70);
         margin-bottom:18px;
         font-weight:300;
@@ -199,9 +214,15 @@
             margin-bottom:5%;
         }
 
+        &--small {
+            @include font-size(50);
+ 
+        }
     }
 
     &__weekly{
+        font-family: $font-family-sans-serif;
+
         @include font-size(18);
         font-weight: $weightBold;
         letter-spacing: 0.6px;
@@ -243,6 +264,7 @@
 
     // }
     &__subscribe-button {
+        font-family: $font-family-sans-serif;
         @include flexbox();
         @include justify-content(center);
         @include align-items(center);
