@@ -9,6 +9,7 @@ export const UserProfileController = function()
 {
     this.mailChimpUser  = false;
     this.emailLists     = [];
+    this.purchasePlan   = null;
     // test mailchimp accounts
     // this.newsroom       = '17ba69a02c';
     // this.group          = 'cb03aca14d'; // me
@@ -516,6 +517,117 @@ UserProfileController.prototype.events = function ()
        
             }); 
     });       
+
+
+
+    $('.j-purchaseplan_select').on('click', function(e) {
+        var plans = $('#purchase-plans');
+        plans.children().each(function(p) {
+            $(this).addClass('paywall-plan-card--unselected');
+        });
+        let newPlan = $(e.target);
+        if (!newPlan.hasClass('j-purchaseplan_selected')) {
+            newPlan = $(e.target.parentNode);
+        }
+        self.purchasePlan = newPlan.data('planid');
+        newPlan.removeClass('paywall-plan-card--unselected');
+    });
+
+    
+    var purchaseform = document.getElementById('purchase-plan-form');
+    if (purchaseform != null) {
+        purchaseform.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            if (!self.purchasePlan) {
+                return;
+            }
+
+            self.modal.render("spinner", "Your request is being processed.");
+
+            const errorElement = document.getElementById('card-errors');
+
+            errorElement.textContent = '';
+            // const stripe = Stripe(self.stripekey);
+            self.stripe.createToken(self.card).then(function(result) {
+                // console.log(result);
+                if (result.error) {
+                    self.modal.closeWindow();
+
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+
+                    const formdata = {
+                        "stripetoken":result.token.id,
+                        "planid": self.purchasePlan,
+                        "redirect" : false
+                    }
+                    Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', formdata).done((r) => {
+                        self.modal.closeWindow();
+                        if (r.success === true) {
+                            location.reload();
+                        }
+                    });
+
+                }
+            });
+        });
+    }
+
+    $('.j-purchaseplan').on('click', function(e) {
+ 
+        const requestData = { 
+            planid: self.purchasePlan
+        };
+
+        var stripeCall = this.stripe.createToken(self.card).then(function(result) {
+            console.log(result);
+            if (result.error) {
+                self.signup.closeWindow();
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error;
+            } else {
+                // Send the token to your server
+
+                self.data['stripetoken'] = result.token.id;
+                self.data['planid'] = $('#planid').val();
+                self.data['redirect'] = false;
+                Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', requestData).done(function(r) {
+                    // console.log(r);
+                    if (r.success == 1) {
+                        window.location.reload();
+                    } else {
+                        var errorElement = document.getElementById('card-errors');
+                        var text = '';
+                        for (var key in r.error) {
+                            text = text + r.error[key] + " ";
+                        } 
+                        // console.log(text);
+                        errorElement.textContent = text;
+                    }
+                }).fail(function(r) {
+                    // self.signup.closeWindow();
+                });
+            }
+        }); 
+
+        Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', requestData).done((data) => {
+            if (data.success == 1) {
+                window.location.reload();
+            } else {
+                $('#dialog').parent().remove();
+                self.modal.render("userPlan", data.error);
+            }
+
+        }).fail((r) => {
+            $('#createUserErrorMessage').text(r.textStatus);
+        });
+    });
 
 
     $('.j-setplan').on('click', function(e) {

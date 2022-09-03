@@ -18698,6 +18698,10 @@ input[type=radio].inline {
   text-align: center;
   padding-bottom: 7px;
 }
+.plans__item.selected {
+  background: darkslategrey;
+  color: white;
+}
 
 .plans__name {
   margin: 0;
@@ -23172,6 +23176,15 @@ input[type=radio].inline {
   width: 50%;
 }
 
+.paywall-plan-cards {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  font-family: "tinos", Helvetica, Arial, sans-serif;
+  padding-bottom: 20px;
+  margin-top: 30px;
+}
+
 .paywall-plan-card {
   display: -webkit-box;
   display: -webkit-flex;
@@ -23205,6 +23218,12 @@ input[type=radio].inline {
   .paywall-plan-card {
     height: 50vw;
   }
+}
+.paywall-plan-card--account {
+  height: 260px;
+}
+.paywall-plan-card--unselected {
+  opacity: 0.3;
 }
 .paywall-plan-card__best-value {
   display: -webkit-box;
@@ -23380,6 +23399,7 @@ input[type=radio].inline {
   }
 }
 .paywall-plan-card__price {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 4.375rem;
   line-height: 5.25rem;
   margin-bottom: 18px;
@@ -23423,7 +23443,12 @@ input[type=radio].inline {
     margin-bottom: 5%;
   }
 }
+.paywall-plan-card__price--small {
+  font-size: 3.125rem;
+  line-height: 3.75rem;
+}
 .paywall-plan-card__weekly {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 1.125rem;
   line-height: 1.35rem;
   font-weight: 700;
@@ -23453,6 +23478,7 @@ input[type=radio].inline {
   }
 }
 .paywall-plan-card__subscribe-button {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -28186,6 +28212,7 @@ body.channel .section-sidepanel-news a.card .content .author p, body.section .se
 .paywall__form-label {
   font-size: 1rem;
   line-height: 1.2rem;
+  line-height: 1.2rem !important;
 }
 @media screen and (max-width : 767px) {
   .paywall__form-label {
@@ -44670,6 +44697,20 @@ body.channel.supporters p span {
 .divide30 {
   margin-top: 30px;
   margin-bottom: 30px;
+  border: 0;
+  border-top: 1px solid #dadada;
+}
+
+.divide40 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 0;
+  border-top: 1px solid #dadada;
+}
+
+.divide50 {
+  margin-top: 50px;
+  margin-bottom: 50px;
   border: 0;
   border-top: 1px solid #dadada;
 }

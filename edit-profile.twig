@@ -12,8 +12,75 @@
 {% set commenter = false %}
 
 {% set pwstats = _User.getPaywallStats(true) %}
-
 {% set plans = _Paywall.getActiveNetworkPaywallPlans() %}
+
+{% set topPlans = [] %}
+{% set bottomPlans = [] %}
+{% set signupurl = '/subscribeform' %}
+
+{% for plan in plans %}
+    {% set continue = false %}
+
+    {% if "!*!" in plan.description %}
+
+        {% set description = plan.description | split("!*!") %}
+
+        {% set data = _AppHelper.jsonDecode( description[0] ) %}
+        {% if data['showplan'] is defined and data['showplan'] == false %}
+            {% set continue = true %}
+        {% endif %}
+
+        {% if not continue %}
+            {% set plan = plan | merge({ ("order") : data['order']}) %}
+            {% if data['best'] is defined and data['best'] == true %}
+                {% set plan = plan | merge({ ("best") : 'true'}) %}
+            {% endif %}
+
+            {% if data['save'] is defined %}
+                {% set plan = plan | merge({ ("save") : data['save']}) %}
+            {% endif %}
+
+            {% if data['place'] == 'top' %}
+                {% set topPlans = topPlans | merge({ ("0") : plan}) %}
+            {% endif %}
+        {% endif %}
+
+    {% endif %} 
+{% endfor %}
+
+
+{% set orderedTop = [] %}
+
+{% for plan in topPlans %}
+    {% set added = false %}
+    {% if orderedTop | length == 0 %}
+        {% set added = true %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% else %} 
+
+    {% set break = false %}
+        {% for ordered in orderedTop if not break %}
+            {% if plan.order < ordered.order %}
+                {% set added = true %}
+                {% set before = orderedTop | slice(0, loop.index0) %}
+                {% set after = orderedTop  | slice(loop.index0, orderedTop | length) %}
+                {% set orderedTop = before | merge({ ("0") : plan}) %}
+                {% set orderedTop = orderedTop | merge( after) %}
+                {% set break = true %}
+            {% endif %} 
+        {% endfor %}
+    {% endif %} 
+
+    {% if added == false %}
+        {% set orderedTop = orderedTop | merge({ ("0") : plan}) %}
+    {% endif %} 
+{% endfor %}
+
+
+
+
+
+
 
 {% set userLimit = 20 %}
 {% set user = _User.getUser() %}
@@ -49,6 +116,208 @@
         <div class="user_profile_section">
             <div class="row">
                 <div class="col-sm-12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="profile-section">
+                        <div id="userPlanSection">
+
+
+
+
+
+
+                            <div class="profile-section__header">
+                                <p class="profile-section__heading">Hi {{user.firstname}}</p>
+                                <p>It looks like you don't have a Newsroom subscription yet! To get access to all of Newsroom's award-winning premium content, subscribe to Newsroom Pro.  No lock-in contracts. 
+                                    To get started, choose a plan:</p>
+                            </div>
+
+                            <div id="purchase-plans" class="row paywall-plan-cards j-purchase-plans"
+                                data-cardsupplied="{{cardSupplied}}"
+                                data-currentUsers="{{managedUserCount}}"
+                                data-currentPeriod="{{pwstats['period']}}"
+                                data-currentCost="{{pwstats['plan_value']}}"
+                                data-currentType="{{pwstats['type']}}"
+                                data-expiry="{{pwstats['expiry_date']}}"
+                                data-currentplanperiodcount="{{pwstats['period_count']}}"
+                            >
+
+                                {% for plan in orderedTop %}
+                                    {% set paddingClass = loop.index % 2 == 0 ? "u-mobile-padding-left-5" : "u-mobile-padding-right-5" %}
+                            
+                                    {% set period = "Monthly" %}
+                                    {% set yearDiv = 12 %}
+                                    {% if plan.period == "year" %}
+                                        {% set period = "Annual" %}
+                                        {% set yearDiv = 1 %}
+                                    {% elseif plan.period == "week" %}
+                                        {% set period = "Weekly" %}
+                                        {% set yearDiv = 52 %}
+                                    {% endif %}
+                                    
+
+
+                                    {% set description = plan.description | split("!*!") %}
+                                    {% set data = _AppHelper.jsonDecode( description[0] ) %}
+                                    {% if data['special'] is defined and data['special'] == true %}
+                                        {% set period = plan.plan_name %}
+                                    {% endif %}
+
+
+
+                                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 j-purchaseplan_selected {{paddingClass}}"
+                                        data-planid          = "{{plan.guid}}"
+                                        data-planusercount   = "{{userCount}}"
+                                        data-plancost        = "{{plan.plan_value}}"
+                                        data-planperiod      = "{{plan.period}}"
+                                        data-trialstatus     = "{{plan['trial_status']}}"
+                                        data-planType        = "{{plan.type}}"
+                                        data-planPeriodCount = "{{plan.period_count}}"
+                                    >
+                                        <div class="paywall-plan-card paywall-plan-card--account u-mobile-margin-top-10">
+                                            
+                                            {% if plan.best is defined and plan.best == 'true' %}
+
+                                            <div class="paywall-plan-card__best-value">
+                                                <div class="paywall-plan-card__ribbon"></div>
+                                                <div class="paywall-plan-card__best-value-container">
+                                                    <p class="paywall-plan-card__best-value-label">BEST VALUE</p>
+                                                    {% if plan.save is defined %}
+                                                        <p class="paywall-plan-card__best-value-amount">SAVE ${{plan.save}}</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% set val = plan.plan_value / 100 %}
+                                            {% set weekVal = ((yearDiv / plan.period_count) * val) / 52 %}
+                                            <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
+                                            
+                                            {% if plan.type != 'signup' %}
+                                                <p class="paywall-plan-card__price paywall-plan-card__price--small">${{val}}</p>
+                                                <p class="paywall-plan-card__weekly">${{weekVal|number_format(2, '.', ',')}} per week</p>
+                                                <p class="paywall-plan-card__users">{{plan.user_count + 1}} users</p>
+                                            {% endif %}
+
+                                            {% set subscribeLink = networkData.defaultBlogUrl ~ signupurl ~ "?plan="~ plan.guid %}
+                                            
+                                        </div>
+                                            <a class="_btn--red paywall-plan-card__subscribe-button j-purchaseplan_select" href="#!" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">SELECT PLAN</a>
+                                    </div>
+                                    
+                                {% endfor %}
+                            </div>
+
+
+
+
+                            <div class='update-card'>
+                                <div class="">
+
+                                    <form id="purchase-plan-form" action="" method="post">
+
+                                        <div class="form-row ">
+                                            <p class="stripe-form__p u-margin-top-30 paywall__form-label">Please enter your credit or debit card details. </p>
+
+                                            <div id="card-element" class="u-margin-top-10 paywall__stripe-card">
+                                            <!-- a Stripe Element will be inserted here. -->
+                                            </div>
+
+                                            <!-- Used to display form errors -->
+                                            <div id="card-errors" class="profile-section__card-errors" role="alert"></div>
+
+                                            <p class="stripe-form__p u-margin-top-10 paywall__form-label">All credit card payments are processed by Stripe. 
+                                                <a class="stripe-form__link" target="_blank" href="https://stripe.com/docs/security" rel="noopener">Learn more about Stripe’s security.</a>
+                                            </p>
+
+                                        </div>
+
+                                        <div class="u-margin-top-20"></div>
+                                        <div class="button-set c-checkbox u-margin-bottom-15">
+                                            <input id="terms" name="terms" type="checkbox" class="c-checkbox__input" />
+                                            <label class="c-checkbox__label u-padding-top-3 paywall__form-label" for="terms">
+                                                <span class="c-checkbox__button"></span>
+                                                I agree to Newsroom's <a class=" account-form__label--red" href="{{networkData.defaultBlogUrl}}/terms-and-conditions" target="_blank">Terms and Conditions</a>
+                                            </label>
+                                        </div>
+
+                                        <button id="subscribe" class="_btn _btn--red u-margin-top-25 subscribe-form__button j-gtasubcreate" data-price="{{planPrice}}" data-name="{{frequency}}" data-id="{{plan.guid}}">SUBSCRIBE</button>
+
+                                   </form>
+                                </div>
+                            </div>
+
+
+                            <hr class="divide50" style="border-top:1px solid #97999c;">
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     {{this.render('layouts/partials/messages.twig') | raw}}
 
                     <div class="profile-section" style="padding-bottom:18px;">
@@ -122,9 +391,10 @@
                                     <button type="submit" class="text-button u-float-right update-details">Update Details</button>
                                 </div>
 
-                                <div id="account-form__email" class="email-subscription">
-                                </div>
 
+                                {% if pwstats.plan_id %}
+                                    <div id="account-form__email" class="email-subscription"> </div>
+                                {% endif %}
                                 {# <p class="account-form__unsubscribe">Alternatively, email <a href="mailto:unsubscribe@newsroom.co.nz">unsubscribe@newsroom.co.nz</a> to cancel your email subscriptions</p> #}
 
 

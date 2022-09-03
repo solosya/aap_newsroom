@@ -86,7 +86,6 @@
     <meta charset="UTF-8">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"/>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
@@ -110,7 +109,7 @@
 
 
     <!-- optionally increase loading priority -->
-    <link rel="preload" as="font" href='https://fonts.googleapis.com/css?family=Tinos:400,700'>
+    <link rel="preload" as="style" href='https://fonts.googleapis.com/css?family=Tinos:400,700'>
 
     <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href='https://fonts.googleapis.com/css?family=Tinos:400,700&display=swap'>
     <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap">
@@ -136,7 +135,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD' %} 
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=3c8bcaa7" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?v=72cc42d3" type="text/css" media="all">
 
     {% else %}
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/css/concat.css?ver=17' type='text/css' media='all' />
