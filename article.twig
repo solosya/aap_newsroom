@@ -888,7 +888,6 @@
 
 
 
-        //window.showcaseEntitlement = "{{showcase}}";
 
         // Registered user with no access #}
         // if paywalled and not guestUser %}
@@ -955,7 +954,7 @@
             return;
         };
 
-
+        var showcaseEntitlement = "{{showcase}}";
 
         var initData = {
             googleApiClientId: "{{client_id}}", 
@@ -967,6 +966,10 @@
             showPaywall: showPaywall,
             allowedReferrers: ["www.newsroom.co.nz", "newsroomtest.cognitives.link", "www.parent.io"],
         };
+
+        if (showcaseEntitlement) {
+            initDFata['showcaseEntitlement'] = showcaseEntitlement;
+        }
 
         console.log(initData);
         GaaMetering.init(initData);
