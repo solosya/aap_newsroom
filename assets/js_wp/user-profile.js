@@ -568,7 +568,7 @@ UserProfileController.prototype.events = function ()
                     }
                     Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', formdata).done((r) => {
                         self.modal.closeWindow();
-                        if (r.success === true) {
+                        if (r.success === 1) {
                             location.reload();
                         }
                     });
