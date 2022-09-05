@@ -381,6 +381,7 @@ spinner:
 spinnerTmpl: '<div class="spinner"></div>',
 
 subscribeTerms:  '<p class="password-reset-form__p u-margin-bottom-20">Please agree to the terms of use.</p><div><form><button class="_btn _btn--red" data-role="okay">OK</button></form></div>',
+purchasePlan:  '<p class="password-reset-form__p u-margin-bottom-20">Please choose a plan.</p><div><form><button class="_btn _btn--red" data-role="okay">OK</button></form></div>',
 
 ipnotice:  
     '<p class="ipdialog__p u-margin-bottom-20">You can access Pro under this subscription – simply email <a href="mailto:pro@newsroom.co.nz"><strong>pro@newsroom.co.nz</strong></a> for a login.</p> \

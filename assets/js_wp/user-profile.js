@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars'
+import { Form, Validators } from './form'
 import { Server, Modal } from './framework'
 import { Templates } from './article-templates'
 import { SigninModal }  from './signinModal'
 import Card from './StripeCard'
-
 
 export const UserProfileController = function()
 {
@@ -14,6 +14,7 @@ export const UserProfileController = function()
     // this.newsroom       = '17ba69a02c';
     // this.group          = 'cb03aca14d'; // me
     
+   
     
     this.newsroom       = '2412c1d355';
     this.group          = 'f6f5aaa06b';
@@ -24,10 +25,12 @@ export const UserProfileController = function()
         "userPlanChange" : 'userPlanOkCancel'
     } );
 
-    this.stripekey = $('#stripekey').html();
-    this.stripe = Stripe(this.stripekey);
-    const StripeCard = new Card();
-    this.card = StripeCard.get(this.stripe);
+    if ($('#update-card-form').length > 0) {
+        this.stripekey = $('#stripekey').html();
+        this.stripe = Stripe(this.stripekey);
+        const StripeCard = new Card();
+        this.card = StripeCard.get(this.stripe);
+    }
 
     this.events();
     this.userEvents();
@@ -520,117 +523,6 @@ UserProfileController.prototype.events = function ()
 
 
 
-    $('.j-purchaseplan_select').on('click', function(e) {
-        var plans = $('#purchase-plans');
-        plans.children().each(function(p) {
-            $(this).addClass('paywall-plan-card--unselected');
-        });
-        let newPlan = $(e.target);
-        if (!newPlan.hasClass('j-purchaseplan_selected')) {
-            newPlan = $(e.target.parentNode);
-        }
-        self.purchasePlan = newPlan.data('planid');
-        newPlan.removeClass('paywall-plan-card--unselected');
-    });
-
-    
-    var purchaseform = document.getElementById('purchase-plan-form');
-    if (purchaseform != null) {
-        purchaseform.addEventListener('submit', function(event) {
-
-            event.preventDefault();
-
-            if (!self.purchasePlan) {
-                return;
-            }
-
-            self.modal.render("spinner", "Your request is being processed.");
-
-            const errorElement = document.getElementById('card-errors');
-
-            errorElement.textContent = '';
-            // const stripe = Stripe(self.stripekey);
-            self.stripe.createToken(self.card).then(function(result) {
-                // console.log(result);
-                if (result.error) {
-                    self.modal.closeWindow();
-
-                    // Inform the user if there was an error
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server
-
-                    const formdata = {
-                        "stripetoken":result.token.id,
-                        "planid": self.purchasePlan,
-                        "redirect" : false
-                    }
-                    
-                    Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', formdata).done((r) => {
-                        self.modal.closeWindow();
-                        if (r.success === 1) {
-                            location.reload();
-                        }
-                    });
-
-                }
-            });
-        });
-    }
-
-    $('.j-purchaseplan').on('click', function(e) {
- 
-        const requestData = { 
-            planid: self.purchasePlan
-        };
-
-        var stripeCall = this.stripe.createToken(self.card).then(function(result) {
-            console.log(result);
-            if (result.error) {
-                self.signup.closeWindow();
-                // Inform the user if there was an error
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error;
-            } else {
-                // Send the token to your server
-
-                self.data['stripetoken'] = result.token.id;
-                self.data['planid'] = $('#planid').val();
-                self.data['redirect'] = false;
-                Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', requestData).done(function(r) {
-                    // console.log(r);
-                    if (r.success == 1) {
-                        window.location.reload();
-                    } else {
-                        var errorElement = document.getElementById('card-errors');
-                        var text = '';
-                        for (var key in r.error) {
-                            text = text + r.error[key] + " ";
-                        } 
-                        // console.log(text);
-                        errorElement.textContent = text;
-                    }
-                }).fail(function(r) {
-                    // self.signup.closeWindow();
-                });
-            }
-        }); 
-
-        Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', requestData).done((data) => {
-            if (data.success == 1) {
-                window.location.reload();
-            } else {
-                $('#dialog').parent().remove();
-                self.modal.render("userPlan", data.error);
-            }
-
-        }).fail((r) => {
-            $('#createUserErrorMessage').text(r.textStatus);
-        });
-    });
-
-
     $('.j-setplan').on('click', function(e) {
         e.stopPropagation();
 
@@ -801,24 +693,119 @@ UserProfileController.prototype.events = function ()
 };
 
 
+export const PurchaseForm = function(id) {
+    this.id = id || null;
+    this.parent = Form.prototype;
+
+    this.data = {
+        "plan_id": null,
+        "terms": false,
+    };
 
 
-// UserProfileController.prototype.listingEvents = function() {
-//     var self = this;
+    this.errorFields = [];
 
-//     $('.j-deleteListing').unbind().on('click', function(e) {
-//         e.preventDefault();
-//         const listing = $(e.target).closest('a.card');
-//         const id      = listing.data("guid");
-//         self.modal.render("userPlanChange", "Are you sure you want to delete this listing?")
-//             .done(function() {
-//                 Server.create('/api/article/delete-user-article', {"articleguid": id}).done(function(r) {
-//                     listing.remove();
-//                 }).fail(function(r) {
-//                     // console.log(r);
-//                 });
-//             });
-//     });  
-// };
+    this.validateRules = {
+        "plan_id" : ["notEmpty"],
+        "terms" : ["isTrue"],
+    };
 
-    
+    this.validateFields = Object.keys(this.validateRules);
+
+    this.spinner = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+    this.stripeSetup();
+    this.loadData();
+    this.events();
+    this.localEvents();
+
+};
+PurchaseForm.prototype = new Form(Validators);
+PurchaseForm.constructor = PurchaseForm;
+PurchaseForm.prototype.stripeSetup = function () {
+    var self = this;
+    var stripekey = $('#stripekey').html();
+    this.stripe = Stripe(stripekey);
+    const StripeCard = new Card();
+    this.card = StripeCard.get(this.stripe);
+}
+PurchaseForm.prototype.localEvents = function(event) {
+    var self = this;
+    $('.j-purchaseplan_select').on('click', function(e) {
+        var plans = $('#purchase-plans');
+        plans.children().each(function(p) {
+            $(this).addClass('paywall-plan-card--unselected');
+        });
+        let newPlan = $(e.target);
+        if (!newPlan.hasClass('j-purchaseplan_selected')) {
+            newPlan = $(e.target.parentNode);
+        }
+        self.data.plan_id = newPlan.data('planid');
+        newPlan.removeClass('paywall-plan-card--unselected');
+    });
+};
+PurchaseForm.prototype.submit = function(event) 
+{
+    var self = this;
+    event.preventDefault();
+    console.log(self.data.plan_id);
+    console.log('submitting!!!');
+
+
+    var validated = self.validate();
+    if (!validated) {
+        if (!this.data.terms) {
+            this.confirmView = new Modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+            this.confirmView.render("terms", "Almost there");
+            return;
+        }
+        if (!this.data.plan_id) {
+            this.confirmView = new Modal('modal', 'signin-modal', {'terms': 'purchasePlan'});
+            this.confirmView.render("terms", "Almost there");
+            return;
+        }
+        console.log(self.errorFields);
+    }
+
+
+
+    self.spinner.render("spinner", "Your request is being processed.");
+
+    const errorElement = document.getElementById('card-errors');
+
+    errorElement.textContent = '';
+    // const stripe = Stripe(self.stripekey);
+    self.stripe.createToken(self.card).then(function(result) {
+        // console.log(result);
+        if (result.error) {
+            self.spinner.closeWindow();
+
+            // Inform the user if there was an error
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+        } else {
+            // Send the token to your server
+
+            const formdata = {
+                "stripetoken":result.token.id,
+                "planid": self.data.plan_id,
+                "redirect" : false
+            }
+
+            Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', formdata).done((r) => {
+                if (r.success === 1) {
+                    location.reload();
+                    return;
+                }
+                self.spinner.closeWindow();
+            });
+
+        }
+    });
+            
+};
+
+
+
+if ($('#stripekey').length > 0 && $('#purchase-plan-form').length > 0 ) {
+    Acme.subscribe = new PurchaseForm('purchase-plan-form');
+}
