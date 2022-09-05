@@ -566,9 +566,10 @@ UserProfileController.prototype.events = function ()
                         "planid": self.purchasePlan,
                         "redirect" : false
                     }
+                    
                     Server.create(_appJsConfig.baseHttpPath + '/auth/paywall-purchase', formdata).done((r) => {
                         self.modal.closeWindow();
-                        if (r.success === true) {
+                        if (r.success === 1) {
                             location.reload();
                         }
                     });
