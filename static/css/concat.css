@@ -19087,6 +19087,7 @@ input[type=radio].inline {
 
 .profile-message {
   display: inline-block;
+  position: relative;
   padding: 5px 10px;
   background-color: #dadada;
   font-size: 0.8125rem;
@@ -23197,7 +23198,7 @@ input[type=radio].inline {
   }
 }
 .paywall-plan-card--account {
-  height: 260px;
+  height: 225px;
 }
 .paywall-plan-card--unselected {
   opacity: 0.3;
@@ -23350,6 +23351,9 @@ input[type=radio].inline {
   background-color: #979797;
   margin: 13px auto;
 }
+.paywall-plan-card__period--account {
+  margin-top: 25px;
+}
 @media screen and (min-width : 768px) and (max-width : 991px) {
   .paywall-plan-card__period {
     margin-top: 21px;
@@ -23440,6 +23444,7 @@ input[type=radio].inline {
   }
 }
 .paywall-plan-card__users {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.125rem;
   font-weight: 700;

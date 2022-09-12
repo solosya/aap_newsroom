@@ -140,7 +140,7 @@
 
                             <div class="profile-section__header">
                                 <p class="profile-section__heading">Hi {{user.firstname}}</p>
-                                <p>It looks like you don't have a Newsroom subscription yet! To get access to all of Newsroom's award-winning premium content, subscribe to Newsroom Pro.  No lock-in contracts. 
+                                <p style="line-height:1.3">It looks like you don't have a Newsroom subscription yet! To get access to all of Newsroom's award-winning premium content, subscribe to Newsroom Pro.  No lock-in contracts. 
                                     To get started, choose a plan:</p>
                             </div>
 
@@ -202,7 +202,7 @@
                                             {% endif %}
                                             {% set val = plan.plan_value / 100 %}
                                             {% set weekVal = ((yearDiv / plan.period_count) * val) / 52 %}
-                                            <p class="paywall-plan-card__period">{{plan.plan_name}}</p>
+                                            <p class="paywall-plan-card__period paywall-plan-card__period--account">{{plan.plan_name}}</p>
                                             
                                             {% if plan.type != 'signup' %}
                                                 <p class="paywall-plan-card__price paywall-plan-card__price--small">${{val}}</p>
