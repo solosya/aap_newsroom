@@ -856,7 +856,7 @@
 
 
 
-{# {% if isGaa %} #}
+{% if isGaa %}
 
 <script  subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js"></script>
 <script  src="https://news.google.com/swg/js/v1/swg-gaa.js"></script>
@@ -907,18 +907,7 @@
             });
         });
 
-        let unlockArticle = function() {
-
-           // var postData = {
-           //     "article_id": articleId
-           // };
-
-           // Acme.Server.create('/auth/extended-access-unlock-article', postData ).done(function(r) {
-           //     console.log(r);
-           //     if (r.success == 1) {
-           //     }
-           // });
-        }
+        let unlockArticle = function() { }
 
         let registerUserPromise = new Promise((resolve) => {
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
@@ -932,10 +921,10 @@
                 Acme.Server.create('/auth/extended-access-signup', postData ).done(function(r) {
                     console.log(r);
                     if (r.success == 1) {
-                       // window.userState.id = r.user_id;
-                        //window.userState.registrationTimestamp = r.registration;
+                        window.userState.id = r.user_id;
+                        window.userState.registrationTimestamp = r.registration;
                         //window.userState.granted = true;
-                        //resolve(window.userState);
+                        resolve(window.userState);
                         location.reload();
                         return;
                     }
@@ -971,7 +960,6 @@
             initData['showcaseEntitlement'] = showcaseEntitlement;
         }
 
-        console.log(initData);
         GaaMetering.init(initData);
     });   
 

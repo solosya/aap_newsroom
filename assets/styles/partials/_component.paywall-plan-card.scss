@@ -38,7 +38,7 @@
     }       
 
     &--account {
-        height: 260px;
+        height: 225px;
     }
     &--unselected {
         opacity: 0.3;
@@ -163,6 +163,9 @@
             margin: 13px auto;
         }
 
+        &--account {
+            margin-top: 25px;
+        }
 
         @media #{$tablet} {
             margin-top:21px;
@@ -234,6 +237,7 @@
     }
 
     &__users{
+        font-family: $font-family-sans-serif;
         @include font-size(15);
         font-weight: $weightBold;
         letter-spacing: 0.5px;

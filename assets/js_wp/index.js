@@ -55,7 +55,10 @@ var googleLogin = function(user) {
         //console.log(r);
         if (r.success == 1) {
             location.reload()
+            return;
         }
+        console.log(r);
+        Acme.SigninView.errorMsg();
     });
 }
 
