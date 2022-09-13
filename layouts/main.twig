@@ -20,7 +20,7 @@
 
 
 {% set networkData   = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog() %}
+{% set blogData      = _Blog.getBlog(null, {'excludeMenus' : true}) %}
 {% set pageClass     = _Page.getBodyClass() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
@@ -28,6 +28,8 @@
 {% set pageURL       = _AppHelper.getCurrentUrl(true) %}
 {% set config        = _Network.getThemeConfig() %}
 {% set squeeze       = false %}
+
+
 
 
 {% set metaTitle = this.title %}
@@ -90,6 +92,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"/>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
     <meta name="google-site-verification" content="K-ToGDFxKuQdd_Ykjo1EJDCtGoS7xmid2Pge0cqUxPw" />
+
+    {% if config.metaTags is defined %}
+        {% for tag in config.metaTags %}
+            {% if tag.name is defined and tag.name != "" and tag.content is defined and tag.content != "" %}
+                <meta name="{{tag.name}}" content="{{tag.content}}" />
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <title>{{ metaTitle }}</title>
