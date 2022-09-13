@@ -116,7 +116,8 @@
 {% set isPublisherPaywalled = showPaywall %}
 
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
-{% set isGaa = _User.isGaa() %}
+{# {% set isGaa = _User.isGaa() %} #}
+{% set isGaa = false %}
 {% set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" %}
 {% set showcase = false %}
 {% if showPaywall and not guestUser and isGaa %}
