@@ -21,6 +21,12 @@
             "link": "",
             "description": "",
             "title": ""
+        },
+        "net zero: the road to 2050": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -121,14 +127,18 @@
                     }) | raw}}
                 {% endif %}
 
-                {# {% if sections['podcast: book bubble'].feed.articles|length > 0 %}
+
+
+                {% if sections['net zero: the road to 2050'].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
-                        'section' : 'podcast: book bubble',
+                        'section' : 'net zero: the road to 2050',
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-light.twig',
-                        'title' : 'podcast: book bubble'
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : 'net zero: the road to 2050'
                     }) | raw}}
-                {% endif %} #}
+                {% endif %}
+
+
 
                 {% if sections['podcast: a neesh audience'].feed.articles|length > 0 %}
                     {{this.render('render.twig', {

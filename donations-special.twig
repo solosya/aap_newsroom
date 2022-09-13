@@ -6,7 +6,7 @@
 
 
 {% set donations = "nr" %}
-{% if config.donations is defined %}
+{# {% if config.donations is defined %}
     {% if config.donations != "nr" %}
         {% set donations = config.donations %}
     {% endif %}
@@ -14,7 +14,7 @@
     {% if config.donations.provider is defined %} 
         {% set donations = config.donations.provider %}
     {% endif %}
-{% endif %}
+{% endif %} #}
 
 
 {% set donationsSupport = 'Support our special cause' %}
@@ -123,13 +123,13 @@
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                    {% for i in donationsAmount %}
+                    {# {% for i in donationsAmount %}
                         {% if i == 0 %}
                             <a href="https://dashboard.presspatron.com/donations/new?frame=1&t={{donationsPPno}}" data-pp-page="pwyw" data-pp-metadata="membership-pwyw" target="_blank" class="c-supporter-special__button c-supporter-special__button--grey{% if loop.index in [2,4,6,8] %} c-supporter-special__button--space{% endif %} u-mobile-margin-top-20{% if loop.index > 2 %} u-margin-top-20{% endif %}" rel="noopener">Pay what you want</a>
                         {% else %}
                             <a href="https://dashboard.presspatron.com/donations/new?frame=1&t={{donationsPPno}}" data-pp-page="checkout" data-pp-amount="{{i}}" data-pp-metadata="membership-pwyw" target="_blank" class="c-supporter-special__button c-supporter-special__button--black{% if loop.index in [2,4,6,8] %} c-supporter-special__button--space{% endif %} u-mobile-margin-top-20{% if loop.index > 2 %} u-margin-top-20{% endif %}" rel="noopener">Donate ${{i}}</a>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %} #}
                     
                 {% endif %}
 

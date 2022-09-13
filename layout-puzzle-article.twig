@@ -114,10 +114,10 @@
 {% endif %}
 
 
-{% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %}
+{# {% set ppsrc = '//dashboard.presspatron.com/dev/banner?b=AbkE2e7ZwQgwLPFzVowC2cKm' %} #}
 
 
-    <script>
+    {# <script>
         (function(d) {
         var el, fjs = d.getElementsByTagName('script')[0];
             el = d.createElement('script');
@@ -125,7 +125,7 @@
             el.src = "{{ppsrc}}";
             fjs.parentNode.insertBefore(el, fjs);
         }(document));
-    </script>
+    </script> #}
 
 {% set storySplit = article.content | split('</p>')  %}
 {% set contentPartOne = "" %}
