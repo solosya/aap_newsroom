@@ -244,22 +244,23 @@
 
 
 {% set cacheKey = "related_articlePage" %}
-{% set relatedArticles = getCache(cacheKey) %}
+{% set forceCache = true %}
+{% set relatedArticles = getCache(cacheKey, forceCache) %}
 {% if (relatedArticles is empty) %}
     {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
-    {% set cache = setCache(cacheKey, relatedArticles, 900) %} 
+    {% set cache = setCache(cacheKey, relatedArticles, 900, forceCache) %} 
 {% endif %} 
 
 
 {% set cacheKey = "articlePopular_articlePage" %}
-{% set popular = getCache(cacheKey) %}
+{% set popular = getCache(cacheKey, forceCache) %}
 {% if (popular is empty) %}
     {% set popular = _Article.getPopularArticles({
             limit: 4, 
             scope: 'network', 
             interval: 24 
     }) %}
-    {% set cache = setCache(cacheKey, popular, 900) %} 
+    {% set cache = setCache(cacheKey, popular, 900, forceCache) %} 
 {% endif %} 
 
 
@@ -714,14 +715,14 @@
                                     <h3 class="most-viewed__header">MOST VIEWED</h3>
 
                                     {% set cacheKey = "pro_popular_articles" %}
-                                    {% set popularArticles = getCache(cacheKey) %}
+                                    {% set popularArticles = getCache(cacheKey, forceCache) %}
                                     {% if (popularArticles is empty) %}
                                         {% set popularArticles = _Article.getPopularArticles({ 
                                                 limit: 5, 
                                                 blogId: proBlogId, 
                                                 interval: 168 
                                         }) %}
-                                        {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+                                        {% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} 
                                     {% endif %} 
 
 
