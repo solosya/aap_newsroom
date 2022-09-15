@@ -233,13 +233,7 @@
 {% endif %} #}
 
 
-{% set cacheKey = "related_articlePage" %}
-{% set forceCache = true %}
-{% set relatedArticles = getCache(cacheKey, forceCache) %}
-{% if (relatedArticles is empty) %}
-    {% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
-    {% set cache = setCache(cacheKey, relatedArticles, 900, forceCache) %} 
-{% endif %} 
+{% set relatedArticles = _Article.getRelatedArticlesByArticleId(article.id) %}
 
 
 {% set cacheKey = "articlePopular_articlePage" %}
