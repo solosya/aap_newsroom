@@ -23392,6 +23392,10 @@ input[type=radio].inline {
   .paywall-plan-card__period:after {
     width: 21px;
   }
+  .paywall-plan-card__period--account {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 }
 @media screen and (max-width : 767px) {
   .paywall-plan-card__period {
@@ -23402,10 +23406,18 @@ input[type=radio].inline {
   .paywall-plan-card__period:after {
     width: 24px;
   }
+  .paywall-plan-card__period--account {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 }
 @media screen and (max-width : 575px) {
   .paywall-plan-card__period {
     font-size: 2.9vw;
+  }
+  .paywall-plan-card__period--account {
+    font-size: 0.875rem;
+    line-height: 1.05rem;
   }
 }
 .paywall-plan-card__price {
