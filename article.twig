@@ -330,7 +330,7 @@
                                 ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-email icon-mail"></a>
                                 
                                 {% if article.userHasEditArticleAccess is defined and article.userHasEditArticleAccess == 1 %}
-                                    <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                                    <a href="{{article.editUrl}}" target="_blank" class="edit_btn">Edit article</a>
                                 {% endif %}
 
                                 <div class="articleTimes">
