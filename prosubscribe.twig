@@ -1,6 +1,5 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
-
 {% if not _User.isAdminUser() and not _User.isGuest() %}
     {% set redir = _Page.setHttpRedirects(
         { '|^/.*|': networkData.defaultBlogUrl ~ '/user/edit-profile', }, false) 

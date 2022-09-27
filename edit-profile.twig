@@ -362,6 +362,9 @@
 
 
 
+                            {# Password reset turned off for Google signups #}
+                            {% if pwstats.plan_id is not null %}
+
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Change password</label>
                                 <div class="account-form__inline-inputs">
                                     <label class="account-form__label d-none d-md-block" for="password">Password</label>
@@ -373,14 +376,14 @@
                                 </div>
 
 
-
-
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Verify Password</label>
                                 <div class="account-form__inline-inputs  u-margin-bottom-10">
                                     <label class="account-form__label d-none d-md-block" for="password">Verify Password</label>
                                     <input type="password" id="verifypassword" class="account-form__input" name="verifypassword" placeholder="retype password"  autocomplete="new-password">
-                                </div>
+                                </div> 
                                 
+                            {% endif %}
+
 
                                 <label class="account-form__label account-form__label--mobile d-block d-md-none" for="password">Organisation</label>
                                 <div class="account-form__inline-inputs  u-margin-bottom-10">
