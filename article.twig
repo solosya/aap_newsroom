@@ -116,10 +116,17 @@
 {% set isPublisherPaywalled = showPaywall %}
 
 {% set reason = article.showPaywallReason is defined ? article.showPaywallReason : "" %}
-{% set isGaa = _User.isGaa() %}
-{% set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" %}
-{% set showcase = false %}
-{% if showPaywall and not guestUser and isGaa %}
+
+{% set extAccess = false %}
+{% set isGaa = false %}
+{% if config.extended_access is defined and config.extended_access.active is defined and config.extended_access.active != false %}
+    {% set extAccess = true %}
+    {% set isGaa = _User.isGaa() %}
+    {% set client_id = "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com" %}
+{% endif %}
+
+{% if extAccess and showPaywall and not guestUser and isGaa  %}
+    {% set showcase = false %}
     {% set showcaseResponse = _User.checkShowcaseAccess("newsroom.co.nz", article) %}
     {% if showcaseResponse.success == 1 and showcaseResponse.entitlement is defined and showcaseResponse.entitlement != false %}
         {% set showcase = showcaseResponse.entitlement %}
@@ -891,7 +898,7 @@
 
         let registerUserPromise = new Promise((resolve) => {
             GaaMetering.getGaaUserPromise().then((gaaUser) => {
-                    console.log(gaaUser);
+                //console.log(gaaUser);
                 var postData = {
                     "article_id": articleId,
                     "user": JSON.stringify(gaaUser),
@@ -899,12 +906,12 @@
                 };
 
                 Acme.Server.create('/auth/extended-access-signup', postData ).done(function(r) {
-                    console.log(r);
+                    //console.log(r);
                     if (r.success == 1) {
                         window.userState.id = r.user_id;
                         window.userState.registrationTimestamp = r.registration;
-                        //window.userState.granted = true;
-                        resolve(window.userState);
+                        window.userState.granted = true;
+                        resolve(window.userState); 
                         location.reload();
                         return;
                     }
