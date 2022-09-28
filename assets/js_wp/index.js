@@ -67,18 +67,20 @@ var googleLogin = function(user) {
 window.loadSigninForm = function() {
     Acme.SigninView.render("signin", "Sign in");
 
-    google.accounts.id.initialize({
-        client_id: "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com",
-        callback: googleLogin
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("google_signin"),
-        { 
-            theme: "outline", 
-            size: "large",
-            width: 100
-        }  // customization attributes
-      );
+    if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+            client_id: "142840943125-tl0o6d3vrpk19n6dphmspegmaqpbqc5d.apps.googleusercontent.com",
+            callback: googleLogin
+          });
+          google.accounts.id.renderButton(
+            document.getElementById("google_signin"),
+            { 
+                theme: "outline", 
+                size: "large",
+                width: 100
+            }  // customization attributes
+          );
+    }
 }
 
 $('#signinBtn, #articleSigninBtn, .j-signin').on('click', function() {
