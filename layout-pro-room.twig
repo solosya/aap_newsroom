@@ -67,18 +67,19 @@
 
 
 {% set cacheKey = "pro_popular" %}
-{% set popularArticles = getCache(cacheKey) %}
+{% set forceCache = true %}
+{% set popularArticles = getCache(cacheKey, forceCache) %}
 {% if (popularArticles is empty) %}
     {% set popularArticles = _Article.getPopularArticles({ limit: 6, blogId: blogData['id'],  interval: 168  }) %}
-    {% set cache = setCache(cacheKey, popularArticles, 900) %} 
+    {% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} 
 {% endif %} 
 
 
 {% set cacheKey = "pro_recent" %}
-{% set recentArticles = getCache(cacheKey) %}
+{% set recentArticles = getCache(cacheKey, forceCache) %}
 {% if (recentArticles is empty) %}
     {% set recentArticles  = _Article.getRecentArticles( { limit: 6, blogId: blogData['id'] }) %}
-    {% set cache = setCache(cacheKey, recentArticles, 900) %} 
+    {% set cache = setCache(cacheKey, recentArticles, 900, forceCache) %} 
 {% endif %} 
 
 
