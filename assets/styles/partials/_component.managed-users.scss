@@ -10,18 +10,29 @@
 .managed-users-search__field {
     padding:0;
     margin:0;
+    width: calc(100% - 50px);
+    height: 100%;
+    outline: none;
 }
 .managed-users-search__button {
     padding:0;
     margin:0;
     position: absolute;
-    top: 0px;
+    top: 12px;
     right: 14px;
     background:none;
     border:none;
     color:color(red);
     @include font-size(14);
     font-style: italic;
+}
+.managed-userContainer {
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
 }
 
 .managed-users-search__button-clear {
