@@ -151,7 +151,7 @@ Card.prototype.bindPosition = function(e)
         }
         
         const data = {position: display};
-        Server.fetch(_appJsConfig.baseHttpPath + '/api/article/get-position', data).done(function(r) {
+        Server.fetch(_appJsConfig.appHostName + '/api/article/get-position', data).done(function(r) {
             console.log(r);
         });
 
@@ -170,7 +170,7 @@ Card.prototype.bindPosition = function(e)
         const title = button[0].dataset.title;
 
         const logData = {offset: 0, type: 'all', entityType: 'article', entityId: articleId, showType: 'activityFeed'};
-        Server.create(_appJsConfig.baseHttpPath + '/admin/api/network-log/load-more', logData).done(function(r) {
+        Server.create(_appJsConfig.appHostName + '/admin/api/network-log/load-more', logData).done(function(r) {
             // console.log(r);
             const logModal = new Modal('modal', 'log-modal', {
                 "log": 'articleLog',
