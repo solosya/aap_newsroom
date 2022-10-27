@@ -75,6 +75,19 @@
     {% endif %}
 
 
+
+    <button 
+        class             = "btnhide social-tooltip j-logs activity_logs"
+        type              = "button"
+        title             = "Article activity"
+        data-title        = "{{article.title}}" 
+        data-status       = "{{isPinned}}"
+        data-position     = "{{position}}" 
+        data-ispinned     = "{{article.isPinned}}" 
+        data-articleid    = "{{id}}"
+        data-displayorder = "{{article.displayOrder}}">
+        <i class            = "far fa-chart-line"></i><span class="u-display-none"></span>
+    </button>
     {# Live BUTTON #}
     {# <button data-id         = "{{id}}" 
             title           = "Live edit" 

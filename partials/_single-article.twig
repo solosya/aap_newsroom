@@ -1,18 +1,54 @@
 {% import "quotes.twig" as quotes %}
 
+{% set isAdmin = _User.isAdminUser() %}
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == true   ? true      : false   %}
 {% set lazyload      = lazyload      is defined and lazyload == false       ? false     : true    %}
 {% set template      = template      is defined and template != ''          ? template  : 'main'  %}
 {% set swap          = swap          is defined and swap == 'false'         ? ''        : 'swap'  %}
-{% set dev           = dev           is defined and dev == true             ? true      : false   %}
+{% set dev           = dev           is defined and dev == true and isAdmin ? true      : false    %}
 {% set inline        = inline        is defined and inline != ''            ? inline    : ''      %}
 
 {# This can add a prefix to the card class to segregate its styles #}
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
 
+
+{% set url = _AppHelper.getParsedUrl %}
+{% set params = url['query'] %}
+{% for k, p in params %}
+    {% if k == 'images' %}
+        {% if p == 'false' %}
+            {% set imageSuppress = true %}
+        {% endif %}
+        {% if p == 'video' %}
+            {% set forceVideo = true %}
+        {% endif %}
+    {% endif %}
+    {% if k == 'premium' %}
+        {% if p == 'false' %}
+            {% set premiumSuppress = true %}
+        {% endif %}
+
+        {% if p == 'true' %}
+            {% set forcePremium = true %}
+        {% endif %}
+
+    {% endif %}
+    {% if k == 'dev' %}
+        {% if p == 'true' and isAdmin %}
+            {% set dev = true %}
+        {% endif %}
+    {% endif %}
+
+{% endfor %}
+
+
+
+
+
+
 {% set draggable = 'false' %}
-{% if _User.isAdminUser %}
+{% if isAdmin %}
     {% set draggable = swap is defined and swap == 'swap' ? "true" : 'false' %}
 {% endif %}
 
@@ -154,7 +190,12 @@
             title="{{totalstring}}">
             
             {% if dev %}
-                <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
+                <div class="j-position {{cardType}}c-cards-view__article_number" 
+                    data-ispinned="{{article.isPinned}}" 
+                    data-position="{{position}}"
+                    data-displayorder="{{article.displayOrder}}"
+                    data-articleid="{{article.id}}">{{position}}
+                    </div>
                 <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
                 {# <div class="{{cardType}}c-cards-view__cardId">{{cardId}}</div> #}
             {% endif %}
