@@ -169,7 +169,7 @@ Card.prototype.bindPosition = function(e)
         const articleId = button[0].dataset.articleid;
         const title = button[0].dataset.title;
 
-        const logData = {offset: 0, type: 'all', entityType: 'article', entityId: articleId, showType: 'activityFeed'};
+        const logData = {offset: 0, limit:100, type: 'all', entityType: 'article', entityId: articleId, showType: 'activityFeed'};
         logData['typeIn'] = ["article", "blogFeed"];
         Server.create(_appJsConfig.appHostName + '/admin/api/network-log/load-more', logData).done(function(r) {
             // console.log(r);
