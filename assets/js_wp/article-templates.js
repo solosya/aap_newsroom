@@ -81,6 +81,18 @@ const cardTemplateBottom =
                 '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn {{# ifCond isPinned "==" 1}} selected {{/ifCond}} " type="button" data-status="{{isPinned}}">'+
                     '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+   
                 '</button>'+
+                '<button \
+                    class             = "btnhide social-tooltip j-logs activity_logs" \
+                    type              = "button" \
+                    title             = "Article activity" \
+                    data-title        = "{{title}}" \
+                    data-status       = "{{isPinned}}" \
+                    data-position     = "{{position}}" \
+                    data-ispinned     = "{{isPinned}}" \
+                    data-articleid    = "{{articleId}}" \
+                    data-displayorder = "{{displayOrder}}"> \
+                    <i class="far fa-chart-line"></i><span class="hide"></span>'+   
+                '</button>'+
             '</div>'+
         "{{/if}}"+
     '</a>'+
