@@ -414,6 +414,21 @@ modalVideo:
     </video> \
 </div>',
 
+
+articleLog:
+'<div id="" class="article-log"> \
+    {{#each logs}} \
+        <div class="article-log__item"> \
+            <img class="article-log__profile" src="{{ProfileImage}}" > \
+            <div class="article-log__message-container"> \
+                <p class="article-log__message">{{log_message}}</p> \
+                <p class="article-log__date">{{date}}</p> \
+            </div> \
+        </div> \
+    {{/each}} \
+</div>',
+
+
 registerPopup: 
 '<div id="register-popup" class="register-popup"> \
     <div class="container"> \
