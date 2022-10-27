@@ -1,0 +1,45 @@
+.article-log {
+	max-height: 500px;
+	overflow:auto;
+
+	&__item {
+		display:flex;
+		margin-bottom: 15px;
+		margin-right: 20px;
+		padding: 10px 10px 0 10px;
+		background: aliceblue;
+		border-radius: 0 10px;
+		// box-shadow: 1px 0px 7px -1px rgba(173,41,41,0.75);
+	}
+
+	&__profile {
+		width:40px;
+		height:40px;
+		background-size:cover;
+		border-radius:100%;
+	}
+
+
+	&__message-container {
+		display:flex;
+		display: flex;
+		flex-grow: 2;
+		flex-direction: column;
+		margin-left:20px;
+
+	}
+
+	&__message{
+		text-align:left;
+		font-size:14px;
+		margin-bottom: 10px;
+		line-height: 1.2;
+	}
+
+	&__date {
+		padding:3px;
+		border-top: 1px solid #ddf0ff;
+		font-size:12px;
+		text-align:right;
+	}
+}

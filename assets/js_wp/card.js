@@ -133,7 +133,53 @@ Card.prototype.renderReadingTime = function (time)
     }
 };
 
+Card.prototype.bindPosition = function(e)
+{
 
+
+    $('.j-position').on("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        const position = e.target.dataset.position;
+        const display = e.target.dataset.displayorder;
+        const isPinned = e.target.dataset.ispinned;
+
+        if (isPinned) {
+            console.log(parseInt(position));
+            return;
+        }
+        
+        const data = {position: display};
+        Server.fetch(_appJsConfig.baseHttpPath + '/api/article/get-position', data).done(function(r) {
+            console.log(r);
+        });
+
+    });
+
+
+
+
+    $('.j-logs').on("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        const elem = $(e.target);
+        const button = elem.closest('button');
+        const articleId = button[0].dataset.articleid;
+        const title = button[0].dataset.title;
+
+        const logData = {offset: 0, type: 'all', entityType: 'article', entityId: articleId, showType: 'activityFeed'};
+        Server.create(_appJsConfig.baseHttpPath + '/admin/api/network-log/load-more', logData).done(function(r) {
+            // console.log(r);
+            const logModal = new Modal('modal', 'log-modal', {
+                "log": 'articleLog',
+            } ); 
+
+            logModal.render("log", "Activity logs for " + title, r);
+        });
+    });
+};
 
 // events
 Card.prototype.bindPinUnpinArticle = function()
@@ -423,6 +469,7 @@ Card.prototype.events = function()
         self.bindDeleteHideArticle();
         // self.BindLightboxArticleBtn();
 
+        self.bindPosition();
     }
     // self.bindSocialPostPopup();
 };
