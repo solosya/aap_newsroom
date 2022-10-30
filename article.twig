@@ -810,7 +810,7 @@
         "@type": "NewsArticle",
         "isAccessibleForFree": {{isPaywalled}},
         "isPartOf": {
-            "@type": ["Product"],
+            "@type": ["CreativeWork", "Product"],
             "name": "Newsroom",
             "productID": "newsroom.co.nz:showcase"
         },
@@ -863,13 +863,13 @@
             granted: false
         };
 
-        if (isPremium && !paywalled && !guestUser) {
+        if (isPremium && publisherGranted && !guestUser) {
             window.userState = {
                 id: "{{userGuid}}",
                 registrationTimestamp: "{{userCreatedAt}}",
                 subscriptionTimestamp: "{{userCreatedAt}}",
                 granted: publisherGranted,
-                grantRease: "SUBSCRIBER"
+                grantReason: "SUBSCRIBER"
             };
         }
 
@@ -878,7 +878,7 @@
 
         // Registered user with no access #}
         // if paywalled and not guestUser %}
-        if (paywalled && !guestUser) {
+        if (!publisherGranted && !guestUser) {
             window.userState = {
                 id: "{{user.guid}}",
                 registrationTimestamp: "{{userCreatedAt}}",
