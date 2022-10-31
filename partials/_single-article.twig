@@ -15,6 +15,10 @@
 
 {% set url = _AppHelper.getParsedUrl %}
 {% set params = url['query'] %}
+{% set premiumSuppress = false %}
+{% set forcePremium = false %}
+{% set forceVideo = false %}
+
 {% for k, p in params %}
     {% if k == 'images' %}
         {% if p == 'false' %}
