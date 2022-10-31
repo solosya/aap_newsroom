@@ -866,8 +866,8 @@
         if (isPremium && publisherGranted && !guestUser) {
             window.userState = {
                 id: "{{userGuid}}",
-                registrationTimestamp: "{{userCreatedAt}}",
-                subscriptionTimestamp: "{{userCreatedAt}}",
+                registrationTimestamp: parseInt("{{userCreatedAt}}"),
+                subscriptionTimestamp: parseInt("{{userCreatedAt}}"),
                 granted: publisherGranted,
                 grantReason: "SUBSCRIBER"
             };
@@ -881,7 +881,7 @@
         if (!publisherGranted && !guestUser) {
             window.userState = {
                 id: "{{user.guid}}",
-                registrationTimestamp: "{{userCreatedAt}}",
+                registrationTimestamp: parseInt("{{userCreatedAt}}"),
                 granted: false,
             };
         }
