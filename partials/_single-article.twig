@@ -15,6 +15,10 @@
 
 {% set url = _AppHelper.getParsedUrl %}
 {% set params = url['query'] %}
+{% set premiumSuppress = false %}
+{% set forcePremium = false %}
+{% set forceVideo = false %}
+
 {% for k, p in params %}
     {% if k == 'images' %}
         {% if p == 'false' %}
@@ -69,7 +73,7 @@
 
     {% set placeholder = 'https://place-hold.it/1' %}
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
-    {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
+    {% set hasArticleMediaClass = ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress != true) ? 'withImage__content': 'without__image' %}
 
 
 
@@ -135,6 +139,7 @@
     {# {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %} #}
 
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+    {% set figureClass = forceVideo ? 'video' : figureClass %}
 
 
 
@@ -201,7 +206,7 @@
             {% endif %}
 
             <article class="{{params.cardType}}c-cards-view">
-                {% if article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE' %}
+                {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress != true %}
                     <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
                         {% if lazyload == false %}
                             <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
@@ -263,6 +268,7 @@
     {% set social = article.social %}
     {% set mediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content' : 'without__image' %}
     {% set videoClass = (social.media['type'] == 'video') ? 'video_card' : '' %}
+    {% set videoClass = forceVideo ? 'video_card' : videoClass %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
 
