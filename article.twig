@@ -263,6 +263,7 @@
 {% endif %}
 
 <meta name="google-signin-client_id" content="{{client_id}}">
+
 <main id="main" 
     class="site-main u-margin-top-40"
     role="main" 
@@ -271,6 +272,9 @@
     data-comment-setting="{{commentSettingString}}"
     data-guest="{{guestString}}"
     data-paywall-reason="{{reason}}"
+    data-isGaa="{{isGaa}}"
+    data-showcase="{{showcase}}"
+
     {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
@@ -931,6 +935,7 @@
         };
 
         var showcaseEntitlement = "{{showcase}}";
+        console.log(showcaseEntitlement);
 
         var initData = {
             googleApiClientId: "{{client_id}}", 
