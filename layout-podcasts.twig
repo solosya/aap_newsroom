@@ -27,6 +27,12 @@
             "link": "",
             "description": "",
             "title": ""
+        },
+        "Peter Ellis, the creche case & me podcast": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -68,14 +74,14 @@
 %} #}
 
 
-{% set limit = 4 %}
+{% set limit = 5 %}
 
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key | lower %}
             {% set sections = sections | merge({
                 (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                    'feed': _Blog.getBlogFeed({'limit': 5, 'offset': 0, 'blogid':blog.guid}),
                     'link' : blog.link,
                     'description'   : blog.short_description,
                     'title'         : blog.title,
@@ -155,6 +161,15 @@
                         'blogFeeds' : sections,
                         'template' : 'partials/pro/hero-four-dark.twig',
                         'title' : "podcast: two cents' worth"
+                    }) | raw}}
+                {% endif %}
+
+                {% if sections["Peter Ellis, the creche case & me podcast"].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : "Peter Ellis, the creche case & me podcast",
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : "Peter Ellis, the creche case & me podcast"
                     }) | raw}}
                 {% endif %}
                 
