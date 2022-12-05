@@ -14,6 +14,7 @@
 {% set pwstats = _User.getPaywallStats(true) %}
 {% set plans = _Paywall.getActiveNetworkPaywallPlans() %}
 
+{% set changePlans = [] %}
 {% set topPlans = [] %}
 {% set bottomPlans = [] %}
 {% set signupurl = '/subscribeform' %}
@@ -24,13 +25,14 @@
     {% if "!*!" in plan.description %}
 
         {% set description = plan.description | split("!*!") %}
-
         {% set data = _AppHelper.jsonDecode( description[0] ) %}
         {% if data['showplan'] is defined and data['showplan'] == false %}
             {% set continue = true %}
         {% endif %}
 
         {% if not continue %}
+            {% set changePlans = changePlans | merge({ ("0") : plan}) %}
+
             {% set plan = plan | merge({ ("order") : data['order']}) %}
             {% if data['best'] is defined and data['best'] == true %}
                 {% set plan = plan | merge({ ("best") : 'true'}) %}
@@ -45,6 +47,8 @@
             {% endif %}
         {% endif %}
 
+    {% else %}
+        {% set changePlans = changePlans | merge({ ("0") : plan}) %}
     {% endif %} 
 {% endfor %}
 
@@ -610,7 +614,7 @@
                                 data-currentplanperiodcount="{{pwstats['period_count']}}"
                             >
 
-                            {% for plan in plans %}
+                            {% for plan in changePlans %}
                                 {# {% if pwstats['status'] != 'paid' and pwstats['status'] != 'trial' %} #}
                                 {% set description = plan.description | split("!*!") %}
 
