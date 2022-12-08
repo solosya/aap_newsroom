@@ -135,6 +135,7 @@ $('.j-mcmultisubscribe').on('click',function(event){
 });
 
 $('.j-mccancel').on('click',function(){
+    console.log('test');
     $('#j-mcpopup').data('email','');
     $('#j-mcpopup').addClass('d-none');
     $( "#j-mccheckbox-3-0" ).prop( "checked", false );
@@ -146,7 +147,7 @@ $('.j-mccancel').on('click',function(){
     $( "#j-mccheckbox-3-3" ).prop( "checked", false );
     $( "#j-box-3-3" ).removeClass("d-none");
     $( "#j-mccheckbox-3-4" ).prop( "checked", false );
-    $( "#j-box-3-4" ).removeClass("d-none");
+    $( "#j-box-3-4").removeClass("d-none");
     $('#j-mcpopup-signup').removeClass('d-none');
     $('#j-mcpopup-cancel').html('CANCEL');
     $('#j-mcpopup-blurb').html("While you’re here would you like to sign up to any of our other email newsletters?");
