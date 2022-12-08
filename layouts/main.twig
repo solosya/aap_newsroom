@@ -243,9 +243,9 @@
     <!-- Google Tag Manager body -->
 
 
-    {% if _AppHelper.getApplicationEnv() != 'PROD' %} 
+    {# {% if _AppHelper.getApplicationEnv() != 'PROD' %} 
         {{ this.render('../tag-manager_head.twig')  | raw }}
-    {% endif %}
+    {% endif %} #}
 
 
     {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
