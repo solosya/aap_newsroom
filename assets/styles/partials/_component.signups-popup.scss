@@ -11,7 +11,7 @@
         width: max-content;
         height: max-content;
         max-width: 816px;
-        max-height: 505px;
+        max-height: 700px;
         margin: 0 auto;
         background: $white;
         padding: 70px;
@@ -73,6 +73,15 @@
     &__logo{
         height: 30px;
         padding: 5px 0;
+
+        &.sustainable_logo {
+            height: 25px;
+            object-fit: contain;
+            @media #{$mobile}{
+                padding: 4px 0;
+                height: 20px;
+            }
+        }
     }
 
     &__text{

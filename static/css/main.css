@@ -25880,7 +25880,7 @@ input[type=radio].inline {
   width: max-content;
   height: max-content;
   max-width: 816px;
-  max-height: 505px;
+  max-height: 700px;
   margin: 0 auto;
   background: #ffffff;
   padding: 70px;
@@ -25944,6 +25944,16 @@ input[type=radio].inline {
 .c-signups-popup__logo {
   height: 30px;
   padding: 5px 0;
+}
+.c-signups-popup__logo.sustainable_logo {
+  height: 25px;
+  object-fit: contain;
+}
+@media screen and (max-width : 767px) {
+  .c-signups-popup__logo.sustainable_logo {
+    padding: 4px 0;
+    height: 20px;
+  }
 }
 .c-signups-popup__text {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
