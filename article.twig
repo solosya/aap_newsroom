@@ -263,7 +263,6 @@
 {% endif %}
 
 <meta name="google-signin-client_id" content="{{client_id}}">
-
 <main id="main" 
     class="site-main u-margin-top-40"
     role="main" 
@@ -275,7 +274,6 @@
     data-isGaa="{{isGaa}}"
     data-showcase="{{showcase}}"
     data-url="{{article.url}}"
-
     {# data-comments="{{commentCount}}" #}
     data-cacheKey="{{cacheKey}}" 
     >
@@ -413,8 +411,8 @@
                                     <p class="catalyst-section__arttext">In association with</p>
                                 </div>
                             {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
-                                <div class="catalyst-section catalyst-section__article d-none">
-                                    <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=5" alt="logo">
+                                <div class="catalyst-section catalyst-section__article d-block d-lg-none">
+                                    <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.svg?v=5" alt="logo">
                                     <p class="catalyst-section__arttext">In association with</p>
                                 </div>
 
@@ -486,14 +484,14 @@
 
                             {% if guestUser %}
                                 {% if articleBlog == 'lockerroom' %}
-                                    <div class="article-support">
-                                        <div class="article-support__text">
+                                    {# <div class="article-support"> #}
+                                        {# <div class="article-support__text">
                                             <p class="article-support__content">LockerRoom is made possible by contributions from readers like you. Become a supporter to expand our in-depth coverage of women's sport in NZ.</p>
-                                        </div>
-                                        <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
+                                        </div> #}
+                                        {# <a href="https://dashboard.presspatron.com/donations/new?frame=1&t=9Ac35CVe5uEb9P8vFFb5YjFu" data-pp-page="pwyw" data-pp-metadata="custom-button-v1" target="_blank"> 
                                             <div class="d-print-none article-support__button">Become a Supporter</div>
-                                        </a>
-                                    </div>
+                                        </a> #}
+                                    {# </div> #}
 
                                 {% else %}
                                     <div class="article-support row">
@@ -646,8 +644,8 @@
                                     </div>
                                    
                                 {% elseif articleBlog == 'sustainable future' or blogName|lower == 'sustainable future' or 'sustainable future' in article.label | lower %}
-                                    <div class="catalyst-section catalyst-section__article d-none">
-                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.png?v=5" alt="logo">
+                                    <div class="catalyst-section catalyst-section__article d-none d-lg-block">
+                                        <img class="catalyst-section__artlogo" src="{{networkData.templatePath}}/static/images/logos/hyundai.svg?v=5" alt="logo">
                                         <p class="catalyst-section__arttext">In association with</p>
                                     </div>
                                 {% elseif articleBlog == 'cop26' or blogName|lower == 'cop26' or 'cop26' in article.label | lower %}
@@ -856,7 +854,6 @@
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
 
-
         let isPremium = "{{isPremium}}" == 1 ? true : false;
         let paywalled = "{{showPaywall}}" == 1 ? true: false;
         let publisherGranted = "{{isPublisherPaywalled}}" == true ? false : true;
@@ -877,7 +874,6 @@
                 grantReason: "SUBSCRIBER"
             };
         }
-
 
 
 
@@ -936,7 +932,6 @@
         };
 
         var showcaseEntitlement = "{{showcase}}";
-        console.log(showcaseEntitlement);
 
         var initData = {
             googleApiClientId: "{{client_id}}", 
@@ -952,7 +947,6 @@
         if (showcaseEntitlement) {
             initData['showcaseEntitlement'] = showcaseEntitlement;
         }
-
         console.log(initData);
         GaaMetering.init(initData);
     });   

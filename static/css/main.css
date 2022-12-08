@@ -14927,7 +14927,7 @@ body.no_profile .profile_overlay {
 }
 .user_profile .user_profile_section {
   margin: 36px auto 0 auto;
-  max-width: 722px;
+  max-width: 900px;
   background-color: #fff;
   padding: 40px;
 }
@@ -24743,7 +24743,7 @@ input[type=radio].inline {
   .catalyst-section__channel {
     margin-top: 0;
     margin-bottom: 15px;
-    height: 25px;
+    height: 35px;
     padding-right: 0;
     width: fit-content;
     margin-left: 25px;
@@ -24797,6 +24797,8 @@ input[type=radio].inline {
   height: 30px;
   float: right;
   margin-right: -20px;
+  max-width: 150px;
+  margin-left: 25px;
 }
 @media screen and (max-width : 767px) {
   .catalyst-section__artlogo {
@@ -25081,7 +25083,7 @@ input[type=radio].inline {
   }
 }
 .circularity-section__chalogo.hyundai-logo {
-  height: 35px;
+  height: 30px;
 }
 @media screen and (max-width : 767px) {
   .circularity-section__chalogo.hyundai-logo {
@@ -25878,7 +25880,7 @@ input[type=radio].inline {
   width: max-content;
   height: max-content;
   max-width: 816px;
-  max-height: 505px;
+  max-height: 700px;
   margin: 0 auto;
   background: #ffffff;
   padding: 70px;
@@ -25942,6 +25944,16 @@ input[type=radio].inline {
 .c-signups-popup__logo {
   height: 30px;
   padding: 5px 0;
+}
+.c-signups-popup__logo.sustainable_logo {
+  height: 25px;
+  object-fit: contain;
+}
+@media screen and (max-width : 767px) {
+  .c-signups-popup__logo.sustainable_logo {
+    padding: 4px 0;
+    height: 20px;
+  }
 }
 .c-signups-popup__text {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -28543,6 +28555,7 @@ input[type=radio].inline {
   font-weight: 600;
   color: #e22f22;
   margin-left: 10px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 @media screen and (min-width : 768px) and (max-width : 991px) {
   .paywall-plan-card__best-value-label {
@@ -28563,6 +28576,7 @@ input[type=radio].inline {
   font-weight: 600;
   color: #e22f22;
   margin-left: auto;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 @media screen and (min-width : 768px) and (max-width : 991px) {
   .paywall-plan-card__best-value-amount {
