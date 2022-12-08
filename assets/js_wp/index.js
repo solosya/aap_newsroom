@@ -97,13 +97,9 @@ $('a.j-register').on('click', function(e) {
 
 $('.j-mcsubscribe').on('click',function(event) {
     var target = $(event.currentTarget); 
-    console.log(target);
     var email = $('#'+target.data('input')).val();
     var className = "j-group3-" + target.data('type');
     var checkbox = document.getElementsByClassName(className);
-    
-    console.log(checkbox);
-    console.log(className);
 
     checkbox[0].checked = true;
     $('#j-box-'+target.data('type')).addClass('d-none');
@@ -135,7 +131,6 @@ $('.j-mcmultisubscribe').on('click',function(event){
 });
 
 $('.j-mccancel').on('click',function(){
-    console.log('test');
     $('#j-mcpopup').data('email','');
     $('#j-mcpopup').addClass('d-none');
     $( "#j-mccheckbox-3-0" ).prop( "checked", false );
