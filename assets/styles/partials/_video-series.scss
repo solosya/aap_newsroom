@@ -1,0 +1,22 @@
+.video-series {
+    background-color: black;
+    width: 100%;
+    margin-top: 100px;
+    position: relative;
+
+    &:before,
+    &:after {
+        content: "";
+        background-color: black;
+        position: absolute;
+        left: -100vw;
+        top: 0;
+        height: 100%;
+        width: 100vw;
+    }
+
+    &:after {
+        right: -100vw;
+        left: auto;
+    }
+}

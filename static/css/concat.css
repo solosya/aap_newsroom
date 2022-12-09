@@ -34783,6 +34783,26 @@ body.channel.supporters p span {
   text-align: right;
 }
 
+.video-series {
+  background-color: black;
+  width: 100%;
+  margin-top: 100px;
+  position: relative;
+}
+.video-series:before, .video-series:after {
+  content: "";
+  background-color: black;
+  position: absolute;
+  left: -100vw;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+}
+.video-series:after {
+  right: -100vw;
+  left: auto;
+}
+
 .card {
   display: block;
   height: 100%;
