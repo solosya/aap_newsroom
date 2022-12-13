@@ -13,10 +13,54 @@
         top: 0;
         height: 100%;
         width: 100vw;
+        z-index: 10;
     }
 
     &:after {
         right: -100vw;
         left: auto;
+    }
+
+    &__bottomBar {
+        background-color: $brand-secondary;
+        padding: 12px 0;
+        position: relative;
+        @include flexbox;
+        @include flex-direction(column);
+
+        @media #{$media-ipadPortrait} {
+            display: none;
+        }
+
+        &:before,
+        &:after {
+            content: "";
+            background-color: $brand-secondary;
+            position: absolute;
+            left: -100vw;
+            top: 0;
+            height: 100%;
+            width: 100vw;
+            z-index: 11;
+        }
+
+        &:after {
+            right: -100vw;
+            left: auto;
+        }
+
+        &_podcast {
+            @include flexbox;
+            @include align-items(center);
+
+            &-text {
+                text-transform: uppercase;
+                font-size: 15.5px;
+                line-height: 1.16;
+                color: $white;
+                font-weight: $weightBold;
+                margin-left: 7px;
+            }
+        }
     }
 }
