@@ -114,6 +114,10 @@
         "puzzles": {
             "feed": "",
             "link": ""
+        },
+		"videoseries": {
+            "feed": "",
+            "link": ""
         }
     }
 %}
@@ -264,8 +268,8 @@ So you don't have to create all the sections on dev #}
 							{# <span class="ad-text">Advertisement</span> #}
 						</div>
 						{# <div class="col-md-6 d-none d-md-block">
-						                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
-						                            </div> #}
+																		                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
+																		                            </div> #}
 					</section>
 
 
@@ -314,15 +318,15 @@ So you don't have to create all the sections on dev #}
 					{% endfor %}
 
 					{# {% if articles[articleCount] %}
-					                            {{this.render('partials/_single-article.twig', {
-					                                article: articles[articleCount], 
-					                                position: (articleCount + 1), 
-					                                containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
-					                                imageSize: {width:330, height:236},
-					                                dev: dev
-					                            }) | raw}}
-					                            {% set articleCount = articleCount + 1 %}
-					                        {% endif %} #}
+															                            {{this.render('partials/_single-article.twig', {
+															                                article: articles[articleCount], 
+															                                position: (articleCount + 1), 
+															                                containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
+															                                imageSize: {width:330, height:236},
+															                                dev: dev
+															                            }) | raw}}
+															                            {% set articleCount = articleCount + 1 %}
+															                        {% endif %} #}
 
 
 					<section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
@@ -344,17 +348,17 @@ So you don't have to create all the sections on dev #}
 
 
 				{# ********************************************************
-				                                            SIDEBAR
-				                    ******************************************************** #}
+												                                            SIDEBAR
+												                    ******************************************************** #}
 				<div class="col-sm-12 col-lg-4 sidebar">
 					<div
 						class="row u-mobile-margin-top-40">
 						{#{% if _Page.getPageData("rnz") is defined %}
-						                                <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
-						                                    {% set rnzpage = _Page.getPageData("rnz", false) %}
-						                                    {{rnzpage.content | raw}}
-						                                </div>
-						                            {% endif %}#}
+																		                                <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
+																		                                    {% set rnzpage = _Page.getPageData("rnz", false) %}
+																		                                    {{rnzpage.content | raw}}
+																		                                </div>
+																		                            {% endif %}#}
 
 						<div class="col-12 col-md-6 col-lg-12 d-none d-md-block">
 							{{this.render('/partials/cta-side.twig', {
@@ -413,35 +417,20 @@ So you don't have to create all the sections on dev #}
 
 				</div>
 			</div>
-			<div class="video-series">
-				<div class="">mayank</div>
 
-				<div class="video-series__bottomBar">
-					<div class="video-series__bottomBar_podcast">
-                        <span class="video-series__bottomBar_podcast-icon">
-                            <img src="{{networkData.templatePath}}/static/icons/podcast.svg" />
-                        </span>
-                        <span class="video-series__bottomBar_podcast-text">Podcast</span>
-					</div>
-					<div class="video-series__bottomBar_text"></div>
-					<div class="video-series__bottomBar_listen">
-						<span class="video-series__bottomBar_listen-icon">
-                            <img src="{{networkData.templatePath}}/static/icons/podcast-video.svg" />
-                        </span>
-						<span class="video-series__bottomBar_listen-text">Listen now</span>
-					</div>
-				</div>
-			</div>
+			{% if sections['videoseries'].feed.articles|length > 0 %}
+				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
+			{% endif %}
 			{% if sections['newsroom pro'].feed.articles|length > 0 %}
 				{{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
 			{% endif %}
 
 			{# {% if sections['election 2020'].feed.articles|length > 0 %}
-			                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
-			                {% endif %} #}
+									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
 			{# {% if sections['economic recovery'].feed.articles|length > 0 %}
-			                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
-			                {% endif %} #}
+									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
 
 			{% if sections['ideasroom'].feed.articles|length > 0 %}
 				{{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
@@ -452,8 +441,8 @@ So you don't have to create all the sections on dev #}
 			{% endif %}
 
 			{#{% if sections['climate emergency'].feed.articles|length > 0 %}
-			                    {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
-			                {% endif %}#}
+									                    {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %}#}
 
 
 			{% if sections['sustainable future'].feed.articles|length > 0 %}
@@ -482,8 +471,8 @@ So you don't have to create all the sections on dev #}
 
 
 			{# {% if sections['livingroom'].feed.articles|length > 0 %}
-			                    {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}
-			                {% endif %} #}
+									                    {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
 
 
 		</div>

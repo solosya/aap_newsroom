@@ -1,8 +1,9 @@
 .video-series {
     background-color: black;
     width: 100%;
-    margin-top: 100px;
+    margin: 100px 0;
     position: relative;
+    padding-top: 70px;
 
     &:before,
     &:after {
@@ -21,6 +22,31 @@
         left: auto;
     }
 
+    &_label {
+        @include flexbox;
+        @include align-items(center);
+        margin-bottom: 25px;
+
+        &-text {
+            text-transform: uppercase;
+            font-size: 15.5px;
+            line-height: 1.16;
+            color: $white;
+            font-weight: $weightBold;
+            margin-left: 7px;
+        }
+    }
+
+    &_head {
+        margin: 60px 0;
+        &_content {
+            font-size: 20px;
+            line-height: 1.4;
+            color: $white;
+        }
+    }
+    
+
     &__bottomBar {
         background-color: $brand-secondary;
         padding: 12px 0;
@@ -28,8 +54,39 @@
         @include flexbox;
         @include flex-direction(column);
 
-        @media #{$media-ipadPortrait} {
-            display: none;
+        @media #{$media-desktop-up} {
+            @include flex-direction(row);
+            @include justify-content(space-between);
+        }
+
+        &-cont {
+            @include flexbox;
+            @include flex-direction(column);
+
+            @media #{$media-desktop-up} {
+                @include flex-direction(row);
+                @include align-items(center);
+            }
+        }
+
+        &_text {
+            font-size: 20px;
+            line-height: 1.16;
+            color: $white;
+            font-weight: $weightBold;
+            border-top: 2px solid $white;
+            margin-top: 15px;
+            padding-top: 15px;
+            position: relative;
+
+            @media #{$media-desktop-up} {
+                border-left: 2px solid $white;
+                margin-left: 15px;
+                padding-left: 15px;
+                border-top: none;
+                margin-top: 0;
+                padding-top: 0;
+            }
         }
 
         &:before,
@@ -49,7 +106,8 @@
             left: auto;
         }
 
-        &_podcast {
+        &_podcast,
+        &_listen {
             @include flexbox;
             @include align-items(center);
 
@@ -60,6 +118,118 @@
                 color: $white;
                 font-weight: $weightBold;
                 margin-left: 7px;
+            }
+        }
+
+        &_listen {
+            margin-top: 15px;
+
+            @media #{$media-desktop-up} {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .contents {
+        margin-bottom: 50px;
+    }
+}
+
+.card-videoseries {
+    .card {
+        .c-cards-view {
+            @include flexbox;
+            &__media {
+                display: none;
+                flex: 1;
+                max-width: 180px;
+                max-height: 155px;
+                margin-right: 20px;
+
+
+                &.video {
+                    &::before {
+                        display: none !important;
+                    }
+                }
+
+                @media #{$media-iPad-to-desktop} {
+                    display: block;
+                }
+            }
+
+            &__titleWrap {
+                @include flexbox;
+                @include align-items(flex-start);
+                margin-top: 15px;
+
+                &.video_card {
+                    .c-cards-view__videoIcon {
+                        margin-right: 15px;
+                        width: 30px;
+                    }
+                    .c-cards-view__heading {
+                        width: calc(100% - 40px);
+                    }
+                }
+            }
+
+            &__heading {
+                color: $white;
+                font-size: 18px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 15px;
+            }
+
+            &__description {
+                color: $white;
+                font-size: 14px;
+                line-height: 1.2;
+                height: 50px;
+                margin-bottom: 20px;
+                flex: 1;
+            }
+
+            &__container {
+                flex: 1;
+                border-bottom: 1px solid $white;
+                margin-bottom: 30px;
+                height: calc(100% - 30px);
+            }
+
+            &__category {
+                &-container {
+                    @include flexbox;
+                    @include align-items(center);
+                }
+
+                &.label {
+                    background-color: $brand-secondary;
+                    color: $white;
+                    font-size: 12px;
+                    padding: 4px;
+                    margin-right: 8px;
+                }
+
+                &.category {
+                    color: $white;
+                    font-size: 14px;
+                }
+            }
+
+            &__resp-container {
+                @include flexbox;
+
+            }
+
+            &__mediaInner {
+                display: block;
+                width: 100px;
+                margin-right: 15px;
+                
+                @media #{$media-iPad-to-desktop} {
+                    display: none;
+                }
             }
         }
     }
