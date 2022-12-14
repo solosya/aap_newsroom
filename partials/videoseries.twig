@@ -1,0 +1,63 @@
+{% set blogShortDesc = '' %}
+{% for blogs in networkData.networkBlogs %}
+	{% if blogs.url_prefix == 'videoseries' %}
+		{% set blogShortDesc = blogs.short_description %}
+
+	{% endif %}
+{% endfor %}
+<div class="video-series">
+	<div class="video-series_label">
+		<span class="video-series_label-icon">
+			<img src="{{networkData.templatePath}}/static/icons/video-series.svg"/>
+		</span>
+		<span class="video-series_label-text">Video series</span>
+	</div>
+
+	<div class="video-series_head">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-5">
+				<a href="{{ sections['videoseries'].link }}">
+					<img src="{{networkData.templatePath}}/static/images/videoseries-logo.png" alt="viewing room" class="img-fluid">
+				</a>
+			</div>
+			<div class="col-12 col-md-6 col-lg-7">
+				{% if blogShortDesc != '' %}
+					<div class="video-series_head_content">{{blogShortDesc}}</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<div class="contents row">
+		{% for i in 0..7 %}
+			{% if sections['videoseries'].feed.articles[i] %}
+				{{this.render('_single-article_videoseries.twig', {
+                        article: sections['videoseries'].feed.articles[i], 
+                        containerClass: 'col-12 col-md-6 card-videoseries', 
+                        swap: 'false'
+                    }) | raw}}
+			{% endif %}
+		{% endfor %}
+	</div>
+	<!-- .content-->
+
+	<div class="video-series__bottomBar">
+		<div class="video-series__bottomBar-cont">
+			<div class="video-series__bottomBar_podcast">
+				<span class="video-series__bottomBar_podcast-icon">
+					<img src="{{networkData.templatePath}}/static/icons/podcast.svg"/>
+				</span>
+				<span class="video-series__bottomBar_podcast-text">Podcast</span>
+			</div>
+			{% if config['video-series']['podcast']['description'] is defined and config['video-series']['podcast']['description'] is not empty %}
+				<div class="video-series__bottomBar_text">{{config['video-series']['podcast']['description']}}</div>
+			{% endif %}
+		</div>
+		<div class="video-series__bottomBar_listen">
+			<span class="video-series__bottomBar_listen-icon">
+				<img src="{{networkData.templatePath}}/static/icons/podcast-video.svg"/>
+			</span>
+			<span class="video-series__bottomBar_listen-text">Listen now</span>
+		</div>
+	</div>
+</div>
