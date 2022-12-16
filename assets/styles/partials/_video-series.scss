@@ -46,6 +46,16 @@
         }
     }
     
+    &_view-all {
+        @include flexbox;
+        @include justify-content(flex-end);
+        
+        a {
+            color: $white;
+            border-bottom: 1px solid $white;
+            padding-bottom: 5px;
+        }
+    }
 
     &__bottomBar {
         background-color: $brand-secondary;
