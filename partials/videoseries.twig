@@ -16,7 +16,7 @@
 	<div class="video-series_head">
 		<div class="row">
 			<div class="col-12 col-md-6 col-lg-5">
-				<a href="{{ sections['videoseries'].link }}">
+				<a href="{{ sections['video series'].link }}">
 					<img src="{{networkData.templatePath}}/static/images/videoseries-logo.png" alt="viewing room" class="img-fluid">
 				</a>
 			</div>
@@ -30,9 +30,9 @@
 
 	<div class="contents row">
 		{% for i in 0..7 %}
-			{% if sections['videoseries'].feed.articles[i] %}
+			{% if sections['video series'].feed.articles[i] %}
 				{{this.render('_single-article_videoseries.twig', {
-                        article: sections['videoseries'].feed.articles[i], 
+                        article: sections['video series'].feed.articles[i], 
                         containerClass: 'col-12 col-md-6 card-videoseries', 
                         swap: 'false'
                     }) | raw}}
