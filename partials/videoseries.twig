@@ -1,6 +1,6 @@
 {% set blogShortDesc = '' %}
 {% for blogs in networkData.networkBlogs %}
-	{% if blogs.url_prefix == 'podcast-peter-ellis-the-creche-case-and-me' %}
+	{% if blogs.url_prefix == 'peter-ellis-the-creche-case--me' %}
 		{% set blogShortDesc = blogs.short_description %}
 
 	{% endif %}
@@ -30,9 +30,9 @@
 
 	<div class="contents row">
 		{% for i in 0..2 %}
-			{% if sections['peter ellis, the creche case & me podcast'].feed.articles[i] %}
+			{% if sections['peter ellis, the creche case & me'].feed.articles[i] %}
 				{{this.render('_single-article_videoseries.twig', {
-                        article: sections['peter ellis, the creche case & me podcast'].feed.articles[i], 
+                        article: sections['peter ellis, the creche case & me'].feed.articles[i], 
                         containerClass: 'col-12 col-md-6 card-videoseries', 
                         swap: 'false'
                     }) | raw}}
@@ -41,13 +41,13 @@
 
 		<div class="d-block d-md-none col-12">
 			<div class="video-series_view-all">
-				<a class="" href="{{networkData.defaultBlogUrl}}/podcast-peter-ellis-the-creche-case-and-me">View more episodes</a>
+				<a class="" href="{{networkData.defaultBlogUrl}}/peter-ellis-the-creche-case--me">View more episodes</a>
 			</div>
 		</div>
 		{% for i in 3..7 %}
-			{% if sections['peter ellis, the creche case & me podcast'].feed.articles[i] %}
+			{% if sections['peter ellis, the creche case & me'].feed.articles[i] %}
 				{{this.render('_single-article_videoseries.twig', {
-                        article: sections['peter ellis, the creche case & me podcast'].feed.articles[i], 
+                        article: sections['peter ellis, the creche case & me'].feed.articles[i], 
                         containerClass: 'col-12 col-md-6 card-videoseries d-none d-md-block', 
                         swap: 'false'
                     }) | raw}}
