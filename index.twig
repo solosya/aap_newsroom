@@ -123,16 +123,35 @@
 %}
 
 
-{% for key, value in sections %}
+{# {% for key, value in sections %}
 	{% for blog in networkData.networkBlogs %}
-
-		{% if blog.title | lower == key %}
+		{% if blog.title | lower == 'peter ellis, the creche case & me' %}
 			{% set sections = sections | merge({
-                (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                ("peter ellis, the creche case & me") : {
+                    'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
                     'link' : blog.link
                     }
                 }) %}
+		{% elseif blog.title | lower == key %}
+			{% set sections = sections | merge({
+			(key) : {
+				'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+				'link' : blog.link
+				}
+			}) %}
+		{% endif %}
+	{% endfor %}
+{% endfor %} #}
+
+{% for key, value in sections %}
+	{% for blog in networkData.networkBlogs %}
+		{% if blog.title | lower == key %}
+			{% set sections = sections | merge({
+			(key) : {
+				'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
+				'link' : blog.link
+				}
+			}) %}
 		{% endif %}
 	{% endfor %}
 {% endfor %}
