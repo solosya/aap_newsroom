@@ -1,0 +1,342 @@
+{% import "quotes.twig" as quotes %}
+{% set networkData = _Network.getNetworkData() %}
+{% set isAdmin = _User.isAdminUser() %}
+
+{% set imageSuppress = imageSuppress is defined and imageSuppress == true   ? true      : false   %}
+{% set lazyload      = lazyload      is defined and lazyload == false       ? false     : true    %}
+{% set template      = template      is defined and template != ''          ? template  : 'main'  %}
+{% set swap          = swap          is defined and swap == 'false'         ? ''        : 'swap'  %}
+{% set dev           = dev           is defined and dev == true and isAdmin ? true      : false    %}
+{% set inline        = inline        is defined and inline != ''            ? inline    : ''      %}
+
+{# This can add a prefix to the card class to segregate its styles #}
+{% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
+
+
+{% set url = _AppHelper.getParsedUrl %}
+{% set params = url['query'] %}
+{% set premiumSuppress = false %}
+{% set forcePremium = false %}
+{% set forceVideo = false %}
+
+{% for k, p in params %}
+    {% if k == 'images' %}
+        {% if p == 'false' %}
+            {% set imageSuppress = true %}
+        {% endif %}
+        {% if p == 'video' %}
+            {% set forceVideo = true %}
+        {% endif %}
+    {% endif %}
+    {% if k == 'premium' %}
+        {% if p == 'false' %}
+            {% set premiumSuppress = true %}
+        {% endif %}
+
+        {% if p == 'true' %}
+            {% set forcePremium = true %}
+        {% endif %}
+
+    {% endif %}
+    {% if k == 'dev' %}
+        {% if p == 'true' and isAdmin %}
+            {% set dev = true %}
+        {% endif %}
+    {% endif %}
+
+{% endfor %}
+
+
+
+
+
+
+{% set draggable = 'false' %}
+{% if isAdmin %}
+    {% set draggable = swap is defined and swap == 'swap' ? "true" : 'false' %}
+{% endif %}
+
+
+{% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
+    {% set articleImg = '' %}
+    {% if article.featuredMedia | length > 0 %}
+
+        {% set imgWidth = 1280 %}
+        {% set imgHeight = 720 %}
+
+        {% if imageSize is defined %}
+            {% set imgWidth = (imageSize.width is defined) ? imageSize.width : 1280  %}
+            {% set imgHeight = (imageSize.height is defined) ? imageSize.height : 720 %}
+        {% endif %}
+
+    {% endif %}
+
+    {% set placeholder = 'https://place-hold.it/1' %}
+    {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
+    {% set hasArticleMediaClass = ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress != true) ? 'withImage__content': 'without__image' %}
+
+
+
+
+
+    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDateTime,'d M Y h:ia') %} #}
+    {% set publishedDate = article.publishDate is defined ? article.publishDate : article.publishedDate %}
+    {% set publishedDateTime = article.publishDateTime is defined ? article.publishDateTime : article.publishedDateTime %}
+    {% set publishDate = publishedDate %}
+    {% set publishedAgo = _AppHelper.getSecondsSincePublished(publishedDateTime) %}
+    {% if publishedAgo < 86400 %}
+        {% set publishDate = _AppHelper.getRelativeTime(publishedDateTime) ~ " ago" %}
+    {% endif %}
+    
+    {% set updatedDateTime = article.updatedDateTime %}
+    {% set updatedDate = article.updatedDateTime |date("M d Y", false) %}
+    {% set updatededAgo = _AppHelper.getSecondsSincePublished(article.updatedDateTime) %}
+    {% if updatededAgo < 86400 %}
+        {% set updatedDate = _AppHelper.getRelativeTime(article.updatedDateTime) ~ " ago" %}
+    {% endif %}
+
+    {% set isPinned = article.isPinned == 1 ? "Pinned" : "Unpinned" %}
+    {% set pinned_position = "" %}
+    {% if article.isPinned != 1 and article.pinnedAt > 0 %}
+        {% set pinned_position = " Previously pinned at " ~ article.pinnedAt %}
+    {% elseif article.isPinned == 1 %}
+        {% set pinned_position = " at position " ~ article.pinnedAt %}
+    {% endif %}
+
+    {% set hasComments = false %}
+    {% set commentCount = 0 %}
+    {% set totalstring = "" %}
+    {% set totals = (article.total is defined) ? article.total : false %}
+    {% if totals and _User.isAdminUser() %}
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ publishDate ~ ". " ~ isPinned ~ pinned_position ~ " display order " ~ article.displayOrder %}
+    {% endif %}
+
+
+    {% if article.additionalInfo is defined and article.additionalInfo.comments is defined and article.additionalInfo.comments == 'on' %}
+        {% set hasComments = true %}
+        {% if totals and totals.comment > 0 %}
+            {% set commentCount = totals.comment %}
+        {% endif %}
+    {% endif %}
+
+    {# {% set hasComments = false %}
+    {% set commentCount = 0 %} #}
+
+
+
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+    
+
+
+    {% set articleTitle = quotes.smarten(article.title)  %}
+    {% if article.titlePreview is defined and article.titlePreview != "" %}
+        {% set articleTitle = quotes.smarten(article.titlePreview) %}
+    {% endif %}
+
+
+
+    {# {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %} #}
+
+    {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+    {% set figureClass = forceVideo ? 'video' : figureClass %}
+
+
+
+
+
+
+    {% set author = "" %}
+    {% if article['createdBy']['coauthors'] %}
+        {% set author = author ~  '<p class="j-truncate">' ~ article.createdBy['displayName'] %}
+
+        {% for i, authors in article['createdBy']['coauthors'] %}
+            {% set divider = (loop.last) ? ' and ' : ', ' %}
+            {% set author = author ~ divider ~ authors['displayName'] %}
+        {% endfor %}
+        {% set author = author ~  "</p>" %}
+
+    {% else %}
+        {% set author = author ~  '<img height="34" width="34" src=' ~ profileImg ~ ' class="img-circle" alt="' ~ article.createdBy['displayName'] ~ '">' %}
+        {% set author = author ~  '<p class="j-truncate">' ~ article.createdBy['displayName'] ~ '</p>' %}
+    {% endif %}
+    
+    <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
+        
+        {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
+
+        <a  href="{{article.url}}"
+            id="{{article.articleId}}"
+            class="{{swap}} card {{hasArticleMediaClass}}" 
+            aria-label="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            data-id="{{article.articleId}}" 
+            data-position="{{position}}"
+            draggable="{{draggable}}" 
+            data-social="0" 
+            data-article-image="{{articleImg}}" 
+            data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            title="{{totalstring}}">
+            
+            {% if dev %}
+                <div class="j-position {{cardType}}c-cards-view__article_number" 
+                    data-ispinned="{{article.isPinned}}" 
+                    data-position="{{position}}"
+                    data-displayorder="{{article.displayOrder}}"
+                    data-articleid="{{article.id}}">{{position}}
+                    </div>
+                <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
+                {# <div class="{{cardType}}c-cards-view__cardId">{{cardId}}</div> #}
+            {% endif %}
+            <article class="{{params.cardType}}c-cards-view">
+                {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress != true %}
+                    <figure class="{{params.cardType}}c-cards-view__media {{figureClass}}">
+                        {% if lazyload == false %}
+                            <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                        {% else %}
+                            <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
+                        {% endif %}
+                    </figure>
+                {% endif %}
+
+                <div class="{{params.cardType}}c-cards-view__container content">
+
+                    <div class="{{params.cardType}}c-cards-view__category-container">
+                        {% if article.label != article.blogTitle %}
+                            <div class="{{params.cardType}}c-cards-view__category label">{{article.label}}</div>
+                        {% endif %}
+                        <div class="{{params.cardType}}c-cards-view__category category">{{article.blogTitle}}</div>
+                    </div>
+
+                    <div class="c-cards-view__titleWrap {% if article.featuredMedia['type'] == 'video' %} video_card {% endif %}">
+                        {% if article.featuredMedia['type'] == 'video' %}
+                            <div class="c-cards-view__videoIcon">
+                                <img src="{{networkData.templatePath}}/static/icons/podcast-video.svg"/>
+                            </div>
+                        {% endif %}
+                        <h2 class="{{params.cardType}}c-cards-view__heading j-truncate">{{ articleTitle }}</h2>
+                    </div>
+
+                    <div class="c-cards-view__resp-container">
+                        {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress != true %}
+                            <figure class="{{params.cardType}}c-cards-view__mediaInner {{figureClass}}">
+                                {% if lazyload == false %}
+                                    <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid" src="{{articleImg}}" alt="{{ articleTitle }}" {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                                {% else %}
+                                    <img  draggable="false" width="{{imgWidth}}" height="{{imgHeight}}" class="img-fluid lazyload" data-original="{{articleImg}}" src="{{placeholder}}" alt="{{ articleTitle }}" >
+                                {% endif %}
+                            </figure>
+                        {% endif %}
+                        {% if cardClass != 'instagram no-caption' %}  
+                            <p class="{{params.cardType}}c-cards-view__description j-truncate">{{ quotes.smarten(article.excerpt | raw) }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+
+
+            {# Article admin buttons to delete/edit/pin #}
+            {% if article.userHasBlogAccess == '1' %}
+                {{ this.render('_article_admin.twig', {
+                    article  : article, 
+                    position : position, 
+                    type     : params.social == 0 ? "article" : "social",
+                    swap     : swap
+                } ) | raw }}
+            {% endif %}
+
+
+
+        </a>
+    </div>
+    
+
+
+{% else %}
+
+    {% set social = article.social %}
+    {% set mediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content' : 'without__image' %}
+    {% set videoClass = (social.media['type'] == 'video') ? 'video_card' : '' %}
+    {% set videoClass = forceVideo ? 'video_card' : videoClass %}
+    {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
+    {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
+
+    <div class="{{containerClass}}">
+        <a  href="{{social.url}}"
+            class="swap card social {{ social.source }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
+            data-id="{{article.socialId}}" 
+            data-position="{{position}}" 
+            data-social="1" 
+            data-article-image="{{social.media['path']}}" 
+            data-article-text="{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">
+
+            <article class="">
+                {% if social.hasMedia == 'TRUE' %}  
+                    <figure>
+
+                        {% if lazyload == false %}
+                            <img class="img-fluid" src="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                        {% else %}
+                            <img class="img-fluid lazyload" data-original="{{social.media['path']}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {% endif %}>
+                        {% endif %}
+
+
+                        {# <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div> #}
+                        {% if social.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
+                            <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
+                        {% endif %}
+                    </figure>
+                {% endif %}
+
+                {% if social.source == 'soundcloud' %}  
+                    <div class="other-content">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/289583160&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_artwork=false"></iframe>
+                    </div>
+                {% endif %}
+
+                <div class="content">
+                
+                    <div class="category {{social.source}}">{{social.source}}</div>
+                    
+                    <p id="updateSocial{{article.socialId}}" data-update="0">
+                            {{ quotes.smarten(social.content 
+                                | preg_replace('/(@.+?) /', '<span style="color:#0099cc">$1</span> ')
+                                | raw) }}
+                    </p>
+
+                    <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate,'d M Y')}}</time>
+                    
+                    <div class="author">
+                        <p>
+                            <img src="{{social.user.media.path}}" class="img-circle">
+                            <span class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</span>
+                        </p>
+                    </div><!-- .author-->
+
+                </div>
+            </article>
+
+            {# {% if article.userHasBlogAccess == '1' %}
+            <div class="btn_overlay articleMenu">
+                <button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
+                    <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>
+                </button>
+                    <button title="Edit" class="btnhide social-tooltip editSocialPost" type="button" data-url="/admin/social-funnel/update-social?guid={{social.blog['guid']}}&socialguid={{social.guid}}">
+                    <i class="fa fa-edit"></i><span class="hide">Edit</span>
+                    </button>
+                 {% set pinTitle = 'Pin Article' %}
+                 {% set pinTxt = 'Pin' %}
+                 {% set pinClass = '' %}
+                 {% if article.isPinned == 1 %}
+                     {% set pinTitle = 'Un-Pin Article' %}
+                     {% set pinTxt = 'Un-Pin' %}
+                     {% set pinClass = 'selected' %}
+                 {% endif %}    
+                <button data-position="{{position}}" data-social="1" data-id="{{article.socialId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn {{pinClass}}" type="button" data-status="{{article.isPinned}}">
+                    <i class="fa fa-thumb-tack"></i><span class="hide">{{pinTxt}}</span>
+                </button>
+            </div>
+            {% endif %} #}
+        </a>
+    </div><!--swiper slide-->
+
+{% endif %}
