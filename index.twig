@@ -129,7 +129,7 @@
 		{% if blog.title | lower == key %}
 			{% set sections = sections | merge({
                 (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                    'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
                     'link' : blog.link
                     }
                 }) %}
