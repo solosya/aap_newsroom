@@ -25888,7 +25888,9 @@ input[type=radio].inline {
   width: max-content;
   height: max-content;
   max-width: 816px;
-  max-height: 700px;
+  /* max-height: 700px; */
+  max-height: calc(100vh - 60px);
+  overflow: auto;
   margin: 0 auto;
   background: #ffffff;
   padding: 70px;
@@ -25954,7 +25956,7 @@ input[type=radio].inline {
   padding: 5px 0;
 }
 .c-signups-popup__logo.sustainable_logo {
-  height: 25px;
+  height: 24px;
   object-fit: contain;
 }
 @media screen and (max-width : 767px) {
