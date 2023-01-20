@@ -418,11 +418,11 @@ So you don't have to create all the sections on dev #}
 				</div>
 			</div>
 
-			{% if sections['peter ellis, the creche case & me'].feed.articles|length > 0 %}
-				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
-			{% endif %}
 			{% if sections['newsroom pro'].feed.articles|length > 0 %}
 				{{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+			{% if sections['peter ellis, the creche case & me'].feed.articles|length > 0 %}
+				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
 			{% endif %}
 
 			{# {% if sections['election 2020'].feed.articles|length > 0 %}
