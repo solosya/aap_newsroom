@@ -17818,6 +17818,12 @@ section.subscribe > p {
   position: relative;
   display: block;
   padding: 15px 20px;
+  /* &.newsroom{
+      img{
+          height: 17px;
+          margin-top: 3px;
+      }
+  } */
 }
 .mobile-menu__rooms-link.covid-19 > img {
   padding: 2px 0;
@@ -18096,6 +18102,12 @@ section.subscribe > p {
 .site-header__top .rooms-link li a {
   display: block;
   margin-left: 25px;
+  /* &.newsroom{
+      img{
+          height: 14px;
+          margin-top: 3px;
+      }
+  } */
 }
 .site-header__top .rooms-link li a img {
   height: 20px;
@@ -25880,11 +25892,13 @@ input[type=radio].inline {
   width: max-content;
   height: max-content;
   max-width: 816px;
-  max-height: 700px;
+  /* max-height: 700px; */
+  max-height: calc(100vh - 60px);
+  overflow: auto;
   margin: 0 auto;
   background: #ffffff;
   padding: 70px;
-  margin-top: 200px;
+  margin-top: 50px;
   border-radius: 6px;
 }
 @media screen and (max-width : 767px) {
@@ -25946,7 +25960,7 @@ input[type=radio].inline {
   padding: 5px 0;
 }
 .c-signups-popup__logo.sustainable_logo {
-  height: 25px;
+  height: 24px;
   object-fit: contain;
 }
 @media screen and (max-width : 767px) {

@@ -123,35 +123,16 @@
 %}
 
 
-{# {% for key, value in sections %}
+{% for key, value in sections %}
 	{% for blog in networkData.networkBlogs %}
-		{% if blog.title | lower == 'peter ellis, the creche case & me' %}
+
+		{% if blog.title | lower == key %}
 			{% set sections = sections | merge({
-                ("peter ellis, the creche case & me") : {
+                (key) : {
                     'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
                     'link' : blog.link
                     }
                 }) %}
-		{% elseif blog.title | lower == key %}
-			{% set sections = sections | merge({
-			(key) : {
-				'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
-				'link' : blog.link
-				}
-			}) %}
-		{% endif %}
-	{% endfor %}
-{% endfor %} #}
-
-{% for key, value in sections %}
-	{% for blog in networkData.networkBlogs %}
-		{% if blog.title | lower == key %}
-			{% set sections = sections | merge({
-			(key) : {
-				'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
-				'link' : blog.link
-				}
-			}) %}
 		{% endif %}
 	{% endfor %}
 {% endfor %}
@@ -274,7 +255,8 @@ So you don't have to create all the sections on dev #}
 						{{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
-                                    extraClass: ''
+                                    extraClass: '',
+									id:"daily-email-mobile"
                                 }) | raw}}
 					</div>
 
@@ -367,23 +349,25 @@ So you don't have to create all the sections on dev #}
 
 
 				{# ********************************************************
-												                                            SIDEBAR
-												                    ******************************************************** #}
+										SIDEBAR
+				******************************************************** #}
 				<div class="col-sm-12 col-lg-4 sidebar">
 					<div
 						class="row u-mobile-margin-top-40">
 						{#{% if _Page.getPageData("rnz") is defined %}
-																		                                <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
-																		                                    {% set rnzpage = _Page.getPageData("rnz", false) %}
-																		                                    {{rnzpage.content | raw}}
-																		                                </div>
-																		                            {% endif %}#}
+							<div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
+								{% set rnzpage = _Page.getPageData("rnz", false) %}
+								{{rnzpage.content | raw}}
+							</div>
+						{% endif %}#}
 
 						<div class="col-12 col-md-6 col-lg-12 d-none d-md-block">
 							{{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
-                                    extraClass: 'd-none d-md-flex'
+                                    extraClass: 'd-none d-md-flex',
+									id:"daily-email-desktop"
+
                                 }) | raw}}
 						</div>
 
@@ -437,11 +421,11 @@ So you don't have to create all the sections on dev #}
 				</div>
 			</div>
 
-			{% if sections['peter ellis, the creche case & me'].feed.articles|length > 0 %}
-				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
-			{% endif %}
 			{% if sections['newsroom pro'].feed.articles|length > 0 %}
 				{{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+			{% if sections['peter ellis, the creche case & me'].feed.articles|length > 0 %}
+				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
 			{% endif %}
 
 			{# {% if sections['election 2020'].feed.articles|length > 0 %}
