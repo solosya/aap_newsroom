@@ -432,7 +432,8 @@
                                     {{this.render('/partials/cta-side.twig', {
                                         networkData: networkData,
                                         config: config,
-                                        extraClass: 'd-md-none'
+                                        extraClass: 'd-md-none',
+                                        id:"daily-email"
                                     }) | raw}}
                                 </div>                        
                             {% endif %}
@@ -734,7 +735,8 @@
                                 {{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
-                                    extraClass: 'd-none d-lg-flex'
+                                    extraClass: 'd-none d-lg-flex',
+                                    id:"daily-email-side"
                                 }) | raw}}
                             </div>
 

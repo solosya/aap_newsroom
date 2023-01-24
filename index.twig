@@ -255,7 +255,8 @@ So you don't have to create all the sections on dev #}
 						{{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
-                                    extraClass: ''
+                                    extraClass: '',
+									id:"daily-email-mobile"
                                 }) | raw}}
 					</div>
 
@@ -348,23 +349,25 @@ So you don't have to create all the sections on dev #}
 
 
 				{# ********************************************************
-												                                            SIDEBAR
-												                    ******************************************************** #}
+										SIDEBAR
+				******************************************************** #}
 				<div class="col-sm-12 col-lg-4 sidebar">
 					<div
 						class="row u-mobile-margin-top-40">
 						{#{% if _Page.getPageData("rnz") is defined %}
-																		                                <div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
-																		                                    {% set rnzpage = _Page.getPageData("rnz", false) %}
-																		                                    {{rnzpage.content | raw}}
-																		                                </div>
-																		                            {% endif %}#}
+							<div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
+								{% set rnzpage = _Page.getPageData("rnz", false) %}
+								{{rnzpage.content | raw}}
+							</div>
+						{% endif %}#}
 
 						<div class="col-12 col-md-6 col-lg-12 d-none d-md-block">
 							{{this.render('/partials/cta-side.twig', {
                                     networkData: networkData,
                                     config: config,
-                                    extraClass: 'd-none d-md-flex'
+                                    extraClass: 'd-none d-md-flex',
+									id:"daily-email-desktop"
+
                                 }) | raw}}
 						</div>
 
