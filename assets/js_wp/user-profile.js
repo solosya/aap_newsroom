@@ -410,8 +410,8 @@ UserProfileController.prototype.events = function ()
         $('#newuserfirstname').focus();
         $('#addManagedUser').addClass('hidden');
         $('#nousers').addClass('hidden');
-
-        $('#saveUser').on('click', function(e) {
+        
+        $('#saveUser').unbind().on('click', function(e) {
             $('#userError').text("");
 
             var requestData = { 
