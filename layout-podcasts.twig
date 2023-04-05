@@ -33,6 +33,12 @@
             "link": "",
             "description": "",
             "title": ""
+        },
+        "Podcast: Raw Politics": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -122,23 +128,33 @@
  #}
 
 
+                {% if sections['podcast: raw politics'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: raw politics',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-light.twig',
+                        'title' : 'podcast: raw politics'
+                    }) | raw}}
+                {% endif %}
+
+                
+
+                {% if sections['podcast: the detail'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: the detail',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : 'podcast: the detail'
+                    }) | raw}}
+                {% endif %}
 
 
                 {% if sections["Peter Ellis, the creche case & me podcast"].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
                         'section' : "Peter Ellis, the creche case & me podcast",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
-                        'title' : "Peter Ellis, the creche case & me podcast"
-                    }) | raw}}
-                {% endif %}
-
-                {% if sections['podcast: the detail'].feed.articles|length > 0 %}
-                    {{this.render('render.twig', {
-                        'section' : 'podcast: the detail',
-                        'blogFeeds' : sections,
                         'template' : 'partials/pro/hero-four-light.twig',
-                        'title' : 'podcast: the detail'
+                        'title' : "Peter Ellis, the creche case & me podcast"
                     }) | raw}}
                 {% endif %}
 
