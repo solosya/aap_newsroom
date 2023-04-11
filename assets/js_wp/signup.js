@@ -102,6 +102,15 @@ SubscribeForm.prototype.submit = function(event)
         return;
     }
 
+    if (typeof window.Acme.captcha_site_key !== 'undefined') {
+        grecaptcha.ready(function() {
+            grecaptcha.execute(window.Acme.captcha_site_key, {action: 'submit'}).then(function(token) {
+                self.data['g-recaptcha-response'] = token;
+            });
+        });
+    }
+
+
 
     this.signup = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
 
@@ -168,11 +177,17 @@ SubscribeForm.prototype.submit = function(event)
                         for (var key in r.error) {
                             text = text + r.error[key] + " ";
                         } 
-                        // console.log(text);
                         errorElement.textContent = text;
                     }
                     self.signup.closeWindow();
                 }).fail(function(r) {
+
+                    var errorElement = document.getElementById('card-errors');
+                    var text = '';
+                    for (var key in r.error) {
+                        text = text + r.error[key] + " ";
+                    } 
+                    errorElement.textContent = text;
                     self.signup.closeWindow();
                 });
             }
