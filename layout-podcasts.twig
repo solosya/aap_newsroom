@@ -33,6 +33,18 @@
             "link": "",
             "description": "",
             "title": ""
+        },
+        "podcast: raw politics": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
+        },
+        "podcast: moving on up": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -122,23 +134,42 @@
  #}
 
 
+                {% if sections['podcast: raw politics'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: raw politics',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-light.twig',
+                        'title' : 'podcast: raw politics'
+                    }) | raw}}
+                {% endif %}
+
+                
+
+                {% if sections['podcast: the detail'].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : 'podcast: the detail',
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : 'podcast: the detail'
+                    }) | raw}}
+                {% endif %}
 
 
                 {% if sections["Peter Ellis, the creche case & me podcast"].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
                         'section' : "Peter Ellis, the creche case & me podcast",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'template' : 'partials/pro/hero-four-light.twig',
                         'title' : "Peter Ellis, the creche case & me podcast"
                     }) | raw}}
                 {% endif %}
 
-                {% if sections['podcast: the detail'].feed.articles|length > 0 %}
+                 {% if sections["Podcast: Moving on Up"].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
-                        'section' : 'podcast: the detail',
+                        'section' : "Podcast: Moving on Up",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-light.twig',
-                        'title' : 'podcast: the detail'
+                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'title' : "Podcast: Moving on Up"
                     }) | raw}}
                 {% endif %}
 
@@ -148,7 +179,7 @@
                     {{this.render('render.twig', {
                         'section' : 'net zero: the road to 2050',
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'template' : 'partials/pro/hero-four-light.twig',
                         'title' : 'net zero: the road to 2050'
                     }) | raw}}
                 {% endif %}
@@ -159,7 +190,7 @@
                     {{this.render('render.twig', {
                         'section' : 'podcast: a neesh audience',
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-light.twig',
+                        'template' : 'partials/pro/hero-four-dark.twig',
                         'title' : 'podcast: a neesh audience'
                     }) | raw}}
                 {% endif %}
@@ -168,7 +199,7 @@
                     {{this.render('render.twig', {
                         'section' : "podcast: two cents' worth",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'template' : 'partials/pro/hero-four-light.twig',
                         'title' : "podcast: two cents' worth"
                     }) | raw}}
                 {% endif %}

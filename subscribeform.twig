@@ -1,12 +1,11 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-
 {# {% if not _User.isGuest() %}
     {% set redir = _Page.setHttpRedirects(
         { '|^/.*|': networkData.defaultBlogUrl ~ '/user/edit-profile', }, false) 
     %} 
 {% endif %} #}
 
-
+{% set config       = _Network.getThemeConfig() %}
 
 
 {% set networkData = _Network.getNetworkData() %}
@@ -496,6 +495,33 @@
             {% endif %}
         </section>
     </div>
+
+
+
+{% set captcha = config.paywall.captcha.active is defined ? config.paywall.captcha.active : false %}
+{% set captchaOn = config.paywall.captcha.on is defined ? config.paywall.captcha.on : 'all' %}
+
+{% if captcha %}
+    {% if (captchaOn == 'trial' and plan.trial_status == '1') or captchaOn == 'all' %}
+        {% if networkData.thirdPartyIntegrations['recaptcha'] | length > 0 and networkData.thirdPartyIntegrations['recaptcha']['site_key'] != '' %}
+            {% set site_key = networkData.thirdPartyIntegrations['recaptcha']['site_key'] %}
+            <script src="https://www.google.com/recaptcha/api.js?render={{site_key}}"></script>
+            <script>
+                if (typeof window.Acme === "undefined") {
+                    window.Acme = {};
+                }
+
+                window.Acme.captcha_site_key = "{{site_key}}";
+            </script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+
+
+
+
+
 
 
     <script type="text/javascript">
