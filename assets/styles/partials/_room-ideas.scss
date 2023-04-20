@@ -21,6 +21,15 @@
             }
         }    
     }
-
+    .sponsored_section {
+        @media #{$mobile} {
+            width: 100%;
+        }
+        &_firstLogo {
+            @media #{$mobile} {
+                margin-left: 0;
+            }
+        }
+    }
 
 }
