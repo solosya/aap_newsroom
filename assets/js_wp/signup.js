@@ -138,62 +138,84 @@ SubscribeForm.prototype.submit = function(event)
                 self.data['stripetoken'] = result.token.id;
                 self.data['planid'] = $('#planid').val();
                 self.data['redirect'] = false;
-                Server.create('/auth/paywall-signup', self.data).done(function(r) {
-                    // console.log(r);
-                    if (r.success == 1) {
-                        self.data.user_id = r.userid;
-                        self.data.user_guid = r.userguid;
 
-                        var purchaseId = Math.floor(Math.random()*60000000000);
+                var usingCaptcha = false;
+                // captcha_site_key is set in the subscribe twig template based on
+                // rules set in the theme config and reCaptcha integration
+                if (typeof window.Acme.captcha_site_key !== 'undefined') {
+                    usingCaptcha = true;
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute(window.Acme.captcha_site_key, {action: 'submit'}).then(function(token) {
+                            self.data['g-recaptcha-response'] = token;
+                            self.submitForm();
+                        });
+                    });
+                }
 
-                        if  ($('.j-gtasubpay')[0]){
-                            var payitem = $($('.j-gtasubpay')[0]);
-                            if (typeof dataLayer !== 'undefined') {
-                                dataLayer.push({
-                                    'event':'purchase',
-                                    'ecommerce': {
-                                        'purchase': {
-                                            'actionField': {
-                                                'id': purchaseId,                         // Transaction ID. Required for purchases and refunds.
-                                                'revenue': payitem.data('price')
-                                            },
-                                            'products': [{                            // List of productFieldObjects.
-                                                'name': payitem.data('name'),
-                                                'id': payitem.data('id'),
-                                                'category': 'Pro Subscription',
-                                                'price': payitem.data('price'),
-                                                'quantity': 1
-                                            }]
-                                        }
-                                    }
-                                });
-                            }
-                        }
-                        Acme.progress.next();
+                if (!usingCaptcha) {
+                    self.submitForm();
+                }
 
-                    } else {
-                        var errorElement = document.getElementById('card-errors');
-                        var text = '';
-                        for (var key in r.error) {
-                            text = text + r.error[key] + " ";
-                        } 
-                        errorElement.textContent = text;
-                    }
-                    self.signup.closeWindow();
-                }).fail(function(r) {
-
-                    var errorElement = document.getElementById('card-errors');
-                    var text = '';
-                    for (var key in r.error) {
-                        text = text + r.error[key] + " ";
-                    } 
-                    errorElement.textContent = text;
-                    self.signup.closeWindow();
-                });
             }
         });   
     }
 
+
+    SubscribeForm.prototype.submitForm = function(event) {
+        return Server.create('/auth/paywall-signup', self.data).done(function(r) {
+            // console.log(r);
+            if (r.success == 1) {
+                self.data.user_id = r.userid;
+                self.data.user_guid = r.userguid;
+
+                var purchaseId = Math.floor(Math.random()*60000000000);
+
+                if  ($('.j-gtasubpay')[0]){
+                    var payitem = $($('.j-gtasubpay')[0]);
+                    if (typeof dataLayer !== 'undefined') {
+                        dataLayer.push({
+                            'event':'purchase',
+                            'ecommerce': {
+                                'purchase': {
+                                    'actionField': {
+                                        'id': purchaseId,                         // Transaction ID. Required for purchases and refunds.
+                                        'revenue': payitem.data('price')
+                                    },
+                                    'products': [{                            // List of productFieldObjects.
+                                        'name': payitem.data('name'),
+                                        'id': payitem.data('id'),
+                                        'category': 'Pro Subscription',
+                                        'price': payitem.data('price'),
+                                        'quantity': 1
+                                    }]
+                                }
+                            }
+                        });
+                    }
+                }
+                Acme.progress.next();
+
+            } else {
+                var errorElement = document.getElementById('card-errors');
+                var text = '';
+                for (var key in r.error) {
+                    text = text + r.error[key] + " ";
+                } 
+                errorElement.textContent = text;
+            }
+            self.signup.closeWindow();
+        }).fail(function(r) {
+
+            var errorElement = document.getElementById('card-errors');
+            var text = '';
+            for (var key in r.error) {
+                text = text + r.error[key] + " ";
+            } 
+            errorElement.textContent = text;
+            self.signup.closeWindow();
+        });
+
+    }
         
 };
 
