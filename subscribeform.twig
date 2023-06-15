@@ -470,11 +470,19 @@
                             {% endif %}
                             <div class="col-12">	
                                 <h3 class="plan-type__name">{{plan.plan_name}}</h3>
-                                <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
                                 {% if data['special'] is defined and data['special'] == true %}
                                     <p class="plan-type__users">Save ($91) + free book</p>
+                                {% else %}
+                                    <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
                                 {% endif %}
-                                <p class="plan-type__currency">${{val}} per {{period_count}}{{period}}</p>
+                                <p class="plan-type__currency">
+                                ${{val}}
+                                {% if data['special'] is defined and data['special'] == true %}
+                                for 12 months
+                                {% else %} 
+                                per {{period_count}}{{period}}
+                                {% endif %}
+                                </p>
                             </div>
                             <div class="col-12">
                                 <img class="plan-type__img" src="{{orderImage}}">
