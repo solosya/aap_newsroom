@@ -45,6 +45,12 @@
             "link": "",
             "description": "",
             "title": ""
+        },
+        "podcast: the boy in the water": {
+            "feed": "",
+            "link": "",
+            "description": "",
+            "title": ""
         }
     }
 %}
@@ -173,13 +179,22 @@
                     }) | raw}}
                 {% endif %}
 
+                {% if sections["podcast: the boy in the water"].feed.articles|length > 0 %}
+                    {{this.render('render.twig', {
+                        'section' : "podcast: the boy in the water",
+                        'blogFeeds' : sections,
+                        'template' : 'partials/pro/hero-four-light.twig',
+                        'title' : "podcast: the boy in the water"
+                    }) | raw}}
+                {% endif %}
+
 
 
                 {% if sections['net zero: the road to 2050'].feed.articles|length > 0 %}
                     {{this.render('render.twig', {
                         'section' : 'net zero: the road to 2050',
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-light.twig',
+                        'template' : 'partials/pro/hero-four-dark.twig',
                         'title' : 'net zero: the road to 2050'
                     }) | raw}}
                 {% endif %}
@@ -190,7 +205,7 @@
                     {{this.render('render.twig', {
                         'section' : 'podcast: a neesh audience',
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-dark.twig',
+                        'template' : 'partials/pro/hero-four-light.twig',
                         'title' : 'podcast: a neesh audience'
                     }) | raw}}
                 {% endif %}
@@ -199,7 +214,7 @@
                     {{this.render('render.twig', {
                         'section' : "podcast: two cents' worth",
                         'blogFeeds' : sections,
-                        'template' : 'partials/pro/hero-four-light.twig',
+                        'template' : 'partials/pro/hero-four-dark.twig',
                         'title' : "podcast: two cents' worth"
                     }) | raw}}
                 {% endif %}
