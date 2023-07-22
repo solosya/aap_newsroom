@@ -104,15 +104,25 @@ UserProfileController.prototype.fetchEmailLists = function() {
                         checked = 'checked';
                     }
 
-                    if (self.emailLists[i].name.toLowerCase() == 'daily summaries') {
-                        name = "Send me Jonathan Milne's <i>8 Things</i> email each day";
+                    if (self.emailLists[i].name.toLowerCase() == '8 things daily newsletter') {
+                        name = "Send me <i>8 Things</i> email each day";
                     }
-
+                
                     if (self.emailLists[i].name.toLowerCase() == 'breaking news alerts') {
                         name = "Send me an email alert when important news breaks";
                     }
 
+                    if (self.emailLists[i].name.toLowerCase() == 'rnz 8am bulletin') {
+                        name = "RNZ 8am bulletin";
+                    }
+
+                    if (self.emailLists[i].name.toLowerCase() == 'morning government and political news links') {
+                        name = "Morning government and political news links";
+                    }
+ 
+
                     var params = {
+                        i: i,
                         listId: self.newsroom,
                         groupId: self.emailLists[i].id,
                         name: name,
@@ -138,7 +148,7 @@ UserProfileController.prototype.deleteUser = function(e) {
 
     var mailChimpData = {
         user    : userid,
-        list    : this.newsroom,
+        list    : self.newsroom,
         action  : 'unsubscribe'
     }
 
@@ -319,8 +329,8 @@ UserProfileController.prototype.events = function ()
     });
 
 
-    $('#account-form__email').unbind().on('click', function(e) {
-        var elem = $(e.target);
+    $('body').on('click','.email-subscription__checkbox', function(e) {
+        var elem = $(this);
         
         var action = elem.is(':checked') 
             ? self.mailChimpUser 
