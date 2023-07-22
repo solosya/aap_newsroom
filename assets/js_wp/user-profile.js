@@ -15,9 +15,17 @@ export const UserProfileController = function()
     // this.group          = 'cb03aca14d'; // me
     
     
-    this.newsroom       = '2412c1d355';
-    this.group          = 'f6f5aaa06b';
+    // OLD NEWSROOM MAILCHIMP ID COMMENTED ON 21/07/2023 
+    // this.newsroom       = '2412c1d355';
+    // this.group          = 'f6f5aaa06b';
 
+
+    // LATEST NEWSROOM MAILCHIMP ID ADDING ON ON 21/07/2023 
+    this.newsroom       = '4a8eebedd7'; //LIST ID
+    this.group          = 'afdf46c0ff'; // GROUP ID
+
+
+    
     this.modal = new SigninModal('modal', 'signin-modal', {
         "spinner"       : 'spinnerTmpl',
         "userPlan"      : 'userPlanMessage',

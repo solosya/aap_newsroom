@@ -272,26 +272,40 @@ ActivateForm.prototype.submit = function(event)
     this.signup.render("spinner", "Activating account");
     Server.create('/api/user/edit-profile', this.data).done(function(r) {
         console.log(r);
-        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
-            var subscribeData = {
-                "EMAIL": self.subscription.data['email'], 
-                "FNAME": self.data['firstname'],
-                "LNAME": self.data['lastname'],
-            };
-            if (self.data["group[1149][1]"]) {
-                subscribeData["group[1149][1]"] = 1;
-            }
-            if (self.data["group[1149][2]"]) {
-                subscribeData["group[1149][2]"] = 2;
-            }
+        // Commented on 22/07/2023
+        // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
-            
-            Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+        //     var subscribeData = {
+        //         "EMAIL": self.subscription.data['email'], 
+        //         "FNAME": self.data['firstname'],
+        //         "LNAME": self.data['lastname'],
+        //     };
+        //     if (self.data["group[1149][1]"]) {
+        //         subscribeData["group[1149][1]"] = 1;
+        //     }
+        //     if (self.data["group[1149][2]"]) {
+        //         subscribeData["group[1149][2]"] = 2;
+        //     }
+           
+        //     Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+        //         .then(function(r) {
+        //             console.log(r);
+        //         });                        
+        // }
+
+        var subscribeData = {
+            "EMAIL": self.subscription.data['email'], 
+            "FNAME": self.data['firstname'],
+            "LNAME": self.data['lastname'],
+        };
+
+        Server.create("https://newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=4a8eebedd7&amp;f_id=00e1c2e1f0", subscribeData)
                 .then(function(r) {
                     console.log(r);
-                });                        
-        }
+                }); 
+
+
         self.signup.closeWindow();
         if (self.subscription.plan_user_count < 1) {
             window.location.href = location.origin + '/auth/thank-you';
