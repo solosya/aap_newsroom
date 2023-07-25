@@ -291,7 +291,9 @@ ActivateForm.prototype.submit = function (event) {
         //         .then(function(r) {
         //             console.log(r);
         //         });                        
-        // }
+        // }   
+
+        
         if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false || self.data["group[6][4]"] != false || self.data["group[6][8]"] != false) {
             var subscribeData = {
                 "EMAIL": self.subscription.data['email'],
