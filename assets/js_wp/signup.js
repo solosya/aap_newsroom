@@ -285,11 +285,7 @@ ActivateForm.prototype.submit = function(event)
             if (self.data["group[1149][2]"]) {
                 subscribeData["group[1149][2]"] = 2;
             }
-
-
-
-            
-            
+            console.log("Cache Busting");
             Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
                 .then(function(r) {
                     console.log(r);
