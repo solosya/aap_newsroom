@@ -3,9 +3,9 @@ import { Modal, Server } from './framework'
 import Card from './StripeCard'
 
 
-export const SubscribeForm = function(id, user) {
+export const SubscribeForm = function (id, user) {
 
-    
+
     this.botTimer = 0;
     this.id = id || null;
     this.parent = Form.prototype;
@@ -24,9 +24,9 @@ export const SubscribeForm = function(id, user) {
     this.errorFields = [];
 
     this.validateRules = {
-        "email"             : ["notEmpty"],
-        "trial"             : [],
-        "terms"             : ["isTrue"],
+        "email": ["notEmpty"],
+        "trial": [],
+        "terms": ["isTrue"],
     };
 
     var trial = $('#trial').val();
@@ -59,32 +59,30 @@ SubscribeForm.prototype.stripeSetup = function () {
     const StripeCard = new Card();
     this.card = StripeCard.get(this.stripe);
 
-    setInterval(function(){
+    setInterval(function () {
         self.botTimer = self.botTimer + 1;
     }, 1000);
 }
-SubscribeForm.prototype.random = function(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+SubscribeForm.prototype.random = function (length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 };
-SubscribeForm.prototype.render = function(checkTerms) 
-{
+SubscribeForm.prototype.render = function (checkTerms) {
     this.clearInlineErrors();
     this.addInlineErrors();
     if (checkTerms) {
         if (!this.data.terms || (this.data.trial === 'true' && !this.data.changeterms)) {
-            this.confirmView = new Modal('modal', 'signin-modal', {'terms': 'subscribeTerms'});
+            this.confirmView = new Modal('modal', 'signin-modal', { 'terms': 'subscribeTerms' });
             this.confirmView.render("terms", "Almost there");
         }
     }
 };
-SubscribeForm.prototype.submit = function(event) 
-{
+SubscribeForm.prototype.submit = function (event) {
     var self = this;
     event.preventDefault();
 
@@ -94,7 +92,7 @@ SubscribeForm.prototype.submit = function(event)
         checkTerms = false;
     }
     self.render(checkTerms);
-    
+
     if (!validated) return;
 
     if (self.botTimer < 5 || $('#email-confirm').val() !== "") {
@@ -103,8 +101,8 @@ SubscribeForm.prototype.submit = function(event)
     }
 
     if (typeof window.Acme.captcha_site_key !== 'undefined') {
-        grecaptcha.ready(function() {
-            grecaptcha.execute(window.Acme.captcha_site_key, {action: 'submit'}).then(function(token) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute(window.Acme.captcha_site_key, { action: 'submit' }).then(function (token) {
                 self.data['g-recaptcha-response'] = token;
             });
         });
@@ -112,7 +110,7 @@ SubscribeForm.prototype.submit = function(event)
 
 
 
-    this.signup = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+    this.signup = new Modal('modal', 'spinner-modal', { "spinner": 'spinnerTmpl' });
 
     if (this.code) {
         this.signup.render("spinner", "Authorising code");
@@ -125,7 +123,7 @@ SubscribeForm.prototype.submit = function(event)
 
         // modal.render("spinner", "Your request is being processed.");
         this.signup.render("spinner", "Your request is being processed.");
-        var stripeCall = this.stripe.createToken(self.card).then(function(result) {
+        var stripeCall = this.stripe.createToken(self.card).then(function (result) {
 
             if (result.error) {
                 self.signup.closeWindow();
@@ -147,8 +145,8 @@ SubscribeForm.prototype.submit = function(event)
                 // rules set in the theme config and reCaptcha integration
                 if (typeof window.Acme.captcha_site_key !== 'undefined') {
                     usingCaptcha = true;
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute(window.Acme.captcha_site_key, {action: 'submit'}).then(function(token) {
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute(window.Acme.captcha_site_key, { action: 'submit' }).then(function (token) {
                             self.data['g-recaptcha-response'] = token;
                             self.submitForm();
                         });
@@ -160,24 +158,24 @@ SubscribeForm.prototype.submit = function(event)
                 }
 
             }
-        });   
+        });
     }
 
 
-    SubscribeForm.prototype.submitForm = function(event) {
-        return Server.create('/auth/paywall-signup', self.data).done(function(r) {
+    SubscribeForm.prototype.submitForm = function (event) {
+        return Server.create('/auth/paywall-signup', self.data).done(function (r) {
             // console.log(r);
             if (r.success == 1) {
                 self.data.user_id = r.userid;
                 self.data.user_guid = r.userguid;
 
-                var purchaseId = Math.floor(Math.random()*60000000000);
+                var purchaseId = Math.floor(Math.random() * 60000000000);
 
-                if  ($('.j-gtasubpay')[0]){
+                if ($('.j-gtasubpay')[0]) {
                     var payitem = $($('.j-gtasubpay')[0]);
                     if (typeof dataLayer !== 'undefined') {
                         dataLayer.push({
-                            'event':'purchase',
+                            'event': 'purchase',
                             'ecommerce': {
                                 'purchase': {
                                     'actionField': {
@@ -203,23 +201,23 @@ SubscribeForm.prototype.submit = function(event)
                 var text = '';
                 for (var key in r.error) {
                     text = text + r.error[key] + " ";
-                } 
+                }
                 errorElement.textContent = text;
             }
             self.signup.closeWindow();
-        }).fail(function(r) {
+        }).fail(function (r) {
 
             var errorElement = document.getElementById('card-errors');
             var text = '';
             for (var key in r.error) {
                 text = text + r.error[key] + " ";
-            } 
+            }
             errorElement.textContent = text;
             self.signup.closeWindow();
         });
 
     }
-        
+
 };
 
 
@@ -231,22 +229,24 @@ SubscribeForm.prototype.submit = function(event)
 
 
 
-var ActivateForm = function(id, subscription) {
+var ActivateForm = function (id, subscription) {
     this.subscription = subscription;
     this.id = id || null;
     this.parent = Form.prototype;
     this.data = {
-        "group[1149][1]": true,
-        "group[1149][2]": true,
+        "group[6][1]": true,
+        "group[6][2]": true,
+        "group[6][4]": true,
+        "group[6][8]": true,
     };
     this.errorFields = [];
 
     this.validateRules = {
         // this.data              Rule
-        "password"          : ["notEmpty"],
-        "verifypassword"    : ["notEmpty"],
-        "firstname"         : ["notEmpty"], 
-        "lastname"          : ["notEmpty"], 
+        "password": ["notEmpty"],
+        "verifypassword": ["notEmpty"],
+        "firstname": ["notEmpty"],
+        "lastname": ["notEmpty"],
     };
 
     this.validateFields = Object.keys(this.validateRules);
@@ -256,8 +256,7 @@ var ActivateForm = function(id, subscription) {
 
 ActivateForm.prototype = new Form(Validators);
 ActivateForm.constructor = ActivateForm;
-ActivateForm.prototype.submit = function(event) 
-{
+ActivateForm.prototype.submit = function (event) {
     var self = this;
     event.preventDefault();
     var validated = self.validate();
@@ -267,39 +266,68 @@ ActivateForm.prototype.submit = function(event)
     self.render(true);
     if (!validated) return;
 
-    this.signup = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+    this.signup = new Modal('modal', 'spinner-modal', { "spinner": 'spinnerTmpl' });
 
     this.signup.render("spinner", "Activating account");
-    Server.create('/api/user/edit-profile', this.data).done(function(r) {
+    Server.create('/api/user/edit-profile', this.data).done(function (r) {
         console.log(r);
-        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
+        // Commented on 22/07/2023
+        // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+
+        //     var subscribeData = {
+        //         "EMAIL": self.subscription.data['email'], 
+        //         "FNAME": self.data['firstname'],
+        //         "LNAME": self.data['lastname'],
+        //     };
+        //     if (self.data["group[1149][1]"]) {
+        //         subscribeData["group[1149][1]"] = 1;
+        //     }
+        //     if (self.data["group[1149][2]"]) {
+        //         subscribeData["group[1149][2]"] = 2;
+        //     }
+
+        //     Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+        //         .then(function(r) {
+        //             console.log(r);
+        //         });                        
+        // }
+        if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false || self.data["group[6][4]"] != false || self.data["group[6][8]"] != false) {
             var subscribeData = {
-                "EMAIL": self.subscription.data['email'], 
+                "EMAIL": self.subscription.data['email'],
                 "FNAME": self.data['firstname'],
                 "LNAME": self.data['lastname'],
             };
-            if (self.data["group[1149][1]"]) {
-                subscribeData["group[1149][1]"] = 1;
+
+            if (self.data["group[6][1]"]) {
+                subscribeData["group[6][1]"] = 1;
             }
-            if (self.data["group[1149][2]"]) {
-                subscribeData["group[1149][2]"] = 2;
+            if (self.data["group[6][2]"]) {
+                subscribeData["group[6][2]"] = 2;
+            }
+            if (self.data["group[6][4]"]) {
+                subscribeData["group[6][4]"] = 4;
+            }
+            if (self.data["group[6][8]"]) {
+                subscribeData["group[6][8]"] = 8;
             }
 
-            
-            Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                .then(function(r) {
+
+            Server.create("https://newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=4a8eebedd7&amp;f_id=00e1c2e1f0", subscribeData)
+                .then(function (r) {
                     console.log(r);
-                });                        
-        }
-        self.signup.closeWindow();
-        if (self.subscription.plan_user_count < 1) {
-            window.location.href = location.origin + '/auth/thank-you';
-            return;
+                });
+
+
+            self.signup.closeWindow();
+            if (self.subscription.plan_user_count < 1) {
+                window.location.href = location.origin + '/auth/thank-you';
+                return;
+            }
         }
 
         Acme.progress.next();
-    }).fail(function(r) {
+    }).fail(function (r) {
         console.log('failed', r);
     });
 
@@ -310,19 +338,19 @@ ActivateForm.prototype.submit = function(event)
 
 
 
-var ManagedForm = function(id, user) {
+var ManagedForm = function (id, user) {
     this.id = id || null;
     this.parent = Form.prototype;
     this.data = {};
     this.errorFields = [];
 
     this.validateRules = {
-        "firstname"         : ["notEmpty"], 
-        "lastname"          : ["notEmpty"], 
-        "email"             : ["notEmpty"],
+        "firstname": ["notEmpty"],
+        "lastname": ["notEmpty"],
+        "email": ["notEmpty"],
     };
 
-    
+
     this.validateFields = Object.keys(this.validateRules);
     this.loadData();
     this.events();
@@ -332,8 +360,7 @@ var ManagedForm = function(id, user) {
 ManagedForm.prototype = new Form(Validators);
 ManagedForm.constructor = ManagedForm;
 
-ManagedForm.prototype.submit = function(event) 
-{
+ManagedForm.prototype.submit = function (event) {
     var self = this;
     event.preventDefault();
 
@@ -350,25 +377,25 @@ ManagedForm.prototype.submit = function(event)
     if (!validated) return;
 
 
-    this.signup = new Modal('modal', 'spinner-modal', {"spinner": 'spinnerTmpl'});
+    this.signup = new Modal('modal', 'spinner-modal', { "spinner": 'spinnerTmpl' });
 
     this.signup.render("spinner", "Sending invite");
-    Server.create('/api/user/create-paywall-managed-user', this.data).done(function(r) {
+    Server.create('/api/user/create-paywall-managed-user', this.data).done(function (r) {
         console.log(r);
         if (r.success == 1) {
-                // set time out used for Firefox which seems to need a little bit more time to figure things out
-                // setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
-                window.location.href = location.origin + '/auth/thank-you';
+            // set time out used for Firefox which seems to need a little bit more time to figure things out
+            // setTimeout('window.location.href = location.origin + "/auth/thank-you";', 2000);
+            window.location.href = location.origin + '/auth/thank-you';
         } else {
             self.signup.closeWindow();
         }
 
-    }).fail(function(r) {
+    }).fail(function (r) {
         console.log('failed', r);
         self.signup.closeWindow();
     });
 
-        
+
 };
 
 
@@ -376,8 +403,7 @@ ManagedForm.prototype.submit = function(event)
 
 
 
-var Progress = function(step) 
-{
+var Progress = function (step) {
     this.progress = step > 0 && step < 4 ? step : 1;
     this.numbers = [$('#num1'), $('#num2'), $('#num3')];
     this.lines = [$('#line1'), $('#line2'), $('#line3')];
@@ -385,39 +411,35 @@ var Progress = function(step)
     this.labels = [$('#label1'), $('#label2'), $('#label3')];
     this.render();
 };
-Progress.prototype.tick = function(tick) 
-{
+Progress.prototype.tick = function (tick) {
     this.progress = tick;
     this.render();
 };
-Progress.prototype.next = function() 
-{
-    if (this.progress < 3 ) {
+Progress.prototype.next = function () {
+    if (this.progress < 3) {
         this.progress++;
     }
     this.render();
 };
-Progress.prototype.previous = function() 
-{
-    if (this.progress > 0 ) {
+Progress.prototype.previous = function () {
+    if (this.progress > 0) {
         this.progress--;
     }
     this.render();
 };
 
-Progress.prototype.render = function()
-{
-    for (var i=0;i<this.numbers.length;i++) {
+Progress.prototype.render = function () {
+    for (var i = 0; i < this.numbers.length; i++) {
         this.numbers[i].removeClass('subscribe-progress__number--red');
     };
-    for (var i=0;i<this.lines.length;i++) {
+    for (var i = 0; i < this.lines.length; i++) {
         this.lines[i].removeClass('subscribe-progress__line--red');
     };
-    for (var i=0;i<this.forms.length;i++) {
+    for (var i = 0; i < this.forms.length; i++) {
         this.forms[i].addClass('u-hide');
         // form.removeClass('u-hide');
     };
-    for (var i=0;i<this.labels.length;i++) {
+    for (var i = 0; i < this.labels.length; i++) {
         this.labels[i].removeClass('subscribe-progress__label--active');
     };
 
@@ -429,8 +451,8 @@ Progress.prototype.render = function()
     }
 
     this.forms[this.progress - 1].removeClass('u-hide');
-    
-    if (this.progress > 1 ) {
+
+    if (this.progress > 1) {
         $('#changeplan').addClass('u-hide');
     }
 };
@@ -440,17 +462,17 @@ Progress.prototype.render = function()
 
 
 
-if ($('#stripekey').length > 0 && $('#paywallsubscribe').length > 0 ) {
+if ($('#stripekey').length > 0 && $('#paywallsubscribe').length > 0) {
     var urlParams = new URLSearchParams(window.location.search);
-    var step = urlParams.get('step');    
+    var step = urlParams.get('step');
     Acme.progress = new Progress(step);
     Acme.progress.render();
-    
+
     var main = $('main');
     var user = {
-        user_id : main.data('userid'),
-        user_guid : main.data('userguid'),
-        plan_user_count : parseInt(main.data('usercount'))
+        user_id: main.data('userid'),
+        user_guid: main.data('userguid'),
+        plan_user_count: parseInt(main.data('usercount'))
     };
     Acme.subscribe = new SubscribeForm('payment-form', user);
     Acme.subscribe = new ActivateForm('activate-form', Acme.subscribe);
