@@ -15,17 +15,9 @@ export const UserProfileController = function()
     // this.group          = 'cb03aca14d'; // me
     
     
-    // OLD NEWSROOM MAILCHIMP ID COMMENTED ON 21/07/2023 
-    // this.newsroom       = '2412c1d355';
-    // this.group          = 'f6f5aaa06b';
+    this.newsroom       = '2412c1d355';
+    this.group          = 'f6f5aaa06b';
 
-
-    // LATEST NEWSROOM MAILCHIMP ID ADDING ON ON 21/07/2023 
-    this.newsroom       = '4a8eebedd7'; //LIST ID
-    this.group          = 'afdf46c0ff'; // GROUP ID
-
-
-    
     this.modal = new SigninModal('modal', 'signin-modal', {
         "spinner"       : 'spinnerTmpl',
         "userPlan"      : 'userPlanMessage',
@@ -104,25 +96,15 @@ UserProfileController.prototype.fetchEmailLists = function() {
                         checked = 'checked';
                     }
 
-                    if (self.emailLists[i].name.toLowerCase() == '8 things daily newsletter') {
-                        name = "Send me <i>8 Things</i> email each day";
+                    if (self.emailLists[i].name.toLowerCase() == 'daily summaries') {
+                        name = "Send me Jonathan Milne's <i>8 Things</i> email each day";
                     }
-                
+
                     if (self.emailLists[i].name.toLowerCase() == 'breaking news alerts') {
                         name = "Send me an email alert when important news breaks";
                     }
 
-                    if (self.emailLists[i].name.toLowerCase() == 'rnz 8am bulletin') {
-                        name = "RNZ 8am bulletin";
-                    }
-
-                    if (self.emailLists[i].name.toLowerCase() == 'morning government and political news links') {
-                        name = "Morning government and political news links";
-                    }
- 
-
                     var params = {
-                        i: i,
                         listId: self.newsroom,
                         groupId: self.emailLists[i].id,
                         name: name,
@@ -148,7 +130,7 @@ UserProfileController.prototype.deleteUser = function(e) {
 
     var mailChimpData = {
         user    : userid,
-        list    : self.newsroom,
+        list    : this.newsroom,
         action  : 'unsubscribe'
     }
 
@@ -329,8 +311,8 @@ UserProfileController.prototype.events = function ()
     });
 
 
-    $('body').on('click','.email-subscription__checkbox', function(e) {
-        var elem = $(this);
+    $('#account-form__email').unbind().on('click', function(e) {
+        var elem = $(e.target);
         
         var action = elem.is(':checked') 
             ? self.mailChimpUser 
