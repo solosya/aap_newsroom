@@ -291,35 +291,33 @@ ActivateForm.prototype.submit = function (event) {
         //         .then(function(r) {
         //             console.log(r);
         //         });                        
-        // }   
-
+        // }
 
         if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false || self.data["group[6][4]"] != false || self.data["group[6][8]"] != false) {
-            var subscribeData = {
-                "EMAIL": self.subscription.data['email'],
-                "FNAME": self.data['firstname'],
-                "LNAME": self.data['lastname'],
-            };
 
+            var group = []
             if (self.data["group[6][1]"]) {
-                subscribeData["group[6][1]"] = 1;
+                group.push("019ac44861") ; //Breaking News Alerts
             }
             if (self.data["group[6][2]"]) {
-                subscribeData["group[6][2]"] = 2;
+                group.push("e1bb226d4b"); //8 Things daily newsletter
             }
             if (self.data["group[6][4]"]) {
-                subscribeData["group[6][4]"] = 4;
+                group.push("e2b9bc1f62"); //RNZ 8am Bulletin
             }
             if (self.data["group[6][8]"]) {
-                subscribeData["group[6][8]"] = 8;
+                group.push("e8dfe0928b"); //Morning government and political news links
             }
+            
+            var requestData = {
+                list    : "4a8eebedd7",
+                action  : "create",
+                group   : group
+            };
 
-
-            Server.create("https://newsroom.us14.list-manage.com/subscribe/post?u=e0ae259e8f9472b9c54037c25&amp;id=4a8eebedd7&amp;f_id=00e1c2e1f0", subscribeData)
-                .then(function (r) {
-                    console.log(r);
-                    console.log(r);
-                });
+            Server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData).then(function(r) {
+                console.log(r);
+            }); 
 
 
             self.signup.closeWindow();
