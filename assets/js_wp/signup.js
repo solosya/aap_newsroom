@@ -272,29 +272,59 @@ ActivateForm.prototype.submit = function(event)
     this.signup.render("spinner", "Activating account");
     Server.create('/api/user/edit-profile', this.data).done(function(r) {
         console.log(r);
-        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
+        // Commented on 22/07/2023
+        // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
-            var subscribeData = {
-                "EMAIL": self.subscription.data['email'], 
-                "FNAME": self.data['firstname'],
-                "LNAME": self.data['lastname'],
+        //     var subscribeData = {
+        //         "EMAIL": self.subscription.data['email'], 
+        //         "FNAME": self.data['firstname'],
+        //         "LNAME": self.data['lastname'],
+        //     };
+        //     if (self.data["group[1149][1]"]) {
+        //         subscribeData["group[1149][1]"] = 1;
+        //     }
+        //     if (self.data["group[1149][2]"]) {
+        //         subscribeData["group[1149][2]"] = 2;
+        //     }
+
+        //     Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
+        //         .then(function(r) {
+        //             console.log(r);
+        //         });                        
+        // }
+
+        if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false || self.data["group[6][4]"] != false || self.data["group[6][8]"] != false) {
+
+            var group = []
+            if (self.data["group[6][1]"]) {
+                group.push("019ac44861") ; //Breaking News Alerts
+            }
+            if (self.data["group[6][2]"]) {
+                group.push("e1bb226d4b"); //8 Things daily newsletter
+            }
+            if (self.data["group[6][4]"]) {
+                group.push("e2b9bc1f62"); //RNZ 8am Bulletin
+            }
+            if (self.data["group[6][8]"]) {
+                group.push("e8dfe0928b"); //Morning government and political news links
+            }
+            
+            var requestData = {
+                list    : "4a8eebedd7",
+                action  : "create",
+                group   : group
             };
-            if (self.data["group[1149][1]"]) {
-                subscribeData["group[1149][1]"] = 1;
+
+            Server.create(_appJsConfig.baseHttpPath + '/api/integration/mailchimp-subscription', requestData).then(function(r) {
+                console.log(r);
+            }); 
+
+
+            self.signup.closeWindow();
+            if (self.subscription.plan_user_count < 1) {
+                window.location.href = location.origin + '/auth/thank-you';
+                return;
             }
-            if (self.data["group[1149][2]"]) {
-                subscribeData["group[1149][2]"] = 2;
-            }
-            console.log("Cache Busting");
-            Server.create("https://hivenews.us7.list-manage.com/subscribe/post?u=9cf8330209dae95121b0d58a6&amp;id=2412c1d355", subscribeData)
-                .then(function(r) {
-                    console.log(r);
-                });                        
-        }
-        self.signup.closeWindow();
-        if (self.subscription.plan_user_count < 1) {
-            window.location.href = location.origin + '/auth/thank-you';
-            return;
         }
 
         Acme.progress.next();
