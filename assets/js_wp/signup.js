@@ -236,8 +236,10 @@ var ActivateForm = function(id, subscription) {
     this.id = id || null;
     this.parent = Form.prototype;
     this.data = {
-        "group[1149][1]": true,
-        "group[1149][2]": true,
+        "group[6][1]": true,
+        "group[6][2]": true,
+        "group[6][4]": true,
+        "group[6][8]": true,
     };
     this.errorFields = [];
 
