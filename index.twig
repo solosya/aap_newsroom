@@ -118,6 +118,10 @@
 		"peter ellis, the creche case & me": {
             "feed": "",
             "link": ""
+        },
+		"election 2023" : {
+            "feed" : "",
+            "link": ""
         }
     }
 %}
@@ -428,9 +432,9 @@ So you don't have to create all the sections on dev #}
 				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
 			{% endif %} #}
 
-			{# {% if sections['election 2020'].feed.articles|length > 0 %}
-									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
-									                {% endif %} #}
+			{% if sections['election 2023'].feed.articles|length > 0 %}
+				{{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
 			{# {% if sections['economic recovery'].feed.articles|length > 0 %}
 									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
 									                {% endif %} #}

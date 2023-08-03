@@ -1,11 +1,11 @@
  <section class="room-sports u-margin-top-80 u-margin-mobile-40">
      <header>
-         <a href="{{ sections['election 2020'].link }}">
-             <img src="{{networkData.templatePath}}/static/images/election 2020-logo.svg?ver=1" alt="Election 2020" class="img-fluid room-logo">
+         <a href="{{ sections['election 2023'].link }}">
+             <img src="{{networkData.templatePath}}/static/images/election 2023-logo.svg?ver=1" alt="Election 2023" class="img-fluid room-logo">
          </a>
      </header>
     {{this.render('_single-article.twig', {
-        article: sections['election 2020'].feed.articles[0], 
+        article: sections['election 2023'].feed.articles[0], 
         position: 1, 
         containerClass: 'card-featured-mobile card-featured-tablet card-featured-desktop card-featured-desktop-up sport', 
         imageSize: {width:1140, height:430},
@@ -17,9 +17,9 @@
          <div class="row">
              
              {% for i in 1..2 %}
-                 {% if sections['election 2020'].feed.articles[i] %}        
+                 {% if sections['election 2023'].feed.articles[i] %}        
                     {{this.render('_single-article.twig', {
-                        article: sections['election 2020'].feed.articles[i], 
+                        article: sections['election 2023'].feed.articles[i], 
                         position: i+1, 
                         containerClass: 'col-md-12 col-lg-6 card-sub-featured-mobile card-sub-featured-tablet card-sub-featured-desktop card-sub-featured-desktop-up sport', 
                         imageSize: {width:203, height:129},
