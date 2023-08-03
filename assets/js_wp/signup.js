@@ -272,9 +272,6 @@ ActivateForm.prototype.submit = function(event)
     this.signup.render("spinner", "Activating account");
     Server.create('/api/user/edit-profile', this.data).done(function(r) {
         console.log(r);
-        if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
-
-
         // Commented on 22/07/2023
         // if (self.data["group[1149][1]"] != false || self.data["group[1149][2]"] != false) {
 
