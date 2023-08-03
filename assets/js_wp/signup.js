@@ -237,9 +237,7 @@ var ActivateForm = function(id, subscription) {
     this.parent = Form.prototype;
     this.data = {
         "group[6][1]": true,
-        "group[6][2]": true,
-        "group[6][4]": true,
-        "group[6][8]": true,
+        "group[6][2]": true
     };
     this.errorFields = [];
 
@@ -295,7 +293,7 @@ ActivateForm.prototype.submit = function(event)
         //         });                        
         // }
 
-        if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false || self.data["group[6][4]"] != false || self.data["group[6][8]"] != false) {
+        if (self.data["group[6][1]"] != false || self.data["group[6][2]"] != false) {
 
             var group = []
             if (self.data["group[6][1]"]) {
@@ -304,12 +302,13 @@ ActivateForm.prototype.submit = function(event)
             if (self.data["group[6][2]"]) {
                 group.push("e1bb226d4b"); //8 Things daily newsletter
             }
-            if (self.data["group[6][4]"]) {
-                group.push("e2b9bc1f62"); //RNZ 8am Bulletin
-            }
-            if (self.data["group[6][8]"]) {
-                group.push("e8dfe0928b"); //Morning government and political news links
-            }
+            
+            // if (self.data["group[6][4]"]) {
+            //     group.push("e2b9bc1f62"); //RNZ 8am Bulletin
+            // }
+            // if (self.data["group[6][8]"]) {
+            //     group.push("e8dfe0928b"); //Morning government and political news links
+            // }
             
             var requestData = {
                 list    : "4a8eebedd7",
