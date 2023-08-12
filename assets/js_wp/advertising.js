@@ -61,7 +61,8 @@ export default class AdLoader {
         }
 
         if (allAdsKeywords.length > 0) {
-
+            //multikeyword fetching calls
+            console.log("Calling API")
             Server.create(
                 _appJsConfig.appHostName + "/api/ad/get-all", { 'multiKeywords': allAdsKeywords }).done((data) => {
 
