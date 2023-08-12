@@ -56,7 +56,6 @@ export default class AdLoader {
                 keysArray.push('default');
             }
 
-
             const keysString = keysArray.join(',');
             allAdsKeywords.push(keysString)
         }
