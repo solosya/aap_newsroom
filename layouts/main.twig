@@ -181,6 +181,7 @@
     {# 'figure out the nav sub menu to send through to the header and footer' #}
     {% set submenu = [] %}
     {% set roomInfo = ['newsroom', networkData.defaultBlogUrl] %}
+    {% set roomInfo = ['election-2023', '/election-2023'] %}
 
     {% set menuItems = getCache("menuItems") %}
     {% if (menuItems is empty) %}
