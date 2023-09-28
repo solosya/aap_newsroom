@@ -8,6 +8,11 @@
 {% set topPlans = [] %}
 {% set bottomPlans = [] %}
 
+{% if not _User.isGuest() %}
+    {% set redir = _Page.setHttpRedirects(
+        { '|^/.*|': networkData.defaultBlogUrl, }, false) 
+    %} 
+{% endif %}
 
 {% for plan in plans %}
     {% if "!*!" in plan.description %}

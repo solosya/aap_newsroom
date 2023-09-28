@@ -35,6 +35,12 @@
 
 {% endfor %}
 
+{% if not _User.isGuest() %}
+    {% set redir = _Page.setHttpRedirects(
+        { '|^/.*|': networkData.defaultBlogUrl, }, false) 
+    %} 
+{% endif %}
+
 {% if plan != false  %}
 
 {# The first payment is due on DD Month 20XX unless cancelled. #}
