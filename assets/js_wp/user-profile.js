@@ -93,7 +93,7 @@ UserProfileController.prototype.fetchEmailLists = function() {
 
 
 
-        self.fetchUserMailchimpStatus(self.newsroom).done(function(status) {
+        self.fetchUserMailchimpStatus(this.newsroom).done(function(status) {
 
             self.mailChimpUser = status.data === false ? false : true;
 
@@ -124,7 +124,7 @@ UserProfileController.prototype.fetchEmailLists = function() {
 
                     var params = {
                         i: i,
-                        listId: self.newsroom,
+                        listId: this.newsroom,
                         groupId: self.emailLists[i].id,
                         name: name,
                         checked: checked
@@ -149,7 +149,7 @@ UserProfileController.prototype.deleteUser = function(e) {
 
     var mailChimpData = {
         user    : userid,
-        list    : self.newsroom,
+        list    : this.newsroom,
         action  : 'unsubscribe'
     }
 
