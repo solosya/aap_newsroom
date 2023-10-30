@@ -463,7 +463,9 @@
                             {% if data['special'] is defined and data['special'] == true %}
                                 {% set orderImage = networkData.templatePath ~ "/static/images/newsroom-pro-device_1.png?ver=2" %}
                             {% endif %}
-
+                            {% if plan.guid == "a244559c-6edb-4703-91c5-f82a0504378f" %}
+                                {% set orderImage = networkData.templatePath ~ "/static/images/newsroom-pro-cop.png" %}
+                            {% endif %}
 
                             {% set period_count = "" %}
                             {% set period = plan.period %}
@@ -471,22 +473,32 @@
                                 {% set period_count = plan.period_count ~ " " %}
                                 {% set period = period ~ "s" %}
                             {% endif %}
-                            <div class="col-12">	
-                                <h3 class="plan-type__name">{{plan.plan_name}}</h3>
-                                {% if data['special'] is defined and data['special'] == true %}
-                                    <p class="plan-type__users">Save ($91) + free book</p>
-                                {% else %}
-                                    <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
-                                {% endif %}
-                                <p class="plan-type__currency">
-                                ${{val}}
-                                {% if data['special'] is defined and data['special'] == true %}
-                                for 12 months
-                                {% else %} 
-                                per {{period_count}}{{period}}
-                                {% endif %}
-                                </p>
-                            </div>
+
+                            {% if plan.guid == "a244559c-6edb-4703-91c5-f82a0504378f" %}
+                                <div class="col-12">	
+                                    <h3 class="plan-type__name">Newsroom Pro Special Offer</h3>
+                                    <p class="plan-type__users">Support Newsroom's climate coverage</p>
+                                    <p class="plan-type__currency">$199 for 12 months (save $91)</p>
+                                </div>
+                            {% else %}
+                                <div class="col-12">	
+                                    <h3 class="plan-type__name">{{plan.plan_name}}</h3>
+                                    {% if data['special'] is defined and data['special'] == true %}
+                                        <p class="plan-type__users">Save ($91) + free book</p>
+                                    {% else %}
+                                        <p class="plan-type__users">{{plan.user_count + 1}} Users</p>
+                                    {% endif %}
+                                    <p class="plan-type__currency">
+                                    ${{val}}
+                                    {% if data['special'] is defined and data['special'] == true %}
+                                    for 12 months
+                                    {% else %} 
+                                    per {{period_count}}{{period}}
+                                    {% endif %}
+                                    </p>
+                                </div>
+                            {% endif %}
+                            
                             <div class="col-12">
                                 <img class="plan-type__img" src="{{orderImage}}">
                             </div>
