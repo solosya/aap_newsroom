@@ -316,8 +316,10 @@ Donations.prototype.render = function (layout, data) {
     $(this.container)
       .unbind()
       .on("click", function (e) {
-        console.log(e.target);
-        self.handler(e);
+        console.log(e.target.nodeName);
+        if (e.target.nodeName !== "A") {
+          self.handler(e);
+        }
         return;
       });
   }
@@ -439,11 +441,8 @@ Donations.prototype.layoutEvents = function () {
 Donations.prototype.handler = function (e) {
   var self = this;
   e.preventDefault();
-  if (
-    typeof e.target.dataset.elem === "undefined" ||
-    e.target.type.toUpperCase() === "A"
-  ) {
-    return true;
+  if (typeof e.target.dataset.elem === "undefined") {
+    return;
   }
 
   var elem = e.target.dataset.elem;
