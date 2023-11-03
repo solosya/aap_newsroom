@@ -162,7 +162,7 @@ export const Templates = {
     {{ else }} \
         <button id="donate-button" class="{{class_name}}__button" data-elem="checkout">Donate</button> \
     {{/ifCond}} \
-        <a href="mailto: contact@newsroom.co.nz" subject="I would like to donate via bank transfer" class="{{class_name}}__bank-email-link">Donate via bank transfer</a> \
+        <a href="mailto:contact@newsroom.co.nz" subject="I would like to donate via bank transfer" class="{{class_name}}__bank-email-link">Donate via bank transfer</a> \
 </div>',
 
   donateSignupForm:
