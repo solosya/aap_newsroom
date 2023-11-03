@@ -316,6 +316,7 @@ Donations.prototype.render = function (layout, data) {
     $(this.container)
       .unbind()
       .on("click", function (e) {
+        console.log(e.target);
         self.handler(e);
         return;
       });
