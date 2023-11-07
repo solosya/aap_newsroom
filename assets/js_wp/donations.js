@@ -170,11 +170,13 @@ Donations.prototype.parsePrices = function (r) {
       continue;
     }
 
-    var order = ["month", "year", "one_time"];
+    var order = ["one_time", "month", "year"];
 
-    if (typeof product.metadata.order !== "undefined") {
-      order = product.metadata.order.split(",");
-    }
+    // Rohit: hardcoding the order as we dont have access to stripe
+
+    // if (typeof product.metadata.order !== "undefined") {
+    //   order = product.metadata.order.split(",");
+    // }
 
     this.active[product.id] = order[0];
     this.selected.interval = order[0];
