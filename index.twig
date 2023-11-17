@@ -14,17 +14,7 @@
 {% set config       = _Network.getThemeConfig() %}
 
 
-{% set cacheKey = "index_popular" %}
-{% set forceCache = true %}
-{% set popularArticles = getCache(cacheKey, forceCache) %}
-{% if (popularArticles is empty) %}
-	{% set popularArticles = _Article.getPopularArticles({ 
-        limit: 6, 
-        blogId: blogData['id'],  
-        interval: 36  
-    }) %}
-	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %}
-{% endif %}
+
 
 
 {% set donations = "nr" %}
