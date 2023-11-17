@@ -1,4 +1,45 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
 
+{% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : false %}
+
+
+{% cache 'indexCache_1' 300 %}
+
+
+{% set networkData   = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog(null, {'excludeMenus' : true}) %}
+{% set blogName      = blogData.title %}
+{% set layout        = blogData.layout %}
+{% set layoutTitle   = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
+{% set config       = _Network.getThemeConfig() %}
+
+
+{% set cacheKey = "index_popular" %}
+{% set forceCache = true %}
+{% set popularArticles = getCache(cacheKey, forceCache) %}
+{% if (popularArticles is empty) %}
+	{% set popularArticles = _Article.getPopularArticles({ 
+        limit: 6, 
+        blogId: blogData['id'],  
+        interval: 36  
+    }) %}
+	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %}
+{% endif %}
+
+
+{% set donations = "nr" %}
+
+
+{% set limit = 12 %}
+{% if layoutTitle | lower == 'newsroom_opinion' %}
+	{% set limit = 14 %}
+{% endif %}
+
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
 
 
 
@@ -8,3 +49,7 @@
 </main>
 
 
+
+
+
+{% endcache %}
