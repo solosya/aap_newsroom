@@ -19,12 +19,12 @@
 {% set log = _AppHelper.log('getting popular from theme') %}
 {% set popularArticles = getCache(cacheKey, forceCache) %}
 {% if (popularArticles is empty) %}
-	{% set popularArticles = _Article.getPopularArticles({ 
+	{# {% set popularArticles = _Article.getPopularArticles({ 
         limit: 6, 
         blogId: blogData['id'],  
         interval: 36  
     })
-	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} #}
+	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} #} #}
 {% endif %}
 
 
@@ -154,7 +154,7 @@ So you don't have to create all the sections on dev #}
 {% endif %}
 
 
-<main id="main" class="site-main" role="main" data-test="true" data-ver="11">
+<main id="main" class="site-main" role="main" data-test="true" data-ver="12">
 
 	{% if layoutTitle | lower == 'newsroom_opinion' %}
 		{{this.render('partials/_index-comment.twig', {articles: articles, networkData: networkData}) | raw}}
