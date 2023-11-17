@@ -18,11 +18,11 @@
 {% set forceCache = true %}
 {% set popularArticles = getCache(cacheKey, forceCache) %}
 {% if (popularArticles is empty) %}
-	{% set popularArticles = _Article.getPopularArticles({ 
+	{# {% set popularArticles = _Article.getPopularArticles({ 
         limit: 6, 
         blogId: blogData['id'],  
         interval: 36  
-    }) %}
+    }) %} #}
 	{# {% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} #}
 {% endif %}
 
@@ -44,7 +44,7 @@
 
 
 
-<main id="main" class="site-main" role="main" data-test="true" data-ver="8">
+<main id="main" class="site-main" role="main" data-test="true" data-ver="9">
 
 </main>
 
