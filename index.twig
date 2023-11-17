@@ -16,6 +16,7 @@
 
 {% set cacheKey = "index_popular" %}
 {% set forceCache = true %}
+{% set log = _AppHelper.log('getting popular from theme') %}
 {% set popularArticles = getCache(cacheKey, forceCache) %}
 {% if (popularArticles is empty) %}
 	{% set popularArticles = _Article.getPopularArticles({ 
