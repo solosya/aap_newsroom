@@ -14,7 +14,11 @@
 {% set config       = _Network.getThemeConfig() %}
 
 
-
+{% set cacheKey = "index_popular" %}
+{% set forceCache = true %}
+{% set popularArticles = getCache(cacheKey, forceCache) %}
+{% if (popularArticles is empty) %}
+{% endif %}
 
 
 {% set donations = "nr" %}
@@ -34,7 +38,7 @@
 
 
 
-<main id="main" class="site-main" role="main" data-test="true" data-ver="5">
+<main id="main" class="site-main" role="main" data-test="true" data-ver="6">
 
 </main>
 
