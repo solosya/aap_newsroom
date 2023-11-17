@@ -22,8 +22,8 @@
         limit: 6, 
         blogId: blogData['id'],  
         interval: 36  
-    }) %} #}
-	{# {% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} #}
+    }) %}
+	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %} #}
 {% endif %}
 
 
@@ -36,20 +36,487 @@
 {% endif %}
 
 
-
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+{% set nonPinnedCount = articlesArr.existingNonPinnedCount %}
+{% set lastArticle = articles | last %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 
 
+{% set sections =  {
+        "video": {
+            "feed": "",
+            "link": ""
+        }, 
+        "livingroom": {
+            "feed": "",
+            "link": ""
+        }, 
+        "lockerroom": {
+            "feed": "",
+            "link": ""
+        }, 
+        "climate emergency": {
+            "feed": "",
+            "link": ""
+        }, 
+        "economic recovery": {
+            "feed": "",
+            "link": ""
+        },
+        "election 2020" : {
+            "feed" : "",
+            "link": ""
+        },
+        "readingroom": {
+            "feed": "",
+            "link": ""
+        },
+        "technology": {
+            "feed": "",
+            "link": ""
+        },
+        "health & science": {
+            "feed": "",
+            "link": ""
+        },
+        "ideasroom": {
+            "feed": "",
+            "link": ""
+        },
+        "futurelearning": {
+            "feed": "",
+            "link": ""
+        },
+        "partner newsroom": {
+            "feed": "",
+            "link": ""
+        },
+        "newsroom pro": {
+            "feed": "",
+            "link": ""
+        },
+        "podcast card": {
+            "feed": "",
+            "link": ""
+        },
+        "investigations": {
+            "feed": "",
+            "link": ""
+        },
+        "sustainable future": {
+            "feed": "",
+            "link": ""
+        },
+        "puzzles": {
+            "feed": "",
+            "link": ""
+        },
+		"peter ellis, the creche case & me": {
+            "feed": "",
+            "link": ""
+        }
+    }
+%}
 
 
-<main id="main" class="site-main" role="main" data-test="true" data-ver="9">
+{% for key, value in sections %}
+	{% for blog in networkData.networkBlogs %}
 
+		{% if blog.title | lower == key %}
+			{% set sections = sections | merge({
+                (key) : {
+                    'feed': _Blog.getBlogFeed({'limit': 8, 'offset': 0, 'blogid':blog.guid}),
+                    'link' : blog.link
+                    }
+                }) %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+
+
+{# Fill all sections with content from a single section
+So you don't have to create all the sections on dev #}
+{% if dev %}
+	{% set devSection = sections['readingroom']%}
+	{% for key, section in sections %}
+		{% set sections = sections | merge({
+            (key) : {
+                'feed': devSection.feed,
+                'link' : blog.link
+                }
+            }) %}
+	{% endfor %}
+{% endif %}
+
+
+<main id="main" class="site-main" role="main" data-test="true" data-ver="11">
+
+	{% if layoutTitle | lower == 'newsroom_opinion' %}
+		{{this.render('partials/_index-comment.twig', {articles: articles, networkData: networkData}) | raw}}
+		{% set articleCount = articleCount + 4 %}
+
+	{% elseif  layoutTitle | lower == 'newsroom-special' %}
+		{{this.render('partials/_index-special.twig', {articles: articles, networkData: networkData}) | raw}}
+		{% set articleCount = articleCount + 4 %}
+
+	{% else %}
+		{{this.render('partials/_index-default.twig', {articles: articles, networkData: networkData }) | raw}}
+		{% set articleCount = articleCount + 4 %}
+	{% endif %}
+
+
+	{# {{this.render('partials/email-signup.twig') | raw}} #}
+
+
+	<section class="home-page-content">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-12 col-lg-8">
+
+
+					{% if layoutTitle | lower == 'newsroom_opinion' %}
+						{% if articles[articleCount] %}
+							<section class="">
+								<div class="row">
+									{% for i in 0..1 %}
+										{% if articles[articleCount] %}
+											{{this.render('partials/_single-article.twig', {
+                                                    article: articles[articleCount],
+                                                    position: (articleCount+1), 
+                                                    containerClass: 'col-sm-6 card-top-story card-top-story-tablet card-top-story-mobile opinion-card row_cardss', 
+                                                    swap: 'false',
+                                                    dev: dev
+                                                    }) | raw}}
+											{% set articleCount = articleCount + 1 %}
+										{% endif %}
+									{% endfor %}
+								</div>
+							</section>
+						{% endif %}
+					{% endif %}
+
+					<div class="">
+
+						{% if articles[articleCount] %}
+							{{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount + 1), 
+                                    containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
+                                }) | raw}}
+							{% set articleCount = articleCount + 1 %}
+						{% endif %}
+
+
+						{% if 'The Detail' in sections['podcast card'].feed.articles[0].label %}
+
+						</div>
+						{% set podCardClass = 'card-pod-td card-pod-td-tablet card-pod-td-mobile' %}
+						<div class="row">
+							{{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
+							{% set limit = limit - 1 %}
+							{% if not lastArticle.isPinned %}
+								{% set nonPinnedCount = nonPinnedCount - 1 %}
+							{% endif %}
+					{% elseif 'Two Cents' in sections['podcast card'].feed.articles[0].label %}
+
+						</div>
+						{% set podCardClass = 'card-pod-tc card-pod-tc-tablet card-pod-tc-mobile' %}
+						<div class="row">
+							{{ this.render('partials/pod-partial.twig', {sections: sections['podcast card'], networkData: networkData, cardClass: podCardClass}) | raw }}
+							{% set limit = limit - 1 %}
+							{% if not lastArticle.isPinned %}
+								{% set nonPinnedCount = nonPinnedCount - 1 %}
+							{% endif %}
+
+						{% else %}
+							{% if articles[articleCount] %}
+								{{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile',
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
+                                }) | raw}}
+								{% set articleCount = articleCount + 1 %}
+							{% endif %}
+						{% endif %}
+
+					</div>
+
+
+					<div class="col-12 d-md-none u-margin-top-40">
+						{{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: '',
+									id:"daily-email-mobile"
+                                }) | raw}}
+					</div>
+
+
+					<section class="ad row sidebar-ad sidebar-ad__idx  d-lg-none   u-tablet-no-margin-top">
+						<div class="col-12">
+							{% if config['inventory']['adSpace']['mrec'][0] is defined %}
+								<div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec" data-responsive="0"></div>
+							{% endif %}
+							{# <span class="ad-text">Advertisement</span> #}
+						</div>
+						{# <div class="col-md-6 d-none d-md-block">
+																		                                {{ this.render('partials/newsroom_register.twig', {networkData : networkData, class: ' with-ad'}) | raw }}
+																		                            </div> #}
+					</section>
+
+
+					<div class="row">
+
+						{% for i in 0..2 %}
+							{% if articles[articleCount] %}
+								{{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount], 
+                                        position: (articleCount+1), 
+                                        containerClass: 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
+                                        imageSize: {width:230, height:208},
+                                        dev: dev
+                                    }) | raw}}
+								{% set articleCount = articleCount + 1 %}
+							{% endif %}
+						{% endfor %}
+
+					</div>
+
+
+					{% if articles[articleCount] %}
+						<div class="u-mobile-margin-top-60">
+							{{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1), 
+                                containerClass: 'card-lg-mobile card-lg-tablet card-lg-desktop card-lg-desktop-lg',
+                                imageSize: {width:750, height:518},
+                                dev: dev
+                            }) | raw}}
+							{% set articleCount = articleCount + 1 %}
+						</div>
+					{% endif %}
+
+					{% for i in 0..1 %}
+						{% if articles[articleCount] %}
+							{{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: (articleCount+1), 
+                                    containerClass: 'card-rec card-rec-tablet card-rec-mobile',
+                                    imageSize: {width:330, height:236},
+                                    dev: dev
+                                }) | raw}}
+							{% set articleCount = articleCount + 1 %}
+						{% endif %}
+					{% endfor %}
+
+					{# {% if articles[articleCount] %}
+															                            {{this.render('partials/_single-article.twig', {
+															                                article: articles[articleCount], 
+															                                position: (articleCount + 1), 
+															                                containerClass: 'card-rec-inverted-desktop card-rec-inverted-desktop-lg card-rec-inverted-tablet card-rec-mobile',
+															                                imageSize: {width:330, height:236},
+															                                dev: dev
+															                            }) | raw}}
+															                            {% set articleCount = articleCount + 1 %}
+															                        {% endif %} #}
+
+
+					<section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+
+					<section
+						class="loadmore__section {{site}}">
+						{# {% if articles|length >= limit %} #}
+						{{ this.render('/partials/load_more.twig', {
+                                    name            : "section-load",
+                                    label           : "Load more articles",
+                                    buttonClass     : "loadMoreArticles-index u-desktop-margin-top-minus-60",
+                                }) | raw }}
+						{# {% endif %} #}
+					</section>
+
+
+				</div>
+				<!-- .col-sm-8 -->
+
+
+				{# ********************************************************
+										SIDEBAR
+				******************************************************** #}
+				<div class="col-sm-12 col-lg-4 sidebar">
+					<div
+						class="row u-mobile-margin-top-40">
+						{#{% if _Page.getPageData("rnz") is defined %}
+							<div class="rnz-widget col-lg-12 col-md-6 u-tablet-order-1 u-desktop-order-1">
+								{% set rnzpage = _Page.getPageData("rnz", false) %}
+								{{rnzpage.content | raw}}
+							</div>
+						{% endif %}#}
+
+						<div class="col-12 col-md-6 col-lg-12 d-none d-md-block">
+							{{this.render('/partials/cta-side.twig', {
+                                    networkData: networkData,
+                                    config: config,
+                                    extraClass: 'd-none d-md-flex',
+									id:"daily-email-desktop"
+
+                                }) | raw}}
+						</div>
+
+						<section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30">
+							{% if config['inventory']['adSpace']['mrec'][1] is defined %}
+								<div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][1]}}" data-adshape="mrec" data-responsive="1"></div>
+							{% endif %}
+							{# <span class="ad-text">Advertisement</span> #}
+						</section>
+
+
+					</div>
+
+
+					<section class="sidebar-news recent-articles">
+						<h3 class="recent-articles__header">
+							<span class="recent-articles__header-bold">Most popular</span>
+							on Newsroom
+						</h3>
+
+
+						{% if popularArticles|length > 0 %}
+
+							{% for i in 0..4 %}
+								{% if popularArticles[i] %}
+									{{
+                                            this.render('partials/_single-article_recent.twig', {
+                                                article: popularArticles[i], 
+                                                containerClass: '', 
+                                                swap: 'false', 
+                                                isArticle: 'true'}) | raw
+                                        }}
+								{% endif %}
+							{% endfor %}
+
+						{% endif %}
+
+					</section>
+
+					<section class="ad col-12 no-padding d-md-none d-lg-block u-margin-top-30 u-margin-bottom-30">
+						{% if config['inventory']['adSpace']['hpage'][0] is defined %}
+							<div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage" data-responsive="1"></div>
+						{% endif %}
+						{# <span class="ad-text">Advertisement</span> #}
+					</section>
+
+					{% if sections['puzzles'].feed.articles|length > 0 %}
+						{{ this.render('partials/puzzles-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+					{% endif %}
+
+				</div>
+			</div>
+
+			{% if sections['newsroom pro'].feed.articles|length > 0 %}
+				{{ this.render('partials/pro-partial.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+			{# {% if sections['peter ellis, the creche case & me'].feed.articles|length > 0 %}
+				{{ this.render('partials/videoseries.twig', {sections: sections, networkData: networkData, config: config}) | raw }}
+			{% endif %} #}
+
+			{# {% if sections['election 2020'].feed.articles|length > 0 %}
+									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
+			{# {% if sections['economic recovery'].feed.articles|length > 0 %}
+									                    {{ this.render('partials/sportsroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
+
+			{% if sections['ideasroom'].feed.articles|length > 0 %}
+				{{ this.render('partials/ideasroom.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['lockerroom'].feed.articles|length > 0 %}
+				{{ this.render('partials/lockerroom.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{#{% if sections['climate emergency'].feed.articles|length > 0 %}
+									                    {{ this.render('partials/greenroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %}#}
+
+
+			{% if sections['sustainable future'].feed.articles|length > 0 %}
+				{{ this.render('partials/sustainablefuture.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['investigations'].feed.articles|length > 0 %}
+				{{ this.render('partials/investigations.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['technology'].feed.articles|length > 0 %}
+				{{ this.render('partials/technology.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['health & science'].feed.articles|length > 0 %}
+				{{ this.render('partials/healthscience.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['readingroom'].feed.articles|length > 0 %}
+				{{ this.render('partials/readingroom.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+			{% if sections['video'].feed.articles|length > 0 %}
+				{{ this.render('partials/viewingroom.twig', {sections: sections, networkData: networkData}) | raw }}
+			{% endif %}
+
+
+			{# {% if sections['livingroom'].feed.articles|length > 0 %}
+									                    {{ this.render('partials/livingroom.twig', {sections: sections, networkData: networkData}) | raw }}
+									                {% endif %} #}
+
+
+		</div>
+
+		{% if sections['partner newsroom'].feed.articles|length > 0 %}
+			{{ this.render('partials/partnerroom.twig', {sections: sections, networkData: networkData}) | raw }}
+		{% endif %}
+
+
+		{{ this.render('partials/_sponsor_logos2.twig') | raw }}
+
+	</section>
+	<div id="ad-keywords" class="j-keyword-cont" data-keywords="{{blogData.keywords}}" data-pagename="home" data-pagetype="home" data-pagetags=""></div>
 </main>
 
 
+{# <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var card = new Acme.Card();
+        Acme.loadMore = new Acme.ArticleFeed(card, {{limit}}, {{firstCount}}, false);
+    });
+</script> #}
+<script>
+	document.addEventListener("DOMContentLoaded", function (event) {
+const events = new Acme.Card();
 
+Acme.loadMore = new Acme.ArticleFeed({
+model: Acme.Card,
+container: 'loadmore_section',
+offset: {{ articleCount }},
+limit: 12,
+label: "Load more articles",
+imgwidth: "220",
+imgheight: "208",
+name: 'section-load',
+blogid: "{{ blogData['guid'] }}",
+card_class: 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
+non_pinned: "{{ nonPinnedCount }}"
+});
+});
+</script>
 
 
 {% endcache %}
