@@ -1,49 +1,4 @@
-{{ set(this, 'title', _Blog.getBlogTitle()) }}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'PROD' ? false : false %}
-
-
-{% cache 'indexCache_1' 300 %}
-
-
-{% set networkData   = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog(null, {'excludeMenus' : true}) %}
-{% set blogName      = blogData.title %}
-{% set layout        = blogData.layout %}
-{% set layoutTitle   = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
-{% set config       = _Network.getThemeConfig() %}
-
-
-{% set cacheKey = "index_popular" %}
-{% set forceCache = true %}
-{% set popularArticles = getCache(cacheKey, forceCache) %}
-{% if (popularArticles is empty) %}
-	{% set popularArticles = _Article.getPopularArticles({ 
-        limit: 6, 
-        blogId: blogData['id'],  
-        interval: 36  
-    }) %}
-	{% set cache = setCache(cacheKey, popularArticles, 900, forceCache) %}
-{% endif %}
-
-
-{% set donations = "nr" %}
-
-
-{% set limit = 12 %}
-{% if layoutTitle | lower == 'newsroom_opinion' %}
-	{% set limit = 14 %}
-{% endif %}
-
-
-{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0, 'distribution': true}) %}
-{% set articles = articlesArr.articles %}
-{% set firstCount = articles | length %}
-{% set nonPinnedCount = articlesArr.existingNonPinnedCount %}
-{% set lastArticle = articles | last %}
-
-<!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = 0 %}
 
 
 
@@ -53,31 +8,3 @@
 </main>
 
 
-{# <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function() {
-        var card = new Acme.Card();
-        Acme.loadMore = new Acme.ArticleFeed(card, {{limit}}, {{firstCount}}, false);
-    });
-</script> #}
-<script>
-	document.addEventListener("DOMContentLoaded", function (event) {
-const events = new Acme.Card();
-
-Acme.loadMore = new Acme.ArticleFeed({
-model: Acme.Card,
-container: 'loadmore_section',
-offset: {{ articleCount }},
-limit: 12,
-label: "Load more articles",
-imgwidth: "220",
-imgheight: "208",
-name: 'section-load',
-blogid: "{{ blogData['guid'] }}",
-card_class: 'col-md-4 card-sm card-sm-tablet card-sm-mobile',
-non_pinned: "{{ nonPinnedCount }}"
-});
-});
-</script>
-
-
-{% endcache %}
