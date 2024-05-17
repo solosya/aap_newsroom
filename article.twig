@@ -772,6 +772,8 @@
     <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </main>
 
+
+
 {% set hasCommentEnabled = _Article.hasCommentEnabled(article.publishedAt) %}
 {% if  show_comments %}
     {{this.render('partials/_comments.twig', {
@@ -783,6 +785,9 @@
         allowComments: (allow_comments and hasCommentEnabled) ? "true" : "false"
     }) | raw}}
 {% endif %}
+
+<p>hasCommentEnabled - {{hasCommentEnabled}}</p>
+<p>Allow Connents - {{(allow_comments and hasCommentEnabled)}}</p>
 
 {% set isPaywalled = article.premiumContent ? 'false' : 'true' %}
 
