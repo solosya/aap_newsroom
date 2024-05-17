@@ -772,7 +772,7 @@
     <div id="ad-keywords" class="j-keyword-cont" data-keywords="{{theKeywords}}" data-pageName="{{articleBlog}}" data-pageType="article" data-pageTags=""{% if articleBlog == 'ideasroom' %} data-adsection="futurelearning"{% endif %}></div>
 </main>
 
-
+{% set hasCommentEnabled = _Article.hasCommentEnabled(article.publishedAt) %}
 {% if  show_comments %}
     {{this.render('partials/_comments.twig', {
         config: config,
@@ -780,7 +780,7 @@
         articleId: article.id,
         articleGuid: article.guid,
         commentCount:commentCount,
-        allowComments:allow_comments ? "true" : "false"
+        allowComments: (allow_comments and hasCommentEnabled) ? "true" : "false"
     }) | raw}}
 {% endif %}
 
